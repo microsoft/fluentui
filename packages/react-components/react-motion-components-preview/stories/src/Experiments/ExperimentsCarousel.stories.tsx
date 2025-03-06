@@ -118,7 +118,7 @@ const useClasses = makeStyles({
     padding: '20px',
     // width: '70px',
     height: '100%',
-    boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.5)', // Added drop shadow
+    boxShadow: '2px 2px 12px rgba(0, 0, 0, 0.8)', // Added drop shadow
   },
   photo3Up: {
     display: 'grid',
@@ -175,7 +175,7 @@ const useClasses = makeStyles({
 
 // A motion component that fades in and slides in from the top over 1 second,
 // holds in place for 3 seconds, and then fades out and slides out to the bottom over 1 second.
-const TitleSlide = createMotionComponent({
+const TitleMotion = createMotionComponent({
   keyframes: [
     { transform: 'translateY(-100px)', opacity: 0, easing: motionTokens.curveDecelerateMin },
     { transform: 'translateY(0)', opacity: 1, offset: 0.2 },
@@ -185,7 +185,7 @@ const TitleSlide = createMotionComponent({
   duration: 5000,
 });
 
-const PhotoScale = createMotionComponent({
+const PhotoMotion = createMotionComponent({
   keyframes: [
     { transform: 'scale(0.5)', opacity: 0, easing: motionTokens.curveDecelerateMin },
     { transform: 'scale(1)', opacity: 1, offset: 0.1 },
@@ -197,77 +197,70 @@ const PhotoScale = createMotionComponent({
 
 export const ExperimentsCarousel = () => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(false);
-  const [autoplay, setAutoplay] = React.useState<boolean>(false);
-  const [duration, setDuration] = React.useState<number>(1000);
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
-  const [orientation, setOrientation] = React.useState<'vertical' | 'horizontal'>('vertical');
-  const [distance, setDistance] = React.useState<string>('100%');
+  // const [visible, setVisible] = React.useState<boolean>(false);
+  // const [autoplay, setAutoplay] = React.useState<boolean>(false);
+  // const [duration, setDuration] = React.useState<number>(1000);
+  // const [animateOpacity, setAnimateOpacity] = React.useState(true);
+  // const [orientation, setOrientation] = React.useState<'vertical' | 'horizontal'>('vertical');
+  // const [distance, setDistance] = React.useState<string>('100%');
 
-  const orientationSelectId = useId();
-  const distanceSelectId = useId();
-  const durationSliderId = useId();
-  const durationMin = 200;
-  const durationMax = 2000;
-
-  // const screenA = (
-  //   <div>
-  //     <div>{albumTitleSeries}</div>
-  //     <div>{photo3Stagger}</div>
-  //   </div>
-  // );
+  // const orientationSelectId = useId();
+  // const distanceSelectId = useId();
+  // const durationSliderId = useId();
+  // const durationMin = 200;
+  // const durationMax = 2000;
 
   const photo3Stagger = (
     <Stagger delay={100}>
-      <PhotoScale>
+      <PhotoMotion>
         <div className={classes.photo}>A1</div>
-      </PhotoScale>
+      </PhotoMotion>
 
-      <PhotoScale>
+      <PhotoMotion>
         <div className={classes.photo}>A2</div>
-      </PhotoScale>
+      </PhotoMotion>
 
-      <PhotoScale>
+      <PhotoMotion>
         <div className={classes.photo}>A3</div>
-      </PhotoScale>
+      </PhotoMotion>
+    </Stagger>
+  );
+
+  const photo4Stagger = (
+    <Stagger delay={100}>
+      <PhotoMotion>
+        <div className={classes.photo}>B1</div>
+      </PhotoMotion>
+
+      <PhotoMotion>
+        <div className={classes.photo}>B2</div>
+      </PhotoMotion>
+
+      <PhotoMotion>
+        <div className={classes.photo}>B3</div>
+      </PhotoMotion>
+
+      <PhotoMotion>
+        <div className={classes.photo}>B4</div>
+      </PhotoMotion>
     </Stagger>
   );
 
   const screenA = (
     <>
-      <TitleSlide>
+      <TitleMotion>
         <div className={classes.albumTitle}>Album A</div>
-      </TitleSlide>
+      </TitleMotion>
 
       <div className={classes.photo3Up}>{photo3Stagger}</div>
     </>
   );
 
-  const photo4Stagger = (
-    <Stagger delay={100}>
-      <PhotoScale>
-        <div className={classes.photo}>B1</div>
-      </PhotoScale>
-
-      <PhotoScale>
-        <div className={classes.photo}>B2</div>
-      </PhotoScale>
-
-      <PhotoScale>
-        <div className={classes.photo}>B3</div>
-      </PhotoScale>
-
-      <PhotoScale>
-        <div className={classes.photo}>B4</div>
-      </PhotoScale>
-    </Stagger>
-  );
-
   const screenB = (
     <>
-      <TitleSlide>
+      <TitleMotion>
         <div className={classes.albumTitle}>Album B</div>
-      </TitleSlide>
+      </TitleMotion>
 
       <div className={classes.photo4Up}>{photo4Stagger}</div>
     </>
