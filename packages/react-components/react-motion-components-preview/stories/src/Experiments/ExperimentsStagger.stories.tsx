@@ -105,6 +105,13 @@ const curveSpringRelaxed = `linear(
   0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
 )`;
 
+const curveBounceHard = `linear(
+    0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141 13.6%, 0.25, 0.391, 0.563, 0.765,
+    1, 0.891 40.9%, 0.848, 0.813, 0.785, 0.766, 0.754, 0.75, 0.754, 0.766, 0.785,
+    0.813, 0.848, 0.891 68.2%, 1 72.7%, 0.973, 0.953, 0.941, 0.938, 0.941, 0.953,
+    0.973, 1, 0.988, 0.984, 0.988, 1
+  )`;
+
 const LoremIpsum = () => (
   <>
     {'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.repeat(
@@ -122,6 +129,15 @@ const SlideSpringy = createPresenceComponent(
     enterDuration: motionTokens.durationNormal * 5,
     enterEasing: curveSpringRelaxed,
     exitDuration: motionTokens.durationNormal * 5,
+    exitEasing: motionTokens.curveAccelerateMax,
+  }),
+);
+
+const SlideBouncy = createPresenceComponent(
+  createSlidePresence({
+    enterDuration: motionTokens.durationNormal * 2,
+    enterEasing: curveBounceHard,
+    exitDuration: motionTokens.durationNormal * 2,
     exitEasing: motionTokens.curveAccelerateMax,
   }),
 );
@@ -200,7 +216,7 @@ export const ExperimentsStagger = () => {
           Component: SlideSpringy.In,
           numItems: 100,
           itemSize: '50px',
-          props: { orientation: 'vertical', distance: '-100%' },
+          props: { orientation: 'vertical', distance: '200%' },
         })}
       </Stagger>
 
@@ -210,6 +226,15 @@ export const ExperimentsStagger = () => {
           numItems: 100,
           itemSize: '50px',
           props: { orientation: 'horizontal', distance: '200%' },
+        })}
+      </Stagger>
+
+      <Stagger delay={50}>
+        {createMotionComponents({
+          Component: SlideBouncy.In,
+          numItems: 100,
+          itemSize: '50px',
+          props: { orientation: 'vertical', distance: '-200%' },
         })}
       </Stagger>
 
