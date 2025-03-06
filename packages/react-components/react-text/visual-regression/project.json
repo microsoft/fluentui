@@ -32,7 +32,7 @@
       "dependsOn": ["build-storybook"]
     },
     "test-vr-cli": {
-      "command": "visual-regression-assert --baselineDir dist/vrt/baseline --actualDir dist/vrt/actual --diffDir dist/vrt/diff --reportPath dist/vrt/report.html",
+      "command": "visual-regression-assert assert --baselineDir dist/vrt/baseline --actualDir dist/vrt/actual --diffDir dist/vrt/diff --reportPath dist/vrt/report.html",
       "options": {
         "cwd": "{projectRoot}"
       },

@@ -93,16 +93,12 @@ jobs:
       - name: Report Updated Baseline
         if: steps.affected_projects_count.outputs.value > 0
         run: |
-          echo "## Run Result" >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-          cat packages/react-components/react-text/visual-regression/dist/vrt/report.json >> $GITHUB_STEP_SUMMARY
-          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          yarn visual-regression-assert report --outputPath dist/vrt
+          cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
 
       - name: Report No Baseline Update
         if: steps.affected_projects_count.outputs.value == 0
         run: |
-          echo "## Run Result" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
           echo "_✅ No affected visual regression tests - baseline updated was skipped_" >> $GITHUB_STEP_SUMMARY
 
   vrt_pr:
@@ -132,14 +128,14 @@ jobs:
       - run: yarn playwright install --with-deps
       - run: yarn nx run visual-regression-assert:build
 
-      - name: Run VR tests (generate screenshots)
+      - name: Run VR tests
         run: yarn nx affected -t test-vr-cli --nxBail
 
       - name: Report
-        if: failure()
+        if: always()
         run: |
-          echo "## ❌ Test Run Failed" >> $GITHUB_STEP_SUMMARY
-          cat packages/react-components/react-text/visual-regression/dist/vrt/report.md >> $GITHUB_STEP_SUMMARY
+          yarn visual-regression-assert report --outputPath dist/vrt
+          cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
@@ -148,8 +144,7 @@ jobs:
           name: vrt_report
           retention-days: 1
           path: |
-            '!node_modules/'
-            '**/dist/vrt/**'
+            'dist/vrt'
 
       # - name: Upload VR screenshots
       #   uses: actions/upload-artifact@v4
