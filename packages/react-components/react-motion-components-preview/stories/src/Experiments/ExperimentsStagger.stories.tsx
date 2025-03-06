@@ -28,7 +28,7 @@ import {
   Wipe,
 } from '@fluentui/react-motion-components-preview';
 import { Series } from './Series';
-import { Stagger } from './Stagger';
+import { PresenceStagger, Stagger } from './Stagger';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -88,7 +88,7 @@ const useClasses = makeStyles({
     justifyContent: 'start',
     alignContent: 'flex-start',
     flexWrap: 'wrap',
-    perspective: '200px',
+    perspective: '400px',
     overflow: 'hidden',
     // width: '500px',
     height: '500px',
@@ -167,7 +167,7 @@ export const ExperimentsStagger = () => {
   const durationMax = 2000;
 
   // a function to create an array of Blur.In components
-  const createMotionComponents = ({
+  const createStaggerForMotion = ({
     numItems,
     itemSize = '25px',
     Component = Slide.In,
@@ -195,66 +195,96 @@ export const ExperimentsStagger = () => {
 
   const seriesA = (
     <Series autoloop>
-      <Stagger delay={50}>
-        {createMotionComponents({
-          Component: FadeExtraGentle.In,
+      <PresenceStagger mode="enter" delay={20}>
+        {createStaggerForMotion({
+          Component: FadeExtraGentle,
           numItems: 100,
           itemSize: '50px',
         })}
-      </Stagger>
+      </PresenceStagger>
 
-      <Stagger delay={50}>
-        {createMotionComponents({
-          Component: Blur.In,
+      {/* <PresenceStagger reverse delay={50}>
+        {createStaggerForMotion({
+          Component: FadeExtraGentle,
           numItems: 100,
           itemSize: '50px',
         })}
-      </Stagger>
+      </PresenceStagger>
+
+      <PresenceStagger delay={50}>
+        {createStaggerForMotion({
+          Component: Blur,
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger> */}
+
+      <PresenceStagger mode="exit" delay={20}>
+        {createStaggerForMotion({
+          Component: Blur,
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
 
       <Stagger delay={50}>
-        {createMotionComponents({
+        {createStaggerForMotion({
           Component: SlideSpringy.In,
-          numItems: 100,
-          itemSize: '50px',
           props: { orientation: 'vertical', distance: '200%' },
+          numItems: 100,
+          itemSize: '50px',
         })}
       </Stagger>
 
+      <PresenceStagger mode="exit" delay={50}>
+        {createStaggerForMotion({
+          Component: SlideMagnetic,
+          props: { orientation: 'horizontal', distance: '-200%' },
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
       <Stagger delay={50}>
-        {createMotionComponents({
+        {createStaggerForMotion({
           Component: SlideMagnetic.In,
-          numItems: 100,
-          itemSize: '50px',
           props: { orientation: 'horizontal', distance: '200%' },
-        })}
-      </Stagger>
-
-      <Stagger delay={50}>
-        {createMotionComponents({
-          Component: SlideBouncy.In,
           numItems: 100,
           itemSize: '50px',
-          props: { orientation: 'vertical', distance: '-200%' },
         })}
       </Stagger>
 
-      <Stagger delay={50}>
-        {createMotionComponents({
-          Component: Rotate.In,
+      <PresenceStagger mode="enterReverse" delay={50}>
+        {createStaggerForMotion({
+          Component: SlideBouncy,
+          props: { orientation: 'vertical', distance: '-200%', animateOpacity: false },
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
+      <PresenceStagger mode="exit" delay={50}>
+        {createStaggerForMotion({
+          Component: Rotate,
+          props: {
+            axis: 'Y',
+            enterAngle: 90,
+            enterDuration: motionTokens.durationSlow * 2,
+            enterEasing: motionTokens.curveAccelerateMid,
+          },
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
+      <PresenceStagger mode="enterReverse" delay={50}>
+        {createStaggerForMotion({
+          Component: Rotate,
           props: { axis: 'X', enterDuration: motionTokens.durationSlow * 8, enterEasing: curveSpringRelaxed },
           numItems: 100,
           itemSize: '50px',
         })}
-      </Stagger>
-
-      <Stagger delay={50}>
-        {createMotionComponents({
-          Component: Rotate.In,
-          props: { axis: 'Y', enterDuration: motionTokens.durationSlow * 5, enterEasing: curveSpringRelaxed },
-          numItems: 100,
-          itemSize: '50px',
-        })}
-      </Stagger>
+      </PresenceStagger>
 
       {/* <Stagger delay={20}>
         {createMotionComponents({
