@@ -68,13 +68,29 @@ jobs:
       - name: Update VR tests baseline
         run: yarn nx affected -t test-vr-cli -u --nxBail
 
-      - name: Report
-        if: always()
+      - name: Affected Projects
+        id: affected_projects_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t test-vr-cli --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      - name: Affected Projects Count
+        run: echo ${{steps.affected_projects_count.outputs.value}}
+
+      - name: Report Updated Baseline
+        if: steps.affected_projects_count.outputs.value > 1
         run: |
           echo "## Run Result" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           cat packages/react-components/react-text/visual-regression/dist/vrt/report.json >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Report No Baseline Update
+        if: steps.affected_projects_count.outputs.value == 0
+        run: |
+          echo "## Run Result" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "_✅ No affected visual regression tests - baseline updated was skipped_" >> $GITHUB_STEP_SUMMARY
 
   vrt_pr:
     if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'pull_request' }}
