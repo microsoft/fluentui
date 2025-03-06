@@ -13,7 +13,6 @@ export const childrenOrFragmentToArray = (children: React.ReactNode): React.Reac
 };
 
 // A Series is a component that accepts an array of motion components and plays them in sequence
-// TODO: add a Pause component to pause the series for a duration
 // TODO: add a delay between each component
 export const Series: React.FC<{
   children: React.ReactNode;
