@@ -37,3 +37,14 @@ export const Series: React.FC<{
 
   return React.cloneElement(currentComponent, { onMotionFinish: onComponentFinish });
 };
+
+export const Hold: React.FC<{
+  duration: number;
+  onMotionFinish?: () => void;
+}> = ({ duration, children, onMotionFinish = () => null }) => {
+  setTimeout(() => {
+    onMotionFinish();
+  }, duration);
+
+  return <>{children}</>;
+};
