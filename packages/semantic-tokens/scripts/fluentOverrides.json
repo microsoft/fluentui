@@ -10,5 +10,5 @@
   "ctrlLinkForegroundNeutralRest": "tokens.colorNeutralForeground2",
   "ctrlLinkForegroundNeutralPressed": "tokens.colorNeutralForeground2Pressed",
   "ctrlLinkForegroundNeutralHover": "tokens.colorNeutralForeground2Hover",
-  "foregroundCtrlNeutralPrimaryDisabled": "tokens.colorNeutralForeground2Disabled"
+  "foregroundCtrlNeutralPrimaryDisabled": "tokens.colorNeutralForegroundDisabled"
 }
