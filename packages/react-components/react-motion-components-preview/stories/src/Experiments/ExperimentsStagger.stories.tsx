@@ -27,10 +27,10 @@ import {
   Scale,
   ScaleRelaxed,
   Slide,
-  Wipe,
 } from '@fluentui/react-motion-components-preview';
 import { Series } from './Series';
 import { PresenceStagger, Stagger } from './Stagger';
+import { Wipe } from './Wipe';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -93,7 +93,7 @@ const useClasses = makeStyles({
     perspective: '400px',
     overflow: 'hidden',
     // width: '500px',
-    height: '500px',
+    minHeight: '500px',
     // gap: '10px',
     gridArea: 'card',
     // padding: '10px',
@@ -243,6 +243,24 @@ export const ExperimentsStagger = () => {
       <PresenceStagger mode="exit" delay={20}>
         {createStaggerForMotion({
           Component: Blur,
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
+      <PresenceStagger mode="enter" delay={20}>
+        {createStaggerForMotion({
+          Component: Wipe,
+          props: {},
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
+      <PresenceStagger mode="exitReverse" delay={20}>
+        {createStaggerForMotion({
+          Component: Wipe,
+          props: {},
           numItems: 100,
           itemSize: '50px',
         })}
