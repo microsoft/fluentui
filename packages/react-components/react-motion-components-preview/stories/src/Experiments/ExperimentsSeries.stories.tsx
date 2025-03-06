@@ -99,11 +99,7 @@ const Series: React.FC<{ components: MotionComponentDef[] }> = ({ components }) 
   return <currentComponent.fn {...currentComponent.props} onMotionFinish={onMotionFinish} />;
 };
 
-type MotionComponentCreator = {
-  ({ onMotionFinish }: { onMotionFinish: MotionComponentProps['onMotionFinish'] }): React.ReactElement;
-};
-
-const SeriesB: React.FC<{ components: MotionComponentCreator[] }> = ({ components }) => {
+const SeriesB: React.FC<{ components: React.ReactElement[] }> = ({ components }) => {
   const [index, setIndex] = React.useState(0);
 
   const currentComponent = components[index];
@@ -115,30 +111,46 @@ const SeriesB: React.FC<{ components: MotionComponentCreator[] }> = ({ component
     }
   };
 
-  return currentComponent({ onMotionFinish });
+  return React.cloneElement(currentComponent, { onMotionFinish });
 };
 
-const componentsB = ({ animateOpacity = true }): MotionComponentCreator[] => [
-  ({ onMotionFinish }) => (
-    <Blur.In onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.In>
-  ),
-  ({ onMotionFinish }) => (
-    <Blur.Out onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.Out>
-  ),
-  ({ onMotionFinish }) => (
-    <Blur.In onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.In>
-  ),
-  ({ onMotionFinish }) => (
-    <Blur.Out onMotionFinish={onMotionFinish} animateOpacity={animateOpacity}>
-      <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
-    </Blur.Out>
-  ),
+const componentsB = ({ animateOpacity = true }): React.ReactElement[] => [
+  <Blur.In animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Blur.In>,
+  <Blur.Out animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Blur.Out>,
+  <Blur.In animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Blur.In>,
+  <Blur.Out animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Blur.Out>,
+  <Collapse.In animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Collapse.In>,
+  <Collapse.Out animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Collapse.Out>,
+  <ScaleRelaxed.In animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </ScaleRelaxed.In>,
+  <ScaleRelaxed.Out animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </ScaleRelaxed.Out>,
+  <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Slide.In>,
+  <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Slide.Out>,
+  <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Slide.In>,
+  <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+    <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
+  </Slide.Out>,
 ];
 
 const componentsA = ({ animateOpacity = true }): MotionComponentDef[] => [
