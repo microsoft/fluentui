@@ -141,7 +141,7 @@ jobs:
           echo "value=true" >> $GITHUB_OUTPUT
 
       - name: Upload Report
-        if: always() && steps.report.outputs.value == true
+        if: ${{ always() && steps.report.outputs.value == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: vrt_report
