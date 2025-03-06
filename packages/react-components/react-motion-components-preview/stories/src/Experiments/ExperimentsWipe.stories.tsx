@@ -1,19 +1,6 @@
 import * as React from 'react';
-import {
-  Field,
-  makeStyles,
-  tokens,
-  Switch,
-  useId,
-  Label,
-  Slider,
-  AtomMotion,
-  motionTokens,
-  PresenceMotionFn,
-  createPresenceComponent,
-  Avatar,
-} from '@fluentui/react-components';
-import { fadeAtom } from '../../../library/src/atoms/fade-atom';
+import { Field, makeStyles, tokens, Switch, useId, Label, Slider, Avatar } from '@fluentui/react-components';
+import { Wipe } from './Wipe';
 
 // import description from './ExperimentsWipe.stories.md';
 
@@ -72,7 +59,7 @@ const LoremIpsum = () => (
   </>
 );
 
-const diagonalWipeKeyframes = ({ reverse = false } = {}) => {
+export const diagonalWipeKeyframes = ({ reverse = false } = {}) => {
   if (reverse) {
     return [
       // beginning: mask is fully covering the element
@@ -99,80 +86,6 @@ const diagonalWipeKeyframes = ({ reverse = false } = {}) => {
     },
   ];
 };
-
-// TODO: define wipe by angle?
-// TODO: allow wipe-out to go forward rather than backward
-
-const wipeKeyframes = () => {
-  return { diagonal: diagonalWipeKeyframes() };
-};
-
-type WipeRuntimeParams = {
-  enterDuration?: number;
-  exitDuration?: number;
-  enterEasing?: string;
-  exitEasing?: string;
-  animateOpacity?: boolean;
-};
-
-// Create a Wipe presence motion component that moves the element in a wipe path,
-// from a starting radius to a target radius, and from a starting angle to a target angle.
-const wipePresenceFn: PresenceMotionFn<WipeRuntimeParams> = ({
-  enterDuration = 500,
-  exitDuration = enterDuration,
-  // enterEasing = motionTokens.curveDecelerateMin,
-  enterEasing = motionTokens.curveDecelerateMin,
-  exitEasing = motionTokens.curveAccelerateMin,
-  animateOpacity = true,
-}: WipeRuntimeParams) => {
-  // const keyframeDefs = {
-  //   diagonal: [
-  //     // beginning: mask is empty and the starting point is the top-left corner
-  //     { clipPath: 'polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%)' },
-  //     // halfway: mask covers half along the diagonal from the bottom-left to the top-right
-  //     { clipPath: 'polygon(0% 0%, 0% 100%, 0% 100%, 100% 0%, 100% 0%)' },
-  //     // end: mask is fully covering the element
-  //     {
-  //       clipPath: 'polygon(0% 0%, 0% 100%, 100% 100%, 100% 100%, 100% 0%)',
-  //     },
-  //   ],
-  // };
-  const keyframes = wipeKeyframes().diagonal;
-
-  // create the enter and exit atoms
-  const enterAtoms: AtomMotion[] = [
-    {
-      keyframes,
-      duration: enterDuration,
-      easing: enterEasing,
-      // fill: 'forwards',
-    },
-  ];
-  if (animateOpacity) {
-    enterAtoms.push(fadeAtom({ direction: 'enter', duration: enterDuration, easing: enterEasing }));
-  }
-  const exitAtoms: AtomMotion[] = [
-    {
-      // keyframes: [...keyframes].reverse(),
-      keyframes: diagonalWipeKeyframes({ reverse: true }),
-      duration: exitDuration,
-      easing: exitEasing,
-      // fill: 'forwards',
-    },
-  ];
-  // TODO: fix element disappearing when exiting
-  if (animateOpacity) {
-    exitAtoms.push(fadeAtom({ direction: 'exit', duration: exitDuration, easing: exitEasing }));
-  }
-  // console.log('### enterAtoms', enterAtoms);
-  // console.log('### exitAtoms', exitAtoms);
-  return {
-    enter: enterAtoms,
-    exit: exitAtoms,
-  };
-};
-
-const Wipe = createPresenceComponent(wipePresenceFn);
 
 export const ExperimentsWipe = () => {
   const classes = useClasses();
