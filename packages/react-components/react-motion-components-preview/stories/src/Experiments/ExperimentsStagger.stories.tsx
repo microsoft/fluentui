@@ -19,10 +19,12 @@ import {
   Blur,
   Collapse,
   createFadePresence,
+  createScalePresence,
   createSlidePresence,
   Fade,
   FadeRelaxed,
   Rotate,
+  Scale,
   ScaleRelaxed,
   Slide,
   Wipe,
@@ -112,6 +114,21 @@ const curveBounceHard = `linear(
     0.973, 1, 0.988, 0.984, 0.988, 1
   )`;
 
+const curveElastic = `linear(
+    0, 0.218 2.1%, 0.862 6.5%, 1.114, 1.296 10.7%, 1.346, 1.37 12.9%, 1.373,
+    1.364 14.5%, 1.315 16.2%, 1.032 21.8%, 0.941 24%, 0.891 25.9%, 0.877,
+    0.869 27.8%, 0.87, 0.882 30.7%, 0.907 32.4%, 0.981 36.4%, 1.012 38.3%, 1.036,
+    1.046 42.7% 44.1%, 1.042 45.7%, 0.996 53.3%, 0.988, 0.984 57.5%, 0.985 60.7%,
+    1.001 68.1%, 1.006 72.2%, 0.998 86.7%, 1
+  )`;
+
+const curveEmphasized = `linear(
+    0, 0.002, 0.01 3.6%, 0.034, 0.074 9.1%, 0.128 11.4%, 0.194 13.4%, 0.271 15%,
+    0.344 16.1%, 0.544, 0.66 20.6%, 0.717 22.4%, 0.765 24.6%, 0.808 27.3%,
+    0.845 30.4%, 0.883 35.1%, 0.916 40.6%, 0.942 47.2%, 0.963 55%, 0.979 64%,
+    0.991 74.4%, 0.998 86.4%, 1
+  )`;
+
 const LoremIpsum = () => (
   <>
     {'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '.repeat(
@@ -133,6 +150,15 @@ const SlideSpringy = createPresenceComponent(
   }),
 );
 
+const SlideElastic = createPresenceComponent(
+  createSlidePresence({
+    enterDuration: motionTokens.durationNormal * 10,
+    enterEasing: curveElastic,
+    exitDuration: motionTokens.durationNormal * 10,
+    exitEasing: motionTokens.curveAccelerateMax,
+  }),
+);
+
 const SlideBouncy = createPresenceComponent(
   createSlidePresence({
     enterDuration: motionTokens.durationNormal * 2,
@@ -147,7 +173,18 @@ const SlideMagnetic = createPresenceComponent(
     enterDuration: motionTokens.durationNormal * 5,
     enterEasing: motionTokens.curveAccelerateMax,
     exitDuration: motionTokens.durationNormal * 5,
-    exitEasing: motionTokens.curveAccelerateMax,
+    // exitEasing: motionTokens.curveAccelerateMax,
+    exitEasing: curveEmphasized,
+  }),
+);
+
+const ScaleCompletely = createPresenceComponent(
+  createScalePresence({
+    fromScale: 0,
+    enterDuration: motionTokens.durationSlow * 10,
+    enterEasing: motionTokens.curveAccelerateMax,
+    exitDuration: motionTokens.durationSlow * 10,
+    exitEasing: curveEmphasized,
   }),
 );
 
@@ -180,7 +217,7 @@ export const ExperimentsStagger = () => {
   }) => {
     return Array.from({ length: numItems }, (_, i) => {
       const t = i / numItems;
-      const backgroundColor = `hsl(${Math.floor(180 + t * 120)}, 100%, 50%)`;
+      const backgroundColor = `hsl(${Math.floor(180 + t * 120)}, 100%, 40%)`;
       return (
         // <Blur.In>
         // <span>
@@ -203,22 +240,6 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      {/* <PresenceStagger reverse delay={50}>
-        {createStaggerForMotion({
-          Component: FadeExtraGentle,
-          numItems: 100,
-          itemSize: '50px',
-        })}
-      </PresenceStagger>
-
-      <PresenceStagger delay={50}>
-        {createStaggerForMotion({
-          Component: Blur,
-          numItems: 100,
-          itemSize: '50px',
-        })}
-      </PresenceStagger> */}
-
       <PresenceStagger mode="exit" delay={20}>
         {createStaggerForMotion({
           Component: Blur,
@@ -227,10 +248,10 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <Stagger delay={50}>
+      <Stagger delay={30}>
         {createStaggerForMotion({
-          Component: SlideSpringy.In,
-          props: { orientation: 'vertical', distance: '200%' },
+          Component: SlideElastic.In,
+          props: { orientation: 'vertical', distance: '100%' },
           numItems: 100,
           itemSize: '50px',
         })}
@@ -286,6 +307,15 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
+      <PresenceStagger mode="exit" delay={50}>
+        {createStaggerForMotion({
+          Component: ScaleCompletely,
+          props: {},
+          numItems: 100,
+          itemSize: '50px',
+        })}
+      </PresenceStagger>
+
       {/* <Stagger delay={20}>
         {createMotionComponents({
           Component: Slide.In,
@@ -304,13 +334,13 @@ export const ExperimentsStagger = () => {
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field> */}
 
-        <Field className={classes.field}>
+        {/* <Field className={classes.field}>
           <Switch
             label={<code>animateOpacity</code>}
             checked={animateOpacity}
             onChange={() => setAnimateOpacity(v => !v)}
           />
-        </Field>
+        </Field> */}
       </div>
 
       {/* <div className={classes.card}>{staggerB}</div> */}
