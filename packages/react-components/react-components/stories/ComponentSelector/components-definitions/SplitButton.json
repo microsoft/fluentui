@@ -3,5 +3,5 @@
   "component": "SplitButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["moreActions"]
+  "attributes": ["primaryActionPlusDropdown", "notToggle"]
 }

@@ -1,6 +1,16 @@
 {
   "name": "Checkbox",
   "component": "Checkbox",
-  "attributes": ["multipleChoices", "notOnOrOff", "toggle", "notInsideMenu", "navigationByTabKey", "interactive"],
+  "attributes": [
+    "multipleChoices",
+    "notOnOrOff",
+    "toggle",
+    "notInsideMenu",
+    "navigationByTabKey",
+    "interactive",
+    "notAutoSelect",
+    "visibilityOnScreen",
+    "isNotInstantAction"
+  ],
   "note": "When grouping multiple checkboxes together, they should be navigated by TAB key not arrows."
 }

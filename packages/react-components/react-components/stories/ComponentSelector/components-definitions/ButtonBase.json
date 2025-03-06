@@ -1,4 +1,4 @@
 {
   "name": "ButtonBase",
-  "attributes": ["staysOnPage", "navigationByTabKey", "interactive"]
+  "attributes": ["navigationByTabKey", "interactive", "performsAction"]
 }

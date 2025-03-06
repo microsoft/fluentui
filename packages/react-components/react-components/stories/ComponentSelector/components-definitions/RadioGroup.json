@@ -1,5 +1,5 @@
 {
   "name": "RadioGroup",
   "component": "RadioGroup",
-  "attributes": []
+  "attributes": ["singleChoice", "autoSelect", "isInstantAction"]
 }

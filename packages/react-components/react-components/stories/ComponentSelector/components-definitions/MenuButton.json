@@ -3,5 +3,5 @@
   "component": "MenuButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["opensMenu"]
+  "attributes": ["opensMenu", "equealActions", "notToggle"]
 }

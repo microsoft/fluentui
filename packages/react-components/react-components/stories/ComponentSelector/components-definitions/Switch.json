@@ -1,5 +1,5 @@
 {
   "name": "Switch",
   "component": "Switch",
-  "attributes": []
+  "attributes": ["singleChoice", "autoSelect", "isInstantAction"]
 }

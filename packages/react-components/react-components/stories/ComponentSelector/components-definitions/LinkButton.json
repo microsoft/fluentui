@@ -1,0 +1,5 @@
+{
+  "name": "LinkButton",
+  "component": "LinkButton",
+  "attributes": ["notToggle", "performsNavigation", "navigationByTabKey", "interactive", "linkAsButton"]
+}
