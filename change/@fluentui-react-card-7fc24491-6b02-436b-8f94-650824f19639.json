@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: implemented custom style hook for Card, CardFooter, CardHeader, CardPreview",
+  "packageName": "@fluentui/react-card",
+  "email": "terynkum@microsoft.com",
+  "dependentChangeType": "patch"
+}
