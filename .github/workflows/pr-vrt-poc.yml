@@ -137,7 +137,6 @@ jobs:
         run: |
           yarn visual-regression-assert report --outputPath dist/vrt
           cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
-          ls -al dist/vrt
           echo "value=true" >> $GITHUB_OUTPUT
 
       - name: Upload Report
@@ -146,6 +145,7 @@ jobs:
         with:
           name: vrt_report
           retention-days: 1
+          if-no-files-found: error
           path: |
             dist/vrt/
 
@@ -153,6 +153,7 @@ jobs:
         if: always()
         run: echo ${{ github.event.number }} > pr.txt
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: pr-number
           retention-days: 1
