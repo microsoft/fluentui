@@ -1,0 +1,9 @@
+export const ctrlProgressBackgroundEmptyRaw = '--smtc-ctrl-progress-background-empty';
+export const ctrlProgressBackgroundFilledRaw = '--smtc-ctrl-progress-background-filled';
+export const ctrlProgressCornerRaw = '--smtc-ctrl-progress-corner';
+export const ctrlProgressHeightFilledRaw = '--smtc-ctrl-progress-height-filled';
+export const ctrlProgressHeightEmptyRaw = '--smtc-ctrl-progress-height-empty';
+export const ctrlProgressSmHeightFilledRaw = '--smtc-ctrl-progress-sm-height-filled';
+export const ctrlProgressSmHeightEmptyRaw = '--smtc-ctrl-progress-sm-height-empty';
+export const ctrlProgressLgHeightFilledRaw = '--smtc-ctrl-progress-lg-height-filled';
+export const ctrlProgressLgHeightEmptyRaw = '--smtc-ctrl-progress-lg-height-empty';
