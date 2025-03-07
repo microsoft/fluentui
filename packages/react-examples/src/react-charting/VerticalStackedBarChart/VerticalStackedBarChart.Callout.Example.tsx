@@ -61,45 +61,45 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 5, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 15, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 3, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 60, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const fourthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 10, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const fifthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 40, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const sixthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 40, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 20, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const seventhChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 80, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 20, color: getColorFromToken(DataVizPalette.color6) },
     ];
     const eightChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 50, color: getColorFromToken(DataVizPalette.color11) },
+      { legend: 'Metadata1', data: 50, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata2', data: 50, color: getColorFromToken(DataVizPalette.color1) },
       { legend: 'Metadata3', data: 20, color: getColorFromToken(DataVizPalette.color6) },
     ];

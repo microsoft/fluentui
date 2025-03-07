@@ -47,7 +47,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 40,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 Metadata1 61%' },
@@ -74,7 +74,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 30,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 Metadata1 33%' },
@@ -101,7 +101,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 44,
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '43%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 Metadata1 43%' },

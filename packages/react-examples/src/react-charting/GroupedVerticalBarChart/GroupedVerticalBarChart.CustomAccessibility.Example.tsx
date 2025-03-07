@@ -60,7 +60,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -71,7 +71,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 44000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '44%',
@@ -90,7 +90,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -101,7 +101,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 3000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
@@ -120,7 +120,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 14000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '13%',
@@ -131,7 +131,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 50000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '50%',
@@ -150,7 +150,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series1',
             data: 33000,
-            color: getColorFromToken(DataVizPalette.color10),
+            color: getColorFromToken(DataVizPalette.color1),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '29%',
@@ -161,7 +161,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           {
             key: 'series2',
             data: 3000,
-            color: getColorFromToken(DataVizPalette.color11),
+            color: getColorFromToken(DataVizPalette.color2),
             legend: 'MetaData4',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
