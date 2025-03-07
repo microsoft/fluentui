@@ -1,20 +1,11 @@
-import { render } from 'ejs';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { cwd } from 'node:process';
 
 import { PNG } from 'pngjs';
 import { getPackageMetadata, loadPixelmatch } from './utils';
-import { dirname, join } from 'node:path';
-import { Metadata, Result, Report } from './types';
-
-function stripIndents(strings: { raw: readonly string[] }, ...values: string[]) {
-  return String.raw(strings, ...values)
-    .split('\n')
-    .map(line => line.trim())
-    .join('\n')
-    .trim();
-}
+import { Result } from './types';
+import { generateCliReport, generateHtmlReport, generateJsonReport, generateMarkdownReport } from './reporters';
 
 async function compareSnapshots(
   baselinePath: string,
@@ -51,139 +42,6 @@ async function compareSnapshots(
     return { passed: true };
   } catch (error) {
     return { passed: false, error: (error as Error).message };
-  }
-}
-
-function generateJsonReport(
-  results: Result[],
-  options: {
-    metadata: Metadata;
-    reportFileName: string;
-    paths: {
-      absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-      relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    };
-  },
-) {
-  const { metadata, paths, reportFileName } = options;
-  const reportPathRoot = dirname(paths.absolute.reportPath);
-
-  const reportPathFile = join(reportPathRoot, reportFileName);
-  const report: Report = { results, metadata };
-
-  fs.writeFileSync(reportPathFile, JSON.stringify(report, null, 2), 'utf-8');
-
-  console.log(`JSON report generated: ${reportPathFile}`);
-}
-
-function generateMarkdownReport(
-  results: Result[],
-  paths: {
-    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-  },
-) {
-  const template = fs.readFileSync(path.join(__dirname, 'template/report.md__tmpl__'), 'utf-8');
-  const generatedContent = results
-    .map(result => {
-      let generatedContent = stripIndents`
-            | ${result.file} | ${result.passed ? '✅ Passed' : '❌ Failed'} |
-            `;
-
-      if (!result.passed) {
-        if (result.error) {
-          generatedContent += `Error: ${result.error}`;
-          generatedContent += `<br/>`;
-        }
-        if (result.diffPixels) {
-          generatedContent += `Diff pixels: ${result.diffPixels}`;
-          // TODO: this is impossible to do in GitHub MD context without either uploading images to some cloud or inlining  them via BASE64 which would be catastrophic for GH GUI
-          // generatedContent += `<br/>`;
-          // generatedContent += `<figure><figcaption>Baseline</<figcaption><img src="${paths.baselineDir}/${result.file}" alt="Baseline"></figure>`;
-          // generatedContent += `<figure><figcaption>Actual</<figcaption><img src="${paths.actualDir}/${result.file}" alt="Actual"></figure>`;
-          // generatedContent += `<figure><figcaption>Diff</<figcaption><img src="${paths.diffDir}/${result.file}" alt="Diff"></figure>`;
-        }
-      }
-
-      generatedContent += `|`;
-
-      return generatedContent;
-    })
-    .join('\n');
-
-  const renderedMD = render(template, { content: generatedContent });
-
-  const reportPath = paths.absolute.reportPath.replace('html', 'md');
-  fs.writeFileSync(reportPath, renderedMD, 'utf-8');
-
-  console.log(`Markdown report generated: ${reportPath}`);
-}
-
-function generateHtmlReport(
-  results: Result[],
-  paths: {
-    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-  },
-) {
-  const template = fs.readFileSync(path.join(__dirname, 'template/report.html__tmpl__'), 'utf-8');
-  const generatedContent = results
-    .map(result => {
-      let generatedContent = stripIndents`
-          <tr>
-            <td>${result.file}</td>
-            <td class="${result.passed ? 'passed' : 'failed'}">${result.passed ? 'Passed' : 'Failed'}</td>
-            <td>`;
-
-      if (!result.passed) {
-        if (result.error) {
-          generatedContent += `<p>Error: ${result.error}</p>`;
-        }
-        if (result.diffPixels) {
-          const sanitizedFileName = encodeURIComponent(result.file);
-          const images = {
-            baseline: createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
-            actual: createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
-            diff: createRelativeImagePath(paths.relative.reportPath, paths.relative.diffDir),
-          };
-          generatedContent += `<p>Diff pixels: ${result.diffPixels}</p>`;
-          generatedContent += `<div class="image-container">`;
-          generatedContent += `<figure><figcaption>Baseline</figcaption><img src="${path.join(
-            images.baseline,
-            sanitizedFileName,
-          )}" alt="Baseline"></figure>`;
-          generatedContent += `<figure><figcaption>Actual</figcaption><img src="${path.join(
-            images.actual,
-            sanitizedFileName,
-          )}" alt="Actual"></figure>`;
-          generatedContent += `<figure><figcaption>Diff</figcaption><img src="${path.join(
-            images.diff,
-            sanitizedFileName,
-          )}" alt="Diff"></figure>`;
-          generatedContent += `</div>`;
-        }
-      }
-
-      generatedContent += `</td></tr>`;
-
-      return generatedContent;
-    })
-    .join('\n');
-
-  const renderedHTML = render(template, { content: generatedContent });
-
-  fs.writeFileSync(paths.absolute.reportPath, renderedHTML);
-  console.log(`HTML report generated: ${paths.absolute.reportPath}`);
-}
-
-function createRelativeImagePath(reportFilePath: string, imageDirectory: string) {
-  try {
-    const reportDir = path.dirname(reportFilePath);
-    const relativePath = path.relative(reportDir, imageDirectory);
-    return path.join(relativePath, '/'); // Add a trailing slash for directory access
-  } catch (error) {
-    console.error('Error creating relative path:', error);
-    return ''; // Return an empty string in case of an error
   }
 }
 
@@ -293,6 +151,12 @@ export async function runSnapshotTests(
       results.push({ file, passed: true });
     }
   }
+
+  generateCliReport(results, {
+    metadata,
+    reportFileName,
+    paths: { absolute: normalizedPaths, relative: relativePaths },
+  });
 
   generateJsonReport(results, {
     metadata,
