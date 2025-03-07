@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "fix: Implemented customStyleHooks for SearchBox Component",
   "packageName": "@fluentui/react-search",
   "email": "terynkum@microsoft.com",
