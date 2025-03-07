@@ -52,7 +52,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: vr-report-comment
-          number: ${{ steps.pr_number }}
+          number: ${{ steps.pr_number.outputs.id }}
           message: |
             VR Regression Report:
             - status: ${{ github.event.workflow_run.conclusion }}
