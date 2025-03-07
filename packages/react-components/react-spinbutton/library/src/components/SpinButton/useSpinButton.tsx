@@ -154,6 +154,11 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
     const newValue = e.target.value;
     setTextValue(newValue);
+    if (inputRef.current) {
+      // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
+      // is not in sync with the user-entered native input value, and some screen readers end up reading the wrong value.
+      inputRef.current.ariaValueNow = newValue;
+    }
   };
 
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -236,21 +241,12 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
-      if (inputRef.current) {
-        // we need to set this here using the IDL attribute directly, because otherwise the timing of the ARIA value update
-        // is not in sync with the user-entered native input value, and some screen readers end up reading the previous value.
-        inputRef.current.ariaValueNow = `${roundedValue}`;
-      }
       internalState.current.value = roundedValue;
     } else if (displayValueChanged && !isControlled) {
       const nextValue = parseFloat(newDisplayValue as string);
       if (!isNaN(nextValue)) {
-        const roundedNextValue = precisionRound(nextValue, precision);
-        setCurrentValue(roundedNextValue);
-        if (inputRef.current) {
-          inputRef.current.ariaValueNow = `${roundedNextValue}`;
-        }
-        internalState.current.value = roundedNextValue;
+        setCurrentValue(precisionRound(nextValue, precision));
+        internalState.current.value = precisionRound(nextValue, precision);
       }
     }
 
@@ -337,6 +333,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input.ref = useMergedRefs(inputRef, ref);
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
+  state.input['aria-valuenow'] = internalState.current.value ?? undefined;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = mergeCallbacks(state.input.onChange, handleInputChange);
   state.input.onInput = mergeCallbacks(state.input.onInput, handleInputChange);
