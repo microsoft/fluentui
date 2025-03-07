@@ -40,3 +40,11 @@ export async function loadPixelmatch() {
   const pixelmatch = (await import('pixelmatch')).default;
   return pixelmatch;
 }
+
+export function stripIndents(strings: { raw: readonly string[] }, ...values: string[]) {
+  return String.raw(strings, ...values)
+    .split('\n')
+    .map(line => line.trim())
+    .join('\n')
+    .trim();
+}
