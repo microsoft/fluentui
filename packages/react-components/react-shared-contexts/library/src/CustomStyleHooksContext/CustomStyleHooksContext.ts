@@ -56,6 +56,7 @@ export type CustomStyleHooksContextValue = Partial<{
   usePopoverSurfaceStyles_unstable: CustomStyleHook;
   useRadioGroupStyles_unstable: CustomStyleHook;
   useRadioStyles_unstable: CustomStyleHook;
+  useSearchBoxStyles_unstable: CustomStyleHook;
   useSelectStyles_unstable: CustomStyleHook;
   useSliderStyles_unstable: CustomStyleHook;
   useSpinButtonStyles_unstable: CustomStyleHook;
