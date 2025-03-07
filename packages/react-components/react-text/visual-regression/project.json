@@ -36,7 +36,11 @@
       "options": {
         "cwd": "{projectRoot}"
       },
-      "dependsOn": ["build-storybook", "generate-image-for-vrt"],
+      "dependsOn": [
+        "build-storybook",
+        "generate-image-for-vrt",
+        { "projects": ["visual-regression-assert"], "target": "build" }
+      ],
       "inputs": ["{projectRoot}/dist/vrt/screenshots/**"],
       "metadata": {
         "help": {
