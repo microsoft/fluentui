@@ -84,7 +84,7 @@ const DismissExample = () => {
 
 const SelectExample = () => {
   const [seletedTags, setSelectedTags] = React.useState<Array<string> | undefined>([]);
-  const selectItem: TagGroupProps['onSelect'] = (_e, { value }) => {
+  const selectItem: TagGroupProps['onTagSelect'] = (_e, { value }) => {
     if (!seletedTags) {
       return;
     }
@@ -98,7 +98,7 @@ const SelectExample = () => {
   return (
     <>
       <div id="selected-tags">{seletedTags?.join(', ')}</div>
-      <TagGroup onSelect={selectItem}>{selectableTags.map(({ children }) => children)}</TagGroup>
+      <TagGroup onTagSelect={selectItem}>{selectableTags.map(({ children }) => children)}</TagGroup>
     </>
   );
 };

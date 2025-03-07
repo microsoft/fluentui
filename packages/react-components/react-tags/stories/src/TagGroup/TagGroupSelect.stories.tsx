@@ -29,7 +29,7 @@ const initialTags = [
 
 const WithMultiselectTags = () => {
   const [seletedTags, setSelectedTags] = React.useState<Array<TagValue> | undefined>([]);
-  const selectItem: TagGroupProps['onSelect'] = (_e, { value }) => {
+  const selectItem: TagGroupProps['onTagSelect'] = (_e, { value }) => {
     if (!seletedTags) {
       return;
     }
@@ -43,7 +43,7 @@ const WithMultiselectTags = () => {
   return (
     <>
       <p>Selected values: {seletedTags?.join(', ')}</p>
-      <TagGroup onSelect={selectItem} aria-label="Tag group with Multiselect Tag">
+      <TagGroup onTagSelect={selectItem} aria-label="Tag group with Multiselect Tag">
         <InteractionTag>
           <InteractionTagPrimary>Tag 1</InteractionTagPrimary>
         </InteractionTag>
@@ -91,7 +91,7 @@ const DismissWithInteractionTags = () => {
   };
 
   const resetItems = () => setVisibleTags(initialTags);
-  const selectItem: TagGroupProps['onSelect'] = (_e, { value }) => {
+  const selectItem: TagGroupProps['onTagSelect'] = (_e, { value }) => {
     if (!seletedTags) {
       return;
     }
@@ -110,7 +110,11 @@ const DismissWithInteractionTags = () => {
     <>
       <p>Selected values: {seletedTags?.join(', ')}</p>
       {visibleTags.length !== 0 && (
-        <TagGroup onSelect={selectItem} onDismiss={removeItem} aria-label="Tag group with Dismissable Multiselect Tag">
+        <TagGroup
+          onTagSelect={selectItem}
+          onDismiss={removeItem}
+          aria-label="Tag group with Dismissable Multiselect Tag"
+        >
           {visibleTags.map((tag, index) => (
             <InteractionTag value={tag.value} key={tag.value}>
               <InteractionTagPrimary hasSecondaryAction ref={index === 0 ? firstTagRef : null}>

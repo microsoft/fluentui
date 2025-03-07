@@ -136,13 +136,13 @@ export type TagGroupContextValues = {
 };
 
 // @public
-export type TagGroupProps<Value = TagValue> = Omit<ComponentProps<TagGroupSlots>, 'onSelect'> & {
+export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
     onDismiss?: TagDismissHandler<Value>;
     disabled?: boolean;
     size?: TagSize;
     appearance?: TagAppearance;
     dismissible?: boolean;
-    onSelect?: EventHandler<TagSelectData<Value>>;
+    onTagSelect?: EventHandler<TagSelectData<Value>>;
 };
 
 // @public (undocumented)

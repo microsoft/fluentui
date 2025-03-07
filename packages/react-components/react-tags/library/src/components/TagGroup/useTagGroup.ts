@@ -23,7 +23,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     appearance = 'filled',
     dismissible = false,
     role = 'toolbar',
-    onSelect,
+    onTagSelect,
     ...rest
   } = props;
 
@@ -58,7 +58,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   });
 
   const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback((e, data) => {
-    onSelect?.(e, data);
+    onTagSelect?.(e, data);
 
     if (items.includes(data.value)) {
       setItems(items.filter(item => item !== data.value));
@@ -75,7 +75,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
-    handleTagSelect: onSelect ? handleTagSelect : undefined,
+    handleTagSelect: onTagSelect ? handleTagSelect : undefined,
     selectedValues: items,
     role,
     size,

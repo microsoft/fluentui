@@ -21,7 +21,7 @@ export type TagGroupSlots = {
 /**
  * TagGroup Props
  */
-export type TagGroupProps<Value = TagValue> = Omit<ComponentProps<TagGroupSlots>, 'onSelect'> & {
+export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
@@ -42,7 +42,7 @@ export type TagGroupProps<Value = TagValue> = Omit<ComponentProps<TagGroupSlots>
   /**
    * Callback for when a tag is selected
    */
-  onSelect?: EventHandler<TagSelectData<Value>>;
+  onTagSelect?: EventHandler<TagSelectData<Value>>;
 };
 
 /**
