@@ -43,7 +43,20 @@ async function main() {
       async argv => {
         const { baselineDir, actualDir, diffDir, reportPath, updateSnapshots } = argv;
 
-        return await runSnapshotTests(baselineDir, actualDir, diffDir, reportPath, reportFileName, updateSnapshots);
+        const result = await runSnapshotTests(
+          baselineDir,
+          actualDir,
+          diffDir,
+          reportPath,
+          reportFileName,
+          updateSnapshots,
+        );
+        if (!result.passed) {
+          console.error('===============================================');
+          console.error('🚨 Snapshots changed! Please Review VR Report 🚨');
+          console.error('===============================================');
+          process.exit(1);
+        }
       },
     )
     // .option('baselineDir', { type: 'string', demandOption: true })
