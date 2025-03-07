@@ -167,6 +167,8 @@ export async function runSnapshotTests(
   generateMarkdownReport(results, { absolute: normalizedPaths, relative: relativePaths });
 
   if (!allPassed) {
-    throw new Error(`snapshots contain diff`);
+    return { passed: false };
   }
+
+  return { passed: true };
 }
