@@ -1,13 +1,31 @@
 import * as React from 'react';
 import type { ArgTypes } from '@storybook/react';
-import { Field, SearchBox } from '@fluentui/react-components';
-import type { SearchBoxProps } from '@fluentui/react-components';
+import { Field, mergeClasses, makeStyles, SearchBox, FluentProvider } from '@fluentui/react-components';
+import type { SearchBoxProps, SearchBoxState, FluentProviderCustomStyleHooks } from '@fluentui/react-components';
+
+const useSearchBoxStyle = makeStyles({
+  root: {
+    backgroundColor: 'red',
+  },
+});
+
+const useSearchBoxStyles = (state: unknown) => {
+  const styles = useSearchBoxStyle();
+  const componentState = state as SearchBoxState;
+  componentState.root.className = mergeClasses(componentState.root.className, styles.root);
+};
+
+const CUSTOM_STYLE_HOOK: FluentProviderCustomStyleHooks = {
+  useSearchBoxStyles_unstable: useSearchBoxStyles,
+};
 
 export const Default = (props: SearchBoxProps) => {
   return (
-    <Field label="Sample SearchBox">
-      <SearchBox {...props} />
-    </Field>
+    <FluentProvider customStyleHooks_unstable={CUSTOM_STYLE_HOOK}>
+      <Field label="Sample SearchBox">
+        <SearchBox {...props} />
+      </Field>
+    </FluentProvider>
   );
 };
 
