@@ -1,5 +1,4 @@
-import type { Slot } from '@fluentui/react-utilities';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities/src/index';
+import type { Slot, ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 export type EmptyStateSlots = {
   /**
@@ -10,9 +9,14 @@ export type EmptyStateSlots = {
   /**
    * Element used to render the main header title.
    */
-  title: Slot<'span'>;
+  header: Slot<'span'>;
 };
 
-export type EmptyStateProps = ComponentProps<EmptyStateSlots>;
+export type EmptyStateProps = ComponentProps<EmptyStateSlots> & {
+  /**
+   * The title of the EmptyState.
+   */
+  title?: string;
+};
 
 export type EmptyStateState = ComponentState<EmptyStateSlots>;

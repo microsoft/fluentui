@@ -11,13 +11,13 @@ import type { EmptyStateProps, EmptyStateState } from './EmptyState.types';
  * @param props - props from this instance of EmptyState
  * @param ref - reference to root HTMLElement of EmptyState
  */
-export const useEmptyState = (props: EmptyStateProps, ref: React.Ref<HTMLElement>): EmptyStateState => {
-  const { title, ...rest } = props;
+export const useEmptyState_unstable = (props: EmptyStateProps, ref: React.Ref<HTMLElement>): EmptyStateState => {
+  const { header, title, ...rest } = props;
 
   const state: EmptyStateState = {
     components: {
       root: 'div',
-      title: 'span',
+      header: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -26,7 +26,7 @@ export const useEmptyState = (props: EmptyStateProps, ref: React.Ref<HTMLElement
       }),
       { elementType: 'div' },
     ),
-    title: slot.always(
+    header: slot.always(
       getIntrinsicElementProps('span', {
         children: title,
       }),

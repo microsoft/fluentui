@@ -5,7 +5,7 @@ import type { EmptyStateSlots, EmptyStateState } from './EmptyState.types';
 
 export const emptyStateClassNames: SlotClassNames<EmptyStateSlots> = {
   root: 'fui-EmptyState',
-  title: 'fui-EmptyState__title',
+  header: 'fui-EmptyState__header',
 };
 
 /**
@@ -15,8 +15,8 @@ const useRootStyles = makeResetStyles({
   padding: '20px',
 });
 
-const useTitleStyles = makeStyles({
-  title: {
+const useHeaderStyles = makeStyles({
+  header: {
     fontSize: tokens.fontSizeBase500,
     fontWeight: tokens.fontWeightSemibold,
     color: tokens.colorNeutralForeground1,
@@ -30,12 +30,12 @@ export const useColorSliderStyles_unstable = (state: EmptyStateState): EmptyStat
   'use no memo';
 
   const rootStyles = useRootStyles();
-  const titleStyles = useTitleStyles();
+  const headerStyles = useHeaderStyles();
 
   state.root.className = mergeClasses(emptyStateClassNames.root, rootStyles, state.root.className);
 
-  if (state.title) {
-    state.title.className = mergeClasses(emptyStateClassNames.title, titleStyles.title);
+  if (state.header) {
+    state.header.className = mergeClasses(emptyStateClassNames.header, headerStyles.header);
   }
 
   return state;

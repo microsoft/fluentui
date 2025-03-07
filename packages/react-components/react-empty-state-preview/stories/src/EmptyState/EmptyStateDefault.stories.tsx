@@ -5,7 +5,7 @@ export const EmptyStateDefault = () => {
   return (
     <div>
       Test
-      {/* <EmptyState title="No data" /> */}
+      <EmptyState title="No data" />
     </div>
   );
 };

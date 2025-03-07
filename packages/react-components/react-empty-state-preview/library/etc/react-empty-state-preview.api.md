@@ -4,8 +4,8 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utilities/src/index';
-import { ComponentState } from '@fluentui/react-utilities/src/index';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -14,22 +14,24 @@ import type { Slot } from '@fluentui/react-utilities';
 export const EmptyState: ForwardRefComponent<EmptyStateProps>;
 
 // @public (undocumented)
-export type EmptyStateProps = ComponentProps<EmptyStateSlots>;
+export type EmptyStateProps = ComponentProps<EmptyStateSlots> & {
+    title?: string;
+};
 
 // @public (undocumented)
 export type EmptyStateSlots = {
     root: Slot<'div'>;
-    title: Slot<'span'>;
+    header: Slot<'span'>;
 };
 
 // @public (undocumented)
 export type EmptyStateState = ComponentState<EmptyStateSlots>;
 
-// @public (undocumented)
-export const renderEmptyState: (state: EmptyStateState) => JSX.Element;
+// @public
+export const renderEmptyState_unstable: (state: EmptyStateState) => JSX.Element;
 
 // @public
-export const useEmptyState: (props: EmptyStateProps, ref: React_2.Ref<HTMLElement>) => EmptyStateState;
+export const useEmptyState_unstable: (props: EmptyStateProps, ref: React_2.Ref<HTMLElement>) => EmptyStateState;
 
 // (No @packageDocumentation comment for this package)
 
