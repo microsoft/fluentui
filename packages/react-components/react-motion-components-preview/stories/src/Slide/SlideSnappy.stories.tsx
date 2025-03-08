@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { SlideSnappy } from '@fluentui/react-motion-components-preview';
+
+import description from './SlideSnappy.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -35,7 +37,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: React.ComponentProps<typeof Scale>) => {
+export const Snappy = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
@@ -47,11 +49,19 @@ export const Default = (props: React.ComponentProps<typeof Scale>) => {
         </Field>
       </div>
 
-      <Scale visible={visible}>
+      <SlideSnappy visible={visible}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </Scale>
+      </SlideSnappy>
     </div>
   );
+};
+
+Snappy.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };
