@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-drawer): Use token for backdrop color",
+  "packageName": "@fluentui/react-drawer",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}
