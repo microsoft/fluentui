@@ -129,12 +129,19 @@ export type CustomStyleHooksContextValue = Partial<{
   useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
   /** @deprecated Replaced by TeachingPopoverFooter / TeachingPopoverCarousel styling hooks */
   useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
-  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
   useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  useTeachingPopoverFooterStyles_unstable: CustomStyleHook;
   /** @deprecated Replaced by TeachingPopoverCarouselNav styling hooks */
   useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselCardStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselFooterStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselFooterButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselPageCountStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
   useTagPickerInputStyles_unstable: CustomStyleHook;
   useTagPickerButtonStyles_unstable: CustomStyleHook;

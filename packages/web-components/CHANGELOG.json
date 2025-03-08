@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 05 Mar 2025 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.83",
+      "version": "3.0.0-beta.83",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8d1c3b728b0c905ce19baff2edf0b2533fb090cd",
+            "comment": "feat: auto associate tabpanels with tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Feb 2025 04:07:19 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.82",
       "version": "3.0.0-beta.82",
