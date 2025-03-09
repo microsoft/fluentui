@@ -19,23 +19,24 @@ For the remaining controls, refer to the migration guide to consume them in v9. 
 
 | v8 control                          | v9 control           |
 | ----------------------------------- | -------------------- |
-| Area Chart                          | Planned              |
+| Area Chart                          | April 2025           |
 | Donut Chart                         | Donut Chart          |
-| Gauge Chart                         |                      |
-| Heatmap Chart                       |                      |
+| Gauge Chart                         | April 2025           |
+| Heatmap Chart                       | April 2025           |
 | Horizontal Bar Chart                | Horizontal Bar Chart |
-| Horizontal Bar Chart with Axis      | Planned              |
+| Horizontal Bar Chart with Axis      | April 2025           |
 | Horizontal Bar Chart - Stacked      |                      |
 | Horizontal Bar Chart - MultiStacked |                      |
 | Legends                             | Legends              |
 | Line Chart                          | Line Chart           |
-| Pie Chart                           |                      |
-| Sankey Chart                        |                      |
+| Pie Chart                           | Use Donut Chart      |
+| Sankey Chart                        | April 2025           |
 | Sparkline Chart                     | Sparkline Chart      |
 | Tree Chart                          |                      |
 | Vertical Bar Chart                  | Vertical Bar Chart   |
-| Vertical Bar Chart - Grouped        |                      |
-| Vertical Bar Chart - Stacked        | Planned              |
+| Vertical Bar Chart - Grouped        | April 2025           |
+| Vertical Bar Chart - Stacked        | April 2025           |
+| Plotly Schema Chart                 | March 2025           |
 
 ## Behaviors
 

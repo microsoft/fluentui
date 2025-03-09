@@ -105,7 +105,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useHorizontalBarChartStyles_unstable = (props: HorizontalBarChartProps): HorizontalBarChartStyles => {
+export const useHorizontalBarChartStyles = (props: HorizontalBarChartProps): HorizontalBarChartStyles => {
   const { className, showTriangle, variant, hideLabels } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

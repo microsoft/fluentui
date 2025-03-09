@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Pie inside donut chart component
  */
-export const usePieStyles_unstable = (props: PieProps): PieStyles => {
+export const usePieStyles = (props: PieProps): PieStyles => {
   const { className } = props;
 
   const baseStyles = useStyles();

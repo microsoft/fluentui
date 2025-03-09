@@ -1,7 +1,7 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint } from '../../index';
-import { useCartesianChartStyles_unstable } from './useCartesianChartStyles.styles';
+import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -84,7 +84,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
     margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 60 : 40;
   }
 
-  const classes = useCartesianChartStyles_unstable(props);
+  const classes = useCartesianChartStyles(props);
   const focusAttributes = useFocusableGroup();
   const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
   // ComponentdidMount and Componentwillunmount logic

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { useArcStyles_unstable } from './useArcStyles.styles';
+import { useArcStyles } from './useArcStyles.styles';
 import { ChartDataPoint } from '../index';
 import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
@@ -16,7 +16,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     const arc = d3Arc();
     const currentRef = React.createRef<SVGPathElement>();
     const _isRTL: boolean = useRtl();
-    const classes = useArcStyles_unstable(props);
+    const classes = useArcStyles(props);
 
     React.useEffect(() => {
       _updateChart(props);
