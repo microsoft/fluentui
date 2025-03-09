@@ -6,7 +6,7 @@ import { pie as d3Pie } from 'd3-shape';
 import { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import { ChartDataPoint } from '../index';
-import { usePieStyles_unstable } from './usePieStyles.styles';
+import { usePieStyles } from './usePieStyles.styles';
 import { wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 
@@ -22,7 +22,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     }, []);
 
     let _totalValue: number;
-    const classes = usePieStyles_unstable(props);
+    const classes = usePieStyles(props);
     const pieForFocusRing = d3Pie()
       .sort(null)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

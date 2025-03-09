@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Arc components
  */
-export const useArcStyles_unstable = (props: ArcProps): ArcStyles => {
+export const useArcStyles = (props: ArcProps): ArcStyles => {
   const { className } = props;
   const baseStyles = useStyles();
 

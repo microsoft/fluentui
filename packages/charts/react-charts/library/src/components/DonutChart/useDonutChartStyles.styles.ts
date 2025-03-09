@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the DonutChart component
  */
-export const useDonutChartStyles_unstable = (props: DonutChartProps): DonutChartStyles => {
+export const useDonutChartStyles = (props: DonutChartProps): DonutChartStyles => {
   const { className } = props;
   const baseStyles = useStyles();
 

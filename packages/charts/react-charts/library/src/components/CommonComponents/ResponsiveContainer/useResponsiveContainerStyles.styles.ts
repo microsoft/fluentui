@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useResponsiveContainerStyles_unstable = (props: ResponsiveContainerProps): ResponsiveContainerStyles => {
+export const useResponsiveContainerStyles = (props: ResponsiveContainerProps): ResponsiveContainerStyles => {
   const baseStyles = useStyles();
 
   return {
