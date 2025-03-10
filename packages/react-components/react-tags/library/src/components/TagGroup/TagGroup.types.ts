@@ -29,6 +29,11 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   onDismiss?: TagDismissHandler<Value>;
 
   /**
+   * Sets selected values for an uncontrolled component.
+   */
+  defaultSelectedValues?: Value[];
+
+  /**
    * A TagGroup can show that it cannot be interacted with.
    *
    * @default false
@@ -43,15 +48,19 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
    * Callback for when a tag is selected
    */
   onTagSelect?: EventHandler<TagSelectData<Value>>;
+
+  /**
+   * Values of the selected tags
+   */
+  selectedValues?: Value[];
 };
 
 /**
  * State used in rendering TagGroup
  */
 export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
-  Required<Pick<TagGroupProps, 'disabled' | 'size' | 'appearance' | 'dismissible'>> & {
+  Required<Pick<TagGroupProps, 'appearance' | 'dismissible' | 'disabled' | 'size' | 'selectedValues'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
     handleTagSelect?: TagSelectHandler<Value>;
     role?: React.AriaRole;
-    selectedValues: Value[];
   };

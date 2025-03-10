@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  useControllableState,
+  useEventCallback,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -19,11 +25,13 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   const {
     onDismiss,
     disabled = false,
+    defaultSelectedValues,
     size = 'medium',
     appearance = 'filled',
     dismissible = false,
     role = 'toolbar',
     onTagSelect,
+    selectedValues,
     ...rest
   } = props;
 
@@ -31,7 +39,11 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
 
-  const [items, setItems] = React.useState<Array<TagValue>>([]);
+  const [items, setItems] = useControllableState<Array<TagValue>>({
+    defaultState: defaultSelectedValues,
+    state: selectedValues,
+    initialState: [],
+  });
 
   const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
