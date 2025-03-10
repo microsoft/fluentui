@@ -34,6 +34,10 @@
       "types": "./dist/dts/utils/index.d.ts",
       "default": "./dist/esm/utils/index.js"
     },
+    "./*/base.js": {
+      "types": "./dist/dts/*/*.base.d.ts",
+      "default": "./dist/esm/*/*.base.js"
+    },
     "./*/define.js": {
       "types": "./dist/dts/*/*.define.d.ts",
       "default": "./dist/esm/*/*.define.js"
