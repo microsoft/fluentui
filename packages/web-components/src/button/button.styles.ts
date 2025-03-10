@@ -144,7 +144,8 @@ export const baseButtonStyles = css`
     margin-inline-end: var(--icon-spacing);
   }
 
-  ::slotted([slot='end']) {
+  ::slotted([slot='end']),
+  [slot='end'] {
     flex-shrink: 0;
     margin-inline-start: var(--icon-spacing);
   }

@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import type { BaseDropdown } from '../dropdown/dropdown.js';
+import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
