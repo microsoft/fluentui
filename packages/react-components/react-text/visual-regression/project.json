@@ -5,12 +5,6 @@
   "projectType": "library",
   "tags": ["vNext", "platform:web", "visual-regression"],
   "targets": {
-    "storybook": {
-      "command": "storybook dev",
-      "options": {
-        "cwd": "{projectRoot}"
-      }
-    },
     "generate-image-for-vrt": {
       "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
       "options": {
@@ -54,19 +48,6 @@
       "options": {
         "cwd": "{projectRoot}"
       }
-    },
-    "build": {
-      "executor": "@nx/js:swc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/react-components/react-text/visual-regression",
-        "main": "packages/react-components/react-text/visual-regression/src/index.ts",
-        "tsConfig": "packages/react-components/react-text/visual-regression/tsconfig.lib.json",
-        "assets": ["packages/react-components/react-text/visual-regression/*.md"]
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }
