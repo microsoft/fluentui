@@ -28,6 +28,21 @@ test.describe('Avatar', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'img');
   });
 
+  test('should render an icon when no name or initials are provided', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const icon = element.locator('svg');
+
+    await fastPage.setTemplate({ innerHTML: `\n\n\n` });
+
+    await expect(icon).toBeVisible();
+
+    await test.step('should NOT render the icon when empty elements are present in the default slot', async () => {
+      await fastPage.setTemplate({ innerHTML: `<div></div><span></span>\n\n` });
+
+      await expect(icon).toBeHidden();
+    });
+  });
+
   test('When no name value is set, should render with custom initials based on the provided initials value', async ({
     fastPage,
   }) => {
@@ -36,6 +51,12 @@ test.describe('Avatar', () => {
     await fastPage.setTemplate({ attributes: { initials: 'JD' } });
 
     await expect(element).toContainText('JD');
+
+    await test.step('should NOT render the default icon', async () => {
+      const icon = element.locator('svg');
+
+      await expect(icon).toBeHidden();
+    });
   });
 
   test('When name value is set, should generate initials based on the provided name value', async ({ fastPage }) => {
