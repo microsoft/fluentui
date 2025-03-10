@@ -1,8 +1,9 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { join } from 'node:path';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs';
 import { cwd } from 'node:process';
 
 import { PNG } from 'pngjs';
+
 import { getPackageMetadata, loadPixelmatch } from './utils';
 import { Result } from './types';
 import { generateCliReport, generateHtmlReport, generateJsonReport, generateMarkdownReport } from './reporters';
@@ -13,8 +14,8 @@ async function compareSnapshots(
   diffPath: string,
 ): Promise<Omit<Result, 'file'>> {
   try {
-    const baselineImg = PNG.sync.read(fs.readFileSync(baselinePath));
-    const actualImg = PNG.sync.read(fs.readFileSync(actualPath));
+    const baselineImg = PNG.sync.read(readFileSync(baselinePath));
+    const actualImg = PNG.sync.read(readFileSync(actualPath));
     const { width, height } = baselineImg;
 
     if (actualImg.width !== width || actualImg.height !== height) {
@@ -26,17 +27,18 @@ async function compareSnapshots(
     const numDiffPixels = pixelmatch(baselineImg.data, actualImg.data, diff.data, width, height, { threshold: 0.1 });
 
     if (numDiffPixels > 0) {
-      fs.writeFileSync(diffPath, PNG.sync.write(diff));
+      writeFileSync(diffPath, PNG.sync.write(diff));
       return {
         passed: false,
+        error: 'Image diff',
         changeType: 'diff',
         diffPixels: numDiffPixels,
         diffPath: diffPath,
       };
     }
 
-    if (fs.existsSync(diffPath)) {
-      fs.unlinkSync(diffPath);
+    if (existsSync(diffPath)) {
+      unlinkSync(diffPath);
     }
 
     return { passed: true };
@@ -45,31 +47,27 @@ async function compareSnapshots(
   }
 }
 
-export async function runSnapshotTests(
-  baselineDir: string,
-  actualDir: string,
-  diffDir: string,
-  reportPath: string,
-  reportFileName: string,
-  updateSnapshots: boolean,
-) {
+export async function runSnapshotTests(options: {
+  baselineDir: string;
+  actualDir: string;
+  diffDir: string;
+  reportPath: string;
+  reportFileName: string;
+  updateSnapshots: boolean;
+}) {
+  const { updateSnapshots, reportFileName, ...relativePaths } = options;
+
   if (updateSnapshots) {
     console.info('======================');
     console.info('💡 UPDATING SNAPSHOTS!');
     console.info('======================');
   }
 
-  const relativePaths = {
-    baselineDir,
-    actualDir,
-    diffDir,
-    reportPath,
-  };
   const normalizedPaths = {
-    baselineDir: path.join(cwd(), relativePaths.baselineDir),
-    actualDir: path.join(cwd(), relativePaths.actualDir),
-    diffDir: path.join(cwd(), relativePaths.diffDir),
-    reportPath: path.join(cwd(), relativePaths.reportPath),
+    baselineDir: join(cwd(), relativePaths.baselineDir),
+    actualDir: join(cwd(), relativePaths.actualDir),
+    diffDir: join(cwd(), relativePaths.diffDir),
+    reportPath: join(cwd(), relativePaths.reportPath),
   };
 
   const packageMeta = getPackageMetadata(normalizedPaths.reportPath);
@@ -79,22 +77,18 @@ export async function runSnapshotTests(
     project: packageMeta,
   };
 
-  if (!fs.existsSync(normalizedPaths.baselineDir)) {
-    fs.mkdirSync(normalizedPaths.baselineDir, { recursive: true });
+  if (!existsSync(normalizedPaths.baselineDir)) {
+    mkdirSync(normalizedPaths.baselineDir, { recursive: true });
   }
 
-  const baselineFiles = fs.readdirSync(normalizedPaths.baselineDir);
-  const actualFiles = fs.readdirSync(normalizedPaths.actualDir);
+  const baselineFiles = readdirSync(normalizedPaths.baselineDir);
+  const actualFiles = readdirSync(normalizedPaths.actualDir);
   let allPassed = true;
   const results: Result[] = [];
 
-  if (!fs.existsSync(normalizedPaths.diffDir)) {
-    fs.mkdirSync(normalizedPaths.diffDir, { recursive: true });
+  if (!existsSync(normalizedPaths.diffDir)) {
+    mkdirSync(normalizedPaths.diffDir, { recursive: true });
   }
-
-  // if (baselineFiles.length === 0) {
-  //   console.info('No Baseline Exist yet! Create baseline by running `--update-snapshots`');
-  // }
 
   const removedFilesFromBaseline = baselineFiles.filter(file => {
     if (!actualFiles.includes(file)) {
@@ -107,14 +101,14 @@ export async function runSnapshotTests(
         });
         allPassed = false;
       } else {
-        const baselinePath = path.join(normalizedPaths.baselineDir, file);
-        fs.unlinkSync(baselinePath);
+        const baselinePath = join(normalizedPaths.baselineDir, file);
+        unlinkSync(baselinePath);
       }
     }
   });
 
   if (removedFilesFromBaseline.length > 0) {
-    console.error(`Removed snapshots: ${removedFilesFromBaseline.join(', ')}`);
+    console.error(`🧹 Removed snapshots: ${removedFilesFromBaseline.join(', ')}`);
   }
 
   for (const file of actualFiles) {
@@ -122,11 +116,11 @@ export async function runSnapshotTests(
       throw new Error(`Only png files are supported - ${file}`);
     }
 
-    const baselinePath = path.join(normalizedPaths.baselineDir, file);
-    const actualPath = path.join(normalizedPaths.actualDir, file);
-    const diffPath = path.join(normalizedPaths.diffDir, file);
+    const baselinePath = join(normalizedPaths.baselineDir, file);
+    const actualPath = join(normalizedPaths.actualDir, file);
+    const diffPath = join(normalizedPaths.diffDir, file);
 
-    if (!fs.existsSync(baselinePath)) {
+    if (!existsSync(baselinePath)) {
       results.push({
         file,
         passed: updateSnapshots ? true : false,
@@ -136,7 +130,7 @@ export async function runSnapshotTests(
       if (!updateSnapshots) {
         allPassed = false;
       } else {
-        fs.copyFileSync(actualPath, baselinePath);
+        copyFileSync(actualPath, baselinePath);
       }
       continue;
     }

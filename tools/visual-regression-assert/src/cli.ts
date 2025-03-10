@@ -43,14 +43,14 @@ async function main() {
       async argv => {
         const { baselineDir, actualDir, diffDir, reportPath, updateSnapshots } = argv;
 
-        const result = await runSnapshotTests(
+        const result = await runSnapshotTests({
           baselineDir,
           actualDir,
           diffDir,
           reportPath,
           reportFileName,
           updateSnapshots,
-        );
+        });
         if (!result.passed) {
           console.error('===============================================');
           console.error('🚨 Snapshots changed! Please Review VR Report 🚨');

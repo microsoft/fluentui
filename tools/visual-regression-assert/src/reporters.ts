@@ -21,11 +21,10 @@ export function generateMarkdownReport(
 
       if (!result.passed) {
         if (result.error) {
-          generatedContent += `Error: ${result.error}`;
-          generatedContent += `<br/>`;
+          generatedContent += result.error;
         }
         if (result.diffPixels) {
-          generatedContent += `Diff pixels: ${result.diffPixels}`;
+          generatedContent += `<br/>Diff pixels: ${result.diffPixels}`;
           // TODO: this is impossible to do in GitHub MD context without either uploading images to some cloud or inlining  them via BASE64 which would be catastrophic for GH GUI
           // generatedContent += `<br/>`;
           // generatedContent += `<figure><figcaption>Baseline</<figcaption><img src="${paths.baselineDir}/${result.file}" alt="Baseline"></figure>`;
@@ -66,29 +65,44 @@ export function generateHtmlReport(
 
       if (!result.passed) {
         if (result.error) {
-          generatedContent += `<p>Error: ${result.error}</p>`;
+          generatedContent += `<p>${result.error}</p>`;
+          generatedContent += `<div class="image-container">`;
+          if (result.changeType === 'add') {
+            generatedContent += renderImage(
+              result.file,
+              createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
+              'actual',
+            );
+          }
+          if (result.changeType === 'remove') {
+            generatedContent += renderImage(
+              result.file,
+              createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
+              'actual',
+            );
+          }
+          generatedContent += `</div>`;
         }
+
         if (result.diffPixels) {
-          const sanitizedFileName = encodeURIComponent(result.file);
-          const images = {
-            baseline: createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
-            actual: createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
-            diff: createRelativeImagePath(paths.relative.reportPath, paths.relative.diffDir),
-          };
           generatedContent += `<p>Diff pixels: ${result.diffPixels}</p>`;
           generatedContent += `<div class="image-container">`;
-          generatedContent += `<figure><figcaption>Baseline</figcaption><img src="${join(
-            images.baseline,
-            sanitizedFileName,
-          )}" alt="Baseline"></figure>`;
-          generatedContent += `<figure><figcaption>Actual</figcaption><img src="${join(
-            images.actual,
-            sanitizedFileName,
-          )}" alt="Actual"></figure>`;
-          generatedContent += `<figure><figcaption>Diff</figcaption><img src="${join(
-            images.diff,
-            sanitizedFileName,
-          )}" alt="Diff"></figure>`;
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
+            'baseline',
+          );
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
+            'actual',
+          );
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(paths.relative.reportPath, paths.relative.diffDir),
+            'diff',
+          );
+
           generatedContent += `</div>`;
         }
       }
@@ -103,6 +117,15 @@ export function generateHtmlReport(
 
   writeFileSync(paths.absolute.reportPath, renderedHTML);
   console.log(`HTML report generated: ${paths.absolute.reportPath}`);
+
+  function renderImage(fileName: string, relativeFileRootUrl: string, type: 'baseline' | 'actual' | 'diff') {
+    const sanitizedFileName = encodeURIComponent(fileName);
+
+    return `<figure><figcaption>Baseline</figcaption><img src="${join(
+      relativeFileRootUrl,
+      sanitizedFileName,
+    )}" alt="${type}"></figure>`;
+  }
 }
 
 export function generateJsonReport(
@@ -148,7 +171,7 @@ export function generateCliReport(
 
     if (!result.passed) {
       if (result.error) {
-        details += `Error: ${result.error}`;
+        details += result.error;
       }
       if (result.diffPixels) {
         details += `Diff pixels: ${result.diffPixels}`;
@@ -170,13 +193,14 @@ export function generateCliReport(
   console.log(footer);
 }
 
-function createRelativeImagePath(reportFilePath: string, imageDirectory: string) {
+function createRelativeImagePath(reportFilePath: string, imageDirectory: string): string {
   try {
     const reportDir = dirname(reportFilePath);
     const relativePath = relative(reportDir, imageDirectory);
-    return join(relativePath, '/'); // Add a trailing slash for directory access
+    // Add a trailing slash for directory access
+    return join(relativePath, '/');
   } catch (error) {
     console.error('Error creating relative path:', error);
-    return ''; // Return an empty string in case of an error
+    return '';
   }
 }
