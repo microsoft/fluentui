@@ -1480,13 +1480,18 @@ const MEASUREMENT_SPAN_STYLE = {
 };
 const MEASUREMENT_SPAN_ID = getId('measurement_span_');
 
-export const createMeasurementSpan = (text: string | number, className: string) => {
+export const createMeasurementSpan = (text: string | number, className: string, parentElement?: HTMLElement | null) => {
   let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
   if (!measurementSpan) {
     measurementSpan = document.createElement('span');
     measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
     measurementSpan.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(measurementSpan);
+
+    if (parentElement) {
+      parentElement.appendChild(measurementSpan);
+    } else {
+      document.body.appendChild(measurementSpan);
+    }
   }
 
   measurementSpan.setAttribute('class', className);

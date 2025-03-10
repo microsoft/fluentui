@@ -47,6 +47,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
   /** Boolean variable to check if one or more legends are selected */
   private _isLegendSelected = false;
+  private _rootElem: HTMLDivElement | null;
 
   public static getDerivedStateFromProps(newProps: ILegendsProps, prevState: ILegendState): ILegendState {
     const { selectedLegend, selectedLegends } = newProps;
@@ -106,7 +107,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -122,12 +123,17 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
   }
 
   public toSVG = (svgWidth: number, isRTL: boolean = false) => {
-    return cloneLegendsToSVG(this.props.legends, svgWidth, {
-      selectedLegends: this.state.selectedLegends,
-      centerLegends: !!this.props.centerLegends,
-      textClassName: this._classNames.text,
-      isRTL,
-    });
+    return cloneLegendsToSVG(
+      this.props.legends,
+      svgWidth,
+      {
+        selectedLegends: this.state.selectedLegends,
+        centerLegends: !!this.props.centerLegends,
+        textClassName: this._classNames.text,
+        isRTL,
+      },
+      this._rootElem,
+    );
   };
 
   private _generateData(): ILegendOverflowData {

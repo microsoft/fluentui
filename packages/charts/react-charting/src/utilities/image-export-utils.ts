@@ -118,6 +118,7 @@ export function cloneLegendsToSVG(
     textClassName: string;
     isRTL: boolean;
   },
+  legendContainer?: HTMLElement | null,
 ) {
   if (legends.length === 0) {
     return {
@@ -138,7 +139,7 @@ export function cloneLegendsToSVG(
 
   for (let i = 0; i < legends.length; i++) {
     const textOffset = LEGEND_PADDING + LEGEND_SHAPE_SIZE + LEGEND_SHAPE_MARGIN_END;
-    const legendText = createMeasurementSpan(legends[i].title, textClassName);
+    const legendText = createMeasurementSpan(legends[i].title, textClassName, legendContainer);
     const legendWidth = textOffset + legendText.getBoundingClientRect().width + LEGEND_PADDING;
     const legendItem = legendGroup.append('g');
 
