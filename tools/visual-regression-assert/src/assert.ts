@@ -5,7 +5,7 @@ import { cwd } from 'node:process';
 import { PNG } from 'pngjs';
 
 import { getPackageMetadata, loadPixelmatch } from './utils';
-import { Result } from './types';
+import { Metadata, Result } from './types';
 import { generateCliReport, generateHtmlReport, generateJsonReport, generateMarkdownReport } from './reporters';
 
 async function compareSnapshots(
@@ -30,7 +30,6 @@ async function compareSnapshots(
       writeFileSync(diffPath, PNG.sync.write(diff));
       return {
         passed: false,
-        error: 'Image diff',
         changeType: 'diff',
         diffPixels: numDiffPixels,
         diffPath: diffPath,
@@ -49,13 +48,11 @@ async function compareSnapshots(
 
 export async function runSnapshotTests(options: {
   baselineDir: string;
-  actualDir: string;
-  diffDir: string;
-  reportPath: string;
+  outputPath: string;
   reportFileName: string;
   updateSnapshots: boolean;
 }) {
-  const { updateSnapshots, reportFileName, ...relativePaths } = options;
+  const { updateSnapshots, reportFileName, baselineDir, outputPath } = options;
 
   if (updateSnapshots) {
     console.info('======================');
@@ -63,19 +60,32 @@ export async function runSnapshotTests(options: {
     console.info('======================');
   }
 
-  const normalizedPaths = {
-    baselineDir: join(cwd(), relativePaths.baselineDir),
-    actualDir: join(cwd(), relativePaths.actualDir),
-    diffDir: join(cwd(), relativePaths.diffDir),
-    reportPath: join(cwd(), relativePaths.reportPath),
+  const relativePaths = {
+    baselineDir,
+    outputPath,
+    outputBaselineDir: join(outputPath, 'baseline'),
+    actualDir: join(outputPath, 'actual'),
+    diffDir: join(outputPath, 'diff'),
   };
 
-  const packageMeta = getPackageMetadata(normalizedPaths.reportPath);
+  const normalizedPaths = {
+    outputPath: join(cwd(), outputPath),
+    baselineDir: join(cwd(), relativePaths.baselineDir),
+    outputBaselineDir: join(cwd(), relativePaths.outputBaselineDir),
+    actualDir: join(cwd(), relativePaths.actualDir),
+    diffDir: join(cwd(), relativePaths.diffDir),
+  };
 
-  const metadata = {
+  const packageMeta = getPackageMetadata(normalizedPaths.outputPath);
+
+  const metadata: Metadata = {
     paths: normalizedPaths,
     project: packageMeta,
   };
+
+  if (!existsSync(normalizedPaths.outputBaselineDir)) {
+    mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
+  }
 
   if (!existsSync(normalizedPaths.baselineDir)) {
     mkdirSync(normalizedPaths.baselineDir, { recursive: true });
@@ -91,8 +101,14 @@ export async function runSnapshotTests(options: {
   }
 
   const removedFilesFromBaseline = baselineFiles.filter(file => {
+    if (!file.endsWith('.png')) {
+      throw new Error(`Only png files are supported - ${file}`);
+    }
+
     if (!actualFiles.includes(file)) {
+      const baselinePath = join(normalizedPaths.baselineDir, file);
       if (!updateSnapshots) {
+        copyFileSync(baselinePath, join(normalizedPaths.outputBaselineDir, file));
         results.push({
           file,
           passed: updateSnapshots ? true : false,
@@ -101,7 +117,6 @@ export async function runSnapshotTests(options: {
         });
         allPassed = false;
       } else {
-        const baselinePath = join(normalizedPaths.baselineDir, file);
         unlinkSync(baselinePath);
       }
     }
@@ -121,6 +136,7 @@ export async function runSnapshotTests(options: {
     const diffPath = join(normalizedPaths.diffDir, file);
 
     if (!existsSync(baselinePath)) {
+      copyFileSync(actualPath, join(normalizedPaths.outputBaselineDir, file));
       results.push({
         file,
         passed: updateSnapshots ? true : false,
@@ -138,6 +154,7 @@ export async function runSnapshotTests(options: {
     if (!updateSnapshots) {
       const result = await compareSnapshots(baselinePath, actualPath, diffPath);
       if (!result.passed) {
+        copyFileSync(baselinePath, join(normalizedPaths.outputBaselineDir, file));
         allPassed = false;
       }
       results.push({ file, ...result });
@@ -146,19 +163,16 @@ export async function runSnapshotTests(options: {
     }
   }
 
-  generateCliReport(results, {
+  const reportConfig = {
     metadata,
     reportFileName,
     paths: { absolute: normalizedPaths, relative: relativePaths },
-  });
+  };
 
-  generateJsonReport(results, {
-    metadata,
-    reportFileName,
-    paths: { absolute: normalizedPaths, relative: relativePaths },
-  });
-  generateHtmlReport(results, { absolute: normalizedPaths, relative: relativePaths });
-  generateMarkdownReport(results, { absolute: normalizedPaths, relative: relativePaths });
+  generateCliReport(results, reportConfig);
+  generateJsonReport(results, reportConfig);
+  generateHtmlReport(results, reportConfig);
+  generateMarkdownReport(results, reportConfig);
 
   if (!allPassed) {
     return { passed: false };

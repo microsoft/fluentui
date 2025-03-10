@@ -1,17 +1,33 @@
 import { render } from 'ejs';
 const Table = require('cli-table3') as import('cli-table3');
 import { readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join, relative } from 'node:path';
+import { join, relative } from 'node:path';
 import { stripIndents } from './utils';
 import type { Metadata, Result, Report } from './types';
+import { reporterFileNames } from './shared';
 
-export function generateMarkdownReport(
-  results: Result[],
+type Options = {
+  metadata: Metadata;
+  reportFileName: string;
   paths: {
-    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-  },
-) {
+    absolute: {
+      baselineDir: string;
+      actualDir: string;
+      diffDir: string;
+      outputBaselineDir: string;
+      outputPath: string;
+    };
+    relative: {
+      baselineDir: string;
+      actualDir: string;
+      diffDir: string;
+      outputBaselineDir: string;
+      outputPath: string;
+    };
+  };
+};
+
+export function generateMarkdownReport(results: Result[], options: Options) {
   const template = readFileSync(join(__dirname, 'template/report.md__tmpl__'), 'utf-8');
   const generatedContent = results
     .map(result => {
@@ -40,21 +56,15 @@ export function generateMarkdownReport(
     .join('\n');
 
   const renderedMD = render(template, { content: generatedContent });
-
-  const reportPath = paths.absolute.reportPath.replace('html', 'md');
+  const reportPath = join(options.paths.absolute.outputPath, reporterFileNames.markdown);
   writeFileSync(reportPath, renderedMD, 'utf-8');
 
   console.log(`Markdown report generated: ${reportPath}`);
 }
 
-export function generateHtmlReport(
-  results: Result[],
-  paths: {
-    absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-  },
-) {
+export function generateHtmlReport(results: Result[], options: Options) {
   const template = readFileSync(join(__dirname, 'template/report.html__tmpl__'), 'utf-8');
+
   const generatedContent = results
     .map(result => {
       let generatedContent = stripIndents`
@@ -70,15 +80,15 @@ export function generateHtmlReport(
           if (result.changeType === 'add') {
             generatedContent += renderImage(
               result.file,
-              createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
+              createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.actualDir),
               'actual',
             );
           }
           if (result.changeType === 'remove') {
             generatedContent += renderImage(
               result.file,
-              createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
-              'actual',
+              createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.outputBaselineDir),
+              'baseline',
             );
           }
           generatedContent += `</div>`;
@@ -89,17 +99,17 @@ export function generateHtmlReport(
           generatedContent += `<div class="image-container">`;
           generatedContent += renderImage(
             result.file,
-            createRelativeImagePath(paths.relative.reportPath, paths.relative.baselineDir),
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.outputBaselineDir),
             'baseline',
           );
           generatedContent += renderImage(
             result.file,
-            createRelativeImagePath(paths.relative.reportPath, paths.relative.actualDir),
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.actualDir),
             'actual',
           );
           generatedContent += renderImage(
             result.file,
-            createRelativeImagePath(paths.relative.reportPath, paths.relative.diffDir),
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.diffDir),
             'diff',
           );
 
@@ -114,53 +124,30 @@ export function generateHtmlReport(
     .join('\n');
 
   const renderedHTML = render(template, { content: generatedContent });
-
-  writeFileSync(paths.absolute.reportPath, renderedHTML);
-  console.log(`HTML report generated: ${paths.absolute.reportPath}`);
+  const reportPath = join(options.paths.absolute.outputPath, reporterFileNames.html);
+  writeFileSync(reportPath, renderedHTML);
+  console.log(`HTML report generated: ${reportPath}`);
 
   function renderImage(fileName: string, relativeFileRootUrl: string, type: 'baseline' | 'actual' | 'diff') {
     const sanitizedFileName = encodeURIComponent(fileName);
 
-    return `<figure><figcaption>Baseline</figcaption><img src="${join(
-      relativeFileRootUrl,
-      sanitizedFileName,
-    )}" alt="${type}"></figure>`;
+    return stripIndents`
+      <figure>
+        <figcaption>${type.toLocaleUpperCase()}</figcaption>
+        <img src="${join(relativeFileRootUrl, sanitizedFileName)}" alt="${type}">
+      </figure>`;
   }
 }
 
-export function generateJsonReport(
-  results: Result[],
-  options: {
-    metadata: Metadata;
-    reportFileName: string;
-    paths: {
-      absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-      relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    };
-  },
-) {
-  const { metadata, paths, reportFileName } = options;
-  const reportPathRoot = dirname(paths.absolute.reportPath);
-
-  const reportPathFile = join(reportPathRoot, reportFileName);
-  const report: Report = { results, metadata };
-
+export function generateJsonReport(results: Result[], options: Options) {
+  const reportPathFile = join(options.paths.absolute.outputPath, options.reportFileName);
+  const report: Report = { results, metadata: options.metadata };
   writeFileSync(reportPathFile, JSON.stringify(report, null, 2), 'utf-8');
 
   console.log(`JSON report generated: ${reportPathFile}`);
 }
 
-export function generateCliReport(
-  results: Result[],
-  options: {
-    metadata: Metadata;
-    reportFileName: string;
-    paths: {
-      absolute: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-      relative: { baselineDir: string; actualDir: string; diffDir: string; reportPath: string };
-    };
-  },
-) {
+export function generateCliReport(results: Result[], options: Options) {
   const table = new Table({
     colAligns: ['left', 'left', 'right'],
     head: ['File', 'Status', 'Details'],
@@ -193,10 +180,9 @@ export function generateCliReport(
   console.log(footer);
 }
 
-function createRelativeImagePath(reportFilePath: string, imageDirectory: string): string {
+function createRelativeImagePath(outputRootDir: string, imageDirectory: string): string {
   try {
-    const reportDir = dirname(reportFilePath);
-    const relativePath = relative(reportDir, imageDirectory);
+    const relativePath = relative(outputRootDir, imageDirectory);
     // Add a trailing slash for directory access
     return join(relativePath, '/');
   } catch (error) {

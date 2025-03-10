@@ -1,6 +1,7 @@
 import yargs from 'yargs';
 import { runSnapshotTests } from './assert';
 import { prepareReport } from './report';
+import { reporterFileNames } from './shared';
 
 main()
   // .then(_ => {
@@ -12,7 +13,7 @@ main()
   });
 
 async function main() {
-  const reportFileName = 'visual-regression-assert.json';
+  const reportFileName = reporterFileNames.json;
   const reportFilesGlob = `**/${reportFileName}`;
 
   yargs(process.argv.slice(2))
@@ -21,7 +22,11 @@ async function main() {
       'report',
       'prepare diff report for CI',
       y => {
-        return y.option('outputPath', { type: 'string', demandOption: true });
+        return y.option('outputPath', {
+          type: 'string',
+          demandOption: true,
+          description: 'relative path all projects report output should be created',
+        });
       },
       async argv => {
         const outputPath = argv.outputPath;
@@ -34,20 +39,24 @@ async function main() {
       'run assertion',
       y => {
         return y
-          .option('baselineDir', { type: 'string', demandOption: true })
-          .option('actualDir', { type: 'string', demandOption: true })
-          .option('diffDir', { type: 'string', demandOption: true })
-          .option('reportPath', { type: 'string', demandOption: true })
+          .option('baselineDir', {
+            type: 'string',
+            demandOption: true,
+            description: 'relative path to baseline folder',
+          })
+          .option('outputPath', {
+            type: 'string',
+            demandOption: true,
+            description: 'relative path where report output should be created',
+          })
           .option('updateSnapshots', { type: 'boolean', default: false, alias: 'u' });
       },
       async argv => {
-        const { baselineDir, actualDir, diffDir, reportPath, updateSnapshots } = argv;
+        const { baselineDir, outputPath, updateSnapshots } = argv;
 
         const result = await runSnapshotTests({
           baselineDir,
-          actualDir,
-          diffDir,
-          reportPath,
+          outputPath,
           reportFileName,
           updateSnapshots,
         });

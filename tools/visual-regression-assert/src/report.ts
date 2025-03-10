@@ -4,6 +4,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } fr
 import { join } from 'node:path';
 import { findGitRoot } from './utils';
 import { Report } from './types';
+import { reporterFileNames } from './shared';
 
 export async function prepareReport(reportFilesGlob: string, outputPath: string) {
   const rootReportName = 'vrt-report.json';
@@ -33,15 +34,10 @@ export async function prepareReport(reportFilesGlob: string, outputPath: string)
       const projectNameWithoutScope = project.replace(/^@[a-z-]+\//, '');
       // copy project report
       console.log(`Copy project report to: ${join(absoluteRootPath, projectNameWithoutScope)}`);
-      cpSync(
-        // TODO - resolve this hard coded path from metadata paths
-        join(report.metadata.project.root, 'dist/vrt'),
-        join(absoluteRootPath, projectNameWithoutScope),
-        { recursive: true },
-      );
+      cpSync(report.metadata.paths.outputPath, join(absoluteRootPath, projectNameWithoutScope), { recursive: true });
 
       // update markdownReport
-      const projectMdReport = readFileSync(report.metadata.paths.reportPath.replace('.html', '.md'), 'utf-8');
+      const projectMdReport = readFileSync(join(report.metadata.paths.outputPath, reporterFileNames.markdown), 'utf-8');
       markdownReport = markdownReport + `## ${projectNameWithoutScope}\n\n` + projectMdReport + '\n\n';
     });
   } else {
