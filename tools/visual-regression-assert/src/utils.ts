@@ -10,9 +10,14 @@ export function findGitRoot(cwd: string) {
   return output.toString().trim();
 }
 
-export function getPackageMetadata(reportFilePath: string) {
-  const root = getPackageRoot(reportFilePath);
-  const json = JSON.parse(readFileSync(join(root, 'package.json'), 'utf-8'));
+/**
+ *
+ * @param outputRoot-  absolute root path to output assets
+ * @returns
+ */
+export function getPackageMetadata(outputRoot: string) {
+  const root = getPackageRoot(outputRoot);
+  const json: { name: string } = JSON.parse(readFileSync(join(root, 'package.json'), 'utf-8'));
 
   return {
     root,
@@ -20,14 +25,14 @@ export function getPackageMetadata(reportFilePath: string) {
   };
 }
 
-export function getPackageRoot(reportFilePath: string) {
-  const rootConfig = findUpSync(['package.json'], { cwd: dirname(reportFilePath) });
+export function getPackageRoot(outputRoot: string) {
+  const rootConfig = findUpSync(['package.json', 'project.json'], { cwd: outputRoot });
 
   if (!rootConfig) {
     throw new Error(
       [
         'Failed to find a package root (directory that contains "package.json" or "project.json" file)',
-        `Report file location: ${reportFilePath}`,
+        `Report file location: ${outputRoot}`,
         `Tip: You can override package root resolution by providing "packageRoot" function in the configuration`,
       ].join('\n'),
     );

@@ -8,14 +8,21 @@ export interface Result {
 }
 
 export interface Metadata {
+  /**
+   * absolute paths
+   */
   paths: {
     baselineDir: string;
     actualDir: string;
     diffDir: string;
-    reportPath: string;
+    outputBaselineDir: string;
+    outputPath: string;
   };
   project: {
     root: string;
+    /**
+     * package.json#name
+     */
     name: string;
   };
 }
