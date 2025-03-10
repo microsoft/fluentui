@@ -21,7 +21,7 @@ const defaultIconTemplate = html`<svg
  */
 export function avatarTemplate<T extends Avatar>(): ElementViewTemplate<T> {
   return html<T>`
-    <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
+    <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate.render(x, x))}</slot>
     <slot name="badge"></slot>
   `;
 }
