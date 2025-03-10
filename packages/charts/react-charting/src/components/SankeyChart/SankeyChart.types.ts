@@ -108,6 +108,7 @@ export interface ISankeyChartStyleProps {
   width: number;
   height: number;
   pathColor?: string;
+  enableReflow?: boolean;
 }
 
 /**

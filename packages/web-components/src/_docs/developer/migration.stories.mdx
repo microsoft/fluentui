@@ -1,0 +1,549 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/V2 → V3 Migration Guide" />
+
+# V2 → V3 Migration Guide
+
+We're happy to announce Fluent Web Components v3 is now available. This document provides a high-level overview of the differences and API changes between previous versions. Please reach out if you have any questions.
+
+Here's a snapshot of what's new and improved in v3.
+
+- Smaller bundle size (-26% compressed!)
+- Reduced DOM size and overhead by nearly 50%
+- Improved Storybook docs
+- Updated to FASTElement v2.0
+- Individual component exports
+- Leveraging ElementInternals for better form support
+- Removed hard dependency on @microsoft/fast-foundation
+- Continued alignment with Fluent React v9
+- Improved setTheme() to set/unset at the page or element level
+
+## Component Comparison v2 → v3
+
+A high-level look at the differences between components in v2 and v3
+
+- 🆕 15 new components
+- ⚠️ 5 renamed components
+- ⛔️ 4 deprecated components
+- 🛣️ 13 components on our current roadmap
+
+### Renamed Components
+
+- `anchor` = use `link` or `anchor-button`
+- `progress` = use `progress-bar`
+- `select` = use `dropdown`
+- `text-area` = `textarea`
+- `text-field` = `text-input`
+
+### Deprecated Components
+
+- `anchored-region`
+- `slider-label` = `use field, label`
+- `tabs` = use `tablist`
+- `tab-panel` = use `role="tabpanel"`
+
+# API Changes
+
+- Form controls now use `<fluent-field>` wrapper to handle label spacing and errors
+- Dialog = requires Dialog Body child
+- Tabs = no longer a uniform control, allows for flexibility
+- Accordion Item = attribute changes
+- RadioGroup = new API to leverage field
+
+API changes, renames, and deprecations are itemized in the table below.
+
+<table>
+<thead>
+<tr><th> Component </th><th> V2 </th><th> V3 </th><th> Notes </th></tr>
+</thead>
+<tbody>
+
+<tr>
+  <td> accordion </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> accordion-item </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> ⚠️ API Change → Attributes changed to better match web platform </td>
+</tr>
+<tr>
+  <td> anchor </td>
+  <td> ✅ </td>
+  <td> ⚠️ </td>
+  <td> ⛔️ Renamed → See `link`, `anchor-button` </td>
+</tr>
+<tr>
+  <td> anchor-button </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> anchored-region </td>
+  <td> ✅ </td>
+  <td> ⚠️ </td>
+  <td> ⛔️ Deprecated </td>
+</tr>
+<tr>
+  <td> avatar </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> badge </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> breadcrumb </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> breadcrumb-item </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> button </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> calendar </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> card </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> 🚧 In Progress </td>
+</tr>
+<tr>
+  <td> checkbox </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> color </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> combobox </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> compound-button </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> data-grid </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> 🚧 In Progress </td>
+</tr>
+<tr>
+  <td> dialog </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> ⚠️ API Change → Split into two components to allow for more expressive modals. </td>
+</tr>
+<tr>
+  <td> dialog-body </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> divider </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> drawer </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> drawer-body </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> dropdown </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> field </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> flipper </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> horizontal-scroll </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> image </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> listbox </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> listbox-option </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> label </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> link </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> (Renamed) </td>
+</tr>
+<tr>
+  <td> menu </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> menu-button </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> menu-item </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> menu-list </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> message-bar </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> number-field </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> popover </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> progress </td>
+  <td> ✅ </td>
+  <td> 🔀 </td>
+  <td> ⛔️ Renamed → See `progress-bar` </td>
+</tr>
+<tr>
+  <td> progress-bar </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> (Renamed) </td>
+</tr>
+<tr>
+  <td> progress-ring </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> radio </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> radio-group </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> search </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> select </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> 🚧 In Progress </td>
+</tr>
+<tr>
+  <td> skeleton </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> slider </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> slider-label </td>
+  <td> ✅ </td>
+  <td> ⚠️ </td>
+  <td> ⛔️ Deprecated → See `label`, `field` </td>
+</tr>
+<tr>
+  <td> spinner </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> switch </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> tab </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> tabs </td>
+  <td> ✅ </td>
+  <td> ⚠️ </td>
+  <td> ⛔️ Deprecated → See `tablist` </td>
+</tr>
+<tr>
+  <td> tab-panel </td>
+  <td> ✅ </td>
+  <td> ⚠️ </td>
+  <td> ⛔️ Deprecated </td>
+</tr>
+<tr>
+  <td> tablist </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> text </td>
+  <td> </td>
+  <td> 🆕 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> text-area </td>
+  <td> ✅ </td>
+  <td> 🔀 </td>
+  <td> ⛔️ Renamed → See textarea </td>
+</tr>
+<tr>
+  <td> textarea </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> (Renamed) </td>
+</tr>
+<tr>
+  <td> text-field </td>
+  <td> ✅ </td>
+  <td> 🔀 </td>
+  <td> ⛔️ Renamed→ See text-input </td>
+</tr>
+<tr>
+  <td> text-input </td>
+  <td> </td>
+  <td> ✅ </td>
+  <td> (Renamed) </td>
+</tr>
+<tr>
+  <td> toolbar </td>
+  <td> ✅ </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td> tooltip </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> ⚠️ API is different from React implementation </td>
+</tr>
+<tr>
+  <td> tree-item </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> 🚧 In Progress </td>
+</tr>
+<tr>
+  <td> tree-view </td>
+  <td> ✅ </td>
+  <td> ✅ </td>
+  <td> 🚧 In Progress </td>
+</tr>
+</tbody>
+</table>
+
+### Notable API Changes
+
+Here's an overview of the more significant changes in the project. Other smaller changes (like attribute renaming) will be reflected in the improved Storybook docs.
+
+### Anchor
+
+Anchor is deprecated in favor of `<fluent-link>` (for text links) and `<fluent-anchor-button>` (for links that look like buttons).
+
+### Dialog
+
+The previous dialog didn't allow for expressive dialogs without the default padding and presentation (like full-width imagery). This introduction of the `<fluent-dialog-body>` element allows for more custom compositions.
+
+#### BEFORE:
+
+```html
+<!-- V2 -->
+<fluent-dialog>
+  <h1 slot="title">Title goes here</h1>
+  <img src="full-width.jpg" alt="" />
+  Contents go here
+</fluent-dialog>
+```
+
+#### AFTER:
+
+```html
+<!-- V3 -->
+<fluent-dialog>
+  <img src="full-width.jpg" alt="optional image" />
+  <fluent-dialog-body>
+    <h1 slot="title">Title goes here</h1>
+    Contents go here
+  </fluent-dialog-body>
+</fluent-dialog>
+```
+
+### Field
+
+We have a new form Field component to control label placement and validation errors for form controls.
+
+```html
+<fluent-field label-position="after">
+  <fluent-checkbox slot="input"></fluent-checkbox>
+
+  <label slot="label" for="checkbox">Label goes here</label>
+</fluent-field>
+```
+
+This is also used by `<fluent-radio-group>` (see below).
+
+Due to web platform labelling constraints of the ShadowDOM, the labelling API for `<fluent-text-input>` and `<fluent-textarea>` is slightly different. Note that `<fluent-text-input>` uses the default slot for label, while `<fluent-textarea>` uses the label slot due to its default slot is reserved for the content inside the text area.
+
+```html
+<fluent-text-input>
+  <fluent-label>Label goes here</fluent-label>
+</fluent-text-input>
+
+<fluent-textarea>
+  <fluent-label slot="label">Label goes here</fluent-label>
+</fluent-textarea>
+```
+
+### RadioGroup
+
+#### BEFORE:
+
+```html
+<fluent-radio-group id="radio-group">
+  <fluent-radio value="apple">Apple</fluent-radio>
+  <fluent-radio value="banana">Banana</fluent-radio>
+</fluent-radio-group>
+```
+
+#### AFTER:
+
+```html
+<fluent-field>
+  <label slot="label" for="radio-group">Favorite Fruit</label>
+  <fluent-radio-group
+    slot="input"
+    id="radio-group"
+    aria-labelledby="radio-group--label"
+    orientation="vertical"
+    name="favorite-fruit"
+  >
+    <fluent-field label-position="after">
+      <label slot="label" for="radio-group--apple">Apple</label>
+      <fluent-radio slot="input" id="radio-group--apple" name="favorite-fruit" value="apple"></fluent-radio>
+    </fluent-field>
+
+    <fluent-field label-position="after">
+      <label slot="label" for="radio-group--banana">Banana</label>
+      <fluent-radio slot="input" id="radio-group--banana" name="favorite-fruit" value="banana"></fluent-radio>
+    </fluent-field>
+  </fluent-radio-group>
+</fluent-field>
+```
+
+### setTheme
+
+A more powerful and simpler set-theme API that allows setting themes at the element level.
+
+- `setThemeFor()` is deprecated in favor of `setTheme( theme, element )`
+- `setTheme()` can unset themes with `setTheme(null)` or `setTheme( null, element )`
+
+### Case studies
+
+- [Edge is seeing impressive results](https://blogs.windows.com/msedgedev/2024/05/28/an-even-faster-microsoft-edge/) when switching WebView UI to Fluent Web Components v3.

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use strongly typed interfaces for plotly schema",
-  "packageName": "@fluentui/react-charting",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 08 Jan 2025 18:33:34 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.7)
+
+Wed, 22 Jan 2025 14:00:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.6..@fluentui/react-motion_v9.6.7)
+
+### Patches
+
+- feat: add extended support for reduced motion ([PR #33353](https://github.com/microsoft/fluentui/pull/33353) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.6)
 

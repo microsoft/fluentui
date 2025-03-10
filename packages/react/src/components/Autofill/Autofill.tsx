@@ -98,7 +98,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null) {
+  public componentDidUpdate(_: any, previousState: IAutofillState, cursor: ICursorLocation | null) {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -114,7 +114,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
-      _doesTextStartWith(suggestedDisplayValue, this.value)
+      _doesTextStartWith(suggestedDisplayValue, this.value) &&
+      previousState.inputValue !== this.value
     ) {
       let shouldSelectFullRange = false;
 
@@ -249,6 +250,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     if (!(ev.nativeEvent as any).isComposing) {
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       switch (ev.which) {
+        case KeyCodes.del:
         case KeyCodes.backspace:
           this._autoFillEnabled = false;
           break;

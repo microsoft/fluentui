@@ -7,6 +7,7 @@ import accessibilityMd from './DropdownAccessibility.md';
 
 export { Default } from './DropdownDefault.stories';
 export { Appearance } from './DropdownAppearance.stories';
+export { WithField } from './DropdownField.stories';
 export { Grouped } from './DropdownGrouped.stories';
 export { Clearable } from './DropdownClearable.stories';
 export { ComplexOptions } from './DropdownComplexOptions.stories';

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { tinycolor } from '@ctrl/tinycolor';
 import { useId, slot, useMergedRefs, mergeCallbacks, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import type { HsvColor } from '../../types/color';
@@ -153,7 +154,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   const rootVariables = {
     [colorAreaCSSVars.areaXProgressVar]: `${saturation}%`,
     [colorAreaCSSVars.areaYProgressVar]: `${value}%`,
-    [colorAreaCSSVars.thumbColorVar]: 'transparent',
+    [colorAreaCSSVars.thumbColorVar]: tinycolor(hsvColor).toRgbString(),
     [colorAreaCSSVars.mainColorVar]: `hsl(${hsvColor.h}, 100%, 50%)`,
   };
   const state: ColorAreaState = {
@@ -183,7 +184,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       defaultProps: {
         id: useId('sliderY-'),
         type: 'range',
-        ...(activeAxis && { tabIndex: activeAxis === 'y' ? 0 : -1 }),
+        tabIndex: activeAxis && activeAxis === 'y' ? 0 : -1,
       },
       elementType: 'input',
     }),

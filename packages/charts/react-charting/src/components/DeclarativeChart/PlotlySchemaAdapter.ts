@@ -29,6 +29,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { findNumericMinMaxOfY } from '../../utilities/utilities';
 import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
@@ -39,6 +40,44 @@ interface ISecondaryYAxisValues {
 }
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
+const dashOptions = {
+  dot: {
+    strokeDasharray: '1, 5',
+    strokeLinecap: 'round',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  dash: {
+    strokeDasharray: '5, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  longdash: {
+    strokeDasharray: '10, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  dashdot: {
+    strokeDasharray: '5, 5, 1, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  longdashdot: {
+    strokeDasharray: '10, 5, 1, 5',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+  solid: {
+    strokeDasharray: '0',
+    strokeLinecap: 'butt',
+    strokeWidth: '2',
+    lineBorderWidth: '4',
+  },
+} as const;
 const isDate = (value: any): boolean => {
   const parsedDate = new Date(Date.parse(value));
   if (isNaN(parsedDate.getTime())) {
@@ -225,15 +264,6 @@ export const transformPlotlyJsonToDonutProps = (
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
     : 0;
-
-  const styles: IDonutChartProps['styles'] = {
-    root: {
-      '[class^="arcLabel"]': {
-        ...(typeof firstData.textfont?.size === 'number' ? { fontSize: firstData.textfont.size } : {}),
-      },
-    },
-  };
-
   const { chartTitle } = getTitles(input.layout);
 
   return {
@@ -242,12 +272,11 @@ export const transformPlotlyJsonToDonutProps = (
       chartData: donutData,
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
-    width,
+    width: input.layout?.width,
     height,
     innerRadius,
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
-    styles,
   };
 };
 
@@ -284,6 +313,9 @@ export const transformPlotlyJsonToVSBCProps = (
         const color = getColor(legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].lineData!.push({
           legend,
+          ...(series.line?.dash && dashOptions[series.line.dash]
+            ? { lineOptions: { ...dashOptions[series.line.dash] } }
+            : {}),
           y: yVal,
           color,
         });
@@ -298,8 +330,8 @@ export const transformPlotlyJsonToVSBCProps = (
 
   return {
     data: Object.values(mapXToDataPoints),
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     barWidth: 'auto',
     yMaxValue,
     chartTitle,
@@ -308,6 +340,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -349,8 +382,8 @@ export const transformPlotlyJsonToGVBCProps = (
 
   return {
     data: Object.values(mapXToDataPoints),
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     barwidth: 'auto',
     chartTitle,
     xAxisTitle,
@@ -358,6 +391,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -442,14 +476,14 @@ export const transformPlotlyJsonToVBCProps = (
 
   return {
     data: vbcData,
-    // width: layout?.width,
-    // height: layout?.height,
-    barWidth: 24,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     supportNegativeData: true,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -474,6 +508,9 @@ export const transformPlotlyJsonToScatterChartProps = (
 
     return {
       legend,
+      ...(series.line?.dash && dashOptions[series.line.dash]
+        ? { lineOptions: { ...dashOptions[series.line.dash] } }
+        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -482,6 +519,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     } as ILineChartPoints;
   });
 
+  const yMinMaxValues = findNumericMinMaxOfY(chartData);
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
   const chartProps: IChartProps = {
@@ -498,6 +536,9 @@ export const transformPlotlyJsonToScatterChartProps = (
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
       mode,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
     } as IAreaChartProps;
   } else {
     return {
@@ -507,6 +548,13 @@ export const transformPlotlyJsonToScatterChartProps = (
       yAxisTitle,
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      roundedTicks: true,
+      yMinValue: yMinMaxValues.startValue,
+      yMaxValue: yMinMaxValues.endValue,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
+      enableReflow: false,
     } as ILineChartProps;
   }
 };
@@ -556,12 +604,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         : input.layout?.yaxis2?.title?.text || '',
     barHeight,
     showYAxisLables: true,
-    styles: {
-      root: {
-        height: chartHeight,
-        width: input.layout?.width ?? 600,
-      },
-    },
+    height: chartHeight,
+    width: input.layout?.width,
+    hideTickOverlap: true,
   };
 };
 
@@ -582,8 +627,10 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
         rectText: zVal,
       });
 
-      zMin = Math.min(zMin, zVal);
-      zMax = Math.max(zMax, zVal);
+      if (typeof zVal === 'number') {
+        zMin = Math.min(zMin, zVal);
+        zMax = Math.max(zMax, zVal);
+      }
     });
   });
   const heatmapData: IHeatMapChartData = {
@@ -593,7 +640,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
   };
 
   // Initialize domain and range to default values
-  const defaultDomain = [zMin, zMax];
+  const defaultDomain = [zMin, (zMax + zMin) / 2, zMax];
   const defaultRange = [
     getColorFromToken(DataVizPalette.color1),
     getColorFromToken(DataVizPalette.color2),
@@ -619,6 +666,9 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     xAxisTitle,
     yAxisTitle,
     sortOrder: 'none',
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    hideTickOverlap: true,
   };
 };
 
@@ -655,14 +705,11 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   } as ISankeyChartData;
 
-  const width: number = input.layout?.width ?? 440;
-  const height: number = input.layout?.height ?? 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
       ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
     },
   };
-  const shouldResize: number = width + height;
 
   const { chartTitle } = getTitles(input.layout);
 
@@ -671,10 +718,9 @@ export const transformPlotlyJsonToSankeyProps = (
       chartTitle,
       SankeyChartData: sankeyChartData,
     },
-    width,
-    height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 468,
     styles,
-    shouldResize,
     enableReflow: true,
   };
 };
@@ -741,14 +787,14 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    width: input.layout?.width ?? 440,
+    width: input.layout?.width,
     height: input.layout?.height ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
   };
 };
 
-const MAX_DEPTH = 8;
+const MAX_DEPTH = 15;
 export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   if (depth > MAX_DEPTH) {
     throw new Error('Maximum json depth exceeded');

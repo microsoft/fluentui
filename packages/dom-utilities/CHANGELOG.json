@@ -2,6 +2,21 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 07:22:41 GMT",
+      "tag": "@fluentui/dom-utilities_v2.3.10",
+      "version": "2.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/dom-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.24",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Oct 2024 16:51:53 GMT",
       "tag": "@fluentui/dom-utilities_v2.3.9",
       "version": "2.3.9",

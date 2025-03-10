@@ -115,7 +115,7 @@ export const BasicSecondaryYAxis = () => {
   return (
     <div style={rootStyle}>
       <VerticalBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Vertical bar chart basic example "
         data={points}
         width={650}

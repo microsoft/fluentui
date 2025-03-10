@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix: make api.md up to date",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

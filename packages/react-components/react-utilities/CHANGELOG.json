@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:12 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.20",
+      "version": "9.18.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8cf401d626def27ad679f9e53928533df9f9ef52",
+            "comment": "fix: add autoCorrect and minLength input properties support to getNativeProps utility"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-utilities_v9.18.19",
       "version": "9.18.19",

@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -87,22 +92,22 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
       {
         x: 'Simple Text',
         y: 1000,
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         x: 'Showing all text here',
         y: 5000,
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         x: 'Large data, showing all text by tooltip',
         y: 3000,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         x: 'Data',
         y: 2000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color4),
       },
     ];
 

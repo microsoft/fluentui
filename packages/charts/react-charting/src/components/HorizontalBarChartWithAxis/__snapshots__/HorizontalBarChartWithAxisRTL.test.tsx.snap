@@ -28,9 +28,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1034,9 +1032,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2053,9 +2049,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -3060,9 +3054,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4066,9 +4058,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4948,9 +4938,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

@@ -7,6 +7,7 @@ import {
   slot,
   elementContains,
   useMergedRefs,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -38,6 +39,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
+  const navigationMode = useTreeContext_unstable(ctx => ctx.navigationMode ?? 'tree');
   const forceUpdateRovingTabIndex = useTreeContext_unstable(ctx => ctx.forceUpdateRovingTabIndex);
   const { level: contextLevel } = useSubtreeContext_unstable();
   const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
@@ -147,25 +149,36 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    // Ignore keyboard events that do not originate from the current tree item.
-    if (event.isDefaultPrevented() || event.currentTarget !== event.target) {
+    if (event.isDefaultPrevented() || !treeItemRef.current) {
       return;
     }
+    const isEventFromTreeItem = event.currentTarget === event.target;
+    const isEventFromActions = actionsRef.current && actionsRef.current.contains(event.target as Node);
+
     switch (event.key) {
-      case Space:
+      case Space: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         if (selectionMode !== 'none') {
           selectionRef.current?.click();
           // Prevents the page from scrolling down when the spacebar is pressed
           event.preventDefault();
         }
         return;
+      }
       case treeDataTypes.Enter: {
+        if (!isEventFromTreeItem) {
+          return;
+        }
         return event.currentTarget.click();
       }
       case treeDataTypes.End:
       case treeDataTypes.Home:
-      case treeDataTypes.ArrowUp:
-      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowUp: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
         return requestTreeResponse({
           requestType: 'navigate',
           event,
@@ -175,42 +188,65 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         });
+      }
+      case treeDataTypes.ArrowDown: {
+        if (!isEventFromTreeItem && !isEventFromActions) {
+          return;
+        }
+        if (isEventFromActions && (!isHTMLElement(event.target) || event.target.hasAttribute('aria-haspopup'))) {
+          return;
+        }
+        return requestTreeResponse({
+          requestType: 'navigate',
+          event,
+          value,
+          itemType,
+          parentValue,
+          type: event.key,
+          target: event.currentTarget,
+        });
+      }
       case treeDataTypes.ArrowLeft: {
         // arrow left with alt key is reserved for history navigation
         if (event.altKey) {
+          return;
+        }
+        const data = {
+          value,
+          event,
+          open: getNextOpen(),
+          type: event.key,
+          itemType,
+          parentValue,
+          target: event.currentTarget,
+        } as const;
+
+        if (isEventFromActions && navigationMode === 'treegrid') {
+          requestTreeResponse({ ...data, requestType: 'navigate' });
+          return;
+        }
+        if (!isEventFromTreeItem) {
           return;
         }
         // do not navigate to parent if the item is on the top level
         if (level === 1 && !open) {
           return;
         }
-        const data = {
-          value,
-          event,
-          open: getNextOpen(),
-          type: event.key,
-          target: event.currentTarget,
-        } as const;
         if (open) {
           props.onOpenChange?.(event, data);
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'open' : 'navigate',
-        });
+        requestTreeResponse({ ...data, requestType: open ? 'open' : 'navigate' });
         return;
       }
       case treeDataTypes.ArrowRight: {
+        // Ignore keyboard events that do not originate from the current tree item.
+        if (!isEventFromTreeItem) {
+          return;
+        }
         // arrow right with alt key is reserved for history navigation
         if (event.altKey) {
           return;
         }
-        // do not navigate or open if the item is a leaf
-        if (itemType === 'leaf') {
-          return;
-        }
         const data = {
           value,
           event,
@@ -218,17 +254,19 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           type: event.key,
           target: event.currentTarget,
         } as const;
-        if (!open) {
+
+        if (itemType === 'branch' && !open) {
           props.onOpenChange?.(event, data);
+          requestTreeResponse({ ...data, itemType, requestType: 'open' });
+        } else {
+          requestTreeResponse({ ...data, itemType, parentValue, requestType: 'navigate' });
         }
-        requestTreeResponse({
-          ...data,
-          itemType,
-          parentValue,
-          requestType: open ? 'navigate' : 'open',
-        });
         return;
       }
+    }
+    // Ignore keyboard events that do not originate from the current tree item.
+    if (!isEventFromTreeItem) {
+      return;
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;

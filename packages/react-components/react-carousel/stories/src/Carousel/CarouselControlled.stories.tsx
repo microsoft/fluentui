@@ -162,7 +162,7 @@ export const Controlled = () => {
         </div>
 
         <div className={classes.footer}>
-          <CarouselAutoplayButton />
+          <CarouselAutoplayButton aria-label="Enable autoplay" />
           <Divider vertical />
           <code className={classes.code}>{JSON.stringify({ activeIndex }, null, 2)}</code>
           <Divider vertical />

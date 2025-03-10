@@ -150,7 +150,7 @@ export const Basic = () => {
   return (
     <div style={rootStyle}>
       <LineChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data}
         legendsOverflowText={'Overflow Items'}
         yMinValue={200}

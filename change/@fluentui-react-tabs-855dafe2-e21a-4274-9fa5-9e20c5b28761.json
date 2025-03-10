@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: selected state in HC on Windows",
+  "packageName": "@fluentui/react-tabs",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -11,13 +11,13 @@ import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@flue
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
 export const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover('.breadcrumb-sample')
-  .snapshot('hover', { cropTo: '.testWrapper' })
+  .snapshot('hover')
   .mouseDown('.breadcrumb-sample')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .focus('.breadcrumb-sample')
-  .snapshot('focused', { cropTo: '.testWrapper' })
+  .snapshot('focused')
   .end();
 
 export const SampleBreadcrumbButtons = (props: BreadcrumbProps) => (

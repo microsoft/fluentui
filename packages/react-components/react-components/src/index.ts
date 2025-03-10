@@ -128,6 +128,7 @@ export {
   useScrollbarWidth,
   useSelection,
   useTimeout,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -821,7 +822,9 @@ export type {
 
 export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
+  PositioningBoundary,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningImperativeRef,
@@ -1782,6 +1785,7 @@ export {
   useTagPickerOptionGroupStyles,
   useTagPickerOptionGroup,
   useTagPickerFilter,
+  useTagPickerContext_unstable,
 } from '@fluentui/react-tag-picker';
 export type {
   TagPickerContextValues,
@@ -1812,6 +1816,7 @@ export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
+  TagPickerContextValue,
 } from '@fluentui/react-tag-picker';
 
 export {

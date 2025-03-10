@@ -20,10 +20,12 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  resolveCSSVariables,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
+import { getColorContrast } from '../../utilities/colors';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -202,6 +204,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
+    const tickParams = {
+      tickValues: this.props.tickValues,
+      tickFormat: this.props.tickFormat,
+    };
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
@@ -230,6 +236,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         legendBars={this._createLegendBars()}
         onChartMouseLeave={this._handleChartMouseLeave}
         ref={this._cartesianChartRef}
+        tickParams={tickParams}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -351,6 +358,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
   };
 
+  private _getInvertedTextColor = (color: string): string => {
+    return color === this.props.theme!.semanticColors.bodyText
+      ? this.props.theme!.semanticColors.bodyBackground
+      : this.props.theme!.semanticColors.bodyText;
+  };
+
   /**
    * This is the function which is responsible for
    * drawing the rectangle in the graph and also
@@ -368,12 +381,24 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
         let rectElement: JSX.Element;
         const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
-        if (this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint) {
+        if (
+          this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint &&
+          typeof this._dataSet[yAxisDataPoint][index]?.value === 'number'
+        ) {
           /**
            * dataPointObject is an object where it contains information on single
            * data point such as x, y , value, rectText property of the rectangle
            */
           const dataPointObject = this._dataSet[yAxisDataPoint][index];
+          let styleRules = '';
+          let foregroundColor = this.props.theme!.semanticColors.bodyText;
+          if (this.chartContainer) {
+            styleRules = resolveCSSVariables(this.chartContainer!, foregroundColor);
+          }
+          const contrastRatio = getColorContrast(styleRules, this._colorScale(dataPointObject.value));
+          if (contrastRatio < 3) {
+            foregroundColor = this._getInvertedTextColor(foregroundColor);
+          }
           rectElement = (
             <g
               key={id}
@@ -401,6 +426,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 textAnchor={'middle'}
                 className={this._classNames.text}
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+                fill={foregroundColor}
               >
                 {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
               </text>

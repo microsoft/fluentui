@@ -441,8 +441,9 @@ export class VerticalStackedBarChartBase
             x2={x2}
             y2={y2}
             opacity={shouldHighlight ? 1 : 0.1}
-            strokeWidth={3}
-            strokeLinecap="round"
+            strokeWidth={lineObject[item][0].lineOptions?.strokeWidth ?? 3}
+            strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
+            strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(this._isLegendHighlighted(item) && {

@@ -1086,7 +1086,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
       const colorFillBar = this._colorFillBars[i];
-      const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+      const legend = typeof colorFillBar.legend === 'string' ? colorFillBar.legend.replace(/\W/g, '') : '';
+      const colorFillBarId = getId(legend);
       // isInverted property is applicable to v8 themes only
       const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
 

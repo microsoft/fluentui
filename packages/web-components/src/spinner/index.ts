@@ -1,4 +1,5 @@
-export { BaseSpinner, Spinner } from './spinner.js';
+export { BaseSpinner } from './spinner.base.js';
+export { Spinner } from './spinner.js';
 export { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 export { template as SpinnerTemplate } from './spinner.template.js';
 export { styles as SpinnerStyles } from './spinner.styles.js';

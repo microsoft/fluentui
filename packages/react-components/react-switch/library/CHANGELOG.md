@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 08 Jan 2025 18:33:36 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.2.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.104..@fluentui/react-switch_v9.2.0)
+
+### Minor changes
+
+- Bump @fluentui/react-field to v9.2.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.1.104](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.104)
+
+Mon, 27 Jan 2025 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.103..@fluentui/react-switch_v9.1.104)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.86 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
+
+## [9.1.103](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.103)
+
+Wed, 22 Jan 2025 14:00:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.102..@fluentui/react-switch_v9.1.103)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.85 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-label to v9.1.83 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [9.1.102](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.102)
 

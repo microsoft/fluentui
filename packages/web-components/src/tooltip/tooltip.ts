@@ -1,9 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter, Updates } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
+import { AnchorPositioningCSSSupported, AnchorPositioningHTMLSupported } from '../utils/support.js';
 import type { TooltipPositioningOption } from './tooltip.options.js';
-
-const SUPPORTS_CSS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
-const SUPPORTS_HTML_ANCHOR_POSITIONING = 'anchor' in HTMLElement.prototype;
 
 /**
  * A Tooltip Custom HTML Element.
@@ -50,7 +48,7 @@ export class Tooltip extends FASTElement {
    * @internal
    */
   public positioningChanged(): void {
-    if (!SUPPORTS_CSS_ANCHOR_POSITIONING) {
+    if (!AnchorPositioningCSSSupported) {
       this.setFallbackStyles();
     }
   }
@@ -100,8 +98,8 @@ export class Tooltip extends FASTElement {
     this.anchorElement.addEventListener('mouseenter', this.mouseenterAnchorHandler);
     this.anchorElement.addEventListener('mouseleave', this.mouseleaveAnchorHandler);
 
-    if (SUPPORTS_CSS_ANCHOR_POSITIONING) {
-      if (!SUPPORTS_HTML_ANCHOR_POSITIONING) {
+    if (AnchorPositioningCSSSupported) {
+      if (!AnchorPositioningHTMLSupported) {
         // @ts-expect-error - Baseline 2024
         this.anchorElement.style.anchorName = anchorName;
         // @ts-expect-error - Baseline 2024

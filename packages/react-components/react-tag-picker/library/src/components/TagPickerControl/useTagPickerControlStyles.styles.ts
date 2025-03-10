@@ -154,13 +154,10 @@ const useStyles = makeStyles({
 
 const useAsideStyles = makeStyles({
   root: {
-    display: 'grid',
-    alignItems: 'center',
+    display: 'flex',
     position: 'absolute',
     top: '0',
     right: tokens.spacingHorizontalM,
-    gridTemplateColumns: 'repeat(2, auto)',
-    gridTemplateRows: 'minmax(32px, auto) 1fr',
     height: '100%',
     cursor: 'text',
   },
@@ -187,7 +184,10 @@ const useIconStyles = makeStyles({
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
     cursor: 'pointer',
-    display: 'block',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
     fontSize: tokens.fontSizeBase500,
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -199,19 +199,26 @@ const useIconStyles = makeStyles({
   medium: {
     fontSize: iconSizes.small,
     marginLeft: tokens.spacingHorizontalXXS,
+    minHeight: '32px',
   },
   large: {
     fontSize: iconSizes.medium,
     marginLeft: tokens.spacingHorizontalXXS,
+    minHeight: '40px',
   },
   'extra-large': {
     fontSize: iconSizes.large,
     marginLeft: tokens.spacingHorizontalSNudge,
+    minHeight: '44px',
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
   },
+});
+
+const useSecondaryActionStyles = makeStyles({
+  root: { display: 'flex' },
 });
 
 /**
@@ -223,6 +230,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const asideStyles = useAsideStyles();
+  const secondaryActionStyles = useSecondaryActionStyles();
   state.root.className = mergeClasses(
     tagPickerControlClassNames.root,
     styles.root,
@@ -257,6 +265,7 @@ export const useTagPickerControlStyles_unstable = (state: TagPickerControlState)
   if (state.secondaryAction) {
     state.secondaryAction.className = mergeClasses(
       tagPickerControlClassNames.secondaryAction,
+      secondaryActionStyles.root,
       state.secondaryAction.className,
     );
   }
