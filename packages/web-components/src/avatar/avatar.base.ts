@@ -1,14 +1,5 @@
-import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
-import { getInitials } from '../utils/get-initials.js';
-import { swapStates } from '../utils/element-internals.js';
-import {
-  type AvatarActive,
-  type AvatarAppearance,
-  AvatarColor,
-  AvatarNamedColor,
-  type AvatarShape,
-  type AvatarSize,
-} from './avatar.options.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
+import { type AvatarActive } from './avatar.options.js';
 
 /**
  * The base class used for constructing a fluent-avatar custom element
