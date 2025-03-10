@@ -23,7 +23,7 @@
         }
       },
       "dependsOn": ["build-storybook"],
-      "inputs": ["{projectRoot}/src/**/*.stories.tsx?"],
+      "inputs": ["{projectRoot}/src/**/*.stories.tsx"],
       "outputs": ["{projectRoot}/dist/vrt/actual/**"],
       "cache": true
     },
@@ -32,7 +32,7 @@
       "dependsOn": ["build-storybook"]
     },
     "test-vr-cli": {
-      "command": "visual-regression-assert assert --baselineDir dist/vrt/baseline --actualDir dist/vrt/actual --diffDir dist/vrt/diff --reportPath dist/vrt/report.html",
+      "command": "visual-regression-assert assert --baselineDir src/__snapshots__ --outputPath dist/vrt",
       "options": {
         "cwd": "{projectRoot}"
       },
@@ -41,7 +41,7 @@
         "generate-image-for-vrt",
         { "projects": ["visual-regression-assert"], "target": "build" }
       ],
-      "inputs": ["{projectRoot}/dist/vrt/screenshots/**"],
+      "inputs": ["{projectRoot}/dist/vrt/screenshots/**", "{projectRoot}/src/**/*.stories.tsx"],
       "metadata": {
         "help": {
           "command": "yarn visual-regression-assert --help",
