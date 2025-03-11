@@ -72,7 +72,6 @@ export interface CartesianChartProps {
     // @deprecated
     chartLabel?: string;
     className?: string;
-    // (undocumented)
     componentRef?: React_2.RefObject<Chart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;

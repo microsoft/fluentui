@@ -7,11 +7,4 @@ export const Basic = () => <DeclarativeChartBasicExample />;
 export default {
   title: 'Components/DeclarativeChart',
   component: DeclarativeChart,
-  // parameters: {
-  //   docs: {
-  //     description: {
-  //       component: [descriptionMd, bestPracticesMd].join('\n'),
-  //     },
-  //   },
-  // },
 };

@@ -1,6 +1,4 @@
 import * as React from 'react';
-// import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
-// import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charts';
 
 interface ErrorBoundaryProps {
@@ -37,19 +35,6 @@ interface DeclarativeChartState {
   selectedLegends: string;
 }
 
-// const options: IDropdownOption[] = [
-//   { key: 'areachart', text: 'Area Chart' },
-//   { key: 'donutchart', text: 'Donut Chart' },
-//   { key: 'gaugechart', text: 'Gauge Chart' },
-//   { key: 'heatmapchart', text: 'Heatmap Chart' },
-//   { key: 'horizontalbarchart', text: 'HorizontalBar Chart' },
-//   { key: 'linechart', text: 'Line Chart' },
-//   { key: 'piechart', text: 'Pie Chart' },
-//   { key: 'sankeychart', text: 'Sankey Chart' },
-//   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
-//   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
-// ];
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const schemas: any[] = [
   { key: 'areachart', schema: require('./schema/fluent_area.json') },
@@ -63,10 +48,6 @@ const schemas: any[] = [
   { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
   { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
 ];
-
-const dropdownStyles = { dropdown: { width: 200 } };
-
-// const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: 300 } };
 
 function fileSaver(url: string) {
   const saveLink = document.createElement('a');
@@ -83,7 +64,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, Declarativ
 
   constructor(props: DeclarativeChartProps) {
     super(props);
-    const defaultselection = schemas[0].key;
+    const defaultselection = schemas[1].key;
     const selectedPlotlySchema = this._getSchemaByKey(defaultselection);
     const { selectedLegends } = selectedPlotlySchema;
     this.state = {
@@ -104,19 +85,6 @@ export class DeclarativeChartBasicExample extends React.Component<{}, Declarativ
   public render(): JSX.Element {
     return <div>{this._createDeclarativeChart()}</div>;
   }
-
-  // private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
-  //   const selectedPlotlySchema = this._getSchemaByKey(option.key as string);
-  //   const { selectedLegends } = selectedPlotlySchema;
-  //   this.setState({ selectedChoice: option.key as string, selectedLegends: JSON.stringify(selectedLegends) });
-  // };
-
-  private _onSelectedLegendsEdited = (
-    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-    newValue?: string,
-  ): void => {
-    this.setState({ selectedLegends: newValue ?? '' });
-  };
 
   private _handleChartSchemaChanged = (eventData: Schema) => {
     const { selectedLegends } = eventData.plotlySchema;
@@ -146,23 +114,6 @@ export class DeclarativeChartBasicExample extends React.Component<{}, Declarativ
 
     return (
       <ErrorBoundary>
-        {/* <div style={{ display: 'flex' }}>
-          <Dropdown
-            placeholder="Select a schema"
-            options={options}
-            onChange={this._onChange}
-            selectedKey={this.state.selectedChoice}
-            styles={dropdownStyles}
-          >
-            {options.map((option) => (
-          <Option key={option.key} >
-            {option.text}
-          </Option>
-        ))}
-          </Dropdown>
-          &nbsp;&nbsp;&nbsp;
-        </div>
-        <br /> */}
         <button
           onClick={() => {
             this._declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
@@ -179,13 +130,6 @@ export class DeclarativeChartBasicExample extends React.Component<{}, Declarativ
           onSchemaChange={this._handleChartSchemaChanged}
           componentRef={this._declarativeChartRef}
         />
-        {/* <br />
-        <TextField
-          label="Current Legend selection"
-          value={this.state.selectedLegends}
-          onChange={this._onSelectedLegendsEdited}
-          styles={textFieldStyles}
-        /> */}
       </ErrorBoundary>
     );
   }

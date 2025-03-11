@@ -7,30 +7,12 @@ import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { DonutChartProps } from '../DonutChart/index';
-import {
-  ChartDataPoint,
-  ChartProps,
-  // HorizontalBarChartWithAxisDataPoint,
-  LineChartPoints,
-  // VerticalStackedChartProps,
-  // HeatMapChartData,
-  // HeatMapChartDataPoint,
-  // GroupedVerticalBarChartData,
-  VerticalBarChartDataPoint,
-  // SankeyChartData,
-} from '../../types/DataPoint';
-// import { ISankeyChartProps } from '../SankeyChart/index';
-// import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
-// import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/index';
+import { ChartDataPoint, ChartProps, LineChartPoints, VerticalBarChartDataPoint } from '../../types/DataPoint';
 import { LineChartProps } from '../LineChart/index';
-// import { IAreaChartProps } from '../AreaChart/index';
-// import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { /*DataVizPalette, getColorFromToken,*/ getNextColor } from '../../utilities/colors';
-// import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
-// import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
+import { getNextColor } from '../../utilities/colors';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import { Layout, PlotlySchema, PieData, PlotData /*SankeyData*/ } from './PlotlySchema';
+import { Layout, PlotlySchema, PieData, PlotData } from './PlotlySchema';
 import type { Datum, TypedArray } from './PlotlySchema';
 import { timeParse } from 'd3-time-format';
 
@@ -280,121 +262,6 @@ export const transformPlotlyJsonToDonutProps = (
   };
 };
 
-// export const transformPlotlyJsonToVSBCProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   isDarkTheme?: boolean,
-//   fallbackVSBC?: boolean,
-// ): IVerticalStackedBarChartProps => {
-//   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
-//   let yMaxValue = 0;
-//   let secondaryYAxisValues: ISecondaryYAxisValues = {};
-//   input.data.forEach((series: PlotData, index1: number) => {
-//     invalidate2Dseries(series, 'VSBC');
-
-//     if (!isNumberArray(series.y)) {
-//       throw new Error('transform to VSBC:: y values should be numeric');
-//     }
-
-//     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
-//       if (!mapXToDataPoints[x]) {
-//         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
-//       }
-//       const legend: string = getLegend(series, index1);
-//       const yVal: number = (series.y?.[index2] as number) ?? 0;
-//       if (series.type === 'bar') {
-//         const color = getColor(legend, colorMap, isDarkTheme);
-//         mapXToDataPoints[x].chartData.push({
-//           legend,
-//           data: yVal,
-//           color,
-//         });
-//       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
-//         const color = getColor(legend, colorMap, isDarkTheme);
-//         mapXToDataPoints[x].lineData!.push({
-//           legend,
-//           ...(series.line?.dash && dashOptions[series.line.dash]
-//             ? { lineOptions: { ...dashOptions[series.line.dash] } }
-//             : {}),
-//           y: yVal,
-//           color,
-//         });
-//       }
-
-//       yMaxValue = Math.max(yMaxValue, yVal);
-//     });
-//     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
-//   });
-
-//   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
-//   return {
-//     data: Object.values(mapXToDataPoints),
-//     // width: layout?.width,
-//     // height: layout?.height,
-//     barWidth: 'auto',
-//     yMaxValue,
-//     chartTitle,
-//     xAxisTitle,
-//     yAxisTitle,
-//     mode: 'plotly',
-//     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-//     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
-//     hideTickOverlap: true,
-//   };
-// };
-
-// export const transformPlotlyJsonToGVBCProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   isDarkTheme?: boolean,
-// ): IGroupedVerticalBarChartProps => {
-//   const mapXToDataPoints: Record<string, GroupedVerticalBarChartData> = {};
-//   let secondaryYAxisValues: ISecondaryYAxisValues = {};
-//   input.data.forEach((series: PlotData, index1: number) => {
-//     invalidate2Dseries(series, 'GVBC');
-
-//     if (!isNumberArray(series.y)) {
-//       throw new Error('transform to GVBC:: y values should be numeric');
-//     }
-
-//     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
-//       if (!mapXToDataPoints[x]) {
-//         mapXToDataPoints[x] = { name: x.toString(), series: [] };
-//       }
-//       if (series.type === 'bar') {
-//         const legend: string = getLegend(series, index1);
-//         const color = getColor(legend, colorMap, isDarkTheme);
-
-//         mapXToDataPoints[x].series.push({
-//           key: legend,
-//           data: (series.y?.[index2] as number) ?? 0,
-//           xAxisCalloutData: x as string,
-//           color,
-//           legend,
-//         });
-//       }
-//     });
-//     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
-//   });
-
-//   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
-//   return {
-//     data: Object.values(mapXToDataPoints),
-//     // width: layout?.width,
-//     // height: layout?.height,
-//     barwidth: 'auto',
-//     chartTitle,
-//     xAxisTitle,
-//     yAxisTitle,
-//     mode: 'plotly',
-//     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-//     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
-//     hideTickOverlap: true,
-//   };
-// };
-
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -478,11 +345,9 @@ export const transformPlotlyJsonToVBCProps = (
     data: vbcData,
     // width: layout?.width,
     // height: layout?.height,
-    // supportNegativeData: true,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    // mode: 'plotly',
     hideTickOverlap: true,
   };
 };
@@ -492,9 +357,8 @@ export const transformPlotlyJsonToScatterChartProps = (
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
-): LineChartProps /*| IAreaChartProps*/ => {
+): LineChartProps => {
   let secondaryYAxisValues: SecondaryYAxisValues = {};
-  // let mode: string = 'tonexty';
   const chartData: LineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     invalidate2Dseries(series, 'Scatter');
     const xValues = series.x as Datum[];
@@ -504,7 +368,6 @@ export const transformPlotlyJsonToScatterChartProps = (
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
-    // mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
 
     return {
       legend,
@@ -527,18 +390,6 @@ export const transformPlotlyJsonToScatterChartProps = (
     lineChartData: chartData,
   };
 
-  // if (isAreaChart) {
-  //   return {
-  //     data: chartProps,
-  //     supportNegativeData: true,
-  //     xAxisTitle,
-  //     yAxisTitle,
-  //     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-  //     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
-  //     mode,
-  //     hideTickOverlap: true,
-  //   } as IAreaChartProps;
-  // } else {
   return {
     data: chartProps,
     supportNegativeData: true,
@@ -551,249 +402,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     yMaxValue: yMinMaxValues.endValue,
     hideTickOverlap: true,
   } as LineChartProps;
-  // }
 };
-
-// export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   isDarkTheme?: boolean,
-// ): IHorizontalBarChartWithAxisProps => {
-//   const chartData: HorizontalBarChartWithAxisDataPoint[] = input.data
-//     .map((series: PlotData, index: number) => {
-//       invalidate2Dseries(series, 'HBC');
-
-//       return (series.y as Datum[]).map((yValue: string, i: number) => {
-//         const color = getColor(yValue, colorMap, isDarkTheme);
-//         return {
-//           x: series.x[i],
-//           y: yValue,
-//           legend: yValue,
-//           color,
-//         } as HorizontalBarChartWithAxisDataPoint;
-//       });
-//     })
-//     .flat()
-//     //reversing the order to invert the Y bars order as required by plotly.
-//     .reverse();
-
-//   const chartHeight: number = input.layout?.height ?? 450;
-//   const margin: number = input.layout?.margin?.l ?? 0;
-//   const padding: number = input.layout?.margin?.pad ?? 0;
-//   const availableHeight: number = chartHeight - margin - padding;
-//   const numberOfBars = (input.data[0] as PlotData).y.length;
-//   const scalingFactor = 0.01;
-//   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
-//   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
-
-//   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
-//   return {
-//     data: chartData,
-//     chartTitle,
-//     xAxisTitle,
-//     yAxisTitle,
-//     secondaryYAxistitle:
-//       typeof input.layout?.yaxis2?.title === 'string'
-//         ? input.layout?.yaxis2?.title
-//         : input.layout?.yaxis2?.title?.text || '',
-//     barHeight,
-//     showYAxisLables: true,
-//     styles: {
-//       root: {
-//         height: chartHeight,
-//         width: input.layout?.width ?? 600,
-//       },
-//     },
-//     hideTickOverlap: true,
-//   };
-// };
-
-// export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMapChartProps => {
-//   const firstData = input.data[0] as PlotData;
-//   const heatmapDataPoints: HeatMapChartDataPoint[] = [];
-//   let zMin = Number.POSITIVE_INFINITY;
-//   let zMax = Number.NEGATIVE_INFINITY;
-
-//   (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
-//     firstData.y?.forEach((yVal: any, yIdx: number) => {
-//       const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
-
-//       heatmapDataPoints.push({
-//         x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
-//         y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
-//         value: zVal,
-//         rectText: zVal,
-//       });
-
-//       if (typeof zVal === 'number') {
-//         zMin = Math.min(zMin, zVal);
-//         zMax = Math.max(zMax, zVal);
-//       }
-//     });
-//   });
-//   const heatmapData: HeatMapChartData = {
-//     legend: firstData.name,
-//     data: heatmapDataPoints,
-//     value: 0,
-//   };
-
-//   // Initialize domain and range to default values
-//   const defaultDomain = [zMin, (zMax + zMin) / 2, zMax];
-//   const defaultRange = [
-//     getColorFromToken(DataVizPalette.color1),
-//     getColorFromToken(DataVizPalette.color2),
-//     getColorFromToken(DataVizPalette.color3),
-//   ];
-//   const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
-//     ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
-//     : defaultDomain;
-
-//   const rangeValuesForColorScale: string[] = Array.isArray(firstData.colorscale)
-//     ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
-//     : defaultRange;
-
-//   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
-//   return {
-//     data: [heatmapData],
-//     domainValuesForColorScale,
-//     rangeValuesForColorScale,
-//     hideLegend: true,
-//     showYAxisLables: true,
-//     chartTitle,
-//     xAxisTitle,
-//     yAxisTitle,
-//     sortOrder: 'none',
-//     hideTickOverlap: true,
-//   };
-// };
-
-// export const transformPlotlyJsonToSankeyProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   isDarkTheme?: boolean,
-// ): ISankeyChartProps => {
-//   const { link, node } = input.data[0] as SankeyData;
-//   const validLinks = (link?.value ?? [])
-//     .map((val: number, index: number) => ({
-//       value: val,
-//       source: link?.source![index],
-//       target: link?.target![index],
-//     }))
-//     // eslint-disable-next-line @typescript-eslint/no-shadow
-//     // Filter out negative nodes, unequal nodes and self-references (circular links)
-//     .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
-
-//   const sankeyChartData = {
-//     nodes: node.label?.map((label: string, index: number) => {
-//       const color = getColor(label, colorMap, isDarkTheme);
-
-//       return {
-//         nodeId: index,
-//         name: label,
-//         color,
-//       };
-//     }),
-//     links: validLinks.map((validLink: any, index: number) => {
-//       return {
-//         ...validLink,
-//       };
-//     }),
-//   } as SankeyChartData;
-
-//   const width: number = input.layout?.width ?? 440;
-//   const height: number = input.layout?.height ?? 220;
-//   const styles: ISankeyChartProps['styles'] = {
-//     root: {
-//       ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
-//     },
-//   };
-//   const shouldResize: number = width + height;
-
-//   const { chartTitle } = getTitles(input.layout);
-
-//   return {
-//     data: {
-//       chartTitle,
-//       SankeyChartData: sankeyChartData,
-//     },
-//     width,
-//     height,
-//     styles,
-//     shouldResize,
-//     enableReflow: true,
-//   };
-// };
-
-// export const transformPlotlyJsonToGaugeProps = (
-//   input: PlotlySchema,
-//   colorMap: React.MutableRefObject<Map<string, string>>,
-//   isDarkTheme?: boolean,
-// ): IGaugeChartProps => {
-//   const firstData = input.data[0] as PlotData;
-
-//   const segments = firstData.gauge?.steps?.length
-//     ? firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
-//         const legend = step.name || `Segment ${index + 1}`;
-//         const color = getColor(legend, colorMap, isDarkTheme);
-//         return {
-//           legend,
-//           size: step.range?.[1] - step.range?.[0],
-//           color,
-//         };
-//       })
-//     : [
-//         {
-//           legend: 'Current',
-//           size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
-//           color: getColor('Current', colorMap, isDarkTheme),
-//         },
-//         {
-//           legend: 'Target',
-//           size: (firstData.gauge?.axis?.range?.[1] ?? 100) - (firstData.value ?? 0),
-//           color: DataVizPalette.disabled,
-//         },
-//       ];
-
-//   let sublabel: string | undefined;
-//   let sublabelColor: string | undefined;
-//   if (firstData.delta?.reference) {
-//     const diff = firstData.value - firstData.delta.reference;
-//     if (diff >= 0) {
-//       sublabel = `\u25B2 ${diff}`;
-//       const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
-//       sublabelColor = color;
-//     } else {
-//       sublabel = `\u25BC ${Math.abs(diff)}`;
-//       const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
-//       sublabelColor = color;
-//     }
-//   }
-
-//   const styles: IGaugeChartProps['styles'] = {
-//     sublabel: {
-//       fill: sublabelColor,
-//     },
-//   };
-
-//   const { chartTitle } = getTitles(input.layout);
-
-//   return {
-//     segments,
-//     chartValue: firstData.value ?? 0,
-//     chartTitle,
-//     sublabel,
-//     // range values can be null
-//     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
-//     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
-//     chartValueFormat: () => firstData.value?.toString() ?? '',
-//     width: input.layout?.width ?? 440,
-//     height: input.layout?.height ?? 220,
-//     styles,
-//     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
-//   };
-// };
 
 const MAX_DEPTH = 15;
 export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
@@ -825,10 +434,6 @@ export function isArrayOrTypedArray(a: any) {
 }
 
 function isPlainObject(obj: any) {
-  // if (window && window.process && window.process.versions) {
-  //   return Object.prototype.toString.call(obj) === '[object Object]';
-  // }
-
   return (
     Object.prototype.toString.call(obj) === '[object Object]' &&
     Object.getPrototypeOf(obj).hasOwnProperty('hasOwnProperty')
