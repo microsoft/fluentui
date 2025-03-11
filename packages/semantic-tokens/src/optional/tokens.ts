@@ -27,7 +27,6 @@ import {
   gapBetweenContentXxsmallRaw,
   iconthemeCtrlDefaultRestRaw,
   iconthemeCtrlDefaultSelectedRaw,
-  nullColorRaw,
   paddingContentAlignDefaultRaw,
   paddingContentAlignOutdentTextonsubtleRaw,
   paddingContentXsmallRaw,
@@ -467,32 +466,32 @@ export const strokewidthCtrlOutlinePressed = `var(${strokewidthCtrlOutlinePresse
 export const strokewidthCtrlOutlineSelected = `var(${strokewidthCtrlOutlineSelectedRaw}, ${strokewidthDefaultRaw})`;
 export const strokewidthWindowDefault = `var(${strokewidthWindowDefaultRaw}, ${strokewidthDefaultRaw})`;
 export const backgroundToolbar = `var(${backgroundToolbarRaw}, ${backgroundCardOnprimaryDefaultRestRaw})`;
-export const strokeToolbar = `var(${strokeToolbarRaw}, var(${strokeCardOnprimaryRestRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnbrandRestStop2 = `var(${strokeCtrlOnbrandRestStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnbrandHoverStop2 = `var(${strokeCtrlOnbrandHoverStop2Raw}, var(${strokeCtrlOnbrandHoverRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnbrandPressedStop2 = `var(${strokeCtrlOnbrandPressedStop2Raw}, var(${strokeCtrlOnbrandPressedRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnbrandDisabledStop2 = `var(${strokeCtrlOnbrandDisabledStop2Raw}, var(${strokeCtrlOnbrandDisabledRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnneutralRestStop2 = `var(${strokeCtrlOnneutralRestStop2Raw}, var(${strokeCtrlOnneutralRestRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnneutralHoverStop2 = `var(${strokeCtrlOnneutralHoverStop2Raw}, var(${strokeCtrlOnneutralPressedRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnneutralPressedStop2 = `var(${strokeCtrlOnneutralPressedStop2Raw}, var(${strokeCtrlOnneutralHoverRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnneutralDisabledStop2 = `var(${strokeCtrlOnneutralDisabledStop2Raw}, var(${strokeCtrlOnneutralDisabledRaw}, ${nullColorRaw}))`;
+export const strokeToolbar = `var(${strokeToolbarRaw}, ${strokeCardOnprimaryRestRaw})`;
+export const strokeCtrlOnbrandRestStop2 = `var(${strokeCtrlOnbrandRestStop2Raw}, ${strokeCtrlOnbrandRestRaw})`;
+export const strokeCtrlOnbrandHoverStop2 = `var(${strokeCtrlOnbrandHoverStop2Raw}, ${strokeCtrlOnbrandHoverRaw})`;
+export const strokeCtrlOnbrandPressedStop2 = `var(${strokeCtrlOnbrandPressedStop2Raw}, ${strokeCtrlOnbrandPressedRaw})`;
+export const strokeCtrlOnbrandDisabledStop2 = `var(${strokeCtrlOnbrandDisabledStop2Raw}, ${strokeCtrlOnbrandDisabledRaw})`;
+export const strokeCtrlOnneutralRestStop2 = `var(${strokeCtrlOnneutralRestStop2Raw}, ${strokeCtrlOnneutralRestRaw})`;
+export const strokeCtrlOnneutralHoverStop2 = `var(${strokeCtrlOnneutralHoverStop2Raw}, ${strokeCtrlOnneutralPressedRaw})`;
+export const strokeCtrlOnneutralPressedStop2 = `var(${strokeCtrlOnneutralPressedStop2Raw}, ${strokeCtrlOnneutralHoverRaw})`;
+export const strokeCtrlOnneutralDisabledStop2 = `var(${strokeCtrlOnneutralDisabledStop2Raw}, ${strokeCtrlOnneutralDisabledRaw})`;
 export const strokeCtrlOnoutlineRestStop2 = `var(${strokeCtrlOnoutlineRestStop2Raw}, ${strokeCtrlOnoutlineRestRaw})`;
 export const strokeCtrlOnoutlineHoverStop2 = `var(${strokeCtrlOnoutlineHoverStop2Raw}, ${strokeCtrlOnoutlineHoverRaw})`;
 export const strokeCtrlOnoutlinePressedStop2 = `var(${strokeCtrlOnoutlinePressedStop2Raw}, ${strokeCtrlOnoutlinePressedRaw})`;
 export const strokeCtrlOnoutlineDisabledStop2 = `var(${strokeCtrlOnoutlineDisabledStop2Raw}, ${strokeCtrlOnoutlineDisabledRaw})`;
-export const strokeCtrlOnactivebrandRest = `var(${strokeCtrlOnactivebrandRestRaw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
+export const strokeCtrlOnactivebrandRest = `var(${strokeCtrlOnactivebrandRestRaw}, ${strokeCtrlOnbrandRestRaw})`;
 export const strokeCtrlDividerOnbrandDisabled = `var(${strokeCtrlDividerOnbrandDisabledRaw}, ${strokeCtrlDividerOnbrandRaw})`;
 export const strokeCtrlDividerOnneutralDisabled = `var(${strokeCtrlDividerOnneutralDisabledRaw}, ${strokeCtrlDividerOnneutralRaw})`;
 export const strokeCtrlDividerOnoutlineDisabled = `var(${strokeCtrlDividerOnoutlineDisabledRaw}, ${strokeCtrlDividerOnoutlineRaw})`;
 export const strokeCtrlDividerOnactivebrand = `var(${strokeCtrlDividerOnactivebrandRaw}, ${strokeCtrlDividerOnbrandRaw})`;
 export const strokeCtrlDividerOnactivebrandDisabled = `var(${strokeCtrlDividerOnactivebrandDisabledRaw}, ${strokeCtrlDividerOnbrandRaw})`;
-export const strokeCtrlOnactivebrandHover = `var(${strokeCtrlOnactivebrandHoverRaw}, var(${strokeCtrlOnbrandHoverRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandPressed = `var(${strokeCtrlOnactivebrandPressedRaw}, var(${strokeCtrlOnbrandPressedRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandDisabled = `var(${strokeCtrlOnactivebrandDisabledRaw}, var(${strokeCtrlOnbrandDisabledRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandRestStop2 = `var(${strokeCtrlOnactivebrandRestStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandHoverStop2 = `var(${strokeCtrlOnactivebrandHoverStop2Raw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandPressedStop2 = `var(${strokeCtrlOnactivebrandPressedStop2Raw}, var(${strokeCtrlOnbrandPressedRaw}, ${nullColorRaw}))`;
-export const strokeCtrlOnactivebrandDisabledStop2 = `var(${strokeCtrlOnactivebrandDisabledStop2Raw}, var(${strokeCtrlOnbrandDisabledRaw}, ${nullColorRaw}))`;
+export const strokeCtrlOnactivebrandHover = `var(${strokeCtrlOnactivebrandHoverRaw}, ${strokeCtrlOnbrandHoverRaw})`;
+export const strokeCtrlOnactivebrandPressed = `var(${strokeCtrlOnactivebrandPressedRaw}, ${strokeCtrlOnbrandPressedRaw})`;
+export const strokeCtrlOnactivebrandDisabled = `var(${strokeCtrlOnactivebrandDisabledRaw}, ${strokeCtrlOnbrandDisabledRaw})`;
+export const strokeCtrlOnactivebrandRestStop2 = `var(${strokeCtrlOnactivebrandRestStop2Raw}, ${strokeCtrlOnbrandRestRaw})`;
+export const strokeCtrlOnactivebrandHoverStop2 = `var(${strokeCtrlOnactivebrandHoverStop2Raw}, ${strokeCtrlOnbrandRestRaw})`;
+export const strokeCtrlOnactivebrandPressedStop2 = `var(${strokeCtrlOnactivebrandPressedStop2Raw}, ${strokeCtrlOnbrandPressedRaw})`;
+export const strokeCtrlOnactivebrandDisabledStop2 = `var(${strokeCtrlOnactivebrandDisabledStop2Raw}, ${strokeCtrlOnbrandDisabledRaw})`;
 export const strokeDividerSubtle = `var(${strokeDividerSubtleRaw}, ${strokeDividerDefaultRaw})`;
 export const strokeDividerStrong = `var(${strokeDividerStrongRaw}, ${strokeDividerDefaultRaw})`;
 export const strokeDividerBrand = `var(${strokeDividerBrandRaw}, ${backgroundCtrlBrandRestRaw})`;
@@ -560,8 +559,8 @@ export const foregroundCtrlOnoutlineHover = `var(${foregroundCtrlOnoutlineHoverR
 export const foregroundCtrlOnoutlinePressed = `var(${foregroundCtrlOnoutlinePressedRaw}, ${foregroundCtrlNeutralPrimaryRestRaw})`;
 export const foregroundCtrlOnoutlineDisabled = `var(${foregroundCtrlOnoutlineDisabledRaw}, ${foregroundCtrlNeutralPrimaryDisabledRaw})`;
 export const foregroundCtrlOnsubtleRest = `var(${foregroundCtrlOnsubtleRestRaw}, ${foregroundCtrlNeutralPrimaryRestRaw})`;
-export const foregroundCtrlOnsubtleHover = `var(${foregroundCtrlOnsubtleHoverRaw}, var(${foregroundCtrlNeutralPrimaryHoverRaw}, ${foregroundCtrlNeutralPrimaryRestRaw}))`;
-export const foregroundCtrlOnsubtlePressed = `var(${foregroundCtrlOnsubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${foregroundCtrlNeutralPrimaryRestRaw}))`;
+export const foregroundCtrlOnsubtleHover = `var(${foregroundCtrlOnsubtleHoverRaw}, ${foregroundCtrlNeutralPrimaryHoverRaw})`;
+export const foregroundCtrlOnsubtlePressed = `var(${foregroundCtrlOnsubtlePressedRaw}, ${foregroundCtrlNeutralPrimaryPressedRaw})`;
 export const foregroundCtrlOnsubtleDisabled = `var(${foregroundCtrlOnsubtleDisabledRaw}, ${foregroundCtrlNeutralPrimaryDisabledRaw})`;
 export const foregroundCtrlOntransparentRest = `var(${foregroundCtrlOntransparentRestRaw}, ${foregroundCtrlNeutralPrimaryRestRaw})`;
 export const foregroundCtrlOntransparentHover = `var(${foregroundCtrlOntransparentHoverRaw}, ${foregroundCtrlNeutralPrimaryRestRaw})`;

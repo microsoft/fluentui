@@ -185,35 +185,7 @@ function generateTokenVariables() {
     // Our default token value if no fallbacks found.
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
 
-    const fallbacksFallback = tokenSemanticName ? tokensJSON[tokenSemanticName] : null;
-
-    if (tokenSemanticRef && fallbacksFallback && fallbacksFallback.fst_reference.length > 0) {
-      // TODO: Check if we even want this level of fallback complexity?
-      // Maximum two fallbacks, no need for recursion.
-      const fallbackSemanticName = toCamelCase(cleanFSTTokenName(fallbacksFallback.fst_reference));
-      const fallbackSemanticRef = fallbackSemanticName + 'Raw';
-
-      // Our FST Fallback has one more additional layer of fallback
-      if (fluentFallbacks[token]) {
-        // Token has a FST fallback and a fluent override fallback
-        resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
-          tokenSemanticRef,
-        )}, var(${escapeInlineToken(fallbackSemanticRef)}, ${escapeInlineToken(fluentFallbacks[token])})))`;
-      } else {
-        // Fallback has a FST reference fallback, also check if it has it's own fluent fallback
-        if (fluentFallbacks[fallbackSemanticName]) {
-          resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
-            tokenSemanticRef,
-          )}, var(${escapeInlineToken(fallbackSemanticRef)}, ${escapeInlineToken(
-            fluentFallbacks[fallbackSemanticName],
-          )})))`;
-        } else {
-          resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
-            tokenSemanticRef,
-          )}, ${escapeInlineToken(fallbackSemanticRef)}))`;
-        }
-      }
-    } else if (tokenSemanticRef && fluentFallbacks[token]) {
+    if (tokenSemanticRef && fluentFallbacks[token]) {
       // Token has a FST fallback and a fluent override fallback
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
         tokenSemanticRef,

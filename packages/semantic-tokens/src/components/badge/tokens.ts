@@ -3,11 +3,11 @@ import {
   ctrlBadgeBeaconSizeRaw,
   ctrlBadgeCornerRaw,
   ctrlBadgeGapRaw,
-  ctrlBadgeIconSizeFigmaOnlyRaw,
+  ctrlBadgeIconSizeFigmaonlyRaw,
   ctrlBadgeIconSizeRaw,
   ctrlBadgeIconThemeRaw,
   ctrlBadgeLgCornerRaw,
-  ctrlBadgeLgIconSizeFigmaOnlyRaw,
+  ctrlBadgeLgIconSizeFigmaonlyRaw,
   ctrlBadgeLgIconSizeRaw,
   ctrlBadgeLgPaddingRaw,
   ctrlBadgeLgSizeRaw,
@@ -16,7 +16,7 @@ import {
   ctrlBadgePaddingRaw,
   ctrlBadgeSizeRaw,
   ctrlBadgeSmCornerRaw,
-  ctrlBadgeSmIconSizeFigmaOnlyRaw,
+  ctrlBadgeSmIconSizeFigmaonlyRaw,
   ctrlBadgeSmIconSizeRaw,
   ctrlBadgeSmPaddingRaw,
   ctrlBadgeSmSizeRaw,
@@ -35,17 +35,17 @@ export const ctrlBadgeIconTheme = `var(${ctrlBadgeIconThemeRaw}, ${iconthemeCtrl
 export const ctrlBadgeBeaconSize = `var(${ctrlBadgeBeaconSizeRaw})`;
 export const ctrlBadgeSize = `var(${ctrlBadgeSizeRaw})`;
 export const ctrlBadgeCorner = `var(${ctrlBadgeCornerRaw})`;
-export const ctrlBadgeIconSizeFigmaOnly = `var(${ctrlBadgeIconSizeFigmaOnlyRaw})`;
+export const ctrlBadgeIconSizeFigmaonly = `var(${ctrlBadgeIconSizeFigmaonlyRaw})`;
 export const ctrlBadgeGap = `var(${ctrlBadgeGapRaw})`;
 export const ctrlBadgeIconSize = `var(${ctrlBadgeIconSizeRaw})`;
 export const ctrlBadgePadding = `var(${ctrlBadgePaddingRaw})`;
 export const ctrlBadgeSmSize = `var(${ctrlBadgeSmSizeRaw})`;
 export const ctrlBadgeSmCorner = `var(${ctrlBadgeSmCornerRaw})`;
-export const ctrlBadgeSmIconSizeFigmaOnly = `var(${ctrlBadgeSmIconSizeFigmaOnlyRaw})`;
+export const ctrlBadgeSmIconSizeFigmaonly = `var(${ctrlBadgeSmIconSizeFigmaonlyRaw})`;
 export const ctrlBadgeSmIconSize = `var(${ctrlBadgeSmIconSizeRaw})`;
 export const ctrlBadgeSmPadding = `var(${ctrlBadgeSmPaddingRaw})`;
 export const ctrlBadgeLgSize = `var(${ctrlBadgeLgSizeRaw})`;
-export const ctrlBadgeLgIconSizeFigmaOnly = `var(${ctrlBadgeLgIconSizeFigmaOnlyRaw})`;
+export const ctrlBadgeLgIconSizeFigmaonly = `var(${ctrlBadgeLgIconSizeFigmaonlyRaw})`;
 export const ctrlBadgeLgIconSize = `var(${ctrlBadgeLgIconSizeRaw})`;
 export const ctrlBadgeLgCorner = `var(${ctrlBadgeLgCornerRaw})`;
 export const ctrlBadgeLgPadding = `var(${ctrlBadgeLgPaddingRaw})`;

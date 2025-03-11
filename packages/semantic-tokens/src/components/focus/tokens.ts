@@ -6,9 +6,9 @@ import {
   ctrlFocusInnerStrokewidthRaw,
   ctrlFocusOuterStrokeRaw,
   ctrlFocusOuterStrokewidthRaw,
-  ctrlFocusPositionFigmaOnlyRaw,
+  ctrlFocusPositionFigmaonlyRaw,
 } from './variables';
-export const ctrlFocusPositionFigmaOnly = `var(${ctrlFocusPositionFigmaOnlyRaw})`;
+export const ctrlFocusPositionFigmaonly = `var(${ctrlFocusPositionFigmaonlyRaw})`;
 export const ctrlFocusInnerStrokewidth = `var(${ctrlFocusInnerStrokewidthRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlFocusInnerStroke = `var(${ctrlFocusInnerStrokeRaw})`;
 export const ctrlFocusOuterStrokewidth = `var(${ctrlFocusOuterStrokewidthRaw})`;

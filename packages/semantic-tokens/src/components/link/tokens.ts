@@ -14,21 +14,22 @@ import {
   ctrlLinkForegroundNeutralHoverRaw,
   ctrlLinkForegroundNeutralPressedRaw,
   ctrlLinkForegroundNeutralRestRaw,
+  ctrlLinkInlineShowunderlineatrestRaw,
   ctrlLinkInlineStrokewidthHoverRaw,
   ctrlLinkInlineStrokewidthRestRaw,
   ctrlLinkInlineUnderlineDashedRaw,
-  ctrlLinkInlineUnderlineSolidFigmaOnlyRaw,
+  ctrlLinkInlineUnderlineSolidFigmaonlyRaw,
+  ctrlLinkOnpageShowunderlineatrestRaw,
   ctrlLinkOnpageStrokewidthHoverRaw,
   ctrlLinkOnpageStrokewidthRestRaw,
   ctrlLinkOnpageUnderlineDashedRaw,
-  ctrlLinkOnpageUnderlineSolidFigmaOnlyRaw,
-  ctrlLinkShowunderlineatrestRaw,
+  ctrlLinkOnpageUnderlineSolidFigmaonlyRaw,
 } from './variables';
 export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2}))`;
 export const ctrlLinkInlineStrokewidthRest = `var(${ctrlLinkInlineStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlLinkInlineStrokewidthHover = `var(${ctrlLinkInlineStrokewidthHoverRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlLinkInlineUnderlineDashed = `var(${ctrlLinkInlineUnderlineDashedRaw})`;
-export const ctrlLinkInlineUnderlineSolidFigmaOnly = `var(${ctrlLinkInlineUnderlineSolidFigmaOnlyRaw})`;
+export const ctrlLinkInlineUnderlineSolidFigmaonly = `var(${ctrlLinkInlineUnderlineSolidFigmaonlyRaw})`;
 export const ctrlLinkForegroundNeutralHover = `var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2Hover}))`;
 export const ctrlLinkForegroundNeutralPressed = `var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2Pressed}))`;
 export const ctrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${tokens.colorBrandForegroundLink}))`;
@@ -37,5 +38,6 @@ export const ctrlLinkForegroundBrandPressed = `var(${ctrlLinkForegroundBrandPres
 export const ctrlLinkOnpageStrokewidthRest = `var(${ctrlLinkOnpageStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlLinkOnpageStrokewidthHover = `var(${ctrlLinkOnpageStrokewidthHoverRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlLinkOnpageUnderlineDashed = `var(${ctrlLinkOnpageUnderlineDashedRaw})`;
-export const ctrlLinkOnpageUnderlineSolidFigmaOnly = `var(${ctrlLinkOnpageUnderlineSolidFigmaOnlyRaw})`;
-export const ctrlLinkShowunderlineatrest = `var(${ctrlLinkShowunderlineatrestRaw})`;
+export const ctrlLinkOnpageUnderlineSolidFigmaonly = `var(${ctrlLinkOnpageUnderlineSolidFigmaonlyRaw})`;
+export const ctrlLinkInlineShowunderlineatrest = `var(${ctrlLinkInlineShowunderlineatrestRaw})`;
+export const ctrlLinkOnpageShowunderlineatrest = `var(${ctrlLinkOnpageShowunderlineatrestRaw})`;

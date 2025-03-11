@@ -1,7 +1,6 @@
 import {
   backgroundCtrlBrandRestRaw,
   foregroundCtrlOnbrandRestRaw,
-  nullColorRaw,
   strokewidthDefaultRaw,
 } from '../../control/variables';
 import { strokeCtrlOnbrandRestRaw } from '../../nullable/variables';
@@ -12,6 +11,6 @@ import {
   ctrlLitefilterStrokewidthSelectedRaw,
 } from './variables';
 export const ctrlLitefilterBackgroundSelected = `var(${ctrlLitefilterBackgroundSelectedRaw}, ${backgroundCtrlBrandRestRaw})`;
-export const ctrlLitefilterStrokeSelected = `var(${ctrlLitefilterStrokeSelectedRaw}, var(${strokeCtrlOnbrandRestRaw}, ${nullColorRaw}))`;
+export const ctrlLitefilterStrokeSelected = `var(${ctrlLitefilterStrokeSelectedRaw}, ${strokeCtrlOnbrandRestRaw})`;
 export const ctrlLitefilterForegroundSelected = `var(${ctrlLitefilterForegroundSelectedRaw}, ${foregroundCtrlOnbrandRestRaw})`;
 export const ctrlLitefilterStrokewidthSelected = `var(${ctrlLitefilterStrokewidthSelectedRaw}, ${strokewidthDefaultRaw})`;

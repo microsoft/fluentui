@@ -43,6 +43,7 @@ import {
   backgroundFlyoutLumblendRaw,
   backgroundFlyoutSolidRaw,
   backgroundLayerPrimarySolidRaw,
+  backgroundSmokeRaw,
   backgroundWebpagePrimaryRaw,
   backgroundWebpageSecondaryRaw,
   backgroundWindowPrimaryColorblendRaw,
@@ -65,18 +66,6 @@ import {
   cornerLayerDefaultRaw,
   cornerWindowDefaultRaw,
   cornerZeroRaw,
-  ctrlCardStateDisabledRaw,
-  ctrlCardStateHoverRaw,
-  ctrlCardStatePressedRaw,
-  ctrlCardStateRestRaw,
-  ctrlListShadowSelectedAmbientBlurRaw,
-  ctrlListShadowSelectedAmbientColorRaw,
-  ctrlListShadowSelectedAmbientXRaw,
-  ctrlListShadowSelectedAmbientYRaw,
-  ctrlListShadowSelectedKeyBlurRaw,
-  ctrlListShadowSelectedKeyColorRaw,
-  ctrlListShadowSelectedKeyXRaw,
-  ctrlListShadowSelectedKeyYRaw,
   foregroundCtrlBrandDisabledRaw,
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
@@ -100,8 +89,10 @@ import {
   gapBetweenCtrlSmDefaultRaw,
   gapInsideCtrlDefaultRaw,
   gapInsideCtrlLgDefaultRaw,
+  gapInsideCtrlLgTolabelRaw,
   gapInsideCtrlLgTosecondaryiconRaw,
   gapInsideCtrlSmDefaultRaw,
+  gapInsideCtrlSmTolabelRaw,
   gapInsideCtrlSmTosecondaryiconRaw,
   gapInsideCtrlTolabelRaw,
   gapInsideCtrlTosecondaryiconRaw,
@@ -166,14 +157,14 @@ import {
   shadowWindowInactiveAmbientXRaw,
   shadowWindowInactiveAmbientYRaw,
   sizeCtrlDefaultRaw,
-  sizeCtrlIconFigmaOnlyRaw,
+  sizeCtrlIconFigmaonlyRaw,
   sizeCtrlIconRaw,
   sizeCtrlIconsecondaryRaw,
   sizeCtrlLgDefaultRaw,
-  sizeCtrlLgIconFigmaOnlyRaw,
+  sizeCtrlLgIconFigmaonlyRaw,
   sizeCtrlLgIconRaw,
   sizeCtrlSmDefaultRaw,
-  sizeCtrlSmIconFigmaOnlyRaw,
+  sizeCtrlSmIconFigmaonlyRaw,
   sizeCtrlSmIconRaw,
   statusAwayForegroundRaw,
   statusBrandTintBackgroundRaw,
@@ -268,19 +259,19 @@ export const textStyleDefaultRegularLetterspacing = `var(${textStyleDefaultRegul
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
 export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw})`;
 export const sizeCtrlIcon = `var(${sizeCtrlIconRaw})`;
-export const sizeCtrlIconFigmaOnly = `var(${sizeCtrlIconFigmaOnlyRaw})`;
+export const sizeCtrlIconFigmaonly = `var(${sizeCtrlIconFigmaonlyRaw})`;
 export const sizeCtrlIconsecondary = `var(${sizeCtrlIconsecondaryRaw})`;
 export const textCtrlWeightSelected = `var(${textCtrlWeightSelectedRaw})`;
 export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw})`;
 export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw})`;
 export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw})`;
 export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw})`;
-export const sizeCtrlSmIconFigmaOnly = `var(${sizeCtrlSmIconFigmaOnlyRaw})`;
-export const sizeCtrlLgIconFigmaOnly = `var(${sizeCtrlLgIconFigmaOnlyRaw})`;
+export const sizeCtrlSmIconFigmaonly = `var(${sizeCtrlSmIconFigmaonlyRaw})`;
+export const sizeCtrlLgIconFigmaonly = `var(${sizeCtrlLgIconFigmaonlyRaw})`;
 export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
 export const paddingContentAlignOutdentIcononsubtle = `var(${paddingContentAlignOutdentIcononsubtleRaw})`;
-export const paddingContentNone = `var(${paddingContentNoneRaw})`;
 export const paddingContentAlignOutdentTextonsubtle = `var(${paddingContentAlignOutdentTextonsubtleRaw})`;
+export const paddingContentNone = `var(${paddingContentNoneRaw})`;
 export const paddingContentXxsmall = `var(${paddingContentXxsmallRaw})`;
 export const paddingContentXsmall = `var(${paddingContentXsmallRaw})`;
 export const paddingContentSmall = `var(${paddingContentSmallRaw})`;
@@ -306,8 +297,8 @@ export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxsmall = `var(${gapBetweenContentXxsmallRaw})`;
 export const gapBetweenContentXsmall = `var(${gapBetweenContentXsmallRaw})`;
 export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw})`;
-export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw})`;
+export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenContentLarge = `var(${gapBetweenContentLargeRaw})`;
 export const gapBetweenContentXlarge = `var(${gapBetweenContentXlargeRaw})`;
 export const gapBetweenContentXxlarge = `var(${gapBetweenContentXxlargeRaw})`;
@@ -320,8 +311,11 @@ export const gapInsideCtrlLgDefault = `var(${gapInsideCtrlLgDefaultRaw})`;
 export const gapInsideCtrlLgTosecondaryicon = `var(${gapInsideCtrlLgTosecondaryiconRaw})`;
 export const gapInsideCtrlTosecondaryicon = `var(${gapInsideCtrlTosecondaryiconRaw})`;
 export const gapInsideCtrlTolabel = `var(${gapInsideCtrlTolabelRaw})`;
+export const gapInsideCtrlSmTolabel = `var(${gapInsideCtrlSmTolabelRaw})`;
+export const gapInsideCtrlLgTolabel = `var(${gapInsideCtrlLgTolabelRaw})`;
 export const cornerCircular = `var(${cornerCircularRaw})`;
 export const strokewidthDefault = `var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin})`;
+export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
 export const strokeCtrlOnoutlineRest = `var(${strokeCtrlOnoutlineRestRaw})`;
 export const strokeCtrlOnoutlineHover = `var(${strokeCtrlOnoutlineHoverRaw})`;
 export const strokeCtrlOnoutlinePressed = `var(${strokeCtrlOnoutlinePressedRaw})`;
@@ -449,18 +443,6 @@ export const shadowWindowInactiveAmbientY = `var(${shadowWindowInactiveAmbientYR
 export const shadowWindowInactiveAmbientBlur = `var(${shadowWindowInactiveAmbientBlurRaw})`;
 export const shadowWindowInactiveAmbientColor = `var(${shadowWindowInactiveAmbientColorRaw})`;
 export const nullColor = `var(${nullColorRaw})`;
-export const ctrlCardStateRest = `var(${ctrlCardStateRestRaw})`;
-export const ctrlCardStateHover = `var(${ctrlCardStateHoverRaw})`;
-export const ctrlCardStatePressed = `var(${ctrlCardStatePressedRaw})`;
-export const ctrlCardStateDisabled = `var(${ctrlCardStateDisabledRaw})`;
-export const ctrlListShadowSelectedKeyX = `var(${ctrlListShadowSelectedKeyXRaw})`;
-export const ctrlListShadowSelectedKeyY = `var(${ctrlListShadowSelectedKeyYRaw})`;
-export const ctrlListShadowSelectedKeyBlur = `var(${ctrlListShadowSelectedKeyBlurRaw})`;
-export const ctrlListShadowSelectedKeyColor = `var(${ctrlListShadowSelectedKeyColorRaw})`;
-export const ctrlListShadowSelectedAmbientX = `var(${ctrlListShadowSelectedAmbientXRaw})`;
-export const ctrlListShadowSelectedAmbientY = `var(${ctrlListShadowSelectedAmbientYRaw})`;
-export const ctrlListShadowSelectedAmbientBlur = `var(${ctrlListShadowSelectedAmbientBlurRaw})`;
-export const ctrlListShadowSelectedAmbientColor = `var(${ctrlListShadowSelectedAmbientColorRaw})`;
 export const statusNeutralBackground = `var(${statusNeutralBackgroundRaw})`;
 export const statusNeutralTintBackground = `var(${statusNeutralTintBackgroundRaw})`;
 export const statusNeutralTintStroke = `var(${statusNeutralTintStrokeRaw})`;

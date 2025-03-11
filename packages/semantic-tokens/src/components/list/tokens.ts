@@ -7,6 +7,7 @@ import {
   foregroundCtrlBrandDisabledRaw,
   foregroundCtrlBrandRestRaw,
   nullColorRaw,
+  nullNumberRaw,
   paddingCtrlHorizontalDefaultRaw,
   paddingCtrlLgHorizontalDefaultRaw,
   paddingCtrlSmHorizontalDefaultRaw,
@@ -29,9 +30,9 @@ import {
   ctrlListChoiceBackgroundSelectedDisabledRaw,
   ctrlListChoiceBackgroundSelectedRestRaw,
   ctrlListChoiceCheckboxCornerRaw,
-  ctrlListChoiceCheckboxIconSizeFigmaOnlyRaw,
+  ctrlListChoiceCheckboxIconSizeFigmaonlyRaw,
   ctrlListChoiceCheckboxIconSizeRaw,
-  ctrlListChoiceDotSizeFigmaOnlyRaw,
+  ctrlListChoiceDotSizeFigmaonlyRaw,
   ctrlListChoiceDotSizeRaw,
   ctrlListChoiceForegroundHoverRaw,
   ctrlListChoiceForegroundSelectedDisabledRaw,
@@ -60,6 +61,15 @@ import {
   ctrlListPillStretchPaddingDefaultRaw,
   ctrlListPillStretchPaddingHintRaw,
   ctrlListPillWidthRaw,
+  ctrlListShadowSelectedAmbientBlurRaw,
+  ctrlListShadowSelectedAmbientColorRaw,
+  ctrlListShadowSelectedAmbientXRaw,
+  ctrlListShadowSelectedAmbientYRaw,
+  ctrlListShadowSelectedKeyBlurRaw,
+  ctrlListShadowSelectedKeyColorRaw,
+  ctrlListShadowSelectedKeyXRaw,
+  ctrlListShadowSelectedKeyY2Raw,
+  ctrlListShadowSelectedKeyYRaw,
   ctrlListSmCornerHoverRaw,
   ctrlListSmCornerPressedRaw,
   ctrlListSmCornerRestRaw,
@@ -84,16 +94,16 @@ export const ctrlListCornerPressed = `var(${ctrlListCornerPressedRaw}, ${cornerC
 export const ctrlListIndentLevel1 = `var(${ctrlListIndentLevel1Raw}, ${paddingCtrlHorizontalDefaultRaw})`;
 export const ctrlListIndentLevel2 = `var(${ctrlListIndentLevel2Raw})`;
 export const ctrlListIndentLevel3 = `var(${ctrlListIndentLevel3Raw})`;
-export const ctrlListBackgroundSelectedRest = `var(${ctrlListBackgroundSelectedRestRaw}, var(${backgroundCtrlSubtleRestRaw}, ${nullColorRaw}))`;
+export const ctrlListBackgroundSelectedRest = `var(${ctrlListBackgroundSelectedRestRaw}, ${backgroundCtrlSubtleRestRaw})`;
 export const ctrlListBackgroundSelectedHover = `var(${ctrlListBackgroundSelectedHoverRaw}, ${backgroundCtrlSubtleHoverRaw})`;
 export const ctrlListBackgroundSelectedPressed = `var(${ctrlListBackgroundSelectedPressedRaw}, ${backgroundCtrlSubtlePressedRaw})`;
-export const ctrlListBackgroundSelectedDisabled = `var(${ctrlListBackgroundSelectedDisabledRaw}, var(${backgroundCtrlSubtleDisabledRaw}, ${nullColorRaw}))`;
+export const ctrlListBackgroundSelectedDisabled = `var(${ctrlListBackgroundSelectedDisabledRaw}, ${backgroundCtrlSubtleDisabledRaw})`;
 export const ctrlListChoiceBackgroundRest = `var(${ctrlListChoiceBackgroundRestRaw}, ${nullColorRaw})`;
 export const ctrlListChoiceStrokeRest = `var(${ctrlListChoiceStrokeRestRaw}, ${nullColorRaw})`;
 export const ctrlListChoiceStrokeDisabled = `var(${ctrlListChoiceStrokeDisabledRaw}, ${nullColorRaw})`;
 export const ctrlListChoiceStrokeSelectedRest = `var(${ctrlListChoiceStrokeSelectedRestRaw}, ${nullColorRaw})`;
 export const ctrlListChoiceStrokeSelectedDisabled = `var(${ctrlListChoiceStrokeSelectedDisabledRaw}, ${nullColorRaw})`;
-export const ctrlListChoiceForegroundHover = `var(${ctrlListChoiceForegroundHoverRaw}, var(${foregroundCtrlHintDefaultRaw}, ${nullColorRaw}))`;
+export const ctrlListChoiceForegroundHover = `var(${ctrlListChoiceForegroundHoverRaw}, ${foregroundCtrlHintDefaultRaw})`;
 export const ctrlListChoiceForegroundSelectedRest = `var(${ctrlListChoiceForegroundSelectedRestRaw}, ${foregroundCtrlBrandRestRaw})`;
 export const ctrlListChoiceForegroundSelectedDisabled = `var(${ctrlListChoiceForegroundSelectedDisabledRaw}, ${foregroundCtrlBrandDisabledRaw})`;
 export const ctrlListChoiceBackgroundDisabled = `var(${ctrlListChoiceBackgroundDisabledRaw}, ${nullColorRaw})`;
@@ -101,9 +111,9 @@ export const ctrlListChoiceBackgroundSelectedRest = `var(${ctrlListChoiceBackgro
 export const ctrlListChoiceBackgroundSelectedDisabled = `var(${ctrlListChoiceBackgroundSelectedDisabledRaw}, ${nullColorRaw})`;
 export const ctrlListChoiceCheckboxCorner = `var(${ctrlListChoiceCheckboxCornerRaw}, ${ctrlChoiceCheckboxCornerRaw})`;
 export const ctrlListChoiceCheckboxIconSize = `var(${ctrlListChoiceCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;
-export const ctrlListChoiceCheckboxIconSizeFigmaOnly = `var(${ctrlListChoiceCheckboxIconSizeFigmaOnlyRaw})`;
+export const ctrlListChoiceCheckboxIconSizeFigmaonly = `var(${ctrlListChoiceCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlListChoiceDotSize = `var(${ctrlListChoiceDotSizeRaw})`;
-export const ctrlListChoiceDotSizeFigmaOnly = `var(${ctrlListChoiceDotSizeFigmaOnlyRaw})`;
+export const ctrlListChoiceDotSizeFigmaonly = `var(${ctrlListChoiceDotSizeFigmaonlyRaw})`;
 export const ctrlListSplitDividerPaddingInset = `var(${ctrlListSplitDividerPaddingInsetRaw})`;
 export const ctrlListSplitDividerStroke = `var(${ctrlListSplitDividerStrokeRaw}, ${strokeCtrlDividerOnneutralRaw})`;
 export const ctrlListSmCornerRest = `var(${ctrlListSmCornerRestRaw}, ${cornerCtrlSmRestRaw})`;
@@ -119,3 +129,12 @@ export const ctrlListLgIndentLevel1 = `var(${ctrlListLgIndentLevel1Raw}, ${paddi
 export const ctrlListLgIndentLevel2 = `var(${ctrlListLgIndentLevel2Raw})`;
 export const ctrlListLgIndentLevel3 = `var(${ctrlListLgIndentLevel3Raw})`;
 export const ctrlListSplitDividerShowdivider = `var(${ctrlListSplitDividerShowdividerRaw})`;
+export const ctrlListShadowSelectedKeyY2 = `var(${ctrlListShadowSelectedKeyY2Raw}, ${nullNumberRaw})`;
+export const ctrlListShadowSelectedKeyX = `var(${ctrlListShadowSelectedKeyXRaw})`;
+export const ctrlListShadowSelectedKeyY = `var(${ctrlListShadowSelectedKeyYRaw})`;
+export const ctrlListShadowSelectedKeyBlur = `var(${ctrlListShadowSelectedKeyBlurRaw})`;
+export const ctrlListShadowSelectedKeyColor = `var(${ctrlListShadowSelectedKeyColorRaw})`;
+export const ctrlListShadowSelectedAmbientX = `var(${ctrlListShadowSelectedAmbientXRaw})`;
+export const ctrlListShadowSelectedAmbientY = `var(${ctrlListShadowSelectedAmbientYRaw})`;
+export const ctrlListShadowSelectedAmbientBlur = `var(${ctrlListShadowSelectedAmbientBlurRaw})`;
+export const ctrlListShadowSelectedAmbientColor = `var(${ctrlListShadowSelectedAmbientColorRaw})`;

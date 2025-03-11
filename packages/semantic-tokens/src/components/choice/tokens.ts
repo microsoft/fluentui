@@ -1,13 +1,7 @@
 import {
-  backgroundCtrlBrandDisabledRaw,
-  backgroundCtrlBrandHoverRaw,
-  backgroundCtrlBrandPressedRaw,
-  backgroundCtrlBrandRestRaw,
   cornerCircularRaw,
   foregroundCtrlNeutralSecondaryDisabledRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
-  foregroundCtrlOnbrandDisabledRaw,
-  foregroundCtrlOnbrandRestRaw,
   nullColorRaw,
   nullNumberRaw,
   sizeCtrlIconRaw,
@@ -21,35 +15,25 @@ import {
   backgroundCtrlOutlinePressedRaw,
   backgroundCtrlOutlineRestRaw,
 } from '../../nullable/variables';
-import { foregroundCtrlOnbrandHoverRaw, foregroundCtrlOnbrandPressedRaw } from '../../optional/variables';
 import {
   ctrlChoiceBaseBackgroundDisabledRaw,
   ctrlChoiceBaseBackgroundHoverRaw,
-  ctrlChoiceBaseBackgroundIndeterminateDisabledRaw,
-  ctrlChoiceBaseBackgroundIndeterminateHoverRaw,
-  ctrlChoiceBaseBackgroundIndeterminatePressedRaw,
-  ctrlChoiceBaseBackgroundIndeterminateRestRaw,
   ctrlChoiceBaseBackgroundPressedRaw,
   ctrlChoiceBaseBackgroundRestRaw,
   ctrlChoiceBaseSizeRaw,
   ctrlChoiceBaseStrokeDisabledRaw,
   ctrlChoiceBaseStrokeHoverRaw,
-  ctrlChoiceBaseStrokeIndeterminateDisabledRaw,
-  ctrlChoiceBaseStrokeIndeterminateHoverRaw,
-  ctrlChoiceBaseStrokeIndeterminatePressedRaw,
-  ctrlChoiceBaseStrokeIndeterminateRestRaw,
   ctrlChoiceBaseStrokePressedRaw,
   ctrlChoiceBaseStrokeRestRaw,
   ctrlChoiceCheckboxCornerRaw,
   ctrlChoiceCheckboxIconSizeRaw,
-  ctrlChoiceForegroundIndeterminateDisabledRaw,
-  ctrlChoiceForegroundIndeterminateHoverRaw,
-  ctrlChoiceForegroundIndeterminatePressedRaw,
-  ctrlChoiceForegroundIndeterminateRestRaw,
+  ctrlChoiceCheckboxIndeterminateCornerRaw,
+  ctrlChoiceCheckboxIndeterminateHeightRaw,
+  ctrlChoiceCheckboxIndeterminateWidthRaw,
   ctrlChoiceIconThemeRaw,
   ctrlChoiceLgBaseSizeRaw,
   ctrlChoiceLgCheckboxCornerRaw,
-  ctrlChoiceLgCheckboxIconSizeFigmaOnlyRaw,
+  ctrlChoiceLgCheckboxIconSizeFigmaonlyRaw,
   ctrlChoiceLgCheckboxIconSizeRaw,
   ctrlChoiceLgRadioDotSizeHoverRaw,
   ctrlChoiceLgRadioDotSizePressedRaw,
@@ -67,7 +51,7 @@ import {
   ctrlChoiceRadioDotSizeRestRaw,
   ctrlChoiceSmBaseSizeRaw,
   ctrlChoiceSmCheckboxCornerRaw,
-  ctrlChoiceSmCheckboxIconSizeFigmaOnlyRaw,
+  ctrlChoiceSmCheckboxIconSizeFigmaonlyRaw,
   ctrlChoiceSmCheckboxIconSizeRaw,
   ctrlChoiceSmRadioDotSizeRaw,
   ctrlChoiceSmSwitchHeightRaw,
@@ -97,28 +81,19 @@ export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw
 export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw})`;
 export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, ${sizeCtrlIconRaw})`;
 export const ctrlChoiceIconTheme = `var(${ctrlChoiceIconThemeRaw})`;
-export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}, ${nullColorRaw}))`;
-export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}, ${nullColorRaw}))`;
-export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, var(${backgroundCtrlOutlinePressedRaw}, ${nullColorRaw}))`;
-export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, var(${backgroundCtrlOutlineDisabledRaw}, ${nullColorRaw}))`;
-export const ctrlChoiceBaseBackgroundIndeterminateRest = `var(${ctrlChoiceBaseBackgroundIndeterminateRestRaw}, ${backgroundCtrlBrandRestRaw})`;
-export const ctrlChoiceBaseBackgroundIndeterminateHover = `var(${ctrlChoiceBaseBackgroundIndeterminateHoverRaw}, ${backgroundCtrlBrandHoverRaw})`;
-export const ctrlChoiceBaseBackgroundIndeterminatePressed = `var(${ctrlChoiceBaseBackgroundIndeterminatePressedRaw}, ${backgroundCtrlBrandPressedRaw})`;
-export const ctrlChoiceBaseBackgroundIndeterminateDisabled = `var(${ctrlChoiceBaseBackgroundIndeterminateDisabledRaw}, ${backgroundCtrlBrandDisabledRaw})`;
+export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, ${backgroundCtrlOutlineRestRaw})`;
+export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, ${backgroundCtrlOutlineHoverRaw})`;
+export const ctrlChoiceBaseBackgroundPressed = `var(${ctrlChoiceBaseBackgroundPressedRaw}, ${backgroundCtrlOutlinePressedRaw})`;
+export const ctrlChoiceBaseBackgroundDisabled = `var(${ctrlChoiceBaseBackgroundDisabledRaw}, ${backgroundCtrlOutlineDisabledRaw})`;
 export const ctrlChoiceBaseStrokeRest = `var(${ctrlChoiceBaseStrokeRestRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
 export const ctrlChoiceBaseStrokeHover = `var(${ctrlChoiceBaseStrokeHoverRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
 export const ctrlChoiceBaseStrokePressed = `var(${ctrlChoiceBaseStrokePressedRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
 export const ctrlChoiceBaseStrokeDisabled = `var(${ctrlChoiceBaseStrokeDisabledRaw}, ${foregroundCtrlNeutralSecondaryDisabledRaw})`;
-export const ctrlChoiceBaseStrokeIndeterminateRest = `var(${ctrlChoiceBaseStrokeIndeterminateRestRaw}, ${backgroundCtrlBrandRestRaw})`;
-export const ctrlChoiceBaseStrokeIndeterminateHover = `var(${ctrlChoiceBaseStrokeIndeterminateHoverRaw}, ${backgroundCtrlBrandHoverRaw})`;
-export const ctrlChoiceBaseStrokeIndeterminatePressed = `var(${ctrlChoiceBaseStrokeIndeterminatePressedRaw}, ${backgroundCtrlBrandPressedRaw})`;
-export const ctrlChoiceBaseStrokeIndeterminateDisabled = `var(${ctrlChoiceBaseStrokeIndeterminateDisabledRaw}, ${backgroundCtrlBrandDisabledRaw})`;
-export const ctrlChoiceForegroundIndeterminateRest = `var(${ctrlChoiceForegroundIndeterminateRestRaw}, ${foregroundCtrlOnbrandRestRaw})`;
-export const ctrlChoiceForegroundIndeterminateHover = `var(${ctrlChoiceForegroundIndeterminateHoverRaw}, var(${foregroundCtrlOnbrandHoverRaw}, ${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlChoiceForegroundIndeterminatePressed = `var(${ctrlChoiceForegroundIndeterminatePressedRaw}, var(${foregroundCtrlOnbrandPressedRaw}, ${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlChoiceForegroundIndeterminateDisabled = `var(${ctrlChoiceForegroundIndeterminateDisabledRaw}, ${foregroundCtrlOnbrandDisabledRaw})`;
 export const ctrlChoiceCheckboxIconSize = `var(${ctrlChoiceCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;
 export const ctrlChoiceCheckboxCorner = `var(${ctrlChoiceCheckboxCornerRaw})`;
+export const ctrlChoiceCheckboxIndeterminateCorner = `var(${ctrlChoiceCheckboxIndeterminateCornerRaw}, ${cornerCircularRaw})`;
+export const ctrlChoiceCheckboxIndeterminateHeight = `var(${ctrlChoiceCheckboxIndeterminateHeightRaw})`;
+export const ctrlChoiceCheckboxIndeterminateWidth = `var(${ctrlChoiceCheckboxIndeterminateWidthRaw})`;
 export const ctrlChoiceRadioCorner = `var(${ctrlChoiceRadioCornerRaw}, ${cornerCircularRaw})`;
 export const ctrlChoiceSwitchCorner = `var(${ctrlChoiceSwitchCornerRaw}, ${cornerCircularRaw})`;
 export const ctrlChoiceRadioDotSizeRest = `var(${ctrlChoiceRadioDotSizeRestRaw})`;
@@ -141,9 +116,9 @@ export const ctrlChoiceSwitchThumbShadowAmbientY = `var(${ctrlChoiceSwitchThumbS
 export const ctrlChoiceSwitchThumbShadowAmbientBlur = `var(${ctrlChoiceSwitchThumbShadowAmbientBlurRaw}, ${nullNumberRaw})`;
 export const ctrlChoiceSwitchThumbShadowAmbientColor = `var(${ctrlChoiceSwitchThumbShadowAmbientColorRaw}, ${nullColorRaw})`;
 export const ctrlChoiceSmBaseSize = `var(${ctrlChoiceSmBaseSizeRaw}, ${sizeCtrlSmIconRaw})`;
-export const ctrlChoiceSmCheckboxIconSize = `var(${ctrlChoiceSmCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;
 export const ctrlChoiceSmCheckboxCorner = `var(${ctrlChoiceSmCheckboxCornerRaw})`;
-export const ctrlChoiceSmCheckboxIconSizeFigmaOnly = `var(${ctrlChoiceSmCheckboxIconSizeFigmaOnlyRaw})`;
+export const ctrlChoiceSmCheckboxIconSize = `var(${ctrlChoiceSmCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;
+export const ctrlChoiceSmCheckboxIconSizeFigmaonly = `var(${ctrlChoiceSmCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlChoiceSmRadioDotSize = `var(${ctrlChoiceSmRadioDotSizeRaw})`;
 export const ctrlChoiceSmSwitchWidth = `var(${ctrlChoiceSmSwitchWidthRaw})`;
 export const ctrlChoiceSmSwitchHeight = `var(${ctrlChoiceSmSwitchHeightRaw}, ${sizeCtrlSmIconRaw})`;
@@ -153,7 +128,7 @@ export const ctrlChoiceSmSwitchThumbWidthPressed = `var(${ctrlChoiceSmSwitchThum
 export const ctrlChoiceLgBaseSize = `var(${ctrlChoiceLgBaseSizeRaw}, ${sizeCtrlLgIconRaw})`;
 export const ctrlChoiceLgCheckboxCorner = `var(${ctrlChoiceLgCheckboxCornerRaw})`;
 export const ctrlChoiceLgCheckboxIconSize = `var(${ctrlChoiceLgCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;
-export const ctrlChoiceLgCheckboxIconSizeFigmaOnly = `var(${ctrlChoiceLgCheckboxIconSizeFigmaOnlyRaw})`;
+export const ctrlChoiceLgCheckboxIconSizeFigmaonly = `var(${ctrlChoiceLgCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlChoiceLgRadioDotSizeRest = `var(${ctrlChoiceLgRadioDotSizeRestRaw})`;
 export const ctrlChoiceLgRadioDotSizeHover = `var(${ctrlChoiceLgRadioDotSizeHoverRaw}, ${ctrlChoiceLgRadioDotSizeRestRaw})`;
 export const ctrlChoiceLgRadioDotSizePressed = `var(${ctrlChoiceLgRadioDotSizePressedRaw}, ${ctrlChoiceLgRadioDotSizeRestRaw})`;

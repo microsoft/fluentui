@@ -7,7 +7,6 @@ import {
   foregroundCtrlNeutralSecondaryRestRaw,
   foregroundCtrlOnbrandRestRaw,
   nullColorRaw,
-  statusDangerBackgroundRaw,
   strokeCtrlOnoutlineDisabledRaw,
   strokeCtrlOnoutlineHoverRaw,
   strokeCtrlOnoutlinePressedRaw,
@@ -72,4 +71,4 @@ export const ctrlInputStrokeHover = `var(${ctrlInputStrokeHoverRaw}, ${strokeCtr
 export const ctrlInputStrokePressed = `var(${ctrlInputStrokePressedRaw}, ${strokeCtrlOnoutlinePressedRaw})`;
 export const ctrlInputStrokeDisabled = `var(${ctrlInputStrokeDisabledRaw}, ${strokeCtrlOnoutlineDisabledRaw})`;
 export const ctrlInputStrokeSelected = `var(${ctrlInputStrokeSelectedRaw}, ${strokeCtrlOnoutlineRestRaw})`;
-export const ctrlInputStrokeError = `var(${ctrlInputStrokeErrorRaw}, var(${statusDangerStrokeRaw}, ${statusDangerBackgroundRaw}))`;
+export const ctrlInputStrokeError = `var(${ctrlInputStrokeErrorRaw}, ${statusDangerStrokeRaw})`;

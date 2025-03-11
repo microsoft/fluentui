@@ -7,7 +7,6 @@ import {
   backgroundCtrlSubtleDisabledRaw,
   backgroundCtrlSubtleHoversplitRaw,
   backgroundCtrlSubtleRestRaw,
-  ctrlListShadowSelectedKeyY2Raw,
   foregroundCtrlHintDefaultRaw,
   shadowCardDisabledKeyBlurRaw,
   shadowCardDisabledKeyColorRaw,
@@ -140,4 +139,3 @@ export const shadowLayerAmbientX = `var(${shadowLayerAmbientXRaw}, ${nullNumberR
 export const shadowLayerAmbientY = `var(${shadowLayerAmbientYRaw}, ${nullNumberRaw})`;
 export const shadowLayerAmbientBlur = `var(${shadowLayerAmbientBlurRaw}, ${nullNumberRaw})`;
 export const shadowLayerAmbientColor = `var(${shadowLayerAmbientColorRaw}, ${nullColorRaw})`;
-export const ctrlListShadowSelectedKeyY2 = `var(${ctrlListShadowSelectedKeyY2Raw}, ${nullNumberRaw})`;
