@@ -320,7 +320,7 @@ Fri, 06 Dec 2024 12:53:38 GMT
 
 - `@fluentui/react-breadcrumb`
   - Updated README.md ([PR #33385](https://github.com/microsoft/fluentui/pull/33385) by vkozlova@microsoft.com)
-- `@fluentui/react-charts`
+- `@fluentui/react-charts-preview`
   - chore: fix import of makeStyles() ([PR #33381](https://github.com/microsoft/fluentui/pull/33381) by olfedias@microsoft.com)
 - `@fluentui/react-dialog`
   - chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
@@ -384,7 +384,7 @@ Thu, 28 Nov 2024 09:30:49 GMT
 
 ### Patches
 
-- `@fluentui/react-charts`
+- `@fluentui/react-charts-preview`
   - Update readme with current content ([PR #33295](https://github.com/microsoft/fluentui/pull/33295) by 98592573+AtishayMsft@users.noreply.github.com)
 - `@fluentui/react-dialog`
   - feat(motion): update DialogBackdropMotion to use createFadePresence API ([PR #33288](https://github.com/microsoft/fluentui/pull/33288) by olkatruk@microsoft.com)
@@ -404,7 +404,7 @@ Mon, 18 Nov 2024 09:44:38 GMT
 
 ### Minor changes
 
-- `@fluentui/react-charts`
+- `@fluentui/react-charts-preview`
   - feat: Create charts components as native v9 controls. ([PR #32966](https://github.com/microsoft/fluentui/pull/32966) by 98592573+AtishayMsft@users.noreply.github.com)
 - `@fluentui/react-slider`
   - feat: adjust thumb positioning ([PR #32424](https://github.com/microsoft/fluentui/pull/32424) by dmytrokirpa@microsoft.com)

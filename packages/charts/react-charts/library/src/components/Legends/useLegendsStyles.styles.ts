@@ -98,7 +98,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useLegendStyles_unstable = (props: LegendsProps): LegendsStyles => {
+export const useLegendStyles = (props: LegendsProps): LegendsStyles => {
   const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
   const baseStyles = useStyles();
 

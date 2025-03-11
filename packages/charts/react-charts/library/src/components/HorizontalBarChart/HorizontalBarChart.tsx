@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useHorizontalBarChartStyles_unstable } from './useHorizontalBarChartStyles.styles';
+import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { formatValueWithSIPrefix, getAccessibleDataObject, useRtl } from '../../utilities/index';
@@ -292,7 +292,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
   const { data } = props;
   _adjustProps();
-  const classes = useHorizontalBarChartStyles_unstable(props);
+  const classes = useHorizontalBarChartStyles(props);
   const focusAttributes = useFocusableGroup();
 
   let datapoint: number | undefined = 0;
@@ -319,7 +319,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         const bars = _createBars(points!);
         const keyVal = _uniqLineText + '_' + index;
         // ToDo - Showtriangle property is per data series. How to account for it in the new stylesheet
-        /*         const classes = useHorizontalBarChartStyles_unstable(props.styles!, {
+        /*         const classes = useHorizontalBarChartStyles(props.styles!, {
           width: props.width,
           showTriangle: !!points!.chartData![0].data,
           variant: props.variant,

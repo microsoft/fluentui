@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useSparklineStyles_unstable = (props: SparklineProps): SparklineStyles => {
+export const useSparklineStyles = (props: SparklineProps): SparklineStyles => {
   const baseStyles = useStyles();
 
   return {

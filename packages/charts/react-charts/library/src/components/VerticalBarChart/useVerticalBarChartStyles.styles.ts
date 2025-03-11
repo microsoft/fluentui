@@ -60,7 +60,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useVerticalBarChartStyles_unstable = (props: VerticalBarChartProps): VerticalBarChartStyles => {
+export const useVerticalBarChartStyles = (props: VerticalBarChartProps): VerticalBarChartStyles => {
   const baseStyles = useStyles();
 
   return {

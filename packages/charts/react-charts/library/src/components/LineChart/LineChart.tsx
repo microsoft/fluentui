@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineChartProps } from './LineChart.types';
-import { useLineChartStyles_unstable } from './useLineChartStyles.styles';
+import { useLineChartStyles } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
@@ -826,7 +826,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           </g>,
         );
       }
-      const classes = useLineChartStyles_unstable(props);
+      const classes = useLineChartStyles(props);
       // Removing un wanted tooltip div from DOM, when prop not provided.
       if (!props.showXAxisLablesTooltip) {
         try {

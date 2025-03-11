@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSparklineStyles_unstable } from './useSparklineStyles.styles';
+import { useSparklineStyles } from './useSparklineStyles.styles';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
@@ -104,7 +104,7 @@ export const Sparkline: React.FunctionComponent<SparklineProps> = React.forwardR
       );
     }
 
-    const classes = useSparklineStyles_unstable(props);
+    const classes = useSparklineStyles(props);
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div className={classes.inlineBlock} {...focusAttributes}>

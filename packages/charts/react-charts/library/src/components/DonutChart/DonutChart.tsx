@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Pie } from './Pie/index';
 import { DonutChartProps } from './DonutChart.types';
-import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
+import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
@@ -262,7 +262,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     const { data, hideLegend = false } = props;
     const points = _addDefaultColors(data?.chartData);
 
-    const classes = useDonutChartStyles_unstable(props);
+    const classes = useDonutChartStyles(props);
 
     const legendBars = _createLegends(points);
     const donutMarginHorizontal = props.hideLabels ? 0 : 80;

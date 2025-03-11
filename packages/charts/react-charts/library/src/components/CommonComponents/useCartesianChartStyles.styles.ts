@@ -174,7 +174,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useCartesianChartStyles_unstable = (props: CartesianChartProps): CartesianChartStyles => {
+export const useCartesianChartStyles = (props: CartesianChartProps): CartesianChartStyles => {
   const _useRtl = useRtl();
   const baseStyles = useStyles();
   return {

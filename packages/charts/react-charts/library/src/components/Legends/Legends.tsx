@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { Legend, LegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
-import { useLegendStyles_unstable } from './useLegendsStyles.styles';
+import { useLegendStyles } from './useLegendsStyles.styles';
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
@@ -59,7 +59,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
     const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-    const classes = useLegendStyles_unstable(props);
+    const classes = useLegendStyles(props);
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
     props.legends.map((legend, index) => {

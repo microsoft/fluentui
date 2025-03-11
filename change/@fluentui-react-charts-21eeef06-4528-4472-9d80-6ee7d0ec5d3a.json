@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "publish stable version of charts v9 package",
+  "comment": "chore: Publish stable version of charts v9 package",
   "packageName": "@fluentui/react-charts",
   "email": "74965306+Anush2303@users.noreply.github.com",
   "dependentChangeType": "patch"
