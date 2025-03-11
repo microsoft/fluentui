@@ -71,6 +71,7 @@ jobs:
       - name: Affected Projects
         id: affected_projects_count
         run: |
+          yarn --silent nx show projects -t test-vr-cli --affected --verbose false
           affected_count=$(yarn --silent nx show projects -t test-vr-cli --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
 
@@ -95,11 +96,6 @@ jobs:
         run: |
           yarn visual-regression-assert report --outputPath dist/vrt
           cat dist/vrt/vrt-report.md >> $GITHUB_STEP_SUMMARY
-
-      - name: Report No Baseline Update
-        if: steps.affected_projects_count.outputs.value == 0
-        run: |
-          echo "_✅ No affected visual regression tests - baseline updated was skipped_" >> $GITHUB_STEP_SUMMARY
 
   vrt_pr:
     if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'pull_request' }}
