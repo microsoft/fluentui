@@ -66,31 +66,16 @@ describe('visual-regression generator', () => {
     expect(vrtPackage).toMatchInlineSnapshot(`
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-        "implicitDependencies": Array [],
         "name": "react-text-visual-regression",
         "projectType": "library",
         "root": "packages/react-components/react-text/visual-regression",
         "sourceRoot": "packages/react-components/react-text/visual-regression/src",
         "tags": Array [
-          "platform:web",
           "vNext",
+          "platform:web",
           "visual-regression",
         ],
         "targets": Object {
-          "build": Object {
-            "executor": "@nx/js:swc",
-            "options": Object {
-              "assets": Array [
-                "packages/react-components/react-text/visual-regression/*.md",
-              ],
-              "main": "packages/react-components/react-text/visual-regression/src/index.ts",
-              "outputPath": "dist/packages/react-components/react-text/visual-regression",
-              "tsConfig": "packages/react-components/react-text/visual-regression/tsconfig.lib.json",
-            },
-            "outputs": Array [
-              "{options.outputPath}",
-            ],
-          },
           "build-storybook": Object {
             "command": "storybook build -o dist/storybook --quiet",
             "options": Object {
@@ -99,9 +84,12 @@ describe('visual-regression generator', () => {
           },
           "generate-image-for-vrt": Object {
             "cache": true,
-            "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
+            "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
             "dependsOn": Array [
               "build-storybook",
+            ],
+            "inputs": Array [
+              "{projectRoot}/src/**/*.stories.tsx",
             ],
             "metadata": Object {
               "help": Object {
@@ -113,11 +101,8 @@ describe('visual-regression generator', () => {
               "cwd": "{projectRoot}",
             },
             "outputs": Array [
-              "{projectRoot}/dist/screenshots/**",
+              "{projectRoot}/dist/vrt/actual/**",
             ],
-          },
-          "lint": Object {
-            "executor": "@nx/eslint:lint",
           },
           "storybook": Object {
             "command": "storybook dev",
@@ -132,10 +117,20 @@ describe('visual-regression generator', () => {
             "executor": "@fluentui/workspace-plugin:visual-regression",
           },
           "test-vr-cli": Object {
-            "command": "visual-regression-assert --baselineDir dist/baseline --actualDir dist/screenshots --diffDir dist/diff --reportPath dist/report.html",
+            "command": "visual-regression-assert assert --baselineDir src/__snapshots__ --outputPath dist/vrt",
             "dependsOn": Array [
               "build-storybook",
               "generate-image-for-vrt",
+              Object {
+                "projects": Array [
+                  "visual-regression-assert",
+                ],
+                "target": "build",
+              },
+            ],
+            "inputs": Array [
+              "{projectRoot}/dist/vrt/screenshots/**",
+              "{projectRoot}/src/**/*.stories.tsx",
             ],
             "metadata": Object {
               "help": Object {

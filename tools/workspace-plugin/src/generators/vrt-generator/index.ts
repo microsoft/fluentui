@@ -1,15 +1,17 @@
 import {
   addProjectConfiguration,
   joinPathFragments,
+  applyChangesToString,
   formatFiles,
   generateFiles,
   Tree,
   offsetFromRoot,
+  ChangeType,
+  type StringChange,
 } from '@nx/devkit';
 import * as path from 'path';
 import { VisualRegressionSchema } from './schema';
-import { getProjectConfig, isPackageConverged } from '../../utils';
-import { addCodeowner } from '../add-codeowners';
+import { getProjectConfig } from '../../utils';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -18,8 +20,24 @@ export default async function (tree: Tree, schema: VisualRegressionSchema) {
 
   addFiles(tree, options);
 
-  addCodeowner(tree, { packageName: options.projectConfig.name as string, owner: schema.owner as string });
+  const codeownersPath = joinPathFragments('/.github', 'CODEOWNERS');
+  const codeownersContent = tree.read(codeownersPath, 'utf8') as string;
+  const insertPosition = codeownersContent.indexOf('\n', codeownersContent.indexOf(options.library)) + 1;
 
+  if (insertPosition === -1) {
+    throw new Error(`CODEOWNERS doesn't have an entry for ${options.library}`);
+  }
+
+  const changes: StringChange[] = [
+    {
+      index: insertPosition,
+      type: ChangeType.Insert,
+      text: `${options.projectConfig.root} ${options.owner}\n`,
+    },
+  ];
+
+  const newContents = applyChangesToString(codeownersContent, changes);
+  tree.write(codeownersPath, newContents);
   await formatFiles(tree);
 }
 
@@ -39,11 +57,20 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 
 function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
   const projectName = `${options.project}-visual-regression`;
-  const root = joinPathFragments('packages', 'react-components', options.project, 'visual-regression');
   const { projectConfig } = getProjectConfig(tree, { packageName: options.project });
+  const root = joinPathFragments(projectConfig.root.replace('/library', ''), 'visual-regression');
+  const isVnextPackage = projectConfig.tags?.includes('vNext');
 
-  if (!isPackageConverged(tree, projectConfig)) {
+  if (!isVnextPackage) {
     throw new Error(`this generator works only with v9 packages. "${projectConfig.name}" is not!`);
+  }
+
+  if (options.project.endsWith('-stories')) {
+    throw new Error(`${options.project} is a stories package, please specify react-<component> package name`);
+  }
+
+  if (!options.project.startsWith('react-')) {
+    throw new Error('It should be v9 react-<component> package');
   }
 
   addProjectConfiguration(tree, projectName, {
@@ -112,6 +139,9 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
     ...options,
     ...project,
     rootOffset: offsetFromRoot(root),
+    library: projectConfig.root,
     projectName,
   };
 }
+
+function assertProject(tree: Tree, options: NormalizedSchema) {}
