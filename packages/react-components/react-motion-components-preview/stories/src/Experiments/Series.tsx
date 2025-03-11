@@ -17,8 +17,9 @@ export const childrenOrFragmentToArray = (children: React.ReactNode): React.Reac
 export const Series: React.FC<{
   children: React.ReactNode;
   autoloop?: boolean;
+  commonProps?: Record<string, unknown>;
   onMotionFinish?: () => void;
-}> = ({ children, autoloop = false, onMotionFinish = () => null }) => {
+}> = ({ children, autoloop = false, commonProps, onMotionFinish = () => null }) => {
   const [index, setIndex] = React.useState(0);
 
   const components = childrenOrFragmentToArray(children);
@@ -34,7 +35,7 @@ export const Series: React.FC<{
     }
   };
 
-  return React.cloneElement(currentComponent, { onMotionFinish: onComponentFinish });
+  return React.cloneElement(currentComponent, { ...commonProps, onMotionFinish: onComponentFinish });
 };
 
 export const Hold: React.FC<{
