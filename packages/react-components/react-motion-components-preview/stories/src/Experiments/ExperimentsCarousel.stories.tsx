@@ -11,6 +11,7 @@ import {
   motionTokens,
   createPresenceComponent,
   useId,
+  Image,
 } from '@fluentui/react-components';
 
 import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
@@ -96,55 +97,9 @@ const useClasses = makeStyles({
     marginLeft: '50px',
   },
   photo: {
-    color: 'white',
-    fontSize: '40px',
-    fontWeight: 'bold',
-    fontFamily: 'OpenSans, Arial, sans-serif',
     borderRadius: '20px',
     backgroundColor: 'grey',
-    padding: '20px',
-    height: '100%',
     boxShadow: '2px 2px 12px rgba(0, 0, 0, 0.8)', // Added drop shadow
-  },
-  photo1: {
-    backgroundImage: 'url(https://picsum.photos/id/15/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo2: {
-    backgroundImage: 'url(https://picsum.photos/id/16/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo3: {
-    backgroundImage: 'url(https://picsum.photos/id/17/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo4: {
-    backgroundImage: 'url(https://picsum.photos/id/18/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo5: {
-    backgroundImage: 'url(https://picsum.photos/id/19/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo6: {
-    backgroundImage: 'url(https://picsum.photos/id/20/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo7: {
-    backgroundImage: 'url(https://picsum.photos/id/21/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-  photo8: {
-    backgroundImage: 'url(https://picsum.photos/id/22/800/800)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
   },
 
   photo3Up: {
@@ -155,7 +110,7 @@ const useClasses = makeStyles({
     marginTop: '100px',
 
     gridTemplateColumns: '1fr 1fr',
-    gridTemplateRows: 'repeat(2, auto)',
+    gridTemplateRows: '200px 200px',
     gap: '10px',
     gridTemplateAreas: `
       "photo1 photo1"
@@ -178,8 +133,8 @@ const useClasses = makeStyles({
     marginLeft: '100px',
     marginTop: '100px',
 
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridTemplateRows: 'repeat(2, auto)',
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: '200px 200px',
     gap: '10px',
     gridTemplateAreas: `
       "photo1 photo2"
@@ -199,6 +154,17 @@ const useClasses = makeStyles({
     },
   },
 });
+
+const imageUrls = [
+  'https://picsum.photos/id/15/800/800',
+  'https://picsum.photos/id/16/800/800',
+  'https://picsum.photos/id/17/800/800',
+  'https://picsum.photos/id/18/800/800',
+  'https://picsum.photos/id/19/800/800',
+  'https://picsum.photos/id/20/800/800',
+  'https://picsum.photos/id/21/800/800',
+  'https://picsum.photos/id/22/800/800',
+];
 
 // A motion component that fades in and slides in from the top over 1 second,
 // holds in place for 3 seconds, and then fades out and slides out to the bottom over 1 second.
@@ -237,7 +203,7 @@ export const ExperimentsCarousel = () => {
   // const durationMin = 200;
   // const durationMax = 2000;
 
-  const screenA = (
+  const sceneA = (
     <>
       <TitleMotion>
         <div className={classes.albumTitle}>Album A</div>
@@ -246,22 +212,22 @@ export const ExperimentsCarousel = () => {
       <div className={classes.photo3Up}>
         <Stagger delay={100}>
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo1}`} />
+            <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo2}`} />
+            <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo3}`} />
+            <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
           </PhotoMotion>
         </Stagger>
       </div>
     </>
   );
 
-  const screenB = (
+  const sceneB = (
     <>
       <TitleMotion>
         <div className={classes.albumTitle}>Album B</div>
@@ -270,51 +236,49 @@ export const ExperimentsCarousel = () => {
       <div className={classes.photo4Up}>
         <Stagger delay={100}>
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo4}`}></div>
+            <Image fit="cover" src={imageUrls[3]} className={`${classes.photo}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo5}`}></div>
+            <Image fit="cover" src={imageUrls[4]} className={`${classes.photo}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo6}`}></div>
+            <Image fit="cover" src={imageUrls[5]} className={`${classes.photo}`} />
           </PhotoMotion>
 
           <PhotoMotion>
-            <div className={`${classes.photo} ${classes.photo7}`}></div>
+            <Image fit="cover" src={imageUrls[6]} className={`${classes.photo}`} />
           </PhotoMotion>
         </Stagger>
       </div>
     </>
   );
 
-  const screenSeries = (
+  const sceneSeries = (
     <Series autoloop>
-      <Hold duration={6000}>{screenA}</Hold>
-      <Hold duration={6000}>{screenB}</Hold>
+      <Hold duration={6000}>{sceneA}</Hold>
+      <Hold duration={6000}>{sceneB}</Hold>
     </Series>
   );
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
-        {/* <Field className={classes.field}>
+      {/* <div className={classes.controls}> */}
+      {/* <Field className={classes.field}>
               <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
             </Field> */}
 
-        {/* <Field className={classes.field}>
+      {/* <Field className={classes.field}>
               <Switch
                 label={<code>animateOpacity</code>}
                 checked={animateOpacity}
                 onChange={() => setAnimateOpacity(v => !v)}
               />
             </Field> */}
-      </div>
+      {/* </div> */}
 
-      {/* <div className={classes.card}>{staggerB}</div> */}
-      {/* <div className={classes.carouselContainer}>{screenA}</div> */}
-      <div className={classes.carouselContainer}>{screenSeries}</div>
+      <div className={classes.carouselContainer}>{sceneSeries}</div>
     </div>
   );
 };
