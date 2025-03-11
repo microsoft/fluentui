@@ -15,8 +15,6 @@ parameters:
 
 variables:
   - group: 'Github and NPM secrets'
-    parameters:
-      skipComponentGovernanceDetection: false
   - name: tags
     value: production,externalfacing
 
