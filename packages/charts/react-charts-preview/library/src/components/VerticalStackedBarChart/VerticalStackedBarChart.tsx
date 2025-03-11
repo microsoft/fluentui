@@ -44,7 +44,7 @@ import {
   calculateLongestLabelWidth,
   useRtl,
 } from '../../utilities/index';
-//import { DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
+import { DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -99,7 +99,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
-  const [refSelected, setRefSelected] = React.useState<SVGGElement | null>(null);
+  const [refSelected, setRefSelected] = React.useState<React.MouseEvent<SVGElement> | SVGCircleElement | null>(null);
   const [dataForHoverCard, setDataForHoverCard] = React.useState(0);
   const [color, setColor] = React.useState('');
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
@@ -133,11 +133,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       return <></>;
     }
     const defaultPalette: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
+      getColorFromToken(DataVizPalette.color6),
+      getColorFromToken(DataVizPalette.color1),
+      getColorFromToken(DataVizPalette.color5),
+      getColorFromToken(DataVizPalette.color7),
+      getColorFromToken(DataVizPalette.color10),
     ];
     const actions: Legend[] = [];
     const { allowHoverOnLegend = true } = props;
@@ -209,7 +209,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function lineHoverFocus(lineData: LinePoint, refSelected: React.MouseEvent<SVGElement> | SVGCircleElement) {
-    setRefSelected;
+    setRefSelected(refSelected);
     setPopoverOpen(true);
     setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
     setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
@@ -278,11 +278,11 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _points = props.data || [];
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
     const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
+      getColorFromToken(DataVizPalette.color6),
+      getColorFromToken(DataVizPalette.color1),
+      getColorFromToken(DataVizPalette.color5),
+      getColorFromToken(DataVizPalette.color7),
+      getColorFromToken(DataVizPalette.color10),
     ];
     _colors = props.colors || defaultColors;
     _xAxisType = getTypeOfAxis(props.data[0].xAxisPoint, true) as XAxisTypes;
@@ -553,7 +553,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
             }
             onMouseOver={
-              _isLegendHighlighted(item) ? _lineHover.bind(circlePoint) : _onStackHover.bind(circlePoint.xItem)
+              _isLegendHighlighted(item)
+                ? (event: React.MouseEvent<SVGElement, MouseEvent>) => _lineHover(circlePoint, event)
+                : (event: React.MouseEvent<SVGElement, MouseEvent>) => _onStackHover(circlePoint.xItem, event)
             }
             {...(_isLegendHighlighted(item) && {
               onMouseLeave: _lineHoverOut,
@@ -568,6 +570,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             ref={e => (circleRef.refElement = e)}
             onFocus={_lineFocus.bind(circlePoint, circleRef)}
             onBlur={_lineHoverOut}
+            tabIndex={circlePoint.legend !== '' ? 0 : undefined}
           />,
         );
       });
