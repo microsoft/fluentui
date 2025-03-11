@@ -4,7 +4,7 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../../utilities';
 
-const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+const steps = new Steps().snapshot('default').end();
 
 export default {
   title: 'TagGroup Converged',

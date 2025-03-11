@@ -1,4 +1,4 @@
-import { Divider, tokens, Switch } from '@fluentui/react-components';
+import { Divider, Switch } from '@fluentui/react-components';
 import { curves, durations } from '@fluentui/react-motion';
 import * as React from 'react';
 
@@ -32,9 +32,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
             d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
               100 - easingPoints[3]
             }, 100 0`}
-            fill="none"
-            stroke={tokens.colorNeutralStrokeAccessible}
-            strokeWidth="2"
+            className={classes.path}
           />
         </svg>
 

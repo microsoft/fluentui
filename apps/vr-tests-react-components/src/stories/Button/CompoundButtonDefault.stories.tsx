@@ -9,12 +9,12 @@ import { buttonId } from './utils';
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   // https://github.com/microsoft/fluentui/issues/21998
   // .hover('#button-id')
   // .snapshot('hover', { cropTo: '.testWrapper' })
   .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .end();
 
 export default {

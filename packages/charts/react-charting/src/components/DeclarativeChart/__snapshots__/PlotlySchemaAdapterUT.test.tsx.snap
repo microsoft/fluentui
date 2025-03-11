@@ -203,7 +203,7 @@ Object {
   "hideLegend": false,
   "innerRadius": 42,
   "showLabelsInPercent": true,
-  "width": 440,
+  "width": undefined,
 }
 `;
 
@@ -239,7 +239,7 @@ Object {
   "hideLegend": false,
   "innerRadius": 0,
   "showLabelsInPercent": false,
-  "width": 440,
+  "width": undefined,
 }
 `;
 
@@ -344,9 +344,12 @@ Object {
       ],
     },
   ],
+  "height": 742,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
+  "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -2807,7 +2810,9 @@ Object {
     67.29785160341703,
     76.5710413276318,
   ],
+  "height": 350,
   "hideLegend": true,
+  "hideTickOverlap": true,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
     "rgb(213,62,79)",
@@ -2823,6 +2828,7 @@ Object {
   ],
   "showYAxisLables": true,
   "sortOrder": "none",
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -2972,14 +2978,11 @@ Object {
       "y": "Laravel",
     },
   ],
+  "height": 742,
+  "hideTickOverlap": true,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
-  "styles": Object {
-    "root": Object {
-      "height": 742,
-      "width": 850,
-    },
-  },
+  "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
 }
@@ -3113,13 +3116,12 @@ Object {
   },
   "enableReflow": true,
   "height": 772,
-  "shouldResize": 1212,
   "styles": Object {
     "root": Object {
       "fontSize": 10,
     },
   },
-  "width": 440,
+  "width": undefined,
 }
 `;
 
@@ -3314,10 +3316,13 @@ Object {
       },
     ],
   },
+  "height": 350,
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4548,10 +4553,13 @@ Object {
       },
     ],
   },
+  "height": 350,
+  "hideTickOverlap": true,
   "mode": "tonexty",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4828,8 +4836,11 @@ Object {
       "y": 2,
     },
   ],
+  "height": 350,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "supportNegativeData": true,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
@@ -4921,9 +4932,12 @@ Object {
       "xAxisPoint": "May",
     },
   ],
+  "height": 350,
+  "hideTickOverlap": true,
   "mode": "plotly",
   "secondaryYAxistitle": undefined,
   "secondaryYScaleOptions": undefined,
+  "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

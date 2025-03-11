@@ -14,7 +14,7 @@ import {
   mergeArrowOffset,
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useActivateModal } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 import { popoverSurfaceBorderRadius } from './constants';
@@ -111,20 +111,28 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   const { findFirstFocusable } = useFocusFinders();
+  const activateModal = useActivateModal();
 
   React.useEffect(() => {
     if (props.unstable_disableAutoFocus) {
       return;
     }
 
-    if (open && positioningRefs.contentRef.current) {
-      const containerTabIndex = positioningRefs.contentRef.current.getAttribute('tabIndex') ?? undefined;
-      const firstFocusable = isNaN(containerTabIndex)
-        ? findFirstFocusable(positioningRefs.contentRef.current)
-        : positioningRefs.contentRef.current;
+    const contentElement = positioningRefs.contentRef.current;
+
+    if (open && contentElement) {
+      const shouldFocusContainer = !isNaN(contentElement.getAttribute('tabIndex') ?? undefined);
+      const firstFocusable = shouldFocusContainer ? contentElement : findFirstFocusable(contentElement);
+
       firstFocusable?.focus();
+
+      if (shouldFocusContainer) {
+        // Modal activation happens automatically when something inside the modal is focused programmatically.
+        // When the container is focused, we need to activate the modal manually.
+        activateModal(contentElement);
+      }
     }
-  }, [findFirstFocusable, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
+  }, [findFirstFocusable, activateModal, open, positioningRefs.contentRef, props.unstable_disableAutoFocus]);
 
   return {
     ...initialState,

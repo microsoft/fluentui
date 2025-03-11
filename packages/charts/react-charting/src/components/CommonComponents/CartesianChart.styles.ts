@@ -5,7 +5,16 @@ import { NeutralColors, isIE11 } from '@fluentui/react';
 const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
-  const { className, theme, isRtl, shouldHighlight, href, lineColor = 'transparent', toDrawShape } = props;
+  const {
+    className,
+    theme,
+    isRtl,
+    shouldHighlight,
+    href,
+    lineColor = 'transparent',
+    toDrawShape,
+    enableReflow,
+  } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -20,7 +29,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       className,
     ],
     chartWrapper: {
-      overflow: 'auto',
+      ...(enableReflow ? { overflow: 'auto' } : {}),
     },
     axisTitle: [
       theme.fonts.xSmall,
