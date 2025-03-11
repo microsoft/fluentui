@@ -68,15 +68,6 @@ const DEFAULT_LINE_STROKE_SIZE = 4;
 // The given shape of a icon must be 2.5 times bigger than line width (known as stroke width)
 const PATH_MULTIPLY_SIZE = 2.5;
 
-// minimum of all x of line chart points
-let xMin = Number.NEGATIVE_INFINITY;
-
-//minimum of all y of line chart points
-let yMin = Number.NEGATIVE_INFINITY;
-
-//maximum of all x of line chart points
-let xMax = Number.POSITIVE_INFINITY;
-
 /**
  *
  * @param x units from origin
@@ -198,6 +189,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _emptyChartId: string;
   private _isRTL: boolean = getRTL();
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _xMin: number = Number.NEGATIVE_INFINITY;
+  private _yMin: number = Number.NEGATIVE_INFINITY;
+  private _xMax: number = Number.POSITIVE_INFINITY;
+  private _xPadding: number = 0;
+  private _yPadding: number = 0;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -464,11 +460,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _getNumericMinMaxOfY = (points: ILineChartPoints[]): { startValue: number; endValue: number } => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points);
-    yMin = startValue;
-    const padding = this.props.lineMode === 'scatter' ? (endValue - startValue) * 0.1 : 0;
+    this._yMin = startValue;
+    this._yPadding = this.props.lineMode === 'scatter' ? (endValue - startValue) * 0.1 : 0;
     return {
-      startValue: startValue - padding,
-      endValue: endValue + padding,
+      startValue: startValue - this._yPadding,
+      endValue: endValue + this._yPadding,
     };
   };
 
@@ -649,11 +645,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _getRangeForScatterMarkerSize(containerHeight: number, containerWidth: number): number {
+  private _getRangeForScatterMarkerSize(): number {
     const extraXPixels = this._isRTL
-      ? containerWidth - this.margins.right! - this._xAxisScale(xMax)
-      : this._xAxisScale(xMin) - this.margins.left!;
-    const extraYPixels = containerHeight - this.margins.bottom! - this._yAxisScale(yMin);
+      ? this._xAxisScale(this._xMax - this._xPadding) - this._xAxisScale(this._xMax)
+      : this._xAxisScale(this._xMin + this._xPadding) - this._xAxisScale(this._xMin);
+
+    const extraYPixels = this._yAxisScale(this._yMin) - this._yAxisScale(this._yMin + this._yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
   private _createLines(xElement: SVGElement, containerHeight: number, containerWidth: number): JSX.Element[] {
@@ -663,13 +660,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     } else {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
     }
-    const extraMaxPixels =
-      this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(containerHeight, containerWidth) : 0;
+    const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize() : 0;
     const maxMarkerSize = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.markerSize as number;
       });
     })!;
+
     for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
       const bordersForLine: JSX.Element[] = [];
@@ -1655,30 +1652,30 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     width: number,
     isRTL: boolean,
   ): IDomainNRange => {
-    xMin = d3Min(points, (point: ILineChartPoints) => {
+    this._xMin = d3Min(points, (point: ILineChartPoints) => {
       return d3Min(point.data, (item: ILineChartDataPoint) => item.x as number)!;
     })!;
 
-    xMax = d3Max(points, (point: ILineChartPoints) => {
+    this._xMax = d3Max(points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.x as number;
       });
     })!;
 
-    const padding = this.props.lineMode === 'scatter' ? (xMax - xMin) * 0.1 : 0;
+    this._xPadding = this.props.lineMode === 'scatter' ? (this._xMax - this._xMin) * 0.1 : 0;
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
 
     return isRTL
       ? {
-          dStartValue: xMax + padding,
-          dEndValue: xMin - padding,
+          dStartValue: this._xMax + this._xPadding,
+          dEndValue: this._xMin - this._xPadding,
           rStartValue,
           rEndValue,
         }
       : {
-          dStartValue: xMin - padding,
-          dEndValue: xMax + padding,
+          dStartValue: this._xMin - this._xPadding,
+          dEndValue: this._xMax + this._xPadding,
           rStartValue,
           rEndValue,
         };
