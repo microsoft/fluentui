@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use correct tokens for hover, active and focus states",
-  "packageName": "@fluentui/react-combobox",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

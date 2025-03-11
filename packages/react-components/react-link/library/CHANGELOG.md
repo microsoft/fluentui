@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 21 Feb 2025 14:34:05 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Mar 2025 18:58:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.4.1)
+
+Tue, 11 Mar 2025 18:58:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.4.0..@fluentui/react-link_v9.4.1)
+
+### Patches
+
+- fix: Link now pulls customStyleHook from context ([PR #33894](https://github.com/microsoft/fluentui/pull/33894) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.51 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-tabster to v9.24.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.4.0)
 

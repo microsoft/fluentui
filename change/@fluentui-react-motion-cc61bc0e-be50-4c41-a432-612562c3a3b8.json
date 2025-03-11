@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: apply initial styles consistently",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
