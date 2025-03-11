@@ -50,7 +50,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
     root,
     projectType: 'library',
     sourceRoot: `${root}/src`,
-    tags: ['platform:web', 'vNext', 'visual-regression'],
+    tags: ['vNext', 'platform:web', 'visual-regression'],
     targets: {
       storybook: {
         command: 'storybook dev',
@@ -60,7 +60,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
       },
       'generate-image-for-vrt': {
         command:
-          'rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/actual --waitTimeScreenshot 500 --concurrency 4 --headless true',
+          'rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true',
         options: {
           cwd: '{projectRoot}',
         },
@@ -71,7 +71,8 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
           },
         },
         dependsOn: ['build-storybook'],
-        outputs: ['{projectRoot}/dist/screenshots/**'],
+        inputs: ['{projectRoot}/src/**/*.stories.tsx'],
+        outputs: ['{projectRoot}/dist/vrt/actual/**'],
         cache: true,
       },
       'test-vr': {
@@ -79,12 +80,16 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
         dependsOn: ['build-storybook'],
       },
       'test-vr-cli': {
-        command:
-          'visual-regression-assert --baselineDir dist/baseline --actualDir dist/screenshots --diffDir dist/diff --reportPath dist/report.html',
+        command: 'visual-regression-assert assert --baselineDir src/__snapshots__ --outputPath dist/vrt',
         options: {
           cwd: '{projectRoot}',
         },
-        dependsOn: ['build-storybook', 'generate-image-for-vrt'],
+        dependsOn: [
+          'build-storybook',
+          'generate-image-for-vrt',
+          { projects: ['visual-regression-assert'], target: 'build' },
+        ],
+        inputs: ['{projectRoot}/dist/vrt/screenshots/**', '{projectRoot}/src/**/*.stories.tsx'],
         metadata: {
           help: {
             command: 'yarn visual-regression-assert --help',
@@ -98,21 +103,7 @@ function normalizeOptions(tree: Tree, options: VisualRegressionSchema) {
           cwd: '{projectRoot}',
         },
       },
-      build: {
-        executor: '@nx/js:swc',
-        outputs: ['{options.outputPath}'],
-        options: {
-          outputPath: `dist/${root}`,
-          main: `${root}/src/index.ts`,
-          tsConfig: `${root}/tsconfig.lib.json`,
-          assets: [`${root}/*.md`],
-        },
-      },
-      lint: {
-        executor: '@nx/eslint:lint',
-      },
     },
-    implicitDependencies: [],
   });
 
   const project = getProjectConfig(tree, { packageName: projectName });
