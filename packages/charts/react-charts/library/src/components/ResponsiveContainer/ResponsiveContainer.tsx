@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ResponsiveContainerProps } from './ResponsiveContainer.types';
-import { useResponsiveContainerStyles_unstable } from './useResponsiveContainerStyles.styles';
+import { useResponsiveContainerStyles } from './useResponsiveContainerStyles.styles';
 
 export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const onResizeRef = React.useRef<ResponsiveContainerProps['onResize']>();
   const { targetDocument } = useFluent_unstable();
-  const classes = useResponsiveContainerStyles_unstable(props);
+  const classes = useResponsiveContainerStyles(props);
 
   const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 

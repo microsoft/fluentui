@@ -1,31 +1,31 @@
-# Change Log - @fluentui/react-charts
+# Change Log - @fluentui/react-charts-preview
 
 This log was last generated on Fri, 07 Feb 2025 10:42:12 GMT and should not be manually modified.
 
 <!-- Start content -->
 
-## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.10)
+## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.10)
 
 Fri, 07 Feb 2025 10:42:12 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.9..@fluentui/react-charts_v0.1.10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.9..@fluentui/react-charts-preview_v0.1.10)
 
 ### Patches
 
 - Bump @fluentui/react-button to v9.3.102 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by beachball)
 
-## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.9)
+## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.9)
 
 Tue, 28 Jan 2025 21:26:35 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.8..@fluentui/react-charts_v0.1.9)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.8..@fluentui/react-charts-preview_v0.1.9)
 
 ### Patches
 
 - Bump @fluentui/react-button to v9.3.101 ([PR #33736](https://github.com/microsoft/fluentui/pull/33736) by beachball)
 
-## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.8)
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.8)
 
 Mon, 27 Jan 2025 20:27:35 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.7..@fluentui/react-charts_v0.1.8)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.7..@fluentui/react-charts-preview_v0.1.8)
 
 ### Patches
 
@@ -33,10 +33,10 @@ Mon, 27 Jan 2025 20:27:35 GMT
 - Bump @fluentui/react-popover to v9.9.32 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 - Bump @fluentui/react-tooltip to v9.5.5 ([PR #33724](https://github.com/microsoft/fluentui/pull/33724) by beachball)
 
-## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.7)
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.7)
 
 Wed, 22 Jan 2025 14:00:21 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.6..@fluentui/react-charts_v0.1.7)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.6..@fluentui/react-charts-preview_v0.1.7)
 
 ### Patches
 
@@ -48,10 +48,10 @@ Wed, 22 Jan 2025 14:00:21 GMT
 - Bump @fluentui/react-tooltip to v9.5.4 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 - Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
-## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.6)
+## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.6)
 
 Wed, 08 Jan 2025 18:33:36 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.5..@fluentui/react-charts_v0.1.6)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.5..@fluentui/react-charts-preview_v0.1.6)
 
 ### Patches
 
@@ -61,20 +61,20 @@ Wed, 08 Jan 2025 18:33:36 GMT
 - Bump @fluentui/react-popover to v9.9.30 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
 - Bump @fluentui/react-tooltip to v9.5.3 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
 
-## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.5)
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.5)
 
 Wed, 18 Dec 2024 10:59:37 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.4..@fluentui/react-charts_v0.1.5)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.4..@fluentui/react-charts-preview_v0.1.5)
 
 ### Patches
 
 - Bump @fluentui/react-overflow to v9.2.5 ([PR #33483](https://github.com/microsoft/fluentui/pull/33483) by beachball)
 - Bump @fluentui/react-popover to v9.9.29 ([PR #33483](https://github.com/microsoft/fluentui/pull/33483) by beachball)
 
-## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.4)
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.4)
 
 Mon, 16 Dec 2024 16:26:49 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.3..@fluentui/react-charts_v0.1.4)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.3..@fluentui/react-charts-preview_v0.1.4)
 
 ### Patches
 
@@ -88,10 +88,10 @@ Mon, 16 Dec 2024 16:26:49 GMT
 - Bump @fluentui/react-tooltip to v9.5.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 - Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 
-## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.3)
+## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.3)
 
 Mon, 09 Dec 2024 17:38:16 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.2..@fluentui/react-charts_v0.1.3)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.2..@fluentui/react-charts-preview_v0.1.3)
 
 ### Patches
 
@@ -100,10 +100,10 @@ Mon, 09 Dec 2024 17:38:16 GMT
 - Bump @fluentui/react-popover to v9.9.27 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 - Bump @fluentui/react-tooltip to v9.5.1 ([PR #33431](https://github.com/microsoft/fluentui/pull/33431) by beachball)
 
-## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.2)
+## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.2)
 
 Fri, 06 Dec 2024 12:53:38 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.1..@fluentui/react-charts_v0.1.2)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.1..@fluentui/react-charts-preview_v0.1.2)
 
 ### Patches
 
@@ -118,16 +118,16 @@ Fri, 06 Dec 2024 12:53:38 GMT
 - Bump @fluentui/react-tooltip to v9.5.0 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 - Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
-## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.1)
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.1)
 
 Thu, 28 Nov 2024 09:30:50 GMT
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v0.1.0..@fluentui/react-charts_v0.1.1)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.0..@fluentui/react-charts-preview_v0.1.1)
 
 ### Patches
 
 - Update readme with current content ([PR #33295](https://github.com/microsoft/fluentui/pull/33295) by 98592573+AtishayMsft@users.noreply.github.com)
 
-## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v0.1.0)
+## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.0)
 
 Mon, 18 Nov 2024 09:44:38 GMT
 
