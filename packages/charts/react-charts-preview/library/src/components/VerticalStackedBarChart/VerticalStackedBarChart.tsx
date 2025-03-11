@@ -99,7 +99,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
-  const [refSelected, setRefSelected] = React.useState<React.MouseEvent<SVGElement> | SVGCircleElement | null>(null);
+  const [refSelected, setRefSelected] = React.useState<SVGGElement | null>(null);
   const [dataForHoverCard, setDataForHoverCard] = React.useState(0);
   const [color, setColor] = React.useState('');
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
@@ -209,7 +209,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function lineHoverFocus(lineData: LinePoint, refSelected: React.MouseEvent<SVGElement> | SVGCircleElement) {
-    setRefSelected(refSelected);
+    setRefSelected;
     setPopoverOpen(true);
     setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
     setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
