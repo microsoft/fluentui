@@ -43,8 +43,9 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   useRtl,
+  DataVizPalette,
+  getColorFromToken,
 } from '../../utilities/index';
-import { DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
