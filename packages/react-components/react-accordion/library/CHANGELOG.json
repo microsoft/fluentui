@@ -2,6 +2,63 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 11 Mar 2025 18:58:54 GMT",
+      "tag": "@fluentui/react-accordion_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.14.1",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.73",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.51",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.22.0",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-motion to v9.6.8",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.4",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.24.1",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.21",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 14:34:05 GMT",
       "tag": "@fluentui/react-accordion_v9.6.0",
       "version": "9.6.0",

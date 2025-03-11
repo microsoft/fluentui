@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorPickerSlots, ColorPickerState } from './ColorPicker.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots> = {
   root: 'fui-ColorPicker',
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
   },
 });
 

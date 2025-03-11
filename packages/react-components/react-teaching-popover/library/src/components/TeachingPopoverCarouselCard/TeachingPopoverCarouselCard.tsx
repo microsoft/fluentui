@@ -4,6 +4,7 @@ import { renderTeachingPopoverCarouselCard_unstable } from './renderTeachingPopo
 import type { TeachingPopoverCarouselCardProps } from './TeachingPopoverCarouselCard.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTeachingPopoverCarouselCardStyles_unstable } from './useTeachingPopoverCarouselCardStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled TeachingPopoverCarouselCard, using the `useTeachingPopoverCarouselCard_unstable` and `useTeachingPopoverCarouselCardStyles_unstable`
@@ -16,6 +17,8 @@ export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCar
     const state = useTeachingPopoverCarouselCard_unstable(props, ref);
 
     useTeachingPopoverCarouselCardStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useTeachingPopoverCarouselCardStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselCard_unstable(state);
   },

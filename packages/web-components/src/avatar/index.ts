@@ -1,4 +1,5 @@
-export { BaseAvatar, Avatar } from './avatar.js';
+export { Avatar } from './avatar.js';
+export { BaseAvatar } from './avatar.base.js';
 export {
   AvatarActive,
   AvatarAppearance,
