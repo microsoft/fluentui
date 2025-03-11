@@ -423,7 +423,7 @@ export interface CartesianChartProps {
    * Define a custom callout props override
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
+  calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
 }
 
 export interface YValueHover {

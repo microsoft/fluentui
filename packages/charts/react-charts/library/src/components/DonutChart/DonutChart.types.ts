@@ -36,7 +36,7 @@ export interface DonutChartProps {
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
+  calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 
   /**
    * props for the callout in the chart

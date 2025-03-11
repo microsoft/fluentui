@@ -69,9 +69,9 @@ export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartPro
 // @public
 export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
-    customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     height?: number;
@@ -359,9 +359,9 @@ export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 // @public
 export interface DonutChartProps {
     calloutProps?: ChartPopoverProps;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     className?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
     height?: number;
     hideLabels?: boolean;
@@ -455,11 +455,11 @@ export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartPro
 export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
     barHeight?: number;
     calloutProps?: ChartPopoverProps;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];

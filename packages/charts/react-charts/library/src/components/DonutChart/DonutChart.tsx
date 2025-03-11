@@ -304,7 +304,9 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
             customizedCallout: props.onRenderCalloutPerDataPoint
               ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!)
               : undefined,
-            customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+            customCalloutProps: props.calloutPropsPerDataPoint
+              ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+              : undefined,
           }}
           isCartesian={false}
         />
