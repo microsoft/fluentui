@@ -63,9 +63,6 @@ function cleanFSTTokenName(originalTokenName: string) {
   // Ignore brackets
   newtokenName = newtokenName.replace('(', '/').replace(')', '');
 
-  // Remove random basket emoji
-  newtokenName = newtokenName.replace('🗑️/', '');
-
   return newtokenName;
 }
 
