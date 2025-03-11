@@ -1,11 +1,8 @@
-/* eslint-disable @nx/workspace-no-restricted-globals */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-shadow */
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { useVerticalStackedBarChartStyles_unstable } from './useVerticalStackedBarChartStyles.styles';
+import { useVerticalStackedBarChartStyles } from './useVerticalStackedBarChartStyles.styles';
 import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
@@ -47,6 +44,7 @@ import {
   calculateLongestLabelWidth,
   useRtl,
 } from '../../utilities/index';
+//import { DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
@@ -843,7 +841,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     );
   }
 
-  const classes = useVerticalStackedBarChartStyles_unstable(props);
+  const classes = useVerticalStackedBarChartStyles(props);
   function _createBar(
     xBarScale: any,
     yBarScale: NumericScale,
@@ -929,6 +927,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 rx={props.roundCorners ? 3 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+                cursor={props.href ? 'pointer' : 'default'}
                 {...rectFocusProps}
               />
             </React.Fragment>
@@ -947,6 +946,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               height={barHeight}
               fill={startColor}
               opacity={shouldHighlight ? 1 : 0.1}
+              cursor={props.href ? 'pointer' : 'default'}
               rx={props.roundCorners ? 3 : 0}
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}

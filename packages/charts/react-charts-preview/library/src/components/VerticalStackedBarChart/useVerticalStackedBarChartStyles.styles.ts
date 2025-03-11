@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const useVerticalStackedBarChartStyles_unstable = (
+export const useVerticalStackedBarChartStyles = (
   props: VerticalStackedBarChartProps,
 ): VerticalStackedBarChartStyles => {
   const baseStyles = useStyles();
@@ -59,7 +59,7 @@ export const useVerticalStackedBarChartStyles_unstable = (
     opacityChangeOnHover: mergeClasses(
       verticalstackedbarchartClassNames.opacityChangeOnHover,
       baseStyles.opacityChangeOnHover,
-      props.href ? 'cursor-pointer' : '',
+      props.href ? 'pointer' : 'default',
     ),
     tooltip: mergeClasses(verticalstackedbarchartClassNames.tooltip, baseStyles.tooltip),
     barLabel: mergeClasses(verticalstackedbarchartClassNames.barLabel, baseStyles.barLabel),
