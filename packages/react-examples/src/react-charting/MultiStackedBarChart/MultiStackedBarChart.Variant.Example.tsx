@@ -4,6 +4,8 @@ import {
   MultiStackedBarChart,
   IChartProps,
   MultiStackedBarChartVariant,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -81,12 +83,12 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
       {
         legend: 'Phone Numbers',
         data: 40,
-        color: '#881798',
+        color: getColorFromToken(DataVizPalette.color27),
       },
       {
         legend: 'Credit card Numbers',
         data: 23,
-        color: '#AE8C00',
+        color: getColorFromToken(DataVizPalette.color28),
       },
     ];
 

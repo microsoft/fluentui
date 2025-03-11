@@ -272,7 +272,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartData: donutData,
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
-    width,
+    width: input.layout?.width,
     height,
     innerRadius,
     hideLabels,
@@ -330,8 +330,8 @@ export const transformPlotlyJsonToVSBCProps = (
 
   return {
     data: Object.values(mapXToDataPoints),
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     barWidth: 'auto',
     yMaxValue,
     chartTitle,
@@ -340,6 +340,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -381,8 +382,8 @@ export const transformPlotlyJsonToGVBCProps = (
 
   return {
     data: Object.values(mapXToDataPoints),
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     barwidth: 'auto',
     chartTitle,
     xAxisTitle,
@@ -390,6 +391,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
     secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    hideTickOverlap: true,
   };
 };
 
@@ -474,13 +476,14 @@ export const transformPlotlyJsonToVBCProps = (
 
   return {
     data: vbcData,
-    // width: layout?.width,
-    // height: layout?.height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
     supportNegativeData: true,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
+    hideTickOverlap: true,
   };
 };
 
@@ -538,6 +541,9 @@ export const transformPlotlyJsonToScatterChartProps = (
       secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
       secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
       mode,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
     } as IAreaChartProps;
   } else {
     return {
@@ -550,6 +556,10 @@ export const transformPlotlyJsonToScatterChartProps = (
       roundedTicks: true,
       yMinValue: yMinMaxValues.startValue,
       yMaxValue: yMinMaxValues.endValue,
+      width: input.layout?.width,
+      height: input.layout?.height ?? 350,
+      hideTickOverlap: true,
+      enableReflow: false,
     } as ILineChartProps;
   }
 };
@@ -599,12 +609,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         : input.layout?.yaxis2?.title?.text || '',
     barHeight,
     showYAxisLables: true,
-    styles: {
-      root: {
-        height: chartHeight,
-        width: input.layout?.width ?? 600,
-      },
-    },
+    height: chartHeight,
+    width: input.layout?.width,
+    hideTickOverlap: true,
   };
 };
 
@@ -664,6 +671,9 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     xAxisTitle,
     yAxisTitle,
     sortOrder: 'none',
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    hideTickOverlap: true,
   };
 };
 
@@ -700,14 +710,11 @@ export const transformPlotlyJsonToSankeyProps = (
     }),
   } as ISankeyChartData;
 
-  const width: number = input.layout?.width ?? 440;
-  const height: number = input.layout?.height ?? 220;
   const styles: ISankeyChartProps['styles'] = {
     root: {
       ...(input.layout?.font?.size ? { fontSize: input.layout.font?.size } : {}),
     },
   };
-  const shouldResize: number = width + height;
 
   const { chartTitle } = getTitles(input.layout);
 
@@ -716,10 +723,9 @@ export const transformPlotlyJsonToSankeyProps = (
       chartTitle,
       SankeyChartData: sankeyChartData,
     },
-    width,
-    height,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 468,
     styles,
-    shouldResize,
     enableReflow: true,
   };
 };
@@ -786,7 +792,7 @@ export const transformPlotlyJsonToGaugeProps = (
     minValue: typeof firstData.gauge?.axis?.range?.[0] === 'number' ? firstData.gauge?.axis?.range?.[0] : undefined,
     maxValue: typeof firstData.gauge?.axis?.range?.[1] === 'number' ? firstData.gauge?.axis?.range?.[1] : undefined,
     chartValueFormat: () => firstData.value?.toString() ?? '',
-    width: input.layout?.width ?? 440,
+    width: input.layout?.width,
     height: input.layout?.height ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,

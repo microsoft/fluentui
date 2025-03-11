@@ -2,6 +2,60 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 14:34:03 GMT",
+      "tag": "@fluentui/react-carousel_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "3441c65501ce8a65495db7646f0e4b2af5066b83",
+            "comment": "feat: Implement props to control animation duration and autoplay interval"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-aria to v9.14.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-button to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Feb 2025 11:26:27 GMT",
+      "tag": "@fluentui/react-carousel_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "58c34624254f34c19d41033d92d968b1be02d258",
+            "comment": "feat: Add tooltip wrappers for icon buttons in nav container"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2025 10:42:12 GMT",
       "tag": "@fluentui/react-carousel_v9.4.7",
       "version": "9.4.7",

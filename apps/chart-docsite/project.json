@@ -2,8 +2,8 @@
   "name": "chart-docsite",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "implicitDependencies": ["tag:type:stories"],
-  "tags": ["platform:web", "vNext"],
+  "implicitDependencies": [],
+  "tags": ["platform:web", "vNext", "charting"],
   "targets": {
     "build-storybook": {
       "dependsOn": [

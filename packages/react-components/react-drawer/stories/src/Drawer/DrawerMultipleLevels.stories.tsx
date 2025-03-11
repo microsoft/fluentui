@@ -13,6 +13,8 @@ import {
   ToolbarGroup,
   ToolbarButton,
   makeStyles,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular, Calendar24Regular, Settings24Regular, ArrowLeft24Regular } from '@fluentui/react-icons';
 
@@ -96,9 +98,19 @@ export const MultipleLevels = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [level, setLevel] = React.useState<1 | 2>(1);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer
+        {...restoreFocusSourceAttributes}
+        position="start"
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
@@ -161,7 +173,7 @@ export const MultipleLevels = () => {
         </DrawerFooter>
       </OverlayDrawer>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+      <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
       </Button>
     </div>

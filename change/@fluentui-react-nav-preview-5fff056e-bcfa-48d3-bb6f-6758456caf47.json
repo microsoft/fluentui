@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix(react-nav): Export missing context providers and hooks",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

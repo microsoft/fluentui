@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-color-picker-preview",
-  "version": "0.1.6",
+  "version": "0.3.0",
   "description": "ColorPicker component for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/react-context-selector": "^9.1.72",
     "@fluentui/react-jsx-runtime": "^9.0.50",
     "@fluentui/react-shared-contexts": "^9.21.2",
-    "@fluentui/react-tabster": "^9.23.3",
+    "@fluentui/react-tabster": "^9.24.0",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-utilities": "^9.18.20",
     "@griffel/react": "^1.5.22",

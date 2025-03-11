@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: use contrasting token pairs for selected radio and toggle states",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

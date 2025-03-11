@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 22 Jan 2025 14:00:09 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 14:34:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.0)
+
+Fri, 21 Feb 2025 14:34:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.23.3..@fluentui/react-tabster_v9.24.0)
+
+### Minor changes
+
+- Nested modalizer fix and useActivateModal() hook to activate modals without moving focus. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+
+### Patches
+
+- fix: provide methods for elements such as live regions to not get hidden by modals ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
 
 ## [9.23.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.23.3)
 

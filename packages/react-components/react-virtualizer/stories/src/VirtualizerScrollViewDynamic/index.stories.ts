@@ -1,5 +1,6 @@
 import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import descriptionMd from './VirtualizerScrollViewDynamicDescription.md';
+import accessibilityMd from './VirtualizerScrollViewDynamicAccessibility.md';
 
 export { AutoMeasure } from './AutoMeasure.stories';
 export { Default } from './Default.stories';
@@ -13,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, accessibilityMd].join('\n'),
       },
     },
   },
