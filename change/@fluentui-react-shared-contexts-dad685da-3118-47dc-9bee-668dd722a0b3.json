@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Implemented customStyleHooks for SearchBox Component",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "terynkum@microsoft.com",
-  "dependentChangeType": "patch"
-}
