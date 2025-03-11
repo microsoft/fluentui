@@ -1,0 +1,88 @@
+import {
+  cornerCtrlLgRestRaw,
+  cornerCtrlRestRaw,
+  cornerCtrlSmRestRaw,
+  foregroundCtrlNeutralSecondaryDisabledRaw,
+  foregroundCtrlNeutralSecondaryRestRaw,
+  nullNumberRaw,
+} from '../../control/variables';
+import {
+  backgroundCtrlOutlineDisabledRaw,
+  backgroundCtrlOutlineHoverRaw,
+  backgroundCtrlOutlinePressedRaw,
+  backgroundCtrlOutlineRestRaw,
+} from '../../nullable/variables';
+import {
+  ctrlSegmentedBackgroundDisabledRaw,
+  ctrlSegmentedBackgroundHoverRaw,
+  ctrlSegmentedBackgroundPressedRaw,
+  ctrlSegmentedBackgroundRestRaw,
+  ctrlSegmentedCornerHoverRaw,
+  ctrlSegmentedCornerPressedRaw,
+  ctrlSegmentedCornerRestRaw,
+  ctrlSegmentedGapRaw,
+  ctrlSegmentedItemCornerHoverRaw,
+  ctrlSegmentedItemCornerPressedRaw,
+  ctrlSegmentedItemCornerRestRaw,
+  ctrlSegmentedLgCornerHoverRaw,
+  ctrlSegmentedLgCornerPressedRaw,
+  ctrlSegmentedLgCornerRestRaw,
+  ctrlSegmentedLgItemCornerHoverRaw,
+  ctrlSegmentedLgItemCornerPressedRaw,
+  ctrlSegmentedLgItemCornerRestRaw,
+  ctrlSegmentedLgPaddingHoverRaw,
+  ctrlSegmentedLgPaddingPressedRaw,
+  ctrlSegmentedLgPaddingRestRaw,
+  ctrlSegmentedPaddingHoverRaw,
+  ctrlSegmentedPaddingPressedRaw,
+  ctrlSegmentedPaddingRestRaw,
+  ctrlSegmentedSmCornerHoverRaw,
+  ctrlSegmentedSmCornerPressedRaw,
+  ctrlSegmentedSmCornerRestRaw,
+  ctrlSegmentedSmItemCornerHoverRaw,
+  ctrlSegmentedSmItemCornerPressedRaw,
+  ctrlSegmentedSmItemCornerRestRaw,
+  ctrlSegmentedSmPaddingHoverRaw,
+  ctrlSegmentedSmPaddingPressedRaw,
+  ctrlSegmentedSmPaddingRestRaw,
+  ctrlSegmentedStrokeDisabledRaw,
+  ctrlSegmentedStrokeHoverRaw,
+  ctrlSegmentedStrokePressedRaw,
+  ctrlSegmentedStrokeRestRaw,
+} from './variables';
+export const ctrlSegmentedBackgroundRest = `var(${ctrlSegmentedBackgroundRestRaw}, ${backgroundCtrlOutlineRestRaw})`;
+export const ctrlSegmentedBackgroundHover = `var(${ctrlSegmentedBackgroundHoverRaw}, ${backgroundCtrlOutlineHoverRaw})`;
+export const ctrlSegmentedBackgroundPressed = `var(${ctrlSegmentedBackgroundPressedRaw}, ${backgroundCtrlOutlinePressedRaw})`;
+export const ctrlSegmentedBackgroundDisabled = `var(${ctrlSegmentedBackgroundDisabledRaw}, ${backgroundCtrlOutlineDisabledRaw})`;
+export const ctrlSegmentedStrokeRest = `var(${ctrlSegmentedStrokeRestRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlSegmentedStrokeHover = `var(${ctrlSegmentedStrokeHoverRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlSegmentedStrokePressed = `var(${ctrlSegmentedStrokePressedRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlSegmentedStrokeDisabled = `var(${ctrlSegmentedStrokeDisabledRaw}, ${foregroundCtrlNeutralSecondaryDisabledRaw})`;
+export const ctrlSegmentedCornerRest = `var(${ctrlSegmentedCornerRestRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedCornerHover = `var(${ctrlSegmentedCornerHoverRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedCornerPressed = `var(${ctrlSegmentedCornerPressedRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedPaddingRest = `var(${ctrlSegmentedPaddingRestRaw})`;
+export const ctrlSegmentedPaddingHover = `var(${ctrlSegmentedPaddingHoverRaw}, ${ctrlSegmentedPaddingRestRaw})`;
+export const ctrlSegmentedPaddingPressed = `var(${ctrlSegmentedPaddingPressedRaw}, ${ctrlSegmentedPaddingRestRaw})`;
+export const ctrlSegmentedGap = `var(${ctrlSegmentedGapRaw}, ${nullNumberRaw})`;
+export const ctrlSegmentedItemCornerRest = `var(${ctrlSegmentedItemCornerRestRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedItemCornerHover = `var(${ctrlSegmentedItemCornerHoverRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedItemCornerPressed = `var(${ctrlSegmentedItemCornerPressedRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedSmPaddingRest = `var(${ctrlSegmentedSmPaddingRestRaw})`;
+export const ctrlSegmentedSmPaddingHover = `var(${ctrlSegmentedSmPaddingHoverRaw}, ${ctrlSegmentedSmPaddingRestRaw})`;
+export const ctrlSegmentedSmPaddingPressed = `var(${ctrlSegmentedSmPaddingPressedRaw}, ${ctrlSegmentedSmPaddingRestRaw})`;
+export const ctrlSegmentedLgPaddingRest = `var(${ctrlSegmentedLgPaddingRestRaw})`;
+export const ctrlSegmentedLgPaddingHover = `var(${ctrlSegmentedLgPaddingHoverRaw}, ${ctrlSegmentedLgPaddingRestRaw})`;
+export const ctrlSegmentedLgPaddingPressed = `var(${ctrlSegmentedLgPaddingPressedRaw}, ${ctrlSegmentedLgPaddingRestRaw})`;
+export const ctrlSegmentedSmItemCornerRest = `var(${ctrlSegmentedSmItemCornerRestRaw})`;
+export const ctrlSegmentedSmItemCornerHover = `var(${ctrlSegmentedSmItemCornerHoverRaw})`;
+export const ctrlSegmentedSmItemCornerPressed = `var(${ctrlSegmentedSmItemCornerPressedRaw})`;
+export const ctrlSegmentedLgItemCornerRest = `var(${ctrlSegmentedLgItemCornerRestRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedLgItemCornerHover = `var(${ctrlSegmentedLgItemCornerHoverRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedLgItemCornerPressed = `var(${ctrlSegmentedLgItemCornerPressedRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlSegmentedSmCornerRest = `var(${ctrlSegmentedSmCornerRestRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedSmCornerHover = `var(${ctrlSegmentedSmCornerHoverRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedSmCornerPressed = `var(${ctrlSegmentedSmCornerPressedRaw}, ${cornerCtrlSmRestRaw})`;
+export const ctrlSegmentedLgCornerRest = `var(${ctrlSegmentedLgCornerRestRaw}, ${cornerCtrlLgRestRaw})`;
+export const ctrlSegmentedLgCornerHover = `var(${ctrlSegmentedLgCornerHoverRaw}, ${cornerCtrlLgRestRaw})`;
+export const ctrlSegmentedLgCornerPressed = `var(${ctrlSegmentedLgCornerPressedRaw}, ${cornerCtrlLgRestRaw})`;

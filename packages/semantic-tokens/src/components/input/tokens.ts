@@ -1,0 +1,74 @@
+import {
+  backgroundCtrlBrandRestRaw,
+  backgroundCtrlNeutralDisabledRaw,
+  backgroundCtrlNeutralHoverRaw,
+  backgroundCtrlNeutralPressedRaw,
+  backgroundCtrlNeutralRestRaw,
+  foregroundCtrlNeutralSecondaryRestRaw,
+  foregroundCtrlOnbrandRestRaw,
+  nullColorRaw,
+  strokeCtrlOnoutlineDisabledRaw,
+  strokeCtrlOnoutlineHoverRaw,
+  strokeCtrlOnoutlinePressedRaw,
+  strokeCtrlOnoutlineRestRaw,
+  strokewidthDefaultRaw,
+} from '../../control/variables';
+import { statusDangerStrokeRaw } from '../../optional/variables';
+import {
+  ctrlInputBackgroundDisabledRaw,
+  ctrlInputBackgroundErrorRaw,
+  ctrlInputBackgroundHoverRaw,
+  ctrlInputBackgroundPressedRaw,
+  ctrlInputBackgroundRestRaw,
+  ctrlInputBackgroundSelectedRaw,
+  ctrlInputBottomlineStrokeDisabledRaw,
+  ctrlInputBottomlineStrokeErrorRaw,
+  ctrlInputBottomlineStrokeHoverRaw,
+  ctrlInputBottomlineStrokePressedRaw,
+  ctrlInputBottomlineStrokeRestRaw,
+  ctrlInputBottomlineStrokeSelectedRaw,
+  ctrlInputBottomlineStrokewidthHoverRaw,
+  ctrlInputBottomlineStrokewidthPressedRaw,
+  ctrlInputBottomlineStrokewidthRestRaw,
+  ctrlInputBottomlineStrokewidthSelectedRaw,
+  ctrlInputStrokeDisabledRaw,
+  ctrlInputStrokeErrorRaw,
+  ctrlInputStrokeHoverRaw,
+  ctrlInputStrokePressedRaw,
+  ctrlInputStrokeRestRaw,
+  ctrlInputStrokeSelectedRaw,
+  ctrlInputStrokewidthHoverRaw,
+  ctrlInputStrokewidthPressedRaw,
+  ctrlInputStrokewidthRestRaw,
+  ctrlInputStrokewidthSelectedRaw,
+  ctrlInputTextselectionBackgroundRaw,
+  ctrlInputTextselectionForegroundRaw,
+} from './variables';
+export const ctrlInputBackgroundRest = `var(${ctrlInputBackgroundRestRaw}, ${backgroundCtrlNeutralRestRaw})`;
+export const ctrlInputBackgroundHover = `var(${ctrlInputBackgroundHoverRaw}, ${backgroundCtrlNeutralHoverRaw})`;
+export const ctrlInputBackgroundPressed = `var(${ctrlInputBackgroundPressedRaw}, ${backgroundCtrlNeutralPressedRaw})`;
+export const ctrlInputBackgroundDisabled = `var(${ctrlInputBackgroundDisabledRaw}, ${backgroundCtrlNeutralDisabledRaw})`;
+export const ctrlInputBackgroundSelected = `var(${ctrlInputBackgroundSelectedRaw}, ${backgroundCtrlNeutralRestRaw})`;
+export const ctrlInputBackgroundError = `var(${ctrlInputBackgroundErrorRaw}, ${backgroundCtrlNeutralRestRaw})`;
+export const ctrlInputStrokeRest = `var(${ctrlInputStrokeRestRaw}, ${strokeCtrlOnoutlineRestRaw})`;
+export const ctrlInputBottomlineStrokewidthRest = `var(${ctrlInputBottomlineStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlInputStrokewidthRest = `var(${ctrlInputStrokewidthRestRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlInputTextselectionBackground = `var(${ctrlInputTextselectionBackgroundRaw}, ${backgroundCtrlBrandRestRaw})`;
+export const ctrlInputTextselectionForeground = `var(${ctrlInputTextselectionForegroundRaw}, ${foregroundCtrlOnbrandRestRaw})`;
+export const ctrlInputStrokewidthHover = `var(${ctrlInputStrokewidthHoverRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlInputStrokewidthPressed = `var(${ctrlInputStrokewidthPressedRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlInputStrokewidthSelected = `var(${ctrlInputStrokewidthSelectedRaw})`;
+export const ctrlInputBottomlineStrokewidthHover = `var(${ctrlInputBottomlineStrokewidthHoverRaw}, ${strokewidthDefaultRaw})`;
+export const ctrlInputBottomlineStrokewidthPressed = `var(${ctrlInputBottomlineStrokewidthPressedRaw}, ${ctrlInputBottomlineStrokewidthSelectedRaw})`;
+export const ctrlInputBottomlineStrokewidthSelected = `var(${ctrlInputBottomlineStrokewidthSelectedRaw})`;
+export const ctrlInputBottomlineStrokeRest = `var(${ctrlInputBottomlineStrokeRestRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlInputBottomlineStrokeHover = `var(${ctrlInputBottomlineStrokeHoverRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlInputBottomlineStrokePressed = `var(${ctrlInputBottomlineStrokePressedRaw}, ${foregroundCtrlNeutralSecondaryRestRaw})`;
+export const ctrlInputBottomlineStrokeDisabled = `var(${ctrlInputBottomlineStrokeDisabledRaw}, ${nullColorRaw})`;
+export const ctrlInputBottomlineStrokeSelected = `var(${ctrlInputBottomlineStrokeSelectedRaw}, ${backgroundCtrlBrandRestRaw})`;
+export const ctrlInputBottomlineStrokeError = `var(${ctrlInputBottomlineStrokeErrorRaw}, ${nullColorRaw})`;
+export const ctrlInputStrokeHover = `var(${ctrlInputStrokeHoverRaw}, ${strokeCtrlOnoutlineHoverRaw})`;
+export const ctrlInputStrokePressed = `var(${ctrlInputStrokePressedRaw}, ${strokeCtrlOnoutlinePressedRaw})`;
+export const ctrlInputStrokeDisabled = `var(${ctrlInputStrokeDisabledRaw}, ${strokeCtrlOnoutlineDisabledRaw})`;
+export const ctrlInputStrokeSelected = `var(${ctrlInputStrokeSelectedRaw}, ${strokeCtrlOnoutlineRestRaw})`;
+export const ctrlInputStrokeError = `var(${ctrlInputStrokeErrorRaw}, ${statusDangerStrokeRaw})`;
