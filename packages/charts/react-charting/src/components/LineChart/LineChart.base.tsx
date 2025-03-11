@@ -461,7 +461,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points);
     this._yMin = startValue;
-    this._yPadding = this.props.lineMode === 'scatter' ? (endValue - startValue) * 0.1 : 0;
+    this._yPadding = (endValue - startValue) * 0.1;
     return {
       startValue: startValue - this._yPadding,
       endValue: endValue + this._yPadding,
@@ -482,7 +482,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines(xElement!, containerHeight!, containerWidth!);
+    this.lines = this._createLines(xElement!, containerHeight!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: LineChartDataWithIndex | IColorFillBarsProps) => {
@@ -653,7 +653,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const extraYPixels = this._yAxisScale(this._yMin) - this._yAxisScale(this._yMin + this._yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
-  private _createLines(xElement: SVGElement, containerHeight: number, containerWidth: number): JSX.Element[] {
+  private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -1662,7 +1662,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    this._xPadding = this.props.lineMode === 'scatter' ? (this._xMax - this._xMin) * 0.1 : 0;
+    this._xPadding = (this._xMax - this._xMin) * 0.1;
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
 
