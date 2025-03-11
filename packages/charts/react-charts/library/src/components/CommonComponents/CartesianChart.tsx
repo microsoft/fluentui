@@ -421,7 +421,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     if (props.parentRef || chartContainer.current) {
       const container = props.parentRef ? props.parentRef : chartContainer.current!;
       const currentContainerWidth =
-        props.enableReflow && !_isFirstRender.current
+        props.reflowProps?.mode === 'min-width' && !_isFirstRender.current
           ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
           : container.getBoundingClientRect().width;
       const currentContainerHeight =

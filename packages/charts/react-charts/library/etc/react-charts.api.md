@@ -74,7 +74,6 @@ export interface CartesianChartProps {
     customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
-    enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideTickOverlap?: boolean;
@@ -87,6 +86,9 @@ export interface CartesianChartProps {
     margins?: Margins;
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
+    reflowProps?: {
+        mode: 'none' | 'min-width';
+    };
     rotateXAxisLables?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {

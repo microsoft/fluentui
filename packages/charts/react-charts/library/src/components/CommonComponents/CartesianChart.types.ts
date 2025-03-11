@@ -372,10 +372,16 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
-   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default True for LineChart but False for other charts
+   * Props related to reflow behavior of the chart
    */
-  enableReflow?: boolean;
+  reflowProps?: {
+    /**
+     * Determines the reflow behavior of the chart.
+     * When set to `'min-width'`, the chart will not shrink below a certain width and will enable scrolling if it overflows.
+     * @default 'none'
+     */
+    mode: 'none' | 'min-width';
+  };
 
   /**
    * Prop to set the x axis title
