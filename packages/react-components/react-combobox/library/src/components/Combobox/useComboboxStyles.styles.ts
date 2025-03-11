@@ -125,7 +125,12 @@ const useStyles = makeStyles({
       borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
     },
 
-    '&:active, &:focus-within': {
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+    },
+
+    '&:focus-within': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
