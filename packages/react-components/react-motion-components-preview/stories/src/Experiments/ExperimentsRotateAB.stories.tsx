@@ -106,10 +106,10 @@ export const ExperimentsRotateAB = () => {
     </div>
   );
 
-  const easing = [motionTokens.curveDecelerateMid, motionTokens.curveAccelerateMid];
+  // const easing = [motionTokens.curveDecelerateMid, motionTokens.curveAccelerateMid];
   return (
-    <div className={classes.container} style={{ perspective }}>
-      <div className={classes.controls}>
+    <div className={classes.container}>
+      {/* <div className={classes.controls}>
         <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
@@ -163,49 +163,26 @@ export const ExperimentsRotateAB = () => {
           />
           <Label aria-hidden>{perspectiveMax}</Label>
         </div>
-      </div>
+      </div> */}
 
-      <div>
-        <Series autoloop>
-          <Rotate.In
-            // visible={visible}
-            axis={axis}
-            enterDuration={duration}
-            enterEasing={easing[0]}
-          >
-            {contentA}
-          </Rotate.In>
-
+      <div style={{ perspective, perspectiveOrigin: '50% 50%', display: 'inline' }}>
+        <Series
+          autoloop
+          commonProps={{
+            axis: 'Y',
+            enterDuration: duration,
+            enterEasing: motionTokens.curveDecelerateMid,
+            exitEasing: motionTokens.curveAccelerateMid,
+            animateOpacity: false,
+          }}
+        >
+          <Rotate.In>{contentA}</Rotate.In>
           <Hold duration={2000}>{contentA}</Hold>
+          <Rotate.Out exitAngle={-90}>{contentA}</Rotate.Out>
 
-          <Rotate.Out
-            // visible={visible}
-            axis={axis}
-            enterDuration={duration}
-            enterEasing={easing[1]}
-          >
-            {contentA}
-          </Rotate.Out>
-
-          <Rotate.In
-            // visible={visible}
-            axis={axis}
-            enterDuration={duration}
-            enterEasing={easing[0]}
-          >
-            {contentB}
-          </Rotate.In>
-
+          <Rotate.In enterAngle={90}>{contentB}</Rotate.In>
           <Hold duration={2000}>{contentB}</Hold>
-
-          <Rotate.Out
-            // visible={visible}
-            axis={axis}
-            enterDuration={duration}
-            enterEasing={easing[1]}
-          >
-            {contentB}
-          </Rotate.Out>
+          <Rotate.Out>{contentB}</Rotate.Out>
         </Series>
       </div>
     </div>
