@@ -85,7 +85,7 @@ export class Tree extends FASTElement {
    * 2. Update the child items' appearance based on the tree's appearance
    */
   private updateSizeAndAppearance() {
-    if (!this.childTreeItems || !this.childTreeItems.length) {
+    if (!this.childTreeItems?.length) {
       return;
     }
     this.childTreeItems.forEach(item => {
@@ -117,7 +117,7 @@ export class Tree extends FASTElement {
    *
    *  @internal
    */
-  handleKeyDown = (e: KeyboardEvent): boolean | void => {
+  public keydownHandler(e: KeyboardEvent): boolean | void {
     if (e.defaultPrevented) {
       return;
     }
@@ -130,24 +130,27 @@ export class Tree extends FASTElement {
     const elements = this.getVisibleNodes();
 
     switch (e.key) {
-      case keyHome:
+      case keyHome: {
         if (elements.length) {
           elements[0].focus();
         }
         return;
-      case keyEnd:
+      }
+      case keyEnd: {
         if (elements.length) {
           elements[elements.length - 1].focus();
         }
         return;
-      case keyArrowLeft:
+      }
+      case keyArrowLeft: {
         if (item?.childTreeItems?.length && item.expanded) {
           item.expanded = false;
-        } else if (item.parentElement instanceof TreeItem) {
+        } else if (isTreeItem(item.parentElement)) {
           item.parentElement.focus();
         }
         return;
-      case keyArrowRight:
+      }
+      case keyArrowRight: {
         if (item?.childTreeItems?.length) {
           if (!item.expanded) {
             item.expanded = true;
@@ -156,26 +159,31 @@ export class Tree extends FASTElement {
           }
         }
         return;
-      case keyArrowDown:
-        if (e.target instanceof TreeItem) {
-          this.focusNextNode(1, e.target);
+      }
+      case keyArrowDown: {
+        if (isTreeItem(item)) {
+          this.focusNextNode(1, item);
         }
         return;
-      case keyArrowUp:
-        if (e.target instanceof TreeItem) {
-          this.focusNextNode(-1, e.target);
+      }
+      case keyArrowUp: {
+        if (isTreeItem(item)) {
+          this.focusNextNode(-1, item);
         }
         return;
-      case keyEnter:
+      }
+      case keyEnter: {
         // In single-select trees where selection does not follow focus (see note below),
         // the default action is typically to select the focused node.
-        this.handleClick(e as Event);
+        this.clickHandler(e as Event);
         return;
-      case keySpace:
-        if (e.target instanceof TreeItem) {
-          e.target.toggleSelection();
+      }
+      case keySpace: {
+        if (isTreeItem(item)) {
+          item.toggleSelection();
         }
         return;
+      }
     }
 
     // don't prevent default if we took no action
@@ -187,7 +195,7 @@ export class Tree extends FASTElement {
    *
    * @internal
    */
-  handleFocus = (e: FocusEvent): void => {
+  public focusHandler(e: FocusEvent): void {
     if (this.childTreeItems.length < 1) {
       // no child items, nothing to do
       return;
@@ -216,7 +224,7 @@ export class Tree extends FASTElement {
    *
    * @internal
    */
-  handleBlur = (e: FocusEvent): void => {
+  public blurHandler(e: FocusEvent): void {
     if (e.target instanceof HTMLElement && (e.relatedTarget === null || !this.contains(e.relatedTarget as Node))) {
       this.setAttribute('tabindex', '0');
     }
@@ -227,7 +235,8 @@ export class Tree extends FASTElement {
    *
    *  @internal
    */
-  handleClick(e: Event) {
+
+  public clickHandler(e: Event): boolean | void {
     if (e.defaultPrevented) {
       // handled, do nothing
       return;
@@ -250,7 +259,7 @@ export class Tree extends FASTElement {
    *
    *  @internal
    */
-  handleChange = (e: Event): boolean | void => {
+  public changeHandler(e: Event): boolean | void {
     if (e.defaultPrevented) {
       return;
     }

@@ -18,7 +18,7 @@ export class TreeItem extends FASTElement {
   /**
    * When true, the control will be appear expanded by user interaction.
    * @public
-   * HTML Attribute: expanded
+   * HTML Attribute: `expanded`
    */
   @attr({ mode: 'boolean' })
   expanded: boolean = false;
@@ -104,7 +104,7 @@ export class TreeItem extends FASTElement {
       this.$fastController.removeStyles(this.styles);
     }
 
-    this.styles = css/**css*/ `
+    this.styles = css`
       :host {
         --indent: ${next as any};
       }
@@ -129,7 +129,7 @@ export class TreeItem extends FASTElement {
    * 2. Update the child items' appearance based on the tree's appearance
    */
   private updateChildTreeItems() {
-    if (!this.childTreeItems || !this.childTreeItems.length) {
+    if (!this.childTreeItems?.length) {
       return;
     }
 
@@ -147,7 +147,7 @@ export class TreeItem extends FASTElement {
    * Sets the indent for each item
    */
   private setIndent(item: TreeItem): void {
-    const indent = this.dataIndent === undefined ? 0 : this.dataIndent;
+    const indent = this.dataIndent ?? 0;
     item.dataIndent = indent + 1;
   }
 
