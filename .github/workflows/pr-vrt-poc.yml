@@ -125,7 +125,7 @@ jobs:
       - run: yarn nx run visual-regression-assert:build
 
       - name: Run VR tests
-        run: yarn nx affected -t test-vr-cli --nxBail
+        run: yarn nx affected -t test-vr-cli
 
       - name: Report
         if: always()
