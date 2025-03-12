@@ -177,7 +177,7 @@ function withSlotEnhancer(story: PreparedStory) {
   return component;
 }
 
-const AdditionalApiDocs: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const AdditionalApiDocs: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const styles = useStyles();
   return (
     <div className={styles.additionalInfo}>
