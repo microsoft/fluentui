@@ -10,10 +10,7 @@ export interface ChartPopoverProps {
   XValue?: string;
   color?: string;
   culture?: string;
-  customCallout?: {
-    customizedCallout?: JSX.Element;
-    customCalloutProps?: ChartPopoverProps;
-  };
+  customizedCallout?: JSX.Element;
   isCalloutForStack?: boolean;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
@@ -24,19 +21,5 @@ export interface ChartPopoverProps {
 }
 
 export interface PopoverComponentStyles {
-  calloutContentRoot: string;
-  calloutDateTimeContainer: string;
-  calloutContentX: string;
-  calloutBlockContainer: string;
-  calloutBlockContainertoDrawShapefalse: string;
-  calloutBlockContainertoDrawShapetrue: string;
-  shapeStyles: string;
-  calloutlegendText: string;
-  calloutContentY: string;
-  descriptionMessage: string;
-  ratio: string;
-  numerator: string;
-  denominator: string;
-  calloutInfoContainer: string;
   calloutContainer: string;
 }

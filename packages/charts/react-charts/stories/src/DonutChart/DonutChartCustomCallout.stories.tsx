@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  ChartPopoverProps,
+  ChartHoverCard,
 } from '@fluentui/react-charts';
 import { Switch, tokens } from '@fluentui/react-components';
 
@@ -36,16 +36,6 @@ export const DonutChartCustomCallout = () => {
   const data: ChartProps = {
     chartTitle: 'Donut chart custom callout example',
     chartData: points,
-  };
-
-  const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
-    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
-    return {
-      XValue: 'Custom XVal',
-      legend: 'Custom Legend',
-      YValue: yValue,
-      color: getColorFromToken(DataVizPalette.warning),
-    };
   };
 
   const customPopover = (props: ChartDataPoint): JSX.Element | undefined => {
@@ -82,7 +72,14 @@ export const DonutChartCustomCallout = () => {
           {yValue}
         </div>
       </div>
-    ) : undefined;
+    ) : (
+      <ChartHoverCard
+        XValue="Custom XVal"
+        legend="Custom Legend"
+        YValue={props ? `${props.yAxisCalloutData! || props.data} h` : ''}
+        color={getColorFromToken(DataVizPalette.warning)}
+      />
+    );
   };
 
   return (
@@ -96,7 +93,6 @@ export const DonutChartCustomCallout = () => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
-        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />
     </>

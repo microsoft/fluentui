@@ -5,7 +5,7 @@ import {
   ChartDataPoint,
   DataVizPalette,
   getColorFromToken,
-  ChartPopoverProps,
+  ChartHoverCard,
 } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
 import { Switch, tokens } from '@fluentui/react-components';
@@ -112,17 +112,6 @@ export const HorizontalBarCustomCallout = () => {
       ],
     },
   ];
-  const customPopoverProps = (props: ChartDataPoint): ChartPopoverProps => {
-    const yValue = props ? `${props.yAxisCalloutData! || props.data} h` : '';
-    const color = props ? props.color : getColorFromToken(DataVizPalette.color28);
-    return {
-      XValue: 'Custom XVal',
-      legend: 'Custom Legend',
-      YValue: yValue,
-      color,
-      isCalloutForStack: false,
-    };
-  };
 
   const _onTogglePopoverCheckChange = React.useCallback(ev => {
     setUseCustomPopover(ev.currentTarget.checked);
@@ -162,7 +151,15 @@ export const HorizontalBarCustomCallout = () => {
           {yValue}
         </div>
       </div>
-    ) : undefined;
+    ) : (
+      <ChartHoverCard
+        XValue="Custom XVal"
+        legend="Custom Legend"
+        YValue={props ? `${props.yAxisCalloutData! || props.data} h` : ''}
+        color={props ? props.color : getColorFromToken(DataVizPalette.color28)}
+        isCalloutForStack={false}
+      />
+    );
   };
   return (
     <div style={{ maxWidth: 600 }}>
@@ -181,7 +178,6 @@ export const HorizontalBarCustomCallout = () => {
             </div>
           );
         }} */
-        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerHorizontalBar={(props: ChartDataPoint) => customPopover(props)}
       />
     </div>

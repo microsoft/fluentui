@@ -73,7 +73,6 @@ export interface CartesianChartProps {
     chartLabel?: string;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
-    customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
@@ -175,6 +174,76 @@ export interface ChartDataPoint {
 }
 
 // @public (undocumented)
+export const ChartHoverCard: React_2.FunctionComponent<ChartHoverCardProps>;
+
+// @public (undocumented)
+export interface ChartHoverCardProps {
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    culture?: string;
+    // (undocumented)
+    descriptionMessage?: string;
+    // (undocumented)
+    hoverXValue?: string | number;
+    // (undocumented)
+    isCalloutForStack?: boolean;
+    // (undocumented)
+    isCartesian?: boolean;
+    // (undocumented)
+    legend?: string | number | Date;
+    // (undocumented)
+    ratio?: [number, number];
+    // (undocumented)
+    xAxisCalloutAccessibilityData?: {
+        ariaLabel?: string;
+        data?: string;
+    };
+    // (undocumented)
+    xCalloutValue?: string;
+    // (undocumented)
+    XValue?: string;
+    // (undocumented)
+    yCalloutValue?: string;
+    // (undocumented)
+    YValue?: string | number | Date;
+    // (undocumented)
+    YValueHover?: YValueHover[];
+}
+
+// @public (undocumented)
+export interface ChartHoverCardStyles {
+    // (undocumented)
+    calloutBlockContainer: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapefalse: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapetrue: string;
+    // (undocumented)
+    calloutContentRoot: string;
+    // (undocumented)
+    calloutContentX: string;
+    // (undocumented)
+    calloutContentY: string;
+    // (undocumented)
+    calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutInfoContainer: string;
+    // (undocumented)
+    calloutlegendText: string;
+    // (undocumented)
+    denominator: string;
+    // (undocumented)
+    descriptionMessage: string;
+    // (undocumented)
+    numerator: string;
+    // (undocumented)
+    ratio: string;
+    // (undocumented)
+    shapeStyles: string;
+}
+
+// @public (undocumented)
 export const ChartPopover: React_2.FunctionComponent<ChartPopoverProps>;
 
 // @public (undocumented)
@@ -189,10 +258,7 @@ export interface ChartPopoverProps {
     // (undocumented)
     culture?: string;
     // (undocumented)
-    customCallout?: {
-        customizedCallout?: JSX.Element;
-        customCalloutProps?: ChartPopoverProps;
-    };
+    customizedCallout?: JSX.Element;
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
@@ -362,7 +428,6 @@ export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 export interface DonutChartProps extends CartesianChartProps {
     calloutProps?: ChartPopoverProps;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
     hideLabels?: boolean;
     innerRadius?: number;
@@ -451,7 +516,6 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     className?: string;
     color?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];
@@ -727,35 +791,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
 // @public (undocumented)
 export interface PopoverComponentStyles {
     // (undocumented)
-    calloutBlockContainer: string;
-    // (undocumented)
-    calloutBlockContainertoDrawShapefalse: string;
-    // (undocumented)
-    calloutBlockContainertoDrawShapetrue: string;
-    // (undocumented)
     calloutContainer: string;
-    // (undocumented)
-    calloutContentRoot: string;
-    // (undocumented)
-    calloutContentX: string;
-    // (undocumented)
-    calloutContentY: string;
-    // (undocumented)
-    calloutDateTimeContainer: string;
-    // (undocumented)
-    calloutInfoContainer: string;
-    // (undocumented)
-    calloutlegendText: string;
-    // (undocumented)
-    denominator: string;
-    // (undocumented)
-    descriptionMessage: string;
-    // (undocumented)
-    numerator: string;
-    // (undocumented)
-    ratio: string;
-    // (undocumented)
-    shapeStyles: string;
 }
 
 // @public (undocumented)

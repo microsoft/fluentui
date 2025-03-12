@@ -101,11 +101,6 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
    * prop to render the custom callout
    */
   onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
-
-  /**
-   * Define a custom callout props override
-   */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 }
 
 /**
