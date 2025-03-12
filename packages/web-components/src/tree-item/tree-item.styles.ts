@@ -24,6 +24,7 @@ import {
   curveEasyEaseMax,
   durationFaster,
   fontSizeBase300,
+  spacingHorizontalM,
   spacingHorizontalXS,
   spacingHorizontalXXL,
   spacingHorizontalXXS,
@@ -42,10 +43,6 @@ export const styles = css`
     outline: none;
   }
 
-  :host([data-indent]) {
-    --indent: attr(data-indent type(<number>));
-  }
-
   :host(:focus-visible) .positioning-region {
     box-shadow: ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalXXS}
       ${colorStrokeFocus2} inset;
@@ -54,10 +51,6 @@ export const styles = css`
     :host(:focus-visible) .positioning-region {
       outline: 1px solid ${colorStrokeFocus2};
     }
-  }
-
-  :host([size="small"]) ::slotted(fluent-tree-item) {
-    padding-inline-start: ${spacingHorizontalXXL};
   }
 
   /**
@@ -147,7 +140,7 @@ export const styles = css`
   }
 
   .items {
-    display: none
+    display: none;
   }
 
   :host([expanded]) .items {
@@ -172,13 +165,13 @@ export const styles = css`
     }
   }
 
-  :host([size="small"]) .positioning-region {
+  :host([size='small']) .positioning-region {
     height: ${spacingVerticalXXL};
-    background: red;
+    padding-inline-start: calc(var(--indent) * ${spacingHorizontalM});
   }
 
   /* Appearance variants - subtle-alpha */
-  :host([appearance="subtle-alpha"]) .positioning-region {
+  :host([appearance='subtle-alpha']) .positioning-region {
     background-color: ${colorSubtleBackground};
     &:hover {
       background-color: ${colorSubtleBackgroundLightAlphaHover};
@@ -188,13 +181,13 @@ export const styles = css`
       background-color: ${colorSubtleBackgroundLightAlphaPressed};
     }
   }
-  :host([appearance="subtle-alpha"][selected]) .positioning-region {
+  :host([appearance='subtle-alpha'][selected]) .positioning-region {
     background-color: ${colorSubtleBackgroundLightAlphaSelected};
     color: ${colorNeutralForeground2Selected};
   }
 
   /* Appearance variants - transparent */
-  :host([appearance="transparent"]) .positioning-region {
+  :host([appearance='transparent']) .positioning-region {
     background-color: ${colorTransparentBackground};
     &:hover {
       background-color: ${colorTransparentBackgroundHover};
@@ -204,7 +197,7 @@ export const styles = css`
       background-color: ${colorTransparentBackgroundPressed};
     }
   }
-  :host([appearance="transparent"][selected]) .positioning-region {
+  :host([appearance='transparent'][selected]) .positioning-region {
     background-color: ${colorTransparentBackgroundSelected};
     color: ${colorNeutralForeground2Selected};
   }

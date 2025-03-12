@@ -1,5 +1,4 @@
 import { children, elements, html } from '@microsoft/fast-element';
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
 
 // We don't put the icon into the icons/index.ts file because
@@ -21,15 +20,12 @@ export const template = html<TreeItem>`
     @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
     ${children({
       property: 'childTreeItems',
-      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+      filter: elements(),
     })}
   >
     <div class="positioning-region" part="positioning-region">
       <div class="content-region" part="content-region">
-        <span
-          class="chevron-region"
-          part="chevron-region"
-        >
+        <span class="chevron-region" part="chevron-region">
           <slot name="chevron">${chevronIcon}</slot>
         </span>
         <span class="start-region" part="start-region">
@@ -45,11 +41,7 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    <div
-      role="group"
-      class="items"
-      part="items"
-    >
+    <div role="group" class="items" part="items">
       <slot name="item"></slot>
     </div>
   </template>

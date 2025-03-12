@@ -22,7 +22,7 @@ import {
   keySpace,
 } from '@microsoft/fast-web-utilities';
 import { TreeItem } from '../tree-item/index.js';
-import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options';
+import { isTreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options';
 
 export class Tree extends FASTElement {
   /**
@@ -89,6 +89,9 @@ export class Tree extends FASTElement {
       return;
     }
     this.childTreeItems.forEach(item => {
+      if (!isTreeItem(item)) {
+        return;
+      }
       item.size = this.size;
       item.appearance = this.appearance;
     });

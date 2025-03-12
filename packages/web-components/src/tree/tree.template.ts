@@ -1,5 +1,4 @@
 import { children, elements, html } from '@microsoft/fast-element';
-import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
@@ -12,7 +11,7 @@ export const template = html<Tree>`
     @change="${(x, c) => x.handleSelectedChange(c.event)}"
     ${children({
       property: 'childTreeItems',
-      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+      filter: elements(),
     })}
   >
     <slot></slot>

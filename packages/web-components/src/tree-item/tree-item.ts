@@ -1,6 +1,7 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
+import { name } from 'ejs';
 import { toggleState } from '../utils/element-internals.js';
-import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
+import { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 export class TreeItem extends FASTElement {
   /**
@@ -90,6 +91,29 @@ export class TreeItem extends FASTElement {
     this.updateChildTreeItems();
   }
 
+  private styles: ElementStyles | undefined;
+
+  /**
+   * The indent of the tree item element.
+   * This is not needed once css attr() is supported (--indent: attr(data-indent type(<number>)));
+   */
+  @attr({ attribute: 'data-indent' })
+  public dataIndent!: number | undefined;
+
+  private dataIndentChanged(prev: number, next: number) {
+    if (this.styles !== undefined) {
+      this.$fastController.removeStyles(this.styles);
+    }
+
+    this.styles = css/**css*/ `
+      :host {
+        --indent: ${next as any};
+      }
+    `;
+
+    this.$fastController.addStyles(this.styles);
+  }
+
   @observable
   childTreeItems: TreeItem[] | undefined = [];
 
@@ -111,11 +135,21 @@ export class TreeItem extends FASTElement {
     }
 
     this.childTreeItems.forEach(item => {
-      const indent = this.getAttribute(`data-indent`) === null ? 0 : parseInt(this.getAttribute(`data-indent`) as string)
+      if (!isTreeItem(item)) {
+        return;
+      }
+      this.setIndent(item);
       item.size = this.size;
       item.appearance = this.appearance;
-      item.setAttribute('data-indent', `${indent + 1}`);
     });
+  }
+
+  /**
+   * Sets the indent for each item
+   */
+  private setIndent(item: TreeItem): void {
+    const indent = this.dataIndent === undefined ? 0 : this.dataIndent;
+    item.dataIndent = indent + 1;
   }
 
   /**
@@ -166,7 +200,7 @@ export class TreeItem extends FASTElement {
    * @internal
    */
   get isNestedItem() {
-    return this.parentElement instanceof TreeItem;
+    return isTreeItem(this.parentElement);
   }
 
   /**
