@@ -245,6 +245,7 @@ export const SubtleCircularAppearance = {
       <Tab value="3">Third</Tab>
     </TabList>
   ),
+  name: 'Subtle circular appearance',
 };
 
 export const SubtleCircularAppearanceDarkMode = getStoryVariant(SubtleCircularAppearance, DARK_MODE);
@@ -261,6 +262,7 @@ export const FilledCircularAppearance = {
       <Tab value="3">Third</Tab>
     </TabList>
   ),
+  name: 'Filled circular appearance',
 };
 
 export const FilledCircularAppearanceDarkMode = getStoryVariant(FilledCircularAppearance, DARK_MODE);
