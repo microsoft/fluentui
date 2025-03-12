@@ -13,6 +13,10 @@
         align-items: center;
       }
 
+      section {
+        padding-top: 2rem;
+      }
+
       table {
         width: 90%;
         max-width: 800px;
@@ -77,17 +81,38 @@
   </head>
   <body>
     <h1>Snapshot Comparison Report</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>File</th>
-          <th>Status</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%- content %>
-      </tbody>
-    </table>
+
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Status</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- changed %>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <details>
+        <summary>Unchanged Scenarios</summary>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Status</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- unchanged %>
+          </tbody>
+        </table>
+      </details>
+    </section>
   </body>
 </html>
