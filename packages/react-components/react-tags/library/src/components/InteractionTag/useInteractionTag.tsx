@@ -44,7 +44,7 @@ export const useInteractionTag_unstable = (
     handleTagDismiss,
     handleTagSelect,
     interactionTagPrimaryId,
-    selected: selectedValues.includes(value) ?? selected,
+    selected: selectedValues.includes(value) || selected,
     selectedValues,
     shape,
     size,
