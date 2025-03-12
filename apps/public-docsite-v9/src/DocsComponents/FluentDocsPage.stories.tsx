@@ -1,5 +1,5 @@
 import * as React from 'react';
-import cloneDeep from 'lodash/cloneDeep';
+import { cloneDeep } from 'lodash';
 import {
   DocsContext,
   ArgsTable,
@@ -11,15 +11,13 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, StrictArgTypes } from '@storybook/types';
-import type { SBEnumType } from '@storybook/csf';
+import type { PreparedStory, Renderer, StrictArgTypes, SBEnumType } from '@storybook/types';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
 import { Toc, nameToHash } from './Toc.stories';
-import { has } from 'lodash';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -64,7 +62,6 @@ const useStyles = makeStyles({
     margin: `0 ${tokens.spacingHorizontalM}`,
   },
   additionalInfoIcon: {
-    // alignSelf: 'flex-start',
     alignSelf: 'center',
     color: tokens.colorBrandForeground1,
     fontSize: '24px',
@@ -73,7 +70,6 @@ const useStyles = makeStyles({
   additionalInfoMessage: {
     display: 'flex',
     flexDirection: 'row',
-    // alignItems: 'flex-start',
     alignItems: 'center',
     gap: tokens.spacingVerticalXS,
   },
@@ -195,7 +191,6 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
 const RenderArgsTable = ({
   hideArgsTable,
   story,
-  argTypes,
 }: {
   story: PrimaryStory;
   hideArgsTable: boolean;
