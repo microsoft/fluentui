@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InteractionTagState } from '../components/InteractionTag/index';
+import type { InteractionTagState } from '../components/InteractionTag/index';
 import { TagDismissHandler, TagSelectHandler } from '../utils/types';
 
 export const InteractionTagContext = React.createContext<InteractionTagContextValue | undefined>(undefined);
