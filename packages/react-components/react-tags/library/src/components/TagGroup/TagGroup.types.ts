@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot, EventHandler } from '@fluentui/react-utilities';
-import {
+import type {
   TagSize,
   TagValue,
   TagDismissHandler,
