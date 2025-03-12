@@ -101,6 +101,12 @@ export interface DonutChartProps {
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
+
+  /**
+   * Do not show tooltips in chart
+   * @default false
+   */
+  hideTooltip?: boolean;
 }
 
 /**

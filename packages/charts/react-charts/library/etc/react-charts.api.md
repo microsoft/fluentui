@@ -366,6 +366,7 @@ export interface DonutChartProps {
     height?: number;
     hideLabels?: boolean;
     hideLegend?: boolean;
+    hideTooltip?: boolean;
     href?: string;
     innerRadius?: number;
     // (undocumented)
