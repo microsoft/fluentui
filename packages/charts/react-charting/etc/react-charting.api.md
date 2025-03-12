@@ -963,6 +963,7 @@ export interface ILegendSubComponentStyles {
 export interface ILineChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerSize?: number;
     onDataPointClick?: () => void;
     x: number | Date;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
@@ -1013,6 +1014,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    lineMode?: 'default' | 'scatter';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)

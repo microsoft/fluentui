@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: focus on Y axis",
-  "packageName": "@fluentui/react-color-picker-preview",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}
