@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 import {
   DocsContext,
   ArgsTable,
@@ -18,6 +19,7 @@ import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
 import { Toc, nameToHash } from './Toc.stories';
+import { has } from 'lodash';
 
 type PrimaryStory = PreparedStory<Renderer>;
 
@@ -144,10 +146,10 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 };
 
 const slotRegex = /as\?:\s*"([^"]+)"/;
-let hasSlotMatch = false;
 function withSlotEnhancer(story: PreparedStory) {
   const updatedArgTypes = { ...story.argTypes };
-
+  const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
+  let hasArgAsSlot = false;
   type InternalComponentApi = {
     __docgenInfo: { props?: Record<string, { type: { name: string } }> };
     [k: string]: unknown;
@@ -162,7 +164,7 @@ function withSlotEnhancer(story: PreparedStory) {
   Object.entries(docGenProps).forEach(([key, argType]) => {
     const value: string = argType?.type?.name;
     if (value.includes('WithSlotShorthandValue')) {
-      hasSlotMatch = true;
+      hasArgAsSlot = true;
       const match = value.match(slotRegex);
       if (match) {
         component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
@@ -176,7 +178,7 @@ function withSlotEnhancer(story: PreparedStory) {
     }
   });
 
-  return component;
+  return { component, hasArgAsSlot, hasArgAsProp };
 }
 
 const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
@@ -199,15 +201,8 @@ const RenderArgsTable = ({
   hideArgsTable: boolean;
   argTypes: StrictArgTypes;
 }) => {
-  const storyCopy = { ...story };
-  type InternalComponentApi = {
-    __docgenInfo: { props?: Record<string, { type: { name: string } }> };
-    [k: string]: unknown;
-  };
-
-  const component = withSlotEnhancer(storyCopy).component as InternalComponentApi;
-
-  const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
+  const storyCopy = cloneDeep(story);
+  const { component, hasArgAsProp, hasArgAsSlot } = withSlotEnhancer(storyCopy);
 
   return hideArgsTable ? null : (
     <>
@@ -226,7 +221,7 @@ const RenderArgsTable = ({
           </p>
         </AdditionalApiDocs>
       )}
-      {hasSlotMatch && (
+      {hasArgAsSlot && (
         <AdditionalApiDocs>
           <p>
             <b>
