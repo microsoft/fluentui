@@ -6,6 +6,7 @@ import ExperimentsDescription from './ExperimentsDescription.md';
 export { ExperimentsRotate as Rotate } from './ExperimentsRotate.stories';
 export { ExperimentsRotateAB as RotateAB } from './ExperimentsRotateAB.stories';
 export { ExperimentsBlur as Blur } from './ExperimentsBlur.stories';
+export { ExperimentsBlurAB as BlurAB } from './ExperimentsBlurAB.stories';
 export { ExperimentsSpiral as Spiral } from './ExperimentsSpiral.stories';
 export { ExperimentsWipe as Wipe } from './ExperimentsWipe.stories';
 export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.stories';
