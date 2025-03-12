@@ -55,14 +55,15 @@ const useStyles = makeStyles({
   additionalInfo: {
     display: 'flex',
     flexDirection: 'column',
-    gap: tokens.spacingHorizontalM,
+    gap: tokens.spacingVerticalM,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     padding: tokens.spacingHorizontalM,
     margin: `0 ${tokens.spacingHorizontalM}`,
   },
   additionalInfoIcon: {
-    alignSelf: 'flex-start',
+    // alignSelf: 'flex-start',
+    alignSelf: 'center',
     color: tokens.colorBrandForeground1,
     fontSize: '24px',
     marginRight: tokens.spacingHorizontalM,
@@ -70,7 +71,8 @@ const useStyles = makeStyles({
   additionalInfoMessage: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    // alignItems: 'flex-start',
+    alignItems: 'center',
     gap: tokens.spacingVerticalXS,
   },
   infoIcon: {
@@ -177,7 +179,7 @@ function withSlotEnhancer(story: PreparedStory) {
   return component;
 }
 
-const AdditionalApiDocs: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
   const styles = useStyles();
   return (
     <div className={styles.additionalInfo}>
@@ -211,30 +213,36 @@ const RenderArgsTable = ({
     <>
       {hasArgAsProp && (
         <AdditionalApiDocs>
-          <b>
-            Native props are supported <span role="presentation">🙌</span>
-          </b>
-          <span>
-            All HTML attributes native to the
-            {getNativeElementsList(story.argTypes.as?.options)}, including all <code>aria-*</code> and{' '}
-            <code>data-*</code> attributes, can be applied as native props on this component.
-          </span>
+          <p>
+            <b>
+              Native props are supported <span role="presentation">🙌</span>
+              <br />
+            </b>
+            <span>
+              All HTML attributes native to the
+              {getNativeElementsList(story.argTypes.as?.options)}, including all <code>aria-*</code> and{' '}
+              <code>data-*</code> attributes, can be applied as native props on this component.
+            </span>
+          </p>
         </AdditionalApiDocs>
       )}
       {hasSlotMatch && (
         <AdditionalApiDocs>
-          <b>
-            Customizing components with slots <span role="presentation">🙌</span>
-          </b>
-          <span>
-            Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible approach
-            to customizing components. Each slot is exposed as a top-level prop and can be filled with primitive values,
-            JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable component structures,
-            similar to slots in other frameworks.{' '}
-            <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
-              Customizing components with slots{' '}
-            </Link>
-          </span>
+          <p>
+            <b>
+              Customizing components with slots <span role="presentation">🙌</span>
+            </b>
+            <br />
+            <span>
+              Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible approach
+              to customizing components. Each slot is exposed as a top-level prop and can be filled with primitive
+              values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable component
+              structures, similar to slots in other frameworks.{' '}
+              <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                Customizing components with slots{' '}
+              </Link>
+            </span>
+          </p>
         </AdditionalApiDocs>
       )}
       <ArgsTable of={component} />
