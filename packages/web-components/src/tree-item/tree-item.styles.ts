@@ -24,7 +24,6 @@ import {
   curveEasyEaseMax,
   durationFaster,
   fontSizeBase300,
-  spacingHorizontalM,
   spacingHorizontalXS,
   spacingHorizontalXXL,
   spacingHorizontalXXS,
@@ -35,8 +34,6 @@ import {
   spacingVerticalXXXL,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
-
-export const treeItemLevelToken = '--fluentTreeItemLevel' as const;
 
 export const styles = css`
   ${display('block')}
@@ -55,6 +52,14 @@ export const styles = css`
     }
   }
 
+  ::slotted(fluent-tree-item) {
+    padding-inline-start: ${spacingHorizontalXXL};
+  }
+
+  :host([size="small"]) ::slotted(fluent-tree-item) {
+    padding-inline-start: ${spacingHorizontalXXL};
+  }
+
   /**
    * Default variants:
    * Size - medium
@@ -65,23 +70,11 @@ export const styles = css`
     align-items: stretch;
     justify-content: space-between;
     cursor: pointer;
-
     height: ${spacingVerticalXXXL};
     padding-inline-end: ${spacingVerticalS};
     border-radius: ${borderRadiusMedium};
     background-color: ${colorSubtleBackground};
     color: ${colorNeutralForeground2};
-
-    /**
-     * The positioning-region's font size is inherited from host element,
-     * therefore:
-     *
-     * indentation: 0
-     *     indentation: 24
-     *         indentation: 48
-     *             ...
-     */
-    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalXXL});
 
     & .content-region {
       display: flex;
@@ -112,7 +105,7 @@ export const styles = css`
       }
 
       ::slotted([slot='start']),
-      ::slotted([slot='middle']) {
+      ::slotted(:not([slot])) {
         display: flex;
         align-items: center;
         min-width: 0;
@@ -123,7 +116,7 @@ export const styles = css`
         margin-inline-end: ${spacingHorizontalXS};
       }
 
-      ::slotted([slot='middle']) {
+      ::slotted(:not([slot])) {
         padding-inline: ${spacingHorizontalXXS};
       }
     }
@@ -152,6 +145,23 @@ export const styles = css`
     }
   }
 
+  .items {
+    display: none
+  }
+
+  :host([expanded]) .items {
+    display: block;
+  }
+
+  :host([empty]) {
+    .chevron-region {
+      visibility: hidden;
+    }
+    .items {
+      visibility: hidden;
+    }
+  }
+
   /* Appearance - subtle + selected */
   :host([selected]) .positioning-region {
     background-color: ${colorSubtleBackgroundSelected};
@@ -161,31 +171,13 @@ export const styles = css`
     }
   }
 
-  :host(.small) .positioning-region {
+  :host([size="small"]) .positioning-region {
     height: ${spacingVerticalXXL};
-    /**
-     *
-     * indentation: 0
-     *     indentation: 12
-     *         indentation: 24
-     *             ...
-     */
-    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalM});
-  }
-
-  :host(.leaf) .positioning-region {
-    /**
-     * According to the designs, the indentation of the leaf item will be 24px larger than non-leaf item,
-     * So we don't need to subtract with the ${spacingHorizontalXXL} or ${spacingHorizontalM}, and just set it to 1em
-     */
-    padding-inline-start: calc((var(${treeItemLevelToken}) + 1) * ${spacingHorizontalXXL});
-  }
-  :host(.leaf.small) .positioning-region {
-    padding-inline-start: calc(var(${treeItemLevelToken}) * ${spacingHorizontalM} + ${spacingHorizontalXXL});
+    background: red;
   }
 
   /* Appearance variants - subtle-alpha */
-  :host(.subtle-alpha) .positioning-region {
+  :host([appearance="subtle-alpha"]) .positioning-region {
     background-color: ${colorSubtleBackground};
     &:hover {
       background-color: ${colorSubtleBackgroundLightAlphaHover};
@@ -195,13 +187,13 @@ export const styles = css`
       background-color: ${colorSubtleBackgroundLightAlphaPressed};
     }
   }
-  :host(.subtle-alpha[selected]) .positioning-region {
+  :host([appearance="subtle-alpha"][selected]) .positioning-region {
     background-color: ${colorSubtleBackgroundLightAlphaSelected};
     color: ${colorNeutralForeground2Selected};
   }
 
   /* Appearance variants - transparent */
-  :host(.transparent) .positioning-region {
+  :host([appearance="transparent"]) .positioning-region {
     background-color: ${colorTransparentBackground};
     &:hover {
       background-color: ${colorTransparentBackgroundHover};
@@ -211,7 +203,7 @@ export const styles = css`
       background-color: ${colorTransparentBackgroundPressed};
     }
   }
-  :host(.transparent[selected]) .positioning-region {
+  :host([appearance="transparent"][selected]) .positioning-region {
     background-color: ${colorTransparentBackgroundSelected};
     color: ${colorNeutralForeground2Selected};
   }

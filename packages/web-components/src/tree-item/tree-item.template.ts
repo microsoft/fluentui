@@ -1,7 +1,6 @@
-import { children, elements, html, when } from '@microsoft/fast-element';
+import { children, elements, html } from '@microsoft/fast-element';
 import { FluentDesignSystem } from '../fluent-design-system.js';
 import type { TreeItem } from './tree-item.js';
-import { treeItemLevelToken } from './tree-item.styles.js';
 
 // We don't put the icon into the icons/index.ts file because
 // this icon is the default chevron icon of the tree-item component,
@@ -18,10 +17,8 @@ export const template = html<TreeItem>`
   <template
     tabindex="-1"
     slot="${x => (x.isNestedItem ? 'item' : void 0)}"
-    class="${x => x.calculatedClassName}"
     @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
     @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
-    style="${x => `${treeItemLevelToken}: ${x.depth};`}"
     ${children({
       property: 'childTreeItems',
       filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
@@ -29,9 +26,7 @@ export const template = html<TreeItem>`
   >
     <div class="positioning-region" part="positioning-region">
       <div class="content-region" part="content-region">
-        <span class="selection-region" part="selection-region"></span>
         <span
-          style="${x => (x.childTreeItems && x.childTreeItems.length > 0 ? '' : 'visibility: hidden; max-width: 0;')}"
           class="chevron-region"
           part="chevron-region"
         >
@@ -39,9 +34,7 @@ export const template = html<TreeItem>`
         </span>
         <span class="start-region" part="start-region">
           <slot name="start"></slot>
-          <slot name="middle">
-            <slot></slot>
-          </slot>
+          <slot></slot>
           <slot name="end"></slot>
         </span>
       </div>
@@ -52,21 +45,12 @@ export const template = html<TreeItem>`
         <slot name="toolbar"></slot>
       </div>
     </div>
-    ${when(
-      x => x.childTreeItems && x.childTreeItems.length > 0,
-      html`
-        <div
-          style="${x =>
-            x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
-              ? '' /** make sure we do not use visibility: visible here, it will still visible even if parent is hidden */
-              : 'visibility: hidden; max-height: 0;'}"
-          role="group"
-          class="items"
-          part="items"
-        >
-          <slot name="item"></slot>
-        </div>
-      `,
-    )}
+    <div
+      role="group"
+      class="items"
+      part="items"
+    >
+      <slot name="item"></slot>
+    </div>
   </template>
 `;

@@ -1,6 +1,6 @@
-import { attr, FASTElement, nullableNumberConverter, observable, volatile } from '@microsoft/fast-element';
-import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 export class TreeItem extends FASTElement {
   /**
@@ -10,34 +10,10 @@ export class TreeItem extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  /**
-   * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
-   * @public
-   * @remarks
-   * HTML Attribute: disabled
-   */
-  @attr({ mode: 'boolean' })
-  disabled = false;
-
-  /**
-   * Handles changes to the disabled attribute
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  disabledChanged(prev: boolean, next: boolean): void {
-    this.elementInternals.ariaDisabled = next ? 'true' : 'false';
-  }
-
   constructor() {
     super();
     this.elementInternals.role = 'treeitem';
   }
-
-  /**
-   * The depth of the tree item
-   */
-  @attr({ converter: nullableNumberConverter })
-  depth: number = 0;
 
   /**
    * When true, the control will be appear expanded by user interaction.
@@ -45,7 +21,7 @@ export class TreeItem extends FASTElement {
    * HTML Attribute: expanded
    */
   @attr({ mode: 'boolean' })
-  expanded = false;
+  expanded: boolean = false;
 
   /**
    * Handles changes to the expanded attribute
@@ -66,7 +42,7 @@ export class TreeItem extends FASTElement {
    * HTML Attribute: selected
    */
   @attr({ mode: 'boolean' })
-  selected = false;
+  selected: boolean = false;
 
   /**
    * Handles changes to the selected attribute
@@ -74,15 +50,24 @@ export class TreeItem extends FASTElement {
    * @param next - the next state
    */
   protected selectedChanged(prev: boolean, next: boolean): void {
+    this.$emit('change');
     toggleState(this.elementInternals, 'selected', next);
     this.elementInternals.ariaSelected = next ? 'true' : 'false';
   }
 
   /**
+   * When true, the control has no child tree items
+   * @public
+   * HTML Attribute: empty
+   */
+  @attr({ mode: 'boolean' })
+  empty: boolean = false;
+
+  /**
    * The size of the tree item element
    */
-  @observable
-  size: TreeItemSize = 'medium';
+  @attr
+  size: TreeItemSize = TreeItemSize.small;
 
   /**
    * Handles changes to the size attribute
@@ -95,8 +80,8 @@ export class TreeItem extends FASTElement {
   /**
    * The size of the tree item element
    */
-  @observable
-  appearance: TreeItemAppearance = 'subtle';
+  @attr
+  appearance: TreeItemAppearance = TreeItemAppearance.subtle;
 
   /**
    * Handles changes to the appearance attribute
@@ -112,6 +97,7 @@ export class TreeItem extends FASTElement {
    * Handles changes to the child tree items
    */
   private childTreeItemsChanged() {
+    this.empty = this.childTreeItems?.length === 0;
     this.updateChildTreeItems();
   }
 
@@ -126,7 +112,6 @@ export class TreeItem extends FASTElement {
     this.childTreeItems.forEach(item => {
       item.size = this.size;
       item.appearance = this.appearance;
-      item.depth = this.depth + 1;
     });
   }
 
@@ -161,7 +146,7 @@ export class TreeItem extends FASTElement {
    * Toggle the expansion state of the tree item
    */
   toggleExpansion() {
-    if (!this.disabled && this.childTreeItems?.length) {
+    if (this.childTreeItems?.length) {
       this.expanded = !this.expanded;
     }
   }
@@ -170,9 +155,7 @@ export class TreeItem extends FASTElement {
    * Toggle the single selection state of the tree item
    */
   toggleSelection() {
-    if (!this.disabled) {
-      this.selected = !this.selected;
-    }
+    this.selected = !this.selected;
   }
 
   /**
@@ -193,22 +176,5 @@ export class TreeItem extends FASTElement {
 
   get isExpanded() {
     return this.expanded && this.childTreeItems && this.childTreeItems.length > 0;
-  }
-
-  /**
-   * Calculate the class list that should be applied to the positioning-region
-   * @internal
-   */
-  @volatile
-  get calculatedClassName() {
-    let className = '';
-    if (!this.childTreeItems?.length) {
-      className += 'leaf';
-    }
-    if (this.isRootItem) {
-      className += ' root-item';
-    }
-    className += ` ${this.size} ${this.appearance}`;
-    return className.trim();
   }
 }

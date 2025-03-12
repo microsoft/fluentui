@@ -9,7 +9,7 @@ export const template = html<Tree>`
     @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
     @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
     @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
-    @selected-change="${(x, c) => x.handleSelectedChange(c.event)}"
+    @change="${(x, c) => x.handleSelectedChange(c.event)}"
     ${children({
       property: 'childTreeItems',
       filter: elements(`${FluentDesignSystem.prefix}-tree-item`),

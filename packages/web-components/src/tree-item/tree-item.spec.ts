@@ -7,7 +7,6 @@ test.describe('<tree-item>', () => {
     await page.waitForFunction(() => customElements.whenDefined('fluent-tree-item'));
   });
 
-
   test('should work with basic rendering', async ({ page }) => {
     await page.setContent(/* html */ `
         <fluent-tree-item>Item 1</fluent-tree-item>
@@ -32,8 +31,8 @@ test.describe('<tree-item>', () => {
       `);
     const treeItems = page.locator('fluent-tree-item');
     await expect(treeItems).toHaveCount(4);
-    const nestedItems = await treeItems.nth(0).locator('fluent-tree-item');
-    expect(nestedItems).toHaveCount(1);
+    const nestedItems = treeItems.nth(0).locator('fluent-tree-item');
+    await expect(nestedItems).toHaveCount(1);
   });
 
   test('should work with expanded attribute', async ({ page }) => {
@@ -45,8 +44,8 @@ test.describe('<tree-item>', () => {
     `);
     const treeItemEl = page.locator('fluent-tree-item');
     expect(await treeItemEl.nth(0).getAttribute('expanded')).toBeNull();
-    const nestedItems = await treeItemEl.nth(0).locator('fluent-tree-item');
-    expect(await nestedItems.isVisible()).toBeFalsy();
+    const nestedItems = treeItemEl.nth(0).locator('fluent-tree-item');
+    await expect(nestedItems).toBeHidden();
     // expand
     await page.setContent(`
         <fluent-tree-item expanded>
@@ -55,7 +54,7 @@ test.describe('<tree-item>', () => {
         </fluent-tree-item>
     `);
     expect(await treeItemEl.nth(0).getAttribute('expanded')).not.toBeNull();
-    expect(await nestedItems.isVisible()).toBeTruthy();
+    await expect(nestedItems).toBeVisible();
   });
 
   test('should work with selected attribute', async ({ page }) => {
@@ -74,5 +73,4 @@ test.describe('<tree-item>', () => {
     `);
     expect(await treeItemEl.getAttribute('selected')).not.toBeNull();
   });
-
 });

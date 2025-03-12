@@ -21,7 +21,8 @@ import {
   keyHome,
   keySpace,
 } from '@microsoft/fast-web-utilities';
-import { TreeItem, TreeItemAppearance, TreeItemSize } from '../tree-item/index.js';
+import { TreeItem } from '../tree-item/index.js';
+import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options';
 
 export class Tree extends FASTElement {
   /**
@@ -56,7 +57,7 @@ export class Tree extends FASTElement {
    * HTML Attribute: size
    */
   @attr()
-  size: TreeItemSize = 'medium';
+  size: TreeItemSize = TreeItemSize.small;
   private sizeChanged() {
     this.updateSizeAndAppearance();
   }
@@ -67,7 +68,7 @@ export class Tree extends FASTElement {
    * HTML Attribute: appearance
    */
   @attr()
-  appearance: TreeItemAppearance = 'subtle';
+  appearance: TreeItemAppearance = TreeItemAppearance.subtle;
   private appearanceChanged() {
     this.updateSizeAndAppearance();
   }

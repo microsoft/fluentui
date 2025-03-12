@@ -257,46 +257,11 @@ export {
   TabsStyles,
   TabsDefinition,
 } from './tabs/index.js';
-export {
-  Text,
-  TextAlign,
-  TextFont,
-  TextSize,
-  TextWeight,
-  TextTemplate,
-  TextStyles,
-  TextDefinition,
-} from './text/index.js';
-export {
-  TextInputOptions,
-  TextInput,
-  TextInputType,
-  TextInputAppearance,
-  TextInputControlSize,
-  TextInputTemplate,
-  TextInputStyles,
-  TextInputDefinition,
-} from './text-input/index.js';
-export {
-  ToggleButton,
-  ToggleButtonAppearance,
-  ToggleButtonOptions,
-  ToggleButtonShape,
-  ToggleButtonSize,
-  ToggleButtonTemplate,
-  ToggleButtonStyles,
-  ToggleButtonDefinition,
-} from './toggle-button/index.js';
-
-export { TreeItem } from './tree-item/index.js';
-export { TreeView } from './tree-view/index.js';
 
 export {
   typographyBody1Styles,
   typographyBody1StrongStyles,
   typographyBody1StrongerStyles,
-  typographyBody1StrongStyles,
-  typographyBody1Styles,
   typographyBody2Styles,
   typographyCaption1StrongerStyles,
   typographyCaption1StrongStyles,
@@ -312,20 +277,6 @@ export {
   typographyTitle2Styles,
   typographyTitle3Styles,
 } from './styles/partials/typography.partials.js';
-export { Switch, SwitchDefinition, SwitchLabelPosition, SwitchStyles, SwitchTemplate } from './switch/index.js';
-export type { SwitchOptions } from './switch/index.js';
-export { TabPanel, TabPanelDefinition, TabPanelStyles, TabPanelTemplate } from './tab-panel/index.js';
-export { Tab, TabDefinition, TabStyles, TabTemplate } from './tab/index.js';
-export type { TabOptions } from './tab/index.js';
-export {
-  Tabs,
-  TabsAppearance,
-  TabsDefinition,
-  TabsOrientation,
-  TabsSize,
-  TabsStyles,
-  TabsTemplate,
-} from './tabs/index.js';
 export {
   BaseTablist,
   Tablist,
@@ -336,7 +287,6 @@ export {
   TablistStyles,
   TablistTemplate,
 } from './tablist/index.js';
-export type { TabsOptions } from './tabs/index.js';
 export {
   BaseTextArea,
   TextArea,
@@ -391,7 +341,6 @@ export {
 } from './tooltip/index.js';
 export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
 export type { TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
-export { TreeView, TreeViewDefinition, TreeViewStyles, TreeViewTemplate } from './tree-view/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,

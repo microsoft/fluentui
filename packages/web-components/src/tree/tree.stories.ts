@@ -1,39 +1,35 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options.js';
 import type { Tree as FluentTree } from './tree.js';
-import './define.js';
-import { treeItemAppearance, treeItemSize } from '../tree-item/tree-item.options.js';
 
 type TreeStoryArgs = Args & FluentTree;
 type TreeStoryMeta = Meta<TreeStoryArgs>;
 
 const storyTemplate = html<TreeStoryArgs>`
-<fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
-  <fluent-tree-item >
-    Item 1
-    <fluent-tree-item>Item 1-1
-    </fluent-tree-item>
-    <fluent-tree-item>Item 1-2</fluent-tree-item>
-    <fluent-tree-item>Item 1-3</fluent-tree-item>
-  </fluent-tree-item>
-  <fluent-tree-item expanded>
-    Item 2
-    <fluent-tree-item expanded>
-      Item 2-1
-      <fluent-tree-item>
-        Item 2-1-1
-        <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
-        <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
-      </fluent-tree-item>
-      <fluent-tree-item>Item 2-1-2</fluent-tree-item>
-    </fluent-tree-item>
-    <fluent-tree-item>Item 2-2</fluent-tree-item>
+  <fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
     <fluent-tree-item>
-      Item 2-3
+      Item 1
+      <fluent-tree-item>Item 1-1 </fluent-tree-item>
+      <fluent-tree-item>Item 1-2</fluent-tree-item>
+      <fluent-tree-item>Item 1-3</fluent-tree-item>
     </fluent-tree-item>
-  </fluent-tree-item>
-</fluent-tree>
+    <fluent-tree-item expanded>
+      Item 2
+      <fluent-tree-item expanded>
+        Item 2-1
+        <fluent-tree-item>
+          Item 2-1-1
+          <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+          <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+        </fluent-tree-item>
+        <fluent-tree-item>Item 2-1-2</fluent-tree-item>
+      </fluent-tree-item>
+      <fluent-tree-item>Item 2-2</fluent-tree-item>
+      <fluent-tree-item> Item 2-3 </fluent-tree-item>
+    </fluent-tree-item>
+  </fluent-tree>
 `;
 
 export default {
@@ -51,7 +47,7 @@ export default {
     },
     size: {
       control: 'select',
-      options: Object.values(treeItemSize),
+      options: Object.values(TreeItemSize),
       description: 'Sets the visual appearance of the control',
       table: {
         defaultValue: {
@@ -62,7 +58,7 @@ export default {
     },
     appearance: {
       control: 'select',
-      options: Object.values(treeItemAppearance),
+      options: Object.values(TreeItemAppearance),
       description: 'The appearance variants of the tree item element',
       table: {
         defaultValue: {
