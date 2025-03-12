@@ -461,7 +461,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points);
     this._yMin = startValue;
-    this._yPadding = (endValue - startValue) * 0.1;
+    if (this.props.lineMode === 'scatter') {
+      this._yPadding = (endValue - startValue) * 0.1;
+    }
     return {
       startValue: startValue - this._yPadding,
       endValue: endValue + this._yPadding,
@@ -1663,7 +1665,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    this._xPadding = (this._xMax - this._xMin) * 0.1;
+    if (this.props.lineMode === 'scatter') {
+      this._xPadding = (this._xMax - this._xMin) * 0.1;
+    }
     const rStartValue = margins.left!;
     const rEndValue = width - margins.right!;
 
