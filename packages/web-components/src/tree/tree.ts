@@ -150,15 +150,11 @@ export class Tree extends FASTElement {
         return;
       }
       case keyArrowDown: {
-        if (isTreeItem(item)) {
-          this.focusNextNode(1, item);
-        }
+        this.focusNextNode(1, item);
         return;
       }
       case keyArrowUp: {
-        if (isTreeItem(item)) {
-          this.focusNextNode(-1, item);
-        }
+        this.focusNextNode(-1, item);
         return;
       }
       case keyEnter: {
@@ -168,9 +164,7 @@ export class Tree extends FASTElement {
         return;
       }
       case keySpace: {
-        if (isTreeItem(item)) {
-          item.toggleSelection();
-        }
+        item.toggleSelection();
         return;
       }
     }
