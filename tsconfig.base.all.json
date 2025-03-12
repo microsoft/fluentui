@@ -227,6 +227,7 @@
       "@fluentui/react-table-stories": ["packages/react-components/react-table/stories/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/library/src/index.ts"],
       "@fluentui/react-tabs-stories": ["packages/react-components/react-tabs/stories/src/index.ts"],
+      "@fluentui/react-tabs-visual-regression": ["packages/react-components/react-tabs/visual-regression/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
       "@fluentui/react-tag-picker": ["packages/react-components/react-tag-picker/library/src/index.ts"],
       "@fluentui/react-tag-picker-stories": ["packages/react-components/react-tag-picker/stories/src/index.ts"],
