@@ -33,11 +33,6 @@ export interface DonutChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
 
   /**
-   * Define a custom callout props override
-   */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
-
-  /**
    * props for the callout in the chart
    */
   calloutProps?: ChartPopoverProps;
