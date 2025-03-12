@@ -14,9 +14,8 @@ export default {
         .snapshot('default')
         .hover('.mouse-target')
         .snapshot('hover')
-        .mouseDown('.mouse-target')
+        .click('.mouse-target')
         .snapshot('pressed')
-        .mouseUp('.mouse-target')
         .end(),
     },
   } satisfies StoryParameters,
