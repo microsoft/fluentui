@@ -54,12 +54,6 @@ export async function runSnapshotTests(options: {
 }) {
   const { updateSnapshots, reportFileName, baselineDir, outputPath } = options;
 
-  if (updateSnapshots) {
-    console.info('======================');
-    console.info('💡 UPDATING SNAPSHOTS!');
-    console.info('======================');
-  }
-
   const relativePaths = {
     baselineDir,
     outputPath,
@@ -76,12 +70,22 @@ export async function runSnapshotTests(options: {
     diffDir: join(cwd(), relativePaths.diffDir),
   };
 
-  const packageMeta = getPackageMetadata(normalizedPaths.outputPath);
+  if (!existsSync(normalizedPaths.actualDir)) {
+    throw new Error(
+      `actualDir "${normalizedPaths.actualDir}" doesn't exist. Make sure to provide images for assertion`,
+    );
+  }
 
   const metadata: Metadata = {
     paths: normalizedPaths,
-    project: packageMeta,
+    project: getPackageMetadata(normalizedPaths.outputPath),
   };
+
+  if (updateSnapshots) {
+    console.info('======================');
+    console.info('💡 UPDATING SNAPSHOTS!');
+    console.info('======================');
+  }
 
   if (!existsSync(normalizedPaths.outputBaselineDir)) {
     mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
@@ -136,7 +140,6 @@ export async function runSnapshotTests(options: {
     const diffPath = join(normalizedPaths.diffDir, file);
 
     if (!existsSync(baselinePath)) {
-      copyFileSync(actualPath, join(normalizedPaths.outputBaselineDir, file));
       results.push({
         file,
         passed: updateSnapshots ? true : false,
