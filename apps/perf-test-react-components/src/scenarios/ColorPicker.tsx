@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPicker, ColorArea, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorArea, ColorSlider, AlphaSlider } from '@fluentui/react-components';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
