@@ -6,7 +6,7 @@
   "tags": ["vNext", "platform:web", "visual-regression"],
   "targets": {
     "generate-image-for-vrt": {
-      "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
+      "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError",
       "options": {
         "cwd": "{projectRoot}"
       },
