@@ -7,15 +7,21 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '@fluentui/visual
 
 export default {
   title: 'TabList and Tab Converged',
-  decorators: [],
+  decorators: [
+    Story => (
+      <div className="testWrapper" style={{ width: '300px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     storyWright: {
       steps: new Steps()
-        .snapshot('default')
+        .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.mouse-target')
-        .snapshot('hover')
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.mouse-target')
-        .snapshot('pressed')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end(),
     },
   } satisfies StoryParameters,
