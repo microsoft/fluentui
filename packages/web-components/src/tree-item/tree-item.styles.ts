@@ -175,11 +175,11 @@ export const styles = css`
     padding-inline-start: calc(var(--indent) * ${spacingHorizontalM});
   }
 
-  :host([appearance='subtle-alpha']:hover) .positioning-region {
+  :host([appearance='subtle-alpha']) .positioning-region:hover {
     background-color: ${colorSubtleBackgroundLightAlphaHover};
   }
 
-  :host([appearance='subtle-alpha']:active) .positioning-region {
+  :host([appearance='subtle-alpha']) .positioning-region:active {
     background-color: ${colorSubtleBackgroundLightAlphaPressed};
   }
 
@@ -192,11 +192,11 @@ export const styles = css`
     background-color: ${colorTransparentBackground};
   }
 
-  :host([appearance='transparent']:hover) .positioning-region {
+  :host([appearance='transparent']) .positioning-region:hover {
     background-color: ${colorTransparentBackgroundHover};
   }
 
-  :host([appearance='transparent']:active) .positioning-region {
+  :host([appearance='transparent']) .positioning-region:active {
     background-color: ${colorTransparentBackgroundPressed};
   }
 

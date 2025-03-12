@@ -1,5 +1,4 @@
 import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fast-element';
-import { name } from 'ejs';
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
