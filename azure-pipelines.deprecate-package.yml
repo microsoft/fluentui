@@ -35,7 +35,7 @@ extends:
     stages:
       - stage: main
         jobs:
-          - job: Release
+          - job: DeprecateRelease
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
