@@ -250,7 +250,7 @@ export class Tree extends FASTElement {
    *
    *  @internal
    */
-  handleSelectedChange = (e: Event): boolean | void => {
+  handleChange = (e: Event): boolean | void => {
     if (e.defaultPrevented) {
       return;
     }

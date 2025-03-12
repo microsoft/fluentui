@@ -59,84 +59,92 @@ export const styles = css`
    * Appearance - subtle
    */
   .positioning-region {
-    padding-inline-start: calc(var(--indent) * ${spacingHorizontalXXL});
     display: flex;
     align-items: stretch;
     justify-content: space-between;
     cursor: pointer;
     height: ${spacingVerticalXXXL};
+    padding-inline-start: calc(var(--indent) * ${spacingHorizontalXXL});
     padding-inline-end: ${spacingVerticalS};
     border-radius: ${borderRadiusMedium};
     background-color: ${colorSubtleBackground};
     color: ${colorNeutralForeground2};
+  }
 
-    & .content-region {
-      display: flex;
-      align-items: center;
-      font-size: ${fontSizeBase300};
-      min-width: 0;
-      & .chevron-region {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-        min-width: 0;
-        justify-content: center;
-        width: ${spacingHorizontalXXL};
-        height: ${spacingVerticalXXL};
-        color: ${colorNeutralForeground3};
-        transition: transform ${durationFaster} ${curveEasyEaseMax};
-        transform: rotate(0deg);
+  .content-region {
+    display: flex;
+    align-items: center;
+    font-size: ${fontSizeBase300};
+    min-width: 0;
+  }
 
-        &:dir(rtl) {
-          transform: rotate(180deg);
-        }
-      }
+  .chevron-region {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 0;
+    justify-content: center;
+    width: ${spacingHorizontalXXL};
+    height: ${spacingVerticalXXL};
+    color: ${colorNeutralForeground3};
+    transition: transform ${durationFaster} ${curveEasyEaseMax};
+    transform: rotate(0deg);
+  }
 
-      & .start-region {
-        display: flex;
-        align-items: center;
-        min-width: 0;
-      }
+  .chevron-region:dir(rtl) {
+    transform: rotate(180deg);
+  }
 
-      ::slotted([slot='start']),
-      ::slotted(:not([slot])) {
-        display: flex;
-        align-items: center;
-        min-width: 0;
-      }
+  .start-region {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+  .badging-region,
+  .toolbar-region {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    font-size: ${fontSizeBase300};
+  }
 
-      ::slotted([slot='start']) {
-        flex-shrink: 0;
-        margin-inline-end: ${spacingHorizontalXS};
-      }
+  .positioning-region:hover {
+    background-color: ${colorSubtleBackgroundHover};
+    color: ${colorNeutralForeground2Hover};
+  }
 
-      ::slotted(:not([slot])) {
-        padding-inline: ${spacingHorizontalXXS};
-      }
+  .positioning-region:hover .content-region,
+  .positioning-region:hover .chevron-region {
+    color: ${colorNeutralForeground3Hover};
+  }
+
+  .positioning-region:active {
+    background-color: ${colorSubtleBackgroundPressed};
+    color: ${colorNeutralForeground2Pressed};
+    & .content-region .chevron-region {
+      color: ${colorNeutralForeground3Pressed};
     }
-    & .badging-region,
-    & .toolbar-region {
-      display: flex;
-      align-items: center;
-      min-width: 0;
-      font-size: ${fontSizeBase300};
-    }
+  }
 
-    &:hover {
-      background-color: ${colorSubtleBackgroundHover};
-      color: ${colorNeutralForeground2Hover};
-      & .content-region .chevron-region {
-        color: ${colorNeutralForeground3Hover};
-      }
-    }
+  .positioning-region:active .content-region,
+  .positioning-region:active .chevron-region {
+    color: ${colorNeutralForeground3Pressed};
+  }
 
-    &:active {
-      background-color: ${colorSubtleBackgroundPressed};
-      color: ${colorNeutralForeground2Pressed};
-      & .content-region .chevron-region {
-        color: ${colorNeutralForeground3Pressed};
-      }
-    }
+  ::slotted([slot='start']),
+  ::slotted(:not([slot])) {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  ::slotted([slot='start']) {
+    flex-shrink: 0;
+    margin-inline-end: ${spacingHorizontalXS};
+  }
+
+  ::slotted(:not([slot])) {
+    padding-inline: ${spacingHorizontalXXS};
   }
 
   .items {
@@ -147,22 +155,19 @@ export const styles = css`
     display: block;
   }
 
-  :host([empty]) {
-    .chevron-region {
-      visibility: hidden;
-    }
-    .items {
-      visibility: hidden;
-    }
+  :host([empty]) .chevron-region,
+  :host([empty]) .items {
+    visibility: hidden;
   }
 
-  /* Appearance - subtle + selected */
   :host([selected]) .positioning-region {
     background-color: ${colorSubtleBackgroundSelected};
     color: ${colorNeutralForeground2Selected};
-    & .content-region .chevron-region {
-      color: ${colorNeutralForeground3Selected};
-    }
+  }
+
+  :host([selected]) .content-region,
+  :host([selected]) .chevron-region {
+    color: ${colorNeutralForeground3Selected};
   }
 
   :host([size='small']) .positioning-region {
@@ -170,33 +175,31 @@ export const styles = css`
     padding-inline-start: calc(var(--indent) * ${spacingHorizontalM});
   }
 
-  /* Appearance variants - subtle-alpha */
-  :host([appearance='subtle-alpha']) .positioning-region {
-    background-color: ${colorSubtleBackground};
-    &:hover {
-      background-color: ${colorSubtleBackgroundLightAlphaHover};
-    }
-
-    &:active {
-      background-color: ${colorSubtleBackgroundLightAlphaPressed};
-    }
+  :host([appearance='subtle-alpha']:hover) .positioning-region {
+    background-color: ${colorSubtleBackgroundLightAlphaHover};
   }
+
+  :host([appearance='subtle-alpha']:active) .positioning-region {
+    background-color: ${colorSubtleBackgroundLightAlphaPressed};
+  }
+
   :host([appearance='subtle-alpha'][selected]) .positioning-region {
     background-color: ${colorSubtleBackgroundLightAlphaSelected};
     color: ${colorNeutralForeground2Selected};
   }
 
-  /* Appearance variants - transparent */
   :host([appearance='transparent']) .positioning-region {
     background-color: ${colorTransparentBackground};
-    &:hover {
-      background-color: ${colorTransparentBackgroundHover};
-    }
-
-    &:active {
-      background-color: ${colorTransparentBackgroundPressed};
-    }
   }
+
+  :host([appearance='transparent']:hover) .positioning-region {
+    background-color: ${colorTransparentBackgroundHover};
+  }
+
+  :host([appearance='transparent']:active) .positioning-region {
+    background-color: ${colorTransparentBackgroundPressed};
+  }
+
   :host([appearance='transparent'][selected]) .positioning-region {
     background-color: ${colorTransparentBackgroundSelected};
     color: ${colorNeutralForeground2Selected};
