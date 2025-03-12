@@ -4374,25 +4374,22 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 export class TreeItem extends FASTElement {
     constructor();
     appearance: TreeItemAppearance;
+    blurHandler(e: FocusEvent): void;
     // (undocumented)
     childTreeItems: TreeItem[] | undefined;
+    // @internal
+    protected childTreeItemsChanged(): void;
     dataIndent: number | undefined;
     // @internal
     elementInternals: ElementInternals;
     empty: boolean;
     expanded: boolean;
     expandedChanged(prev: boolean, next: boolean): void;
-    // @internal
-    handleBlur: (e: FocusEvent) => void;
-    // @internal
-    handleFocus: (e: FocusEvent) => void;
-    // (undocumented)
-    get isExpanded(): boolean | undefined;
+    focusHandler(e: FocusEvent): void;
     // @internal
     get isNestedItem(): boolean;
-    // @internal
-    get isRootItem(): any;
     selected: boolean;
+    // @internal
     protected selectedChanged(prev: boolean, next: boolean): void;
     size: TreeItemSize;
     toggleExpansion(): void;

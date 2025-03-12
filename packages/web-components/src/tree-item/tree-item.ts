@@ -27,6 +27,8 @@ export class TreeItem extends FASTElement {
    * Handles changes to the expanded attribute
    * @param prev - the previous state
    * @param next - the next state
+   *
+   * @public
    */
   public expandedChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'expanded', next);
@@ -48,6 +50,8 @@ export class TreeItem extends FASTElement {
    * Handles changes to the selected attribute
    * @param prev - the previous state
    * @param next - the next state
+   *
+   * @internal
    */
   protected selectedChanged(prev: boolean, next: boolean): void {
     this.$emit('change');
@@ -61,17 +65,19 @@ export class TreeItem extends FASTElement {
    * HTML Attribute: empty
    */
   @attr({ mode: 'boolean' })
-  empty: boolean = false;
+  public empty: boolean = false;
 
   /**
    * The size of the tree item element
+   * @public
    */
   @attr
-  size: TreeItemSize = TreeItemSize.small;
+  public size: TreeItemSize = TreeItemSize.small;
 
   /**
    * Handles changes to the size attribute
    * we update the child tree items' size based on the size
+   *  @internal
    */
   private sizeChanged() {
     this.updateChildTreeItems();
@@ -79,12 +85,15 @@ export class TreeItem extends FASTElement {
 
   /**
    * The size of the tree item element
+   * @public
    */
   @attr
-  appearance: TreeItemAppearance = TreeItemAppearance.subtle;
+  public appearance: TreeItemAppearance = TreeItemAppearance.subtle;
 
   /**
    * Handles changes to the appearance attribute
+   *
+   * @internal
    */
   private appearanceChanged() {
     this.updateChildTreeItems();
@@ -95,6 +104,7 @@ export class TreeItem extends FASTElement {
   /**
    * The indent of the tree item element.
    * This is not needed once css attr() is supported (--indent: attr(data-indent type(<number>)));
+   * @public
    */
   @attr({ attribute: 'data-indent' })
   public dataIndent!: number | undefined;
@@ -118,8 +128,10 @@ export class TreeItem extends FASTElement {
 
   /**
    * Handles changes to the child tree items
+   *
+   * @internal
    */
-  private childTreeItemsChanged() {
+  protected childTreeItemsChanged() {
     this.empty = this.childTreeItems?.length === 0;
     this.updateChildTreeItems();
   }
@@ -154,9 +166,9 @@ export class TreeItem extends FASTElement {
   /**
    * Handle focus events
    *
-   * @internal
+   * @public
    */
-  handleFocus = (e: FocusEvent): void => {
+  public focusHandler(e: FocusEvent): void {
     if (
       e.target === this ||
       // In case where the tree-item contains a focusable element, we should not set the tabindex to 0 when the focus is on its child focusable element,
@@ -170,9 +182,9 @@ export class TreeItem extends FASTElement {
   /**
    * Handle blur events
    *
-   * @internal
+   * @public
    */
-  handleBlur = (e: FocusEvent): void => {
+  public blurHandler(e: FocusEvent): void {
     if (e.target === this) {
       this.setAttribute('tabindex', '-1');
     }
@@ -180,8 +192,10 @@ export class TreeItem extends FASTElement {
 
   /**
    * Toggle the expansion state of the tree item
+   *
+   * @public
    */
-  toggleExpansion() {
+  public toggleExpansion() {
     if (this.childTreeItems?.length) {
       this.expanded = !this.expanded;
     }
@@ -189,8 +203,10 @@ export class TreeItem extends FASTElement {
 
   /**
    * Toggle the single selection state of the tree item
+   *
+   * @public
    */
-  toggleSelection() {
+  public toggleSelection() {
     this.selected = !this.selected;
   }
 
@@ -200,17 +216,5 @@ export class TreeItem extends FASTElement {
    */
   get isNestedItem() {
     return isTreeItem(this.parentElement);
-  }
-
-  /**
-   * Whether the tree is an root item
-   * @internal
-   */
-  get isRootItem() {
-    return this.parentElement && (this.parentElement as any).isTreeView;
-  }
-
-  get isExpanded() {
-    return this.expanded && this.childTreeItems && this.childTreeItems.length > 0;
   }
 }

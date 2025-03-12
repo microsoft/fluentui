@@ -47,11 +47,6 @@ export const styles = css`
     box-shadow: ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalXXS}
       ${colorStrokeFocus2} inset;
   }
-  @media (prefers-contrast: more) {
-    :host(:focus-visible) .positioning-region {
-      outline: 1px solid ${colorStrokeFocus2};
-    }
-  }
 
   /**
    * Default variants:
@@ -71,14 +66,20 @@ export const styles = css`
     color: ${colorNeutralForeground2};
   }
 
-  .content-region {
+  @media (prefers-contrast: more) {
+    :host(:focus-visible) .positioning-region {
+      outline: 1px solid ${colorStrokeFocus2};
+    }
+  }
+
+  .content {
     display: flex;
     align-items: center;
     font-size: ${fontSizeBase300};
     min-width: 0;
   }
 
-  .chevron-region {
+  .chevron {
     display: flex;
     align-items: center;
     flex-shrink: 0;
@@ -91,17 +92,12 @@ export const styles = css`
     transform: rotate(0deg);
   }
 
-  .chevron-region:dir(rtl) {
+  .chevron:dir(rtl) {
     transform: rotate(180deg);
   }
 
-  .start-region {
-    display: flex;
-    align-items: center;
-    min-width: 0;
-  }
-  .badging-region,
-  .toolbar-region {
+  .badging,
+  .toolbar {
     display: flex;
     align-items: center;
     min-width: 0;
@@ -113,21 +109,18 @@ export const styles = css`
     color: ${colorNeutralForeground2Hover};
   }
 
-  .positioning-region:hover .content-region,
-  .positioning-region:hover .chevron-region {
+  .positioning-region:hover .content,
+  .positioning-region:hover .chevron {
     color: ${colorNeutralForeground3Hover};
   }
 
   .positioning-region:active {
     background-color: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground2Pressed};
-    & .content-region .chevron-region {
-      color: ${colorNeutralForeground3Pressed};
-    }
   }
 
-  .positioning-region:active .content-region,
-  .positioning-region:active .chevron-region {
+  .positioning-region:active .content,
+  .positioning-region:active .chevron {
     color: ${colorNeutralForeground3Pressed};
   }
 
@@ -155,7 +148,7 @@ export const styles = css`
     display: block;
   }
 
-  :host([empty]) .chevron-region,
+  :host([empty]) .chevron,
   :host([empty]) .items {
     visibility: hidden;
   }
@@ -165,8 +158,8 @@ export const styles = css`
     color: ${colorNeutralForeground2Selected};
   }
 
-  :host([selected]) .content-region,
-  :host([selected]) .chevron-region {
+  :host([selected]) .content,
+  :host([selected]) .chevron {
     color: ${colorNeutralForeground3Selected};
   }
 
@@ -205,7 +198,7 @@ export const styles = css`
     color: ${colorNeutralForeground2Selected};
   }
 
-  :host([expanded]) .chevron-region {
+  :host([expanded]) .chevron {
     transform: rotate(90deg);
   }
 `;

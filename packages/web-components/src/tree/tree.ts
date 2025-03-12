@@ -1,16 +1,5 @@
-/**
- * The <tree> element is mainly responsible for these things:
- * 1. To act as a tree role, e.i. role='tree'
- * 2. To handle the keyboard events and mouse events that are bubbling from the <tree-item>s,
- *    like click, selected-change, keydown, focusin, focusout
- * 3. Control the size and appearance variants
- * 4. Focus management
- * 5. Selection management
- */
-
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import {
-  getDisplayedNodes,
   isHTMLElement,
   keyArrowDown,
   keyArrowLeft,
@@ -30,14 +19,14 @@ export class Tree extends FASTElement {
    * @public
    */
   @observable
-  currentSelected: HTMLElement | null = null;
+  public currentSelected: HTMLElement | null = null;
 
   /**
    * The tree item that is designated to be in the tab queue.
    *
    * @internal
    */
-  currentFocused: HTMLElement | null = null;
+  private currentFocused: HTMLElement | null = null;
 
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -56,8 +45,8 @@ export class Tree extends FASTElement {
    * @public
    * HTML Attribute: size
    */
-  @attr()
-  size: TreeItemSize = TreeItemSize.small;
+  @attr
+  public size: TreeItemSize = TreeItemSize.small;
   private sizeChanged() {
     this.updateSizeAndAppearance();
   }
@@ -67,15 +56,15 @@ export class Tree extends FASTElement {
    * @public
    * HTML Attribute: appearance
    */
-  @attr()
-  appearance: TreeItemAppearance = TreeItemAppearance.subtle;
+  @attr
+  public appearance: TreeItemAppearance = TreeItemAppearance.subtle;
   private appearanceChanged() {
     this.updateSizeAndAppearance();
   }
 
   @observable
   childTreeItems: TreeItem[] = [];
-  private childTreeItemsChanged() {
+  protected childTreeItemsChanged() {
     this.updateSizeAndAppearance();
     this.updateCurrentSelected();
   }
@@ -301,7 +290,9 @@ export class Tree extends FASTElement {
   }
 
   private getVisibleNodes(): HTMLElement[] {
-    return getDisplayedNodes(this, 'fluent-tree-item') || [];
+    return Array.from(this.querySelectorAll('*')).filter(
+      node => isTreeItem(node) && node.offsetParent !== null,
+    ) as HTMLElement[];
   }
 
   /**

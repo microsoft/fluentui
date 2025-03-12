@@ -48,14 +48,17 @@ test.describe('Tree Item', () => {
     await expect(nestedItems).toBeVisible();
   });
 
-  test('should work with selected attribute', async ({ fastPage }) => {
+  test('should not have selected attribute', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate({
       innerHTML: `Item 1`,
     });
 
     expect(await element.getAttribute('selected')).toBeNull();
-    // selected
+  });
+
+  test('should have selected attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
     await fastPage.setTemplate({
       attributes: { selected: true },
       innerHTML: `Item 1`,
