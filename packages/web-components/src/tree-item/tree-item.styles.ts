@@ -42,6 +42,10 @@ export const styles = css`
     outline: none;
   }
 
+  :host([data-indent]) {
+    --indent: attr(data-indent type(<number>));
+  }
+
   :host(:focus-visible) .positioning-region {
     box-shadow: ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalNone} ${spacingVerticalXXS}
       ${colorStrokeFocus2} inset;
@@ -50,10 +54,6 @@ export const styles = css`
     :host(:focus-visible) .positioning-region {
       outline: 1px solid ${colorStrokeFocus2};
     }
-  }
-
-  ::slotted(fluent-tree-item) {
-    padding-inline-start: ${spacingHorizontalXXL};
   }
 
   :host([size="small"]) ::slotted(fluent-tree-item) {
@@ -66,6 +66,7 @@ export const styles = css`
    * Appearance - subtle
    */
   .positioning-region {
+    padding-inline-start: calc(var(--indent) * ${spacingHorizontalXXL});
     display: flex;
     align-items: stretch;
     justify-content: space-between;

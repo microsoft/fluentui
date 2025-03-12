@@ -109,9 +109,12 @@ export class TreeItem extends FASTElement {
     if (!this.childTreeItems || !this.childTreeItems.length) {
       return;
     }
+
     this.childTreeItems.forEach(item => {
+      const indent = this.getAttribute(`data-indent`) === null ? 0 : parseInt(this.getAttribute(`data-indent`) as string)
       item.size = this.size;
       item.appearance = this.appearance;
+      item.setAttribute('data-indent', `${indent + 1}`);
     });
   }
 
