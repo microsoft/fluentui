@@ -10,7 +10,7 @@ export const RTL = 'RTL';
 type StoryVariant = typeof DARK_MODE | typeof HIGH_CONTRAST | typeof RTL;
 
 /** Helper function that returns RTL, Dark Mode or High Contrast variant of an existing story. */
-export function getStoryVariant(story: StoryObj & { name: string }, variant: StoryVariant): StoryObj {
+export function getStoryVariant(story: StoryObj, variant: StoryVariant): StoryObj {
   const theme = getTheme(variant);
   const dir = getDir(variant);
   const decorators = story.decorators ?? [];
