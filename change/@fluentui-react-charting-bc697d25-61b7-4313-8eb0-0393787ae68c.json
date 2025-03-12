@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Move utilities and plotly schema to utilities package",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
