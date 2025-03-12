@@ -1,8 +1,37 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 25 Feb 2025 04:07:15 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Mar 2025 21:05:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.84)
+
+Mon, 10 Mar 2025 21:05:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.83..@fluentui/web-components_v3.0.0-beta.84)
+
+### Changes
+
+- fix: move base classes to a separate file and provide export paths for improved tree shaking ([PR #33962](https://github.com/microsoft/fluentui/pull/33962) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.83)
+
+Wed, 05 Mar 2025 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.82..@fluentui/web-components_v3.0.0-beta.83)
+
+### Changes
+
+- feat: auto associate tabpanels with tabs ([PR #33939](https://github.com/microsoft/fluentui/pull/33939) by machi@microsoft.com)
+
+## [3.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.82)
+
+Fri, 28 Feb 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.81..@fluentui/web-components_v3.0.0-beta.82)
+
+### Changes
+
+- Fixed button start and end slots inline spacing. ([PR #33917](https://github.com/microsoft/fluentui/pull/33917) by 601470+mlijanto@users.noreply.github.com)
+- fix: position thumb properly at pointer coordinates ([PR #33916](https://github.com/microsoft/fluentui/pull/33916) by machi@microsoft.com)
+- fix: enable keyboard interactions after clicking on thumb ([PR #33922](https://github.com/microsoft/fluentui/pull/33922) by machi@microsoft.com)
 
 ## [3.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.81)
 
