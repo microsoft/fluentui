@@ -199,7 +199,11 @@ test.describe('Tree', () => {
     await expect(treeItem1).toHaveAttribute('selected');
     expect(await elementHandle).toBe(false);
   });
-  test('keyboard navigation should work when the tree-item contains focusable elements', async ({ fastPage, page }) => {
+  test('keyboard navigation should work when the tree-item contains focusable elements', async ({
+    fastPage,
+    page,
+    browserName,
+  }) => {
     const { element } = fastPage;
     const anchor = page.locator('a');
 
@@ -216,7 +220,7 @@ test.describe('Tree', () => {
     const treeItems = page.locator('fluent-tree-item');
     await element.focus();
     await expect(treeItems.nth(0)).toBeFocused();
-    await page.keyboard.press('Tab');
+    await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(anchor).toBeFocused();
   });
 });
