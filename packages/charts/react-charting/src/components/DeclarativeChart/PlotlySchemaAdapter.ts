@@ -30,8 +30,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from '@fluentui/chart-utilities';
-import type { Datum, TypedArray } from '@fluentui/chart-utilities';
+import type { Datum, Layout, PlotlySchema, PieData, PlotData, SankeyData, TypedArray } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 
 interface ISecondaryYAxisValues {
