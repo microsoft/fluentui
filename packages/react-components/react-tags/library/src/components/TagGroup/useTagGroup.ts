@@ -4,7 +4,7 @@ import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
-import { TagValue } from '../../utils/types';
+import type { TagValue } from '../../utils/types';
 
 /**
  * Create the state required to render TagGroup.
