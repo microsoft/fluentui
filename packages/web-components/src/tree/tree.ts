@@ -122,8 +122,8 @@ export class Tree extends FASTElement {
       return;
     }
 
-    const item = e.target;
-    if (!(item instanceof TreeItem) || this.childTreeItems.length < 1) {
+    const item = e.target as HTMLElement;
+    if (!isTreeItem(item) || this.childTreeItems.length < 1) {
       return true;
     }
 
@@ -242,7 +242,7 @@ export class Tree extends FASTElement {
       return;
     }
 
-    if (!(e.target instanceof TreeItem)) {
+    if (!isTreeItem(e.target as HTMLElement)) {
       // not a tree item, ignore
       // return true, do not prevent default
       return true;
@@ -264,7 +264,7 @@ export class Tree extends FASTElement {
       return;
     }
 
-    if (!(e.target instanceof TreeItem)) {
+    if (!isTreeItem(e.target as HTMLElement)) {
       return true;
     }
 
