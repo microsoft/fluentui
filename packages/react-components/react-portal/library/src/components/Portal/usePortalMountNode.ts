@@ -6,7 +6,6 @@ import {
 } from '@fluentui/react-shared-contexts';
 import { mergeClasses } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
-import { useDisposable } from 'use-disposable';
 
 import { usePortalMountNodeStylesStyles } from './usePortalMountNodeStyles.styles';
 
@@ -37,36 +36,106 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
   const className = mergeClasses(themeClassName, classes.root, options.className);
   const targetNode: HTMLElement | ShadowRoot | undefined = mountNode ?? targetDocument?.body;
 
-  const element = useDisposable(() => {
-    if (targetNode === undefined || options.disabled) {
-      return [null, () => null];
+  const [elementFactory] = React.useState(() => {
+    let currentElement: HTMLDivElement | undefined = undefined;
+
+    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: false): HTMLDivElement | undefined;
+    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: true): HTMLDivElement;
+    function get(targetRoot: HTMLElement | ShadowRoot, forceCreation: boolean): HTMLDivElement | undefined {
+      if (currentElement) {
+        return currentElement;
+      }
+
+      if (forceCreation) {
+        currentElement = targetRoot.ownerDocument.createElement('div');
+        targetRoot.appendChild(currentElement);
+      }
+
+      return currentElement;
     }
 
-    const newElement = targetNode.ownerDocument.createElement('div');
-    targetNode.appendChild(newElement);
-    return [newElement, () => newElement.remove()];
-  }, [targetNode]);
+    function dispose() {
+      if (currentElement) {
+        currentElement.remove();
+        currentElement = undefined;
+      }
+    }
+
+    return {
+      get,
+      dispose,
+    };
+  });
+
+  const elementProxy = React.useMemo(() => {
+    if (targetNode === undefined || options.disabled) {
+      return null;
+    }
+
+    return new Proxy({} as HTMLDivElement, {
+      get(_, property: keyof HTMLDivElement) {
+        // Heads up!
+        // We intercept the `remove()` method to remove the mount node only when portal has been unmounted already.
+        if (property === 'remove') {
+          const targetElement = elementFactory.get(targetNode, false);
+
+          if (targetElement) {
+            // If the mountElement has children, the portal is still mounted
+            const portalHasNoChildren = targetElement.childNodes.length === 0;
+
+            if (portalHasNoChildren) {
+              return targetElement.remove.bind(targetElement);
+            }
+          }
+
+          return () => {
+            // If the mountElement has children, ignore the remove call
+          };
+        }
+
+        const targetElement = elementFactory.get(targetNode, true);
+        const targetProperty = targetElement[property];
+
+        if (typeof targetProperty === 'function') {
+          return targetProperty.bind(targetElement);
+        }
+
+        return targetProperty;
+      },
+
+      set(_, property: keyof HTMLDivElement, value) {
+        const targetElement = elementFactory.get(targetNode, true);
+
+        if (targetElement) {
+          Object.assign(targetElement, { [property]: value });
+          return true;
+        }
+
+        return false;
+      },
+    });
+  }, [elementFactory, targetNode, options.disabled]);
 
   if (useInsertionEffect) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useInsertionEffect(() => {
-      if (!element) {
+      if (!elementProxy) {
         return;
       }
 
       const classesToApply = className.split(' ').filter(Boolean);
 
-      element.classList.add(...classesToApply);
-      element.setAttribute('dir', dir);
-      element.setAttribute('data-portal-node', 'true');
+      elementProxy.classList.add(...classesToApply);
+      elementProxy.setAttribute('dir', dir);
+      elementProxy.setAttribute('data-portal-node', 'true');
 
-      focusVisibleRef.current = element;
+      focusVisibleRef.current = elementProxy;
 
       return () => {
-        element.classList.remove(...classesToApply);
-        element.removeAttribute('dir');
+        elementProxy.classList.remove(...classesToApply);
+        elementProxy.removeAttribute('dir');
       };
-    }, [className, dir, element, focusVisibleRef]);
+    }, [className, dir, elementProxy, focusVisibleRef]);
   } else {
     // This useMemo call is intentional for React 17
     // We don't want to re-create the portal element when its attributes change.
@@ -74,18 +143,18 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     // after initial mount can trigger interesting CSS side effects like transitions.
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useMemo(() => {
-      if (!element) {
+      if (!elementProxy) {
         return;
       }
 
       // Force replace all classes
-      element.className = className;
-      element.setAttribute('dir', dir);
-      element.setAttribute('data-portal-node', 'true');
+      elementProxy.className = className;
+      elementProxy.setAttribute('dir', dir);
+      elementProxy.setAttribute('data-portal-node', 'true');
 
-      focusVisibleRef.current = element;
-    }, [className, dir, element, focusVisibleRef]);
+      focusVisibleRef.current = elementProxy;
+    }, [className, dir, elementProxy, focusVisibleRef]);
   }
 
-  return element;
+  return elementProxy;
 };
