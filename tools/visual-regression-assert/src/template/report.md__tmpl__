@@ -2,4 +2,14 @@
 
 | File | Status | Details |
 | ---- | ------ | ------- |
-<%- content %>
+<%- changed %>
+
+
+<details>
+<summary>Unchanged Scenarios</summary>
+
+| File | Status | Details |
+| ---- | ------ | ------- |
+<%- unchanged %>
+
+</details>
