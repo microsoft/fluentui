@@ -1,0 +1,72 @@
+import { children, elements, html, when } from '@microsoft/fast-element';
+import { FluentDesignSystem } from '../fluent-design-system.js';
+import type { TreeItem } from './tree-item.js';
+import { treeItemLevelToken } from './tree-item.styles.js';
+
+// We don't put the icon into the icons/index.ts file because
+// this icon is the default chevron icon of the tree-item component,
+// it would be contributed to the upstream later.
+const chevronIcon = html`
+  <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+    <path
+      d="M4.65 2.15a.5.5 0 000 .7L7.79 6 4.65 9.15a.5.5 0 10.7.7l3.5-3.5a.5.5 0 000-.7l-3.5-3.5a.5.5 0 00-.7 0z"
+    ></path>
+  </svg>
+`;
+
+export const template = html<TreeItem>`
+  <template
+    tabindex="-1"
+    slot="${x => (x.isNestedItem ? 'item' : void 0)}"
+    class="${x => x.calculatedClassName}"
+    @focusin="${(x, c) => x.handleFocus(c.event as FocusEvent)}"
+    @focusout="${(x, c) => x.handleBlur(c.event as FocusEvent)}"
+    style="${x => `${treeItemLevelToken}: ${x.depth};`}"
+    ${children({
+      property: 'childTreeItems',
+      filter: elements(`${FluentDesignSystem.prefix}-tree-item`),
+    })}
+  >
+    <div class="positioning-region" part="positioning-region">
+      <div class="content-region" part="content-region">
+        <span class="selection-region" part="selection-region"></span>
+        <span
+          style="${x => (x.childTreeItems && x.childTreeItems.length > 0 ? '' : 'visibility: hidden; max-width: 0;')}"
+          class="chevron-region"
+          part="chevron-region"
+        >
+          <slot name="chevron">${chevronIcon}</slot>
+        </span>
+        <span class="start-region" part="start-region">
+          <slot name="start"></slot>
+          <slot name="middle">
+            <slot></slot>
+          </slot>
+          <slot name="end"></slot>
+        </span>
+      </div>
+      <div class="badging-region" part="badging-region">
+        <slot name="badging"></slot>
+      </div>
+      <div class="toolbar-region" part="toolbar-region">
+        <slot name="toolbar"></slot>
+      </div>
+    </div>
+    ${when(
+      x => x.childTreeItems && x.childTreeItems.length > 0,
+      html`
+        <div
+          style="${x =>
+            x.childTreeItems && x.childTreeItems.length > 0 && x.isExpanded
+              ? '' /** make sure we do not use visibility: visible here, it will still visible even if parent is hidden */
+              : 'visibility: hidden; max-height: 0;'}"
+          role="group"
+          class="items"
+          part="items"
+        >
+          <slot name="item"></slot>
+        </div>
+      `,
+    )}
+  </template>
+`;
