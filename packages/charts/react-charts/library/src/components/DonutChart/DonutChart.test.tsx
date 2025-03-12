@@ -89,7 +89,7 @@ describe('DonutChart snapShot testing', () => {
   it('renders enabledLegendsWrapLines correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPointsDC} enabledLegendsWrapLines={true} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} legendProps={{ enabledWrapLines: true }} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();

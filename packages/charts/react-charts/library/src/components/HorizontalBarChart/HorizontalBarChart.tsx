@@ -375,7 +375,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           customizedCallout: props.onRenderCalloutPerHorizontalBar
             ? props.onRenderCalloutPerHorizontalBar(barCalloutProps!)
             : undefined,
-          customCalloutProps: props.customProps ? props.customProps(barCalloutProps!) : undefined,
+          customCalloutProps: props.calloutPropsPerDataPoint
+            ? props.calloutPropsPerDataPoint(barCalloutProps!)
+            : undefined,
         }}
         isCartesian={false}
       />

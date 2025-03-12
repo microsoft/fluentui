@@ -1,12 +1,14 @@
-import { CartesianChartProps, CartesianChartStyleProps } from '../CommonComponents/index';
-import { ChartProps, ChartDataPoint } from './index';
+import * as React from 'react';
+import { CartesianChartStyleProps } from '../CommonComponents/index';
+import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
+import { LegendsProps } from '../Legends/index';
 
 /**
  * Donut Chart properties.
  * {@docCategory DonutChart}
  */
-export interface DonutChartProps extends CartesianChartProps {
+export interface DonutChartProps {
   /**
    * Data to render in the chart.
    */
@@ -35,7 +37,7 @@ export interface DonutChartProps extends CartesianChartProps {
   /**
    * Define a custom callout props override
    */
-  customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
+  calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
 
   /**
    * props for the callout in the chart
@@ -58,6 +60,60 @@ export interface DonutChartProps extends CartesianChartProps {
    * @default true
    */
   hideLabels?: boolean;
+
+  /**
+   * Below height used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
+   */
+  height?: number;
+
+  /**
+   * Below width used for resizing of the chart
+   * Wrap chart in your container and send the updated height and width to these props.
+   * These values decide wheather chart re render or not. Please check examples for reference
+   */
+  width?: number;
+
+  /**
+   * this prop takes its parent as a HTML element to define the width and height of the chart
+   */
+  parentRef?: HTMLElement | null;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
+  className?: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  legendsOverflowText?: any;
+
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<LegendsProps>;
+
+  /** decides wether to show/hide legends
+   * @defaultvalue false
+   */
+  hideLegend?: boolean;
+
+  /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
+
+  /**
+   * Do not show tooltips in chart
+   * @default false
+   */
+  hideTooltip?: boolean;
+
+  /**
+   * Optional callback to access the Chart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: React.RefObject<Chart>;
 }
 
 /**

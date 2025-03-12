@@ -214,7 +214,7 @@ describe('Render calling with respective to props', () => {
       wrapper.setProps({ ...props, hideTooltip: true });
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(3);
+    expect(renderedDOM!.length).toBe(2);
   });
 });
 
@@ -257,6 +257,6 @@ describe('Render empty chart calling with respective to props', () => {
       wrapper.setProps({ ...props, data: chartPointsVBC, hideTooltip: true });
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('hideTooltip') === true);
-    expect(renderedDOM!.length).toBe(3);
+    expect(renderedDOM!.length).toBe(2);
   });
 });

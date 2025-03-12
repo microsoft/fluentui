@@ -1280,7 +1280,9 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
-        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+        customCalloutProps: props.calloutPropsPerDataPoint
+          ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+          : undefined,
       },
     };
     const tickParams = {

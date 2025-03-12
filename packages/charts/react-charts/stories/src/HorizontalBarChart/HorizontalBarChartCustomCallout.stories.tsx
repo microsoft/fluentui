@@ -181,7 +181,7 @@ export const HorizontalBarCustomCallout = () => {
             </div>
           );
         }} */
-        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
+        calloutPropsPerDataPoint={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerHorizontalBar={(props: ChartDataPoint) => customPopover(props)}
       />
     </div>

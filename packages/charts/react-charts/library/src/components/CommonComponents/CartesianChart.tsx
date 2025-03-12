@@ -25,13 +25,12 @@ import {
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ResponsiveContainer } from './ResponsiveContainer';
 
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
  */
-const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> = React.forwardRef<
+export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps> = React.forwardRef<
   HTMLDivElement,
   ModifiedCartesianChartProps
 >((props, forwardedRef) => {
@@ -430,7 +429,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
     if (props.parentRef || chartContainer.current) {
       const container = props.parentRef ? props.parentRef : chartContainer.current!;
       const currentContainerWidth =
-        props.enableReflow && !_isFirstRender.current
+        props.reflowProps?.mode === 'min-width' && !_isFirstRender.current
           ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
           : container.getBoundingClientRect().width;
       const currentContainerHeight =
@@ -628,21 +627,4 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
     </div>
   );
 });
-
-export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps> = props => {
-  if (!props.responsive) {
-    return <CartesianChartBase {...props} />;
-  }
-
-  return (
-    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
-      {({ containerWidth, containerHeight }) => (
-        <CartesianChartBase {...props} width={containerWidth} height={containerHeight} />
-      )}
-    </ResponsiveContainer>
-  );
-};
 CartesianChart.displayName = 'CartesianChart';
-CartesianChart.defaultProps = {
-  responsive: true,
-};

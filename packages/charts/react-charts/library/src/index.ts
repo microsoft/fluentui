@@ -8,4 +8,5 @@ export * from './types/index';
 export * from './Sparkline';
 export * from './utilities/colors';
 export * from './Popover';
+export * from './ResponsiveContainer';
 export * from './DeclarativeChart';
