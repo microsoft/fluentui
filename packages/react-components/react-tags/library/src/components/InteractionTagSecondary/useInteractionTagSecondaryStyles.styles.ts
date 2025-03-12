@@ -107,7 +107,7 @@ const useRootStyles = makeStyles({
   selected: {
     background: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorBrandBackground),
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
@@ -177,15 +177,15 @@ export const useInteractionTagSecondaryStyles_unstable = (
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
-  const { selected, shape, size, appearance } = state;
+  const { disabled, selected, shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
     rootBaseClassName,
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
-    selected && !state.disabled && rootStyles.selected,
+    selected && !disabled && rootStyles.selected,
     state.root.className,
   );
 

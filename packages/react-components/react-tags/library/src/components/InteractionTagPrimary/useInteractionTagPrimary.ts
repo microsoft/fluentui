@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
@@ -40,12 +40,11 @@ export const useInteractionTagPrimary_unstable = (
   } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
 
-  const onClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
-    props?.onClick?.(ev);
-    if (!ev.defaultPrevented) {
-      handleTagSelect?.(ev, { type: 'click', event: ev, value, selectedValues });
-    }
-  });
+  const onClick = useEventCallback(
+    mergeCallbacks(props?.onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
+      handleTagSelect?.(event, { type: 'click', event, value, selectedValues }),
+    ),
+  );
 
   return {
     appearance,

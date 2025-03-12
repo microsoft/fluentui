@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { Tag, makeStyles } from '@fluentui/react-components';
+import { Tag, makeResetStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const useContainerStyles = makeStyles({
-  container: {
-    columnGap: '10px',
-    display: 'flex',
-  },
+const useContainerStyles = makeResetStyles({
+  columnGap: '10px',
+  display: 'flex',
 });
 
 export const Selected = () => {
-  const styles = useContainerStyles();
+  const containerStyles = useContainerStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={containerStyles}>
       <Tag
         selected
         secondaryText="appearance=filled"

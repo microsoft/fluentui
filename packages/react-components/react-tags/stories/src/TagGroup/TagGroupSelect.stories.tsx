@@ -7,15 +7,17 @@ import {
   InteractionTagSecondary,
   Button,
   makeStyles,
+  makeResetStyles,
   type TagValue,
 } from '@fluentui/react-components';
 
+const useContainerStyles = makeResetStyles({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '10px',
+});
+
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
   resetButton: {
     width: 'fit-content',
   },
@@ -139,9 +141,9 @@ const DismissWithInteractionTags = () => {
 };
 
 export const Select = () => {
-  const styles = useStyles();
+  const containerStyles = useContainerStyles();
   return (
-    <div className={styles.container}>
+    <div className={containerStyles}>
       Example with InteractionTag:
       <WithMultiselectTags />
       Example with Dismissable InteractionTag:

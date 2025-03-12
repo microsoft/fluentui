@@ -193,7 +193,7 @@ const useRootStyles = makeStyles({
   selected: {
     background: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorBrandBackground),
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
@@ -297,7 +297,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
   const rootCircularContrastStyles = useRootCircularContrastStyles();
 
-  const { shape, size, appearance, selected } = state;
+  const { disabled, shape, size, appearance, selected } = state;
 
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
@@ -306,8 +306,8 @@ export const useInteractionTagPrimaryStyles_unstable = (
 
     shape === 'circular' && !state.hasSecondaryAction && rootCircularContrastStyles.withoutSecondaryAction,
 
-    state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
-    selected && !state.disabled && rootStyles.selected,
+    disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
+    selected && !disabled && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
