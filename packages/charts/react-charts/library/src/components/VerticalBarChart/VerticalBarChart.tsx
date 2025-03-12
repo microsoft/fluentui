@@ -955,7 +955,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     isCartesian: true,
     customCallout: {
       customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,
-      customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+      customCalloutProps: props.calloutPropsPerDataPoint
+        ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+        : undefined,
     },
   };
 

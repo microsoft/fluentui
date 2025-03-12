@@ -96,7 +96,7 @@ export const DonutChartCustomCallout = () => {
         hideLegend={false}
         height={220}
         valueInsideDonut={39000}
-        customProps={(props: ChartDataPoint) => customPopoverProps(props)}
+        calloutPropsPerDataPoint={(props: ChartDataPoint) => customPopoverProps(props)}
         onRenderCalloutPerDataPoint={(props: ChartDataPoint) => customPopover(props)}
       />
     </>

@@ -303,12 +303,6 @@ export interface CartesianChartProps {
    */
   href?: string;
 
-  /**
-   * Label to apply to the whole chart.
-   * @deprecated - Use your chart label for the chart.
-   */
-  chartLabel?: string;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
 
@@ -378,10 +372,16 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
-   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default True for LineChart but False for other charts
+   * Props related to reflow behavior of the chart
    */
-  enableReflow?: boolean;
+  reflowProps?: {
+    /**
+     * Determines the reflow behavior of the chart.
+     * When set to `'min-width'`, the chart will not shrink below a certain width and will enable scrolling if it overflows.
+     * @default 'none'
+     */
+    mode: 'none' | 'min-width';
+  };
 
   /**
    * Prop to set the x axis title
@@ -414,19 +414,6 @@ export interface CartesianChartProps {
   useUTC?: string | boolean;
 
   /**
-   * Enables the chart to automatically adjust its size based on the container's dimensions.
-   * @default true
-   */
-  responsive?: boolean;
-
-  /**
-   * The function that is called when the chart is resized.
-   * @param width - The new width of the chart.
-   * @param height - The new height of the chart.
-   */
-  onResize?: (width: number, height: number) => void;
-
-  /**
    * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
    */
@@ -436,7 +423,7 @@ export interface CartesianChartProps {
    * Define a custom callout props override
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
+  calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
 }
 
 export interface YValueHover {

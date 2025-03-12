@@ -63,20 +63,17 @@ export interface Basestate {
     }[];
 }
 
-// @public (undocumented)
+// @public
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
 
 // @public
 export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
-    // @deprecated
-    chartLabel?: string;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
     customDateTimeFormatter?: (dateTime: Date) => string;
-    customProps?: (dataPointCalloutProps: any) => ChartPopoverProps;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
-    enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideTickOverlap?: boolean;
@@ -88,9 +85,10 @@ export interface CartesianChartProps {
     legendsOverflowText?: any;
     margins?: Margins;
     noOfCharsToTruncate?: number;
-    onResize?: (width: number, height: number) => void;
     parentRef?: HTMLElement | null;
-    responsive?: boolean;
+    reflowProps?: {
+        mode: 'none' | 'min-width';
+    };
     rotateXAxisLables?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
@@ -355,21 +353,32 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
-// @public (undocumented)
+// @public
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
-export interface DonutChartProps extends CartesianChartProps {
+export interface DonutChartProps {
     calloutProps?: ChartPopoverProps;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
+    className?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps;
+    height?: number;
     hideLabels?: boolean;
+    hideLegend?: boolean;
+    hideTooltip?: boolean;
+    href?: string;
     innerRadius?: number;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
     onRenderCalloutPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => JSX.Element | undefined;
+    parentRef?: HTMLElement | null;
     showLabelsInPercent?: boolean;
     styles?: DonutChartStyles;
     valueInsideDonut?: string | number;
+    width?: number;
 }
 
 // @public
@@ -447,11 +456,11 @@ export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartPro
 export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivElement> {
     barHeight?: number;
     calloutProps?: ChartPopoverProps;
+    calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
     culture?: string;
-    customProps?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     data?: ChartProps[];
     hideLabels?: boolean;
     hideRatio?: boolean[];
@@ -767,6 +776,9 @@ export interface RefArrayData {
 }
 
 // @public (undocumented)
+export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public (undocumented)
 export const Shape: React_2.FunctionComponent<ShapeProps>;
 
 // @public (undocumented)
@@ -857,12 +869,6 @@ export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface VerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
-    // @deprecated
-    xAxisTicks?: string;
-    // @deprecated
-    yAxisDomain?: string;
-    // @deprecated
-    yAxisTicks?: string;
 }
 
 // @public (undocumented)
