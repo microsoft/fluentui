@@ -21,6 +21,7 @@ import {
 } from '@fluentui/react-motion-components-preview';
 
 import { Hold, Series } from './Series';
+import { Stagger } from './Stagger';
 
 const imageUrls = [
   'https://picsum.photos/id/15/800/800',
@@ -62,8 +63,10 @@ const useClasses = makeStyles({
     alignItems: 'center',
   },
   photo: {
+    position: 'absolute',
     width: '300px',
     height: '300px',
+    borderRadius: '20px',
   },
   series: {
     display: 'flex',
@@ -79,7 +82,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const SlideVerticalCarousel = createPresenceComponent(
+export const SlideCarousel = createPresenceComponent(
   createSlidePresence({
     enterDuration: motionTokens.durationGentle * 3,
     enterEasing: motionTokens.curveDecelerateMax,
@@ -88,12 +91,12 @@ export const SlideVerticalCarousel = createPresenceComponent(
   }),
 );
 
-export const ScaleVerticalCarousel = createPresenceComponent(
+export const ScaleCarousel = createPresenceComponent(
   createScalePresence({
     fromScale: 0.1,
     enterDuration: motionTokens.durationSlow,
     enterEasing: motionTokens.curveDecelerateMax,
-    exitDuration: motionTokens.durationGentle * 2,
+    exitDuration: motionTokens.durationGentle * 1.5,
     exitEasing: motionTokens.curveAccelerateMin,
   }),
 );
@@ -121,13 +124,13 @@ export const ExperimentsSlideScaleAB = () => {
   )`;
 
   const contentA = (
-    <div key={1} className={classes.card}>
-      <Image key={1} fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
+    <div key="A" className={classes.card}>
+      <Image key="A" fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
     </div>
   );
   const contentB = (
-    <div key={2} className={classes.card}>
-      <Image key={2} fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
+    <div key="B" className={classes.card}>
+      <Image key="B" fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
     </div>
   );
 
@@ -190,23 +193,27 @@ export const ExperimentsSlideScaleAB = () => {
         </div>
       </div> */}
 
-      <div style={{ perspective, perspectiveOrigin: '50% 50%', display: 'inline' }}>
+      <div style={{ display: 'block', position: 'relative' }}>
         <Series
           autoloop
           commonProps={{
-            axis: 'Y',
-            enterDuration: duration * 20,
-            enterEasing: motionTokens.curveDecelerateMin,
-            exitEasing: motionTokens.curveAccelerateMin,
+            orientation: 'vertical',
           }}
         >
-          <SlideVerticalCarousel.In distance="100%">{contentA}</SlideVerticalCarousel.In>
+          {/* <SlideCarousel.In distance="100%">{contentA}</SlideCarousel.In> */}
+          {/* <Hold duration={1000}>{contentA}</Hold> */}
           <Hold duration={1000}>{contentA}</Hold>
-          <ScaleVerticalCarousel.Out>{contentA}</ScaleVerticalCarousel.Out>
-
-          <SlideVerticalCarousel.In distance="100%">{contentB}</SlideVerticalCarousel.In>
+          <Stagger delay={100}>
+            <SlideCarousel.In distance="100%">{contentB}</SlideCarousel.In>
+            <ScaleCarousel.Out>{contentA}</ScaleCarousel.Out>
+          </Stagger>
           <Hold duration={1000}>{contentB}</Hold>
-          <ScaleVerticalCarousel.Out>{contentB}</ScaleVerticalCarousel.Out>
+          {/* <ScaleCarousel.Out>{contentB}</ScaleCarousel.Out> */}
+          <Stagger delay={100}>
+            <SlideCarousel.In distance="100%">{contentA}</SlideCarousel.In>
+            <ScaleCarousel.Out>{contentB}</ScaleCarousel.Out>
+          </Stagger>
+          {/* <Hold duration={1000}>{contentA}</Hold> */}
         </Series>
       </div>
     </div>
