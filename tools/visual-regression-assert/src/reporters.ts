@@ -6,7 +6,7 @@ import { stripIndents } from './utils';
 import type { Metadata, Result, Report } from './types';
 import { reporterFileNames } from './shared';
 
-type Options = {
+export type Options = {
   metadata: Metadata;
   reportFileName: string;
   paths: {
@@ -147,7 +147,7 @@ export function generateJsonReport(results: Result[], options: Options) {
   console.log(`JSON report generated: ${reportPathFile}`);
 }
 
-export function generateCliReport(results: Result[], options: Options) {
+export function generateCliReport(results: Result[]) {
   const table = new Table({
     colAligns: ['left', 'left', 'right'],
     head: ['File', 'Status', 'Details'],
