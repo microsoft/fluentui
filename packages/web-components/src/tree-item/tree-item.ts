@@ -177,7 +177,7 @@ export class TreeItem extends FASTElement {
     ) {
       this.setAttribute('tabindex', '0');
     }
-  };
+  }
 
   /**
    * Handle blur events
@@ -188,7 +188,7 @@ export class TreeItem extends FASTElement {
     if (e.target === this) {
       this.setAttribute('tabindex', '-1');
     }
-  };
+  }
 
   /**
    * Toggle the expansion state of the tree item

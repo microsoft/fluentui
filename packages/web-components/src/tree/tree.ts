@@ -171,7 +171,7 @@ export class Tree extends FASTElement {
 
     // don't prevent default if we took no action
     return true;
-  };
+  }
 
   /**
    * Handle focus events
@@ -200,7 +200,7 @@ export class Tree extends FASTElement {
       this.setAttribute('tabindex', '-1');
       this.currentFocused = e.target as HTMLElement;
     }
-  };
+  }
 
   /**
    * Handle blur events
@@ -211,7 +211,7 @@ export class Tree extends FASTElement {
     if (e.target instanceof HTMLElement && (e.relatedTarget === null || !this.contains(e.relatedTarget as Node))) {
       this.setAttribute('tabindex', '0');
     }
-  };
+  }
 
   /**
    * Handles click events bubbling up
@@ -264,7 +264,7 @@ export class Tree extends FASTElement {
       // Selected item deselected
       this.currentSelected = null;
     }
-  };
+  }
 
   /**
    * checks if there are any nested tree items
