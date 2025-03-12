@@ -1,9 +1,6 @@
 import { children, elements, html } from '@microsoft/fast-element';
 import type { TreeItem } from './tree-item.js';
 
-// We don't put the icon into the icons/index.ts file because
-// this icon is the default chevron icon of the tree-item component,
-// it would be contributed to the upstream later.
 const chevronIcon = html`
   <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
     <path
