@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 27 Feb 2025 07:15:49 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Mar 2025 07:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.59)
+
+Thu, 13 Mar 2025 07:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.58..@fluentui/react-charting_v5.23.59)
+
+### Patches
+
+- Create Scatter plot ([PR #33843](https://github.com/microsoft/fluentui/pull/33843) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [5.23.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.58)
 
