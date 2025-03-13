@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const {
-  loadWorkspaceAddon,
+  // loadWorkspaceAddon,
   registerTsPaths,
   processBabelLoaderOptions,
   getImportMappingsForExportToSandboxAddon,
