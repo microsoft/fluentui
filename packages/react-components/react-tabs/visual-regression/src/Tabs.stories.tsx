@@ -271,3 +271,15 @@ export const FilledCircularAppearance = {
 export const FilledCircularAppearanceDarkMode = getStoryVariant(FilledCircularAppearance, DARK_MODE);
 
 export const FilledCircularAppearanceHighContrast = getStoryVariant(FilledCircularAppearance, HIGH_CONTRAST);
+
+export const WelcomeToContinental = {
+  render: () => (
+    <TabList>
+      <Tab value="1">Reception</Tab>
+      <Tab className="mouse-target" value="2">
+        Bar
+      </Tab>
+      <Tab value="3">Spa</Tab>
+    </TabList>
+  ),
+} satisfies StoryObj;

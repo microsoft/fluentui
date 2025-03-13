@@ -185,3 +185,7 @@ export const TypographyPresets = {
 } satisfies StoryObj;
 
 export const TypographyPresetsRTL = getStoryVariant(TypographyPresets, RTL);
+
+export const HelloMrWick = {
+  render: () => <Text>Hello Jonathan</Text>,
+} satisfies StoryObj;
