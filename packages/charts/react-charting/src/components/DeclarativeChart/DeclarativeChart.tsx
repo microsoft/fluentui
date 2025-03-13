@@ -110,7 +110,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   })();
 
   if (!plotlyInput || !plotlyInput.data || plotlyInput.data.length === 0) {
-    throw new Error(`Invalid plotly schema`);
+    throw new Error('Invalid plotly schema');
   }
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
