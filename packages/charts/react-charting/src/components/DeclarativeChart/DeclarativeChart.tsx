@@ -101,7 +101,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const plotlyInput = plotlySchema as PlotlySchema;
+  const plotlyInput: PlotlySchema | null = (() => {
+    try {
+      return plotlySchema as PlotlySchema;
+    } catch (error) {
+      throw new Error(`Invalid plotly schema: ${error}`);
+    }
+  })();
+
+  if (!plotlyInput || !plotlyInput.data || plotlyInput.data.length === 0) {
+    throw new Error(`Invalid plotly schema`);
+  }
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const theme = useTheme();
