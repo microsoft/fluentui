@@ -38,15 +38,6 @@ export function generateMarkdownReport(results: Result[], options: Options) {
       if (result.error) {
         generatedContent += result.error;
       }
-      if (result.diffPixels) {
-        generatedContent += `<br/>Diff pixels: ${result.diffPixels}`;
-        // TODO: this is impossible to do in GitHub MD context without either uploading images to some cloud or inlining  them via BASE64 which would be catastrophic for GH GUI
-        // generatedContent += `<br/>`;
-        // generatedContent += `<figure><figcaption>Baseline</<figcaption><img src="${paths.baselineDir}/${result.file}" alt="Baseline"></figure>`;
-        // generatedContent += `<figure><figcaption>Actual</<figcaption><img src="${paths.actualDir}/${result.file}" alt="Actual"></figure>`;
-        // generatedContent += `<figure><figcaption>Diff</<figcaption><img src="${paths.diffDir}/${result.file}" alt="Diff"></figure>`;
-      }
-
       generatedContent += `|`;
 
       return generatedContent;
@@ -84,6 +75,7 @@ export function generateHtmlReport(results: Result[], options: Options) {
       if (result.error) {
         generatedContent += `<p>${result.error}</p>`;
         generatedContent += `<div class="image-container">`;
+
         if (result.changeType === 'add') {
           generatedContent += renderImage(
             result.file,
@@ -91,6 +83,7 @@ export function generateHtmlReport(results: Result[], options: Options) {
             'actual',
           );
         }
+
         if (result.changeType === 'remove') {
           generatedContent += renderImage(
             result.file,
@@ -98,27 +91,37 @@ export function generateHtmlReport(results: Result[], options: Options) {
             'baseline',
           );
         }
-        generatedContent += `</div>`;
-      }
 
-      if (result.diffPixels) {
-        generatedContent += `<p>Diff pixels: ${result.diffPixels}</p>`;
-        generatedContent += `<div class="image-container">`;
-        generatedContent += renderImage(
-          result.file,
-          createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.outputBaselineDir),
-          'baseline',
-        );
-        generatedContent += renderImage(
-          result.file,
-          createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.actualDir),
-          'actual',
-        );
-        generatedContent += renderImage(
-          result.file,
-          createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.diffDir),
-          'diff',
-        );
+        if (result.changeType === 'dimensions-diff') {
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.outputBaselineDir),
+            'baseline',
+          );
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.actualDir),
+            'actual',
+          );
+        }
+
+        if (result.changeType === 'diff') {
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.outputBaselineDir),
+            'baseline',
+          );
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.actualDir),
+            'actual',
+          );
+          generatedContent += renderImage(
+            result.file,
+            createRelativeImagePath(options.paths.relative.outputPath, options.paths.relative.diffDir),
+            'diff',
+          );
+        }
 
         generatedContent += `</div>`;
       }
@@ -176,13 +179,8 @@ export function generateCliReport(results: Result[], options: Options) {
   changedEntries.forEach(result => {
     let details = '';
 
-    if (!result.passed) {
-      if (result.error) {
-        details += result.error;
-      }
-      if (result.diffPixels) {
-        details += `Diff pixels: ${result.diffPixels}`;
-      }
+    if (result.error) {
+      details += result.error;
     }
 
     table.push([

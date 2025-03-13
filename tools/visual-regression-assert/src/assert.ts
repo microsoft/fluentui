@@ -1,5 +1,14 @@
 import { join } from 'node:path';
-import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs';
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  unlinkSync,
+  writeFileSync,
+} from 'node:fs';
 import { cwd } from 'node:process';
 
 import { PNG } from 'pngjs';
@@ -18,9 +27,9 @@ async function compareSnapshots(
     const actualImg = PNG.sync.read(readFileSync(actualPath));
     const { width, height } = baselineImg;
 
-    // if (actualImg.width !== width || actualImg.height !== height) {
-    //   return { passed: false, error: 'Image dimensions mismatch', changeType: 'diff' };
-    // }
+    if (actualImg.width !== width || actualImg.height !== height) {
+      return { passed: false, error: 'Image dimensions mismatch', changeType: 'dimensions-diff' };
+    }
 
     const diff = new PNG({ width, height });
     const pixelmatch = await loadPixelmatch();
@@ -30,6 +39,7 @@ async function compareSnapshots(
       writeFileSync(diffPath, PNG.sync.write(diff));
       return {
         passed: false,
+        error: `Diff pixels: ${numDiffPixels}`,
         changeType: 'diff',
         diffPixels: numDiffPixels,
         diffPath: diffPath,
@@ -42,6 +52,7 @@ async function compareSnapshots(
 
     return { passed: true };
   } catch (error) {
+    console.error(error);
     return { passed: false, error: (error as Error).message };
   }
 }
@@ -87,22 +98,28 @@ export async function runSnapshotTests(options: {
     console.info('======================');
   }
 
+  if (!existsSync(normalizedPaths.baselineDir)) {
+    mkdirSync(normalizedPaths.baselineDir, { recursive: true });
+  }
+
   if (!existsSync(normalizedPaths.outputBaselineDir)) {
+    mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
+  } else {
+    rmSync(normalizedPaths.outputBaselineDir, { recursive: true });
     mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
   }
 
-  if (!existsSync(normalizedPaths.baselineDir)) {
-    mkdirSync(normalizedPaths.baselineDir, { recursive: true });
+  if (!existsSync(normalizedPaths.diffDir)) {
+    mkdirSync(normalizedPaths.diffDir, { recursive: true });
+  } else {
+    rmSync(normalizedPaths.diffDir, { recursive: true });
+    mkdirSync(normalizedPaths.diffDir, { recursive: true });
   }
 
   const baselineFiles = readdirSync(normalizedPaths.baselineDir);
   const actualFiles = readdirSync(normalizedPaths.actualDir);
   let allPassed = true;
   const results: Result[] = [];
-
-  if (!existsSync(normalizedPaths.diffDir)) {
-    mkdirSync(normalizedPaths.diffDir, { recursive: true });
-  }
 
   const removedFilesFromBaseline = baselineFiles.filter(file => {
     if (!file.endsWith('.png')) {
@@ -112,6 +129,7 @@ export async function runSnapshotTests(options: {
     if (!actualFiles.includes(file)) {
       const baselinePath = join(normalizedPaths.baselineDir, file);
       if (!updateSnapshots) {
+        // copy baseline img that is being removed to our reports /baseline folder
         copyFileSync(baselinePath, join(normalizedPaths.outputBaselineDir, file));
         results.push({
           file,
@@ -146,6 +164,7 @@ export async function runSnapshotTests(options: {
         error: updateSnapshots ? undefined : 'New Snapshot',
         changeType: 'add',
       });
+
       if (!updateSnapshots) {
         allPassed = false;
       } else {
@@ -162,6 +181,7 @@ export async function runSnapshotTests(options: {
       }
       results.push({ file, ...result });
     } else {
+      copyFileSync(actualPath, baselinePath);
       results.push({ file, passed: true });
     }
   }
