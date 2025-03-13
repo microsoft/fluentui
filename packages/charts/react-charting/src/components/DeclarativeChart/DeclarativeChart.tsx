@@ -31,8 +31,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { IImageExportOptions, toImage } from './imageExporter';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -101,7 +100,23 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const plotlyInput = plotlySchema as PlotlySchema;
+  const plotlyInput: PlotlySchema | null = (() => {
+    try {
+      return plotlySchema as PlotlySchema;
+    } catch (error) {
+      throw new Error(`Invalid plotly schema: ${error}`);
+    }
+  })();
+
+  if (!plotlyInput) {
+    throw new Error('Plotly input is null or undefined');
+  }
+  if (!plotlyInput.data) {
+    throw new Error('Plotly input data is null or undefined');
+  }
+  if (plotlyInput.data.length === 0) {
+    throw new Error('Plotly input data is empty');
+  }
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const theme = useTheme();
@@ -187,11 +202,20 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   const exportAsImage = React.useCallback(
-    (opts?: IImageExportOptions) => {
-      return toImage(chartRef.current?.chartContainer, {
-        background: theme.semanticColors.bodyBackground,
-        scale: 5,
-        ...opts,
+    (opts?: IImageExportOptions): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        if (!chartRef.current || typeof chartRef.current.toImage !== 'function') {
+          return reject(Error('Chart cannot be exported as image'));
+        }
+
+        chartRef.current
+          .toImage({
+            background: theme.semanticColors.bodyBackground,
+            scale: 5,
+            ...opts,
+          })
+          .then(resolve)
+          .catch(reject);
       });
     },
     [theme],
@@ -242,17 +266,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
-      if (plotlyInput.data[0].mode === 'markers') {
-        throw new Error(`Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
+      if (plotlyInput.data[0]?.mode?.includes('markers') && !isNumberArray(plotlyInput.data[0].y!)) {
+        throw new Error(
+          `Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}
+          , xAxisType: String or Date`,
+        );
       }
       const isAreaChart = plotlyInput.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
+      const isScatterMarkers = plotlyInput.data[0]?.mode?.includes('markers');
       const renderChartJsx = (chartProps: ILineChartProps | IAreaChartProps) => {
         if (isAreaChart) {
           return <ResponsiveAreaChart {...chartProps} />;
         }
-        return <ResponsiveLineChart {...chartProps} />;
+        return <ResponsiveLineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
       };
       return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':

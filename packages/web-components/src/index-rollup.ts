@@ -40,3 +40,5 @@ import './text-input/define.js';
 import './text/define.js';
 import './toggle-button/define.js';
 import './tooltip/define.js';
+import './tree/define.js';
+import './tree-item/define.js';

@@ -132,7 +132,7 @@ const useRootStyles = makeStyles({
     },
 
     ':focus-within': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
