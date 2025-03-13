@@ -179,6 +179,13 @@ function generateTokenVariables() {
       tokenSemanticRef = tokenSemanticName + 'Raw';
     }
 
+    /**
+     * TODO, we need to account for the fact that the fallbacks can be nullable tokens and as such we need to ensure
+     * that they are not wrapped in the var() css function. This is because `unset` is not a variable and a statement.
+     * We also need to ensure legacy F2 tokens are not wrapped in the var() css function because they have the var() css function
+     * already in the token value. Any other values should probably include the var() css function.
+     */
+
     // Our default token value if no fallbacks found.
     let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
 
@@ -190,6 +197,9 @@ function generateTokenVariables() {
     } else if (fluentFallbacks[token]) {
       // Token has a fluent override fallback only
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(fluentFallbacks[token])})`;
+    } else if (tokenData.nullable && tokenSemanticRef) {
+      // nullable tokens should always resolve to unset
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset})`;
     } else if (tokenSemanticRef) {
       // Token has a FST reference fallback only
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenSemanticRef)})`;

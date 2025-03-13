@@ -1,4 +1,4 @@
-import { nullNumberRaw, strokewidthDefaultRaw } from '../../control/variables';
+import { strokewidthDefaultRaw } from '../../control/variables';
 import {
   ctrlSplitDividerStrokewidthOnoutlineRaw,
   ctrlSplitDividerStrokewidthOnsubtleRaw,
@@ -6,4 +6,4 @@ import {
 } from './variables';
 export const ctrlSplitDividerStrokewidth = `var(${ctrlSplitDividerStrokewidthRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlSplitDividerStrokewidthOnoutline = `var(${ctrlSplitDividerStrokewidthOnoutlineRaw}, ${strokewidthDefaultRaw})`;
-export const ctrlSplitDividerStrokewidthOnsubtle = `var(${ctrlSplitDividerStrokewidthOnsubtleRaw}, ${nullNumberRaw})`;
+export const ctrlSplitDividerStrokewidthOnsubtle = `var(${ctrlSplitDividerStrokewidthOnsubtleRaw}, unset})`;

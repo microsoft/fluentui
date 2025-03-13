@@ -1,4 +1,4 @@
-import { backgroundFlyoutSolidRaw, nullColorRaw } from '../../control/variables';
+import { backgroundFlyoutSolidRaw } from '../../control/variables';
 import {
   ctrlComposerContainerBackgroundAcryliccolorblendRaw,
   ctrlComposerContainerBackgroundAcryliclumblendRaw,
@@ -56,20 +56,20 @@ export const ctrlComposerInputBackgroundPressed = `var(${ctrlComposerInputBackgr
 export const ctrlComposerInputBackgroundDisabled = `var(${ctrlComposerInputBackgroundDisabledRaw})`;
 export const ctrlComposerInputBackgroundSelectedRest = `var(${ctrlComposerInputBackgroundSelectedRestRaw})`;
 export const ctrlComposerInputBackgroundHover = `var(${ctrlComposerInputBackgroundHoverRaw})`;
-export const ctrlComposerInputStrokeRest = `var(${ctrlComposerInputStrokeRestRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputStrokeHoverUsesgradient = `var(${ctrlComposerInputStrokeHoverUsesgradientRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputStrokePressedUsesgradient = `var(${ctrlComposerInputStrokePressedUsesgradientRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputStrokeDisabledUsesgradient = `var(${ctrlComposerInputStrokeDisabledUsesgradientRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputStrokeSelectedRestUsesgradient = `var(${ctrlComposerInputStrokeSelectedRestUsesgradientRaw}, ${nullColorRaw})`;
+export const ctrlComposerInputStrokeRest = `var(${ctrlComposerInputStrokeRestRaw}, unset})`;
+export const ctrlComposerInputStrokeHoverUsesgradient = `var(${ctrlComposerInputStrokeHoverUsesgradientRaw}, unset})`;
+export const ctrlComposerInputStrokePressedUsesgradient = `var(${ctrlComposerInputStrokePressedUsesgradientRaw}, unset})`;
+export const ctrlComposerInputStrokeDisabledUsesgradient = `var(${ctrlComposerInputStrokeDisabledUsesgradientRaw}, unset})`;
+export const ctrlComposerInputStrokeSelectedRestUsesgradient = `var(${ctrlComposerInputStrokeSelectedRestUsesgradientRaw}, unset})`;
 export const ctrlComposerInputStrokeWidthRest = `var(${ctrlComposerInputStrokeWidthRestRaw})`;
 export const ctrlComposerInputStrokeWidthHover = `var(${ctrlComposerInputStrokeWidthHoverRaw})`;
 export const ctrlComposerInputStrokeWidthPressed = `var(${ctrlComposerInputStrokeWidthPressedRaw})`;
 export const ctrlComposerInputStrokeWidthSelectedRest = `var(${ctrlComposerInputStrokeWidthSelectedRestRaw})`;
-export const ctrlComposerInputBottomstrokeRest = `var(${ctrlComposerInputBottomstrokeRestRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputBottomstrokeHover = `var(${ctrlComposerInputBottomstrokeHoverRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputBottomstrokePressed = `var(${ctrlComposerInputBottomstrokePressedRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputBottomstrokeDisabled = `var(${ctrlComposerInputBottomstrokeDisabledRaw}, ${nullColorRaw})`;
-export const ctrlComposerInputBottomstrokeSelectedRest = `var(${ctrlComposerInputBottomstrokeSelectedRestRaw}, ${nullColorRaw})`;
+export const ctrlComposerInputBottomstrokeRest = `var(${ctrlComposerInputBottomstrokeRestRaw}, unset})`;
+export const ctrlComposerInputBottomstrokeHover = `var(${ctrlComposerInputBottomstrokeHoverRaw}, unset})`;
+export const ctrlComposerInputBottomstrokePressed = `var(${ctrlComposerInputBottomstrokePressedRaw}, unset})`;
+export const ctrlComposerInputBottomstrokeDisabled = `var(${ctrlComposerInputBottomstrokeDisabledRaw}, unset})`;
+export const ctrlComposerInputBottomstrokeSelectedRest = `var(${ctrlComposerInputBottomstrokeSelectedRestRaw}, unset})`;
 export const ctrlComposerInputShadowXOffset = `var(${ctrlComposerInputShadowXOffsetRaw})`;
 export const ctrlComposerInputShadowY = `var(${ctrlComposerInputShadowYRaw})`;
 export const ctrlComposerInputShadowBlur = `var(${ctrlComposerInputShadowBlurRaw})`;
@@ -86,4 +86,4 @@ export const ctrlComposerContainerShadowAmbientX = `var(${ctrlComposerContainerS
 export const ctrlComposerContainerShadowAmbientY = `var(${ctrlComposerContainerShadowAmbientYRaw})`;
 export const ctrlComposerContainerShadowAmbientBlur = `var(${ctrlComposerContainerShadowAmbientBlurRaw})`;
 export const ctrlComposerContainerShadowAmbientColor = `var(${ctrlComposerContainerShadowAmbientColorRaw})`;
-export const ctrlComposerContainerStrokeDefault = `var(${ctrlComposerContainerStrokeDefaultRaw}, ${nullColorRaw})`;
+export const ctrlComposerContainerStrokeDefault = `var(${ctrlComposerContainerStrokeDefaultRaw}, unset})`;
