@@ -3,7 +3,7 @@ export interface Result {
   diffPixels?: any;
   diffPath?: string;
   file: any;
-  changeType?: 'add' | 'diff' | 'remove';
+  changeType?: 'add' | 'diff' | 'dimensions-diff' | 'remove';
   error?: string;
 }
 
