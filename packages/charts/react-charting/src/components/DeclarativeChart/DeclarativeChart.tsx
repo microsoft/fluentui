@@ -109,8 +109,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
   })();
 
-  if (!plotlyInput || !plotlyInput.data || plotlyInput.data.length === 0) {
-    throw new Error('Invalid plotly schema');
+  if (!plotlyInput) {
+    throw new Error('Plotly input is null or undefined');
+  }
+  if (!plotlyInput.data) {
+    throw new Error('Plotly input data is null or undefined');
+  }
+  if (plotlyInput.data.length === 0) {
+    throw new Error('Plotly input data is empty');
   }
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
