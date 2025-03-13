@@ -136,6 +136,7 @@ apps/chart-docsite @microsoft/charting-team
 packages/azure-themes @Jacqueline-ms
 packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
+packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
 packages/charts/react-charts-preview/library @microsoft/charting-team
 packages/charts/react-charts-preview/stories @microsoft/charting-team

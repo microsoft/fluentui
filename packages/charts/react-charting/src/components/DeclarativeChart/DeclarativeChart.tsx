@@ -4,7 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
-import { PlotData, PlotlySchema } from './PlotlySchema';
+import type { PlotData, PlotlySchema } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
   isDateArray,
