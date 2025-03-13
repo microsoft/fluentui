@@ -35,23 +35,27 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  backgroundColor: `var(--smtc-background-control-neutral-rest,${tokens.colorNeutralBackground1})`,
+  color: `var(--smtc-foreground-control-onNeutral-rest,${tokens.colorNeutralForeground1})`,
+  border: `${tokens.strokeWidthThin} solid var(--smtc-stroke-control-onNeutral-rest,${tokens.colorNeutralStroke1})`,
 
+  [`& .${buttonClassNames.icon}`]: {
+    color: 'var(--smtc-icon-theme-control-default-rest)',
+  },
   fontFamily: tokens.fontFamilyBase,
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
+    backgroundColor: `var(--smtc-background-control-neutral-hover,${tokens.colorNeutralBackground1Hover}`,
+    borderColor: `var(--smtc-stroke-control-onNeutral-hover,${tokens.colorNeutralStroke1Hover})`,
+    borderImage: `linear-gradient(0deg, var(--smtc-stroke-control-onNeutral-hover), var(--ctrl-stroke-control-onNeutral-gradientStop2-hover)) 1`,
+    color: `var(--smtc-foreground-control-onNeutral-hover,${tokens.colorNeutralForeground1Hover})`,
 
     cursor: 'pointer',
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    backgroundColor: `var(--smtc-background-control-neutral-pressed,${tokens.colorNeutralBackground1Pressed}`,
     borderColor: tokens.colorNeutralStroke1Pressed,
     color: tokens.colorNeutralForeground1Pressed,
 
@@ -152,7 +156,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: `var(--smtc-background-control-brand-hover,${tokens.colorBrandBackgroundHover}`,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
@@ -320,7 +324,7 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: `var(--smtc-background-control-neutral-disabled,${tokens.colorNeutralBackgroundDisabled})`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
 
