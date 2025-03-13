@@ -274,7 +274,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     if (name) {
       children.unshift({
         key: name + '-header',
-        name: name,
+        name,
         iconProps: { iconName: '' },
         className: 'ba-SidebarContextualMenuButton-header ',
         disabled: true,
