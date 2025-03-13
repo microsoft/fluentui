@@ -405,6 +405,7 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
   lineBorderColor?: string;
 
   /**
+   * Defines the type of interpolation used to render the line.
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
