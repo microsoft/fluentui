@@ -2,6 +2,16 @@ import { create as d3Create, select as d3Select, Selection } from 'd3-selection'
 import { copyStyle, createMeasurementSpan, resolveCSSVariables } from './index';
 import { IImageExportOptions } from '../types/index';
 import { ILegend, ILegendContainer } from '../Legends';
+import {
+  LEGEND_CONTAINER_MARGIN_TOP,
+  LEGEND_CONTAINER_MARGIN_START,
+  LEGEND_PADDING,
+  LEGEND_HEIGHT,
+  LEGEND_SHAPE_BORDER,
+  LEGEND_SHAPE_SIZE,
+  LEGEND_SHAPE_MARGIN_END,
+  INACTIVE_LEGEND_TEXT_OPACITY,
+} from '../components/Legends/Legends.styles';
 
 export function toImage(
   chartContainer: HTMLElement | null | undefined,
@@ -96,12 +106,6 @@ function toSVG(
   };
 }
 
-const LEGEND_CONTAINER_MARGIN_TOP = 8;
-const LEGEND_CONTAINER_MARGIN_START = 12;
-const LEGEND_PADDING = 8;
-const LEGEND_HEIGHT = 32;
-const LEGEND_SHAPE_SIZE = 12.5;
-const LEGEND_SHAPE_MARGIN_END = 8;
 const LEGEND_TEXT_STYLE_PROPERTIES_MAP = {
   color: 'fill',
   'font-family': 'font-family',
@@ -163,7 +167,7 @@ export function cloneLegendsToSVG(
       .attr('width', LEGEND_SHAPE_SIZE)
       .attr('height', LEGEND_SHAPE_SIZE)
       .style('fill', isLegendActive ? legends[i].color : 'transparent')
-      .style('stroke-width', 1)
+      .style('stroke-width', LEGEND_SHAPE_BORDER)
       .style('stroke', legends[i].color);
 
     legendItem
@@ -171,7 +175,7 @@ export function cloneLegendsToSVG(
       .attr('x', legendX + (isRTL ? legendWidth - textOffset : textOffset))
       .attr('y', legendY + LEGEND_PADDING)
       .attr('dominant-baseline', 'hanging')
-      .style('opacity', isLegendActive ? 1 : 0.67)
+      .style('opacity', isLegendActive ? 1 : INACTIVE_LEGEND_TEXT_OPACITY)
       .text(legends[i].title)
       .call(selection => copyStyle(LEGEND_TEXT_STYLE_PROPERTIES_MAP, legendText, selection.node()!));
 
@@ -189,9 +193,9 @@ export function cloneLegendsToSVG(
       let itemOffsetX = 0;
       ln.forEach(item => {
         const newOffsetX = lineOffsetX + (isRTL ? remLineWidth - item.width - itemOffsetX : 0);
+        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
         remLineWidth -= item.width;
         itemOffsetX += item.width;
-        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
       });
     });
   } else if (isRTL) {
@@ -201,9 +205,9 @@ export function cloneLegendsToSVG(
       let itemOffsetX = LEGEND_CONTAINER_MARGIN_START;
       ln.forEach(item => {
         const newOffsetX = remLineWidth - item.width - itemOffsetX;
+        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
         remLineWidth -= item.width;
         itemOffsetX += item.width;
-        item.elem.attr('transform', `translate(${newOffsetX}, 0)`);
       });
     });
   }
