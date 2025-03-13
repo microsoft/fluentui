@@ -46,15 +46,18 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
 
-export const Vertical = () => (
-  <TabList vertical>
-    <Tab value="1">First</Tab>
-    <Tab className="mouse-target" value="2">
-      Second
-    </Tab>
-    <Tab value="3">Third</Tab>
-  </TabList>
-);
+export const Vertical = {
+  render: () => (
+    <TabList vertical>
+      <Tab value="1">First</Tab>
+      <Tab className="mouse-target" value="2">
+        Second
+      </Tab>
+      <Tab value="3">Third</Tab>
+    </TabList>
+  ),
+  name: 'Vertical',
+};
 
 export const SubtleAppearance = {
   render: () => (
