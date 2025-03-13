@@ -49,6 +49,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#004b50"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -61,6 +62,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -113,6 +115,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#5c2d91"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -125,6 +128,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -177,6 +181,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#a4262c"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -189,6 +194,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -199,7 +205,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout70"
+      id="callout84"
     />
   </div>
 </div>
@@ -254,6 +260,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#004b50"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -266,6 +273,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -318,6 +326,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#5c2d91"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -330,6 +339,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -382,6 +392,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="#a4262c"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -394,6 +405,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -404,7 +416,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout75"
+      id="callout90"
     />
   </div>
 </div>
@@ -413,7 +425,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider76"
+    class="fui-FluentProvider fui-FluentProvider91"
     dir="ltr"
   >
     <div
@@ -463,6 +475,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#004b50"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
@@ -475,6 +488,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
+                rx="4"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
                 y="0"
@@ -527,6 +541,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#5c2d91"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
@@ -539,6 +554,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
+                rx="4"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
                 y="0"
@@ -591,6 +607,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="#a4262c"
                 height="12"
                 role="img"
+                rx="4"
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
@@ -603,6 +620,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
+                rx="4"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
                 y="0"
@@ -613,7 +631,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
       </div>
       <div
         class="fui-cart__calloutContainer"
-        id="callout81"
+        id="callout97"
       />
     </div>
   </div>
@@ -624,7 +642,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty82"
+    id="_HBC_empty98"
     role="alert"
     style="opacity: 0;"
   />
@@ -681,6 +699,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#004b50"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -693,6 +712,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -745,6 +765,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#5c2d91"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -757,6 +778,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -809,6 +831,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="#a4262c"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -821,6 +844,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -831,7 +855,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout86"
+      id="callout103"
     />
   </div>
 </div>
@@ -886,6 +910,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#004b50"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="10.286666666666665%"
               x="0%"
@@ -898,6 +923,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="89.71333333333334%"
               x="10.286666666666665%"
               y="0"
@@ -950,6 +976,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#5c2d91"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="5.333333333333334%"
               x="0%"
@@ -962,6 +989,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="94.66666666666667%"
               x="5.333333333333334%"
               y="0"
@@ -1014,6 +1042,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="#a4262c"
               height="12"
               role="img"
+              rx="4"
               tabindex="0"
               width="59.25333333333334%"
               x="0%"
@@ -1026,6 +1055,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               fill="var(--colorBackgroundOverlay)"
               height="12"
               role="img"
+              rx="4"
               width="40.74666666666666%"
               x="59.25333333333334%"
               y="0"
@@ -1036,7 +1066,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout5"
+      id="callout6"
     />
   </div>
 </div>
