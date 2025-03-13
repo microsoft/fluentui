@@ -83,7 +83,21 @@ const storyTemplate = html<TreeStoryArgs>`
     </fluent-tree-item>
     <fluent-tree-item expanded>
       Item 2
-      <svg slot="aside" fill="red" class="___12fm75w f1w7gpdv fez10in fg4l7m0" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8.2 8.83a.2.2 0 0 1-.4 0l-.86-4.56a1.07 1.07 0 1 1 2.12 0L8.2 8.83ZM8 2a2.07 2.07 0 0 0-2.04 2.46l.86 4.56a1.2 1.2 0 0 0 2.36 0l.86-4.56A2.07 2.07 0 0 0 8 2Zm0 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="red"></path></svg>
+      <svg
+        slot="aside"
+        fill="red"
+        class="___12fm75w f1w7gpdv fez10in fg4l7m0"
+        aria-hidden="true"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.2 8.83a.2.2 0 0 1-.4 0l-.86-4.56a1.07 1.07 0 1 1 2.12 0L8.2 8.83ZM8 2a2.07 2.07 0 0 0-2.04 2.46l.86 4.56a1.2 1.2 0 0 0 2.36 0l.86-4.56A2.07 2.07 0 0 0 8 2Zm0 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"
+          fill="red"
+        ></path>
+      </svg>
       <fluent-tree-item expanded>
         Item 2-1
         <fluent-tree-item>
