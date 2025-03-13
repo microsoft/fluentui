@@ -1,8 +1,17 @@
 # Change Log - @fluentui/set-version
 
-This log was last generated on Fri, 05 May 2023 18:14:00 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.2.24)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/set-version_v8.2.23..@fluentui/set-version_v8.2.24)
+
+### Patches
+
+- fix: trigger v8 release to fix production source-maps issues ([PR #33875](https://github.com/microsoft/fluentui/pull/33875) by martinhochel@microsoft.com)
 
 ## [8.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.2.9)
 

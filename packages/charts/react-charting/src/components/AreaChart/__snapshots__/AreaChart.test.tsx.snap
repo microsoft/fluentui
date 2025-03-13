@@ -28,9 +28,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -598,9 +596,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1065,9 +1061,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
+
     data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}

@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 18 Feb 2025 11:26:27 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Mar 2025 18:58:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.1)
+
+Tue, 11 Mar 2025 18:58:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.60.0..@fluentui/react-components_v9.60.1)
+
+### Minor changes
+
+- `@fluentui/react-card`
+  - fix: implemented custom style hook for Card, CardFooter, CardHeader, CardPreview ([PR #33912](https://github.com/microsoft/fluentui/pull/33912) by terynkum@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix(react-nav): Export missing context providers and hooks ([PR #33938](https://github.com/microsoft/fluentui/pull/33938) by jiangemma@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents. ([PR #33943](https://github.com/microsoft/fluentui/pull/33943) by matejera@microsoft.com)
+  - fix: Implemented customStyleHooks for SearchBox Component ([PR #33954](https://github.com/microsoft/fluentui/pull/33954) by terynkum@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents. ([PR #33943](https://github.com/microsoft/fluentui/pull/33943) by matejera@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: use contrasting token pairs for selected radio and toggle states ([PR #33579](https://github.com/microsoft/fluentui/pull/33579) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: placed thumb half outside of colorSlider and colorArea ([PR #33880](https://github.com/microsoft/fluentui/pull/33880) by vkozlova@microsoft.com)
+  - fix: focus on Y axis ([PR #33899](https://github.com/microsoft/fluentui/pull/33899) by v.kozlova13@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+- `@fluentui/react-link`
+  - fix: Link now pulls customStyleHook from context ([PR #33894](https://github.com/microsoft/fluentui/pull/33894) by mgodbolt@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: apply initial styles consistently ([PR #33810](https://github.com/microsoft/fluentui/pull/33810) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix: Implemented customStyleHooks for SearchBox Component ([PR #33954](https://github.com/microsoft/fluentui/pull/33954) by terynkum@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: selected state in HC on Windows ([PR #33910](https://github.com/microsoft/fluentui/pull/33910) by v.kozlova13@gmail.com)
+- `@fluentui/react-tag-picker`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+
+## [9.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.0)
+
+Fri, 21 Feb 2025 14:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.59.0..@fluentui/react-components_v9.60.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Implement props to control animation duration and autoplay interval ([PR #33820](https://github.com/microsoft/fluentui/pull/33820) by mifraser@microsoft.com)
+- `@fluentui/react-tabster`
+  - Nested modalizer fix and useActivateModal() hook to activate modals without moving focus. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Add a defensive check when getting overflow item records ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - fix: useAnnounce live regions do not get aria-hidden from tabster ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-popover`
+  - Update to satisfy the bumped Tabster 8.5.0. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: provide methods for elements such as live regions to not get hidden by modals ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: TeachingPopoverCarousel fires announce() messages on slide change ([PR #33833](https://github.com/microsoft/fluentui/pull/33833) by sarah.higley@microsoft.com)
 
 ## [9.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.59.0)
 

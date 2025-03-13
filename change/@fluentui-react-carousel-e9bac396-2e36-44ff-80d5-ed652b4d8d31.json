@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement props to control animation duration and autoplay interval",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

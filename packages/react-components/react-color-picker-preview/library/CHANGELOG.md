@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-color-picker-preview
 
-This log was last generated on Tue, 18 Feb 2025 11:26:27 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Mar 2025 18:58:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.3.1)
+
+Tue, 11 Mar 2025 18:58:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.3.0..@fluentui/react-color-picker-preview_v0.3.1)
+
+### Patches
+
+- fix: placed thumb half outside of colorSlider and colorArea ([PR #33880](https://github.com/microsoft/fluentui/pull/33880) by vkozlova@microsoft.com)
+- fix: focus on Y axis ([PR #33899](https://github.com/microsoft/fluentui/pull/33899) by v.kozlova13@gmail.com)
+- Bump @fluentui/react-context-selector to v9.1.73 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.51 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-tabster to v9.24.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.3.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker-preview_v0.2.0..@fluentui/react-color-picker-preview_v0.3.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker-preview_v0.2.0)
 

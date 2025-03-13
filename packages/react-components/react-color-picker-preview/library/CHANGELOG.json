@@ -2,6 +2,72 @@
   "name": "@fluentui/react-color-picker-preview",
   "entries": [
     {
+      "date": "Tue, 11 Mar 2025 18:58:50 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "1a43640b27a07712bc9bc2909ef6d19d7a929ea2",
+            "comment": "fix: placed thumb half outside of colorSlider and colorArea"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker-preview",
+            "commit": "a218a5dc65fafa2e5b18a8ec8258d08b0da4dcbf",
+            "comment": "fix: focus on Y axis"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.73",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.51",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.22.0",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.24.1",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.21",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-color-picker-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-color-picker-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.24.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Feb 2025 11:26:27 GMT",
       "tag": "@fluentui/react-color-picker-preview_v0.2.0",
       "version": "0.2.0",

@@ -121,3 +121,13 @@ export {
   useSplitNavItemStyles_unstable,
   useSplitNavItem_unstable,
 } from './SplitNavItem';
+
+export type { NavCategoryContextValues } from './components/NavCategoryContext';
+export { NavCategoryProvider, useNavCategoryContext_unstable } from './components/NavCategoryContext';
+export { useNavCategoryContextValues_unstable } from './components/useNavCategoryContextValues_unstable';
+
+export type { NavCategoryItemContextValues } from './components/NavCategoryItem/NavCategoryItem.types';
+export { NavCategoryItemProvider, useNavCategoryItemContext_unstable } from './components/NavCategoryItemContext';
+export { useNavCategoryItemContextValues_unstable } from './components/useNavCategoryItemContextValues_unstable';
+
+export { useNavContextValues_unstable } from './components/useNavContextValues';
