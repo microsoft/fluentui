@@ -1,17 +1,10 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { ProgressBar } from '@fluentui/react-progress';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 
-import {
-  getStoryVariant,
-  withStoryWrightSteps,
-  TestWrapperDecoratorFixedWidth,
-  DARK_MODE,
-  HIGH_CONTRAST,
-  RTL,
-} from '../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, DARK_MODE, HIGH_CONTRAST, RTL } from '../utilities';
 
 const useStyles = makeStyles({
   paused: {
@@ -25,10 +18,10 @@ const useStyles = makeStyles({
 export default {
   title: 'ProgressBar converged',
 
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof ProgressBar>;
 
 export const IndeterminateThickness = () => (

@@ -13,9 +13,9 @@ export default {
       <StoryWright
         steps={new Steps()
           .snapshot('default', { cropTo: '.testWrapper' })
-          .hover('input')
+          .hover('[role=combobox]')
           .snapshot('hover', { cropTo: '.testWrapper' })
-          .focus('input')
+          .focus('[role=combobox]')
           .wait(250) // let focus border animation finish
           .snapshot('focused', { cropTo: '.testWrapper' })
           .end()}
