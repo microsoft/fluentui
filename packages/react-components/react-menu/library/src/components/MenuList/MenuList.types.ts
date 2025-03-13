@@ -69,6 +69,8 @@ export type MenuListState = ComponentState<MenuListSlots> &
      * States if the MenuList is inside MenuContext
      */
     hasMenuContext?: boolean;
+
+    mouseInputState?: MenuListContextValue['mouseInputState'];
   };
 
 export type MenuListContextValues = {
