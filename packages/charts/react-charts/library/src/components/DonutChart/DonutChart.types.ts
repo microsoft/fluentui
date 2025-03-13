@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { CartesianChartStyleProps } from '../CommonComponents/index';
-import { ChartProps, ChartDataPoint } from './index';
+import { ChartProps, ChartDataPoint, Chart } from './index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { LegendsProps } from '../Legends/index';
 
@@ -107,6 +108,12 @@ export interface DonutChartProps {
    * @default false
    */
   hideTooltip?: boolean;
+
+  /**
+   * Optional callback to access the Chart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: React.RefObject<Chart>;
 }
 
 /**

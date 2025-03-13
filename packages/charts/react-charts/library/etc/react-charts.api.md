@@ -71,6 +71,7 @@ export interface CartesianChartProps {
     calloutProps?: Partial<ChartPopoverProps>;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
     className?: string;
+    componentRef?: React_2.RefObject<Chart>;
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
@@ -154,6 +155,12 @@ export interface CartesianChartStyles {
     tooltip?: string;
     xAxis?: string;
     yAxis?: string;
+}
+
+// @public (undocumented)
+export interface Chart {
+    // (undocumented)
+    chartContainer: HTMLElement | null;
 }
 
 // @public
@@ -354,6 +361,16 @@ export const DataVizPalette: {
 };
 
 // @public
+export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
+
+// @public
+export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
+    chartSchema: Schema;
+    componentRef?: React_2.RefObject<IDeclarativeChart>;
+    onSchemaChange?: (eventData: Schema) => void;
+}
+
+// @public
 export const DonutChart: React_2.FunctionComponent<DonutChartProps>;
 
 // @public
@@ -361,6 +378,7 @@ export interface DonutChartProps {
     calloutProps?: ChartPopoverProps;
     calloutPropsPerDataPoint?: (dataPointCalloutProps: ChartDataPoint) => ChartPopoverProps;
     className?: string;
+    componentRef?: React_2.RefObject<Chart>;
     culture?: string;
     data?: ChartProps;
     height?: number;
@@ -512,6 +530,24 @@ export interface HorizontalBarChartWithAxisDataPoint {
 export interface HorizontalDataPoint {
     x: number;
     y: number;
+}
+
+// @public (undocumented)
+export interface IDeclarativeChart {
+    // (undocumented)
+    exportAsImage: (opts?: ImageExportOptions) => Promise<string>;
+}
+
+// @public (undocumented)
+export interface ImageExportOptions {
+    // (undocumented)
+    background?: string;
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    scale?: number;
+    // (undocumented)
+    width?: number;
 }
 
 // @public
@@ -777,6 +813,11 @@ export interface RefArrayData {
 
 // @public (undocumented)
 export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public
+export interface Schema {
+    plotlySchema: any;
+}
 
 // @public (undocumented)
 export const Shape: React_2.FunctionComponent<ShapeProps>;

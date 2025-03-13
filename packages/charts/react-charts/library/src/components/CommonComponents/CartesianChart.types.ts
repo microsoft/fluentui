@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps, Margins } from '../../types/index';
+import { AccessibilityProps, Chart, Margins } from '../../types/index';
 import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { ChartPopoverProps } from './ChartPopover.types';
@@ -424,6 +424,12 @@ export interface CartesianChartProps {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   calloutPropsPerDataPoint?: (dataPointCalloutProps: any) => ChartPopoverProps;
+
+  /**
+   * Optional callback to access the Chart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: React.RefObject<Chart>;
 }
 
 export interface YValueHover {

@@ -153,6 +153,14 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     }
   });
 
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: chartContainer.current ?? null,
+    }),
+    [],
+  );
+
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.
