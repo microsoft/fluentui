@@ -30,11 +30,8 @@ export const template = html<TreeItem>`
         <slot></slot>
         <slot name="end"></slot>
       </div>
-      <div class="badging" part="badging">
-        <slot name="badging"></slot>
-      </div>
-      <div class="toolbar" part="toolbar">
-        <slot name="toolbar"></slot>
+      <div class="aside" part="aside">
+        <slot name="aside"></slot>
       </div>
     </div>
     <div role="group" class="items" part="items">
