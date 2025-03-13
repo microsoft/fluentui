@@ -3,6 +3,7 @@ import {
   getIntrinsicElementProps,
   useControllableState,
   useEventCallback,
+  mergeCallbacks,
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
@@ -69,15 +70,15 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }
   });
 
-  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback((e, data) => {
-    onTagSelect?.(e, data);
-
-    if (items.includes(data.value)) {
-      setItems(items.filter(item => item !== data.value));
-    } else {
-      setItems([...items, data.value]);
-    }
-  });
+  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback(
+    mergeCallbacks(onTagSelect, (_, data) => {
+      if (items.includes(data.value)) {
+        setItems(items.filter(item => item !== data.value));
+      } else {
+        setItems([...items, data.value]);
+      }
+    }),
+  );
 
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,

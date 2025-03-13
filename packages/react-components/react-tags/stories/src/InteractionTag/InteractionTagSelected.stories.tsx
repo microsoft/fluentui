@@ -40,3 +40,13 @@ export const Selected = () => {
     </div>
   );
 };
+
+Selected.storyName = 'Selected';
+Selected.parameters = {
+  docs: {
+    description: {
+      story:
+        'InteractionTag that can be selected. Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup.',
+    },
+  },
+};

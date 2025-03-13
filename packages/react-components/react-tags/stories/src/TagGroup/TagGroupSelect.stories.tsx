@@ -156,7 +156,8 @@ Select.storyName = 'Select';
 Select.parameters = {
   docs: {
     description: {
-      story: 'A TagGroup contains a collection of InteractionTag that can be selected.',
+      story:
+        'A TagGroup contains a collection of InteractionTag that can be selected. Note: This prop only changes the appearance of the tag at the moment. A future PR will add the integration with TagGroup.',
     },
   },
 };
