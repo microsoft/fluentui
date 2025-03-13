@@ -1,5 +1,6 @@
 import { children, elements, html } from '@microsoft/fast-element';
 import type { TreeItem } from './tree-item.js';
+import { isTreeItem } from './tree-item.options';
 
 const chevronIcon = html`
   <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
@@ -17,7 +18,7 @@ export const template = html<TreeItem>`
     @focusout="${(x, c) => x.blurHandler(c.event as FocusEvent)}"
     ${children({
       property: 'childTreeItems',
-      filter: elements(),
+      filter: node => isTreeItem(node),
     })}
   >
     <div class="positioning-region" part="positioning-region">
