@@ -9,7 +9,7 @@ export default {
   title: 'TabList and Tab Converged',
   decorators: [
     Story => (
-      <div className="testWrapper" style={{ width: '300px' }}>
+      <div className="testWrapper" style={{ width: '300px', height: '200px' }}>
         <Story />
       </div>
     ),
