@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 13 Mar 2025 04:07:37 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.85",
+      "version": "3.0.0-beta.85",
+      "comments": {
+        "none": [
+          {
+            "author": "patrick.wang1029@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1d870f57b9e47d5617b3d5fd3ca4a487d2cc37c1",
+            "comment": "Add tree-view and tree-view component"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "wes.ngrongsen@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "28857e63fd630673f6f6294ef3d576bf8ecaeec7",
+            "comment": "fix: export AnchorButtonStyles in its index.ts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 10 Mar 2025 21:05:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.84",
       "version": "3.0.0-beta.84",

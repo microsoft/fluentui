@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: export AnchorButtonStyles in its index.ts",
-  "packageName": "@fluentui/web-components",
-  "email": "wes.ngrongsen@gmail.com",
-  "dependentChangeType": "patch"
-}
