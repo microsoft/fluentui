@@ -158,7 +158,7 @@ Thu, 28 Nov 2024 09:30:50 GMT
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.0)
 
-Mon, 18 Nov 2024 09:44:38 GMT 
+Mon, 18 Nov 2024 09:44:38 GMT
 
 ### Minor changes
 
