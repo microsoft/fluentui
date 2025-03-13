@@ -59,8 +59,11 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -103,8 +106,11 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
@@ -147,8 +153,11 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -230,8 +239,11 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -274,8 +286,11 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
@@ -318,8 +333,11 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             className=
 
                 {
-                  fill: #000000;
+                  fill: #323130;
                   outline: none;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: rgb(255, 255, 255);
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
