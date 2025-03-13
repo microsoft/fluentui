@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "move filtering for tree-items to template",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
