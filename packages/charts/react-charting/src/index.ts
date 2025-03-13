@@ -139,5 +139,7 @@ export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaug
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './DeclarativeChart';
 export { DeclarativeChart } from './DeclarativeChart';
+export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
+export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
 
 import './version';

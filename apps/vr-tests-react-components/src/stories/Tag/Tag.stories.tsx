@@ -8,7 +8,7 @@ import { Steps } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+const steps = new Steps().snapshot('default').end();
 
 export default {
   title: 'Tag Converged',

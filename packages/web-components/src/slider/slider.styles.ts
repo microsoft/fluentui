@@ -126,11 +126,6 @@ export const styles = css`
     width: var(--track-size);
   }
 
-  :host(${verticalState}) .track {
-    top: var(--track-overhang);
-    bottom: var(--track-overhang);
-  }
-
   .track::before {
     content: '';
     position: absolute;
@@ -138,6 +133,10 @@ export const styles = css`
     border-radius: inherit;
     inset-inline-start: 0;
     width: var(--slider-progress);
+  }
+
+  :host(:dir(rtl)) .track::before {
+    width: calc(100% - var(--slider-progress));
   }
 
   :host(${verticalState}) .track::before {

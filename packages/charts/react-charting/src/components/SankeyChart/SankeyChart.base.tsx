@@ -598,6 +598,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     className: string,
     containerWidth: number,
     containerHeight: number,
+    enableReflow: boolean | undefined,
   ) => ISankeyChartStyleProps;
   private readonly _computeClassNames: (
     styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
@@ -656,12 +657,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className: string,
         containerWidth: number,
         containerHeight: number,
+        enableReflow: boolean | undefined,
       ): ISankeyChartStyleProps => ({
         theme: theme!,
         width: containerWidth,
         height: containerHeight,
         pathColor,
         className,
+        enableReflow,
       }),
     );
     // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
@@ -758,6 +761,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className!,
         state.containerWidth,
         state.containerHeight,
+        this.props.enableReflow,
       );
       const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 

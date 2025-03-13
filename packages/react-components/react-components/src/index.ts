@@ -128,6 +128,7 @@ export {
   useScrollbarWidth,
   useSelection,
   useTimeout,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,

@@ -24,7 +24,12 @@ export const SnapToAlignment = () => {
       numItems={childLength}
       itemSize={100}
       axis={'horizontal'}
-      container={{ role: 'list', className: styles.container }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        className: styles.container,
+      }}
       enablePagination
     >
       {(index: number) => {
