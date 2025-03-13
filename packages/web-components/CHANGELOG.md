@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 10 Mar 2025 21:05:03 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Mar 2025 04:07:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.85)
+
+Thu, 13 Mar 2025 04:07:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.84..@fluentui/web-components_v3.0.0-beta.85)
+
+### Changes
+
+- fix: export AnchorButtonStyles in its index.ts ([PR #33957](https://github.com/microsoft/fluentui/pull/33957) by wes.ngrongsen@gmail.com)
 
 ## [3.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.84)
 

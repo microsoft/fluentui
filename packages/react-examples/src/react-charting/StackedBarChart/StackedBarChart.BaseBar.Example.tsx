@@ -20,7 +20,7 @@ export class StackedBarChartBaseBarExample extends React.Component<{}, {}> {
     const chartTitle = 'Stacked Bar chart example';
 
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle,
       chartData: points,
     };
 

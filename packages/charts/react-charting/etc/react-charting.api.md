@@ -363,6 +363,8 @@ export interface ICartesianChartStyles {
 export interface IChart {
     // (undocumented)
     chartContainer: HTMLElement | null;
+    // (undocumented)
+    toImage?: (opts?: IImageExportOptions) => Promise<string>;
 }
 
 // @public (undocumented)
@@ -912,6 +914,8 @@ export interface ILegendsProps {
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
+    // Warning: (ae-forgotten-export) The symbol "ILegendContainer" needs to be exported by the entry point index.d.ts
+    ref?: IRefObject<ILegendContainer>;
     selectedLegend?: string;
     selectedLegends?: string[];
     shape?: LegendShape;
