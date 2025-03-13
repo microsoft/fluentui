@@ -2,8 +2,6 @@ import {
   cornerCircularRaw,
   foregroundCtrlNeutralSecondaryDisabledRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
-  nullColorRaw,
-  nullNumberRaw,
   sizeCtrlIconRaw,
   sizeCtrlIconsecondaryRaw,
   sizeCtrlLgIconRaw,
@@ -107,14 +105,14 @@ export const ctrlChoiceSwitchWidth = `var(${ctrlChoiceSwitchWidthRaw})`;
 export const ctrlChoiceSwitchThumbWidthRest = `var(${ctrlChoiceSwitchThumbWidthRestRaw})`;
 export const ctrlChoiceSwitchThumbWidthHover = `var(${ctrlChoiceSwitchThumbWidthHoverRaw}, ${ctrlChoiceSwitchThumbWidthRestRaw})`;
 export const ctrlChoiceSwitchThumbWidthPressed = `var(${ctrlChoiceSwitchThumbWidthPressedRaw}, ${ctrlChoiceSwitchThumbWidthRestRaw})`;
-export const ctrlChoiceSwitchThumbShadowKeyX = `var(${ctrlChoiceSwitchThumbShadowKeyXRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowKeyY = `var(${ctrlChoiceSwitchThumbShadowKeyYRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowKeyBlur = `var(${ctrlChoiceSwitchThumbShadowKeyBlurRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowKeyColor = `var(${ctrlChoiceSwitchThumbShadowKeyColorRaw}, ${nullColorRaw})`;
-export const ctrlChoiceSwitchThumbShadowAmbientX = `var(${ctrlChoiceSwitchThumbShadowAmbientXRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowAmbientY = `var(${ctrlChoiceSwitchThumbShadowAmbientYRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowAmbientBlur = `var(${ctrlChoiceSwitchThumbShadowAmbientBlurRaw}, ${nullNumberRaw})`;
-export const ctrlChoiceSwitchThumbShadowAmbientColor = `var(${ctrlChoiceSwitchThumbShadowAmbientColorRaw}, ${nullColorRaw})`;
+export const ctrlChoiceSwitchThumbShadowKeyX = `var(${ctrlChoiceSwitchThumbShadowKeyXRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowKeyY = `var(${ctrlChoiceSwitchThumbShadowKeyYRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowKeyBlur = `var(${ctrlChoiceSwitchThumbShadowKeyBlurRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowKeyColor = `var(${ctrlChoiceSwitchThumbShadowKeyColorRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowAmbientX = `var(${ctrlChoiceSwitchThumbShadowAmbientXRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowAmbientY = `var(${ctrlChoiceSwitchThumbShadowAmbientYRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowAmbientBlur = `var(${ctrlChoiceSwitchThumbShadowAmbientBlurRaw}, unset})`;
+export const ctrlChoiceSwitchThumbShadowAmbientColor = `var(${ctrlChoiceSwitchThumbShadowAmbientColorRaw}, unset})`;
 export const ctrlChoiceSmBaseSize = `var(${ctrlChoiceSmBaseSizeRaw}, ${sizeCtrlSmIconRaw})`;
 export const ctrlChoiceSmCheckboxCorner = `var(${ctrlChoiceSmCheckboxCornerRaw})`;
 export const ctrlChoiceSmCheckboxIconSize = `var(${ctrlChoiceSmCheckboxIconSizeRaw}, ${sizeCtrlIconsecondaryRaw})`;

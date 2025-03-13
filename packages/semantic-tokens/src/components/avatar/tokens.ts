@@ -3,7 +3,6 @@ import {
   backgroundLayerPrimarySolidRaw,
   cornerCircularRaw,
   cornerCtrlRestRaw,
-  nullNumberRaw,
   sizeCtrlDefaultRaw,
   sizeCtrlIconRaw,
   strokewidthDefaultRaw,
@@ -42,7 +41,7 @@ export const ctrlAvatarActiveringStrokewidth = `var(${ctrlAvatarActiveringStroke
 export const ctrlAvatarPresencebadgeStrokewidth = `var(${ctrlAvatarPresencebadgeStrokewidthRaw}, ${strokewidthDefaultRaw})`;
 export const ctrlAvatarTextFontsize = `var(${ctrlAvatarTextFontsizeRaw}, ${textGlobalBody3FontsizeRaw})`;
 export const ctrlAvatarTextLineheight = `var(${ctrlAvatarTextLineheightRaw}, ${textGlobalBody3LineheightRaw})`;
-export const ctrlAvatarTextPaddingTopoffset = `var(${ctrlAvatarTextPaddingTopoffsetRaw}, ${nullNumberRaw})`;
+export const ctrlAvatarTextPaddingTopoffset = `var(${ctrlAvatarTextPaddingTopoffsetRaw}, unset})`;
 export const ctrlAvatarActiveringStroke = `var(${ctrlAvatarActiveringStrokeRaw}, ${backgroundCtrlBrandRestRaw})`;
 export const ctrlAvatarShowcutout = `var(${ctrlAvatarShowcutoutRaw})`;
 export const ctrlAvatarPresencebadgeBackgroundBehindbadge = `var(${ctrlAvatarPresencebadgeBackgroundBehindbadgeRaw}, ${backgroundLayerPrimarySolidRaw})`;

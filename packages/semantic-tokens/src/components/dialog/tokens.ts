@@ -1,4 +1,4 @@
-import { backgroundLayerPrimarySolidRaw, cornerCardRestRaw, nullColorRaw } from '../../control/variables';
+import { backgroundLayerPrimarySolidRaw, cornerCardRestRaw } from '../../control/variables';
 import {
   ctrlDialogBackgroundRaw,
   ctrlDialogBaseCornerRaw,
@@ -15,7 +15,7 @@ import {
   ctrlDialogStrokeRaw,
 } from './variables';
 export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw})`;
-export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, ${nullColorRaw})`;
+export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, unset})`;
 export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, ${cornerCardRestRaw})`;
 export const ctrlDialogBaseShadowKeyX = `var(${ctrlDialogBaseShadowKeyXRaw})`;
 export const ctrlDialogBaseShadowKeyY = `var(${ctrlDialogBaseShadowKeyYRaw})`;

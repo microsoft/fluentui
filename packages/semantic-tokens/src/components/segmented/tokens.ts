@@ -4,7 +4,6 @@ import {
   cornerCtrlSmRestRaw,
   foregroundCtrlNeutralSecondaryDisabledRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
-  nullNumberRaw,
 } from '../../control/variables';
 import {
   backgroundCtrlOutlineDisabledRaw,
@@ -64,7 +63,7 @@ export const ctrlSegmentedCornerPressed = `var(${ctrlSegmentedCornerPressedRaw},
 export const ctrlSegmentedPaddingRest = `var(${ctrlSegmentedPaddingRestRaw})`;
 export const ctrlSegmentedPaddingHover = `var(${ctrlSegmentedPaddingHoverRaw}, ${ctrlSegmentedPaddingRestRaw})`;
 export const ctrlSegmentedPaddingPressed = `var(${ctrlSegmentedPaddingPressedRaw}, ${ctrlSegmentedPaddingRestRaw})`;
-export const ctrlSegmentedGap = `var(${ctrlSegmentedGapRaw}, ${nullNumberRaw})`;
+export const ctrlSegmentedGap = `var(${ctrlSegmentedGapRaw}, unset})`;
 export const ctrlSegmentedItemCornerRest = `var(${ctrlSegmentedItemCornerRestRaw}, ${cornerCtrlSmRestRaw})`;
 export const ctrlSegmentedItemCornerHover = `var(${ctrlSegmentedItemCornerHoverRaw}, ${cornerCtrlSmRestRaw})`;
 export const ctrlSegmentedItemCornerPressed = `var(${ctrlSegmentedItemCornerPressedRaw}, ${cornerCtrlSmRestRaw})`;
