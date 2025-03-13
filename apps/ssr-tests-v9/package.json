@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "lint": "just-scripts lint",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
     "storybook": "storybook dev",
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
