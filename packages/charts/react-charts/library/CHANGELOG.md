@@ -6,7 +6,7 @@ This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be m
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.2.1)
 
-Tue, 11 Mar 2025 18:58:54 GMT
+Tue, 11 Mar 2025 18:58:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.2.0..@fluentui/react-charts-preview_v0.2.1)
 
 ### Patches
@@ -22,7 +22,7 @@ Tue, 11 Mar 2025 18:58:54 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.2.0)
 
-Fri, 21 Feb 2025 14:34:05 GMT
+Fri, 21 Feb 2025 14:34:05 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.10..@fluentui/react-charts-preview_v0.2.0)
 
 ### Minor changes
@@ -35,7 +35,7 @@ Fri, 21 Feb 2025 14:34:05 GMT
 
 ## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.10)
 
-Fri, 07 Feb 2025 10:42:12 GMT
+Fri, 07 Feb 2025 10:42:12 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.9..@fluentui/react-charts-preview_v0.1.10)
 
 ### Patches
@@ -44,7 +44,7 @@ Fri, 07 Feb 2025 10:42:12 GMT
 
 ## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.9)
 
-Tue, 28 Jan 2025 21:26:35 GMT
+Tue, 28 Jan 2025 21:26:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.8..@fluentui/react-charts-preview_v0.1.9)
 
 ### Patches
@@ -53,7 +53,7 @@ Tue, 28 Jan 2025 21:26:35 GMT
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.8)
 
-Mon, 27 Jan 2025 20:27:35 GMT
+Mon, 27 Jan 2025 20:27:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.7..@fluentui/react-charts-preview_v0.1.8)
 
 ### Patches
@@ -64,7 +64,7 @@ Mon, 27 Jan 2025 20:27:35 GMT
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.7)
 
-Wed, 22 Jan 2025 14:00:21 GMT
+Wed, 22 Jan 2025 14:00:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.6..@fluentui/react-charts-preview_v0.1.7)
 
 ### Patches
@@ -79,7 +79,7 @@ Wed, 22 Jan 2025 14:00:21 GMT
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.6)
 
-Wed, 08 Jan 2025 18:33:36 GMT
+Wed, 08 Jan 2025 18:33:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.5..@fluentui/react-charts-preview_v0.1.6)
 
 ### Patches
@@ -92,7 +92,7 @@ Wed, 08 Jan 2025 18:33:36 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.5)
 
-Wed, 18 Dec 2024 10:59:37 GMT
+Wed, 18 Dec 2024 10:59:37 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.4..@fluentui/react-charts-preview_v0.1.5)
 
 ### Patches
@@ -102,7 +102,7 @@ Wed, 18 Dec 2024 10:59:37 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.4)
 
-Mon, 16 Dec 2024 16:26:49 GMT
+Mon, 16 Dec 2024 16:26:49 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.3..@fluentui/react-charts-preview_v0.1.4)
 
 ### Patches
@@ -119,7 +119,7 @@ Mon, 16 Dec 2024 16:26:49 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.3)
 
-Mon, 09 Dec 2024 17:38:16 GMT
+Mon, 09 Dec 2024 17:38:16 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.2..@fluentui/react-charts-preview_v0.1.3)
 
 ### Patches
@@ -131,7 +131,7 @@ Mon, 09 Dec 2024 17:38:16 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.2)
 
-Fri, 06 Dec 2024 12:53:38 GMT
+Fri, 06 Dec 2024 12:53:38 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.1..@fluentui/react-charts-preview_v0.1.2)
 
 ### Patches
@@ -149,7 +149,7 @@ Fri, 06 Dec 2024 12:53:38 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.1)
 
-Thu, 28 Nov 2024 09:30:50 GMT
+Thu, 28 Nov 2024 09:30:50 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.0..@fluentui/react-charts-preview_v0.1.1)
 
 ### Patches
@@ -158,7 +158,7 @@ Thu, 28 Nov 2024 09:30:50 GMT
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.1.0)
 
-Mon, 18 Nov 2024 09:44:38 GMT
+Mon, 18 Nov 2024 09:44:38 GMT 
 
 ### Minor changes
 
