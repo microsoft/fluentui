@@ -25,13 +25,9 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
     '@storybook/addon-mdx-gfm',
 
     // internal monorepo custom addons
-
-    /**  {@link file://./../packages/react-components/react-storybook-addon/package.json} */
-    loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
-    /** {@link file://./../packages/react-components/react-storybook-addon-export-to-sandbox/package.json} */
-    loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', {
-      tsConfigPath,
-      /** @type {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').PresetConfig} */
+    '@fluentui/react-storybook-addon',
+    {
+      name: '@fluentui/react-storybook-addon-export-to-sandbox',
       options: {
         importMappings: getImportMappingsForExportToSandboxAddon(),
         babelLoaderOptionsUpdater: processBabelLoaderOptions,
@@ -40,7 +36,23 @@ module.exports = /** @type {import('./types').StorybookConfig} */ ({
           include: /stories/,
         },
       },
-    }),
+    },
+
+    // /**  {@link file://./../packages/react-components/react-storybook-addon/package.json} */
+    // loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
+    // /** {@link file://./../packages/react-components/react-storybook-addon-export-to-sandbox/package.json} */
+    // loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', {
+    //   tsConfigPath,
+    //   /** @type {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').PresetConfig} */
+    //   options: {
+    //     importMappings: getImportMappingsForExportToSandboxAddon(),
+    //     babelLoaderOptionsUpdater: processBabelLoaderOptions,
+    //     webpackRule: {
+    //       test: /\.stories\.tsx$/,
+    //       include: /stories/,
+    //     },
+    //   },
+    // }),
   ],
   webpackFinal: config => {
     registerTsPaths({ config, configFile: tsConfigPath });
