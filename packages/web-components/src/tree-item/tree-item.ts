@@ -146,9 +146,6 @@ export class TreeItem extends FASTElement {
     }
 
     this.childTreeItems.forEach(item => {
-      if (!isTreeItem(item)) {
-        return;
-      }
       this.setIndent(item);
       item.size = this.size;
       item.appearance = this.appearance;
