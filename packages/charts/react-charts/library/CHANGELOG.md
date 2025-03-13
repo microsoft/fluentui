@@ -6,7 +6,7 @@ This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be m
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.2.1)
 
-Tue, 11 Mar 2025 18:58:54 GMT 
+Tue, 11 Mar 2025 18:58:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.2.0..@fluentui/react-charts-preview_v0.2.1)
 
 ### Patches
@@ -22,7 +22,7 @@ Tue, 11 Mar 2025 18:58:54 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.2.0)
 
-Fri, 21 Feb 2025 14:34:05 GMT 
+Fri, 21 Feb 2025 14:34:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.1.10..@fluentui/react-charts-preview_v0.2.0)
 
 ### Minor changes
