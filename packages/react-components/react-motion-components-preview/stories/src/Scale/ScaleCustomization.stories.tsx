@@ -132,6 +132,9 @@ export const Customization = () => {
         imperativeRef={motionRef}
         visible={visible}
         unmountOnExit={unmountOnExit}
+        fromScale={0.5}
+        easing={[curveEaseOutBack, 'linear']}
+        duration={300}
       >
         <div className={classes.card}>
           <LoremIpsum />
