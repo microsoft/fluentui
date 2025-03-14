@@ -2801,8 +2801,10 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
+// Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function isTreeItem(element?: Node | null, tagName?: string): element is TreeItem;
+export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
 export class Label extends FASTElement {
@@ -4368,7 +4370,6 @@ export const TooltipStyles: ElementStyles;
 // @public
 export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
