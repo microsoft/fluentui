@@ -213,6 +213,10 @@ export interface PositioningOptions {
    * @default false
    */
   shiftToCoverTarget?: boolean;
+    /**
+   * Enables users to pass in custom scroll parent elements to listen to scroll events on
+   */
+    scrollParents?: HTMLElement[];
 }
 
 /**
