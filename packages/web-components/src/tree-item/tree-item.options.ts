@@ -1,5 +1,5 @@
 import { ValuesOf } from '../utils/typings.js';
-import { TreeItem } from './tree-item.js';
+import { BaseTreeItem } from './tree-item.base.js';
 
 export const TreeItemAppearance = {
   subtle: 'subtle',
@@ -24,7 +24,7 @@ export type TreeItemSize = ValuesOf<typeof TreeItemSize>;
  * @returns true if the element is a dropdown.
  * @public
  */
-export function isTreeItem(element?: Node | null, tagName: string = '-tree-item'): element is TreeItem {
+export function isTreeItem(element?: Node | null, tagName: string = '-tree-item'): element is BaseTreeItem {
   if (element?.nodeType !== Node.ELEMENT_NODE) {
     return false;
   }

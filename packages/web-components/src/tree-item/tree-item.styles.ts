@@ -79,7 +79,6 @@ export const styles = css`
   .content {
     display: flex;
     align-items: center;
-    min-width: 0;
     gap: ${spacingHorizontalXS};
   }
 
@@ -87,7 +86,6 @@ export const styles = css`
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    min-width: 0;
     justify-content: center;
     width: ${spacingHorizontalXXL};
     height: ${spacingVerticalXXL};
@@ -99,12 +97,9 @@ export const styles = css`
     transform: rotate(180deg);
   }
 
-  .badging,
-  .toolbar {
+  .aside {
     display: flex;
     align-items: center;
-    min-width: 0;
-    font-size: ${fontSizeBase300};
   }
 
   .positioning-region:hover {
