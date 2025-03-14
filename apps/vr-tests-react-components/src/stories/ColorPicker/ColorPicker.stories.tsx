@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { ColorPicker, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorSlider, AlphaSlider } from '@fluentui/react-color-picker';
 import { SampleColorPicker } from './utils';
 import { Steps } from 'storywright';
 

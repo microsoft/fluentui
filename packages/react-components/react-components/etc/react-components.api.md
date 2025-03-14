@@ -43,6 +43,11 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AlphaSlider } from '@fluentui/react-color-picker';
+import { alphaSliderClassNames } from '@fluentui/react-color-picker';
+import { AlphaSliderProps } from '@fluentui/react-color-picker';
+import { AlphaSliderSlots } from '@fluentui/react-color-picker';
+import { AlphaSliderState } from '@fluentui/react-color-picker';
 import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import { AnnounceProvider } from '@fluentui/react-shared-contexts';
 import { AriaLiveAnnouncer } from '@fluentui/react-aria';
@@ -214,7 +219,22 @@ import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
+import { ColorArea } from '@fluentui/react-color-picker';
+import { colorAreaClassNames } from '@fluentui/react-color-picker';
+import { ColorAreaProps } from '@fluentui/react-color-picker';
+import { ColorAreaSlots } from '@fluentui/react-color-picker';
+import { ColorAreaState } from '@fluentui/react-color-picker';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorPicker } from '@fluentui/react-color-picker';
+import { colorPickerClassNames } from '@fluentui/react-color-picker';
+import { ColorPickerProps } from '@fluentui/react-color-picker';
+import { ColorPickerSlots } from '@fluentui/react-color-picker';
+import { ColorPickerState } from '@fluentui/react-color-picker';
+import { ColorSlider } from '@fluentui/react-color-picker';
+import { colorSliderClassNames } from '@fluentui/react-color-picker';
+import { ColorSliderProps } from '@fluentui/react-color-picker';
+import { ColorSliderSlots } from '@fluentui/react-color-picker';
+import { ColorSliderState } from '@fluentui/react-color-picker';
 import { ColorSwatch } from '@fluentui/react-swatch-picker';
 import { colorSwatchClassNames } from '@fluentui/react-swatch-picker';
 import { ColorSwatchProps } from '@fluentui/react-swatch-picker';
@@ -763,6 +783,7 @@ import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAlphaSlider_unstable } from '@fluentui/react-color-picker';
 import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
@@ -789,6 +810,9 @@ import { renderCarouselNavImageButton_unstable } from '@fluentui/react-carousel'
 import { renderCarouselSlider_unstable } from '@fluentui/react-carousel';
 import { renderCarouselViewport_unstable } from '@fluentui/react-carousel';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderColorArea_unstable } from '@fluentui/react-color-picker';
+import { renderColorPicker_unstable } from '@fluentui/react-color-picker';
+import { renderColorSlider_unstable } from '@fluentui/react-color-picker';
 import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
@@ -1395,6 +1419,8 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAlphaSlider_unstable } from '@fluentui/react-color-picker';
+import { useAlphaSliderStyles_unstable } from '@fluentui/react-color-picker';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
@@ -1457,6 +1483,12 @@ import { useCarouselViewportStyles_unstable } from '@fluentui/react-carousel';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColorArea_unstable } from '@fluentui/react-color-picker';
+import { useColorAreaStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorPicker_unstable } from '@fluentui/react-color-picker';
+import { useColorPickerStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorSlider_unstable } from '@fluentui/react-color-picker';
+import { useColorSliderStyles_unstable } from '@fluentui/react-color-picker';
 import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
@@ -1908,6 +1940,16 @@ export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
 
+export { AlphaSlider }
+
+export { alphaSliderClassNames }
+
+export { AlphaSliderProps }
+
+export { AlphaSliderSlots }
+
+export { AlphaSliderState }
+
 export { AnnounceContextValue }
 
 export { AnnounceProvider }
@@ -2250,7 +2292,37 @@ export { CheckboxSlots }
 
 export { CheckboxState }
 
+export { ColorArea }
+
+export { colorAreaClassNames }
+
+export { ColorAreaProps }
+
+export { ColorAreaSlots }
+
+export { ColorAreaState }
+
 export { ColorPaletteTokens }
+
+export { ColorPicker }
+
+export { colorPickerClassNames }
+
+export { ColorPickerProps }
+
+export { ColorPickerSlots }
+
+export { ColorPickerState }
+
+export { ColorSlider }
+
+export { colorSliderClassNames }
+
+export { ColorSliderProps }
+
+export { ColorSliderSlots }
+
+export { ColorSliderState }
 
 export { ColorSwatch }
 
@@ -3348,6 +3420,8 @@ export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
 
+export { renderAlphaSlider_unstable }
+
 export { renderAriaLiveAnnouncer_unstable }
 
 export { renderAvatar_unstable }
@@ -3399,6 +3473,12 @@ export { renderCarouselSlider_unstable }
 export { renderCarouselViewport_unstable }
 
 export { renderCheckbox_unstable }
+
+export { renderColorArea_unstable }
+
+export { renderColorPicker_unstable }
+
+export { renderColorSlider_unstable }
 
 export { renderColorSwatch_unstable }
 
@@ -4612,6 +4692,10 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAlphaSlider_unstable }
+
+export { useAlphaSliderStyles_unstable }
+
 export { useAnimationFrame }
 
 export { useAnnounce }
@@ -4735,6 +4819,18 @@ export { useCheckbox_unstable }
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useColorArea_unstable }
+
+export { useColorAreaStyles_unstable }
+
+export { useColorPicker_unstable }
+
+export { useColorPickerStyles_unstable }
+
+export { useColorSlider_unstable }
+
+export { useColorSliderStyles_unstable }
 
 export { useColorSwatch_unstable }
 
