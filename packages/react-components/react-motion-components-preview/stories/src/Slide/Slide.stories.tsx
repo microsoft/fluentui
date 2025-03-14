@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PresenceComponentProps } from '@fluentui/react-components';
-import { Collapse, CollapseRuntimeParams } from '@fluentui/react-motion-components-preview';
+import { Slide } from '@fluentui/react-motion-components-preview';
 
 const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => (
   <div ref={ref} {...props}>
@@ -10,10 +10,10 @@ const LoremIpsum = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivEleme
   </div>
 ));
 
-export const DefaultCollapse = (props: PresenceComponentProps & CollapseRuntimeParams) => {
+export const DefaultSlide = (props: PresenceComponentProps) => {
   return (
-    <Collapse {...props}>
+    <Slide {...props}>
       <LoremIpsum />
-    </Collapse>
+    </Slide>
   );
 };
