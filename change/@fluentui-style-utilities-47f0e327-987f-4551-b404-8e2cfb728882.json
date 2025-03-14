@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating CDN URL to point to refreshed 64x64 filetype icon assets.",
-  "packageName": "@fluentui/style-utilities",
-  "email": "caperez@microsoft.com",
-  "dependentChangeType": "patch"
-}
