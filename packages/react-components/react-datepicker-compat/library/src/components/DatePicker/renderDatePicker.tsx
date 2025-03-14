@@ -11,7 +11,7 @@ import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
 export const renderDatePicker_unstable = (state: DatePickerState) => {
   assertSlots<DatePickerSlots>(state);
   const { inlinePopup } = state;
-
+  console.log('state', state.popupSurface);
   return (
     <>
       <state.root />
