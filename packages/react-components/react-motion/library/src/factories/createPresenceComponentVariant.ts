@@ -17,13 +17,14 @@ export function createPresenceFnVariant<MotionParams extends Record<string, Moti
 }
 
 /**
+ * Create a new presence component based on another presence component,
+ * using the provided variant parameters as defaults.
  *
- *
- * @param component A component created by `createPresenceComponent`.
- * @param variantParams An object containing the variant parameters to be used as defaults.
- *                      The variant parameters should match the type of the component's motion parameters.
+ * @param component - A component created by `createPresenceComponent`.
+ * @param variantParams - An object containing the variant parameters to be used as defaults.
+ * The variant parameters should match the type of the component's motion parameters.
  * @returns A new presence component that uses the provided variant parameters as defaults.
- *          The new component can still accept runtime parameters that override the defaults.
+ * The new component can still accept runtime parameters that override the defaults.
  */
 export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(
   component: PresenceComponent<MotionParams>,
