@@ -72,6 +72,8 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
 };
 
+const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
+
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
 ): PresenceComponent<MotionParams> {
@@ -145,6 +147,16 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
           const presenceMotion =
             typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
+          const IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION = (
+            presenceMotion as PresenceMotion & { [INTERRUPTABLE_MOTION_SYMBOL]?: boolean }
+          )[INTERRUPTABLE_MOTION_SYMBOL];
+
+          if (IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION) {
+            if (handleRef.current && handleRef.current.isPlaying()) {
+              handleRef.current.reverse();
+              return;
+            }
+          }
 
           const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
@@ -160,6 +172,8 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
           const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
+          handleRef.current = handle;
+
           if (applyInitialStyles) {
             // Heads up!
             // .finish() is used in this case to skip animation and apply animation styles immediately
@@ -167,7 +181,6 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             return;
           }
 
-          handleRef.current = handle;
           handle.setMotionEndCallbacks(
             () => handleMotionFinish(direction),
             () => handleMotionCancel(direction),
@@ -178,6 +191,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           }
 
           return () => {
+            if (IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION) {
+              return;
+            }
+
             handle.cancel();
           };
         },
