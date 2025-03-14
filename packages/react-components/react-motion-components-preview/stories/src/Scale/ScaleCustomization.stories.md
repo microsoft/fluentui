@@ -5,14 +5,10 @@
 import { motionTokens, createPresenceComponentVariant } from '@fluentui/react-components';
 import { createScalePresence } from '@fluentui/react-motion-components-preview';
 
-const CustomScaleVariant = createPresenceComponent(
-  createScalePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveEasyEaseMax,
-    exitDuration: motionTokens.durationNormal,
-    exitEasing: motionTokens.curveEasyEaseMax,
-  }),
-);
+const CustomScaleVariant = createPresenceComponentVariant(Scale, {
+  duration: [motionTokens.durationSlow, motionTokens.durationNormal],
+  easing: motionTokens.curveEasyEaseMax,
+});
 
 const CustomScale = ({ visible }) => (
   <CustomScaleVariant animateOpacity={false} unmountOnExit visible={visible}>
