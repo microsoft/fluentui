@@ -1,5 +1,5 @@
 import { ValuesOf } from '../utils/typings.js';
-import { BaseTreeItem } from './tree-item.base';
+import { BaseTreeItem } from './tree-item.base.js';
 
 export const TreeItemAppearance = {
   subtle: 'subtle',
