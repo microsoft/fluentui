@@ -25,7 +25,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
