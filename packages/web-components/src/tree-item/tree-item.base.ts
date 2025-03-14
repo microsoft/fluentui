@@ -100,7 +100,6 @@ export class BaseTreeItem extends FASTElement {
    * @public
    */
   public childTreeItemsChanged() {
-    console.log('From base class!', this.childTreeItems);
     this.empty = this.childTreeItems?.length === 0;
     this.updateChildTreeItems();
   }

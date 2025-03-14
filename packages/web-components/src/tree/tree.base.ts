@@ -10,7 +10,6 @@ import {
   keyHome,
   keySpace,
 } from '@microsoft/fast-web-utilities';
-import { TreeItem } from '../tree-item/index.js';
 import { isTreeItem } from '../tree-item/tree-item.options';
 import { BaseTreeItem } from '../tree-item/tree-item.base';
 
@@ -192,7 +191,7 @@ export class BaseTree extends FASTElement {
       return true;
     }
 
-    const item = e.target as TreeItem;
+    const item = e.target as BaseTreeItem;
     item.toggleExpansion();
     item.toggleSelection();
   }
@@ -212,11 +211,11 @@ export class BaseTree extends FASTElement {
       return true;
     }
 
-    const item = e.target as TreeItem;
+    const item = e.target as BaseTreeItem;
 
     if (item.selected) {
       // Deselect the prevously selected item
-      if (this.currentSelected && this.currentSelected !== item && this.currentSelected instanceof TreeItem) {
+      if (this.currentSelected && this.currentSelected !== item && isTreeItem(this.currentSelected)) {
         this.currentSelected.selected = false;
       }
       // New selected item
@@ -236,7 +235,7 @@ export class BaseTree extends FASTElement {
     let focusIndex = elements.findIndex(el => (el as any).selected);
     if (focusIndex === -1) {
       // otherwise first focusable tree item
-      focusIndex = elements.findIndex(el => el instanceof TreeItem);
+      focusIndex = elements.findIndex(el => isTreeItem(el));
     }
     if (focusIndex !== -1) {
       return elements[focusIndex];
@@ -253,7 +252,7 @@ export class BaseTree extends FASTElement {
   /**
    * Move focus to a tree item based on its offset from the provided item
    */
-  private focusNextNode(delta: number, item: TreeItem): void {
+  private focusNextNode(delta: number, item: BaseTreeItem): void {
     const visibleNodes = this.getVisibleNodes();
     if (!visibleNodes.length) {
       return;
