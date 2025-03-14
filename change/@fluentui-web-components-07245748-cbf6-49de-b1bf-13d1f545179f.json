@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor out base classes for tree and tree item",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
