@@ -26,6 +26,10 @@ export class Tree extends BaseTree {
     this.updateSizeAndAppearance();
   }
 
+  /**
+   * child tree items supered change event
+   * @internal
+   */
   public childTreeItemsChanged() {
     super.childTreeItemsChanged();
     this.updateSizeAndAppearance();

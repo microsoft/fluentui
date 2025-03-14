@@ -36,7 +36,8 @@ export class TreeItem extends BaseTreeItem {
   }
 
   /**
-   * Need to super this in order for size and appearance chnage to work
+   * child tree items supered change event
+   * @internal
    */
   public childTreeItemsChanged(): void {
     super.childTreeItemsChanged();
