@@ -1,55 +1,36 @@
-import type { MotionParam, PresenceDirection, PresenceMotionFn } from '../types';
+import type { MotionParam, PresenceMotionFn } from '../types';
 import { MOTION_DEFINITION, createPresenceComponent, PresenceComponent } from './createPresenceComponent';
 
 /**
  * @internal
- */
-type PresenceOverrideFields = {
-  duration: KeyframeEffectOptions['duration'];
-  easing: KeyframeEffectOptions['easing'];
-};
-
-/**
- * @internal
  *
- * Override properties for presence transitions.
- *
- * @example <caption>Override duration for all transitions</caption>
- * ```
- * const override: PresenceOverride = {
- *  all: { duration: 1000 },
- * };
- * ```
- *
- * @example <caption>Override easing for exit transition</caption>
- * ```
- * const override: PresenceOverride = {
- *  exit: { easing: 'ease-out' },
- * };
- * ```
+ * Create a variant function that wraps a presence function to customize it.
+ * The new presence function has the supplied variant params as defaults,
+ * but these can still be overridden by runtime params when the new function is called.
  */
-type PresenceOverride = Partial<Record<PresenceDirection | 'all', Partial<PresenceOverrideFields>>>;
-
-/**
- * @internal
- */
-export function overridePresenceMotion<MotionParams extends Record<string, MotionParam> = {}>(
-  presenceMotion: PresenceMotionFn<MotionParams>,
-  override: PresenceOverride,
-): PresenceMotionFn<MotionParams> {
-  return (...args: Parameters<PresenceMotionFn<MotionParams>>) => {
-    const { enter, exit } = presenceMotion(...args);
-
-    return {
-      enter: { ...enter, ...override.all, ...override.enter },
-      exit: { ...exit, ...override.all, ...override.exit },
-    };
-  };
+export function createPresenceFnVariant<MotionParams extends Record<string, MotionParam> = {}>(
+  presenceFn: PresenceMotionFn<MotionParams>,
+  variantParams: Partial<MotionParams>,
+): typeof presenceFn {
+  const variantFn: typeof presenceFn = runtimeParams => presenceFn({ ...variantParams, ...runtimeParams });
+  return variantFn;
 }
 
+/**
+ *
+ *
+ * @param component A component created by `createPresenceComponent`.
+ * @param variantParams An object containing the variant parameters to be used as defaults.
+ *                      The variant parameters should match the type of the component's motion parameters.
+ * @returns A new presence component that uses the provided variant parameters as defaults.
+ *          The new component can still accept runtime parameters that override the defaults.
+ */
 export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(
   component: PresenceComponent<MotionParams>,
-  override: PresenceOverride,
+  variantParams: Partial<MotionParams>,
 ): PresenceComponent<MotionParams> {
-  return createPresenceComponent(overridePresenceMotion(component[MOTION_DEFINITION], override));
+  const originalFn = component[MOTION_DEFINITION];
+  // The variant params become new defaults, but they can still be be overridden by runtime params.
+  const variantFn = createPresenceFnVariant(originalFn, variantParams);
+  return createPresenceComponent(variantFn);
 }
