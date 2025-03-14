@@ -20,21 +20,8 @@ export type UsePortalMountNodeOptions = {
   className?: string;
 };
 
-/**
- * Creates a new element on a "document.body" to mount portals.
- */
-export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
-  'use no memo';
-
-  const { targetDocument, dir } = useFluent();
-  const mountNode = usePortalMountNodeContext();
-
-  const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
-  const classes = usePortalMountNodeStylesStyles();
-  const themeClassName = useThemeClassName();
-
-  const className = mergeClasses(themeClassName, classes.root, options.className);
-  const targetNode: HTMLElement | ShadowRoot | undefined = mountNode ?? targetDocument?.body;
+const useModernElementFactory = options => {
+  const { className, dir, focusVisibleRef, targetNode } = options;
 
   const [elementFactory] = React.useState(() => {
     let currentElement: HTMLDivElement | undefined = undefined;
@@ -116,45 +103,92 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     });
   }, [elementFactory, targetNode, options.disabled]);
 
-  if (useInsertionEffect) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useInsertionEffect(() => {
-      if (!elementProxy) {
-        return;
-      }
+  React.useEffect(() => {
+    return () => {
+      elementFactory.dispose();
+    };
+  }, [elementFactory]);
 
-      const classesToApply = className.split(' ').filter(Boolean);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useInsertionEffect(() => {
+    if (!elementProxy) {
+      return;
+    }
 
-      elementProxy.classList.add(...classesToApply);
-      elementProxy.setAttribute('dir', dir);
-      elementProxy.setAttribute('data-portal-node', 'true');
+    const classesToApply = className.split(' ').filter(Boolean);
 
-      focusVisibleRef.current = elementProxy;
+    elementProxy.classList.add(...classesToApply);
+    elementProxy.setAttribute('dir', dir);
+    elementProxy.setAttribute('data-portal-node', 'true');
 
-      return () => {
-        elementProxy.classList.remove(...classesToApply);
-        elementProxy.removeAttribute('dir');
-      };
-    }, [className, dir, elementProxy, focusVisibleRef]);
-  } else {
-    // This useMemo call is intentional for React 17
-    // We don't want to re-create the portal element when its attributes change.
-    // This also should not be done in an effect because, changing the value of css variables
-    // after initial mount can trigger interesting CSS side effects like transitions.
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useMemo(() => {
-      if (!elementProxy) {
-        return;
-      }
+    focusVisibleRef.current = elementProxy;
 
-      // Force replace all classes
-      elementProxy.className = className;
-      elementProxy.setAttribute('dir', dir);
-      elementProxy.setAttribute('data-portal-node', 'true');
-
-      focusVisibleRef.current = elementProxy;
-    }, [className, dir, elementProxy, focusVisibleRef]);
-  }
+    return () => {
+      elementProxy.classList.remove(...classesToApply);
+      elementProxy.removeAttribute('dir');
+    };
+  }, [className, dir, elementProxy, focusVisibleRef]);
 
   return elementProxy;
+};
+
+const useLegacyElementFactory = options => {
+  const { className, dir, focusVisibleRef, targetNode } = options;
+
+  const element = React.useMemo(() => {
+    if (targetNode === undefined || options.disabled) {
+      return null;
+    }
+
+    const element = targetNode.ownerDocument.createElement('div');
+    targetNode.appendChild(element);
+
+    return element;
+  }, [targetNode, options.disabled]);
+
+  // Heads up!
+  // This useMemo() call is intentional for React 17.
+  //
+  // We don't want to re-create the portal element when its attributes change. This also cannot not be done in an effect
+  // because, changing the value of CSS variables after an initial mount will trigger interesting CSS side effects like
+  // transitions.
+  React.useMemo(() => {
+    if (!element) {
+      return;
+    }
+
+    element.className = className;
+    element.setAttribute('dir', dir);
+    element.setAttribute('data-portal-node', 'true');
+
+    focusVisibleRef.current = element;
+  }, [className, dir, element, focusVisibleRef]);
+
+  React.useEffect(() => {
+    return () => {
+      element?.remove();
+    };
+  }, [element]);
+
+  return element;
+};
+
+/**
+ * Creates a new element on a "document.body" to mount portals.
+ */
+export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
+  'use no memo';
+
+  const { targetDocument, dir } = useFluent();
+  const mountNode = usePortalMountNodeContext();
+
+  const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
+  const classes = usePortalMountNodeStylesStyles();
+  const themeClassName = useThemeClassName();
+
+  const className = mergeClasses(themeClassName, classes.root, options.className);
+  const targetNode: HTMLElement | ShadowRoot | undefined = mountNode ?? targetDocument?.body;
+
+  if (useInsertionEffect) {
+  }
 };
