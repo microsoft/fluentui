@@ -1,16 +1,15 @@
 import { motionTokens, createPresenceComponent, AtomMotion } from '@fluentui/react-motion';
 import { PresenceMotionFnCreator } from '../../types';
-import { SlideRuntimeParams_unstable, SlideVariantParams_unstable } from './Slide.types';
+import { SlideRuntimeParams, SlideVariantParams } from './Slide.types';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
-import { visibilityAtom } from '../../atoms/visibility-atom';
 
 /** Define a presence motion for slide in/out */
-export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable> =
+export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams, SlideRuntimeParams> =
   ({
-    enterDuration = motionTokens.durationNormal,
-    enterEasing = motionTokens.curveDecelerateMid,
-    exitDuration = enterDuration, // defaults to the enter duration for symmetry
+    duration = motionTokens.durationNormal,
+    easing = motionTokens.curveDecelerateMid,
+    exitDuration = duration, // defaults to the enter duration for symmetry
     exitEasing = motionTokens.curveAccelerateMid,
   } = {}) =>
   ({ animateOpacity = true, orientation = 'vertical', distance = '20px' }) => {
@@ -20,21 +19,22 @@ export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_uns
         direction: 'enter',
         orientation,
         distance,
-        duration: enterDuration,
-        easing: enterEasing,
+        duration,
+        easing,
       }),
     ];
     if (animateOpacity) {
       enterAtoms.push(
         fadeAtom({
           direction: 'enter',
-          duration: enterDuration,
-          easing: enterEasing,
+          duration,
+          easing,
         }),
       );
     } else {
+      // TODO: need to test visibility behavior further
       // Since there is no fade-in, use visibility to show the element
-      enterAtoms.push(visibilityAtom({ direction: 'enter', duration: enterDuration }));
+      // enterAtoms.push(visibilityAtom({ direction: 'enter', duration }));
     }
 
     // ----- EXIT -----
@@ -56,8 +56,9 @@ export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_uns
         }),
       );
     } else {
+      // TODO: need to test visibility behavior further
       // Since there is no fade-out, use visibility to hide the element
-      enterAtoms.push(visibilityAtom({ direction: 'exit', duration: exitDuration }));
+      // enterAtoms.push(visibilityAtom({ direction: 'exit', duration: exitDuration }));
     }
 
     return {
@@ -71,8 +72,8 @@ export const Slide = createPresenceComponent(createSlidePresence());
 
 export const SlideSnappy = createPresenceComponent(
   createSlidePresence({
-    enterDuration: motionTokens.durationNormal,
-    enterEasing: motionTokens.curveDecelerateMax,
+    duration: motionTokens.durationNormal,
+    easing: motionTokens.curveDecelerateMax,
     exitDuration: motionTokens.durationNormal,
     exitEasing: motionTokens.curveAccelerateMax,
   }),
@@ -80,8 +81,8 @@ export const SlideSnappy = createPresenceComponent(
 
 export const SlideRelaxed = createPresenceComponent(
   createSlidePresence({
-    enterDuration: motionTokens.durationGentle,
-    enterEasing: motionTokens.curveDecelerateMid,
+    duration: motionTokens.durationGentle,
+    easing: motionTokens.curveDecelerateMid,
     exitDuration: motionTokens.durationGentle,
     exitEasing: motionTokens.curveAccelerateMid,
   }),
