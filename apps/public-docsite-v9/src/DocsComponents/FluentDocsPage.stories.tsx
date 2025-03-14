@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { cloneDeep } from 'lodash';
 import {
   DocsContext,
   ArgsTable,
@@ -10,8 +11,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer } from '@storybook/types';
-import type { SBEnumType } from '@storybook/csf';
+import type { PreparedStory, Renderer, StrictArgTypes, SBEnumType } from '@storybook/types';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
@@ -52,24 +52,32 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr min-content',
   },
-  nativeProps: {
+  additionalInfo: {
     display: 'flex',
-    gap: tokens.spacingHorizontalM,
-
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalM,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderRadius: tokens.borderRadiusMedium,
     padding: tokens.spacingHorizontalM,
     margin: `0 ${tokens.spacingHorizontalM}`,
   },
-  nativePropsIcon: {
+  additionalInfoIcon: {
     alignSelf: 'center',
     color: tokens.colorBrandForeground1,
     fontSize: '24px',
+    marginRight: tokens.spacingHorizontalM,
   },
-  nativePropsMessage: {
+  additionalInfoMessage: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: tokens.spacingVerticalXS,
+  },
+  infoIcon: {
     display: 'flex',
     flexDirection: 'column',
     gap: tokens.spacingVerticalXS,
+    flex: 1,
   },
 });
 
@@ -133,26 +141,101 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
   );
 };
 
-const RenderArgsTable = ({ hideArgsTable, primaryStory }: { primaryStory: PrimaryStory; hideArgsTable: boolean }) => {
+const slotRegex = /as\?:\s*"([^"]+)"/;
+function withSlotEnhancer(story: PreparedStory) {
+  const updatedArgTypes = { ...story.argTypes };
+  const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
+  let hasArgAsSlot = false;
+  type InternalComponentApi = {
+    __docgenInfo: { props?: Record<string, { type: { name: string } }> };
+    [k: string]: unknown;
+  };
+  const component = story.component as InternalComponentApi;
+  const docGenProps = component?.__docgenInfo?.props;
+
+  if (!docGenProps) {
+    return component;
+  }
+
+  Object.entries(docGenProps).forEach(([key, argType]) => {
+    const value: string = argType?.type?.name;
+    if (value.includes('WithSlotShorthandValue')) {
+      hasArgAsSlot = true;
+      const match = value.match(slotRegex);
+      if (match) {
+        component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
+        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+        updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
+      } else {
+        component.__docgenInfo.props![key].type.name = `Slot`;
+        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+        updatedArgTypes[key].type.value = `Slot`;
+      }
+    }
+  });
+
+  return { component, hasArgAsSlot, hasArgAsProp };
+}
+
+const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
   const styles = useStyles();
+  return (
+    <div className={styles.additionalInfo}>
+      <div className={styles.additionalInfoMessage}>
+        <InfoFilled className={styles.additionalInfoIcon} />
+        <div className={styles.infoIcon}>{children}</div>
+      </div>
+    </div>
+  );
+};
+const RenderArgsTable = ({
+  hideArgsTable,
+  story,
+}: {
+  story: PrimaryStory;
+  hideArgsTable: boolean;
+  argTypes: StrictArgTypes;
+}) => {
+  const storyCopy = cloneDeep(story);
+  const { component, hasArgAsProp, hasArgAsSlot } = withSlotEnhancer(storyCopy);
+
   return hideArgsTable ? null : (
     <>
-      <ArgsTable of={primaryStory.component} />
-      {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
-        <div className={styles.nativeProps}>
-          <InfoFilled className={styles.nativePropsIcon} />
-          <div className={styles.nativePropsMessage}>
+      {hasArgAsProp && (
+        <AdditionalApiDocs>
+          <p>
             <b>
               Native props are supported <span role="presentation">🙌</span>
+              <br />
             </b>
             <span>
-              All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)}, including
-              all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props on this
-              component.
+              All HTML attributes native to the
+              {getNativeElementsList(story.argTypes.as?.options)}, including all <code>aria-*</code> and{' '}
+              <code>data-*</code> attributes, can be applied as native props on this component.
             </span>
-          </div>
-        </div>
+          </p>
+        </AdditionalApiDocs>
       )}
+      {hasArgAsSlot && (
+        <AdditionalApiDocs>
+          <p>
+            <b>
+              Customizing components with slots <span role="presentation">🙌</span>
+            </b>
+            <br />
+            <span>
+              Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible approach
+              to customizing components. Each slot is exposed as a top-level prop and can be filled with primitive
+              values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable component
+              structures, similar to slots in other frameworks.{' '}
+              <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                Customizing components with slots{' '}
+              </Link>
+            </span>
+          </p>
+        </AdditionalApiDocs>
+      )}
+      <ArgsTable of={component} />
     </>
   );
 };
@@ -179,6 +262,7 @@ const RenderPrimaryStory = ({
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
   const stories = context.componentStories();
+
   const primaryStory = stories[0];
   const primaryStoryContext = context.getStoryContext(primaryStory);
 
@@ -219,7 +303,7 @@ export const FluentDocsPage = () => {
             {videos && <VideoPreviews videos={videos} />}
           </div>
           <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable primaryStory={primaryStory} hideArgsTable={hideArgsTable} />
+          <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} argTypes={primaryStoryContext.argTypes} />
           <Stories />
         </div>
         <div className={styles.toc}>
