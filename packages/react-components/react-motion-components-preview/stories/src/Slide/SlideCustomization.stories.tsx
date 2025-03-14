@@ -10,7 +10,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { createSlidePresence } from '@fluentui/react-motion-components-preview';
+import { Slide } from '@fluentui/react-motion-components-preview';
 
 import description from './SlideCustomization.stories.md';
 
@@ -54,14 +54,16 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomSlideVariant = createPresenceComponent(
-  createSlidePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveEasyEaseMax,
-    exitDuration: motionTokens.durationNormal,
-    exitEasing: motionTokens.curveEasyEaseMax,
-  }),
-);
+// TODO: split customization into 2 stories: param overrides and creating custom variants
+// TODO: use new createPresenceComponentVariant implementation when available
+// const CustomSlideVariant = createPresenceComponent((params: Parameters<typeof slidePresenceFn>[0]) =>
+//   slidePresenceFn({
+//     duration: motionTokens.durationSlow,
+//     easing: motionTokens.curveEasyEaseMax,
+//     exitDuration: motionTokens.durationNormal,
+//     ...params,
+//   }),
+// );
 
 const LoremIpsum = () => (
   <>
@@ -130,16 +132,21 @@ export const Customization = () => {
         </Field>
       </div>
 
-      <CustomSlideVariant
+      <Slide
+        visible={visible}
+        distance="50%"
+        duration={motionTokens.durationFaster}
+        exitDuration={motionTokens.durationSlow}
+        easing={motionTokens.curveLinear}
+        exitEasing={motionTokens.curveLinear}
         animateOpacity={animateOpacity}
         imperativeRef={motionRef}
-        visible={visible}
         unmountOnExit={unmountOnExit}
       >
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </CustomSlideVariant>
+      </Slide>
     </div>
   );
 };
@@ -151,3 +158,7 @@ Customization.parameters = {
     },
   },
 };
+
+//     duration: motionTokens.durationSlow,
+//     easing: motionTokens.curveEasyEaseMax,
+//     exitDuration: motionTokens.durationNormal,
