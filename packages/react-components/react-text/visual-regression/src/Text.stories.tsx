@@ -178,6 +178,9 @@ export const TypographyPresets = {
       <Title1 block>Title1</Title1>
       <Title2 block>Title2</Title2>
       <Title3 block>Title3</Title3>
+      <Text>
+        <b>What am I doing here?</b>
+      </Text>
     </>
   ),
 

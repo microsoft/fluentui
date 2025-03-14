@@ -50,7 +50,7 @@ export const Vertical = {
   render: () => (
     <TabList vertical>
       <Tab value="1">First</Tab>
-      <Tab className="mouse-target" value="2">
+      <Tab className="mouse-target" value="2" style={{ padding: '1em', background: 'cyan' }}>
         Second
       </Tab>
       <Tab value="3">Third</Tab>
