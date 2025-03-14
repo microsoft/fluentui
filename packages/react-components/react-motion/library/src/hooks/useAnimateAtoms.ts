@@ -78,6 +78,11 @@ function useAnimateAtomsInSupportedEnvironment() {
               oncancel();
             });
         },
+        isPlaying() {
+          return animations.some(animation => {
+            return animation.playState === 'running';
+          });
+        },
 
         cancel: () => {
           animations.forEach(animation => {
@@ -97,6 +102,14 @@ function useAnimateAtomsInSupportedEnvironment() {
         finish: () => {
           animations.forEach(animation => {
             animation.finish();
+          });
+        },
+        reverse: () => {
+          // TODO: what do with sequences?
+          // TODO: what to with different durations?
+
+          animations.forEach(animation => {
+            animation.reverse();
           });
         },
       };
@@ -148,6 +161,10 @@ function useAnimateAtomsInTestEnvironment() {
         set playbackRate(rate: number) {
           /* no-op */
         },
+        isPlaying() {
+          return false;
+        },
+
         cancel() {
           /* no-op */
         },
@@ -158,6 +175,9 @@ function useAnimateAtomsInTestEnvironment() {
           /* no-op */
         },
         finish() {
+          /* no-op */
+        },
+        reverse() {
           /* no-op */
         },
       };
