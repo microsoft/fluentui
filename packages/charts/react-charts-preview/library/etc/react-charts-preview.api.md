@@ -445,7 +445,6 @@ export interface GaugeChartProps {
     segments: GaugeChartSegment[];
     styles?: GaugeChartStyles;
     sublabel?: string;
-    theme?: string;
     variant?: GaugeChartVariant;
     width?: number;
 }
@@ -457,20 +456,6 @@ export interface GaugeChartSegment {
     gradient?: [string, string];
     legend: string;
     size: number;
-}
-
-// @public
-export interface GaugeChartStyleProps {
-    chartHeight?: number;
-    chartValueSize?: number;
-    chartWidth?: number;
-    className?: string;
-    gradientFill?: string;
-    lineColor?: string;
-    opacity?: number;
-    solidFill?: string;
-    theme: string;
-    toDrawShape?: boolean;
 }
 
 // @public

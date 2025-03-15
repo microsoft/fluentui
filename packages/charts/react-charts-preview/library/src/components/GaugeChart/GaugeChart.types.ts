@@ -130,11 +130,6 @@ export interface GaugeChartProps {
   className?: string;
 
   /**
-   * Theme (provided through customization)
-   */
-  theme?: string;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: GaugeChartStyles;
@@ -166,62 +161,6 @@ export interface GaugeChartProps {
    * @default false
    */
   roundCorners?: boolean;
-}
-
-/**
- * Gauge Chart style properties
- * {@docCategory GaugeChart}
- */
-export interface GaugeChartStyleProps {
-  /**
-   * Theme (provided through customization)
-   */
-  theme: string;
-
-  /**
-   * Font size of the chart value
-   */
-  chartValueSize?: number;
-
-  /**
-   * Width of the chart
-   */
-  chartWidth?: number;
-
-  /**
-   * Height of the chart
-   */
-  chartHeight?: number;
-
-  /**
-   * Additional CSS class(es) to apply to the chart
-   */
-  className?: string;
-
-  /**
-   * Color of the line
-   */
-  lineColor?: string;
-
-  /**
-   * Boolean flag which determines if shape is drawn in callout
-   */
-  toDrawShape?: boolean;
-
-  /**
-   * solid color for the arc (when enableGradient is false)
-   */
-  solidFill?: string;
-
-  /**
-   * gradient for the arc (when enableGradient is true)
-   */
-  gradientFill?: string;
-
-  /**
-   * opacity of the arc
-   */
-  opacity?: number;
 }
 
 /**
