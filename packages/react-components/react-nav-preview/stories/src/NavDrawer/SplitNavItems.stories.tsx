@@ -75,6 +75,9 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '600px',
   },
+  nav: {
+    minWidth: '200px',
+  },
   content: {
     flex: '1',
     padding: '16px',
@@ -295,7 +298,7 @@ export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="5" open={true} density={density} type={'inline'}>
+      <NavDrawer defaultSelectedValue="5" open={true} density={density} type={'inline'} className={styles.nav}>
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
             <Hamburger />
