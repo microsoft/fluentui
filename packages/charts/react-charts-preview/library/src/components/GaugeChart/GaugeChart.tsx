@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useGaugeChartStyles_unstable } from './useGaugeChartStyles.styles';
+import { useGaugeChartStyles } from './useGaugeChartStyles.styles';
 import { select as d3Select } from 'd3-selection';
 import { arc as d3Arc } from 'd3-shape';
 import { YValueHover } from '../../index';
@@ -151,7 +151,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       prevPropsRef.current = props;
     }, [props]);
 
-    const classes = useGaugeChartStyles_unstable(props);
+    const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
       for (let index = BREAKPOINTS.length - 1; index >= 0; index -= 1) {
         if (_outerRadius >= BREAKPOINTS[index].minRadius) {

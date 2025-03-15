@@ -110,8 +110,7 @@ const useStyles = makeStyles({
     borderTop: `1px solid ${tokens.colorNeutralStroke1}`,
   },
 });
-
-export const useGaugeChartStyles_unstable = (props: GaugeChartProps): GaugeChartStyles => {
+export const useGaugeChartStyles = (props: GaugeChartProps): GaugeChartStyles => {
   const baseStyles = useStyles();
 
   return {
