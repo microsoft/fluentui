@@ -18,6 +18,9 @@ export interface AccessibilityProps {
 }
 
 // @public (undocumented)
+export const ARC_PADDING = 2;
+
+// @public (undocumented)
 export interface Basestate {
     // (undocumented)
     activeLegend?: string;
@@ -62,6 +65,16 @@ export interface Basestate {
         color?: string;
     }[];
 }
+
+// @public (undocumented)
+export const BREAKPOINTS: {
+    minRadius: number;
+    arcWidth: number;
+    fontSize: number;
+}[];
+
+// @public (undocumented)
+export const calcNeedleRotation: (chartValue: number, minValue: number, maxValue: number) => number;
 
 // @public (undocumented)
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
@@ -401,10 +414,115 @@ export interface EventsAnnotationProps {
 }
 
 // @public (undocumented)
+export interface ExtendedSegment extends GaugeChartSegment {
+    // (undocumented)
+    end: number;
+    // (undocumented)
+    start: number;
+}
+
+// @public (undocumented)
+export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
+
+// @public
+export interface GaugeChartProps {
+    calloutProps?: Partial<ChartPopoverProps>;
+    chartTitle?: string;
+    chartValue: number;
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    className?: string;
+    culture?: string;
+    enableGradient?: boolean;
+    height?: number;
+    hideLegend?: boolean;
+    hideMinMax?: boolean;
+    hideTooltip?: boolean;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    maxValue?: number;
+    minValue?: number;
+    roundCorners?: boolean;
+    segments: GaugeChartSegment[];
+    styles?: GaugeChartStyles;
+    sublabel?: string;
+    theme?: string;
+    variant?: GaugeChartVariant;
+    width?: number;
+}
+
+// @public
+export interface GaugeChartSegment {
+    accessibilityData?: AccessibilityProps;
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    size: number;
+}
+
+// @public
+export interface GaugeChartStyleProps {
+    chartHeight?: number;
+    chartValueSize?: number;
+    chartWidth?: number;
+    className?: string;
+    gradientFill?: string;
+    lineColor?: string;
+    opacity?: number;
+    solidFill?: string;
+    theme: string;
+    toDrawShape?: boolean;
+}
+
+// @public
+export interface GaugeChartStyles {
+    calloutBlockContainer?: string;
+    calloutContentRoot?: string;
+    calloutContentX?: string;
+    calloutContentY?: string;
+    calloutDateTimeContainer?: string;
+    calloutInfoContainer?: string;
+    calloutlegendText?: string;
+    chart?: string;
+    chartTitle?: string;
+    chartValue?: string;
+    descriptionMessage?: string;
+    gradientSegment?: string;
+    legendsContainer?: string;
+    limits?: string;
+    needle?: string;
+    root?: string;
+    segment?: string;
+    shapeStyles?: string;
+    sublabel?: string;
+}
+
+// @public (undocumented)
+export enum GaugeChartVariant {
+    // (undocumented)
+    MultipleSegments = "multiple-segments",
+    // (undocumented)
+    SingleSegment = "single-segment"
+}
+
+// @public (undocumented)
+export enum GaugeValueFormat {
+    // (undocumented)
+    Fraction = "fraction",
+    // (undocumented)
+    Percentage = "percentage"
+}
+
+// @public (undocumented)
+export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant?: GaugeChartVariant, isAriaLabel?: boolean) => string;
 
 // @public (undocumented)
 export interface GroupedVerticalBarChartData {
@@ -545,6 +663,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
