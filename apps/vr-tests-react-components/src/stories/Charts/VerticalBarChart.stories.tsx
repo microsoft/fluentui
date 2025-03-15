@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { LineChartLineOptions, VerticalBarChartDataPoint, VerticalBarChart } from '@fluentui/react-charts-preview';
+import { LineChartLineOptions, VerticalBarChartDataPoint, VerticalBarChart } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/VerticalBarChart',
