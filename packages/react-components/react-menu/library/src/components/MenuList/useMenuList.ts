@@ -213,7 +213,7 @@ const useMouseInputState = () => {
 
   const setMouseInput = React.useCallback(
     (isMouseInput: boolean) => {
-      setKeyboardNavigationState(!isMouseInput);
+      setKeyboardNavigationState(true);
       parentContext?.setMouseInput(isMouseInput);
       isMouseInputRef.current = isMouseInput;
     },

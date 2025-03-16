@@ -41,7 +41,7 @@ export const FilteringCombobox: React.FunctionComponent = () => {
   };
 
   return (
-    <Scenario pageTitle="Combobox with filtering">
+    <Scenario pageTitle="Filtering combobox">
       <div className={styles.root}>
         <label id={comboId}>Best pet</label>
         <Combobox
