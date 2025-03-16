@@ -41,6 +41,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     appearance = contextAppearance ?? 'filled',
     disabled = false,
     dismissible = contextDismissible ?? false,
+    selected = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -68,6 +69,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     avatarSize: tagAvatarSizeMap[size],
     disabled: contextDisabled ? true : disabled,
     dismissible,
+    selected,
     shape,
     size,
 

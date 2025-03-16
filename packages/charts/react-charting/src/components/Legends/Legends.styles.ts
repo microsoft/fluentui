@@ -1,6 +1,20 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
 import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions, IStyle } from '@fluentui/react/lib/Styling';
 
+// Constants needed to create legends using SVG for image export
+export const LEGEND_CONTAINER_MARGIN_TOP = 8;
+export const LEGEND_CONTAINER_MARGIN_START = 12;
+export const LEGEND_PADDING = 8;
+export const LEGEND_HEIGHT = 32;
+export const LEGEND_SHAPE_BORDER = 1;
+const LEGEND_SHAPE_SIZE_WITHOUT_BORDER = 12;
+// SVG strokes are drawn centered around the path, with half of the stroke width extending inward
+// (overlapping the fill area) and half outward. To ensure the filled area maintains its intended size,
+// expand the shape accordingly.
+export const LEGEND_SHAPE_SIZE = LEGEND_SHAPE_SIZE_WITHOUT_BORDER + LEGEND_SHAPE_BORDER;
+export const LEGEND_SHAPE_MARGIN_END = 8;
+export const INACTIVE_LEGEND_TEXT_OPACITY = 0.67;
+
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme, isLineLegendInBarChart = false } = props;
   const { palette, fonts } = theme!;
@@ -30,7 +44,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         alignItems: 'center',
         cursor: 'pointer',
         border: 'none',
-        padding: '8px',
+        padding: `${LEGEND_PADDING}px`,
         background: 'none',
         textTransform: 'capitalize',
       },
@@ -42,11 +56,11 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
           opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.6' : '',
         },
       },
-      width: '12px',
-      height: isLineLegendInBarChart ? '4px' : '12px',
+      width: `${LEGEND_SHAPE_SIZE_WITHOUT_BORDER}px`,
+      height: isLineLegendInBarChart ? '4px' : `${LEGEND_SHAPE_SIZE_WITHOUT_BORDER}px`,
       backgroundColor: props.stripePattern ? '' : props.colorOnSelectedState,
-      marginRight: '8px',
-      border: '1px solid',
+      marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
+      border: `${LEGEND_SHAPE_BORDER}px solid`,
       borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
       content: props.stripePattern
         ? // eslint-disable-next-line @fluentui/max-len
@@ -55,7 +69,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     },
     shape: [
       {
-        marginRight: '8px',
+        marginRight: `${LEGEND_SHAPE_MARGIN_END}px`,
       },
     ],
     triangle: {
@@ -86,7 +100,8 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       ...fonts.small,
       lineHeight: '16px',
       color: theme?.semanticColors.bodyText,
-      opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.67' : '',
+      opacity:
+        props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? `${INACTIVE_LEGEND_TEXT_OPACITY}` : '',
     },
     hoverChange: {
       width: '12px',
@@ -103,7 +118,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
         color: theme?.semanticColors.bodyText,
         ...fonts.small,
         lineHeight: '16px',
-        padding: '8px',
+        padding: `${LEGEND_PADDING}px`,
       },
     ],
     hoverCardRoot: {
