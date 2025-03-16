@@ -36,7 +36,8 @@ const useRootBaseStyles = makeResetStyles({
   cursor: 'pointer',
   gap: '4px',
 
-  ':hover': {
+  ':focus': {
+    outline: 'none',
     backgroundColor: tokens.colorNeutralBackground1Hover,
     color: tokens.colorNeutralForeground2Hover,
 
@@ -55,6 +56,10 @@ const useRootBaseStyles = makeResetStyles({
     },
   },
 
+  ':focus-visible': {
+    outlineStyle: 'none',
+  },
+
   ':hover:active': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     color: tokens.colorNeutralForeground2Pressed,
@@ -62,6 +67,14 @@ const useRootBaseStyles = makeResetStyles({
     [`& .${menuItemClassNames.subText}`]: {
       color: tokens.colorNeutralForeground3Pressed,
     },
+  },
+
+  ':hover:active:focus': {
+    outlineStyle: 'none',
+  },
+
+  ':hover:active:focus-visible': {
+    outlineStyle: 'none',
   },
 
   // High contrast styles

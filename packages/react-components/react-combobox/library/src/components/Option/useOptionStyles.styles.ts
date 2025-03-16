@@ -25,21 +25,16 @@ const useStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
     padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
     position: 'relative',
+  },
 
-    ':hover': {
+  active: {
+    // Add the data-activedescendant attribute styles
+    '[data-activedescendant]': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
       color: tokens.colorNeutralForeground1Hover,
       [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
 
-    ':active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      color: tokens.colorNeutralForeground1Pressed,
-      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
-    },
-  },
-
-  active: {
     [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
       content: '""',
       position: 'absolute',
