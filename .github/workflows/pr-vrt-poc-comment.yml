@@ -2,6 +2,8 @@ name: VRT POC | Comment on PR
 on:
   workflow_run:
     workflows: ['VRT POC']
+    types:
+      - completed
 
 concurrency:
   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
@@ -36,6 +38,12 @@ jobs:
       #     run-id: ${{ github.event.workflow_run.id }}
       #     github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Debug
+        run: |
+          echo $W_RUN
+        env:
+          W_RUN: ${{ toJSON(github.event.workflow_run) }}
+
       - uses: actions/download-artifact@v4
         with:
           name: pr-number
@@ -49,11 +57,11 @@ jobs:
         working-directory: ./results
 
       - name: 'Comment on PR'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.1
         with:
           header: vr-report-comment
           number: ${{ steps.pr_number.outputs.id }}
           message: |
             VR Regression Report:
             - status: ${{ github.event.workflow_run.conclusion }}
-            - check whole [report](${{github.event.workflow_run.workflow_url}}) to review visual differences
+            - check whole [report](${{github.event.workflow_run.html_url}}) to review visual differences

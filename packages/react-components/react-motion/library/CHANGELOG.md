@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 22 Jan 2025 14:00:19 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Mar 2025 18:58:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.8)
+
+Tue, 11 Mar 2025 18:58:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.7..@fluentui/react-motion_v9.6.8)
+
+### Patches
+
+- fix: apply initial styles consistently ([PR #33810](https://github.com/microsoft/fluentui/pull/33810) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
 
 ## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.7)
 

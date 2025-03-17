@@ -1,4 +1,4 @@
-import { BaseCheckbox } from '../checkbox/checkbox.js';
+import { BaseCheckbox } from '../checkbox/checkbox.base.js';
 
 /**
  * A Radio Custom HTML Element.
