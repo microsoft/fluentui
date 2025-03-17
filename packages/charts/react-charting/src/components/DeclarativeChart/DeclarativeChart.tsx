@@ -215,7 +215,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       );
     case 'bar':
       const orientation = plotlyInput.data[0].orientation;
-      if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
+      const containsBase = plotlyInput.data.some((series: PlotData) => series.base !== undefined);
+      if (orientation === 'h' && plotlyInput.data[0].type === 'bar' && containsBase) {
+        throw new Error('Unsupported chart type: Gantt');
+      } else if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
         return (
           <ResponsiveHorizontalBarChartWithAxis
             {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
@@ -288,6 +291,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...commonProps}
         />
       );
+    case 'contour':
+      throw new Error(`Unsupported chart - type: ${plotlyInput.data[0]?.type}`);
     default:
       const xValues = (plotlyInput.data[0] as PlotData).x;
       const yValues = (plotlyInput.data[0] as PlotData).y;
