@@ -3,12 +3,13 @@
 
 # RFC: React 18 upgrade
 
-[@marcosmoura](https://github.com/marcosmoura)
+[@marcosmoura](https://github.com/marcosmoura)\
 [@mainframev](https://github.com/mainframev)
 
----
+## Table of contents
 
 - [RFC: React 18 upgrade](#rfc-react-18-upgrade)
+  - [Table of contents](#table-of-contents)
   - [Summary](#summary)
   - [Problem statement](#problem-statement)
   - [Detailed Design or Proposal](#detailed-design-or-proposal)
