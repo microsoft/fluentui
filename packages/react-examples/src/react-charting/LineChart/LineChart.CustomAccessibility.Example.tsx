@@ -145,7 +145,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           {
             x: new Date('2018/04/01'),
             y: 50,
-            callOutAccessibilityData: { ariaLabel: '1 April 2018, 00:00, Point 2 Second 50' },
+            callOutAccessibilityData: { ariaLabel: '1 Apr 2018, 00:00, Point 2 Second 50' },
           },
           {
             x: new Date('2018/05/01'),
@@ -180,7 +180,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           {
             x: new Date('2018/04/01'),
             y: 70,
-            callOutAccessibilityData: { ariaLabel: '1 April 2018, 00:00, Point 3 Third 70' },
+            callOutAccessibilityData: { ariaLabel: '1 Apr 2018, 00:00, Point 3 Third 70' },
           },
           {
             x: new Date('2018/05/01'),
