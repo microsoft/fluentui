@@ -32,6 +32,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       background: theme.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
+      color: props.theme!.semanticColors.bodyText,
     },
 
     barLabel: {
