@@ -3,10 +3,10 @@
 
 # RFC: React 18 upgrade
 
----
-
 [@marcosmoura](https://github.com/marcosmoura)
 [@mainframev](https://github.com/mainframev)
+
+---
 
 - [RFC: React 18 upgrade](#rfc-react-18-upgrade)
   - [Summary](#summary)
