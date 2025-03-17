@@ -11,11 +11,11 @@
 #### Supported Props
 
 - `color`
-- `onChange`
 
 #### Props no longer supported with an equivalent functionality in ColorPicker V9:
 
 - `className` => Slot system supports it by default. We don't need to provide it explicitly.
+- `onChange` => Use `onColorChange` instead.
 - `styles` => Use style customization through `className` instead.
 - `theme`
 
@@ -43,9 +43,10 @@
 
 #### New props
 
+- `channel`
 - `defaultColor`
 - `shape`
-- `orient`
+- `vertical`
 
 #### Props supported
 
@@ -69,10 +70,9 @@
 | v8 `ColorPicker` | v9 `ColorPicker`           |
 | ---------------- | -------------------------- |
 | `value`          | `color`                    |
-| `onChange`       | `onChange`                 |
+| `onChange`       | `onColorChange`            |
 | `maxValue`       |                            |
 | `minValue`       |                            |
-| `shape `         |                            |
 | `type`           |                            |
 | `isAlpha`        | `AlphaSlider` component    |
 | `overlayColor`   | In `AlphaSlider` component |

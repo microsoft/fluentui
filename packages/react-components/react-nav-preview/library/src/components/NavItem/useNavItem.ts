@@ -42,7 +42,6 @@ export const useNavItem_unstable = (
       rootElementType,
       useARIAButtonProps(rootElementType, {
         'aria-current': selected ? 'page' : 'false',
-        role: rootElementType,
         ...props,
       }),
     ),

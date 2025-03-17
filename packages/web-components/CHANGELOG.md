@@ -1,8 +1,36 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 05 Mar 2025 04:07:03 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Mar 2025 04:07:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.86](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.86)
+
+Fri, 14 Mar 2025 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.85..@fluentui/web-components_v3.0.0-beta.86)
+
+### Changes
+
+- refactor out base classes for tree and tree item ([PR #33990](https://github.com/microsoft/fluentui/pull/33990) by jes@microsoft.com)
+- move filtering for tree-items to template ([PR #33989](https://github.com/microsoft/fluentui/pull/33989) by jes@microsoft.com)
+
+## [3.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.85)
+
+Thu, 13 Mar 2025 04:07:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.84..@fluentui/web-components_v3.0.0-beta.85)
+
+### Changes
+
+- fix: export AnchorButtonStyles in its index.ts ([PR #33957](https://github.com/microsoft/fluentui/pull/33957) by wes.ngrongsen@gmail.com)
+
+## [3.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.84)
+
+Mon, 10 Mar 2025 21:05:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.83..@fluentui/web-components_v3.0.0-beta.84)
+
+### Changes
+
+- fix: move base classes to a separate file and provide export paths for improved tree shaking ([PR #33962](https://github.com/microsoft/fluentui/pull/33962) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.83)
 

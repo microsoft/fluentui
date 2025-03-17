@@ -55,6 +55,9 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '600px',
   },
+  nav: {
+    minWidth: '200px',
+  },
   content: {
     flex: '1',
     padding: '16px',
@@ -124,6 +127,7 @@ export const VariableDensityItems = (props: Partial<NavDrawerProps>) => {
         open={true}
         type={'inline'}
         density={density}
+        className={styles.nav}
       >
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
