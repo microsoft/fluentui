@@ -4,7 +4,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
   issues: write
 
 jobs:
@@ -14,13 +13,3 @@ jobs:
       - uses: actions/labeler@v3
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-  assign-to-current-milestone:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Assign to latest milestone
-        uses: andrefcdias/add-to-milestone@v1.3.0
-        with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          use-expression: true
-          milestone: '* Project Cycle *'
-          users-file-path: '.github/MAINTAINERS'
