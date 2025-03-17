@@ -7,6 +7,12 @@ import { type AvatarActive } from './avatar.options.js';
  */
 export class BaseAvatar extends FASTElement {
   /**
+   * Reference to the default slot element.
+   * @internal
+   */
+  public defaultSlot!: HTMLSlotElement;
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -50,5 +56,15 @@ export class BaseAvatar extends FASTElement {
     super();
 
     this.elementInternals.role = 'img';
+  }
+
+  public slotchangeHandler(e: Event): void {
+    if (!this.defaultSlot.innerText.trim()) {
+      this.defaultSlot.assignedNodes().forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          (node as Element).remove();
+        }
+      });
+    }
   }
 }
