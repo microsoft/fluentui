@@ -38,14 +38,14 @@ jobs:
         run: yarn nx run-many -t bundle-size --nxBail
 
       - name: Login via Azure CLI
-        uses: azure/login@v2
+        uses: azure/login@a65d910e8af852a8061c627c456678983e180302 # v2.2.0
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Upload report
-        uses: azure/cli@v2
+        uses: azure/cli@089eac9d8cc39f5d003e94f8b65efc51076c9cbd # v2.1.0
         with:
           azcliversion: latest
           inlineScript: |
