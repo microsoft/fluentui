@@ -238,9 +238,30 @@ export {
   SpinnerTemplate,
 } from './spinner/index.js';
 export {
-  typographyBody1StrongerStyles,
-  typographyBody1StrongStyles,
+  Switch,
+  SwitchOptions,
+  SwitchLabelPosition,
+  SwitchDefinition,
+  SwitchStyles,
+  SwitchTemplate,
+} from './switch/index.js';
+export { Tab, TabOptions, TabTemplate, TabStyles, TabDefinition } from './tab/index.js';
+export { TabPanel, TabPanelTemplate, TabPanelStyles, TabPanelDefinition } from './tab-panel/index.js';
+export {
+  Tabs,
+  TabsAppearance,
+  TabsOptions,
+  TabsOrientation,
+  TabsSize,
+  TabsTemplate,
+  TabsStyles,
+  TabsDefinition,
+} from './tabs/index.js';
+
+export {
   typographyBody1Styles,
+  typographyBody1StrongStyles,
+  typographyBody1StrongerStyles,
   typographyBody2Styles,
   typographyCaption1StrongerStyles,
   typographyCaption1StrongStyles,
@@ -256,20 +277,6 @@ export {
   typographyTitle2Styles,
   typographyTitle3Styles,
 } from './styles/partials/typography.partials.js';
-export { Switch, SwitchDefinition, SwitchLabelPosition, SwitchStyles, SwitchTemplate } from './switch/index.js';
-export type { SwitchOptions } from './switch/index.js';
-export { TabPanel, TabPanelDefinition, TabPanelStyles, TabPanelTemplate } from './tab-panel/index.js';
-export { Tab, TabDefinition, TabStyles, TabTemplate } from './tab/index.js';
-export type { TabOptions } from './tab/index.js';
-export {
-  Tabs,
-  TabsAppearance,
-  TabsDefinition,
-  TabsOrientation,
-  TabsSize,
-  TabsStyles,
-  TabsTemplate,
-} from './tabs/index.js';
 export {
   BaseTablist,
   Tablist,
@@ -280,7 +287,6 @@ export {
   TablistStyles,
   TablistTemplate,
 } from './tablist/index.js';
-export type { TabsOptions } from './tabs/index.js';
 export {
   BaseTextArea,
   TextArea,
@@ -333,6 +339,8 @@ export {
   TooltipStyles,
   TooltipTemplate,
 } from './tooltip/index.js';
+export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
+export type { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
