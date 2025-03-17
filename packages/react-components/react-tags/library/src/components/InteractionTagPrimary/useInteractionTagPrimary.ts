@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
@@ -27,8 +27,24 @@ export const useInteractionTagPrimary_unstable = (
   props: InteractionTagPrimaryProps,
   ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagPrimaryState => {
-  const { appearance, disabled, interactionTagPrimaryId, shape, size } = useInteractionTagContext_unstable();
+  const {
+    appearance,
+    disabled,
+    handleTagSelect,
+    interactionTagPrimaryId,
+    selected: contextSelected,
+    selectedValues,
+    shape,
+    size,
+    value,
+  } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
+
+  const onClick = useEventCallback(
+    mergeCallbacks(props?.onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
+      handleTagSelect?.(event, { type: 'click', event, value, selectedValues }),
+    ),
+  );
 
   return {
     appearance,
@@ -36,6 +52,7 @@ export const useInteractionTagPrimary_unstable = (
     avatarSize: avatarSizeMap[size],
     disabled,
     hasSecondaryAction,
+    selected: contextSelected,
     shape,
     size,
 
@@ -52,6 +69,8 @@ export const useInteractionTagPrimary_unstable = (
         ref,
         disabled,
         id: interactionTagPrimaryId,
+        ...(handleTagSelect !== undefined && { 'aria-pressed': contextSelected }),
+        onClick,
         ...props,
       }),
       { elementType: 'button' },
