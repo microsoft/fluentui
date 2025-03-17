@@ -52,3 +52,6 @@ export type {
   AttachmentHeaderProps,
   AttachmentIconProps,
 } from './components/Attachment';
+
+export { Embed } from './components/Embed';
+export type { EmbedProps } from './components/Embed';

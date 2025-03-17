@@ -11,7 +11,7 @@ export interface VideoProps extends React.VideoHTMLAttributes<HTMLVideoElement> 
   /**
    * The source URL of the video
    */
-  src: string;
+  src?: string | undefined;
 
   /**
    * Whether the video should start playing automatically

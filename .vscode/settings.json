@@ -75,5 +75,10 @@
   "typescript.preferences.importModuleSpecifierEnding": "index",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.reportStyleChecksAsWarnings": false,
-  "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"]
+  "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#461F42",
+    "titleBar.activeBackground": "#622B5D",
+    "titleBar.activeForeground": "#FCF9FC"
+  }
 }
