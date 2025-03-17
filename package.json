@@ -268,7 +268,7 @@
     "jju": "1.4.0",
     "json-schema": "0.4.0",
     "json-stable-stringify-without-jsonify": "1.0.1",
-    "jsonc-eslint-parser": "2.3.0",
+    "jsonc-eslint-parser": "2.4.0",
     "just-scripts": "1.8.2",
     "license-webpack-plugin": "4.0.2",
     "lint-staged": "10.2.10",
