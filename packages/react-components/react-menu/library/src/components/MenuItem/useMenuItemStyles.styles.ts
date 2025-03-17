@@ -36,6 +36,9 @@ const useRootBaseStyles = makeResetStyles({
   cursor: 'pointer',
   gap: '4px',
 
+  ':hover:focus': {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+  },
   ':focus': {
     outline: 'none',
     backgroundColor: tokens.colorNeutralBackground1Hover,
@@ -139,6 +142,9 @@ const useSubtextBaseStyles = makeResetStyles({
 });
 
 const useStyles = makeStyles({
+  submenuOpen: {
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
   checkmark: {
     marginTop: '2px',
   },
@@ -234,6 +240,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     menuItemClassNames.root,
     rootBaseStyles,
     state.disabled && styles.disabled,
+    state.hasSubmenu && state.isSubmenuOpen && styles.submenuOpen,
     state.root.className,
   );
 

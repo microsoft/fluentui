@@ -42,6 +42,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
+  const isSubmenuOpen = useMenuContext_unstable(context => context.open);
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -51,6 +52,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     hasSubmenu,
     disabled,
     persistOnClick,
+    isSubmenuOpen: hasSubmenu && isSubmenuOpen,
     components: {
       root: 'div',
       icon: 'span',
@@ -80,7 +82,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
               mouseInputState?.setMouseInput(true);
             }
 
-            if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget) {
+            if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget && !(hasSubmenu && isSubmenuOpen)) {
               innerRef.current?.focus();
             }
 
