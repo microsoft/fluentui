@@ -17,6 +17,10 @@ import {
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
+const getAnnouncement = (newValue: string) => {
+  return `Carousel slide ${newValue}`;
+};
+
 export const Carousel = () => (
   <TeachingPopover>
     <TeachingPopoverTrigger>
@@ -24,7 +28,7 @@ export const Carousel = () => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>Tips</TeachingPopoverHeader>
-      <TeachingPopoverCarousel defaultValue={'1'}>
+      <TeachingPopoverCarousel defaultValue={'1'} announcement={getAnnouncement}>
         <TeachingPopoverCarouselCard value="1">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>

@@ -215,9 +215,9 @@ function useListeners(
     (e: KeyboardEvent) => {
       // Open coachmark if user presses ALT + C (arbitrary keypress for now)
       if (
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (e.altKey && e.which === KeyCodes.c) ||
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (e.which === KeyCodes.enter && translateAnimationContainer.current?.contains?.(e.target as Node))
       ) {
         openCoachmark();
@@ -582,7 +582,7 @@ function getBounds(
 }
 
 function isInsideElement(
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   targetElementRect: ClientRect,
   mouseX: number,
   mouseY: number,

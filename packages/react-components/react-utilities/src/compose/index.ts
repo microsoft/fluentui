@@ -26,15 +26,15 @@ export { isSlot } from './isSlot';
 export { assertSlots } from './assertSlots';
 export { getIntrinsicElementProps } from './getIntrinsicElementProps';
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ObjectSlotProps, Slots } from './deprecated/getSlots';
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { getSlots } from './deprecated/getSlots';
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ResolveShorthandFunction, ResolveShorthandOptions } from './deprecated/resolveShorthand';
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { resolveShorthand } from './deprecated/resolveShorthand';
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { getSlotsNext } from './deprecated/getSlotsNext';
 
 export { slot };

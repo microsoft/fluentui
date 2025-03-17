@@ -1,4 +1,4 @@
-export type { NavProps, NavSize, NavSlots, NavState, OnNavItemSelectData } from './components/Nav/index';
+export type { NavProps, NavDensity, NavSlots, NavState, OnNavItemSelectData } from './components/Nav/index';
 export { Nav, navClassNames, renderNav_unstable, useNavStyles_unstable, useNav_unstable } from './components/Nav/index';
 export type {
   NavCategoryItemProps,

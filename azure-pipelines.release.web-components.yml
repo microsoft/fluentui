@@ -69,7 +69,7 @@ extends:
                 displayName: yarn
 
               - script: |
-                  yarn nx run-many -t format:check lint test build -p web-components --nxBail
+                  yarn nx run-many -t format:check lint test build -p tag:web-components --exclude vr-tests-web-components --nxBail
                 displayName: Build, Test, Lint
 
               - script: |
@@ -78,6 +78,7 @@ extends:
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
+                condition: eq(variables.dryRun, false)
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

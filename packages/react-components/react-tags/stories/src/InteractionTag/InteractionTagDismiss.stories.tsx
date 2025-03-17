@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     rowGap: '10px',
   },
+  tagGroup: {
+    flexWrap: 'wrap',
+  },
   resetButton: {
     width: 'fit-content',
   },
@@ -60,7 +63,7 @@ export const Dismiss = () => {
   return (
     <div className={styles.container}>
       {visibleTags.length !== 0 && (
-        <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+        <TagGroup className={styles.tagGroup} onDismiss={removeItem} aria-label="Dismiss example">
           {visibleTags.map((tag, index) => (
             <InteractionTag value={tag.value} key={tag.value}>
               <InteractionTagPrimary hasSecondaryAction ref={index === 0 ? firstTagRef : null}>

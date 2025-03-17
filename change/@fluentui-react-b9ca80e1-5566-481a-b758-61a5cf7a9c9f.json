@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Combobox and Dropdown): add aria-invalid when errorMessage is set",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

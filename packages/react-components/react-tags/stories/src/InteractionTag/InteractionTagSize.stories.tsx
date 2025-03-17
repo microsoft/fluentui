@@ -13,6 +13,7 @@ const useContainerStyles = makeStyles({
     alignItems: 'start',
     columnGap: '10px',
     display: 'flex',
+    flexWrap: 'wrap',
   },
   outerWrapper: {
     display: 'flex',

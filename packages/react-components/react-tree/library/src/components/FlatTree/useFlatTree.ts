@@ -22,7 +22,7 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLEle
 };
 
 function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
-  const navigation = useFlatTreeNavigation();
+  const navigation = useFlatTreeNavigation(props.navigationMode);
 
   return Object.assign(
     useRootTree(

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Mon, 09 Dec 2024 17:38:13 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2025 14:00:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.4.3)
+
+Wed, 22 Jan 2025 14:00:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.4.0..@fluentui/react-motion-components-preview_v0.4.3)
+
+### Patches
+
+- refactor(Collapse): streamline motion atom functions ([PR #33463](https://github.com/microsoft/fluentui/pull/33463) by robertpenner@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.4.0)
 

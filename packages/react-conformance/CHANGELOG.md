@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Mon, 11 Nov 2024 10:01:11 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Jan 2025 18:33:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.19.3)
+
+Wed, 08 Jan 2025 18:33:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.19.2..@fluentui/react-conformance_v0.19.3)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
 
 ## [0.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.19.2)
 

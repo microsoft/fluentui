@@ -14,6 +14,8 @@ export type ColorSliderSlots = {
   input: NonNullable<Slot<'input'>>;
 };
 
+export type ColorChannel = 'hue' | 'saturation' | 'value';
+
 /**
  * ColorSlider Props
  */
@@ -22,7 +24,11 @@ export type ColorSliderProps = Omit<
   'defaultValue' | 'onChange' | 'value' | 'color'
 > &
   Pick<ColorPickerProps, 'shape'> & {
-    channel?: string;
+    /**
+     * Color channel of the Slider.
+     * @default `hue`
+     */
+    channel?: ColorChannel;
 
     /**
      * Triggers a callback when the value has been changed. This will be called on every individual step.
@@ -36,7 +42,7 @@ export type ColorSliderProps = Omit<
     vertical?: boolean;
 
     /**
-     * Color of the COlorPicker
+     * Color of the ColorPicker
      */
     color?: HsvColor;
 
@@ -49,4 +55,5 @@ export type ColorSliderProps = Omit<
 /**
  * State used in rendering ColorSlider
  */
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'shape'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> &
+  Pick<ColorSliderProps, 'vertical' | 'shape' | 'channel'>;

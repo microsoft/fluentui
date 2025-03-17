@@ -172,6 +172,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   directionalHint={DirectionalHint.topAutoEdge}
                   id={this._calloutId}
                   onDismiss={this._closeCallout}
+                  // eslint-disable-next-line @typescript-eslint/no-deprecated
                   preventDismissOnLostFocus={true}
                   /** Keep the callout updated with details of focused/hovered bar */
                   shouldUpdateWhenHidden={true}

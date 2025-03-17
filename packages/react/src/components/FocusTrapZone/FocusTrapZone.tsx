@@ -87,10 +87,10 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     disableFirstFocus,
     forceFocusInsideTrap,
     focusPreviouslyFocusedInnerElement,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     firstFocusableSelector,
     firstFocusableTarget,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     disableRestoreFocus = props.ignoreExternalFocusing,
     isClickableOutsideFocusTrap,
     enableAriaHiddenSiblings,

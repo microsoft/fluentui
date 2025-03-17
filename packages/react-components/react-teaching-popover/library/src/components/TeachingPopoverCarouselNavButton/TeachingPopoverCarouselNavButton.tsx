@@ -4,6 +4,7 @@ import { useTeachingPopoverCarouselNavButton_unstable } from './useTeachingPopov
 import { renderTeachingPopoverCarouselNavButton_unstable } from './renderTeachingPopoverCarouselNavButton';
 import { useTeachingPopoverCarouselNavButtonStyles_unstable } from './useTeachingPopoverCarouselNavButtonStyles.styles';
 import type { TeachingPopoverCarouselNavButtonProps } from './TeachingPopoverCarouselNavButton.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TeachingPopoverCarouselNavButton is a button to jump to a single page within TeachingPopoverCarousel
@@ -15,6 +16,8 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
     const state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
 
     useTeachingPopoverCarouselNavButtonStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useTeachingPopoverCarouselNavButtonStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselNavButton_unstable(state);
   }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;

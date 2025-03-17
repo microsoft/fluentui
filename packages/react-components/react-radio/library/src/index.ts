@@ -18,6 +18,6 @@ export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Ra
 export {
   RadioGroupProvider,
   useRadioGroupContextValues,
-  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContext_unstable, // eslint-disable-line @typescript-eslint/no-deprecated
   useRadioGroupContextValue_unstable,
 } from './contexts/index';

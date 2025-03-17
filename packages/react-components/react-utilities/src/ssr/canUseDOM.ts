@@ -7,7 +7,7 @@ export function canUseDOM(): boolean {
     typeof window !== 'undefined' &&
     !!(
       window.document &&
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       window.document.createElement
     )
     /* eslint-enable @nx/workspace-no-restricted-globals */

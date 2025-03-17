@@ -23,6 +23,9 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorNeutralStroke1}`,
     margin: `${tokens.spacingVerticalMNudge} 0`,
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+    },
   },
   button: {
     marginRight: tokens.spacingHorizontalS,
@@ -45,10 +48,11 @@ const useStyles = makeStyles({
 
 const ITEMS_LIMIT = 8;
 const DEFAULT_SELECTED_VALUE = '2be700';
-const DEFAULT_SELECTED_COLOR = '#2be700';
-const DEFAULT_COLOR_HSV = tinycolor(DEFAULT_SELECTED_COLOR).toHsv();
 
-export const ColorAndSwatchPickerExample = () => {
+const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
+const DEFAULT_SELECTED_COLOR = tinycolor(DEFAULT_COLOR_HSV).toHex();
+
+export const ColorAndSwatchPicker = () => {
   const styles = useStyles();
   const [color, setColor] = React.useState(DEFAULT_COLOR_HSV);
   const [selectedValue, setSelectedValue] = React.useState(DEFAULT_SELECTED_VALUE);
@@ -94,11 +98,11 @@ export const ColorAndSwatchPickerExample = () => {
   return (
     <div className={styles.example}>
       <ColorPicker color={color} onColorChange={handleChange}>
-        <ColorArea />
+        <ColorArea inputX={{ 'aria-label': 'Saturation' }} inputY={{ 'aria-label': 'Brightness' }} />
         <div className={styles.row}>
           <div className={styles.sliders}>
-            <ColorSlider />
-            <AlphaSlider />
+            <ColorSlider aria-label="Hue" />
+            <AlphaSlider aria-label="Alpha" />
           </div>
           <div className={styles.previewColor} style={{ backgroundColor: tinycolor(color).toRgbString() }} />
         </div>
@@ -107,6 +111,7 @@ export const ColorAndSwatchPickerExample = () => {
         aria-label="SwatchPicker with empty swatches"
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
+        shape="rounded"
       >
         {items.map(item => (
           <ColorSwatch key={item.value} ref={item.value === colorFocusTarget ? colorFocusTargetRef : null} {...item} />

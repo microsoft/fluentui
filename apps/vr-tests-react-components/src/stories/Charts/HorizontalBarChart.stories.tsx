@@ -129,7 +129,7 @@ export const Basic = () => {
 
   return (
     <div style={{ padding: '10px' }}>
-      <HorizontalBarChart culture={window.navigator.language} data={data} hideRatio={hideRatio} width={600} />
+      <HorizontalBarChart culture="en-US" data={data} hideRatio={hideRatio} width={600} />
     </div>
   );
 };

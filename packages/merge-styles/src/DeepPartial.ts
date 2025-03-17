@@ -3,7 +3,7 @@
  * @deprecated - This type will hit infinite type instantiation recursion. Please use {@link DeepPartialV2}
  */
 export type DeepPartial<T> = {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 

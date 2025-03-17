@@ -195,7 +195,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLInputElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const keyCode = ev.which;
       switch (keyCode) {
         case KeyCodes.backspace:

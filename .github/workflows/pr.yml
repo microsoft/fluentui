@@ -23,6 +23,7 @@ env:
 
 jobs:
   main:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
@@ -81,6 +82,7 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   e2e:
+    if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172

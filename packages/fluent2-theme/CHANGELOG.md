@@ -1,8 +1,90 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Mon, 30 Dec 2024 07:21:29 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Mar 2025 07:23:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.129](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.129)
+
+Fri, 14 Mar 2025 07:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.128..@fluentui/fluent2-theme_v8.107.129)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.12 ([PR #33981](https://github.com/microsoft/fluentui/pull/33981) by beachball)
+
+## [8.107.128](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.128)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.127..@fluentui/fluent2-theme_v8.107.128)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.11 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+
+## [8.107.127](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.127)
+
+Wed, 19 Feb 2025 07:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.126..@fluentui/fluent2-theme_v8.107.127)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.10 ([PR #33867](https://github.com/microsoft/fluentui/pull/33867) by beachball)
+
+## [8.107.126](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.126)
+
+Wed, 29 Jan 2025 07:21:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.125..@fluentui/fluent2-theme_v8.107.126)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.9 ([PR #33713](https://github.com/microsoft/fluentui/pull/33713) by beachball)
+
+## [8.107.125](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.125)
+
+Wed, 22 Jan 2025 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.124..@fluentui/fluent2-theme_v8.107.125)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.8 ([PR #33685](https://github.com/microsoft/fluentui/pull/33685) by beachball)
+
+## [8.107.124](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.124)
+
+Fri, 17 Jan 2025 07:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.123..@fluentui/fluent2-theme_v8.107.124)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.7 ([commit](https://github.com/microsoft/fluentui/commit/baf887d95f91874c814a7cae749c20e797f828be) by beachball)
+
+## [8.107.123](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.123)
+
+Mon, 13 Jan 2025 07:21:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.122..@fluentui/fluent2-theme_v8.107.123)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.6 ([PR #33148](https://github.com/microsoft/fluentui/pull/33148) by beachball)
+
+## [8.107.122](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.122)
+
+Wed, 08 Jan 2025 07:21:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.121..@fluentui/fluent2-theme_v8.107.122)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.5 ([PR #33578](https://github.com/microsoft/fluentui/pull/33578) by beachball)
+
+## [8.107.121](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.121)
+
+Fri, 03 Jan 2025 07:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.120..@fluentui/fluent2-theme_v8.107.121)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.4 ([PR #33529](https://github.com/microsoft/fluentui/pull/33529) by beachball)
 
 ## [8.107.120](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.120)
 

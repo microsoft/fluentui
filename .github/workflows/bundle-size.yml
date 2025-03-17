@@ -16,6 +16,7 @@ env:
 
 jobs:
   bundle-size:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'

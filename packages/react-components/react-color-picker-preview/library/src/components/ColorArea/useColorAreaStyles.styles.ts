@@ -20,9 +20,6 @@ export const colorAreaCSSVars = {
 
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
-const thumbPositionXVar = `--fui-AlphaSlider__thumb--positionX`;
-const thumbPositionYVar = `--fui-AlphaSlider__thumb--positionY`;
-const innerThumbRadiusVar = `--fui-AlphaSlider__thumb--radius`;
 
 /**
  * Styles for the root slot
@@ -37,9 +34,10 @@ const useRootStyles = makeResetStyles({
   alignItems: 'start',
   justifyItems: 'start',
   [thumbSizeVar]: '20px',
-  minWidth: '200px',
-  minHeight: '200px',
-  [innerThumbRadiusVar]: '6px',
+  minWidth: '300px',
+  minHeight: '300px',
+  boxSizing: 'border-box',
+  marginBottom: tokens.spacingVerticalSNudge,
 });
 
 /**
@@ -54,20 +52,19 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralForeground4}`,
+    boxShadow: tokens.shadow4,
     backgroundColor: `var(${colorAreaCSSVars.thumbColorVar})`,
     transform: 'translate(-50%, 50%)',
-    [`${thumbPositionXVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaXProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
-    [`${thumbPositionYVar}`]: `clamp(var(${innerThumbRadiusVar}), var(${colorAreaCSSVars.areaYProgressVar}), calc(100% - var(${innerThumbRadiusVar})))`,
-    left: `var(${thumbPositionXVar})`,
-    bottom: `var(${thumbPositionYVar})`,
+    left: `var(${colorAreaCSSVars.areaXProgressVar})`,
+    bottom: `var(${colorAreaCSSVars.areaYProgressVar})`,
     '::before': {
       position: 'absolute',
       inset: '0px',
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralBackground1}`,
     },
   },
   focusIndicator: createFocusOutlineStyle({

@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   build_and_deploy:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:

@@ -1,90 +1,59 @@
-import { expect, test } from '@playwright/test';
-
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Drawer } from './drawer.js';
+import { DrawerPosition } from './drawer.options.js';
+import { DrawerSize, DrawerType } from './drawer.options.js';
 
 test.describe('Drawer', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-drawer--drawer'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-drawer'));
+  test.use({
+    tagName: 'fluent-drawer',
   });
 
-  test('should reflect type attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  for (const type of Object.values(DrawerType)) {
+    test(`should set the \`type\` property to "${type}" when set via the \`type\` attribute`, async ({ fastPage }) => {
+      const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer type="modal">Drawer</fluent-drawer>
-    `);
+      await fastPage.setTemplate({ attributes: { type } });
 
-    await expect(element).toHaveAttribute('type', 'modal');
-    await expect(element).toHaveJSProperty('type', 'modal');
-
-    await element.evaluate((node: Drawer) => {
-      node.type = 'non-modal';
+      await expect(element).toHaveAttribute('type', type);
+      await expect(element).toHaveJSProperty('type', type);
     });
+  }
 
-    await expect(element).toHaveAttribute('type', 'non-modal');
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const size of Object.values(DrawerSize)) {
+      await test.step(`should set the \`size\` property to \`${size}\``, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
+
+        await expect(element).toHaveAttribute('size', size);
+
+        await expect(element).toHaveJSProperty('size', size);
+      });
+    }
   });
 
-  test('should reflect size attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  test('should set the `position` property to match the `position` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer size="small">Drawer</fluent-drawer>
-    `);
+    for (const position of Object.values(DrawerPosition)) {
+      await test.step(`should set the \`position\` property to \`${position}\``, async () => {
+        await fastPage.setTemplate({ attributes: { position } });
 
-    await expect(element).toHaveAttribute('size', 'small');
-    await expect(element).toHaveJSProperty('size', 'small');
+        await expect(element).toHaveAttribute('position', position);
 
-    await element.evaluate((node: Drawer) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveAttribute('size', 'medium');
-    await expect(element).toHaveJSProperty('size', 'medium');
-
-    await element.evaluate((node: Drawer) => {
-      node.size = 'large';
-    });
-
-    await expect(element).toHaveAttribute('size', 'large');
-    await expect(element).toHaveJSProperty('size', 'large');
-
-    await element.evaluate((node: Drawer) => {
-      node.size = 'full';
-    });
-
-    await expect(element).toHaveAttribute('size', 'full');
-    await expect(element).toHaveJSProperty('size', 'full');
+        await expect(element).toHaveJSProperty('position', position);
+      });
+    }
   });
 
-  test('should reflect position attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  test('should set the `ariaLabel` property when the `aria-label` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer position="start">Drawer</fluent-drawer>
-    `);
-
-    await expect(element).toHaveAttribute('position', 'start');
-    await expect(element).toHaveJSProperty('position', 'start');
-
-    await element.evaluate((node: Drawer) => {
-      node.position = 'end';
-    });
-
-    await expect(element).toHaveAttribute('position', 'end');
-    await expect(element).toHaveJSProperty('position', 'end');
-  });
-
-  test('should reflect aria-label attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
-
-    await page.setContent(/* html */ `
-        <fluent-drawer aria-label="abc">Drawer</fluent-drawer>
-    `);
+    await fastPage.setTemplate({ attributes: { 'aria-label': 'abc' } });
 
     await expect(element).toHaveAttribute('aria-label', 'abc');
+
     await expect(element).toHaveJSProperty('ariaLabel', 'abc');
 
     await element.evaluate((node: Drawer) => {
@@ -92,17 +61,17 @@ test.describe('Drawer', () => {
     });
 
     await expect(element).toHaveAttribute('aria-label', 'def');
+
     await expect(element).toHaveJSProperty('ariaLabel', 'def');
   });
 
-  test('should reflect aria-labelledby attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  test('should set the `ariaLabelledby` property when the `aria-labelledby` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer aria-labelledby="abc">Drawer</fluent-drawer>
-    `);
+    await fastPage.setTemplate({ attributes: { 'aria-labelledby': 'abc' } });
 
     await expect(element).toHaveAttribute('aria-labelledby', 'abc');
+
     await expect(element).toHaveJSProperty('ariaLabelledby', 'abc');
 
     await element.evaluate((node: Drawer) => {
@@ -110,17 +79,19 @@ test.describe('Drawer', () => {
     });
 
     await expect(element).toHaveAttribute('aria-labelledby', 'def');
+
     await expect(element).toHaveJSProperty('ariaLabelledby', 'def');
   });
 
-  test('should reflect aria-describedby attribute', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  test('should set the `ariaDescribedby` property when the `aria-describedby` attribute is set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer aria-describedby="abc">Drawer</fluent-drawer>
-    `);
+    await fastPage.setTemplate({ attributes: { 'aria-describedby': 'abc' } });
 
     await expect(element).toHaveAttribute('aria-describedby', 'abc');
+
     await expect(element).toHaveJSProperty('ariaDescribedby', 'abc');
 
     await element.evaluate((node: Drawer) => {
@@ -128,80 +99,53 @@ test.describe('Drawer', () => {
     });
 
     await expect(element).toHaveAttribute('aria-describedby', 'def');
+
     await expect(element).toHaveJSProperty('ariaDescribedby', 'def');
   });
 
-  test('should emit an event when open property changes', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
+  test('should emit a `toggle` event when the `show` method is called', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-drawer>Drawer</fluent-drawer>
-    `);
-
-    const [wasOpened] = await Promise.all([
-      element.evaluate(
-        node =>
-          new Promise(resolve => {
-            node.addEventListener('toggle', () => resolve(true));
-          }),
-      ),
-      await element.evaluate((node: Drawer) => {
-        node.show();
-      }),
-    ]);
-
-    expect(wasOpened).toBe(true);
-  });
-
-  test('should emit an event before open property changes', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
-
-    await page.setContent(/* html */ `
-        <fluent-drawer>Drawer</fluent-drawer>
-    `);
-
-    const [wasOpened] = await Promise.all([
-      element.evaluate(
-        node =>
-          new Promise(resolve => {
-            node.addEventListener('beforetoggle', () => resolve(true));
-          }),
-      ),
-      await element.evaluate((node: Drawer) => {
-        node.show();
-      }),
-    ]);
-
-    expect(wasOpened).toBe(true);
-  });
-
-  test('should fire a `cancel` event when keydown is invoked on the document', async ({ page }) => {
-    const element = page.locator('fluent-drawer');
-
-    await page.setContent(/* html */ `
-        <fluent-drawer type="modal"></fluent-drawer>
-    `);
+    const wasOpened = element.evaluate(
+      node => new Promise(resolve => node.addEventListener('toggle', () => resolve(true))),
+    );
 
     await element.evaluate((node: Drawer) => {
       node.show();
     });
 
-    const [wasDismissed] = await Promise.all([
-      element.evaluate(
-        node =>
-          new Promise(resolve => {
-            node.addEventListener('cancel', () => resolve(true));
-          }),
-      ),
-      element.evaluate(node => {
-        node.dispatchEvent(
-          new Event('cancel', {
-            key: 'Escape',
-          } as EventInit),
-        );
-      }),
-    ]);
+    await expect(wasOpened).resolves.toBe(true);
+  });
 
-    expect(wasDismissed).toBe(true);
+  test('should emit a `beforetoggle` event before open property changes', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    const wasOpened = element.evaluate(
+      node => new Promise(resolve => node.addEventListener('beforetoggle', () => resolve(true))),
+    );
+
+    await element.evaluate((node: Drawer) => {
+      node.show();
+    });
+
+    await expect(wasOpened).resolves.toBe(true);
+  });
+
+  test('should emit a `cancel` event when a `cancel` event is invoked on the document', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await element.evaluate((node: Drawer) => {
+      node.show();
+    });
+
+    const wasDismissed = element.evaluate(
+      node => new Promise(resolve => node.addEventListener('cancel', () => resolve(true))),
+    );
+
+    await element.evaluate(node => {
+      node.dispatchEvent(new Event('cancel', { key: 'Escape' } as EventInit));
+    });
+
+    await expect(wasDismissed).resolves.toBe(true);
   });
 });

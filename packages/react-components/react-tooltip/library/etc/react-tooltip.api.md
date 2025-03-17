@@ -56,7 +56,7 @@ export type TooltipState = ComponentState<TooltipSlots> & Pick<TooltipProps, 'mo
 // @public
 export type TooltipTriggerProps = {
     ref?: React_2.Ref<unknown>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave' | 'aria-haspopup' | 'aria-expanded'>;
 
 // @public
 export const useTooltip_unstable: (props: TooltipProps) => TooltipState;

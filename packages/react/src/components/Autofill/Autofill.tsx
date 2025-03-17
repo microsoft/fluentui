@@ -40,9 +40,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   private _async: Async;
 
   public static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (props.updateValueInWillReceiveProps) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const updatedInputValue = props.updateValueInWillReceiveProps();
       // Don't update if we have a null value or the value isn't changing
       // the value should still update if an empty string is passed in
@@ -98,7 +98,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     return this._inputElement.current;
   }
 
-  public componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null) {
+  public componentDidUpdate(_: any, previousState: IAutofillState, cursor: ICursorLocation | null) {
     const { suggestedDisplayValue, shouldSelectFullInputValueInComponentDidUpdate, preventValueSelection } = this.props;
     let differenceIndex = 0;
 
@@ -114,7 +114,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
-      _doesTextStartWith(suggestedDisplayValue, this.value)
+      _doesTextStartWith(suggestedDisplayValue, this.value) &&
+      previousState.inputValue !== this.value
     ) {
       let shouldSelectFullRange = false;
 
@@ -247,8 +248,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     // Right now typing does not have isComposing, once that has been fixed any should be removed.
 
     if (!(ev.nativeEvent as any).isComposing) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       switch (ev.which) {
+        case KeyCodes.del:
         case KeyCodes.backspace:
           this._autoFillEnabled = false;
           break;
@@ -263,7 +265,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           break;
         default:
           if (!this._autoFillEnabled) {
-            // eslint-disable-next-line deprecation/deprecation
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             if (this.props.enableAutofillOnKeyPress!.indexOf(ev.which) !== -1) {
               this._autoFillEnabled = true;
             }
@@ -339,7 +341,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const { onInputChange, onInputValueChange } = this.props;
     if (onInputChange) {
       newValue = onInputChange?.(newValue, composing) || '';

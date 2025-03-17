@@ -193,7 +193,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
 
   // Show HoverCard
   private _cardOpen = (ev: MouseEvent): void => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === this.props.openHotKey))) {
       return;
     }
@@ -239,13 +239,13 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
         return;
       }
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.type === 'keydown' && ev.which !== KeyCodes.escape) {
         return;
       }
 
       // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
         this.dismiss(true);
       }

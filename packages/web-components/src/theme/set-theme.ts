@@ -1,3 +1,4 @@
+import { Updates } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 
 /**
@@ -208,9 +209,10 @@ function forceRepaint(element: HTMLElement) {
   const currentValue = element.style.getPropertyValue(name);
 
   element.style.setProperty(name, tempValue);
-  requestAnimationFrame(() => {
-    element.style.setProperty(name, currentValue);
-  });
+
+  Updates.process();
+
+  element.style.setProperty(name, currentValue);
 }
 
 /**

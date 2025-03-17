@@ -24,7 +24,7 @@ export { FirstRunExperience } from './CarouselFirstRunExperience.stories';
 export { Eventing } from './CarouselEventing.stories';
 
 export default {
-  title: 'Components/Carousel',
+  title: 'Components/Carousel/Carousel',
   component: Carousel,
   subcomponents: {
     CarouselAutoplayButton,
