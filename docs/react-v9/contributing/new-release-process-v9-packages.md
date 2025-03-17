@@ -161,7 +161,16 @@ yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28505
 
 ```sh
-yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui/react-one-preview --phase=stable
+yarn generate
+
+? Select generator to run ... release
+@fluentui/workspace-plugin - prepare-initial-release - Prepare a project (v9) for release (various stages)
+
+? Execute command or Set flags ...project
+project(required) - Library name
+
+? Select Project ... react-one-preview
+Execute: nx g @fluentui/workspace-plugin:prepare-initial-release --project=react-one-preview
 ```
 
 - TODO: deprecate all released `*-preview` package version on npm on CI during release
