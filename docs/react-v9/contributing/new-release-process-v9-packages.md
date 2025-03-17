@@ -160,6 +160,8 @@ yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui
 
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28505
 
+You can use `yarn generate` or Nx Console to navigate through the process.
+
 ```sh
 yarn generate
 
