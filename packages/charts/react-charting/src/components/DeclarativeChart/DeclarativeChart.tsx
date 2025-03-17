@@ -216,7 +216,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'bar':
       const orientation = plotlyInput.data[0].orientation;
       const containsBase = plotlyInput.data.some((series: PlotData) => series.base !== undefined);
-      if (orientation === 'h' && plotlyInput.data[0].type === 'bar' && containsBase) {
+      if (orientation === 'h' && containsBase) {
         throw new Error('Unsupported chart type: Gantt');
       } else if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
         return (
