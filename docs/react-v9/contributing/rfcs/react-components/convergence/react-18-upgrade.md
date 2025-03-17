@@ -47,6 +47,7 @@ The goal is to make updates to our type system codebase to accommodate the break
 ### Breaking Changes
 
 As of now, the following breaking changes are present in React 18:
+
 **TODO**: Add breaking changes here
 
 ### What is not covered by this RFC
@@ -79,7 +80,7 @@ The release will include the necessary type changes, documentation updates and a
 
 If we choose to release a new major version, we could also take the opportunity to introduce new Slot APIs. This would be a good opportunity to introduce new APIs that are more aligned with the future of Fluent UI, adding support for React 18 and beyond and making the slot API more flexible and easier to maintain/upgrade. This would also be a good leap to add support for React 19 in the future.
 
-**TODO** Add implementation details here
+**TODO**: Add implementation details here
 
 ###### Pros
 
@@ -115,7 +116,7 @@ This is a variation of the previous option. We would introduce the new Slot APIs
 
 This is a much more conservative approach. We would simply update the types to support React 18 and make necessary changes to the codebase to accommodate the breaking changes. All the documentation and other changes would be made to support this and no further updates would be made to the codebase.
 
-**TODO** Add implementation details here
+**TODO**: Add implementation details here
 
 ###### Pros
 
@@ -140,3 +141,5 @@ The release will include the necessary type changes, documentation updates and a
 
 - 👎 Breaks heavily semantic versioning
 - 👎 Documentation issues to communicate what release adds the React 18 support
+
+**TODO**: Add implementation details here
