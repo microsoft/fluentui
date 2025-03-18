@@ -10,12 +10,13 @@ export { ExperimentsBlurAB as BlurAB } from './ExperimentsBlurAB.stories';
 export { ExperimentsSpiral as Spiral } from './ExperimentsSpiral.stories';
 export { ExperimentsWipe as Wipe } from './ExperimentsWipe.stories';
 export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.stories';
-export { ExperimentsSlideScaleAB as SlideScaleAB } from './ExperimentsSlideScaleAB.stories';
+// export { ExperimentsSlideScaleAB as SlideScaleAB } from './ExperimentsSlideScaleAB.stories';
 // TODO: fix the lack of .In and .Out in the SlideUnder component
 // export { ExperimentsSlideUnderAB as SlideUnderAB } from './ExperimentsSlideUnderAB.stories';
 export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
 export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
 export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
+// export { ExperimentsHoverAndPress as HoverAndPress } from './ExperimentsHoverAndPress.stories';
 
 export default {
   title: 'Motion/Experiments',

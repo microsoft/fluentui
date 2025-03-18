@@ -11,14 +11,9 @@ import {
   Image,
   motionTokens,
   createPresenceComponent,
+  createPresenceComponentVariant,
 } from '@fluentui/react-components';
-import {
-  Blur,
-  createScalePresence,
-  createSlidePresence,
-  Scale,
-  Slide,
-} from '@fluentui/react-motion-components-preview';
+import { Blur, createSlidePresence, Scale, Slide } from '@fluentui/react-motion-components-preview';
 
 import { Hold, Series } from './Series';
 import { Stagger } from './Stagger';
@@ -91,15 +86,13 @@ export const SlideCarousel = createPresenceComponent(
   }),
 );
 
-export const ScaleCarousel = createPresenceComponent(
-  createScalePresence({
-    fromScale: 0.1,
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveDecelerateMax,
-    exitDuration: motionTokens.durationGentle * 1.5,
-    exitEasing: motionTokens.curveAccelerateMin,
-  }),
-);
+export const ScaleCarousel = createPresenceComponentVariant(Scale, {
+  fromScale: 0.1,
+  duration: motionTokens.durationSlow,
+  easing: motionTokens.curveDecelerateMax,
+  exitDuration: motionTokens.durationGentle * 1.5,
+  exitEasing: motionTokens.curveAccelerateMin,
+});
 
 export const ExperimentsSlideScaleAB = () => {
   const classes = useClasses();
