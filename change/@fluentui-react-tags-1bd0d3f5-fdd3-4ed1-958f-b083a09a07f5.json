@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Added selected state for Tag and InteractionTag",
+  "packageName": "@fluentui/react-tags",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
