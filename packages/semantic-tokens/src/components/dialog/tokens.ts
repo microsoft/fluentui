@@ -16,7 +16,7 @@ import {
 } from './variables';
 export const ctrlDialogBackground = `var(${ctrlDialogBackgroundRaw})`;
 export const ctrlDialogStroke = `var(${ctrlDialogStrokeRaw}, unset})`;
-export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, ${cornerCardRestRaw})`;
+export const ctrlDialogBaseCorner = `var(${ctrlDialogBaseCornerRaw}, var(${cornerCardRestRaw}))`;
 export const ctrlDialogBaseShadowKeyX = `var(${ctrlDialogBaseShadowKeyXRaw})`;
 export const ctrlDialogBaseShadowKeyY = `var(${ctrlDialogBaseShadowKeyYRaw})`;
 export const ctrlDialogBaseShadowKeyBlur = `var(${ctrlDialogBaseShadowKeyBlurRaw})`;
@@ -25,5 +25,5 @@ export const ctrlDialogBaseShadowAmbientX = `var(${ctrlDialogBaseShadowAmbientXR
 export const ctrlDialogBaseShadowAmbientY = `var(${ctrlDialogBaseShadowAmbientYRaw})`;
 export const ctrlDialogBaseShadowAmbientBlur = `var(${ctrlDialogBaseShadowAmbientBlurRaw})`;
 export const ctrlDialogBaseShadowAmbientColor = `var(${ctrlDialogBaseShadowAmbientColorRaw})`;
-export const ctrlDialogLayerBackground = `var(${ctrlDialogLayerBackgroundRaw}, ${backgroundLayerPrimarySolidRaw})`;
+export const ctrlDialogLayerBackground = `var(${ctrlDialogLayerBackgroundRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const ctrlDialogLayerPaddingBottom = `var(${ctrlDialogLayerPaddingBottomRaw})`;

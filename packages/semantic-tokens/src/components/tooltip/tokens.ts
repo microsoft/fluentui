@@ -22,14 +22,14 @@ import {
   ctrlTooltipShadowKeyXRaw,
   ctrlTooltipShadowKeyYRaw,
 } from './variables';
-export const ctrlTooltipShadowKeyX = `var(${ctrlTooltipShadowKeyXRaw}, ${ctrlFabShadowRestKeyXRaw})`;
-export const ctrlTooltipShadowKeyY = `var(${ctrlTooltipShadowKeyYRaw}, ${ctrlFabShadowRestKeyYRaw})`;
-export const ctrlTooltipShadowKeyBlur = `var(${ctrlTooltipShadowKeyBlurRaw}, ${ctrlFabShadowRestKeyBlurRaw})`;
-export const ctrlTooltipShadowKeyColor = `var(${ctrlTooltipShadowKeyColorRaw}, ${ctrlFabShadowRestKeyColorRaw})`;
-export const ctrlTooltipShadowAmbientX = `var(${ctrlTooltipShadowAmbientXRaw}, ${ctrlFabShadowRestAmbientXRaw})`;
-export const ctrlTooltipShadowAmbientY = `var(${ctrlTooltipShadowAmbientYRaw}, ${ctrlFabShadowRestAmbientYRaw})`;
-export const ctrlTooltipShadowAmbientBlur = `var(${ctrlTooltipShadowAmbientBlurRaw}, ${ctrlFabShadowRestAmbientBlurRaw})`;
-export const ctrlTooltipShadowAmbientColor = `var(${ctrlTooltipShadowAmbientColorRaw}, ${ctrlFabShadowRestAmbientColorRaw})`;
-export const ctrlTooltipCorner = `var(${ctrlTooltipCornerRaw}, ${cornerCtrlRestRaw})`;
+export const ctrlTooltipShadowKeyX = `var(${ctrlTooltipShadowKeyXRaw}, var(${ctrlFabShadowRestKeyXRaw}))`;
+export const ctrlTooltipShadowKeyY = `var(${ctrlTooltipShadowKeyYRaw}, var(${ctrlFabShadowRestKeyYRaw}))`;
+export const ctrlTooltipShadowKeyBlur = `var(${ctrlTooltipShadowKeyBlurRaw}, var(${ctrlFabShadowRestKeyBlurRaw}))`;
+export const ctrlTooltipShadowKeyColor = `var(${ctrlTooltipShadowKeyColorRaw}, var(${ctrlFabShadowRestKeyColorRaw}))`;
+export const ctrlTooltipShadowAmbientX = `var(${ctrlTooltipShadowAmbientXRaw}, var(${ctrlFabShadowRestAmbientXRaw}))`;
+export const ctrlTooltipShadowAmbientY = `var(${ctrlTooltipShadowAmbientYRaw}, var(${ctrlFabShadowRestAmbientYRaw}))`;
+export const ctrlTooltipShadowAmbientBlur = `var(${ctrlTooltipShadowAmbientBlurRaw}, var(${ctrlFabShadowRestAmbientBlurRaw}))`;
+export const ctrlTooltipShadowAmbientColor = `var(${ctrlTooltipShadowAmbientColorRaw}, var(${ctrlFabShadowRestAmbientColorRaw}))`;
+export const ctrlTooltipCorner = `var(${ctrlTooltipCornerRaw}, var(${cornerCtrlRestRaw}))`;
 export const ctrlTooltipBackground = `var(${ctrlTooltipBackgroundRaw})`;
 export const ctrlTooltipForeground = `var(${ctrlTooltipForegroundRaw})`;

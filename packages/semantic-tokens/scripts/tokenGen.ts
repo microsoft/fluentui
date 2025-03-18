@@ -222,7 +222,7 @@ function generateTokenVariables() {
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset})`;
     } else if (tokenSemanticRef) {
       // Token has a FST reference fallback only
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeInlineToken(tokenSemanticRef)})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(tokenSemanticRef)}))`;
     }
 
     if (tokenData.name.startsWith('CTRL/')) {
