@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tsconfig.base.v8.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "strictBindCallApply": true,
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom"],
+    "isolatedModules": true
+  },
+  "include": ["src"]
+}
