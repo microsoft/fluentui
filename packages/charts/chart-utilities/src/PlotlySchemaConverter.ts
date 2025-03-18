@@ -58,13 +58,15 @@ export const isLineData = (data: Partial<PlotData>): boolean => {
   );
 };
 
-export const invalidate2Dseries = (series: PlotData, chartType: string): void => {
+export const invalidate2Dseries = (series: PlotData): boolean => {
   if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-    throw new Error(`transform to ${chartType}:: 2D x array not supported`);
+    return false;
   }
   if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-    throw new Error(`transform to ${chartType}:: 2D y array not supported`);
+    return false;
   }
+
+  return true;
 };
 
 export const getValidSchema = (input: any): PlotlySchema => {
@@ -72,56 +74,59 @@ export const getValidSchema = (input: any): PlotlySchema => {
 };
 
 const validateDatapointsInternal = (plotlyData: PlotlySchema) => {
-  let fallbackVSBC = false;
   const xValues = (plotlyData.data[0] as PlotData).x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
-  const isXMonth = isMonthArray(xValues);
   if (isXDate || isXNumber) {
-    return true;
-  } else if (isXMonth) {
-    return true;
+    const isValid = plotlyData.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
+    return isValid;
   }
 
-  fallbackVSBC = true;
-  return true;
-  // return (
-  // <ResponsiveVerticalStackedBarChart
-  //   {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme, fallbackVSBC)}
-  //   {...commonProps}
-  // />
-  // );
+  // Fallback VSBC
+  const isValid = plotlyData.data.reduce(
+    (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
+    true,
+  );
+  return isValid;
 };
 
 export const isSchemaSupported = (input: any): boolean => {
+  try {
+    sanitizeJson(input);
+  } catch (error) {
+    return false;
+  }
+
   const validSchema: PlotlySchema = getValidSchema(input);
   switch (validSchema.data[0].type) {
     case 'pie':
-      return true;
+      return true; // Donut chart
     case 'bar':
       const orientation = validSchema.data[0].orientation;
       if (orientation === 'h' && isNumberArray((validSchema.data[0] as PlotData).x)) {
-        return true;
+        // HBC
+        const isValid = input.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
+        return isValid;
       } else {
         const containsLines = validSchema.data.some(
           series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
         );
         if (['group', 'overlay'].includes(validSchema?.layout?.barmode!) && !containsLines) {
-          return true;
+          // GVBC
+          const isValid = input.data.reduce(
+            (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
+            true,
+          );
+          return isValid;
         }
-        return true;
+        // VSBC
+        const isValid = input.data.reduce(
+          (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
+          true,
+        );
+        return isValid;
       }
-    case 'scatter':
-      if (validSchema.data[0].mode === 'markers') {
-        return false;
-      }
-      const isAreaChart = validSchema.data.some(
-        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
-      );
-
-      return validateDatapointsInternal(validSchema);
     case 'heatmap':
-      return true;
     case 'sankey':
       return true;
     case 'indicator':
@@ -131,7 +136,13 @@ export const isSchemaSupported = (input: any): boolean => {
       }
       return false;
     case 'histogram':
-      return true;
+      const isValid = input.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
+      return isValid;
+    case 'scatter':
+      if (validSchema.data[0].mode === 'markers') {
+        return false;
+      }
+      return validateDatapointsInternal(validSchema);
     default:
       const xValues = (validSchema.data[0] as PlotData).x;
       const yValues = (validSchema.data[0] as PlotData).y;
