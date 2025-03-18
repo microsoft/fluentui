@@ -20,6 +20,9 @@ interface IGroupedBarChartState {
   selectMultipleLegends: boolean;
 }
 
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
+
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
   constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -276,87 +279,88 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <Label>
-          <p>
+        <ThemeProvider theme={DarkTheme}>
+          <Label>
             In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the
             callout. So instead of a numeric value, the callout will show the date that is passed in the{' '}
             <code>xAxisCalloutData</code> property.
-          </p>
-        </Label>
-        <label htmlFor="changeWidth_Basic">Change Width:</label>
-        <input
-          type="range"
-          value={this.state.width}
-          min={200}
-          max={1000}
-          id="changeWidth_Basic"
-          onChange={this._onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
-        />
-        <label htmlFor="changeHeight_Basic">Change Height:</label>
-        <input
-          type="range"
-          value={this.state.height}
-          min={200}
-          max={1000}
-          id="changeHeight_Basic"
-          onChange={this._onHeightChange}
-          aria-valuetext={`ChangeHeightslider${this.state.height}`}
-        />
-        <br />
-        <label htmlFor="changeBarwidth">Change Barwidth:</label>
-        <input
-          type="range"
-          value={this.state.barwidth}
-          min={1}
-          max={50}
-          id="changeBarwidth"
-          onChange={this._onBarwidthChange}
-          aria-valuetext={`ChangeBarwidthslider${this.state.barwidth}`}
-        />
-        <label>{this.state.barwidth}</label>
-        <ChoiceGroup
-          options={options}
-          selectedKey={this.state.selectedCallout}
-          onChange={this._onChange}
-          label="Pick one"
-        />
-        <Checkbox
-          label="Hide labels"
-          checked={this.state.hideLabels}
-          onChange={this._onCheckChange}
-          styles={{ root: { marginTop: '20px' } }}
-        />
-        <div style={{ display: 'flex' }}>
-          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
-          &nbsp;&nbsp;
-          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
-          &nbsp;&nbsp;
-          <Toggle
-            label="Select Multiple Legends"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onLegendMultiSelectChange}
+          </Label>
+          <br />
+          <label htmlFor="changeWidth_Basic">Change Width:</label>
+          <input
+            type="range"
+            value={this.state.width}
+            min={200}
+            max={1000}
+            id="changeWidth_Basic"
+            onChange={this._onWidthChange}
+            aria-valuetext={`ChangeWidthSlider${this.state.width}`}
           />
-        </div>
-        <div style={rootStyle}>
-          <GroupedVerticalBarChart
-            culture={window.navigator.language}
-            chartTitle="Grouped Vertical Bar chart basic example"
-            data={data}
-            height={this.state.height}
-            width={this.state.width}
-            isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
-            barwidth={this.state.barwidth}
-            hideLabels={this.state.hideLabels}
-            enableReflow={true}
-            enableGradient={this.state.enableGradient}
-            roundCorners={this.state.roundCorners}
-            legendProps={{
-              canSelectMultipleLegends: this.state.selectMultipleLegends,
-            }}
+          <label htmlFor="changeHeight_Basic">Change Height:</label>
+          <input
+            type="range"
+            value={this.state.height}
+            min={200}
+            max={1000}
+            id="changeHeight_Basic"
+            onChange={this._onHeightChange}
+            aria-valuetext={`ChangeHeightslider${this.state.height}`}
           />
-        </div>
+          <br />
+          <label htmlFor="changeBarwidth">Change Barwidth:</label>
+          <input
+            type="range"
+            value={this.state.barwidth}
+            min={1}
+            max={50}
+            id="changeBarwidth"
+            onChange={this._onBarwidthChange}
+            aria-valuetext={`ChangeBarwidthslider${this.state.barwidth}`}
+          />
+          <label>{this.state.barwidth}</label>
+          <ChoiceGroup
+            options={options}
+            selectedKey={this.state.selectedCallout}
+            onChange={this._onChange}
+            label="Pick one"
+          />
+          <Checkbox
+            label="Hide labels"
+            checked={this.state.hideLabels}
+            onChange={this._onCheckChange}
+            styles={{ root: { marginTop: '20px' } }}
+          />
+          <div style={{ display: 'flex' }}>
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+            &nbsp;&nbsp;
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+            &nbsp;&nbsp;
+            <Toggle
+              label="Select Multiple Legends"
+              onText="ON"
+              offText="OFF"
+              onChange={this._onLegendMultiSelectChange}
+            />
+          </div>
+          <div style={rootStyle}>
+            <GroupedVerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Grouped Vertical Bar chart basic example"
+              data={data}
+              height={this.state.height}
+              width={this.state.width}
+              isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
+              barwidth={this.state.barwidth}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
+              legendProps={{
+                canSelectMultipleLegends: this.state.selectMultipleLegends,
+              }}
+            />
+          </div>
+        </ThemeProvider>
       </>
     );
   }
