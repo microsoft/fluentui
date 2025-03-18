@@ -10,16 +10,14 @@ import {
   AtomMotion,
   motionTokens,
   createPresenceComponent,
+  createPresenceComponentVariant,
 } from '@fluentui/react-components';
 import { fadeAtom } from '../../../library/src/atoms/fade-atom';
 import { slideAtom } from '../../../library/src/atoms/slide-atom';
 import { PresenceMotionFnCreator } from '../../../library/src/types';
-import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
 import {
   Blur,
   Collapse,
-  createFadePresence,
-  createScalePresence,
   createSlidePresence,
   Fade,
   FadeRelaxed,
@@ -137,9 +135,14 @@ const LoremIpsum = () => (
   </>
 );
 
-const FadeExtraGentle = createPresenceComponent(
-  createFadePresence({ enterDuration: motionTokens.durationGentle * 5, enterEasing: motionTokens.curveAccelerateMin }),
-);
+// const FadeExtraGentle = createPresenceComponent(
+//   createFadePresence({ enterDuration: motionTokens.durationGentle * 5, enterEasing: motionTokens.curveAccelerateMin }),
+// );
+
+const FadeExtraGentle = createPresenceComponentVariant(Fade, {
+  duration: motionTokens.durationGentle * 5,
+  easing: motionTokens.curveAccelerateMin,
+});
 
 const SlideSpringy = createPresenceComponent(
   createSlidePresence({
@@ -178,15 +181,22 @@ const SlideMagnetic = createPresenceComponent(
   }),
 );
 
-const ScaleCompletely = createPresenceComponent(
-  createScalePresence({
-    fromScale: 0,
-    enterDuration: motionTokens.durationSlow * 10,
-    enterEasing: motionTokens.curveAccelerateMax,
-    exitDuration: motionTokens.durationSlow * 10,
-    exitEasing: curveEmphasized,
-  }),
-);
+// const ScaleCompletely = createPresenceComponent(
+//   createScalePresence({
+//     fromScale: 0,
+//     enterDuration: motionTokens.durationSlow * 10,
+//     enterEasing: motionTokens.curveAccelerateMax,
+//     exitDuration: motionTokens.durationSlow * 10,
+//     exitEasing: curveEmphasized,
+//   }),
+// );
+
+const ScaleCompletely = createPresenceComponentVariant(Scale, {
+  fromScale: 0,
+  duration: motionTokens.durationSlow * 10,
+  easing: motionTokens.curveAccelerateMax,
+  exitEasing: curveEmphasized,
+});
 
 export const ExperimentsStagger = () => {
   const classes = useClasses();
