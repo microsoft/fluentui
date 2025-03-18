@@ -27,7 +27,6 @@
     "@fluentui/react-card": "*",
     "@fluentui/react-charts": "*",
     "@fluentui/react-checkbox": "*",
-    "@fluentui/react-color-picker-preview": "*",
     "@fluentui/react-combobox": "*",
     "@fluentui/react-context-selector": "*",
     "@fluentui/react-datepicker-compat": "*",
@@ -81,6 +80,7 @@
     "@fluentui/react-teaching-popover": "*",
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
-    "@fluentui/react-list": "*"
+    "@fluentui/react-list": "*",
+    "@fluentui/react-color-picker": ">=9.0.0-alpha"
   }
 }

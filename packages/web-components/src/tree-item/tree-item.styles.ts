@@ -24,6 +24,7 @@ import {
   curveEasyEaseMax,
   durationFaster,
   fontSizeBase300,
+  lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalXS,
   spacingHorizontalXXL,
@@ -41,6 +42,8 @@ export const styles = css`
 
   :host {
     outline: none;
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
   }
 
   :host(:focus-visible) .positioning-region {
@@ -55,7 +58,7 @@ export const styles = css`
    */
   .positioning-region {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
     cursor: pointer;
     height: ${spacingVerticalXXXL};
@@ -64,6 +67,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     background-color: ${colorSubtleBackground};
     color: ${colorNeutralForeground2};
+    gap: ${spacingHorizontalXS};
   }
 
   @media (prefers-contrast: more) {
@@ -75,19 +79,16 @@ export const styles = css`
   .content {
     display: flex;
     align-items: center;
-    font-size: ${fontSizeBase300};
-    min-width: 0;
+    gap: ${spacingHorizontalXS};
   }
 
   .chevron {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    min-width: 0;
     justify-content: center;
     width: ${spacingHorizontalXXL};
     height: ${spacingVerticalXXL};
-    color: ${colorNeutralForeground3};
     transition: transform ${durationFaster} ${curveEasyEaseMax};
     transform: rotate(0deg);
   }
@@ -96,12 +97,9 @@ export const styles = css`
     transform: rotate(180deg);
   }
 
-  .badging,
-  .toolbar {
+  .aside {
     display: flex;
     align-items: center;
-    min-width: 0;
-    font-size: ${fontSizeBase300};
   }
 
   .positioning-region:hover {
@@ -109,22 +107,13 @@ export const styles = css`
     color: ${colorNeutralForeground2Hover};
   }
 
-  .positioning-region:hover .content,
-  .positioning-region:hover .chevron {
-    color: ${colorNeutralForeground3Hover};
-  }
-
   .positioning-region:active {
     background-color: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground2Pressed};
   }
 
-  .positioning-region:active .content,
-  .positioning-region:active .chevron {
-    color: ${colorNeutralForeground3Pressed};
-  }
-
   ::slotted([slot='start']),
+  ::slotted([slot='end']),
   ::slotted(:not([slot])) {
     display: flex;
     align-items: center;
@@ -133,7 +122,6 @@ export const styles = css`
 
   ::slotted([slot='start']) {
     flex-shrink: 0;
-    margin-inline-end: ${spacingHorizontalXS};
   }
 
   ::slotted(:not([slot])) {

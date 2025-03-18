@@ -1,5 +1,5 @@
 import { expect, test } from '../../test/playwright/index.js';
-import type { TreeItem } from './tree-item.js';
+import type { BaseTreeItem } from './tree-item.base.js';
 
 test.describe('Tree Item', () => {
   test.use({
@@ -27,6 +27,16 @@ test.describe('Tree Item', () => {
     await expect(nestedItem).toHaveText('Nested Item A');
   });
 
+  test('should have empty attribute when there are not child tree items', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `Item 1
+        <span slot="start"></span>
+        `,
+    });
+    await expect(element.nth(0)).toHaveAttribute('empty');
+  });
+
   test('should work with expanded attribute', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate({
@@ -41,7 +51,7 @@ test.describe('Tree Item', () => {
     const nestedItems = element.locator('fluent-tree-item');
     await expect(nestedItems).toBeHidden();
 
-    await element.nth(0).evaluate((node: TreeItem) => {
+    await element.nth(0).evaluate((node: BaseTreeItem) => {
       node.expanded = true;
     });
     await expect(element.nth(0)).toHaveAttribute('expanded');

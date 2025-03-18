@@ -136,6 +136,7 @@ apps/chart-docsite @microsoft/charting-team
 packages/azure-themes @Jacqueline-ms
 packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
+packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
 packages/charts/react-charts @microsoft/charting-team
 packages/charts/react-charts/library @microsoft/charting-team
@@ -324,8 +325,8 @@ packages/react-components/react-motion-components-preview/library @microsoft/flu
 packages/react-components/react-motion-components-preview/stories @microsoft/fluent-motion-framework
 packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-color-picker/library @microsoft/cxe-prg
+packages/react-components/react-color-picker/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

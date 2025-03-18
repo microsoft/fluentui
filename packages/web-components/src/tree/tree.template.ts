@@ -1,4 +1,5 @@
 import { children, elements, html } from '@microsoft/fast-element';
+import { isTreeItem } from '../tree-item/tree-item.options';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`
@@ -11,7 +12,7 @@ export const template = html<Tree>`
     @change="${(x, c) => x.changeHandler(c.event)}"
     ${children({
       property: 'childTreeItems',
-      filter: elements(),
+      filter: node => isTreeItem(node),
     })}
   >
     <slot></slot>

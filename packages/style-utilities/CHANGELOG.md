@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Mar 2025 07:23:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.8)
+
+Fri, 14 Mar 2025 07:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.7..@fluentui/style-utilities_v8.11.8)
+
+### Patches
+
+- Updating CDN URL to point to refreshed 64x64 filetype icon assets. ([PR #33966](https://github.com/microsoft/fluentui/pull/33966) by caperez@microsoft.com)
 
 ## [8.11.7](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.7)
 
