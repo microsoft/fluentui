@@ -60,6 +60,7 @@ jobs:
           header: vr-report-comment
           number: ${{ steps.pr_number.outputs.id }}
           message: |
-            VR Regression Report:
-            - status: ${{ github.event.workflow_run.conclusion }}
-            - check whole [report](${{github.event.workflow_run.html_url}}) to review visual differences
+            Visual Regression Testing Report:
+            - status: **${{github.event.workflow_run.conclusion}}**
+            - 👀 check whole [report](${{github.event.workflow_run.html_url}}) to review visual differences
+            - 👨‍🔧 once reviewed and changes are expected, update diffs in your PR by adding a comment with following text: "&#47;approve-visual-regression-diff"
