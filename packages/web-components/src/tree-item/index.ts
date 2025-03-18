@@ -1,3 +1,4 @@
+export { BaseTreeItem } from './tree-item.base.js';
 export { TreeItem } from './tree-item.js';
 export { template as TreeItemTemplate } from './tree-item.template.js';
 export { styles as TreeItemStyles } from './tree-item.styles.js';

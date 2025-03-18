@@ -2801,8 +2801,10 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
+// Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function isTreeItem(element?: Node | null, tagName?: string): element is TreeItem;
+export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
 export class Label extends FASTElement {
@@ -4371,29 +4373,12 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export class TreeItem extends FASTElement {
-    constructor();
+export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
-    blurHandler(e: FocusEvent): void;
-    // (undocumented)
-    childTreeItems: TreeItem[] | undefined;
     // @internal
-    protected childTreeItemsChanged(): void;
-    dataIndent: number | undefined;
-    // @internal
-    elementInternals: ElementInternals;
-    empty: boolean;
-    expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
-    focusHandler(e: FocusEvent): void;
-    // @internal
-    get isNestedItem(): boolean;
-    selected: boolean;
-    // @internal
-    protected selectedChanged(prev: boolean, next: boolean): void;
+    childTreeItemsChanged(): void;
     size: TreeItemSize;
-    toggleExpansion(): void;
-    toggleSelection(): void;
+    updateSizeAndAppearance(): void;
 }
 
 // Warning: (ae-missing-release-tag) "TreeItemAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
