@@ -7,7 +7,7 @@
     "declarationDir": "../../dist/out-tsc/types",
     "outDir": "../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"],
+    "types": ["static-assets", "environment", "node"],
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },
