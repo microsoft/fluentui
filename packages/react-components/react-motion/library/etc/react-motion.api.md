@@ -24,7 +24,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 // @public (undocumented)
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
-// @public (undocumented)
+// @public
 export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
