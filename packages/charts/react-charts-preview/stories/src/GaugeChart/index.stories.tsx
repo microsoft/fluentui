@@ -4,6 +4,7 @@ import descriptionMd from './GaugeChartDescription.md';
 import bestPracticesMd from './GaugeChartBestPractices.md';
 
 export { GaugeChartBasic } from './GaugeChartDefault.stories';
+export { GaugeChartSingleSegment } from './GaugeChartSingleSegment.stories';
 
 export default {
   title: 'Charts/GaugeChart',
