@@ -34,6 +34,24 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
     };
   }
 
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
   public render(): React.ReactNode {
     return (
       <>
