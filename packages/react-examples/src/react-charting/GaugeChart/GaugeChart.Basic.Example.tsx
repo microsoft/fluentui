@@ -54,7 +54,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
 
   public render(): React.ReactNode {
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
           <StackItem>
             <label htmlFor="width-slider">Width:</label>
@@ -161,7 +161,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             canSelectMultipleLegends: this.state.legendMultiSelect,
           }}
         />
-      </>
+      </div>
     );
   }
 
