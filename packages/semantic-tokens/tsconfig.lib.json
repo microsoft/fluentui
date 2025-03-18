@@ -7,8 +7,10 @@
     "declarationDir": "../../dist/out-tsc/types",
     "outDir": "../../dist/out-tsc",
     "inlineSources": true,
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment"],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec-e2e.ts"],
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts", "./scripts/**/*.ts"]
 }
