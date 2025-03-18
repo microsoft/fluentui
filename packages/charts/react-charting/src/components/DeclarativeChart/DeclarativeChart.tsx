@@ -250,16 +250,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         );
       }
     case 'scatter':
-      if (plotlyInput.data[0]?.mode?.includes('markers') && !isNumberArray(plotlyInput.data[0].y!)) {
+      if (plotlyInput.data[0]?.mode === 'markers' && !isNumberArray(plotlyInput.data[0].y!)) {
         throw new Error(
           `Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}
-          , xAxisType: String or Date`,
+          , yAxisType: String or Date`,
         );
       }
       const isAreaChart = plotlyInput.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
-      const isScatterMarkers = plotlyInput.data[0]?.mode?.includes('markers');
+      const isScatterMarkers = plotlyInput.data[0]?.mode === 'markers';
       const renderChartJsx = (chartProps: ILineChartProps | IAreaChartProps) => {
         if (isAreaChart) {
           return <ResponsiveAreaChart {...chartProps} />;
