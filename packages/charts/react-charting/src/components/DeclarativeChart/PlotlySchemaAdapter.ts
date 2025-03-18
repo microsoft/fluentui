@@ -31,8 +31,16 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
-import type { Datum, ScatterLine, TypedArray } from './PlotlySchema';
+import type {
+  Datum,
+  Layout,
+  PlotlySchema,
+  PieData,
+  PlotData,
+  SankeyData,
+  ScatterLine,
+  TypedArray,
+} from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 

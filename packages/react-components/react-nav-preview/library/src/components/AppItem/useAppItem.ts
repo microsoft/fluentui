@@ -26,7 +26,6 @@ export const useAppItem_unstable = (
     getIntrinsicElementProps(
       rootElementType,
       useARIAButtonProps(rootElementType, {
-        role: rootElementType,
         ...props,
       }),
     ),
