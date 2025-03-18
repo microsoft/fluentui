@@ -8,7 +8,7 @@ import {
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { Label } from '@fluentui/react';
+
 interface IGroupedBarChartState {
   width: number;
   height: number;
