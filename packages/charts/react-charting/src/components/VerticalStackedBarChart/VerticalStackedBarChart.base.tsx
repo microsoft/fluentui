@@ -864,8 +864,7 @@ export class VerticalStackedBarChartBase
     });
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
     const gaps = barGapMax && bars.length - 1;
-    const gapHeight =
-      gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier * scalingRatio) / gaps));
+    const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
     const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
     return {
       gapHeight,
