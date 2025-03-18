@@ -132,6 +132,8 @@ Following chapters describe required steps for each phase. All of them are gener
 
 > Following graph sums those steps as well https://github.com/microsoft/fluentui/blob/master/tools/workspace-plugin/src/generators/prepare-initial-release/README.md#v9-release-process-flow
 
+You can use `yarn generate` or Nx Console to navigate through the process.
+
 ## 1. Kick-off phase
 
 > automation status: implemented ✅ / https://github.com/microsoft/fluentui/pull/28474
@@ -163,16 +165,7 @@ yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project @fluentui
 You can use `yarn generate` or Nx Console to navigate through the process.
 
 ```sh
-yarn generate
-
-? Select generator to run ... release
-@fluentui/workspace-plugin - prepare-initial-release - Prepare a project (v9) for release (various stages)
-
-? Execute command or Set flags ...project
-project(required) - Library name
-
-? Select Project ... react-one-preview
-Execute: nx g @fluentui/workspace-plugin:prepare-initial-release --project=react-one-preview
+yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project react-one-preview --phase=stable
 ```
 
 - TODO: deprecate all released `*-preview` package version on npm on CI during release
