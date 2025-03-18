@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "bundle": "just-scripts build && just-scripts bundle",
-    "lint": "just-scripts lint",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

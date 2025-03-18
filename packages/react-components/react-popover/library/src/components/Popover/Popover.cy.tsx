@@ -381,6 +381,7 @@ describe('Popover', () => {
 
       it('should work as inertTrapFocus when set to false', () => {
         mount(
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           <Popover legacyTrapFocus={false} trapFocus>
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
