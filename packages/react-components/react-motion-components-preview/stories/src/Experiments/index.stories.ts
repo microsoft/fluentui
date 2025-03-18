@@ -16,7 +16,7 @@ export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.sto
 export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
 export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
 export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
-// export { ExperimentsHoverAndPress as HoverAndPress } from './ExperimentsHoverAndPress.stories';
+export { ExperimentsReverseSlower as ReverseSlower } from './ExperimentsReverseSlower.stories';
 
 export default {
   title: 'Motion/Experiments',
