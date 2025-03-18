@@ -21,22 +21,51 @@ env:
   NX_VERBOSE_LOGGING: true
 
 jobs:
-  # TODO: it's not possible to update another JOB result to "success" in order to make PR mergeable
-  #
   approve_vrt_diff:
-    if: github.event.issue.pull_request && contains(github.event.comment.body,'/approve-snapshots')
+    if: github.event.issue.pull_request && contains(github.event.comment.body,'/approve-visual-regression-diff')
     runs-on: ubuntu-latest
-    #   permissions:
-    #     statuses: write
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
-      - run: echo "Hello"
-  #     - name: Approve VRT Diff
-  #       uses: actions/github-script@v7
-  #       with:
-  #         script: |
-  #           const run = require('./.github/scripts/approve-pr-vrt-diff');
-  #           const config = { prId: context.payload.issue.number };
-  #           await run({github,context,core,config});
+      - name: Checkout Forked Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps
+
+      - name: Update VR tests diff
+        run: yarn nx affected -t test-vr-cli -u --nxBail
+
+      - name: Configure Git
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+
+      - name: Update Baseline
+        run: |
+          git add *.png
+          if [[ -n $(git status --porcelain) ]]; then
+            git commit -m "chore: update vrt baseline / triggered by PR comment"
+            git push origin ${{ github.event.pull_request.head.ref }}
+          else
+            echo "No Visual Regression image changes to commit."
+          fi
+
+      - name: Post comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: vrt-diff-update-comment
+          number: ${{ github.event.issue.number }}
+          message: 'VRT update complete.'
 
   vrt_baseline:
     if: ${{ github.repository_owner == 'microsoft' && github.event_name == 'push' && github.event_name!='pull_request' }}
