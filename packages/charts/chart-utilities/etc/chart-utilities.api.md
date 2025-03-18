@@ -1018,6 +1018,8 @@ export interface PlotData {
     // (undocumented)
     automargin: boolean;
     // (undocumented)
+    base: Datum[] | Datum[][] | TypedArray;
+    // (undocumented)
     boxmean: boolean | 'sd';
     // (undocumented)
     boxpoints: 'all' | 'outliers' | 'suspectedoutliers' | false;
