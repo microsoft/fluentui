@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 14 Mar 2025 07:23:15 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Mar 2025 07:21:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.61)
+
+Tue, 18 Mar 2025 07:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.60..@fluentui/react-charting_v5.23.61)
+
+### Patches
+
+- fix(react-charting): Handle unsupported chart types Gantt and Contour ([PR #34005](https://github.com/microsoft/fluentui/pull/34005) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.60)
 
