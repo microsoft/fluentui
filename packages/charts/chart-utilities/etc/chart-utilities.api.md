@@ -759,6 +759,9 @@ export interface LegendTitle {
 }
 
 // @public (undocumented)
+export const mapFluentChart: (input: any) => OutputChartType;
+
+// @public (undocumented)
 export interface Margin {
     // (undocumented)
     b: number;
@@ -803,6 +806,16 @@ export interface MinorAxisLayout {
     tickvals: any[];
     // (undocumented)
     tickwidth: number;
+}
+
+// @public (undocumented)
+export interface OutputChartType {
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    isValid: boolean;
+    // (undocumented)
+    type?: string;
 }
 
 // @public (undocumented)

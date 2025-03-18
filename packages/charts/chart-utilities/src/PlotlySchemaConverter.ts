@@ -1,5 +1,12 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema } from './PlotlySchema';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export interface OutputChartType {
+  isValid: boolean;
+  errorMessage?: string;
+  type?: string;
+}
+
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -73,74 +80,77 @@ export const getValidSchema = (input: any): PlotlySchema => {
   return input as PlotlySchema;
 };
 
-const validateDatapointsInternal = (plotlyData: PlotlySchema) => {
+const validateDatapointsInternal = (plotlyData: PlotlySchema): OutputChartType => {
   const xValues = (plotlyData.data[0] as PlotData).x;
   const isXDate = isDateArray(xValues);
   const isXNumber = isNumberArray(xValues);
+  const isAreaChart = plotlyData.data.some(
+    (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+  );
   if (isXDate || isXNumber) {
-    const isValid = plotlyData.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
-    return isValid;
+    return validateSeriesData(plotlyData, isAreaChart ? 'area' : 'line', false);
   }
 
-  // Fallback VSBC
-  const isValid = plotlyData.data.reduce(
-    (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
-    true,
-  );
-  return isValid;
+  return validateSeriesData(plotlyData, 'verticalstackedbar', true);
 };
 
-export const isSchemaSupported = (input: any): boolean => {
+const validateSeriesData = (input: PlotlySchema, type: string, validateNumericY: boolean): OutputChartType => {
+  input.data.forEach((series: PlotData) => {
+    if (!invalidate2Dseries(series)) {
+      return { isValid: false, errorMessage: `${type}. Invalid 2D series encountered.`, type };
+    }
+    if (validateNumericY && !isNumberArray(series.y)) {
+      return { isValid: false, errorMessage: `${type}. Invalid numeric Y values encountered.`, type };
+    }
+  });
+  return { isValid: true, type };
+};
+
+export const mapFluentChart = (input: any): OutputChartType => {
   try {
     sanitizeJson(input);
   } catch (error) {
-    return false;
+    return { isValid: false, errorMessage: `Invalid JSON: ${error}` };
   }
 
   const validSchema: PlotlySchema = getValidSchema(input);
   switch (validSchema.data[0].type) {
     case 'pie':
-      return true; // Donut chart
+      return { isValid: true, type: 'donut' };
     case 'bar':
       const orientation = validSchema.data[0].orientation;
       if (orientation === 'h' && isNumberArray((validSchema.data[0] as PlotData).x)) {
-        // HBC
-        const isValid = input.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
-        return isValid;
+        return validateSeriesData(validSchema, 'horizontalbar', false);
       } else {
         const containsLines = validSchema.data.some(
           series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
         );
         if (['group', 'overlay'].includes(validSchema?.layout?.barmode!) && !containsLines) {
-          // GVBC
-          const isValid = input.data.reduce(
-            (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
-            true,
-          );
-          return isValid;
+          return validateSeriesData(validSchema, 'groupedverticalbar', true);
         }
-        // VSBC
-        const isValid = input.data.reduce(
-          (acc: boolean, series: PlotData) => acc && invalidate2Dseries(series) && isNumberArray(series.y),
-          true,
-        );
-        return isValid;
+        return validateSeriesData(validSchema, 'verticalstackedbar', true);
       }
     case 'heatmap':
+      return { isValid: true, type: 'heatmap' };
     case 'sankey':
-      return true;
+      return { isValid: true, type: 'sankey' };
     case 'indicator':
     case 'gauge':
       if (validSchema.data?.[0]?.mode?.includes('gauge') || validSchema.data?.[0]?.type === 'gauge') {
-        return true;
+        return { isValid: true, type: 'gauge' };
       }
-      return false;
+      return {
+        isValid: false,
+        errorMessage: `Unsupported chart - type: ${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}`,
+      };
     case 'histogram':
-      const isValid = input.data.reduce((acc: boolean, series: PlotData) => acc && invalidate2Dseries(series), true);
-      return isValid;
+      return validateSeriesData(validSchema, 'verticalbar', false);
     case 'scatter':
       if (validSchema.data[0].mode === 'markers') {
-        return false;
+        return {
+          isValid: false,
+          errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}`,
+        };
       }
       return validateDatapointsInternal(validSchema);
     default:
@@ -149,7 +159,10 @@ export const isSchemaSupported = (input: any): boolean => {
       if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
         return validateDatapointsInternal(validSchema);
       }
-      return false;
+      return {
+        isValid: false,
+        errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}}`,
+      };
   }
 };
 
