@@ -108,11 +108,18 @@ jobs:
       # NOTE: we need to build the assertion CLI - will be removed once migrated ot ESM
       - run: yarn nx run visual-regression-assert:build
 
+      - name: Affected Projects
+        id: affected_projects_count
+        run: |
+          yarn --silent nx show projects -t test-vr-cli --affected --verbose false
+          affected_count=$(yarn --silent nx show projects -t test-vr-cli --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
       - name: Run VR tests
         run: yarn nx affected -t test-vr-cli
 
       - name: Create Report
-        if: always()
+        if: always() && steps.affected_projects_count.outputs.value > 0
         id: report
         run: |
           yarn visual-regression-assert report --outputPath dist/vrt
