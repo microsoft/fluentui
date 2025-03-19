@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: modify check for scatter plot",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "110246001+krkshitij@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
