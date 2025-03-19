@@ -219,7 +219,7 @@ function generateTokenVariables() {
       )})`;
     } else if (tokenData.nullable && tokenSemanticRef) {
       // nullable tokens should always resolve to unset
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset})`;
+      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset)`;
     } else if (tokenSemanticRef) {
       // Token has a FST reference fallback only
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(tokenSemanticRef)}))`;
