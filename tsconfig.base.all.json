@@ -114,6 +114,8 @@
       "@fluentui/react-charts-preview-stories": ["packages/charts/react-charts-preview/stories/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
       "@fluentui/react-checkbox-stories": ["packages/react-components/react-checkbox/stories/src/index.ts"],
+      "@fluentui/react-color-picker": ["packages/react-components/react-color-picker/library/src/index.ts"],
+      "@fluentui/react-color-picker-stories": ["packages/react-components/react-color-picker/stories/src/index.ts"],
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/library/src/index.ts"],
       "@fluentui/react-combobox-stories": ["packages/react-components/react-combobox/stories/src/index.ts"],
@@ -260,9 +262,9 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-color-picker-stories": ["packages/react-components/react-color-picker/stories/src/index.ts"],
-      "@fluentui/react-color-picker": ["packages/react-components/react-color-picker/library/src/index.ts"]
+      "@fluentui/visual-regression-assert": ["tools/visual-regression-assert/src/index.ts"],
+      "@fluentui/visual-regression-utilities": ["tools/visual-regression-utilities/src/index.ts"],
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }
