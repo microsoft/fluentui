@@ -4,7 +4,7 @@ import { renderToastTitle_unstable } from './renderToastTitle';
 import { useToastTitleStyles_unstable } from './useToastTitleStyles.styles';
 import type { ToastTitleProps } from './ToastTitle.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook } from '@fluentui/react-shared-contexts/src/CustomStyleHooksContext';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToastTitle component
@@ -13,7 +13,7 @@ export const ToastTitle: ForwardRefComponent<ToastTitleProps> = React.forwardRef
   const state = useToastTitle_unstable(props, ref);
 
   useToastTitleStyles_unstable(state);
-  useCustomStyleHook('useToastTitleStyles_unstable')(state);
+  useCustomStyleHook_unstable('useToastTitleStyles_unstable')(state);
 
   return renderToastTitle_unstable(state);
 });
