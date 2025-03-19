@@ -24,17 +24,20 @@ jobs:
     permissions:
       pull-requests: write
       contents: write
+      actions: read
     steps:
+      - name: Debug
+        run: |
+          echo $W_RUN
+        env:
+          W_RUN: ${{ toJSON(github.event.pull_request) }}
+
       - name: Checkout Forked Repository
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-
-      # remove after debugging ( if nx sha determines proper BASE and HEAD)
-      - name: Get Base Branch Ref
-        run: |
-          echo "Base branch ref: ${{ github.event.pull_request.base.ref }}"
+          fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
