@@ -25,12 +25,28 @@ jobs:
       pull-requests: write
       contents: write
       actions: read
+      issues: read
     steps:
+      - name: Get Pull Request Details
+        id: pr_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const response = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+            return response.data;
+
       - name: Debug
         run: |
           echo $W_RUN
+          echo '===='
+          echo $PR_DETAILS
         env:
-          W_RUN: ${{ toJSON(github.event.pull_request) }}
+          W_RUN: ${{ toJSON(github.event) }}
+          PR_DETAILS: ${{toJSON(steps.pr_details.outputs)}}
 
       - name: Checkout Forked Repository
         uses: actions/checkout@v4
