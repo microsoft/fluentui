@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-shared-contexts": "^9.23.0",
     "@fluentui/react-label": "^9.1.85",
     "@fluentui/react-popover": "^9.10.2",
     "@fluentui/react-tabster": "^9.24.2",
