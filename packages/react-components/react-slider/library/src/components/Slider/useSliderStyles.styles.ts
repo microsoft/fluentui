@@ -273,7 +273,7 @@ const useInputStyles = makeStyles({
     },
     // Fallback for browsers that don't support `writing-mode: vertical-lr` for inputs
     '@supports not (writing-mode: sideways-lr)': {
-      '-webkit-appearance': 'slider-vertical',
+      WebkitAppearance: 'slider-vertical',
     },
   },
 });
