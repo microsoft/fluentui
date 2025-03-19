@@ -225,10 +225,7 @@ export const ExperimentsReverseSlower = () => {
 
     return (
       <div>
-        <p>
-          The mouse down animation is reused for mouse up, <br />
-          but in reverse and slower.
-        </p>
+        <p>The mouse down animation is reused for mouse up, but in reverse and slower.</p>
         {content}
       </div>
     );
