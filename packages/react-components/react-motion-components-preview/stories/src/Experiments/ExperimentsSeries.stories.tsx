@@ -15,7 +15,15 @@ import { fadeAtom } from '../../../library/src/atoms/fade-atom';
 import { slideAtom } from '../../../library/src/atoms/slide-atom';
 import { PresenceMotionFnCreator } from '../../../library/src/types';
 import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
-import { Blur, Collapse, Fade, FadeRelaxed, ScaleRelaxed, Slide } from '@fluentui/react-motion-components-preview';
+import {
+  Blur,
+  Collapse,
+  Fade,
+  FadeRelaxed,
+  ScaleRelaxed,
+  Slide,
+  SlideRelaxed,
+} from '@fluentui/react-motion-components-preview';
 import { Series } from './Series';
 
 // import description from './ExperimentsWipe.stories.md';
@@ -82,7 +90,7 @@ export const ExperimentsSeries = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
-  const [duration, setDuration] = React.useState<number>(1000);
+  const [duration, setDuration] = React.useState<number>(700);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const [orientation, setOrientation] = React.useState<'vertical' | 'horizontal'>('vertical');
   const [distance, setDistance] = React.useState<string>('100%');
@@ -94,58 +102,59 @@ export const ExperimentsSeries = () => {
   const durationMax = 2000;
 
   const series = (
-    <Series>
-      <Blur.In animateOpacity={animateOpacity}>
+    <Series autoloop>
+      <Blur.In enterDuration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
       </Blur.In>
-      <Blur.Out animateOpacity={animateOpacity}>
+      <Blur.Out exitDuration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'red', width: '100px', height: '100px', borderRadius: '50%' }} />
       </Blur.Out>
 
-      <Blur.In animateOpacity={animateOpacity}>
+      <Blur.In enterDuration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
       </Blur.In>
-      <Blur.Out animateOpacity={animateOpacity}>
+      <Blur.Out exitDuration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'blue', width: '100px', height: '100px', borderRadius: '50%' }} />
       </Blur.Out>
 
-      <ScaleRelaxed.In animateOpacity={animateOpacity}>
+      <ScaleRelaxed.In duration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
       </ScaleRelaxed.In>
-      <ScaleRelaxed.Out animateOpacity={animateOpacity}>
+      <ScaleRelaxed.Out duration={duration} animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
       </ScaleRelaxed.Out>
 
-      <Slide.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+      <SlideRelaxed.In distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-      </Slide.In>
-      <Slide.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
+      </SlideRelaxed.In>
+      <SlideRelaxed.Out distance="100%" orientation="vertical" animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-      </Slide.Out>
+      </SlideRelaxed.Out>
 
-      <Slide.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+      <SlideRelaxed.In distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-      </Slide.In>
-      <Slide.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
+      </SlideRelaxed.In>
+      <SlideRelaxed.Out distance="100%" orientation="horizontal" animateOpacity={animateOpacity}>
         <div style={{ backgroundColor: 'purple', width: '100px', height: '100px', borderRadius: '50%' }} />
-      </Slide.Out>
+      </SlideRelaxed.Out>
     </Series>
   );
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
+      <div>
+        {/* <div className={classes.controls}> */}
         {/* <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field> */}
 
-        <Field className={classes.field}>
+        {/* <Field className={classes.field}>
           <Switch
             label={<code>animateOpacity</code>}
             checked={animateOpacity}
             onChange={() => setAnimateOpacity(v => !v)}
           />
-        </Field>
+        </Field> */}
       </div>
 
       <div className={classes.card}>{series}</div>

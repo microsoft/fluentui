@@ -177,7 +177,7 @@ export const ExperimentsReverseSlower = () => {
   };
 
   const shrinkBounceAtom = {
-    keyframes: [{ transform: 'scale(1)' }, { transform: 'scale(0.8)' }],
+    keyframes: [{ transform: 'scale(1)' }, { transform: 'scale(0.5)' }],
     duration: 800,
     easing: curveBounceHard,
     fill: 'forwards',
@@ -188,7 +188,7 @@ export const ExperimentsReverseSlower = () => {
     exit: {
       ...shrinkBounceAtom,
       direction: 'reverse',
-      duration: shrinkBounceAtom.duration * 2,
+      duration: shrinkBounceAtom.duration * 3,
     },
   });
 
@@ -200,7 +200,13 @@ export const ExperimentsReverseSlower = () => {
         <button
           onMouseDown={() => setPressed(true)}
           onMouseUp={() => setPressed(false)}
-          style={{ padding: '40px 40px', fontSize: '16px', cursor: 'pointer' }}
+          style={{
+            padding: '60px 60px',
+            fontSize: '20px',
+            cursor: 'pointer',
+            backgroundColor: tokens.colorNeutralBackground1Pressed,
+            borderRadius: tokens.borderRadiusXLarge,
+          }}
         >
           Click and hold
         </button>
@@ -219,8 +225,10 @@ export const ExperimentsReverseSlower = () => {
 
     return (
       <div>
-        {/* <p>Playback rate: {pressed ? '1' : '-0.3'}</p> */}
-        <p>The mouse down animation is used for mouse up, but at a playback rate of -0.3.</p>
+        <p>
+          The mouse down animation is reused for mouse up, <br />
+          but in reverse and slower.
+        </p>
         {content}
       </div>
     );

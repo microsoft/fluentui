@@ -13,10 +13,10 @@ export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.sto
 // export { ExperimentsSlideScaleAB as SlideScaleAB } from './ExperimentsSlideScaleAB.stories';
 // TODO: fix the lack of .In and .Out in the SlideUnder component
 // export { ExperimentsSlideUnderAB as SlideUnderAB } from './ExperimentsSlideUnderAB.stories';
-export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
-export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
-export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
 export { ExperimentsReverseSlower as ReverseSlower } from './ExperimentsReverseSlower.stories';
+export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
+export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
+export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
 
 export default {
   title: 'Motion/Experiments',

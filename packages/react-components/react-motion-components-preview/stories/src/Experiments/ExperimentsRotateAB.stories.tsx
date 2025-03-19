@@ -177,11 +177,11 @@ export const ExperimentsRotateAB = () => {
           }}
         >
           <Rotate.In>{contentA}</Rotate.In>
-          <Hold duration={2000}>{contentA}</Hold>
+          <Hold duration={1000}>{contentA}</Hold>
           <Rotate.Out exitAngle={-90}>{contentA}</Rotate.Out>
 
           <Rotate.In enterAngle={90}>{contentB}</Rotate.In>
-          <Hold duration={2000}>{contentB}</Hold>
+          <Hold duration={1000}>{contentB}</Hold>
           <Rotate.Out>{contentB}</Rotate.Out>
         </Series>
       </div>
