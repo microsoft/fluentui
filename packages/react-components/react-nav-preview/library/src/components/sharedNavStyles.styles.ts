@@ -98,7 +98,8 @@ export const useIndicatorStyles = makeStyles({
     },
     '@media (forced-colors: active)': {
       '::after': {
-        backgroundColor: 'ButtonText',
+        outline: `solid 2px ${tokens.colorTransparentStroke}`,
+        outlineOffset: '-2px',
       },
     },
   },
