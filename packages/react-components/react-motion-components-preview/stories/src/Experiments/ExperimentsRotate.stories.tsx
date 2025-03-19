@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Field, makeStyles, tokens, Switch, useId, Label, Slider, Select } from '@fluentui/react-components';
 import { Rotate } from '@fluentui/react-motion-components-preview';
 
-import description from './ExperimentsRotate.stories.md';
+// import description from './ExperimentsRotate.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -140,7 +140,7 @@ export const ExperimentsRotate = () => {
 ExperimentsRotate.parameters = {
   docs: {
     description: {
-      story: description,
+      // story: description,
     },
   },
 };
