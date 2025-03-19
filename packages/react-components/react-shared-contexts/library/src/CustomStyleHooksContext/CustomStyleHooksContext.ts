@@ -166,6 +166,10 @@ export type CustomStyleHooksContextValue = Partial<{
   useCarouselNavButtonStyles_unstable: CustomStyleHook;
   useCarouselNavContainerStyles_unstable: CustomStyleHook;
   useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
+  useAlphaSliderStyles_unstable: CustomStyleHook;
+  useColorAreaStyles_unstable: CustomStyleHook;
+  useColorPickerStyles_unstable: CustomStyleHook;
+  useColorSliderStyles_unstable: CustomStyleHook;
 }>;
 
 /**
