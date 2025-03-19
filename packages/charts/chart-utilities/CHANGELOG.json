@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/chart-utilities",
+  "entries": [
+    {
+      "date": "Wed, 19 Mar 2025 07:09:29 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "1380089fd1a9c3555d8071ac2c50e2f1d068e470",
+            "comment": "Create chart utilities package"
+          }
+        ]
+      }
+    }
+  ]
+}
