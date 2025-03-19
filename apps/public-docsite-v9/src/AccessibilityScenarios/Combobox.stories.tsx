@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Combobox, ComboboxProps, makeStyles, useComboboxFilter, useId } from '@fluentui/react-components';
+import { Combobox, Option, makeStyles, useId } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 const useStyles = makeStyles({
@@ -14,44 +14,62 @@ const useStyles = makeStyles({
 });
 
 const options = [
-  { children: 'Alligator', value: 'Alligator' },
-  { children: 'Bee', value: 'Bee' },
-  { children: 'Bird', value: 'Bird' },
-  { children: 'Cheetah', disabled: true, value: 'Cheetah' },
-  { children: 'Dog', value: 'Dog' },
-  { children: 'Dolphin', value: 'Dolphin' },
-  { children: 'Ferret', value: 'Ferret' },
-  { children: 'Firefly', value: 'Firefly' },
-  { children: 'Fish', value: 'Fish' },
-  { children: 'Goat', value: 'Goat' },
-  { children: 'Horse', value: 'Horse' },
-  { children: 'Lion', value: 'Lion' },
+  'Apple',
+  'Apricot',
+  'Avocado',
+  'Banana',
+  'Blackberry',
+  'Blueberry',
+  'Boysenberry',
+  'Cantaloupe',
+  'Coconut',
+  'Currant',
+  'Date',
+  'Dragon fruit',
+  'Fig',
+  'Grape',
+  'Grapefruit',
+  'Honeydew',
+  'Kiwi',
+  'Lemon',
+  'Lime',
+  'Lychee',
+  'Mango',
+  'Mandarin orange',
+  'Melon',
+  'Nectarine',
+  'Olive',
+  'Orange',
+  'Papaya',
+  'Passion Fruit',
+  'Peach',
+  'Pear',
+  'Persimmon',
+  'Pineapple',
+  'Plum',
+  'Pomegranate',
+  'Raspberry',
+  'Ramnutan',
+  'Strawberry',
+  'Tangerine',
+  'Watermelon',
 ];
 
 export const FilteringCombobox: React.FunctionComponent = () => {
   const comboId = useId();
   const styles = useStyles();
 
-  const [query, setQuery] = React.useState<string>('');
-  const children = useComboboxFilter(query, options, {
-    noOptionsMessage: 'No animals match your search.',
-  });
-  const onOptionSelect: ComboboxProps['onOptionSelect'] = (e, data) => {
-    setQuery(data.optionText ?? '');
-  };
-
   return (
     <Scenario pageTitle="Filtering combobox">
+      <div>Single state</div>
       <div className={styles.root}>
-        <label id={comboId}>Best pet</label>
-        <Combobox
-          onOptionSelect={onOptionSelect}
-          aria-labelledby={comboId}
-          placeholder="Select an animal"
-          onChange={ev => setQuery(ev.target.value)}
-          value={query}
-        >
-          {children}
+        <label id={comboId}>Favourite fruit to have with ice-cream</label>
+        <Combobox aria-labelledby={comboId} placeholder="Pick a fruit">
+          {options.map(option => (
+            <Option key={option} disabled={option === 'Ferret'}>
+              {option}
+            </Option>
+          ))}
         </Combobox>
       </div>
     </Scenario>
