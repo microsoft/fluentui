@@ -4,12 +4,14 @@
     "/testing",
     "/**/*.cy.ts",
     "/**/*.cy.tsx",
+    "/**/*.spec-e2e.ts",
     "/**/*.spec.ts",
     "/**/*.spec.tsx",
     "/**/*.test.ts",
     "/**/*.test.tsx"
   ],
   "jsc": {
+    "baseUrl": ".",
     "parser": {
       "syntax": "typescript",
       "tsx": true,
@@ -23,7 +25,7 @@
         "useSpread": true
       }
     },
-    "target": "es2020"
+    "target": "es2019"
   },
   "minify": false,
   "sourceMaps": true
