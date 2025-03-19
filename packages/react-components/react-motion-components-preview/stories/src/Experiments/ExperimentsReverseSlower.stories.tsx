@@ -14,7 +14,7 @@ import {
 import { fadeAtom } from '../../../library/src/atoms/fade-atom';
 import { slideAtom } from '../../../library/src/atoms/slide-atom';
 import { PresenceMotionFnCreator } from '../../../library/src/types';
-import { MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
+import { createMotionComponent, MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
 import {
   Blur,
   Collapse,
@@ -176,57 +176,52 @@ export const ExperimentsReverseSlower = () => {
     });
   };
 
+  const shrinkBounceAtom = {
+    keyframes: [{ transform: 'scale(1)' }, { transform: 'scale(0.8)' }],
+    duration: 800,
+    easing: curveBounceHard,
+    fill: 'forwards',
+  } as const satisfies AtomMotion;
+
+  const ShrinkBounce = createPresenceComponent({
+    enter: shrinkBounceAtom,
+    exit: {
+      ...shrinkBounceAtom,
+      direction: 'reverse',
+      duration: shrinkBounceAtom.duration * 2,
+    },
+  });
+
   const AnimatedButton = () => {
-    const buttonRef = React.useRef<HTMLButtonElement>(null);
-    const clickAnimationRef = React.useRef<Animation | null | undefined>(null);
     const [pressed, setPressed] = React.useState(false);
 
-    const handleMouseEnter = () => {
-      buttonRef.current?.animate([{ backgroundColor: '#fff' }, { backgroundColor: '#aaa' }], {
-        duration: 500,
-        easing: 'ease-out',
-        fill: 'forwards',
-      });
-    };
+    const content = (
+      <ShrinkBounce visible={pressed}>
+        <button
+          onMouseDown={() => setPressed(true)}
+          onMouseUp={() => setPressed(false)}
+          style={{ padding: '40px 40px', fontSize: '16px', cursor: 'pointer' }}
+        >
+          Click and hold
+        </button>
+      </ShrinkBounce>
+    );
 
-    const handleMouseLeave = () => {
-      buttonRef.current?.animate([{ backgroundColor: '#aaa' }, { backgroundColor: '#fff' }], {
-        duration: 500,
-        fill: 'forwards',
-      });
-    };
-
-    const handleMouseDown = () => {
-      clickAnimationRef.current = buttonRef.current?.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.8)' }], {
-        duration: 800,
-        easing: curveBounceHard,
-        fill: 'forwards',
-        playbackRate: 1,
-      });
-    };
-
-    const handleMouseUp = () => {
-      if (clickAnimationRef.current) {
-        clickAnimationRef.current.playbackRate = -0.3;
-        clickAnimationRef.current.play();
-        // clickAnimationRef.current.reverse();
-      }
-    };
+    // const contentWithAnimation = (
+    //   pressed ? (
+    //     <Scale.Out
+    //       fromScale={0.8}
+    //       animateOpacity={false}
+    //       duration={duration}
+    //       exitEasing={curveBounceHard}
+    //       enterEasing={curveBounceHard}
+    //   )
 
     return (
       <div>
         {/* <p>Playback rate: {pressed ? '1' : '-0.3'}</p> */}
         <p>The mouse down animation is used for mouse up, but at a playback rate of -0.3.</p>
-        <button
-          ref={buttonRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          style={{ padding: '40px 40px', fontSize: '16px', cursor: 'pointer' }}
-        >
-          Click and hold
-        </button>
+        {content}
       </div>
     );
   };
