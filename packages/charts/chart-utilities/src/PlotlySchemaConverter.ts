@@ -135,14 +135,15 @@ const validateDatapointsInternal = (plotlyData: PlotlySchema, isAreaChart: boole
 };
 
 const validateSeriesData = (input: PlotlySchema, type: string, validateNumericY: boolean): OutputChartType => {
-  input.data.forEach((series: PlotData) => {
+  for (let i = 0; i < input.data.length; i++) {
+    const series = input.data[i] as PlotData;
     if (!validate2Dseries(series)) {
       return { isValid: false, errorMessage: `${type}. Invalid 2D series encountered.`, type };
     }
     if (validateNumericY && !isNumberArray(series.y)) {
-      return { isValid: false, errorMessage: `${type}. Invalid numeric Y values encountered.`, type };
+      return { isValid: false, errorMessage: `${type}. Non numeric Y values encountered.`, type };
     }
-  });
+  }
   return { isValid: true, type };
 };
 

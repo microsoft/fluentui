@@ -274,7 +274,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'area':
     case 'line':
     case 'fallback':
-      return checkAndRenderChart(chart.type === 'area');
+      // Need recheck for area chart as we don't have ability to check for valid months in previous step
+      const isAreaChart = plotlyInput.data.some(
+        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+      );
+      return checkAndRenderChart(isAreaChart);
     default:
       throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
   }
