@@ -39,9 +39,9 @@ This RFC outlines the ideas and implementation to effectively add React 18 suppo
 
 ## Problem statement
 
-Currently, Fluent UI lacks support for React 18 out of the box. Due to type changes in React 18, the current Fluent UI codebase works but have issues with the types and new features present only in React 18.
+Currently, Fluent UI lacks support for React 18 out of the box. Due to type changes in React 18, the current Fluent UI codebase works but has issues with the types and new features present only in React 18.
 
-Please not that those breaking changes only apply to v9 of Fluent UI, as the deprecations happens in the Slot API of v9. v8 and below are not affected by the breaking changes, but it'll be updated accordingly to support React 18.
+Please note that those breaking changes only apply to v9 of Fluent UI, as the deprecations happen in the Slot API of v9. v8 and below are not affected by the breaking changes, but they'll be updated accordingly to support React 18.
 
 ## Detailed Design or Proposal
 
@@ -53,6 +53,7 @@ As of now, the following breaking changes are present in React 18:
 
 <!-- Disable HTML tags lint for this line as it is temporary -->
 <!-- markdownlint-disable-next-line MD033 -->
+
 <span style="color: #f38ba8; font-size: 20px; font-family: monospace">🟥 **TODO**: Add breaking changes here</span>
 
 ### What is not covered by this RFC
