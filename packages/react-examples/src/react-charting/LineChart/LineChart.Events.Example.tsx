@@ -31,7 +31,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
 
   public render(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Events">Change Width:</label>
         <input
           type="range"
@@ -71,7 +71,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           />
         )}
         <div>{this._basicExample()}</div>
-      </>
+      </div>
     );
   }
 
@@ -178,7 +178,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
     };
 
     return (
-      <div className="containerDiv" style={rootStyle}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           legendsOverflowText={'Overflow Items'}

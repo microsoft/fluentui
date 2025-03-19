@@ -173,7 +173,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -224,7 +224,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

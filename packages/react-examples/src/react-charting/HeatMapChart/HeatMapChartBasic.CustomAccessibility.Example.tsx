@@ -98,7 +98,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
       },
     ];
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="ChangeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -136,7 +136,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {

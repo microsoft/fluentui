@@ -30,7 +30,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -59,7 +59,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           checked={this.state.allowMultipleShapes}
         />
         <div>{this._styledExample()}</div>
-      </>
+      </div>
     );
   }
 
@@ -240,7 +240,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
       },
     ];
     return (
-      <div className="containerDiv" style={rootStyle}>
+      <div style={rootStyle}>
         <LineChart
           data={data}
           strokeWidth={4}
