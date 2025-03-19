@@ -22,22 +22,8 @@ jobs:
     outputs:
       pr_number: ${{ steps.pr_number.outputs.result }}
     permissions:
-      # necessary to write comments to the PR from the vr-approval-cli
       pull-requests: write
-      # id-token: write
     steps:
-      # - uses: actions/checkout@v4
-      #   with:
-      #     sparse-checkout: |
-      #       .github
-
-      # - uses: actions/download-artifact@v4
-      #   with:
-      #     name: vrt_report
-      #     path: ./vrt_report
-      #     run-id: ${{ github.event.workflow_run.id }}
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Debug
         run: |
           echo $W_RUN
@@ -62,6 +48,7 @@ jobs:
           header: vr-report-comment
           number: ${{ steps.pr_number.outputs.id }}
           message: |
-            VR Regression Report:
-            - status: ${{ github.event.workflow_run.conclusion }}
-            - check whole [report](${{github.event.workflow_run.html_url}}) to review visual differences
+            Visual Regression Testing Report:
+            - status: **${{github.event.workflow_run.conclusion}}**
+            - 👀 check whole [report](${{github.event.workflow_run.html_url}}) to review visual differences
+            - 👨‍🔧 once reviewed and changes are expected, update diffs in your PR by adding a comment with following text: "&#47;approve-visual-regression-diff"
