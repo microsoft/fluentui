@@ -129,12 +129,10 @@ export class SankeyChartResponsiveExample extends React.Component {
 
   public render(): JSX.Element {
     return (
-      <div className="containerDiv">
-        <div className={this._classNames.resizableArea}>
-          <ResponsiveContainer>
-            <SankeyChart data={data} />
-          </ResponsiveContainer>
-        </div>
+      <div className={this._classNames.resizableArea}>
+        <ResponsiveContainer>
+          <SankeyChart data={data} />
+        </ResponsiveContainer>
       </div>
     );
   }

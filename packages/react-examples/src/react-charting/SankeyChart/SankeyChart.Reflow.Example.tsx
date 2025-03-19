@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export class SankeyChartReflowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    return <div className="containerDiv">{this._reflowExample()}</div>;
+    return <div>{this._reflowExample()}</div>;
   }
 
   private _reflowExample(): JSX.Element {
