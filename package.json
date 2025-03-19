@@ -196,6 +196,7 @@
     "circular-dependency-plugin": "5.2.2",
     "clean-css": "4.2.3",
     "clean-webpack-plugin": "4.0.0",
+    "codesandbox-import-utils": "2.2.3",
     "connect-history-api-fallback": "1.6.0",
     "copy-webpack-plugin": "12.0.2",
     "cross-env": "^5.1.4",

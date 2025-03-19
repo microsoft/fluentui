@@ -26,7 +26,7 @@
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "dedent": "^1.2.0",
-    "codesandbox-import-utils": "2.2.3"
+    "codesandbox-import-utils": "^2.2.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
