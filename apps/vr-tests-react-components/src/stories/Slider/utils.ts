@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Slider, sliderCSSVars } from '@fluentui/react-slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
 import { makeStyles } from '@griffel/react';
 const { sliderProgressColorVar, sliderRailColorVar, sliderThumbColorVar, sliderThumbSizeVar } = sliderCSSVars;
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
   enabled: {
     [sliderProgressColorVar]: '#ff0764',
     [sliderRailColorVar]: '##242424',
@@ -25,9 +24,3 @@ const useStyles = makeStyles({
     },
   },
 });
-
-export const SampleCustomizedSlider = () => {
-  const styles = useStyles();
-
-  return <Slider className={styles.enabled} thumb={{ className: styles.thumb }} defaultValue={20} size="small" />;
-};
