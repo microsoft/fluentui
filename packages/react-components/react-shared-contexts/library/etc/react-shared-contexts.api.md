@@ -188,6 +188,10 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
+    useAlphaSliderStyles_unstable: CustomStyleHook;
+    useColorAreaStyles_unstable: CustomStyleHook;
+    useColorPickerStyles_unstable: CustomStyleHook;
+    useColorSliderStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -345,6 +349,10 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
+    useAlphaSliderStyles_unstable: CustomStyleHook;
+    useColorAreaStyles_unstable: CustomStyleHook;
+    useColorPickerStyles_unstable: CustomStyleHook;
+    useColorSliderStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -502,6 +510,10 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
+    useAlphaSliderStyles_unstable: CustomStyleHook;
+    useColorAreaStyles_unstable: CustomStyleHook;
+    useColorPickerStyles_unstable: CustomStyleHook;
+    useColorSliderStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
