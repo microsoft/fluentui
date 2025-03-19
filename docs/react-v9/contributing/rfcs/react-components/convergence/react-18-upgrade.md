@@ -14,7 +14,11 @@
   - [Problem statement](#problem-statement)
   - [Detailed Design or Proposal](#detailed-design-or-proposal)
     - [Breaking Changes](#breaking-changes)
+      - [Related links](#related-links)
+      - [Initial code changes](#initial-code-changes)
     - [What is not covered by this RFC](#what-is-not-covered-by-this-rfc)
+      - [React 19](#react-19)
+      - [Usage of new React 18 features](#usage-of-new-react-18-features)
   - [Areas of impact](#areas-of-impact)
   - [Options](#options)
     - [Option 1: Release a new major version of Fluent UI](#option-1-release-a-new-major-version-of-fluent-ui)
@@ -61,7 +65,6 @@ As of now, the following breaking changes are present in React 18:
 - Removal of previously deprecated types. Affecting only older versions, where React.ReactType, React.Props used.
 - `ref` property in `React.RefAttributes` becomes `LegacyRef`. Affects `useMergedRefs` , breaks where `React.PropsWithRef` and `React.RefAttributes` are used.
 
-
 ```ts
 // v17
 interface RefAttributes<T> {
@@ -74,7 +77,6 @@ interface RefAttributes<T> {
   ref?: LegacyRef<T>;
 }
 ```
-
 
 - `ReactNode` becomes more specific. This change affects heavily our Slots API.
 
@@ -99,15 +101,25 @@ type ReactNode =
   | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES];
 ```
 
-Related links:
+#### Related links
 
 - [DefinitelyTyped: React 18 types](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210)
 - [React v9 Slots Proposed Changes](https://github.com/microsoft/fluentui/pull/31548/files)
 
+#### Initial code changes
+
+> [!NOTE]
+> The initial code changes will be made in a separate PR, and this RFC will be updated with the PR link.
 
 ### What is not covered by this RFC
 
+#### React 19
+
 Please note that even though our efforts on this RFC take into consideration React 19 as a future goal, the full support will be discussed in a separate RFC.
+
+#### Usage of new React 18 features
+
+There are many new features in React 18 that we could take advantage of, like the new transition API, batching updates, and more. This RFC does not cover the usage of these new features or upgrades to our components, but it is something that we should consider in the future.
 
 ## Areas of impact
 
