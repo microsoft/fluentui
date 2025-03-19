@@ -137,13 +137,14 @@ export const ExperimentsWipe = () => {
           <Label aria-hidden>{durationMax}</Label>
         </div>
 
-        <Field className={classes.field}>
+        {/* It's not working with animateOpacity false */}
+        {/* <Field className={classes.field}>
           <Switch
             label={<code>animateOpacity</code>}
             checked={animateOpacity}
             onChange={() => setAnimateOpacity(v => !v)}
           />
-        </Field>
+        </Field> */}
 
         {/* <Label htmlFor={radiusSliderId}>radius: {radius}</Label>
         <div className={classes.sliderWrapper}>

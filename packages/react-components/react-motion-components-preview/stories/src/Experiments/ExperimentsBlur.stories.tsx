@@ -123,7 +123,7 @@ export const ExperimentsBlur = () => {
 ExperimentsBlur.parameters = {
   docs: {
     description: {
-      story: description,
+      // story: description,
     },
   },
 };
