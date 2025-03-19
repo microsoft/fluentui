@@ -176,11 +176,11 @@ export const ExperimentsBlurAB = () => {
           }}
         >
           <Blur.In>{contentA}</Blur.In>
-          <Hold duration={2000}>{contentA}</Hold>
+          <Hold duration={1000}>{contentA}</Hold>
           <Blur.Out>{contentA}</Blur.Out>
 
           <Blur.In>{contentB}</Blur.In>
-          <Hold duration={2000}>{contentB}</Hold>
+          <Hold duration={1000}>{contentB}</Hold>
           <Blur.Out>{contentB}</Blur.Out>
         </Series>
       </div>
