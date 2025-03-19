@@ -15,18 +15,14 @@ export const renderMessageBarGroup_unstable = (state: MessageBarGroupState) => {
   return (
     <state.root>
       <PresenceGroup>
-        {state.children.map(child => {
-          // Skip wrapping with a motion component if .animate is not set
-          if (!state.animate) {
-            return child;
-          }
-          // .animate is set, so wrap each child with a motion component
-          return (
-            <MessageBarMotion key={child.key} animate={state.animate}>
-              {child}
-            </MessageBarMotion>
-          );
-        })}
+        {/* Skip wrapping with a motion component if .animate is not set */}
+        {!state.animate
+          ? state.children
+          : state.children.map(child => (
+              <MessageBarMotion key={child.key} animate={state.animate}>
+                {child}
+              </MessageBarMotion>
+            ))}
       </PresenceGroup>
     </state.root>
   );
