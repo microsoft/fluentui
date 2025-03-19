@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 11 Mar 2025 18:58:53 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.2)
+
+Wed, 19 Mar 2025 15:40:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.7.1..@fluentui/react-tabs_v9.7.2)
+
+### Patches
+
+- fix: use proper type for Tab value prop ([PR #33988](https://github.com/microsoft/fluentui/pull/33988) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.74 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.52 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-tabster to v9.24.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.1)
 
