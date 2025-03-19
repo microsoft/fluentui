@@ -63,7 +63,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -110,7 +110,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
@@ -157,7 +157,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -243,7 +243,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
@@ -290,7 +290,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
@@ -337,7 +337,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   outline: none;
                 }
                 @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(255, 255, 255);
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
