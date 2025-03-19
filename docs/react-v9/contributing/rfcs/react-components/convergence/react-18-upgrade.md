@@ -39,13 +39,13 @@
 
 ## Summary
 
-This RFC outlines the ideas and implementation to effectively add React 18 support for Fluent UI. This will also briefly mention on plans to migrate the whole repository to React 18.
+This RFC outlines the ideas and implementation to effectively add React 18 support for Fluent UI. This will also briefly mention plans to migrate the whole repository to React 18.
 
 ## Problem statement
 
 Currently, Fluent UI lacks support for React 18 out of the box. Due to type changes in React 18, the current Fluent UI codebase works but has issues with the types and new features present only in React 18.
 
-Please note that those breaking changes only apply to v9 of Fluent UI, as the deprecations happen in the Slot API of v9. v8 and below are not affected by the breaking changes, but they'll be updated accordingly to support React 18.
+Please note that these breaking changes only apply to v9 of Fluent UI, as the deprecations happen in the Slot API of v9. v8 and below are not affected by the breaking changes, but they'll be updated accordingly to support React 18.
 
 ## Detailed Design or Proposal
 
@@ -62,8 +62,8 @@ As of now, the following breaking changes are present in React 18:
 
 - Removal of implicit children from `React.FC` / `React.FunctionComponent / React.Component`.
 - `this.context` becomes `unknown`.
-- Removal of previously deprecated types. Affecting only older versions, where React.ReactType, React.Props used.
-- `ref` property in `React.RefAttributes` becomes `LegacyRef`. Affects `useMergedRefs` , breaks where `React.PropsWithRef` and `React.RefAttributes` are used.
+- Removal of previously deprecated types. Affecting only older versions, where React.ReactType, React.Props were used.
+- `ref` property in `React.RefAttributes` becomes `LegacyRef`. Affects `useMergedRefs`, breaks where `React.PropsWithRef` and `React.RefAttributes` are used.
 
 ```ts
 // v17
