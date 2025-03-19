@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Autofill): Revert #33700 to avoid breaking pickers.",
-  "packageName": "@fluentui/react",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}
