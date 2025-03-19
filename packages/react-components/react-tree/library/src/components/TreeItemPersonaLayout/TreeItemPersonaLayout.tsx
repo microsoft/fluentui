@@ -5,7 +5,7 @@ import { useTreeItemPersonaLayoutStyles_unstable } from './useTreeItemPersonaLay
 import type { TreeItemPersonaLayoutProps } from './TreeItemPersonaLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeItemPersonaLayoutContextValues_unstable } from './useTreeItemPersonaLayoutContextValues';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts/src/index';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `TreeItemPersonaLayout` component is used as a child of `TreeItem` to display a `TreeItem` with a media (typically an avatar) and a description.
