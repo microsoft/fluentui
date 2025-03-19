@@ -31,6 +31,16 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
 
+      # remove after debugging ( if nx sha determines proper BASE and HEAD)
+      - name: Get Base Branch Ref
+        run: |
+          echo "Base branch ref: ${{ github.event.pull_request.base.ref }}"
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        with:
+          main-branch-name: 'master'
+
       - uses: actions/setup-node@v4
         with:
           cache: 'yarn'
