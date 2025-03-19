@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 19 Mar 2025 15:40:40 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 18:11:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.1)
+
+Wed, 19 Mar 2025 18:11:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.0..@fluentui/react-components_v9.61.1)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix(MessageBar): revert motion migration to resolve validation errors ([PR #34037](https://github.com/microsoft/fluentui/pull/34037) by robertpenner@microsoft.com)
 
 ## [9.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.0)
 
