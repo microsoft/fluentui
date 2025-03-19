@@ -33,6 +33,7 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { decodePlotlySchema } from '../../utilities/decode-binary-data';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -100,7 +101,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const plotlyInput: PlotlySchema | null = (() => {
+  let plotlyInput: PlotlySchema | null = (() => {
     try {
       return plotlySchema as PlotlySchema;
     } catch (error) {
@@ -117,6 +118,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (plotlyInput.data.length === 0) {
     throw new Error('Plotly input data is empty');
   }
+
+  try {
+    plotlyInput = decodePlotlySchema(plotlyInput);
+  } catch (error) {
+    throw new Error(`Failed to decode plotly schema: ${error}`);
+  }
+
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const theme = useTheme();
