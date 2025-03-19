@@ -128,7 +128,10 @@ const VideoPreviews: React.FC<{
 };
 
 const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
-  const elementsArr = elements.map((el, idx) => [
+  if (!elements) {
+    return <></>;
+  }
+  const elementsArr = elements?.map((el, idx) => [
     <code key={idx}>{`<${el}>`}</code>,
     idx !== elements.length - 1 ? ', ' : ' ',
   ]);
@@ -162,6 +165,7 @@ function withSlotEnhancer(story: PreparedStory) {
     if (value.includes('WithSlotShorthandValue')) {
       hasArgAsSlot = true;
       const match = value.match(slotRegex);
+      console.log('match', match);
       if (match) {
         component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
         // @ts-expect-error - storybook doesn't ship proper types (value is missing)
@@ -198,10 +202,10 @@ const RenderArgsTable = ({
 }) => {
   const storyCopy = cloneDeep(story);
   const { component, hasArgAsProp, hasArgAsSlot } = withSlotEnhancer(storyCopy);
-
+  const options = story.argTypes.as?.options;
   return hideArgsTable ? null : (
     <>
-      {hasArgAsProp && (
+      {hasArgAsProp && options && (
         <AdditionalApiDocs>
           <p>
             <b>
@@ -210,13 +214,13 @@ const RenderArgsTable = ({
             </b>
             <span>
               All HTML attributes native to the
-              {getNativeElementsList(story.argTypes.as?.options)}, including all <code>aria-*</code> and{' '}
-              <code>data-*</code> attributes, can be applied as native props on this component.
+              {getNativeElementsList(options)}, including all <code>aria-*</code> and <code>data-*</code> attributes,
+              can be applied as native props on this component.
             </span>
           </p>
         </AdditionalApiDocs>
       )}
-      {hasArgAsSlot && (
+      {hasArgAsSlot && options && (
         <AdditionalApiDocs>
           <p>
             <b>
