@@ -118,7 +118,7 @@ jobs:
 
           npx vr-approval-cli@1.0.0-test.1742371346259 create-policy \
             --nonBlockingPipelines '{"301":{"pipelineStatus": "PENDING","pipelineName": "Fluent UI"}}' \
-            --clientType VCR_Testing
+            --clientType FLUENTUI
 
 
           npx vr-approval-cli@1.0.0-test.1742371346259 run-diff \
