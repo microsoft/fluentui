@@ -53,7 +53,6 @@ As of now, the following breaking changes are present in React 18:
 
 <!-- Disable HTML tags lint for this line as it is temporary -->
 <!-- markdownlint-disable-next-line MD033 -->
-
 <span style="color: #f38ba8; font-size: 20px; font-family: monospace">🟥 **TODO**: Add breaking changes here</span>
 
 ### What is not covered by this RFC
