@@ -202,10 +202,11 @@ export const ExperimentsStagger = () => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
   const [autoplay, setAutoplay] = React.useState<boolean>(false);
-  const [duration, setDuration] = React.useState<number>(1000);
+  const [duration, setDuration] = React.useState<number>(2000);
   const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const [orientation, setOrientation] = React.useState<'vertical' | 'horizontal'>('vertical');
   const [distance, setDistance] = React.useState<string>('100%');
+  const [delay, setDelay] = React.useState<number>(25);
 
   const orientationSelectId = useId();
   const distanceSelectId = useId();
@@ -231,7 +232,7 @@ export const ExperimentsStagger = () => {
       return (
         // <Blur.In>
         // <span>
-        <Component key={i} animateOpacity={animateOpacity} enterDuration={duration} {...props}>
+        <Component key={i} animateOpacity={animateOpacity} duration={duration} enterDuration={duration} {...props}>
           <div style={{ backgroundColor, width: itemSize, height: itemSize, borderRadius: '0%' }} />
         </Component>
         // </span>
@@ -242,7 +243,7 @@ export const ExperimentsStagger = () => {
 
   const seriesA = (
     <Series autoloop>
-      <PresenceStagger mode="enter" delay={20}>
+      <PresenceStagger mode="enter" delay={delay}>
         {createStaggerForMotion({
           Component: FadeExtraGentle,
           numItems: 100,
@@ -250,7 +251,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="exit" delay={20}>
+      <PresenceStagger mode="exit" delay={delay}>
         {createStaggerForMotion({
           Component: Blur,
           numItems: 100,
@@ -258,7 +259,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="enter" delay={20}>
+      <PresenceStagger mode="enter" delay={delay}>
         {createStaggerForMotion({
           Component: Wipe,
           props: {},
@@ -267,7 +268,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="exitReverse" delay={20}>
+      <PresenceStagger mode="exitReverse" delay={delay}>
         {createStaggerForMotion({
           Component: Wipe,
           props: {},
@@ -285,7 +286,7 @@ export const ExperimentsStagger = () => {
         })}
       </Stagger>
 
-      <PresenceStagger mode="exit" delay={50}>
+      <PresenceStagger mode="exit" delay={delay}>
         {createStaggerForMotion({
           Component: SlideMagnetic,
           props: { orientation: 'horizontal', distance: '-200%' },
@@ -303,7 +304,7 @@ export const ExperimentsStagger = () => {
         })}
       </Stagger>
 
-      <PresenceStagger mode="enterReverse" delay={50}>
+      <PresenceStagger mode="enterReverse" delay={delay}>
         {createStaggerForMotion({
           Component: SlideBouncy,
           props: { orientation: 'vertical', distance: '-200%', animateOpacity: false },
@@ -312,7 +313,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="exit" delay={50}>
+      <PresenceStagger mode="exit" delay={delay}>
         {createStaggerForMotion({
           Component: Rotate,
           props: {
@@ -326,7 +327,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="enterReverse" delay={50}>
+      <PresenceStagger mode="enterReverse" delay={delay}>
         {createStaggerForMotion({
           Component: Rotate,
           props: { axis: 'X', enterDuration: motionTokens.durationSlow * 8, enterEasing: curveSpringRelaxed },
@@ -335,7 +336,7 @@ export const ExperimentsStagger = () => {
         })}
       </PresenceStagger>
 
-      <PresenceStagger mode="exit" delay={50}>
+      <PresenceStagger mode="exit" delay={delay}>
         {createStaggerForMotion({
           Component: ScaleCompletely,
           props: {},
@@ -357,7 +358,8 @@ export const ExperimentsStagger = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
+      <div>
+        {/* <div className={classes.controls}> */}
         {/* <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field> */}
