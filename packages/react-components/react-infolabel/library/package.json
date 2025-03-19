@@ -24,6 +24,7 @@
     "@fluentui/react-label": "^9.1.84",
     "@fluentui/react-popover": "^9.10.1",
     "@fluentui/react-tabster": "^9.24.1",
+    "@fluentui/react-shared-contexts": "^9.22.0",
     "@fluentui/react-jsx-runtime": "^9.0.51",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-utilities": "^9.18.21",

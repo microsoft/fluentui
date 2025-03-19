@@ -5,6 +5,7 @@ import { useSkeletonStyles_unstable } from './useSkeletonStyles.styles';
 import { useSkeletonContextValues } from './useSkeletonContextValues';
 import type { SkeletonProps } from './Skeleton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Skeleton component - TODO: add more docs
@@ -14,6 +15,8 @@ export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef((pr
   const contextValues = useSkeletonContextValues(state);
 
   useSkeletonStyles_unstable(state);
+  useCustomStyleHook_unstable('useSkeletonStyles_unstable')(state);
+
   return renderSkeleton_unstable(state, contextValues);
 });
 
