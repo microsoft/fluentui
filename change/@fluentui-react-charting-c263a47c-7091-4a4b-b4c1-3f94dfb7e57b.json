@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Move utilities and plotly schema to utilities package",
+  "comment": "feat: Consume validated plotly schema from chart utility and decouple rendering code from validation and chart mapping",
   "packageName": "@fluentui/react-charting",
   "email": "98592573+AtishayMsft@users.noreply.github.com",
   "dependentChangeType": "patch"
