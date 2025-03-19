@@ -1942,6 +1942,15 @@
     "@griffel/react" "^1.5.22"
     "@swc/helpers" "^0.5.1"
 
+"@fluentui/react-charts@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-charts/-/react-charts-1.2.0.tgz#34672c9f012e05b567438ffa398a1c2fd127f1e8"
+  integrity sha512-52O5B9wukw+PMsmEHJvLClzwGNmHP5ZRJ7Ws6FGJASCbTrz2z/VLf6NsN+LoKgX0VSBrvDqcgbYVVFu0sIx7Hw==
+  dependencies:
+    chart.js "^2.9.4"
+    chartjs-plugin-deferred "^1.0.2"
+    react-perfect-scrollbar "^1.5.8"
+
 "@fluentui/react-icons@^2.0.237", "@fluentui/react-icons@^2.0.239", "@fluentui/react-icons@^2.0.245":
   version "2.0.245"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.245.tgz#66df74bf52861046b8171b49c2d05f8f29a28a1a"
@@ -8255,6 +8264,34 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
+chart.js@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.9.4.tgz#0827f9563faffb2dc5c06562f8eb10337d5b9684"
+  integrity sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==
+  dependencies:
+    chartjs-color "^2.1.0"
+    moment "^2.10.2"
+
+chartjs-color-string@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.6.0.tgz#1df096621c0e70720a64f4135ea171d051402f71"
+  integrity sha512-TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==
+  dependencies:
+    color-name "^1.0.0"
+
+chartjs-color@^2.1.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.4.1.tgz#6118bba202fe1ea79dd7f7c0f9da93467296c3b0"
+  integrity sha512-haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==
+  dependencies:
+    chartjs-color-string "^0.6.0"
+    color-convert "^1.9.3"
+
+chartjs-plugin-deferred@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-deferred/-/chartjs-plugin-deferred-1.0.2.tgz#c1a373a8e2fe8e99e674ec0d69d8ae6c1a78bb5f"
+  integrity sha512-ZQsTMtfHRRiQMZ3AuAOuMltMHDLb0Qo6JlT2ncEz28BMtQmq9K+D1ACrI1yNOHMYSCJgDTCOIQorgKauOQIVmA==
+
 check-more-types@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/check-more-types/-/check-more-types-2.24.0.tgz#1420ffb10fd444dcfc79b43891bbfffd32a84600"
@@ -8671,7 +8708,7 @@ color-check@0.0.2:
   resolved "https://registry.yarnpkg.com/color-check/-/color-check-0.0.2.tgz#2f4eea5b74329181adcc077e0ce845d9411b47c4"
   integrity sha1-L07qW3QykYGtzAd+DOhF2UEbR8Q=
 
-color-convert@^1.9.0, color-convert@^1.9.1:
+color-convert@^1.9.0, color-convert@^1.9.1, color-convert@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
   integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
@@ -17537,6 +17574,11 @@ mocha@7.2.0:
     yargs-parser "13.1.2"
     yargs-unparser "1.6.0"
 
+moment@^2.10.2:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 moment@^2.18.1, moment@^2.22.1:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
@@ -18884,6 +18926,11 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
+perfect-scrollbar@^1.5.0:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.6.tgz#f1aead2588ba896435ee41b246812b2080573b7c"
+  integrity sha512-rixgxw3SxyJbCaSpo1n35A/fwI1r2rdwMKOTCg/AcG+xOEyZcE8UHVjpZMFCVImzsFoCZeJTT+M/rdEIQYO2nw==
+
 performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
@@ -19807,6 +19854,14 @@ react-node-resolver@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-node-resolver/-/react-node-resolver-1.0.1.tgz#1798a729c0e218bf2f0e8ddf79c550d4af61d83a"
   integrity sha1-F5inKcDiGL8vDo3fecVQ1K9h2Do=
+
+react-perfect-scrollbar@^1.5.8:
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/react-perfect-scrollbar/-/react-perfect-scrollbar-1.5.8.tgz#380959387a325c5c9d0268afc08b3f73ed5b3078"
+  integrity sha512-bQ46m70gp/HJtiBOF3gRzBISSZn8FFGNxznTdmTG8AAwpxG1bJCyn7shrgjEvGSQ5FJEafVEiosY+ccER11OSA==
+  dependencies:
+    perfect-scrollbar "^1.5.0"
+    prop-types "^15.6.1"
 
 react-property@2.0.0:
   version "2.0.0"
