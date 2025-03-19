@@ -1,4 +1,4 @@
-name: VRT | Comment on PR
+name: VRT CI | Comment on PR
 on:
   workflow_run:
     workflows: ['VRT PR']

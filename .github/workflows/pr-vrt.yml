@@ -1,4 +1,4 @@
-name: VRT PR
+name: VRT CI
 on:
   pull_request:
     # TODO: once testing is done enable pull_request on all branches again
