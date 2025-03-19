@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: updated TypeScript target to ES2020.",
+  "packageName": "@fluentui/react-popover",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
