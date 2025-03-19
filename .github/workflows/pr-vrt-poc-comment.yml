@@ -18,6 +18,8 @@ jobs:
       pr_number: ${{ steps.pr_number.outputs.result }}
     permissions:
       pull-requests: write
+      contents: read
+      actions: read
     steps:
       - name: Debug
         run: |
