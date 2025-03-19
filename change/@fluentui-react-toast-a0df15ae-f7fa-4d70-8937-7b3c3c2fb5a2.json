@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add customStyleHook",
+  "packageName": "@fluentui/react-toast",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
