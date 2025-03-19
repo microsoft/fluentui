@@ -130,13 +130,14 @@ export const ExperimentsSlideUnder = () => {
           <option>-50%</option>
         </Select>
 
-        <Field className={classes.field}>
+        {/* Not working with animateOpacity false */}
+        {/* <Field className={classes.field}>
           <Switch
             label={<code>animateOpacity</code>}
             checked={animateOpacity}
             onChange={() => setAnimateOpacity(v => !v)}
           />
-        </Field>
+        </Field> */}
       </div>
       <div className={classes.card}>
         <SlideUnder visible={visible} orientation={orientation} distance={distance} animateOpacity={animateOpacity}>
