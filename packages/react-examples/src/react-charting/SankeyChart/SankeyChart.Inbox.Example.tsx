@@ -174,7 +174,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label>change Width:</label>
         <input type="range" value={this.state.width} min={400} max={1600} onChange={this._onWidthChange} />
         <label>change Height:</label>
@@ -195,7 +195,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

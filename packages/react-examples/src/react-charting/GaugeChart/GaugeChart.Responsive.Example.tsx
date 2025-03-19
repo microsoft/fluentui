@@ -50,33 +50,35 @@ export class GaugeChartResponsiveExample extends React.Component {
 
   public render(): React.ReactNode {
     return (
-      <div className={this._classNames.resizableArea}>
-        <ResponsiveContainer height={128}>
-          <GaugeChart
-            segments={[
-              {
-                size: 33,
-                color: DataVizPalette.success,
-                gradient: getGradientFromToken(DataVizGradientPalette.success),
-                legend: 'Low Risk',
-              },
-              {
-                size: 34,
-                color: DataVizPalette.warning,
-                gradient: getGradientFromToken(DataVizGradientPalette.warning),
-                legend: 'Medium Risk',
-              },
-              {
-                size: 33,
-                color: DataVizPalette.error,
-                gradient: getGradientFromToken(DataVizGradientPalette.error),
-                legend: 'High Risk',
-              },
-            ]}
-            chartValue={75}
-            variant={GaugeChartVariant.MultipleSegments}
-          />
-        </ResponsiveContainer>
+      <div className="containerDiv">
+        <div className={this._classNames.resizableArea}>
+          <ResponsiveContainer height={128}>
+            <GaugeChart
+              segments={[
+                {
+                  size: 33,
+                  color: DataVizPalette.success,
+                  gradient: getGradientFromToken(DataVizGradientPalette.success),
+                  legend: 'Low Risk',
+                },
+                {
+                  size: 34,
+                  color: DataVizPalette.warning,
+                  gradient: getGradientFromToken(DataVizGradientPalette.warning),
+                  legend: 'Medium Risk',
+                },
+                {
+                  size: 33,
+                  color: DataVizPalette.error,
+                  gradient: getGradientFromToken(DataVizGradientPalette.error),
+                  legend: 'High Risk',
+                },
+              ]}
+              chartValue={75}
+              variant={GaugeChartVariant.MultipleSegments}
+            />
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }

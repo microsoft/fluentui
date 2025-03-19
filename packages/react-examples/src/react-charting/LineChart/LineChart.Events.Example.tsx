@@ -178,7 +178,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
     };
 
     return (
-      <div style={rootStyle}>
+      <div className="containerDiv" style={rootStyle}>
         <LineChart
           data={data}
           legendsOverflowText={'Overflow Items'}

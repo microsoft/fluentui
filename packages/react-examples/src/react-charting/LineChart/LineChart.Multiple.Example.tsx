@@ -292,7 +292,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
     ];
     return (
-      <div style={rootStyle}>
+      <div className="containerDiv" style={rootStyle}>
         <LineChart
           data={data}
           strokeWidth={4}
