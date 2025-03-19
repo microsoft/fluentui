@@ -412,6 +412,9 @@ export interface GaugeLine {
 }
 
 // @public (undocumented)
+export const getValidSchema: (input: any) => PlotlySchema;
+
+// @public (undocumented)
 export interface HoverLabel extends Label {
     align: 'left' | 'right' | 'auto';
     namelength: number;
@@ -436,6 +439,30 @@ export interface Icon {
     // (undocumented)
     width?: number | undefined;
 }
+
+// @public (undocumented)
+export const isArrayOfType: (plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined, typeCheck: (datum: any, ...args: any[]) => boolean, ...args: any[]) => boolean;
+
+// @public (undocumented)
+export function isArrayOrTypedArray(a: any): boolean;
+
+// @public (undocumented)
+export const isDate: (value: any) => boolean;
+
+// @public (undocumented)
+export const isDateArray: (data: Datum[] | Datum[][] | TypedArray) => boolean;
+
+// @public (undocumented)
+export const isLineData: (data: Partial<PlotData>) => boolean;
+
+// @public (undocumented)
+export const isNumber: (value: any) => boolean;
+
+// @public (undocumented)
+export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray) => boolean;
+
+// @public (undocumented)
+export function isTypedArray(a: any): boolean;
 
 // @public (undocumented)
 export interface Label {
@@ -1482,6 +1509,9 @@ export interface RangeSlider {
 }
 
 // @public (undocumented)
+export const sanitizeJson: (jsonObject: any, depth?: number) => any;
+
+// @public (undocumented)
 export type SankeyColor = string | number;
 
 // @public (undocumented)
@@ -1890,6 +1920,9 @@ export interface TransformStyle {
 
 // @public (undocumented)
 export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array;
+
+// @public (undocumented)
+export const validate2Dseries: (series: PlotData) => boolean;
 
 // Warning: (ae-forgotten-export) The symbol "xYAxisNames" needs to be exported by the entry point index.d.ts
 //

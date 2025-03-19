@@ -94,4 +94,17 @@ export type {
   YAxisName,
 } from './PlotlySchema';
 export type { OutputChartType } from './PlotlySchemaConverter';
-export { mapFluentChart } from './PlotlySchemaConverter';
+export {
+  mapFluentChart,
+  isDate,
+  isNumber,
+  isArrayOfType,
+  isDateArray,
+  isNumberArray,
+  isLineData,
+  validate2Dseries,
+  getValidSchema,
+  sanitizeJson,
+  isTypedArray,
+  isArrayOrTypedArray,
+} from './PlotlySchemaConverter';
