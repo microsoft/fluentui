@@ -5,7 +5,7 @@ import { useToastContainerStyles_unstable } from './useToastContainerStyles.styl
 import type { ToastContainerProps } from './ToastContainer.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useToastContainerContextValues_unstable } from './useToastContainerContextValues';
-import { useCustomStyleHook } from '@fluentui/react-shared-contexts/src/CustomStyleHooksContext';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToastContainer component
@@ -14,7 +14,8 @@ export const ToastContainer: ForwardRefComponent<ToastContainerProps> = React.fo
   const state = useToastContainer_unstable(props, ref);
 
   useToastContainerStyles_unstable(state);
-  useCustomStyleHook('useToastContainerStyles_unstable')(state);
+  useCustomStyleHook_unstable('useToastContainerStyles_unstable')(state);
+
   return renderToastContainer_unstable(state, useToastContainerContextValues_unstable(state));
 });
 
