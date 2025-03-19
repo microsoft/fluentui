@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 11 Mar 2025 18:58:50 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.0)
+
+Wed, 19 Mar 2025 15:40:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.60.1..@fluentui/react-components_v9.61.0)
+
+### Minor changes
+
+- `@fluentui/react-color-picker`
+  - feat: release ColorPicker as 9.0.0 stable ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-components`
+  - feat: release ColorPicker as 9.0.0 stable ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: added CustomStyleHooks ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: Added selected state for Tag and InteractionTag ([PR #33804](https://github.com/microsoft/fluentui/pull/33804) by vkozlova@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix(react-dialog): Use token for backdrop color ([PR #33955](https://github.com/microsoft/fluentui/pull/33955) by jiangemma@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix(react-drawer): Use token for backdrop color ([PR #33955](https://github.com/microsoft/fluentui/pull/33955) by jiangemma@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix: minor accessibility cleanup ([PR #33992](https://github.com/microsoft/fluentui/pull/33992) by sarah.higley@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: don't throw on window.getComputedStyle() ([PR #34016](https://github.com/microsoft/fluentui/pull/34016) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: Spinbutton aria-valuenow vs native value timing fix ([PR #33923](https://github.com/microsoft/fluentui/pull/33923) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: use proper type for Tab value prop ([PR #33988](https://github.com/microsoft/fluentui/pull/33988) by dmytrokirpa@microsoft.com)
 
 ## [9.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.1)
 

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.2)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.20.1..@fluentui/react-provider_v9.20.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-tabster to v9.24.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.52 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.20.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.1)
 

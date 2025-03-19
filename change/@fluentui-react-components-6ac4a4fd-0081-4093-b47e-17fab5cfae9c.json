@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release ColorPicker as 9.0.0 stable",
-  "packageName": "@fluentui/react-components",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

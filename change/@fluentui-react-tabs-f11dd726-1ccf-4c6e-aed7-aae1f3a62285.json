@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use proper type for Tab value prop",
-  "packageName": "@fluentui/react-tabs",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

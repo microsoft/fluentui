@@ -2,6 +2,77 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 19 Mar 2025 15:40:40 GMT",
+      "tag": "@fluentui/react-components_v9.61.0",
+      "version": "9.61.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: release ColorPicker as 9.0.0 stable"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: release ColorPicker as 9.0.0 stable"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: added CustomStyleHooks"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "78f34a9462f52c273558438f912ab31a13c1a140",
+            "comment": "feat: Added selected state for Tag and InteractionTag"
+          }
+        ],
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4b051eac8e0ff943f4834ec603b300d3e90f8407",
+            "comment": "fix(react-dialog): Use token for backdrop color"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "4b051eac8e0ff943f4834ec603b300d3e90f8407",
+            "comment": "fix(react-drawer): Use token for backdrop color"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "75d152e2adea05a787528a7200b9eb012c06f986",
+            "comment": "fix: minor accessibility cleanup"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8fe7635eb63677b24cf86e1b80459e7d8fcc14c7",
+            "comment": "fix: don't throw on window.getComputedStyle()"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "de2d68732d26b01a1d0eeb598de522f4afd95435",
+            "comment": "fix: Spinbutton aria-valuenow vs native value timing fix"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b417f6866fc16e83aeb9c4bacc1534a8d27fe498",
+            "comment": "fix: use proper type for Tab value prop"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Mar 2025 18:58:50 GMT",
       "tag": "@fluentui/react-components_v9.60.1",
       "version": "9.60.1",

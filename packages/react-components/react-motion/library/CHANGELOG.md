@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Tue, 11 Mar 2025 18:58:51 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.9)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.8..@fluentui/react-motion_v9.6.9)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.8)
 

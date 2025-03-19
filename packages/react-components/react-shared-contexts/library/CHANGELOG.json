@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 19 Mar 2025 15:40:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: added CustomStyleHooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Mar 2025 18:58:52 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.22.0",
       "version": "9.22.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 11 Mar 2025 18:58:52 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.23.0)
+
+Wed, 19 Mar 2025 15:40:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.22.0..@fluentui/react-shared-contexts_v9.23.0)
+
+### Minor changes
+
+- feat: added CustomStyleHooks ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
 
 ## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.22.0)
 
