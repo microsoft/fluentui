@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { VerticalBarChart, VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { Radio, RadioGroup, RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { Switch } from '@fluentui/react-switch';
+import { Field } from '@fluentui/react-field';
 
 export const VerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);

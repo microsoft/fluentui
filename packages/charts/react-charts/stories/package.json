@@ -13,7 +13,6 @@
   "devDependencies": {
     "d3-time-format": "^3.0.0",
     "@fluentui/react-charts": "*",
-    "@fluentui/react-components": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",

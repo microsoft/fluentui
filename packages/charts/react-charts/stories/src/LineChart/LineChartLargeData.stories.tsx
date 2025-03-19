@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, ChartProps, LineChartDataPoint, DataVizPalette } from '@fluentui/react-charts';
-import { Switch } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-switch';
 
 export const LineChartLargeData = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);

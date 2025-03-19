@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
 import * as d3 from 'd3-format';
-import { Label, Switch } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-switch';
+import { Label } from '@fluentui/react-label';
 
 /* const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
