@@ -1,4 +1,4 @@
-import type { PlotlySchema } from '@fluentui/chart-utilities';
+import { PlotlySchema } from './PlotlySchema';
 
 function addBase64Padding(s: string): string {
   const paddingNeeded = (4 - (s.length % 4)) % 4;
@@ -95,7 +95,7 @@ function decodeBdataInDict(d: any): void {
 }
 
 // Function to process a PlotlySchema object
-export function decodePlotlySchema(plotlySchema: PlotlySchema): PlotlySchema {
+export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
   // Create a deep copy of the original data
   const originalData = JSON.parse(JSON.stringify(plotlySchema.data));
 
@@ -109,12 +109,16 @@ export function decodePlotlySchema(plotlySchema: PlotlySchema): PlotlySchema {
     // Overwrite the 'y', 'x', or 'z' value with the decoded 'bdata'
     for (const item of plotlySchema.data || []) {
       ['y', 'x', 'z'].forEach(key => {
-        if (item[key] && typeof item[key] === 'object' && 'bdata' in item[key]) {
-          const bdata = item[key].bdata;
+        if (
+          item[key as keyof typeof item] &&
+          typeof item[key as keyof typeof item] === 'object' &&
+          'bdata' in (item[key as keyof typeof item] as Record<string, number[]>)
+        ) {
+          const bdata = (item[key as keyof typeof item] as { bdata: number[] }).bdata;
           if (Array.isArray(bdata) && bdata.some(x => typeof x === 'number' && isNaN(x))) {
             isNan = true;
           } else {
-            item[key] = bdata;
+            (item[key as keyof typeof item] as number[]) = bdata as number[];
           }
         }
       });

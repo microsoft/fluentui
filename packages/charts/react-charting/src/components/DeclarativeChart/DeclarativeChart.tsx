@@ -5,6 +5,7 @@ import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import type { PlotData, PlotlySchema } from '@fluentui/chart-utilities';
+import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
   isDateArray,
@@ -33,7 +34,6 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
-import { decodePlotlySchema } from '../../utilities/decode-binary-data';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -120,7 +120,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 
   try {
-    plotlyInput = decodePlotlySchema(plotlyInput);
+    plotlyInput = decodeBase64Fields(plotlyInput);
   } catch (error) {
     throw new Error(`Failed to decode plotly schema: ${error}`);
   }

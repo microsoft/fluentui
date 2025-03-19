@@ -93,3 +93,5 @@ export type {
   XAxisName,
   YAxisName,
 } from './PlotlySchema';
+
+export { decodeBase64Fields } from './decode-binary-data';
