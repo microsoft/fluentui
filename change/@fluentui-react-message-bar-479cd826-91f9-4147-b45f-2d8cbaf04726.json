@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(MessageBar): omit motion wrapping when .animate is not set",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
