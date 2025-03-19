@@ -73,5 +73,3 @@ jobs:
             --threshold '0.04' \
             --pipelineId '301' \
             --cumThreshold '1'
-
-

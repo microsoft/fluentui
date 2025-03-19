@@ -64,4 +64,3 @@ jobs:
           name: vrscreenshot
           retention-days: 1
           path: ${{steps.screenshots_root.outputs.result}}
-
