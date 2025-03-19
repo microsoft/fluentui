@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-dialog): Use token for backdrop color",
-  "packageName": "@fluentui/react-dialog",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}
