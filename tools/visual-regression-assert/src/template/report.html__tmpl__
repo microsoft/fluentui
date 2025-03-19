@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visual Regression Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section {
+        padding-top: 2rem;
+      }
+
+      table {
+        width: 90%;
+        max-width: 800px;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      tr:hover {
+        background-color: #e9ecef;
+        transition: 0.2s;
+      }
+
+      td {
+        border-bottom: 1px solid #ddd;
+      }
+
+      @media (max-width: 600px) {
+        table {
+          width: 100%;
+        }
+
+        th,
+        td {
+          padding: 8px;
+        }
+      }
+      .passed {
+        color: green;
+      }
+      .failed {
+        color: red;
+      }
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .image-container img {
+        max-width: 300px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Snapshot Comparison Report</h1>
+
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Status</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- changed %>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <details>
+        <summary>Unchanged Scenarios</summary>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Status</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- unchanged %>
+          </tbody>
+        </table>
+      </details>
+    </section>
+  </body>
+</html>

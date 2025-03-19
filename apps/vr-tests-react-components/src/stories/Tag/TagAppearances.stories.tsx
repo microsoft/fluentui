@@ -10,9 +10,9 @@ const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const dismissIconId = 'dismiss-icon-id';
 const steps = new Steps()
   .snapshot('default')
-  .hover(`#${dismissIconId}}`)
+  .hover(`#${dismissIconId}`)
   .snapshot('hover')
-  .mouseDown(`#${dismissIconId}}`)
+  .mouseDown(`#${dismissIconId}`)
   .snapshot('pressed')
   .end();
 

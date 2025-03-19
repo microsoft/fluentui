@@ -7,6 +7,7 @@ export const getParentNode = (node: HTMLElement): HTMLElement => {
   if (node.nodeName === 'HTML') {
     return node;
   }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return node.parentNode || (node as any).host;
 };
@@ -16,13 +17,18 @@ export const getParentNode = (node: HTMLElement): HTMLElement => {
  * @param node - DOM node.
  * @returns - CSS styles.
  */
-const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
+export const getStyleComputedProperty = (node: HTMLElement): Partial<CSSStyleDeclaration> => {
   if (node.nodeType !== 1) {
     return {};
   }
 
-  const window = node.ownerDocument?.defaultView;
-  return window!.getComputedStyle(node, null);
+  const targetWindow = node.ownerDocument?.defaultView;
+
+  if (targetWindow) {
+    return targetWindow.getComputedStyle(node, null);
+  }
+
+  return {};
 };
 
 /**
@@ -55,5 +61,6 @@ export const getScrollParent = (node: Document | HTMLElement | null): HTMLElemen
 
 export const hasScrollParent = (node: Document | HTMLElement | null): boolean => {
   const scrollParentElement: HTMLElement = getScrollParent(node);
+
   return scrollParentElement ? scrollParentElement !== scrollParentElement.ownerDocument?.body : false;
 };

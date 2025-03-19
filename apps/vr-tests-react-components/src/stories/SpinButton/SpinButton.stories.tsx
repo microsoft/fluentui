@@ -1,25 +1,18 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { FluentProvider } from '@fluentui/react-provider';
 import { makeStyles } from '@griffel/react';
 
-import {
-  DARK_MODE,
-  getStoryVariant,
-  HIGH_CONTRAST,
-  RTL,
-  TestWrapperDecoratorFixedWidth,
-  withStoryWrightSteps,
-} from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 
 export default {
   title: 'SpinButton Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof SpinButton>;
 
 export const SizeSmall = () => <SpinButton size="small" value={10} />;

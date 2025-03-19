@@ -11,7 +11,7 @@
     "start": "storybook dev",
     "test": "just-scripts test",
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

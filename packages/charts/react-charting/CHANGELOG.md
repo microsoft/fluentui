@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 18 Mar 2025 07:21:01 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 07:09:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.62)
+
+Wed, 19 Mar 2025 07:09:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.61..@fluentui/react-charting_v5.23.62)
+
+### Patches
+
+- Move utilities and plotly schema to utilities package ([PR #33974](https://github.com/microsoft/fluentui/pull/33974) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.0 ([PR #34023](https://github.com/microsoft/fluentui/pull/34023) by beachball)
 
 ## [5.23.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.61)
 
