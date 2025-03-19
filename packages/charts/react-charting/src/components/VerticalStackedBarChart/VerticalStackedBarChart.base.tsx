@@ -845,6 +845,7 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
+    readonly adjustedTotalHeight: number;
   } {
     const { barGapMax = 0 } = this.props;
 
@@ -854,7 +855,7 @@ export class VerticalStackedBarChartBase
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
     let sumOfPercent = 0;
     bars.forEach(point => {
-      let value = (point.data / totalData) * 100;
+      let value = (Math.abs(point.data) / totalData) * 100;
       if (value < 0) {
         value = 0;
       } else if (value < 1 && value !== 0) {
@@ -869,6 +870,7 @@ export class VerticalStackedBarChartBase
     return {
       gapHeight,
       heightValueScale,
+      adjustedTotalHeight: sumOfPercent,
     } as const;
   }
 
@@ -912,7 +914,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -949,8 +951,8 @@ export class VerticalStackedBarChartBase
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.floor((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.floor((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
+        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
+          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
