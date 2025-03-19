@@ -1318,6 +1318,7 @@ export interface PlotData {
   ncontours: number;
   uirevision: string | number;
   uid: string;
+  base: Datum[] | Datum[][] | TypedArray;
 }
 
 /**

@@ -2801,6 +2801,11 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
+// Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
+
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
@@ -4364,6 +4369,55 @@ export const TooltipStyles: ElementStyles;
 
 // @public
 export const TooltipTemplate: ViewTemplate<Tooltip, any>;
+
+// Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TreeItem extends BaseTreeItem {
+    appearance: TreeItemAppearance;
+    // @internal
+    childTreeItemsChanged(): void;
+    size: TreeItemSize;
+    updateSizeAndAppearance(): void;
+}
+
+// Warning: (ae-missing-release-tag) "TreeItemAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TreeItemAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemAppearance: {
+    readonly subtle: "subtle";
+    readonly subtleAlpha: "subtle-alpha";
+    readonly transparent: "transparent";
+};
+
+// @public (undocumented)
+export type TreeItemAppearance = ValuesOf<typeof TreeItemAppearance>;
+
+// @public (undocumented)
+export const TreeItemDefinition: FASTElementDefinition<typeof TreeItem>;
+
+// Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+};
+
+// @public (undocumented)
+export type TreeItemSize = ValuesOf<typeof TreeItemSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemTemplate: ViewTemplate<TreeItem, any>;
 
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //

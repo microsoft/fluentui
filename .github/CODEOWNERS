@@ -101,6 +101,7 @@ scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
+tools/visual-regression-utilities @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -324,8 +325,8 @@ packages/react-components/react-motion-components-preview/library @microsoft/flu
 packages/react-components/react-motion-components-preview/stories @microsoft/fluent-motion-framework
 packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-color-picker/library @microsoft/cxe-prg
+packages/react-components/react-color-picker/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
