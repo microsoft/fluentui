@@ -53,7 +53,6 @@ As of now, the following breaking changes are present in React 18:
 
 <!-- Disable HTML tags lint for this line as it is temporary -->
 <!-- markdownlint-disable-next-line MD033 -->
-
 <span style="color: #f38ba8; font-size: 20px; font-family: monospace">🟥 **TODO**: Add breaking changes here</span>
 
 ### What is not covered by this RFC
@@ -121,7 +120,8 @@ The implementation APIs would be up to debate, but the idea is to make the APIs 
 - 👎 This would require more work to implement, test and release
 - 👎 This would be a big breaking change for partners, and it'll require good documentation and assistance
 
-**Due to how urgent React 18 upgrade is at the moment of the writing of this RFC, this option might not be viable, but it is written here anyway.**
+> [!NOTE]
+> Due to how urgent React 18 upgrade is at the moment of the writing of this RFC, this option might not be viable, but it is written here anyway.
 
 ##### Option 1-c: New Slot APIs with compat layer
 
@@ -138,7 +138,8 @@ This is a variation of the previous option. We would introduce the new Slot APIs
 - 👎 Could bring some confusion to partners on why this is necessary
 - 👎 Same other cons as option 1-a
 
-**Due to how urgent React 18 upgrade is at the moment of the writing of this RFC, this option might not be viable, but it is written here anyway.**
+> [!NOTE]
+> Due to how urgent React 18 upgrade is at the moment of the writing of this RFC, this option might not be viable, but it is written here anyway.
 
 ###### Cons
 
