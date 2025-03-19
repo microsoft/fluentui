@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(MessageBar): revert motion migration to resolve validation errors",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
