@@ -20,7 +20,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       background: theme.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
-      color: props.theme!.semanticColors.bodyText,
+      color: theme.semanticColors.bodyText,
     },
 
     barLabel: {

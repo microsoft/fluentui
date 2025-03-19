@@ -11,7 +11,7 @@ export const getStyles = (props: IArcProps, theme: ITheme | undefined): IArcStyl
       outline: 'none',
       selectors: {
         [HighContrastSelectorBlack]: {
-          fill: 'rgb(255, 255, 255)',
+          fill: 'CanvasText',
         },
       },
     },

@@ -28,7 +28,7 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
       {
         textAlign: 'center',
         ...theme.fonts.mediumPlus,
-        color: theme?.semanticColors.bodyText,
+        color: theme.semanticColors.bodyText,
       },
     ],
   };

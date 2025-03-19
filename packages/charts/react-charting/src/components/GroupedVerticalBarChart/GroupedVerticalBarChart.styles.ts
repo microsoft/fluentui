@@ -19,7 +19,7 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       background: theme.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
-      color: props.theme!.semanticColors.bodyText,
+      color: theme.semanticColors.bodyText,
     },
 
     barLabel: {
