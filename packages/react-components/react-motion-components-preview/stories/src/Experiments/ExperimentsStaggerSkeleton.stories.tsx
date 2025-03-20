@@ -12,6 +12,7 @@ import {
   Collapse,
   CollapseDelayed,
   CollapseRelaxed,
+  Scale,
   ScaleRelaxed,
   Slide,
   SlideRelaxed,
@@ -20,6 +21,7 @@ import * as React from 'react';
 import { PresenceStagger, Stagger } from '../Experiments/Stagger';
 import { SlideUnder } from '../Experiments/SlideUnder';
 import { Hold, Series } from '../Experiments/Series';
+import { Wipe } from './Wipe';
 
 const useClasses = makeStyles({
   container: {
@@ -114,7 +116,7 @@ export const ExperimentsStaggerSkeleton = (props: React.ComponentProps<typeof Co
     // <ScaleRelaxed visible={visible} duration={1000}>
     // <div>
     // <Blur visible={visible} enterDuration={700} radius="50px">
-    <SlideUnder visible={visible}>
+    <SlideUnder visible={visible} distance="-100%">
       <div className={styles.firstRow}>
         {visible ? <ContentRow /> : <div style={{ width: '100%', height: '28px' }} />}
       </div>
@@ -128,14 +130,13 @@ export const ExperimentsStaggerSkeleton = (props: React.ComponentProps<typeof Co
     // <ScaleRelaxed visible={visible} duration={1000}>
     // <div>
     // <Blur visible={visible} enterDuration={700} radius="50px">
-    <SlideUnder visible={visible}>
+    <SlideUnder visible={visible} distance="-100%">
       {visible ? (
         <div style={{ height: '36px' }}>
           <Series>
-            <Hold duration={3000}>
-              <SkeletonRowCustom />
-            </Hold>
-            <Slide.In>{ContentRow()}</Slide.In>
+            <Hold duration={4000}>{SkeletonRowCustom()}</Hold>
+            {/* <Blur.Out radius="10px">{skeletonRowCustom}</Blur.Out> */}
+            <Wipe.In enterDuration={1000}>{ContentRow()}</Wipe.In>
           </Series>
         </div>
       ) : (
@@ -160,7 +161,7 @@ export const ExperimentsStaggerSkeleton = (props: React.ComponentProps<typeof Co
           {
             <Skeleton>
               {/* TODO: get exit stagger working  */}
-              <PresenceStagger delay={70} mode={visible ? 'enter' : 'exit'}>
+              <PresenceStagger delay={90} mode={visible ? 'enter' : 'exit'}>
                 <SkeletonRowPresence />
                 <SkeletonRowPresence />
                 <SkeletonRowPresence />
