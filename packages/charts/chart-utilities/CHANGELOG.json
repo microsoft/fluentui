@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 07:21:55 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.2",
+      "version": "1.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "d0bd936ac4b42bc0b6af495ce78ccda26c86fbfa",
+            "comment": "fix: Fixing failing webpack step in chart-utilities package."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 18:51:26 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.1",
       "version": "1.1.1",

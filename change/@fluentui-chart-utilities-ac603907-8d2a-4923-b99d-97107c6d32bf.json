@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing failing webpack step in chart-utilities package.",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}
