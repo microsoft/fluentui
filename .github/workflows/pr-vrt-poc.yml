@@ -18,6 +18,74 @@ env:
   NX_VERBOSE_LOGGING: true
 
 jobs:
+  debug:
+    if: github.repository_owner == 'microsoft' && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      actions: 'read'
+    steps:
+      - name: Get Pull Request Details
+        id: pr_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const response = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            console.log({issue:context.issue})
+
+            return response.data;
+
+      - name: Debug
+        run: |
+          echo "${{ steps.pr_details.outputs.result.head }}"
+          echo "${{ fromJson(steps.pr_details.outputs.result).head.ref }}"
+          echo "${{ fromJson(steps.pr_details.outputs.result).head.repo.full_name }}"
+          echo '========'
+          echo '========'
+          echo '========'
+          echo $W_RUN
+          echo '========'
+          echo '========'
+          echo '========'
+          echo $RESULT
+        env:
+          W_RUN: ${{ toJSON(github.event) }}
+          RESULT: ${{steps.pr_details.outputs.result}}
+
+      - name: Checkout Forked Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ fromJson(steps.pr_details.outputs.result).head.ref }}
+          repository: ${{ fromJson(steps.pr_details.outputs.result).head.repo.full_name }}
+          fetch-depth: 10
+
+      - name: Debug2
+        run: |
+          echo "--base ${{ fromJson(steps.pr_details.outputs.result).base.sha }} --head ${{ fromJson(steps.pr_details.outputs.result).head.sha }}"
+          echo "===="
+          git status
+          echo '===='
+          ls -la packages/react-components/react-text/visual-regression
+
+      - name: Configure Git
+        run: |
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+
+      - name: commit
+        run: |
+          git remote -v
+          touch packages/react-components/react-text/visual-regression/hello.txt
+          git status
+          git add *.txt
+          git commit -m "chore: test by bot"
+          git push origin ${{ fromJson(steps.pr_details.outputs.result).head.ref }}
+
   approve_vrt_diff:
     if: github.repository_owner == 'microsoft' && github.event.issue.pull_request && contains(github.event.comment.body,'/approve-visual-regression-diff')
     runs-on: ubuntu-latest
