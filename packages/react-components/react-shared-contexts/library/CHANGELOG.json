@@ -2,6 +2,42 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 19 Mar 2025 15:40:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.23.0",
+      "version": "9.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "18134c1eb5e8d3bd8508cef24971ab7874661531",
+            "comment": "feat: added CustomStyleHooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Mar 2025 18:58:52 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.22.0",
+      "version": "9.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "81f584430d55ea58d88d1529282b41ddba0e83b5",
+            "comment": "feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents."
+          },
+          {
+            "author": "terynkum@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b0005b5ade58b047930e4f5404efd5081da6136d",
+            "comment": "fix: Implemented customStyleHooks for SearchBox Component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 Dec 2024 16:26:49 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.21.2",
       "version": "9.21.2",

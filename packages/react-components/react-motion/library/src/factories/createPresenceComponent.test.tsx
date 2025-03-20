@@ -25,6 +25,9 @@ function createElementMock() {
     set onfinish(fn: () => void) {
       fn();
     },
+    set oncancel(fn: () => void) {
+      fn();
+    },
   }));
   const ElementMock = React.forwardRef<{ animate: () => void }, { onRender?: () => void }>((props, ref) => {
     React.useImperativeHandle(ref, () => ({
@@ -67,30 +70,45 @@ describe('createPresenceComponent', () => {
   });
 
   describe('appear', () => {
-    it('does not animate by default', () => {
+    it('by default on initial mount applies styles immediately', () => {
+      const onMotionFinish = jest.fn();
       const TestPresence = createPresenceComponent(motion);
-      const { animateMock, ElementMock } = createElementMock();
+      const { animateMock, ElementMock, finishMock } = createElementMock();
 
       render(
-        <TestPresence visible>
+        <TestPresence onMotionFinish={onMotionFinish} visible>
           <ElementMock />
         </TestPresence>,
       );
 
-      expect(animateMock).not.toHaveBeenCalled();
+      // Should be called with "enter" keyframes
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+
+      expect(finishMock).toHaveBeenCalledTimes(1);
+      expect(onMotionFinish).toHaveBeenCalledTimes(0);
     });
 
-    it('animates when is "true"', () => {
+    it('runs animation on mount when is "true"', async () => {
+      const onMotionFinish = jest.fn();
       const TestPresence = createPresenceComponent(motion);
-      const { animateMock, ElementMock } = createElementMock();
+      const { animateMock, ElementMock, finishMock } = createElementMock();
 
       render(
-        <TestPresence appear visible>
+        <TestPresence appear onMotionFinish={onMotionFinish} visible>
           <ElementMock />
         </TestPresence>,
       );
 
+      expect(animateMock).toHaveBeenCalledTimes(1);
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+
+      await act(async () => {
+        await new Promise<void>(process.nextTick);
+      });
+
+      expect(finishMock).toHaveBeenCalledTimes(0);
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
     });
 
     it('animates when is "true" (without .persist())', () => {
@@ -111,27 +129,30 @@ describe('createPresenceComponent', () => {
       });
     });
 
-    it('finishes motion when wrapped in motion behaviour context with skip behaviour', async () => {
-      const TestPresence = createPresenceComponent(motion);
-      const { finishMock, ElementMock } = createElementMock();
-      const onMotionStart = jest.fn();
-      const onMotionFinish = jest.fn();
+    describe('MotionBehaviourProvider', () => {
+      it('finishes motion when wrapped in context with "skip" behaviour, but executes callbacks', async () => {
+        const onMotionStart = jest.fn();
+        const onMotionFinish = jest.fn();
 
-      const { queryByText } = render(
-        <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
-          <ElementMock />
-        </TestPresence>,
-        { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
-      );
+        const TestPresence = createPresenceComponent(motion);
+        const { finishMock, ElementMock } = createElementMock();
 
-      await act(async () => {
-        await new Promise<void>(process.nextTick);
+        const { queryByText } = render(
+          <TestPresence appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish} visible>
+            <ElementMock />
+          </TestPresence>,
+          { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
+        );
+
+        await act(async () => {
+          await new Promise<void>(process.nextTick);
+        });
+
+        expect(queryByText('ElementMock')).toBeTruthy();
+        expect(finishMock).toHaveBeenCalledTimes(1);
+        expect(onMotionStart).toHaveBeenCalledTimes(1);
+        expect(onMotionFinish).toHaveBeenCalledTimes(1);
       });
-
-      expect(queryByText('ElementMock')).toBeTruthy();
-      expect(finishMock).toHaveBeenCalledTimes(1);
-      expect(onMotionStart).toHaveBeenCalledTimes(1);
-      expect(onMotionFinish).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -274,32 +295,45 @@ describe('createPresenceComponent', () => {
   });
 
   describe('visible', () => {
-    it('animates when state changes', () => {
-      const TestPresence = createPresenceComponent(motion);
+    it('animates when state changes', async () => {
+      const onMotionFinish = jest.fn();
       const onRender = jest.fn();
+
+      const TestPresence = createPresenceComponent(motion);
       const { animateMock, ElementMock, finishMock } = createElementMock();
 
       const { rerender } = render(
-        <TestPresence visible>
+        <TestPresence onMotionFinish={onMotionFinish} visible>
           <ElementMock onRender={onRender} />
         </TestPresence>,
       );
 
-      expect(animateMock).not.toHaveBeenCalled();
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+      expect(finishMock).toHaveBeenCalledTimes(1);
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(0);
       expect(onRender).toHaveBeenCalledTimes(1);
-      expect(finishMock).not.toHaveBeenCalled();
 
       // ---
 
       jest.clearAllMocks();
+
       rerender(
-        <TestPresence visible={false}>
+        <TestPresence onMotionFinish={onMotionFinish} visible={false}>
           <ElementMock onRender={onRender} />
         </TestPresence>,
       );
 
+      expect(animateMock).toHaveBeenCalledTimes(1);
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
       expect(finishMock).not.toHaveBeenCalled();
+
+      await act(async () => {
+        await new Promise<void>(process.nextTick);
+      });
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
       expect(onRender).toHaveBeenCalledTimes(1);
     });
 
@@ -313,25 +347,44 @@ describe('createPresenceComponent', () => {
         </TestPresence>,
       );
 
+      expect(animateMock).toHaveBeenCalledTimes(1);
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
       expect(finishMock).toHaveBeenCalled();
     });
   });
 
   describe('unmountOnExit', () => {
-    it('unmounts when state changes', async () => {
+    it('unmounted when "visible" is "false"', () => {
       const TestPresence = createPresenceComponent(motion);
+      const { queryByText } = render(
+        <TestPresence visible={false} unmountOnExit>
+          <div>ElementMock</div>
+        </TestPresence>,
+      );
+
+      expect(queryByText('ElementMock')).toBe(null);
+    });
+
+    it('unmounts when state changes', async () => {
+      const onMotionFinish = jest.fn();
       const onRender = jest.fn();
-      const { animateMock, ElementMock } = createElementMock();
+
+      const TestPresence = createPresenceComponent(motion);
+      const { animateMock, finishMock, ElementMock } = createElementMock();
 
       const { rerender, queryByText } = render(
-        <TestPresence visible unmountOnExit>
+        <TestPresence onMotionFinish={onMotionFinish} visible unmountOnExit>
           <ElementMock onRender={onRender} />
         </TestPresence>,
       );
 
       expect(queryByText('ElementMock')).toBeTruthy();
-      expect(animateMock).not.toHaveBeenCalled();
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+      expect(finishMock).toHaveBeenCalledTimes(1);
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(0);
       expect(onRender).toHaveBeenCalledTimes(1);
 
       // ---
@@ -340,14 +393,19 @@ describe('createPresenceComponent', () => {
 
       await act(async () => {
         rerender(
-          <TestPresence visible={false} unmountOnExit>
+          <TestPresence onMotionFinish={onMotionFinish} visible={false} unmountOnExit>
             <ElementMock onRender={onRender} />
           </TestPresence>,
         );
       });
 
       expect(queryByText('ElementMock')).toBe(null);
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
+      expect(finishMock).toHaveBeenCalledTimes(0);
+
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
       expect(onRender).toHaveBeenCalledTimes(1);
     });
 
@@ -384,6 +442,7 @@ describe('createPresenceComponent', () => {
   describe('definitions', () => {
     it('supports functions as motion definitions', () => {
       const fnMotion = jest.fn().mockImplementation(() => motion);
+
       const TestPresence = createPresenceComponent(fnMotion);
       const { animateMock, ElementMock } = createElementMock();
 
@@ -393,12 +452,16 @@ describe('createPresenceComponent', () => {
         </TestPresence>,
       );
 
-      expect(animateMock).not.toHaveBeenCalled();
-      expect(fnMotion).not.toHaveBeenCalled();
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+
+      // Is called to apply initial styles
+      expect(fnMotion).toHaveBeenCalledTimes(1);
 
       // ---
 
       jest.clearAllMocks();
+
       rerender(
         <TestPresence visible={false}>
           <ElementMock />
@@ -408,6 +471,7 @@ describe('createPresenceComponent', () => {
       expect(fnMotion).toHaveBeenCalledTimes(1);
       expect(fnMotion).toHaveBeenCalledWith({ element: { animate: animateMock } /* mock of html element */ });
 
+      expect(animateMock).toHaveBeenCalledTimes(1);
       expect(animateMock).toHaveBeenCalledWith(exitKeyframes, options);
     });
   });

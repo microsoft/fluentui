@@ -10,9 +10,9 @@ export const useStyles = makeStyles({
 });
 
 export const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover('#button-id')
-  .snapshot('hover', { cropTo: '.testWrapper' })
+  .snapshot('hover')
   .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .end();

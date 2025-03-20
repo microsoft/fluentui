@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: make SplitButton divider transparent for subtle and transparent variants",
-  "packageName": "@fluentui/react-button",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

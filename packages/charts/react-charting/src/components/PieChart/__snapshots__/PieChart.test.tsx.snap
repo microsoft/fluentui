@@ -26,12 +26,12 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={350}
-      width={600}
+      height={358}
+      width={608}
     >
       <g
         className="pie"
-        transform="translate(300, 175)"
+        transform="translate(304, 179)"
       >
         <g
           aria-label="A-50"
@@ -71,8 +71,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={158.9995031252588}
-            y={-0.3974995859376562}
+            x={168.9995031252588}
+            y={-10.397499585937656}
           >
             A-50
           </text>
@@ -115,8 +115,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-112.00757625617408}
-            y={112.85079911643227}
+            x={-122.00757625617408}
+            y={122.85079911643227}
           >
             B-25
           </text>
@@ -159,8 +159,8 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-112.57042780891464}
-            y={-112.2893529365894}
+            x={-122.57042780891464}
+            y={-122.2893529365894}
           >
             C-25
           </text>
@@ -197,12 +197,12 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={300}
-      width={600}
+      height={308}
+      width={608}
     >
       <g
         className="pie"
-        transform="translate(300, 150)"
+        transform="translate(304, 154)"
       >
         <g
           aria-label="A-50"
@@ -242,8 +242,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="start"
-            x={133.99958125021809}
-            y={-0.3349996510417983}
+            x={143.99958125021809}
+            y={-10.334999651041798}
           >
             A-50
           </text>
@@ -286,8 +286,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-94.39632212784481}
-            y={95.1069627773706}
+            x={-104.39632212784481}
+            y={105.1069627773706}
           >
             B-25
           </text>
@@ -330,8 +330,8 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
             textAnchor="end"
-            x={-94.87067500877083}
-            y={-94.63379429876088}
+            x={-104.87067500877083}
+            y={-104.63379429876088}
           >
             C-25
           </text>

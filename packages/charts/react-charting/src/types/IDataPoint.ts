@@ -341,6 +341,11 @@ export interface ILineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -824,4 +829,15 @@ export interface ICustomizedCalloutData {
  */
 export interface IChart {
   chartContainer: HTMLElement | null;
+  toImage?: (opts?: IImageExportOptions) => Promise<string>;
+}
+
+/**
+ * {@docCategory Chart}
+ */
+export interface IImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
 }

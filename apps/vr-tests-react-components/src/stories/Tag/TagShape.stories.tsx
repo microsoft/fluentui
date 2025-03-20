@@ -1,24 +1,23 @@
 import * as React from 'react';
 import { Tag } from '@fluentui/react-tags';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 
 const tagId = 'tag-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   // This needs to be added so that the focus outline is shown correctly
   .executeScript(`document.querySelector('#${tagId}').setAttribute('data-fui-focus-visible', '')`)
   .focus(`#${tagId}`)
-  .snapshot('focused', { cropTo: '.testWrapper' })
+  .snapshot('focused')
   .executeScript(`document.querySelector('#${tagId}').removeAttribute('data-fui-focus-visible')`)
   .end();
 
 export default {
   title: 'Tag Converged',
   component: Tag,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof Tag>;
 
 export const Rounded = () => <Tag>Primary Text</Tag>;
@@ -35,6 +34,8 @@ export const RoundedDismissible = () => (
     Primary Text
   </Tag>
 );
+RoundedDismissible.parameters = { storyWright: { steps } } satisfies StoryParameters;
+
 export const RoundedDismissibleRTL = getStoryVariant(RoundedDismissible, RTL);
 
 export const Circular = () => <Tag shape="circular">Primary Text</Tag>;
@@ -53,4 +54,6 @@ export const CircularDismissible = () => (
     Primary Text
   </Tag>
 );
+CircularDismissible.parameters = { storyWright: { steps } } satisfies StoryParameters;
+
 export const CircularDismissibleRTL = getStoryVariant(CircularDismissible, RTL);

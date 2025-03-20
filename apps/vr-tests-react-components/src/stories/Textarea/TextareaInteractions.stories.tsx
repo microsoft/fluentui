@@ -18,7 +18,7 @@ export default {
           .snapshot('hover', { cropTo: '.testWrapper' })
           .click('textarea')
           .wait(250) // needed for bottom focus border animation
-          .snapshot('focused', { cropTo: '.textWrapper' })
+          .snapshot('focused', { cropTo: '.testWrapper' })
           .end(),
       }),
   ],

@@ -23,16 +23,6 @@ describe('MessageBar', () => {
         // do nothing
       }
     };
-
-    // @ts-expect-error https://github.com/jsdom/jsdom/issues/2032
-    global.IntersectionObserver = class IntersectionObserver {
-      public observe() {
-        // do nothing
-      }
-      public disconnect() {
-        // do nothing
-      }
-    };
   });
 
   beforeEach(() => {

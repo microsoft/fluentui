@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 12 Feb 2025 07:20:51 GMT",
+      "tag": "@fluentui/api-docs_v8.2.26",
+      "version": "8.2.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/api-docs",
+            "commit": "f0f16ea9d7e407f87e4f144a40be8a3c4f2b6369",
+            "comment": "chore: update api-extractor to 7.49.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 07:33:36 GMT",
       "tag": "@fluentui/api-docs_v8.2.25",
       "version": "8.2.25",

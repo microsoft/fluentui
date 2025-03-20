@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: actions lose visibility when mouse and keyboard interactions are mixed",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

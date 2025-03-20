@@ -1,8 +1,172 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 27 Jan 2025 20:27:33 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 18:11:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.1)
+
+Wed, 19 Mar 2025 18:11:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.0..@fluentui/react-components_v9.61.1)
+
+### Patches
+
+- `@fluentui/react-message-bar`
+  - fix(MessageBar): revert motion migration to resolve validation errors ([PR #34037](https://github.com/microsoft/fluentui/pull/34037) by robertpenner@microsoft.com)
+
+## [9.61.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.0)
+
+Wed, 19 Mar 2025 15:40:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.60.1..@fluentui/react-components_v9.61.0)
+
+### Minor changes
+
+- `@fluentui/react-color-picker`
+  - feat: release ColorPicker as 9.0.0 stable ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-components`
+  - feat: release ColorPicker as 9.0.0 stable ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: added CustomStyleHooks ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+- `@fluentui/react-tags`
+  - feat: Added selected state for Tag and InteractionTag ([PR #33804](https://github.com/microsoft/fluentui/pull/33804) by vkozlova@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - fix(react-dialog): Use token for backdrop color ([PR #33955](https://github.com/microsoft/fluentui/pull/33955) by jiangemma@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix(react-drawer): Use token for backdrop color ([PR #33955](https://github.com/microsoft/fluentui/pull/33955) by jiangemma@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix: minor accessibility cleanup ([PR #33992](https://github.com/microsoft/fluentui/pull/33992) by sarah.higley@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: don't throw on window.getComputedStyle() ([PR #34016](https://github.com/microsoft/fluentui/pull/34016) by olfedias@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: Spinbutton aria-valuenow vs native value timing fix ([PR #33923](https://github.com/microsoft/fluentui/pull/33923) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: use proper type for Tab value prop ([PR #33988](https://github.com/microsoft/fluentui/pull/33988) by dmytrokirpa@microsoft.com)
+
+## [9.60.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.1)
+
+Tue, 11 Mar 2025 18:58:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.60.0..@fluentui/react-components_v9.60.1)
+
+### Minor changes
+
+- `@fluentui/react-card`
+  - fix: implemented custom style hook for Card, CardFooter, CardHeader, CardPreview ([PR #33912](https://github.com/microsoft/fluentui/pull/33912) by terynkum@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - fix(react-nav): Export missing context providers and hooks ([PR #33938](https://github.com/microsoft/fluentui/pull/33938) by jiangemma@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents. ([PR #33943](https://github.com/microsoft/fluentui/pull/33943) by matejera@microsoft.com)
+  - fix: Implemented customStyleHooks for SearchBox Component ([PR #33954](https://github.com/microsoft/fluentui/pull/33954) by terynkum@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents. ([PR #33943](https://github.com/microsoft/fluentui/pull/33943) by matejera@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: use contrasting token pairs for selected radio and toggle states ([PR #33579](https://github.com/microsoft/fluentui/pull/33579) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: placed thumb half outside of colorSlider and colorArea ([PR #33880](https://github.com/microsoft/fluentui/pull/33880) by vkozlova@microsoft.com)
+  - fix: focus on Y axis ([PR #33899](https://github.com/microsoft/fluentui/pull/33899) by v.kozlova13@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+- `@fluentui/react-link`
+  - fix: Link now pulls customStyleHook from context ([PR #33894](https://github.com/microsoft/fluentui/pull/33894) by mgodbolt@microsoft.com)
+- `@fluentui/react-motion`
+  - fix: apply initial styles consistently ([PR #33810](https://github.com/microsoft/fluentui/pull/33810) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix: Implemented customStyleHooks for SearchBox Component ([PR #33954](https://github.com/microsoft/fluentui/pull/33954) by terynkum@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: selected state in HC on Windows ([PR #33910](https://github.com/microsoft/fluentui/pull/33910) by v.kozlova13@gmail.com)
+- `@fluentui/react-tag-picker`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+- `@fluentui/react-textarea`
+  - fix: use correct tokens for hover, active and focus states ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by vgenaev@gmail.com)
+
+## [9.60.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.60.0)
+
+Fri, 21 Feb 2025 14:34:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.59.0..@fluentui/react-components_v9.60.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Implement props to control animation duration and autoplay interval ([PR #33820](https://github.com/microsoft/fluentui/pull/33820) by mifraser@microsoft.com)
+- `@fluentui/react-tabster`
+  - Nested modalizer fix and useActivateModal() hook to activate modals without moving focus. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Add a defensive check when getting overflow item records ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - fix: useAnnounce live regions do not get aria-hidden from tabster ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-popover`
+  - Update to satisfy the bumped Tabster 8.5.0. ([PR #33817](https://github.com/microsoft/fluentui/pull/33817) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: provide methods for elements such as live regions to not get hidden by modals ([PR #33855](https://github.com/microsoft/fluentui/pull/33855) by sarah.higley@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: TeachingPopoverCarousel fires announce() messages on slide change ([PR #33833](https://github.com/microsoft/fluentui/pull/33833) by sarah.higley@microsoft.com)
+
+## [9.59.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.59.0)
+
+Tue, 18 Feb 2025 11:26:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.3..@fluentui/react-components_v9.59.0)
+
+### Minor changes
+
+- `@fluentui/react-carousel`
+  - feat: Add tooltip wrappers for icon buttons in nav container ([PR #33821](https://github.com/microsoft/fluentui/pull/33821) by mifraser@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - custom color channels ([PR #33763](https://github.com/microsoft/fluentui/pull/33763) by v.kozlova13@gmail.com)
+- `@fluentui/react-components`
+  - BREAKING: rename api report file name according to api-extractor change ([PR #33692](https://github.com/microsoft/fluentui/pull/33692) by vgenaev@gmail.com)
+  - feat: export isHTMLElement from public API ([PR #33856](https://github.com/microsoft/fluentui/pull/33856) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-color-picker-preview`
+  - fix: design changes for ColorPicker ([PR #33785](https://github.com/microsoft/fluentui/pull/33785) by vkozlova@microsoft.com)
+
+## [9.58.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.3)
+
+Fri, 07 Feb 2025 10:42:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.2..@fluentui/react-components_v9.58.3)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: Button sets correct disabledFocusable icon color ([PR #33756](https://github.com/microsoft/fluentui/pull/33756) by sarah.higley@microsoft.com)
+- `@fluentui/react-color-picker-preview`
+  - fix: thumb design for ColorPicker - partner's ask ([PR #33743](https://github.com/microsoft/fluentui/pull/33743) by v.kozlova13@gmail.com)
+- `@fluentui/react-message-bar`
+  - fix: Revert MessageBar auto reflow changes from #33409 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - fix: exported internal CSS variables ([PR #33682](https://github.com/microsoft/fluentui/pull/33682) by vkozlova@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - bugfix: regression from #33689 ([PR #33747](https://github.com/microsoft/fluentui/pull/33747) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: Fix regression of child render function update ([PR #33788](https://github.com/microsoft/fluentui/pull/33788) by mifraser@microsoft.com)
+
+## [9.58.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.2)
+
+Tue, 28 Jan 2025 21:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.58.1..@fluentui/react-components_v9.58.2)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: make SplitButton divider transparent for subtle and transparent variants ([PR #33726](https://github.com/microsoft/fluentui/pull/33726) by vgenaev@gmail.com)
+- `@fluentui/react-carousel`
+  - fix: Ensure carousel handles indexing when window size is larger then combined card size ([PR #33732](https://github.com/microsoft/fluentui/pull/33732) by mifraser@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - fix: add aria-disabled to expand button when disabled ([PR #33530](https://github.com/microsoft/fluentui/pull/33530) by sarah.higley@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: actions lose visibility when mouse and keyboard interactions are mixed ([PR #33731](https://github.com/microsoft/fluentui/pull/33731) by bernardo.sunderhus@gmail.com)
 
 ## [9.58.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.58.1)
 

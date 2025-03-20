@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Ensure carousel handles indexing when window size is larger then combined card size",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
