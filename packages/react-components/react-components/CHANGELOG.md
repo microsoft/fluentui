@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 19 Mar 2025 18:11:11 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Mar 2025 09:34:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.2)
+
+Thu, 20 Mar 2025 09:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.1..@fluentui/react-components_v9.61.2)
+
+### Patches
+
+- `@fluentui/react-motion`
+  - feat: experimental createInterruptablePresence() ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by olfedias@microsoft.com)
 
 ## [9.61.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.1)
 
