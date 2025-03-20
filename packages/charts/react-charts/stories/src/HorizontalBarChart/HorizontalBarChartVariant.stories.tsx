@@ -6,7 +6,7 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const HorizontalBarAbsoluteScale = () => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);

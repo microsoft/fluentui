@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { DeclarativeChart, IDeclarativeChart, Schema } from '@fluentui/react-charts';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { Dropdown, Option, OptionOnSelectData, SelectionEvents } from '@fluentui/react-combobox';
+import { Dropdown, Option, OptionOnSelectData, SelectionEvents, useFluent } from '@fluentui/react-components';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;

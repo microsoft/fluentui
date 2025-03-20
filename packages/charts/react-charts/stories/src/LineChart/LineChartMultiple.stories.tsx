@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
 
-import { Switch } from '@fluentui/react-switch';
+import { Switch } from '@fluentui/react-components';
 
 export const LineChartMultiple = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);

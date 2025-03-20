@@ -8,8 +8,7 @@ import {
   ChartPopoverProps,
 } from '@fluentui/react-charts';
 // import * as d3 from 'd3-format';
-import { Switch } from '@fluentui/react-switch';
-import { tokens } from '@fluentui/react-theme';
+import { Switch, tokens } from '@fluentui/react-components';
 
 export const HorizontalBarCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];
