@@ -149,38 +149,53 @@ function withSlotEnhancer(story: PreparedStory) {
   const updatedArgTypes = { ...story.argTypes };
   const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
   let hasArgAsSlot = false;
+
   type InternalComponentApi = {
-    __docgenInfo: { props?: Record<string, { type: { name: string } }> };
+    __docgenInfo: {
+      props?: Record<string, { type: { name: string } }>;
+      subcomponents?: Record<string, InternalComponentApi>;
+    };
     [k: string]: unknown;
   };
-  const component = story.component as InternalComponentApi;
-  const docGenProps = component?.__docgenInfo?.props;
 
-  if (!docGenProps) {
-    return component;
-  }
-
-  Object.entries(docGenProps).forEach(([key, argType]) => {
-    const value: string = argType?.type?.name;
-    if (value.includes('WithSlotShorthandValue')) {
-      hasArgAsSlot = true;
-      const match = value.match(slotRegex);
-      console.log('match', match);
-      if (match) {
-        component.__docgenInfo.props![key].type.name = `Slot<\"${match[1]}\">`;
-        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
-        updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
-      } else {
-        component.__docgenInfo.props![key].type.name = `Slot`;
-        // @ts-expect-error - storybook doesn't ship proper types (value is missing)
-        updatedArgTypes[key].type.value = `Slot`;
+  const checkPropsForSlotShorthandValue = (props: Record<string, { type: { name: string } }>) => {
+    Object.entries(props).forEach(([key, argType]) => {
+      const value: string = argType?.type?.name;
+      if (value.includes('WithSlotShorthandValue')) {
+        hasArgAsSlot = true;
+        const match = value.match(slotRegex);
+        if (match) {
+          props[key].type.name = `Slot<\"${match[1]}\">`;
+          // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+          updatedArgTypes[key].type.value = `Slot<\"${match[1]}\">`;
+        } else {
+          props[key].type.name = `Slot`;
+          // @ts-expect-error - storybook doesn't ship proper types (value is missing)
+          updatedArgTypes[key].type.value = `Slot`;
+        }
       }
+    });
+  };
+
+  const processComponent = (component: InternalComponentApi) => {
+    const docGenProps = component?.__docgenInfo?.props;
+    if (docGenProps) {
+      checkPropsForSlotShorthandValue(docGenProps);
     }
-  });
+
+    const subComponents = component?.__docgenInfo?.subcomponents;
+    if (subComponents) {
+      Object.values(subComponents).forEach(subcomponent => {
+        processComponent(subcomponent);
+      });
+    }
+  };
+
+  const component = story.component as InternalComponentApi;
+  processComponent(component);
 
   return { component, hasArgAsSlot, hasArgAsProp };
 }
-
 const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
   const styles = useStyles();
   return (
