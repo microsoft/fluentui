@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: experimental createInterruptablePresence()",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
