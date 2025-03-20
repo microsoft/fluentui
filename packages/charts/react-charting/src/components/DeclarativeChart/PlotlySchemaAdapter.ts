@@ -259,11 +259,12 @@ export const transformPlotlyJsonToVSBCProps = (
         });
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
+        const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
           legend,
           y: yVal,
           color,
-          lineOptions: getLineOptions(series.line),
+          ...(lineOptions ? { lineOptions } : {}),
         });
       }
 
@@ -442,6 +443,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
+    const lineOptions = getLineOptions(series.line);
 
     return {
       legend,
@@ -455,7 +457,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           : {}),
       })),
       color: lineColor,
-      lineOptions: getLineOptions(series.line),
+      ...(lineOptions ? { lineOptions } : {}),
     } as ILineChartPoints;
   });
 
@@ -808,5 +810,5 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
       break;
   }
 
-  return lineOptions;
+  return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
