@@ -24,7 +24,6 @@ export { default as DialogDef } from './Dialog.json';
 export { default as DividerDef } from './Divider.json';
 export { default as DrawerDef } from './Drawer.json';
 export { default as DropdownDef } from './Dropdown.json';
-export { default as ExampleDef } from './Example.json';
 export { default as FieldDef } from './Field.json';
 export { default as FluentProviderDef } from './FluentProvider.json';
 export { default as ImageDef } from './Image.json';

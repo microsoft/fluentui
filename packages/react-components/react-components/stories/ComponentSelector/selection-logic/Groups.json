@@ -47,7 +47,7 @@
     "id": "navigationAndDisclosures",
     "title": "Navigation and Disclosures",
     "tags": ["Tree", "Accordion", "TabList"],
-    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"]
+    "questions": [""]
   },
   {
     "id": "notifications",
