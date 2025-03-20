@@ -86,31 +86,33 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
     }
   }, [lastAnimatedFrom]);
 
-  if (selected) {
-    const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
+  React.useEffect(() => {
+    if (selected) {
+      const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
 
-    if (isValueDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
-      const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
-      const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
+      if (isValueDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
+        const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
+        const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
-      if (selectedTabRect && previousSelectedTabRect) {
-        const offset = vertical
-          ? previousSelectedTabRect.y - selectedTabRect.y
-          : previousSelectedTabRect.x - selectedTabRect.x;
+        if (selectedTabRect && previousSelectedTabRect) {
+          const offset = vertical
+            ? previousSelectedTabRect.y - selectedTabRect.y
+            : previousSelectedTabRect.x - selectedTabRect.x;
 
-        const scale = vertical
-          ? previousSelectedTabRect.height / selectedTabRect.height
-          : previousSelectedTabRect.width / selectedTabRect.width;
+          const scale = vertical
+            ? previousSelectedTabRect.height / selectedTabRect.height
+            : previousSelectedTabRect.width / selectedTabRect.width;
 
-        setAnimationValues({ offset, scale });
-        setLastAnimatedFrom(previousSelectedValue);
+          setAnimationValues({ offset, scale });
+          setLastAnimatedFrom(previousSelectedValue);
+        }
       }
+    } else if (isValueDefined(lastAnimatedFrom)) {
+      // need to clear the last animated from so that if this tab is selected again
+      // from the same previous tab as last time, that animation still happens.
+      setLastAnimatedFrom(undefined);
     }
-  } else if (isValueDefined(lastAnimatedFrom)) {
-    // need to clear the last animated from so that if this tab is selected again
-    // from the same previous tab as last time, that animation still happens.
-    setLastAnimatedFrom(undefined);
-  }
+  }, [selected, getRegisteredTabs, lastAnimatedFrom, vertical]);
 
   // do not apply any animation if the tab is disabled
   if (disabled) {
