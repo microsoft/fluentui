@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[chore]: move core functionality to base dropdown",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
