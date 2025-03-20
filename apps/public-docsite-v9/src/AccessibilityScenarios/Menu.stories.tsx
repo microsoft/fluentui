@@ -71,7 +71,7 @@ export const ProfileMenu: React.FunctionComponent = () => {
     <Scenario pageTitle="Profile menu">
       <Menu>
         <MenuTrigger disableButtonEnhancement>
-          <MenuButton>Profile</MenuButton>
+          <MenuButton>Profile - dual state</MenuButton>
         </MenuTrigger>
 
         <MenuPopover>
