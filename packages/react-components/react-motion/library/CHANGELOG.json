@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 09:34:58 GMT",
+      "tag": "@fluentui/react-motion_v9.6.10",
+      "version": "9.6.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1f3f6f9a05ae0e87c5c13b2d02c2a158035e3e5b",
+            "comment": "feat: experimental createInterruptablePresence()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-motion_v9.6.9",
       "version": "9.6.9",

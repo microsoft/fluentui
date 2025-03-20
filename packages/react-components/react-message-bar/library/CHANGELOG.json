@@ -2,6 +2,21 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Wed, 19 Mar 2025 18:11:11 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "faa9f1f749e9dee653ea26db9f9859cbb2a383fd",
+            "comment": "fix(MessageBar): revert motion migration to resolve validation errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-message-bar_v9.4.2",
       "version": "9.4.2",

@@ -600,6 +600,8 @@ export class BaseDropdown extends FASTElement {
     ariaLabelledBy: string;
     changeHandler(e: Event): boolean | void;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -608,6 +610,8 @@ export class BaseDropdown extends FASTElement {
     controlSlot: HTMLSlotElement;
     disabled?: boolean;
     disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
     elementInternals: ElementInternals;
@@ -2484,16 +2488,9 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
-    constructor();
     appearance: DropdownAppearance;
     // @internal
     appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
     size?: DropdownSize;
     // @internal
     sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 14 Mar 2025 07:23:16 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Mar 2025 10:22:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.14)
+
+Thu, 20 Mar 2025 10:22:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.13..@fluentui/react_v8.122.14)
+
+### Patches
+
+- fix: restore missing files from last publish. ([PR #34046](https://github.com/microsoft/fluentui/pull/34046) by tristan.watanabe@gmail.com)
+
+## [8.122.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.13)
+
+Wed, 19 Mar 2025 18:51:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.12..@fluentui/react_v8.122.13)
+
+### Patches
+
+- fix(Autofill): Revert #33700 to avoid breaking pickers. ([PR #34038](https://github.com/microsoft/fluentui/pull/34038) by estebanmu@microsoft.com)
 
 ## [8.122.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.12)
 

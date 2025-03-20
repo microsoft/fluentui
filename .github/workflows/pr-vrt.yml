@@ -64,3 +64,14 @@ jobs:
           name: vrscreenshot
           retention-days: 1
           path: ${{steps.screenshots_root.outputs.result}}
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-number
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            pr.txt
