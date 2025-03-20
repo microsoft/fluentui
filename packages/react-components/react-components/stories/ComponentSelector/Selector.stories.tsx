@@ -41,7 +41,7 @@ import { removeFromArray, getComponentStoryUrl, getAllQuestions, hasQuestions } 
 import importedGroups from './selection-logic/Groups.json';
 import attributesMapping from './selection-logic/AttributesMapping.json';
 import * as importedComponentsDefinitions from './components-definitions/index';
-import { add, create, filter, get, pad, set } from 'lodash';
+import { add, create, filter, get, pad, result, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
 import { BehaviorSelection } from './BehaviorSelection';
@@ -89,7 +89,7 @@ const useStyles = makeStyles({
     flex: 1,
     padding: '20px',
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 490px)',
+    maxHeight: 'calc(100vh - 440px)',
   },
   footerWrapper: {
     display: 'flex',
@@ -104,14 +104,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
-  questionsWrapper: {
-    padding: '20px',
-    margin: '20px 0',
-    backgroundColor: 'white',
-    borderRadius: '16px',
-    border: '1px solid var(--colorNeutralStroke1, #e1dfdd)',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  },
+
   questionsLabel: {
     color: '#ff00ff',
     fontWeight: tokens.fontWeightBold,
@@ -191,6 +184,16 @@ const useStyles = makeStyles({
   headerHeadingAndInput: {
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  QuestionsAndResults: {
+    display: 'flex',
+  },
+  allQuestions: {
+    width: '50%',
+  },
+  results: {
+    width: '50%',
+    paddingLeft: '50px',
   },
 });
 
@@ -537,30 +540,38 @@ export const Selector = () => {
                 Questions
               </h2>
             )}
-            {allQuestions.map((question, index) => (
-              <Question
-                key={question.id}
-                question={question}
-                number={index + 1}
-                updateDecisionForQuestion={updateDecisionForQuestion}
-              />
-            ))}
+            <div id="questions-and-results" className={classes.QuestionsAndResults}>
+              <div id="all-questions" className="{classes.allQuestions}">
+                {allQuestions.map((question, index) => (
+                  <Question
+                    key={question.id}
+                    question={question}
+                    number={index + 1}
+                    updateDecisionForQuestion={updateDecisionForQuestion}
+                  />
+                ))}
+              </div>
+              <div id="results" className={classes.results}>
+                {(matchingComponents.length > 0 ||
+                  (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
+                  <h2 id="matching-heading" className={classes.heading}>
+                    Matching Components {matchingComponents.length}
+                  </h2>
+                )}
+                {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
+                  <Text>No components match the given answers.</Text>
+                )}
+                {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
+              </div>
+            </div>
           </>
         )}
+
         {mode === 'byBehaviors' && (
           <>
             <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
           </>
         )}
-        {(matchingComponents.length > 0 || (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
-          <h2 id="matching-heading" className={classes.heading}>
-            Matching Components {matchingComponents.length}
-          </h2>
-        )}
-        {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
-          <Text>No components match the given answers.</Text>
-        )}
-        {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
       </div>
 
       {/* <div className={classes.selectedComponentTitle}>
