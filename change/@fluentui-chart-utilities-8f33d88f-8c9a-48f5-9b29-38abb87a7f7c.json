@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Create chart utilities package",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
