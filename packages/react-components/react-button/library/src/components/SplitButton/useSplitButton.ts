@@ -35,7 +35,7 @@ export const useSplitButton_unstable = (
       disabledFocusable,
       menuIcon,
       shape,
-      size,
+      size: size === 'medium' ? 'large' : size,
     },
     renderByDefault: true,
     elementType: MenuButton,
