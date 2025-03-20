@@ -37,8 +37,7 @@ import {
   ArrowRightRegular,
 } from '@fluentui/react-icons';
 
-import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
-import questions from './selection-logic/Questions.json';
+import { removeFromArray, getComponentStoryUrl, getAllQuestions, hasQuestions } from './utils';
 import importedGroups from './selection-logic/Groups.json';
 import attributesMapping from './selection-logic/AttributesMapping.json';
 import * as importedComponentsDefinitions from './components-definitions/index';
@@ -422,7 +421,7 @@ export const Selector = () => {
     const result = groups.map(group => {
       group.cards = [];
       definitionsWithDisplayName.forEach(definition => {
-        if (group.tags.includes(definition.component)) {
+        if (hasQuestions(definition.name) && group.tags.includes(definition.component)) {
           const selected = !!selectedComponents.find(component => definition.name === component.name);
           const card = (
             <>
@@ -459,7 +458,7 @@ export const Selector = () => {
     });
   };
 
-  const allQuestions = React.useMemo(() => getAllQuestions(selectedComponents, questions), [selectedComponents]);
+  const allQuestions = React.useMemo(() => getAllQuestions(selectedComponents), [selectedComponents]);
 
   return (
     <div className={classes.componentWrapper}>

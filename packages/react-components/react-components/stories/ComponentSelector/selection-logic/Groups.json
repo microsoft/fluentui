@@ -15,8 +15,8 @@
     "id": "hintsAndTips",
     "title": "Hints and tips",
     "tags": ["InfoLabel", "Tooltip"],
-    "comment": "add custom infoIcon codesandbox",
-    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"]
+    "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
+    "comment": "add custom infoIcon codesandbox"
   },
   {
     "id": "structuresAndLists",
@@ -40,8 +40,8 @@
     "id": "optionsAndPickers",
     "title": "Options and Pickers",
     "tags": ["Combobox", "Dropdown", "Select"],
-    "comment": "missing calendar and datepicker",
-    "questions": ["", "", ""]
+    "questions": [],
+    "comment": "missing calendar and datepicker"
   },
   {
     "id": "navigationAndDisclosures",
@@ -53,18 +53,18 @@
     "id": "notifications",
     "title": "Notifications",
     "tags": ["MessageBar", "Badges", "Toast"],
-    "questions": ["", "", ""]
+    "questions": []
   },
   {
     "id": "textInput",
     "title": "Text Input",
     "tags": ["TextInput", "TextArea", "Field"],
-    "questions": ["", "", ""]
+    "questions": []
   },
   {
     "id": "loadingAndProgress",
     "title": "Loading and Progress",
     "tags": ["ProgressIndicator", "Spinner", "Skeleton"],
-    "questions": ["", "", ""]
+    "questions": []
   }
 ]

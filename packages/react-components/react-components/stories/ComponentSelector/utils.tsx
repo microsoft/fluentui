@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import groups from './selection-logic/Groups.json';
+import questions from './selection-logic/Questions.json';
 
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
@@ -74,7 +75,7 @@ const getQuestionsIDs = (name: string) => {
   return questionsIds;
 };
 
-export const getAllQuestions = (selectedComponents, questions) => {
+export const getAllQuestions = selectedComponents => {
   let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
     getQuestionsIDs(component.name).forEach(id => {
@@ -86,4 +87,10 @@ export const getAllQuestions = (selectedComponents, questions) => {
     .map(questionId => questions.find(question => question.id === questionId))
     .filter(foundQuestion => foundQuestion !== undefined);
   return allQuestions;
+};
+
+export const hasQuestions = componentName => {
+  const components = [{ name: componentName }];
+  const questions = getAllQuestions(components);
+  return questions.length > 0;
 };
