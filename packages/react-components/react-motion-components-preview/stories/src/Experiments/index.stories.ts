@@ -15,6 +15,7 @@ export { ExperimentsSlideUnder as SlideUnder } from './ExperimentsSlideUnder.sto
 // export { ExperimentsSlideUnderAB as SlideUnderAB } from './ExperimentsSlideUnderAB.stories';
 export { ExperimentsReverseSlower as ReverseSlower } from './ExperimentsReverseSlower.stories';
 export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
+export { ExperimentsStaggerSkeleton as StaggerSkeleton } from './ExperimentsStaggerSkeleton.stories';
 export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
 export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
 
