@@ -134,12 +134,12 @@ export const OverlaySurfaceBackdropMotion = createPresenceComponent(({ size }: O
     enter: {
       keyframes,
       easing: motionTokens.curveLinear,
-      duration,
+      duration: duration.open,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
       easing: motionTokens.curveLinear,
-      duration,
+      duration: duration.close,
     },
   };
 });
