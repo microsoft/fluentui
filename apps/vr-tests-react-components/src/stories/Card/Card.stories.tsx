@@ -49,7 +49,7 @@ CardTemplates.storyName = 'card templates';
 export const Appearance = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginLeft: '10px', marginRight: '10px' }}>
     <div>
-      <h1>Filled Test Diff</h1>
+      <h1>Filled Test Diff 2</h1>
       <Card appearance="filled">
         <SampleCardContent />
       </Card>
