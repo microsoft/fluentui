@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Export DeepPartialV2 type definition",
+  "packageName": "@fluentui/merge-styles",
+  "email": "ychigu@microsoft.com",
+  "dependentChangeType": "patch"
+}
