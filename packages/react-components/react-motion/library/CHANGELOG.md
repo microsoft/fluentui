@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Mar 2025 09:34:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.10)
+
+Thu, 20 Mar 2025 09:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.9..@fluentui/react-motion_v9.6.10)
+
+### Patches
+
+- feat: experimental createInterruptablePresence() ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by olfedias@microsoft.com)
 
 ## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.9)
 

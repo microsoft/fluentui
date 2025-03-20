@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 04:07:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.87",
+      "version": "3.0.0-beta.87",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "683cd05a2ff1f8da232d6ac356e82d1087b14517",
+            "comment": "[chore]: move core functionality to base dropdown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Mar 2025 04:07:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.86",
       "version": "3.0.0-beta.86",
