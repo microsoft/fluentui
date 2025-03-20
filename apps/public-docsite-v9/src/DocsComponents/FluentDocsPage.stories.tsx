@@ -11,7 +11,7 @@ import {
   Stories,
   type DocsContextProps,
 } from '@storybook/addon-docs';
-import type { PreparedStory, Renderer, StrictArgTypes, SBEnumType } from '@storybook/types';
+import type { PreparedStory, Renderer, SBEnumType } from '@storybook/types';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
 import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
@@ -207,14 +207,7 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
     </div>
   );
 };
-const RenderArgsTable = ({
-  hideArgsTable,
-  story,
-}: {
-  story: PrimaryStory;
-  hideArgsTable: boolean;
-  argTypes: StrictArgTypes;
-}) => {
+const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideArgsTable: boolean }) => {
   const storyCopy = cloneDeep(story);
   const { component, hasArgAsProp, hasArgAsSlot } = withSlotEnhancer(storyCopy);
   const options = story.argTypes.as?.options;
