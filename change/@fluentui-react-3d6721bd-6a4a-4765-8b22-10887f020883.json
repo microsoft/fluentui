@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: restore missing files from last publish.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
