@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VerticalBarChart, VerticalBarChartDataPoint } from '@fluentui/react-charts';
-import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-checkbox';
 
 export const VerticalBarStyled = () => {
   const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);

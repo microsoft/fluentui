@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DonutChart, ChartProps, ChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 
-import { Button, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-button';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {

@@ -1,18 +1,10 @@
 import * as React from 'react';
 import { VerticalBarChart, VerticalBarChartDataPoint, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Button } from '@fluentui/react-components';
-import {
-  Checkbox,
-  CheckboxOnChangeData,
-  CheckboxProps,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-  Input,
-  InputProps,
-  InputOnChangeData,
-} from '@fluentui/react-components';
+import { Button } from '@fluentui/react-button';
+import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-checkbox';
+import { Radio, RadioGroup, RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { Input, InputProps, InputOnChangeData } from '@fluentui/react-input';
+import { Field } from '@fluentui/react-field';
 
 export const VerticalBarDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */

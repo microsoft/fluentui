@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LineChartProps, ChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts';
-import { Switch } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-switch';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import itITLocale from 'd3-time-format/locale/it-IT.json';
 

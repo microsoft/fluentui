@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LineChartProps, LineChart, ChartProps, DataVizPalette } from '@fluentui/react-charts';
-import { Switch, Checkbox } from '@fluentui/react-components';
-import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Switch } from '@fluentui/react-switch';
+import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-checkbox';
 
 export const LineChartBasic = (props: LineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
