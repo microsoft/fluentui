@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Changing motion values (durations/curves) to Copilot values",
+  "packageName": "@fluentui/react-drawer",
+  "email": "kegorr@microsoft.com",
+  "dependentChangeType": "patch"
+}

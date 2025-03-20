@@ -10,11 +10,23 @@ export type DrawerMotionParams = Required<
 >;
 export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerBaseProps, 'size'>>;
 
-const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
-  small: motionTokens.durationGentle,
-  medium: motionTokens.durationSlow,
-  large: motionTokens.durationSlower,
-  full: motionTokens.durationUltraSlow,
+const durations: Record<NonNullable<DrawerBaseProps['size']>, { open: number; close: number }> = {
+  small: {
+    open: motionTokens.durationNormal, // 200ms
+    close: motionTokens.durationFast, // 150ms
+  },
+  medium: {
+    open: motionTokens.durationGentle, // 250ms
+    close: motionTokens.durationNormal, // 200ms
+  },
+  large: {
+    open: motionTokens.durationSlow, // 300ms
+    close: motionTokens.durationGentle, // 250ms
+  },
+  full: {
+    open: motionTokens.durationSlower, // 400ms
+    close: motionTokens.durationSlow, // 300ms
+  },
 };
 
 /**
@@ -64,12 +76,12 @@ export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({
   return {
     enter: {
       keyframes,
-      duration,
-      easing: motionTokens.curveDecelerateMid,
+      duration: duration.open,
+      easing: motionTokens.curveDecelerateMax,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
-      duration,
+      duration: duration.close,
       easing: motionTokens.curveAccelerateMin,
     },
   };
@@ -100,12 +112,12 @@ export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>((
   return {
     enter: {
       keyframes,
-      duration,
-      easing: motionTokens.curveDecelerateMid,
+      duration: duration.open,
+      easing: motionTokens.curveDecelerateMax,
     },
     exit: {
       keyframes: [...keyframes].reverse(),
-      duration,
+      duration: duration.close,
       easing: motionTokens.curveAccelerateMin,
     },
   };
