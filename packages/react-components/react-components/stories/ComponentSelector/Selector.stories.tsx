@@ -460,6 +460,11 @@ export const Selector = () => {
 
   const allQuestions = React.useMemo(() => getAllQuestions(selectedComponents), [selectedComponents]);
 
+  const componentsCount = React.useMemo(
+    () => categorizedComponents.reduce((total, category) => total + (category.cards?.length || 0), 0),
+    [categorizedComponents],
+  );
+
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
@@ -507,7 +512,7 @@ export const Selector = () => {
         {mode === 'byComponents' && (
           <>
             <div className={classes.visuallyHidden}>
-              <Text role="status">{filteredComponentsDefinitions.length} components available.</Text>
+              <Text role="status">{componentsCount} components available.</Text>
             </div>
             {/* <h2>Choose Component ({filteredComponentsDefinitions.length})</h2> */}
             <div>
