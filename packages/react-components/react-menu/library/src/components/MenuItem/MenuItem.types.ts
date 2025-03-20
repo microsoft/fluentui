@@ -61,4 +61,6 @@ export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'conten
   };
 
 export type MenuItemState = ComponentState<MenuItemSlots> &
-  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+  Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    isSubmenuOpen: boolean;
+  };
