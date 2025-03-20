@@ -191,9 +191,13 @@ const useStyles = makeStyles({
   allQuestions: {
     width: '50%',
   },
-  results: {
+  resultsWrapper: {
     width: '50%',
     paddingLeft: '50px',
+  },
+  results: {
+    position: 'sticky',
+    top: '5%',
   },
 });
 
@@ -551,17 +555,19 @@ export const Selector = () => {
                   />
                 ))}
               </div>
-              <div id="results" className={classes.results}>
-                {(matchingComponents.length > 0 ||
-                  (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
-                  <h2 id="matching-heading" className={classes.heading}>
-                    Matching Components {matchingComponents.length}
-                  </h2>
-                )}
-                {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
-                  <Text>No components match the given answers.</Text>
-                )}
-                {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
+              <div id="results-wrapper" className={classes.resultsWrapper}>
+                <div id="results" className={classes.results}>
+                  {(matchingComponents.length > 0 ||
+                    (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
+                    <h2 id="matching-heading" className={classes.heading}>
+                      Matching Components {matchingComponents.length}
+                    </h2>
+                  )}
+                  {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
+                    <Text>No components match the given answers.</Text>
+                  )}
+                  {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
+                </div>
               </div>
             </div>
           </>
