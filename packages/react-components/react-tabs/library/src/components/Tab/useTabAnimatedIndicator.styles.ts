@@ -5,6 +5,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
 import { tokens } from '@fluentui/react-theme';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const tabIndicatorCssVars_unstable = {
@@ -80,39 +81,36 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   const [animationValues, setAnimationValues] = React.useState({ offset: 0, scale: 1 });
   const getRegisteredTabs = useTabListContext_unstable(ctx => ctx.getRegisteredTabs);
 
-  React.useEffect(() => {
-    if (isValueDefined(lastAnimatedFrom)) {
-      setAnimationValues({ offset: 0, scale: 1 });
-    }
-  }, [lastAnimatedFrom]);
+  const [requestAnimationFrame] = useAnimationFrame();
 
-  React.useEffect(() => {
-    if (selected) {
-      const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
+  if (selected) {
+    const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
 
-      if (isValueDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
-        const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
-        const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
+    if (isValueDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
+      const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
+      const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
-        if (selectedTabRect && previousSelectedTabRect) {
-          const offset = vertical
-            ? previousSelectedTabRect.y - selectedTabRect.y
-            : previousSelectedTabRect.x - selectedTabRect.x;
+      if (selectedTabRect && previousSelectedTabRect) {
+        const offset = vertical
+          ? previousSelectedTabRect.y - selectedTabRect.y
+          : previousSelectedTabRect.x - selectedTabRect.x;
 
-          const scale = vertical
-            ? previousSelectedTabRect.height / selectedTabRect.height
-            : previousSelectedTabRect.width / selectedTabRect.width;
+        const scale = vertical
+          ? previousSelectedTabRect.height / selectedTabRect.height
+          : previousSelectedTabRect.width / selectedTabRect.width;
 
-          setAnimationValues({ offset, scale });
-          setLastAnimatedFrom(previousSelectedValue);
-        }
+        setAnimationValues({ offset, scale });
+        setLastAnimatedFrom(previousSelectedValue);
+
+        // Reset the animation values after the animation is complete
+        requestAnimationFrame(() => setAnimationValues({ offset: 0, scale: 1 }));
       }
-    } else if (isValueDefined(lastAnimatedFrom)) {
-      // need to clear the last animated from so that if this tab is selected again
-      // from the same previous tab as last time, that animation still happens.
-      setLastAnimatedFrom(undefined);
     }
-  }, [selected, getRegisteredTabs, lastAnimatedFrom, vertical]);
+  } else if (isValueDefined(lastAnimatedFrom)) {
+    // need to clear the last animated from so that if this tab is selected again
+    // from the same previous tab as last time, that animation still happens.
+    setLastAnimatedFrom(undefined);
+  }
 
   // do not apply any animation if the tab is disabled
   if (disabled) {
