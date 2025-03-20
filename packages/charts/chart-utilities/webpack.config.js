@@ -37,6 +37,8 @@ module.exports = [
       },
     },
   }),
+  // This should be uncommented if we want to build the legacy demo app for the PR deploy site, which should only happen
+  // if examples are added under the react-examples/chart-utilities folder.
   // Also build the legacy demo app for the PR deploy site
-  require('./webpack.serve.config'),
+  // require('./webpack.serve.config'),
 ];

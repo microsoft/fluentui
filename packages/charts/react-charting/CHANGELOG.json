@@ -2,6 +2,48 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 10:22:53 GMT",
+      "tag": "@fluentui/react-charting_v5.23.65",
+      "version": "5.23.65",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b",
+            "comment": "fix: restore missing files from last publish."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.203",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.14",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 07:21:55 GMT",
+      "tag": "@fluentui/react-charting_v5.23.64",
+      "version": "5.23.64",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.2",
+            "commit": "d811d795c1e7234090cc6f36b2ed5e2544d35748"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 18:51:26 GMT",
       "tag": "@fluentui/react-charting_v5.23.63",
       "version": "5.23.63",
