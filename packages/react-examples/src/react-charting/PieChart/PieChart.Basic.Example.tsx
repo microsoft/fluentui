@@ -37,41 +37,39 @@ export class PieChartBasicExample extends React.Component<IPieChartProps, { widt
     ];
     return (
       <div className="containerDiv">
-        <React.Fragment>
-          <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
-            <StackItem>
-              <label htmlFor="width-slider">Width:</label>
-              <input
-                type="range"
-                value={this.state.width}
-                min={0}
-                max={1000}
-                id="width-slider"
-                onChange={this._onWidthChange}
-                aria-valuetext={`Width: ${this.state.width}`}
-              />
-            </StackItem>
-            <StackItem>
-              <label htmlFor="height-slider">Height:</label>
-              <input
-                type="range"
-                value={this.state.height}
-                min={0}
-                max={1000}
-                id="height-slider"
-                onChange={this._onHeightChange}
-                aria-valuetext={`height: ${this.state.height}`}
-              />
-            </StackItem>
-          </Stack>
-          <PieChart
-            width={this.state.width}
-            height={this.state.height}
-            culture={window.navigator.language}
-            data={points}
-            chartTitle="Pie Chart basic example"
-          />
-        </React.Fragment>
+        <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
+          <StackItem>
+            <label htmlFor="width-slider">Width:</label>
+            <input
+              type="range"
+              value={this.state.width}
+              min={0}
+              max={1000}
+              id="width-slider"
+              onChange={this._onWidthChange}
+              aria-valuetext={`Width: ${this.state.width}`}
+            />
+          </StackItem>
+          <StackItem>
+            <label htmlFor="height-slider">Height:</label>
+            <input
+              type="range"
+              value={this.state.height}
+              min={0}
+              max={1000}
+              id="height-slider"
+              onChange={this._onHeightChange}
+              aria-valuetext={`height: ${this.state.height}`}
+            />
+          </StackItem>
+        </Stack>
+        <PieChart
+          width={this.state.width}
+          height={this.state.height}
+          culture={window.navigator.language}
+          data={points}
+          chartTitle="Pie Chart basic example"
+        />
       </div>
     );
   }
