@@ -1,5 +1,6 @@
 export { definition as DropdownDefinition } from './dropdown.definition.js';
-export { BaseDropdown, Dropdown } from './dropdown.js';
+export { BaseDropdown } from './dropdown.base.js';
+export { Dropdown } from './dropdown.js';
 export {
   DropdownAppearance,
   DropdownSize,

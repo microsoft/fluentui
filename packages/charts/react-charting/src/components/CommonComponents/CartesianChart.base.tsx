@@ -294,6 +294,12 @@ export class CartesianChartBase
         xAxisPadding: this.props.xAxisPadding,
         xAxisInnerPadding: this.props.xAxisInnerPadding,
         xAxisOuterPadding: this.props.xAxisOuterPadding,
+        containerWidth: this.state.containerWidth,
+        hideTickOverlap:
+          this.props.hideTickOverlap &&
+          !this.props.rotateXAxisLables &&
+          !this.props.showXAxisLablesTooltip &&
+          !this.props.wrapXAxisLables,
       };
 
       const YAxisParams = {
@@ -324,7 +330,12 @@ export class CartesianChartBase
       let tickValues: (string | number)[];
       switch (this.props.xAxisType!) {
         case XAxisTypes.NumericAxis:
-          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+          ({ xScale, tickValues } = createNumericXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            this.props.chartType,
+            culture,
+          ));
           break;
         case XAxisTypes.DateAxis:
           ({ xScale, tickValues } = createDateXAxis(
@@ -346,7 +357,12 @@ export class CartesianChartBase
           ));
           break;
         default:
-          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+          ({ xScale, tickValues } = createNumericXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            this.props.chartType,
+            culture,
+          ));
       }
       this._xScale = xScale;
       this._tickValues = tickValues;
@@ -464,6 +480,7 @@ export class CartesianChartBase
       height: this.state._height,
       className: this.props.className,
       isRtl: this._isRtl,
+      enableReflow: this.props.enableReflow,
     });
 
     const svgDimensions = {
@@ -555,6 +572,7 @@ export class CartesianChartBase
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
             <g
@@ -606,6 +624,7 @@ export class CartesianChartBase
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
                     theme={this.props.theme}
+                    showBackground={true}
                   />
                 )}
               </g>
@@ -630,6 +649,7 @@ export class CartesianChartBase
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
           </svg>

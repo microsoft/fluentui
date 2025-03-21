@@ -4,7 +4,6 @@
   "private": true,
   "devDependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-color-picker-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",

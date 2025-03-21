@@ -1,6 +1,5 @@
-import { attr, type ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import type { MenuList } from '../menu-list/menu-list.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
@@ -20,13 +19,6 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
   indicator?: StaticallyComposableHTML<MenuItem>;
   submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
-
-/**
- * Creates a function that can be used to filter a Node array, selecting only elements with elementInternals role of "menu".
- * @public
- */
-export const menuFilter = (): ElementsFilter => value =>
-  value.nodeType === 1 && (value as MenuList).elementInternals.role === 'menu';
 
 /**
  * A Switch Custom HTML Element.

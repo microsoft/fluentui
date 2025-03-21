@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { BaseAnchor } from '../anchor-button/anchor-button.js';
+import { BaseAnchor } from '../anchor-button/anchor-button.base.js';
 import { swapStates, toggleState } from '../utils/element-internals.js';
 import { LinkAppearance } from './link.options.js';
 

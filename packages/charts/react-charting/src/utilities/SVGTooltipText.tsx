@@ -68,6 +68,12 @@ interface ISVGTooltipTextProps {
    * Theme provided by High Order Component
    */
   theme?: ITheme;
+
+  /**
+   * @default false
+   * Prop to selectively display the tooltip background
+   */
+  showBackground?: boolean;
 }
 
 interface ISVGTooltipTextState {
@@ -116,7 +122,7 @@ export class SVGTooltipText
   }
 
   public render(): React.ReactNode {
-    const { content, tooltipProps, textProps, shouldReceiveFocus = true } = this.props;
+    const { content, tooltipProps, textProps, shouldReceiveFocus = true, showBackground = false } = this.props;
     const { isTooltipVisible, textX, textY, textWidth, textHeight } = this.state;
     const tooltipRenderProps: ITooltipProps = {
       content,
@@ -138,14 +144,16 @@ export class SVGTooltipText
     const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
     return (
       <>
-        <rect
-          x={rectX}
-          y={(textY ?? 0) - PADDING}
-          width={(textWidth ?? 0) + 2 * PADDING}
-          height={(textHeight ?? 0) + 2 * PADDING}
-          fill={backgroundColor}
-          transform={textProps?.transform}
-        />
+        {showBackground && (
+          <rect
+            x={rectX}
+            y={(textY ?? 0) - PADDING}
+            width={(textWidth ?? 0) + 2 * PADDING}
+            height={(textHeight ?? 0) + 2 * PADDING}
+            fill={backgroundColor}
+            transform={textProps?.transform}
+          />
+        )}
         <text
           {...textProps}
           id={this._tooltipHostId}

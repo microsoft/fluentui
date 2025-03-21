@@ -2,6 +2,165 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Wed, 19 Mar 2025 18:11:11 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "faa9f1f749e9dee653ea26db9f9859cbb2a383fd",
+            "comment": "fix(MessageBar): revert motion migration to resolve validation errors"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 15:40:43 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.2",
+      "version": "9.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.4.2",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.52",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion to v9.6.9",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.5",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.0",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.4.2",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.22",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Mar 2025 18:58:54 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.1",
+      "version": "9.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.4.1",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.51",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion to v9.6.8",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.4",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.22.0",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.4.1",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-utilities to v9.18.21",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2025 14:34:05 GMT",
+      "tag": "@fluentui/react-message-bar_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-link to v9.4.0",
+            "commit": "5f185f3378d6315879de324ca57f025df37a79d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2025 10:42:11 GMT",
+      "tag": "@fluentui/react-message-bar_v9.3.3",
+      "version": "9.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3",
+            "comment": "fix: Revert MessageBar auto reflow changes from #33409"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.102",
+            "commit": "b37554b631f4e27e0927b123732f3d57d62660a3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jan 2025 21:26:35 GMT",
       "tag": "@fluentui/react-message-bar_v9.3.2",
       "version": "9.3.2",

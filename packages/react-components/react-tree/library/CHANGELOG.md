@@ -1,8 +1,81 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 28 Jan 2025 21:26:34 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Mar 2025 09:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.3)
+
+Thu, 20 Mar 2025 09:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.2..@fluentui/react-tree_v9.10.3)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.4.6 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
+- Bump @fluentui/react-motion to v9.6.10 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.2)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.1..@fluentui/react-tree_v9.10.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-avatar to v9.7.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-button to v9.4.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-checkbox to v9.3.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.74 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.5 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-motion to v9.6.9 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-radio to v9.3.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-tabster to v9.24.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.52 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.1)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.0..@fluentui/react-tree_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-avatar to v9.7.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-button to v9.4.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-checkbox to v9.3.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.73 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.4 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-motion to v9.6.8 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-radio to v9.3.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-tabster to v9.24.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.51 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.9.3..@fluentui/react-tree_v9.10.0)
+
+### Minor changes
+
+- Bump @fluentui/react-aria to v9.14.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-avatar to v9.7.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-button to v9.4.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-checkbox to v9.3.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-radio to v9.3.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.3)
+
+Fri, 07 Feb 2025 10:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.9.2..@fluentui/react-tree_v9.9.3)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.102 ([PR #33797](https://github.com/microsoft/fluentui/pull/33797) by beachball)
 
 ## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.9.2)
 

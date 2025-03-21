@@ -62,14 +62,19 @@ export const ScrollTo = () => {
     <div>
       <Input defaultValue={'0'} onChange={onChangeGoToIndex} />
       <Button onClick={scrollToIndex}>{'GoTo'}</Button>
-      <Text>{message}</Text>
+      <Text aria-live="polite">{message}</Text>
       <VirtualizerScrollViewDynamic
         numItems={childLength}
         itemSize={100}
         getItemSize={getItemSizeCallback}
         imperativeRef={scrollRef}
         imperativeVirtualizerRef={sizeRef}
-        container={{ role: 'list', style: { maxHeight: '80vh' } }}
+        container={{
+          role: 'list',
+          'aria-label': `Virtualized list with ${childLength} children`,
+          tabIndex: 0,
+          style: { maxHeight: '80vh' },
+        }}
       >
         {(index: number) => {
           const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

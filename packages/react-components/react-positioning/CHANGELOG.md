@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 27 Jan 2025 20:27:34 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.5)
+
+Wed, 19 Mar 2025 15:40:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.4..@fluentui/react-positioning_v9.16.5)
+
+### Patches
+
+- fix: don't throw on window.getComputedStyle() ([PR #34016](https://github.com/microsoft/fluentui/pull/34016) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.16.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.4)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.3..@fluentui/react-positioning_v9.16.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
 
 ## [9.16.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.3)
 
