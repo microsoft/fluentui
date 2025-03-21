@@ -939,7 +939,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
 
     // Show the circle if no legends are selected or if the point's legend is in the selected legends
-    if (!this._legendHighlighted(legend)) {
+    if (!this._noLegendHighlighted() && !this._legendHighlighted(legend)) {
       return 0;
     }
 
@@ -1022,7 +1022,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getFilteredLegendValues = (values: any) => {
-    !this._noLegendHighlighted()
+    return !this._noLegendHighlighted()
       ? values.filter((value: { legend: string }) => this._legendHighlighted(value.legend))
       : values;
   };
