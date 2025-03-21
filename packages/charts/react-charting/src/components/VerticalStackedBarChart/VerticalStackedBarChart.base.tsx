@@ -851,7 +851,7 @@ export class VerticalStackedBarChartBase
 
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
+    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
     let sumOfPercent = 0;
     bars.forEach(point => {
