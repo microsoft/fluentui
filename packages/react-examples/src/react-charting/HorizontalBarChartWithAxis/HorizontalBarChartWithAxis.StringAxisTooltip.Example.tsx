@@ -71,7 +71,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
 
     const rootStyle = { width: '650px', height: '350px' };
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <ChoiceGroup
             options={options}
@@ -102,7 +102,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

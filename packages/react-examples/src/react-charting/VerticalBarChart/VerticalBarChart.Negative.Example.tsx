@@ -183,7 +183,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <Label>
           In this example the supportNegativeData property is enabled and some positive and some negative y points are
           passed to the data. As a result chart with negative y axis data is rendered.
@@ -288,7 +288,7 @@ export class VerticalBarChartNegativeExample extends React.Component<IVerticalBa
             />
           </div>
         )}
-      </>
+      </div>
     );
   }
 }

@@ -79,7 +79,7 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
 
   private _createTreeChart(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -99,7 +99,7 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
           height={this.state._height}
           margins={{ top: 30, right: 130, bottom: 30, left: 50 }}
         />
-      </>
+      </div>
     );
   }
 }

@@ -33,7 +33,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
 
   public render(): React.ReactNode {
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
           <StackItem>
             <label htmlFor="width-slider">Width:</label>
@@ -113,7 +113,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
           enableGradient={this.state.enableGradient}
           roundCorners={this.state.roundedCorners}
         />
-      </>
+      </div>
     );
   }
 

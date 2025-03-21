@@ -156,7 +156,7 @@ export class LineChartAllNegativeExample extends React.Component<{}, ILineChartB
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -218,7 +218,7 @@ export class LineChartAllNegativeExample extends React.Component<{}, ILineChartB
             supportNegativeData={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

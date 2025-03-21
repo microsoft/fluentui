@@ -26,7 +26,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
 
   private _createTreeChart(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -38,7 +38,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
           aria-valuetext={`ChangeWidthSlider${this.state?._layoutWidth}`}
         />
         <TreeChart treeData={twoLayerChart} layoutWidth={this.state?._layoutWidth} />
-      </>
+      </div>
     );
   }
 }

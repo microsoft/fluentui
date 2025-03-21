@@ -198,7 +198,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Callout">Change Width:</label>
         <input
           type="range"
@@ -295,7 +295,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
