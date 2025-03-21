@@ -1,0 +1,8 @@
+{
+  "name": "MenuItemRadio",
+  "component": "Menu",
+  "folder": "Menu",
+  "story": "Radio Items",
+  "extends": "MenuBase",
+  "attributes": ["singleChoice", "notOnOrOff", "visibilityInMenu", "autoSelect"]
+}
