@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 10:22:53 GMT",
+      "tag": "@fluentui/react_v8.122.14",
+      "version": "8.122.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b",
+            "comment": "fix: restore missing files from last publish."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 18:51:26 GMT",
+      "tag": "@fluentui/react_v8.122.13",
+      "version": "8.122.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f900ebfb5523381379b2316ad837370388ece098",
+            "comment": "fix(Autofill): Revert #33700 to avoid breaking pickers."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Mar 2025 07:23:16 GMT",
       "tag": "@fluentui/react_v8.122.12",
       "version": "8.122.12",

@@ -23,6 +23,7 @@ jobs:
   generate_vrt_screenshots:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
+    name: Generate screenshots
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,6 +67,7 @@ jobs:
 
       - name: Save PR number
         run: echo ${{ github.event.number }} > pr.txt
+
       - uses: actions/upload-artifact@v4
         with:
           name: pr-number

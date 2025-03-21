@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import { isAnimationRunning } from '../utils/isAnimationRunning';
 import type { AnimationHandle, AtomMotion } from '../types';
 
 export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
@@ -78,6 +80,9 @@ function useAnimateAtomsInSupportedEnvironment() {
               oncancel();
             });
         },
+        isRunning() {
+          return animations.some(animation => isAnimationRunning(animation));
+        },
 
         cancel: () => {
           animations.forEach(animation => {
@@ -97,6 +102,18 @@ function useAnimateAtomsInSupportedEnvironment() {
         finish: () => {
           animations.forEach(animation => {
             animation.finish();
+          });
+        },
+        reverse: () => {
+          // Heads up!
+          //
+          // This is used for the interruptible motion. If the animation is running, we need to reverse it.
+          //
+          // TODO: what do with animations that have "delay"?
+          // TODO: what do with animations that have different "durations"?
+
+          animations.forEach(animation => {
+            animation.reverse();
           });
         },
       };
@@ -148,6 +165,10 @@ function useAnimateAtomsInTestEnvironment() {
         set playbackRate(rate: number) {
           /* no-op */
         },
+        isRunning() {
+          return false;
+        },
+
         cancel() {
           /* no-op */
         },
@@ -158,6 +179,9 @@ function useAnimateAtomsInTestEnvironment() {
           /* no-op */
         },
         finish() {
+          /* no-op */
+        },
+        reverse() {
           /* no-op */
         },
       };
