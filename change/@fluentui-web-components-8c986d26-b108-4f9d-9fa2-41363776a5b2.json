@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: emit change event on tablist only when active tab changed",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
