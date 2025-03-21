@@ -1,6 +1,7 @@
 export { motionTokens, durations, curves } from './motions/motionTokens';
 
 export { createMotionComponent, type MotionComponentProps } from './factories/createMotionComponent';
+export { createMotionKindComponent } from './factories/createMotionKindComponent';
 export {
   createPresenceComponent,
   type PresenceComponentProps,
@@ -23,3 +24,5 @@ export type {
 } from './types';
 
 export { MotionBehaviourProvider } from './contexts/MotionBehaviourContext';
+
+export { mapItemsWithIndexes } from './mapItemsWithIndexes';
