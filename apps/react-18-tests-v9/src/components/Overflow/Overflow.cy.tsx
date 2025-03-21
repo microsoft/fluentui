@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { mount as mountBase } from '@cypress/react';
 import {
   makeStyles,
   Button,
@@ -15,10 +16,9 @@ import {
   OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
-  FluentProvider,
-  teamsLightTheme,
 } from '@fluentui/react-components';
-import { mount as mountBase } from '@cypress/react';
+
+import { Provider } from '../Provider/Provider';
 
 // eslint-disable-next-line @griffel/styles-file
 const useStyles = makeStyles({
@@ -90,11 +90,7 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
 };
 
 const mount = (element: JSX.Element) => {
-  mountBase(
-    <React.StrictMode>
-      <FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>
-    </React.StrictMode>,
-  );
+  mountBase(<Provider>{element}</Provider>);
 };
 
 describe('Overflow', () => {

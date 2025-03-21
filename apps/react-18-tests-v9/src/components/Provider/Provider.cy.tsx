@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
+import { Button } from '@fluentui/react-components';
 
-import { App } from './App';
+import { Provider } from './Provider';
 
 const providerSelector = '.fui-FluentProvider';
 
-describe('App with React 18', () => {
+describe('Provider with React 18', () => {
   describe('FluentProvider', () => {
     it('should apply matching className in strict mode', () => {
       mount(
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>,
+        <Provider>
+          <Button>Click Me</Button>
+        </Provider>,
       );
 
       cy.get(providerSelector)

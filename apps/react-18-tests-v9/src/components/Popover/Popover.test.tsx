@@ -2,9 +2,9 @@ import { resetIdsForTests } from '@fluentui/react-utilities';
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import { App } from './App';
+import { CustomPopover as Popover } from './Popover';
 
-describe('App with React 18', () => {
+describe('Popover component with React 18', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
 
@@ -20,7 +20,7 @@ describe('App with React 18', () => {
     it('should apply matching className in strict mode', () => {
       const { getByText } = render(
         <React.StrictMode>
-          <App />
+          <Popover />
         </React.StrictMode>,
       );
       const element = getByText('Click Me');
