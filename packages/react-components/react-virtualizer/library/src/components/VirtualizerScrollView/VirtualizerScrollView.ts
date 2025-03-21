@@ -3,6 +3,7 @@ import { useVirtualizerScrollView_unstable } from './useVirtualizerScrollView';
 import { renderVirtualizerScrollView_unstable } from './renderVirtualizerScrollView';
 import { useVirtualizerScrollViewStyles_unstable } from './useVirtualizerScrollViewStyles.styles';
 import * as React from 'react';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Virtualizer ScrollView
@@ -12,6 +13,7 @@ export const VirtualizerScrollView: React.FC<VirtualizerScrollViewProps> = (prop
   const state = useVirtualizerScrollView_unstable(props);
 
   useVirtualizerScrollViewStyles_unstable(state);
+  useCustomStyleHook_unstable('useVirtualizerScrollViewStyles_unstable')(state);
 
   return renderVirtualizerScrollView_unstable(state);
 };

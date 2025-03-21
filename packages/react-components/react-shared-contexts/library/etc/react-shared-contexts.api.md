@@ -192,6 +192,27 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useColorAreaStyles_unstable: CustomStyleHook;
     useColorPickerStyles_unstable: CustomStyleHook;
     useColorSliderStyles_unstable: CustomStyleHook;
+    useInfoButtonStyles_unstable: CustomStyleHook;
+    useInfoLabelStyles_unstable: CustomStyleHook;
+    useSkeletonStyles_unstable: CustomStyleHook;
+    useSkeletonItemStyles_unstable: CustomStyleHook;
+    useToastStyles_unstable: CustomStyleHook;
+    useToastBodyStyles_unstable: CustomStyleHook;
+    useToastContainerStyles_unstable: CustomStyleHook;
+    useToastFooterStyles_unstable: CustomStyleHook;
+    useToastTitleStyles_unstable: CustomStyleHook;
+    useFieldStyles_unstable: CustomStyleHook;
+    useRatingStyles_unstable: CustomStyleHook;
+    useRatingDisplayStyles_unstable: CustomStyleHook;
+    useRatingItemStyles_unstable: CustomStyleHook;
+    useTreeStyles_unstable: CustomStyleHook;
+    useTreeItemStyles_unstable: CustomStyleHook;
+    useTreeItemLayoutStyles_unstable: CustomStyleHook;
+    useTreeItemPersonaLayoutStyles_unstable: CustomStyleHook;
+    useFlatTreeStyles_unstable: CustomStyleHook;
+    useVirtualizerStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewDynamicStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -353,6 +374,27 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useColorAreaStyles_unstable: CustomStyleHook;
     useColorPickerStyles_unstable: CustomStyleHook;
     useColorSliderStyles_unstable: CustomStyleHook;
+    useInfoButtonStyles_unstable: CustomStyleHook;
+    useInfoLabelStyles_unstable: CustomStyleHook;
+    useSkeletonStyles_unstable: CustomStyleHook;
+    useSkeletonItemStyles_unstable: CustomStyleHook;
+    useToastStyles_unstable: CustomStyleHook;
+    useToastBodyStyles_unstable: CustomStyleHook;
+    useToastContainerStyles_unstable: CustomStyleHook;
+    useToastFooterStyles_unstable: CustomStyleHook;
+    useToastTitleStyles_unstable: CustomStyleHook;
+    useFieldStyles_unstable: CustomStyleHook;
+    useRatingStyles_unstable: CustomStyleHook;
+    useRatingDisplayStyles_unstable: CustomStyleHook;
+    useRatingItemStyles_unstable: CustomStyleHook;
+    useTreeStyles_unstable: CustomStyleHook;
+    useTreeItemStyles_unstable: CustomStyleHook;
+    useTreeItemLayoutStyles_unstable: CustomStyleHook;
+    useTreeItemPersonaLayoutStyles_unstable: CustomStyleHook;
+    useFlatTreeStyles_unstable: CustomStyleHook;
+    useVirtualizerStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewDynamicStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -514,6 +556,27 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useColorAreaStyles_unstable: CustomStyleHook;
     useColorPickerStyles_unstable: CustomStyleHook;
     useColorSliderStyles_unstable: CustomStyleHook;
+    useInfoButtonStyles_unstable: CustomStyleHook;
+    useInfoLabelStyles_unstable: CustomStyleHook;
+    useSkeletonStyles_unstable: CustomStyleHook;
+    useSkeletonItemStyles_unstable: CustomStyleHook;
+    useToastStyles_unstable: CustomStyleHook;
+    useToastBodyStyles_unstable: CustomStyleHook;
+    useToastContainerStyles_unstable: CustomStyleHook;
+    useToastFooterStyles_unstable: CustomStyleHook;
+    useToastTitleStyles_unstable: CustomStyleHook;
+    useFieldStyles_unstable: CustomStyleHook;
+    useRatingStyles_unstable: CustomStyleHook;
+    useRatingDisplayStyles_unstable: CustomStyleHook;
+    useRatingItemStyles_unstable: CustomStyleHook;
+    useTreeStyles_unstable: CustomStyleHook;
+    useTreeItemStyles_unstable: CustomStyleHook;
+    useTreeItemLayoutStyles_unstable: CustomStyleHook;
+    useTreeItemPersonaLayoutStyles_unstable: CustomStyleHook;
+    useFlatTreeStyles_unstable: CustomStyleHook;
+    useVirtualizerStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewStyles_unstable: CustomStyleHook;
+    useVirtualizerScrollViewDynamicStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
