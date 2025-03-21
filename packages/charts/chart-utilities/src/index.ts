@@ -110,4 +110,4 @@ export {
   isArrayOrTypedArray,
 } from './PlotlySchemaConverter';
 
-export { decodeBase64Fields } from './decode-binary-data';
+export { decodeBase64Fields } from './DecodeBase64Data';
