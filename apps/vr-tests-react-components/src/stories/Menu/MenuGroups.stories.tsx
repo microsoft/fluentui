@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { StoryWright } from 'storywright';
 import {
   Menu,
   MenuTrigger,
@@ -17,8 +16,6 @@ import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../../utilities'
 
 export default {
   title: 'Menu Converged - groups',
-
-  decorators: [story => <StoryWright>{story()}</StoryWright>],
 } satisfies Meta<typeof Menu>;
 
 export const Default = () => (

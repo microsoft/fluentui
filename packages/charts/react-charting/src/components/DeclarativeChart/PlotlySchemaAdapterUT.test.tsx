@@ -1,8 +1,8 @@
+import { isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+
 import {
-  isDateArray,
-  isNumberArray,
   isMonthArray,
-  updateXValues,
+  correctYearMonth,
   getColor,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
@@ -13,7 +13,6 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
-  sanitizeJson,
 } from './PlotlySchemaAdapter';
 
 const date = new Date();
@@ -139,29 +138,29 @@ describe('isMonthArray', () => {
   });
 });
 
-describe('updateXValues', () => {
+describe('correctYearMonth', () => {
   test('Should return dates array when input array contains months data', () => {
-    expect(updateXValues([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
+    expect(correctYearMonth([10, 11, 1])).toStrictEqual(['10 01, 2024', '11 01, 2024', '1 01, 2025']);
   });
 
   test('Should return error when input array contains invalid months', () => {
     try {
-      expect(updateXValues([10, 11, 16])).toStrictEqual([]);
+      expect(correctYearMonth([10, 11, 16])).toStrictEqual([]);
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
     }
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
-    expect(updateXValues(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
+    expect(correctYearMonth(['January', 'February'])).toStrictEqual(['January 01, 2025', 'February 01, 2025']);
   });
 
   test('Should return dates array when input array contains months data in MM format', () => {
-    expect(updateXValues(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
+    expect(correctYearMonth(['Jan', 'Feb'])).toStrictEqual(['Jan 01, 2025', 'Feb 01, 2025']);
   });
 
   test('Should return dates array when input array is empty', () => {
-    expect(updateXValues([])).toStrictEqual([]);
+    expect(correctYearMonth([])).toStrictEqual([]);
   });
 });
 

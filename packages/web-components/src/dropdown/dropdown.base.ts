@@ -1,5 +1,6 @@
 import { attr, FASTElement, Observable, observable, Updates, volatile } from '@microsoft/fast-element';
 import type { Listbox } from '../listbox/listbox.js';
+import { isListbox } from '../listbox/listbox.options.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
@@ -24,6 +25,14 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @public
  */
 export class BaseDropdown extends FASTElement {
+  /**
+   * Static property for the anchor positioning fallback observer. The observer is used to flip the listbox when it is
+   * out of view.
+   * @remarks This is only used when the browser does not support CSS anchor positioning.
+   * @internal
+   */
+  private static AnchorPositionFallbackObserver: IntersectionObserver;
+
   /**
    * The ID of the current active descendant.
    *
@@ -307,6 +316,13 @@ export class BaseDropdown extends FASTElement {
     toggleState(this.elementInternals, 'open', next);
     this.elementInternals.ariaExpanded = next ? 'true' : 'false';
     this.activeIndex = this.selectedIndex ?? -1;
+
+    if (next) {
+      BaseDropdown.AnchorPositionFallbackObserver?.observe(this.listbox);
+      return;
+    }
+
+    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
   }
 
   /**
@@ -594,6 +610,8 @@ export class BaseDropdown extends FASTElement {
 
     this.elementInternals.role = 'presentation';
 
+    this.addEventListener('connected', this.listboxConnectedHandler);
+
     Updates.enqueue(() => {
       this.insertControl();
     });
@@ -865,5 +883,58 @@ export class BaseDropdown extends FASTElement {
 
     this.freeformOption.value = value;
     this.freeformOption.hidden = false;
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.anchorPositionFallback();
+  }
+
+  disconnectedCallback(): void {
+    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
+
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Handles the connected event for the listbox.
+   *
+   * @param e - the event object
+   * @internal
+   */
+  private listboxConnectedHandler(e: Event): void {
+    const target = e.target as HTMLElement;
+
+    if (isListbox(target)) {
+      this.listbox = target;
+    }
+  }
+
+  /**
+   * When anchor positioning isn't supported, an intersection observer is used to flip the listbox when it hits the
+   * viewport bounds. One static observer is used for all dropdowns.
+   *
+   * @internal
+   */
+  private anchorPositionFallback(): void {
+    BaseDropdown.AnchorPositionFallbackObserver =
+      BaseDropdown.AnchorPositionFallbackObserver ??
+      new IntersectionObserver(
+        (entries: IntersectionObserverEntry[]): void => {
+          entries.forEach(({ boundingClientRect, isIntersecting, target }) => {
+            if (isListbox(target) && !isIntersecting) {
+              if (boundingClientRect.bottom > window.innerHeight) {
+                toggleState(target.dropdown!.elementInternals, 'flip-block', true);
+                return;
+              }
+
+              if (boundingClientRect.top < 0) {
+                toggleState(target.dropdown!.elementInternals, 'flip-block', false);
+              }
+            }
+          });
+        },
+        { threshold: 1 },
+      );
   }
 }
