@@ -49,6 +49,7 @@ function usePopupVisibility(props: DatePickerProps) {
     defaultState: props.defaultOpen,
     state: props.open,
   });
+
   const isMounted = React.useRef(false);
 
   React.useEffect(
@@ -433,6 +434,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
         elementType: 'div',
       })
     : undefined;
+  console.log('open', open);
   const { targetDocument } = useFluent();
   useOnClickOutside({
     element: targetDocument,
