@@ -93,6 +93,7 @@ export type {
   XAxisName,
   YAxisName,
 } from './PlotlySchema';
+
 export type { OutputChartType } from './PlotlySchemaConverter';
 export {
   mapFluentChart,
@@ -108,3 +109,5 @@ export {
   isTypedArray,
   isArrayOrTypedArray,
 } from './PlotlySchemaConverter';
+
+export { decodeBase64Fields } from './DecodeBase64Data';
