@@ -41,9 +41,18 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
+  ILineChartLineOptions,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
+import {
+  CurveFactory,
+  curveLinear as d3CurveLinear,
+  curveNatural as d3CurveNatural,
+  curveStep as d3CurveStep,
+  curveStepAfter as d3CurveStepAfter,
+  curveStepBefore as d3CurveStepBefore,
+} from 'd3-shape';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1594,3 +1603,25 @@ export const createMeasurementSpan = (text: string | number, className: string, 
 
   return measurementSpan;
 };
+
+export function getCurveFactory(
+  curve: ILineChartLineOptions['curve'],
+  defaultFactory: CurveFactory = d3CurveLinear,
+): CurveFactory {
+  if (typeof curve === 'function') {
+    return curve;
+  }
+
+  switch (curve) {
+    case 'natural':
+      return d3CurveNatural;
+    case 'step':
+      return d3CurveStep;
+    case 'stepAfter':
+      return d3CurveStepAfter;
+    case 'stepBefore':
+      return d3CurveStepBefore;
+    default:
+      return defaultFactory;
+  }
+}

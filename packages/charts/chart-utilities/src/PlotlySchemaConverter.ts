@@ -1,4 +1,5 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema } from './PlotlySchema';
+import { decodeBase64Fields } from './DecodeBase64Data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface OutputChartType {
@@ -155,7 +156,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
   }
 
   try {
-    const validSchema: PlotlySchema = getValidSchema(input);
+    let validSchema: PlotlySchema = getValidSchema(input);
+
+    try {
+      validSchema = decodeBase64Fields(validSchema);
+    } catch (error) {
+      return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
+    }
+
     switch (validSchema.data[0].type) {
       case 'pie':
         return { isValid: true, type: 'donut' };
@@ -191,11 +199,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
       case 'histogram':
         return validateSeriesData(validSchema, 'verticalbar', false);
       case 'scatter':
-        if (validSchema.data[0]?.mode?.includes('markers') && !isNumberArray(validSchema.data[0].y!)) {
+        if (validSchema.data[0]?.mode === 'markers' && !isNumberArray(validSchema.data[0].y!)) {
           return {
             isValid: false,
             errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}
-           , xAxisType: String or Date`,
+           , yAxisType: String or Date`,
           };
         }
         const isAreaChart = validSchema.data.some(
