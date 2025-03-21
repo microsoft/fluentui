@@ -97,6 +97,10 @@ export class BaseTablist extends FASTElement {
           activePanel.hidden = false;
         }
       }
+
+      if (oldValue !== newValue) {
+        this.change();
+      }
     }
   }
 
@@ -173,7 +177,6 @@ export class BaseTablist extends FASTElement {
           this.activetab = tab;
           this.activeid = tabId;
         }
-        this.change();
       }
     });
   }
@@ -188,7 +191,6 @@ export class BaseTablist extends FASTElement {
     if (this.activeTabIndex !== this.prevActiveTabIndex) {
       this.activeid = this.tabIds[this.activeTabIndex] as string;
       this.focusTab();
-      this.change();
     }
   }
 

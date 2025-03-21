@@ -1,4 +1,5 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema } from './PlotlySchema';
+import { decodeBase64Fields } from './DecodeBase64Data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface OutputChartType {
@@ -155,7 +156,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
   }
 
   try {
-    const validSchema: PlotlySchema = getValidSchema(input);
+    let validSchema: PlotlySchema = getValidSchema(input);
+
+    try {
+      validSchema = decodeBase64Fields(validSchema);
+    } catch (error) {
+      return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
+    }
+
     switch (validSchema.data[0].type) {
       case 'pie':
         return { isValid: true, type: 'donut' };

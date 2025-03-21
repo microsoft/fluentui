@@ -61,7 +61,7 @@ jobs:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         run: |
-          npx vr-approval-cli@1.0.0-test.1742371346259 run-diff \
+          npx vr-approval-cli@1.0.0-test.1742488629090 run-diff \
             --screenshotsDirectory "${{steps.screenshots_root.outputs.result}}" \
             --buildType release \
             --ciDefinitionId 'vrt-baseline.yml' \

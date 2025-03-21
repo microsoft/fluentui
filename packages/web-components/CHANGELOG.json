@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Mar 2025 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.88",
+      "version": "3.0.0-beta.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "90f14e0aa5f0d8283c4bd7b6f41fa5c80dc8cd8c",
+            "comment": "fix: emit change event on tablist only when active tab changed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Mar 2025 04:07:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.87",
       "version": "3.0.0-beta.87",

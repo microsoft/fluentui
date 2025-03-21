@@ -27,27 +27,27 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
       {
         legend: 'Debit card numbers (EU and USA)',
         data: 40,
-        color: '#0099BC',
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Passport numbers (USA)',
         data: 23,
-        color: '#77004D',
+        color: getColorFromToken(DataVizPalette.color5),
       },
       {
         legend: 'Social security numbers',
         data: 35,
-        color: '#4F68ED',
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         legend: 'Credit card numbers',
         data: 87,
-        color: '#AE8C00',
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         legend: 'Tax identification numbers (USA)',
         data: 87,
-        color: '#004E8C',
+        color: getColorFromToken(DataVizPalette.color9),
       },
     ];
 
@@ -55,27 +55,27 @@ export class MultiStackedBarChartVariantExample extends React.Component<{}, IMSB
       {
         legend: 'Debit card numbers (EU and USA)',
         data: 40,
-        color: '#0099BC',
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         legend: 'Passport numbers (USA)',
         data: 56,
-        color: '#77004D',
+        color: getColorFromToken(DataVizPalette.color5),
       },
       {
         legend: 'Social security numbers',
         data: 35,
-        color: '#4F68ED',
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         legend: 'Credit card numbers',
         data: 92,
-        color: '#AE8C00',
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         legend: 'Tax identification numbers (USA)',
         data: 87,
-        color: '#004E8C',
+        color: getColorFromToken(DataVizPalette.color9),
       },
     ];
 
