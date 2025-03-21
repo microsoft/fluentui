@@ -856,9 +856,7 @@ export class VerticalStackedBarChartBase
     let sumOfPercent = 0;
     bars.forEach(point => {
       let value = (Math.abs(point.data) / totalData) * 100;
-      if (value < 0) {
-        value = 0;
-      } else if (value < 1 && value !== 0) {
+      if (value < 1 && value !== 0) {
         value = 1;
       }
       sumOfPercent += value;
