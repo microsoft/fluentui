@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: updated TypeScript target to ES2020.",
+  "packageName": "@fluentui/tokens",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
