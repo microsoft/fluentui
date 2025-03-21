@@ -1022,7 +1022,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getFilteredLegendValues = (values: any) => {
-    return !this._noLegendHighlighted()
+    !this._noLegendHighlighted()
       ? values.filter((value: { legend: string }) => this._legendHighlighted(value.legend))
       : values;
   };
