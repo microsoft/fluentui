@@ -141,6 +141,10 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
   unstable_disableAutoFocus?: boolean;
+  /**
+   * Enables users to pass in custom scroll parent elements to listen to scroll events on
+   */
+  scrollParents?: HTMLElement[];
 };
 
 /**

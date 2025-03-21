@@ -182,6 +182,7 @@ function usePositioningOptions(options: PositioningOptions) {
     matchTargetSize,
     disableUpdateOnResize = false,
     shiftToCoverTarget,
+    scrollParents
   } = options;
 
   const { dir, targetDocument } = useFluent();
@@ -247,6 +248,7 @@ function usePositioningOptions(options: PositioningOptions) {
       matchTargetSize,
       targetDocument,
       disableUpdateOnResize,
+      scrollParents
     ],
   );
 }
