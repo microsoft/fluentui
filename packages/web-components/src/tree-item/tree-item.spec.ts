@@ -27,6 +27,16 @@ test.describe('Tree Item', () => {
     await expect(nestedItem).toHaveText('Nested Item A');
   });
 
+  test('should have empty attribute when there are not child tree items', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `Item 1
+        <span slot="start"></span>
+        `,
+    });
+    await expect(element.nth(0)).toHaveAttribute('empty');
+  });
+
   test('should work with expanded attribute', async ({ fastPage }) => {
     const { element } = fastPage;
     await fastPage.setTemplate({

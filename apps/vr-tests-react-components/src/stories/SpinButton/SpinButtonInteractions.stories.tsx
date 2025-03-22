@@ -1,53 +1,44 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, StoryParameters } from 'storywright';
 import { SpinButton, spinButtonClassNames } from '@fluentui/react-spinbutton';
 
-import {
-  getStoryVariant,
-  withStoryWrightSteps,
-  TestWrapperDecoratorFixedWidth,
-  DARK_MODE,
-  RTL,
-  HIGH_CONTRAST,
-} from '../../utilities';
+import { getStoryVariant, TestWrapperDecoratorFixedWidth, DARK_MODE, RTL, HIGH_CONTRAST } from '../../utilities';
 
 const cropTo = '.testWrapper';
 
 export default {
   title: 'SpinButton Converged',
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    story =>
-      withStoryWrightSteps({
-        story,
-        steps: new Steps()
-          .snapshot('rest', { cropTo })
-          .hover('input')
-          .snapshot('hoverInput', { cropTo })
+  decorators: [TestWrapperDecoratorFixedWidth],
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('rest', { cropTo })
+        .hover('input')
+        .snapshot('hoverInput', { cropTo })
 
-          .hover(`.${spinButtonClassNames.incrementButton}`)
-          .snapshot('hoverIncrement', { cropTo })
+        .hover(`.${spinButtonClassNames.incrementButton}`)
+        .snapshot('hoverIncrement', { cropTo })
 
-          .hover(`.${spinButtonClassNames.decrementButton}`)
-          .snapshot('hoverDecrement', { cropTo })
+        .hover(`.${spinButtonClassNames.decrementButton}`)
+        .snapshot('hoverDecrement', { cropTo })
 
-          .mouseDown(`.${spinButtonClassNames.incrementButton}`)
-          .wait(250)
-          .snapshot('mouseDownIncrement', { cropTo })
-          .mouseUp(`.${spinButtonClassNames.incrementButton}`)
+        .mouseDown(`.${spinButtonClassNames.incrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownIncrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.incrementButton}`)
 
-          .mouseDown(`.${spinButtonClassNames.decrementButton}`)
-          .wait(250)
-          .snapshot('mouseDownDecrement', { cropTo })
-          .mouseUp(`.${spinButtonClassNames.decrementButton}`)
+        .mouseDown(`.${spinButtonClassNames.decrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownDecrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.decrementButton}`)
 
-          .click('input')
-          .wait(250) // let focus border animation finish
-          .snapshot('focused', { cropTo })
-          .end(),
-      }),
-  ],
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo })
+        .end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof SpinButton>;
 
 export const AppearanceOutlineDefault = () => <SpinButton value={10} />;

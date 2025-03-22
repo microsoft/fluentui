@@ -1,0 +1,50 @@
+{
+  "name": "@fluentui/chart-utilities",
+  "entries": [
+    {
+      "date": "Thu, 20 Mar 2025 07:21:55 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.2",
+      "version": "1.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "d0bd936ac4b42bc0b6af495ce78ccda26c86fbfa",
+            "comment": "fix: Fixing failing webpack step in chart-utilities package."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 18:51:26 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.1",
+      "version": "1.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9b4495741904cbd3f282f4351eef4d53e07c35d9",
+            "comment": "feat: Move implementation of schema validation to charting utility and code refactor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 07:09:29 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "1380089fd1a9c3555d8071ac2c50e2f1d068e470",
+            "comment": "Create chart utilities package"
+          }
+        ]
+      }
+    }
+  ]
+}
