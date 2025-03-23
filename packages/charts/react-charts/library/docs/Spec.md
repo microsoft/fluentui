@@ -25,8 +25,8 @@ For the remaining controls, refer to the migration guide to consume them in v9. 
 | Heatmap Chart                       | April 2025           |
 | Horizontal Bar Chart                | Horizontal Bar Chart |
 | Horizontal Bar Chart with Axis      | April 2025           |
-| Horizontal Bar Chart - Stacked      |                      |
-| Horizontal Bar Chart - MultiStacked |                      |
+| Horizontal Bar Chart - Stacked      | Horizontal Bar Chart |
+| Horizontal Bar Chart - MultiStacked | Horizontal Bar Chart |
 | Legends                             | Legends              |
 | Line Chart                          | Line Chart           |
 | Pie Chart                           | Use Donut Chart      |
