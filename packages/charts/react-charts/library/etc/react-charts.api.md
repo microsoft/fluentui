@@ -483,6 +483,10 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
@@ -502,6 +506,7 @@ export interface HorizontalBarChartStyles {
     chartTitleRight: string;
     chartWrapper: string;
     items: string;
+    legendContainer: string;
     root: string;
     triangle: string;
 }
@@ -528,8 +533,8 @@ export interface HorizontalBarChartWithAxisDataPoint {
 
 // @public (undocumented)
 export interface HorizontalDataPoint {
+    total?: number;
     x: number;
-    y: number;
 }
 
 // @public (undocumented)
