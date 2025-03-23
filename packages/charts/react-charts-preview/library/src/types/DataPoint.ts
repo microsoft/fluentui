@@ -99,9 +99,9 @@ export interface HorizontalDataPoint {
   x: number;
 
   /**
-   * Dependent value of the data point, rendered along the y-axis.
+   * Total value of a single point bar chart.
    */
-  y: number;
+  total?: number;
 }
 
 /**

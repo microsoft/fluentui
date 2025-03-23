@@ -20,6 +20,7 @@ export const hbcClassNames: SlotClassNames<HorizontalBarChartStyles> = {
   triangle: 'fui-hbc__triangle',
   barLabel: 'fui-hbc__barLabel',
   chartWrapper: 'fui-hbc__chartWrapper',
+  legendContainer: 'fui-hbc__legendContainer',
 };
 
 /**
@@ -100,6 +101,7 @@ const useStyles = makeStyles({
   chartWrapper0ppadding: {
     paddingRight: tokens.spacingHorizontalNone,
   },
+  legendContainer: { paddingTop: tokens.spacingVerticalL },
 });
 
 /**
@@ -152,6 +154,11 @@ export const useHorizontalBarChartStyles_unstable = (props: HorizontalBarChartPr
         ? baseStyles.chartWrapper40ppadding
         : baseStyles.chartWrapper0ppadding,
       props.styles?.chartWrapper,
+    ),
+    legendContainer: mergeClasses(
+      hbcClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
     ),
   };
 };

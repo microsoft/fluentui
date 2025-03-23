@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 import { ChartDataPoint, ChartProps } from './index';
+import { LegendsProps } from '../Legends/index';
 
 /**
  * Horizontal Bar Chart properties
@@ -97,6 +98,14 @@ export interface HorizontalBarChartProps extends React.RefAttributes<HTMLDivElem
    */
   showTriangle?: boolean;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  legendsOverflowText?: any;
+
+  /*
+   * props for the legends in the chart
+   */
+  legendProps?: Partial<LegendsProps>;
+
   /**
    * prop to render the custom callout
    */
@@ -172,6 +181,11 @@ export interface HorizontalBarChartStyles {
    * Style for the div containing the chart
    */
   chartWrapper: string;
+
+  /**
+   * Style for the legend container.
+   */
+  legendContainer: string;
 }
 
 /**
