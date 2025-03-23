@@ -8,7 +8,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: getColorFromToken(DataVizPalette.color1),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '10%',
@@ -20,7 +20,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: getColorFromToken(DataVizPalette.color2),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
@@ -32,7 +32,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color3),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '59%',
@@ -44,7 +44,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color4),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '106%',
@@ -56,7 +56,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: getColorFromToken(DataVizPalette.color5),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '76%',
@@ -68,7 +68,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: getColorFromToken(DataVizPalette.color6),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '93%',
@@ -80,7 +80,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: getColorFromToken(DataVizPalette.color7),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '66%',
@@ -92,7 +92,7 @@ export const HorizontalBarBasic = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: getColorFromToken(DataVizPalette.color8),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
@@ -102,9 +102,9 @@ export const HorizontalBarBasic = () => {
   ];
 
   return (
-    <>
+    <div style={{ maxWidth: 600 }}>
       <HorizontalBarChart data={data} chartDataMode={'default'} className={'hbcbasic'} />
-    </>
+    </div>
   );
 };
 

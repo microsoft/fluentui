@@ -10,7 +10,7 @@ export const HorizontalBarBenchmark = () => {
         {
           legend: 'one',
           data: 50,
-          horizontalBarChartdata: { x: 10, y: 100 },
+          horizontalBarChartdata: { x: 10, total: 100 },
           color: getColorFromToken(DataVizPalette.color25),
         },
       ],
@@ -21,7 +21,7 @@ export const HorizontalBarBenchmark = () => {
         {
           legend: 'two',
           data: 30,
-          horizontalBarChartdata: { x: 30, y: 200 },
+          horizontalBarChartdata: { x: 30, total: 200 },
           color: getColorFromToken(DataVizPalette.color26),
         },
       ],
@@ -32,7 +32,7 @@ export const HorizontalBarBenchmark = () => {
         {
           legend: 'three',
           data: 5,
-          horizontalBarChartdata: { x: 15, y: 50 },
+          horizontalBarChartdata: { x: 15, total: 50 },
           color: getColorFromToken(DataVizPalette.color27),
         },
       ],
