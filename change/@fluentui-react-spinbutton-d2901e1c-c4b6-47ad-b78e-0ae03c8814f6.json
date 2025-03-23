@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Spinbutton aria-valuenow vs native value timing fix",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

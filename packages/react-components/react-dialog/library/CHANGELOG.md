@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Mar 2025 09:34:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.12.3)
+
+Thu, 20 Mar 2025 09:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.12.2..@fluentui/react-dialog_v9.12.3)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.6.10 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.6 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
+
+## [9.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.12.2)
+
+Wed, 19 Mar 2025 15:40:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.12.1..@fluentui/react-dialog_v9.12.2)
+
+### Patches
+
+- fix(react-dialog): Use token for backdrop color ([PR #33955](https://github.com/microsoft/fluentui/pull/33955) by jiangemma@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.52 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.74 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-motion to v9.6.9 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.5 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-aria to v9.14.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-tabster to v9.24.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-portal to v9.5.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.12.1)
 

@@ -1,4 +1,5 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema } from './PlotlySchema';
+import { decodeBase64Fields } from './DecodeBase64Data';
 
 export type ValidChartOutput = {
   isValid: true;
@@ -144,7 +145,13 @@ export const mapFluentChart = (input: any): OutputChartType => {
   }
 
   try {
-    const validSchema: PlotlySchema = getValidSchema(input);
+    let validSchema: PlotlySchema = getValidSchema(input);
+
+    try {
+      validSchema = decodeBase64Fields(validSchema);
+    } catch (error) {
+      return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
+    }
 
     let errorMessage: string | undefined;
     const validData = validSchema.data.filter((trace, index) => {
@@ -166,7 +173,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
         }
         if (trace.type === 'scatter' || isLineData(trace as Partial<PlotData>)) {
           const scatterTrace = trace as Partial<PlotData>;
-          if (scatterTrace.mode?.includes('markers') && !isNumberArray(scatterTrace.y)) {
+          if (scatterTrace.mode === 'markers' && !isNumberArray(scatterTrace.x)) {
             throw new Error(
               `Unsupported chart - type :${scatterTrace.type}, mode: ${scatterTrace.mode}, xAxisType: String or Date`,
             );

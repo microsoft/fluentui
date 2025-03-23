@@ -297,6 +297,9 @@ export type DataTransform = Partial<Transform>;
 export type Datum = string | number | Date | null;
 
 // @public (undocumented)
+export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema;
+
+// @public (undocumented)
 export interface Delta {
     // (undocumented)
     decreasing: {
