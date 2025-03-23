@@ -441,6 +441,12 @@ export interface Icon {
 }
 
 // @public (undocumented)
+export type InvalidChartOutput = {
+    isValid: false;
+    errorMessage: string;
+};
+
+// @public (undocumented)
 export const isArrayOfType: (plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined, typeCheck: (datum: any, ...args: any[]) => boolean, ...args: any[]) => boolean;
 
 // @public (undocumented)
@@ -450,7 +456,7 @@ export function isArrayOrTypedArray(a: any): boolean;
 export const isDate: (value: any) => boolean;
 
 // @public (undocumented)
-export const isDateArray: (data: Datum[] | Datum[][] | TypedArray) => boolean;
+export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export const isLineData: (data: Partial<PlotData>) => boolean;
@@ -459,7 +465,7 @@ export const isLineData: (data: Partial<PlotData>) => boolean;
 export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
-export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray) => boolean;
+export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export function isTypedArray(a: any): boolean;
@@ -836,14 +842,7 @@ export interface MinorAxisLayout {
 }
 
 // @public (undocumented)
-export interface OutputChartType {
-    // (undocumented)
-    errorMessage?: string;
-    // (undocumented)
-    isValid: boolean;
-    // (undocumented)
-    type?: string;
-}
+export type OutputChartType = ValidChartOutput | InvalidChartOutput;
 
 // @public (undocumented)
 export interface Padding {
@@ -1924,7 +1923,16 @@ export interface TransformStyle {
 export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array;
 
 // @public (undocumented)
-export const validate2Dseries: (series: PlotData) => boolean;
+export const validate2Dseries: (series: Partial<PlotData>) => boolean;
+
+// @public (undocumented)
+export type ValidChartOutput = {
+    isValid: true;
+    type: string;
+    chartSchema: {
+        plotlySchema: PlotlySchema;
+    };
+};
 
 // Warning: (ae-forgotten-export) The symbol "xYAxisNames" needs to be exported by the entry point index.d.ts
 //

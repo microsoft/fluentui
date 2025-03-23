@@ -1,11 +1,15 @@
 import type { Datum, TypedArray, PlotData, PlotlySchema } from './PlotlySchema';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface OutputChartType {
-  isValid: boolean;
-  errorMessage?: string;
-  type?: string;
-}
+export type ValidChartOutput = {
+  isValid: true;
+  type: string;
+  chartSchema: { plotlySchema: PlotlySchema };
+};
+export type InvalidChartOutput = {
+  isValid: false;
+  errorMessage: string;
+};
+export type OutputChartType = ValidChartOutput | InvalidChartOutput;
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
 
@@ -47,11 +51,11 @@ export const isArrayOfType = (
   }
 };
 
-export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+export const isDateArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   return isArrayOfType(data, isDate);
 };
 
-export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
+export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   return isArrayOfType(data, isNumber);
 };
 
@@ -65,11 +69,11 @@ export const isLineData = (data: Partial<PlotData>): boolean => {
   );
 };
 
-export const validate2Dseries = (series: PlotData): boolean => {
-  if (series.x?.length > 0 && Array.isArray(series.x[0])) {
+export const validate2Dseries = (series: Partial<PlotData>): boolean => {
+  if (Array.isArray(series.x) && series.x.length > 0 && Array.isArray(series.x[0])) {
     return false;
   }
-  if (series.y?.length > 0 && Array.isArray(series.y[0])) {
+  if (Array.isArray(series.y) && series.y.length > 0 && Array.isArray(series.y[0])) {
     return false;
   }
 
@@ -123,28 +127,13 @@ export const getValidSchema = (input: any): PlotlySchema => {
   }
 };
 
-const validateDatapointsInternal = (plotlyData: PlotlySchema, isAreaChart: boolean): OutputChartType => {
-  const xValues = (plotlyData.data[0] as PlotData).x;
-  const isXDate = isDateArray(xValues);
-  const isXNumber = isNumberArray(xValues);
-  if (isXDate || isXNumber) {
-    return validateSeriesData(plotlyData, isAreaChart ? 'area' : 'line', false);
+const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean) => {
+  if (!validate2Dseries(series)) {
+    throw new Error(`Invalid 2D series encountered.`);
   }
-
-  return validateSeriesData(plotlyData, 'fallback', true);
-};
-
-const validateSeriesData = (input: PlotlySchema, type: string, validateNumericY: boolean): OutputChartType => {
-  for (let i = 0; i < input.data.length; i++) {
-    const series = input.data[i] as PlotData;
-    if (!validate2Dseries(series)) {
-      return { isValid: false, errorMessage: `${type}. Invalid 2D series encountered.`, type };
-    }
-    if (validateNumericY && !isNumberArray(series.y)) {
-      return { isValid: false, errorMessage: `${type}. Non numeric Y values encountered.`, type };
-    }
+  if (validateNumericY && !isNumberArray(series.y)) {
+    throw new Error(`Non numeric Y values encountered.`);
   }
-  return { isValid: true, type };
 };
 
 export const mapFluentChart = (input: any): OutputChartType => {
@@ -156,68 +145,93 @@ export const mapFluentChart = (input: any): OutputChartType => {
 
   try {
     const validSchema: PlotlySchema = getValidSchema(input);
-    switch (validSchema.data[0].type) {
-      case 'pie':
-        return { isValid: true, type: 'donut' };
-      case 'bar':
-        const orientation = validSchema.data[0].orientation;
-        const containsBase = validSchema.data.some((series: PlotData) => series.base !== undefined);
-        if (orientation === 'h' && containsBase) {
-          return { isValid: false, errorMessage: 'Unsupported chart type: Gantt' };
-        } else if (orientation === 'h' && isNumberArray((validSchema.data[0] as PlotData).x)) {
-          return validateSeriesData(validSchema, 'horizontalbar', false);
-        } else {
-          const containsLines = validSchema.data.some(
-            series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
-          );
-          if (['group', 'overlay'].includes(validSchema?.layout?.barmode!) && !containsLines) {
-            return validateSeriesData(validSchema, 'groupedverticalbar', true);
+
+    let errorMessage: string | undefined;
+    const validData = validSchema.data.filter((trace, index) => {
+      try {
+        if (trace.type === 'histogram') {
+          validateSeriesData(trace, false);
+        }
+        if (trace.type === 'contour') {
+          throw new Error(`Unsupported chart - type :${trace.type}`);
+        }
+        if (trace.type === 'bar') {
+          if (trace.orientation === 'h' && trace.base !== undefined) {
+            throw new Error('Unsupported chart type: Gantt');
+          } else if (trace.orientation === 'h' && isNumberArray(trace.x)) {
+            validateSeriesData(trace, false);
+          } else {
+            validateSeriesData(trace, true);
           }
-          return validateSeriesData(validSchema, 'verticalstackedbar', true);
         }
-      case 'heatmap':
-        return { isValid: true, type: 'heatmap' };
-      case 'sankey':
-        return { isValid: true, type: 'sankey' };
-      case 'indicator':
-      case 'gauge':
-        if (validSchema.data?.[0]?.mode?.includes('gauge') || validSchema.data?.[0]?.type === 'gauge') {
-          return { isValid: true, type: 'gauge' };
+        if (trace.type === 'scatter' || isLineData(trace as Partial<PlotData>)) {
+          const scatterTrace = trace as Partial<PlotData>;
+          if (scatterTrace.mode?.includes('markers') && !isNumberArray(scatterTrace.y)) {
+            throw new Error(
+              `Unsupported chart - type :${scatterTrace.type}, mode: ${scatterTrace.mode}, xAxisType: String or Date`,
+            );
+          } else {
+            validateSeriesData(scatterTrace, true);
+          }
         }
-        return {
-          isValid: false,
-          errorMessage: `Unsupported chart - type: ${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}`,
-        };
-      case 'histogram':
-        return validateSeriesData(validSchema, 'verticalbar', false);
-      case 'scatter':
-        if (validSchema.data[0]?.mode?.includes('markers') && !isNumberArray(validSchema.data[0].y!)) {
-          return {
-            isValid: false,
-            errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}
-           , xAxisType: String or Date`,
-          };
-        }
-        const isAreaChart = validSchema.data.some(
-          (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
-        );
-        return validateDatapointsInternal(validSchema, isAreaChart);
-      case 'contour':
-        return {
-          isValid: false,
-          errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}`,
-        };
-      default:
-        const xValues = (validSchema.data[0] as PlotData).x;
-        const yValues = (validSchema.data[0] as PlotData).y;
-        if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
-          return validateDatapointsInternal(validSchema, false);
-        }
-        return {
-          isValid: false,
-          errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}}`,
-        };
+
+        return true;
+      } catch (error) {
+        errorMessage = `data[${index}]: ${error}`;
+        return false;
+      }
+    });
+    if (validData.length === 0) {
+      return { isValid: false, errorMessage: errorMessage! };
     }
+
+    const chartSchema = { plotlySchema: { ...validSchema, data: validData } };
+
+    const firstTrace = validData[0];
+    if (firstTrace.type === 'pie') {
+      return { isValid: true, type: 'donut', chartSchema };
+    }
+    if (firstTrace.type === 'heatmap') {
+      return { isValid: true, type: 'heatmap', chartSchema };
+    }
+    if (firstTrace.type === 'sankey') {
+      return { isValid: true, type: 'sankey', chartSchema };
+    }
+    if ((firstTrace.type === 'indicator' && firstTrace.mode?.includes('gauge')) || firstTrace.type === 'gauge') {
+      return { isValid: true, type: 'gauge', chartSchema };
+    }
+    if (firstTrace.type === 'histogram') {
+      return { isValid: true, type: 'verticalbar', chartSchema };
+    }
+
+    const containsBars = validData.some(d => d.type === 'bar');
+    const containsLines = validData.some(d => d.type === 'scatter' || isLineData(d as Partial<PlotData>));
+    if (containsBars && containsLines) {
+      return { isValid: true, type: 'verticalstackedbar', chartSchema };
+    }
+    if (containsBars) {
+      const barTrace = firstTrace as Partial<PlotData>;
+      if (barTrace.orientation === 'h' && isNumberArray(barTrace.x)) {
+        return { isValid: true, type: 'horizontalbar', chartSchema };
+      } else {
+        if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
+          return { isValid: true, type: 'groupedverticalbar', chartSchema };
+        }
+        return { isValid: true, type: 'verticalstackedbar', chartSchema };
+      }
+    }
+    if (containsLines) {
+      const scatterTrace = firstTrace as Partial<PlotData>;
+      const isAreaChart = validData.some((series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy');
+      const isXDate = isDateArray(scatterTrace.x);
+      const isXNumber = isNumberArray(scatterTrace.x);
+      if (isXDate || isXNumber) {
+        return { isValid: true, type: isAreaChart ? 'area' : 'line', chartSchema };
+      }
+      return { isValid: true, type: 'fallback', chartSchema };
+    }
+
+    return { isValid: false, errorMessage: `Unsupported chart - type :${firstTrace.type}}` };
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };
   }
