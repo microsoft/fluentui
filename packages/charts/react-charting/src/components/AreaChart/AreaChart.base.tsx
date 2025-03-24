@@ -321,7 +321,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const { selectedLegends } = this.state;
     const xOffset = this._xAxisRectScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
