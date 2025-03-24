@@ -199,11 +199,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
       case 'histogram':
         return validateSeriesData(validSchema, 'verticalbar', false);
       case 'scatter':
-        if (validSchema.data[0]?.mode === 'markers' && !isNumberArray(validSchema.data[0].y!)) {
+        if (validSchema.data[0]?.mode === 'markers' && !isNumberArray(validSchema.data[0].x!)) {
           return {
             isValid: false,
             errorMessage: `Unsupported chart - type :${validSchema.data[0]?.type}, mode: ${validSchema.data[0]?.mode}
-           , yAxisType: String or Date`,
+           , xAxisType: String or Date`,
           };
         }
         const isAreaChart = validSchema.data.some(
