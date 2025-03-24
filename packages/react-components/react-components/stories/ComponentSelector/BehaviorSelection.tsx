@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { ToggleButton, makeStyles } from '@fluentui/react-components';
 
-import behaviorOptions from './selection-logic/BehaviorOptions.json';
-
 const useStyles = makeStyles({
   heading: { margin: '30px 0 10px 0' },
   behaviors: { display: 'flex', gap: '10px' },
 });
 
-const getDefaultBehaviors = () => {
+const getDefaultBehaviors = behaviorOptions => {
   const behaviors = {};
   behaviorOptions.forEach(category => {
     category.behaviors.forEach(behavior => {
@@ -18,9 +16,9 @@ const getDefaultBehaviors = () => {
   return behaviors;
 };
 
-export const BehaviorSelection = ({ updateBehaviorDecision }) => {
+export const BehaviorSelection = ({ behaviorOptions, updateBehaviorDecision }) => {
   const classes = useStyles();
-  const [behaviors, setBehaviors] = React.useState<Record<string, boolean>>(getDefaultBehaviors());
+  const [behaviors, setBehaviors] = React.useState<Record<string, boolean>>(getDefaultBehaviors(behaviorOptions));
 
   return (
     <>

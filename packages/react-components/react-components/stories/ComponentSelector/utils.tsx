@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-import groups from './selection-logic/Groups.json';
-import questions from './selection-logic/Questions.json';
-
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
 const formatComponentStoryUrl = (component, story) =>
@@ -67,7 +64,7 @@ export const getComponentStoryUrl = component => {
   return url;
 };
 
-const getQuestionsIDs = (name: string) => {
+const getQuestionsIDs = (name: string, groups) => {
   const questionsIds: string[] = [];
   groups.forEach(group => {
     group.tags.includes(name) ? questionsIds.push(...group.questions) : null;
@@ -75,10 +72,10 @@ const getQuestionsIDs = (name: string) => {
   return questionsIds;
 };
 
-export const getAllQuestions = selectedComponents => {
+export const getAllQuestions = (selectedComponents, groups, questions) => {
   let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
-    getQuestionsIDs(component.name).forEach(id => {
+    getQuestionsIDs(component.name, groups).forEach(id => {
       allQuestionsIDs.includes(id) ? null : allQuestionsIDs.push(id);
     });
   });
@@ -89,8 +86,8 @@ export const getAllQuestions = selectedComponents => {
   return allQuestions;
 };
 
-export const hasQuestions = componentName => {
+export const hasQuestions = (componentName, groups, questions) => {
   const components = [{ name: componentName }];
-  const questions = getAllQuestions(components);
-  return questions.length > 0;
+  const componentQuestions = getAllQuestions(components, groups, questions);
+  return componentQuestions.length > 0;
 };

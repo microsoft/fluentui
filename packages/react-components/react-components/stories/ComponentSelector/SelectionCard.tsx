@@ -14,8 +14,6 @@ import {
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { stat } from 'fs';
 
-import * as componentsImagesImported from './components-images/index';
-
 const useStyles = makeStyles({
   main: {
     gap: '16px',
@@ -60,7 +58,7 @@ const useStyles = makeStyles({
 
 export const SelectionCard = props => {
   const styles = useStyles();
-  const { name, displayName, selected, updateComponentSelection } = props;
+  const { componentsImages, name, displayName, selected, updateComponentSelection } = props;
   const [hovered, setHovered] = React.useState(false);
 
   const onSelectionChange = React.useCallback(
@@ -73,9 +71,9 @@ export const SelectionCard = props => {
   const componentImage = React.useMemo(() => {
     let src;
     const importName = `${name}Img`;
-    if (componentsImagesImported[importName]) {
+    if (componentsImages[importName]) {
       const result = {
-        src: componentsImagesImported[importName],
+        src: componentsImages[importName],
         alt: `Preview for ${props.displayName}`,
       };
       return result;
