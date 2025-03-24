@@ -62,7 +62,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
       height: `${this.state.height}px`,
     };
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Styled">Change Width:</label>
         <input
           type="range"
@@ -115,7 +115,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             useUTC={false}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
