@@ -3,16 +3,15 @@ import { glob } from 'glob';
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { findGitRoot } from './utils';
-import { Report } from './types';
-import { reporterFileNames } from './shared';
+import { type Report, type RootReport } from './types';
+import { reporterFileNames, rootReportName } from './shared';
 
 export async function prepareReport(reportFilesGlob: string, outputPath: string) {
-  const rootReportName = 'vrt-report.json';
   const root = findGitRoot(process.cwd());
   const absoluteRootPath = join(root, outputPath);
 
   const reportFiles = glob.sync(reportFilesGlob, { absolute: true, cwd: root });
-  const reports = reportFiles.reduce<Record<string, Report>>((acc, reportFile) => {
+  const reports = reportFiles.reduce<RootReport>((acc, reportFile) => {
     const data: Report = JSON.parse(readFileSync(reportFile, 'utf-8'));
     acc[data.metadata.project.name] = data;
 
