@@ -22,7 +22,7 @@ export const chartPoints: ChartProps[] = [
     chartData: [
       {
         legend: 'one',
-        horizontalBarChartdata: { x: 1543, y: 15000 },
+        horizontalBarChartdata: { x: 1543, total: 15000 },
         color: '#004b50',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '94%',
@@ -34,7 +34,7 @@ export const chartPoints: ChartProps[] = [
     chartData: [
       {
         legend: 'two',
-        horizontalBarChartdata: { x: 800, y: 15000 },
+        horizontalBarChartdata: { x: 800, total: 15000 },
         color: '#5c2d91',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '19%',

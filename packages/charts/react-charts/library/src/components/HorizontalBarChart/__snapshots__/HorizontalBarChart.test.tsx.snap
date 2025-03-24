@@ -63,6 +63,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="10.286666666666665%"
@@ -78,6 +79,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
+            opacity={1}
             role="img"
             width="89.71333333333334%"
             x="10.286666666666665%"
@@ -145,6 +147,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="5.333333333333334%"
@@ -160,6 +163,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
+            opacity={1}
             role="img"
             width="94.66666666666667%"
             x="5.333333333333334%"
@@ -239,6 +243,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="10.286666666666665%"
@@ -254,6 +259,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
+            opacity={1}
             role="img"
             width="89.71333333333334%"
             x="10.286666666666665%"
@@ -321,6 +327,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="5.333333333333334%"
@@ -336,6 +343,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             key="1"
             onBlur={[Function]}
             onMouseLeave={[Function]}
+            opacity={1}
             role="img"
             width="94.66666666666667%"
             x="5.333333333333334%"
@@ -402,6 +410,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="10.286666666666665%"
@@ -458,6 +467,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="5.333333333333334%"
@@ -526,6 +536,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="10.286666666666665%"
@@ -591,6 +602,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             onFocus={[Function]}
             onMouseLeave={[Function]}
             onMouseOver={[Function]}
+            opacity={1}
             role="img"
             tabIndex={0}
             width="5.333333333333334%"

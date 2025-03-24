@@ -14,7 +14,7 @@ const chartPoints: ChartProps[] = [
     chartData: [
       {
         legend: 'one',
-        horizontalBarChartdata: { x: 1543, y: 15000 },
+        horizontalBarChartdata: { x: 1543, total: 15000 },
         color: '#004b50',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '10%',
@@ -26,7 +26,7 @@ const chartPoints: ChartProps[] = [
     chartData: [
       {
         legend: 'two',
-        horizontalBarChartdata: { x: 800, y: 15000 },
+        horizontalBarChartdata: { x: 800, total: 15000 },
         color: '#5c2d91',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
@@ -38,7 +38,7 @@ const chartPoints: ChartProps[] = [
     chartData: [
       {
         legend: 'three',
-        horizontalBarChartdata: { x: 8888, y: 15000 },
+        horizontalBarChartdata: { x: 8888, total: 15000 },
         color: '#a4262c',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '59%',
@@ -50,15 +50,15 @@ const chartPoints: ChartProps[] = [
 const chartPointsWithBenchMark: ChartProps[] = [
   {
     chartTitle: 'one',
-    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: '#004b50' }],
+    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, total: 100 }, color: '#004b50' }],
   },
   {
     chartTitle: 'two',
-    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: '#5c2d91' }],
+    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, total: 200 }, color: '#5c2d91' }],
   },
   {
     chartTitle: 'three',
-    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: '#a4262c' }],
+    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, total: 50 }, color: '#a4262c' }],
   },
 ];
 
