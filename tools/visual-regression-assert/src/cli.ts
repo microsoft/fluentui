@@ -71,7 +71,13 @@ async function main() {
             demandOption: true,
             description: 'relative path where report output should be created',
           })
-          .option('updateSnapshots', { type: 'boolean', default: false, alias: 'u' })
+          .option('updateSnapshots', {
+            type: 'boolean',
+            default: false,
+            alias: 'u',
+            description:
+              'NOTE: updating snapshots during test execution is suggested only if you can guarantee that all users and CI are using same OS environment',
+          })
           .strict(true);
       },
       async argv => {

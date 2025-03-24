@@ -67,7 +67,7 @@ interface Options {
   updateSnapshots: boolean;
 }
 
-export async function runSnapshotTests(options: Options) {
+export async function runSnapshotTests(options: Options): Promise<{ success: boolean }> {
   const { updateSnapshots, reportFileName, baselineDir, outputPath } = options;
 
   const relativePaths = {
