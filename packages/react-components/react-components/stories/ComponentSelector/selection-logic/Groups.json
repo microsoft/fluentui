@@ -14,7 +14,7 @@
   {
     "id": "hintsAndTips",
     "title": "Hints and tips",
-    "tags": ["InfoLabel", "Tooltip"],
+    "tags": ["InfoLabel", "Tooltip", "InfoIcon"],
     "questions": ["hasInteractiveContent", "doesAppearOnHover", "activationSource"],
     "comment": "add custom infoIcon codesandbox"
   },

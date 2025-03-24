@@ -28,6 +28,7 @@ export { default as FieldDef } from './Field.json';
 export { default as FluentProviderDef } from './FluentProvider.json';
 export { default as ImageDef } from './Image.json';
 export { default as InfoLabelDef } from './InfoLabel.json';
+export { default as InfoIconDef } from './InfoIcon.json';
 export { default as InputDef } from './Input.json';
 export { default as LabelDef } from './Label.json';
 export { default as LinkDef } from './Link.json';
