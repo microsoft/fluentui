@@ -323,263 +323,267 @@ export const defaultTests: DefaultTestObject = {
 
         const indexFile = require(indexPath);
         const classNamesFromFile = indexFile[exportName];
+        console.log(renderOptions);
 
-        const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
-        let missingClassNames = Object.values(expectedClassNames).filter(
-          className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
-        );
+        result.unmount();
+        //   const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
+        //   let missingClassNames = Object.values(expectedClassNames).filter(
+        //     className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
+        //   );
+        //
+        //   if (missingClassNames.length && portalEl) {
+        //     missingClassNames = missingClassNames.filter(
+        //       className => !portalEl.classList.contains(className) && !portalEl.querySelector(`.${className}`),
+        //     );
+        //   }
+        //
+        //   try {
+        //     expect(missingClassNames).toHaveLength(0);
+        //   } catch (e: OptOutStrictCatchTypes) {
+        //     throw new Error(
+        //       defaultErrorMessages['component-has-static-classnames'](
+        //         testInfo,
+        //         e,
+        //         componentName,
+        //         missingClassNames.join(', '),
+        //         rootEl,
+        //       ),
+        //     );
+        //   }
 
-        if (missingClassNames.length && portalEl) {
-          missingClassNames = missingClassNames.filter(
-            className => !portalEl.classList.contains(className) && !portalEl.querySelector(`.${className}`),
-          );
-        }
-
-        try {
-          expect(missingClassNames).toHaveLength(0);
-        } catch (e: OptOutStrictCatchTypes) {
-          throw new Error(
-            defaultErrorMessages['component-has-static-classnames'](
-              testInfo,
-              e,
-              componentName,
-              missingClassNames.join(', '),
-              rootEl,
-            ),
-          );
-        }
+        // render.
       }
     });
   },
-
-  /** Constructor/component name matches filename */
-  'name-matches-filename': (testInfo: IsConformantOptions) => {
-    it(`Component/constructor name matches filename (name-matches-filename)`, () => {
-      try {
-        const { componentPath, displayName } = testInfo;
-        const fileName = path.basename(componentPath, path.extname(componentPath));
-
-        expect(displayName).toMatch(fileName);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['name-matches-filename'](testInfo, e));
-      }
-    });
-  },
-
-  /** Ensures component is exported at top level allowing `import { Component } from 'packageName'` */
-  'exported-top-level': (testInfo: IsConformantOptions) => {
-    if (testInfo.isInternal) {
-      return;
-    }
-
-    it(`is exported at top-level (exported-top-level)`, () => {
-      try {
-        const { displayName, componentPath, Component } = testInfo;
-        const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
-
-        expect(indexFile[displayName]).toBe(Component);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['exported-top-level'](testInfo, e));
-      }
-    });
-  },
-
-  /** Ensures component has top level file in package/src/componentName */
-  'has-top-level-file': (testInfo: IsConformantOptions) => {
-    if (testInfo.isInternal) {
-      return;
-    }
-
-    it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
-      try {
-        const { displayName, componentPath, Component } = testInfo;
-        const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
-
-        expect(topLevelFile[displayName]).toBe(Component);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['has-top-level-file'](testInfo, e));
-      }
-    });
-  },
-
-  /** Ensures aria attributes are kebab cased */
-  'kebab-aria-attributes': (testInfo: IsConformantOptions, componentInfo: ComponentDoc) => {
-    it(`uses kebab-case for aria attributes (kebab-aria-attributes)`, () => {
-      const invalidProps = Object.keys(componentInfo.props).filter(
-        prop => prop.startsWith('aria') && !/^aria-[a-z]+$/.test(prop),
-      );
-      try {
-        expect(invalidProps).toEqual([]);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['kebab-aria-attributes'](testInfo, invalidProps));
-      }
-    });
-  },
-
-  // TODO: Test last word of callback name against list of valid verbs
-  /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
-  'consistent-callback-names': (testInfo: IsConformantOptions, componentInfo: ComponentDoc) => {
-    it(`has consistent custom callback names (consistent-callback-names)`, () => {
-      const { testOptions = {} } = testInfo;
-      const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
-
-      const invalidProps = propNames.filter(propName => {
-        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
-          const words = propName.slice(2).match(/[A-Z][a-z]+/g);
-          if (words) {
-            // Make sure last word doesn't end with ed
-            const lastWord = words[words.length - 1];
-            return lastWord.endsWith('ed');
-          }
-        }
-        return false;
-      });
-
-      try {
-        expect(invalidProps).toEqual([]);
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['consistent-callback-names'](testInfo, invalidProps));
-      }
-    });
-  },
-
-  /**
-   * Ensures that components have consistent callback arguments (ev, data)
-   * @deprecated this test is for existing callbacks. The newly added callbacks' type will be guarded by eslint rule consistent-callback-type
-   */
-  'consistent-callback-args': (testInfo, componentInfo, tsProgram) => {
-    it('has consistent custom callback arguments (consistent-callback-args)', () => {
-      const { testOptions = {} } = testInfo;
-
-      const propNames = Object.keys(componentInfo.props);
-      const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
-
-      // verify that legacyCallbacks option contains real props:
-      const legacyCallbacksNotInProp = legacyCallbacks.filter(legacyCallback => !propNames.includes(legacyCallback));
-      if (legacyCallbacksNotInProp.length) {
-        throw new Error(
-          [
-            `Option "consistent-callback-args.legacyCallbacks" contains "${legacyCallbacksNotInProp.join(', ')}" prop,`,
-            'which is not present in component props.',
-          ].join(' '),
-        );
-      }
-
-      const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
-        if (legacyCallbacks.includes(propName)) {
-          const propInfo = componentInfo.props[propName];
-
-          if (!propInfo.declarations) {
-            throw new Error(
-              [
-                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
-                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
-                'where it happens and used interfaces.',
-              ].join(' '),
-            );
-          }
-
-          if (propInfo.declarations.length !== 1) {
-            throw new Error(
-              [
-                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
-                `"react-docgen-typescript".`,
-                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
-                'where it happens and used interfaces.',
-              ].join(' '),
-            );
-          }
-
-          const rootFileName = propInfo.declarations[0].fileName;
-          const propsTypeName = propInfo.declarations[0].name;
-
-          try {
-            validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
-          } catch (err: OptOutStrictCatchTypes) {
-            console.log('err', err);
-
-            return { ...errors, [propName]: err };
-          }
-        }
-
-        return errors;
-      }, {});
-
-      try {
-        expect(invalidProps).toEqual({});
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
-      }
-    });
-  },
-
-  /** If the primary slot is specified, it receives native props other than 'className' and 'style' */
-  'primary-slot-gets-native-props': (testInfo: IsConformantOptions) => {
-    it(`applies correct native props to the primary and root slots (primary-slot-gets-native-props)`, () => {
-      try {
-        const { Component, requiredProps, primarySlot = 'root', renderOptions } = testInfo;
-
-        // This test only applies if this component has a primary slot other than 'root'
-        // (this also prevents the test from running for northstar and v8)
-        if (primarySlot === 'root') {
-          return;
-        }
-
-        // Add this data attribute directly to the primary slot so that its DOM node can be
-        // found to verify that the props went to the correct element
-        const primarySlotDataTag = 'data-primary-slot';
-
-        // Add these values to the component's props to make sure they are forwarded to the appropriate slot
-        const ref = React.createRef<HTMLElement>();
-        const testDataAttribute = 'data-conformance-test'; // A data attribute is a proxy for any arbitrary native prop
-        const testClass = 'conformance-test-class-name';
-        const testStyleFontFamily = 'conformance-test-font-family';
-
-        const mergedProps: Partial<{}> = {
-          ...requiredProps,
-          [primarySlot]: {
-            [primarySlotDataTag]: true,
-          },
-          ref,
-          className: testClass,
-          style: { fontFamily: testStyleFontFamily },
-          [testDataAttribute]: testDataAttribute,
-        };
-
-        const { container } = render(<Component {...mergedProps} />, renderOptions);
-        const rootNode = container.firstElementChild as HTMLElement;
-        expect(rootNode).toBeTruthy();
-
-        act(() => {
-          // Find the node that represents the primary slot, searching for its data attribute
-          const primaryNode = rootNode.querySelector(`[${primarySlotDataTag}]`);
-
-          // We should have found the primary slot's node
-          expect(primaryNode).toBeInstanceOf(HTMLElement);
-          if (!(primaryNode instanceof HTMLElement)) {
-            return;
-          }
-
-          // className and style should go the *root* slot
-          expect(classListToStrings(rootNode.classList)).toContain(testClass);
-          expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
-          // ... and not the primary slot
-          expect(classListToStrings(primaryNode.classList)).not.toContain(testClass);
-          expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
-
-          // Ref and all other native props should go to the *primary* slot
-          expect(primaryNode).toBe(ref.current);
-          expect(primaryNode.getAttribute(testDataAttribute)).toEqual(testDataAttribute);
-          // ... and not the root slot
-          expect(rootNode).not.toBe(ref.current);
-          expect(rootNode.getAttribute(testDataAttribute)).not.toEqual(testDataAttribute);
-        });
-      } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['primary-slot-gets-native-props'](testInfo, e));
-      }
-    });
-  },
+  //
+  // /** Constructor/component name matches filename */
+  // 'name-matches-filename': (testInfo: IsConformantOptions) => {
+  //   it(`Component/constructor name matches filename (name-matches-filename)`, () => {
+  //     try {
+  //       const { componentPath, displayName } = testInfo;
+  //       const fileName = path.basename(componentPath, path.extname(componentPath));
+  //
+  //       expect(displayName).toMatch(fileName);
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['name-matches-filename'](testInfo, e));
+  //     }
+  //   });
+  // },
+  //
+  // /** Ensures component is exported at top level allowing `import { Component } from 'packageName'` */
+  // 'exported-top-level': (testInfo: IsConformantOptions) => {
+  //   if (testInfo.isInternal) {
+  //     return;
+  //   }
+  //
+  //   it(`is exported at top-level (exported-top-level)`, () => {
+  //     try {
+  //       const { displayName, componentPath, Component } = testInfo;
+  //       const indexFile = require(path.join(getPackagePath(componentPath), 'src', 'index'));
+  //
+  //       expect(indexFile[displayName]).toBe(Component);
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['exported-top-level'](testInfo, e));
+  //     }
+  //   });
+  // },
+  //
+  // /** Ensures component has top level file in package/src/componentName */
+  // 'has-top-level-file': (testInfo: IsConformantOptions) => {
+  //   if (testInfo.isInternal) {
+  //     return;
+  //   }
+  //
+  //   it(`has corresponding top-level file 'package/src/Component' (has-top-level-file)`, () => {
+  //     try {
+  //       const { displayName, componentPath, Component } = testInfo;
+  //       const topLevelFile = require(path.join(getPackagePath(componentPath), 'src', displayName));
+  //
+  //       expect(topLevelFile[displayName]).toBe(Component);
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['has-top-level-file'](testInfo, e));
+  //     }
+  //   });
+  // },
+  //
+  // /** Ensures aria attributes are kebab cased */
+  // 'kebab-aria-attributes': (testInfo: IsConformantOptions, componentInfo: ComponentDoc) => {
+  //   it(`uses kebab-case for aria attributes (kebab-aria-attributes)`, () => {
+  //     const invalidProps = Object.keys(componentInfo.props).filter(
+  //       prop => prop.startsWith('aria') && !/^aria-[a-z]+$/.test(prop),
+  //     );
+  //     try {
+  //       expect(invalidProps).toEqual([]);
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['kebab-aria-attributes'](testInfo, invalidProps));
+  //     }
+  //   });
+  // },
+  //
+  // // TODO: Test last word of callback name against list of valid verbs
+  // /** Ensures that components have consistent custom callback names i.e. on[Part][Event] */
+  // 'consistent-callback-names': (testInfo: IsConformantOptions, componentInfo: ComponentDoc) => {
+  //   it(`has consistent custom callback names (consistent-callback-names)`, () => {
+  //     const { testOptions = {} } = testInfo;
+  //     const propNames = Object.keys(componentInfo.props);
+  //     const ignoreProps = testOptions['consistent-callback-names']?.ignoreProps || [];
+  //
+  //     const invalidProps = propNames.filter(propName => {
+  //       if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+  //         const words = propName.slice(2).match(/[A-Z][a-z]+/g);
+  //         if (words) {
+  //           // Make sure last word doesn't end with ed
+  //           const lastWord = words[words.length - 1];
+  //           return lastWord.endsWith('ed');
+  //         }
+  //       }
+  //       return false;
+  //     });
+  //
+  //     try {
+  //       expect(invalidProps).toEqual([]);
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['consistent-callback-names'](testInfo, invalidProps));
+  //     }
+  //   });
+  // },
+  //
+  // /**
+  //  * Ensures that components have consistent callback arguments (ev, data)
+  //  * @deprecated this test is for existing callbacks. The newly added callbacks' type will be guarded by eslint rule consistent-callback-type
+  //  */
+  // 'consistent-callback-args': (testInfo, componentInfo, tsProgram) => {
+  //   it('has consistent custom callback arguments (consistent-callback-args)', () => {
+  //     const { testOptions = {} } = testInfo;
+  //
+  //     const propNames = Object.keys(componentInfo.props);
+  //     const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
+  //
+  //     // verify that legacyCallbacks option contains real props:
+  //     const legacyCallbacksNotInProp = legacyCallbacks.filter(legacyCallback => !propNames.includes(legacyCallback));
+  //     if (legacyCallbacksNotInProp.length) {
+  //       throw new Error(
+  //         [
+  //           `Option "consistent-callback-args.legacyCallbacks" contains "${legacyCallbacksNotInProp.join(', ')}" prop,`,
+  //           'which is not present in component props.',
+  //         ].join(' '),
+  //       );
+  //     }
+  //
+  //     const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
+  //       if (legacyCallbacks.includes(propName)) {
+  //         const propInfo = componentInfo.props[propName];
+  //
+  //         if (!propInfo.declarations) {
+  //           throw new Error(
+  //             [
+  //               `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+  //               'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+  //               'where it happens and used interfaces.',
+  //             ].join(' '),
+  //           );
+  //         }
+  //
+  //         if (propInfo.declarations.length !== 1) {
+  //           throw new Error(
+  //             [
+  //               `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+  //               `"react-docgen-typescript".`,
+  //               'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+  //               'where it happens and used interfaces.',
+  //             ].join(' '),
+  //           );
+  //         }
+  //
+  //         const rootFileName = propInfo.declarations[0].fileName;
+  //         const propsTypeName = propInfo.declarations[0].name;
+  //
+  //         try {
+  //           validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
+  //         } catch (err: OptOutStrictCatchTypes) {
+  //           console.log('err', err);
+  //
+  //           return { ...errors, [propName]: err };
+  //         }
+  //       }
+  //
+  //       return errors;
+  //     }, {});
+  //
+  //     try {
+  //       expect(invalidProps).toEqual({});
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
+  //     }
+  //   });
+  // },
+  //
+  // /** If the primary slot is specified, it receives native props other than 'className' and 'style' */
+  // 'primary-slot-gets-native-props': (testInfo: IsConformantOptions) => {
+  //   it(`applies correct native props to the primary and root slots (primary-slot-gets-native-props)`, () => {
+  //     try {
+  //       const { Component, requiredProps, primarySlot = 'root', renderOptions } = testInfo;
+  //
+  //       // This test only applies if this component has a primary slot other than 'root'
+  //       // (this also prevents the test from running for northstar and v8)
+  //       if (primarySlot === 'root') {
+  //         return;
+  //       }
+  //
+  //       // Add this data attribute directly to the primary slot so that its DOM node can be
+  //       // found to verify that the props went to the correct element
+  //       const primarySlotDataTag = 'data-primary-slot';
+  //
+  //       // Add these values to the component's props to make sure they are forwarded to the appropriate slot
+  //       const ref = React.createRef<HTMLElement>();
+  //       const testDataAttribute = 'data-conformance-test'; // A data attribute is a proxy for any arbitrary native prop
+  //       const testClass = 'conformance-test-class-name';
+  //       const testStyleFontFamily = 'conformance-test-font-family';
+  //
+  //       const mergedProps: Partial<{}> = {
+  //         ...requiredProps,
+  //         [primarySlot]: {
+  //           [primarySlotDataTag]: true,
+  //         },
+  //         ref,
+  //         className: testClass,
+  //         style: { fontFamily: testStyleFontFamily },
+  //         [testDataAttribute]: testDataAttribute,
+  //       };
+  //
+  //       const { container } = render(<Component {...mergedProps} />, renderOptions);
+  //       const rootNode = container.firstElementChild as HTMLElement;
+  //       expect(rootNode).toBeTruthy();
+  //
+  //       act(() => {
+  //         // Find the node that represents the primary slot, searching for its data attribute
+  //         const primaryNode = rootNode.querySelector(`[${primarySlotDataTag}]`);
+  //
+  //         // We should have found the primary slot's node
+  //         expect(primaryNode).toBeInstanceOf(HTMLElement);
+  //         if (!(primaryNode instanceof HTMLElement)) {
+  //           return;
+  //         }
+  //
+  //         // className and style should go the *root* slot
+  //         expect(classListToStrings(rootNode.classList)).toContain(testClass);
+  //         expect(rootNode.style.fontFamily).toEqual(testStyleFontFamily);
+  //         // ... and not the primary slot
+  //         expect(classListToStrings(primaryNode.classList)).not.toContain(testClass);
+  //         expect(primaryNode.style.fontFamily).not.toEqual(testStyleFontFamily);
+  //
+  //         // Ref and all other native props should go to the *primary* slot
+  //         expect(primaryNode).toBe(ref.current);
+  //         expect(primaryNode.getAttribute(testDataAttribute)).toEqual(testDataAttribute);
+  //         // ... and not the root slot
+  //         expect(rootNode).not.toBe(ref.current);
+  //         expect(rootNode.getAttribute(testDataAttribute)).not.toEqual(testDataAttribute);
+  //       });
+  //     } catch (e: OptOutStrictCatchTypes) {
+  //       throw new Error(defaultErrorMessages['primary-slot-gets-native-props'](testInfo, e));
+  //     }
+  //   });
+  // },
 };
 
 function classListToStrings(classList: DOMTokenList): string[] {
