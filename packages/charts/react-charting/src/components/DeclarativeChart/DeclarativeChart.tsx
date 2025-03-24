@@ -154,7 +154,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
-    const isScatterMarkers = (plotlyData[0] as PlotData)?.mode?.includes('markers');
+    const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
     const chartProps: ILineChartProps | IAreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
