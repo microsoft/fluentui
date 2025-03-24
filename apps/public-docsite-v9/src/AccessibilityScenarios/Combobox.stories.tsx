@@ -64,7 +64,7 @@ export const FilteringCombobox: React.FunctionComponent = () => {
       <div>Single state</div>
       <div className={styles.root}>
         <label id={comboId}>Favourite fruit to have with ice-cream</label>
-        <Combobox aria-labelledby={comboId} placeholder="Pick a fruit">
+        <Combobox aria-labelledby={comboId} placeholder="Pick a fruit" positioning={{ autoSize: true }}>
           {options.map(option => (
             <Option key={option} disabled={option === 'Ferret'}>
               {option}

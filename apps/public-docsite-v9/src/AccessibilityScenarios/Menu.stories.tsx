@@ -8,7 +8,7 @@ export const ProfileMenu: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Profile menu">
       <div>Single state</div>
-      <Menu>
+      <Menu positioning={{ autoSize: true }}>
         <MenuTrigger disableButtonEnhancement>
           <MenuButton>Pick a fruit</MenuButton>
         </MenuTrigger>
