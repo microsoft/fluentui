@@ -1,9 +1,8 @@
 name: VRT Baseline
 on:
   push:
-    # TODO: once testing is done enable pull_request on all branches again
     branches:
-      - vrt-gha-testing
+      - master
 
 env:
   NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM

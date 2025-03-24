@@ -1,7 +1,7 @@
-name: VRT CI | Comment on PR
+name: VRT | Comment on PR
 on:
   workflow_run:
-    workflows: ['VRT CI']
+    workflows: ['VRT PR']
     types:
       - completed
 
