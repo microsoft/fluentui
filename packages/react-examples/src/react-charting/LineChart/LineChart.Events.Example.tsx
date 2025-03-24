@@ -227,7 +227,6 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
             strokeColor: this.state.customEventAnnotationColor,
             labelColor: this.state.customEventAnnotationColor,
             labelHeight: 18,
-            labelWidth: 50,
             mergedLabel: (count: number) => `${count} events`,
           }}
           height={this.state.height}
