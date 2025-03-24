@@ -18,6 +18,7 @@ export { MailSettingsVerticalTabList } from './TabListVertical.stories';
 export { QuestionnaireAboutCustomerExperienceTextareas } from './Textarea.stories';
 export { DeviceControlsToggleButtons } from './ToggleButton.stories';
 export { ButtonsWithTooltip } from './Tooltip.stories';
+export { FilteringCombobox } from './Combobox.stories';
 
 export default {
   title: 'Concepts/Developer/Accessibility/Stories',
