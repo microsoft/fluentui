@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
+import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts';
 
 export const HorizontalBarStacked = () => {
   const data = [
