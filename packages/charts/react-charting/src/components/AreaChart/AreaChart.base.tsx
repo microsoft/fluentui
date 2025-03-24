@@ -373,10 +373,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
-      const filteredValues =
-        selectedLegends.length > 0
-          ? found.values.filter((value: { legend: string }) => selectedLegends.includes(value.legend))
-          : found.values;
+      const filteredValues = this._getFilteredLegendValues(found.values);
       this.setState({
         nearestCircleToHighlight,
         isCalloutVisible: false,
