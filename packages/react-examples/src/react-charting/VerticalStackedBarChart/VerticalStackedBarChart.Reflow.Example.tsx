@@ -9,7 +9,11 @@ import {
 
 export class VerticalStackedBarChartReflowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    return <div key={'id_VBC'}>{this._reflowExample()}</div>;
+    return (
+      <div className="containerDiv" key={'id_VBC'}>
+        {this._reflowExample()}
+      </div>
+    );
   }
 
   private _reflowExample(): JSX.Element {
