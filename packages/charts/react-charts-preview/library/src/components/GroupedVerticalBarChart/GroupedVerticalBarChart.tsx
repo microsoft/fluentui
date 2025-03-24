@@ -4,13 +4,7 @@ import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
 import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
-import {
-  classNamesFunction,
-  getRTL,
-  initializeComponentRef,
-  memoizeFunction,
-  warnDeprecations,
-} from '@fluentui/react/lib/Utilities';
+
 import { useId } from '@fluentui/react-utilities';
 import {
   ChartTypes,
@@ -78,7 +72,7 @@ interface GVDataPoint {
 }
 
 // While forming datapoints from given prop "data" in code. These datapoints are used for to draw graph easily.
-interface IGVSingleDataPoint {
+interface GVSingleDataPoint {
   [key: string]: GVDataPoint;
 }
 
@@ -91,23 +85,22 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     maxBarWidth: 24,
   };
 
-  let _createSet = memoizeFunction((data: GroupedVerticalBarChartData[]) => _createDataSetOfGVBC(data));
+  const _createSet = memoizeFunction((data: GroupedVerticalBarChartData[]) => _createDataSetOfGVBC(data));
   let _dataset: GVDataPoint[] = [];
   let _keys: string[] = [];
   let _xAxisLabels: string[] = [];
-  let _datasetForBars: any[] = [];
+  let _datasetForBars = [];
   let _margins: Margins = { top: 0, right: 0, bottom: 0, left: 0 };
   let _groupedVerticalBarGraph: JSX.Element[] = [];
   let _refArray: RefArrayData[] = [];
   let _yMax: number = 0;
-  let _calloutId: string = useId('callout');
-  let _tooltipId: string = useId('GVBCTooltipId_');
-  let _xAxisType: XAxisTypes;
+  const _calloutId: string = useId('callout');
+  const _tooltipId: string = useId('GVBCTooltipId_');
   const _useRtl: boolean = useRtl();
   let _calloutAnchorPoint: GVBarChartSeriesPoint | null = null;
   let _barWidth: number = 0;
-  let _domainMargin: number = MIN_DOMAIN_MARGIN;
-  let _emptyChartId: string = useId('_GVBC_empty');
+  const _domainMargin: number = MIN_DOMAIN_MARGIN;
+  const _emptyChartId: string = useId('_GVBC_empty');
   let _groupWidth: number = 0;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
@@ -208,7 +201,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   _keys = keys;
   _xAxisLabels = xAxisLabels;
   _datasetForBars = datasetForBars;
-  _xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
+  const _xAxisType: XAxisTypes = getTypeOfAxis(points[0].name, true);
   const legends: JSX.Element = _getLegendData(points);
   _adjustProps();
 
@@ -283,7 +276,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
     const xScale1 = _createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
-    _datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
+    _datasetForBars.forEach((singleSet: GVSingleDataPoint) => {
       allGroupsBars.push(_buildGraph(singleSet, xScale0, xScale1, containerHeight, xElement!));
     });
     _groupedVerticalBarGraph = allGroupsBars;
@@ -384,7 +377,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       // use the following addend.
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - _barWidth) / 2;
       const yPoint = Math.max(containerHeight! - _margins.bottom! - yBarScale(pointData.data), 0);
-      let startColor = pointData.color ? pointData.color : getNextColor(index, 0, props.theme?.isInverted);
+      const startColor = pointData.color ? pointData.color : getNextColor(index, 0, props.theme?.isInverted);
 
       // Not rendering data with 0.
       pointData.data &&
