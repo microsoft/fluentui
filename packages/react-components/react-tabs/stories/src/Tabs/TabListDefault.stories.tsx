@@ -19,18 +19,10 @@ export const Default = (props: Partial<TabListProps>) => {
   return (
     <div className={styles.root}>
       <TabList {...props}>
-        <Tab value="tab1" key="tab1">
-          First Tab
-        </Tab>
-        <Tab value="tab2" key="tab2">
-          Second Tab
-        </Tab>
-        <Tab value="tab3" key="tab3">
-          Third Tab
-        </Tab>
-        <Tab value="tab4" key="tab4">
-          Fourth Tab
-        </Tab>
+        <Tab value="tab1">First Tab</Tab>
+        <Tab value="tab2">Second Tab</Tab>
+        <Tab value="tab3">Third Tab</Tab>
+        <Tab value="tab4">Fourth Tab</Tab>
       </TabList>
     </div>
   );
