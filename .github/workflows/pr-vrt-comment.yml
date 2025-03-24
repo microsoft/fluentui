@@ -105,11 +105,11 @@ jobs:
             const { execSync } = require('child_process');
 
             try {
-              execSync(`npx vr-approval-cli@1.0.0-test.1742371346259 create-policy \
+              execSync(`npx vr-approval-cli@0.5.1 create-policy \
                 --nonBlockingPipelines '{"301":{"pipelineStatus": "PENDING","pipelineName": "Fluent UI"}}' \
                 --clientType FLUENTUI`, { stdio: 'inherit' });
 
-              execSync(`npx vr-approval-cli@1.0.0-test.1742371346259 run-diff \
+              execSync(`npx vr-approval-cli@0.5.1 run-diff \
                 --screenshotsDirectory ./screenshots \
                 --buildType pr \
                 --ciDefinitionId 'vrt-baseline.yml' \

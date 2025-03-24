@@ -13,6 +13,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       background: props.theme!.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
+      color: props.theme!.semanticColors.bodyText,
     },
   };
 };

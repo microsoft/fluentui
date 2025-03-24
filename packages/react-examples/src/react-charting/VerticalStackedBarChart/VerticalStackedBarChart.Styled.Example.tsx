@@ -114,7 +114,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     };
 
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
@@ -236,7 +236,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
