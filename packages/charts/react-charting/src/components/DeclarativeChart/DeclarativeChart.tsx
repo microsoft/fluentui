@@ -4,6 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
+import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -107,7 +108,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (!chart.isValid) {
     throw new Error(`Invalid chart schema: ${chart.errorMessage}`);
   }
-  const plotlyInput = plotlySchema as PlotlySchema;
+  let plotlyInput = plotlySchema as PlotlySchema;
+  try {
+    plotlyInput = decodeBase64Fields(plotlyInput);
+  } catch (error) {
+    throw new Error(`Failed to decode plotly schema: ${error}`);
+  }
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
@@ -148,7 +154,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
-    const isScatterMarkers = (plotlyData[0] as PlotData)?.mode?.includes('markers');
+    const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
     const chartProps: ILineChartProps | IAreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
