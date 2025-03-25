@@ -461,7 +461,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-          calloutLegend: point.placeHolder ? 'Remaining' : point.legend!,
+          calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
           dataForHoverCard: pointData,
           color,
           xCalloutValue: point.xAxisCalloutData!,
@@ -605,7 +605,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-        calloutLegend: point.placeHolder ? 'Remaining' : point.legend!,
+        calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
         dataForHoverCard: pointData,
         color,
         xCalloutValue: point.xAxisCalloutData!,

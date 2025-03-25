@@ -413,7 +413,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-          calloutLegend: point.placeHolder ? 'Remaining' : point.legend!,
+          calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
           dataForHoverCard: pointData,
           color,
           xCalloutValue: point.xAxisCalloutData!,
@@ -485,7 +485,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-        calloutLegend: point.placeHolder ? 'Remaining' : point.legend!,
+        calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
         dataForHoverCard: pointData,
         color,
         xCalloutValue: point.xAxisCalloutData!,
@@ -542,7 +542,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const yValue = point.yAxisCalloutData || point.data || 0;
     return (
       point.callOutAccessibilityData?.ariaLabel ||
-      (point.placeHolder ? 'Remaining, ' : legend ? `${legend}, ` : '') + `${yValue}.`
+      (legend ? `${legend}, ` : point.placeHolder ? 'Remaining, ' : '') + `${yValue}.`
     );
   };
 
