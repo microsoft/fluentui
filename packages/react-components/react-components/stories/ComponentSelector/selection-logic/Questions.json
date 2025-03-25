@@ -158,7 +158,7 @@
     ]
   },
   {
-    "id": "navigationOrDisplayingData",
+    "id": "navigationOrDisplayingDataStructureAndList",
     "question": "What is the Primary Purpose?",
     "answers": [
       {
@@ -174,7 +174,7 @@
     ]
   },
   {
-    "id": "moreInteraction",
+    "id": "moreInteractionStructureAndList",
     "question": "Does it have one or more interactions associated with it?",
     "answers": [
       {
@@ -188,7 +188,7 @@
     ]
   },
   {
-    "id": "visualLayout",
+    "id": "visualLayoutStructureAndList",
     "question": "What is the desired visual layout you want?",
     "answers": [
       {
@@ -206,7 +206,7 @@
     ]
   },
   {
-    "id": "relationships",
+    "id": "relationshipsStructureAndList",
     "question": "Is there relationships between rows and columns?",
     "answers": [
       {

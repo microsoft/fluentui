@@ -22,7 +22,12 @@
     "id": "structuresAndLists",
     "title": "Structures and Lists",
     "tags": ["List", "DataGrid", "TreeGrid", "Table", "Menu"],
-    "questions": ["navigationOrDisplayingData", "moreInteraction", "visualLayout", "relationships"]
+    "questions": [
+      "navigationOrDisplayingDataStructureAndList",
+      "moreInteractionStructureAndList",
+      "visualLayoutStructureAndList",
+      "relationshipsStructureAndList"
+    ]
   },
   {
     "id": "contentGrouping",
@@ -34,7 +39,7 @@
     "id": "surfaces",
     "title": "Surfaces",
     "tags": ["Dialog", "Popover", "TeachingPopover"],
-    "questions": ["dialogPrimaryPurpose", "dialogInteraction"]
+    "questions": ["dialogPrimaryPurpose", "userAttentionBeforeContinue"]
   },
   {
     "id": "optionsAndPickers",
