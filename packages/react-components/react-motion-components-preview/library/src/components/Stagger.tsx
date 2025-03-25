@@ -97,5 +97,3 @@ export const PresenceStagger: React.FC<{
     </>
   );
 };
-
-//         if (components.length - i >= index) {
