@@ -48,3 +48,5 @@ export const Hold: React.FC<{
 
   return <>{children}</>;
 };
+
+export const Scene = Hold;
