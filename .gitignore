@@ -170,3 +170,7 @@ gulp-cache
 .swc
 .nx/cache
 .nx/workspace-data
+
+# VRT
+
+__vrt_baseline__
