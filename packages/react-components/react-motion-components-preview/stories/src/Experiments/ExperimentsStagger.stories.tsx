@@ -25,9 +25,10 @@ import {
   Scale,
   ScaleRelaxed,
   Slide,
+  Series,
+  PresenceStagger,
+  Stagger,
 } from '@fluentui/react-motion-components-preview';
-import { Series } from './Series';
-import { PresenceStagger, Stagger } from './Stagger';
 import { Wipe } from './Wipe';
 
 // import description from './ExperimentsWipe.stories.md';

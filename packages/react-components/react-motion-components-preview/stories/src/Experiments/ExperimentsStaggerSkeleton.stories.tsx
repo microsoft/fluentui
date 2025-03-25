@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Field,
   makeStyles,
@@ -16,11 +17,12 @@ import {
   ScaleRelaxed,
   Slide,
   SlideRelaxed,
+  PresenceStagger,
+  Stagger,
+  Hold,
+  Series,
 } from '@fluentui/react-motion-components-preview';
-import * as React from 'react';
-import { PresenceStagger, Stagger } from '../Experiments/Stagger';
 import { SlideUnder } from '../Experiments/SlideUnder';
-import { Hold, Series } from '../Experiments/Series';
 import { Wipe } from './Wipe';
 
 const useClasses = makeStyles({

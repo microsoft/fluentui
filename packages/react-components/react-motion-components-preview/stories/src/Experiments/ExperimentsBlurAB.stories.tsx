@@ -11,9 +11,7 @@ import {
   Image,
   motionTokens,
 } from '@fluentui/react-components';
-import { Blur } from '@fluentui/react-motion-components-preview';
-
-import { Hold, Series } from './Series';
+import { Blur, Hold, Series } from '@fluentui/react-motion-components-preview';
 
 const imageUrls = [
   'https://picsum.photos/id/15/800/800',

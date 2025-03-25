@@ -17,7 +17,7 @@ export { ExperimentsReverseSlower as ReverseSlower } from './ExperimentsReverseS
 export { ExperimentsSeries as Series } from './ExperimentsSeries.stories';
 export { ExperimentsStaggerSkeleton as StaggerSkeleton } from './ExperimentsStaggerSkeleton.stories';
 export { ExperimentsStagger as Stagger } from './ExperimentsStagger.stories';
-export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
+// export { ExperimentsCarousel as Carousel } from './ExperimentsCarousel.stories';
 
 export default {
   title: 'Motion/Experiments',
