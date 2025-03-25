@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-18-tests-v9",
   "description": "React 18 test application and playground",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
