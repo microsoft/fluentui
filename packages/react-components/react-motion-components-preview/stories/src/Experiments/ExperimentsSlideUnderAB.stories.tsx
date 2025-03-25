@@ -10,10 +10,10 @@ import {
   Select,
   Image,
   motionTokens,
+  Hold,
+  Series,
 } from '@fluentui/react-components';
 import { SlideUnder } from './SlideUnder';
-
-import { Hold, Series } from './Series';
 
 const imageUrls = [
   'https://picsum.photos/id/15/800/800',

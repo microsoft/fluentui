@@ -23,8 +23,8 @@ import {
   ScaleRelaxed,
   Slide,
   SlideRelaxed,
+  Series,
 } from '@fluentui/react-motion-components-preview';
-import { Series } from './Series';
 
 // import description from './ExperimentsWipe.stories.md';
 

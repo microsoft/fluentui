@@ -10,11 +10,10 @@ import {
   AtomMotion,
   motionTokens,
   createPresenceComponent,
+  createMotionComponent,
+  MotionComponentProps,
+  PresenceComponent,
 } from '@fluentui/react-components';
-import { fadeAtom } from '../../../library/src/atoms/fade-atom';
-import { slideAtom } from '../../../library/src/atoms/slide-atom';
-import { PresenceMotionFnCreator } from '../../../library/src/types';
-import { createMotionComponent, MotionComponentProps, PresenceComponent } from '@fluentui/react-motion/src/index';
 import {
   Blur,
   Collapse,
@@ -24,9 +23,10 @@ import {
   Scale,
   ScaleRelaxed,
   Slide,
+  Series,
+  PresenceStagger,
+  Stagger,
 } from '@fluentui/react-motion-components-preview';
-import { Series } from './Series';
-import { PresenceStagger, Stagger } from './Stagger';
 import { Wipe } from './Wipe';
 
 // import description from './ExperimentsWipe.stories.md';
