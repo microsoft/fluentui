@@ -2,6 +2,11 @@ import { attr } from '@microsoft/fast-element';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 import { BaseTreeItem } from './tree-item.base';
 
+/**
+ * A Tree Item is a custom HTML Element used in the tree component that represents an item in a tree structure
+ *
+ * @tag fluent-tree-item
+ */
 export class TreeItem extends BaseTreeItem {
   /**
    * The size of the tree item element

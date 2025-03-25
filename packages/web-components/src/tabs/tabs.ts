@@ -7,6 +7,13 @@ import { TabsAppearance, TabsOrientation, type TabsSize } from './tabs.options.j
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
+/**
+ * A Tabs Custom HTML Element.
+ * Based on BaseTabs and includes style and layout specific attributes
+ *
+ * @tag fluent-tabs
+ * 
+ */
 export class Tabs extends BaseTabs {
   /**
    * activeTabData

@@ -20,12 +20,15 @@ import { convertPixelToPercent } from './slider-utilities.js';
 /**
  * The base class used for constructing a fluent-slider custom element
  *
+ * @tag fluent-slider
+ * 
  * @slot thumb - The slot for a custom thumb element.
+ * 
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
+ * 
  * @fires change - Fires a custom 'change' event when the value changes.
  *
- * @public
  */
 export class Slider extends FASTElement implements SliderConfiguration {
   /**
