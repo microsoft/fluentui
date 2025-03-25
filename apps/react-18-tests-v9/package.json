@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-18-tests-v9",
-  "description": "React 18 test application",
-  "version": "1.0.0",
+  "description": "React 18 test application and playground",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
@@ -19,14 +19,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@cypress/react": "9.0.0",
     "@fluentui/react-components": "*",
-    "@testing-library/dom": "^10.1.0",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react-dom": "18.3.5",
+    "@types/react-test-renderer": "18.3.1",
+    "@types/react": "18.3.20",
+    "react-dom": "18.3.1",
+    "react-test-renderer": "18.3.1",
+    "react": "18.3.1",
     "tslib": "^2.1.0"
   }
 }
