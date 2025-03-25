@@ -143,7 +143,9 @@ const useStyles = makeStyles({
     margin: '15px 0',
   },
   searchComponentInput: {
-    alignSelf: 'flex-end',
+    alignSelf: 'flex-start',
+    width: '300px',
+    marginLeft: '20px',
   },
   jumpToCategoryHeader: {
     alignSelf: 'flex-start',
@@ -521,21 +523,21 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
-        <div id="insideHeader">
-          <div id="firstBlock" className={classes.headerHeadingAndInput}>
-            {categorizedComponents.length && <h2 className={classes.jumpToCategoryHeader}>Jump to category</h2>}
-            <Input
-              contentBefore={<SearchRegular />}
-              size="small"
-              placeholder="Filter"
-              aria-label="Filter"
-              value={filterText}
-              onChange={onFilterChange}
-              className={classes.searchComponentInput}
-            />
-          </div>
-          {mode === 'byComponents' && (
+        {/* <div id="insideHeader">
+          <div id="firstBlock" className={classes.headerHeadingAndInput}> */}
+        <Input
+          contentBefore={<SearchRegular />}
+          // size="small"
+          placeholder="Find component or category"
+          aria-label="Find component or category"
+          value={filterText}
+          onChange={onFilterChange}
+          className={classes.searchComponentInput}
+        />
+        {/* </div> */}
+        {/* {mode === 'byComponents' && (
             <div className={classes.jumpToCategoryButtons}>
+            {categorizedComponents.length && <h2 className={classes.jumpToCategoryHeader}>Jump to category</h2>}
               <TagGroup aria-label="Jump to questions" className={classes.jumpToCategoryTags}>
                 {categorizedComponents.map((category, index) => (
                   <>
@@ -558,8 +560,8 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
                 More
               </Button>
             </div>
-          )}
-        </div>
+          )} */}
+        {/* </div> */}
       </div>
       <div id="#body" className={classes.bodyWrapper}>
         {mode === 'byComponents' && (
