@@ -2,6 +2,7 @@ name: VRT PR
 on:
   pull_request:
     branches:
+    # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
       - master
 
 concurrency:

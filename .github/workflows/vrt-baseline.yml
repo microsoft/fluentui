@@ -2,6 +2,7 @@ name: VRT Baseline
 on:
   push:
     branches:
+      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
       - master
 
 env:
@@ -57,6 +58,7 @@ jobs:
 
       - name: Run baseline
         env:
+          # this is explicity needed as github token is not available in CLI context
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         run: |
