@@ -3,7 +3,7 @@ import { PresenceMotionFnCreator } from '../../types';
 import { SlideRuntimeParams_unstable, SlideVariantParams_unstable } from './Slide.types';
 import { fadeAtom } from '../../atoms/fade-atom';
 import { slideAtom } from '../../atoms/slide-atom';
-import { visibilityAtom } from '../../atoms/visibility-atom';
+// import { visibilityAtom } from '../../atoms/visibility-atom';
 
 /** Define a presence motion for slide in/out */
 export const createSlidePresence: PresenceMotionFnCreator<SlideVariantParams_unstable, SlideRuntimeParams_unstable> =
