@@ -1,4 +1,5 @@
-- In this step, we add a sliding motion to the title.
+In this step, we add a sliding motion to the title.
+
 - We wrap the text in a `TitleMotion` component.
 
 <div style="font-weight: bold;">
