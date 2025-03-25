@@ -37,7 +37,7 @@ import {
   ArrowRightRegular,
 } from '@fluentui/react-icons';
 
-import { removeFromArray, getComponentStoryUrl, getAllQuestions, hasQuestions } from './utils';
+import { removeFromArray, getAllQuestions, hasQuestions } from './utils';
 import { add, create, filter, get, pad, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
@@ -212,7 +212,7 @@ interface ComponentDefinition {
   component?: string;
   story?: string;
   attributes?: string[];
-  url?: string;
+  link?: string;
 }
 
 interface ComponentGroup {

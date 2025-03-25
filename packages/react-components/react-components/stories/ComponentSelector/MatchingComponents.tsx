@@ -12,7 +12,7 @@ export const MatchingComponents = ({ components }) => {
             <div key={`component-${index}}`}>
               <Text weight="semibold">
                 Component name:{' '}
-                <Link target="_blank" inline href={getComponentStoryUrl(component)}>
+                <Link target="_blank" inline href={component.link ?? getComponentStoryUrl(component)}>
                   {component.component}{' '}
                 </Link>
               </Text>
