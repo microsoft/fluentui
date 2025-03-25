@@ -14,7 +14,7 @@ import { cwd } from 'node:process';
 import { PNG } from 'pngjs';
 
 import { createMetadataForReport, findGitRoot, loadPixelmatch } from './utils';
-import { Result } from './types';
+import type { Result } from './types';
 import { generateCliReport, generateHtmlReport, generateJsonReport, generateMarkdownReport } from './reporters';
 
 async function compareSnapshots(

@@ -3,7 +3,7 @@ import { execSync } from 'node:child_process';
 import { dirname, join, relative } from 'node:path';
 import { readFileSync } from 'node:fs';
 import { sync as findUpSync } from 'find-up';
-import { Metadata } from './types';
+import type { Metadata } from './types';
 
 export function findGitRoot(cwd: string) {
   const output = execSync('git rev-parse --show-toplevel', { cwd });

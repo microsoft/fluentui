@@ -4,7 +4,7 @@ import { join, isAbsolute, basename, normalize } from 'node:path';
 import { cwd } from 'node:process';
 
 import { rootReportName } from './shared';
-import { RootReport } from './types';
+import type { RootReport } from './types';
 import { findGitRoot } from './utils';
 
 /**
