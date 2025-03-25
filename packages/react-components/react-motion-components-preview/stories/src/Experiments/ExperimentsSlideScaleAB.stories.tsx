@@ -13,10 +13,15 @@ import {
   createPresenceComponent,
   createPresenceComponentVariant,
 } from '@fluentui/react-components';
-import { Blur, createSlidePresence, Scale, Slide } from '@fluentui/react-motion-components-preview';
-
-import { Hold, Series } from './Series';
-import { Stagger } from './Stagger';
+import {
+  Blur,
+  createSlidePresence,
+  Scale,
+  Slide,
+  Hold,
+  Series,
+  Stagger,
+} from '@fluentui/react-motion-components-preview';
 
 const imageUrls = [
   'https://picsum.photos/id/15/800/800',

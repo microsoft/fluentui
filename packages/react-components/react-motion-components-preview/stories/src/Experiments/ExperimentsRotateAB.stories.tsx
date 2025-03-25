@@ -11,10 +11,9 @@ import {
   Image,
   motionTokens,
 } from '@fluentui/react-components';
-import { Rotate } from '@fluentui/react-motion-components-preview';
+import { Rotate, Hold, Series } from '@fluentui/react-motion-components-preview';
 
 // import description from './ExperimentsRotateAB.stories.md';
-import { Hold, Series } from './Series';
 
 const imageUrls = [
   'https://picsum.photos/id/15/800/800',
