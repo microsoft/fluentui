@@ -1,4 +1,5 @@
-- First we create the core carousel structure for the 2 photo albums.
+First we create the core carousel structure for the 2 photo albums.
+
 - We create a `Scene` for each album: a simple wrapper with a duration.
 - We create a `Series` of the 2 scenes to show them one-by-one.
 
