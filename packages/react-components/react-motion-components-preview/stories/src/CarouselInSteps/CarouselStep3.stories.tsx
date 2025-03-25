@@ -1,9 +1,9 @@
 import { createMotionComponent, Image, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import { Hold, Series } from './Series';
+import { Hold, Series } from '@fluentui/react-motion-components-preview';
 
-import description from './ExperimentsCarouselStep3.stories.md';
+import description from './CarouselStep3.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -172,7 +172,7 @@ const PhotoMotion = createMotionComponent({
   duration: 2000,
 });
 
-export const ExperimentsCarouselStep3 = () => {
+export const CarouselStep3 = () => {
   const classes = useClasses();
 
   const sceneA = (
@@ -237,7 +237,7 @@ export const ExperimentsCarouselStep3 = () => {
   );
 };
 
-ExperimentsCarouselStep3.parameters = {
+CarouselStep3.parameters = {
   docs: {
     description: {
       story: description,

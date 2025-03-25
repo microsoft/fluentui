@@ -1,10 +1,9 @@
-// import { DefaultExperiments as Experiments } from './Experiments.stories';
-import ExperimentsDescription from './ExperimentsDescription.md';
+import CarouselInStepsDescription from './CarouselInStepsDescription.md';
 
-export { ExperimentsCarouselStep2 as CarouselStep1 } from './ExperimentsCarouselStep1.stories';
-export { ExperimentsCarouselStep2 as CarouselStep2 } from './ExperimentsCarouselStep2.stories';
-export { ExperimentsCarouselStep3 as CarouselStep3 } from './ExperimentsCarouselStep3.stories';
-export { ExperimentsCarouselStep4 as CarouselStep4 } from './ExperimentsCarouselStep4.stories';
+export { CarouselStep1 } from './CarouselStep1.stories';
+export { CarouselStep2 } from './CarouselStep2.stories';
+export { CarouselStep3 } from './CarouselStep3.stories';
+export { CarouselStep4 } from './CarouselStep4.stories';
 
 export default {
   title: 'Motion/Carousel in steps',
@@ -12,7 +11,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        // component: ExperimentsDescription,
+        component: CarouselInStepsDescription,
       },
     },
   },

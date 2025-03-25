@@ -1,9 +1,9 @@
-import { Image, makeStyles, tokens } from '@fluentui/react-components';
+import { createMotionComponent, Image, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import { Scene, Series } from './Series';
+import { Hold, Series } from '@fluentui/react-motion-components-preview';
 
-import description from './ExperimentsCarouselStep1.stories.md';
+import description from './CarouselStep2.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -150,12 +150,42 @@ const imageUrls = [
   'https://picsum.photos/id/22/800/800',
 ];
 
-export const ExperimentsCarouselStep2 = () => {
+// A motion component that fades in and slides in from the top over 1 second,
+// holds in place for 3 seconds, and then fades out and slides out to the bottom over 1 second.
+const TitleMotion = createMotionComponent({
+  keyframes: [
+    { transform: 'translateY(-100px)', opacity: 0, easing: motionTokens.curveDecelerateMin },
+    { transform: 'translateY(0)', opacity: 1, offset: 0.2 },
+    { transform: 'translateY(0)', opacity: 1, offset: 0.8, easing: motionTokens.curveAccelerateMin },
+    { transform: 'translateY(100px)', opacity: 0 },
+  ],
+  duration: 2000,
+});
+
+export const CarouselStep2 = () => {
   const classes = useClasses();
+
+  const sceneA = (
+    <>
+      <TitleMotion>
+        <div className={classes.albumTitle}>Album A</div>
+      </TitleMotion>
+
+      <div className={classes.photo3Up}>
+        <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
+
+        <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
+
+        <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
+      </div>
+    </>
+  );
 
   const sceneB = (
     <>
-      <div className={classes.albumTitle}>Album B</div>
+      <TitleMotion>
+        <div className={classes.albumTitle}>Album B</div>
+      </TitleMotion>
 
       <div className={classes.photo4Up}>
         <Image fit="cover" src={imageUrls[3]} className={`${classes.photo}`} />
@@ -169,25 +199,10 @@ export const ExperimentsCarouselStep2 = () => {
     </>
   );
 
-  const SceneA = (
-    <Scene duration={3000}>
-      <div className={classes.albumTitle}>Album A</div>
-
-      <div className={classes.photo3Up}>
-        <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
-
-        <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
-
-        <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
-      </div>
-    </Scene>
-  );
-  const SceneB = <Scene duration={3000}>{sceneB}</Scene>;
-
   const sceneSeries = (
     <Series autoloop>
-      {SceneA}
-      {SceneB}
+      <Hold duration={3000}>{sceneA}</Hold>
+      <Hold duration={3000}>{sceneB}</Hold>
     </Series>
   );
 
@@ -198,7 +213,7 @@ export const ExperimentsCarouselStep2 = () => {
   );
 };
 
-ExperimentsCarouselStep2.parameters = {
+CarouselStep2.parameters = {
   docs: {
     description: {
       story: description,
