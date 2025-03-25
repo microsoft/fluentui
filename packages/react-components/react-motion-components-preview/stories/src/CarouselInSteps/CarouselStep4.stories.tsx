@@ -1,9 +1,9 @@
 import { createMotionComponent, Image, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-import { Hold, Series } from './Series';
+import { Scene, Series, Stagger } from '@fluentui/react-motion-components-preview';
 
-import description from './ExperimentsCarouselStep2.stories.md';
+import description from './CarouselStep4.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -162,47 +162,75 @@ const TitleMotion = createMotionComponent({
   duration: 2000,
 });
 
-export const ExperimentsCarouselStep2 = () => {
+const PhotoMotion = createMotionComponent({
+  keyframes: [
+    { transform: 'scale(0.5)', opacity: 0, easing: motionTokens.curveDecelerateMin },
+    { transform: 'scale(1)', opacity: 1, offset: 0.1 },
+    { transform: 'scale(1)', opacity: 1, offset: 0.9, easing: motionTokens.curveAccelerateMin },
+    { transform: 'scale(0.5)', opacity: 0 },
+  ],
+  duration: 2000,
+});
+
+export const CarouselStep4 = () => {
   const classes = useClasses();
 
   const sceneA = (
-    <>
+    <Scene duration={3000}>
       <TitleMotion>
         <div className={classes.albumTitle}>Album A</div>
       </TitleMotion>
 
       <div className={classes.photo3Up}>
-        <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
+        <Stagger delay={100}>
+          <PhotoMotion>
+            <Image block fit="cover" src={imageUrls[0]} className={`${classes.photo}`} />
+          </PhotoMotion>
 
-        <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
+          <PhotoMotion>
+            <Image block fit="cover" src={imageUrls[1]} className={`${classes.photo}`} />
+          </PhotoMotion>
 
-        <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
+          <PhotoMotion>
+            <Image block fit="cover" src={imageUrls[2]} className={`${classes.photo}`} />
+          </PhotoMotion>
+        </Stagger>
       </div>
-    </>
+    </Scene>
   );
 
   const sceneB = (
-    <>
+    <Scene duration={3000}>
       <TitleMotion>
         <div className={classes.albumTitle}>Album B</div>
       </TitleMotion>
 
       <div className={classes.photo4Up}>
-        <Image fit="cover" src={imageUrls[3]} className={`${classes.photo}`} />
+        <Stagger delay={100}>
+          <PhotoMotion>
+            <Image fit="cover" src={imageUrls[3]} className={`${classes.photo}`} />
+          </PhotoMotion>
 
-        <Image fit="cover" src={imageUrls[4]} className={`${classes.photo}`} />
+          <PhotoMotion>
+            <Image fit="cover" src={imageUrls[4]} className={`${classes.photo}`} />
+          </PhotoMotion>
 
-        <Image fit="cover" src={imageUrls[5]} className={`${classes.photo}`} />
+          <PhotoMotion>
+            <Image fit="cover" src={imageUrls[5]} className={`${classes.photo}`} />
+          </PhotoMotion>
 
-        <Image fit="cover" src={imageUrls[6]} className={`${classes.photo}`} />
+          <PhotoMotion>
+            <Image fit="cover" src={imageUrls[6]} className={`${classes.photo}`} />
+          </PhotoMotion>
+        </Stagger>
       </div>
-    </>
+    </Scene>
   );
 
   const sceneSeries = (
     <Series autoloop>
-      <Hold duration={3000}>{sceneA}</Hold>
-      <Hold duration={3000}>{sceneB}</Hold>
+      {sceneA}
+      {sceneB}
     </Series>
   );
 
@@ -213,7 +241,7 @@ export const ExperimentsCarouselStep2 = () => {
   );
 };
 
-ExperimentsCarouselStep2.parameters = {
+CarouselStep4.parameters = {
   docs: {
     description: {
       story: description,
