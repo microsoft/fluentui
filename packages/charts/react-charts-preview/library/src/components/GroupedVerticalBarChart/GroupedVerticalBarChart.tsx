@@ -64,9 +64,9 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 >((props = { maxBarWidth: 24 }, forwardedRef) => {
   const _calloutId: string = useId('callout');
   const _tooltipId: string = useId('GVBCTooltipId_');
-  const _domainMargin: number = MIN_DOMAIN_MARGIN;
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
+  let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _dataset: GVDataPoint[] = [];
   let _keys: string[] = [];
   let _xAxisLabels: string[] = [];
@@ -116,7 +116,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     _xAxisOuterPadding = getScalePadding(props.xAxisOuterPadding);
   };
 
-  const createDataset = (points: GroupedVerticalBarChartData[]) => {
+  const _createDataset = (points: GroupedVerticalBarChartData[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
     const dataset: GVDataPoint[] = [];
@@ -152,7 +152,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     points[0].series.forEach((singleKey: GVBarChartSeriesPoint) => {
       keys.push(singleKey.key);
     });
-    const datasetForBars = createDataset(points);
+    const datasetForBars = _createDataset(points);
     return {
       keys,
       xAxisLabels,
@@ -530,8 +530,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _getDomainMargins = (containerWidth: number): Margins => {
-    let domainMargin = MIN_DOMAIN_MARGIN;
-
     /** Total width available to render the bars */
     const totalWidth = containerWidth - (_margins.left! + MIN_DOMAIN_MARGIN) - (_margins.right! + MIN_DOMAIN_MARGIN);
     /** Rate at which the space between the groups changes wrt the group width */
@@ -541,7 +539,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       if (isScalePaddingDefined(props.xAxisOuterPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first group and after the last group.
-        domainMargin = 0;
+        _domainMargin = 0;
       } else if (props.barWidth !== 'auto') {
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
@@ -552,7 +550,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
-          domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
+          _domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
       } else if (props.mode === 'plotly' && xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering groups at their maximum allowable width
@@ -568,14 +566,14 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         reqWidth = (xAxisLabels.length - _xAxisInnerPadding) * step;
         const margin2 = (totalWidth - reqWidth) / 2;
 
-        domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
+        _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     }
 
     return {
       ..._margins,
-      left: _margins.left! + domainMargin,
-      right: _margins.right! + domainMargin,
+      left: _margins.left! + _domainMargin,
+      right: _margins.right! + _domainMargin,
     };
   };
 

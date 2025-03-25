@@ -1,20 +1,10 @@
 import * as React from 'react';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
-import {
-  Switch,
-  Checkbox,
-  CheckboxOnChangeData,
-  Field,
-  Radio,
-  RadioGroup,
-  RadioGroupOnChangeData,
-} from '@fluentui/react-components';
+import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const GroupedVerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
-  const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
-  const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
@@ -23,16 +13,6 @@ export const GroupedVerticalBarDefault = () => {
   };
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
-  };
-  const _onChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData): void => {
-    if (isCalloutselected) {
-      setIsCalloutSelected(false);
-    } else {
-      setIsCalloutSelected(true);
-    }
-  };
-  const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setUseSingleColor(checked.checked as boolean);
   };
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
@@ -268,19 +248,6 @@ export const GroupedVerticalBarDefault = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <Field label="Pick one">
-        <RadioGroup defaultValue="basicExample" onChange={_onChange}>
-          <Radio value="Basic Example" label="Basic Example" />
-          <Radio value="Custom Callout Example" label="Custom Callout Example" />
-        </RadioGroup>
-      </Field>
-      <div style={{ marginTop: '10px' }}>
-        <Checkbox
-          label="use single color(This will have only one color)"
-          checked={useSingleColor}
-          onChange={_onCheckChange}
-        />
-      </div>
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
@@ -297,13 +264,8 @@ export const GroupedVerticalBarDefault = () => {
           data={data}
           height={height}
           width={width}
-          // isCalloutForStack={selectedCallout === 'StackCallout'}
-          // barWidth={barwidth}
-          // hideLabels={this.state.hideLabels}
           enableReflow={true}
-          // legendProps={{
-          //   canSelectMultipleLegends: this.state.selectMultipleLegends,
-          // }}
+          hideLabels={hideLabels}
         />
       </div>
     </>
