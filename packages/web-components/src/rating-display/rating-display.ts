@@ -7,7 +7,8 @@ import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
  * A Rating Display Custom HTML Element.
  * Based on BaseRatingDisplay and includes style and layout specific attributes
  *
- * @public
+ * @tag fluent-rating-display
+ * 
  */
 export class RatingDisplay extends BaseRatingDisplay {
   /**

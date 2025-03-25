@@ -9,7 +9,8 @@ import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
  * A Button Custom HTML Element.
  * Based on BaseButton and includes style and layout specific attributes
  *
- * @public
+ * @tag fluent-button
+ * 
  */
 export class Button extends BaseButton {
   /**

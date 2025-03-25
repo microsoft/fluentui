@@ -7,6 +7,8 @@ import { uniqueId } from '../utils/unique-id.js';
  * A DropdownOption Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#option | ARIA option } role.
  *
+ * @tag fluent-option
+ * 
  * @slot - The default slot for the option's content.
  * @slot checked-indicator - The checked indicator.
  * @slot description - Optional description content.
@@ -19,7 +21,6 @@ import { uniqueId } from '../utils/unique-id.js';
  * This class is named `DropdownOption` to avoid conflicts with the native `Option` global. Related constructs are also
  * titled with `DropdownOption` to maintain consistency.
  *
- * @public
  */
 export class DropdownOption extends FASTElement implements Start {
   /**

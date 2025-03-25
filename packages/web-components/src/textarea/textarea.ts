@@ -3,6 +3,13 @@ import { hasMatchingState, swapStates, toggleState } from '../utils/element-inte
 import { BaseTextArea } from './textarea.base.js';
 import { TextAreaAppearance, TextAreaAppearancesForDisplayShadow, TextAreaSize } from './textarea.options.js';
 
+/**
+ * A TextArea Custom HTML Element.
+ * Based on BaseTextArea and includes style and layout specific attributes
+ *
+ * @tag fluent-text-area
+ * 
+ */
 export class TextArea extends BaseTextArea {
   protected labelSlottedNodesChanged() {
     super.labelSlottedNodesChanged();
