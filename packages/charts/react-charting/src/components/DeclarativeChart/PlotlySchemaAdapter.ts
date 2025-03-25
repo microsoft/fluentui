@@ -18,6 +18,7 @@ import {
   IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
+  ILineChartLineOptions,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -30,7 +31,16 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import type { Datum, Layout, PlotlySchema, PieData, PlotData, SankeyData, TypedArray } from '@fluentui/chart-utilities';
+import type {
+  Datum,
+  Layout,
+  PlotlySchema,
+  PieData,
+  PlotData,
+  SankeyData,
+  ScatterLine,
+  TypedArray,
+} from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
   isArrayOrTypedArray,
@@ -40,6 +50,7 @@ import {
   isLineData,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
+import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -248,13 +259,12 @@ export const transformPlotlyJsonToVSBCProps = (
         });
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
+        const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          ...(series.line?.dash && dashOptions[series.line.dash]
-            ? { lineOptions: { ...dashOptions[series.line.dash] } }
-            : {}),
           y: yVal,
           color,
+          ...(lineOptions ? { lineOptions } : {}),
         });
       }
 
@@ -433,12 +443,10 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
+    const lineOptions = getLineOptions(series.line);
 
     return {
       legend,
-      ...(series.line?.dash && dashOptions[series.line.dash]
-        ? { lineOptions: { ...dashOptions[series.line.dash] } }
-        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -449,6 +457,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           : {}),
       })),
       color: lineColor,
+      ...(lineOptions ? { lineOptions } : {}),
     } as ILineChartPoints;
   });
 
@@ -770,4 +779,36 @@ function crawlIntoTrace(container: any, i: number, astrPartial: any) {
       crawlIntoTrace(item, i + 1, newAstrPartial + '.');
     }
   }
+}
+
+function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineOptions | undefined {
+  if (!line) {
+    return;
+  }
+
+  let lineOptions: ILineChartLineOptions = {};
+  if (line.dash) {
+    lineOptions = { ...lineOptions, ...dashOptions[line.dash] };
+  }
+
+  switch (line.shape) {
+    case 'linear':
+      lineOptions.curve = 'linear';
+      break;
+    case 'spline':
+      const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
+      lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
+      break;
+    case 'hv':
+      lineOptions.curve = 'stepAfter';
+      break;
+    case 'vh':
+      lineOptions.curve = 'stepBefore';
+      break;
+    case 'hvh':
+      lineOptions.curve = 'step';
+      break;
+  }
+
+  return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
