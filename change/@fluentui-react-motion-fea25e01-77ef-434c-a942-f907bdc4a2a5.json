@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix(motion): make createPresenceComponentVariant support motion arrays",
-  "packageName": "@fluentui/react-motion",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
