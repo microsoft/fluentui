@@ -5,7 +5,7 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles_unstable } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
+import { getNextGradient } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -23,7 +23,6 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
   (props, forwardedRef) => {
     const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _uniqText: string = useId('_Pie_');
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     let _calloutAnchorPoint: ChartDataPoint | null;
     let _emptyChartId: string | null;
     const legendContainer = React.useRef<HTMLDivElement | null>(null);
@@ -34,7 +33,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
     const [activeLegend, setActiveLegend] = React.useState<string>('');
-    const [color, setColor] = React.useState<string | undefined>('');
+    const [color, setColor] = React.useState<string | [string, string] | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
@@ -76,13 +75,14 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
       });
       return elevatedData;
     }
+
     function _createLegends(chartData: ChartDataPoint[]): JSX.Element {
       const legendDataItems = chartData.map((point: ChartDataPoint, index: number) => {
-        const color: string = point.color!;
+        const useGradient = Array.isArray(point.color);
         // mapping data to the format Legends component needs
-        const legend: Legend = {
+        const pointLegend: Legend = {
           title: point.legend!,
-          color,
+          color: useGradient ? point.color![0] : (point.color as string),
           action: () => {
             if (selectedLegend === point.legend) {
               setSelectedLegend('');
@@ -98,7 +98,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
             setActiveLegend('');
           },
         };
-        return legend;
+        return pointLegend;
       });
       const legends = (
         <Legends
@@ -115,7 +115,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
-      setColor(data.color!);
+      setColor(data.color);
       setXCalloutValue(data.xAxisCalloutData!);
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
@@ -128,7 +128,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setValue(data.data!.toString());
         setLegend(data.legend);
-        setColor(data.color!);
+        setColor(data.color);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
@@ -193,13 +193,30 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     function _addDefaultColors(donutChartDataPoint?: ChartDataPoint[]): ChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            let defaultColor: string;
-            if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0);
-            } else {
-              defaultColor = getColorFromToken(item.color);
+            let itemColor = item.color;
+
+            // if color is not defined, assign a default color
+            if (!itemColor) {
+              itemColor = getNextGradient(index);
             }
-            return { ...item, defaultColor };
+            // if color is a string, check if it is undefined or blank assign a default color
+            if (typeof itemColor === 'string' && itemColor.trim() === '') {
+              itemColor = getNextGradient(index);
+            }
+            // if color is an array, check if either colors are undefined or blank
+            // if startColor is undefined or blank, assign a default color
+            // if endColor is undefined or blank, assign the startColor to endColor
+            if (Array.isArray(itemColor)) {
+              const [startColor, endColor] = itemColor;
+              if (!startColor || startColor.trim() === '') {
+                itemColor[0] = getNextGradient(index)[0];
+              }
+              if (!endColor || endColor.trim() === '') {
+                itemColor[1] = itemColor[0];
+              }
+            }
+
+            return { ...item, color: itemColor };
           })
         : [];
     }
@@ -263,6 +280,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
     const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
     const focusAttributes = useFocusableGroup();
+
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
@@ -299,7 +317,7 @@ const DonutChartBase: React.FunctionComponent<DonutChartProps> = React.forwardRe
           isPopoverOpen={isPopoverOpen}
           legend={legend!}
           YValue={value!}
-          color={color}
+          color={Array.isArray(color) ? color[0] : color}
           isCalloutForStack={false}
           customCallout={{
             customizedCallout: props.onRenderCalloutPerDataPoint

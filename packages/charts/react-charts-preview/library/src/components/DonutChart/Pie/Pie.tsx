@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { pie as d3Pie } from 'd3-shape';
+import { pie as d3Pie, PieArcDatum } from 'd3-shape';
 import { PieProps } from './index';
 import { Arc } from '../Arc/index';
 import { ChartDataPoint } from '../index';
@@ -25,7 +25,6 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
     const classes = usePieStyles_unstable(props);
     const pieForFocusRing = d3Pie()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)
       .padAngle(0);
 
@@ -45,9 +44,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
       return totalValue;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSX.Element {
-      const color = d && d.data && d.data.color;
+    function arcGenerator(d: PieArcDatum<ChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
       return (
         <Arc
           key={i}
@@ -55,7 +52,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
-          color={color!}
+          color={d.data.color!}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
           onBlurCallback={props.onBlurCallback}
@@ -78,7 +75,6 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
 
     const piechart = d3Pie<ChartDataPoint>()
       .sort(null)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)
       .padAngle(0.02)(data);
     const translate = `translate(${props.width / 2}, ${props.height / 2})`;
@@ -87,7 +83,7 @@ export const Pie: React.FunctionComponent<PieProps> = React.forwardRef<HTMLDivEl
 
     return (
       <g transform={translate}>
-        {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {piechart.map((d: PieArcDatum<ChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
             {props.valueInsideDonut}
