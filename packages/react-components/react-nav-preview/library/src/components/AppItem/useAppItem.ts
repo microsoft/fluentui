@@ -20,13 +20,12 @@ export const useAppItem_unstable = (
   const { icon, as, href } = props;
   const rootElementType = as || (href ? 'a' : 'button');
 
-  const { size = 'medium' } = useNavContext_unstable();
+  const { density = 'medium' } = useNavContext_unstable();
 
   const root = slot.always<ARIAButtonSlotProps<'a'>>(
     getIntrinsicElementProps(
       rootElementType,
       useARIAButtonProps(rootElementType, {
-        role: rootElementType,
         ...props,
       }),
     ),
@@ -48,6 +47,6 @@ export const useAppItem_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    size,
+    density,
   };
 };

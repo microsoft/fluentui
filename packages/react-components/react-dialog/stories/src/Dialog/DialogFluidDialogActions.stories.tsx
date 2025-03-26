@@ -26,12 +26,12 @@ export const FluidActions = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions fluid>
+            <Button appearance="primary">Do Something</Button>
             <Button appearance="secondary">Something Else</Button>
             <Button appearance="secondary">Something Else</Button>
             <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
           </DialogActions>
         </DialogBody>
       </DialogSurface>

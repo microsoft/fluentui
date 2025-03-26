@@ -48,8 +48,8 @@ export const Appearance = (props: Partial<DropdownProps>) => {
     <div className={styles.root}>
       <div>
         <h3>Outline</h3>
-        <label id={`${dropdownId}-outline`}>Select an animal</label>
-        <Dropdown aria-labelledby={`${dropdownId}-outline`} placeholder="-" appearance="outline" {...props}>
+        <label htmlFor={`${dropdownId}-outline`}>Select an animal</label>
+        <Dropdown id={`${dropdownId}-outline`} placeholder="-" appearance="outline" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>
@@ -58,8 +58,8 @@ export const Appearance = (props: Partial<DropdownProps>) => {
 
       <div>
         <h3>Underline</h3>
-        <label id={`${dropdownId}-underline`}>Select an animal</label>
-        <Dropdown aria-labelledby={`${dropdownId}-underline`} placeholder="-" appearance="underline" {...props}>
+        <label htmlFor={`${dropdownId}-underline`}>Select an animal</label>
+        <Dropdown id={`${dropdownId}-underline`} placeholder="-" appearance="underline" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>
@@ -68,8 +68,8 @@ export const Appearance = (props: Partial<DropdownProps>) => {
 
       <div className={styles.filledDarker}>
         <h3>Filled Darker</h3>
-        <label id={`${dropdownId}-filledDarker`}>Select an animal</label>
-        <Dropdown aria-labelledby={`${dropdownId}-filledDarker`} placeholder="-" appearance="filled-darker" {...props}>
+        <label htmlFor={`${dropdownId}-filledDarker`}>Select an animal</label>
+        <Dropdown id={`${dropdownId}-filledDarker`} placeholder="-" appearance="filled-darker" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>
@@ -78,13 +78,8 @@ export const Appearance = (props: Partial<DropdownProps>) => {
 
       <div className={styles.filledLighter}>
         <h3>Filled Lighter</h3>
-        <label id={`${dropdownId}-filledLighter`}>Select an animal</label>
-        <Dropdown
-          aria-labelledby={`${dropdownId}-filledLighter`}
-          placeholder="-"
-          appearance="filled-lighter"
-          {...props}
-        >
+        <label htmlFor={`${dropdownId}-filledLighter`}>Select an animal</label>
+        <Dropdown id={`${dropdownId}-filledLighter`} placeholder="-" appearance="filled-lighter" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>

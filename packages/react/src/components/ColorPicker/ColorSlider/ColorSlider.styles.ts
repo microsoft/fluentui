@@ -25,7 +25,7 @@ const alphaStyle = {
 };
 
 export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { theme, className, type = 'hue', isAlpha: useAlphaBackground = type !== 'hue' } = props;
   const { palette, effects } = theme;
 

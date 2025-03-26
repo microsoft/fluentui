@@ -1,2 +1,2 @@
-export * from './MenuShim';
-export * from './shimMenuProps';
+export { MenuItemShim } from './MenuShim';
+export { shimMenuHeaderProps, shimMenuItemCheckboxProps, shimMenuItemProps, shimMenuProps } from './shimMenuProps';

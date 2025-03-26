@@ -1,1 +1,1 @@
-export * from './ComponentTestFacade';
+export { ComponentTestFacade } from './ComponentTestFacade';

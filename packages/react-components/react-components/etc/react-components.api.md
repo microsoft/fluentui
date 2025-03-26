@@ -43,6 +43,11 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AlphaSlider } from '@fluentui/react-color-picker';
+import { alphaSliderClassNames } from '@fluentui/react-color-picker';
+import { AlphaSliderProps } from '@fluentui/react-color-picker';
+import { AlphaSliderSlots } from '@fluentui/react-color-picker';
+import { AlphaSliderState } from '@fluentui/react-color-picker';
 import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import { AnnounceProvider } from '@fluentui/react-shared-contexts';
 import { AriaLiveAnnouncer } from '@fluentui/react-aria';
@@ -214,7 +219,22 @@ import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
+import { ColorArea } from '@fluentui/react-color-picker';
+import { colorAreaClassNames } from '@fluentui/react-color-picker';
+import { ColorAreaProps } from '@fluentui/react-color-picker';
+import { ColorAreaSlots } from '@fluentui/react-color-picker';
+import { ColorAreaState } from '@fluentui/react-color-picker';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorPicker } from '@fluentui/react-color-picker';
+import { colorPickerClassNames } from '@fluentui/react-color-picker';
+import { ColorPickerProps } from '@fluentui/react-color-picker';
+import { ColorPickerSlots } from '@fluentui/react-color-picker';
+import { ColorPickerState } from '@fluentui/react-color-picker';
+import { ColorSlider } from '@fluentui/react-color-picker';
+import { colorSliderClassNames } from '@fluentui/react-color-picker';
+import { ColorSliderProps } from '@fluentui/react-color-picker';
+import { ColorSliderSlots } from '@fluentui/react-color-picker';
+import { ColorSliderState } from '@fluentui/react-color-picker';
 import { ColorSwatch } from '@fluentui/react-swatch-picker';
 import { colorSwatchClassNames } from '@fluentui/react-swatch-picker';
 import { ColorSwatchProps } from '@fluentui/react-swatch-picker';
@@ -482,6 +502,7 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -496,6 +517,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { List } from '@fluentui/react-list';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -504,6 +526,15 @@ import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
+import { listClassNames } from '@fluentui/react-list';
+import { ListItem } from '@fluentui/react-list';
+import { listItemClassNames } from '@fluentui/react-list';
+import { ListItemProps } from '@fluentui/react-list';
+import { ListItemSlots } from '@fluentui/react-list';
+import { ListItemState } from '@fluentui/react-list';
+import { ListProps } from '@fluentui/react-list';
+import { ListSlots } from '@fluentui/react-list';
+import { ListState } from '@fluentui/react-list';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
@@ -681,8 +712,10 @@ import { Portal } from '@fluentui/react-portal';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningBoundary } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -750,6 +783,7 @@ import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAlphaSlider_unstable } from '@fluentui/react-color-picker';
 import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
@@ -776,6 +810,9 @@ import { renderCarouselNavImageButton_unstable } from '@fluentui/react-carousel'
 import { renderCarouselSlider_unstable } from '@fluentui/react-carousel';
 import { renderCarouselViewport_unstable } from '@fluentui/react-carousel';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderColorArea_unstable } from '@fluentui/react-color-picker';
+import { renderColorPicker_unstable } from '@fluentui/react-color-picker';
+import { renderColorSlider_unstable } from '@fluentui/react-color-picker';
 import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
@@ -816,7 +853,9 @@ import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderList_unstable } from '@fluentui/react-list';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderListItem_unstable } from '@fluentui/react-list';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -1123,6 +1162,7 @@ import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
 import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
 import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
 import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValue } from '@fluentui/react-tag-picker';
 import { TagPickerContextValues } from '@fluentui/react-tag-picker';
 import { TagPickerControl } from '@fluentui/react-tag-picker';
 import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
@@ -1356,6 +1396,7 @@ import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
 import { TreeProps } from '@fluentui/react-tree';
 import { TreeProvider } from '@fluentui/react-tree';
+import { TreeRootReset } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
@@ -1378,6 +1419,8 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAlphaSlider_unstable } from '@fluentui/react-color-picker';
+import { useAlphaSliderStyles_unstable } from '@fluentui/react-color-picker';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
@@ -1440,6 +1483,12 @@ import { useCarouselViewportStyles_unstable } from '@fluentui/react-carousel';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColorArea_unstable } from '@fluentui/react-color-picker';
+import { useColorAreaStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorPicker_unstable } from '@fluentui/react-color-picker';
+import { useColorPickerStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorSlider_unstable } from '@fluentui/react-color-picker';
+import { useColorSliderStyles_unstable } from '@fluentui/react-color-picker';
 import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
@@ -1552,10 +1601,14 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useList_unstable } from '@fluentui/react-list';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContext_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useListItem_unstable } from '@fluentui/react-list';
+import { useListItemStyles_unstable } from '@fluentui/react-list';
+import { useListStyles_unstable } from '@fluentui/react-list';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -1717,6 +1770,7 @@ import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
 import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagPickerFilter } from '@fluentui/react-tag-picker';
@@ -1885,6 +1939,16 @@ export { AccordionToggleData }
 export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
+
+export { AlphaSlider }
+
+export { alphaSliderClassNames }
+
+export { AlphaSliderProps }
+
+export { AlphaSliderSlots }
+
+export { AlphaSliderState }
 
 export { AnnounceContextValue }
 
@@ -2228,7 +2292,37 @@ export { CheckboxSlots }
 
 export { CheckboxState }
 
+export { ColorArea }
+
+export { colorAreaClassNames }
+
+export { ColorAreaProps }
+
+export { ColorAreaSlots }
+
+export { ColorAreaState }
+
 export { ColorPaletteTokens }
+
+export { ColorPicker }
+
+export { colorPickerClassNames }
+
+export { ColorPickerProps }
+
+export { ColorPickerSlots }
+
+export { ColorPickerState }
+
+export { ColorSlider }
+
+export { colorSliderClassNames }
+
+export { ColorSliderProps }
+
+export { ColorSliderSlots }
+
+export { ColorSliderState }
 
 export { ColorSwatch }
 
@@ -2764,6 +2858,8 @@ export { InteractionTagSlots }
 
 export { InteractionTagState }
 
+export { isHTMLElement }
+
 export { isTruncatableBreadcrumbContent }
 
 export { Label }
@@ -2792,6 +2888,8 @@ export { LinkSlots }
 
 export { LinkState }
 
+export { List }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -2807,6 +2905,24 @@ export { ListboxProvider }
 export { ListboxSlots }
 
 export { ListboxState }
+
+export { listClassNames }
+
+export { ListItem }
+
+export { listItemClassNames }
+
+export { ListItemProps }
+
+export { ListItemSlots }
+
+export { ListItemState }
+
+export { ListProps }
+
+export { ListSlots }
+
+export { ListState }
 
 export { makeResetStyles }
 
@@ -3162,9 +3278,13 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningBoundary }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
+
+export { PositioningRect }
 
 export { PositioningShorthand }
 
@@ -3300,6 +3420,8 @@ export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
 
+export { renderAlphaSlider_unstable }
+
 export { renderAriaLiveAnnouncer_unstable }
 
 export { renderAvatar_unstable }
@@ -3351,6 +3473,12 @@ export { renderCarouselSlider_unstable }
 export { renderCarouselViewport_unstable }
 
 export { renderCheckbox_unstable }
+
+export { renderColorArea_unstable }
+
+export { renderColorPicker_unstable }
+
+export { renderColorSlider_unstable }
 
 export { renderColorSwatch_unstable }
 
@@ -3432,7 +3560,11 @@ export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
+export { renderList_unstable }
+
 export { renderListbox_unstable }
+
+export { renderListItem_unstable }
 
 export { renderMenu_unstable }
 
@@ -4046,6 +4178,8 @@ export { TagPickerButtonSlots }
 
 export { TagPickerButtonState }
 
+export { TagPickerContextValue }
+
 export { TagPickerContextValues }
 
 export { TagPickerControl }
@@ -4512,6 +4646,8 @@ export { TreeProps }
 
 export { TreeProvider }
 
+export { TreeRootReset }
+
 export { TreeSelectionValue }
 
 export { TreeSlots }
@@ -4555,6 +4691,10 @@ export { useAccordionPanel_unstable }
 export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
+
+export { useAlphaSlider_unstable }
+
+export { useAlphaSliderStyles_unstable }
 
 export { useAnimationFrame }
 
@@ -4679,6 +4819,18 @@ export { useCheckbox_unstable }
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useColorArea_unstable }
+
+export { useColorAreaStyles_unstable }
+
+export { useColorPicker_unstable }
+
+export { useColorPickerStyles_unstable }
+
+export { useColorSlider_unstable }
+
+export { useColorSliderStyles_unstable }
 
 export { useColorSwatch_unstable }
 
@@ -4904,6 +5056,8 @@ export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
 
+export { useList_unstable }
+
 export { useListbox_unstable }
 
 export { useListboxContext_unstable }
@@ -4911,6 +5065,12 @@ export { useListboxContext_unstable }
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useListItem_unstable }
+
+export { useListItemStyles_unstable }
+
+export { useListStyles_unstable }
 
 export { useMenu_unstable }
 
@@ -5233,6 +5393,8 @@ export { useTagPicker_unstable }
 export { useTagPickerButton_unstable }
 
 export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerContext_unstable }
 
 export { useTagPickerControl_unstable }
 

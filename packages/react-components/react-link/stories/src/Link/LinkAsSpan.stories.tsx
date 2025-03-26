@@ -8,7 +8,7 @@ const useDivWithWidthClassName = makeResetStyles({
 export const AsSpan = () => (
   <div className={useDivWithWidthClassName()}>
     The following link renders as a span.{' '}
-    <Link as="span" inline>
+    <Link as="span" inline onClick={() => alert('Link rendered as span')}>
       Links that render as a span wrap correctly between lines when their content is very long
     </Link>
     . This is because they behave as regular inline elements.

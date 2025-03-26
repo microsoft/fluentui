@@ -69,9 +69,9 @@ export const getCalloutOffsetStyles = (
     return mergeStyleSets(getCalloutStyles(props), {
       root: [
         {
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           marginLeft: offset.left || offset.x,
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           marginTop: offset.top || offset.y,
         },
       ],

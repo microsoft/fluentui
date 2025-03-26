@@ -1412,6 +1412,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -1978,6 +1979,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               45.0k
             </text>
           </g>
+          
         </g>
       </svg>
     </div>
@@ -2544,6 +2546,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               43%
             </text>
           </g>
+          
         </g>
       </svg>
     </div>
@@ -3149,6 +3152,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               />
             </foreignObject>
           </g>
+          
         </g>
       </svg>
     </div>
@@ -3667,6 +3671,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -4703,6 +4708,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -5221,6 +5227,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -5739,6 +5746,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -5874,6 +5882,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -6392,23 +6401,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               role="img"
             />
           </g>
-          <text
-            className=
-
-                {
-                  fill: #323130;
-                  font-size: 24px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: rgb(179, 179, 179);
-                }
-            dominantBaseline="middle"
-            textAnchor="middle"
-            y={5}
-          >
-            1,000
-          </text>
+          
         </g>
       </svg>
     </div>

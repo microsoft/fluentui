@@ -103,7 +103,7 @@ export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () 
   }
 
   return (
-    <>
+    <div className="containerDiv">
       <Checkbox
         label="Hide labels"
         checked={hideLabels}
@@ -118,6 +118,6 @@ export const HorizontalBarChartVariantExample: React.FunctionComponent<{}> = () 
           hideLabels={hideLabels}
         />
       </div>
-    </>
+    </div>
   );
 };

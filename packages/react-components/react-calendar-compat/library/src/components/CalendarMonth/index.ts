@@ -1,3 +1,8 @@
-export * from './CalendarMonth';
-export * from './CalendarMonth.types';
-export * from './useCalendarMonthStyles.styles';
+export { CalendarMonth } from './CalendarMonth';
+export type {
+  CalendarMonthProps,
+  CalendarMonthStyleProps,
+  CalendarMonthStyles,
+  ICalendarMonth,
+} from './CalendarMonth.types';
+export { useCalendarMonthStyles_unstable } from './useCalendarMonthStyles.styles';

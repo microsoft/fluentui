@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -226,22 +226,64 @@ export interface ILegendsProps {
   onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
 
   /**
-   * Keys (title) that will be initially used to set selected items.
-   * This prop is used for multiSelect scenarios.
-   * In other cases, defaultSelectedLegend should be used.
+   * Keys (title) that will be initially used to set selected items. This prop is used for multi-select scenarios when
+   * canSelectMultipleLegends is true; for single-select, use defaultSelectedLegend.
+   *
+   * Updating this prop does not change the selection after the component has been initialized. For controlled
+   * selections, use selectedLegends instead.
+   *
+   * @see selectedLegends for setting the selected legends in controlled mode.
+   * @see defaultSelectedLegend for setting the initially selected legend when canSelectMultipleLegends is false.
    */
   defaultSelectedLegends?: string[];
 
   /**
-   * Key that will be initially used to set selected item.
-   * This prop is used for singleSelect scenarios.
+   * Key that will be initially used to set selected item. This prop is used for single-select scenarios when
+   * canSelectMultipleLegends is false or unspecified; for multi-select, use defaultSelectedLegends.
+   *
+   * Updating this prop does not change the selection after the component has been initialized. For controlled
+   * selections, use selectedLegend instead.
+   *
+   * @see selectedLegend for setting the selected legend in controlled mode.
+   * @see defaultSelectedLegends for setting the initially selected legends when canSelectMultipleLegends is true.
    */
   defaultSelectedLegend?: string;
+
+  /**
+   * Keys (title) that will be used to set selected items in multi-select scenarios when canSelectMultipleLegends is
+   * true. For single-select, use selectedLegend.
+   *
+   * When this prop is provided, the component is controlled and does not automatically update the selection based on
+   * user interactions; the parent component must update the value passed to this property by handling the onChange
+   * event.
+   *
+   * @see defaultSelectedLegends for setting the initially-selected legends in uncontrolled mode.
+   * @see selectedLegends for setting the selected legends when `canSelectMultipleLegends` is `true`.
+   */
+  selectedLegends?: string[];
+
+  /**
+   * Key (title) that will be used to set the selected item in single-select scenarios when canSelectMultipleLegends is
+   * false or unspecified. For multi-select, use selectedLegends.
+   *
+   * When this prop is provided, the component is controlled and does not automatically update the selection based on
+   * user interactions; the parent component must update the value passed to this property by handling the onChange
+   * event.
+   *
+   * @see defaultSelectedLegend for setting the initially-selected legend in uncontrolled mode.
+   * @see selectedLegend for setting the selected legend when `canSelectMultipleLegends` is `false`.
+   */
+  selectedLegend?: string;
 
   /**
    * The shape for the legend.
    */
   shape?: LegendShape;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<ILegendContainer>;
 }
 
 /**
@@ -252,3 +294,17 @@ export interface ILegendsProps {
  * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+
+/**
+ * {@docCategory Legends}
+ */
+export interface ILegendContainer {
+  toSVG: (
+    svgWidth: number,
+    isRTL?: boolean,
+  ) => {
+    node: SVGGElement | null;
+    width: number;
+    height: number;
+  };
+}

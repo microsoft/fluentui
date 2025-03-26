@@ -10,6 +10,8 @@ import {
   ToolbarGroup,
   ToolbarButton,
   makeStyles,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import {
   Dismiss24Regular,
@@ -30,9 +32,19 @@ export const WithNavigation = () => {
 
   const [isOpen, setIsOpen] = React.useState(false);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div>
-      <OverlayDrawer position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer
+        position="start"
+        {...restoreFocusSourceAttributes}
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderNavigation className={styles.header}>
             <Button aria-label="Back" appearance="subtle" icon={<ArrowLeft24Regular />} />
@@ -58,7 +70,7 @@ export const WithNavigation = () => {
         </DrawerBody>
       </OverlayDrawer>
 
-      <Button appearance="primary" onClick={() => setIsOpen(true)}>
+      <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
       </Button>
     </div>

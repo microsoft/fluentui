@@ -24,9 +24,8 @@ function main(changedFiles) {
  * @returns {string}
  */
 function renderNotification(title) {
-  return [
-    '⚠️ ----------------------------------------------------------------------------------------- ⚠️',
-    `⚠️  ${title}  ⚠️`,
-    '⚠️ ----------------------------------------------------------------------------------------- ⚠️',
-  ].join('\n');
+  const titleLength = title.length;
+  const fillWithDashes = '-'.repeat(titleLength + 4);
+
+  return [`⚠️ ${fillWithDashes} ⚠️`, `⚠️   ${title}   ⚠️`, `⚠️ ${fillWithDashes} ⚠️`].join('\n');
 }

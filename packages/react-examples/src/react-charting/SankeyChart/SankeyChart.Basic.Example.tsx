@@ -1,4 +1,10 @@
-import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import {
+  IChartProps,
+  ISankeyChartProps,
+  SankeyChart,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import * as React from 'react';
 
 interface ISankeyChartBasicState {
@@ -13,6 +19,24 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
       width: 820,
       height: 412,
     };
+  }
+
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
   }
 
   public render(): JSX.Element {
@@ -34,38 +58,38 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
           {
             nodeId: 0,
             name: 'node0',
-            color: '#00758F',
-            borderColor: '#002E39',
+            color: getColorFromToken(DataVizPalette.color3),
+            borderColor: getColorFromToken(DataVizPalette.color23),
           },
           {
             nodeId: 1,
             name: 'node1',
-            color: '#77004D',
-            borderColor: '#43002C',
+            color: getColorFromToken(DataVizPalette.color22),
+            borderColor: getColorFromToken(DataVizPalette.color2),
           },
           {
             nodeId: 2,
             name: 'node2',
-            color: '#4F6BED',
-            borderColor: '#3B52B4',
+            color: getColorFromToken(DataVizPalette.color1),
+            borderColor: getColorFromToken(DataVizPalette.color21),
           },
           {
             nodeId: 3,
             name: 'node3',
-            color: '#937600',
-            borderColor: '#6D5700',
+            color: getColorFromToken(DataVizPalette.color27),
+            borderColor: getColorFromToken(DataVizPalette.color7),
           },
           {
             nodeId: 4,
             name: 'node4',
-            color: '#286EA8',
-            borderColor: '#00457E',
+            color: getColorFromToken(DataVizPalette.color28),
+            borderColor: getColorFromToken(DataVizPalette.color8),
           },
           {
             nodeId: 5,
             name: 'node5',
-            color: '#A43FB1',
-            borderColor: '#7C158A',
+            color: getColorFromToken(DataVizPalette.color4),
+            borderColor: getColorFromToken(DataVizPalette.color24),
           },
         ],
         links: [
@@ -116,7 +140,7 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -145,7 +169,7 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
             shouldResize={this.state.width + this.state.height}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

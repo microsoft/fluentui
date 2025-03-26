@@ -24,6 +24,7 @@ describe('MenuItemSwitch', () => {
             icon: 'Test Icon',
             content: 'Test Content',
             secondaryContent: 'Test Secondary Content',
+            subText: 'Sub text',
           },
         },
       ],

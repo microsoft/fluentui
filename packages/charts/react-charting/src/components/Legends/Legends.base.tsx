@@ -14,8 +14,10 @@ import {
   ILegendsStyles,
   ILegendStyleProps,
   ILegendOverflowData,
+  ILegendContainer,
 } from './Legends.types';
 import { Shape } from './shape';
+import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -40,26 +42,59 @@ export interface ILegendState {
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
-export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+export class LegendsBase extends React.Component<ILegendsProps, ILegendState> implements ILegendContainer {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
   /** Boolean variable to check if one or more legends are selected */
   private _isLegendSelected = false;
+  private _rootElem: HTMLDivElement | null;
+
+  public static getDerivedStateFromProps(newProps: ILegendsProps, prevState: ILegendState): ILegendState {
+    const { selectedLegend, selectedLegends } = newProps;
+
+    if (newProps.canSelectMultipleLegends && selectedLegends !== undefined) {
+      return {
+        ...prevState,
+        selectedLegends: selectedLegends.reduce(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (combinedDict: any, key: any) => ({ [key]: true, ...combinedDict }),
+          {},
+        ),
+      };
+    }
+
+    if (!newProps.canSelectMultipleLegends && selectedLegend !== undefined) {
+      return {
+        ...prevState,
+        selectedLegends: { [selectedLegend]: true },
+      };
+    }
+
+    return prevState;
+  }
 
   public constructor(props: ILegendsProps) {
     super(props);
-    let defaultSelectedLegends = {};
+    //let defaultSelectedLegends = {};
+    const initialSelectedLegends = props.selectedLegends ?? props.defaultSelectedLegends;
+    const initialSelectedLegend = props.selectedLegend ?? props.defaultSelectedLegend;
+    let selectedLegendsState = {};
+
     if (props.canSelectMultipleLegends) {
-      defaultSelectedLegends =
-        props.defaultSelectedLegends?.reduce((combinedDict, key) => ({ [key]: true, ...combinedDict }), {}) || {};
-    } else if (props.defaultSelectedLegend) {
-      defaultSelectedLegends = { [props.defaultSelectedLegend]: true };
+      selectedLegendsState =
+        (initialSelectedLegends ?? [])?.reduce(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (combineDict: any, key: any) => ({ [key]: true, ...combineDict }),
+          {},
+        ) || {};
+    } else if (initialSelectedLegend) {
+      selectedLegendsState = { [initialSelectedLegend]: true };
     }
 
     this.state = {
       activeLegend: '',
       isHoverCardVisible: false,
-      selectedLegends: defaultSelectedLegends,
+      selectedLegends: selectedLegendsState,
     };
   }
 
@@ -72,7 +107,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -86,6 +121,20 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       </div>
     );
   }
+
+  public toSVG = (svgWidth: number, isRTL: boolean = false) => {
+    return cloneLegendsToSVG(
+      this.props.legends,
+      svgWidth,
+      {
+        selectedLegends: this.state.selectedLegends,
+        centerLegends: !!this.props.centerLegends,
+        textClassName: this._classNames.text,
+        isRTL,
+      },
+      this._rootElem,
+    );
+  };
 
   private _generateData(): ILegendOverflowData {
     const { allowFocusOnLegends = true, shape } = this.props;
@@ -164,11 +213,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   /**
-   * This function will get called when there is an ability to
-   * select  multiple legends
-   * @param legend ILegend
+   * Get the new selected legends based on the legend that was clicked when multi-select is enabled.
+   * @param legend The legend that was clicked
+   * @returns An object with the new selected legend(s) state data.
    */
-  private _canSelectMultipleLegends = (legend: ILegend): { [key: string]: boolean } => {
+  private _getNewSelectedLegendsForMultiselect = (legend: ILegend): { [key: string]: boolean } => {
     let selectedLegends = { ...this.state.selectedLegends };
     if (selectedLegends[legend.title]) {
       // Delete entry for the deselected legend to make
@@ -181,37 +230,27 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         selectedLegends = {};
       }
     }
-    this.setState({ selectedLegends });
     return selectedLegends;
   };
 
   /**
-   * This function will get called when there is
-   * ability to select only single legend
-   * @param legend ILegend
+   * Get the new selected legends based on the legend that was clicked when single-select is enabled.
+   * @param legend The legend that was clicked
+   * @returns An object with the new selected legend state data.
    */
 
-  private _canSelectOnlySingleLegend = (legend: ILegend): boolean => {
-    if (this.state.selectedLegends[legend.title]) {
-      this.setState({ selectedLegends: {} });
-      return false;
-    } else {
-      this.setState({ selectedLegends: { [legend.title]: true } });
-      return true;
-    }
+  private _getNewSelectedLegendsForSingleSelect = (legend: ILegend): { [key: string]: boolean } => {
+    return this.state.selectedLegends[legend.title] ? {} : { [legend.title]: true };
   };
 
   private _onClick = (legend: ILegend, event: React.MouseEvent<HTMLButtonElement>): void => {
     const { canSelectMultipleLegends = false } = this.props;
-    let selectedLegends: string[] = [];
-    if (canSelectMultipleLegends) {
-      const nextSelectedLegends = this._canSelectMultipleLegends(legend);
-      selectedLegends = Object.keys(nextSelectedLegends);
-    } else {
-      const isSelected = this._canSelectOnlySingleLegend(legend);
-      selectedLegends = isSelected ? [legend.title] : [];
-    }
-    this.props.onChange?.(selectedLegends, event, legend);
+    const nextSelectedLegends = canSelectMultipleLegends
+      ? this._getNewSelectedLegendsForMultiselect(legend)
+      : this._getNewSelectedLegendsForSingleSelect(legend);
+
+    this.setState({ selectedLegends: nextSelectedLegends });
+    this.props.onChange?.(Object.keys(nextSelectedLegends), event, legend);
     legend.action?.();
   };
 

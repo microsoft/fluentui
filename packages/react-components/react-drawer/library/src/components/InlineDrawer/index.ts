@@ -1,5 +1,10 @@
-export * from './InlineDrawer';
-export * from './InlineDrawer.types';
-export * from './renderInlineDrawer';
-export * from './useInlineDrawer';
-export * from './useInlineDrawerStyles.styles';
+export { InlineDrawer } from './InlineDrawer';
+export type {
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+  SurfaceMotionSlotProps,
+} from './InlineDrawer.types';
+export { renderInlineDrawer_unstable } from './renderInlineDrawer';
+export { useInlineDrawer_unstable } from './useInlineDrawer';
+export { inlineDrawerClassNames, useInlineDrawerStyles_unstable } from './useInlineDrawerStyles.styles';

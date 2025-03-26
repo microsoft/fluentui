@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
@@ -7,6 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
   IAccessibilityProps,
+  IChart,
   IDataPoint,
   IGroupedVerticalBarChartData,
   IHeatMapChartDataPoint,
@@ -75,6 +76,11 @@ export interface ICartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -235,7 +241,7 @@ export interface ICartesianChartProps {
    * This is a optional parameter if not specified D3 will decide which values appear on the x-axis for you
    * Please look at https://github.com/d3/d3-scale for more information on how D3 decides what data to appear on the axis of chart
    */
-  tickValues?: number[] | Date[];
+  tickValues?: number[] | Date[] | string[];
 
   /**
    * the format for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
@@ -439,6 +445,30 @@ export interface ICartesianChartProps {
    * @default true
    */
   useUTC?: boolean;
+
+  /**
+   * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeData?: boolean;
+
+  /**
+   * @default false
+   * The prop used to decide rounded ticks on y axis
+   */
+  roundedTicks?: boolean;
+
+  /**
+   * Optional callback to access the IChart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: IRefObject<IChart>;
+
+  /**
+   * Determines whether overlapping x-axis tick labels should be hidden.
+   * @default false
+   */
+  hideTickOverlap?: boolean;
 }
 
 export interface IYValueHover {
@@ -538,7 +568,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Tick params are applicable for date axis only.
    */
   tickParams?: {
-    tickValues?: number[] | Date[];
+    tickValues?: number[] | Date[] | string[];
     tickFormat?: string;
   };
 
@@ -651,6 +681,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     axisData: IAxisData,
     isIntegralDataset: boolean,
     useSecondaryYScale?: boolean,
+    supportNegativeData?: boolean,
+    roundedTicks?: boolean,
   ) => ScaleLinear<number, number, never>;
 
   /**
@@ -670,7 +702,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isRTL: boolean,
     xAxisType: XAxisTypes,
     barWidth: number,
-    tickValues: Date[] | number[] | undefined,
+    tickValues: Date[] | number[] | string[] | undefined,
     shiftX: number,
   ) => IDomainNRange;
 
@@ -683,4 +715,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isRtl: boolean,
     barWidth: number | undefined,
   ) => ScaleBand<string>;
+
+  /**
+   * Callback to access the public methods and properties of the component.
+   */
+  ref?: IRefObject<IChart>;
 }

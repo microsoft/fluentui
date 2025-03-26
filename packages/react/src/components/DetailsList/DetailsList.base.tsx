@@ -141,11 +141,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionMode = selection.mode,
     selectionPreservedOnEmptyClick,
     selectionZoneProps,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ariaLabel,
     ariaLabelForGrid,
     rowElementEventMap,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     shouldApplyApplicationRole = false,
     getKey,
     listProps,
@@ -593,7 +593,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const isRightArrow = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       return event.which === getRTLSafeKeyCode(KeyCodes.right, theme);
     },
     [theme],
@@ -657,7 +657,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const onHeaderKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.down) {
         if (focusZoneRef.current && focusZoneRef.current.focus()) {
           // select the first item in list after down arrow key event
@@ -676,7 +676,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const onContentKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.up && !ev.altKey) {
         if (headerRef.current && headerRef.current.focus()) {
           ev.preventDefault();
@@ -918,10 +918,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
             targetIndex,
           };
           columnReorderOptions.onColumnDrop(dragDropDetails);
-          /* eslint-disable deprecation/deprecation */
+          /* eslint-disable @typescript-eslint/no-deprecated */
         } else if (columnReorderOptions.handleColumnReorder) {
           columnReorderOptions.handleColumnReorder(draggedIndex, targetIndex);
-          /* eslint-enable deprecation/deprecation */
+          /* eslint-enable @typescript-eslint/no-deprecated */
         }
       }
     }
@@ -1345,7 +1345,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         ...this._columnOverrides[column.key],
       };
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (!(baseColumn.isCollapsible || baseColumn.isCollapsable)) {
         minimumWidth += getPaddedWidth(baseColumn, props);
       }
@@ -1368,7 +1368,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
         if (minimumWidth < availableWidth) {

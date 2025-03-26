@@ -1,12 +1,25 @@
-export * from './Button/buttonBehaviorDefinition';
-export * from './Button/buttonGroupBehaviorDefinition';
-export * from './Button/toggleButtonBehaviorDefinition';
-export * from './Link/linkBehaviorDefinition';
-export * from './MenuButton/menuButtonBehaviorDefinition';
-export * from './Pill/pillActionBehaviorDefinition';
-export * from './Pill/pillBehaviorDefinition';
-export * from './Pill/pillOptionBehaviorDefinition';
-export * from './Pill/pillGroupBehaviorDefinition';
-export * from './Popup/popupBehaviorDefinition';
-
-export * from './react-button/buttonAccessibilityBehaviorDefinition';
+export { buttonBehaviorDefinition } from './Button/buttonBehaviorDefinition';
+export { buttonGroupBehaviorDefinition } from './Button/buttonGroupBehaviorDefinition';
+export { toggleButtonBehaviorDefinition } from './Button/toggleButtonBehaviorDefinition';
+export { linkBehaviorDefinition } from './Link/linkBehaviorDefinition';
+export {
+  menuButtonBehaviorDefinition,
+  menuButtonBehaviorDefinitionMenuSlot,
+  menuButtonBehaviorDefinitionMenuSlotWithoutID,
+  menuButtonBehaviorDefinitionTriggerSlotNotTabbable,
+  menuButtonBehaviorDefinitionTriggerSlotTabbable,
+  menuButtonBehaviorDefinitionTriggerSlotWithoutID,
+  menuButtonBehaviorDefinitionTriggerWithTabIndex,
+} from './MenuButton/menuButtonBehaviorDefinition';
+export { pillActionBehaviorDefinition } from './Pill/pillActionBehaviorDefinition';
+export { pillBehaviorDefinition } from './Pill/pillBehaviorDefinition';
+export { pillOptionBehaviorDefinition } from './Pill/pillOptionBehaviorDefinition';
+export { pillGroupBehaviorDefinition } from './Pill/pillGroupBehaviorDefinition';
+export {
+  popupBehaviorDefinition,
+  popupBehaviorDefinitionPopupSlot,
+  popupBehaviorDefinitionTriggerSlotNotTabbable,
+  popupBehaviorDefinitionTriggerSlotTabbable,
+  popupBehaviorDefinitionTriggerSlotWithTabIndex,
+} from './Popup/popupBehaviorDefinition';
+export { buttonAccessibilityBehaviorDefinition } from './react-button/buttonAccessibilityBehaviorDefinition';

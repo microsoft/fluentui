@@ -16,7 +16,7 @@ describe('getSlotsNext', () => {
   it('returns provided component type for root if the as prop is not provided', () => {
     type Slots = { root: Slot<'div'> };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({}),
         components: { root: 'div' },
@@ -30,7 +30,7 @@ describe('getSlotsNext', () => {
   it('returns root slot as a span with no props', () => {
     type Slots = { root: Slot<'div', 'span'> };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'span' }),
         components: { root: 'div' },
@@ -45,7 +45,7 @@ describe('getSlotsNext', () => {
     type Slots = { root: Slot<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'button', id: 'id', ...invalidProp }),
         components: { root: 'button' },
@@ -59,7 +59,7 @@ describe('getSlotsNext', () => {
   it('returns root slot as an anchor, leaving the href intact', () => {
     type Slots = { root: Slot<'a'> };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'a', id: 'id', href: 'href' }),
         components: { root: 'a' },
@@ -76,7 +76,7 @@ describe('getSlotsNext', () => {
       icon: Slot<typeof Foo>;
     };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({}),
         components: { root: 'div', icon: Foo },
@@ -97,7 +97,7 @@ describe('getSlotsNext', () => {
       icon: Slot<'button'>;
     };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         components: { icon: 'button', root: 'div' },
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'span' }),
@@ -118,7 +118,7 @@ describe('getSlotsNext', () => {
       icon: Slot<'a'>;
     };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
         components: { root: 'div', icon: 'a' },
@@ -143,7 +143,7 @@ describe('getSlotsNext', () => {
       icon: Slot<'a'> | Slot<typeof Foo>;
     };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
@@ -169,7 +169,7 @@ describe('getSlotsNext', () => {
     };
     const renderIcon = (C: React.ElementType, p: {}) => <C {...p} />;
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
@@ -191,12 +191,12 @@ describe('getSlotsNext', () => {
     };
     const renderFunction = (C: React.ElementType, p: {}) => <C {...p} />;
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         root: resolveShorthand<ExtractSlotProps<Slots['root']>>({ as: 'div' }, { required: true }),
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         icon: resolveShorthand<ExtractSlotProps<Slots['icon']>>({ id: 'bar', children: renderFunction }),
       }),
     ).toEqual({
@@ -219,7 +219,7 @@ describe('getSlotsNext', () => {
       icon?: Slot<'a'>;
     };
     expect(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getSlotsNext<Slots>({
         root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
         components: { root: 'div', input: 'input', icon: 'a' },

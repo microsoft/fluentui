@@ -51,4 +51,12 @@ describe('Rating', () => {
     expect(onChange.mock.calls[1][1].value).toBe(3);
     expect(onChange.mock.calls[2][1].value).toBe(2);
   });
+  it('creates RadioItems with correct aria-labels', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<Rating onChange={onChange} itemLabel={num => `item #${num}`} />);
+    const items = getAllByRole('radio');
+    expect(items[0].getAttribute('aria-label')).toBe('item #1');
+    expect(items[1].getAttribute('aria-label')).toBe('item #2');
+    expect(items[2].getAttribute('aria-label')).toBe('item #3');
+  });
 });

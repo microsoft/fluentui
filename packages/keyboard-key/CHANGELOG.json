@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Mon, 20 Jan 2025 07:21:46 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.23",
+      "version": "0.4.23",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2024 07:24:44 GMT",
       "tag": "@fluentui/keyboard-key_v0.4.23",
       "version": "0.4.23",

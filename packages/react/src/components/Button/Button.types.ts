@@ -42,12 +42,12 @@ export interface IButton {
 /**
  * {@docCategory Button}
  */
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 export interface IButtonProps
   extends React.AllHTMLAttributes<
     HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement
   > {
-  /* eslint-enable deprecation/deprecation */
+  /* eslint-enable @typescript-eslint/no-deprecated */
   /**
    * Optional callback to access the `IButton` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

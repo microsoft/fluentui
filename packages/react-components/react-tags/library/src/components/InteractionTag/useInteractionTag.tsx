@@ -18,9 +18,11 @@ export const useInteractionTag_unstable = (
 ): InteractionTagState => {
   const {
     handleTagDismiss,
+    handleTagSelect,
     size: contextSize,
     disabled: contextDisabled,
     appearance: contextAppearance,
+    selectedValues = [],
   } = useTagGroupContext_unstable();
 
   const id = useId('fui-InteractionTag-', props.id);
@@ -30,6 +32,7 @@ export const useInteractionTag_unstable = (
   const {
     appearance = contextAppearance ?? 'filled',
     disabled = false,
+    selected = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -39,7 +42,10 @@ export const useInteractionTag_unstable = (
     appearance,
     disabled: contextDisabled ? true : disabled,
     handleTagDismiss,
+    handleTagSelect,
     interactionTagPrimaryId,
+    selected: selectedValues.includes(value) || selected,
+    selectedValues,
     shape,
     size,
     value,

@@ -15,6 +15,9 @@ import { VerticalBarChartTooltipExample } from './VerticalBarChart.AxisTooltip.E
 import { VerticalBarChartCustomAccessibilityExample } from './VerticalBarChart.CustomAccessibility.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
 import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Example';
+import { VerticalBarChartNegativeExample } from './VerticalBarChart.Negative.Example';
+import { VerticalBarChartAllNegativeExample } from './VerticalBarChart.AllNegative.Example';
+import { VerticalBarChartResponsiveExample } from './VerticalBarChart.Responsive.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
@@ -30,6 +33,12 @@ const VerticalBarChartRotateLabelsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.RotateLabels.Example.tsx') as string;
 const VerticalBarChartDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.DateAxis.Example.tsx') as string;
+const VerticalBarChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Negative.Example.tsx') as string;
+const VerticalBarChartAllNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.AllNegative.Example.tsx') as string;
+const VerticalBarChartResponsiveExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Responsive.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -62,6 +71,15 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ExampleCard>
             <ExampleCard title="VerticalBarChart rotate label" code={VerticalBarChartRotateLabelsExampleCode}>
               <VerticalBarChartRotatedLabelExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalBarChart Negative Y Values" code={VerticalBarChartNegativeExampleCode}>
+              <VerticalBarChartNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalBarChart All Negative Y Values" code={VerticalBarChartAllNegativeExampleCode}>
+              <VerticalBarChartAllNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalBarChart responsive" code={VerticalBarChartResponsiveExampleCode}>
+              <VerticalBarChartResponsiveExample />
             </ExampleCard>
           </div>
         }

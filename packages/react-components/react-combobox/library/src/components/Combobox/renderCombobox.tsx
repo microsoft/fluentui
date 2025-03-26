@@ -18,7 +18,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
     <state.root>
       <ActiveDescendantContextProvider value={contextValues.activeDescendant}>
         <ListboxProvider value={contextValues.listbox}>
-          {/*eslint-disable-next-line deprecation/deprecation*/}
+          {/*eslint-disable-next-line @typescript-eslint/no-deprecated*/}
           <ComboboxContext.Provider value={contextValues.combobox}>
             <state.input />
             {state.clearIcon && <state.clearIcon />}
@@ -31,7 +31,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
                   <state.listbox />
                 </Portal>
               ))}
-            {/*eslint-disable-next-line deprecation/deprecation*/}
+            {/*eslint-disable-next-line @typescript-eslint/no-deprecated*/}
           </ComboboxContext.Provider>
         </ListboxProvider>
       </ActiveDescendantContextProvider>

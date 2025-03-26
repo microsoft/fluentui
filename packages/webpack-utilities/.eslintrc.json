@@ -3,7 +3,14 @@
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "deprecation/deprecation": "off",
     "prefer-arrow-callback": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        "@typescript-eslint/no-deprecated": "off"
+      }
+    }
+  ]
 }

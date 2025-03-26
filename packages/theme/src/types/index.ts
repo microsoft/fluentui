@@ -1,4 +1,4 @@
-export * from './Theme';
+export type { ComponentStyles, ComponentsStyles, PartialTheme, Theme } from './Theme';
 export type { IEffects } from './IEffects';
 export type { IFontStyles } from './IFontStyles';
 export type { IPalette } from './IPalette';

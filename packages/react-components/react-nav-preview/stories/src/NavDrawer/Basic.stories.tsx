@@ -15,7 +15,17 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  Label,
+  Radio,
+  RadioGroup,
+  Switch,
+  Tooltip,
+  makeStyles,
+  tokens,
+  useId,
+  useRestoreFocusTarget,
+} from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -52,6 +62,9 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     display: 'flex',
     height: '600px',
+  },
+  nav: {
+    minWidth: '200px',
   },
   content: {
     flex: '1',
@@ -97,15 +110,10 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
   const [type, setType] = React.useState<DrawerType>('inline');
   const [isMultiple, setIsMultiple] = React.useState(true);
 
-  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
+  // Tabster prop used to restore focus to the navigation trigger for overlay nav drawers
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
 
-  const renderHamburgerWithToolTip = () => {
-    return (
-      <Tooltip content="Navigation" relationship="label">
-        <Hamburger onClick={() => setIsOpen(!isOpen)} />
-      </Tooltip>
-    );
-  };
+  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
   return (
     <div className={styles.root}>
@@ -115,8 +123,13 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
         open={isOpen}
         type={type}
         multiple={isMultiple}
+        className={styles.nav}
       >
-        <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
+        <NavDrawerHeader>
+          <Tooltip content="Close Navigation" relationship="label">
+            <Hamburger onClick={() => setIsOpen(!isOpen)} />
+          </Tooltip>
+        </NavDrawerHeader>
 
         <NavDrawerBody>
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
@@ -196,7 +209,9 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
-        {!isOpen && renderHamburgerWithToolTip()}
+        <Tooltip content="Toggle navigation pane" relationship="label">
+          <Hamburger onClick={() => setIsOpen(!isOpen)} {...restoreFocusTargetAttributes} />
+        </Tooltip>
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
           <RadioGroup

@@ -45,7 +45,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX
         <Persona
           {...item}
           presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28} // eslint-disable-line deprecation/deprecation
+          size={PersonaSize.size28} // eslint-disable-line @typescript-eslint/no-deprecated
         />
       </div>
       <IconButton

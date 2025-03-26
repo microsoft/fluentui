@@ -1,1 +1,1 @@
-export * from './Scale';
+export { Scale, ScaleRelaxed, ScaleSnappy, createScalePresence } from './Scale';

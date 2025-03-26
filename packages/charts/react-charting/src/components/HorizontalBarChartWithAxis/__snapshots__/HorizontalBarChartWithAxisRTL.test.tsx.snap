@@ -28,9 +28,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1034,9 +1032,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2053,9 +2049,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -3060,9 +3054,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4066,9 +4058,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -4389,6 +4379,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="1000. String One."
             aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
             data-is-focusable="true"
             fill="#0078d4"
             height="32"
@@ -4403,6 +4398,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="5000. String Two."
             aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
             data-is-focusable="true"
             fill="#002050"
             height="32"
@@ -4417,6 +4417,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="3000. String Three."
             aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
             data-is-focusable="true"
             fill="#00188f"
             height="32"
@@ -4431,6 +4436,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <rect
             aria-label="2000. String Four."
             aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
             data-is-focusable="true"
             fill="#0078d4"
             height="32"
@@ -4928,9 +4938,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

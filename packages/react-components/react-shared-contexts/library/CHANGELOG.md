@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 11 Nov 2024 10:00:54 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Mar 2025 15:40:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.23.0)
+
+Wed, 19 Mar 2025 15:40:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.22.0..@fluentui/react-shared-contexts_v9.23.0)
+
+### Minor changes
+
+- feat: added CustomStyleHooks ([PR #33969](https://github.com/microsoft/fluentui/pull/33969) by vkozlova@microsoft.com)
+
+## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.22.0)
+
+Tue, 11 Mar 2025 18:58:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.21.2..@fluentui/react-shared-contexts_v9.22.0)
+
+### Minor changes
+
+- feat: Adds custom style hooks to TeachingPopoverCarousel and related subcomponents. ([PR #33943](https://github.com/microsoft/fluentui/pull/33943) by matejera@microsoft.com)
+- fix: Implemented customStyleHooks for SearchBox Component ([PR #33954](https://github.com/microsoft/fluentui/pull/33954) by terynkum@microsoft.com)
+
+## [9.21.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.21.2)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.21.1..@fluentui/react-shared-contexts_v9.21.2)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.21.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.21.1)
+
+Fri, 06 Dec 2024 12:53:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.21.0..@fluentui/react-shared-contexts_v9.21.1)
+
+### Patches
+
+- chore: remove usage of "export *"  ([PR #33380](https://github.com/microsoft/fluentui/pull/33380) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
 
 ## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.21.0)
 

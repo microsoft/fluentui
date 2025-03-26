@@ -1,0 +1,40 @@
+{
+  "name": "@fluentui/eslint-plugin-react-components",
+  "version": "0.1.1",
+  "description": "ESLint plugin and custom rules for Fluent UI components v9",
+  "main": "./lib-commonjs/index.js",
+  "module": "./lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/rule-tester": "8.8.1",
+    "eslint-plugin-eslint-plugin": "6.3.1"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^8.8.1",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs",
+    "lib"
+  ]
+}

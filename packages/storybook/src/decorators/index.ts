@@ -1,2 +1,2 @@
-export * from './withKeytipLayer';
-export * from './withStrictMode';
+export { KeytipLayerWrapper, withKeytipLayer } from './withKeytipLayer';
+export { withStrictMode } from './withStrictMode';

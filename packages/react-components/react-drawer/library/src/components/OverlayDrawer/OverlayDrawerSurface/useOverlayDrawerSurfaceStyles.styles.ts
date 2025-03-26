@@ -8,7 +8,7 @@ import { DialogSurfaceState } from '@fluentui/react-dialog';
 const useBackdropResetStyles = makeResetStyles({
   inset: '0px',
   position: 'fixed',
-  backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  backgroundColor: tokens.colorBackgroundOverlay,
 });
 
 const useBackdropStyles = makeStyles({

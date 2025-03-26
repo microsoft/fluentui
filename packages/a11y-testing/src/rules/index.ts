@@ -1,1 +1,1 @@
-export * from './rules';
+export { BehaviorRule, SlotRule } from './rules';

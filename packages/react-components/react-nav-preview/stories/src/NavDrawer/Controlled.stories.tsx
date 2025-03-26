@@ -54,6 +54,9 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '600px',
   },
+  nav: {
+    minWidth: '200px',
+  },
   content: {
     flex: '1',
     padding: '16px',
@@ -210,6 +213,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
         selectedCategoryValue={selectedCategoryValue}
         type={'inline'}
         open={true}
+        className={styles.nav}
       >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 

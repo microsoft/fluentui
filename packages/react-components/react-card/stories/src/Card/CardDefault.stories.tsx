@@ -1,8 +1,16 @@
 import * as React from 'react';
 
-import { makeStyles, Body1, Caption1, Button } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Body1,
+  Caption1,
+  Button,
+  Card,
+  CardFooter,
+  CardHeader,
+  CardPreview,
+} from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
-import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =

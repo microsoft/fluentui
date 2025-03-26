@@ -1,33 +1,19 @@
 import * as React from 'react';
-import {
-  isHTMLElement,
-  useMergedRefs,
-  useControllableState,
-  type EventHandler,
-  useEventCallback,
-} from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { isHTMLElement, useMergedRefs, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { CAROUSEL_ITEM } from './constants';
 import { useCarouselWalker_unstable } from './useCarouselWalker';
 import { createCarouselStore } from './createCarouselStore';
-import type { CarouselValueChangeData } from './Carousel.types';
+import type { UseCarouselOptions } from './Carousel.types';
 import { CarouselContextValue } from './CarouselContext';
-
-export type UseCarouselOptions = {
-  defaultValue?: string;
-  value?: string;
-
-  onValueChange?: EventHandler<CarouselValueChangeData>;
-  onFinish?: EventHandler<CarouselValueChangeData>;
-};
 
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
 export function useCarousel_unstable(options: UseCarouselOptions) {
   'use no memo';
 
-  const { onValueChange, onFinish } = options;
+  const { announcement, onValueChange, onFinish } = options;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -40,6 +26,8 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     initialState: null,
   });
   const rootRef = React.useRef<HTMLDivElement>(null);
+
+  const { announce } = useAnnounce();
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -115,6 +103,18 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
     };
   }, [carouselWalker, store, win]);
 
+  const updateSlide = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, newValue: string) => {
+      setValue(newValue);
+      onValueChange?.(event, { event, type: 'click', value: newValue });
+
+      const announceText = announcement?.(newValue);
+      if (announceText) {
+        announce(announceText, { polite: true });
+      }
+    },
+  );
+
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
 
@@ -126,16 +126,10 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
       direction === 'prev' ? carouselWalker.prevPage(active.value) : carouselWalker.nextPage(active.value);
 
     if (newPage) {
-      setValue(newPage?.value);
-      onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+      updateSlide(event, newPage?.value);
     } else {
       onFinish?.(event, { event, type: 'click', value: active?.value });
     }
-  });
-
-  const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
-    setValue(_value);
-    onValueChange?.(event, { event, type: 'click', value: _value });
   });
 
   return {
@@ -144,7 +138,7 @@ export function useCarousel_unstable(options: UseCarouselOptions) {
       store,
       value,
       selectPageByDirection,
-      selectPageByValue,
+      selectPageByValue: updateSlide,
     },
   };
 }

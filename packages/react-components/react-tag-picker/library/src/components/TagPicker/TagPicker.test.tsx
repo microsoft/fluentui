@@ -62,4 +62,18 @@ describe('TagPicker', () => {
     const expandButton = getByRole('button');
     expect(expandButton.getAttribute('aria-labelledby')).toContain('Selected Employees');
   });
+
+  it('sets expand button to disabled when TagPicker is disabled', () => {
+    const { getByRole } = render(
+      <TagPicker disabled>
+        <TagPickerControl>
+          <TagPickerInput />
+        </TagPickerControl>
+        <TagPickerList />
+      </TagPicker>,
+    );
+
+    const expandButton = getByRole('button');
+    expect(expandButton.getAttribute('aria-disabled')).toEqual('true');
+  });
 });

@@ -1,15 +1,16 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { Slider } from '@fluentui/react-slider';
-import { getStoryVariant, RTL, TestWrapperDecorator, withStoryWrightSteps } from '../../utilities';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
+import { useStyles } from './utils';
 
 export default {
   title: 'Slider Converged',
-  decorators: [
-    TestWrapperDecorator,
-    story => withStoryWrightSteps({ story, steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() }),
-  ],
+  decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: { steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end() },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Slider>;
 
 export const Horizontal0 = () => <Slider defaultValue={0} />;
@@ -31,3 +32,9 @@ export const Vertical100 = () => <Slider vertical defaultValue={100} />;
 Vertical100.storyName = 'Vertical - 100%';
 
 export const Vertical100RTL = getStoryVariant(Vertical100, RTL);
+
+export const CustomizedSlider = () => {
+  const styles = useStyles();
+
+  return <Slider className={styles.enabled} thumb={{ className: styles.thumb }} defaultValue={20} size="small" />;
+};

@@ -1,5 +1,5 @@
-export * from './TableCell';
-export * from './TableCell.types';
-export * from './renderTableCell';
-export * from './useTableCell';
-export * from './useTableCellStyles.styles';
+export { TableCell } from './TableCell';
+export type { TableCellProps, TableCellSlots, TableCellState } from './TableCell.types';
+export { renderTableCell_unstable } from './renderTableCell';
+export { useTableCell_unstable } from './useTableCell';
+export { tableCellClassName, tableCellClassNames, useTableCellStyles_unstable } from './useTableCellStyles.styles';

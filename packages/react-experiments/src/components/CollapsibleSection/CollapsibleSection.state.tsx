@@ -37,12 +37,12 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
       const collapseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
       const expandKey = getRTL() ? KeyCodes.left : KeyCodes.right;
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === collapseKey && !collapsed) {
         setCollapsed(true);
         ev.preventDefault();
         ev.stopPropagation();
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
       } else if (ev.which === expandKey && collapsed) {
         setCollapsed(false);
         ev.preventDefault();
@@ -58,7 +58,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
     // If left/right keypress originates from text input or text area inside collapsible section,
     // ignore the event.
     if (
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ev.which === rootKey &&
       ev.target !== titleElementRef.current &&
       titleElementRef.current &&

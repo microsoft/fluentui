@@ -27,8 +27,8 @@ export const Size = (props: Partial<DropdownProps>) => {
     <div className={styles.root}>
       <div>
         <h3>Small</h3>
-        <label id={`${comboId}-small`}>Best pet</label>
-        <Dropdown aria-labelledby={`${comboId}-small`} placeholder="Select an animal" size="small" {...props}>
+        <label htmlFor={`${comboId}-small`}>Best pet</label>
+        <Dropdown id={`${comboId}-small`} placeholder="Select an animal" size="small" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>
@@ -38,7 +38,7 @@ export const Size = (props: Partial<DropdownProps>) => {
       <div>
         <h3>Medium</h3>
         <label htmlFor={`${comboId}-med`}>Best pet</label>
-        <Dropdown aria-labelledby={`${comboId}-med`} placeholder="Select an animal" size="medium" {...props}>
+        <Dropdown id={`${comboId}-med`} placeholder="Select an animal" size="medium" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>
@@ -48,7 +48,7 @@ export const Size = (props: Partial<DropdownProps>) => {
       <div>
         <h3>Large</h3>
         <label htmlFor={`${comboId}-large`}>Best pet</label>
-        <Dropdown aria-labelledby={`${comboId}-large`} placeholder="Select an animal" size="large" {...props}>
+        <Dropdown id={`${comboId}-large`} placeholder="Select an animal" size="large" {...props}>
           <Option>Cat</Option>
           <Option>Dog</Option>
           <Option>Bird</Option>

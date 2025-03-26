@@ -2,6 +2,21 @@
   "name": "@fluentui/set-version",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2025 07:22:41 GMT",
+      "tag": "@fluentui/set-version_v8.2.24",
+      "version": "8.2.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/set-version",
+            "commit": "7844b29361bd0cfbd7c1e5023e9b87119558b2b0",
+            "comment": "fix: trigger v8 release to fix production source-maps issues"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 07:33:30 GMT",
       "tag": "@fluentui/set-version_v8.2.23",
       "version": "8.2.23",

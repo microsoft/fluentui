@@ -1,5 +1,6 @@
 export { definition as TextAreaDefinition } from './textarea.definition.js';
-export { BaseTextArea, TextArea } from './textarea.js';
+export { BaseTextArea } from './textarea.base.js';
+export { TextArea } from './textarea.js';
 export {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,

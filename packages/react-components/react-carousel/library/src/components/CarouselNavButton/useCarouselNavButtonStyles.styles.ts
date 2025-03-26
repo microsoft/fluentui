@@ -31,6 +31,12 @@ const useStyles = makeStyles({
       width: tokens.spacingHorizontalS,
       backgroundColor: tokens.colorNeutralForeground1,
       color: tokens.colorNeutralForeground1,
+      '@media (forced-colors: active)': {
+        // Bypass OS high contrast with inverted blend mode (otherwise icon is invisible)
+        forcedColorAdjust: 'none',
+        backgroundColor: 'white',
+        mixBlendMode: 'difference',
+      },
     },
   },
   rootUnselected: {

@@ -1,3 +1,3 @@
-export * from './elementContains';
-export * from './setVirtualParent';
-export * from './getParent';
+export { elementContains } from './elementContains';
+export { setVirtualParent } from './setVirtualParent';
+export { getParent } from './getParent';

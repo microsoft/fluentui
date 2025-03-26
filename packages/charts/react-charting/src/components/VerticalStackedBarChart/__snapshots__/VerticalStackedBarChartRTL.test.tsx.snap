@@ -28,9 +28,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -295,12 +293,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="3"
+                height="2.37"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.26"
+                y="249.89"
               />
             </g>
             <text
@@ -316,7 +314,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.26"
+              y="243.89"
             >
               2.5
             </text>
@@ -1019,9 +1017,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1286,12 +1282,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                       opacity: ;
                     }
                 fill="#00188f"
-                height="3"
+                height="2.37"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.26"
+                y="249.89"
               />
             </g>
             <text
@@ -1307,7 +1303,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.26"
+              y="243.89"
             >
               2.5
             </text>
@@ -2010,9 +2006,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2277,12 +2271,12 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                       opacity: ;
                     }
                 fill="#00188f"
-                height="3"
+                height="2.37"
                 rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
-                y="249.26"
+                y="249.89"
               />
             </g>
             <text
@@ -2298,7 +2292,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               text-anchor="middle"
               transform="translate(0, 0)"
               x="287"
-              y="243.26"
+              y="243.89"
             >
               2.5
             </text>
@@ -3014,9 +3008,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -9792,9 +9784,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -10481,9 +10471,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -11159,9 +11147,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -11837,9 +11823,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

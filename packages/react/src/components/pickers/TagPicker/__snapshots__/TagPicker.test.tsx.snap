@@ -336,7 +336,7 @@ exports[`TagPicker renders correctly 1`] = `
       </span>
       <input
         aria-autocomplete="both"
-        aria-describedby="selected-items-id__0"
+        aria-describedby="selected-items-id__0 "
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -765,7 +765,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
       </span>
       <input
         aria-autocomplete="both"
-        aria-describedby="selected-items-id__0"
+        aria-describedby="selected-items-id__0 "
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"

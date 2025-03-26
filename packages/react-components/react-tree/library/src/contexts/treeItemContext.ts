@@ -44,9 +44,9 @@ const defaultContextValue: TreeItemContextValue = {
   checked: false,
 };
 
-export const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<
-  TreeItemContextValue | undefined
->(undefined);
+const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<TreeItemContextValue | undefined>(
+  undefined,
+);
 
 export const { Provider: TreeItemProvider } = TreeItemContext;
 export const useTreeItemContext_unstable = <T>(selector: ContextSelector<TreeItemContextValue, T>): T =>

@@ -5,6 +5,7 @@ import { useCardStyles_unstable } from './useCardStyles.styles';
 import type { CardProps } from './Card.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCardContextValue } from './useCardContextValue';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A card provides scaffolding for hosting actions and content for a single topic.
@@ -14,6 +15,9 @@ export const Card: ForwardRefComponent<CardProps> = React.forwardRef<HTMLDivElem
   const cardContextValue = useCardContextValue(state);
 
   useCardStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useCardStyles_unstable')(state);
+
   return renderCard_unstable(state, cardContextValue);
 });
 

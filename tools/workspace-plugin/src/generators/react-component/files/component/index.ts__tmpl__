@@ -1,5 +1,5 @@
-export * from './<%= componentName %>';
-export * from './<%= componentName %>.types';
-export * from './render<%= componentName %>';
-export * from './use<%= componentName %>';
-export * from './use<%= componentName %>Styles.styles';
+export { <%= componentName %> } from './<%= componentName %>';
+export type { <%= componentName %>Props, <%= componentName %>State } from './<%= componentName %>.types';
+export { render<%= componentName %>_unstable } from './render<%= componentName %>';
+export { use<%= componentName %>_unstable } from './use<%= componentName %>';
+export { <%= propertyName %>ClassNames, use<%= componentName %>Styles_unstable } from './use<%= componentName %>Styles.styles';

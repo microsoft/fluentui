@@ -17,8 +17,8 @@ export const Clearable = () => {
 
   return (
     <div className={styles.root}>
-      <Label id={dropdownId}>Pick a color</Label>
-      <Dropdown clearable aria-labelledby={dropdownId} placeholder="Select a color">
+      <Label htmlFor={dropdownId}>Pick a color</Label>
+      <Dropdown clearable id={dropdownId} placeholder="Select a color">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>

@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: '100%',
     maxHeight: '750px',
+    gap: '20px',
   },
   child: {
     height: `${smallSize}px`,
@@ -87,6 +88,7 @@ export const Dynamic = () => {
           containerSizeRef={containerSizeRef}
           virtualizerContext={contextState}
           updateScrollPosition={updateScrollPosition}
+          gap={20}
         >
           {React.useCallback(
             (index: number) => {

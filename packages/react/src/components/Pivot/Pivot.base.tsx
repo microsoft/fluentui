@@ -41,7 +41,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 
   React.Children.forEach(React.Children.toArray(props.children), (child: React.ReactNode, index: number) => {
     if (isPivotItem(child)) {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const { linkText, ...pivotItemProps } = child.props;
       const itemKey = child.props.itemKey || index.toString();
       result.links.push({
@@ -177,7 +177,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     };
 
     const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
         updateSelectedItem(itemKey);

@@ -139,7 +139,7 @@ export const Eventing = () => {
 
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [statusLog, setStatusLog] = React.useState<
-    [number, { type: 'click' | 'focus' | 'drag' | undefined; index: number }][]
+    [number, { type: 'click' | 'focus' | 'drag' | 'autoplay' | undefined; index: number }][]
   >([]);
 
   return (
@@ -209,6 +209,7 @@ export const Eventing = () => {
           layout="inline"
           next={{ 'aria-label': 'go to next' }}
           prev={{ 'aria-label': 'go to prev' }}
+          autoplay={{ 'aria-label': 'Carousel autoplay' }}
         >
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>

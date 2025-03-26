@@ -17,7 +17,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
-import { chartPointsVBC } from '../../utilities/test-data';
+import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
@@ -392,6 +392,26 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with all negative y value bars correctly',
+    VerticalBarChart,
+    { data: allNegativeChartPointsVBC, supportNegativeData: true },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'should render the vertical bar chart with some positive and some negative y value bars correctly',
+    VerticalBarChart,
+    { data: negativeChartPointsVBC, supportNegativeData: true },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
@@ -608,6 +628,87 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(legends).toHaveLength(9);
       fireEvent.mouseOver(screen.getByText('Oranges'));
       expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      expect(line).toBeDefined();
+      expect(bars[1]).toBeDefined();
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toBeDefined();
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toBeDefined();
+      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toBeDefined();
+      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toBeDefined();
+      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toBeDefined();
+      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toBeDefined();
+      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
+
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over multiple legends',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'just line', legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i)[0];
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      fireEvent.click(screen.getByText('just line'));
+      fireEvent.click(screen.getByText('Oranges'));
+      expect(line.getAttribute('opacity')).toEqual('1');
+      expect(screen.getByText('Oranges')).not.toHaveAttribute('opacity');
+      expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Giraffes')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Cats')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Elephants')).toHaveStyle('opacity: 0.67');
+      expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
+      expect(line).toBeDefined();
+      expect(bars[0]).toBeDefined();
+      expect(bars[0]).not.toHaveAttribute('opacity');
+      expect(bars[1]).toBeDefined();
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toBeDefined();
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toBeDefined();
+      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toBeDefined();
+      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toBeDefined();
+      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toBeDefined();
+      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toBeDefined();
+      expect(bars[7]).toHaveStyle('opacity: 0.1');
+    },
+  );
+
+  testWithWait(
+    'Should reduce the opacity of the other bars/lines and their legends on mouse over multiple legends',
+    VerticalBarChart,
+    { data: pointsWithLine, lineLegendText: 'just line', legendProps: { canSelectMultipleLegends: true } },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      const line = getById(container, /_VBC_line/i)[0];
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      expect(line).toBeDefined();
+      expect(bars).toHaveLength(8);
+      expect(legends).toHaveLength(9);
+      fireEvent.click(screen.getByText('just line'));
+      fireEvent.click(screen.getByText('Oranges'));
+      expect(line.getAttribute('opacity')).toEqual('1');
       expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Apples')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Bananas')).toHaveStyle('opacity: 0.67');

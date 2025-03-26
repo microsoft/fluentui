@@ -25,6 +25,6 @@ export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (prop
     return getThemedContext(context, scheme, theme);
   };
 
-  // eslint-disable-next-line react/jsx-no-bind, deprecation/deprecation
+  // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
   return <Customizer {...rest} contextTransform={contextTransform} />;
 };

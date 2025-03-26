@@ -201,7 +201,7 @@ export const AlignmentAndWhitespace = () => {
       <div className={classes.card}>
         <Carousel align={alignment} className={classes.carousel} whitespace={whitespace} announcement={getAnnouncement}>
           <CarouselViewport>
-            <CarouselSlider cardFocus>
+            <CarouselSlider cardFocus aria-label="Use the left and right arrow keys to navigate focused carousel card">
               {POSTS.map((post, index) => (
                 <ActionCard {...post} key={post.name} index={index} />
               ))}

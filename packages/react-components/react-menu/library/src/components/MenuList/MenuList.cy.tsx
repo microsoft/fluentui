@@ -22,7 +22,7 @@ describe('MenuList', () => {
       </div>,
     );
     cy.get(menuItemSelector).each(el => {
-      cy.wrap(el).trigger('mouseover').should('be.focused');
+      cy.wrap(el).trigger('mousemove').should('be.focused');
     });
   });
 

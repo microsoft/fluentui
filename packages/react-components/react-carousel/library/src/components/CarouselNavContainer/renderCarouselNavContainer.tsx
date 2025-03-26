@@ -12,10 +12,25 @@ export const renderCarouselNavContainer_unstable = (state: CarouselNavContainerS
 
   return (
     <state.root>
-      {state.autoplay && <state.autoplay />}
-      {state.prev && <state.prev />}
+      {!state.autoplayTooltip && state.autoplay && <state.autoplay />}
+      {state.autoplayTooltip && state.autoplay && (
+        <state.autoplayTooltip>
+          <state.autoplay />
+        </state.autoplayTooltip>
+      )}
+      {!state.prevTooltip && state.prev && <state.prev />}
+      {state.prevTooltip && state.prev && (
+        <state.prevTooltip>
+          <state.prev />
+        </state.prevTooltip>
+      )}
       {state.root.children}
-      {state.next && <state.next />}
+      {!state.nextTooltip && state.next && <state.next />}
+      {state.nextTooltip && state.next && (
+        <state.nextTooltip>
+          <state.next />
+        </state.nextTooltip>
+      )}
     </state.root>
   );
 };

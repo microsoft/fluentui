@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/eslint-plugin-react-components",
+  "entries": [
+    {
+      "date": "Wed, 08 Jan 2025 18:33:32 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "384df0ccb4a5324da6daee8f18712ef5a81fa05a",
+            "comment": "feat: add prefer-fluentui-v9 rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Dec 2024 12:53:38 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "ae797cb6012380bbb06c3a2a909f2f742bec8c45",
+            "comment": "feat: initial package structure"
+          }
+        ]
+      }
+    }
+  ]
+}

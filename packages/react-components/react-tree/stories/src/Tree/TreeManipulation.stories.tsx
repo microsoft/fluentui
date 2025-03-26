@@ -34,7 +34,6 @@ const subtrees: ItemProps[][] = [
 ];
 
 type CustomTreeItemProps = FlatTreeItemProps & {
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- FIXME @bsunderhus
   onRemoveItem?: (value: string) => void;
 };
 

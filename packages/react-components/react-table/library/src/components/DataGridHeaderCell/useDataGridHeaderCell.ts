@@ -42,7 +42,7 @@ export const useDataGridHeaderCell_unstable = (
     return ctx.columnSizing_unstable.getTableHeaderCellProps;
   });
 
-  // eslint-disable-next-line deprecation/deprecation -- prefer HTMLTableCellElement
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- prefer HTMLTableCellElement
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
     if (sortable) {
       toggleColumnSort(e, columnId);

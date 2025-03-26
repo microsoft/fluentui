@@ -35,6 +35,7 @@ exports[`BasePicker renders correctly 1`] = `
     >
       <input
         aria-autocomplete="both"
+        aria-describedby=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -100,6 +101,7 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
     >
       <input
         aria-autocomplete="both"
+        aria-describedby=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"

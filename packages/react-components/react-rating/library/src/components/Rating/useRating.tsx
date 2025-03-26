@@ -31,6 +31,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     onChange,
     step = 1,
     size = 'extra-large',
+    itemLabel,
   } = props;
 
   const [value, setValue] = useControllableState({
@@ -56,6 +57,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     name,
     step,
     size,
+    itemLabel,
     value,
     hoveredValue,
     components: {

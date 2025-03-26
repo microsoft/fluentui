@@ -1,5 +1,5 @@
-export * from './MenuItem';
-export * from './MenuItem.types';
-export * from './renderMenuItem';
-export * from './useMenuItem';
-export * from './useMenuItemStyles.styles';
+export { MenuItem } from './MenuItem';
+export type { MenuItemProps, MenuItemSlots, MenuItemState } from './MenuItem.types';
+export { renderMenuItem_unstable } from './renderMenuItem';
+export { useMenuItem_unstable } from './useMenuItem';
+export { menuItemClassNames, useMenuItemStyles_unstable } from './useMenuItemStyles.styles';

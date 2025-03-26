@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventData } from '@fluentui/react-utilities';
+import { EventData, EventHandler } from '@fluentui/react-utilities';
 
 export type CarouselStore = {
   clear: () => void;
@@ -13,6 +13,34 @@ export type CarouselStore = {
 export type CarouselItem = {
   el: HTMLElement;
   value: string | null;
+};
+
+export type UseCarouselOptions = {
+  /**
+   * Localizes the string used to announce carousel page changes to screen reader users
+   * Defaults to: undefined
+   */
+  announcement?: (newValue: string) => string;
+
+  /**
+   * The initial page to display in uncontrolled mode.
+   */
+  defaultValue?: string;
+
+  /**
+   * The value of the currently active page.
+   */
+  value?: string;
+
+  /**
+   * Callback to notify a page change.
+   */
+  onValueChange?: EventHandler<CarouselValueChangeData>;
+
+  /**
+   * Callback to notify when the final button step of a carousel has been activated.
+   */
+  onFinish?: EventHandler<CarouselValueChangeData>;
 };
 
 export type CarouselValueChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {

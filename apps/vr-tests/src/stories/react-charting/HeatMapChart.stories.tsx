@@ -303,7 +303,7 @@ export const Basic = () => {
   return (
     <div style={rootStyle}>
       <HeatMapChart
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Heat map chart basic example"
         data={HeatMapData}
         yAxisStringFormatter={(point: string) => ypointMapping[point as string]}

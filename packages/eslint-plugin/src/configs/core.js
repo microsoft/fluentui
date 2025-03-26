@@ -14,16 +14,7 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'import',
-    '@fluentui',
-    '@rnx-kit',
-    '@typescript-eslint',
-    'deprecation',
-    'jest',
-    'jsdoc',
-    ...__internal.plugins,
-  ],
+  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'jest', 'jsdoc', ...__internal.plugins],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
@@ -248,7 +239,7 @@ const typeAwareRules = {
   /**
    * plugin: https://github.com/gund/eslint-plugin-deprecation
    */
-  'deprecation/deprecation': 'error',
+  '@typescript-eslint/no-deprecated': 'error',
 };
 
 /**
@@ -318,7 +309,7 @@ const getOverrides = () => [
   {
     files: 'src/**/*.deprecated.test.{ts,tsx}',
     rules: {
-      'deprecation/deprecation': 'off', // the purpose of these tests
+      '@typescript-eslint/no-deprecated': 'off',
     },
   },
   {

@@ -43,7 +43,7 @@ function App() {
 }
 ```
 
-## "I tried uing a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
+## <a id="portal-compatibility"></a> "I tried using a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
 
 Both v9 and v8 layers set the same `z-index` value by default, which means the document order will resolve their z-positioning.
 This can lead to inconsistent behavior because z-positioning depends on the order in which elements appear in the DOM.

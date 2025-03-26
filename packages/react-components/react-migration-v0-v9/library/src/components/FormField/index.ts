@@ -1,1 +1,1 @@
-export * from './FormFieldShim';
+export { FormFieldShim } from './FormFieldShim';

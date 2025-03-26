@@ -1,0 +1,13 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:eslint-plugin/recommended"],
+  "plugins": ["eslint-plugin"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["src/rules/*.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
+      }
+    }
+  ]
+}

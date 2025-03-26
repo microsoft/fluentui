@@ -54,7 +54,7 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
           <StackItem>
             <label htmlFor="width-slider">Width:</label>

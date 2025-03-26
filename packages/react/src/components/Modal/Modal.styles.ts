@@ -116,7 +116,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       padding: '3px 0px',
     },
     keyboardMoveIcon: {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       fontSize: fonts.xLargePlus.fontSize,
       width: '24px',
     },

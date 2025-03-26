@@ -1,2 +1,2 @@
-export * from './ToolbarRadioGroup';
-export * from './ToolbarRadioGroup.types';
+export { ToolbarRadioGroup } from './ToolbarRadioGroup';
+export type { ToolbarRadioGroupProps, ToolbarRadioGroupSlots, ToolbarRadioGroupState } from './ToolbarRadioGroup.types';

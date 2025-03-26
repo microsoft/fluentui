@@ -1,4 +1,4 @@
-export * from './CounterBadge';
-export * from './CounterBadge.types';
-export * from './useCounterBadge';
-export * from './useCounterBadgeStyles.styles';
+export { CounterBadge } from './CounterBadge';
+export type { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+export { useCounterBadge_unstable } from './useCounterBadge';
+export { counterBadgeClassNames, useCounterBadgeStyles_unstable } from './useCounterBadgeStyles.styles';

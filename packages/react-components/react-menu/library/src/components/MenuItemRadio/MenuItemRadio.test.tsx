@@ -25,6 +25,7 @@ describe('MenuItemRadio', () => {
             submenuIndicator: 'Test Submenu Indicator',
             content: 'Test Content',
             secondaryContent: 'Test Secondary Content',
+            subText: 'Sub text',
           },
         },
       ],

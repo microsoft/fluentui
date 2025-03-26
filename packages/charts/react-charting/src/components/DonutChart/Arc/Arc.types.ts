@@ -73,7 +73,7 @@ export interface IArcProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * internal prop for href

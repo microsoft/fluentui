@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  useControllableState,
+  useEventCallback,
+  mergeCallbacks,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
+import type { TagValue } from '../../utils/types';
 
 /**
  * Create the state required to render TagGroup.
@@ -18,15 +26,25 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
   const {
     onDismiss,
     disabled = false,
+    defaultSelectedValues,
     size = 'medium',
     appearance = 'filled',
     dismissible = false,
     role = 'toolbar',
+    onTagSelect,
+    selectedValues,
+    ...rest
   } = props;
 
   const innerRef = React.useRef<HTMLElement>();
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const [items, setItems] = useControllableState<Array<TagValue>>({
+    defaultState: defaultSelectedValues,
+    state: selectedValues,
+    initialState: [],
+  });
 
   const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
@@ -52,6 +70,16 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }
   });
 
+  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback(
+    mergeCallbacks(onTagSelect, (_, data) => {
+      if (items.includes(data.value)) {
+        setItems(items.filter(item => item !== data.value));
+      } else {
+        setItems([...items, data.value]);
+      }
+    }),
+  );
+
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
@@ -60,6 +88,8 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
+    handleTagSelect: onTagSelect ? handleTagSelect : undefined,
+    selectedValues: items,
     role,
     size,
     disabled,
@@ -78,7 +108,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
         role,
         'aria-disabled': disabled,
         ...arrowNavigationProps,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),

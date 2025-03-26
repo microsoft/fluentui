@@ -14,7 +14,7 @@ import {
   ITextStyles,
 } from '@fluentui/react';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 const alertClicked = (): void => {
   alert('Clicked');

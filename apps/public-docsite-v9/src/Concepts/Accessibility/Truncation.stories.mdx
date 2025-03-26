@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Accessibility/Truncation" />
+
+## Truncation
+
+Fluent has moved away from building in CSS truncation in components in v9 due to the accessibility concerns that accompany it. There are some ways to handle truncation in an accessible way, though it is important to be aware of the potential pitfalls when doing so.
+
+Our top recommendation is to use character count-based javascript truncation over CSS truncation, ensuring that strings are never truncated past a reasonable and readable number of characters shown, and also to prefer truncating in the middle of the string instead of at the end. This page goes over a full explanation of why we recommend that approach, and a few potential alternatives.
+
+### Accessibility traps
+
+Truncating text based on available width primarily causes problems for people using static page zoom, zoom software, smaller-screen devices, and alternative input methods. These can often combine with eachother to create increasingly difficult barriers to access. Most of those barriers boil down to two specific problems:
+
+1. Truncation based on width at small screen sizes can quickly render the control useless by showing so few characters that the information cannot be parsed.
+2. The full text is often exposed in tooltips which are inaccessable to many users, and often specifically the users who most need it.
+
+The most common scenarios where a user would experience truncation past the point of understandability are:
+
+- Small-screen devices
+- Static zoom or text size increases, sometimes paired with a zooming software like ZoomText
+- Zoom or text size increases on a small-screen device
+
+All of these cases also increase the likelihood that tooltips will not be accessible. Small-screen devices are usually touchscreens, which do not allow the user to access tooltips on most controls.
+
+Additionally, static zoom is often paired with screen magnification software, which makes tooltip access much more difficult. The WCAG criterion [1.4.13 Content on Hover or Focus](https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html) is intended to help make tooltips and other hover content more accessible to magnification users, but it still falls far short in terms of real-world usability. In user studies on tooltips that meet all WCAG requirements as well as keyboard, screen reader, and touch access, one zoom + macOS magnification user had the following to say about our tooltips:
+
+> "There’s something popping up here, but it’s blending in with the background, and I can’t tell where it starts or begins. I’m so visually confused by all of this, that I would not interact with any of this body text."
+
+and:
+
+> "I haaaate hover and things I need to hover over"
+
+This is why tooltips should generally be short optional hints that are not necessary to the understanding and operation of the UI. If a UI uses width-based truncation for a set of items in e.g. a list, menu, or table that requires some users to hover over every entry to read it, that would drastically slow down those users in the best case scenario, and fully block them in the worst-case scenario.
+
+There are ways to truncate while avoiding these pitfalls, but they must ensure that users do not lose meaningful information when zooming, and that tooltips are not the primary method of making truncated text available.
+
+### Accessible truncation approaches
+
+**1. Truncate the string with javascript based on character count, optionally in the middle rather than end of the string**
+
+This approach makes it possible to prevent truncation below a minimum number of characters, which can be chosen to ensure the string never shortens past the point of understandability. The other benefit is that javascript truncation enables truncating in the middle of the string in cases where the end contains relevant information as in the case of file names or emails.
+
+**2. Set a reasonable `min-width` paired with CSS truncation to prevent truncating past usability**
+
+This approach works best when the truncation is occuring in a table or grid, where the user might expect to need to scroll horizontally to consume all the information.
+
+The potential pitfall of this approach is that in some places, setting a `min-width` may cause [WCAG Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) failures if it causes the page to scroll horizontally when zoomed.
+
+**3. Only truncate text that is not necessary for the understanding or operation of the UI**
+
+This is a rare case, since most of the time content that is irrelevant to users should not be displayed. This would need to be evaluated on a case-by-case basis, but a couple examples include:
+
+- `id` or hash data that is not really intended to be read as text by humans
+- Supplementary content, such as a post summary following a post title, where reading the title alone is a reasonable user experience.
+
+**4. Only truncate based on user actions or settings**
+
+If truncation occurs as the result of the user resizing UI or choosing a compact view setting (e.g. in an email application), it is fine to truncate purely based on available space.

@@ -92,7 +92,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.actionButton.className = mergeClasses(
       splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
-      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.actionButton.className,
     );
   }
@@ -101,7 +101,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.toggleButton.className = mergeClasses(
       splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
-      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.toggleButton.className,
     );
   }
@@ -110,7 +110,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.menuButton.className = mergeClasses(
       splitNavItemClassNames.menuButton,
       splitNavItemStyles.baseSecondary,
-      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.menuButton.className,
     );
   }

@@ -1,2 +1,10 @@
-export * from './components/CarouselContext';
-export * from './components/CarouselContext.types';
+export {
+  CarouselProvider,
+  carouselContextDefaultValue,
+  useCarouselContext_unstable,
+} from './components/CarouselContext';
+export type {
+  CarouselContextValue,
+  CarouselContextValues,
+  CarouselIndexChangeData,
+} from './components/CarouselContext.types';

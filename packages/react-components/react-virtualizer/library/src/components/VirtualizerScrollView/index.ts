@@ -1,5 +1,12 @@
-export * from './VirtualizerScrollView';
-export * from './VirtualizerScrollView.types';
-export * from './useVirtualizerScrollView';
-export * from './renderVirtualizerScrollView';
-export * from './useVirtualizerScrollViewStyles.styles';
+export { VirtualizerScrollView } from './VirtualizerScrollView';
+export type {
+  VirtualizerScrollViewProps,
+  VirtualizerScrollViewSlots,
+  VirtualizerScrollViewState,
+} from './VirtualizerScrollView.types';
+export { useVirtualizerScrollView_unstable } from './useVirtualizerScrollView';
+export { renderVirtualizerScrollView_unstable } from './renderVirtualizerScrollView';
+export {
+  useVirtualizerScrollViewStyles_unstable,
+  virtualizerScrollViewClassNames,
+} from './useVirtualizerScrollViewStyles.styles';

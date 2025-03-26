@@ -1,9 +1,9 @@
-import { MiddlewareArguments } from '@floating-ui/dom';
+import { MiddlewareState } from '@floating-ui/dom';
 import { OffsetFunction } from '../types';
 import { FloatingUIOffsetFunction, getFloatingUIOffset } from './getFloatingUIOffset';
 
 describe('getFloatingUIOffset', () => {
-  const testMiddlewareArgs: MiddlewareArguments = {
+  const testMiddlewareArgs: MiddlewareState = {
     elements: {
       reference: document.createElement('div'),
       floating: document.createElement('div'),

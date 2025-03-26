@@ -129,13 +129,13 @@ export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
     {
       legend: 'Phone Numbers',
       data: 40,
-      color: '#881798',
+      color: getColorFromToken(DataVizPalette.color27),
       callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 2 Phone Numbers 40' },
     },
     {
       legend: 'Credit card Numbers',
       data: 23,
-      color: '#AE8C00',
+      color: getColorFromToken(DataVizPalette.color28),
       callOutAccessibilityData: { ariaLabel: 'Bar series 2 of 2 Credit card Numbers 23' },
     },
   ];

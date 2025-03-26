@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeProps, divProperties } from './properties';
+import { getNativeProps, divProperties, inputProperties } from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
@@ -41,6 +41,32 @@ describe('getNativeProps', () => {
     expect(result.className).toEqual('foo');
     expect(typeof result.onClick).toEqual('function');
     expect(typeof result.onClickCapture).toEqual('function');
+  });
+
+  it('can pass through input props', () => {
+    const result = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(
+      {
+        autoCapitalize: 'off',
+        autoCorrect: 'on',
+        maxLength: 10,
+        minLength: 1,
+        value: '123',
+        // Non-input property
+        foobar: 1,
+      },
+      inputProperties,
+    );
+
+    expect(result).toMatchObject({
+      autoCapitalize: 'off',
+      autoCorrect: 'on',
+      maxLength: 10,
+      minLength: 1,
+      value: '123',
+    });
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect((result as any).foobar).toBeUndefined();
   });
 
   it('can remove unexpected properties', () => {

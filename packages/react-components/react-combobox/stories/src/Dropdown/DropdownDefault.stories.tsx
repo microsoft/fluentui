@@ -19,8 +19,8 @@ export const Default = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Best pet</label>
-      <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal" {...props}>
+      <label htmlFor={dropdownId}>Best pet</label>
+      <Dropdown id={dropdownId} placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

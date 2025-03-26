@@ -58,7 +58,7 @@ const RadialBackdropMotion = createPresenceComponent(() => {
 
   return {
     enter: {
-      keyframes: keyframes,
+      keyframes,
       easing: motionTokens.curveDecelerateMax,
       duration: motionTokens.durationGentle,
     },

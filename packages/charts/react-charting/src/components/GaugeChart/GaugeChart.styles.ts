@@ -20,6 +20,9 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       theme.fonts.medium,
       'ms-GaugeChart',
       {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
         width: '100%',
         height: '100%',
       },

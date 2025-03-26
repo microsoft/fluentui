@@ -12,7 +12,7 @@ export type {
   MenuOpenChangeData,
   MenuOpenEvent,
   // MenuOpenEvents is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuProps,
   MenuSlots,
@@ -83,7 +83,7 @@ export type {
   MenuListSlots,
   MenuListState,
   // UninitializedMenuListState is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   UninitializedMenuListState,
 } from './MenuList';
 export {

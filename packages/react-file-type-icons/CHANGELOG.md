@@ -1,8 +1,55 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Fri, 01 Nov 2024 07:23:21 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Mar 2025 07:23:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.9)
+
+Fri, 14 Mar 2025 07:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.8..@fluentui/react-file-type-icons_v8.12.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.8 ([PR #33981](https://github.com/microsoft/fluentui/pull/33981) by beachball)
+
+## [8.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.8)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.7..@fluentui/react-file-type-icons_v8.12.8)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/style-utilities to v8.11.7 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+
+## [8.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.7)
+
+Mon, 23 Dec 2024 07:22:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.6..@fluentui/react-file-type-icons_v8.12.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.6 ([PR #33445](https://github.com/microsoft/fluentui/pull/33445) by beachball)
+
+## [8.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.6)
+
+Fri, 13 Dec 2024 07:23:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.5..@fluentui/react-file-type-icons_v8.12.6)
+
+### Patches
+
+- Adding cliptemplate and listform filetype and itemtype mappings & updating corresponding fabric-cdn URL ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.11.5 ([PR #33455](https://github.com/microsoft/fluentui/pull/33455) by beachball)
+
+## [8.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.5)
+
+Fri, 22 Nov 2024 07:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.12.4..@fluentui/react-file-type-icons_v8.12.5)
+
+### Patches
+
+- fix(react-file-type-icons): Map onepart extension to onenote icon ([PR #33318](https://github.com/microsoft/fluentui/pull/33318) by cpalaparthi@microsoft.com)
 
 ## [8.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.12.4)
 

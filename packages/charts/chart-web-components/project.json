@@ -1,0 +1,10 @@
+{
+  "name": "chart-web-components",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "tags": ["platform:web", "web-components", "charting"],
+  "targets": {
+    "e2e": { "dependsOn": ["build-storybook"] }
+  }
+}

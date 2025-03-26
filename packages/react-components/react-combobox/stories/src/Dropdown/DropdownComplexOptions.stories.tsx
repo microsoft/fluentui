@@ -18,8 +18,8 @@ export const ComplexOptions = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} {...props}>
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown id={dropdownId} {...props}>
         <Option text="Katri Athokas">
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}

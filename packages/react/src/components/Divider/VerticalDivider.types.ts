@@ -11,7 +11,7 @@ export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>
    * Optional function to generate the class names for the divider for custom styling
    * @deprecated Use `styles` instead.
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
   /**
    * The theme that should be used to render the vertical divider.

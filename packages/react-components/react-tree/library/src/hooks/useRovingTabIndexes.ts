@@ -2,7 +2,14 @@ import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useFocusedElementChange } from '@fluentui/react-tabster';
-import { elementContains } from '@fluentui/react-utilities';
+
+const findTreeItemRoot = (element: HTMLElement) => {
+  let parent = element.parentElement;
+  while (parent && parent.getAttribute('role') !== 'tree') {
+    parent = parent.parentElement;
+  }
+  return parent;
+};
 
 /**
  * @internal
@@ -14,11 +21,11 @@ export function useRovingTabIndex() {
   const { targetDocument } = useFluent();
 
   useFocusedElementChange(element => {
-    if (
-      element?.getAttribute('role') === 'treeitem' &&
-      walkerRef.current &&
-      elementContains(walkerRef.current.root, element)
-    ) {
+    if (element?.getAttribute('role') === 'treeitem' && walkerRef.current && walkerRef.current.root.contains(element)) {
+      const treeitemRoot = findTreeItemRoot(element);
+      if (walkerRef.current.root !== treeitemRoot) {
+        return;
+      }
       rove(element);
     }
   });

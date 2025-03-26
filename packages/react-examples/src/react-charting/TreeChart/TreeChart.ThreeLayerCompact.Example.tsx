@@ -100,7 +100,7 @@ export class TreeChartThreeLayerCompactExample extends React.Component<{}, ITree
 
   private _createTreeChart(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -117,7 +117,7 @@ export class TreeChartThreeLayerCompactExample extends React.Component<{}, ITree
           treeTraversal={TreeTraverse.levelOrder}
           layoutWidth={this.state?._layoutWidth}
         />
-      </>
+      </div>
     );
   }
 }

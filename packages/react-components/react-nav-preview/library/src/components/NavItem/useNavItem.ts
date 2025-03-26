@@ -21,7 +21,7 @@ export const useNavItem_unstable = (
 ): NavItemState => {
   const { onClick, value, icon, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect, size = 'medium' } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect, density = 'medium' } = useNavContext_unstable();
 
   const rootElementType = as || (href ? 'a' : 'button');
 
@@ -42,7 +42,6 @@ export const useNavItem_unstable = (
       rootElementType,
       useARIAButtonProps(rootElementType, {
         'aria-current': selected ? 'page' : 'false',
-        role: rootElementType,
         ...props,
       }),
     ),
@@ -76,6 +75,6 @@ export const useNavItem_unstable = (
     }),
     selected,
     value,
-    size,
+    density,
   };
 };

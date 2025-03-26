@@ -221,7 +221,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         const charsSelected = selectionEnd - selectionStart;
         const charCount = inputValue.length + charsSelected - displayValue.length;
         const startPos = selectionStart;
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const pastedString = inputValue.substr(startPos, charCount);
 
         // Clear any selected characters
@@ -252,7 +252,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         // This case is if the user added characters
         const charCount = inputValue.length - displayValue.length;
         const startPos = selectionEnd - charCount;
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const enteredString = inputValue.substr(startPos, charCount);
 
         cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
@@ -264,7 +264,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         const charCount = 1;
         const selectCount = displayValue.length + charCount - inputValue.length;
         const startPos = selectionEnd - charCount;
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const enteredString = inputValue.substr(startPos, charCount);
 
         // Clear the selected range
@@ -292,7 +292,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
 
       internalState.changeSelectionData = null;
       if (textField.current && textField.current.value) {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const { keyCode, ctrlKey, metaKey } = ev;
 
         // Ignore ctrl and meta keydown

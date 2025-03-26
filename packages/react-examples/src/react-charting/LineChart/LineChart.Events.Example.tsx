@@ -31,7 +31,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
 
   public render(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Events">Change Width:</label>
         <input
           type="range"
@@ -71,7 +71,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           />
         )}
         <div>{this._basicExample()}</div>
-      </>
+      </div>
     );
   }
 
@@ -227,7 +227,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
             strokeColor: this.state.customEventAnnotationColor,
             labelColor: this.state.customEventAnnotationColor,
             labelHeight: 18,
-            labelWidth: 50,
+            labelWidth: 80,
             mergedLabel: (count: number) => `${count} events`,
           }}
           height={this.state.height}

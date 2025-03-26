@@ -26,12 +26,12 @@ export const useNavItemStyles_unstable = (state: NavItemState): NavItemState => 
   const indicatorStyles = useIndicatorStyles();
   const iconStyles = useIconStyles();
 
-  const { selected, size } = state;
+  const { selected, density } = state;
 
   state.root.className = mergeClasses(
     navItemClassNames.root,
     rootDefaultClassName,
-    size === 'small' && smallStyles.root,
+    density === 'small' && smallStyles.root,
     selected && indicatorStyles.base,
     selected && contentStyles.selected,
     state.root.className,

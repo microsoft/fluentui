@@ -3,7 +3,7 @@ import { getRTL } from '@fluentui/utilities';
 import type { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import type { IRawStyle } from '../../Styling';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 const tickLabelSpacing = 13;
 

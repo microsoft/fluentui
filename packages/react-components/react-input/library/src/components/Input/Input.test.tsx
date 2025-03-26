@@ -128,4 +128,15 @@ describe('Input', () => {
     expect(input.value).toBe('foo');
     expect(spy).not.toHaveBeenCalled();
   });
+
+  it('forwards native input props to the input element', () => {
+    renderedComponent = render(<Input autoCorrect="on" minLength={1} maxLength={2} />);
+
+    expect(getInput()).toMatchObject({
+      minLength: 1,
+      maxLength: 2,
+    });
+
+    expect(getInput().getAttribute('autocorrect')).toEqual('on');
+  });
 });

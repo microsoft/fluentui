@@ -1,4 +1,4 @@
-export * from './MenuTrigger';
-export * from './MenuTrigger.types';
-export * from './renderMenuTrigger';
-export * from './useMenuTrigger';
+export { MenuTrigger } from './MenuTrigger';
+export type { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+export { renderMenuTrigger_unstable } from './renderMenuTrigger';
+export { useMenuTrigger_unstable } from './useMenuTrigger';

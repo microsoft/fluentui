@@ -1,5 +1,5 @@
-export * from './Select';
-export * from './Select.types';
-export * from './renderSelect';
-export * from './useSelect';
-export * from './useSelectStyles.styles';
+export { Select } from './Select';
+export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from './Select.types';
+export { renderSelect_unstable } from './renderSelect';
+export { useSelect_unstable } from './useSelect';
+export { selectClassNames, useSelectStyles_unstable } from './useSelectStyles.styles';

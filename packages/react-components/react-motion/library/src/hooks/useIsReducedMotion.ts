@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 const REDUCED_MEDIA_QUERY = 'screen and (prefers-reduced-motion: reduce)';
 
@@ -12,7 +13,7 @@ export function useIsReducedMotion(): () => boolean {
   const queryValue = React.useRef<boolean>(false);
   const isEnabled = React.useCallback(() => queryValue.current, []);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (targetWindow === null || typeof targetWindow.matchMedia !== 'function') {
       return;
     }

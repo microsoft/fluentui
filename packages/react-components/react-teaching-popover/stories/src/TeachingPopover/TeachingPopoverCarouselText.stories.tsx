@@ -23,22 +23,22 @@ export const CarouselText = () => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>Tips"</TeachingPopoverHeader>
-      <TeachingPopoverCarousel defaultValue="test-1">
-        <TeachingPopoverCarouselCard value="test-1">
+      <TeachingPopoverCarousel defaultValue="1">
+        <TeachingPopoverCarouselCard value="1">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 1</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
-        <TeachingPopoverCarouselCard value="test-2">
+        <TeachingPopoverCarouselCard value="2">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 2</div>
           </TeachingPopoverBody>
         </TeachingPopoverCarouselCard>
 
-        <TeachingPopoverCarouselCard value="test-3">
+        <TeachingPopoverCarouselCard value="3">
           <TeachingPopoverBody media={<Image alt="test image" fit="cover" src={swapImage} />}>
             <TeachingPopoverTitle>Teaching Bubble Title</TeachingPopoverTitle>
             <div>This is page: 3</div>

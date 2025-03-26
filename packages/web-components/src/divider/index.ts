@@ -1,4 +1,5 @@
-export { BaseDivider, Divider } from './divider.js';
+export { BaseDivider } from './divider.base.js';
+export { Divider } from './divider.js';
 export { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 export { definition as DividerDefinition } from './divider.definition.js';
 export { template as DividerTemplate } from './divider.template.js';

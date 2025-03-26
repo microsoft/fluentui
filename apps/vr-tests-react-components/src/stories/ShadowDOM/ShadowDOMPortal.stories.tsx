@@ -10,7 +10,7 @@ export default {
 };
 
 export const Portal: React.FC = () => (
-  <StoryWright steps={new Steps().click('#toggle-menu').snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+  <StoryWright steps={new Steps().click('#toggle-menu').snapshot('normal').end()}>
     <ShadowRoot>
       <Menu>
         <MenuTrigger disableButtonEnhancement>

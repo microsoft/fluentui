@@ -133,6 +133,7 @@ export type ToastSlots = {
 // @public
 export type ToastState = ComponentState<ToastSlots> & {
     backgroundAppearance: BackgroundAppearanceContextValue;
+    intent?: ToastIntent | undefined;
 };
 
 // @public (undocumented)

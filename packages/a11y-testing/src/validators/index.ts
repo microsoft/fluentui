@@ -1,1 +1,1 @@
-export * from './validate';
+export { validateBehavior, validateSlot } from './validate';

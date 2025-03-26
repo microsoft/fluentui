@@ -3,6 +3,9 @@ import { useTabsterAttributes } from './useTabsterAttributes';
 import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
+const DangerousNeverHiddenAttribute = 'data-tabster-never-hide';
+const DangerousNeverHiddenPropObject = { [DangerousNeverHiddenAttribute]: '' };
+
 export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
@@ -31,6 +34,19 @@ export interface UseModalAttributesOptions {
 }
 
 /**
+ * !!DANGEROUS!! Designates an element that will not be hidden even when outside an open modal.
+ * Only works for top-level elements; should be used with extreme care.
+ * @returns Attribute to apply to the target element that should never receive aria-hidden
+ */
+export function useDangerousNeverHidden_unstable(): { [key: string]: string } {
+  return DangerousNeverHiddenPropObject;
+}
+
+const tabsterAccessibleCheck: TabsterTypes.ModalizerElementAccessibleCheck = element => {
+  return element.hasAttribute(DangerousNeverHiddenAttribute);
+};
+
+/**
  * Applies modal dialog behaviour through DOM attributes
  * Modal element will focus trap and hide other content on the page
  * The trigger element will be focused if focus is lost after the modal element is removed
@@ -44,7 +60,7 @@ export const useModalAttributes = (
   const tabster = useTabster();
   // Initializes the modalizer and restorer APIs
   if (tabster) {
-    getModalizer(tabster);
+    getModalizer(tabster, undefined, tabsterAccessibleCheck);
     getRestorer(tabster);
   }
 

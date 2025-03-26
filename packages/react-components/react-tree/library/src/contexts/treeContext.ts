@@ -21,6 +21,9 @@ export type TreeContextValue = {
   // FIXME: this is only marked as optional to avoid breaking changes
   // it should always be provided internally
   forceUpdateRovingTabIndex?(): void;
+  // FIXME: this is only marked as optional to avoid breaking changes
+  // it should always be provided internally
+  navigationMode?: 'tree' | 'treegrid';
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
@@ -43,6 +46,7 @@ const defaultTreeContextValue: TreeContextValue = {
   forceUpdateRovingTabIndex: noop,
   appearance: 'subtle',
   size: 'medium',
+  navigationMode: 'tree',
 };
 
 function noop() {

@@ -20,7 +20,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     multiple = false,
     collapsible = false,
     onToggle,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     navigation,
   } = props;
   const [openItems, setOpenItems] = useControllableState({
@@ -53,7 +53,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
-        // eslint-disable-next-line deprecation/deprecation
+
         ...(navigation ? arrowNavigationProps : undefined),
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`

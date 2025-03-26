@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { ToastProps, ToastState } from './Toast.types';
+import { useToastContainerContext } from '../../contexts/toastContainerContext';
 
 /**
  * Create the state required to render Toast.
@@ -12,6 +13,8 @@ import type { ToastProps, ToastState } from './Toast.types';
  * @param ref - reference to root HTMLElement of Toast
  */
 export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>): ToastState => {
+  const { intent } = useToastContainerContext();
+
   return {
     components: {
       root: 'div',
@@ -27,5 +30,6 @@ export const useToast_unstable = (props: ToastProps, ref: React.Ref<HTMLElement>
       { elementType: 'div' },
     ),
     backgroundAppearance: props.appearance,
+    intent,
   };
 };

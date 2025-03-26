@@ -1,1 +1,1 @@
-export * from './useToggleState';
+export { useToggleState } from './useToggleState';

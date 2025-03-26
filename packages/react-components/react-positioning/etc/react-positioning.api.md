@@ -13,8 +13,8 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 // @public (undocumented)
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
-// @public (undocumented)
-export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
+// @public @deprecated (undocumented)
+export type Boundary = PositioningBoundary;
 
 // @internal
 export function createArrowHeightStyles(arrowHeight: number): GriffelStyle;
@@ -47,8 +47,8 @@ export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | Offs
 
 // @public (undocumented)
 export type OffsetFunctionParam = {
-    positionedRect: Rect;
-    targetRect: Rect;
+    positionedRect: PositioningRect;
+    targetRect: PositioningRect;
     position: Position;
     alignment?: Alignment;
 };
@@ -66,16 +66,27 @@ export type OffsetShorthand = number;
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
+export type PositioningBoundary = PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
+
+// @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
 };
 
 // @public
-export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize'> {
+export interface PositioningProps extends Pick<PositioningOptions, 'align' | 'arrowPadding' | 'autoSize' | 'coverTarget' | 'fallbackPositions' | 'flipBoundary' | 'offset' | 'overflowBoundary' | 'overflowBoundaryPadding' | 'pinned' | 'position' | 'strategy' | 'useTransform' | 'matchTargetSize' | 'onPositioningEnd' | 'disableUpdateOnResize' | 'shiftToCoverTarget'> {
     positioningRef?: React_2.Ref<PositioningImperativeRef>;
     target?: TargetElement | null;
 }
+
+// @public (undocumented)
+export type PositioningRect = {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+};
 
 // @public (undocumented)
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;

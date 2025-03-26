@@ -56,6 +56,7 @@ export type CustomStyleHooksContextValue = Partial<{
   usePopoverSurfaceStyles_unstable: CustomStyleHook;
   useRadioGroupStyles_unstable: CustomStyleHook;
   useRadioStyles_unstable: CustomStyleHook;
+  useSearchBoxStyles_unstable: CustomStyleHook;
   useSelectStyles_unstable: CustomStyleHook;
   useSliderStyles_unstable: CustomStyleHook;
   useSpinButtonStyles_unstable: CustomStyleHook;
@@ -129,12 +130,19 @@ export type CustomStyleHooksContextValue = Partial<{
   useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
   /** @deprecated Replaced by TeachingPopoverFooter / TeachingPopoverCarousel styling hooks */
   useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
-  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
   useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  useTeachingPopoverFooterStyles_unstable: CustomStyleHook;
   /** @deprecated Replaced by TeachingPopoverCarouselNav styling hooks */
   useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselCardStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselFooterStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselFooterButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselPageCountStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
   useTagPickerInputStyles_unstable: CustomStyleHook;
   useTagPickerButtonStyles_unstable: CustomStyleHook;
@@ -158,6 +166,10 @@ export type CustomStyleHooksContextValue = Partial<{
   useCarouselNavButtonStyles_unstable: CustomStyleHook;
   useCarouselNavContainerStyles_unstable: CustomStyleHook;
   useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
+  useAlphaSliderStyles_unstable: CustomStyleHook;
+  useColorAreaStyles_unstable: CustomStyleHook;
+  useColorPickerStyles_unstable: CustomStyleHook;
+  useColorSliderStyles_unstable: CustomStyleHook;
 }>;
 
 /**

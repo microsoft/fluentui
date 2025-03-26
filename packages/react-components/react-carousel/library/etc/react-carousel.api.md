@@ -25,6 +25,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
+import { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;
@@ -103,7 +104,7 @@ export type CarouselContextValue = {
     selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => number;
     selectPageByIndex: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: number, jump?: boolean) => void;
     subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
-    enableAutoplay: (autoplay: boolean) => void;
+    enableAutoplay: (autoplay: boolean, temporary?: boolean) => void;
     resetAutoplay: () => void;
     containerRef?: React_2.RefObject<HTMLDivElement>;
     viewportRef?: React_2.RefObject<HTMLDivElement>;
@@ -115,7 +116,7 @@ export type CarouselContextValues = {
 };
 
 // @public (undocumented)
-export type CarouselIndexChangeData = (EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> | EventData<'focus', React_2.FocusEvent> | EventData<'drag', PointerEvent | MouseEvent>) & {
+export type CarouselIndexChangeData = (EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> | EventData<'focus', React_2.FocusEvent> | EventData<'drag', PointerEvent | MouseEvent> | EventData<'autoplay', Event>) & {
     index: number;
 };
 
@@ -159,8 +160,11 @@ export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots
 export type CarouselNavContainerSlots = {
     root: Slot<'div'>;
     next?: Slot<CarouselButtonProps>;
+    nextTooltip?: Slot<TooltipProps>;
     prev?: Slot<CarouselButtonProps>;
+    prevTooltip?: Slot<TooltipProps>;
     autoplay?: Slot<typeof CarouselAutoplayButton>;
+    autoplayTooltip?: Slot<TooltipProps>;
 };
 
 // @public
@@ -215,6 +219,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     whitespace?: boolean;
     motion?: CarouselMotion;
     announcement?: CarouselAnnouncerFunction;
+    autoplayInterval?: number;
 };
 
 // @public (undocumented)

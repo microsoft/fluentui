@@ -419,6 +419,24 @@ describe('GaugeChart interaction and accessibility tests', () => {
       }
     }
   });
+
+  it(`should highlight multiple segments when the legend multi select is enabled`, () => {
+    const { container } = render(
+      <GaugeChart
+        segments={segments}
+        chartValue={25}
+        calloutProps={{ doNotLayer: true }}
+        legendProps={{ canSelectMultipleLegends: true }}
+      />,
+    );
+
+    fireEvent.click(screen.getByText(segments[0].legend));
+    fireEvent.click(screen.getByText(segments[1].legend));
+    const segs = container.querySelectorAll('[class^="segment"]');
+    expect(segs[0]).toHaveStyle('fill-opacity: 1');
+    expect(segs[1]).toHaveStyle('fill-opacity: 1');
+    expect(segs[2]).toHaveStyle('fill-opacity: 0.1');
+  });
 });
 
 describe('Gauge Chart - axe-core', () => {

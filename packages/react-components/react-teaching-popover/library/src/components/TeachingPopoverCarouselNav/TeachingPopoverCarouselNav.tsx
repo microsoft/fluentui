@@ -4,6 +4,7 @@ import { renderTeachingPopoverCarouselNav_unstable } from './renderTeachingPopov
 import { useTeachingPopoverCarouselNavStyles_unstable } from './useTeachingPopoverCarouselNavStyles.styles';
 import type { TeachingPopoverCarouselNavProps } from './TeachingPopoverCarouselNav.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled TeachingPopoverCarouselNav, using the `useTeachingPopoverCarouselNav_unstable` and `useTeachingPopoverCarouselNavStyles_unstable`
@@ -16,6 +17,8 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
     const state = useTeachingPopoverCarouselNav_unstable(props, ref);
 
     useTeachingPopoverCarouselNavStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useTeachingPopoverCarouselNavStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselNav_unstable(state);
   },

@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { StackedBarChart, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  StackedBarChart,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 interface IStackedBarState {
@@ -20,12 +25,12 @@ export class StackedBarChartCustomAccessibilityExample extends React.Component<{
       {
         legend: 'first',
         data: 3000000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '99%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 1 2020/04/30 99%' },
       },
-      { legend: 'second', data: 1, color: DefaultPalette.green },
+      { legend: 'second', data: 1, color: getColorFromToken(DataVizPalette.color8) },
     ];
 
     const data0: IChartProps = {

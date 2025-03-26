@@ -43,3 +43,6 @@ variables:
     deployBasePath: ${{ coalesce(parameters.deployBasePath, replace(variables['Build.SourceBranch'], 'refs/', '')) }}
 
   skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}
+
+  # Dry run mode for testing the pipeline without making changes
+  dryRun: false

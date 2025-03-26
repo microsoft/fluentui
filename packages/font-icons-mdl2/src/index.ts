@@ -69,9 +69,9 @@ export function initializeIcons(
   registerIconAliases();
 }
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 export type { IconNamesInput } from './IconNames';
 export { IconNames } from './IconNames';
-/* eslint-enable deprecation/deprecation */
+/* eslint-enable @typescript-eslint/no-deprecated */
 
 import './version';

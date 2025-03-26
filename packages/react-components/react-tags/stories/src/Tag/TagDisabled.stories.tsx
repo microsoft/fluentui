@@ -6,6 +6,7 @@ const useContainerStyles = makeStyles({
   container: {
     columnGap: '10px',
     display: 'flex',
+    flexWrap: 'wrap',
   },
 });
 export const Disabled = () => {

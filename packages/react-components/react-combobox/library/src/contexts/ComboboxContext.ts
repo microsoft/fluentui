@@ -50,5 +50,5 @@ export const ComboboxContext = createContext<ComboboxContextValue>({
  * @see ListboxProvider
  * @see useListboxContext_unstable
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const ComboboxProvider = ComboboxContext.Provider;

@@ -8,6 +8,12 @@ export const carouselNavContainerClassNames: SlotClassNames<CarouselNavContainer
   next: 'fui-CarouselNavContainer__next',
   prev: 'fui-CarouselNavContainer__prev',
   autoplay: 'fui-CarouselNavContainer__autoplay',
+  /* Tooltip classNames are listed for type compatibility only (cannot assign root className to portal)
+   * Use 'content' slot to style Tooltip content instead
+   */
+  nextTooltip: 'fui-CarouselNavContainer__nextTooltip',
+  prevTooltip: 'fui-CarouselNavContainer__prevTooltip',
+  autoplayTooltip: 'fui-CarouselNavContainer__autoplayTooltip',
 };
 
 /**

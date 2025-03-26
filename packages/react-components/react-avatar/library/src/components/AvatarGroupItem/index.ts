@@ -1,5 +1,9 @@
-export * from './AvatarGroupItem';
-export * from './AvatarGroupItem.types';
-export * from './renderAvatarGroupItem';
-export * from './useAvatarGroupItem';
-export * from './useAvatarGroupItemStyles.styles';
+export { AvatarGroupItem } from './AvatarGroupItem';
+export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
+export { renderAvatarGroupItem_unstable } from './renderAvatarGroupItem';
+export { useAvatarGroupItem_unstable } from './useAvatarGroupItem';
+export {
+  avatarGroupItemClassNames,
+  useAvatarGroupItemStyles_unstable,
+  useGroupChildClassName,
+} from './useAvatarGroupItemStyles.styles';

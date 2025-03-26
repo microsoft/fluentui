@@ -78,7 +78,7 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       onSelectYear?.(year);
     }
@@ -246,7 +246,7 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       onNavigate();
     }
@@ -308,7 +308,7 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
   };
 
   const onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       onHeaderSelect();
     }

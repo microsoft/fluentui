@@ -1,5 +1,5 @@
-export * from './AccordionPanel';
-export * from './AccordionPanel.types';
-export * from './renderAccordionPanel';
-export * from './useAccordionPanel';
-export * from './useAccordionPanelStyles.styles';
+export { AccordionPanel } from './AccordionPanel';
+export type { AccordionPanelProps, AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
+export { renderAccordionPanel_unstable } from './renderAccordionPanel';
+export { useAccordionPanel_unstable } from './useAccordionPanel';
+export { accordionPanelClassNames, useAccordionPanelStyles_unstable } from './useAccordionPanelStyles.styles';

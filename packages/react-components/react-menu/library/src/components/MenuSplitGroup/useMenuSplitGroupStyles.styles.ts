@@ -4,17 +4,25 @@ import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+export const menuSplitGroupMultilineAttr = 'data-multiline';
+
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
   root: 'fui-MenuSplitGroup',
 };
 /**
  * Styles for the root slot
+ * TODO - remove the use of nested combinators to style child menu items
  */
 const useStyles = makeStyles({
   root: {
+    [`[${menuSplitGroupMultilineAttr}]`]: {
+      [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
+        alignSelf: 'center',
+      },
+    },
     display: 'flex',
     [`& > .${menuItemClassNames.root}:nth-of-type(1)`]: {
-      flexGrow: 1,
+      flex: 1,
     },
     [`& > .${menuItemClassNames.root}:nth-of-type(2)`]: {
       borderTopLeftRadius: 0,

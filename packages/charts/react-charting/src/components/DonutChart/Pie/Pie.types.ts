@@ -54,7 +54,7 @@ export interface IPieProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * string for callout id

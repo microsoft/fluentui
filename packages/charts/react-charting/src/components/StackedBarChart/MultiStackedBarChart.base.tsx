@@ -148,6 +148,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             directionalHint={DirectionalHint.topAutoEdge}
             id={this._calloutId}
             onDismiss={this._closeCallout}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             preventDismissOnLostFocus={true}
             /** Keep the callout updated with details of focused/hovered bar */
             shouldUpdateWhenHidden={true}
@@ -460,7 +461,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-          calloutLegend: point.legend!,
+          calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
           dataForHoverCard: pointData,
           color,
           xCalloutValue: point.xAxisCalloutData!,
@@ -604,7 +605,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-        calloutLegend: point.legend!,
+        calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
         dataForHoverCard: pointData,
         color,
         xCalloutValue: point.xAxisCalloutData!,

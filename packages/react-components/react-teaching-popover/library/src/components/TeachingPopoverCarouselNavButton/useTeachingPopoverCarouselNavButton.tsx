@@ -52,6 +52,7 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
         role: 'tab',
         type: 'button',
+        'aria-selected': `${!!isSelected}`,
         ...defaultTabProps,
       },
     },

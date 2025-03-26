@@ -25,6 +25,7 @@ const TODOITEM = 'todoitem';
 const PLANNER = 'planner';
 const PORTFOLIO = 'portfolio';
 const ALBUM = 'album';
+const LIST_FORM = 'listform';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -162,6 +163,9 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.album:
         iconBaseName = ALBUM;
+        break;
+      case FileIconType.listForm:
+        iconBaseName = LIST_FORM;
         break;
     }
   }

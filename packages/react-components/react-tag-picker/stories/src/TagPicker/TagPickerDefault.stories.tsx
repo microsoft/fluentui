@@ -53,7 +53,6 @@ export const Default = () => {
           {tagPickerOptions.length > 0 ? (
             tagPickerOptions.map(option => (
               <TagPickerOption
-                secondaryContent="Microsoft FTE"
                 media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
                 value={option}
                 key={option}

@@ -1,24 +1,7 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr } from '@microsoft/fast-element';
 import { swapStates } from '../utils/element-internals.js';
+import { BaseSpinner } from './spinner.base.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-
-/**
- * The base class used for constructing a fluent-spinner custom element
- * @public
- */
-export class BaseSpinner extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'progressbar';
-  }
-}
 
 /**
  * A Spinner Custom HTML Element.

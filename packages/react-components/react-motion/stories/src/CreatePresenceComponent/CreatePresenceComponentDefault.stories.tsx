@@ -1,4 +1,12 @@
-import { createPresenceComponent, Field, makeStyles, motionTokens, tokens, Switch } from '@fluentui/react-components';
+import {
+  createPresenceComponent,
+  Field,
+  makeStyles,
+  motionTokens,
+  tokens,
+  Switch,
+  PresenceComponentProps,
+} from '@fluentui/react-components';
 import * as React from 'react';
 
 const useClasses = makeStyles({
@@ -55,7 +63,7 @@ const Fade = createPresenceComponent({
   },
 });
 
-export const CreatePresenceComponentDefault = () => {
+export const CreatePresenceComponentDefault = (props: PresenceComponentProps) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

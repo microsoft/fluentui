@@ -78,9 +78,73 @@ const basicPoints: ILineChartPoints[] = [
   },
 ];
 
+const negativeYPoints: ILineChartPoints[] = [
+  {
+    legend: 'metaData1',
+    data: [
+      { x: 20, y: 50 },
+      { x: 40, y: -80 },
+    ],
+    color: 'red',
+  },
+  {
+    legend: 'metaData2',
+    data: [
+      { x: 30, y: -60 },
+      { x: 50, y: 90 },
+    ],
+    color: 'green',
+  },
+  {
+    legend: 'metaData3',
+    data: [
+      { x: 70, y: 30 },
+      { x: 40, y: -80 },
+    ],
+    color: 'yellow',
+  },
+];
+
+const allNegativeYPoints: ILineChartPoints[] = [
+  {
+    legend: 'metaData1',
+    data: [
+      { x: 20, y: -50 },
+      { x: 40, y: -80 },
+    ],
+    color: 'red',
+  },
+  {
+    legend: 'metaData2',
+    data: [
+      { x: 30, y: -60 },
+      { x: 50, y: -90 },
+    ],
+    color: 'green',
+  },
+  {
+    legend: 'metaData3',
+    data: [
+      { x: 70, y: -30 },
+      { x: 40, y: -80 },
+    ],
+    color: 'yellow',
+  },
+];
+
 const basicChartPoints = {
   chartTitle: 'LineChart',
   lineChartData: basicPoints,
+};
+
+const negativeYChartPoints = {
+  chartTitle: 'LineChart',
+  lineChartData: negativeYPoints,
+};
+
+const allNegativeYChartPoints = {
+  chartTitle: 'LineChart',
+  lineChartData: allNegativeYPoints,
 };
 
 const datePoints: ILineChartPoints[] = [
@@ -280,6 +344,26 @@ describe('Line chart rendering', () => {
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'should render the line chart with negative y values',
+    LineChart,
+    { data: negativeYChartPoints, supportNegativeData: true },
+    container => {
+      //Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'should render the line chart with all negative y values',
+    LineChart,
+    { data: allNegativeYChartPoints, supportNegativeData: true },
+    container => {
+      //Assert
       expect(container).toMatchSnapshot();
     },
   );

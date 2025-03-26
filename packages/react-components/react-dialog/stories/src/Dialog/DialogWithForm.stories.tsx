@@ -48,12 +48,12 @@ export const WithForm = () => {
               <Input required type="password" id={'password-input'} />
             </DialogContent>
             <DialogActions>
-              <DialogTrigger disableButtonEnhancement>
-                <Button appearance="secondary">Close</Button>
-              </DialogTrigger>
               <Button type="submit" appearance="primary">
                 Submit
               </Button>
+              <DialogTrigger disableButtonEnhancement>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
             </DialogActions>
           </DialogBody>
         </form>

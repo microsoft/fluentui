@@ -4,5 +4,10 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-storybook-addon/src",
   "tags": ["vNext", "platform:any", "tools"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "build": {
+      "dependsOn": [{ "projects": ["react-aria", "react-provider"], "target": "build" }]
+    }
+  }
 }

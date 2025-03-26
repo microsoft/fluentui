@@ -1,64 +1,44 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Divider } from './divider.js';
+import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 
 test.describe('Divider', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-divider--divider'));
+  test.use({ tagName: 'fluent-divider' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-divider'));
-  });
-
-  test('should set a default `role` attribute of "separator"', async ({ page }) => {
-    const element = page.locator('fluent-divider');
-
-    await page.setContent(/* html */ `
-      <fluent-divider></fluent-divider>
-    `);
+  test('should set a default `role` attribute of "separator"', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'separator');
   });
 
-  test('should set the `role` attribute equal to the role provided', async ({ page }) => {
-    const element = page.locator('fluent-divider');
+  test('should set the internal `role` property to match the `role` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-divider role="presentation"></fluent-divider>
-    `);
+    for (const role of Object.values(DividerRole)) {
+      await test.step(`role="${role}"`, async () => {
+        await fastPage.setTemplate({ attributes: { role } });
 
-    await expect(element).toHaveJSProperty('elementInternals.role', 'presentation');
-
-    await element.evaluate((node: Divider) => {
-      node.role = 'separator';
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.role', 'separator');
+        await expect(element).toHaveJSProperty('elementInternals.role', role);
+      });
+    }
   });
 
-  test('should set the `aria-orientation` attribute equal to the `orientation` value', async ({ page }) => {
-    const element = page.locator('fluent-divider');
+  test('should set the `aria-orientation` attribute equal to the `orientation` value', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-divider orientation="vertical"></fluent-divider>
-    `);
+    for (const orientation of Object.values(DividerOrientation)) {
+      await test.step(`orientation="${orientation}"`, async () => {
+        await fastPage.setTemplate({ attributes: { orientation } });
 
-    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
-
-    await element.evaluate((node: Divider) => {
-      node.orientation = 'horizontal';
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
+        await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', orientation);
+      });
+    }
   });
 
-  test('should NOT set the `aria-orientation` property equal to `orientation` value if the `role` is presentational', async ({
-    page,
-  }) => {
-    const element = page.locator('fluent-divider');
+  test('should NOT set the `aria-orientation` property when the `role` is "presentation"', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-divider orientation="vertical"></fluent-divider>
-    `);
+    await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
 
@@ -70,12 +50,10 @@ test.describe('Divider', () => {
     await expect(element).not.toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
-  test('should add a custom state matching the `orientation` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-divider');
+  test('should add a custom state matching the `orientation` attribute when provided', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Divider) => {
-      node.orientation = 'vertical';
-    });
+    await fastPage.setTemplate({ attributes: { orientation: 'vertical' } });
 
     await expect(element).toHaveCustomState('vertical');
 
@@ -88,126 +66,35 @@ test.describe('Divider', () => {
     await expect(element).toHaveCustomState('horizontal');
   });
 
-  test('should initialize to the provided value attribute if set post-connection', async ({ page }) => {
-    const element = page.locator('fluent-divider');
+  test('should initialize to the provided value attribute if set post-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-divider></fluent-divider>
-    `);
+    for (const alignment of Object.values(DividerAlignContent)) {
+      await test.step(`alignContent="${alignment}"`, async () => {
+        await fastPage.setTemplate({ attributes: { 'align-content': alignment } });
 
-    await element.evaluate((node: Divider) => {
-      node.alignContent = 'start';
+        await expect(element).toHaveJSProperty('alignContent', alignment);
+
+        await expect(element).toHaveCustomState(`align-${alignment}`);
+      });
+    }
+
+    for (const appearance of Object.values(DividerAppearance)) {
+      await test.step(`appearance="${appearance}"`, async () => {
+        await fastPage.setTemplate({ attributes: { appearance } });
+
+        await expect(element).toHaveJSProperty('appearance', appearance);
+
+        await expect(element).toHaveCustomState(appearance);
+      });
+    }
+
+    await test.step('inset', async () => {
+      await fastPage.setTemplate({ attributes: { inset: true } });
+
+      await expect(element).toHaveJSProperty('inset', true);
+
+      await expect(element).toHaveCustomState('inset');
     });
-
-    await expect(element).toHaveJSProperty('alignContent', 'start');
-
-    await element.evaluate((node: Divider) => {
-      node.alignContent = 'center';
-    });
-
-    await expect(element).toHaveJSProperty('alignContent', 'center');
-
-    await element.evaluate((node: Divider) => {
-      node.alignContent = 'end';
-    });
-
-    await expect(element).toHaveJSProperty('alignContent', 'end');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = undefined;
-    });
-
-    await expect(element).not.toHaveJSProperty('appearance', 'default');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'strong';
-    });
-
-    await expect(element).toHaveJSProperty('appearance', 'strong');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'brand';
-    });
-
-    await expect(element).toHaveJSProperty('appearance', 'brand');
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'subtle';
-    });
-
-    await expect(element).toHaveJSProperty('appearance', 'subtle');
-
-    await element.evaluate((node: Divider) => {
-      node.inset = true;
-    });
-
-    await expect(element).toHaveJSProperty('inset', true);
-  });
-
-  test('should add a custom state matching the `appearance` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-divider');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'strong';
-    });
-
-    await expect(element).toHaveCustomState('strong');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'brand';
-    });
-
-    await expect(element).not.toHaveCustomState('strong');
-
-    await expect(element).toHaveCustomState('brand');
-
-    await element.evaluate((node: Divider) => {
-      node.appearance = 'subtle';
-    });
-
-    await expect(element).not.toHaveCustomState('brand');
-
-    await expect(element).toHaveCustomState('subtle');
-  });
-
-  test('should add a custom state of `inset` when the value is true', async ({ page }) => {
-    const element = page.locator('fluent-divider');
-
-    await element.evaluate((node: Divider) => {
-      node.inset = true;
-    });
-
-    await expect(element).toHaveCustomState('inset');
-
-    await element.evaluate((node: Divider) => {
-      node.inset = false;
-    });
-
-    await expect(element).not.toHaveCustomState('inset');
-  });
-
-  test('should add a custom state matching the `align-content` attribute value when provided', async ({ page }) => {
-    const element = page.locator('fluent-divider');
-
-    await element.evaluate((node: Divider) => {
-      node.alignContent = 'start';
-    });
-
-    await expect(element).toHaveCustomState('align-start');
-
-    await element.evaluate((node: Divider) => {
-      node.alignContent = 'end';
-    });
-
-    await expect(element).not.toHaveCustomState('align-start');
-
-    await expect(element).toHaveCustomState('align-end');
-
-    await element.evaluate((node: Divider) => {
-      node.alignContent = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('align-start');
-
-    await expect(element).not.toHaveCustomState('align-end');
   });
 });

@@ -8,7 +8,7 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     permissions:
       pull-requests: write
     steps:
@@ -26,7 +26,7 @@ jobs:
         working-directory: ./results
 
       - name: 'Comment on PR'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728 # v2.9.1
         with:
           header: bundle-size-report
           number: ${{ steps.pr_number.outputs.id }}

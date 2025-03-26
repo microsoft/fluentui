@@ -1,5 +1,5 @@
-export * from './CarouselButton';
-export * from './CarouselButton.types';
-export * from './renderCarouselButton';
-export * from './useCarouselButton';
-export * from './useCarouselButtonStyles.styles';
+export { CarouselButton } from './CarouselButton';
+export type { CarouselButtonProps, CarouselButtonSlots, CarouselButtonState } from './CarouselButton.types';
+export { renderCarouselButton_unstable } from './renderCarouselButton';
+export { useCarouselButton_unstable } from './useCarouselButton';
+export { carouselButtonClassNames, useCarouselButtonStyles_unstable } from './useCarouselButtonStyles.styles';

@@ -31,7 +31,7 @@ export default {
   title: 'Components/Button/Menu Button',
   render: renderComponent(storyTemplate),
   args: {
-    content: 'Menu Button',
+    slottedContent: () => 'Menu Button',
     disabled: false,
     disabledFocusable: false,
   },

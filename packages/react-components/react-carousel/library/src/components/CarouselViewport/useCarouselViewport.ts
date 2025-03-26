@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselViewportProps, CarouselViewportState } from './CarouselViewport.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 
@@ -16,7 +16,54 @@ export const useCarouselViewport_unstable = (
   props: CarouselViewportProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselViewportState => {
+  const hasFocus = React.useRef(false);
+  const hasMouse = React.useRef(false);
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
+  const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
+
+  const handleFocusCapture = React.useCallback(
+    (e: React.FocusEvent) => {
+      hasFocus.current = true;
+      // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
+      enableAutoplay(false, true);
+    },
+    [enableAutoplay],
+  );
+
+  const handleBlurCapture = React.useCallback(
+    (e: React.FocusEvent) => {
+      // Will enable autoplay (if initialized) when focus exits viewport
+      if (!e.currentTarget.contains(e.relatedTarget)) {
+        hasFocus.current = false;
+        if (!hasMouse.current) {
+          enableAutoplay(true, true);
+        }
+      }
+    },
+    [enableAutoplay],
+  );
+
+  const handleMouseEnter = React.useCallback(
+    (event: React.MouseEvent) => {
+      hasMouse.current = true;
+      enableAutoplay(false, true);
+    },
+    [enableAutoplay],
+  );
+  const handleMouseLeave = React.useCallback(
+    (event: React.MouseEvent) => {
+      hasMouse.current = false;
+      if (!hasFocus.current) {
+        enableAutoplay(true, true);
+      }
+    },
+    [enableAutoplay],
+  );
+
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);
+  const onMouseEnter = mergeCallbacks(props.onMouseEnter, handleMouseEnter);
+  const onMouseLeave = mergeCallbacks(props.onMouseLeave, handleMouseLeave);
 
   return {
     components: {
@@ -29,6 +76,10 @@ export const useCarouselViewport_unstable = (
         // Draggable ensures dragging is supported (even if not enabled)
         draggable: true,
         ...props,
+        onFocusCapture,
+        onBlurCapture,
+        onMouseEnter,
+        onMouseLeave,
       }),
       { elementType: 'div' },
     ),

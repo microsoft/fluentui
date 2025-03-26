@@ -1,7 +1,10 @@
-export * from './coverTarget';
-export * from './flip';
-export * from './intersecting';
-export * from './maxSize';
-export * from './offset';
-export * from './shift';
-export * from './matchTargetSize';
+export { coverTarget } from './coverTarget';
+export type { FlipMiddlewareOptions } from './flip';
+export { flip } from './flip';
+export { intersecting } from './intersecting';
+export type { MaxSizeMiddlewareOptions } from './maxSize';
+export { maxSize, resetMaxSize } from './maxSize';
+export { offset } from './offset';
+export type { ShiftMiddlewareOptions } from './shift';
+export { shift } from './shift';
+export { matchTargetSize, matchTargetSizeCssVar } from './matchTargetSize';

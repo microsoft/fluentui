@@ -13,6 +13,7 @@ export { Controlled } from './TooltipControlled.stories';
 export { Positioning } from './TooltipPositioning.stories';
 export { Target } from './TooltipTarget.stories';
 export { Icon } from './TooltipIcon.stories';
+export { WithOverflow } from './TooltipWithOverflow.stories';
 
 export default {
   title: 'Components/Tooltip',

@@ -29,7 +29,7 @@ main()
 async function main() {
   const graph = await createProjectGraphAsync();
   const projects = readProjectsConfigurationFromProjectGraph(graph);
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const nxJson = readNxJson();
   if (!nxJson) {
     throw new Error('nx.json not found');

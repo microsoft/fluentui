@@ -14,6 +14,9 @@ import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
 import { AreaChartLargeDataExample } from './AreaChart.LargeData.Example';
 import { AreaChartDataChangeExample } from './AreaChart.DataChange.Example';
+import { AreaChartNegativeExample } from './AreaChart.Negative.Example';
+import { AreaChartMultipleNegativeExample } from './AreaChart.MultipleNegative.Example';
+import { AreaChartAllNegativeExample } from './AreaChart.AllNegative.Example';
 
 const AreaChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
@@ -27,7 +30,12 @@ const AreaChartLargeDataExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.LargeData.Example.tsx') as string;
 const AreaChartDataChangeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.DataChange.Example.tsx') as string;
-
+const AreaChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Negative.Example.tsx') as string;
+const AreaChartMultipleNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.MultipleNegative.Example.tsx') as string;
+const AreaChartAllNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.AllNegative.Example.tsx') as string;
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -53,6 +61,15 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Area chart Data Change" code={AreaChartDataChangeExampleCode}>
               <AreaChartDataChangeExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart some negative y value data" code={AreaChartNegativeExampleCode}>
+              <AreaChartNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart Multiple negative y value data" code={AreaChartMultipleNegativeExampleCode}>
+              <AreaChartMultipleNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart All negative y value data" code={AreaChartAllNegativeExampleCode}>
+              <AreaChartAllNegativeExample />
             </ExampleCard>
           </div>
         }
