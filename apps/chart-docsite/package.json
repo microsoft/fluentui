@@ -21,7 +21,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-charts-preview": "*",
+    "@fluentui/react-charts": ">=9.0.0-alpha",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "react": "17.0.2",
