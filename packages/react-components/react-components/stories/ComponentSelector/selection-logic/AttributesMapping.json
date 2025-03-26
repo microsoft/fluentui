@@ -116,7 +116,7 @@
   },
   {
     "id": "tabularStructureMoreInteraction",
-    "components": ["MenuSubmenu"]
+    "components": []
   },
   {
     "id": "tabularStructureOneInteraction",
@@ -152,7 +152,7 @@
   },
   {
     "id": "cardPrimaryPurposeStatic",
-    "components": ["List", "ListSingleAction", "Table", "Text"]
+    "components": []
   },
   {
     "id": "cardMoreInteraction",
