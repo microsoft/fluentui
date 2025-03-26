@@ -5,7 +5,7 @@ import {
   GaugeValueFormat,
   GaugeChartVariant,
   getColorFromToken,
-} from '@fluentui/react-charts-preview';
+} from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
 export const GaugeChartSingleSegment = () => {

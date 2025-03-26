@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart, GaugeChartVariant, getColorFromToken } from '@fluentui/react-charts-preview';
+import { DataVizPalette, GaugeChart, GaugeChartVariant, getColorFromToken } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
 export const GaugeChartBasic = () => {

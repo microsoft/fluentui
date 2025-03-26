@@ -1,4 +1,4 @@
-import { GaugeChart } from '@fluentui/react-charts-preview';
+import { GaugeChart } from '@fluentui/react-charts';
 
 import descriptionMd from './GaugeChartDescription.md';
 import bestPracticesMd from './GaugeChartBestPractices.md';
