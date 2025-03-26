@@ -182,7 +182,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
       { key: 'StackCallout', text: 'Stack callout' },
     ];
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -229,7 +229,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

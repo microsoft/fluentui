@@ -48,7 +48,7 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
 
     const rootStyle = { width: '650px', height: '350px' };
     return (
-      <>
+      <div className="containerDiv">
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             chartTitle="Horizontal bar chart axis tooltip example "
@@ -60,7 +60,7 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

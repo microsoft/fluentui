@@ -609,6 +609,41 @@ describe('Tree', () => {
       cy.get('#btn-before-tree').realClick();
       cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
     });
+
+    it('should ensure roving tab index will be properly initialized when the tree goes from empty to non-empty', () => {
+      const RovingTreeTest = () => {
+        const [show, setShow] = React.useState(false);
+        return (
+          <>
+            <button onClick={() => setShow(current => !current)} id="btn-before-tree">
+              toggle tree
+            </button>
+            <Tree>
+              {show && (
+                <>
+                  <TreeItem itemType="leaf" value="item1" data-testid="item1">
+                    <TreeItemLayout>level 1, item 1</TreeItemLayout>
+                  </TreeItem>
+                  <TreeItem itemType="leaf" value="item2" data-testid="item2">
+                    <TreeItemLayout>level 1, item 2</TreeItemLayout>
+                  </TreeItem>
+                </>
+              )}
+            </Tree>
+          </>
+        );
+      };
+      mount(<RovingTreeTest />);
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
+      cy.get('[data-testid="item2"]').should('have.attr', 'tabindex', '-1');
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('not.exist');
+      cy.get('[data-testid="item2"]').should('not.exist');
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
+      cy.get('[data-testid="item2"]').should('have.attr', 'tabindex', '-1');
+    });
   });
 });
 

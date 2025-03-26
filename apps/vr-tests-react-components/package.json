@@ -11,7 +11,7 @@
     "start": "storybook dev",
     "test": "just-scripts test",
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true --bailOnStoriesError"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -25,9 +25,8 @@
     "@fluentui/react-button": "*",
     "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-card": "*",
-    "@fluentui/react-charts-preview": "*",
+    "@fluentui/react-charts": "*",
     "@fluentui/react-checkbox": "*",
-    "@fluentui/react-color-picker-preview": "*",
     "@fluentui/react-combobox": "*",
     "@fluentui/react-context-selector": "*",
     "@fluentui/react-datepicker-compat": "*",
@@ -81,6 +80,7 @@
     "@fluentui/react-teaching-popover": "*",
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
-    "@fluentui/react-list": "*"
+    "@fluentui/react-list": "*",
+    "@fluentui/react-color-picker": "*"
   }
 }
