@@ -20,7 +20,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: getColorFromToken(DataVizPalette.color28),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '1.5K',
@@ -32,7 +32,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: getColorFromToken(DataVizPalette.color29),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '800',
@@ -44,7 +44,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color30),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '8.8K',
@@ -56,7 +56,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color31),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '16K',
@@ -68,7 +68,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: getColorFromToken(DataVizPalette.color32),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '11K',
@@ -80,7 +80,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: getColorFromToken(DataVizPalette.color33),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '14K',
@@ -92,7 +92,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: getColorFromToken(DataVizPalette.color34),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '9.9K',
@@ -104,7 +104,7 @@ export const HorizontalBarCustomCallout = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: getColorFromToken(DataVizPalette.color35),
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '4.3K',

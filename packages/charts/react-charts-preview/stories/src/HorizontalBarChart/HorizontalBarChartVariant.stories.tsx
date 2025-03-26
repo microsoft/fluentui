@@ -19,7 +19,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: getColorFromToken(DataVizPalette.color17),
         },
       ],
@@ -29,7 +29,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: getColorFromToken(DataVizPalette.color18),
         },
       ],
@@ -39,7 +39,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color19),
         },
       ],
@@ -49,7 +49,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color20),
         },
       ],
@@ -59,7 +59,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: getColorFromToken(DataVizPalette.color21),
         },
       ],
@@ -69,7 +69,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: getColorFromToken(DataVizPalette.color22),
         },
       ],
@@ -79,7 +79,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: getColorFromToken(DataVizPalette.color23),
         },
       ],
@@ -89,7 +89,7 @@ export const HorizontalBarAbsoluteScale = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: getColorFromToken(DataVizPalette.color24),
         },
       ],

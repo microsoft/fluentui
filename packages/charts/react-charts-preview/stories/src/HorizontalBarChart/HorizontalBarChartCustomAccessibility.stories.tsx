@@ -10,7 +10,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'one',
-          horizontalBarChartdata: { x: 1543, y: 15000 },
+          horizontalBarChartdata: { x: 1543, total: 15000 },
           color: getColorFromToken(DataVizPalette.color9),
           xAxisCalloutData: '2021/06/10',
           yAxisCalloutData: '10%',
@@ -25,7 +25,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'two',
-          horizontalBarChartdata: { x: 800, y: 15000 },
+          horizontalBarChartdata: { x: 800, total: 15000 },
           color: getColorFromToken(DataVizPalette.color10),
           xAxisCalloutData: '2021/06/11',
           yAxisCalloutData: '5%',
@@ -40,7 +40,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'three',
-          horizontalBarChartdata: { x: 8888, y: 15000 },
+          horizontalBarChartdata: { x: 8888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color11),
           xAxisCalloutData: '2021/06/12',
           yAxisCalloutData: '59%',
@@ -55,7 +55,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'four',
-          horizontalBarChartdata: { x: 15888, y: 15000 },
+          horizontalBarChartdata: { x: 15888, total: 15000 },
           color: getColorFromToken(DataVizPalette.color12),
           xAxisCalloutData: '2021/06/13',
           yAxisCalloutData: '105%',
@@ -70,7 +70,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'five',
-          horizontalBarChartdata: { x: 11444, y: 15000 },
+          horizontalBarChartdata: { x: 11444, total: 15000 },
           color: getColorFromToken(DataVizPalette.color13),
           xAxisCalloutData: '2021/06/14',
           yAxisCalloutData: '76%',
@@ -85,7 +85,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'six',
-          horizontalBarChartdata: { x: 14000, y: 15000 },
+          horizontalBarChartdata: { x: 14000, total: 15000 },
           color: getColorFromToken(DataVizPalette.color14),
           xAxisCalloutData: '2021/06/15',
           yAxisCalloutData: '93%',
@@ -100,7 +100,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'seven',
-          horizontalBarChartdata: { x: 9855, y: 15000 },
+          horizontalBarChartdata: { x: 9855, total: 15000 },
           color: getColorFromToken(DataVizPalette.color15),
           xAxisCalloutData: '2021/06/16',
           yAxisCalloutData: '65%',
@@ -115,7 +115,7 @@ export const HorizontalBarCustomAccessibility = () => {
       chartData: [
         {
           legend: 'eight',
-          horizontalBarChartdata: { x: 4250, y: 15000 },
+          horizontalBarChartdata: { x: 4250, total: 15000 },
           color: getColorFromToken(DataVizPalette.color16),
           xAxisCalloutData: '2021/06/17',
           yAxisCalloutData: '28%',

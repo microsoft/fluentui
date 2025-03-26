@@ -407,10 +407,39 @@ export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
+export const GroupedVerticalBarChart: React_2.FC<GroupedVerticalBarChartProps>;
+
+// @public (undocumented)
 export interface GroupedVerticalBarChartData {
     name: string;
     series: GVBarChartSeriesPoint[];
     stackCallOutAccessibilityData?: AccessibilityProps;
+}
+
+// @public
+export interface GroupedVerticalBarChartProps extends CartesianChartProps {
+    barWidth?: number | 'default' | 'auto';
+    chartTitle?: string;
+    colors?: string[];
+    culture?: string;
+    data?: GroupedVerticalBarChartData[];
+    hideLabels?: boolean;
+    isCalloutForStack?: boolean;
+    maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
+    styles?: GroupedVerticalBarChartStyles;
+    useSingleColor?: boolean;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
+}
+
+// @public
+export interface GroupedVerticalBarChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface GroupedVerticalBarChartStyles extends CartesianChartStyles {
+    barLabel: string;
 }
 
 // @public (undocumented)
@@ -456,6 +485,10 @@ export interface HorizontalBarChartProps extends React_2.RefAttributes<HTMLDivEl
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    // (undocumented)
+    legendsOverflowText?: any;
     onRenderCalloutPerHorizontalBar?: (props: ChartDataPoint) => JSX.Element | undefined;
     showTriangle?: boolean;
     styles?: HorizontalBarChartStyles;
@@ -475,6 +508,7 @@ export interface HorizontalBarChartStyles {
     chartTitleRight: string;
     chartWrapper: string;
     items: string;
+    legendContainer: string;
     root: string;
     triangle: string;
 }
@@ -501,8 +535,8 @@ export interface HorizontalBarChartWithAxisDataPoint {
 
 // @public (undocumented)
 export interface HorizontalDataPoint {
+    total?: number;
     x: number;
-    y: number;
 }
 
 // @public
@@ -545,6 +579,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }

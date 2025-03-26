@@ -8,6 +8,7 @@ import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { Legend, Legends } from '../../index';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -19,14 +20,15 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   HTMLDivElement,
   HorizontalBarChartProps
 >((props, forwardedRef) => {
-  let _barHeight: number;
-  //let _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
+  const legendContainer = React.useRef<HTMLDivElement | null>(null);
   const _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
   const _refArray: RefArrayData[] = [];
-  let _calloutAnchorPoint: ChartDataPoint | null;
   const _isRTL: boolean = useRtl();
   const barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
+  let _barHeight: number;
+  let _calloutAnchorPoint: ChartDataPoint | null;
+  let isSingleBar: boolean = true;
 
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
@@ -37,6 +39,8 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   const [barSpacingInPercent, setBarSpacingInPercent] = React.useState<number>(0);
   const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+  const [selectedLegend, setSelectedLegend] = React.useState<string>('');
+  const [activeLegend, setActiveLegend] = React.useState<string>('');
 
   function _refCallback(element: SVGGElement, legendTitle: string | undefined): void {
     _refArray.push({ index: legendTitle, refElement: element });
@@ -47,7 +51,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     hoverVal: string | number | Date,
     point: ChartDataPoint,
   ): void {
-    if ((!isPopoverOpen || legend !== point.legend!) && _calloutAnchorPoint !== point) {
+    if (
+      (!isPopoverOpen || legend !== point.legend!) &&
+      _calloutAnchorPoint !== point &&
+      (_legendHighlighted(point.legend) || _noLegendHighlighted())
+    ) {
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setHoverValue(hoverVal);
@@ -86,14 +94,59 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     //)
   };
 
+  function _createLegends(chartProps: ChartProps[]): JSX.Element {
+    const legendItems: Legend[] = [];
+    chartProps.forEach((point: ChartProps) => {
+      point.chartData!.forEach((dataPoint: ChartDataPoint) => {
+        const color: string = dataPoint.color!;
+        // mapping data to the format Legends component needs
+        const legendItem: Legend = {
+          title: dataPoint.legend!,
+          color,
+          action: () => {
+            if (selectedLegend === dataPoint.legend) {
+              setSelectedLegend('');
+            } else {
+              setSelectedLegend(dataPoint.legend!);
+            }
+          },
+          hoverAction: () => {
+            _handleChartMouseLeave();
+            setActiveLegend(dataPoint.legend!);
+          },
+          onMouseOutAction: () => {
+            setActiveLegend('');
+          },
+        };
+        legendItems.push(legendItem);
+      });
+    });
+    const legends = (
+      <Legends legends={legendItems} centerLegends overflowText={props.legendsOverflowText} {...props.legendProps} />
+    );
+    return legends;
+  }
+
   function _getDefaultTextData(data: ChartProps): JSX.Element {
     const { culture } = props;
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
+    if (!isSingleBar) {
+      const total = data.chartData!.reduce(
+        (acc: number, point: ChartDataPoint) =>
+          acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
+        0,
+      );
+      return (
+        <div className={classes.chartTitleRight} {...accessibilityData}>
+          {convertToLocaleString(total, culture)}
+        </div>
+      );
+    }
     const chartDataMode = props.chartDataMode || 'default';
     const chartData: ChartDataPoint = data!.chartData![0];
     const x = chartData.horizontalBarChartdata!.x;
-    const y = chartData.horizontalBarChartdata!.y;
+    const y = chartData.horizontalBarChartdata!.total!;
 
-    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     switch (chartDataMode) {
       case 'default':
         return (
@@ -119,7 +172,10 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
   }
 
   function _createBenchmark(data: ChartProps): JSX.Element {
-    const totalData = data.chartData![0].horizontalBarChartdata!.y;
+    if (data.chartData![0].horizontalBarChartdata!.total === undefined) {
+      return <></>;
+    }
+    const totalData = data.chartData![0].horizontalBarChartdata!.total!;
     const benchmarkData = data.chartData![0].data;
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
@@ -205,6 +261,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
 
       const xValue = point.horizontalBarChartdata!.x;
       const placeholderIndex = 1;
+      const isLegendSelected: boolean = _legendHighlighted(point.legend) || _noLegendHighlighted();
 
       // Render bar label instead of placeholder bar for absolute-scale variant
       if (index === placeholderIndex && props.variant === HorizontalBarChartVariant.AbsoluteScale) {
@@ -249,6 +306,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
           onBlur={_hoverOff}
           onMouseLeave={_hoverOff}
           className={classes.barWrapper}
+          opacity={isLegendSelected ? 1 : 0.1}
           tabIndex={point.legend !== '' ? 0 : undefined}
         />
       );
@@ -260,7 +318,9 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     const legend = point.xAxisCalloutData || point.legend;
     const yValue =
       point.yAxisCalloutData ||
-      (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
+      (point.horizontalBarChartdata
+        ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.total ?? ''}`
+        : 0);
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
@@ -290,10 +350,25 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
     }
   }, [barChartSvgRef]);
 
+  function _legendHighlighted(barLegend?: string) {
+    if (barLegend === undefined) {
+      return false;
+    }
+    return selectedLegend === barLegend || (selectedLegend === '' && activeLegend === barLegend);
+  }
+
+  /**
+   * This function checks if none of the legends is selected or hovered.*/
+
+  function _noLegendHighlighted() {
+    return selectedLegend === '' && activeLegend === '';
+  }
+
   const { data } = props;
   _adjustProps();
   const classes = useHorizontalBarChartStyles_unstable(props);
   const focusAttributes = useFocusableGroup();
+  const legendButtons = _createLegends(data!);
 
   let datapoint: number | undefined = 0;
   return !_isChartEmpty() ? (
@@ -304,14 +379,18 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         } else {
           datapoint = 0;
         }
-        points.chartData![1] = {
-          legend: '',
-          horizontalBarChartdata: {
-            x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-            y: points.chartData![0].horizontalBarChartdata!.y,
-          },
-          color: tokens.colorBackgroundOverlay,
-        };
+        isSingleBar =
+          points.chartData!.length === 1 || (points.chartData!.length > 1 && points.chartData![1].legend === '');
+        if (isSingleBar) {
+          points.chartData![1] = {
+            legend: '',
+            horizontalBarChartdata: {
+              x: points.chartData![0].horizontalBarChartdata!.total! - datapoint!,
+              total: points.chartData![0].horizontalBarChartdata!.total!,
+            },
+            color: tokens.colorBackgroundOverlay,
+          };
+        }
 
         // Hide right side text of chart title for absolute-scale variant
         const chartDataText =
@@ -379,6 +458,11 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
         }}
         isCartesian={false}
       />
+      {!isSingleBar && (
+        <div ref={(e: HTMLDivElement) => (legendContainer.current = e)} className={classes.legendContainer}>
+          {legendButtons}
+        </div>
+      )}
     </div>
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
