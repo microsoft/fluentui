@@ -90,6 +90,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   }
 
   React.useEffect(() => {
+    // When the tree item is mounted, we might need to update the roving tab index
+    // in edge cases where the tree is empty and then populated
+    forceUpdateRovingTabIndex?.();
     const treeItem = treeItemRef.current;
     return () => {
       // When the tree item is unmounted, we need to update the roving tab index
