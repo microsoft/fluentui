@@ -2,6 +2,152 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 21 Mar 2025 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.88",
+      "version": "3.0.0-beta.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "90f14e0aa5f0d8283c4bd7b6f41fa5c80dc8cd8c",
+            "comment": "fix: emit change event on tablist only when active tab changed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 04:07:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.87",
+      "version": "3.0.0-beta.87",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "683cd05a2ff1f8da232d6ac356e82d1087b14517",
+            "comment": "[chore]: move core functionality to base dropdown"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Mar 2025 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.86",
+      "version": "3.0.0-beta.86",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "161412a39468eac9c393e8636b4ae07407911bda",
+            "comment": "refactor out base classes for tree and tree item"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8b47030853046a03053eddcdf5b2b065274bfd5a",
+            "comment": "move filtering for tree-items to template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Mar 2025 04:07:37 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.85",
+      "version": "3.0.0-beta.85",
+      "comments": {
+        "none": [
+          {
+            "author": "patrick.wang1029@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1d870f57b9e47d5617b3d5fd3ca4a487d2cc37c1",
+            "comment": "Add tree-view and tree-view component"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "wes.ngrongsen@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "28857e63fd630673f6f6294ef3d576bf8ecaeec7",
+            "comment": "fix: export AnchorButtonStyles in its index.ts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Mar 2025 21:05:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.84",
+      "version": "3.0.0-beta.84",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfadc50a3e4714a8b0d3b16bacef7ddec70c06dc",
+            "comment": "fix: move base classes to a separate file and provide export paths for improved tree shaking"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 Mar 2025 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.83",
+      "version": "3.0.0-beta.83",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8d1c3b728b0c905ce19baff2edf0b2533fb090cd",
+            "comment": "feat: auto associate tabpanels with tabs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Feb 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.82",
+      "version": "3.0.0-beta.82",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2ccb82dd6469c10e7b3ade28b2e8b511f63c676c",
+            "comment": "Fixed button start and end slots inline spacing."
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "156b618aef1291bb65b87dc6f2a725210245676a",
+            "comment": "fix: position thumb properly at pointer coordinates"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5d23cf83aba5d3f603ae3d8d5e6bf34701cb14c0",
+            "comment": "fix: enable keyboard interactions after clicking on thumb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2025 04:06:04 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.81",
+      "version": "3.0.0-beta.81",
+      "comments": {
+        "none": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aac812bbe00a89eec5c1eb7dbfcf3172f49f73fb",
+            "comment": "docs: add v2 to v3 migration docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2025 04:07:15 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.81",
       "version": "3.0.0-beta.81",

@@ -41,8 +41,18 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
+  ILineChartLineOptions,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { getId } from '@fluentui/react';
+import {
+  CurveFactory,
+  curveLinear as d3CurveLinear,
+  curveNatural as d3CurveNatural,
+  curveStep as d3CurveStep,
+  curveStepAfter as d3CurveStepAfter,
+  curveStepBefore as d3CurveStepBefore,
+} from 'd3-shape';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -256,6 +266,17 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) 
   )(date);
 }
 
+function isPowerOf10(num: number): boolean {
+  const roundedfinalYMax = handleFloatingPointPrecisionError(num);
+  return Math.log10(roundedfinalYMax) % 1 === 0;
+}
+
+//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
+function handleFloatingPointPrecisionError(num: number): number {
+  const rounded = Math.round(num);
+  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
+}
+
 /**
  * Creating Date x axis of the Chart
  * @export
@@ -410,7 +431,11 @@ function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number
   const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
   const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
   const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
-  return d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(finalYmax)) {
+    ticks.pop();
+  }
+  return ticks;
 }
 /**
  * This method used for creating data points for the y axis.
@@ -1531,4 +1556,72 @@ export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: str
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
+}
+
+export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
+}
+
+const MEASUREMENT_SPAN_STYLE = {
+  position: 'absolute',
+  visibility: 'hidden',
+  top: '-20000px',
+  left: 0,
+  padding: 0,
+  margin: 0,
+  border: 'none',
+  whiteSpace: 'pre',
+};
+const MEASUREMENT_SPAN_ID = getId('measurement_span_');
+
+export const createMeasurementSpan = (text: string | number, className: string, parentElement?: HTMLElement | null) => {
+  let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
+  if (!measurementSpan) {
+    measurementSpan = document.createElement('span');
+    measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
+    measurementSpan.setAttribute('aria-hidden', 'true');
+
+    if (parentElement) {
+      parentElement.appendChild(measurementSpan);
+    } else {
+      document.body.appendChild(measurementSpan);
+    }
+  }
+
+  measurementSpan.setAttribute('class', className);
+  Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
+  measurementSpan.textContent = `${text}`;
+
+  return measurementSpan;
+};
+
+export function getCurveFactory(
+  curve: ILineChartLineOptions['curve'],
+  defaultFactory: CurveFactory = d3CurveLinear,
+): CurveFactory {
+  if (typeof curve === 'function') {
+    return curve;
+  }
+
+  switch (curve) {
+    case 'natural':
+      return d3CurveNatural;
+    case 'step':
+      return d3CurveStep;
+    case 'stepAfter':
+      return d3CurveStepAfter;
+    case 'stepBefore':
+      return d3CurveStepBefore;
+    default:
+      return defaultFactory;
+  }
 }

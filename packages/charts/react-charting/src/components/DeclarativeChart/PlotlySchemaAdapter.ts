@@ -18,6 +18,7 @@ import {
   IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
+  ILineChartLineOptions,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -30,16 +31,32 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import { Layout, PlotlySchema, PieData, PlotData, SankeyData } from './PlotlySchema';
-import type { Datum, TypedArray } from './PlotlySchema';
+import type {
+  Datum,
+  Layout,
+  PlotlySchema,
+  PieData,
+  PlotData,
+  SankeyData,
+  ScatterLine,
+  TypedArray,
+} from '@fluentui/chart-utilities';
+import {
+  isArrayOfType,
+  isArrayOrTypedArray,
+  isDate,
+  isDateArray,
+  isNumberArray,
+  isLineData,
+} from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
+import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
 const dashOptions = {
   dot: {
     strokeDasharray: '1, 5',
@@ -78,20 +95,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-const isDate = (value: any): boolean => {
-  const parsedDate = new Date(Date.parse(value));
-  if (isNaN(parsedDate.getTime())) {
-    return false;
-  }
-  const parsedYear = parsedDate.getFullYear();
-  const yearInString = /\b\d{4}\b/.test(value);
-  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
-    return false;
-  }
-  return true;
-};
-
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 const isMonth = (possiblyMonthValue: any): boolean => {
   const parseFullMonth = timeParse('%B');
@@ -99,57 +102,8 @@ const isMonth = (possiblyMonthValue: any): boolean => {
   return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
 };
 
-const isArrayOfType = (
-  plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
-  typeCheck: (datum: any, ...args: any[]) => boolean,
-  ...args: any[]
-): boolean => {
-  if (!isArrayOrTypedArray(plotCoordinates)) {
-    return false;
-  }
-
-  if (plotCoordinates!.length === 0) {
-    return false;
-  }
-
-  if (Array.isArray(plotCoordinates![0])) {
-    // Handle 2D array
-    return (plotCoordinates as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
-  } else {
-    // Handle 1D array
-    return (plotCoordinates as Datum[]).every(datum => typeCheck(datum, ...args));
-  }
-};
-
-export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isDate);
-};
-
-export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isNumber);
-};
-
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   return isArrayOfType(data, isMonth);
-};
-
-export const isLineData = (data: Partial<PlotData>): boolean => {
-  return (
-    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
-    Array.isArray(data.x) &&
-    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
-    data.x.length > 0 &&
-    data.x.length === data.y!.length
-  );
-};
-
-const invalidate2Dseries = (series: PlotData, chartType: string): void => {
-  if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-    throw new Error(`transform to ${chartType}:: 2D x array not supported`);
-  }
-  if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-    throw new Error(`transform to ${chartType}:: 2D y array not supported`);
-  }
 };
 
 const getLegend = (series: PlotData, index: number): string => {
@@ -165,7 +119,7 @@ function getTitles(layout: Partial<Layout> | undefined) {
   return titles;
 }
 
-export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
+export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
   if (xValues.length > 0 && Array.isArray(xValues[0])) {
     throw new Error('updateXValues:: 2D array not supported');
@@ -290,12 +244,6 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
-    invalidate2Dseries(series, 'VSBC');
-
-    if (!isNumberArray(series.y)) {
-      throw new Error('transform to VSBC:: y values should be numeric');
-    }
-
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
@@ -311,13 +259,12 @@ export const transformPlotlyJsonToVSBCProps = (
         });
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
+        const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          ...(series.line?.dash && dashOptions[series.line.dash]
-            ? { lineOptions: { ...dashOptions[series.line.dash] } }
-            : {}),
           y: yVal,
           color,
+          ...(lineOptions ? { lineOptions } : {}),
         });
       }
 
@@ -352,12 +299,6 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
-    invalidate2Dseries(series, 'GVBC');
-
-    if (!isNumberArray(series.y)) {
-      throw new Error('transform to GVBC:: y values should be numeric');
-    }
-
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
@@ -403,8 +344,6 @@ export const transformPlotlyJsonToVBCProps = (
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
   input.data.forEach((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'VBC');
-
     if (!series.x) {
       return;
     }
@@ -496,7 +435,6 @@ export const transformPlotlyJsonToScatterChartProps = (
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   let mode: string = 'tonexty';
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'Scatter');
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
@@ -505,17 +443,21 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
+    const lineOptions = getLineOptions(series.line);
 
     return {
       legend,
-      ...(series.line?.dash && dashOptions[series.line.dash]
-        ? { lineOptions: { ...dashOptions[series.line.dash] } }
-        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
+        ...(Array.isArray(series.marker?.size)
+          ? { markerSize: series.marker.size[i] }
+          : typeof series.marker?.size === 'number'
+          ? { markerSize: series.marker.size }
+          : {}),
       })),
       color: lineColor,
+      ...(lineOptions ? { lineOptions } : {}),
     } as ILineChartPoints;
   });
 
@@ -566,8 +508,6 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 ): IHorizontalBarChartWithAxisProps => {
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
-      invalidate2Dseries(series, 'HBC');
-
       return (series.y as Datum[]).map((yValue: string, i: number) => {
         const color = getColor(yValue, colorMap, isDarkTheme);
         return {
@@ -794,35 +734,6 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
-const MAX_DEPTH = 15;
-export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
-  if (depth > MAX_DEPTH) {
-    throw new Error('Maximum json depth exceeded');
-  }
-
-  if (typeof jsonObject === 'object' && jsonObject !== null) {
-    for (const key in jsonObject) {
-      if (jsonObject.hasOwnProperty(key)) {
-        if (typeof jsonObject[key] === 'string') {
-          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        } else {
-          jsonObject[key] = sanitizeJson(jsonObject[key], depth + 1);
-        }
-      }
-    }
-  }
-
-  return jsonObject;
-};
-
-function isTypedArray(a: any) {
-  return ArrayBuffer.isView(a) && !(a instanceof DataView);
-}
-
-export function isArrayOrTypedArray(a: any) {
-  return Array.isArray(a) || isTypedArray(a);
-}
-
 function isPlainObject(obj: any) {
   if (window && window.process && window.process.versions) {
     return Object.prototype.toString.call(obj) === '[object Object]';
@@ -868,4 +779,36 @@ function crawlIntoTrace(container: any, i: number, astrPartial: any) {
       crawlIntoTrace(item, i + 1, newAstrPartial + '.');
     }
   }
+}
+
+function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineOptions | undefined {
+  if (!line) {
+    return;
+  }
+
+  let lineOptions: ILineChartLineOptions = {};
+  if (line.dash) {
+    lineOptions = { ...lineOptions, ...dashOptions[line.dash] };
+  }
+
+  switch (line.shape) {
+    case 'linear':
+      lineOptions.curve = 'linear';
+      break;
+    case 'spline':
+      const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
+      lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
+      break;
+    case 'hv':
+      lineOptions.curve = 'stepAfter';
+      break;
+    case 'vh':
+      lineOptions.curve = 'stepBefore';
+      break;
+    case 'hvh':
+      lineOptions.curve = 'step';
+      break;
+  }
+
+  return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }

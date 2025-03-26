@@ -101,6 +101,8 @@ scripts/update-release-notes @microsoft/fluentui-react-build
 scripts/utils @microsoft/fluentui-react-build
 scripts/webpack @microsoft/fluentui-react-build
 scripts/perf-test-flamegrill @microsoft/fluentui-react-build
+tools/visual-regression-utilities @microsoft/fluentui-react-build
+tools/visual-regression-assert @microsoft/fluentui-react-build
 
 #### Fluent UI N*
 packages/a11y-rules @microsoft/fluentui-northstar
@@ -136,9 +138,11 @@ apps/chart-docsite @microsoft/charting-team
 packages/azure-themes @Jacqueline-ms
 packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
+packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
-packages/charts/react-charts-preview/library @microsoft/charting-team
-packages/charts/react-charts-preview/stories @microsoft/charting-team
+packages/charts/react-charts @microsoft/charting-team
+packages/charts/react-charts/library @microsoft/charting-team
+packages/charts/react-charts/stories @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto
@@ -306,8 +310,8 @@ packages/react-components/react-infolabel/library @microsoft/cxe-prg
 packages/react-components/react-infolabel/stories @microsoft/cxe-prg
 packages/react-components/react-list/library @microsoft/teams-prg
 packages/react-components/react-list/stories @microsoft/teams-prg
-packages/react-components/react-motion/library @microsoft/teams-prg
-packages/react-components/react-motion/stories @microsoft/teams-prg
+packages/react-components/react-motion/library @microsoft/teams-prg @microsoft/fluent-motion-framework
+packages/react-components/react-motion/stories @microsoft/teams-prg @microsoft/fluent-motion-framework
 packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
@@ -319,12 +323,12 @@ packages/react-components/react-tag-picker/stories @microsoft/teams-prg
 packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/react-carousel/stories @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
 packages/react-components/recipes @microsoft/fluentui-react @sopranopillow
-packages/react-components/react-motion-components-preview/library @microsoft/teams-prg
-packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
+packages/react-components/react-motion-components-preview/library @microsoft/fluent-motion-framework
+packages/react-components/react-motion-components-preview/stories @microsoft/fluent-motion-framework
 packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
-packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-color-picker/library @microsoft/cxe-prg
+packages/react-components/react-color-picker/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
