@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix deprecated appearance property warning for vertical sliders",
-  "packageName": "@fluentui/react-slider",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
