@@ -63,7 +63,7 @@ function useAnimateAtomsInSupportedEnvironment() {
             return null;
           }
         })
-        .filter(animation => !!animation);
+        .filter(animation => !!animation) as Animation[];
 
       return {
         set playbackRate(rate: number) {
