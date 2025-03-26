@@ -3,3 +3,4 @@ export const reporterFileNames = {
   html: 'report.html',
   markdown: 'report.md',
 };
+export const rootReportName = 'vrt-report.json';
