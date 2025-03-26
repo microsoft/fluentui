@@ -416,6 +416,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
               onBlur={_onBarLeave}
               onClick={pointData.onClick}
               aria-label={getAriaLabel(pointData, singleSet.xAxisPoint)}
+              tabIndex={pointData.legend !== '' ? 0 : undefined}
               role="img"
             />
           </React.Fragment>,
