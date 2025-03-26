@@ -78,6 +78,11 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     selectionCell: slot.optional(props.selectionCell, {
       renderByDefault: selectable,
       elementType: DataGridSelectionCell,
+      defaultProps: {
+        radioIndicator: {
+          disabled: isHeader,
+        },
+      },
     }),
     renderCell: props.children,
     columnDefs,
