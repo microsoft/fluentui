@@ -36,6 +36,7 @@ import {
   YValueHover,
   DataVizPalette,
   getColorFromToken,
+  ChartPopoverProps,
 } from '../../index';
 
 type StringAxis = D3Axis<string>;
@@ -83,7 +84,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
-  const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
   const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
@@ -95,6 +95,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps | undefined>(
     undefined,
   );
+  const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+  const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
   const classes = useGroupedVerticalBarChartStyles_unstable(props);
 
   React.useEffect(() => {
@@ -220,7 +222,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   };
 
   const _closeCallout = () => {
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
   };
 
   const points = props.data;
@@ -236,22 +238,18 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   const yMax = d3Max(_dataset, (point: any) => d3Max(_keys, (key: string) => point[key]));
   _yMax = Math.max(yMax, props.yMaxValue || 0);
 
-  const calloutProps = {
-    target: refSelected,
-    isCalloutVisible: isCalloutVisible,
-    id: `toolTip${_calloutId}`,
-    gapSpace: 15,
-    isBeakVisible: false,
-    setInitialFocus: true,
-    color: color,
-    Legend: calloutLegend,
+  const calloutProps: ChartPopoverProps = {
+    clickPosition,
+    isPopoverOpen,
+    color,
+    legend: calloutLegend,
     XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
-    YValueHover: YValueHover,
-    hoverXValue: hoverXValue,
-    onDismiss: _closeCallout,
+    YValueHover,
+    hoverXValue,
+    culture: props.culture ?? 'en-us',
+    isCartesian: true,
     ...props.calloutProps,
-    preventDismissOnLostFocus: true,
     ...getAccessibleDataObject(callOutAccessibilityData, 'text', false),
   };
   const tickParams = {
@@ -294,6 +292,18 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     return opacity;
   };
 
+  function updatePosition(newX: number, newY: number) {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+      setPopoverOpen(true);
+    }
+  }
+
   const onBarHover = (
     pointData: GVBarChartSeriesPoint,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -303,8 +313,8 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     mouseEvent.persist();
     if (_calloutAnchorPoint !== pointData) {
       _calloutAnchorPoint = pointData;
-      setRefSelected(mouseEvent.currentTarget);
-      setIsCalloutVisible(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
+      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+      setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
       setCalloutLegend(pointData.legend);
       setDataForHoverCard(pointData.data);
       setColor(pointData.color);
@@ -324,7 +334,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const _handleChartMouseLeave = (): void => {
     _calloutAnchorPoint = null;
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
   };
 
   const onBarFocus = (
@@ -336,7 +346,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
         setRefSelected(obj.refElement!);
-        setIsCalloutVisible(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
+        setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
         setCalloutLegend(pointData.legend);
         setDataForHoverCard(pointData.data);
         setColor(pointData.color);
