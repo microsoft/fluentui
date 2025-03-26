@@ -7,5 +7,6 @@ export * from './GroupedVerticalBarChart';
 export * from './CartesianChart';
 export * from './types/index';
 export * from './Sparkline';
+export * from './ScatterChart';
 export * from './utilities/colors';
 export * from './Popover';
