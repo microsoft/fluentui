@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 20 Mar 2025 09:34:58 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 15:52:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.3)
+
+Wed, 26 Mar 2025 15:52:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.2..@fluentui/react-components_v9.61.3)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - chore: Publish stable version of charts v9 package ([PR #33858](https://github.com/microsoft/fluentui/pull/33858) by 74965306+Anush2303@users.noreply.github.com)
+- `@fluentui/react-slider`
+  - fix: fix deprecated appearance property warning for vertical sliders ([PR #34022](https://github.com/microsoft/fluentui/pull/34022) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure tabindex whenever tree is re-populated ([PR #34083](https://github.com/microsoft/fluentui/pull/34083) by bernardo.sunderhus@gmail.com)
 
 ## [9.61.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.2)
 
