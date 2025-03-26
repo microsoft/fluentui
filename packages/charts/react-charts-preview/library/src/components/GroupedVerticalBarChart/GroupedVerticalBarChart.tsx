@@ -63,7 +63,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   HTMLDivElement,
   GroupedVerticalBarChartProps
 >((props = { maxBarWidth: 24 }, forwardedRef) => {
-  const _calloutId: string = useId('callout');
   const _tooltipId: string = useId('GVBCTooltipId_');
   const _emptyChartId: string = useId('_GVBC_empty');
   const _useRtl: boolean = useRtl();
@@ -84,7 +83,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
-  const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
@@ -221,10 +219,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
     );
   };
 
-  const _closeCallout = () => {
-    setPopoverOpen(false);
-  };
-
   const points = props.data;
   const { keys, xAxisLabels, datasetForBars } = _createDataSetOfGVBC(points!);
   _keys = keys;
@@ -345,7 +339,6 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   ): void => {
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === pointData.legend && refArrayIndexNumber === index) {
-        setRefSelected(obj.refElement!);
         setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(pointData.legend));
         setCalloutLegend(pointData.legend);
         setDataForHoverCard(pointData.data);
