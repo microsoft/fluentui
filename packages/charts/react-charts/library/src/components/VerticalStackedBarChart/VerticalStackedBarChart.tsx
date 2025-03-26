@@ -1058,8 +1058,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       isCalloutForStack: _isHavingLines && _noLegendHighlighted(),
       isCartesian: true,
       customCallout: {
-        customizedCallout: _getCustomizedCallout() != null ? _getCustomizedCallout()! : undefined,
-        customCalloutProps: props.customProps ? props.customProps(dataPointCalloutProps!) : undefined,
+        customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,
+        customCalloutProps: props.calloutPropsPerDataPoint
+          ? props.calloutPropsPerDataPoint(dataPointCalloutProps!)
+          : undefined,
       },
     };
     const tickParams = {
