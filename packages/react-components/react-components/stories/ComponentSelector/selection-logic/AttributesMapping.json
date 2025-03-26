@@ -33,11 +33,11 @@
   },
   {
     "id": "multipleChoices",
-    "components": ["Checkbox", "MenuItemCheckbox", "ToggleButton"]
+    "components": ["Checkbox", "MenuItemCheckbox"]
   },
   {
     "id": "singleChoice",
-    "components": ["Button", "MenuItemRadio", "RadioGroup", "Switch"]
+    "components": ["MenuItemRadio", "RadioGroup"]
   },
   {
     "id": "autoSelect",
