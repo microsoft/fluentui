@@ -288,7 +288,6 @@ export const VerticalStackedBarDefault = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
@@ -311,7 +310,6 @@ export const VerticalStackedBarDefault = () => {
               canSelectMultipleLegends: legendMultiSelect,
             }}
             hideLabels={hideLabels}
-            enableReflow={true}
             roundCorners={roundCorners}
           />
         </div>
