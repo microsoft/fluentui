@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: ensure tabindex whenever tree is re-populated",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,21 @@
 {
-  "name": "@fluentui/react-charts-preview",
+  "name": "@fluentui/react-charts",
   "entries": [
+    {
+      "date": "Wed, 26 Mar 2025 15:52:37 GMT",
+      "tag": "@fluentui/react-charts_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b4788ec5def0ffdede8fefe3dd240e7b189fca83",
+            "comment": "chore: Publish stable version of charts v9 package"
+          }
+        ]
+      }
+    },
     {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-charts-preview_v0.2.2",

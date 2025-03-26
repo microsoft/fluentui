@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 20 Mar 2025 09:34:59 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 15:52:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.4)
+
+Wed, 26 Mar 2025 15:52:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.3..@fluentui/react-tree_v9.10.4)
+
+### Patches
+
+- bugfix: ensure tabindex whenever tree is re-populated ([PR #34083](https://github.com/microsoft/fluentui/pull/34083) by bernardo.sunderhus@gmail.com)
 
 ## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.3)
 

@@ -1,8 +1,17 @@
-# Change Log - @fluentui/react-charts-preview
+# Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 15:52:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.0)
+
+Wed, 26 Mar 2025 15:52:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts-preview_v0.2.2..@fluentui/react-charts_v9.0.0)
+
+### Patches
+
+- chore: Publish stable version of charts v9 package ([PR #33858](https://github.com/microsoft/fluentui/pull/33858) by 74965306+Anush2303@users.noreply.github.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts-preview_v0.2.2)
 
