@@ -1,19 +1,11 @@
 [
   {
     "id": "performsAction",
-    "components": [
-      "Button",
-      "MenuButton",
-      "ToggleButton",
-      "SplitButton",
-      "ToolbarToggleButton",
-      "LinkButton",
-      "ButtonBase"
-    ]
+    "components": ["Button", "MenuButton", "ToggleButton", "SplitButton", "ToolbarToggleButton", "LinkButton"]
   },
   {
     "id": "performsNavigation",
-    "components": ["Link", "Link", "LinkButton", "Link"]
+    "components": ["Link", "LinkButton"]
   },
   {
     "id": "primaryActionPlusDropdown",
@@ -29,7 +21,7 @@
   },
   {
     "id": "notToggle",
-    "components": ["Link", "LinkButton", "Link", "MenuButton", "SplitButton"]
+    "components": ["Link", "LinkButton", "Button", "MenuButton", "SplitButton"]
   },
   {
     "id": "linkAsButton",
@@ -76,7 +68,6 @@
     "components": [
       "Accordion",
       "Button",
-      "MenuButton",
       "ToggleButton",
       "SplitButton",
       "InfoLabel",
@@ -84,6 +75,7 @@
       "Menu",
       "MenuButton",
       "MenuItemRadio",
+      "MenuItemCheckbox",
       "MenuSubmenu",
       "TableCellActions",
       "TableCellNavigation",
@@ -212,23 +204,42 @@
   },
   {
     "id": "navigationByTabKey",
-    "components": ["ButtonBase", "Checkbox", "InfoLabel", "Link", "Accordion", "TableCellActions", "Tooltip"]
+    "components": [
+      "Button",
+      "MenuButton",
+      "SplitButton",
+      "ToggleButton",
+      "Checkbox",
+      "InfoLabel",
+      "Link",
+      "Accordion",
+      "TableCellActions",
+      "Tooltip"
+    ]
   },
   {
     "id": "interactive",
     "components": [
-      "ButtonBase",
+      "Button",
+      "MenuButton",
+      "SplitButton",
+      "ToggleButton",
       "Checkbox",
       "InfoLabel",
       "Link",
       "Accordion",
       "ListSingleAction",
-      "MenuBase",
+      "Menu",
+      "MenuItemRadio",
+      "MenuItemCheckbox",
+      "MenuSubmenu",
       "TableCellActions",
       "TableCellNavigation",
       "TabList",
       "Tooltip",
-      "TreeBase"
+      "Tree",
+      "TreeGrid",
+      "TreeSelection"
     ]
   },
   {
@@ -249,15 +260,40 @@
   },
   {
     "id": "narratesPosition",
-    "components": ["ListBase", "MenuBase", "TableBase", "TabList", "TreeBase"]
+    "components": [
+      "List",
+      "ListSingleAction",
+      "Menu",
+      "MenuItemRadio",
+      "MenuItemCheckbox",
+      "MenuSubmenu",
+      "Table",
+      "TableCellNavigation",
+      "TableCellActions",
+      "TabList",
+      "Tree",
+      "TreeGrid",
+      "TreeSelection"
+    ]
   },
   {
     "id": "singleColumn",
-    "components": ["ListBase"]
+    "components": ["List", "ListSingleAction"]
   },
   {
     "id": "navigationByArrowKeys",
-    "components": ["ListSingleAction", "MenuBase", "TableCellNavigation", "TabList", "TreeBase"]
+    "components": [
+      "ListSingleAction",
+      "Menu",
+      "MenuItemRadio",
+      "MenuItemCheckbox",
+      "MenuSubmenu",
+      "TableCellNavigation",
+      "TabList",
+      "Tree",
+      "TreeGrid",
+      "TreeSelection"
+    ]
   },
   {
     "id": "opensMenu",
@@ -265,7 +301,7 @@
   },
   {
     "id": "insideMenu",
-    "components": ["MenuBase"]
+    "components": ["Menu", "MenuItemRadio", "MenuItemCheckbox", "MenuSubmenu"]
   },
   {
     "id": "nested",
@@ -273,7 +309,7 @@
   },
   {
     "id": "columnsAndRows",
-    "components": ["TableBase"]
+    "components": ["Table", "TableCellNavigation", "TableCellActions"]
   },
   {
     "id": "textOrHeading",
