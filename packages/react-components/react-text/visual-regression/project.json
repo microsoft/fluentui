@@ -1,0 +1,49 @@
+{
+  "name": "react-text-visual-regression",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/react-components/react-text/visual-regression/src",
+  "projectType": "library",
+  "tags": ["vNext", "platform:web", "visual-regression"],
+  "targets": {
+    "build-storybook": {
+      "command": "storybook build -o dist/storybook --quiet",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "generate-image-for-vrt": {
+      "command": "rm -rf dist/vrt/actual && storywright  --browsers chromium --url dist/storybook --destpath dist/vrt/actual --waitTimeScreenshot 500 --concurrency 4 --headless true",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn storywright --help",
+          "example": {}
+        }
+      },
+      "dependsOn": ["build-storybook"],
+      "inputs": ["{projectRoot}/src/**/*.stories.tsx"],
+      "outputs": ["{projectRoot}/dist/vrt/actual/**"],
+      "cache": true
+    },
+    "test-vr-cli": {
+      "command": "visual-regression-assert assert --baselineDir src/__snapshots__ --outputPath dist/vrt",
+      "options": {
+        "cwd": "{projectRoot}"
+      },
+      "dependsOn": [
+        "build-storybook",
+        "generate-image-for-vrt",
+        { "projects": ["visual-regression-assert"], "target": "build" }
+      ],
+      "inputs": ["{projectRoot}/dist/vrt/screenshots/**", "{projectRoot}/src/**/*.stories.tsx"],
+      "metadata": {
+        "help": {
+          "command": "yarn visual-regression-assert --help",
+          "example": {}
+        }
+      }
+    }
+  }
+}
