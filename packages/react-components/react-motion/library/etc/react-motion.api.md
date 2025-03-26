@@ -24,8 +24,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 // @public (undocumented)
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
-// @public (undocumented)
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
+// @public
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): typeof component;
 
 // @public (undocumented)
 export const curves: {
@@ -98,6 +98,8 @@ export const motionTokens: {
 export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
     (props: PresenceComponentProps & MotionParams): React_2.ReactElement | null;
     [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+    In: React_2.FC<MotionComponentProps & MotionParams>;
+    Out: React_2.FC<MotionComponentProps & MotionParams>;
 };
 
 // @public (undocumented)
