@@ -57,6 +57,7 @@ import {
   ctrlSliderThumbSizePressedRaw,
   ctrlSliderThumbSizeRestRaw,
 } from './variables';
+
 export const ctrlSliderBarHeight = `var(${ctrlSliderBarHeightRaw}, var(${ctrlProgressHeightFilledRaw}))`;
 export const ctrlSliderBarCorner = `var(${ctrlSliderBarCornerRaw}, var(${cornerCircularRaw}))`;
 export const ctrlSliderBarForegroundFilledRest = `var(${ctrlSliderBarForegroundFilledRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;

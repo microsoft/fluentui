@@ -1,5 +1,10 @@
-// eslint-disable-next-line no-restricted-imports
-import { tokens } from '@fluentui/tokens';
+import {
+  colorNeutralForegroundDisabled,
+  fontFamilyBase,
+  fontSizeBase300,
+  fontWeightRegular,
+  strokeWidthThin,
+} from '../legacy/tokens';
 import {
   aiBrandStop1Raw,
   aiBrandStop2Raw,
@@ -231,6 +236,7 @@ import {
   textStyleDefaultRegularLetterspacingRaw,
   textStyleDefaultRegularWeightRaw,
 } from './variables';
+
 export const textGlobalDisplay1Fontsize = `var(${textGlobalDisplay1FontsizeRaw})`;
 export const textGlobalDisplay1Lineheight = `var(${textGlobalDisplay1LineheightRaw})`;
 export const textGlobalDisplay2Fontsize = `var(${textGlobalDisplay2FontsizeRaw})`;
@@ -247,14 +253,14 @@ export const textGlobalBody1Fontsize = `var(${textGlobalBody1FontsizeRaw})`;
 export const textGlobalBody1Lineheight = `var(${textGlobalBody1LineheightRaw})`;
 export const textGlobalBody2Fontsize = `var(${textGlobalBody2FontsizeRaw})`;
 export const textGlobalBody2Lineheight = `var(${textGlobalBody2LineheightRaw})`;
-export const textGlobalBody3Fontsize = `var(${textGlobalBody3FontsizeRaw}, ${tokens.fontSizeBase300})`;
+export const textGlobalBody3Fontsize = `var(${textGlobalBody3FontsizeRaw}, ${fontSizeBase300})`;
 export const textGlobalBody3Lineheight = `var(${textGlobalBody3LineheightRaw})`;
 export const textGlobalCaption1Fontsize = `var(${textGlobalCaption1FontsizeRaw})`;
 export const textGlobalCaption1Lineheight = `var(${textGlobalCaption1LineheightRaw})`;
 export const textGlobalCaption2Fontsize = `var(${textGlobalCaption2FontsizeRaw})`;
 export const textGlobalCaption2Lineheight = `var(${textGlobalCaption2LineheightRaw})`;
-export const textStyleDefaultRegularFontfamily = `var(${textStyleDefaultRegularFontfamilyRaw}, ${tokens.fontFamilyBase})`;
-export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${tokens.fontWeightRegular})`;
+export const textStyleDefaultRegularFontfamily = `var(${textStyleDefaultRegularFontfamilyRaw}, ${fontFamilyBase})`;
+export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
 export const textStyleDefaultRegularLetterspacing = `var(${textStyleDefaultRegularLetterspacingRaw})`;
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
 export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw})`;
@@ -314,7 +320,7 @@ export const gapInsideCtrlTolabel = `var(${gapInsideCtrlTolabelRaw})`;
 export const gapInsideCtrlSmTolabel = `var(${gapInsideCtrlSmTolabelRaw})`;
 export const gapInsideCtrlLgTolabel = `var(${gapInsideCtrlLgTolabelRaw})`;
 export const cornerCircular = `var(${cornerCircularRaw})`;
-export const strokewidthDefault = `var(${strokewidthDefaultRaw}, ${tokens.strokeWidthThin})`;
+export const strokewidthDefault = `var(${strokewidthDefaultRaw}, ${strokeWidthThin})`;
 export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
 export const strokeCtrlOnoutlineRest = `var(${strokeCtrlOnoutlineRestRaw})`;
 export const strokeCtrlOnoutlineHover = `var(${strokeCtrlOnoutlineHoverRaw})`;
@@ -369,7 +375,7 @@ export const cornerCtrlSmRest = `var(${cornerCtrlSmRestRaw})`;
 export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw})`;
 export const cornerImageIncard = `var(${cornerImageIncardRaw})`;
 export const foregroundCtrlNeutralPrimaryRest = `var(${foregroundCtrlNeutralPrimaryRestRaw})`;
-export const foregroundCtrlNeutralPrimaryDisabled = `var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${tokens.colorNeutralForegroundDisabled})`;
+export const foregroundCtrlNeutralPrimaryDisabled = `var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;
 export const foregroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw})`;
 export const foregroundCtrlNeutralSecondaryDisabled = `var(${foregroundCtrlNeutralSecondaryDisabledRaw})`;
 export const foregroundCtrlBrandRest = `var(${foregroundCtrlBrandRestRaw})`;

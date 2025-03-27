@@ -361,6 +361,7 @@ import {
   textStyleQuoteRegularLetterspacingRaw,
   textStyleQuoteRegularWeightRaw,
 } from './variables';
+
 export const textStyleDefaultHeaderFontfamily = `var(${textStyleDefaultHeaderFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}))`;
 export const textStyleDefaultHeaderLetterspacing = `var(${textStyleDefaultHeaderLetterspacingRaw}, var(${textStyleDefaultRegularLetterspacingRaw}))`;
 export const textStyleAiRegularFontfamily = `var(${textStyleAiRegularFontfamilyRaw}, var(${textStyleDefaultRegularFontfamilyRaw}))`;

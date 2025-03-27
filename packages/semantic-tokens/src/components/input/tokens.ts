@@ -43,6 +43,7 @@ import {
   ctrlInputTextselectionBackgroundRaw,
   ctrlInputTextselectionForegroundRaw,
 } from './variables';
+
 export const ctrlInputBackgroundRest = `var(${ctrlInputBackgroundRestRaw}, var(${backgroundCtrlNeutralRestRaw}))`;
 export const ctrlInputBackgroundHover = `var(${ctrlInputBackgroundHoverRaw}, var(${backgroundCtrlNeutralHoverRaw}))`;
 export const ctrlInputBackgroundPressed = `var(${ctrlInputBackgroundPressedRaw}, var(${backgroundCtrlNeutralPressedRaw}))`;

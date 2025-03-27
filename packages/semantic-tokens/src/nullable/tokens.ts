@@ -69,6 +69,7 @@ import {
   textStyleDefaultHeaderCaseRaw,
   textStyleQuoteHeaderCaseRaw,
 } from './variables';
+
 export const textStyleDefaultHeaderCase = `var(${textStyleDefaultHeaderCaseRaw}, unset)`;
 export const textStyleAiHeaderCase = `var(${textStyleAiHeaderCaseRaw}, unset)`;
 export const textStyleArticleHeaderCase = `var(${textStyleArticleHeaderCaseRaw}, unset)`;

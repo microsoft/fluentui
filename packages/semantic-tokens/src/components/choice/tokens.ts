@@ -75,6 +75,7 @@ import {
   ctrlChoiceSwitchThumbWidthRestRaw,
   ctrlChoiceSwitchWidthRaw,
 } from './variables';
+
 export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw})`;
 export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw})`;
 export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}))`;

@@ -38,12 +38,6 @@ interface ComponentTokenMap {
   [component: string]: string;
 }
 
-// ToDo, make this dynamic to handle all needed variables imported after/during files generation
-function generateImportHeaders() {
-  const importFluent = "import { tokens } from '@fluentui/tokens';\n";
-  return importFluent;
-}
-
 function generateTokens() {
   console.log('Generating tokens...');
   // Simple for now, just generate the raw strings and variables
@@ -167,9 +161,9 @@ function toCamelCase(str: string) {
 function generateTokenVariables() {
   // Default our files to token imports
   // TODO: Add raw token imports
-  let optionalTokens = generateImportHeaders();
-  let controlTokens = generateImportHeaders();
-  let nullableTokens = generateImportHeaders();
+  let optionalTokens = '';
+  let controlTokens = '';
+  let nullableTokens = '';
   const componentTokens: ComponentTokenMap = {};
 
   const optionalVarFile = './src/optional/tokens.ts';
@@ -229,7 +223,7 @@ function generateTokenVariables() {
       // We have a component level control token
       const component = tokenData.name.split('/')[1];
       if (!componentTokens[component]) {
-        componentTokens[component] = generateImportHeaders();
+        componentTokens[component] = '';
       }
       componentTokens[component] += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
 
@@ -263,6 +257,7 @@ function generateTokenVariables() {
   fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
 
   // Add source files for import statements
+  project.addSourceFileAtPath('./src/legacy/tokens.ts');
   project.addSourceFileAtPath('./src/optional/tokens.ts');
   project.addSourceFileAtPath('./src/control/tokens.ts');
   project.addSourceFileAtPath('./src/nullable/tokens.ts');
@@ -293,13 +288,6 @@ function generateTokenVariables() {
       singleQuote: true,
       printWidth: 120,
     });
-
-    // TODO: Can we just fix/ignore this ESLint rule in this repo so this isn't needed?
-    // We have to manually inject eslint disable after formatting, because it deletes it.
-    if (formattedText.startsWith('import { tokens }')) {
-      const esLintDisable = '// eslint-disable-next-line no-restricted-imports\n';
-      formattedText = esLintDisable + formattedText;
-    }
 
     // Format our text to match prettier rules
     sourceFile.replaceWithText(formattedText);

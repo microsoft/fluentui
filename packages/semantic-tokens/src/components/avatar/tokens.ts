@@ -28,6 +28,7 @@ import {
   ctrlAvatarTextLineheightRaw,
   ctrlAvatarTextPaddingTopoffsetRaw,
 } from './variables';
+
 export const ctrlAvatarSize = `var(${ctrlAvatarSizeRaw}, var(${sizeCtrlDefaultRaw}))`;
 export const ctrlAvatarCornerItem = `var(${ctrlAvatarCornerItemRaw}, var(${cornerCircularRaw}))`;
 export const ctrlAvatarBackground = `var(${ctrlAvatarBackgroundRaw})`;
