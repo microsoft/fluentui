@@ -50,12 +50,6 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   barMinimumHeight?: number;
 
   /**
-   * Colors from which to select the color of each bar.
-   * @deprecated Not using this prop. DIrectly taking color from given data.
-   */
-  colors?: string[];
-
-  /**
    * chart title for the chart
    */
   chartTitle?: string;
@@ -80,11 +74,6 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
    * Define a custom callout renderer for a data point
    */
   onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
-
-  /**
-   * props for the callout in the chart
-   */
-  //calloutProps?: Partial<ICalloutProps>;
 
   /**
    * yMinValue is not supported for bar charts, so only allow "undefined"

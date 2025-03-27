@@ -540,7 +540,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
   children(props: ChildProps): React.ReactNode;
 
   /**
-   * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
+   * To enable callout for individual bar or complete stack. Using for only Vertical stacked bar chart.
    * @default false
    * @type \{boolean \}
    */

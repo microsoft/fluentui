@@ -945,8 +945,6 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     barMinimumHeight?: number;
     barWidth?: number | 'default' | 'auto';
     chartTitle?: string;
-    // @deprecated
-    colors?: string[];
     culture?: string;
     data: VerticalStackedChartProps[];
     enableGradient?: boolean;
