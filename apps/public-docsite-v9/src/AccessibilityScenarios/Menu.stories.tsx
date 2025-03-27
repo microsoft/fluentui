@@ -7,7 +7,8 @@ import { Scenario } from './utils';
 export const ProfileMenu: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Profile menu">
-      <div>Dual state</div>
+      <h1>Test 2</h1>
+      <div>Dual State Interaction (Independent Hover + Focus) </div>
       <Menu positioning={{ autoSize: true }}>
         <MenuTrigger disableButtonEnhancement>
           <MenuButton>Pick a fruit</MenuButton>
