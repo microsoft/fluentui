@@ -1,6 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
-  "ignorePatterns": ["!**/*"],
+  "root": true,
+  "ignorePatterns": ["!**/*", "**/__fixtures__/**"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

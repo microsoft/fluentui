@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 15:52:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.3.3)
+
+Wed, 26 Mar 2025 15:52:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.3.2..@fluentui/react-slider_v9.3.3)
+
+### Patches
+
+- fix: fix deprecated appearance property warning for vertical sliders ([PR #34022](https://github.com/microsoft/fluentui/pull/34022) by dmytrokirpa@microsoft.com)
 
 ## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.3.2)
 

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 20 Mar 2025 09:34:58 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 21:47:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.0)
+
+Wed, 26 Mar 2025 21:47:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.10..@fluentui/react-motion_v9.7.0)
+
+### Minor changes
+
+- fix(motion): make createPresenceComponentVariant support motion arrays ([PR #33996](https://github.com/microsoft/fluentui/pull/33996) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix: handle error cases in "element.animate()" ([PR #34096](https://github.com/microsoft/fluentui/pull/34096) by seanmonahan@microsoft.com)
 
 ## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.10)
 
