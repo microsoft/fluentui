@@ -124,10 +124,6 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     );
     const { arcWidth, chartValueSize } = _getStylesBasedOnBreakpoint();
     const _innerRadius: number = _outerRadius - arcWidth;
-    let _minValue!: number;
-    let _maxValue!: number;
-    let _segments!: ExtendedSegment[];
-    let _calloutAnchor: string = '';
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
@@ -137,6 +133,10 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
+    let _minValue!: number;
+    let _maxValue!: number;
+    let _segments!: ExtendedSegment[];
+    let _calloutAnchor: string = '';
     React.useEffect(() => {
       if (prevPropsRef.current) {
         const prevProps = prevPropsRef.current;
@@ -394,7 +394,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         };
         return yValue;
       });
-      updatePosition(clientX, clientY);
+      _updatePosition(clientX, clientY);
       setPopoverOpen(
         ['Needle', 'Chart value'].includes(legend) || _noLegendHighlighted() || _legendHighlighted(legend),
       );
@@ -567,7 +567,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
     }
 
-    function updatePosition(newX: number, newY: number) {
+    function _updatePosition(newX: number, newY: number) {
       const threshold = 1; // Set a threshold for movement
       const { x, y } = clickPosition;
       // Calculate the distance moved
