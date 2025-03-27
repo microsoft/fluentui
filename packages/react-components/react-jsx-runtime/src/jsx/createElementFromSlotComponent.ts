@@ -1,12 +1,13 @@
 import * as React from 'react';
-import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
+import type { SlotComponentType } from '@fluentui/react-utilities';
 import { getMetadataFromSlotComponent } from '../utils/getMetadataFromSlotComponent';
+import type { SlotPropsDataType } from '../utils/types';
 
 /**
  * @internal
  * creates a ReactElement from a slot declaration
  */
-export function createElementFromSlotComponent<Props extends UnknownSlotProps>(
+export function createElementFromSlotComponent<Props extends SlotPropsDataType>(
   type: SlotComponentType<Props>,
   overrideChildren: React.ReactNode[],
 ): React.ReactElement<Props> {
