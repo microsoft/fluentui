@@ -14,11 +14,10 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/tokens": ">=1.0.0-alpha.21"
-  },
-  "dependencies": {
+    "@fluentui/tokens": ">=1.0.0-alpha",
     "@swc/helpers": "^0.5.1"
   },
+  "dependencies": {},
   "beachball": {
     "disallowedChangeTypes": [
       "major",
