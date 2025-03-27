@@ -41,7 +41,6 @@ import { removeFromArray, getAllQuestions, hasQuestions } from './utils';
 import { add, create, filter, get, pad, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
-import { BehaviorSelection } from './BehaviorSelection';
 import { MatchingComponents } from './MatchingComponents';
 
 const useStyles = makeStyles({
@@ -212,6 +211,7 @@ interface ComponentDefinition {
   component?: string;
   story?: string;
   link?: string;
+  attributes?: string[];
 }
 
 interface ComponentGroup {
@@ -233,12 +233,6 @@ interface ComponentAttributesMapping {
   components: string[];
 }
 
-interface BehaviorOptions {
-  id: string;
-  title: string;
-  behaviors: { id: string; name: string }[];
-}
-
 interface SelectedComponent {
   name: string;
   displayName: string;
@@ -249,7 +243,6 @@ interface ComponentSelectorProps {
   groups: ComponentGroup[];
   questions: GroupQuestion[];
   attributesMapping: ComponentAttributesMapping[];
-  behaviorOptions: BehaviorOptions[];
   componentsImages: Record<string, string>;
 }
 
@@ -258,12 +251,10 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   groups,
   questions,
   attributesMapping,
-  behaviorOptions,
   componentsImages,
 }) => {
   const classes = useStyles();
 
-  const [mode, setMode] = React.useState('byComponents');
   const [filterText, setFilterText] = React.useState('');
   const [selectedComponents, setSelectedComponents] = React.useState<SelectedComponent[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
@@ -295,18 +286,6 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     groupSectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const onModeTabSelect = (_, data) => {
-    const newMode = data.value;
-
-    // Reset filter, selected components and selected behaviors on mode change
-    if (newMode === 'byComponents') {
-      setFilterText('');
-      setSelectedComponents([]);
-    }
-    setSelectedBehaviours([]);
-    setMode(newMode);
-  };
-
   const onFilterChange = (_, data) => {
     setFilterText(data.value);
   };
@@ -327,8 +306,6 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     if (processedComponentsDefinitions.current.length === 0) {
       processedComponentsDefinitions.current = [...componentsDefinitions];
       mapAttributes();
-      // TODO: Remove this function after Base JSON files ar removed
-      cleanUpBaseObjects();
     }
   }, []);
 
@@ -364,65 +341,35 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     });
   };
 
-  const cleanUpBaseObjects = () => {
-    processedComponentsDefinitions.current.forEach((definition, index) => {
-      // just check the name if includes "Base",
-      // in future would be better detection based on prop, like: "abstract": "true"
-      if (definition.name && definition.name.includes('Base')) {
-        processedComponentsDefinitions.current.splice(index, 1);
-      }
-    });
-  };
-
-  const updateBehaviorDecision = (name, selected) => {
-    if (selected) {
-      setSelectedBehaviours([...selectedBehaviours, name]);
-    } else {
-      const newSelectedBehaviors = selectedBehaviours.filter(behavior => behavior !== name);
-      setSelectedBehaviours(newSelectedBehaviors);
-    }
-  };
-
   const getComponentDefinitionByName = name => {
     return processedComponentsDefinitions.current.find(definition => definition.name === name);
   };
 
   const matchingComponents = React.useMemo(() => {
-    console.log(`--------- get matching components called`);
     const suitableComponents: any[] = [];
-
-    console.log(`selectedComponents: ${selectedComponents}`);
-
-    if (mode === 'byComponents') {
-      selectedComponents.forEach(component => {
-        const definition = getComponentDefinitionByName(component.name);
-        if (definition) {
-          suitableComponents.push(definition);
-        }
-      });
-    }
+    selectedComponents.forEach(component => {
+      const definition = getComponentDefinitionByName(component.name);
+      if (definition) {
+        suitableComponents.push(definition);
+      }
+    });
 
     if (selectedBehaviours.length > 0) {
-      console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
       processedComponentsDefinitions.current.forEach(definition => {
         let matchedCount = 0;
         selectedBehaviours.forEach(decision => {
           definition.attributes.includes(decision) ? matchedCount++ : null;
         });
         if (selectedBehaviours.length === matchedCount) {
-          console.log('fully matched');
           // if suitableComponents does not include definition, push it
           suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
         } else {
-          // console.log(`suitableComponents: ${suitableComponents}`);
-          // console.log('GOING TO REMOVE');
           removeFromArray(suitableComponents, definition);
-          // console.log(`suitableComponents: ${suitableComponents}`);
         }
       });
     }
     return suitableComponents;
-  }, [mode, selectedComponents, selectedBehaviours]);
+  }, [selectedComponents, selectedBehaviours]);
 
   const updateComponentSelection = React.useCallback(
     (name, selected) => {
@@ -522,8 +469,6 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
-        {/* <div id="insideHeader">
-          <div id="firstBlock" className={classes.headerHeadingAndInput}> */}
         <Input
           contentBefore={<SearchRegular />}
           // size="small"
@@ -533,7 +478,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
           onChange={onFilterChange}
           className={classes.searchComponentInput}
         />
-        {/* </div> */}
+
         {/* {mode === 'byComponents' && (
             <div className={classes.jumpToCategoryButtons}>
             {categorizedComponents.length && <h2 className={classes.jumpToCategoryHeader}>Jump to category</h2>}
@@ -563,79 +508,59 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         {/* </div> */}
       </div>
       <div id="#body" className={classes.bodyWrapper}>
-        {mode === 'byComponents' && (
-          <>
-            <div className={classes.visuallyHidden}>
-              <Text role="status">{componentsCount} components available.</Text>
-            </div>
-            {/* <h2>Choose Component ({filteredComponentsDefinitions.length})</h2> */}
-            <div>
-              {categorizedComponents.map((category, index) => (
+        <div className={classes.visuallyHidden}>
+          <Text role="status">{componentsCount} components available.</Text>
+        </div>
+        <div>
+          {categorizedComponents.map((category, index) => (
+            <>
+              {category.cards && category.cards.length > 0 && (
                 <>
-                  {category.cards && category.cards.length > 0 && (
-                    <>
-                      <div className={classes.actionsHeaderWrapper}>
-                        <h3
-                          className={classes.actionsHeader}
-                          // ref={index === 0 ? firstGroupItemRef : undefined}
-                          ref={el => setSectionRef(el, index)}
-                          tabIndex={-1}
-                        >
-                          {category.title}
-                        </h3>
-                        {<Link20Regular className={classes.actionsHeaderIcon} />}
-                      </div>
-                      <div className={classes.root}>{category.cards}</div>
-                    </>
-                  )}
+                  <div className={classes.actionsHeaderWrapper}>
+                    <h3 className={classes.actionsHeader} ref={el => setSectionRef(el, index)} tabIndex={-1}>
+                      {category.title}
+                    </h3>
+                    {<Link20Regular className={classes.actionsHeaderIcon} />}
+                  </div>
+                  <div className={classes.root}>{category.cards}</div>
                 </>
-              ))}
-            </div>
+              )}
+            </>
+          ))}
+        </div>
 
-            {allQuestions.length > 0 && (
-              <h2 className={classes.heading} ref={questionsSectionRef}>
-                Questions
-              </h2>
-            )}
-            <div id="questions-and-results" className={classes.QuestionsAndResults}>
-              <div id="all-questions" className="{classes.allQuestions}">
-                {allQuestions.map((question, index) => (
-                  <Question
-                    key={question.id}
-                    question={question}
-                    number={index + 1}
-                    updateDecisionForQuestion={updateDecisionForQuestion}
-                  />
-                ))}
-              </div>
-              <div id="results-wrapper" className={classes.resultsWrapper}>
-                <div id="results" className={classes.results}>
-                  {(matchingComponents.length > 0 ||
-                    (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
-                    <h2 id="matching-heading" className={classes.heading}>
-                      Matching Components {matchingComponents.length}
-                    </h2>
-                  )}
-                  {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
-                    <Text>No components match the given answers.</Text>
-                  )}
-                  {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
-                </div>
-              </div>
-            </div>
-          </>
+        {allQuestions.length > 0 && (
+          <h2 className={classes.heading} ref={questionsSectionRef}>
+            Questions
+          </h2>
         )}
-
-        {/* {mode === 'byBehaviors' && (
-          <>
-            <BehaviorSelection updateBehaviorDecision={updateBehaviorDecision} />
-          </>
-        )} */}
+        <div id="questions-and-results" className={classes.QuestionsAndResults}>
+          <div id="all-questions" className="{classes.allQuestions}">
+            {allQuestions.map((question, index) => (
+              <Question
+                key={question.id}
+                question={question}
+                number={index + 1}
+                updateDecisionForQuestion={updateDecisionForQuestion}
+              />
+            ))}
+          </div>
+          <div id="results-wrapper" className={classes.resultsWrapper}>
+            <div id="results" className={classes.results}>
+              {(matchingComponents.length > 0 ||
+                (matchingComponents.length === 0 && selectedBehaviours.length > 0)) && (
+                <h2 id="matching-heading" className={classes.heading}>
+                  Matching Components {matchingComponents.length}
+                </h2>
+              )}
+              {matchingComponents.length === 0 && selectedBehaviours.length > 0 && (
+                <Text>No components match the given answers.</Text>
+              )}
+              {matchingComponents.length > 0 && <MatchingComponents components={matchingComponents} />}
+            </div>
+          </div>
+        </div>
       </div>
-      {/* <div className={classes.selectedComponentTitle}>
-                <Subtitle2>Selected components</Subtitle2>
-              </div> */}
-
       {selectedComponents.length > 0 && (
         <div id="#footer" className={classes.footerWrapper}>
           <div id="selectionPart">

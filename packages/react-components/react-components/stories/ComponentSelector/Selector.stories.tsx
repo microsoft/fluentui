@@ -4,7 +4,6 @@ import * as componentsDefinitions from './components-definitions/index';
 import groups from './selection-logic/Groups.json';
 import questions from './selection-logic/Questions.json';
 import attributesMapping from './selection-logic/AttributesMapping.json';
-import behaviorOptions from './selection-logic/BehaviorOptions.json';
 import * as componentsImages from './components-images/index';
 
 import { ComponentSelector } from './ComponentSelector';
@@ -21,7 +20,6 @@ export const Selector = () => {
       questions={questions}
       attributesMapping={attributesMapping}
       componentsImages={componentsImages}
-      behaviorOptions={behaviorOptions}
     />
   );
 };
