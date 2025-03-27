@@ -4,6 +4,7 @@ import { renderToastFooter_unstable } from './renderToastFooter';
 import { useToastFooterStyles_unstable } from './useToastFooterStyles.styles';
 import type { ToastFooterProps } from './ToastFooter.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToastFooter component
@@ -12,6 +13,8 @@ export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardR
   const state = useToastFooter_unstable(props, ref);
 
   useToastFooterStyles_unstable(state);
+  useCustomStyleHook_unstable('useToastFooterStyles_unstable')(state);
+
   return renderToastFooter_unstable(state);
 });
 
