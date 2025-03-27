@@ -32,16 +32,9 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   HTMLDivElement,
   HorizontalBarChartWithAxisProps
 >((props, forwardedRef) => {
-  let _points: HorizontalBarChartWithAxisDataPoint[] = [];
-  let _barHeight: number = 0;
-  let _colors: string[] = [];
   const _refArray: RefArrayData[] = [];
   const _calloutId: string = useId('callout');
-  let margins: Margins;
   const _isRtl: boolean = useRtl();
-  let _bars: JSX.Element[];
-  let _yAxisLabels: string[];
-  let _xMax: number;
   const _tooltipId: string = useId('HBCWATooltipID_');
   const _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
@@ -51,9 +44,15 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].y, false) as YAxisType)
       : YAxisType.StringAxis;
-  let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
-  //let _cartesianChartRef: React.RefObject<Chart> = React.createRef();
   const _emptyChartId: string = useId('_HBCWithAxis_empty');
+  let _points: HorizontalBarChartWithAxisDataPoint[] = [];
+  let _barHeight: number = 0;
+  let _colors: string[] = [];
+  let _margins: Margins;
+  let _bars: JSX.Element[];
+  let _yAxisLabels: string[];
+  let _xMax: number;
+  let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let tooltipElement: any;
 
@@ -90,21 +89,14 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }, [props]);
 
   const classes = useHorizontalBarChartWithAxisStyles(props);
-  /*public get chartContainer(): HTMLElement | null {
-    return _cartesianChartRef.current?.chartContainer || null;
-  }
-
-  public toImage = (opts?: IImageExportOptions): Promise<string> => {
-    return toImage(_cartesianChartRef.current?.chartContainer, _legendsRef.current?.toSVG, _isRtl, opts);
-  };*/
   function _adjustProps(): void {
     _points = props.data || [];
     _barHeight = props.barHeight || 32;
     _colors = props.colors!; //|| [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
   }
 
-  function _getMargins(_margins: Margins) {
-    margins = _margins;
+  function _getMargins(margins: Margins) {
+    _margins = margins;
   }
 
   function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSX.Element {
@@ -121,9 +113,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       //if useSingle color , then check if user has given a palette or not
       // and pick the first color from that or else from our paltette.
       color = props.colors ? _createColors()(1) : getNextColor(1, 0);
-      /*if (enableGradient) {
-        color = getNextGradient(0, 0)[0];
-      }*/
     } else {
       color = point.color ? point.color : props.colors ? _createColors()(point.x) : getNextColor(selectedPointIndex, 0);
     }
@@ -209,9 +198,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       //if useSingle color , then check if user has given a palette or not
       // and pick the first color from that or else from our paltette.
       color = props.colors ? _createColors()(1) : getNextColor(1, 0);
-      /*if (enableGradient) {
-        color = getNextGradient(0, 0)[0];
-      }*/
     } else {
       color = selectedPoint[0].color
         ? selectedPoint[0].color
@@ -307,10 +293,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       const xBarScale = d3ScaleLinear()
         .domain(_isRtl ? [xMax, 0] : [0, xMax])
         .nice()
-        .range([margins.left!, containerWidth - margins.right!]);
+        .range([_margins.left!, containerWidth - _margins.right!]);
       const yBarScale = d3ScaleLinear()
         .domain([0, yMax])
-        .range([containerHeight - margins.bottom!, margins.top!]);
+        .range([containerHeight - _margins.bottom!, _margins.top!]);
       return { xBarScale, yBarScale };
     } else {
       const xMax = d3Max(_points, (point: HorizontalBarChartWithAxisDataPoint) => point.x as number)!;
@@ -319,13 +305,13 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
         .domain(_yAxisLabels)
-        .range([containerHeight - margins.bottom! - _barHeight / 2, margins.top! + _barHeight / 2])
+        .range([containerHeight - _margins.bottom! - _barHeight / 2, _margins.top! + _barHeight / 2])
         .padding(props.yAxisPadding || 0);
 
       const xBarScale = d3ScaleLinear()
         .domain(_isRtl ? [xMax, 0] : [0, xMax])
         .nice()
-        .range([margins.left!, containerWidth - margins.right!]);
+        .range([_margins.left!, containerWidth - _margins.right!]);
       return { xBarScale, yBarScale };
     }
   }
@@ -364,43 +350,17 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       }
 
       startColor = point.color && !useSingleColor ? point.color : startColor;
-      //let endColor = startColor;
-
-      /*if (props.enableGradient) {
-        const pointIndex = Math.max(
-          _points.findIndex(item => item === point),
-          0,
-        );
-        startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, props.theme?.isInverted)[0];
-        endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, props.theme?.isInverted)[1];
-        if (useSingleColor) {
-          startColor = getNextGradient(0, 0, props.theme?.isInverted)[0];
-          endColor = getNextGradient(0, 0, props.theme?.isInverted)[1];
-        }
-        _points[pointIndex].color = startColor;
-      }*/
-
-      // const gradientId = useId('HBCWA_Gradient') + `_${index}_${point.x}`;
-
       return (
         <React.Fragment key={`${index}_${point.x}`}>
-          {/*{props.enableGradient && (
-            <defs>
-              <linearGradient id={gradientId}>
-                <stop offset="0" stopColor={startColor} />
-                <stop offset="100%" stopColor={endColor} />
-              </linearGradient>
-            </defs>
-          )}*/}
           <rect
             key={point.y}
-            x={_isRtl ? xBarScale(point.x) : margins.left!}
+            x={_isRtl ? xBarScale(point.x) : _margins.left!}
             y={yBarScale(point.y) - _barHeight / 2}
             data-is-focusable={shouldHighlight}
             width={
               _isRtl
-                ? containerWidth - margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - margins.left!
+                ? containerWidth - _margins.right! - Math.max(xBarScale(point.x), 0)
+                : Math.max(xBarScale(point.x), 0) - _margins.left!
             }
             height={_barHeight}
             ref={(e: SVGRectElement) => {
@@ -486,41 +446,18 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       }
 
       startColor = point.color && !useSingleColor ? point.color : startColor;
-      //let endColor = startColor;
-
-      /*if (props.enableGradient) {
-        const pointIndex = _points.findIndex(item => item === point);
-        startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, props.theme?.isInverted)[0];
-        endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, props.theme?.isInverted)[1];
-        if (useSingleColor) {
-          startColor = getNextGradient(0, 0, props.theme?.isInverted)[0];
-          endColor = getNextGradient(0, 0, props.theme?.isInverted)[1];
-        }
-        _points[pointIndex].color = startColor;
-      }*/
-
-      //const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
-
       return (
         <React.Fragment key={`${index}_${point.x}`}>
-          {/*{props.enableGradient && (
-            <defs>
-              <linearGradient id={gradientId}>
-                <stop offset="0" stopColor={startColor} />
-                <stop offset="100%" stopColor={endColor} />
-              </linearGradient>
-            </defs>
-          )}*/}
           <rect
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - _barHeight)})`}
             key={point.x}
-            x={_isRtl ? xBarScale(point.x) : margins.left!}
+            x={_isRtl ? xBarScale(point.x) : _margins.left!}
             y={yBarScale(point.y)}
             rx={props.roundCorners ? 3 : 0}
             width={
               _isRtl
-                ? containerWidth - margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - margins.left!
+                ? containerWidth - _margins.right! - Math.max(xBarScale(point.x), 0)
+                : Math.max(xBarScale(point.x), 0) - _margins.left!
             }
             height={_barHeight}
             aria-labelledby={`toolTip${_calloutId}`}
@@ -600,13 +537,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = useSingleColor ? (props.colors ? _createColors()(1) : getNextColor(1, 0)) : point.color!;
 
-      /*if (props.enableGradient) {
-        color = point.gradient?.[0] || getNextGradient(_index, 0, props.theme?.isInverted)[0];
-        if (useSingleColor) {
-          color = getNextGradient(0, 0, props.theme?.isInverted)[0];
-        }
-      }*/
-
       // mapping data to the format Legends component needs
       const legend: Legend = {
         title: point.legend!,
@@ -626,8 +556,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       <Legends
         legends={actions}
         enabledWrapLines={props.enabledLegendsWrapLines}
-        //overflowProps={props.legendsOverflowProps}
-        //focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
         onChange={_onLegendSelectionChange}
