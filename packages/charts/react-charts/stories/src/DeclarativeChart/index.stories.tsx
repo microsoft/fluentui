@@ -1,5 +1,5 @@
 import { DeclarativeChart } from '@fluentui/react-charts';
-import descriptionMd from './docs/DeclarativeChartOverview.md';
+import descriptionMd from './DeclarativeChartOverview.md';
 
 export { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
 
