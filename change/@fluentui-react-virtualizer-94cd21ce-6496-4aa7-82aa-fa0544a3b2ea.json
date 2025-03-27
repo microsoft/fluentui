@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "feat: add customStyleHook",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}
