@@ -61,7 +61,8 @@ export const FilteringCombobox: React.FunctionComponent = () => {
 
   return (
     <Scenario pageTitle="Filtering combobox">
-      <div>Single state</div>
+      <h1>Test 3</h1>
+      <div>Single State Interaction (Unified Hover/Focus)</div>
       <div className={styles.root}>
         <label id={comboId}>Favourite fruit to have with ice-cream</label>
         <Combobox aria-labelledby={comboId} placeholder="Pick a fruit" positioning={{ autoSize: true }}>

@@ -34,11 +34,5 @@ export const Scenario: React.FunctionComponent<{ pageTitle: string }> = ({ pageT
     document.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;
   }, [pageTitle]);
 
-  return (
-    <div role="main">
-      <BackLink />
-      <br />
-      {children}
-    </div>
-  );
+  return <div role="main">{children}</div>;
 };
