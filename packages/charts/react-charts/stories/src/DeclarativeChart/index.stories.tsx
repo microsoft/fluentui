@@ -1,7 +1,7 @@
 import { DeclarativeChart } from '@fluentui/react-charts';
 import descriptionMd from './DeclarativeChartOverview.md';
 
-export { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
+export { DeclarativeChartBasicExample } from './DeclarativeChartDefault.stories';
 
 export default {
   title: 'Charts/DeclarativeChart',
