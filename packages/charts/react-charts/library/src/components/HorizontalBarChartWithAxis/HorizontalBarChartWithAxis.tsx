@@ -235,16 +235,16 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     point: HorizontalBarChartWithAxisDataPoint,
     // eslint-disable-next-line @typescript-eslint/no-shadow
     color: string,
-    mouseEvent: React.MouseEvent<SVGElement>,
+    mouseEvent: React.MouseEvent<SVGElement, MouseEvent>,
   ): void {
     mouseEvent.persist();
-
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForBar(point);
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
       setRefSelected;
       setPopoverOpen(true);
+      _updatePosition(mouseEvent.clientX, mouseEvent.clientY);
       setDataForHoverCard(point.x);
       setSelectedLegendTitle(point.legend!);
       setColor(props.useSingleColor || props.enableGradient ? color : point.color!);
@@ -260,7 +260,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   }
 
   function _onBarLeave(): void {
-    /**/
+    setPopoverOpen(false);
   }
 
   function _handleChartMouseLeave(): void {
@@ -413,7 +413,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             role="img"
             aria-labelledby={`toolTip${_calloutId}`}
             onMouseLeave={_onBarLeave}
-            onFocus={_onBarFocus.bind(point, index, startColor)}
+            onFocus={() => _onBarFocus(point, index, startColor)}
             onBlur={_onBarLeave}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
@@ -535,7 +535,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onBlur={_onBarLeave}
             data-is-focusable={shouldHighlight}
             opacity={shouldHighlight ? 1 : 0.1}
-            onFocus={_onBarFocus.bind(point, index, startColor)}
+            onFocus={() => _onBarFocus(point, index, startColor)}
             fill={startColor}
             tabIndex={point.legend !== '' ? 0 : undefined}
           />
@@ -695,7 +695,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return !(props.data && props.data.length > 0);
   }
 
-  function updatePosition(newX: number, newY: number): void {
+  function _updatePosition(newX: number, newY: number): void {
     const threshold = 1; // Set a threshold for movement
     const { x, y } = clickPosition;
 
@@ -730,6 +730,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       },
       isCartesian: true,
       isPopoverOpen,
+      clickPosition,
     };
     const tickParams = {
       tickValues: props.tickValues,

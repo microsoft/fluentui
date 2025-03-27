@@ -520,6 +520,9 @@ export enum HorizontalBarChartVariant {
 }
 
 // @public (undocumented)
+export const HorizontalBarChartWithAxis: React_2.FunctionComponent<HorizontalBarChartWithAxisProps>;
+
+// @public (undocumented)
 export interface HorizontalBarChartWithAxisDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
@@ -529,6 +532,40 @@ export interface HorizontalBarChartWithAxisDataPoint {
     xAxisCalloutData?: string;
     y: number | string;
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
+    barHeight?: number;
+    chartTitle?: string;
+    colors?: string[];
+    culture?: string;
+    data?: HorizontalBarChartWithAxisDataPoint[];
+    enableGradient?: boolean;
+    onRenderCalloutPerDataPoint?: RenderFunction<HorizontalBarChartWithAxisDataPoint>;
+    roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
+    styles?: HorizontalBarChartWithAxisStyles;
+    useSingleColor?: boolean;
+    yAxisPadding?: number;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyleProps extends CartesianChartStyleProps {
+    legendColor?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyles extends CartesianChartStyles {
+    chartLabel?: string;
+    opacityChangeOnHover: string;
+    xAxisDomain?: string;
+    xAxisText?: string;
+    xAxisTicks?: string;
+    yAxisDomain?: string;
+    yAxisText?: string;
+    yAxisTicks?: string;
 }
 
 // @public (undocumented)
@@ -595,6 +632,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
