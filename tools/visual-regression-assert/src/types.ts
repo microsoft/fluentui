@@ -9,7 +9,7 @@ export interface Result {
 
 export interface Metadata {
   /**
-   * absolute paths
+   * nx style absolute paths ( starting at workspace root )
    */
   paths: {
     baselineDir: string;
@@ -19,6 +19,9 @@ export interface Metadata {
     outputPath: string;
   };
   project: {
+    /**
+     * project root path (nx style absolute path)
+     */
     root: string;
     /**
      * package.json#name
@@ -26,6 +29,8 @@ export interface Metadata {
     name: string;
   };
 }
+
+export type RootReport = { [project_name: string]: Report };
 
 export interface Report {
   results: Result[];

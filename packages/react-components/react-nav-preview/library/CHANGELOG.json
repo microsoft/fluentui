@@ -2,6 +2,36 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Wed, 26 Mar 2025 21:47:47 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.13.3",
+      "version": "0.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.7.4",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 09:34:59 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.13.2",
+      "version": "0.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.7.3",
+            "commit": "1f3f6f9a05ae0e87c5c13b2d02c2a158035e3e5b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:41 GMT",
       "tag": "@fluentui/react-nav-preview_v0.13.1",
       "version": "0.13.1",

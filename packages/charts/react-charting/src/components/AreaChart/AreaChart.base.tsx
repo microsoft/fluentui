@@ -43,6 +43,7 @@ import {
   formatDate,
   getSecureProps,
   areArraysEqual,
+  getCurveFactory,
 } from '../../utilities/index';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -320,7 +321,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const { selectedLegends } = this.state;
     const xOffset = this._xAxisRectScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
@@ -372,10 +372,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
-      const filteredValues =
-        selectedLegends.length > 0
-          ? found.values.filter((value: { legend: string }) => selectedLegends.includes(value.legend))
-          : found.values;
+      const filteredValues = this._getFilteredLegendValues(found.values);
       this.setState({
         nearestCircleToHighlight,
         isCalloutVisible: false,
@@ -734,25 +731,26 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
-    const area = d3Area()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y0((d: any) => yScale(d.values[0]))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y1((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
-    const line = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
+      const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
+      const area = d3Area()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y0((d: any) => yScale(d.values[0]))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y1((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const line = d3Line()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
       const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
@@ -828,7 +826,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         graph.push(
           <g
             key={`${index}-dots-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
             clipPath="url(#clip)"
             role="region"
             aria-label={`${points[index].legend}, series ${index + 1} of ${points.length} with ${
@@ -939,7 +936,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
 
     // Show the circle if no legends are selected or if the point's legend is in the selected legends
-    if (!this._legendHighlighted(legend)) {
+    if (!this._noLegendHighlighted() && !this._legendHighlighted(legend)) {
       return 0;
     }
 
@@ -1022,7 +1019,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getFilteredLegendValues = (values: any) => {
-    !this._noLegendHighlighted()
+    return !this._noLegendHighlighted()
       ? values.filter((value: { legend: string }) => this._legendHighlighted(value.legend))
       : values;
   };

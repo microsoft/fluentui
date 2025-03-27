@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 19 Mar 2025 15:40:43 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Mar 2025 21:47:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.5)
+
+Wed, 26 Mar 2025 21:47:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.4..@fluentui/react-tree_v9.10.5)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.4.7 ([PR #34096](https://github.com/microsoft/fluentui/pull/34096) by beachball)
+- Bump @fluentui/react-motion to v9.7.0 ([PR #34096](https://github.com/microsoft/fluentui/pull/34096) by beachball)
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.4)
+
+Wed, 26 Mar 2025 15:52:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.3..@fluentui/react-tree_v9.10.4)
+
+### Patches
+
+- bugfix: ensure tabindex whenever tree is re-populated ([PR #34083](https://github.com/microsoft/fluentui/pull/34083) by bernardo.sunderhus@gmail.com)
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.3)
+
+Thu, 20 Mar 2025 09:34:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.10.2..@fluentui/react-tree_v9.10.3)
+
+### Patches
+
+- Bump @fluentui/react-motion-components-preview to v0.4.6 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
+- Bump @fluentui/react-motion to v9.6.10 ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by beachball)
 
 ## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.10.2)
 

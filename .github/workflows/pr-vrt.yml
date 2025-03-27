@@ -1,9 +1,9 @@
-name: VRT CI
+name: VRT PR
 on:
   pull_request:
-    # TODO: once testing is done enable pull_request on all branches again
     branches:
-      - vrt-gha-testing
+      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
+      - master
 
 concurrency:
   # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
@@ -64,3 +64,14 @@ jobs:
           name: vrscreenshot
           retention-days: 1
           path: ${{steps.screenshots_root.outputs.result}}
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > pr.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-number
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            pr.txt

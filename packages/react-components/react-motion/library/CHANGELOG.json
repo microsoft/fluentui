@@ -2,6 +2,44 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 26 Mar 2025 21:47:46 GMT",
+      "tag": "@fluentui/react-motion_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52",
+            "comment": "fix: handle error cases in \"element.animate()\""
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "8f84c46776648c5f25138b30ca783e782ef1f177",
+            "comment": "fix(motion): make createPresenceComponentVariant support motion arrays"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 09:34:58 GMT",
+      "tag": "@fluentui/react-motion_v9.6.10",
+      "version": "9.6.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "1f3f6f9a05ae0e87c5c13b2d02c2a158035e3e5b",
+            "comment": "feat: experimental createInterruptablePresence()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-motion_v9.6.9",
       "version": "9.6.9",

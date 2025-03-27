@@ -2,6 +2,48 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Wed, 26 Mar 2025 21:47:47 GMT",
+      "tag": "@fluentui/react-dialog_v9.12.4",
+      "version": "9.12.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion to v9.7.0",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.7",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 09:34:59 GMT",
+      "tag": "@fluentui/react-dialog_v9.12.3",
+      "version": "9.12.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion to v9.6.10",
+            "commit": "1f3f6f9a05ae0e87c5c13b2d02c2a158035e3e5b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-motion-components-preview to v0.4.6",
+            "commit": "1f3f6f9a05ae0e87c5c13b2d02c2a158035e3e5b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:41 GMT",
       "tag": "@fluentui/react-dialog_v9.12.2",
       "version": "9.12.2",
