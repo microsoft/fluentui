@@ -211,7 +211,6 @@ interface ComponentDefinition {
   name: string;
   component?: string;
   story?: string;
-  attributes?: string[];
   link?: string;
 }
 
