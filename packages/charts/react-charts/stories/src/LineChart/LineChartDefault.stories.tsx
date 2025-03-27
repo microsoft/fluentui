@@ -22,11 +22,11 @@ export const LineChartBasic = (props: LineChartProps) => {
     setUseUTC(checked.checked);
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 

@@ -124,7 +124,7 @@ export const HorizontalBarCustomCallout = () => {
     };
   };
 
-  const _onTogglePopoverCheckChange = React.useCallback(ev => {
+  const _onTogglePopoverCheckChange = React.useCallback((ev: any) => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 

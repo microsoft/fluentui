@@ -38,7 +38,7 @@ export const VerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
   const _onToggleMultiLegendSelection = React.useCallback(ev => {
