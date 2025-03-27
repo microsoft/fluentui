@@ -4,7 +4,7 @@ import descriptionMd from './docs/DeclarativeChartOverview.md';
 export { DeclarativeChartBasicExample } from './DeclarativeChart.Basic.Example';
 
 export default {
-  title: 'Components/DeclarativeChart',
+  title: 'Charts/DeclarativeChart',
   component: DeclarativeChart,
   parameters: {
     docs: {
