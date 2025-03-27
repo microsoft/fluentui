@@ -70,7 +70,7 @@ export const HorizontalBarWithAxisBasic = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onChange = (ev: React.FormEvent<HTMLInputElement>, data: RadioGroupOnChangeData): void => {
+  const _onChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData): void => {
     if (isCalloutselected) {
       setIsCalloutselected(false);
     } else {
@@ -152,7 +152,6 @@ export const HorizontalBarWithAxisBasic = () => {
           width={width}
           useSingleColor={useSingleColor}
           height={height}
-          enableReflow={true}
           enableGradient={enableGradient}
           roundCorners={roundCorners}
           legendProps={{
