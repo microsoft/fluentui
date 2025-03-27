@@ -14,7 +14,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/tokens": "1.0.0-alpha.21"
+    "@fluentui/tokens": "*"
   },
   "dependencies": {
     "@swc/helpers": "^0.5.1"
