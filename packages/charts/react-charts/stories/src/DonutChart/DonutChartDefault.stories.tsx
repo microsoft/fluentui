@@ -8,7 +8,7 @@ export const DonutChartBasic = () => {
       legend: 'second',
       data: 35000,
       color: getColorFromToken(DataVizPalette.color2),
-      xAxisCalloutData: '2020/04/20',
+      xAxisCalloutData: '2024/04/20',
     },
   ];
 
