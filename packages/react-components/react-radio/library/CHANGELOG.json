@@ -2,6 +2,51 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Thu, 27 Mar 2025 21:12:51 GMT",
+      "tag": "@fluentui/react-radio_v9.3.3",
+      "version": "9.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-field to v9.2.3",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.53",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-label to v9.1.86",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.1",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.24.3",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-utilities to v9.18.23",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-radio_v9.3.2",
       "version": "9.3.2",
