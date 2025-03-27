@@ -16,8 +16,8 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.14.2",
-    "@fluentui/react-provider": "^9.20.2",
+    "@fluentui/react-aria": "^9.14.3",
+    "@fluentui/react-provider": "^9.20.3",
     "@fluentui/react-theme": "^9.1.24",
     "@swc/helpers": "^0.5.1"
   },
