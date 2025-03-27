@@ -104,13 +104,10 @@ export const useDynamicVirtualizerPagination = (
   /**
    * On scroll timer that will continuously delay callback until scrolling stops
    */
-  const onScroll = React.useCallback(
-    event => {
-      clearScrollTimer();
-      setScrollTimer(onScrollEnd, 100);
-    },
-    [onScrollEnd, clearScrollTimer, setScrollTimer],
-  );
+  const onScroll = React.useCallback(() => {
+    clearScrollTimer();
+    setScrollTimer(onScrollEnd, 100);
+  }, [onScrollEnd, clearScrollTimer, setScrollTimer]);
 
   /**
    * Pagination ref will ensure we attach listeners to containers on change

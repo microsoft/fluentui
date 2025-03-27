@@ -220,15 +220,27 @@ export const ResizableColumnsControlled = () => {
     }));
   };
 
-  const onColumnResize = React.useCallback((_, { columnId, width }) => {
-    setColumnSizingOptions(state => ({
-      ...state,
-      [columnId]: {
-        ...state[columnId],
-        idealWidth: width,
+  const onColumnResize = React.useCallback(
+    (
+      _: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+      {
+        columnId,
+        width,
+      }: {
+        columnId: TableColumnId;
+        width: number;
       },
-    }));
-  }, []);
+    ) => {
+      setColumnSizingOptions(state => ({
+        ...state,
+        [columnId]: {
+          ...state[columnId],
+          idealWidth: width,
+        },
+      }));
+    },
+    [],
+  );
 
   const {
     getRows,

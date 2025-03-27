@@ -32,9 +32,12 @@ export const TimePickerBasicExample: React.FC = () => {
     setBasicExampleTimeString(basicExampleTime.toString());
   }, []);
 
-  const onNonDefaultOptionsExampleChange = React.useCallback((_, nonDefaultOptionsExampleTime: Date) => {
-    setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
-  }, []);
+  const onNonDefaultOptionsExampleChange = React.useCallback(
+    (_: React.FormEvent<IComboBox>, nonDefaultOptionsExampleTime: Date) => {
+      setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
+    },
+    [],
+  );
 
   const timeRange: ITimeRange = {
     start: 8,

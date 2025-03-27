@@ -16,7 +16,7 @@ export const LineChartMultiple = (props: LineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 

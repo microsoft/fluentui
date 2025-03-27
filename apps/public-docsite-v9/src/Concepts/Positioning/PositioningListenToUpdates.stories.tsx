@@ -54,7 +54,7 @@ export const ListenToUpdates = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [open, setOpen] = React.useState(false);
 
-  const onOpenChange: PopoverProps['onOpenChange'] = React.useCallback((e, data) => {
+  const onOpenChange: NonNullable<PopoverProps['onOpenChange']> = React.useCallback((_, data) => {
     setOpen(data.open);
     if (!data.open) {
       setStatusLog([]);

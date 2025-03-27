@@ -617,7 +617,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -668,7 +668,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -716,7 +716,7 @@ describe('Overflow', () => {
   it('should remove overflow menu when all overflow items are removed', () => {
     const Example = () => {
       const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 

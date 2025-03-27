@@ -37,7 +37,7 @@ export const VerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
   const points: VerticalBarChartDataPoint[] = [
