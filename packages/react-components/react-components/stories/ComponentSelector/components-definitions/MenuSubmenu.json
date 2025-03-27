@@ -2,7 +2,5 @@
   "name": "MenuSubmenu",
   "component": "Menu",
   "folder": "Menu",
-  "story": "Nested Submenus",
-  "extends": "MenuBase",
-  "attributes": ["nested"]
+  "story": "Nested Submenus"
 }

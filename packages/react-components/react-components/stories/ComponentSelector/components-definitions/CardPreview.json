@@ -1,5 +1,4 @@
 {
   "name": "CardPreview",
-  "component": "CardPreview",
-  "attributes": []
+  "component": "CardPreview"
 }

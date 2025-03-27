@@ -1,5 +1,4 @@
 {
   "name": "Accordion",
-  "component": "Accordion",
-  "attributes": ["expandable", "tabbable", "navigationByTabKey", "interactive"]
+  "component": "Accordion"
 }

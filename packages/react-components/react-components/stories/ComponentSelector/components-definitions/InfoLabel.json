@@ -1,5 +1,4 @@
 {
   "name": "InfoLabel",
-  "component": "InfoLabel",
-  "attributes": ["interactiveContent", "onClick", "navigationByTabKey", "interactive"]
+  "component": "InfoLabel"
 }

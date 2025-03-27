@@ -1,5 +1,4 @@
 {
   "name": "Rating",
-  "component": "Rating",
-  "attributes": []
+  "component": "Rating"
 }

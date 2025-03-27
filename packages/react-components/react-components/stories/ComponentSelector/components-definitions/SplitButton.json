@@ -1,7 +1,5 @@
 {
   "name": "SplitButton",
   "component": "SplitButton",
-  "folder": "Button",
-  "extends": "ButtonBase",
-  "attributes": ["primaryActionPlusDropdown", "notToggle"]
+  "folder": "Button"
 }

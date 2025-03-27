@@ -1,12 +1,4 @@
 {
   "name": "Link",
-  "component": "Link",
-  "attributes": [
-    "singleAction",
-    "performsNavigation",
-    "navigationByTabKey",
-    "interactive",
-    "notToggle",
-    "appearanceAsLink"
-  ]
+  "component": "Link"
 }

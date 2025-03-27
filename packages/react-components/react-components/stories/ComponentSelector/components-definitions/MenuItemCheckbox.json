@@ -2,7 +2,5 @@
   "name": "MenuItemCheckbox",
   "component": "Menu",
   "folder": "Menu",
-  "story": "Checkbox Items",
-  "extends": "MenuBase",
-  "attributes": ["multipleChoices", "notOnOrOff", "toggle", "notAutoSelect", "visibilityInMenu"]
+  "story": "Checkbox Items"
 }

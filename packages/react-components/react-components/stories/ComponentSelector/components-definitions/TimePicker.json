@@ -1,5 +1,4 @@
 {
   "name": "TimePicker",
-  "component": "TimePicker",
-  "attributes": []
+  "component": "TimePicker"
 }

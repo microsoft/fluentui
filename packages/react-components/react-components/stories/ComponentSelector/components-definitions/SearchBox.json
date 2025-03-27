@@ -1,5 +1,4 @@
 {
   "name": "SearchBox",
-  "component": "SearchBox",
-  "attributes": []
+  "component": "SearchBox"
 }

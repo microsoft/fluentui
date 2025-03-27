@@ -1,5 +1,4 @@
 {
   "name": "Tooltip",
-  "component": "Tooltip",
-  "attributes": ["nonInteractiveContent", "onHover", "navigationByTabKey", "interactive"]
+  "component": "Tooltip"
 }

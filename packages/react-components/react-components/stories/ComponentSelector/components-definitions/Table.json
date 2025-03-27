@@ -1,6 +1,4 @@
 {
   "name": "Table",
-  "component": "Table",
-  "extends": "TableBase",
-  "attributes": ["static"]
+  "component": "Table"
 }

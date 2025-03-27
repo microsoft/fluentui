@@ -1,6 +1,5 @@
 {
   "name": "Text",
   "component": "Text",
-  "attributes": ["textOrHeading", "static"],
   "note": "Use the 'as' prop to change text to heading."
 }

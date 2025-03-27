@@ -1,7 +1,5 @@
 {
   "name": "ToggleButton",
   "component": "ToggleButton",
-  "folder": "Button",
-  "extends": "ButtonBase",
-  "attributes": ["singleAction", "multipleChoices", "onOrOff", "toggle", "notAutoSelect"]
+  "folder": "Button"
 }

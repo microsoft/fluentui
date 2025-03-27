@@ -1,5 +1,4 @@
 {
   "name": "Calendar",
-  "component": "Calendar",
-  "attributes": []
+  "component": "Calendar"
 }

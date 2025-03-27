@@ -1,5 +1,4 @@
 {
   "name": "Tree",
-  "component": "Tree",
-  "extends": "TreeBase"
+  "component": "Tree"
 }

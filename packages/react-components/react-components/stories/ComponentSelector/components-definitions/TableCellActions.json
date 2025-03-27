@@ -1,7 +1,5 @@
 {
   "name": "TableCellActions",
   "component": "Table",
-  "story": "Cell Actions",
-  "extends": "TableBase",
-  "attributes": ["interactive", "navigationByTabKey"]
+  "story": "Cell Actions"
 }

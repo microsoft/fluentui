@@ -1,5 +1,4 @@
 {
   "name": "TabList",
-  "component": "TabList",
-  "attributes": ["interactive", "navigationByArrowKeys", "narratesPosition"]
+  "component": "TabList"
 }

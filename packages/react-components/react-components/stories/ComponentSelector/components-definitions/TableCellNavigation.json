@@ -1,7 +1,5 @@
 {
   "name": "TableCellNavigation",
   "component": "Table",
-  "story": "Cell Navigation",
-  "extends": "TableBase",
-  "attributes": ["interactive", "navigationByArrowKeys"]
+  "story": "Cell Navigation"
 }

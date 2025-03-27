@@ -1,5 +1,4 @@
 {
   "name": "TreeGrid",
-  "component": "TreeGrid",
-  "extends": "TreeBase"
+  "component": "TreeGrid"
 }

@@ -1,5 +1,4 @@
 {
   "name": "ProgressBar",
-  "component": "ProgressBar",
-  "attributes": []
+  "component": "ProgressBar"
 }

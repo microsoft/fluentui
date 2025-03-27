@@ -1,4 +1,3 @@
 {
-  "name": "TreeBase",
-  "attributes": ["interactive", "navigationByArrowKeys", "hierarchical", "narratesPosition"]
+  "name": "TreeBase"
 }

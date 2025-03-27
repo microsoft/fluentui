@@ -1,6 +1,4 @@
 {
   "name": "List",
-  "component": "List",
-  "extends": "ListBase",
-  "attributes": ["static"]
+  "component": "List"
 }
