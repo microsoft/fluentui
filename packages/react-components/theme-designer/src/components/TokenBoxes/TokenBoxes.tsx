@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
-import { tokens, useId, Button, Caption1, Input, type InputOnChangeData } from '@fluentui/react-components';
+import { tokens, useId, Button, Caption1, Input } from '@fluentui/react-components';
+import type { InputOnChangeData } from '@fluentui/react-components';
 import { Theme } from '@fluentui/react-theme';
 import { SearchRegular } from '@fluentui/react-icons';
 

@@ -1,5 +1,6 @@
 import { Persona, SelectionItemId } from '@fluentui/react-components';
-import { List, ListItem, type ListItemProps } from '@fluentui/react-components';
+import { List, ListItem } from '@fluentui/react-components';
+import type { ListItemProps } from '@fluentui/react-components';
 
 import * as React from 'react';
 

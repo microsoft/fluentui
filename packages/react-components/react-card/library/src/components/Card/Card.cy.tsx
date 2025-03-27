@@ -12,9 +12,8 @@ import {
   cardHeaderClassNames,
   cardPreviewClassNames,
   CardPreview,
-  type CardOnSelectionChangeEvent,
 } from '@fluentui/react-card';
-import type { CardProps } from '@fluentui/react-card';
+import type { CardProps, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);

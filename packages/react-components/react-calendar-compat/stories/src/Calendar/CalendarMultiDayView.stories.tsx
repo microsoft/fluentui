@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Calendar } from '@fluentui/react-calendar-compat';
-import { Dropdown, type DropdownProps, Field, makeStyles, Option } from '@fluentui/react-components';
+import { Dropdown, Field, makeStyles, Option } from '@fluentui/react-components';
+import type { SelectionEvents, OptionOnSelectData } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   wrapper: { height: '360px' },
@@ -20,7 +21,7 @@ export const CalendarMultidayDayView = () => {
     setSelectedDateRange(selectedDateRangeArray);
   }, []);
 
-  const onOptionSelect = React.useCallback<NonNullable<DropdownProps['onOptionSelect']>>((_, data) => {
+  const onOptionSelect = React.useCallback((_: SelectionEvents, data: OptionOnSelectData) => {
     setDaysToSelectInDayView(Number(data.optionText));
   }, []);
 

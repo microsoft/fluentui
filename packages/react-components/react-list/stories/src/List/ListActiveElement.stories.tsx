@@ -1,6 +1,7 @@
 import { Button, makeStyles, Persona, mergeClasses, Text, tokens, SelectionItemId } from '@fluentui/react-components';
 import { Mic16Regular } from '@fluentui/react-icons';
-import { List, ListItem, type ListProps } from '@fluentui/react-components';
+import { List, ListItem } from '@fluentui/react-components';
+import type { ListProps } from '@fluentui/react-components';
 
 import * as React from 'react';
 
