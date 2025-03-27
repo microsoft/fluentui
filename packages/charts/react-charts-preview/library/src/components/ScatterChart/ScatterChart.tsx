@@ -41,74 +41,7 @@ enum PointSize {
   invisibleSize = 1,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const bisect = bisector((d: any) => d.x).left;
-
 const DEFAULT_LINE_STROKE_SIZE = 4;
-
-/**
- *
- * @param x units from origin
- * @param y units from origin
- * @param w is the legnth of the each side of a shape
- * @param index index to get the shape path
- */
-const _getPointPath = (x: number, y: number, w: number, index: number): string => {
-  const allPointPaths = [
-    // circle path
-    `M${x - w / 2} ${y}
-     A${w / 2} ${w / 2} 0 1 0 ${x + w / 2} ${y}
-     M${x - w / 2} ${y}
-     A ${w / 2} ${w / 2} 0 1 1 ${x + w / 2} ${y}
-     `,
-    //square
-    `M${x - w / 2} ${y - w / 2}
-     L${x + w / 2} ${y - w / 2}
-     L${x + w / 2} ${y + w / 2}
-     L${x - w / 2} ${y + w / 2}
-     Z`,
-    //triangle
-    `M${x - w / 2} ${y - 0.2886 * w}
-     H ${x + w / 2}
-     L${x} ${y + 0.5774 * w} Z`,
-    //diamond
-    `M${x} ${y - w / 2}
-     L${x + w / 2} ${y}
-     L${x} ${y + w / 2}
-     L${x - w / 2} ${y}
-     Z`,
-    //pyramid
-    `M${x} ${y - 0.5774 * w}
-     L${x + w / 2} ${y + 0.2886 * w}
-     L${x - w / 2} ${y + 0.2886 * w} Z`,
-    //hexagon
-    `M${x - 0.5 * w} ${y - 0.866 * w}
-     L${x + 0.5 * w} ${y - 0.866 * w}
-     L${x + w} ${y}
-     L${x + 0.5 * w} ${y + 0.866 * w}
-     L${x - 0.5 * w} ${y + 0.866 * w}
-     L${x - w} ${y}
-     Z`,
-    //pentagon
-    `M${x} ${y - 0.851 * w}
-     L${x + 0.6884 * w} ${y - 0.2633 * w}
-     L${x + 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.5001 * w} ${y + 0.6884 * w}
-     L${x - 0.6884 * w} ${y - 0.2633 * w}
-     Z`,
-    //octagon
-    `M${x - 0.5001 * w} ${y - 1.207 * w}
-     L${x + 0.5001 * w} ${y - 1.207 * w}
-     L${x + 1.207 * w} ${y - 0.5001 * w}
-     L${x + 1.207 * w} ${y + 0.5001 * w}
-     L${x + 0.5001 * w} ${y + 1.207 * w}
-     L${x - 0.5001 * w} ${y + 1.207 * w}
-     L${x - 1.207 * w} ${y + 0.5001 * w}
-     L${x - 1.207 * w} ${y - 0.5001 * w}
-     Z`,
-  ];
-  return allPointPaths[index];
-};
 
 type LineChartDataWithIndex = LineChartPoints & { index: number };
 
@@ -130,7 +63,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _yAxisScale: any = '';
   let _circleId: string = useId('circle');
   let _lineId: string = useId('lineID');
-  let _borderId: string = useId('borderID');
   let _verticalLine: string = useId('verticalLine');
   let _uniqueCallOutID: string | null = '';
   let _refArray: RefArrayData[] = [];
@@ -285,29 +217,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     );
   }
 
-  function _getBoxWidthOfShape(pointId: string, pointIndex: number, isLastPoint: boolean) {
-    if (activePoint === pointId) {
-      return PointSize.hoverSize;
-    } else {
-      return PointSize.invisibleSize;
-    }
-  }
-
-  function _getPath(
-    xPos: number,
-    yPos: number,
-    pointId: string,
-    pointIndex: number,
-    isLastPoint: boolean,
-    pointOftheLine: number,
-  ): string {
-    let w = _getBoxWidthOfShape(pointId, pointIndex, isLastPoint);
-    const index: number = 0;
-    const widthRatio = pointTypes[index].widthRatio;
-    w = widthRatio > 1 ? w / widthRatio : w;
-
-    return _getPointPath(xPos, yPos, w, index);
-  }
   function _getPointFill(lineColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
     if (activePoint === pointId) {
       return tokens.colorNeutralBackground1;
@@ -324,8 +233,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     }
     for (let i = _points.length - 1; i >= 0; i--) {
-      const linesForLine: JSX.Element[] = [];
-      const bordersForLine: JSX.Element[] = [];
       const pointsForLine: JSX.Element[] = [];
 
       const legendVal: string = _points[i].legend;
@@ -371,84 +278,41 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       let gapIndex = 0;
       const gaps = _points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
 
-      // Use path rendering technique for larger datasets to optimize performance.
-      if (true && _points[i].data.length > 1) {
-        const line = d3Line()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .x((d: any) => _xAxisScale(d[0]))
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y((d: any) => _yAxisScale(d[1]))
-          .curve(d3curveLinear);
+      for (let j = 0; j < _points[i].data.length; j++) {
+        const gapResult = _checkInGap(j, gaps, gapIndex);
+        gapIndex = gapResult.gapIndex;
 
-        const lineId = `${_lineId}_${i}`;
-        const borderId = `${_borderId}_${i}`;
-        const strokeWidth = _points[i].lineOptions?.strokeWidth || props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
+        const lineId = `${_lineId}_${i}_${j}`;
+        const circleId = `${_circleId}_${i}_${j}`;
+        const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points[i].data[j];
 
         const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
-        const lineData: [number, number][] = [];
-        for (let k = 0; k < _points[i].data.length; k++) {
-          lineData.push([
-            _points[i].data[k].x instanceof Date
-              ? (_points[i].data[k].x as Date).getTime()
-              : (_points[i].data[k].x as number),
-            _points[i].data[k].y,
-          ]);
-        }
-
-        if (isLegendSelected) {
-          linesForLine.push(
-            <circle
-              id={lineId}
-              key={lineId}
-              r={3.5}
-              cx={0}
-              cy={0}
-              fill="transparent"
-              data-is-focusable={true}
-              stroke={lineColor}
-              strokeWidth={strokeWidth}
-              strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
-              onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
-              onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
-              onMouseOut={_handleMouseOut}
-              {..._getClickHandler(_points[i].onLineClick)}
-              opacity={1}
-              tabIndex={_points[i].legend !== '' ? 0 : undefined}
-            />,
-          );
-        } else {
-          linesForLine.push(
-            <circle
-              id={lineId}
-              key={lineId}
-              r={3.5}
-              cx={0}
-              cy={0}
-              fill="transparent"
-              data-is-focusable={false}
-              stroke={lineColor}
-              strokeWidth={strokeWidth}
-              strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
-              opacity={0.1}
-            />,
-          );
-        }
-
+        const currentPointHidden = _points[i].hideNonActiveDots && activePoint !== circleId;
         pointsForLine.push(
           <circle
-            id={`${_staticHighlightCircle}_${i}`}
-            key={`${_staticHighlightCircle}_${i}`}
-            r={5.5}
-            cx={0}
-            cy={0}
-            fill={tokens.colorNeutralBackground1}
-            strokeWidth={DEFAULT_LINE_STROKE_SIZE}
-            stroke={lineColor}
-            visibility={'hidden'}
-            onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
-            onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
+            id={circleId}
+            key={circleId}
+            r={50}
+            cx={_xAxisScale(x)}
+            cy={_yAxisScale(y)}
+            data-is-focusable={isLegendSelected}
+            onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+              _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
+            }
+            onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+              _handleHover(x, y, verticaLineHeight, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData, event)
+            }
             onMouseOut={_handleMouseOut}
+            onFocus={() => _handleFocus(lineId, x, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
+            onBlur={_handleMouseOut}
+            {..._getClickHandler(_points[i].data[j].onDataPointClick)}
+            opacity={isLegendSelected && !currentPointHidden ? 1 : 0.01}
+            fill={_getPointFill(lineColor, circleId, j, false)}
+            stroke={lineColor}
+            role="img"
+            aria-label={_getAriaLabel(i, j)}
+            tabIndex={_points[i].legend !== '' ? 0 : undefined}
           />,
         );
       }
@@ -459,7 +323,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           role="region"
           aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
         >
-          {linesForLine}
           {pointsForLine}
         </g>,
       );
@@ -506,98 +369,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   function _refCallback(element: SVGGElement, legendTitle: string): void {
     _refArray.push({ index: legendTitle, refElement: element });
   }
-
-  const _onMouseOverLargeDataset = (
-    linenumber: number,
-    lineHeight: number,
-    mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
-  ) => {
-    mouseEvent.persist();
-    const { data } = props;
-    const { lineChartData } = data;
-
-    // This will get the value of the X when mouse is on the chart
-    const xOffset = _xAxisScale.invert(pointer(mouseEvent)[0], document.getElementById(_rectId)!);
-    const i = bisect(lineChartData![linenumber].data, xOffset);
-    const d0 = lineChartData![linenumber].data[i - 1] as LineChartDataPoint;
-    const d1 = lineChartData![linenumber].data[i] as LineChartDataPoint;
-    let axisType: XAxisTypes | null = null;
-    let xPointToHighlight: string | Date | number = 0;
-    let index: null | number = null;
-    if (d0 === undefined && d1 !== undefined) {
-      xPointToHighlight = d1.x;
-      index = i;
-    } else if (d0 !== undefined && d1 === undefined) {
-      xPointToHighlight = d0.x;
-      index = i - 1;
-    } else {
-      axisType = getTypeOfAxis(lineChartData![linenumber].data[0].x, true) as XAxisTypes;
-      let x0;
-      let point0;
-      let point1;
-      switch (axisType) {
-        case XAxisTypes.DateAxis:
-          x0 = new Date(xOffset).getTime();
-          point0 = (d0.x as Date).getTime();
-          point1 = (d1.x as Date).getTime();
-          xPointToHighlight = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? d1.x : d0.x;
-          index = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? i : i - 1;
-          break;
-        case XAxisTypes.NumericAxis:
-          x0 = xOffset as number;
-          point0 = d0.x as number;
-          point1 = d1.x as number;
-          xPointToHighlight = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? d1.x : d0.x;
-          index = Math.abs(x0 - point0) > Math.abs(x0 - point1) ? i : i - 1;
-          break;
-        default:
-          break;
-      }
-    }
-
-    const { xAxisCalloutData } = lineChartData![linenumber].data[index as number];
-    const formattedDate =
-      xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
-    const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const found: any = find(_calloutPoints, (element: { x: string | number }) => {
-      return element.x === modifiedXVal;
-    });
-    const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!];
-    const pointToHighlightUpdated =
-      nearestCircleToHighlight === null ||
-      (nearestCircleToHighlight !== null &&
-        pointToHighlight !== null &&
-        (nearestCircleToHighlight.x !== pointToHighlight.x || nearestCircleToHighlight.y !== pointToHighlight.y));
-    // if no points need to be called out then don't show vertical line and callout card
-    if (found && pointToHighlightUpdated) {
-      _uniqueCallOutID = `#${_staticHighlightCircle}_${linenumber}`;
-
-      d3Select(`#${_staticHighlightCircle}_${linenumber}`)
-        .attr('cx', `${_xAxisScale(pointToHighlight.x)}`)
-        .attr('cy', `${_yAxisScale(pointToHighlight.y)}`)
-        .attr('visibility', 'visibility');
-
-      d3Select(`#${_verticalLine}`)
-        .attr('transform', () => `translate(${_xAxisScale(pointToHighlight.x)}, ${_yAxisScale(pointToHighlight.y)})`)
-        .attr('visibility', 'visibility')
-        .attr('y2', `${lineHeight - _yAxisScale(pointToHighlight.y)}`);
-
-      setNearestCircleToHighlight(pointToHighlight);
-      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      setStackCalloutProps(found!);
-      setYValueHover(found.values);
-      setDataPointCalloutProps(found!);
-      xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue(formattedDate);
-      setActivePoint('');
-    }
-
-    if (!found) {
-      setPopoverOpen(false);
-      setNearestCircleToHighlight(pointToHighlight);
-      setActivePoint('');
-    }
-  };
 
   function _handleFocus(
     lineId: string,

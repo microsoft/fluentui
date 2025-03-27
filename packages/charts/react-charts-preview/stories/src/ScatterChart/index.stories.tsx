@@ -1,13 +1,13 @@
-import { GroupedVerticalBarChart } from '@fluentui/react-charts-preview';
+import { ScatterChart } from '@fluentui/react-charts-preview';
 
-import descriptionMd from './GroupedVerticalBarChartDescription.md';
-import bestPracticesMd from './GroupedVerticalBarChartBestPractices.md';
+import descriptionMd from './ScatterChartDescription.md';
+import bestPracticesMd from './ScatterChartBestPractices.md';
 
-export { GroupedVerticalBarDefault } from './GroupedVerticalBarChartDefault.stories';
+export { ScatterChartDefault } from './ScatterChartDefault.stories';
 
 export default {
-  title: 'Charts/GroupedVerticalBarChart',
-  component: GroupedVerticalBarChart,
+  title: 'Charts/ScatterChart',
+  component: ScatterChart,
   parameters: {
     docs: {
       description: {
