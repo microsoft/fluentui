@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "pretype-check": "tsc -p tsconfig.app.json --noEmit --baseUrl . --listFilesOnly | grep @types/react",
     "type-check": "just-scripts type-check",
     "lint": "eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
