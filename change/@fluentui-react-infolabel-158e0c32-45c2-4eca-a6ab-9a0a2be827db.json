@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add customStyleHook",
-  "packageName": "@fluentui/react-infolabel",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 26 Mar 2025 21:47:46 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Mar 2025 21:12:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.5)
+
+Thu, 27 Mar 2025 21:12:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.4..@fluentui/react-components_v9.61.5)
+
+### Patches
+
+- `@fluentui/react-field`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
 
 ## [9.61.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.4)
 
