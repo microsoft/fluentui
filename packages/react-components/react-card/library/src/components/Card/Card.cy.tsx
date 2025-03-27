@@ -12,6 +12,7 @@ import {
   cardHeaderClassNames,
   cardPreviewClassNames,
   CardPreview,
+  type CardOnSelectionChangeEvent,
 } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
@@ -431,7 +432,10 @@ describe('Card', () => {
       const Example = () => {
         const [checked, setChecked] = React.useState(false);
 
-        const onSelectionChange = React.useCallback((event, { selected }) => setChecked(selected), []);
+        const onSelectionChange = React.useCallback(
+          (_: CardOnSelectionChangeEvent, { selected }: { selected: boolean }) => setChecked(selected),
+          [],
+        );
 
         return (
           <CardSample

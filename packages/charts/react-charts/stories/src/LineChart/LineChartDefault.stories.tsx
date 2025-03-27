@@ -18,15 +18,15 @@ export const LineChartBasic = (props: LineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+  const _onCheckChange = (_: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setUseUTC(checked.checked);
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  const _onShapeChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 

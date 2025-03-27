@@ -259,7 +259,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
     }, [internalState, setModalMenuClose]);
 
     const handleDrag = React.useCallback(
-      (ev: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, dragData: IDragData): void => {
+      (_: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, dragData: IDragData): void => {
         setCoordinates(prevValue => ({
           x: getClampedAxis('x', prevValue.x + dragData.delta.x),
           y: getClampedAxis('y', prevValue.y + dragData.delta.y),

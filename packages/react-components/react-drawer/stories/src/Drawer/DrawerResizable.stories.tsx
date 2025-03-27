@@ -73,7 +73,7 @@ export const Resizable = () => {
   const stopResizing = React.useCallback(() => setIsResizing(false), []);
 
   const resize = React.useCallback(
-    ({ clientX }) => {
+    ({ clientX }: { clientX: number }) => {
       animationFrame.current = requestAnimationFrame(() => {
         if (isResizing && sidebarRef.current) {
           setSidebarWidth(clientX - sidebarRef.current.getBoundingClientRect().left);

@@ -236,14 +236,17 @@ export const DefaultEditingItemInner = <TItem extends any>(
   );
 
   const _onSuggestionSelected = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (
+      _: React.KeyboardEvent<HTMLElement> | React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
+      itemProps: IFloatingSuggestionItemProps<TItem>,
+    ) => {
       onEditingComplete(item, itemProps.item);
     },
     [onEditingComplete, item],
   );
 
   const _onRemoveItem = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (_: React.MouseEvent<HTMLElement>, itemProps: IFloatingSuggestionItemProps<TItem>) => {
       if (onRemoveItem) {
         onRemoveItem(itemProps.item);
       }

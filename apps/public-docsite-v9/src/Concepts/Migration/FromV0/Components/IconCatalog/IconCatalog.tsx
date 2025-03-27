@@ -62,11 +62,15 @@ const IconCatalogInner: React.FC = () => {
     [searchTerm, searchV0],
   );
 
-  const onInputChange: InputProps['onChange'] = React.useCallback(
-    (e, { value }) => updateSearchDebounced(value),
+  const onInputChange: NonNullable<InputProps['onChange']> = React.useCallback(
+    (_, { value }) => updateSearchDebounced(value),
     [updateSearchDebounced],
   );
-  const onSwitchChange: SwitchProps['onChange'] = React.useCallback((e, { checked }) => setSearchV0(checked), []);
+
+  const onSwitchChange: NonNullable<SwitchProps['onChange']> = React.useCallback(
+    (_, { checked }) => setSearchV0(checked),
+    [],
+  );
 
   return (
     <>
