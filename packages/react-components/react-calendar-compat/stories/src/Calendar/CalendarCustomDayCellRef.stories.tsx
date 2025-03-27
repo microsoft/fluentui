@@ -5,7 +5,7 @@ import type { CalendarDayProps } from '@fluentui/react-calendar-compat';
 export const CalendarCustomDayCellRef = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
-  const onSelectDate = React.useCallback((date: Date, _: any): void => {
+  const onSelectDate = React.useCallback((date: Date): void => {
     setSelectedDate(date);
   }, []);
 

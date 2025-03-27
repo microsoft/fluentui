@@ -5,7 +5,6 @@ import { Text } from '@fluentui/react/lib/Text';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { KeyCodes } from '@fluentui/react';
 
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
@@ -36,11 +35,11 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
 
   const onKeyDown = React.useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     /* Key Up, but we are not at the beginning of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.currentTarget.selectionStart !== null && e.currentTarget.selectionStart > 0 && e.which === KeyCodes.up) {
+    if (e.currentTarget.selectionStart !== null && e.currentTarget.selectionStart > 0 && e.key === 'ArrowUp') {
       e.stopPropagation();
     }
     /* Key Down, but we are not at the end of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.currentTarget.selectionStart !== e.currentTarget.value.length && e.which === KeyCodes.down) {
+    if (e.currentTarget.selectionStart !== null && e.currentTarget.selectionStart > 0 && e.key === 'ArrowDown') {
       e.stopPropagation();
     }
   }, []);
