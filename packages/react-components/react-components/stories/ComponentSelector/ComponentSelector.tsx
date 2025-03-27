@@ -358,11 +358,11 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       processedComponentsDefinitions.current.forEach(definition => {
         let matchedCount = 0;
         selectedBehaviours.forEach(decision => {
-          definition.attributes.includes(decision) ? matchedCount++ : null;
+          definition.attributes.includes(decision) && matchedCount++;
         });
         if (selectedBehaviours.length === matchedCount) {
           // if suitableComponents does not include definition, push it
-          suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
+          !suitableComponents.includes(definition) && suitableComponents.push(definition);
         } else {
           removeFromArray(suitableComponents, definition);
         }
