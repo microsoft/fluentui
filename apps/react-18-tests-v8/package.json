@@ -4,6 +4,7 @@
   "version": "8.0.0",
   "private": true,
   "scripts": {
+    "pretype-check": "tsc -p tsconfig.app.json --noEmit --baseUrl . --listFilesOnly | grep @types/react",
     "type-check": "just-scripts type-check",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
