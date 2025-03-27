@@ -109,7 +109,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   function _renderContentForOnlyBars(point: HorizontalBarChartWithAxisDataPoint): JSX.Element {
     const { useSingleColor = false } = props;
-    console.log('props', props);
     let selectedPointIndex = 0;
     props.data!.forEach((yDataPoint: HorizontalBarChartWithAxisDataPoint, index: number) => {
       if (yDataPoint.y === point.y) {
@@ -145,13 +144,10 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   function _renderCallout(props?: HorizontalBarChartWithAxisDataPoint): JSX.Element | null {
-    console.log('callout');
     return props ? _renderContentForOnlyBars(props) : null;
   }
 
   function _getCustomizedCallout() {
-    console.log('callout1');
-    console.log('props', props);
     return props.onRenderCalloutPerDataPoint
       ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps, _renderCallout)
       : null;
@@ -241,13 +237,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     color: string,
     mouseEvent: React.MouseEvent<SVGElement>,
   ): void {
-    console.log('hello');
     mouseEvent.persist();
 
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { YValueHover, hoverXValue } = _getCalloutContentForBar(point);
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
-      console.log('in if');
       _calloutAnchorPoint = point;
       setRefSelected;
       setPopoverOpen(true);

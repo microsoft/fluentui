@@ -186,7 +186,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if (props.parentRef) {
     _fitParentContainer();
   }
-  console.log('in cartesian', chartType);
   const margin = { ...margins };
   if (props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
     if (!_useRtl) {

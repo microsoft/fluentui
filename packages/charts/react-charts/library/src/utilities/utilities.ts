@@ -489,12 +489,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-        .attr('aria-hidden', 'true')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
 
