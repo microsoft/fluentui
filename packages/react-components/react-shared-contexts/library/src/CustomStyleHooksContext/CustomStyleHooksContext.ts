@@ -37,6 +37,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useCarouselViewportStyles_unstable: CustomStyleHook;
   useCheckboxStyles_unstable: CustomStyleHook;
   useComboboxStyles_unstable: CustomStyleHook;
+  useCompoundButtonStyles_unstable: CustomStyleHook;
   useColorAreaStyles_unstable: CustomStyleHook;
   useColorPickerStyles_unstable: CustomStyleHook;
   useColorSliderStyles_unstable: CustomStyleHook;
@@ -105,6 +106,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useOverlayDrawerStyles_unstable: CustomStyleHook;
   usePersonaStyles_unstable: CustomStyleHook;
   usePopoverSurfaceStyles_unstable: CustomStyleHook;
+  usePresenceBadgeStyles_unstable: CustomStyleHook;
   useProgressBarStyles_unstable: CustomStyleHook;
   useRadioGroupStyles_unstable: CustomStyleHook;
   useRadioStyles_unstable: CustomStyleHook;
@@ -164,12 +166,14 @@ export type CustomStyleHooksContextValue = Partial<{
   useTableSelectionCellStyles_unstable: CustomStyleHook;
   useTableStyles_unstable: CustomStyleHook;
   useTextareaStyles_unstable: CustomStyleHook;
+  useTextStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
   useToastBodyStyles_unstable: CustomStyleHook;
   useToastContainerStyles_unstable: CustomStyleHook;
   useToastFooterStyles_unstable: CustomStyleHook;
   useToastStyles_unstable: CustomStyleHook;
   useToastTitleStyles_unstable: CustomStyleHook;
+  useToggleButtonStyles_unstable: CustomStyleHook;
   useTooltipStyles_unstable: CustomStyleHook;
   useTreeItemLayoutStyles_unstable: CustomStyleHook;
   useTreeItemPersonaLayoutStyles_unstable: CustomStyleHook;
