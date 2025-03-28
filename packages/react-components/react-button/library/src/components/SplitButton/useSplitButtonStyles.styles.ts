@@ -110,6 +110,7 @@ const useRootStyles = makeStyles({
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
       borderRightColor: tokens.colorTransparentBackground,
+      paddingRight: tokens.spacingVerticalXXS,
     },
 
     ':hover': {
@@ -171,18 +172,40 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useIconOnlyStyles = makeStyles({
+  outline: {},
+  secondary: {},
+  primary: {},
+  subtle: {},
+  transparent: {
+    [`& .${splitButtonClassNames.primaryActionButton}`]: {
+      paddingRight: tokens.spacingVerticalNone,
+    },
+    [`& .${splitButtonClassNames.menuButton}`]: {
+      paddingLeft: tokens.spacingVerticalNone,
+      paddingRight: tokens.spacingVerticalNone,
+    },
+  },
+});
+
 export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitButtonState => {
   'use no memo';
 
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
+  const iconOnlyStyles = useIconOnlyStyles();
 
   const { appearance, disabled, disabledFocusable } = state;
+
+  const noIconClass = state.primaryActionButton
+    ? !state.primaryActionButton.children && appearance && iconOnlyStyles[appearance]
+    : undefined;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
     rootStyles.base,
     appearance && rootStyles[appearance],
+    noIconClass,
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
     state.root.className,
