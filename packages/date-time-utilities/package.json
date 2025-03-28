@@ -20,7 +20,7 @@
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean",
     "start-test": "just-scripts jest-watch",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint"
+    "lint": "just-scripts lint"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

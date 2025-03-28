@@ -14,7 +14,7 @@
   "scripts": {
     "prebundle": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
+    "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

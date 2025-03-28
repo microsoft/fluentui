@@ -13,7 +13,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
+    "lint": "just-scripts lint",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component"
   },
