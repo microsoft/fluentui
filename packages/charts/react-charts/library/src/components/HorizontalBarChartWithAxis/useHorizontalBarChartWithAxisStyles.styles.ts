@@ -64,12 +64,8 @@ export const useHorizontalBarChartWithAxisStyles = (
   const baseStyles = useStyles();
 
   return {
-    opacityChangeOnHover: mergeClasses(
-      hbcWithAxisClassNames.opacityChangeOnHover,
-      baseStyles.opacityChangeOnHover,
-      props.styles?.opacityChangeOnHover,
-    ),
-    xAxisTicks: mergeClasses(hbcWithAxisClassNames.xAxisTicks, baseStyles.xAxisTicks, props.styles?.xAxisTicks),
-    tooltip: mergeClasses(hbcWithAxisClassNames.tooltip, baseStyles.tooltip, props.styles?.tooltip),
+    opacityChangeOnHover: mergeClasses(hbcWithAxisClassNames.opacityChangeOnHover, baseStyles.opacityChangeOnHover),
+    xAxisTicks: mergeClasses(hbcWithAxisClassNames.xAxisTicks, baseStyles.xAxisTicks),
+    tooltip: mergeClasses(hbcWithAxisClassNames.tooltip, baseStyles.tooltip),
   };
 };
