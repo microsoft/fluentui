@@ -35,7 +35,7 @@ jobs:
       - run: yarn install --frozen-lockfile
 
       - name: Build all packages & create reports (non-PR)
-        run: yarn nx run-many -t bundle-size --nxBail
+        run: yarn nx bundle-size react-text
 
       - name: Login via Azure CLI
         uses: azure/login@a65d910e8af852a8061c627c456678983e180302 # v2.2.0
