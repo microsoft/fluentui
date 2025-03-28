@@ -6,7 +6,9 @@ import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.opti
 
 /**
  * The base class used for constructing a fluent-badge custom element
- * @public
+ * 
+ * @tag fluent-badge
+ * 
  */
 export class Badge extends FASTElement {
   /**

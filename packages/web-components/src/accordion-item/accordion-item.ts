@@ -20,7 +20,8 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
  * An Accordion Item Custom HTML Element.
  * Based on BaseAccordionItem and includes style and layout specific attributes
  *
- * @public
+ * @tag fluent-accordion-item
+ * 
  */
 export class AccordionItem extends BaseAccordionItem {
   /**

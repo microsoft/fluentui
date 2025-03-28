@@ -3,6 +3,11 @@ import { TreeItemAppearance, TreeItemSize } from '../tree-item/tree-item.options
 import { TreeItem } from '../tree-item/tree-item';
 import { BaseTree } from './tree.base';
 
+/**
+ * A Tree element that provides a way to represent a hierarchical structure
+ *
+ * @tag fluent-tree
+ */
 export class Tree extends BaseTree {
   /**
    * The size of the tree item element

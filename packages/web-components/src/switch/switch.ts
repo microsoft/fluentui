@@ -5,6 +5,13 @@ export type SwitchOptions = {
   switch?: StaticallyComposableHTML<Switch>;
 };
 
+/**
+ * A Switch Custom HTML Element.
+ * Implements the {@link https://w3c.github.io/aria/#switch | ARIA switch }.
+ *
+ * @tag fluent-switch
+ * 
+ */
 export class Switch extends BaseCheckbox {
   constructor() {
     super();

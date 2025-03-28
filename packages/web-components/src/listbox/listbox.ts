@@ -8,6 +8,8 @@ import { uniqueId } from '../utils/unique-id.js';
 /**
  * A Listbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
+ * 
+ * @tag fluent-listbox
  *
  * @slot - The default slot for the options.
  * @emits connected - Dispatched when the element is connected to the DOM.
@@ -16,7 +18,6 @@ import { uniqueId } from '../utils/unique-id.js';
  * The listbox component represents a list of options that can be selected.
  * It is intended to be used in conjunction with the {@link BaseDropdown | Dropdown} component.
  *
- * @public
  */
 export class Listbox extends FASTElement {
   /**

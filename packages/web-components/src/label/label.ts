@@ -4,7 +4,9 @@ import { LabelSize, LabelWeight } from './label.options.js';
 
 /**
  * The base class used for constructing a fluent-label custom element
- * @public
+ * 
+ * @tag fluent-label
+ * 
  */
 export class Label extends FASTElement {
   /**

@@ -6,11 +6,12 @@ import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 /**
  * The Fluent Dropdown Element. Implements {@link @microsoft/fast-foundation#BaseDropdown}.
  *
+ * @tag fluent-dropdown
+ * 
  * @slot - The default slot. Accepts a {@link (Listbox:class)} element.
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
- * @public
  */
 export class Dropdown extends BaseDropdown {
   /**

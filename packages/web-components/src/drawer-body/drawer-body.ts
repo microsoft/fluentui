@@ -2,7 +2,8 @@ import { FASTElement } from '@microsoft/fast-element';
 
 /**
  * A DrawerBody component to layout drawer content
- * @extends FASTElement
+ * 
+ * @tag fluent-drawer-body
  *
  * @slot title - The title slot
  * @slot close - The close button slot
@@ -15,6 +16,5 @@ import { FASTElement } from '@microsoft/fast-element';
  *
  * @summary A component that provides a drawer body for displaying content in a side panel.
  *
- * @tag fluent-drawer-body
  */
 export class DrawerBody extends FASTElement {}

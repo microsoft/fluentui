@@ -2,6 +2,8 @@ import { Button } from '../button/button.js';
 
 /**
  * The base class used for constructing a fluent-compound-button custom element
- * @public
+ * 
+ * @tag fluent-compound-button
+ * 
  */
 export class CompoundButton extends Button {}

@@ -2,8 +2,8 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 /**
  * Dialog Body component that extends the FASTElement class.
  *
- * @public
- * @extends FASTElement
+ * @tag fluent-dialog-body
+ * 
  */
 export class DialogBody extends FASTElement {
   /**
