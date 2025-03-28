@@ -2,6 +2,7 @@
 import { Project } from 'ts-morph';
 import { promises as fs } from 'fs';
 import { relative } from 'path';
+import { format } from 'prettier';
 import { findStyleFiles } from './fileOperations.js';
 import { analyzeFile } from './astAnalyzer.js';
 import { AnalysisResults, FileAnalysis } from './types.js';
@@ -48,7 +49,15 @@ async function analyzeProjectStyles(
 
     if (outputFile) {
       await measureAsync('write output file', async () => {
-        await fs.writeFile(outputFile, JSON.stringify(results, null, 2), 'utf8');
+        const formatted = format(JSON.stringify(sortObjectByKeys(results), null, 2), {
+          parser: 'json',
+          printWidth: 120,
+          tabWidth: 2,
+          singleQuote: true,
+          trailingComma: 'all',
+          arrowParens: 'avoid',
+        });
+        await fs.writeFile(outputFile, formatted, 'utf8');
         console.log(`Analysis written to ${outputFile}`);
       });
     }
@@ -58,6 +67,21 @@ async function analyzeProjectStyles(
     error('Error during analysis:', err);
     throw err;
   }
+}
+
+/**
+ * Sorts an object by its keys alphabetically
+ *
+ * @param obj Object to sort
+ * @returns New object with the same properties, sorted by keys
+ */
+function sortObjectByKeys<T>(obj: Record<string, T>): Record<string, T> {
+  return Object.keys(obj)
+    .sort()
+    .reduce((sorted: Record<string, T>, key: string) => {
+      sorted[key] = obj[key];
+      return sorted;
+    }, {});
 }
 
 function countTokens(analysis: FileAnalysis): number {

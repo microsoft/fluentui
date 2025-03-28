@@ -10,6 +10,7 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     ':hover': {
       color: tokens.colorNeutralForegroundHover,
     }

@@ -43,6 +43,12 @@ describe('Token Analyzer', () => {
         token: 'tokens.colorNeutralForeground1',
       }),
     );
+    expect(styles.useStyles.root.tokens).toContainEqual(
+      expect.objectContaining({
+        property: 'borderRightColor',
+        token: 'tokens.colorNeutralStrokeDisabled',
+      }),
+    );
 
     // Verify anotherSlot styles
     expect(styles.useStyles.anotherSlot.tokens).toContainEqual(

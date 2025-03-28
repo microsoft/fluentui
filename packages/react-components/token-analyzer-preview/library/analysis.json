@@ -7,65 +7,62 @@
             {
               "property": "backgroundColor",
               "token": "tokens.colorNeutralBackground1",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground1",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
+            },
+            {
+              "property": "border",
+              "token": "tokens.strokeWidthThin",
+              "path": ["border"]
+            },
+            {
+              "property": "border",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["border"]
             },
             {
               "property": "fontFamily",
               "token": "tokens.fontFamilyBase",
-              "path": [
-                "fontFamily"
-              ]
+              "path": ["fontFamily"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalM",
+              "path": ["padding"]
             },
             {
               "property": "borderRadius",
               "token": "tokens.borderRadiusMedium",
-              "path": [
-                "borderRadius"
-              ]
+              "path": ["borderRadius"]
             },
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase300",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "fontWeight",
               "token": "tokens.fontWeightSemibold",
-              "path": [
-                "fontWeight"
-              ]
+              "path": ["fontWeight"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase300",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             },
             {
               "property": "transitionDuration",
               "token": "tokens.durationFaster",
-              "path": [
-                "transitionDuration"
-              ]
+              "path": ["transitionDuration"]
             },
             {
               "property": "transitionTimingFunction",
               "token": "tokens.curveEasyEase",
-              "path": [
-                "transitionTimingFunction"
-              ]
+              "path": ["transitionTimingFunction"]
             }
           ],
           "nested": {
@@ -106,12 +103,19 @@
                   "path": []
                 }
               ]
+            },
+            "'@supports (-moz-appearance:button)'": {
+              "tokens": [
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                }
+              ]
             }
           },
           "isResetStyles": true,
-          "assignedVariables": [
-            "rootBaseClassName"
-          ]
+          "assignedVariables": ["rootBaseClassName"]
         }
       },
       "useIconBaseClassName": {
@@ -120,16 +124,12 @@
             {
               "property": "[iconSpacingVar]",
               "token": "tokens.spacingHorizontalSNudge",
-              "path": [
-                "[iconSpacingVar]"
-              ]
+              "path": ["[iconSpacingVar]"]
             }
           ],
           "nested": {},
           "isResetStyles": true,
-          "assignedVariables": [
-            "iconBaseClassName"
-          ]
+          "assignedVariables": ["iconBaseClassName"]
         }
       },
       "useRootStyles": {
@@ -138,9 +138,7 @@
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -163,25 +161,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "primary": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorBrandBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForegroundOnBrand",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -214,25 +206,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "subtle": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorSubtleBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -275,25 +261,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "transparent": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -340,107 +320,87 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "circular": {
           "tokens": [
             {
               "property": "borderRadius",
               "token": "tokens.borderRadiusCircular",
-              "path": [
-                "borderRadius"
-              ]
+              "path": ["borderRadius"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "square": {
           "tokens": [
             {
               "property": "borderRadius",
               "token": "tokens.borderRadiusNone",
-              "path": [
-                "borderRadius"
-              ]
+              "path": ["borderRadius"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "small": {
           "tokens": [
             {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalS",
+              "path": ["padding"]
+            },
+            {
               "property": "borderRadius",
               "token": "tokens.borderRadiusMedium",
-              "path": [
-                "borderRadius"
-              ]
+              "path": ["borderRadius"]
             },
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase200",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "fontWeight",
               "token": "tokens.fontWeightRegular",
-              "path": [
-                "fontWeight"
-              ]
+              "path": ["fontWeight"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase200",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "large": {
           "tokens": [
             {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalL",
+              "path": ["padding"]
+            },
+            {
               "property": "borderRadius",
               "token": "tokens.borderRadiusMedium",
-              "path": [
-                "borderRadius"
-              ]
+              "path": ["borderRadius"]
             },
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase400",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "fontWeight",
               "token": "tokens.fontWeightSemibold",
-              "path": [
-                "fontWeight"
-              ]
+              "path": ["fontWeight"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase400",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         }
       },
       "useRootDisabledStyles": {
@@ -449,16 +409,32 @@
             {
               "property": "backgroundColor",
               "token": "tokens.colorNeutralBackgroundDisabled",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderLeftColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForegroundDisabled",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -479,6 +455,26 @@
                   "path": []
                 },
                 {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
                   "property": "color",
                   "token": "tokens.colorNeutralForegroundDisabled",
                   "path": []
@@ -498,6 +494,26 @@
                   "path": []
                 },
                 {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
                   "property": "color",
                   "token": "tokens.colorNeutralForegroundDisabled",
                   "path": []
@@ -510,18 +526,14 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         },
         "outline": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -544,18 +556,14 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         },
         "subtle": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -578,18 +586,14 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         },
         "transparent": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -612,9 +616,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         }
       },
       "useRootFocusStyles": {
@@ -631,9 +633,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootFocusStyles"
-          ]
+          "assignedVariables": ["rootFocusStyles"]
         },
         "square": {
           "tokens": [],
@@ -648,9 +648,111 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootFocusStyles"
-          ]
+          "assignedVariables": ["rootFocusStyles"]
+        },
+        "primary": {
+          "tokens": [],
+          "nested": {
+            ":focus": {
+              "tokens": [
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.shadow2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.strokeWidthThin",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.strokeWidthThick",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.shadow2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.strokeWidthThin",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                }
+              ]
+            },
+            "'@supports (-moz-appearance:button)'": {
+              "tokens": [
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.shadow2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.strokeWidthThick",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorNeutralForegroundOnBrand",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.shadow2",
+                  "path": []
+                },
+                {
+                  "property": "boxShadow",
+                  "token": "tokens.colorStrokeFocus2",
+                  "path": []
+                }
+              ]
+            }
+          },
+          "assignedVariables": ["rootFocusStyles"]
         },
         "small": {
           "tokens": [],
@@ -665,9 +767,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootFocusStyles"
-          ]
+          "assignedVariables": ["rootFocusStyles"]
         },
         "large": {
           "tokens": [],
@@ -682,9 +782,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootFocusStyles"
-          ]
+          "assignedVariables": ["rootFocusStyles"]
         }
       },
       "useRootIconOnlyStyles": {},
@@ -694,28 +792,20 @@
             {
               "property": "[iconSpacingVar]",
               "token": "tokens.spacingHorizontalXS",
-              "path": [
-                "[iconSpacingVar]"
-              ]
+              "path": ["[iconSpacingVar]"]
             }
           ],
-          "assignedVariables": [
-            "iconStyles"
-          ]
+          "assignedVariables": ["iconStyles"]
         },
         "large": {
           "tokens": [
             {
               "property": "[iconSpacingVar]",
               "token": "tokens.spacingHorizontalSNudge",
-              "path": [
-                "[iconSpacingVar]"
-              ]
+              "path": ["[iconSpacingVar]"]
             }
           ],
-          "assignedVariables": [
-            "iconStyles"
-          ]
+          "assignedVariables": ["iconStyles"]
         }
       }
     },
@@ -750,33 +840,23 @@
           "slotName": "root"
         },
         "rootStyles.smallWithIcon": {
-          "conditions": [
-            "icon && size === 'small'"
-          ],
+          "conditions": ["icon && size === 'small'"],
           "slotName": "root"
         },
         "rootStyles.largeWithIcon": {
-          "conditions": [
-            "icon && size === 'large'"
-          ],
+          "conditions": ["icon && size === 'large'"],
           "slotName": "root"
         },
         "rootDisabledStyles.base": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "rootDisabledStyles.highContrast": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "rootFocusStyles.primary": {
-          "conditions": [
-            "appearance === 'primary'"
-          ],
+          "conditions": ["appearance === 'primary'"],
           "slotName": "root"
         },
         "buttonClassNames.icon": {
@@ -794,269 +874,6 @@
         "state.icon.className": {
           "isBase": true,
           "slotName": "icon"
-        }
-      }
-    }
-  },
-  "library/src/components/MenuButton/useMenuButtonStyles.styles.ts": {
-    "styles": {
-      "useRootExpandedStyles": {
-        "outline": {
-          "tokens": [
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground1Selected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "rootExpandedStyles"
-          ]
-        },
-        "primary": {
-          "tokens": [
-            {
-              "property": "backgroundColor",
-              "token": "tokens.colorBrandBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "rootExpandedStyles"
-          ]
-        },
-        "secondary": {
-          "tokens": [
-            {
-              "property": "backgroundColor",
-              "token": "tokens.colorNeutralBackground1Selected",
-              "path": [
-                "backgroundColor"
-              ]
-            },
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground1Selected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "rootExpandedStyles"
-          ]
-        },
-        "subtle": {
-          "tokens": [
-            {
-              "property": "backgroundColor",
-              "token": "tokens.colorSubtleBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
-            },
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground2Selected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "rootExpandedStyles"
-          ]
-        },
-        "transparent": {
-          "tokens": [
-            {
-              "property": "backgroundColor",
-              "token": "tokens.colorTransparentBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
-            },
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground2BrandSelected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "rootExpandedStyles"
-          ]
-        }
-      },
-      "useIconExpandedStyles": {
-        "outline": {
-          "tokens": [
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground1Selected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "iconExpandedStyles"
-          ]
-        },
-        "secondary": {
-          "tokens": [
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground1Selected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "iconExpandedStyles"
-          ]
-        },
-        "subtle": {
-          "tokens": [
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground2BrandSelected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "iconExpandedStyles"
-          ]
-        },
-        "transparent": {
-          "tokens": [
-            {
-              "property": "color",
-              "token": "tokens.colorNeutralForeground2BrandSelected",
-              "path": [
-                "color"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "iconExpandedStyles"
-          ]
-        }
-      },
-      "useMenuIconStyles": {
-        "small": {
-          "tokens": [
-            {
-              "property": "lineHeight",
-              "token": "tokens.lineHeightBase200",
-              "path": [
-                "lineHeight"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "menuIconStyles"
-          ]
-        },
-        "medium": {
-          "tokens": [
-            {
-              "property": "lineHeight",
-              "token": "tokens.lineHeightBase200",
-              "path": [
-                "lineHeight"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "menuIconStyles"
-          ]
-        },
-        "large": {
-          "tokens": [
-            {
-              "property": "lineHeight",
-              "token": "tokens.lineHeightBase400",
-              "path": [
-                "lineHeight"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "menuIconStyles"
-          ]
-        },
-        "notIconOnly": {
-          "tokens": [
-            {
-              "property": "marginLeft",
-              "token": "tokens.spacingHorizontalXS",
-              "path": [
-                "marginLeft"
-              ]
-            }
-          ],
-          "assignedVariables": [
-            "menuIconStyles"
-          ]
-        }
-      }
-    },
-    "metadata": {
-      "styleConditions": {
-        "menuButtonClassNames.root": {
-          "isBase": true,
-          "slotName": "root"
-        },
-        "state.root.className": {
-          "isBase": true,
-          "slotName": "root"
-        },
-        "rootExpandedStyles.base": {
-          "conditions": [
-            "state.root['aria-expanded']"
-          ],
-          "slotName": "root"
-        },
-        "menuButtonClassNames.icon": {
-          "isBase": true,
-          "slotName": "icon"
-        },
-        "state.icon.className": {
-          "isBase": true,
-          "slotName": "icon"
-        },
-        "iconExpandedStyles.highContrast": {
-          "conditions": [
-            "state.root['aria-expanded'] && iconExpandedStyles[state.appearance]"
-          ],
-          "slotName": "icon"
-        },
-        "menuButtonClassNames.menuIcon": {
-          "isBase": true,
-          "slotName": "menuIcon"
-        },
-        "menuIconStyles.base": {
-          "isBase": true,
-          "slotName": "menuIcon"
-        },
-        "state.menuIcon.className": {
-          "isBase": true,
-          "slotName": "menuIcon"
-        },
-        "menuIconStyles.notIconOnly": {
-          "conditions": [
-            "!state.iconOnly"
-          ],
-          "slotName": "menuIcon"
         }
       }
     }
@@ -1095,9 +912,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "primary": {
           "tokens": [],
@@ -1130,9 +945,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "subtle": {
           "tokens": [],
@@ -1165,9 +978,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "transparent": {
           "tokens": [],
@@ -1200,72 +1011,102 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "small": {
           "tokens": [
             {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalS",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalS",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalMNudge",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalS",
+              "path": ["padding"]
+            },
+            {
               "property": "fontSize",
               "token": "tokens.fontSizeBase300",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase300",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "medium": {
           "tokens": [
             {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalM",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalL",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalM",
+              "path": ["padding"]
+            },
+            {
               "property": "fontSize",
               "token": "tokens.fontSizeBase300",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase300",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "large": {
           "tokens": [
             {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalL",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalXL",
+              "path": ["padding"]
+            },
+            {
+              "property": "padding",
+              "token": "tokens.spacingHorizontalL",
+              "path": ["padding"]
+            },
+            {
               "property": "fontSize",
               "token": "tokens.fontSizeBase400",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             },
             {
               "property": "lineHeight",
               "token": "tokens.lineHeightBase400",
-              "path": [
-                "lineHeight"
-              ]
+              "path": ["lineHeight"]
             }
           ],
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "disabled": {
           "tokens": [],
@@ -1298,9 +1139,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         }
       },
       "useRootIconOnlyStyles": {
@@ -1309,42 +1148,30 @@
             {
               "property": "padding",
               "token": "tokens.spacingHorizontalXS",
-              "path": [
-                "padding"
-              ]
+              "path": ["padding"]
             }
           ],
-          "assignedVariables": [
-            "rootIconOnlyStyles"
-          ]
+          "assignedVariables": ["rootIconOnlyStyles"]
         },
         "medium": {
           "tokens": [
             {
               "property": "padding",
               "token": "tokens.spacingHorizontalSNudge",
-              "path": [
-                "padding"
-              ]
+              "path": ["padding"]
             }
           ],
-          "assignedVariables": [
-            "rootIconOnlyStyles"
-          ]
+          "assignedVariables": ["rootIconOnlyStyles"]
         },
         "large": {
           "tokens": [
             {
               "property": "padding",
               "token": "tokens.spacingHorizontalS",
-              "path": [
-                "padding"
-              ]
+              "path": ["padding"]
             }
           ],
-          "assignedVariables": [
-            "rootIconOnlyStyles"
-          ]
+          "assignedVariables": ["rootIconOnlyStyles"]
         }
       },
       "useIconStyles": {
@@ -1353,28 +1180,20 @@
             {
               "property": "marginRight",
               "token": "tokens.spacingHorizontalM",
-              "path": [
-                "marginRight"
-              ]
+              "path": ["marginRight"]
             }
           ],
-          "assignedVariables": [
-            "iconStyles"
-          ]
+          "assignedVariables": ["iconStyles"]
         },
         "after": {
           "tokens": [
             {
               "property": "marginLeft",
               "token": "tokens.spacingHorizontalM",
-              "path": [
-                "marginLeft"
-              ]
+              "path": ["marginLeft"]
             }
           ],
-          "assignedVariables": [
-            "iconStyles"
-          ]
+          "assignedVariables": ["iconStyles"]
         }
       },
       "useContentContainerStyles": {},
@@ -1384,56 +1203,40 @@
             {
               "property": "fontWeight",
               "token": "tokens.fontWeightRegular",
-              "path": [
-                "fontWeight"
-              ]
+              "path": ["fontWeight"]
             }
           ],
-          "assignedVariables": [
-            "secondaryContentStyles"
-          ]
+          "assignedVariables": ["secondaryContentStyles"]
         },
         "small": {
           "tokens": [
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase200",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             }
           ],
-          "assignedVariables": [
-            "secondaryContentStyles"
-          ]
+          "assignedVariables": ["secondaryContentStyles"]
         },
         "medium": {
           "tokens": [
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase200",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             }
           ],
-          "assignedVariables": [
-            "secondaryContentStyles"
-          ]
+          "assignedVariables": ["secondaryContentStyles"]
         },
         "large": {
           "tokens": [
             {
               "property": "fontSize",
               "token": "tokens.fontSizeBase300",
-              "path": [
-                "fontSize"
-              ]
+              "path": ["fontSize"]
             }
           ],
-          "assignedVariables": [
-            "secondaryContentStyles"
-          ]
+          "assignedVariables": ["secondaryContentStyles"]
         }
       }
     },
@@ -1460,15 +1263,11 @@
           "slotName": "root"
         },
         "rootStyles.disabled": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "rootStyles.disabledHighContrast": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "compoundButtonClassNames.contentContainer": {
@@ -1514,6 +1313,245 @@
       }
     }
   },
+  "library/src/components/MenuButton/useMenuButtonStyles.styles.ts": {
+    "styles": {
+      "useRootExpandedStyles": {
+        "outline": {
+          "tokens": [
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderLeftColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "primary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorBrandBackgroundSelected",
+              "path": ["backgroundColor"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "secondary": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorNeutralBackground1Selected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStroke1Selected",
+              "path": ["borderLeftColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorSubtleBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "backgroundColor",
+              "token": "tokens.colorTransparentBackgroundSelected",
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["rootExpandedStyles"]
+        }
+      },
+      "useIconExpandedStyles": {
+        "outline": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "secondary": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground1Selected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "subtle": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        },
+        "transparent": {
+          "tokens": [
+            {
+              "property": "color",
+              "token": "tokens.colorNeutralForeground2BrandSelected",
+              "path": ["color"]
+            }
+          ],
+          "assignedVariables": ["iconExpandedStyles"]
+        }
+      },
+      "useMenuIconStyles": {
+        "small": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase200",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "medium": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase200",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "large": {
+          "tokens": [
+            {
+              "property": "lineHeight",
+              "token": "tokens.lineHeightBase400",
+              "path": ["lineHeight"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        },
+        "notIconOnly": {
+          "tokens": [
+            {
+              "property": "marginLeft",
+              "token": "tokens.spacingHorizontalXS",
+              "path": ["marginLeft"]
+            }
+          ],
+          "assignedVariables": ["menuIconStyles"]
+        }
+      }
+    },
+    "metadata": {
+      "styleConditions": {
+        "menuButtonClassNames.root": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "state.root.className": {
+          "isBase": true,
+          "slotName": "root"
+        },
+        "rootExpandedStyles.base": {
+          "conditions": ["state.root['aria-expanded']"],
+          "slotName": "root"
+        },
+        "menuButtonClassNames.icon": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "state.icon.className": {
+          "isBase": true,
+          "slotName": "icon"
+        },
+        "iconExpandedStyles.highContrast": {
+          "conditions": ["state.root['aria-expanded'] && iconExpandedStyles[state.appearance]"],
+          "slotName": "icon"
+        },
+        "menuButtonClassNames.menuIcon": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "menuIconStyles.base": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "state.menuIcon.className": {
+          "isBase": true,
+          "slotName": "menuIcon"
+        },
+        "menuIconStyles.notIconOnly": {
+          "conditions": ["!state.iconOnly"],
+          "slotName": "menuIcon"
+        }
+      }
+    }
+  },
   "library/src/components/SplitButton/useSplitButtonStyles.styles.ts": {
     "styles": {
       "useFocusStyles": {},
@@ -1549,9 +1587,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "subtle": {
           "tokens": [],
@@ -1584,9 +1620,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "transparent": {
           "tokens": [],
@@ -1619,9 +1653,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         },
         "disabled": {
           "tokens": [],
@@ -1654,9 +1686,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootStyles"
-          ]
+          "assignedVariables": ["rootStyles"]
         }
       }
     },
@@ -1675,15 +1705,11 @@
           "slotName": "root"
         },
         "rootStyles.disabled": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "rootStyles.disabledHighContrast": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "splitButtonClassNames.menuButton": {
@@ -1721,16 +1747,32 @@
             {
               "property": "backgroundColor",
               "token": "tokens.colorNeutralBackground1Selected",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderLeftColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground1Selected",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -1739,6 +1781,26 @@
                 {
                   "property": "backgroundColor",
                   "token": "tokens.colorNeutralBackground1Hover",
+                  "path": []
+                },
+                {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStroke1Hover",
                   "path": []
                 },
                 {
@@ -1756,6 +1818,26 @@
                   "path": []
                 },
                 {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStroke1Pressed",
+                  "path": []
+                },
+                {
                   "property": "color",
                   "token": "tokens.colorNeutralForeground1Pressed",
                   "path": []
@@ -1763,18 +1845,34 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootCheckedStyles"
-          ]
+          "assignedVariables": ["rootCheckedStyles"]
         },
         "outline": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStroke1",
+              "path": ["borderLeftColor"]
             }
           ],
           "nested": {
@@ -1797,25 +1895,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootCheckedStyles"
-          ]
+          "assignedVariables": ["rootCheckedStyles"]
         },
         "primary": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorBrandBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForegroundOnBrand",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -1848,25 +1940,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootCheckedStyles"
-          ]
+          "assignedVariables": ["rootCheckedStyles"]
         },
         "subtle": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorSubtleBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2Selected",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -1899,25 +1985,19 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootCheckedStyles"
-          ]
+          "assignedVariables": ["rootCheckedStyles"]
         },
         "transparent": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackgroundSelected",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2BrandSelected",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -1950,9 +2030,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootCheckedStyles"
-          ]
+          "assignedVariables": ["rootCheckedStyles"]
         }
       },
       "useRootDisabledStyles": {
@@ -1961,16 +2039,32 @@
             {
               "property": "backgroundColor",
               "token": "tokens.colorNeutralBackgroundDisabled",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
+            },
+            {
+              "property": "borderTopColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderTopColor"]
+            },
+            {
+              "property": "borderRightColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderRightColor"]
+            },
+            {
+              "property": "borderBottomColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderBottomColor"]
+            },
+            {
+              "property": "borderLeftColor",
+              "token": "tokens.colorNeutralStrokeDisabled",
+              "path": ["borderLeftColor"]
             },
             {
               "property": "color",
               "token": "tokens.colorNeutralForegroundDisabled",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
           "nested": {
@@ -1979,6 +2073,26 @@
                 {
                   "property": "backgroundColor",
                   "token": "tokens.colorNeutralBackgroundDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
                   "path": []
                 },
                 {
@@ -1996,6 +2110,26 @@
                   "path": []
                 },
                 {
+                  "property": "borderTopColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderRightColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderBottomColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
+                  "property": "borderLeftColor",
+                  "token": "tokens.colorNeutralStrokeDisabled",
+                  "path": []
+                },
+                {
                   "property": "color",
                   "token": "tokens.colorNeutralForegroundDisabled",
                   "path": []
@@ -2003,18 +2137,14 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         },
         "subtle": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -2037,18 +2167,14 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         },
         "transparent": {
           "tokens": [
             {
               "property": "backgroundColor",
               "token": "tokens.colorTransparentBackground",
-              "path": [
-                "backgroundColor"
-              ]
+              "path": ["backgroundColor"]
             }
           ],
           "nested": {
@@ -2071,9 +2197,7 @@
               ]
             }
           },
-          "assignedVariables": [
-            "rootDisabledStyles"
-          ]
+          "assignedVariables": ["rootDisabledStyles"]
         }
       },
       "useIconCheckedStyles": {
@@ -2082,14 +2206,10 @@
             {
               "property": "color",
               "token": "tokens.colorNeutralForeground2BrandSelected",
-              "path": [
-                "color"
-              ]
+              "path": ["color"]
             }
           ],
-          "assignedVariables": [
-            "iconCheckedStyles"
-          ]
+          "assignedVariables": ["iconCheckedStyles"]
         }
       },
       "usePrimaryHighContrastStyles": {}
@@ -2105,33 +2225,23 @@
           "slotName": "root"
         },
         "primaryHighContrastStyles.base": {
-          "conditions": [
-            "appearance === 'primary'"
-          ],
+          "conditions": ["appearance === 'primary'"],
           "slotName": "root"
         },
         "primaryHighContrastStyles.disabled": {
-          "conditions": [
-            "appearance === 'primary' && (disabled || disabledFocusable)"
-          ],
+          "conditions": ["appearance === 'primary' && (disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "rootCheckedStyles.base": {
-          "conditions": [
-            "checked"
-          ],
+          "conditions": ["checked"],
           "slotName": "root"
         },
         "rootCheckedStyles.highContrast": {
-          "conditions": [
-            "checked"
-          ],
+          "conditions": ["checked"],
           "slotName": "root"
         },
         "rootDisabledStyles.base": {
-          "conditions": [
-            "(disabled || disabledFocusable)"
-          ],
+          "conditions": ["(disabled || disabledFocusable)"],
           "slotName": "root"
         },
         "toggleButtonClassNames.icon": {
@@ -2147,9 +2257,7 @@
           "slotName": "icon"
         },
         "iconCheckedStyles.subtleOrTransparent": {
-          "conditions": [
-            "checked && (appearance === 'subtle' || appearance === 'transparent')"
-          ],
+          "conditions": ["checked && (appearance === 'subtle' || appearance === 'transparent')"],
           "slotName": "icon"
         }
       }
