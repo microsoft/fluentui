@@ -1,0 +1,16 @@
+import type { Meta } from '@storybook/react';
+
+// import descriptionMd from './AriaLiveAnnouncerDescription.md';
+
+export { Default } from './useTypingAnnounceDefault.stories';
+
+export default {
+  title: 'Utilities/ARIA live/useTypingAnnounce',
+  parameters: {
+    docs: {
+      description: {
+        // component: [descriptionMd].join('\n'),
+      },
+    },
+  },
+} as Meta;
