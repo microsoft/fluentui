@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
-    "lint": "eslint --ext .js,.ts,.tsx ./src",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",

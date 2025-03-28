@@ -11,6 +11,8 @@ if (hasProjectStories(storiesPath)) {
   files.push(storiesPath);
 }
 
+process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+
 export const eslint = eslintTask({
   // TODO: also lint config files?
   files,
