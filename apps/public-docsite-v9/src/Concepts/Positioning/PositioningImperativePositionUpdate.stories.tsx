@@ -21,7 +21,7 @@ export const ImperativePositionUpdate = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [value, setValue] = React.useState(0);
 
-  const onChange: SliderProps['onChange'] = React.useCallback((e, data) => {
+  const onChange: NonNullable<SliderProps['onChange']> = React.useCallback((_, data) => {
     setValue(data.value);
   }, []);
 

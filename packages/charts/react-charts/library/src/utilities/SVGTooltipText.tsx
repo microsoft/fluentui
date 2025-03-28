@@ -87,7 +87,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   );
 
   const onTooltipMouseLeave = useCallback(
-    (ev: React.MouseEvent<SVGElement>) => {
+    (_: React.MouseEvent<SVGElement>) => {
       async.clearTimeout(dismissTimerId.current!);
       async.clearTimeout(openTimerId.current!);
 

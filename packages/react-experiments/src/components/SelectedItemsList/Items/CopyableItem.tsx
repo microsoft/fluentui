@@ -17,7 +17,7 @@ export const CopyableItem = <T extends any>(
 ): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
     const onCopy = React.useCallback(
-      item => {
+      (item: T) => {
         const copyText = copyableItemProps.getCopyItemText([item]);
         const copyInput = document.createElement('input') as HTMLInputElement;
         document.body.appendChild(copyInput);
@@ -47,6 +47,6 @@ export const CopyableItem = <T extends any>(
     );
 
     const ItemComponent = copyableItemProps.itemComponent;
-    return <ItemComponent {...selectedItemProps} onCopy={onCopy} />;
+    return <ItemComponent {...selectedItemProps} onCopy={onCopy as React.ClipboardEventHandler<HTMLElement>} />;
   });
 };
