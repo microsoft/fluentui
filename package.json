@@ -94,7 +94,7 @@
     "@storybook/addon-actions": "7.6.20",
     "@storybook/addon-docs": "7.6.20",
     "@storybook/addon-essentials": "7.6.20",
-    "@storybook/addon-links": "7.6.20",
+    "@storybook/addon-links": "8.1.11",
     "@storybook/addon-mdx-gfm": "7.6.20",
     "@storybook/components": "7.6.20",
     "@storybook/core-events": "7.6.20",
