@@ -1,7 +1,7 @@
-name: VRT CI | Comment on PR
+name: VRT | Comment on PR
 on:
   workflow_run:
-    workflows: ['VRT CI']
+    workflows: ['VRT PR']
     types:
       - completed
 
@@ -14,8 +14,6 @@ jobs:
   run_vr_diff:
     runs-on: ubuntu-latest
     if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
-    outputs:
-      pr_number: ${{ steps.pr_number.outputs.result }}
     permissions:
       # necessary to write comments to the PR from the vr-approval-cli
       pull-requests: write
@@ -29,7 +27,7 @@ jobs:
             .github
 
       # downloaded artifacts will contain screenshots from affected project including 'screenshots-report.json' which contains proper image mappings for affected project
-      # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#43}
+      # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#45}
       # - see @{link file://./pr-vrt.yml#56}
 
       - uses: actions/download-artifact@v4
@@ -39,7 +37,19 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check if visual regression should be run (affected projects)
+        uses: actions/github-script@v7
+        id: should_run_vrt
+        with:
+          script: |
+            const { readFileSync } = require('node:fs');
+            const json = JSON.parse(readFileSync('screenshots/screenshots-report.json','utf-8'));
+            const result = Object.keys(json).length > 0 ? true : false;
+            return result;
+          result-encoding: string
+
       - name: Login via Azure CLI
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
         uses: azure/login@a65d910e8af852a8061c627c456678983e180302 # v2.2.0
         with:
           client-id: ${{ secrets.AZURE_VRT_CLIENT_ID }}
@@ -47,6 +57,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - uses: actions/download-artifact@v4
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
         with:
           name: pr-number
           path: ./results
@@ -54,8 +65,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run VR Approval CLI
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
         uses: actions/github-script@v7
         env:
+          # this is explicity needed as github token is not available in CLI context
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         with:
