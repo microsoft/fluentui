@@ -15,7 +15,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
+    "lint": "just-scripts lint",
     "test": "just-scripts test",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

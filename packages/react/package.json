@@ -24,7 +24,7 @@
     "e2e": "yarn nx run react-examples:e2e --verbose",
     "e2e:local": "yarn nx run react-examples:e2e:local",
     "just": "just-scripts",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
+    "lint": "just-scripts lint",
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start-test": "just-scripts jest-watch",

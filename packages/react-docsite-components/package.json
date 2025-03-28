@@ -15,7 +15,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false just-scripts lint",
+    "lint": "just-scripts lint",
     "start": "just-scripts dev",
     "test": "just-scripts test"
   },
