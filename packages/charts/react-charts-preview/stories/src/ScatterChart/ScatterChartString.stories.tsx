@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScatterChart, DataVizPalette, getColorFromToken, ChartProps } from '@fluentui/react-charts-preview';
 import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
-export const ScatterChartDefault = () => {
+export const ScatterChartString = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
@@ -25,107 +25,81 @@ export const ScatterChartDefault = () => {
     chartTitle: 'Line Chart Basic Example',
     lineChartData: [
       {
-        legend: 'From_Legacy_to_O365',
+        legend: 'Series 1',
         data: [
           {
-            x: 20,
-            y: 216000,
+            x: 'Cat S1.1',
+            y: 216,
             markerSize: 10,
           },
           {
-            x: 40,
-            y: 218123,
-            markerSize: 20,
+            x: 'Cat S1.2',
+            y: 181,
+            markerSize: 40,
           },
           {
-            x: 50,
-            y: 217124,
+            x: 'Cat S1.3',
+            y: 124,
             markerSize: 8,
           },
           {
-            x: 60,
-            y: 248000,
+            x: 'Cat S1.4',
+            y: 248,
             markerSize: 15,
           },
           {
-            x: 80,
-            y: 252000,
+            x: 'Cat S2.2',
+            y: 52,
             markerSize: 13,
           },
           {
-            x: 95,
-            y: 274000,
-            markerSize: 19,
-          },
-          {
-            x: 105,
-            y: 260000,
-            markerSize: 23,
-          },
-          {
-            x: 130,
-            y: 304000,
-            markerSize: 14,
-          },
-          {
-            x: 150,
-            y: 218000,
+            x: 'Cat S2.3',
+            y: 740,
             markerSize: 19,
           },
         ],
         color: DataVizPalette.color3,
       },
       {
-        legend: 'All',
+        legend: 'Series 2',
         data: [
           {
-            x: 30,
-            y: 297000,
-            markerSize: 10,
+            x: 'Cat S2.1',
+            y: 97,
+            markerSize: 20,
           },
           {
-            x: 40,
-            y: 284000,
+            x: 'Cat S2.2',
+            y: 284,
+            markerSize: 17,
+          },
+          {
+            x: 'Cat S1.3',
+            y: 182,
+            markerSize: 11,
+          },
+          {
+            x: 'Cat S2.3',
+            y: 94,
+            markerSize: 60,
+          },
+          {
+            x: 'Cat S1.5',
+            y: 154,
             markerSize: 4,
           },
           {
-            x: 60,
-            y: 282000,
-            markerSize: 8,
-          },
-          {
-            x: 80,
-            y: 294000,
+            x: 'Cat S1.6',
+            y: 30,
             markerSize: 12,
           },
           {
-            x: 90,
-            y: 224000,
-            markerSize: 18,
-          },
-          {
-            x: 100,
-            y: 300000,
-            markerSize: 6,
-          },
-          {
-            x: 130,
-            y: 298000,
-            markerSize: 10,
+            x: 'Cat S1.7',
+            y: 498,
+            markerSize: 29,
           },
         ],
         color: DataVizPalette.color4,
-      },
-      {
-        legend: 'single point',
-        data: [
-          {
-            x: 50,
-            y: 232000,
-            markerSize: 10,
-          },
-        ],
-        color: DataVizPalette.color5,
       },
     ],
   };
@@ -174,7 +148,7 @@ export const ScatterChartDefault = () => {
     </>
   );
 };
-ScatterChartDefault.parameters = {
+ScatterChartString.parameters = {
   docs: {
     description: {},
   },

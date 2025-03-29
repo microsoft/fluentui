@@ -56,6 +56,7 @@ export enum ChartTypes {
   GroupedVerticalBarChart,
   HeatMapChart,
   HorizontalBarChartWithAxis,
+  ScatterChart,
 }
 
 export enum XAxisTypes {
@@ -456,7 +457,7 @@ export function createYAxis(
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, chartType, useSecondaryYScale);
   }
 }
 
@@ -503,6 +504,7 @@ export function createYAxisForOtherCharts(
   isRtl: boolean,
   axisData: IAxisData,
   isIntegralDataset: boolean,
+  chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
 ) {
   const {
@@ -526,8 +528,15 @@ export function createYAxisForOtherCharts(
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  let yMin = finalYmin;
+  let yMax = domainValues[domainValues.length - 1];
+  if (chartType === ChartTypes.ScatterChart) {
+    const yPadding = (yMax - yMin) * 0.1;
+    yMin = yMin - yPadding;
+    yMax = yMax + yPadding;
+  }
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, domainValues[domainValues.length - 1]])
+    .domain([yMin, yMax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
@@ -1021,6 +1030,43 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Calculates Domain and range values for Numeric X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfNumericForScatterChart(
+  points: LineChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+): IDomainNRange {
+  let xMin = d3Min(points, (point: LineChartPoints) => {
+    return d3Min(point.data, (item: LineChartDataPoint) => item.x as number)!;
+  })!;
+
+  let xMax = d3Max(points, (point: LineChartPoints) => {
+    return d3Max(point.data, (item: LineChartDataPoint) => {
+      return item.x as number;
+    });
+  })!;
+
+  const xPadding = (xMax - xMin) * 0.1;
+  xMin = xMin - xPadding;
+  xMax = xMax + xPadding;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1146,6 +1192,57 @@ export function domainRangeOfDateForAreaLineVerticalBarChart(
     ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
     : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
 }
+
+/**
+ * Calculates Domain and range values for Date X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfDateForScatterChart(
+  points: LineChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  tickValues: Date[] = [],
+): IDomainNRange {
+  let sDate: Date;
+  let lDate: Date;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sDate = d3Min(points, (point: any) => {
+    return d3Min(point.data, (item: LineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  lDate = d3Max(points, (point: any) => {
+    return d3Max(point.data, (item: LineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+
+  const xPadding = (lDate.getTime() - sDate.getTime()) * 0.1;
+  sDate = new Date(sDate.getTime() - xPadding);
+  lDate = new Date(lDate.getTime() + xPadding);
+  // Need to draw graph with given small and large date
+  // (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  sDate = d3Min([...tickValues, sDate])!;
+  lDate = d3Max([...tickValues, lDate])!;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
+    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+}
+
 /**
  * Calculate domain and range values to the Vertical bar chart - For Numeric axis
  * @export
@@ -1215,6 +1312,9 @@ export function getDomainNRangeValues(
       case ChartTypes.HorizontalBarChartWithAxis:
         domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
         break;
+      case ChartTypes.ScatterChart:
+        domainNRangeValue = domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+        break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -1234,6 +1334,9 @@ export function getDomainNRangeValues(
           barWidth,
         );
         break;
+      case ChartTypes.ScatterChart:
+        domainNRangeValue = domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+        break;
       default:
         domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -1244,6 +1347,7 @@ export function getDomainNRangeValues(
       case ChartTypes.GroupedVerticalBarChart:
       case ChartTypes.VerticalBarChart:
       case ChartTypes.HeatMapChart:
+      case ChartTypes.ScatterChart:
         domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
         break;
       default:
@@ -1361,6 +1465,7 @@ export function getMinMaxOfYAxis(
   switch (chartType) {
     case ChartTypes.AreaChart:
     case ChartTypes.LineChart:
+    case ChartTypes.ScatterChart:
       minMaxValues = findNumericMinMaxOfY(points);
       break;
     case ChartTypes.VerticalStackedBarChart:

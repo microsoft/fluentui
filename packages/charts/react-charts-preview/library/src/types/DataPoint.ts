@@ -286,7 +286,7 @@ export interface LineChartDataPoint {
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
    * If data type on x is Date, then the data is spaced evenly by d3-scale
    */
-  x: number | Date;
+  x: number | Date | string;
 
   /**
    * Dependent value of the data point, rendered along the y-axis.
@@ -322,6 +322,11 @@ export interface LineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**

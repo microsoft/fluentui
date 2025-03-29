@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScatterChart, DataVizPalette, getColorFromToken, ChartProps } from '@fluentui/react-charts-preview';
 import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
-export const ScatterChartDefault = () => {
+export const ScatterChartDate = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
@@ -28,88 +28,89 @@ export const ScatterChartDefault = () => {
         legend: 'From_Legacy_to_O365',
         data: [
           {
-            x: 20,
+            x: new Date('2020-03-03T00:00:00.000Z'),
             y: 216000,
             markerSize: 10,
           },
           {
-            x: 40,
+            x: new Date('2020-03-03T10:00:00.000Z'),
             y: 218123,
-            markerSize: 20,
+            markerSize: 33,
           },
           {
-            x: 50,
+            x: new Date('2020-03-03T11:00:00.000Z'),
             y: 217124,
-            markerSize: 8,
+            markerSize: 11,
           },
           {
-            x: 60,
+            x: new Date('2020-03-04T00:00:00.000Z'),
             y: 248000,
-            markerSize: 15,
-          },
-          {
-            x: 80,
-            y: 252000,
             markerSize: 13,
           },
           {
-            x: 95,
+            x: new Date('2020-03-05T00:00:00.000Z'),
+            y: 252000,
+            markerSize: 5,
+          },
+          {
+            x: new Date('2020-03-06T00:00:00.000Z'),
             y: 274000,
-            markerSize: 19,
+            markerSize: 17,
           },
           {
-            x: 105,
+            x: new Date('2020-03-07T00:00:00.000Z'),
             y: 260000,
-            markerSize: 23,
+            markerSize: 20,
           },
           {
-            x: 130,
+            x: new Date('2020-03-08T00:00:00.000Z'),
             y: 304000,
-            markerSize: 14,
+            markerSize: 11,
           },
           {
-            x: 150,
+            x: new Date('2020-03-09T00:00:00.000Z'),
             y: 218000,
-            markerSize: 19,
+            markerSize: 29,
           },
         ],
         color: DataVizPalette.color3,
+        onLineClick: () => console.log('From_Legacy_to_O365'),
       },
       {
         legend: 'All',
         data: [
           {
-            x: 30,
+            x: new Date('2020-03-03T00:00:00.000Z'),
             y: 297000,
             markerSize: 10,
           },
           {
-            x: 40,
+            x: new Date('2020-03-04T00:00:00.000Z'),
             y: 284000,
-            markerSize: 4,
+            markerSize: 20,
           },
           {
-            x: 60,
+            x: new Date('2020-03-05T00:00:00.000Z'),
             y: 282000,
             markerSize: 8,
           },
           {
-            x: 80,
+            x: new Date('2020-03-06T00:00:00.000Z'),
             y: 294000,
-            markerSize: 12,
+            markerSize: 15,
           },
           {
-            x: 90,
+            x: new Date('2020-03-07T00:00:00.000Z'),
             y: 224000,
-            markerSize: 18,
+            markerSize: 4,
           },
           {
-            x: 100,
+            x: new Date('2020-03-08T00:00:00.000Z'),
             y: 300000,
-            markerSize: 6,
+            markerSize: 8,
           },
           {
-            x: 130,
+            x: new Date('2020-03-09T00:00:00.000Z'),
             y: 298000,
             markerSize: 10,
           },
@@ -120,9 +121,9 @@ export const ScatterChartDefault = () => {
         legend: 'single point',
         data: [
           {
-            x: 50,
+            x: new Date('2020-03-05T12:00:00.000Z'),
             y: 232000,
-            markerSize: 10,
+            markerSize: 30,
           },
         ],
         color: DataVizPalette.color5,
@@ -174,7 +175,7 @@ export const ScatterChartDefault = () => {
     </>
   );
 };
-ScatterChartDefault.parameters = {
+ScatterChartDate.parameters = {
   docs: {
     description: {},
   },

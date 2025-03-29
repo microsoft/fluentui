@@ -6,6 +6,7 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { Legend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
 import { find } from '../../utilities/index';
 import {
@@ -74,6 +75,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _staticHighlightCircle: string = useId('staticHighlightCircle');
   let _firstRenderOptimization = true;
   let _emptyChartId: string = useId('_LineChart_empty');
+  let _xAxisLabels: string[] = [];
   const _isRTL: boolean = useRtl();
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
 
@@ -90,6 +92,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+
+  const _xAxisType: XAxisTypes =
+    props.data.lineChartData! &&
+    props.data.lineChartData!.length > 0 &&
+    props.data.lineChartData![0].data &&
+    props.data.lineChartData![0].data.length > 0
+      ? (getTypeOfAxis(props.data.lineChartData![0].data[0].x, true) as XAxisTypes)
+      : XAxisTypes.StringAxis;
 
   const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
   const calloutPointsRef = React.useRef<any[]>([]);
@@ -232,6 +242,48 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     } else {
       _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     }
+
+    const yMax = d3Max(points, (point: LineChartPoints) => {
+      return d3Max(point.data, (item: LineChartDataPoint) => item.y)!;
+    })!;
+    const yMin = d3Min(points, (point: LineChartPoints) => {
+      return d3Min(point.data, (item: LineChartDataPoint) => item.y)!;
+    })!;
+
+    let maxMarkerRange = 40;
+    let xBandwidth = 0;
+    if (_xAxisType === XAxisTypes.DateAxis) {
+      const xMin = d3Min(points, (point: LineChartPoints) => {
+        return d3Min(point.data, (item: LineChartDataPoint) => item.x as Date)!;
+      })!;
+
+      const xMax = d3Max(points, (point: LineChartPoints) => {
+        return d3Max(point.data, (item: LineChartDataPoint) => {
+          return item.x as Date;
+        });
+      })!;
+
+      const xPadding = (xMax.getTime() - xMin.getTime()) * 0.1;
+      const yPadding = (yMax - yMin) * 0.1;
+      const xPaddingRange = _xAxisScale(new Date(xMin.getTime() + xPadding)) - _xAxisScale(xMin);
+      const yPaddingRange = Math.abs(_yAxisScale(yMin + yPadding) - _yAxisScale(yMin));
+      maxMarkerRange = Math.min(maxMarkerRange, Math.min(xPaddingRange, yPaddingRange));
+    } else if (_xAxisType === XAxisTypes.StringAxis) {
+      xBandwidth = _xAxisScale.bandwidth() / 2;
+      if (_xAxisLabels.length > 1) {
+        const yPadding = (yMax - yMin) * 0.1;
+        const xPaddingRange = xBandwidth;
+        const yPaddingRange = Math.abs(_yAxisScale(yMin + yPadding) - _yAxisScale(yMin));
+        maxMarkerRange = Math.min(maxMarkerRange, Math.min(xPaddingRange, yPaddingRange));
+      }
+    }
+
+    const maxMarkerSize = d3Max(_points, (point: LineChartPoints) => {
+      return d3Max(point.data, (item: LineChartDataPoint) => {
+        return item.markerSize as number;
+      });
+    })!;
+
     for (let i = _points.length - 1; i >= 0; i--) {
       const pointsForLine: JSX.Element[] = [];
 
@@ -248,7 +300,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             id={circleId}
             key={circleId}
             r={activePoint === circleId ? 5.5 : 3.5}
-            cx={_xAxisScale(x1)}
+            cx={_xAxisScale(x1) + xBandwidth}
             cy={_yAxisScale(y1)}
             fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
             opacity={isLegendSelected ? 1 : 0.1}
@@ -293,8 +345,8 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
           <circle
             id={circleId}
             key={circleId}
-            r={50}
-            cx={_xAxisScale(x)}
+            r={_points[i].data[j].markerSize ? (_points[i].data[j].markerSize! * maxMarkerRange) / maxMarkerSize : 3.5}
+            cx={_xAxisScale(x) + xBandwidth}
             cy={_yAxisScale(y)}
             data-is-focusable={isLegendSelected}
             onMouseOver={(event: React.MouseEvent<SVGElement>) =>
@@ -548,7 +600,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const { legendProps, tickValues, tickFormat } = props;
   _points = _injectIndexPropertyInLineChartData(props.data.lineChartData);
 
-  const isXAxisDateType = getXAxisType(_points);
   let points = _points;
   if (legendProps && !!legendProps.canSelectMultipleLegends) {
     points = selectedLegendPoints.length >= 1 ? selectedLegendPoints : _points;
@@ -583,20 +634,27 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     tickFormat,
   };
 
+  const xAxisLabels: string[] = _points
+    .map((point: LineChartDataWithIndex) => point.data.map((dp: LineChartDataPoint) => dp.x as string))
+    .flat();
+
+  _xAxisLabels = [...new Set(xAxisLabels)];
+
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
       chartTitle={props.data.chartTitle}
       points={points}
-      chartType={ChartTypes.LineChart}
+      chartType={ChartTypes.ScatterChart}
       calloutProps={calloutProps}
       tickParams={tickParams}
       legendBars={legendBars}
       getmargins={_getMargins}
       getGraphData={_initializeLineChartData}
-      xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+      xAxisType={_xAxisType}
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={true && _firstRenderOptimization}
+      datasetForXAxisDomain={_xAxisLabels}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
