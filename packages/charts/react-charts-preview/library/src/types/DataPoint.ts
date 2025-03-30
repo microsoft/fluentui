@@ -286,6 +286,54 @@ export interface LineChartDataPoint {
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
    * If data type on x is Date, then the data is spaced evenly by d3-scale
    */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface ScatterChartDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
   x: number | Date | string;
 
   /**
@@ -403,7 +451,7 @@ export interface LineChartPoints {
   /**
    * dataPoints for the line chart
    */
-  data: LineChartDataPoint[];
+  data: LineChartDataPoint[] | ScatterChartDataPoint[];
 
   /**
    * gaps in the line chart where a line is not drawn

@@ -413,7 +413,12 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         const verticaLineHeight = containerHeight - margins.bottom! + 6;
         if (_points[i].data.length === 1) {
           // eslint-disable-next-line @typescript-eslint/no-shadow
-          const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points[i].data[0];
+          const {
+            x: x1,
+            y: y1,
+            xAxisCalloutData,
+            xAxisCalloutAccessibilityData,
+          } = _points[i].data[0] as LineChartDataPoint;
           const circleId = `${_circleId}_${i}`;
           const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
           pointsForLine.push(
@@ -570,8 +575,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
             const lineId = `${_lineId}_${i}_${j}`;
             const borderId = `${_borderId}_${i}_${j}`;
             const circleId = `${_circleId}_${i}_${j}`;
-            const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points[i].data[j - 1];
-            const { x: x2, y: y2 } = _points[i].data[j];
+            const {
+              x: x1,
+              y: y1,
+              xAxisCalloutData,
+              xAxisCalloutAccessibilityData,
+            } = _points[i].data[j - 1] as LineChartDataPoint;
+            const { x: x2, y: y2 } = _points[i].data[j] as LineChartDataPoint;
             let path = _getPath(_xAxisScale(x1), _yAxisScale(y1), circleId, j, false, _points[i].index);
             const strokeWidth = _points[i].lineOptions?.strokeWidth || props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
 
@@ -975,7 +985,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
         return element.x === modifiedXVal;
       });
-      const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!];
+      const pointToHighlight: LineChartDataPoint = lineChartData![linenumber].data[index!] as LineChartDataPoint;
       const pointToHighlightUpdated =
         nearestCircleToHighlight === null ||
         (nearestCircleToHighlight !== null &&

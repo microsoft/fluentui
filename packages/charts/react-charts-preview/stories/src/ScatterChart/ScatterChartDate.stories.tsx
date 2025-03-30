@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, getColorFromToken, ChartProps } from '@fluentui/react-charts-preview';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts-preview';
 
 export const ScatterChartDate = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
-  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -14,116 +11,100 @@ export const ScatterChartDate = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setHideLabels(checked.checked as boolean);
-  };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
-    setShowAxisTitles(ev.currentTarget.checked);
-  }, []);
 
   const data: ChartProps = {
-    chartTitle: 'Line Chart Basic Example',
+    chartTitle: 'Website Traffic and Sales Performance',
     lineChartData: [
       {
-        legend: 'From_Legacy_to_O365',
+        legend: 'Website Traffic',
         data: [
           {
-            x: new Date('2020-03-03T00:00:00.000Z'),
-            y: 216000,
-            markerSize: 10,
+            x: new Date('2023-03-01T00:00:00.000Z'),
+            y: 5000, // Number of visitors
+            markerSize: 15, // Number of transactions
           },
           {
-            x: new Date('2020-03-03T10:00:00.000Z'),
-            y: 218123,
-            markerSize: 33,
-          },
-          {
-            x: new Date('2020-03-03T11:00:00.000Z'),
-            y: 217124,
-            markerSize: 11,
-          },
-          {
-            x: new Date('2020-03-04T00:00:00.000Z'),
-            y: 248000,
-            markerSize: 13,
-          },
-          {
-            x: new Date('2020-03-05T00:00:00.000Z'),
-            y: 252000,
-            markerSize: 5,
-          },
-          {
-            x: new Date('2020-03-06T00:00:00.000Z'),
-            y: 274000,
-            markerSize: 17,
-          },
-          {
-            x: new Date('2020-03-07T00:00:00.000Z'),
-            y: 260000,
+            x: new Date('2023-03-02T00:00:00.000Z'),
+            y: 7000,
             markerSize: 20,
           },
           {
-            x: new Date('2020-03-08T00:00:00.000Z'),
-            y: 304000,
-            markerSize: 11,
+            x: new Date('2023-03-03T00:00:00.000Z'),
+            y: 6500,
+            markerSize: 18,
           },
           {
-            x: new Date('2020-03-09T00:00:00.000Z'),
-            y: 218000,
-            markerSize: 29,
+            x: new Date('2023-03-04T00:00:00.000Z'),
+            y: 8000,
+            markerSize: 25,
+          },
+          {
+            x: new Date('2023-03-05T00:00:00.000Z'),
+            y: 9000,
+            markerSize: 30,
+          },
+          {
+            x: new Date('2023-03-06T00:00:00.000Z'),
+            y: 8500,
+            markerSize: 28,
+          },
+          {
+            x: new Date('2023-03-07T00:00:00.000Z'),
+            y: 9500,
+            markerSize: 35,
           },
         ],
         color: DataVizPalette.color3,
-        onLineClick: () => console.log('From_Legacy_to_O365'),
+        onLineClick: () => console.log('Website Traffic'),
       },
       {
-        legend: 'All',
+        legend: 'Sales Performance',
         data: [
           {
-            x: new Date('2020-03-03T00:00:00.000Z'),
-            y: 297000,
-            markerSize: 10,
+            x: new Date('2023-03-01T00:00:00.000Z'),
+            y: 2000, // Revenue in dollars
+            markerSize: 10, // Number of transactions
           },
           {
-            x: new Date('2020-03-04T00:00:00.000Z'),
-            y: 284000,
-            markerSize: 20,
-          },
-          {
-            x: new Date('2020-03-05T00:00:00.000Z'),
-            y: 282000,
-            markerSize: 8,
-          },
-          {
-            x: new Date('2020-03-06T00:00:00.000Z'),
-            y: 294000,
+            x: new Date('2023-03-02T00:00:00.000Z'),
+            y: 3000,
             markerSize: 15,
           },
           {
-            x: new Date('2020-03-07T00:00:00.000Z'),
-            y: 224000,
-            markerSize: 4,
+            x: new Date('2023-03-03T00:00:00.000Z'),
+            y: 2500,
+            markerSize: 12,
           },
           {
-            x: new Date('2020-03-08T00:00:00.000Z'),
-            y: 300000,
-            markerSize: 8,
+            x: new Date('2023-03-04T00:00:00.000Z'),
+            y: 4000,
+            markerSize: 20,
           },
           {
-            x: new Date('2020-03-09T00:00:00.000Z'),
-            y: 298000,
-            markerSize: 10,
+            x: new Date('2023-03-05T00:00:00.000Z'),
+            y: 4500,
+            markerSize: 22,
+          },
+          {
+            x: new Date('2023-03-06T00:00:00.000Z'),
+            y: 4200,
+            markerSize: 18,
+          },
+          {
+            x: new Date('2023-03-07T00:00:00.000Z'),
+            y: 5000,
+            markerSize: 25,
           },
         ],
         color: DataVizPalette.color4,
       },
       {
-        legend: 'single point',
+        legend: 'Promotional Campaign',
         data: [
           {
-            x: new Date('2020-03-05T12:00:00.000Z'),
-            y: 232000,
-            markerSize: 30,
+            x: new Date('2023-03-05T12:00:00.000Z'),
+            y: 6000, // Revenue spike due to promotion
+            markerSize: 40, // Number of transactions
           },
         ],
         color: DataVizPalette.color5,
@@ -134,11 +115,7 @@ export const ScatterChartDate = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <text>
-        In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-        So instead of a numeric value, the callout will show the date that is passed in the{' '}
-        <code>xAxisCalloutData</code> property.
-      </text>
+      <text>Scatter chart date x example.</text>
       <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
@@ -160,17 +137,15 @@ export const ScatterChartDate = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <div style={{ marginTop: '10px' }}>
-        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
-      </div>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-        style={{ marginTop: '10px' }}
-      />
       <div style={rootStyle}>
-        <ScatterChart culture={window.navigator.language} data={data} height={height} width={width} />
+        <ScatterChart
+          culture={window.navigator.language}
+          data={data}
+          height={height}
+          width={width}
+          xAxisTitle={'Date'}
+          yAxisTitle={'Number of visitors'}
+        />
       </div>
     </>
   );

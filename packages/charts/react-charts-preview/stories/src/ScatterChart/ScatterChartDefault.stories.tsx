@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, getColorFromToken, ChartProps } from '@fluentui/react-charts-preview';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts-preview';
 
 export const ScatterChartDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
-  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -14,115 +11,79 @@ export const ScatterChartDefault = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setHideLabels(checked.checked as boolean);
-  };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
-    setShowAxisTitles(ev.currentTarget.checked);
-  }, []);
 
   const data: ChartProps = {
-    chartTitle: 'Line Chart Basic Example',
+    chartTitle: 'Project Revenue and Transactions Over Time',
     lineChartData: [
       {
-        legend: 'From_Legacy_to_O365',
+        legend: 'Phase 1',
         data: [
           {
+            x: 10,
+            y: 50000,
+            markerSize: 12, // Number of transactions
+          },
+          {
             x: 20,
-            y: 216000,
-            markerSize: 10,
-          },
-          {
-            x: 40,
-            y: 218123,
-            markerSize: 20,
-          },
-          {
-            x: 50,
-            y: 217124,
-            markerSize: 8,
-          },
-          {
-            x: 60,
-            y: 248000,
+            y: 75000,
             markerSize: 15,
           },
           {
-            x: 80,
-            y: 252000,
-            markerSize: 13,
+            x: 30,
+            y: 90000,
+            markerSize: 18,
           },
           {
-            x: 95,
-            y: 274000,
-            markerSize: 19,
+            x: 40,
+            y: 120000,
+            markerSize: 22,
           },
           {
-            x: 105,
-            y: 260000,
-            markerSize: 23,
-          },
-          {
-            x: 130,
-            y: 304000,
-            markerSize: 14,
-          },
-          {
-            x: 150,
-            y: 218000,
-            markerSize: 19,
+            x: 50,
+            y: 150000,
+            markerSize: 25,
           },
         ],
         color: DataVizPalette.color3,
       },
       {
-        legend: 'All',
+        legend: 'Phase 2',
         data: [
           {
-            x: 30,
-            y: 297000,
-            markerSize: 10,
-          },
-          {
-            x: 40,
-            y: 284000,
-            markerSize: 4,
-          },
-          {
             x: 60,
-            y: 282000,
-            markerSize: 8,
+            y: 180000,
+            markerSize: 28,
+          },
+          {
+            x: 70,
+            y: 200000,
+            markerSize: 30,
           },
           {
             x: 80,
-            y: 294000,
-            markerSize: 12,
+            y: 220000,
+            markerSize: 32,
           },
           {
             x: 90,
-            y: 224000,
-            markerSize: 18,
+            y: 250000,
+            markerSize: 35,
           },
           {
             x: 100,
             y: 300000,
-            markerSize: 6,
-          },
-          {
-            x: 130,
-            y: 298000,
-            markerSize: 10,
+            markerSize: 40,
           },
         ],
         color: DataVizPalette.color4,
       },
       {
-        legend: 'single point',
+        legend: 'Milestone',
         data: [
           {
-            x: 50,
-            y: 232000,
-            markerSize: 10,
+            x: 75,
+            y: 250000,
+            markerSize: 50, // Large number of transactions
           },
         ],
         color: DataVizPalette.color5,
@@ -133,11 +94,7 @@ export const ScatterChartDefault = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <text>
-        In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-        So instead of a numeric value, the callout will show the date that is passed in the{' '}
-        <code>xAxisCalloutData</code> property.
-      </text>
+      <text>Scatter chart numeric x example.</text>
       <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
@@ -159,17 +116,15 @@ export const ScatterChartDefault = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <div style={{ marginTop: '10px' }}>
-        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
-      </div>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-        style={{ marginTop: '10px' }}
-      />
       <div style={rootStyle}>
-        <ScatterChart culture={window.navigator.language} data={data} height={height} width={width} />
+        <ScatterChart
+          culture={window.navigator.language}
+          data={data}
+          height={height}
+          width={width}
+          xAxisTitle={'Days since project start'}
+          yAxisTitle={'Revenue in dollars'}
+        />
       </div>
     </>
   );

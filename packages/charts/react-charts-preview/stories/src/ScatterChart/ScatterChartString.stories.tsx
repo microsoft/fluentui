@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, getColorFromToken, ChartProps } from '@fluentui/react-charts-preview';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts-preview';
 
 export const ScatterChartString = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
-  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -14,89 +11,68 @@ export const ScatterChartString = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setHideLabels(checked.checked as boolean);
-  };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
-    setShowAxisTitles(ev.currentTarget.checked);
-  }, []);
 
   const data: ChartProps = {
-    chartTitle: 'Line Chart Basic Example',
+    chartTitle: 'Sales Performance by Category',
     lineChartData: [
       {
-        legend: 'Series 1',
+        legend: 'Region 1',
         data: [
           {
-            x: 'Cat S1.1',
-            y: 216,
-            markerSize: 10,
+            x: 'Electronics',
+            y: 50000, // Revenue in dollars
+            markerSize: 25, // Units sold
           },
           {
-            x: 'Cat S1.2',
-            y: 181,
-            markerSize: 40,
+            x: 'Furniture',
+            y: 30000,
+            markerSize: 20,
           },
           {
-            x: 'Cat S1.3',
-            y: 124,
-            markerSize: 8,
-          },
-          {
-            x: 'Cat S1.4',
-            y: 248,
+            x: 'Clothing',
+            y: 20000,
             markerSize: 15,
           },
           {
-            x: 'Cat S2.2',
-            y: 52,
-            markerSize: 13,
+            x: 'Toys',
+            y: 15000,
+            markerSize: 10,
           },
           {
-            x: 'Cat S2.3',
-            y: 740,
-            markerSize: 19,
+            x: 'Books',
+            y: 10000,
+            markerSize: 8,
           },
         ],
         color: DataVizPalette.color3,
       },
       {
-        legend: 'Series 2',
+        legend: 'Region 2',
         data: [
           {
-            x: 'Cat S2.1',
-            y: 97,
-            markerSize: 20,
+            x: 'Electronics',
+            y: 60000,
+            markerSize: 30,
           },
           {
-            x: 'Cat S2.2',
-            y: 284,
-            markerSize: 17,
+            x: 'Furniture',
+            y: 25000,
+            markerSize: 18,
           },
           {
-            x: 'Cat S1.3',
-            y: 182,
-            markerSize: 11,
+            x: 'Clothing',
+            y: 22000,
+            markerSize: 16,
           },
           {
-            x: 'Cat S2.3',
-            y: 94,
-            markerSize: 60,
-          },
-          {
-            x: 'Cat S1.5',
-            y: 154,
-            markerSize: 4,
-          },
-          {
-            x: 'Cat S1.6',
-            y: 30,
+            x: 'Toys',
+            y: 12000,
             markerSize: 12,
           },
           {
-            x: 'Cat S1.7',
-            y: 498,
-            markerSize: 29,
+            x: 'Books',
+            y: 8000,
+            markerSize: 6,
           },
         ],
         color: DataVizPalette.color4,
@@ -107,11 +83,7 @@ export const ScatterChartString = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <text>
-        In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-        So instead of a numeric value, the callout will show the date that is passed in the{' '}
-        <code>xAxisCalloutData</code> property.
-      </text>
+      <text>Scatter chart string x example.</text>
       <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
@@ -133,17 +105,15 @@ export const ScatterChartString = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <div style={{ marginTop: '10px' }}>
-        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
-      </div>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-        style={{ marginTop: '10px' }}
-      />
       <div style={rootStyle}>
-        <ScatterChart culture={window.navigator.language} data={data} height={height} width={width} />
+        <ScatterChart
+          culture={window.navigator.language}
+          data={data}
+          height={height}
+          width={width}
+          xAxisTitle={'Product Category'}
+          yAxisTitle={'Revenue in dollars'}
+        />
       </div>
     </>
   );

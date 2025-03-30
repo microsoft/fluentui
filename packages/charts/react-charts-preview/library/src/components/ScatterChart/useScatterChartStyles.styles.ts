@@ -6,7 +6,7 @@ import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 /**
  * @internal
  */
-export const linechartClassNames: SlotClassNames<LineChartStyles> = {
+export const scatterChartClassNames: SlotClassNames<LineChartStyles> = {
   tooltip: 'fui-line__tooltip',
   root: 'fui-line__root',
   xAxis: 'fui-line__xAxis',
@@ -50,9 +50,9 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useLineChartStyles_unstable = (props: LineChartProps): LineChartStyles => {
+export const useScatterChartStyles_unstable = (props: LineChartProps): LineChartStyles => {
   const baseStyles = useStyles();
   return {
-    tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
+    tooltip: mergeClasses(scatterChartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
   };
 };
