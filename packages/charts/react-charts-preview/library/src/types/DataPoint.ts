@@ -280,19 +280,7 @@ export interface LineDataInVerticalBarChart {
 /**
  * {@docCategory ChartData}
  */
-export interface LineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+interface BaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -326,13 +314,26 @@ export interface LineChartDataPoint {
 
 /**
  * {@docCategory ChartData}
- * ScatterChartDataPoint interface.
  */
-export interface ScatterChartDataPoint {
+export interface LineChartDataPoint extends BaseDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory ChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface ScatterChartDataPoint extends BaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
    */
   x: number | Date | string;
 
@@ -340,36 +341,6 @@ export interface ScatterChartDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
-
-  /**
-   * Defines the function that is executed on clicking  line
-   */
-  onDataPointClick?: () => void;
-
-  /**
-   * Callout data for x axis
-   */
-  xAxisCalloutData?: string;
-
-  /**
-   * Callout data for y axis
-   */
-  yAxisCalloutData?: string | { [id: string]: number };
-
-  /**
-   * Whether to hide callout data for the point.
-   */
-  hideCallout?: boolean;
-
-  /**
-   * Accessibility data for callout
-   */
-  callOutAccessibilityData?: AccessibilityProps;
-
-  /**
-   * X axis Accessibility data for callout
-   */
-  xAxisCalloutAccessibilityData?: AccessibilityProps;
 
   /**
    * Marker size of the points
