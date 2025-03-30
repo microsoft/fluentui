@@ -1,12 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { LineChartProps, LineChartStyles } from './ScatterChart.types';
+import { ScatterChartProps, ScatterChartStyles } from './ScatterChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 
 /**
  * @internal
  */
-export const scatterChartClassNames: SlotClassNames<LineChartStyles> = {
+export const scatterChartClassNames: SlotClassNames<ScatterChartStyles> = {
   tooltip: 'fui-line__tooltip',
   root: 'fui-line__root',
   xAxis: 'fui-line__xAxis',
@@ -50,7 +50,7 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the Carousel slots based on the state
  */
-export const useScatterChartStyles_unstable = (props: LineChartProps): LineChartStyles => {
+export const useScatterChartStyles_unstable = (props: ScatterChartProps): ScatterChartStyles => {
   const baseStyles = useStyles();
   return {
     tooltip: mergeClasses(scatterChartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),

@@ -30,7 +30,7 @@ export interface ScatterChartProps extends CartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: LineChartStyles;
+  styles?: ScatterChartStyles;
 
   /**
    * Define a custom callout renderer for a data point
@@ -49,13 +49,13 @@ export interface ScatterChartProps extends CartesianChartProps {
 }
 
 /**
- * Line Chart styles
- * {@docCategory LineChart}
+ * Scatter Chart styles
+ * {@docCategory ScatterChart}
  */
-export interface LineChartStyles extends CartesianChartStyles {}
+export interface ScatterChartStyles extends CartesianChartStyles {}
 
 /**
- * Line Chart style properties
- * {@docCategory LineChart}
+ * Scatter Chart style properties
+ * {@docCategory ScatterChart}
  */
-export interface LineChartStyleProps extends CartesianChartStyleProps {}
+export interface ScatterChartStyleProps extends CartesianChartStyleProps {}

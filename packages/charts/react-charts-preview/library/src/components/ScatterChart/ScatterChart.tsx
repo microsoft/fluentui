@@ -27,7 +27,6 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
-  useRtl,
   formatDate,
 } from '../../utilities/index';
 
@@ -50,7 +49,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const _tooltipId: string = useId('ScatterChartTooltipId_');
   const _firstRenderOptimization = true;
   const _emptyChartId: string = useId('_ScatterChart_empty');
-  const _isRTL: boolean = useRtl();
   let _points: ScatterChartDataWithIndex[] = _injectIndexPropertyInScatterChartData(props.data.lineChartData);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _calloutPoints: any[] = calloutData(_points) || [];

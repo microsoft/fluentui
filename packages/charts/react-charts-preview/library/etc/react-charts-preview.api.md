@@ -626,17 +626,9 @@ export interface LegendStyleProps {
 export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
-export interface LineChartDataPoint {
-    callOutAccessibilityData?: AccessibilityProps;
-    hideCallout?: boolean;
-    onDataPointClick?: () => void;
+export interface LineChartDataPoint extends BaseDataPoint {
     x: number | Date;
-    xAxisCalloutAccessibilityData?: AccessibilityProps;
-    xAxisCalloutData?: string;
     y: number;
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
 }
 
 // @public (undocumented)
@@ -658,7 +650,7 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
 // @public (undocumented)
 export interface LineChartPoints {
     color?: string;
-    data: LineChartDataPoint[];
+    data: LineChartDataPoint[] | ScatterChartDataPoint[];
     gaps?: LineChartGap[];
     hideNonActiveDots?: boolean;
     legend: string;
@@ -800,6 +792,33 @@ export interface RefArrayData {
     index?: string;
     // (undocumented)
     refElement?: SVGGElement;
+}
+
+// @public
+export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
+
+// @public
+export interface ScatterChartDataPoint extends BaseDataPoint {
+    markerSize?: number;
+    x: number | Date | string;
+    y: number;
+}
+
+// @public
+export interface ScatterChartProps extends CartesianChartProps {
+    culture?: string;
+    data: ChartProps;
+    getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
+    onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    styles?: ScatterChartStyles;
+}
+
+// @public
+export interface ScatterChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface ScatterChartStyles extends CartesianChartStyles {
 }
 
 // @public (undocumented)

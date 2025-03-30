@@ -37,6 +37,7 @@ import {
   EventsAnnotationProps,
   LineChartPoints,
   LineChartDataPoint,
+  ScatterChartDataPoint,
   DataPoint,
   VerticalStackedBarDataPoint,
   VerticalBarChartDataPoint,
@@ -1013,11 +1014,11 @@ export function domainRangeOfNumericForAreaChart(
   isRTL: boolean,
 ): IDomainNRange {
   const xMin = d3Min(points, (point: LineChartPoints) => {
-    return d3Min(point.data, (item: LineChartDataPoint) => item.x as number)!;
+    return d3Min(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.x as number)!;
   })!;
 
   const xMax = d3Max(points, (point: LineChartPoints) => {
-    return d3Max(point.data, (item: LineChartDataPoint) => {
+    return d3Max(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1046,11 +1047,11 @@ export function domainRangeOfNumericForScatterChart(
   isRTL: boolean,
 ): IDomainNRange {
   let xMin = d3Min(points, (point: LineChartPoints) => {
-    return d3Min(point.data, (item: LineChartDataPoint) => item.x as number)!;
+    return d3Min(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => item.x as number)!;
   })!;
 
   let xMax = d3Max(points, (point: LineChartPoints) => {
-    return d3Max(point.data, (item: LineChartDataPoint) => {
+    return d3Max(point.data as ScatterChartDataPoint[], (item: LineChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1366,10 +1367,10 @@ export function getDomainNRangeValues(
  */
 export function findNumericMinMaxOfY(points: LineChartPoints[]): { startValue: number; endValue: number } {
   const yMax = d3Max(points, (point: LineChartPoints) => {
-    return d3Max(point.data, (item: LineChartDataPoint) => item.y)!;
+    return d3Max(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
   })!;
   const yMin = d3Min(points, (point: LineChartPoints) => {
-    return d3Min(point.data, (item: LineChartDataPoint) => item.y)!;
+    return d3Min(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
   })!;
 
   return {
