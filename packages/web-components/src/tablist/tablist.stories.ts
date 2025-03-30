@@ -148,3 +148,20 @@ export const LargeSizeVerticalOrientation: Story = {
     },
   ],
 };
+
+export const AutoPanelAssociation: Story = {
+  render: renderComponent(html<StoryArgs<FluentTablist>>`
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <fluent-tablist>
+        <fluent-tab aria-controls="panel1">First Tab</fluent-tab>
+        <fluent-tab aria-controls="panel2">Second Tab</fluent-tab>
+        <fluent-tab aria-controls="panel3">Third Tab</fluent-tab>
+        <fluent-tab aria-controls="panel4">Fourth Tab</fluent-tab>
+      </fluent-tablist>
+      <div id="panel1">First panel</div>
+      <div id="panel2">Second panel</div>
+      <div id="panel3">Third panel</div>
+      <div id="panel4">Fourth panel</div>
+    </div>
+  `),
+};

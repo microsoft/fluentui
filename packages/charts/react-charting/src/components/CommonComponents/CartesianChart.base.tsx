@@ -130,13 +130,13 @@ export class CartesianChartBase
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 60
+          ? 80
           : 40
         : this.props.margins?.left ?? 60;
       this.margins.right! = this._isRtl
         ? this.props.margins?.left ?? 60
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 60
+        ? 80
         : 40;
     }
   }
@@ -294,6 +294,12 @@ export class CartesianChartBase
         xAxisPadding: this.props.xAxisPadding,
         xAxisInnerPadding: this.props.xAxisInnerPadding,
         xAxisOuterPadding: this.props.xAxisOuterPadding,
+        containerWidth: this.state.containerWidth,
+        hideTickOverlap:
+          this.props.hideTickOverlap &&
+          !this.props.rotateXAxisLables &&
+          !this.props.showXAxisLablesTooltip &&
+          !this.props.wrapXAxisLables,
       };
 
       const YAxisParams = {
@@ -324,7 +330,12 @@ export class CartesianChartBase
       let tickValues: (string | number)[];
       switch (this.props.xAxisType!) {
         case XAxisTypes.NumericAxis:
-          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+          ({ xScale, tickValues } = createNumericXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            this.props.chartType,
+            culture,
+          ));
           break;
         case XAxisTypes.DateAxis:
           ({ xScale, tickValues } = createDateXAxis(
@@ -346,7 +357,12 @@ export class CartesianChartBase
           ));
           break;
         default:
-          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+          ({ xScale, tickValues } = createNumericXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            this.props.chartType,
+            culture,
+          ));
       }
       this._xScale = xScale;
       this._tickValues = tickValues;
@@ -464,6 +480,7 @@ export class CartesianChartBase
       height: this.state._height,
       className: this.props.className,
       isRtl: this._isRtl,
+      enableReflow: this.props.enableReflow,
     });
 
     const svgDimensions = {
@@ -555,6 +572,7 @@ export class CartesianChartBase
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
             <g
@@ -577,7 +595,9 @@ export class CartesianChartBase
                   }}
                   id={`yAxisGElementSecondary${this.idForGraph}`}
                   transform={`translate(${
-                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                    this._isRtl
+                      ? this.margins.left! + this.state.startFromX
+                      : svgDimensions.width - this.margins.right! - this.state.startFromX
                   }, 0)`}
                   className={this._classNames.yAxis}
                 />
@@ -604,6 +624,7 @@ export class CartesianChartBase
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
                     theme={this.props.theme}
+                    showBackground={true}
                   />
                 )}
               </g>
@@ -628,6 +649,7 @@ export class CartesianChartBase
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
                 theme={this.props.theme}
+                showBackground={true}
               />
             )}
           </svg>

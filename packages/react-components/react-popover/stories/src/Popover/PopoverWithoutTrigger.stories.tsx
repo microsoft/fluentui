@@ -31,7 +31,19 @@ export const WithoutTrigger = () => {
       <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(s => !s)}>
         Toggle popover
       </Button>
-      <Popover onOpenChange={(_, data) => setOpen(data.open)} trapFocus open={open} positioning={{ positioningRef }}>
+      <Popover
+        onOpenChange={(e, data) => {
+          if (e.target === buttonRef.current) {
+            // Ignore events that are triggered by the button to avoid re-opening the popover
+            return;
+          }
+
+          setOpen(data.open);
+        }}
+        trapFocus
+        open={open}
+        positioning={{ positioningRef }}
+      >
         <PopoverSurface aria-labelledby={headerId}>
           <div>
             <h3 id={headerId} className={styles.contentHeader}>
