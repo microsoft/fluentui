@@ -10,8 +10,8 @@
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
-    "e2e:local": "npx --yes cypress@14 open --component",
-    "e2e": "npx --yes cypress@14 run --component"
+    "e2e:local": "npx cypress@14 open --component",
+    "e2e": "npx cypress@14 run --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
