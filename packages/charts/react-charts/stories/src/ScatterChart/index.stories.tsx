@@ -1,4 +1,4 @@
-import { ScatterChart } from '@fluentui/react-charts-preview';
+import { ScatterChart } from '@fluentui/react-charts';
 
 import descriptionMd from './ScatterChartDescription.md';
 import bestPracticesMd from './ScatterChartBestPractices.md';

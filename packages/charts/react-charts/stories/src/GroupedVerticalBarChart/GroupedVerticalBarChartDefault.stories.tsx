@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts-preview';
+import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
 import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const GroupedVerticalBarDefault = () => {

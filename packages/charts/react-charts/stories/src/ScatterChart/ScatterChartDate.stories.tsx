@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts-preview';
+import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
 
 export const ScatterChartDate = () => {
   const [width, setWidth] = React.useState<number>(650);

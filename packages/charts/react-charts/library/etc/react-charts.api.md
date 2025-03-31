@@ -839,6 +839,9 @@ export interface RefArrayData {
     refElement?: SVGGElement;
 }
 
+// @public (undocumented)
+export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
 // @public
 export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
 
@@ -865,9 +868,6 @@ export interface ScatterChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface ScatterChartStyles extends CartesianChartStyles {
 }
-
-// @public (undocumented)
-export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
 
 // @public
 export interface Schema {

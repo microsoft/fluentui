@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts-preview';
+import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
 
-export const ScatterChartString = () => {
+export const ScatterChartDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
@@ -13,69 +13,80 @@ export const ScatterChartString = () => {
   };
 
   const data: ChartProps = {
-    chartTitle: 'Sales Performance by Category',
+    chartTitle: 'Project Revenue and Transactions Over Time',
     lineChartData: [
       {
-        legend: 'Region 1',
+        legend: 'Phase 1',
         data: [
           {
-            x: 'Electronics',
-            y: 50000, // Revenue in dollars
-            markerSize: 25, // Units sold
+            x: 10,
+            y: 50000,
+            markerSize: 12, // Number of transactions
           },
           {
-            x: 'Furniture',
-            y: 30000,
-            markerSize: 20,
-          },
-          {
-            x: 'Clothing',
-            y: 20000,
+            x: 20,
+            y: 75000,
             markerSize: 15,
           },
           {
-            x: 'Toys',
-            y: 15000,
-            markerSize: 10,
+            x: 30,
+            y: 90000,
+            markerSize: 18,
           },
           {
-            x: 'Books',
-            y: 10000,
-            markerSize: 8,
+            x: 40,
+            y: 120000,
+            markerSize: 22,
+          },
+          {
+            x: 50,
+            y: 150000,
+            markerSize: 25,
           },
         ],
         color: DataVizPalette.color3,
       },
       {
-        legend: 'Region 2',
+        legend: 'Phase 2',
         data: [
           {
-            x: 'Electronics',
-            y: 60000,
+            x: 60,
+            y: 180000,
+            markerSize: 28,
+          },
+          {
+            x: 70,
+            y: 200000,
             markerSize: 30,
           },
           {
-            x: 'Furniture',
-            y: 25000,
-            markerSize: 18,
+            x: 80,
+            y: 220000,
+            markerSize: 32,
           },
           {
-            x: 'Clothing',
-            y: 22000,
-            markerSize: 16,
+            x: 90,
+            y: 250000,
+            markerSize: 35,
           },
           {
-            x: 'Toys',
-            y: 12000,
-            markerSize: 12,
-          },
-          {
-            x: 'Books',
-            y: 8000,
-            markerSize: 6,
+            x: 100,
+            y: 300000,
+            markerSize: 40,
           },
         ],
         color: DataVizPalette.color4,
+      },
+      {
+        legend: 'Milestone',
+        data: [
+          {
+            x: 75,
+            y: 250000,
+            markerSize: 50, // Large number of transactions
+          },
+        ],
+        color: DataVizPalette.color5,
       },
     ],
   };
@@ -83,7 +94,7 @@ export const ScatterChartString = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <text>Scatter chart string x example.</text>
+      <text>Scatter chart numeric x example.</text>
       <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
@@ -111,14 +122,14 @@ export const ScatterChartString = () => {
           data={data}
           height={height}
           width={width}
-          xAxisTitle={'Product Category'}
+          xAxisTitle={'Days since project start'}
           yAxisTitle={'Revenue in dollars'}
         />
       </div>
     </>
   );
 };
-ScatterChartString.parameters = {
+ScatterChartDefault.parameters = {
   docs: {
     description: {},
   },
