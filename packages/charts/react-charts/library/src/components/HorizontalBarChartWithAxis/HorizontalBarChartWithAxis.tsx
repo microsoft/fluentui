@@ -7,7 +7,7 @@ import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
 import { AccessibilityProps, HorizontalBarChartWithAxisDataPoint, RefArrayData, Margins } from '../../index';
-import { ChildProps, YValueHover } from '../CommonComponents/CartesianChart.types';
+import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 import { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
 import { ChartPopover } from '../CommonComponents/ChartPopover';
@@ -67,9 +67,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   const [selectedLegendTitle, setSelectedLegendTitle] = React.useState<string>(props.legendProps?.selectedLegend ?? '');
   const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
-  const [, setActiveXdataPoint] = React.useState<number | null>(null);
-  const [, setYValueHover] = React.useState<YValueHover[]>([]);
-  const [, setHoverXValue] = React.useState<string | number | null>('');
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<HorizontalBarChartWithAxisDataPoint>();
   const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps>();
@@ -183,46 +180,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     _refArray.push({ index: legendTitle, refElement: element });
   }
 
-  function _getCalloutContentForBar(point: HorizontalBarChartWithAxisDataPoint): {
-    YValueHover: YValueHover[];
-    hoverXValue: string | number | null;
-  } {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const YValueHover: YValueHover[] = [];
-    const { useSingleColor = false } = props;
-    const { data } = props;
-    const selectedPoint = data!.filter((yDataPoint: HorizontalBarChartWithAxisDataPoint) => yDataPoint.y === point.y);
-    let selectedPointIndex = 0;
-    data!.forEach((yDataPoint: HorizontalBarChartWithAxisDataPoint, index: number) => {
-      if (yDataPoint.y === point.y) {
-        selectedPointIndex = index;
-      }
-    });
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    let color: string;
-    if (useSingleColor) {
-      //if useSingle color , then check if user has given a palette or not
-      // and pick the first color from that or else from our paltette.
-      color = props.colors ? _createColors()(1) : getNextColor(1, 0);
-    } else {
-      color = selectedPoint[0].color
-        ? selectedPoint[0].color
-        : props.colors
-        ? _createColors()(selectedPoint[0].x)
-        : getNextColor(selectedPointIndex, 0);
-    }
-    // callout data for the bar
-    YValueHover.push({
-      legend: selectedPoint[0].legend,
-      // For HBCWA x and y Values are swapped
-      y: selectedPoint[0].x,
-      color,
-      data: selectedPoint[0].yAxisCalloutData,
-      yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
-    });
-    return { YValueHover, hoverXValue: point.yAxisCalloutData || point.y.toString() };
-  }
-
   function _onBarHover(
     point: HorizontalBarChartWithAxisDataPoint,
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -231,7 +188,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   ): void {
     mouseEvent.persist();
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { YValueHover, hoverXValue } = _getCalloutContentForBar(point);
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
       setRefSelected;
@@ -244,9 +200,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       setXCalloutValue(point.yAxisCalloutData! || point.y.toString());
       setYCalloutValue(point.xAxisCalloutData || point.x.toString());
       setDataPointCalloutProps(point);
-      setActiveXdataPoint(point.x);
-      setYValueHover(YValueHover);
-      setHoverXValue(hoverXValue);
       setCallOutAccessibilityData(point.callOutAccessibilityData);
     }
   }
@@ -258,16 +211,12 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   function _handleChartMouseLeave(): void {
     _calloutAnchorPoint = null;
     setPopoverOpen(false);
-    setActiveXdataPoint(null);
-    setYValueHover([]);
-    setHoverXValue('');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   function _onBarFocus(point: HorizontalBarChartWithAxisDataPoint, refArrayIndexNumber: number, color: string): void {
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       // eslint-disable-next-line @typescript-eslint/no-shadow
-      const { YValueHover, hoverXValue } = _getCalloutContentForBar(point);
       _refArray.forEach((obj: RefArrayData, index: number) => {
         if (refArrayIndexNumber === index) {
           setRefSelected(obj.refElement!);
@@ -278,9 +227,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
           setXCalloutValue(point.yAxisCalloutData || point.y.toString());
           setYCalloutValue(point.xAxisCalloutData! || point.x.toString());
           setDataPointCalloutProps(point);
-          setActiveXdataPoint(point.x);
-          setYValueHover(YValueHover);
-          setHoverXValue(hoverXValue);
           setCallOutAccessibilityData(point.callOutAccessibilityData);
         }
       });
