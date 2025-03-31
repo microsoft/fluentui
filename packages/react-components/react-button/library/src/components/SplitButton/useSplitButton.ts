@@ -28,11 +28,6 @@ export const useSplitButton_unstable = (
   } = props;
   const baseId = useId('splitButton-');
 
-  let menuButtonSize = size;
-  if (size === 'medium' && (appearance === 'transparent' || appearance === 'subtle')) {
-    menuButtonSize = 'large';
-  }
-
   const menuButtonShorthand = slot.optional(menuButton, {
     defaultProps: {
       appearance,
@@ -40,7 +35,7 @@ export const useSplitButton_unstable = (
       disabledFocusable,
       menuIcon,
       shape,
-      size: menuButtonSize,
+      size,
     },
     renderByDefault: true,
     elementType: MenuButton,

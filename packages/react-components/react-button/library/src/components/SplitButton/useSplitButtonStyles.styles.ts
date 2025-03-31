@@ -10,6 +10,8 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
+const menuButtonIconClass = 'fui-MenuButton__menuIcon';
+
 // WCAG minimum target size for pointer targets that are immediately adjacent to other targets:
 // https://w3c.github.io/wcag/guidelines/22/#target-size-minimum
 const MIN_TARGET_SIZE = '24px';
@@ -170,6 +172,14 @@ const useRootStyles = makeStyles({
       },
     },
   },
+
+  largeChevron: {
+    [`& .${menuButtonIconClass}`]: {
+      fontSize: tokens.fontSizeBase400,
+      width: tokens.fontSizeBase400,
+      height: tokens.fontSizeBase400,
+    },
+  },
 });
 
 const useIconOnlyStyles = makeStyles({
@@ -195,17 +205,20 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const focusStyles = useFocusStyles();
   const iconOnlyStyles = useIconOnlyStyles();
 
-  const { appearance, disabled, disabledFocusable } = state;
+  const { appearance, disabled, disabledFocusable, size } = state;
 
-  const noIconClass = state.primaryActionButton
+  const iconOnlyClassName = state.primaryActionButton
     ? !state.primaryActionButton.children && appearance && iconOnlyStyles[appearance]
     : undefined;
+
+  const forceLargeChevron = size === 'medium' && (appearance === 'transparent' || appearance === 'subtle');
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
     rootStyles.base,
     appearance && rootStyles[appearance],
-    noIconClass,
+    iconOnlyClassName,
+    forceLargeChevron && rootStyles.largeChevron,
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
     state.root.className,

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Adjusting split button paddings and icon sizes to fit nee design requests",
+  "comment": "chore: Adjusting split button paddings and icon sizes to fit nee design requests",
   "packageName": "@fluentui/react-button",
   "email": "patrycja.fogelman@microsoft.com",
   "dependentChangeType": "patch"
