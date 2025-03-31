@@ -134,21 +134,15 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
   }
 };
 
-const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => boolean)[]> = {
+const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
     (data: Partial<PlotData>) => {
       if (!data.mode?.includes('gauge')) {
         throw new Error(`Unsupported chart - type: ${data.type}, mode: ${data.mode}`);
       }
-      return false;
     },
   ],
-  histogram: [
-    (data: Partial<PlotData>) => {
-      validateSeriesData(data, false);
-      return true;
-    },
-  ],
+  histogram: [(data: Partial<PlotData>) => validateSeriesData(data, false)],
   contour: [
     (data: Partial<PlotData>) => {
       throw new Error(`Unsupported chart - type :${data.type}`);
@@ -158,31 +152,20 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => boolean)[]> = {
     (data: Partial<PlotData>) => {
       if (data.orientation === 'h' && data.base !== undefined) {
         throw new Error('Unsupported chart type: Gantt');
-      }
-      return false;
-    },
-    (data: Partial<PlotData>) => {
-      if (data.orientation === 'h' && isNumberArray(data.x)) {
+      } else if (data.orientation === 'h' && isNumberArray(data.x)) {
         validateSeriesData(data, false);
-        return true;
+      } else {
+        validateSeriesData(data, true);
       }
-      return false;
-    },
-    (data: Partial<PlotData>) => {
-      validateSeriesData(data, true);
-      return true;
     },
   ],
   scatter: [
     (data: Partial<PlotData>) => {
       if (data.mode === 'markers' && !isNumberArray(data.x)) {
         throw new Error(`Unsupported chart - type :${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
+      } else {
+        validateSeriesData(data, true);
       }
-      return false;
-    },
-    (data: Partial<PlotData>) => {
-      validateSeriesData(data, true);
-      return true;
     },
   ],
 };
@@ -199,9 +182,7 @@ const getValidDataIndices = (dataArr: Data[]) => {
         const validators = DATA_VALIDATORS_MAP[type];
         for (const validator of validators) {
           try {
-            if (validator(data)) {
-              return index;
-            }
+            validator(data);
           } catch (error) {
             errorMessage = `data[${index}]: ${error}`;
             return -1;
