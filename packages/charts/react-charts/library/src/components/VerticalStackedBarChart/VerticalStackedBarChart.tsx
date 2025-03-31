@@ -73,7 +73,6 @@ type CalloutAnchorPointData = {
 };
 
 export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBarChartProps> = props => {
-  const _calloutId: string = useId('callout');
   const _isRtl: boolean = useRtl();
   const _createLegendsForLine: (data: VerticalStackedChartProps[]) => LineLegends[] = (
     data: VerticalStackedChartProps[],
@@ -100,7 +99,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
-  const [refSelected, setRefSelected] = React.useState<SVGGElement | null>(null);
   const [dataForHoverCard, setDataForHoverCard] = React.useState(0);
   const [color, setColor] = React.useState('');
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
@@ -201,7 +199,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   }
 
   function _lineHoverOut() {
-    setRefSelected(null);
     setPopoverOpen(false);
     setXCalloutValue('');
     setYCalloutValue('');
@@ -209,8 +206,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     setColor('');
   }
 
-  function _lineHoverFocus(lineData: LinePoint, refSelected: React.MouseEvent<SVGElement> | SVGCircleElement) {
-    setRefSelected;
+  function _lineHoverFocus(lineData: LinePoint) {
     setPopoverOpen(true);
     setXCalloutValue(`${lineData.xItem.xAxisPoint}`);
     setYCalloutValue(`${lineData.yAxisCalloutData || lineData.data || lineData.y}`);
@@ -330,10 +326,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     if (props.legendProps?.onChange) {
       props.legendProps.onChange(_selectedLegends, event, currentLegend);
     }
-  }
-
-  function _closeCallout() {
-    setPopoverOpen(false);
   }
 
   function _getMargins(margins: Margins) {
@@ -613,7 +605,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         legend={props.legend}
         YValue={props.yAxisCalloutData}
         color={props.color}
-        isCalloutForStack={false}
       />
     ) : null;
   }
@@ -664,12 +655,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _lineHover(lineData: LinePoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
-    _lineHoverFocus(lineData, mouseEvent);
+    _lineHoverFocus(lineData);
   }
 
   function _lineFocus(lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) {
     if (ref.refElement) {
-      _lineHoverFocus(lineData, ref.refElement);
+      _lineHoverFocus(lineData);
     }
   }
 
@@ -951,7 +942,6 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-              tabIndex={point.legend !== '' ? 0 : undefined}
             />
           </React.Fragment>
         );
@@ -985,7 +975,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
-          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+          <g
+            id={`${indexNumber}-singleBar`}
+            ref={e => (groupRef.refElement = e)}
+            {...stackFocusProps}
+            tabIndex={!props.hideTooltip ? 0 : undefined}
+          >
             {singleBar}
           </g>
           {!props.hideLabels && _barWidth >= 16 && showLabel && (
@@ -1035,18 +1030,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     _dataset = _createDataSetLayer();
     const legendBars: JSX.Element = _getLegendData(_points, _createLegendsForLine(props.data));
     const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
-      id: `toolTip${_calloutId}`,
-      target: refSelected!,
-      isBeakVisible: false,
-      gapSpace: 15,
       color: color,
       legend: calloutLegend,
       XValue: xCalloutValue!,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
-      onDismiss: _closeCallout,
-      preventDismissOnLostFocus: true,
       ...props.calloutProps,
       ...getAccessibleDataObject(callOutAccessibilityData),
       clickPosition: clickPosition,

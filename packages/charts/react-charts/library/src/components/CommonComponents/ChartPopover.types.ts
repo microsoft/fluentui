@@ -21,12 +21,6 @@ export interface ChartPopoverProps {
   descriptionMessage?: string;
   ratio?: [number, number];
   isCartesian?: boolean;
-  id?: string;
-  target?: SVGGElement;
-  isBeakVisible?: boolean;
-  gapSpace?: number;
-  onDismiss?: () => void;
-  preventDismissOnLostFocus?: boolean;
 }
 
 export interface PopoverComponentStyles {

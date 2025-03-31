@@ -201,13 +201,7 @@ export interface ChartPopoverProps {
     // (undocumented)
     descriptionMessage?: string;
     // (undocumented)
-    gapSpace?: number;
-    // (undocumented)
     hoverXValue?: string | number;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    isBeakVisible?: boolean;
     // (undocumented)
     isCalloutForStack?: boolean;
     // (undocumented)
@@ -217,13 +211,7 @@ export interface ChartPopoverProps {
     // (undocumented)
     legend?: string | number | Date;
     // (undocumented)
-    onDismiss?: () => void;
-    // (undocumented)
-    preventDismissOnLostFocus?: boolean;
-    // (undocumented)
     ratio?: [number, number];
-    // (undocumented)
-    target?: SVGGElement;
     // (undocumented)
     xAxisCalloutAccessibilityData?: {
         ariaLabel?: string;
