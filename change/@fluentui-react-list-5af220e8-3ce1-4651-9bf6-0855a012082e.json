@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensure external tabster attributes are merged with internals",
+  "packageName": "@fluentui/react-list",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
