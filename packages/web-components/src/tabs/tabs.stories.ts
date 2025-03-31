@@ -1,15 +1,13 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';
 import { TabsAppearance as TabsAppearanceValues, TabsOrientation, TabsSize } from './tabs.options.js';
 
-type TabsStoryArgs = Args & FluentTabs;
-type TabsStoryMeta = Meta<TabsStoryArgs>;
+type Story = StoryObj<FluentTabs>;
 
 const tabIds = ['first-tab', 'second-tab', 'third-tab', 'fourth-tab'];
 
-const tabsDefault = html`
+const tabsDefault = html<StoryArgs<FluentTabs>>`
   <fluent-tabs
     orientation=${x => x.orientation}
     appearance=${x => x.appearance}
@@ -28,9 +26,57 @@ const tabsDefault = html`
     <fluent-tab-panel id=${tabIds[3] + '-panel'}>Tab Four Content</fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsDefault = renderComponent(tabsDefault).bind({});
 
-const tabsHorizontal = html`
+export default {
+  title: 'Components/Tabs',
+  render: renderComponent(tabsDefault),
+  argTypes: {
+    appearance: {
+      control: 'select',
+      description: 'Indicates the styled appearance of the tabs.',
+      mapping: { '': null, ...TabsAppearanceValues },
+      options: ['', ...Object.values(TabsAppearanceValues)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TabsAppearanceValues).join('|') },
+      },
+    },
+    activeid: {
+      options: tabIds,
+      defaultValue: tabIds[0],
+      control: { type: 'select' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Sets the tabs disabled state.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    size: {
+      control: 'select',
+      description: 'Indicates the size of the tabs.',
+      mapping: { '': null, ...TabsSize },
+      options: ['', ...Object.values(TabsSize)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TabsSize).join('|') },
+      },
+    },
+    orientation: {
+      control: 'select',
+      description: 'Indicates the orientation of the tabs.',
+      mapping: { '': null, ...TabsOrientation },
+      options: ['', ...Object.values(TabsOrientation)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(TabsOrientation).join('|') },
+      },
+    },
+  },
+} as Meta<FluentTabs>;
+
+export const TabsDefault: Story = {};
+
+const tabsHorizontal = html<StoryArgs<FluentTabs>>`
   <fluent-tabs orientation="horizontal">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -43,9 +89,9 @@ const tabsHorizontal = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsHorizontal = renderComponent(tabsHorizontal).bind({});
+export const TabsHorizontal: Story = { render: renderComponent(tabsHorizontal) };
 
-const tabsVertical = html`
+const tabsVertical = html<StoryArgs<FluentTabs>>`
   <fluent-tabs orientation="vertical">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -58,9 +104,9 @@ const tabsVertical = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsVertical = renderComponent(tabsVertical).bind({});
+export const TabsVertical: Story = { render: renderComponent(tabsVertical) };
 
-const tabsAppearance = html`
+const tabsAppearance = html<StoryArgs<FluentTabs>>`
   <fluent-tabs appearance="transparent">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -84,9 +130,9 @@ const tabsAppearance = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsAppearance = renderComponent(tabsAppearance).bind({});
+export const TabsAppearance: Story = { render: renderComponent(tabsAppearance) };
 
-const tabsDisabledTabs = html`
+const tabsDisabledTabs = html<StoryArgs<FluentTabs>>`
   <fluent-tabs disabled>
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -111,9 +157,9 @@ const tabsDisabledTabs = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsDisabled = renderComponent(tabsDisabledTabs).bind({});
+export const TabsDisabled: Story = { render: renderComponent(tabsDisabledTabs) };
 
-const tabsSizeSmall = html`
+const tabsSizeSmall = html<StoryArgs<FluentTabs>>`
   <fluent-tabs size="small">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -137,9 +183,9 @@ const tabsSizeSmall = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsSizeSmall = renderComponent(tabsSizeSmall).bind({});
+export const TabsSizeSmall: Story = { render: renderComponent(tabsSizeSmall) };
 
-const tabsSizeMedium = html`
+const tabsSizeMedium = html<StoryArgs<FluentTabs>>`
   <fluent-tabs size="medium">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -163,9 +209,9 @@ const tabsSizeMedium = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsSizeMedium = renderComponent(tabsSizeMedium).bind({});
+export const TabsSizeMedium: Story = { render: renderComponent(tabsSizeMedium) };
 
-const tabsSizeLarge = html`
+const tabsSizeLarge = html<StoryArgs<FluentTabs>>`
   <fluent-tabs size="large">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -189,43 +235,4 @@ const tabsSizeLarge = html`
     <fluent-tab-panel></fluent-tab-panel>
   </fluent-tabs>
 `;
-export const TabsSizeLarge = renderComponent(tabsSizeLarge).bind({});
-
-export default {
-  title: 'Components/Tabs',
-  args: {
-    appearance: 'transparent',
-    disabled: false,
-    orientation: 'horizontal',
-    size: 'medium',
-  },
-  argTypes: {
-    appearance: {
-      options: Object.values(TabsAppearanceValues),
-      defaultValue: TabsAppearanceValues.transparent,
-      control: {
-        type: 'select',
-      },
-    },
-    activeid: {
-      options: tabIds,
-      defaultValue: tabIds[0],
-      control: { type: 'select' },
-    },
-    disabled: {
-      options: [true, false],
-      defaultValue: false,
-      control: { type: 'select' },
-    },
-    size: {
-      options: Object.values(TabsSize),
-      defaultValue: TabsSize.medium,
-      control: { type: 'select' },
-    },
-    orientation: {
-      options: Object.values(TabsOrientation),
-      defaultValue: TabsOrientation.horizontal,
-      control: { type: 'select' },
-    },
-  },
-} as TabsStoryMeta;
+export const TabsSizeLarge: Story = { render: renderComponent(tabsSizeLarge) };

@@ -1,120 +1,91 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Label } from './label.js';
+import { LabelSize, LabelWeight } from './label.options.js';
 
 test.describe('Label', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-label--label'));
+  test.use({ tagName: 'fluent-label' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-label'));
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const size of Object.values(LabelSize)) {
+      await test.step(`should set the \`size\` property to "${size}"`, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
+
+        await expect(element).toHaveAttribute('size', size);
+
+        await expect(element).toHaveJSProperty('size', size);
+
+        await expect(element).toHaveCustomState(size);
+      });
+    }
   });
 
-  test('should reflect size attribute', async ({ page }) => {
-    const element = page.locator('fluent-label');
+  test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Label) => {
-      node.size = 'small';
-    });
+    for (const weight of Object.values(LabelWeight)) {
+      await test.step(`should set the \`weight\` property to "${weight}"`, async () => {
+        await fastPage.setTemplate({ attributes: { weight } });
 
-    await expect(element).toHaveAttribute('size', 'small');
+        await expect(element).toHaveAttribute('weight', weight);
 
-    await expect(element).toHaveJSProperty('size', 'small');
+        await expect(element).toHaveJSProperty('weight', weight);
 
-    await expect(element).toHaveCustomState('small');
-
-    await element.evaluate((node: Label) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveAttribute('size', 'medium');
-
-    await expect(element).toHaveJSProperty('size', 'medium');
-
-    await expect(element).not.toHaveCustomState('small');
-
-    await expect(element).toHaveCustomState('medium');
-
-    await element.evaluate((node: Label) => {
-      node.size = 'large';
-    });
-
-    await expect(element).toHaveAttribute('size', 'large');
-
-    await expect(element).toHaveJSProperty('size', 'large');
-
-    await expect(element).not.toHaveCustomState('medium');
-
-    await expect(element).toHaveCustomState('large');
+        await expect(element).toHaveCustomState(weight);
+      });
+    }
   });
 
-  test('should reflect weight attribute', async ({ page }) => {
-    const element = page.locator('fluent-label');
+  test('should set the `disabled` property to match the `disabled` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: Label) => {
-      node.weight = 'regular';
-    });
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
-    await expect(element).toHaveAttribute('weight', 'regular');
-
-    await expect(element).toHaveJSProperty('weight', 'regular');
-
-    await expect(element).toHaveCustomState('regular');
-
-    await element.evaluate((node: Label) => {
-      node.weight = 'semibold';
-    });
-
-    await expect(element).toHaveAttribute('weight', 'semibold');
-
-    await expect(element).toHaveJSProperty('weight', 'semibold');
-
-    await expect(element).not.toHaveCustomState('regular');
-
-    await expect(element).toHaveCustomState('semibold');
-  });
-
-  test('should reflect disabled attribute', async ({ page }) => {
-    const element = page.locator('fluent-label');
-
-    await page.setContent(/* html */ `
-        <fluent-label disabled>Label</fluent-label>
-    `);
-
-    await expect(element).toHaveAttribute('disabled', '');
+    await expect(element).toHaveAttribute('disabled');
 
     await expect(element).toHaveJSProperty('disabled', true);
 
     await expect(element).toHaveCustomState('disabled');
+
+    await element.evaluate((node: Label) => {
+      node.disabled = false;
+    });
+
+    await expect(element).not.toHaveAttribute('disabled');
+
+    await expect(element).toHaveJSProperty('disabled', false);
+
+    await expect(element).not.toHaveCustomState('disabled');
   });
 
-  test('should reflect required attribute and show asterisk', async ({ page }) => {
-    const element = page.locator('fluent-label');
+  test('should set the `required` property to match the `required` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-label required>Label</fluent-label>
-    `);
+    await fastPage.setTemplate({ attributes: { required: true } });
 
-    const asterisk = element.locator('span.asterisk');
-
-    await expect(element).toHaveAttribute('required', '');
+    await expect(element).toHaveAttribute('required');
 
     await expect(element).toHaveJSProperty('required', true);
 
-    await expect(asterisk).toBeVisible();
-  });
+    await test.step('should display an asterisk when the `required` attribute is set', async () => {
+      const asterisk = element.locator('span.asterisk');
 
-  test('should hide asterisk when required attribute is not set', async ({ page }) => {
-    const element = page.locator('fluent-label');
+      await expect(asterisk).toBeVisible();
+    });
 
-    await page.setContent(/* html */ `
-        <fluent-label>Label</fluent-label>
-    `);
+    await element.evaluate((node: Label) => {
+      node.required = false;
+    });
 
-    const asterisk = element.locator('span.asterisk');
-    await expect(element).not.toHaveAttribute('required', '');
+    await expect(element).not.toHaveAttribute('required');
 
     await expect(element).toHaveJSProperty('required', false);
 
-    await expect(asterisk).toBeHidden();
+    await test.step('should NOT display an asterisk when the `required` attribute is NOT set', async () => {
+      const asterisk = element.locator('span.asterisk');
+
+      await expect(asterisk).toBeHidden();
+    });
   });
 });

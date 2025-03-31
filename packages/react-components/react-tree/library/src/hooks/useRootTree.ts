@@ -88,6 +88,7 @@ export function useRootTree(
     },
     contextType: 'root',
     selectionMode,
+    navigationMode: props.navigationMode ?? 'tree',
     open: true,
     appearance,
     size,

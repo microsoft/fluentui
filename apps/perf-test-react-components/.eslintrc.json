@@ -4,6 +4,6 @@
   "rules": {
     "@griffel/styles-file": "off",
     "no-console": "off",
-    "no-restricted-globals": "off"
+    "@nx/workspace-no-restricted-globals": "off"
   }
 }

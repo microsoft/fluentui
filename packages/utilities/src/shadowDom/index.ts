@@ -1,6 +1,8 @@
 export { MergeStylesRootProvider } from './contexts/MergeStylesRootContext';
 export type { MergeStylesRootContextValue, MergeStylesRootProviderProps } from './contexts/MergeStylesRootContext';
 
+export type { UseWindowHook } from './contexts/MergeStylesDefaultContext';
+
 export { MergeStylesShadowRootConsumer } from './contexts/MergeStylesShadowRootConsumer';
 export type { MergeStylesContextConsumerProps } from './contexts/MergeStylesShadowRootConsumer';
 
@@ -15,9 +17,13 @@ export type { AdoptedStylesheetHook, AdoptedStylesheetExHook } from './hooks/use
 
 export { useMergeStylesHooks } from './hooks/useMergeStylesHooks';
 export { useMergeStylesRootStylesheets } from './hooks/useMergeStylesRootStylesheets';
+export type { MergeStylesRootStylesheetsHook } from './hooks/useMergeStylesRootStylesheets';
 
 export { useHasMergeStylesShadowRootContext, useMergeStylesShadowRootContext } from './hooks/useMergeStylesShadowRoot';
-export type { HasMergeStylesShadowRootContextHook } from './hooks/useMergeStylesShadowRoot';
+export type {
+  HasMergeStylesShadowRootContextHook,
+  MergeStylesShadowRootContextHook,
+} from './hooks/useMergeStylesShadowRoot';
 
 export { useShadowConfig } from './hooks/useShadowConfig';
 export type { ShadowConfigHook } from './hooks/useShadowConfig';

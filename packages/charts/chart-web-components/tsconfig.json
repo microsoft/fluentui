@@ -1,0 +1,22 @@
+{
+  "extends": "../../../tsconfig.base.wc.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "experimentalDecorators": true,
+    "allowJs": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
+}

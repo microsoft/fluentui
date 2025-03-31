@@ -1,66 +1,14 @@
-import { attr, FASTElement, nullableNumberConverter, observable, Observable, Updates } from '@microsoft/fast-element';
+import { attr, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates } from '../utils/element-internals.js';
+import { BaseAvatar } from './avatar.base.js';
 import {
-  AvatarActive,
-  AvatarAppearance,
+  type AvatarAppearance,
   AvatarColor,
   AvatarNamedColor,
-  AvatarShape,
-  AvatarSize,
+  type AvatarShape,
+  type AvatarSize,
 } from './avatar.options.js';
-
-/**
- * The base class used for constructing a fluent-avatar custom element
- * @public
- */
-export class BaseAvatar extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: name
-   */
-  @attr
-  public name?: string | undefined;
-
-  /**
-   * Provide custom initials rather than one generated via the name
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: name
-   */
-  @attr
-  public initials?: string | undefined;
-
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
-
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'img';
-  }
-}
 
 /**
  * An Avatar Custom HTML Element.
@@ -130,7 +78,7 @@ export class Avatar extends BaseAvatar {
   /**
    * Holds the current color state
    */
-  private currentColor: string | undefined;
+  private currentColor: AvatarColor | undefined;
 
   /**
    * Handles changes to observable properties
@@ -177,8 +125,6 @@ export class Avatar extends BaseAvatar {
     const colorful: boolean = this.color === AvatarColor.colorful;
     const prev = this.currentColor;
 
-    toggleState(this.elementInternals, `${prev}`, false);
-
     this.currentColor =
       colorful && this.colorId
         ? this.colorId
@@ -186,7 +132,7 @@ export class Avatar extends BaseAvatar {
         ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color ?? AvatarColor.neutral;
 
-    toggleState(this.elementInternals, `${this.currentColor}`, true);
+    swapStates(this.elementInternals, prev, this.currentColor);
   }
 
   /**

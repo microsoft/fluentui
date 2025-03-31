@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add no-restricted-syntax to react-config",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}

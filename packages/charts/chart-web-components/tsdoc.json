@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  "extends": ["@microsoft/api-extractor/extends/tsdoc-base.json"],
+  "tagDefinitions": [
+    {
+      "tagName": "@slot",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@csspart",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@cssprop",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@cssproperty",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@event",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@fires",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    }
+  ],
+  "supportForTags": {
+    "@slot": true,
+    "@csspart": true,
+    "@cssprop": true,
+    "@cssproperty": true,
+    "@event": true,
+    "@fires": true
+  }
+}

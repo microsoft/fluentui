@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add missing workspace scripts-cypress devDependencies",
-  "packageName": "@fluentui/react-tag-picker",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

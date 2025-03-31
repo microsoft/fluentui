@@ -1,9 +1,16 @@
 {
-  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
-    "deprecation/deprecation": "off",
     "prefer-const": "off",
     "no-restricted-globals": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "rules": {
+        "@typescript-eslint/no-deprecated": "off"
+      }
+    }
+  ]
 }

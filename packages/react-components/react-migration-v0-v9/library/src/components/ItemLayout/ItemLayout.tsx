@@ -1,7 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
 import * as React from 'react';
 import { mergeClasses } from '@fluentui/react-components';
 import {

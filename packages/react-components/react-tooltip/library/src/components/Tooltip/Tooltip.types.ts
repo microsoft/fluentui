@@ -20,7 +20,15 @@ export type TooltipChildProps = {
   ref?: React.Ref<unknown>;
 } & Pick<
   React.HTMLAttributes<HTMLElement>,
-  'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'onBlur' | 'onFocus' | 'onPointerEnter' | 'onPointerLeave'
+  | 'aria-describedby'
+  | 'aria-label'
+  | 'aria-labelledby'
+  | 'onBlur'
+  | 'onFocus'
+  | 'onPointerEnter'
+  | 'onPointerLeave'
+  | 'aria-haspopup'
+  | 'aria-expanded'
 >;
 
 /**

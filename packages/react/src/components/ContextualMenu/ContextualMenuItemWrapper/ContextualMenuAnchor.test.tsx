@@ -8,7 +8,7 @@ import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -46,7 +46,7 @@ describe('ContextualMenuButton', () => {
       );
       component.find('a').simulate('click', mockEvent);
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toBeCalledWith(menuItem, expect.objectContaining(mockEvent));
+      expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
@@ -77,7 +77,7 @@ describe('ContextualMenuButton', () => {
   });
 });
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

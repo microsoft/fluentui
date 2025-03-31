@@ -15,12 +15,12 @@ describe('useUnmount', () => {
       return <>Test Component</>;
     };
 
-    expect(onUnmount).toBeCalledTimes(0);
+    expect(onUnmount).toHaveBeenCalledTimes(0);
     const wrapper = mount(<TestComponent />);
-    expect(onUnmount).toBeCalledTimes(0);
+    expect(onUnmount).toHaveBeenCalledTimes(0);
     ReactTestUtils.act(() => {
       wrapper.unmount();
     });
-    expect(onUnmount).toBeCalledTimes(1);
+    expect(onUnmount).toHaveBeenCalledTimes(1);
   });
 });

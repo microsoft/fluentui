@@ -26,4 +26,17 @@ describe('useMergedTabsterAttributes', () => {
     const { result } = renderHook(() => useMergedTabsterAttributes_unstable());
     expect(result.current).toEqual({ 'data-tabster': undefined });
   });
+
+  it('should ignore undefined/null values', () => {
+    const { result } = renderHook(() =>
+      useMergedTabsterAttributes_unstable(
+        { 'data-tabster': '{"a":"1"}' },
+        null,
+        { 'data-tabster': '{"b":"2"}' },
+        undefined,
+        { 'data-tabster': '{"c":"3"}' },
+      ),
+    );
+    expect(result.current).toEqual({ 'data-tabster': '{"a":"1","b":"2","c":"3"}' });
+  });
 });

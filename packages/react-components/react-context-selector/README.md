@@ -1,6 +1,6 @@
 # `@fluentui/react-context-selector`
 
-React `useContextSelector()` and `useContextSelectors()` hooks in userland.
+React `useContextSelector()` hook in userland.
 
 ## Introduction
 
@@ -40,12 +40,12 @@ interface CounterContextValue {
 
 // 💡 The same syntax as native React context API
 //    https://reactjs.org/docs/context.html#reactcreatecontext
-const CounterContext = createContext<CounterContextValue>({});
+const CounterContext = createContext<CounterContextValue>({} as CounterContextValue);
 
 const CounterProvider = CounterContext.Provider;
 
 // not necessary but can be a good layer to mock for unit testing
-const useCounterContext = <T>(selector: ContextSelector<CounterContextValue, T>) =>
+const useCounterContext = <T,>(selector: ContextSelector<CounterContextValue, T>) =>
   useContextSelector(CounterContext, selector);
 
 const Counter1 = () => {
@@ -58,10 +58,10 @@ const Counter1 = () => {
 };
 
 const Counter2 = () => {
-  const count1 = useCounterContext(context => context.count2);
+  const count2 = useCounterContext(context => context.count2);
   const increment = useCounterContext(context => context.incrementCount2);
 
-  return <button onClick={increment}>Counter 1: {count1}</button>;
+  return <button onClick={increment}>Counter 2: {count2}</button>;
 };
 
 export default function App() {

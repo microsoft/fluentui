@@ -646,6 +646,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       'aria-label': ariaLabel && !label ? ariaLabel : undefined,
     };
 
+    const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
+
     return (
       <div
         data-ktp-target={true}
@@ -679,6 +681,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={ariaActiveDescendantValue}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
@@ -1230,7 +1233,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     const doc = getDocumentEx(this.context);
     // Do nothing if the blur is coming from something
@@ -2105,7 +2108,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         if (this._autofill.current && this._autofill.current.inputElement) {
@@ -2228,7 +2231,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If end, update the values to respond to END
         // which goes to the last selectable option
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.which === KeyCodes.end) {
           index = currentOptions.length;
           directionToSearch = SearchDirection.backward;
@@ -2247,19 +2250,19 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       default:
         /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;
         }
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
           return;
         }
 
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (allowParentArrowNavigation && (ev.keyCode === KeyCodes.left || ev.keyCode === KeyCodes.right)) {
           return;
         }
@@ -2303,7 +2306,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.space:
         // If we are not allowing freeform or free input, and autoComplete is off
@@ -2386,11 +2389,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // of the event unless we have a tab, escape, or function key
       if (
         ev !== null &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ev.which !== KeyCodes.tab &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ev.which !== KeyCodes.escape &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ev.which < 112 /* F1 */ || ev.which > 123) /* F12 */
       ) {
         ev.stopPropagation();
@@ -2615,6 +2618,6 @@ function getPreviewText(item: IComboBoxOption): string {
  * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
  */
 function isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>): boolean {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return ev.which === KeyCodes.alt || ev.key === 'Meta';
 }

@@ -1,8 +1,14 @@
 export { createCSSRuleFromTheme } from './createCSSRuleFromTheme';
-export * from './FluentProvider';
-export * from './FluentProvider.types';
-export * from './renderFluentProvider';
-export * from './useFluentProvider';
-export * from './useFluentProviderStyles.styles';
-export * from './useFluentProviderContextValues';
-export * from './useFluentProviderThemeStyleTag';
+export { FluentProvider } from './FluentProvider';
+export type {
+  FluentProviderContextValues,
+  FluentProviderCustomStyleHooks,
+  FluentProviderProps,
+  FluentProviderSlots,
+  FluentProviderState,
+} from './FluentProvider.types';
+export { renderFluentProvider_unstable } from './renderFluentProvider';
+export { useFluentProvider_unstable } from './useFluentProvider';
+export { fluentProviderClassNames, useFluentProviderStyles_unstable } from './useFluentProviderStyles.styles';
+export { useFluentProviderContextValues_unstable } from './useFluentProviderContextValues';
+export { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';

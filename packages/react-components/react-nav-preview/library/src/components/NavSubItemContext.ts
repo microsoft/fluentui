@@ -14,7 +14,7 @@ const NavSubItemContext = React.createContext<NavSubItemContextValue | undefined
 
 const NavSubItemContextDefaultValue: NavSubItemContextValue = {
   open: false,
-  value: undefined,
+  value: '',
 };
 
 export const { Provider: NavSubItemProvider } = NavSubItemContext;

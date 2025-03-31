@@ -98,6 +98,6 @@ describe('felaSanitizeCssPlugin', () => {
     const onWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
 
     sanitize({ backgroundImage: 'url(../../' });
-    expect(onWarn).toBeCalledWith(expect.stringMatching(/was passed to property/));
+    expect(onWarn).toHaveBeenCalledWith(expect.stringMatching(/was passed to property/));
   });
 });

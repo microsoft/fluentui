@@ -17,6 +17,7 @@ packages/fluentui/.browserslistrc
 **/fixtures/**
 **/__fixtures__/**
 **/bundle-size/**
+**/fake_node_modules/**
 
 ; scaffolding templates
 **/generators/**/files/**

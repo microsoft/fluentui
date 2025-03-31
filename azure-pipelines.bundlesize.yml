@@ -1,6 +1,4 @@
-pr:
-  - master
-
+pr: none
 trigger:
   - master
 
@@ -24,25 +22,29 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      - script: |
-          yarn nx affected -t bundle-size --nxBail $(sinceArg)
-        displayName: build packages & create reports
-        condition: eq(variables.isPR, true)
+      # TODO: these commented steps can be probably removed as we migrated these workflows to GHA
+      #  - @{link file://./.github/workflows/bundle-size-comment.yml}
+      #  - @{link file://./.github/workflows/bundle-size.yml}
 
-      - script: |
-          npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
-        displayName: compare bundle size with base (PR only)
-        condition: eq(variables.isPR, true)
+      # - script: |
+      #     yarn nx affected -t bundle-size --nxBail $(sinceArg)
+      #   displayName: build packages & create reports
+      #   condition: eq(variables.isPR, true)
 
-      - task: GithubPRComment@0
-        displayName: Post results to PR (PR only)
-        condition: eq(variables.isPR, true)
-        inputs:
-          githubOwner: microsoft
-          githubRepo: 'fluentui'
-          blobFilePath: 'monosize-report.md'
-          status: 'success'
-          uniqueId: 'bundleSizeComment9423'
+      # - script: |
+      #     npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
+      #   displayName: compare bundle size with base (PR only)
+      #   condition: eq(variables.isPR, true)
+
+      # - task: GithubPRComment@0
+      #   displayName: Post results to PR (PR only)
+      #   condition: eq(variables.isPR, true)
+      #   inputs:
+      #     githubOwner: microsoft
+      #     githubRepo: 'fluentui'
+      #     blobFilePath: 'monosize-report.md'
+      #     status: 'success'
+      #     uniqueId: 'bundleSizeComment9423'
 
       - script: |
           yarn nx run-many -t bundle-size --nxBail
@@ -51,7 +53,7 @@ jobs:
 
       - task: AzureCLI@2
         displayName: upload a report (base only)
-        condition: eq(variables.isPR, false)
+        condition: and(eq(variables.isPR, false), succeeded())
         env:
           AZURE_TENANT_ID: $(AzureTenantId)
           AZURE_CLIENT_ID: $(AzureClientId)

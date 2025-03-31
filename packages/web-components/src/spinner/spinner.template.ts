@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { Spinner } from './spinner.js';
+import type { Spinner } from './spinner.js';
 
 export const template = html<Spinner>`
   <slot name="indicator">

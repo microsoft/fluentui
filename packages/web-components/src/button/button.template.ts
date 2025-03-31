@@ -1,7 +1,7 @@
-import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import type { Button } from './button.js';
-import { ButtonOptions } from './button.options.js';
+import type { ButtonOptions } from './button.options.js';
 
 /**
  * Generates a template for the Button component.

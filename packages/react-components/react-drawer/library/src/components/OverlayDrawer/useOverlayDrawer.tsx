@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dialog } from '@fluentui/react-dialog';
 import { slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { toMountNodeProps } from '@fluentui/react-portal';
 
 import { OverlayDrawerMotion, OverlaySurfaceBackdropMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
@@ -31,7 +32,9 @@ export const useOverlayDrawer_unstable = (
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
   const { backdropMotion, modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion, mountNode } = props;
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
+  const { element: mountNodeElement } = toMountNodeProps(mountNode);
+  const hasMountNodeElement = Boolean(mountNodeElement && targetDocument?.body !== mountNodeElement);
 
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
@@ -82,6 +85,9 @@ export const useOverlayDrawer_unstable = (
     open,
     size,
     position,
+    hasMountNodeElement,
+
+    // Deprecated props
     mountNode,
     motion: STATIC_MOTION,
   };

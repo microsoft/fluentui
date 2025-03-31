@@ -24,9 +24,14 @@ export const DATA_OVERFLOW_MENU = "data-overflow-menu";
 // @public (undocumented)
 export const DATA_OVERFLOWING = "data-overflowing";
 
+// @public (undocumented)
+export interface OnOverflowChangeData extends OverflowState {
+}
+
 // @public
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
     children: React_2.ReactElement;
+    onOverflowChange?: ((ev: null, data: OverflowState) => void) | undefined;
 } & React_2.RefAttributes<unknown>>;
 
 // @public
@@ -46,6 +51,7 @@ export type OverflowItemProps = {
 // @public
 export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>> & {
     children: React_2.ReactElement;
+    onOverflowChange?: (ev: null, data: OverflowState) => void;
 };
 
 // @public (undocumented)

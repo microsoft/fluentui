@@ -122,7 +122,8 @@ function assertions(
     );
   }
 
-  if (isV8package) {
+  // apply only for non cross domain v8 packages (eg: react-migration-* is v9/v8)
+  if (isV8package && !isV9package) {
     issues.push(assertEmpty(npmPackResult, '(lib|lib-commonjs)/**/*.d.ts', `ships dts`));
 
     if (options.isProduction && shipsBundle) {

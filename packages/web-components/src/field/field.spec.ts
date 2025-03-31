@@ -1,94 +1,83 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import { TextInput } from '../index.js';
+import { expect, test } from '../../test/playwright/index.js';
+import type { TextInput } from '../text-input/text-input.js';
 import type { Field } from './field.js';
 
 test.describe('Field', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-field--field'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-field'));
+  test.use({
+    tagName: 'fluent-field',
+    waitFor: ['fluent-text-input'],
   });
 
-  test('should set the `disabled` state when the slotted input is disabled', async ({ page }) => {
-    const element = page.locator('fluent-field');
+  test('should set the `disabled` state when the slotted input is disabled', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const input = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input slot="input" disabled />
-      </fluent-field>
-    `);
-
-    await test.step('should set the `disabled` state when the input is disabled', async () => {
-      await expect(element).toHaveCustomState('disabled');
+      `,
     });
 
-    await test.step('should remove the `disabled` state when the input is enabled', async () => {
-      await element.evaluate((node: Field) => {
-        node.querySelector('input')?.removeAttribute('disabled');
-      });
+    await expect(element).toHaveCustomState('disabled');
 
-      await expect(element).not.toHaveCustomState('disabled');
+    await input.evaluate(node => {
+      node.removeAttribute('disabled');
     });
+
+    await expect(element).not.toHaveCustomState('disabled');
   });
 
-  test('should set the `required` state when the slotted input is required', async ({ page }) => {
-    const element = page.locator('fluent-field');
+  test('should set the `required` state when the slotted input is required', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const input = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input slot="input" required />
-      </fluent-field>
-    `);
-
-    await test.step('should set the `required` state when the input is required', async () => {
-      await expect(element).toHaveCustomState('required');
+      `,
     });
 
-    await test.step('should remove the `required` state when the input is not required', async () => {
-      await element.evaluate((node: Field) => {
-        node.querySelector('input')?.removeAttribute('required');
-      });
+    await expect(element).toHaveCustomState('required');
 
-      await expect(element).not.toHaveCustomState('required');
+    await input.evaluate((node: Field) => {
+      node.removeAttribute('required');
     });
+
+    await expect(element).not.toHaveCustomState('required');
   });
 
-  test('should set the `readonly` state when the slotted input is read-only', async ({ page }) => {
-    const element = page.locator('fluent-field');
+  test('should set the `readonly` state when the slotted input is read-only', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const input = element.locator('input');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input slot="input" readonly />
-      </fluent-field>
-    `);
-
-    await test.step('should set the `readonly` state when the input is readonly', async () => {
-      await expect(element).toHaveCustomState('readonly');
+      `,
     });
 
-    await test.step('should remove the `readonly` state when the input is not readonly', async () => {
-      await element.evaluate((node: Field) => {
-        node.querySelector('input')?.removeAttribute('readonly');
-      });
+    await expect(element).toHaveCustomState('readonly');
 
-      await expect(element).not.toHaveCustomState('readonly');
+    await input.evaluate((node: Field) => {
+      node.removeAttribute('readonly');
     });
+
+    await expect(element).not.toHaveCustomState('readonly');
   });
 
   test('should display the `valueMissing` validation message when the slotted input has the `value-missing` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" required />
         <div id="message" slot="message" flag="value-missing">This field is required.</div>
-      </fluent-field>
-    `);
+        `,
+    });
 
     await input.fill('foo');
 
@@ -108,18 +97,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `patternMismatch` validation message when the slotted input has the `pattern-mismatch` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" pattern="[0-9]+" />
         <div id="message" slot="message" flag="pattern-mismatch">This field must contain only numbers.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('123');
 
@@ -139,18 +128,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `tooShort` validation message when the slotted input has the `too-short` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" minlength="3" />
         <div id="message" slot="message" flag="too-short">This field must contain at least 3 characters.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('123');
 
@@ -170,18 +159,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `tooLong` validation message when the slotted input has the `too-long` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" maxlength="3" />
         <div id="message" slot="message" flag="too-long">This field must contain at most 3 characters.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('123');
 
@@ -210,18 +199,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `rangeUnderflow` validation message when the slotted input has the `range-underflow` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" type="number" min="3" />
         <div id="message" slot="message" flag="range-underflow">This field must contain a number greater than or equal to 3.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('3');
 
@@ -241,18 +230,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `rangeOverflow` validation message when the slotted input has the `range-overflow` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" type="number" max="3" />
         <div id="message" slot="message" flag="range-overflow">This field must contain a number less than or equal to 3.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('3');
 
@@ -272,18 +261,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `stepMismatch` validation message when the slotted input has the `step-mismatch` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" type="number" step="2" />
         <div id="message" slot="message" flag="step-mismatch">This field must contain a number that is a multiple of 2.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('4');
 
@@ -303,18 +292,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `typeMismatch` validation message when the slotted input has the `type-mismatch` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" type="email" />
         <div id="message" slot="message" flag="type-mismatch">This field must be a valid email address.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('a@b.c');
 
@@ -334,18 +323,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `customError` validation message when the slotted input has the `custom-error` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" />
         <div id="message" slot="message" flag="custom-error">This field has a custom error.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('foo');
 
@@ -375,18 +364,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `badInput` validation message when the slotted input has the `bad-input` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('#input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <fluent-text-input id="input" slot="input" type="text"></fluent-text-input>
         <div id="message" slot="message" flag="bad-input">I have no idea how you managed to do this.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await expect(element).not.toHaveCustomState('bad-input');
 
@@ -403,18 +392,18 @@ test.describe('Field', () => {
   });
 
   test('should display the `valid` validation message when the slotted input has the `valid` validity state', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
-    const input = page.locator('#input');
-    const message = page.locator('#message');
+    const { element } = fastPage;
+    const input = element.locator('input');
+    const message = element.locator('#message');
 
-    await page.setContent(/* html */ `
-      <fluent-field>
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
         <input id="input" slot="input" />
         <div required id="message" slot="message" flag="valid">This field is valid.</div>
-      </fluent-field>
-    `);
+      `,
+    });
 
     await input.fill('foo');
 
@@ -426,31 +415,33 @@ test.describe('Field', () => {
   });
 
   test('should arrange the label and input in the correct order when the `labelPosition` property is set to `above`', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-field label-position="above">
+    await fastPage.setTemplate({
+      attributes: { 'label-position': 'above' },
+      innerHTML: /* html */ `
         <label slot="label">Label</label>
         <input slot="input" id="input" />
-      </fluent-field>
-    `);
+      `,
+    });
 
     await expect(element.locator('input:below(label)')).toHaveCount(1);
   });
 
   test('should arrange the label and input in the correct order when the `labelPosition` property is set to `before`', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-field label-position="before">
+    await fastPage.setTemplate({
+      attributes: { 'label-position': 'before' },
+      innerHTML: /* html */ `
         <label slot="label">Label</label>
         <input slot="input" id="input" />
-      </fluent-field>
-    `);
+      `,
+    });
 
     await expect(element.locator('input:right-of(label)')).toHaveCount(1);
 
@@ -462,16 +453,17 @@ test.describe('Field', () => {
   });
 
   test('should arrange the label and input in the correct order when the `labelPosition` property is set to `after`', async ({
-    page,
+    fastPage,
   }) => {
-    const element = page.locator('fluent-field');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-field label-position="after">
+    await fastPage.setTemplate({
+      attributes: { 'label-position': 'after' },
+      innerHTML: /* html */ `
         <label slot="label">Label</label>
         <input slot="input" id="input" />
-      </fluent-field>
-    `);
+      `,
+    });
 
     await expect(element.locator('input:left-of(label)')).toHaveCount(1);
 

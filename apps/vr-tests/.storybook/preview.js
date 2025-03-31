@@ -1,6 +1,7 @@
 // @ts-check
 
 import { setRTL } from '@fluentui/react/lib/Utilities';
+import { ThemeProviderDecorator } from '../src/utilities';
 
 /** @type {import('@storybook/react').Decorator[]} */
 export const decorators = [
@@ -9,6 +10,7 @@ export const decorators = [
 
     return storyFn(context);
   },
+  ThemeProviderDecorator,
 ];
 
 /** @type {import('@storybook/react').Parameters} */

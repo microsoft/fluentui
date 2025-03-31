@@ -2,7 +2,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 
 describe('suggest prop type', () => {
   test('should throw error when non-array argument given', () => {
-    expect(() => customPropTypes.suggest('foo' as any)).toThrowError(Error);
+    expect(() => customPropTypes.suggest('foo' as any)).toThrow(Error);
   });
 
   test('should return undefined when prop is valid', () => {

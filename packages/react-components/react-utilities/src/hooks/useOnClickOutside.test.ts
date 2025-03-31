@@ -74,7 +74,7 @@ describe('useOnClickOutside', () => {
     jest.runOnlyPendingTimers();
 
     // Assert
-    expect(callback).not.toBeCalled();
+    expect(callback).not.toHaveBeenCalled();
   });
 
   it('should invoke callback when active element is a webview', () => {

@@ -5,10 +5,6 @@
   "bin": {
     "northstar-release": "./bin/northstar-release.js"
   },
-  "scripts": {
-    "lint": "eslint --ext .ts,.js ./src ./bin",
-    "test": "jest --passWithNoTests"
-  },
   "dependencies": {
     "@fluentui/scripts-monorepo": "*"
   },

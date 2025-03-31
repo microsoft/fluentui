@@ -1,2 +1,2 @@
-export * from './OverlayDrawerSurface';
-export * from './OverlayDrawerSurface.types';
+export { OverlayDrawerSurface } from './OverlayDrawerSurface';
+export type { OverlayDrawerSurfaceProps, OverlayDrawerSurfaceSlots } from './OverlayDrawerSurface.types';

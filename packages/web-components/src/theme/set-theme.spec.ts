@@ -1,5 +1,4 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 
 import type { setTheme as _setTheme, Theme } from './set-theme.js';
 
@@ -20,16 +19,12 @@ declare global {
 }
 
 test.describe('setTheme()', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('theme-settheme--set-theme'));
-  });
-
-  test('should set and uset global tokens', async ({ page }) => {
+  test('should set and uset global tokens', async ({ fastPage, page }) => {
     const html = page.locator('html');
     const body = page.locator('body');
     const div = page.locator('div');
 
-    await page.setContent(`<div></div>`);
+    await fastPage.setTemplate(`<div></div>`);
 
     await page.evaluate(theme => {
       window.setTheme(theme);
@@ -66,11 +61,11 @@ test.describe('setTheme()', () => {
     await expect(div).toHaveCSS('--bar', '');
   });
 
-  test('should set and unset tokens in a light DOM subtree', async ({ page }) => {
+  test('should set and unset tokens in a light DOM subtree', async ({ fastPage, page }) => {
     const div = page.locator('div');
     const span = page.locator('span');
 
-    await page.setContent(`<div><span></span></div>`);
+    await fastPage.setTemplate(`<div><span></span></div>`);
 
     await page.evaluate(theme => {
       window.setTheme(theme);
@@ -100,12 +95,11 @@ test.describe('setTheme()', () => {
     await expect(span).toHaveCSS('--bar', 'bar1');
   });
 
-  test('should set and unset tokens in a shadow DOM tree', async ({ page }) => {
+  test('should set and unset tokens in a shadow DOM tree', async ({ fastPage, page }) => {
     const div = page.locator('div');
     const span = page.locator('span');
 
-    // Using Declarative Shadow DOM with `page.setContent()` doesn’t work in Firefox.
-    await page.setContent('<div></div>');
+    await fastPage.setTemplate('<div></div>');
     await div.evaluate((node: HTMLDivElement) => {
       node.attachShadow({ mode: 'open' });
       node.shadowRoot!.innerHTML = '<span></span>';
@@ -140,14 +134,14 @@ test.describe('setTheme()', () => {
   });
 
   test('should not inherit token values from light DOM subtree once tokens are set in the shadow DOM tree', async ({
+    fastPage,
     page,
   }) => {
     const parent = page.locator('div.parent');
     const host = page.locator('div.host');
     const span = host.locator('span');
 
-    // Using Declarative Shadow DOM with `page.setContent()` doesn’t work in Firefox.
-    await page.setContent(`
+    await fastPage.setTemplate(/* html */ `
       <div class="parent">
         <div class="host"></div>
       </div>

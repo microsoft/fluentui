@@ -6,7 +6,7 @@ import { NavCategoryContextValue, NavCategoryProvider } from '../NavCategoryCont
 export function mockNavCategoryContextValue(partialValue?: Partial<NavCategoryContextValue>): NavCategoryContextValue {
   return {
     open: false,
-    value: undefined,
+    value: '',
     ...partialValue,
   };
 }

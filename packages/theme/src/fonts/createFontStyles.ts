@@ -60,7 +60,7 @@ function _getLocalizedFontFamily(language: string | null): string {
 
 function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRawStyle {
   return {
-    fontFamily: fontFamily,
+    fontFamily,
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,

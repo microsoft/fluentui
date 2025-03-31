@@ -1,6 +1,7 @@
 import {
   createMotionComponent,
   makeStyles,
+  type MotionComponentProps,
   type MotionImperativeRef,
   motionTokens,
   tokens,
@@ -40,9 +41,13 @@ const FadeEnter = createMotionComponent({
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationSlow,
   iterations: Infinity,
+
+  reducedMotion: {
+    iterations: 1,
+  },
 });
 
-export const CreateMotionComponentDefault = () => {
+export const CreateMotionComponentDefault = (props: MotionComponentProps) => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 

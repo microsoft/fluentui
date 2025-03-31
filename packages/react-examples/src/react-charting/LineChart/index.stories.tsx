@@ -8,6 +8,8 @@ import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 import { LineChartMultipleExample } from './LineChart.Multiple.Example';
 import { LineChartStyledExample } from './LineChart.Styled.Example';
+import { LineChartNegativeExample } from './LineChart.Negative.Example';
+import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 
 export const Basic = () => <LineChartBasicExample />;
 
@@ -24,6 +26,10 @@ export const LargeData = () => <LineChartLargeDataExample />;
 export const Multiple = () => <LineChartMultipleExample />;
 
 export const Styled = () => <LineChartStyledExample />;
+
+export const Negative = () => <LineChartNegativeExample />;
+
+export const AllNegative = () => <LineChartAllNegativeExample />;
 
 export default {
   title: 'Components/LineChart',

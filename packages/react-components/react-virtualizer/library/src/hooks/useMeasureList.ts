@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useRef } from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export interface IndexedResizeCallbackElement {
@@ -22,7 +21,7 @@ export function useMeasureList<
   const { targetDocument } = useFluent();
 
   // This lets us trigger updates when a size change occurs.
-  const sizeUpdateCount = useRef(0);
+  const sizeUpdateCount = React.useRef(0);
 
   // the handler for resize observer
   const handleIndexUpdate = React.useCallback(
@@ -58,8 +57,21 @@ export function useMeasureList<
   };
 
   React.useEffect(() => {
-    widthArray.current = new Array(totalLength).fill(defaultItemSize);
-    heightArray.current = new Array(totalLength).fill(defaultItemSize);
+    const newHeightLength = totalLength - heightArray.current.length;
+    const newWidthLength = totalLength - widthArray.current.length;
+    /* Ensure we grow or truncate arrays with prior properties,
+    keeping the existing values is important for whitespace assumptions.
+    Even if items in the 'middle' are deleted, we will recalc the whitespace as it is explored.*/
+    if (newWidthLength > 0) {
+      widthArray.current = widthArray.current.concat(new Array(newWidthLength).fill(defaultItemSize));
+    } else if (newWidthLength < 0) {
+      widthArray.current = widthArray.current.slice(0, totalLength);
+    }
+    if (newHeightLength > 0) {
+      heightArray.current = heightArray.current.concat(new Array(newHeightLength).fill(defaultItemSize));
+    } else if (newHeightLength < 0) {
+      heightArray.current = heightArray.current.slice(0, totalLength);
+    }
   }, [defaultItemSize, totalLength]);
 
   // Keep the reference of ResizeObserver as a ref, as it should live through renders

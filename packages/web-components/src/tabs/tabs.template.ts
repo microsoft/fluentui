@@ -1,7 +1,7 @@
-import { ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import { Tabs } from './tabs.js';
-import { TabsOptions } from './tabs.options.js';
+import type { Tabs } from './tabs.js';
+import type { TabsOptions } from './tabs.options.js';
 
 export function tabsTemplate<T extends Tabs>(options: TabsOptions = {}): ElementViewTemplate<T> {
   return html<T>`

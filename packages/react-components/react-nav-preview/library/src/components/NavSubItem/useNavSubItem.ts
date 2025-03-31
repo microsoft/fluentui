@@ -22,7 +22,7 @@ export const useNavSubItem_unstable = (
 ): NavSubItemState => {
   const { onClick, value: subItemValue, as, href } = props;
 
-  const { selectedValue, onRegister, onUnregister, onSelect, size = 'medium' } = useNavContext_unstable();
+  const { selectedValue, onRegister, onUnregister, onSelect, density = 'medium' } = useNavContext_unstable();
 
   const { value: parentCategoryValue } = useNavCategoryContext_unstable();
 
@@ -45,7 +45,6 @@ export const useNavSubItem_unstable = (
       rootElementType,
       useARIAButtonProps(rootElementType, {
         'aria-current': selected ? 'page' : 'false',
-        role: rootElementType,
         ...props,
       }),
     ),
@@ -78,6 +77,6 @@ export const useNavSubItem_unstable = (
     root,
     selected,
     value: subItemValue,
-    size,
+    density,
   };
 };

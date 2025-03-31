@@ -1,2 +1,2 @@
-export * from './FlatTreeItem';
-export * from './FlatTreeItem.types';
+export { FlatTreeItem } from './FlatTreeItem';
+export type { FlatTreeItemProps } from './FlatTreeItem.types';

@@ -1,5 +1,5 @@
-export * from './MenuDivider.types';
-export * from './MenuDivider';
-export * from './renderMenuDivider';
-export * from './useMenuDivider';
-export * from './useMenuDividerStyles.styles';
+export type { MenuDividerProps, MenuDividerSlots, MenuDividerState } from './MenuDivider.types';
+export { MenuDivider } from './MenuDivider';
+export { renderMenuDivider_unstable } from './renderMenuDivider';
+export { useMenuDivider_unstable } from './useMenuDivider';
+export { menuDividerClassNames, useMenuDividerStyles_unstable } from './useMenuDividerStyles.styles';

@@ -26,7 +26,7 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
   title: 'VerticalStackedBarChart',
   componentName: 'VerticalStackedBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/VerticalStackedBar/master/packages/react-charting/src/components/VerticalStackedBarChart',
+    'https://github.com/microsoft/fluentui/VerticalStackedBar/master/packages/charts/react-charting/src/components/VerticalStackedBarChart',
   examples: [
     {
       title: 'VerticalStackedBarChart basic',

@@ -26,7 +26,7 @@ describe('felaFocusVisibleEnhancer', () => {
     renderer.subscribe(subscription);
     renderer.renderRule(() => ({ ':focus-visible': { borderColor: 'red' } } as any), null);
 
-    expect(subscription).toBeCalledWith(
+    expect(subscription).toHaveBeenCalledWith(
       expect.objectContaining({
         pseudo: ':focus',
         selector: 'html[data-whatinput="keyboard"] .a:focus',

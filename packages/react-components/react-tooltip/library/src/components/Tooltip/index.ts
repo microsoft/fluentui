@@ -1,5 +1,5 @@
-export * from './Tooltip';
-export * from './Tooltip.types';
-export * from './renderTooltip';
-export * from './useTooltip';
-export * from './useTooltipStyles.styles';
+export { Tooltip } from './Tooltip';
+export type { OnVisibleChangeData, TooltipChildProps, TooltipProps, TooltipSlots, TooltipState } from './Tooltip.types';
+export { renderTooltip_unstable } from './renderTooltip';
+export { useTooltip_unstable } from './useTooltip';
+export { tooltipClassNames, useTooltipStyles_unstable } from './useTooltipStyles.styles';

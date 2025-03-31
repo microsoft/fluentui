@@ -10,3 +10,9 @@ Picker dropdowns render in their own layer by default to ensure they are not cli
 ```js
 pickerCalloutProps={{ doNotLayer: true }}
 ```
+
+#### Truncation
+
+By default, the Picker truncates item text in the dropdown instead of wrapping to a new line. To avoid losing meaningful information, adjusting styles to wrap the text is recommended. Tooltips are not shown for truncated text within the dropdown to avoid nested popups and the usability and accessibility issues they cause.
+
+The Wrapped Picker example demonstrates how to override truncation styles to support wrapping. The default style will continue to truncate to support existing implementations.

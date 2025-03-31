@@ -19,7 +19,7 @@ export const PanelHandleDismissTargetExample: React.FunctionComponent = () => {
 
       // Demonstrates how to do different things depending on how which element dismissed the panel
       console.log('Close button clicked or light dismissed.');
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const srcElement = ev.nativeEvent.srcElement as Element | null;
       if (srcElement && srcElement.className.indexOf('ms-Button-icon') !== -1) {
         console.log('Close button clicked.');

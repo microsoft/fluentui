@@ -1,4 +1,4 @@
-import { ElementViewTemplate } from '@microsoft/fast-element';
+import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { buttonTemplate } from '../button/button.template.js';
 import type { ToggleButton } from './toggle-button.js';
 

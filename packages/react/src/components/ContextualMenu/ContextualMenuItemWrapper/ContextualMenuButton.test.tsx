@@ -8,7 +8,7 @@ import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -86,10 +86,29 @@ describe('ContextualMenuButton', () => {
 
       renderMock.mockRestore();
     });
+
+    it('renders a description when ariaDescription is passed in', () => {
+      const component = mount(
+        <ContextualMenuButton
+          item={{ ...menuItem, ariaDescription: 'test' }}
+          classNames={menuClassNames}
+          index={0}
+          focusableElementIndex={0}
+          totalItemCount={1}
+          hasCheckmarks={true}
+        />,
+      );
+
+      const descriptionId = component.find('button').at(0).getDOMNode().getAttribute('aria-describedby');
+      expect(descriptionId).toBeTruthy();
+
+      const descriptionEl = component.find(`#${descriptionId}`).at(0);
+      expect(descriptionEl.text()).toEqual('test');
+    });
   });
 });
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

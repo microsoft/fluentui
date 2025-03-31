@@ -29,30 +29,31 @@ import {
   lineHeightHero800,
   lineHeightHero900,
 } from '../theme/design-tokens.js';
-
-/**
- * Selector for the `nowrap` state.
- * @public
- */
-const nowrapState = css.partial`:is([state--nowrap], :state(nowrap))`;
-
-/**
- * Selector for the `truncate` state.
- * @public
- */
-const truncateState = css.partial`:is([state--truncate], :state(truncate))`;
-
-/**
- * Selector for the `underline` state.
- * @public
- */
-const underlineState = css.partial`:is([state--underline], :state(underline))`;
-
-/**
- * Selector for the `strikethrough` state.
- * @public
- */
-const strikethroughState = css.partial`:is([state--strikethrough], :state(strikethrough))`;
+import {
+  blockState,
+  boldState,
+  centerState,
+  endState,
+  italicState,
+  justifyState,
+  mediumState,
+  monospaceState,
+  nowrapState,
+  numericState,
+  semiboldState,
+  size1000State,
+  size100State,
+  size200State,
+  size400State,
+  size500State,
+  size600State,
+  size700State,
+  size800State,
+  size900State,
+  strikethroughState,
+  truncateState,
+  underlineState,
+} from '../styles/states/index.js';
 
 /** Text styles
  * @public
@@ -78,10 +79,10 @@ export const styles = css`
   :host(${truncateState}) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host(:is([state--block], :state(block))) {
+  :host(${blockState}) {
     display: block;
   }
-  :host(:is([state--italic], :state(italic))) {
+  :host(${italicState}) {
     font-style: italic;
   }
   :host(${underlineState}) {
@@ -93,69 +94,68 @@ export const styles = css`
   :host(${underlineState}${strikethroughState}) {
     text-decoration-line: line-through underline;
   }
-  :host(:is([state--size-100], :state(size-100))) {
+  :host(${size100State}) {
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
   }
-  :host(:is([state--size-200], :state(size-200))) {
+  :host(${size200State}) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host(:is([state--size-400], :state(size-400))) {
+  :host(${size400State}) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host(:is([state--size-500], :state(size-500))) {
+  :host(${size500State}) {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
-  :host(:is([state--size-600], :state(size-600))) {
+  :host(${size600State}) {
     font-size: ${fontSizeBase600};
     line-height: ${lineHeightBase600};
   }
-  :host(:is([state--size-700], :state(size-700))) {
+  :host(${size700State}) {
     font-size: ${fontSizeHero700};
     line-height: ${lineHeightHero700};
   }
-  :host(:is([state--size-800], :state(size-800))) {
+  :host(${size800State}) {
     font-size: ${fontSizeHero800};
     line-height: ${lineHeightHero800};
   }
-  :host(:is([state--size-900], :state(size-900))) {
+  :host(${size900State}) {
     font-size: ${fontSizeHero900};
     line-height: ${lineHeightHero900};
   }
-  :host(:is([state--size-1000], :state(size-1000))) {
+  :host(${size1000State}) {
     font-size: ${fontSizeHero1000};
     line-height: ${lineHeightHero1000};
   }
-  :host(:is([state--monospace], :state(monospace))) {
+  :host(${monospaceState}) {
     font-family: ${fontFamilyMonospace};
   }
-  :host(:is([state--numeric], :state(numeric))) {
+  :host(${numericState}) {
     font-family: ${fontFamilyNumeric};
   }
-  :host(:is([state--medium], :state(medium))) {
+  :host(${mediumState}) {
     font-weight: ${fontWeightMedium};
   }
-  :host(:is([state--semibold], :state(semibold))) {
+  :host(${semiboldState}) {
     font-weight: ${fontWeightSemibold};
   }
-  :host(:is([state--bold], :state(bold))) {
+  :host(${boldState}) {
     font-weight: ${fontWeightBold};
   }
-  :host(:is([state--center], :state(center))) {
+  :host(${centerState}) {
     text-align: center;
   }
-  :host(:is([state--end], :state(end))) {
+  :host(${endState}) {
     text-align: end;
   }
-  :host(:is([state--justify], :state(justify))) {
+  :host(${justifyState}) {
     text-align: justify;
   }
 
   ::slotted(*) {
-    display: inherit;
     font: inherit;
     line-height: inherit;
     text-decoration-line: inherit;

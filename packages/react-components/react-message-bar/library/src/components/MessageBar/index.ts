@@ -1,6 +1,12 @@
-export * from './MessageBar';
-export * from './MessageBar.types';
-export * from './renderMessageBar';
-export * from './useMessageBar';
-export * from './useMessageBarStyles.styles';
-export * from './useMessageBarContextValues';
+export { MessageBar } from './MessageBar';
+export type {
+  MessageBarContextValues,
+  MessageBarIntent,
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+} from './MessageBar.types';
+export { renderMessageBar_unstable } from './renderMessageBar';
+export { useMessageBar_unstable } from './useMessageBar';
+export { messageBarClassNames, useMessageBarStyles_unstable } from './useMessageBarStyles.styles';
+export { useMessageBarContextValue_unstable } from './useMessageBarContextValues';

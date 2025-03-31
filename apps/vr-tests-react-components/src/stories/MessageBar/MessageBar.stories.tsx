@@ -124,15 +124,17 @@ export const Auto = () => {
 
 export const Square = () => {
   return (
-    <MessageBar shape="square">
-      <MessageBarBody>
-        <MessageBarTitle>Title</MessageBarTitle>
-        Message providing information to the user with actionable insights. <Link>Link</Link>
-      </MessageBarBody>
-      <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
-        <Button>Action</Button>
-        <Button>Action</Button>
-      </MessageBarActions>
-    </MessageBar>
+    <div className="testWrapper">
+      <MessageBar shape="square">
+        <MessageBarBody>
+          <MessageBarTitle>Title</MessageBarTitle>
+          Message providing information to the user with actionable insights. <Link>Link</Link>
+        </MessageBarBody>
+        <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
+          <Button>Action</Button>
+          <Button>Action</Button>
+        </MessageBarActions>
+      </MessageBar>
+    </div>
   );
 };

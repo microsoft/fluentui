@@ -12,7 +12,7 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import { subtleState } from '../styles/states/index.js';
+import { inlineState, subtleState } from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline')}
@@ -29,7 +29,7 @@ export const styles = css`
     overflow: inherit;
     text-align: start;
     text-decoration: none;
-    text-decoration-thinkness: ${strokeWidthThin};
+    text-decoration-thickness: ${strokeWidthThin};
     text-overflow: inherit;
     user-select: text;
   }
@@ -62,7 +62,7 @@ export const styles = css`
   }
 
   :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)),
-  :host(:is([state--inline], :state(inline))) {
+  :host(${inlineState}) {
     font: inherit;
     text-decoration: underline;
   }

@@ -12,7 +12,7 @@ export function findElementRecursive(
 ): HTMLElement | null {
   // eslint-disable-next-line no-restricted-globals
   doc ??= document;
-  if (!element || element === doc.body) {
+  if (!element || element === doc.body || element instanceof Document) {
     return null;
   }
   return matchFunction(element) ? element : findElementRecursive(getParent(element), matchFunction);

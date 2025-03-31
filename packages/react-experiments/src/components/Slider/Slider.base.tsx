@@ -15,7 +15,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
 import type { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 
 /** @deprecated */
 export interface ISliderState {

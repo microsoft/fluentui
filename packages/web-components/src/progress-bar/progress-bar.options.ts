@@ -1,5 +1,4 @@
-import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
-import { ProgressBar } from './progress-bar.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * ProgressBarThickness Constants

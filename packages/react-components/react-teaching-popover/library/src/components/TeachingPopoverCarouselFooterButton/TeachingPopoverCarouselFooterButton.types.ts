@@ -1,8 +1,8 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { ButtonProps, ButtonState } from '@fluentui/react-button';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import { ReactNode } from 'react';
 
 export type TeachingPopoverCarouselFooterButtonSlots = {
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
@@ -21,7 +21,7 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
     /**
      * The ReactNode provided to the button when it is on it's first (navType 'prev') or last (navType 'next') step
      */
-    altText: ReactNode;
+    altText: React.ReactNode;
   };
 
 /**

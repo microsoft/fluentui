@@ -11,12 +11,14 @@ export { AnchorToTarget } from './PositioningAnchorToTarget.stories';
 export { ImperativeAnchorTarget } from './PositioningImperativeAnchorTarget.stories';
 export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.stories';
 export { OverflowBoundary } from './PositioningOverflowBoundary.stories';
-export { OverflowBoundaryPadding } from './OverflowBoundaryPadding.stories';
+export { OverflowBoundaryRect } from './PositioningOverflowBoundaryRect.stories';
+export { OverflowBoundaryPadding } from './PositioningOverflowBoundaryPadding.stories';
 export { FlipBoundary } from './PositioningFlipBoundary.stories';
-export { MatchTargetSize } from './MatchTargetSize.stories';
+export { MatchTargetSize } from './PositioningMatchTargetSize.stories';
 export { DisableTransform } from './PositioningDisableTransform.stories';
 export { ListenToUpdates } from './PositioningListenToUpdates.stories';
 export { AutoSizeForSmallViewport } from './PositioningAutoSize.stories';
+export { CoverTargetForSmallViewport } from './PositioningShiftToCoverTarget.stories';
 export { FallbackPositions } from './PositioningFallbackPositions.stories';
 
 export default {

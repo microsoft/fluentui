@@ -3,19 +3,5 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/fluentui-publish/src",
   "projectType": "library",
-  "tags": ["tools"],
-  "targets": {
-    "test": {
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js",
-        "{workspaceRoot}/packages/fluentui/*/project.json"
-      ]
-    },
-    "type-check": {
-      "executor": "@fluentui/workspace-plugin:type-check"
-    },
-    "format": {}
-  }
+  "tags": ["tools"]
 }

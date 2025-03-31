@@ -3,11 +3,5 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/perf-test-flamegrill/src",
   "projectType": "library",
-  "tags": ["tools", "platform:any"],
-  "targets": {
-    "type-check": {
-      "executor": "@fluentui/workspace-plugin:type-check"
-    },
-    "format": {}
-  }
+  "tags": ["tools", "platform:any"]
 }

@@ -1,5 +1,13 @@
-export * from './Dropdown';
-export * from './Dropdown.types';
-export * from './renderDropdown';
-export * from './useDropdown';
-export * from './useDropdownStyles.styles';
+export { Dropdown } from './Dropdown';
+export type {
+  ActiveOptionChangeData,
+  DropdownContextValues,
+  DropdownOpenChangeData,
+  DropdownOpenEvents,
+  DropdownProps,
+  DropdownSlots,
+  DropdownState,
+} from './Dropdown.types';
+export { renderDropdown_unstable } from './renderDropdown';
+export { useDropdown_unstable } from './useDropdown';
+export { dropdownClassNames, useDropdownStyles_unstable } from './useDropdownStyles.styles';

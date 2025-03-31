@@ -18,6 +18,10 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
       excludeStoriesInsertionFromPackages: [
         '@fluentui/react-storybook-addon',
         '@fluentui/theme-designer',
+        // Exclude non v9 stories
+        '@fluentui/react',
+        '@fluentui/react-northstar',
+        '@fluentui/react-icons-northstar',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
         '@fluentui/react-nav-preview',
       ],
@@ -39,5 +43,20 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     registerRules({ rules: [rules.scssRule], config: localConfig });
 
     return localConfig;
+  },
+  refs: {
+    contrib: {
+      title: 'Contributors Packages',
+      url: 'https://microsoft.github.io/fluentui-contrib/docsite/',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui-contrib',
+    },
+    charts: {
+      title: 'Charts v9',
+      // Workaround to enable docsite using PR workflow till master workflow is enabled
+      url: 'https://fluentuipr.z22.web.core.windows.net/pull/33270/chart-docsite/storybook',
+      expanded: false,
+      sourceUrl: 'https://github.com/microsoft/fluentui/charts/react-charts',
+    },
   },
 });

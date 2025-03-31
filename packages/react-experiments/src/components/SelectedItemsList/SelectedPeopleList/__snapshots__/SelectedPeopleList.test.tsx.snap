@@ -61,6 +61,7 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px 0px 0px 15px;
               border: none;
@@ -72,6 +73,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -399,18 +401,20 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
               color: #005a9e;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -607,6 +611,7 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px 0px 0px 15px;
               border: none;
@@ -618,6 +623,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -945,18 +951,20 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
               color: #005a9e;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1158,6 +1166,7 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px 0px 0px 15px;
               border: none;
@@ -1169,6 +1178,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -1496,18 +1506,20 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
               color: #005a9e;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1704,6 +1716,7 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px 0px 0px 15px;
               border: none;
@@ -1715,6 +1728,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
@@ -2042,18 +2056,20 @@ Array [
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 15px;
               border: none;
               box-sizing: border-box;
               color: #005a9e;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;

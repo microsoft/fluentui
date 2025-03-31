@@ -1,9 +1,7 @@
 const { RuleTester } = require('@typescript-eslint/rule-tester');
 const rule = require('./index');
 
-const ruleTester = new RuleTester({
-  parser: '@typescript-eslint/parser',
-});
+const ruleTester = new RuleTester();
 
 ruleTester.run('no-context-default-value', rule, {
   valid: [

@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { AccordionItem as FluentAccordionItem } from './accordion-item.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
@@ -21,6 +21,10 @@ const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
 export default {
   title: 'Components/Accordion/AccordionItem',
   render: renderComponent(storyTemplate),
+  args: {
+    headingSlottedContent: () => html`<span slot="heading">Accordion Item</span>`,
+    slottedContent: () => 'Content',
+  },
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -54,6 +58,7 @@ export default {
       description: 'Controls the size of the Accordion Item.',
       name: 'size',
       options: ['', ...Object.values(AccordionItemSize)],
+      mapping: { '': null, ...AccordionItemSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemSize).join('|') },
@@ -64,6 +69,7 @@ export default {
       description: 'Controls the position of the marker.',
       name: 'marker-position',
       options: ['', ...Object.values(AccordionItemMarkerPosition)],
+      mapping: { '': null, ...AccordionItemMarkerPosition },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemMarkerPosition).join('|') },
@@ -93,7 +99,7 @@ export default {
   },
 } as Meta<FluentAccordionItem>;
 
-export const AccordionItem: Story = {
+export const Default: Story = {
   args: {
     expanded: true,
     headinglevel: 2,
@@ -101,10 +107,10 @@ export const AccordionItem: Story = {
     slottedContent: () => html`
       <fluent-text>
         <p>
-          Chalk is a soft, white, porous, sedimentary carbonate rock, a form of limestone composed of the mineral
-          calcite. Calcite is an ionic salt called calcium carbonate or CaCO3. It forms under reasonably deep marine
-          conditions from the gradual accumulation of minute calcite shells shed from micro-organisms called
-          coccolithophores. Flint is very common as bands parallel to the bedding or as nodules embedded in chalk.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia bibendum metus, commodo dapibus erat.
+          Aliquam venenatis gravida malesuada. Maecenas ut porttitor justo, sed euismod ex. Suspendisse sodales enim
+          sem, in auctor risus aliquam ac. Cras ut velit lacinia diam varius fermentum. Sed sed augue tempus, rhoncus
+          neque vestibulum, placerat risus.
         </p>
       </fluent-text>
     `,

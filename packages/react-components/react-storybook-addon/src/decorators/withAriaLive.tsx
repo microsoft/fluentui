@@ -1,7 +1,7 @@
 import { AriaLiveAnnouncer } from '@fluentui/react-aria';
 import * as React from 'react';
 
-import { FluentStoryContext } from '../hooks';
+import type { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 export const withAriaLive = (Story: () => JSX.Element, context: FluentStoryContext) => {

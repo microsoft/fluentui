@@ -135,7 +135,7 @@ export class ColorRectangleBase
 
     // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
     // and getting all the math and styles flipped correctly is tricky
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.up: {
         this._isAdjustingSaturation = false;

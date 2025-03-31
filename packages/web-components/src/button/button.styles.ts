@@ -128,7 +128,9 @@ export const baseButtonStyles = css`
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
-    transition-duration: 0.01ms;
+    :host {
+      transition-duration: 0.01ms;
+    }
   }
 
   ::slotted(svg) {
@@ -138,11 +140,13 @@ export const baseButtonStyles = css`
     fill: currentColor;
   }
 
-  :is([slot='start'], ::slotted([slot='start'])) {
+  ::slotted([slot='start']) {
     margin-inline-end: var(--icon-spacing);
   }
 
-  :is([slot='end'], ::slotted([slot='end'])) {
+  ::slotted([slot='end']),
+  [slot='end'] {
+    flex-shrink: 0;
     margin-inline-start: var(--icon-spacing);
   }
 

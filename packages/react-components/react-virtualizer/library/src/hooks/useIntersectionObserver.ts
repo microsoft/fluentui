@@ -1,4 +1,3 @@
-import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -54,11 +53,11 @@ export const useIntersectionObserver = (
   callback: IntersectionObserverCallback,
   options?: IntersectionObserverInit,
 ): {
-  setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
+  setObserverList: React.Dispatch<React.SetStateAction<Element[] | undefined>>;
   setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
-  observer: MutableRefObject<IntersectionObserver | undefined>;
+  observer: React.MutableRefObject<IntersectionObserver | undefined>;
 } => {
   'use no memo';
 

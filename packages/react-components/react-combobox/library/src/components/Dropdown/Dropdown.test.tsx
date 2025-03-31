@@ -747,6 +747,20 @@ describe('Dropdown', () => {
 
       expect(clearButton).toHaveStyle({ display: 'none' });
     });
+
+    it('is not visible when the component is disabled', () => {
+      const { getByLabelText } = render(
+        <Dropdown clearable defaultSelectedOptions={['Red']} defaultValue="Red" disabled>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>,
+      );
+
+      const clearButton = getByLabelText('Clear selection');
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+    });
   });
   describe('Active item change', () => {
     it('should call onActiveOptionChange with arrow down', () => {

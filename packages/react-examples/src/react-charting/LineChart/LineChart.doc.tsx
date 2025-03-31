@@ -9,6 +9,8 @@ import { LineChartEventsExample } from './LineChart.Events.Example';
 import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
 import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
+import { LineChartNegativeExample } from './LineChart.Negative.Example';
+import { LineChartAllNegativeExample } from './LineChart.AllNegative.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -24,11 +26,16 @@ const LineChartGapsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
 const LineChartCustomLocaleDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+const LineChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Negative.Example.tsx') as string;
+const LineChartAllNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AllNegative.Example.tsx') as string;
 
 export const LineChartPageProps: IDocPageProps = {
   title: 'LineChart',
   componentName: 'LineChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/LineChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/LineChart',
   examples: [
     {
       title: 'LineChart basic',
@@ -64,6 +71,16 @@ export const LineChartPageProps: IDocPageProps = {
       title: 'LineChart custom date axis locale',
       code: LineChartCustomLocaleDateAxisExampleCode,
       view: <LineChartCustomLocaleDateAxisExample />,
+    },
+    {
+      title: 'LineChart with Negative Y values',
+      code: LineChartNegativeExampleCode,
+      view: <LineChartNegativeExample />,
+    },
+    {
+      title: 'LineChart with All Negative Y values',
+      code: LineChartAllNegativeExampleCode,
+      view: <LineChartAllNegativeExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartOverview.md'),

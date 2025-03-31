@@ -14,7 +14,7 @@ export {
   hiddenContentStyle,
   PulsingBeaconAnimationStyles,
   getGlobalClassNames,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getFocusStyle,
   getFocusOutlineStyle,
   getInputFocusStyle,
@@ -29,7 +29,7 @@ export {
   HighContrastSelector,
   HighContrastSelectorWhite,
   HighContrastSelectorBlack,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   EdgeChromiumHighContrastSelector,
   ScreenWidthMinSmall,
   ScreenWidthMinMedium,
@@ -45,7 +45,7 @@ export {
   ScreenWidthMinUhfMobile,
   getScreenSelector,
   getHighContrastNoAdjustStyle,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getEdgeChromiumNoHighContrastAdjustSelector,
   normalize,
   noWrap,

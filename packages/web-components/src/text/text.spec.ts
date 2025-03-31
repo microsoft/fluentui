@@ -1,104 +1,184 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
-import type { Text } from './text.js';
+import { expect, test } from '../../test/playwright/index.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 test.describe('Text Component', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-text--text'));
+  test.use({ tagName: 'fluent-text' });
 
-    await page.waitForFunction(() => customElements.whenDefined('fluent-text'));
+  test(`should set the \`nowrap\` property to true when the \`nowrap\` attribute is present`, async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({ attributes: { nowrap: true } });
+
+    await expect(element).toHaveJSProperty('nowrap', true);
+
+    await expect(element).toHaveCustomState('nowrap');
+
+    await test.step('should set the `nowrap` property to false when the `nowrap` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
+
+      await expect(element).toHaveJSProperty('nowrap', false);
+
+      await expect(element).not.toHaveCustomState('nowrap');
+    });
   });
 
-  for (const attribute of ['nowrap', 'truncate', 'italic', 'underline', 'strikethrough', 'block']) {
-    test(`should set and reflect and update the ${attribute} attribute and property when provided`, async ({
-      page,
-    }) => {
-      const element = page.locator('fluent-text');
+  test(`should set the \`truncate\` property to true when the \`truncate\` attribute is present`, async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-text ${attribute}>Text</fluent-text>
-      `);
+    await fastPage.setTemplate({ attributes: { truncate: true } });
 
-      await expect(element).toHaveAttribute(attribute);
+    await expect(element).toHaveJSProperty('truncate', true);
 
-      await expect(element).toHaveJSProperty(attribute, true);
+    await expect(element).toHaveCustomState('truncate');
 
-      await expect(element).toHaveCustomState(attribute);
+    await test.step('should set the `truncate` property to false when the `truncate` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
 
-      await element.evaluate((node: any, attribute) => {
-        node[attribute] = false;
-      }, attribute);
+      await expect(element).toHaveJSProperty('truncate', false);
 
-      await expect(element).not.toHaveAttribute(attribute);
-
-      await expect(element).toHaveJSProperty(attribute, false);
-
-      await expect(element).not.toHaveCustomState(attribute);
+      await expect(element).not.toHaveCustomState('truncate');
     });
-  }
+  });
 
-  for (const value in Object.values(TextSize)) {
-    test(`should set and reflect the size attribute to \`${value}\` when provided`, async ({ page }) => {
-      const element = page.locator('fluent-text');
+  test(`should set the \`italic\` property to true when the \`italic\` attribute is present`, async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-text size="${value}">Text</fluent-text>
-      `);
+    await fastPage.setTemplate({ attributes: { italic: true } });
 
-      await expect(element).toHaveJSProperty('size', value);
+    await expect(element).toHaveJSProperty('italic', true);
 
-      await expect(element).toHaveAttribute('size', value);
+    await expect(element).toHaveCustomState('italic');
 
-      await expect(element).toHaveCustomState(`size-${value}`);
+    await test.step('should set the `italic` property to false when the `italic` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
+
+      await expect(element).toHaveJSProperty('italic', false);
+
+      await expect(element).not.toHaveCustomState('italic');
     });
-  }
+  });
 
-  for (const value in TextWeight) {
-    test(`should set and reflect the weight attribute to the \`${value}\` when provided`, async ({ page }) => {
-      const element = page.locator('fluent-text');
+  test(`should set the \`underline\` property to true when the \`underline\` attribute is present`, async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-      await page.setContent(/* html */ `
-        <fluent-text weight="${value}">Text</fluent-text>
-      `);
+    await fastPage.setTemplate({ attributes: { underline: true } });
 
-      await expect(element).toHaveJSProperty('weight', value);
+    await expect(element).toHaveJSProperty('underline', true);
 
-      await expect(element).toHaveAttribute('weight', value);
+    await expect(element).toHaveCustomState('underline');
 
-      await expect(element).toHaveCustomState(value);
+    await test.step('should set the `underline` property to false when the `underline` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
+
+      await expect(element).toHaveJSProperty('underline', false);
+
+      await expect(element).not.toHaveCustomState('underline');
     });
-  }
+  });
 
-  for (const value in TextAlign) {
-    test(`should set and reflect the align attribute to \`${value}\` when provided`, async ({ page }) => {
-      const element = page.locator('fluent-text');
+  test(`should set the \`strikethrough\` property to true when the \`strikethrough\` attribute is present`, async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
-      await element.evaluate((node: Text, alignValue: string) => {
-        node.align = alignValue as TextAlign;
-      }, value as string);
+    await fastPage.setTemplate({ attributes: { strikethrough: true } });
 
-      await expect(element).toHaveJSProperty('align', value);
+    await expect(element).toHaveJSProperty('strikethrough', true);
 
-      await expect(element).toHaveAttribute('align', value);
+    await expect(element).toHaveCustomState('strikethrough');
 
-      await expect(element).toHaveCustomState(value);
+    await test.step('should set the `strikethrough` property to false when the `strikethrough` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
+
+      await expect(element).toHaveJSProperty('strikethrough', false);
+
+      await expect(element).not.toHaveCustomState('strikethrough');
     });
-  }
+  });
 
-  for (const value in TextFont) {
-    test(`should set and reflect the font attribute to \`${value}\` when provided`, async ({ page }) => {
-      const element = page.locator('fluent-text');
+  test(`should set the \`block\` property to true when the \`block\` attribute is present`, async ({ fastPage }) => {
+    const { element } = fastPage;
 
-      await element.evaluate((node: Text, fontValue: string) => {
-        node.font = fontValue as TextFont;
-      }, value as string);
+    await fastPage.setTemplate({ attributes: { block: true } });
 
-      await expect(element).toHaveJSProperty('font', value);
+    await expect(element).toHaveJSProperty('block', true);
 
-      await expect(element).toHaveAttribute('font', value);
+    await expect(element).toHaveCustomState('block');
 
-      await expect(element).toHaveCustomState(value);
+    await test.step('should set the `block` property to false when the `block` attribute is removed', async () => {
+      await fastPage.setTemplate({ attributes: {} });
+
+      await expect(element).toHaveJSProperty('block', false);
+
+      await expect(element).not.toHaveCustomState('block');
     });
-  }
+  });
+
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const size of Object.values(TextSize)) {
+      await test.step(size, async () => {
+        await fastPage.setTemplate({ attributes: { size } });
+
+        await expect(element).toHaveJSProperty('size', size);
+
+        await expect(element).toHaveAttribute('size', size);
+
+        await expect(element).toHaveCustomState(`size-${size}`);
+      });
+    }
+  });
+
+  test('should set the `weight` property to match the `weight` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const weight of Object.values(TextWeight)) {
+      await test.step(weight, async () => {
+        await fastPage.setTemplate({ attributes: { weight } });
+
+        await expect(element).toHaveJSProperty('weight', weight);
+
+        await expect(element).toHaveAttribute('weight', weight);
+
+        await expect(element).toHaveCustomState(weight);
+      });
+    }
+  });
+
+  test('should set the `align` property to match the `align` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const align of Object.values(TextAlign)) {
+      await test.step(align, async () => {
+        await fastPage.setTemplate({ attributes: { align } });
+
+        await expect(element).toHaveJSProperty('align', align);
+
+        await expect(element).toHaveAttribute('align', align);
+
+        await expect(element).toHaveCustomState(align);
+      });
+    }
+  });
+
+  test('should set the `font` property to match the `font` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
+
+    for (const font of Object.values(TextFont)) {
+      await test.step(font, async () => {
+        await fastPage.setTemplate({ attributes: { font } });
+
+        await expect(element).toHaveJSProperty('font', font);
+
+        await expect(element).toHaveAttribute('font', font);
+
+        await expect(element).toHaveCustomState(font);
+      });
+    }
+  });
 });

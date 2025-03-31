@@ -11,6 +11,7 @@ import {
   mergeClasses,
   useRestoreFocusSource,
   useRestoreFocusTarget,
+  ToggleButton,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -60,16 +61,6 @@ type DrawerInlineExampleProps = InlineDrawerProps & {
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const getButtonText = (open: boolean, position: Required<InlineDrawerProps>['position']) => {
-  const buttonText = open ? 'Close' : 'Open';
-
-  if (['start', 'end', 'bottom'].includes(position)) {
-    return `${buttonText} ${position}`;
-  }
-
-  return `${buttonText} drawer`;
-};
-
 const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 
@@ -108,17 +99,32 @@ export const Inline = () => {
 
         <div className={styles.content}>
           <div className={styles.buttons}>
-            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setStartOpen(!startOpen)}>
-              {getButtonText(startOpen, 'start')}
-            </Button>
+            <ToggleButton
+              {...restoreFocusTargetAttributes}
+              appearance="primary"
+              onClick={() => setStartOpen(!startOpen)}
+              checked={startOpen}
+            >
+              Toggle start
+            </ToggleButton>
 
-            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setEndOpen(!endOpen)}>
-              {getButtonText(endOpen, 'end')}
-            </Button>
+            <ToggleButton
+              {...restoreFocusTargetAttributes}
+              appearance="primary"
+              onClick={() => setEndOpen(!endOpen)}
+              checked={endOpen}
+            >
+              Toggle end
+            </ToggleButton>
 
-            <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
-              {getButtonText(bottomOpen, 'bottom')}
-            </Button>
+            <ToggleButton
+              {...restoreFocusTargetAttributes}
+              appearance="primary"
+              onClick={() => setBottomOpen(!bottomOpen)}
+              checked={bottomOpen}
+            >
+              Toggle bottom
+            </ToggleButton>
           </div>
 
           {Array.from({ length: 100 }, (_, i) => (

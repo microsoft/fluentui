@@ -1,7 +1,18 @@
-export * from './TabList';
-export * from './TabList.types';
-export * from './TabListContext';
-export * from './renderTabList';
-export * from './useTabList';
-export * from './useTabListContextValues';
-export * from './useTabListStyles.styles';
+export { TabList } from './TabList';
+export type {
+  RegisterTabEventHandler,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListContextValue,
+  TabListContextValues,
+  TabListProps,
+  TabListSlots,
+  TabListState,
+  TabRegisterData,
+} from './TabList.types';
+export { TabListContext, TabListProvider, useTabListContext_unstable } from './TabListContext';
+export { renderTabList_unstable } from './renderTabList';
+export { useTabList_unstable } from './useTabList';
+export { useTabListContextValues_unstable } from './useTabListContextValues';
+export { tabListClassNames, useTabListStyles_unstable } from './useTabListStyles.styles';

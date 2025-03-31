@@ -98,7 +98,7 @@ export function getSubmenuItems(
 ): IContextualMenuItem[] | undefined {
   const target = options?.target;
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const items = item.subMenuProps ? item.subMenuProps.items : item.items;
 
   if (items) {
@@ -149,7 +149,7 @@ const _getMenuItemStylesFunction = memoizeFunction(
     ...styles: (IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> | undefined)[]
   ): IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles> => {
     return (styleProps: IContextualMenuItemStyleProps) =>
-      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles);
+      concatStyleSetsWithProps(styleProps, getItemStyles, ...styles) as IContextualMenuItemStyles;
   },
 );
 
@@ -356,7 +356,7 @@ function useKeyHandlers(
   const shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     const submenuCloseKey = getRTL(theme) ? KeyCodes.right : KeyCodes.left;
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which !== submenuCloseKey || !isSubMenu) {
       return false;
     }
@@ -369,10 +369,10 @@ function useKeyHandlers(
 
   const shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     return (
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       ev.which === KeyCodes.escape ||
       shouldCloseSubMenu(ev) ||
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
     );
   };
@@ -383,7 +383,7 @@ function useKeyHandlers(
     lastKeyDownWasAltOrMeta.current = isAltOrMeta(ev);
 
     // On Mac, pressing escape dismisses all levels of native context menus
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
 
     return keyHandler(ev, shouldHandleKeyDown, dismissAllMenus);
@@ -421,9 +421,9 @@ function useKeyHandlers(
     // If we have a modifier key being pressed, we do not want to move focus.
     // Otherwise, handle up and down keys.
     const hasModifier = !!(ev.altKey || ev.metaKey);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const isUp = ev.which === KeyCodes.up;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const isDown = ev.which === KeyCodes.down;
     if (!hasModifier && (isUp || isDown)) {
       const elementToFocus = isUp
@@ -443,7 +443,7 @@ function useKeyHandlers(
 
     if (
       !item.disabled &&
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
     ) {
       openSubMenu(item, ev.currentTarget as HTMLElement);
@@ -780,7 +780,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const onDefaultRenderMenuList = (
       menuListProps: IContextualMenuListProps,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       defaultRender?: IRenderFunction<IContextualMenuListProps>,
     ): JSX.Element => {
@@ -825,13 +825,13 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       totalItemCount: number,
       hasCheckmarks: boolean,
       hasIcons: boolean,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
     ): JSX.Element => {
       const renderedItems: React.ReactNode[] = [];
       const iconProps = item.iconProps || { iconName: 'None' };
       const {
-        getItemClassNames, // eslint-disable-line deprecation/deprecation
+        getItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
         itemProps,
       } = item;
       const styles = itemProps ? itemProps.styles : undefined;
@@ -841,7 +841,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
       const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       let itemClassNames: IMenuItemClassNames;
 
       // IContextualMenuItem#getItemClassNames for backwards compatibility
@@ -883,7 +883,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         );
       }
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (item.text === '-' || item.name === '-') {
         item.itemType = ContextualMenuItemType.Divider;
       }
@@ -925,7 +925,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const defaultMenuItemRenderer = (
       item: IContextualMenuItemRenderProps,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
     ): React.ReactNode => {
       const { index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
@@ -942,9 +942,9 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const renderSectionItem = (
       sectionItem: IContextualMenuItem,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       itemClassNames: IMenuItemClassNames,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       index: number,
       hasCheckmarks: boolean,
@@ -1033,7 +1033,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
     const renderListItem = (
       content: React.ReactNode,
       key: string | number,
-      classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
+      classNames: IMenuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
       title?: string,
     ) => {
       return (
@@ -1045,7 +1045,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const renderSeparator = (
       index: number,
-      classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
+      classNames: IMenuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
       top?: boolean,
       fromSection?: boolean,
     ): React.ReactNode => {
@@ -1064,7 +1064,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const renderNormalItem = (
       item: IContextualMenuItem,
-      classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
+      classNames: IMenuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
       index: number,
       focusableElementIndex: number,
       totalItemCount: number,
@@ -1142,9 +1142,9 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
 
     const renderHeaderMenuItem = (
       item: IContextualMenuItem,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       itemClassNames: IMenuItemClassNames,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       menuClassNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames,
       index: number,
       hasCheckmarks: boolean,
@@ -1164,7 +1164,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       const divHtmlProperties =
         itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
       return (
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         <div id={id} className={menuClassNames.header} {...divHtmlProperties} style={item.style}>
           <ChildrenRenderer
             item={item}
@@ -1212,7 +1212,7 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         defaultRender?: IRenderFunction<IContextualMenuListProps>,
       ) => onDefaultRenderMenuList(menuListProps, classNames, defaultRender),
       focusZoneProps,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       getMenuClassNames,
     } = props;
 
@@ -1374,7 +1374,7 @@ ContextualMenuBase.displayName = 'ContextualMenuBase';
  * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
  */
 function isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return ev.which === KeyCodes.alt || ev.key === 'Meta';
 }
 

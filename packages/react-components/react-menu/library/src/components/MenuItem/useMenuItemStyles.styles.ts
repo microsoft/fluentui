@@ -14,6 +14,7 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   submenuIndicator: 'fui-MenuItem__submenuIndicator',
   content: 'fui-MenuItem__content',
   secondaryContent: 'fui-MenuItem__secondaryContent',
+  subText: 'fui-MenuItem__subText',
 };
 
 const useRootBaseStyles = makeResetStyles({
@@ -48,11 +49,19 @@ const useRootBaseStyles = makeResetStyles({
     [`& .${menuItemClassNames.icon}`]: {
       color: tokens.colorNeutralForeground2BrandSelected,
     },
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Hover,
+    },
   },
 
   ':hover:active': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     color: tokens.colorNeutralForeground2Pressed,
+
+    [`& .${menuItemClassNames.subText}`]: {
+      color: tokens.colorNeutralForeground3Pressed,
+    },
   },
 
   // High contrast styles
@@ -98,6 +107,7 @@ const useIconBaseStyles = makeResetStyles({
   alignItems: 'center',
   display: 'inline-flex',
   justifyContent: 'center',
+  flexShrink: 0,
 });
 
 const useSubmenuIndicatorBaseStyles = makeResetStyles({
@@ -108,6 +118,11 @@ const useSubmenuIndicatorBaseStyles = makeResetStyles({
   alignItems: 'center',
   display: 'inline-flex',
   justifyContent: 'center',
+});
+
+const useSubtextBaseStyles = makeResetStyles({
+  ...typographyStyles.caption2,
+  color: tokens.colorNeutralForeground3,
 });
 
 const useStyles = makeStyles({
@@ -174,6 +189,21 @@ const useStyles = makeStyles({
   },
 });
 
+const useMultilineStyles = makeStyles({
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  secondaryContent: {
+    alignSelf: 'center',
+  },
+
+  submenuIndicator: {
+    alignSelf: 'center',
+  },
+});
+
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   'use no memo';
@@ -184,6 +214,9 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   const secondaryContentBaseStyles = useSecondaryContentBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
   const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
+  const multilineStyles = useMultilineStyles();
+  const subtextBaseStyles = useSubtextBaseStyles();
+  const multiline = !!state.subText;
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
@@ -192,7 +225,12 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   );
 
   if (state.content) {
-    state.content.className = mergeClasses(menuItemClassNames.content, contentBaseStyles, state.content.className);
+    state.content.className = mergeClasses(
+      menuItemClassNames.content,
+      contentBaseStyles,
+      state.content.className,
+      multiline && multilineStyles.content,
+    );
   }
 
   if (state.checkmark) {
@@ -204,6 +242,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.secondaryContent,
       !state.disabled && secondaryContentBaseStyles,
       state.secondaryContent.className,
+      multiline && multilineStyles.secondaryContent,
     );
   }
 
@@ -216,7 +255,12 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
       menuItemClassNames.submenuIndicator,
       submenuIndicatorBaseStyles,
       state.submenuIndicator.className,
+      multiline && multilineStyles.submenuIndicator,
     );
+  }
+
+  if (state.subText) {
+    state.subText.className = mergeClasses(menuItemClassNames.subText, state.subText.className, subtextBaseStyles);
   }
 
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);

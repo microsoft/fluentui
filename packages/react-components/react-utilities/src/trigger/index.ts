@@ -1,4 +1,4 @@
-export * from './applyTriggerPropsToChildren';
-export * from './getTriggerChild';
-export * from './isFluentTrigger';
-export * from './types';
+export { applyTriggerPropsToChildren } from './applyTriggerPropsToChildren';
+export { getTriggerChild } from './getTriggerChild';
+export { isFluentTrigger } from './isFluentTrigger';
+export type { FluentTriggerComponent, TriggerProps } from './types';

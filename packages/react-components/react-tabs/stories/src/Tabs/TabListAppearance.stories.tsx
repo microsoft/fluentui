@@ -19,7 +19,9 @@ export const Appearance = () => {
     return (
       <>
         <Tab value="tab1">First Tab</Tab>
-        <Tab value="tab2">Second Tab</Tab>
+        <Tab disabled value="tab2">
+          Second Tab
+        </Tab>
         <Tab value="tab3">Third Tab</Tab>
         <Tab value="tab4">Fourth Tab</Tab>
       </>
@@ -34,6 +36,12 @@ export const Appearance = () => {
       <TabList defaultSelectedValue="tab2" appearance="subtle">
         {renderTabs()}
       </TabList>
+      <TabList defaultSelectedValue="tab2" appearance="subtle-circular">
+        {renderTabs()}
+      </TabList>
+      <TabList defaultSelectedValue="tab2" appearance="filled-circular">
+        {renderTabs()}
+      </TabList>
     </div>
   );
 };
@@ -41,7 +49,8 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have a `transparent` or `subtle` appearance. The default is `transparent`.',
+      story:
+        'A tab list can have a `transparent`, `subtle`, `subtle-circular` and `filled-circular` appearance. The default is `transparent`.',
     },
   },
 };

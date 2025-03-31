@@ -1,8 +1,160 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Tue, 10 Sep 2024 10:19:12 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Mar 2025 21:12:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.1.3)
+
+Thu, 27 Mar 2025 21:12:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.1.2..@fluentui/react-rating_v9.1.3)
+
+### Patches
+
+- feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.53 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-tabster to v9.24.3 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.1.2)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.1.1..@fluentui/react-rating_v9.1.2)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.52 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-tabster to v9.24.2 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.1.1)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.1.0..@fluentui/react-rating_v9.1.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.51 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-tabster to v9.24.1 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.1.0)
+
+Fri, 21 Feb 2025 14:34:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.28..@fluentui/react-rating_v9.1.0)
+
+### Minor changes
+
+- Bump @fluentui/react-tabster to v9.24.0 ([PR #33876](https://github.com/microsoft/fluentui/pull/33876) by beachball)
+
+## [9.0.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.28)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.27..@fluentui/react-rating_v9.0.28)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.50 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-tabster to v9.23.3 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.27)
+
+Wed, 08 Jan 2025 18:33:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.26..@fluentui/react-rating_v9.0.27)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.49 ([PR #33550](https://github.com/microsoft/fluentui/pull/33550) by beachball)
+
+## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.26)
+
+Wed, 18 Dec 2024 10:59:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.25..@fluentui/react-rating_v9.0.26)
+
+### Patches
+
+- fix: Pass missing Rating's itemLabel prop to its state so RatingItem consumes it from context. ([PR #33361](https://github.com/microsoft/fluentui/pull/33361) by derdem@microsoft.com)
+
+## [9.0.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.25)
+
+Mon, 16 Dec 2024 16:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.24..@fluentui/react-rating_v9.0.25)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.48 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-theme to v9.1.24 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-tabster to v9.23.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+- Bump @fluentui/react-utilities to v9.18.19 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
+
+## [9.0.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.24)
+
+Mon, 09 Dec 2024 17:38:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.23..@fluentui/react-rating_v9.0.24)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33384](https://github.com/microsoft/fluentui/pull/33384) by olfedias@microsoft.com)
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.23)
+
+Fri, 06 Dec 2024 12:53:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.22..@fluentui/react-rating_v9.0.23)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.47 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-theme to v9.1.23 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-tabster to v9.23.1 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+- Bump @fluentui/react-utilities to v9.18.18 ([PR #33372](https://github.com/microsoft/fluentui/pull/33372) by beachball)
+
+## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.22)
+
+Mon, 11 Nov 2024 10:00:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.21..@fluentui/react-rating_v9.0.22)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.46 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-theme to v9.1.22 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-tabster to v9.23.0 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+- Bump @fluentui/react-utilities to v9.18.17 ([PR #33238](https://github.com/microsoft/fluentui/pull/33238) by beachball)
+
+## [9.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.21)
+
+Tue, 15 Oct 2024 17:17:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.20..@fluentui/react-rating_v9.0.21)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.45 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-theme to v9.1.21 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-tabster to v9.22.9 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+- Bump @fluentui/react-utilities to v9.18.16 ([PR #32999](https://github.com/microsoft/fluentui/pull/32999) by beachball)
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.20)
+
+Tue, 08 Oct 2024 22:05:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.19..@fluentui/react-rating_v9.0.20)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.8 ([PR #33007](https://github.com/microsoft/fluentui/pull/33007) by beachball)
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.19)
+
+Mon, 23 Sep 2024 12:40:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.18..@fluentui/react-rating_v9.0.19)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.18)
 

@@ -35,7 +35,9 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: vertical ? 'vertical' : 'horizontal',
-    memorizeCurrent: true,
+    memorizeCurrent: false,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault: true,
   });
 
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -64,7 +66,21 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
   const registeredTabs = React.useRef<Record<string, TabRegisterData>>({});
 
   const onRegister = useEventCallback((data: TabRegisterData) => {
-    registeredTabs.current[JSON.stringify(data.value)] = data;
+    const key = JSON.stringify(data.value);
+
+    if (!key && process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.error(
+        [
+          `[@fluentui/react-tabs] The value "${data.value}" cannot be serialized to JSON string.`,
+          'Tab component requires serializable values.',
+          'Please provide a primitive value (string, number, boolean),',
+          `or a plain object/array that doesn't contain functions, symbols, or circular references.`,
+        ].join(' '),
+      );
+    }
+
+    registeredTabs.current[key] = data;
   });
 
   const onUnregister = useEventCallback((data: TabRegisterData) => {

@@ -235,7 +235,7 @@ describe('Accordion', () => {
       const wrapper = mountWithProvider(<Accordion panels={panels} onTitleClick={onTitleClick} />);
       getTitleButtonAtIndex(wrapper, 0).simulate('click');
 
-      expect(onTitleClick).toBeCalledTimes(1);
+      expect(onTitleClick).toHaveBeenCalledTimes(1);
     });
 
     it('renders just active panels', () => {

@@ -6,7 +6,7 @@ export type SpinnerSlots = {
    * The root of the Spinner.
    * The root slot receives the `className` and `style` specified directly on the `<Spinner>`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'div', 'span'>>;
 
   /**
    * The animated spinning ring.

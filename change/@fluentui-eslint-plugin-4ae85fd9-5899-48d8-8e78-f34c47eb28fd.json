@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

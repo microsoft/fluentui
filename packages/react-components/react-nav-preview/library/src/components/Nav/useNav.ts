@@ -11,33 +11,21 @@ import {
 import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
-// /**
-//  * Initial value for the uncontrolled case of the list of open indexes
-//  */
-// function initializeUncontrolledOpenItems({ defaultOpenItems }: Pick<NavProps, 'defaultOpenItems'>): NavItemValue[] {
-//   if (defaultOpenItems !== undefined) {
-//     if (Array.isArray(defaultOpenItems)) {
-//       return [defaultOpenItems[0]];
-//     }
-//     return [defaultOpenItems];
-//   }
-//   return [];
-// }
-
-// /**
-//  * Normalizes Accordion index into an array of indexes
-//  */
-// function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
-//   if (index === undefined) {
-//     return undefined;
-//   }
-//   return Array.isArray(index) ? index : [index];
-// }
-
-// temp implementation of the above function.
-const normalizeValues = (index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined => {
+/**
+ * Initial value for the uncontrolled case of the list of open indexes
+ */
+function initializeUncontrolledOpenCategories({
+  defaultOpenCategories,
+  multiple,
+}: Pick<NavProps, 'defaultOpenCategories' | 'multiple'>): NavItemValue[] | undefined {
+  if (defaultOpenCategories !== undefined) {
+    if (Array.isArray(defaultOpenCategories)) {
+      return multiple ? defaultOpenCategories : [defaultOpenCategories[0]];
+    }
+    return [defaultOpenCategories];
+  }
   return undefined;
-};
+}
 
 /**
  * Updates the list of open indexes based on an index that changes
@@ -45,7 +33,7 @@ const normalizeValues = (index?: NavItemValue | NavItemValue[]): NavItemValue[] 
  * @param previousOpenItems - list of current open indexes
  * @param multiple - if Nav supports open categories at the same time
  */
-const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[], multiple: boolean) => {
+const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemValue[], multiple: boolean) => {
   if (multiple) {
     if (previousOpenItems.includes(value)) {
       return previousOpenItems.filter(i => i !== value);
@@ -67,31 +55,36 @@ const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[],
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { onNavItemSelect, onNavCategoryItemToggle, multiple = true, size = 'medium' } = props;
+  const {
+    onNavItemSelect,
+    onNavCategoryItemToggle,
+    multiple = true,
+    density = 'medium',
+    openCategories: controlledOpenCategoryItems,
+    selectedCategoryValue: controlledSelectedCategoryValue,
+    selectedValue: controlledSelectedValue,
+    defaultOpenCategories,
+    defaultSelectedValue,
+    defaultSelectedCategoryValue,
+  } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
   const [openCategories, setOpenCategories] = useControllableState({
-    // normalizeValues(controlledOpenItems), [controlledOpenItems])
-    state: React.useMemo(() => normalizeValues(), []),
-    defaultState: () => [], // initializeUncontrolledOpenItems({ defaultOpenItems }),
+    state: controlledOpenCategoryItems,
+    defaultState: initializeUncontrolledOpenCategories({ defaultOpenCategories, multiple }),
     initialState: [],
   });
 
-  const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.value, openCategories, multiple);
-    onNavCategoryItemToggle?.(event, data);
-    setOpenCategories(nextOpenItems);
-  });
-
   const [selectedCategoryValue, setSelectedCategoryValue] = useControllableState({
-    state: props.selectedCategoryValue,
-    defaultState: props.defaultSelectedCategoryValue,
+    state: controlledSelectedCategoryValue,
+    defaultState: defaultSelectedCategoryValue,
     initialState: undefined,
   });
+
   const [selectedValue, setSelectedValue] = useControllableState({
-    state: props.selectedValue,
-    defaultState: props.defaultSelectedValue,
+    state: controlledSelectedValue,
+    defaultState: defaultSelectedValue,
     initialState: undefined,
   });
 
@@ -105,18 +98,30 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
 
-  React.useEffect(() => {
+  if (currentSelectedValue.current !== selectedValue) {
     previousSelectedValue.current = currentSelectedValue.current;
     currentSelectedValue.current = selectedValue;
+  }
 
+  if (currentSelectedCategoryValue.current !== selectedCategoryValue) {
     previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
     currentSelectedCategoryValue.current = selectedCategoryValue;
-  }, [selectedValue, selectedCategoryValue]);
+  }
 
+  // used for NavItems and NavSubItems
   const onSelect: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
     setSelectedValue(data.value);
-    setSelectedCategoryValue(data.categoryValue);
+    setSelectedCategoryValue(data.categoryValue ? data.categoryValue : '');
     onNavItemSelect?.(event, data);
+  });
+
+  // used for NavCategoryItems
+  const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
+    if (data.categoryValue !== undefined) {
+      const nextOpenCategories = updateOpenCategories(data.categoryValue, openCategories ?? [], multiple);
+      onNavCategoryItemToggle?.(event, data);
+      setOpenCategories(nextOpenCategories);
+    }
   });
 
   const registeredNavItems = React.useRef<Record<string, NavItemRegisterData>>({});
@@ -150,6 +155,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
       }),
       { elementType: 'div' },
     ),
+    openCategories,
     selectedValue,
     selectedCategoryValue,
     onRegister,
@@ -157,8 +163,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onSelect,
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
-    openCategories,
     multiple,
-    size,
+    density,
   };
 };

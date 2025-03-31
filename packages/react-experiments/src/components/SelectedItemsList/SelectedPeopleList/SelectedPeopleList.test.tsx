@@ -54,7 +54,7 @@ describe('SelectedPeopleList', () => {
 
     wrapper.find('button.ms-PickerItem-removeButton').at(1).simulate('click');
 
-    expect(onItemsRemoved).toBeCalledTimes(1);
+    expect(onItemsRemoved).toHaveBeenCalledTimes(1);
   });
 
   it('edit render of the items in selected items list', () => {
@@ -97,6 +97,6 @@ describe('SelectedPeopleList', () => {
     expect(wrapper.find('.ms-ContextualMenu-item').at(1).text()).toEqual('Copy');
 
     wrapper.find('.ms-ContextualMenu-item').at(0).simulate('click');
-    expect(removeItems).toBeCalledTimes(1);
+    expect(removeItems).toHaveBeenCalledTimes(1);
   });
 });

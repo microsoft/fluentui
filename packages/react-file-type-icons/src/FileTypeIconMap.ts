@@ -10,6 +10,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },
+  album: {},
   audio: {
     extensions: [
       'aif',
@@ -46,6 +47,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   clipchamp: {
     extensions: ['clipchamp'],
+  },
+  cliptemplate: {
+    extensions: ['cliptemplate'],
   },
   code: {
     extensions: [
@@ -258,6 +262,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   contact: {
     extensions: ['vcf'],
   },
+  copilot: {
+    extensions: ['copilot'],
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
@@ -297,6 +304,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
+  listform: {},
   listitem: {},
   loop: {
     extensions: ['fluid', 'loop', 'note'],
@@ -351,7 +359,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   multiple: {},
   one: {
     // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
-    extensions: ['one'],
+    extensions: ['one', 'onepart'],
   },
   onetoc: {
     // This is an entire OneNote notebook.
@@ -407,6 +415,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   photo360: {},
   picturesfolder: {},
   planner: {},
+  portfolio: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },

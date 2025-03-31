@@ -251,7 +251,7 @@ describe('getCallbackArguments', () => {
         './Accordion.types.ts': 'export interface AccordionProps { onToggle: (e: null) => void; }',
       });
 
-      expect(() => getCallbackArguments(program, 'Button.types.ts', 'AccordionProps', 'onToggle')).toThrowError(
+      expect(() => getCallbackArguments(program, 'Button.types.ts', 'AccordionProps', 'onToggle')).toThrow(
         [
           'A file (Button.types.ts) was not found in TS program, this looks like an invocation problem,',
           'check your params',

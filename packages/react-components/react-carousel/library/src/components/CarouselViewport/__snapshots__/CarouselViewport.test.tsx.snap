@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselViewport renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CarouselViewport"
+    draggable="true"
+    role="presentation"
+  >
+    Default CarouselViewport
+  </div>
+</div>
+`;

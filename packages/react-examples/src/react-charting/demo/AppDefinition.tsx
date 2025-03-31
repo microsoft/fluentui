@@ -111,6 +111,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Horizontal Bar Chart With Axis',
           url: '#/examples/HorizontalBarChartWithAxis',
         },
+        {
+          component: require<any>('../DeclarativeChart/DeclarativeChartPage').DeclarativeChartPage,
+          key: 'DeclarativeChart',
+          name: 'Declarative Chart',
+          url: '#/examples/declarativechart',
+        },
       ],
     },
   ],
@@ -125,7 +131,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting',
+      url: 'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting',
     },
   ],
 };

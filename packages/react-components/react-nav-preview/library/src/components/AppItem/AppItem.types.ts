@@ -1,6 +1,6 @@
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavSize } from '../Nav/Nav.types';
+import { NavDensity } from '../Nav/Nav.types';
 
 export type AppItemSlots = {
   /**
@@ -24,9 +24,9 @@ export type AppItemProps = ComponentProps<AppItemSlots> & { href?: string };
  */
 export type AppItemState = ComponentState<AppItemSlots> & {
   /**
-   * The size of the NavItem
+   * The density of the NavItem
    *
    * @default 'medium'
    */
-  size: NavSize;
+  density: NavDensity;
 };

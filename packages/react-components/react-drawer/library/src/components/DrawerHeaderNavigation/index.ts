@@ -1,5 +1,12 @@
-export * from './DrawerHeaderNavigation';
-export * from './DrawerHeaderNavigation.types';
-export * from './renderDrawerHeaderNavigation';
-export * from './useDrawerHeaderNavigation';
-export * from './useDrawerHeaderNavigationStyles.styles';
+export { DrawerHeaderNavigation } from './DrawerHeaderNavigation';
+export type {
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from './DrawerHeaderNavigation.types';
+export { renderDrawerHeaderNavigation_unstable } from './renderDrawerHeaderNavigation';
+export { useDrawerHeaderNavigation_unstable } from './useDrawerHeaderNavigation';
+export {
+  drawerHeaderNavigationClassNames,
+  useDrawerHeaderNavigationStyles_unstable,
+} from './useDrawerHeaderNavigationStyles.styles';

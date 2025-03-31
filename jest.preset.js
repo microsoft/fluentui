@@ -9,8 +9,6 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
   prefix: `<rootDir>/${path.relative(process.cwd(), __dirname)}/`,
 });
 
-const isCI = Boolean(process.env.TF_BUILD);
-
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
@@ -41,7 +39,7 @@ const baseConfig = {
    *
    * based on testing not spawning additional workers and rely on task orchestrator (NX) parallelization is fastest on our CI env atm ( 8 Core machine, 16GB RAM)
    */
-  maxWorkers: isCI ? 1 : '50%',
+  maxWorkers: isCI() ? 1 : '50%',
 };
 
 module.exports = {
@@ -57,3 +55,11 @@ module.exports = {
    */
   snapshotFormat: { escapeString: true, printBasicPrototype: true },
 };
+
+function isCI() {
+  return (
+    (process.env.CI && process.env.CI !== 'false') ||
+    (process.env.TF_BUILD && process.env.TF_BUILD.toLowerCase() === 'true') ||
+    process.env.GITHUB_ACTIONS === 'true'
+  );
+}

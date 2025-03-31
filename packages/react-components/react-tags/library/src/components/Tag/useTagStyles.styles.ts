@@ -116,7 +116,11 @@ const useRootStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
   },
-
+  selected: {
+    backgroundColor: tokens.colorBrandBackground,
+    color: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
+  },
   medium: {
     height: '32px',
   },
@@ -182,6 +186,7 @@ export const useIconStyles = makeStyles({
   base: {
     gridArea: 'media',
     display: 'flex',
+    boxSizing: 'content-box',
   },
   medium: {
     paddingLeft: tagSpacingMedium,
@@ -280,6 +285,14 @@ const useDismissIconStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
+  selected: {
+    ':hover': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':active': {
+      color: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
 });
 
 export const usePrimaryTextStyles = makeStyles({
@@ -341,14 +354,15 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const { shape, size, appearance } = state;
+  const { disabled, shape, size, appearance, selected } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
 
     shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
 
-    state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
+    selected && !disabled && rootStyles.selected,
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
@@ -392,7 +406,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       dismissIconStyles.base,
       dismissIconStyles[size],
-      !state.disabled && dismissIconStyles[appearance],
+      !disabled && dismissIconStyles[appearance],
+      selected && !disabled && dismissIconStyles.selected,
       state.dismissIcon.className,
     );
   }

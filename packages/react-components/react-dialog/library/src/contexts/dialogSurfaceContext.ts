@@ -1,11 +1,11 @@
-import { createContext, useContext } from 'react';
+import * as React from 'react';
 
 export type DialogSurfaceContextValue = boolean;
 
 const defaultContextValue: DialogSurfaceContextValue = false;
 
-export const DialogSurfaceContext = createContext<DialogSurfaceContextValue | undefined>(undefined);
+export const DialogSurfaceContext = React.createContext<DialogSurfaceContextValue | undefined>(undefined);
 
 export const DialogSurfaceProvider = DialogSurfaceContext.Provider;
 
-export const useDialogSurfaceContext_unstable = () => useContext(DialogSurfaceContext) ?? defaultContextValue;
+export const useDialogSurfaceContext_unstable = () => React.useContext(DialogSurfaceContext) ?? defaultContextValue;

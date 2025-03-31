@@ -77,7 +77,8 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
    *     announced by screen readers. Additionally, the control inside the field has `aria-invalid` set, which adds a
    *     red border to some field components (such as `Input`).
    * * success: The validation message has a green checkmark icon and gray text.
-   * * warning: The validation message has a yellow exclamation icon and gray text.
+   * * warning: The validation message has a yellow exclamation icon and gray text, with `role="alert"` so it is
+   *     announced by screen readers.
    * * none: The validation message has no icon and gray text.
    *
    * @default error when validationMessage is set; none otherwise.

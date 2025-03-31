@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

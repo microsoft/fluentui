@@ -23,8 +23,11 @@ describe('TextArea', () => {
       const wrapper = mount(<TextArea onChange={onChange} />);
 
       wrapper.simulate('change', { target: { value } });
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith(expect.objectContaining({ type: 'change' }), expect.objectContaining({ value }));
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'change' }),
+        expect.objectContaining({ value }),
+      );
     });
   });
 });

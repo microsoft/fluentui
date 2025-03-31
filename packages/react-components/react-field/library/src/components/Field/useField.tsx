@@ -41,7 +41,10 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     elementType: Label,
   });
   const validationMessage = slot.optional(props.validationMessage, {
-    defaultProps: { id: baseId + '__validationMessage', role: validationState === 'error' ? 'alert' : undefined },
+    defaultProps: {
+      id: baseId + '__validationMessage',
+      role: validationState === 'error' || validationState === 'warning' ? 'alert' : undefined,
+    },
     elementType: 'div',
   });
   const hint = slot.optional(props.hint, { defaultProps: { id: baseId + '__hint' }, elementType: 'div' });
@@ -51,6 +54,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     defaultProps: { children: defaultIcon },
     elementType: 'span',
   });
+
   return {
     children,
     generatedControlId,

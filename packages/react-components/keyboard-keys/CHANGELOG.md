@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Thu, 09 Nov 2023 17:29:49 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Nov 2024 10:01:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.8)
+
+Mon, 11 Nov 2024 10:01:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.7..@fluentui/keyboard-keys_v9.0.8)
+
+### Patches
+
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.7)
 

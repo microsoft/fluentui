@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Avatar as FluentAvatar } from './avatar.js';
 import { AvatarActive, AvatarAppearance, AvatarColor, AvatarShape, AvatarSize } from './avatar.options.js';
 
@@ -27,6 +27,7 @@ export default {
       control: 'select',
       description: 'Optional activity indicator',
       options: ['', ...Object.values(AvatarActive)],
+      mapping: { '': null, ...AvatarActive },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarActive).join('|') },
@@ -36,6 +37,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the avatar.',
       options: ['', ...Object.values(AvatarAppearance)],
+      mapping: { '': null, ...AvatarAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarAppearance).join('|') },
@@ -45,6 +47,7 @@ export default {
       control: 'select',
       description: 'Indicates the color of the avatar.',
       options: ['', ...Object.values(AvatarColor)],
+      mapping: { '': null, ...AvatarColor },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarColor).join('|') },
@@ -65,6 +68,7 @@ export default {
       control: 'select',
       description: 'Indicates the shape of the avatar.',
       options: ['', ...Object.values(AvatarShape)],
+      mapping: { '': null, ...AvatarShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarShape).join('|') },
@@ -74,6 +78,7 @@ export default {
       control: 'select',
       description: 'Indicates the size of the avatar.',
       options: ['', ...Object.values(AvatarSize)],
+      mapping: { '': null, ...AvatarSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarSize).join('|') },
@@ -93,6 +98,8 @@ export default {
     },
   },
 } as Meta<FluentAvatar>;
+
+export const Default: Story = {};
 
 export const Image: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar>

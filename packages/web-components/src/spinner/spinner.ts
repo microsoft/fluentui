@@ -1,24 +1,7 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
-import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
-
-/**
- * The base class used for constructing a fluent-spinner custom element
- * @public
- */
-export class BaseSpinner extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'progressbar';
-  }
-}
+import { attr } from '@microsoft/fast-element';
+import { swapStates } from '../utils/element-internals.js';
+import { BaseSpinner } from './spinner.base.js';
+import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * A Spinner Custom HTML Element.
@@ -43,12 +26,7 @@ export class Spinner extends BaseSpinner {
    * @param next - the next state
    */
   public sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, SpinnerSize);
   }
 
   /**
@@ -66,11 +44,6 @@ export class Spinner extends BaseSpinner {
    * @param next - the next state
    */
   public appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, SpinnerAppearance);
   }
 }

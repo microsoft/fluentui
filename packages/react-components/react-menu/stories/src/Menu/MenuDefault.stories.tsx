@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 
 export const Default = () => (
-  <Menu>
+  <Menu positioning={{ autoSize: true }}>
     <MenuTrigger disableButtonEnhancement>
       <Button>Toggle menu</Button>
     </MenuTrigger>

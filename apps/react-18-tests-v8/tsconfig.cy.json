@@ -3,8 +3,13 @@
   "compilerOptions": {
     "jsx": "react",
     "isolatedModules": false,
-    "types": ["node", "cypress", "cypress-real-events"],
+    "types": [],
     "lib": ["ES2019", "dom"]
   },
+  "files": [
+    "../../node_modules/@types/node/index.d.ts",
+    "../../node_modules/@cypress/react/dist/index.d.ts",
+    "../../node_modules/cypress-real-events/index.d.ts"
+  ],
   "include": ["./src/**/*.cy.ts", "./src/**/*.cy.tsx"]
 }

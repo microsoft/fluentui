@@ -1,5 +1,5 @@
-export * from './MenuPopover';
-export * from './MenuPopover.types';
-export * from './renderMenuPopover';
-export * from './useMenuPopover';
-export * from './useMenuPopoverStyles.styles';
+export { MenuPopover } from './MenuPopover';
+export type { MenuPopoverProps, MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
+export { renderMenuPopover_unstable } from './renderMenuPopover';
+export { useMenuPopover_unstable } from './useMenuPopover';
+export { menuPopoverClassNames, useMenuPopoverStyles_unstable } from './useMenuPopoverStyles.styles';

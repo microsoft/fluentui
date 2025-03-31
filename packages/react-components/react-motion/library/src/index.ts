@@ -19,6 +19,7 @@ export type {
   PresenceMotionFn,
   PresenceDirection,
   MotionImperativeRef,
+  MotionParam,
 } from './types';
 
 export { MotionBehaviourProvider } from './contexts/MotionBehaviourContext';

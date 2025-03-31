@@ -118,7 +118,7 @@ export const handlesAccessibility = (
         });
       });
 
-      expect(eventHandler).toBeCalledTimes(1);
+      expect(eventHandler).toHaveBeenCalledTimes(1);
     });
   }
 };

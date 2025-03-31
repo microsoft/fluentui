@@ -26,7 +26,7 @@ export const StackedBarChartPageProps: IDocPageProps = {
   title: 'StackedBarChart',
   componentName: 'StackedBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/StackedBarChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/StackedBarChart',
   examples: [
     {
       title: 'StackedBarChart basic',

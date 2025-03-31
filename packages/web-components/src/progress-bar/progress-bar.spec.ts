@@ -1,70 +1,58 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { ProgressBar } from './progress-bar.js';
+import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 test.describe('Progress Bar', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-progressbar--progress'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-progress-bar'));
+  test.use({
+    tagName: 'fluent-progress-bar',
   });
 
-  test('should include a role of progressbar', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should include a role of progressbar', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'progressbar');
   });
 
-  test('should set the `aria-valuenow` attribute with the `value` property when provided', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `aria-valuenow` attribute to match the `value` property', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-progress-bar value="50"></fluent-progress-bar>
-    `);
+    await fastPage.setTemplate({ attributes: { value: '50' } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
   });
 
-  test('should set the `aria-valuemin` attribute with the `min` property when provided', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `aria-valuemin` attribute to match the `min` property', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-      <fluent-progress-bar min="50"></fluent-progress-bar>
-    `);
+    await fastPage.setTemplate({ attributes: { min: '50' } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaValueMin', '50');
   });
 
-  test('should set the `aria-valuemax` attribute with the `max` property when provided', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `aria-valuemax` attribute to match the `max` property', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-progress-bar max="50"></fluent-progress-bar>
-    `);
+    await fastPage.setTemplate({ attributes: { max: '50' } });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '50');
   });
 
-  test('should return the `percentComplete` property as a value between 0 and 100 when `min` and `max` are unset', async ({
-    page,
+  test('should set the `percentComplete` property to match the `value` property as a percentage between 0 and 100 when `min` and `max` are unset', async ({
+    fastPage,
   }) => {
-    const element = page.locator('fluent-progress-bar');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-progress-bar value="50"></fluent-progress-bar>
-    `);
+    await fastPage.setTemplate({ attributes: { value: '50' } });
 
     await expect(element).toHaveJSProperty('percentComplete', 50);
   });
 
-  test('should set the `percentComplete` property to match the current `value` in the range of `min` and `max`', async ({
-    page,
+  test('should set the `percentComplete` property to match the `value` property as a percentage between `min` and `max`', async ({
+    fastPage,
   }) => {
-    const element = page.locator('fluent-progress-bar');
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-progress-bar value="0"></fluent-progress-bar>
-    `);
+    await fastPage.setTemplate({ attributes: { value: '0' } });
 
     await expect(element).toHaveJSProperty('percentComplete', 0);
 
@@ -93,76 +81,51 @@ test.describe('Progress Bar', () => {
     await expect(element).toHaveJSProperty('percentComplete', 0);
   });
 
-  test('should set and retrieve the `thickness` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `thickness` property to match the `thickness` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: ProgressBar) => {
-      node.thickness = 'medium';
-    });
+    for (const thickness of Object.values(ProgressBarThickness)) {
+      await test.step(thickness, async () => {
+        await fastPage.setTemplate({ attributes: { thickness } });
 
-    await expect(element).toHaveJSProperty('thickness', 'medium');
-    await expect(element).toHaveCustomState('medium');
+        await expect(element).toHaveAttribute('thickness', thickness);
 
-    await element.evaluate((node: ProgressBar) => {
-      node.thickness = 'large';
-    });
+        await expect(element).toHaveJSProperty('thickness', thickness);
 
-    await expect(element).toHaveJSProperty('thickness', 'large');
-    await expect(element).not.toHaveCustomState('medium');
-    await expect(element).toHaveCustomState('large');
+        await expect(element).toHaveCustomState(thickness);
+      });
+    }
   });
 
-  test('should set and retrieve the `shape` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: ProgressBar) => {
-      node.shape = 'square';
-    });
+    for (const shape of Object.values(ProgressBarShape)) {
+      await test.step(shape, async () => {
+        await fastPage.setTemplate({ attributes: { shape } });
 
-    await expect(element).toHaveJSProperty('shape', 'square');
-    await expect(element).toHaveCustomState('square');
+        await expect(element).toHaveAttribute('shape', shape);
 
-    await element.evaluate((node: ProgressBar) => {
-      node.shape = 'rounded';
-    });
+        await expect(element).toHaveJSProperty('shape', shape);
 
-    await expect(element).toHaveJSProperty('shape', 'rounded');
-    await expect(element).not.toHaveCustomState('square');
-    await expect(element).toHaveCustomState('rounded');
+        await expect(element).toHaveCustomState(shape);
+      });
+    }
   });
 
-  test('should set and retrieve the `validationState` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-progress-bar');
+  test('should set the `validationState` property to match the `validation-state` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await element.evaluate((node: ProgressBar) => {
-      node.validationState = 'success';
-    });
+    for (const validationState of Object.values(ProgressBarValidationState)) {
+      await test.step(validationState, async () => {
+        await fastPage.setTemplate({ attributes: { 'validation-state': validationState } });
 
-    await expect(element).toHaveJSProperty('validationState', 'success');
-    await expect(element).toHaveCustomState('success');
+        await expect(element).toHaveAttribute('validation-state', validationState);
 
-    await element.evaluate((node: ProgressBar) => {
-      node.validationState = 'warning';
-    });
+        await expect(element).toHaveJSProperty('validationState', validationState);
 
-    await expect(element).toHaveJSProperty('validationState', 'warning');
-    await expect(element).not.toHaveCustomState('success');
-    await expect(element).toHaveCustomState('warning');
-
-    await element.evaluate((node: ProgressBar) => {
-      node.validationState = 'error';
-    });
-
-    await expect(element).toHaveJSProperty('validationState', 'error');
-    await expect(element).not.toHaveCustomState('warning');
-    await expect(element).toHaveCustomState('error');
-
-    await element.evaluate((node: ProgressBar) => {
-      node.validationState = null;
-    });
-
-    await expect(element).not.toHaveCustomState('success');
-    await expect(element).not.toHaveCustomState('warning');
-    await expect(element).not.toHaveCustomState('error');
+        await expect(element).toHaveCustomState(validationState);
+      });
+    }
   });
 });

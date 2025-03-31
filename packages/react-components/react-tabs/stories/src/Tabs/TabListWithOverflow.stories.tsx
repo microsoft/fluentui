@@ -112,7 +112,7 @@ const tabs: ExampleTab[] = [
 
 type OverflowMenuItemProps = {
   tab: ExampleTab;
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type
+
   onClick: MenuItemProps['onClick'];
 };
 
@@ -146,7 +146,6 @@ const useOverflowMenuStyles = makeStyles({
 });
 
 type OverflowMenuProps = {
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onTabSelect?: (tabId: string) => void;
 };
 

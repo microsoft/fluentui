@@ -1,4 +1,4 @@
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import { Virtualizer } from '@fluentui/react-virtualizer';
 import descriptionMd from './VirtualizerDescription.md';
 
 export { Default } from './Default.stories';

@@ -43,7 +43,7 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
   const asyncQueue = [];
 
   for (const ref of tsConfigsRefs) {
-    const program = `tsc -p ${ref} --pretty --noEmit --baseUrl .`;
+    const program = `tsc -p ${ref} --pretty --noEmit --baseUrl ${projectRootAbsolutePath}`;
 
     verboseLog(`Running "${program}"`);
 

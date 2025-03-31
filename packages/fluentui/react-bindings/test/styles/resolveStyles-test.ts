@@ -99,7 +99,7 @@ describe('resolveStyles', () => {
     const { resolvedStyles } = resolveStyles(resolveStylesOptions({ renderRule }), resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject({ color: 'red' });
-    expect(renderRule).not.toBeCalled();
+    expect(renderRule).not.toHaveBeenCalled();
   });
 
   test('renders classes when slot classes getter is accessed', () => {

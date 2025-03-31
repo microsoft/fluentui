@@ -110,7 +110,7 @@ describe('MenuButton', () => {
           This is a button
         </MenuButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(anchor.tagName).toBe('A');
     });
@@ -121,7 +121,7 @@ describe('MenuButton', () => {
           This is a button
         </MenuButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -134,7 +134,7 @@ describe('MenuButton', () => {
           This is a button
         </MenuButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -147,7 +147,7 @@ describe('MenuButton', () => {
           This is a button
         </MenuButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();

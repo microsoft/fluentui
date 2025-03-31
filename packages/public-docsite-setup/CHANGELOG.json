@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Thu, 10 Oct 2024 07:21:57 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.34",
+      "version": "0.3.34",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "511f956bfba95ac9dde686f1812e45abc8f0af92",
+            "comment": "chore: use react--legacy config in v8 projects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2024 07:24:46 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.34",
       "version": "0.3.34",

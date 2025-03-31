@@ -177,18 +177,20 @@ exports[`TagPicker renders correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   border-radius: 0 2px 2px 0;
                   border: none;
                   box-sizing: border-box;
                   color: #605e5c;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
                   flex: 0 0 auto;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 4px;
@@ -334,7 +336,7 @@ exports[`TagPicker renders correctly 1`] = `
       </span>
       <input
         aria-autocomplete="both"
-        aria-describedby="selected-items-id__0"
+        aria-describedby="selected-items-id__0 "
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -604,18 +606,20 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  align-items: center;
                   background-color: transparent;
                   border-radius: 0 2px 2px 0;
                   border: none;
                   box-sizing: border-box;
                   color: #605e5c;
                   cursor: pointer;
-                  display: inline-block;
+                  display: inline-flex;
                   flex: 0 0 auto;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
                   height: 100%;
+                  justify-content: center;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 4px;
@@ -761,7 +765,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
       </span>
       <input
         aria-autocomplete="both"
-        aria-describedby="selected-items-id__0"
+        aria-describedby="selected-items-id__0 "
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"

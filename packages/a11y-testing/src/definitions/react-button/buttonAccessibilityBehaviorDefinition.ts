@@ -8,8 +8,9 @@ export const buttonAccessibilityBehaviorDefinition: Rule[] = [
     .description(`if element is rendered as a default 'button'.`),
   BehaviorRule.root()
     .forProps({ as: 'a', href: '#' })
-    .hasAttribute('role', 'button')
-    .hasAttribute('tabindex', '0')
+    .doesNotHaveAttribute('role')
+    .doesNotHaveAttribute('tabindex')
+    .doesNotHaveAttribute('type')
     .description(`if element has href and is rendered as an 'anchor'.`),
   BehaviorRule.root()
     .forProps({ disabled: true })
@@ -18,6 +19,8 @@ export const buttonAccessibilityBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
     .forProps({ as: 'a', disabled: true, href: '#' })
     .doesNotHaveAttribute('disabled')
+    .doesNotHaveAttribute('href')
+    .hasAttribute('role', 'link')
     .description(`if element has href and is rendered as an 'anchor' and is disabled.`),
   BehaviorRule.root()
     .forProps({ disabledFocusable: true })
@@ -27,6 +30,7 @@ export const buttonAccessibilityBehaviorDefinition: Rule[] = [
   BehaviorRule.root()
     .forProps({ as: 'a', disabledFocusable: true, href: '#' })
     .doesNotHaveAttribute('disabled')
+    .doesNotHaveAttribute('href')
     .hasAttribute('aria-disabled', 'true')
     .hasAttribute('tabindex', '0')
     .description(`if element has href and is rendered as an 'anchor' and is disabled but focusable.`),

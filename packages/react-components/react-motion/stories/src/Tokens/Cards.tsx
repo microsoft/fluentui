@@ -1,4 +1,4 @@
-import { Divider, tokens, Switch } from '@fluentui/react-components';
+import { Divider, Switch } from '@fluentui/react-components';
 import { curves, durations } from '@fluentui/react-motion';
 import * as React from 'react';
 
@@ -32,9 +32,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
             d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
               100 - easingPoints[3]
             }, 100 0`}
-            fill="none"
-            stroke={tokens.colorNeutralStrokeAccessible}
-            strokeWidth="2"
+            className={classes.path}
           />
         </svg>
 
@@ -86,7 +84,7 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
 function useAnimationEnabled() {
   const [animationEnabled, setAnimationEnabled] = React.useState(() => {
     // Heads up/ Not the best way to detect reduced motion as it breaks SSR, but it's good enough for Storybook
-    // eslint-disable-next-line no-restricted-globals
+    // eslint-disable-next-line @nx/workspace-no-restricted-globals
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     return !isReducedMotion;

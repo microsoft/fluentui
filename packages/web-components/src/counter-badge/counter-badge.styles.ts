@@ -1,13 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { badgeBaseStyles, badgeFilledStyles, badgeGhostStyles, badgeSizeStyles } from '../styles/index.js';
 import { borderRadiusMedium, borderRadiusSmall } from '../theme/design-tokens.js';
-import { extraSmallState, roundedState, smallState, tinyState } from '../styles/states/index.js';
-
-/**
- * Selector for the `dot` state.
- * @public
- */
-const dotState = css.partial`:is([state--dot], :state(dot))`;
+import { dotState, extraSmallState, roundedState, smallState, tinyState } from '../styles/states/index.js';
 
 /** Badge styles
  * @public

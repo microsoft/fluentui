@@ -45,14 +45,14 @@ export const Basic = () => {
   return (
     <div style={{ width: 900 }}>
       <StackedBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data0}
         href={'https://developer.microsoft.com/en-us/'}
         ignoreFixStyle={false}
       />
       <br />
       <StackedBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data1}
         href={'https://developer.microsoft.com/en-us/'}
         ignoreFixStyle={true}

@@ -92,7 +92,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       disabled,
       getAriaLabel,
       styles,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       min: minFromProps = props.allowZeroStars ? 0 : 1,
       max = 5,
       readOnly,
@@ -146,7 +146,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       };
 
       const onStarKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const { which } = event;
         let newRating = starNum;
         switch (which) {

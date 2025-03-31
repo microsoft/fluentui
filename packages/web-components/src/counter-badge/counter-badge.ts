@@ -1,8 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-// TODO: Remove with https://github.com/microsoft/fast/pull/6797
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
-import { toggleState } from '../utils/element-internals.js';
+import { swapStates, toggleState } from '../utils/element-internals.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -38,12 +37,7 @@ export class CounterBadge extends FASTElement {
    * @param next - the next state
    */
   public appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, CounterBadgeAppearance);
   }
 
   /**
@@ -62,12 +56,7 @@ export class CounterBadge extends FASTElement {
    * @param next - the next state
    */
   public colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, CounterBadgeColor);
   }
 
   /**
@@ -86,12 +75,7 @@ export class CounterBadge extends FASTElement {
    * @param next - the next state
    */
   public shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, CounterBadgeShape);
   }
 
   /**
@@ -110,12 +94,7 @@ export class CounterBadge extends FASTElement {
    * @param next - the next state
    */
   public sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
+    swapStates(this.elementInternals, prev, next, CounterBadgeSize);
   }
 
   /**

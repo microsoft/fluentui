@@ -1,5 +1,9 @@
-export * from './TableHeaderCell';
-export * from './TableHeaderCell.types';
-export * from './renderTableHeaderCell';
-export * from './useTableHeaderCell';
-export * from './useTableHeaderCellStyles.styles';
+export { TableHeaderCell } from './TableHeaderCell';
+export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell.types';
+export { renderTableHeaderCell_unstable } from './renderTableHeaderCell';
+export { useTableHeaderCell_unstable } from './useTableHeaderCell';
+export {
+  tableHeaderCellClassName,
+  tableHeaderCellClassNames,
+  useTableHeaderCellStyles_unstable,
+} from './useTableHeaderCellStyles.styles';

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add z-index tokens",
-  "packageName": "@fluentui/tokens",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

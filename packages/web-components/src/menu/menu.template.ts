@@ -1,4 +1,4 @@
-import { elements, ElementViewTemplate, html, slotted } from '@microsoft/fast-element';
+import { elements, type ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
 import type { Menu } from './menu.js';
 
 export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {
@@ -10,6 +10,7 @@ export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {
       ?persist-on-item-click="${x => x.persistOnItemClick}"
       @keydown="${(x, c) => x.menuKeydownHandler(c.event as KeyboardEvent)}"
     >
+      <slot name="primary-action" ${ref('primaryAction')}></slot>
       <slot name="trigger" ${slotted({ property: 'slottedTriggers', filter: elements() })}></slot>
       <slot ${slotted({ property: 'slottedMenuList', filter: elements() })}></slot>
     </template>

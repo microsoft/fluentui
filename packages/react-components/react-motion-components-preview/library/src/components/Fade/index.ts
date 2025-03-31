@@ -1,1 +1,1 @@
-export * from './Fade';
+export { Fade, FadeRelaxed, FadeSnappy, createFadePresence } from './Fade';

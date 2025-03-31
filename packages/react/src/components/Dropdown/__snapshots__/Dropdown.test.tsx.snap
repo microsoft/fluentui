@@ -8,6 +8,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
     <div
       aria-expanded="false"
       aria-haspopup="listbox"
+      aria-invalid="false"
       class=
           ms-Dropdown
           {
@@ -101,7 +102,6 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
       tabindex="0"
     >
       <span
-        aria-invalid="false"
         class=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -939,6 +939,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
+        aria-invalid="false"
         class=
             ms-Dropdown
             is-open
@@ -1034,7 +1035,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
       >
         <span
           aria-atomic="true"
-          aria-invalid="false"
           aria-live="polite"
           class=
               ms-Dropdown-title
@@ -1119,6 +1119,7 @@ exports[`Dropdown single-select Renders correctly 1`] = `
     <div
       aria-expanded="false"
       aria-haspopup="listbox"
+      aria-invalid="false"
       class=
           ms-Dropdown
           {
@@ -1212,7 +1213,6 @@ exports[`Dropdown single-select Renders correctly 1`] = `
       tabindex="0"
     >
       <span
-        aria-invalid="false"
         class=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -1295,6 +1295,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
+        aria-invalid="false"
         class=
             ms-Dropdown
             is-open
@@ -1390,7 +1391,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
       >
         <span
           aria-atomic="true"
-          aria-invalid="false"
           aria-live="polite"
           class=
               ms-Dropdown-title
@@ -1664,6 +1664,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             font-size: 14px;
                             font-weight: 400;
                             height: 0px;
+                            justify-content: center;
                             line-height: 20px;
                             min-height: 36px;
                             outline: transparent;
@@ -1872,6 +1873,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           font-size: 14px;
                           font-weight: 400;
                           height: 0px;
+                          justify-content: center;
                           line-height: 20px;
                           min-height: 36px;
                           outline: transparent;

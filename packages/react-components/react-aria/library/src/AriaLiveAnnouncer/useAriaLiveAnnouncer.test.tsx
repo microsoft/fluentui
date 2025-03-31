@@ -42,12 +42,12 @@ describe('useAriaLiveAnnouncer', () => {
       const append = jest.spyOn(document.body, 'append');
       const { rerender } = renderHook(() => useAriaLiveAnnouncer({}));
 
-      expect(append).toBeCalledTimes(1);
-      expect(append).toBeCalledWith(expect.any(HTMLDivElement));
+      expect(append).toHaveBeenCalledTimes(1);
+      expect(append).toHaveBeenCalledWith(expect.any(HTMLDivElement));
 
       // Ensure that the same element is not appended again
       rerender();
-      expect(append).toBeCalledTimes(1);
+      expect(append).toHaveBeenCalledTimes(1);
     });
 
     it('should update the announcement message', () => {

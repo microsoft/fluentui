@@ -16,7 +16,7 @@ const ProviderContext = React.createContext<ProviderContextValue | undefined>(
 ) as React.Context<ProviderContextValue>;
 
 const providerContextDefaultValue: ProviderContextValue = {
-  // eslint-disable-next-line no-restricted-globals
+  // eslint-disable-next-line @nx/workspace-no-restricted-globals -- expected ignore ( SSR friendly acquisition of globals )
   targetDocument: typeof document === 'object' ? document : undefined,
   dir: 'ltr' as const,
 };

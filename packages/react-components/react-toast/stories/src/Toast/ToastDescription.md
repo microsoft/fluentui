@@ -11,7 +11,7 @@ The Fluent UI Toast component uses an **imperative** API. Once a Toaster has bee
 `useToastController` hook to get access to imperative methods to dispatch a Toast. The Toast component itself
 is simply a layout component.
 
-> ⚠️ In order for notifications that use toast to be fully accessible, developers should include make the notifications
+> ⚠️ In order for notifications that use toast to be fully accessible, developers should make the notifications
 > available on a permanent surface too. One of the ways to do this in an application is to implement a notification
 > centre.
 

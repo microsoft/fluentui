@@ -14,7 +14,10 @@ export type DialogSurfaceSlots = {
    */
   backdrop?: Slot<'div'>;
   root: Slot<'div'>;
-
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   backdropMotion: Slot<PresenceMotionSlotProps>;
 };
 

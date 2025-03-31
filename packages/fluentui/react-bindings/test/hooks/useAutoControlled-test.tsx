@@ -142,6 +142,6 @@ describe('useAutoControlled', () => {
     act(() => {
       result.current[1](dispatchSpy);
     });
-    expect(dispatchSpy).toBeCalledWith('b');
+    expect(dispatchSpy).toHaveBeenCalledWith('b');
   });
 });

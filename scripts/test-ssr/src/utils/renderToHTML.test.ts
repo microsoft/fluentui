@@ -52,9 +52,9 @@ exports.App = App;
   });
 
   it('throws an error on a non-existing file', async () => {
-    await expect(
-      renderToHTML({ cjsOutfile: 'foo.js', esmOutfile: 'foo.js', htmlOutfile: 'foo.html' }),
-    ).rejects.toThrowError('A file "foo.js" does not exist');
+    await expect(renderToHTML({ cjsOutfile: 'foo.js', esmOutfile: 'foo.js', htmlOutfile: 'foo.html' })).rejects.toThrow(
+      'A file "foo.js" does not exist',
+    );
   });
 
   it('throws an error on a missing export', async () => {
@@ -66,7 +66,7 @@ exports.App = App;
 
     await fs.promises.writeFile(cjsOutfile, `module.exports = false`);
 
-    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrowError(
+    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrow(
       /does not have an export named "App", please check the matching file/,
     );
   });
@@ -82,13 +82,13 @@ exports.App = App;
       cjsOutfile,
       `
 const React = ${REQUIRE_CALL('react')}
-    
+
 exports.App = function App() {
   return React.createElement(Foo);
 }
     `,
     );
 
-    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrowError('Foo is not defined');
+    await expect(renderToHTML({ cjsOutfile, esmOutfile, htmlOutfile })).rejects.toThrow('Foo is not defined');
   });
 });

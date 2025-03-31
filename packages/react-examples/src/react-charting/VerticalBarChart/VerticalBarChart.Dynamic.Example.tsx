@@ -104,7 +104,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
 
   public render(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -238,6 +238,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
             enableGradient={this.state.enableGradient}
             roundCorners={this.state.roundCorners}
+            hideTickOverlap={true}
           />
         </div>
         <div>
@@ -250,7 +251,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             </p>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 

@@ -1,7 +1,11 @@
 //Copied from @microsoft/fast-foundation
 
-import { CaptureType, HTMLDirective, InlineTemplateDirective } from '@microsoft/fast-element';
-import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import {
+  type CaptureType,
+  type HTMLDirective,
+  InlineTemplateDirective,
+  type SyntheticViewTemplate,
+} from '@microsoft/fast-element';
 
 /**
  * A value that can be statically composed into a

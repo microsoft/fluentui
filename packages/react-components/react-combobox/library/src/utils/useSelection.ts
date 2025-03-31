@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
 import { OptionValue } from './OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from './Selection.types';
@@ -12,7 +12,7 @@ export const useSelection = (props: SelectionProps): SelectionState => {
     initialState: [],
   });
 
-  const selectOption = useCallback(
+  const selectOption = React.useCallback(
     (event: SelectionEvents, option: OptionValue) => {
       // if the option is disabled, do nothing
       if (option.disabled) {

@@ -13,7 +13,8 @@ const PieChartDynamicExampleCode =
 export const PieChartPageProps: IDocPageProps = {
   title: 'PieChart',
   componentName: 'PieChart',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/PieChart',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/PieChart',
   examples: [
     {
       title: 'PieChart basic',
