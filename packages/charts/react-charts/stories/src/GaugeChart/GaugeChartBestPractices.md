@@ -30,15 +30,15 @@ The library recommends a few size width and height options for charts. Product t
 
 - A custom formatter function that returns a string representing the chart value.
 
-  - `GaugeValueFormat.Fraction`: Renders the chart value as a fraction.
-  - `GaugeValueFormat.Percentage`: Renders the chart value as a percentage. This is the default format.
+  - `fraction`: Renders the chart value as a fraction.
+  - `percentage`: Renders the chart value as a percentage. This is the default format.
     Note: If the min value is non-zero and no formatter function is provided, the chart value will be rendered as a number.
 
 - `variant`: This prop determines the presentation style of the gauge chart. Set it to one of the following options:
 
-  - `GaugeChartVariant.SingleSegment`: This variant helps represent a single metric or key performance indicator (KPI) within a predefined range or target. In this variant, the segment sizes are rendered as percentages.
+  - `single-segment`: This variant helps represent a single metric or key performance indicator (KPI) within a predefined range or target. In this variant, the segment sizes are rendered as percentages.
 
-  - `GaugeChartVariant.MultipleSegments`: This is the default variant that helps display the distribution of a single variable across different thresholds or categories. In this variant, the segment sizes are rendered as ranges.
+  - `multiple-segments`: This is the default variant that helps display the distribution of a single variable across different thresholds or categories. In this variant, the segment sizes are rendered as ranges.
 
 ### Do's
 
