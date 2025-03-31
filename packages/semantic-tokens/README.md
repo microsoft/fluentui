@@ -2,7 +2,7 @@
 
 **Fluent UI Theme semantic-tokens**
 
-The semantic tokens package provides finely tuneable theme control via component level CSSVars with fallbacks.
+The semantic tokens package provides finely tuneable theme control via generic and component level CSSVars with fallbacks.
 
 This package extends upon the core @fluentui/tokens set in a tree-shakeable and backwards compatible manner.
 
