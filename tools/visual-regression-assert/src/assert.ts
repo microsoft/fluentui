@@ -13,8 +13,8 @@ import { cwd } from 'node:process';
 
 import { PNG } from 'pngjs';
 
-import { getPackageMetadata, loadPixelmatch } from './utils';
-import { Metadata, Result } from './types';
+import { createMetadataForReport, findGitRoot, loadPixelmatch } from './utils';
+import type { Result } from './types';
 import { generateCliReport, generateHtmlReport, generateJsonReport, generateMarkdownReport } from './reporters';
 
 async function compareSnapshots(
@@ -57,12 +57,17 @@ async function compareSnapshots(
   }
 }
 
-export async function runSnapshotTests(options: {
+interface Options {
   baselineDir: string;
+  /**
+   * relative path where report output should be created
+   */
   outputPath: string;
   reportFileName: string;
   updateSnapshots: boolean;
-}) {
+}
+
+export async function runSnapshotTests(options: Options): Promise<{ success: boolean }> {
   const { updateSnapshots, reportFileName, baselineDir, outputPath } = options;
 
   const relativePaths = {
@@ -72,25 +77,21 @@ export async function runSnapshotTests(options: {
     actualDir: join(outputPath, 'actual'),
     diffDir: join(outputPath, 'diff'),
   };
+  const workDir = cwd();
 
-  const normalizedPaths = {
-    outputPath: join(cwd(), outputPath),
-    baselineDir: join(cwd(), relativePaths.baselineDir),
-    outputBaselineDir: join(cwd(), relativePaths.outputBaselineDir),
-    actualDir: join(cwd(), relativePaths.actualDir),
-    diffDir: join(cwd(), relativePaths.diffDir),
+  const absolutePaths = {
+    outputPath: join(workDir, outputPath),
+    baselineDir: join(workDir, relativePaths.baselineDir),
+    outputBaselineDir: join(workDir, relativePaths.outputBaselineDir),
+    actualDir: join(workDir, relativePaths.actualDir),
+    diffDir: join(workDir, relativePaths.diffDir),
   };
 
-  if (!existsSync(normalizedPaths.actualDir)) {
-    throw new Error(
-      `actualDir "${normalizedPaths.actualDir}" doesn't exist. Make sure to provide images for assertion`,
-    );
+  if (!existsSync(absolutePaths.actualDir)) {
+    throw new Error(`actualDir "${absolutePaths.actualDir}" doesn't exist. Make sure to provide images for assertion`);
   }
 
-  const metadata: Metadata = {
-    paths: normalizedPaths,
-    project: getPackageMetadata(normalizedPaths.outputPath),
-  };
+  const metadata = createMetadataForReport({ repoRoot: findGitRoot(workDir), absolutePaths });
 
   if (updateSnapshots) {
     console.info('======================');
@@ -98,26 +99,26 @@ export async function runSnapshotTests(options: {
     console.info('======================');
   }
 
-  if (!existsSync(normalizedPaths.baselineDir)) {
-    mkdirSync(normalizedPaths.baselineDir, { recursive: true });
+  if (!existsSync(absolutePaths.baselineDir)) {
+    mkdirSync(absolutePaths.baselineDir, { recursive: true });
   }
 
-  if (!existsSync(normalizedPaths.outputBaselineDir)) {
-    mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
+  if (!existsSync(absolutePaths.outputBaselineDir)) {
+    mkdirSync(absolutePaths.outputBaselineDir, { recursive: true });
   } else {
-    rmSync(normalizedPaths.outputBaselineDir, { recursive: true });
-    mkdirSync(normalizedPaths.outputBaselineDir, { recursive: true });
+    rmSync(absolutePaths.outputBaselineDir, { recursive: true });
+    mkdirSync(absolutePaths.outputBaselineDir, { recursive: true });
   }
 
-  if (!existsSync(normalizedPaths.diffDir)) {
-    mkdirSync(normalizedPaths.diffDir, { recursive: true });
+  if (!existsSync(absolutePaths.diffDir)) {
+    mkdirSync(absolutePaths.diffDir, { recursive: true });
   } else {
-    rmSync(normalizedPaths.diffDir, { recursive: true });
-    mkdirSync(normalizedPaths.diffDir, { recursive: true });
+    rmSync(absolutePaths.diffDir, { recursive: true });
+    mkdirSync(absolutePaths.diffDir, { recursive: true });
   }
 
-  const baselineFiles = readdirSync(normalizedPaths.baselineDir);
-  const actualFiles = readdirSync(normalizedPaths.actualDir);
+  const baselineFiles = readdirSync(absolutePaths.baselineDir);
+  const actualFiles = readdirSync(absolutePaths.actualDir);
   let allPassed = true;
   const results: Result[] = [];
 
@@ -127,10 +128,10 @@ export async function runSnapshotTests(options: {
     }
 
     if (!actualFiles.includes(file)) {
-      const baselinePath = join(normalizedPaths.baselineDir, file);
+      const baselinePath = join(absolutePaths.baselineDir, file);
       if (!updateSnapshots) {
         // copy baseline img that is being removed to our reports /baseline folder
-        copyFileSync(baselinePath, join(normalizedPaths.outputBaselineDir, file));
+        copyFileSync(baselinePath, join(absolutePaths.outputBaselineDir, file));
         results.push({
           file,
           passed: updateSnapshots ? true : false,
@@ -157,9 +158,9 @@ export async function runSnapshotTests(options: {
       throw new Error(`Only png files are supported - ${file}`);
     }
 
-    const baselinePath = join(normalizedPaths.baselineDir, file);
-    const actualPath = join(normalizedPaths.actualDir, file);
-    const diffPath = join(normalizedPaths.diffDir, file);
+    const baselinePath = join(absolutePaths.baselineDir, file);
+    const actualPath = join(absolutePaths.actualDir, file);
+    const diffPath = join(absolutePaths.diffDir, file);
 
     if (!existsSync(baselinePath)) {
       results.push({
@@ -180,7 +181,7 @@ export async function runSnapshotTests(options: {
     if (!updateSnapshots) {
       const result = await compareSnapshots(baselinePath, actualPath, diffPath);
       if (!result.passed) {
-        copyFileSync(baselinePath, join(normalizedPaths.outputBaselineDir, file));
+        copyFileSync(baselinePath, join(absolutePaths.outputBaselineDir, file));
         allPassed = false;
       }
       results.push({ file, ...result });
@@ -193,7 +194,7 @@ export async function runSnapshotTests(options: {
   const reportConfig = {
     metadata,
     reportFileName,
-    paths: { absolute: normalizedPaths, relative: relativePaths },
+    paths: { absolute: absolutePaths, relative: relativePaths },
   };
 
   generateCliReport(results, reportConfig);
@@ -201,9 +202,5 @@ export async function runSnapshotTests(options: {
   generateHtmlReport(results, reportConfig);
   generateMarkdownReport(results, reportConfig);
 
-  if (!allPassed) {
-    return { passed: false };
-  }
-
-  return { passed: true };
+  return { success: allPassed };
 }

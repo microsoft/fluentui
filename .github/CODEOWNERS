@@ -130,7 +130,7 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
-apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
+apps/react-18-tests-v8 @microsoft/fluentui-react-build
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
 apps/chart-docsite @microsoft/charting-team
 
@@ -140,8 +140,9 @@ packages/react-conformance @microsoft/fluentui-react-build
 packages/charts/chart-web-components @microsoft/charting-team
 packages/charts/chart-utilities @microsoft/charting-team
 packages/charts/react-charting @microsoft/charting-team
-packages/charts/react-charts-preview/library @microsoft/charting-team
-packages/charts/react-charts-preview/stories @microsoft/charting-team
+packages/charts/react-charts @microsoft/charting-team
+packages/charts/react-charts/library @microsoft/charting-team
+packages/charts/react-charts/stories @microsoft/charting-team
 packages/date-time-utilities @microsoft/cxe-red
 packages/eslint-plugin @microsoft/fluentui-react-build
 packages/foundation-legacy @microsoft/cxe-red @khmakoto

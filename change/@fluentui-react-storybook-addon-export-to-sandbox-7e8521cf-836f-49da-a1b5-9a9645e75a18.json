@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: release to npm",
+  "packageName": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

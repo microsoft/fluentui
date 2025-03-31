@@ -115,7 +115,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -241,7 +241,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
