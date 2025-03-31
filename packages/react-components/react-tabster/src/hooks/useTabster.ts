@@ -1,31 +1,29 @@
 import * as React from 'react';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
-import { useIsomorphicLayoutEffect, getParent } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { getParent, usePrevious } from '@fluentui/react-utilities';
 
 interface WindowWithTabsterShadowDOMAPI extends Window {
   __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
 }
 
+type UseTabsterFactory<FactoryResult> = (tabster: TabsterTypes.TabsterCore) => FactoryResult;
+
+const DEFAULT_FACTORY: UseTabsterFactory<TabsterTypes.TabsterCore> = tabster => {
+  return tabster;
+};
+
 /**
- * Tries to get a tabster instance on the current window or creates a new one
- * Since Tabster is single instance only, feel free to call this hook to ensure Tabster exists if necessary
+ * Creates a tabster instance with the provided configuration
  *
  * @internal
- * @returns Tabster core instance
+ * @param targetDocument
  */
-export const useTabster = (): TabsterTypes.TabsterCore | null => {
-  const { targetDocument } = useFluent();
-
+export function createTabsterWithConfig(targetDocument: Document | undefined): TabsterTypes.TabsterCore | undefined {
   const defaultView = targetDocument?.defaultView || undefined;
-
   const shadowDOMAPI = (defaultView as WindowWithTabsterShadowDOMAPI | undefined)?.__tabsterShadowDOMAPI;
 
-  const tabster = React.useMemo(() => {
-    if (!defaultView) {
-      return null;
-    }
-
+  if (defaultView) {
     return createTabster(defaultView, {
       autoRoot: {},
       controlTab: false,
@@ -34,15 +32,51 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
         !!element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper'),
       DOMAPI: shadowDOMAPI,
     });
-  }, [defaultView, shadowDOMAPI]);
+  }
+}
 
-  useIsomorphicLayoutEffect(() => {
-    return () => {
-      if (tabster) {
+/**
+ * Tries to get a tabster instance on the current window or creates a new one
+ * Since Tabster is single instance only, feel free to call this hook to ensure Tabster exists if necessary
+ *
+ * @internal
+ * @returns Tabster a ref to core instance or a factory result
+ */
+export function useTabster(): React.RefObject<TabsterTypes.TabsterCore | null>;
+export function useTabster<FactoryResult>(
+  factory: UseTabsterFactory<FactoryResult>,
+): React.RefObject<FactoryResult | null>;
+
+export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
+  const { targetDocument } = useFluent();
+  const factoryRef = React.useRef<FactoryResult | null>(null);
+
+  React.useEffect(() => {
+    const tabster = createTabsterWithConfig(targetDocument);
+
+    if (tabster) {
+      factoryRef.current = factory(tabster) as FactoryResult;
+
+      return () => {
         disposeTabster(tabster);
-      }
-    };
-  }, [tabster]);
+        factoryRef.current = null;
+      };
+    }
+  }, [targetDocument, factory]);
 
-  return tabster;
-};
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line
+    const previousFactory = usePrevious(factory);
+
+    if (previousFactory !== null && previousFactory !== factory) {
+      throw new Error(
+        [
+          '@fluentui/react-tabster: ',
+          'The factory function passed to useTabster has changed. This should not ever happen.',
+        ].join('\n'),
+      );
+    }
+  }
+
+  return factoryRef;
+}
