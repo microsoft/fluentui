@@ -1,0 +1,19 @@
+{
+  "name": "semantic-tokens",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/semantic-tokens/src",
+  "tags": ["vNext", "platform:web"],
+  "targets": {
+    "e2e": {
+      "dependsOn": ["build"]
+    },
+    "token-pipeline": {
+      "command": "node -r ../../scripts/ts-node/src/register ../../scripts/generators/src/token-pipeline.ts",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    }
+  }
+}
