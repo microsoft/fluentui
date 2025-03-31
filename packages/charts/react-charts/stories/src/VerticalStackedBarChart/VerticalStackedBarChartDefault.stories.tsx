@@ -64,7 +64,7 @@ export const VerticalStackedBarDefault = () => {
   const _onSwitchLegendMultiSelect = React.useCallback(ev => {
     setLegendMultiSelect(ev.currentTarget.checked);
   }, []);
-  //const _basicExample(): JSX.Element {
+
   const firstChartPoints: VSChartDataPoint[] = [
     {
       legend: 'Metadata1',

@@ -4,7 +4,7 @@ import descriptionMd from './VerticalStackedBarChartDescription.md';
 import bestPracticesMd from './VerticalStackedBarChartBestPractices.md';
 
 export { VerticalStackedBarDefault } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartDefault.stories';
-
+export { VerticalStackedBarAxisTooltip } from '../../../../react-charts/stories/src/VerticalStackedBarChart/VerticalStackedBarChartAxisTooltip.stories';
 export default {
   title: 'Charts/VerticalStackedBarChart',
   component: VerticalStackedBarChart,
