@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+// eslint-disable-next-line no-restricted-imports
 import * as tokensPackage from '@fluentui/tokens';
 
 main();

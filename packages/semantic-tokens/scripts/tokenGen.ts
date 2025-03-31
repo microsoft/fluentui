@@ -283,7 +283,7 @@ function generateTokenVariables() {
 
     // Format our text to match prettier rules
     const rawText = sourceFile.getText();
-    let formattedText = format(rawText, {
+    const formattedText = format(rawText, {
       parser: 'typescript',
       singleQuote: true,
       printWidth: 120,
