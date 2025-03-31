@@ -28,4 +28,14 @@ config.component.devServer.webpackConfig.resolve.alias = {
   'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
 };
 
+/**
+ * Resolve the support file and index.html file paths
+ * This is a workaround for the issue where Cypress does not resolve the paths correctly, as it
+ * internally concatenates the __dirname, making them invalid.
+ *
+ * TODO: Remove this workaround once we upgrade the whole repo to Cypress 14
+ */
+config.component.supportFile = '../../scripts/cypress/src/support/component.js';
+config.component.indexHtmlFile = '../../scripts/cypress/src/support/component-index.html';
+
 export default config;
