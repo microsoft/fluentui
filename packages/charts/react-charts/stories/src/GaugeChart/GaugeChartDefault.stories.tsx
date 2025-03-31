@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart, GaugeChartVariant, getColorFromToken } from '@fluentui/react-charts';
+import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
 import { Checkbox, CheckboxOnChangeData, Switch } from '@fluentui/react-components';
 
 export const GaugeChartBasic = () => {
@@ -124,7 +124,7 @@ export const GaugeChartBasic = () => {
         ]}
         chartValue={chartValue}
         hideMinMax={hideMinMax}
-        variant={GaugeChartVariant.MultipleSegments}
+        variant={'multiple-segments'}
         enableGradient={enableGradient}
         roundCorners={roundedCorners}
         legendProps={{

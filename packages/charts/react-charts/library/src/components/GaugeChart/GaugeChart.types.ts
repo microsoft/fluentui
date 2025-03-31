@@ -36,18 +36,12 @@ export interface GaugeChartSegment {
 /**
  * {@docCategory GaugeChart}
  */
-export enum GaugeValueFormat {
-  Percentage = 'percentage',
-  Fraction = 'fraction',
-}
+export type GaugeValueFormat = 'percentage' | 'fraction';
 
 /**
  * {@docCategory GaugeChart}
  */
-export enum GaugeChartVariant {
-  SingleSegment = 'single-segment',
-  MultipleSegments = 'multiple-segments',
-}
+export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 
 /**
  * Gauge Chart properties
@@ -123,11 +117,6 @@ export interface GaugeChartProps {
    * @defaultvalue false
    */
   hideTooltip?: boolean;
-
-  /**
-   * Additional CSS class(es) to apply to the chart
-   */
-  className?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

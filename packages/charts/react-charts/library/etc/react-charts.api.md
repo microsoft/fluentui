@@ -457,7 +457,6 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
-    className?: string;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -509,20 +508,10 @@ export interface GaugeChartStyles {
 }
 
 // @public (undocumented)
-export enum GaugeChartVariant {
-    // (undocumented)
-    MultipleSegments = "multiple-segments",
-    // (undocumented)
-    SingleSegment = "single-segment"
-}
+export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
 
 // @public (undocumented)
-export enum GaugeValueFormat {
-    // (undocumented)
-    Fraction = "fraction",
-    // (undocumented)
-    Percentage = "percentage"
-}
+export type GaugeValueFormat = 'percentage' | 'fraction';
 
 // @public (undocumented)
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;

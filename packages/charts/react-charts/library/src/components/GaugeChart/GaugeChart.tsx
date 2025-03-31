@@ -55,12 +55,12 @@ export const getSegmentLabel = (
   isAriaLabel: boolean = false,
 ) => {
   if (isAriaLabel) {
-    return minValue === 0 && variant === GaugeChartVariant.SingleSegment
+    return minValue === 0 && variant === 'single-segment'
       ? `${segment.legend}, ${segment.size} out of ${maxValue} or ${((segment.size / maxValue) * 100).toFixed()}%`
       : `${segment.legend}, ${segment.start} to ${segment.end}`;
   }
 
-  return minValue === 0 && variant === GaugeChartVariant.SingleSegment
+  return minValue === 0 && variant === 'single-segment'
     ? `${segment.size} (${((segment.size / maxValue) * 100).toFixed()}%)`
     : `${segment.start} - ${segment.end}`;
 };
@@ -77,7 +77,7 @@ export const getChartValueLabel = (
     // This helps clarify the actual value and avoid repetition.
     return minValue !== 0
       ? chartValue.toString()
-      : chartValueFormat === GaugeValueFormat.Fraction
+      : chartValueFormat === 'fraction'
       ? `${((chartValue / maxValue) * 100).toFixed()}%`
       : `${chartValue}/${maxValue}`;
   }
@@ -86,7 +86,7 @@ export const getChartValueLabel = (
     ? chartValueFormat([chartValue - minValue, maxValue - minValue])
     : minValue !== 0
     ? chartValue.toString()
-    : chartValueFormat === GaugeValueFormat.Fraction
+    : chartValueFormat === 'fraction'
     ? `${chartValue}/${maxValue}`
     : `${((chartValue / maxValue) * 100).toFixed()}%`;
 };
@@ -110,20 +110,12 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
         bottom: (sublabel ? LABEL_OFFSET + LABEL_HEIGHT : 0) + GAUGE_MARGIN,
       };
     };
-    const _rootElem = React.useRef<HTMLDivElement | null>(null);
     const _margins: { left: number; right: number; top: number; bottom: number } = _getMargins();
-    const _isRTL: boolean = useRtl();
     const _legendsHeight: number = !props.hideLegend ? 24 : 0;
+    const _rootElem = React.useRef<HTMLDivElement | null>(null);
+    const _isRTL: boolean = useRtl();
     const [width, setWidth] = React.useState<number>(140 + _getMargins().left + _getMargins().right);
     const [height, setHeight] = React.useState<number>(70 + _getMargins().top + _getMargins().bottom + _legendsHeight);
-    const _width = props.width || width;
-    const _height = props.height || height;
-    const _outerRadius: number = Math.min(
-      (_width - (_margins.left + _margins.right)) / 2,
-      _height - (_margins.top + _margins.bottom + _legendsHeight),
-    );
-    const { arcWidth, chartValueSize } = _getStylesBasedOnBreakpoint();
-    const _innerRadius: number = _outerRadius - arcWidth;
     const [hoveredLegend, setHoveredLegend] = React.useState<string>('');
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [focusedElement, setFocusedElement] = React.useState<string | undefined>('');
@@ -133,6 +125,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [hoverYValues, setHoverYValues] = React.useState<YValue[]>([]);
     const prevPropsRef = React.useRef<GaugeChartProps | null>(null);
+    const _width = props.width || width;
+    const _height = props.height || height;
+    const _outerRadius: number = Math.min(
+      (_width - (_margins.left + _margins.right)) / 2,
+      _height - (_margins.top + _margins.bottom + _legendsHeight),
+    );
+    const { arcWidth, chartValueSize } = _getStylesBasedOnBreakpoint();
+    const _innerRadius: number = _outerRadius - arcWidth;
     let _minValue!: number;
     let _maxValue!: number;
     let _segments!: ExtendedSegment[];

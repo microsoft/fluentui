@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  DataVizPalette,
-  GaugeChart,
-  GaugeValueFormat,
-  GaugeChartVariant,
-  getColorFromToken,
-} from '@fluentui/react-charts';
+import { DataVizPalette, GaugeChart, getColorFromToken } from '@fluentui/react-charts';
 import { Switch } from '@fluentui/react-components';
 
 export const GaugeChartSingleSegment = () => {
@@ -103,8 +97,8 @@ export const GaugeChartSingleSegment = () => {
         chartValue={chartValue}
         chartTitle="Storage capacity"
         sublabel="used"
-        chartValueFormat={GaugeValueFormat.Fraction}
-        variant={GaugeChartVariant.SingleSegment}
+        chartValueFormat={'fraction'}
+        variant={'single-segment'}
         enableGradient={enableGradient}
         roundCorners={roundedCorners}
       />
