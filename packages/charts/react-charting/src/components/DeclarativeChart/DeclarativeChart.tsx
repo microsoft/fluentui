@@ -4,6 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
+import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -107,7 +108,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (!chart.isValid) {
     throw new Error(`Invalid chart schema: ${chart.errorMessage}`);
   }
-  const plotlyInput = plotlySchema as PlotlySchema;
+  let plotlyInput = plotlySchema as PlotlySchema;
+  try {
+    plotlyInput = decodeBase64Fields(plotlyInput);
+  } catch (error) {
+    throw new Error(`Failed to decode plotly schema: ${error}`);
+  }
+  const plotlyInputWithValidData: PlotlySchema = {
+    ...plotlyInput,
+    data: chart.validDataIndices!.map(idx => plotlyInput.data[idx]),
+  };
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
@@ -166,14 +176,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
     let fallbackVSBC = false;
-    const xValues = (chart.chartSchema.plotlySchema.data[0] as PlotData).x;
+    const xValues = (plotlyInputWithValidData.data[0] as PlotData).x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
     if (isXDate || isXNumber) {
-      return renderLineArea(chart.chartSchema.plotlySchema.data, isAreaChart);
+      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
-      const updatedData = chart.chartSchema.plotlySchema.data.map((dataPoint: PlotData) => ({
+      const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
         x: correctYearMonth(dataPoint.x),
       }));
@@ -183,7 +193,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     fallbackVSBC = true;
     return (
       <ResponsiveVerticalStackedBarChart
-        {...transformPlotlyJsonToVSBCProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme, fallbackVSBC)}
+        {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme, fallbackVSBC)}
         {...commonProps}
       />
     );
@@ -221,35 +231,35 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'donut':
       return (
         <ResponsiveDonutChart
-          {...transformPlotlyJsonToDonutProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToDonutProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'horizontalbar':
       return (
         <ResponsiveHorizontalBarChartWithAxis
-          {...transformPlotlyJsonToHorizontalBarWithAxisProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'groupedverticalbar':
       return (
         <ResponsiveGroupedVerticalBarChart
-          {...transformPlotlyJsonToGVBCProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToGVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'verticalstackedbar':
       return (
         <ResponsiveVerticalStackedBarChart
-          {...transformPlotlyJsonToVSBCProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'heatmap':
       return (
         <ResponsiveHeatMapChart
-          {...transformPlotlyJsonToHeatmapProps(chart.chartSchema.plotlySchema)}
+          {...transformPlotlyJsonToHeatmapProps(plotlyInputWithValidData)}
           {...commonProps}
           legendProps={{}}
         />
@@ -257,21 +267,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'sankey':
       return (
         <ResponsiveSankeyChart
-          {...transformPlotlyJsonToSankeyProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToSankeyProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'gauge':
       return (
         <ResponsiveGaugeChart
-          {...transformPlotlyJsonToGaugeProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToGaugeProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'verticalbar':
       return (
         <ResponsiveVerticalBarChart
-          {...transformPlotlyJsonToVBCProps(chart.chartSchema.plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
@@ -279,12 +289,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'line':
     case 'fallback':
       // Need recheck for area chart as we don't have ability to check for valid months in previous step
-      const isAreaChart = chart.chartSchema.plotlySchema.data.some(
+      const isAreaChart = plotlyInputWithValidData.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
       return checkAndRenderChart(isAreaChart);
     default:
-      throw new Error(`Unsupported chart type :${chart.chartSchema.plotlySchema.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';

@@ -444,12 +444,6 @@ export interface Icon {
 }
 
 // @public (undocumented)
-export type InvalidChartOutput = {
-    isValid: false;
-    errorMessage: string;
-};
-
-// @public (undocumented)
 export const isArrayOfType: (plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined, typeCheck: (datum: any, ...args: any[]) => boolean, ...args: any[]) => boolean;
 
 // @public (undocumented)
@@ -845,7 +839,16 @@ export interface MinorAxisLayout {
 }
 
 // @public (undocumented)
-export type OutputChartType = ValidChartOutput | InvalidChartOutput;
+export interface OutputChartType {
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    isValid: boolean;
+    // (undocumented)
+    type?: string;
+    // (undocumented)
+    validDataIndices?: number[];
+}
 
 // @public (undocumented)
 export interface Padding {
@@ -1927,15 +1930,6 @@ export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int
 
 // @public (undocumented)
 export const validate2Dseries: (series: Partial<PlotData>) => boolean;
-
-// @public (undocumented)
-export type ValidChartOutput = {
-    isValid: true;
-    type: string;
-    chartSchema: {
-        plotlySchema: PlotlySchema;
-    };
-};
 
 // Warning: (ae-forgotten-export) The symbol "xYAxisNames" needs to be exported by the entry point index.d.ts
 //

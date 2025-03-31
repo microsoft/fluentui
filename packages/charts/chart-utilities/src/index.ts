@@ -93,7 +93,8 @@ export type {
   XAxisName,
   YAxisName,
 } from './PlotlySchema';
-export type { OutputChartType, ValidChartOutput, InvalidChartOutput } from './PlotlySchemaConverter';
+
+export type { OutputChartType } from './PlotlySchemaConverter';
 export {
   mapFluentChart,
   isDate,
