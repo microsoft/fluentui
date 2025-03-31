@@ -20,7 +20,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "lint": "just-scripts lint"
+    "lint": "just-scripts lint && eslint ./bin/*.js ./scripts/*.js"
   },
   "license": "MIT",
   "devDependencies": {
