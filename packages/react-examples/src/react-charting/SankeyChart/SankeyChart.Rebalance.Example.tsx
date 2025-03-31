@@ -384,7 +384,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <Toggle
           label="Data Source"
           onText="simple"
@@ -412,7 +412,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
             }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
