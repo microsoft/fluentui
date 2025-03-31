@@ -10,8 +10,8 @@
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
-    "e2e:local": "cypress open --component",
-    "e2e": "cypress run --component"
+    "e2e:local": "npx --yes cypress@14 open --component",
+    "e2e": "npx --yes cypress@14 run --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -27,7 +27,6 @@
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.5",
     "@types/react-test-renderer": "18.3.1",
-    "cypress": "14.2.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-test-renderer": "18.3.1",
