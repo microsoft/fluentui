@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { useFocusedElementChange } from './useFocusedElementChange';
 import { mount } from '@cypress/react';
+
+import { useFocusedElementChange } from './useFocusedElementChange';
 
 const Example = (props: { callback: () => void }) => {
   useFocusedElementChange(props.callback);
+
   return (
     <>
+      <a id="anchor" href="#">
+        Anchor
+      </a>
+
       <div tabIndex={0}>before</div>
-      <button id="btn-1">Button 1</button>
+      <button id="button">Button</button>
       <div tabIndex={0}>after</div>
     </>
   );
@@ -18,19 +24,30 @@ describe('useFocusedElementChange', () => {
     const callback = cy.stub().as('callback');
     mount(<Example callback={callback} />);
 
-    cy.get('#btn-1').focus();
-    cy.get('@callback').should('have.been.calledOnceWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
-      relatedTarget: Cypress.sinon.match.any,
+    cy.get('#anchor').click();
+    cy.get('#anchor').focused();
+
+    cy.get('#button').focus();
+    cy.get('#button').focused();
+
+    cy.get('@callback').should('have.been.calledWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
+      relatedTarget: Cypress.sinon.match.instanceOf(HTMLAnchorElement),
       isFocusedProgrammatically: false,
     });
   });
+
   it('should call the callback when the focused element changes programmatically', () => {
     const callback = cy.stub().as('callback');
     mount(<Example callback={callback} />);
 
-    cy.get('#btn-1').invoke('focus');
-    cy.get('@callback').should('have.been.calledOnceWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
-      relatedTarget: Cypress.sinon.match.any,
+    cy.get('#anchor').click();
+    cy.get('#anchor').focused();
+
+    cy.get('#button').invoke('focus');
+    cy.get('#button').focused();
+
+    cy.get('@callback').should('have.been.calledWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
+      relatedTarget: Cypress.sinon.match.instanceOf(HTMLAnchorElement),
       isFocusedProgrammatically: true,
     });
   });
