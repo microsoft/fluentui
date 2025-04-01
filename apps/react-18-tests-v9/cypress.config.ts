@@ -25,6 +25,7 @@ config.component.devServer.webpackConfig.resolve.alias = {
   '@types/react-dom': path.resolve(__dirname, './node_modules/@types/react-dom'),
   react: path.resolve(__dirname, './node_modules/react'),
   'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+  'cypress-real-events': path.resolve(__dirname, './node_modules/cypress-real-events'),
 };
 
 /**
