@@ -831,7 +831,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -857,7 +857,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -883,7 +883,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
@@ -1483,7 +1483,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -1509,7 +1509,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -1535,7 +1535,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
@@ -1772,7 +1772,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Low Risk
                     </div>
                     <div
@@ -1798,7 +1798,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       Medium Risk
                     </div>
                     <div
@@ -1824,7 +1824,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-                       
+
                       High Risk
                     </div>
                     <div
