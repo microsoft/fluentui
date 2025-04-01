@@ -280,19 +280,7 @@ export interface LineDataInVerticalBarChart {
 /**
  * {@docCategory ChartData}
  */
-export interface LineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+interface BaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -322,6 +310,42 @@ export interface LineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface LineChartDataPoint extends BaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory ChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface ScatterChartDataPoint extends BaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -398,7 +422,7 @@ export interface LineChartPoints {
   /**
    * dataPoints for the line chart
    */
-  data: LineChartDataPoint[];
+  data: LineChartDataPoint[] | ScatterChartDataPoint[];
 
   /**
    * gaps in the line chart where a line is not drawn
