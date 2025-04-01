@@ -64,7 +64,7 @@ export const Sparkline: React.FunctionComponent<SparklineProps> = React.forwardR
           .domain([0, d3Max(_points, (d: any) => d.y)])
           .range([height - margin.bottom!, margin.top!]);
 
-        setPoints(_points);
+        setPoints(_points as LineChartDataPoint[]);
       }
     }, []);
 

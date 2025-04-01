@@ -4,7 +4,7 @@ import { mount as mountBase } from '@cypress/react';
 import { CustomPopover as Popover } from './Popover';
 import { Provider } from '../Provider/Provider';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: React.JSX.Element) => {
   mountBase(<Provider>{element}</Provider>);
 };
 

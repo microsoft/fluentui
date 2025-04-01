@@ -5,6 +5,7 @@ import { useTreeItemStyles_unstable } from './useTreeItemStyles.styles';
 import type { TreeItemProps } from './TreeItem.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTreeItemContextValues_unstable } from './useTreeItemContextValues';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `TreeItem` component represents a single item in a tree.
@@ -22,6 +23,8 @@ export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((pr
   const state = useTreeItem_unstable(props, ref);
 
   useTreeItemStyles_unstable(state);
+  useCustomStyleHook_unstable('useTreeItemStyles_unstable')(state);
+
   const contextValues = useTreeItemContextValues_unstable(state);
   return renderTreeItem_unstable(state, contextValues);
 });

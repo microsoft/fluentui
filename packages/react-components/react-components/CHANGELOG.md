@@ -1,8 +1,84 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 20 Mar 2025 09:34:58 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.61.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.6)
+
+Tue, 01 Apr 2025 15:08:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.5..@fluentui/react-components_v9.61.6)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Migrate VSBC to v9  ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by 74965306+Anush2303@users.noreply.github.com)
+  - Migrate Gauge chart to V9 ([PR #33998](https://github.com/microsoft/fluentui/pull/33998) by 74965306+Anush2303@users.noreply.github.com)
+  - (feat) Implement grouped vertical bar and scatter chart ([PR #34091](https://github.com/microsoft/fluentui/pull/34091) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-tabs`
+  - fix: fix active tab indicator animation ([PR #34060](https://github.com/microsoft/fluentui/pull/34060) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: improve support for concurrent mode ([PR #34113](https://github.com/microsoft/fluentui/pull/34113) by olfedias@microsoft.com)
+  - fix: don't pass `null` to `createKeyborg()` ([PR #34118](https://github.com/microsoft/fluentui/pull/34118) by olfedias@microsoft.com)
+- `@fluentui/react-list`
+  - bugfix: ensure external tabster attributes are merged with internals ([PR #34117](https://github.com/microsoft/fluentui/pull/34117) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-storybook-addon`
+  - feat: release to npm ([PR #33983](https://github.com/microsoft/fluentui/pull/33983) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-storybook-addon-export-to-sandbox`
+  - feat: release to npm ([PR #33983](https://github.com/microsoft/fluentui/pull/33983) by dmytrokirpa@microsoft.com)
+- `@fluentui/babel-preset-storybook-full-source`
+  - feat: release to npm ([PR #33983](https://github.com/microsoft/fluentui/pull/33983) by dmytrokirpa@microsoft.com)
+
+## [9.61.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.5)
+
+Thu, 27 Mar 2025 21:12:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.4..@fluentui/react-components_v9.61.5)
+
+### Patches
+
+- `@fluentui/react-field`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-infolabel`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-rating`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-skeleton`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+
+## [9.61.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.4)
+
+Wed, 26 Mar 2025 21:47:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.3..@fluentui/react-components_v9.61.4)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - fix(motion): make createPresenceComponentVariant support motion arrays ([PR #33996](https://github.com/microsoft/fluentui/pull/33996) by robertpenner@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-motion`
+  - fix: handle error cases in "element.animate()" ([PR #34096](https://github.com/microsoft/fluentui/pull/34096) by seanmonahan@microsoft.com)
+
+## [9.61.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.3)
+
+Wed, 26 Mar 2025 15:52:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.2..@fluentui/react-components_v9.61.3)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - chore: Publish stable version of charts v9 package ([PR #33858](https://github.com/microsoft/fluentui/pull/33858) by 74965306+Anush2303@users.noreply.github.com)
+- `@fluentui/react-slider`
+  - fix: fix deprecated appearance property warning for vertical sliders ([PR #34022](https://github.com/microsoft/fluentui/pull/34022) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure tabindex whenever tree is re-populated ([PR #34083](https://github.com/microsoft/fluentui/pull/34083) by bernardo.sunderhus@gmail.com)
 
 ## [9.61.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.2)
 

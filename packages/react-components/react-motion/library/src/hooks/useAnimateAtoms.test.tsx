@@ -11,6 +11,20 @@ function createElementMock() {
   return [{ animate } as unknown as HTMLElement, animate] as const;
 }
 
+function createNullElementMock() {
+  const animate = jest.fn().mockReturnValue(null);
+
+  return [{ animate } as unknown as HTMLElement, animate] as const;
+}
+
+function createErrorElementMock() {
+  const animate = jest.fn().mockImplementation(() => {
+    throw new Error('Animation error');
+  });
+
+  return [{ animate } as unknown as HTMLElement, animate] as const;
+}
+
 const DEFAULT_KEYFRAMES = [{ transform: 'rotate(0)' }, { transform: 'rotate(180deg)' }];
 const REDUCED_MOTION_KEYFRAMES = [{ opacity: 0 }, { opacity: 1 }];
 
@@ -83,6 +97,41 @@ describe('useAnimateAtoms', () => {
         easing: 'linear',
         duration: 100,
       });
+    });
+  });
+
+  // See: https://github.com/microsoft/fluentui/issues/33902
+  describe('error handling', () => {
+    it('handle "element.animate()" returning null', () => {
+      const { result } = renderHook(() => useAnimateAtoms());
+
+      const [element, animateMock] = createNullElementMock();
+      const motion: AtomMotion = {
+        keyframes: DEFAULT_KEYFRAMES,
+        reducedMotion: { duration: 100, easing: 'linear' },
+      };
+
+      const handle = result.current(element, motion, { isReducedMotion: false });
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toHaveReturnedWith(null);
+      expect(handle).toBeDefined();
+    });
+
+    it('handles "element.animate()" throwing an error', () => {
+      const { result } = renderHook(() => useAnimateAtoms());
+
+      const [element, animateMock] = createErrorElementMock();
+      const motion: AtomMotion = {
+        keyframes: DEFAULT_KEYFRAMES,
+        reducedMotion: { duration: 100, easing: 'linear' },
+      };
+
+      const handle = result.current(element, motion, { isReducedMotion: false });
+
+      expect(animateMock).toHaveBeenCalledTimes(1);
+      expect(animateMock).toThrow();
+      expect(handle).toBeDefined();
     });
   });
 });

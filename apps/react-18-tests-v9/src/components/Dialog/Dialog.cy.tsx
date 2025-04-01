@@ -4,7 +4,7 @@ import { Dialog, DialogSurface, DialogTrigger, DialogBody, Button } from '@fluen
 
 import { Provider } from '../Provider/Provider';
 
-const mount = (element: JSX.Element) => {
+const mount = (element: React.JSX.Element) => {
   mountBase(<Provider>{element}</Provider>);
 };
 
