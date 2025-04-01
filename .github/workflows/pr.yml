@@ -86,7 +86,7 @@ jobs:
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172
-    runs-on: ubuntu-latest
+    runs-on: macos-15-xlarge
     permissions:
       contents: 'read'
       actions: 'read'
