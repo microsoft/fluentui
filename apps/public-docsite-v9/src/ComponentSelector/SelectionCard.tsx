@@ -1,18 +1,7 @@
 import * as React from 'react';
-import {
-  Button,
-  Caption1,
-  Card,
-  CardHeader,
-  CardPreview,
-  CardProps,
-  Checkbox,
-  Text,
-  makeStyles,
-  tokens,
-} from '@fluentui/react-components';
-import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { stat } from 'fs';
+import { Caption1, Card, CardHeader, CardPreview, Checkbox, makeStyles, tokens } from '@fluentui/react-components';
+
+import { ComponentsImages } from './ComponentSelector';
 
 const useStyles = makeStyles({
   main: {
@@ -56,10 +45,17 @@ const useStyles = makeStyles({
   },
 });
 
-export const SelectionCard = props => {
+interface SelectionCardProps {
+  componentsImages: ComponentsImages;
+  name: string;
+  displayName: string;
+  selected: boolean;
+  updateComponentSelection: (name: string, selected: boolean) => void;
+}
+
+export const SelectionCard: React.FC<SelectionCardProps> = props => {
   const styles = useStyles();
   const { componentsImages, name, displayName, selected, updateComponentSelection } = props;
-  const [hovered, setHovered] = React.useState(false);
 
   const onSelectionChange = React.useCallback(
     (_, data) => {
@@ -69,7 +65,6 @@ export const SelectionCard = props => {
   );
 
   const componentImage = React.useMemo(() => {
-    let src;
     const importName = `${name}Img`;
     if (componentsImages[importName]) {
       const result = {
@@ -87,17 +82,14 @@ export const SelectionCard = props => {
       <Card
         className={styles.card}
         floatingAction={<Checkbox aria-label={displayName} onChange={onSelectionChange} checked={selected} />}
-        selected={selected}
         onSelectionChange={onSelectionChange}
-        // onMouseOver={() => setHovered(true)}
-        // onMouseOut={() => setHovered(false)}
         {...props}
       >
         <CardHeader description={<Caption1 className={styles.caption}>{displayName}</Caption1>} />
         <CardPreview className={styles.grayBackground}>
           {componentImage && (
             <img
-              className={selected || hovered ? styles.cardImageSelected : styles.cardImage}
+              className={selected ? styles.cardImageSelected : styles.cardImage}
               src={componentImage.src}
               alt={componentImage.alt}
             />

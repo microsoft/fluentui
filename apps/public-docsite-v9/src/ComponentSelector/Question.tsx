@@ -1,24 +1,7 @@
 import * as React from 'react';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-  AccordionPanel,
-  Checkbox,
-  Divider,
-  Field,
-  Label,
-  Link,
-  Radio,
-  RadioGroup,
-  Select,
-  Text,
-  ToggleButton,
-  Image,
-  makeStyles,
-  tokens,
-  useId,
-} from '@fluentui/react-components';
+import { Field, Radio, RadioGroup, tokens, makeStyles } from '@fluentui/react-components';
+
+import { GroupQuestion } from './ComponentSelector';
 
 const useStyles = makeStyles({
   secondLevel: { 'margin-left': '30px' },
@@ -81,17 +64,19 @@ const useStyles = makeStyles({
   behaviors: { display: 'flex', gap: '10px' },
 });
 
-export const Question = ({ question, number, updateDecisionForQuestion }) => {
+interface QuestionProps {
+  question: GroupQuestion;
+  number: number;
+  updateDecisionForQuestion: (currentName: string, previousName: string) => void;
+}
+
+export const Question: React.FC<QuestionProps> = ({ question, number, updateDecisionForQuestion }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState('none');
 
-  React.useEffect(() => {
-    console.log(`UseEffect: Question${number}: Value: ${value}`);
-  }, [number, value]);
-
   return (
     <div className={classes.questionsWrapper}>
-      <Field className={classes.questionsField}>
+      <Field>
         <RadioGroup
           key={question.id}
           value={value}
@@ -104,7 +89,7 @@ export const Question = ({ question, number, updateDecisionForQuestion }) => {
           aria-labelledby={`${question.id}-heading`}
         >
           <div className={classes.questionContainer}>
-            <div className={classes.questionLeftSide}>
+            <div>
               <span className={classes.questionsLabel}>{`Q${number}`}</span>
             </div>
             <div className={classes.questionRightSide}>

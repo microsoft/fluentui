@@ -203,6 +203,8 @@ interface ComponentAttributesMapping {
   components: string[];
 }
 
+export type ComponentsImages = Record<string, string>;
+
 interface SelectedComponent extends NamedComponent {
   displayName: string;
 }
@@ -212,7 +214,7 @@ interface ComponentSelectorProps {
   groups: ComponentGroup[];
   questions: GroupQuestion[];
   attributesMapping: ComponentAttributesMapping[];
-  componentsImages: Record<string, string>;
+  componentsImages: ComponentsImages;
 }
 
 export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
