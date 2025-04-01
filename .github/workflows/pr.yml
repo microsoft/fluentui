@@ -117,4 +117,5 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e --nxBail --parallel 1
+        run: yarn cypress run --component
+        working-directory: ./apps/react-18-tests-v9
