@@ -174,6 +174,30 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
+  test('should try fallback positions to avoid ending up out of the viewport', async ({
+    fastPage: { element },
+    page,
+  }) => {
+    await element.locator('fluent-menu-button').evaluate(element => {
+      element.style.position = 'absolute';
+      element.style.right = '0px';
+    });
+
+    const [viewportHeight, viewportWidth] = await page.evaluate(() => [window.innerHeight, window.innerWidth]);
+
+    const menuButton = element.locator('fluent-menu-button');
+    const menuList = element.locator('fluent-menu-list');
+    await menuButton.click();
+
+    await expect(menuList).toBeVisible();
+    const rect = await menuList.evaluate(element => element.getBoundingClientRect());
+
+    expect(rect.top).toBeGreaterThanOrEqual(0);
+    expect(rect.bottom).toBeLessThanOrEqual(viewportHeight);
+    expect(rect.left).toBeGreaterThanOrEqual(0);
+    expect(rect.right).toBeLessThanOrEqual(viewportWidth);
+  });
+
   test('should set popover attribute on slotted submenu', async ({ fastPage }) => {
     const { element } = fastPage;
 
