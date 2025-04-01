@@ -25,10 +25,10 @@ describe('useFocusedElementChange', () => {
     mount(<Example callback={callback} />);
 
     cy.get('#anchor').click();
-    cy.get('#anchor').focused();
+    cy.get('#anchor').should('be.focused');
 
     cy.get('#button').focus();
-    cy.get('#button').focused();
+    cy.get('#button').should('be.focused');
 
     cy.get('@callback').should('have.been.calledWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
       relatedTarget: Cypress.sinon.match.instanceOf(HTMLAnchorElement),
@@ -41,10 +41,10 @@ describe('useFocusedElementChange', () => {
     mount(<Example callback={callback} />);
 
     cy.get('#anchor').click();
-    cy.get('#anchor').focused();
+    cy.get('#anchor').should('be.focused');
 
     cy.get('#button').invoke('focus');
-    cy.get('#button').focused();
+    cy.get('#button').should('be.focused');
 
     cy.get('@callback').should('have.been.calledWith', Cypress.sinon.match.instanceOf(HTMLButtonElement), {
       relatedTarget: Cypress.sinon.match.instanceOf(HTMLAnchorElement),
