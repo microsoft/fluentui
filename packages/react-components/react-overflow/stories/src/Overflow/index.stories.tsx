@@ -13,6 +13,7 @@ export { LargerDividers } from './LargerDividers.stories';
 export { PriorityWithDividers } from './PriorityWithDividers.stories';
 export { CustomComponent } from './CustomComponent.stories';
 export { ListenToChanges } from './ListenToChanges.stories';
+export { MarginAndGapSupport } from './MarginAndGapSupport.stories';
 
 // Typing with as Meta<typeof Overflow> generates a type error for the `subcomponents` property.
 // https://github.com/storybookjs/storybook/issues/27535
