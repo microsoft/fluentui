@@ -472,8 +472,8 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         <Input
           contentBefore={<SearchRegular />}
           // size="small"
-          placeholder="Find component or category"
-          aria-label="Find component or category"
+          placeholder="Search for component or category"
+          aria-label="Search for component or category"
           value={filterText}
           onChange={onFilterChange}
           className={classes.searchComponentInput}
