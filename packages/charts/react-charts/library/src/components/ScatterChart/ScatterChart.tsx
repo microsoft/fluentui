@@ -253,7 +253,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       })!;
 
       const xPadding = (xMax.getTime() - xMin.getTime()) * 0.1;
-      xPaddingRange = _xAxisScale(new Date(xMin.getTime() + xPadding)) - _xAxisScale(xMin);
+      xPaddingRange = Math.abs(_xAxisScale(new Date(xMin.getTime() + xPadding)) - _xAxisScale(xMin));
     } else {
       const xMin = d3Min(points, (point: LineChartPoints) => {
         return d3Min(point.data as ScatterChartDataPoint[], (item: ScatterChartDataPoint) => item.x as number)!;
@@ -266,7 +266,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       })!;
 
       const xPadding = (xMax - xMin) * 0.1;
-      xPaddingRange = _xAxisScale(new Date(xMin + xPadding)) - _xAxisScale(xMin);
+      xPaddingRange = Math.abs(_xAxisScale(xMin + xPadding) - _xAxisScale(xMin));
     }
     maxMarkerRange = Math.min(maxMarkerRange, Math.min(xPaddingRange, yPaddingRange));
 

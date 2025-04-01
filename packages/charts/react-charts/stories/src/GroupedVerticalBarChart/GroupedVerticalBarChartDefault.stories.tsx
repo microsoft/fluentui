@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { GroupedVerticalBarChart, DataVizPalette, getColorFromToken } from '@fluentui/react-charts';
-import { Switch, Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-components';
 
 export const GroupedVerticalBarDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -17,9 +16,7 @@ export const GroupedVerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
-    setShowAxisTitles(ev.currentTarget.checked);
-  }, []);
+
   const data = [
     {
       name: 'Jan - Mar',
@@ -251,12 +248,6 @@ export const GroupedVerticalBarDefault = () => {
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-        style={{ marginTop: '10px' }}
-      />
       <div style={rootStyle}>
         <GroupedVerticalBarChart
           culture={window.navigator.language}
@@ -264,7 +255,6 @@ export const GroupedVerticalBarDefault = () => {
           data={data}
           height={height}
           width={width}
-          enableReflow={true}
           hideLabels={hideLabels}
         />
       </div>
