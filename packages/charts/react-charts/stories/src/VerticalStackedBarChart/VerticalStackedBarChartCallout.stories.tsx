@@ -246,7 +246,7 @@ export const VerticalStackedBarCallout = () => {
           yMaxValue={120}
           margins={{ left: 50 }}
           {...(selectedCallout === 'singleCustomCallout' && {
-            onRenderCalloutPerDataPoint: (props: VSChartDataPoint) => {
+            onRenderCalloutPerDataPoint: (props: VSChartDataPoint | undefined) => {
               return (
                 <div>
                   <pre>{JSON.stringify(props, undefined, 2)}</pre>
@@ -255,7 +255,7 @@ export const VerticalStackedBarCallout = () => {
             },
           })}
           {...(selectedCallout === 'MultiCustomCallout' && {
-            onRenderCalloutPerStack: (props: VerticalStackedChartProps) => {
+            onRenderCalloutPerStack: (props: VerticalStackedChartProps | undefined) => {
               return (
                 <div>
                   <pre>
