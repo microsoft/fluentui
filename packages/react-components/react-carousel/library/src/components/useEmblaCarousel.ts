@@ -229,6 +229,8 @@ export function useEmblaCarousel(
         // Use direct viewport if available, else fallback to container (includes Carousel controls).
         currentElement = viewportRef.current ?? newElement;
         if (currentElement) {
+          // Stop autoplay before reinitializing.
+          emblaApi.current?.plugins().autoplay?.stop();
           emblaApi.current = EmblaCarousel(
             currentElement,
             {
@@ -291,6 +293,8 @@ export function useEmblaCarousel(
       duration: motionDuration,
     };
 
+    // Stop autoplay before reinitializing.
+    emblaApi.current?.plugins().autoplay?.stop();
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
