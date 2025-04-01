@@ -9,7 +9,7 @@ import { DataVizPalette } from '../../utilities/colors';
 expect.extend(toHaveNoViolations);
 
 const segments = [
-  { size: 32, color: DataVizPalette.success, legend: 'Low Risk' },
+  { size: 33, color: DataVizPalette.success, legend: 'Low Risk' },
   { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
   { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
 ];

@@ -29,19 +29,19 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             0
           </text>
           <text
-            aria-label="Max value: 99"
+            aria-label="Max value: 100"
             class="fui-gc__limits"
             role="img"
             text-anchor="start"
             x="74"
             y="0"
           >
-            99
+            100
           </text>
           <path
-            aria-label="Low Risk, 0 to 32"
+            aria-label="Low Risk, 0 to 33"
             class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
             data-is-focusable="true"
             fill="#107c10"
             opacity="1"
@@ -50,9 +50,9 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             tabindex="0"
           />
           <path
-            aria-label="Medium Risk, 32 to 66"
+            aria-label="Medium Risk, 33 to 67"
             class="fui-gc__segment"
-            d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
             data-is-focusable="true"
             fill="#f7630c"
             opacity="1"
@@ -61,9 +61,9 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             tabindex="0"
           />
           <path
-            aria-label="High Risk, 66 to 99"
+            aria-label="High Risk, 67 to 100"
             class="fui-gc__segment"
-            d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
             data-is-focusable="true"
             fill="#c50f1f"
             opacity="1"
@@ -72,7 +72,7 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
             tabindex="0"
           />
           <g
-            transform="rotate(54.54545454545455, 0, 0)"
+            transform="rotate(54, 0, 0)"
           >
             <path
               aria-label="Current value: 30%"
@@ -273,19 +273,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -294,9 +294,9 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="false"
           fill="#f7630c"
           opacity="0.1"
@@ -305,9 +305,9 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="false"
           fill="#c50f1f"
           opacity="0.1"
@@ -316,7 +316,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -456,19 +456,19 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -477,9 +477,9 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="false"
           fill="#f7630c"
           opacity="0.1"
@@ -488,9 +488,9 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="false"
           fill="#c50f1f"
           opacity="0.1"
@@ -499,7 +499,7 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -640,19 +640,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -661,9 +661,9 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -672,9 +672,9 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -683,7 +683,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -813,7 +813,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/99
+              Current value is 30/100
             </div>
           </div>
           <div>
@@ -824,7 +824,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 32"
+                  id="0_0 - 33"
                   style="border-left: 4px solid #107c10;"
                 >
                   <div>
@@ -837,7 +837,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 32
+                      0 - 33
                     </div>
                   </div>
                 </div>
@@ -850,7 +850,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_32 - 66"
+                  id="1_33 - 67"
                   style="border-left: 4px solid #f7630c;"
                 >
                   <div>
@@ -863,7 +863,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      32 - 66
+                      33 - 67
                     </div>
                   </div>
                 </div>
@@ -876,7 +876,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_66 - 99"
+                  id="2_67 - 100"
                   style="border-left: 4px solid #c50f1f;"
                 >
                   <div>
@@ -889,7 +889,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      66 - 99
+                      67 - 100
                     </div>
                   </div>
                 </div>
@@ -929,19 +929,19 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -950,9 +950,9 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -961,9 +961,9 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -972,7 +972,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -1110,19 +1110,19 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -1131,9 +1131,9 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -1142,9 +1142,9 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -1153,7 +1153,7 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -1292,19 +1292,19 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -1313,9 +1313,9 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -1324,9 +1324,9 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -1335,7 +1335,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -1465,7 +1465,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/99
+              Current value is 30/100
             </div>
           </div>
           <div>
@@ -1476,7 +1476,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 32"
+                  id="0_0 - 33"
                   style="border-left: 4px solid #107c10;"
                 >
                   <div>
@@ -1489,7 +1489,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 32
+                      0 - 33
                     </div>
                   </div>
                 </div>
@@ -1502,7 +1502,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_32 - 66"
+                  id="1_33 - 67"
                   style="border-left: 4px solid #f7630c;"
                 >
                   <div>
@@ -1515,7 +1515,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      32 - 66
+                      33 - 67
                     </div>
                   </div>
                 </div>
@@ -1528,7 +1528,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_66 - 99"
+                  id="2_67 - 100"
                   style="border-left: 4px solid #c50f1f;"
                 >
                   <div>
@@ -1541,7 +1541,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      66 - 99
+                      67 - 100
                     </div>
                   </div>
                 </div>
@@ -1581,19 +1581,19 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -1602,9 +1602,9 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -1613,9 +1613,9 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -1624,7 +1624,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -1754,7 +1754,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              Current value is 30/99
+              Current value is 30/100
             </div>
           </div>
           <div>
@@ -1765,7 +1765,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="0_0 - 32"
+                  id="0_0 - 33"
                   style="border-left: 4px solid #107c10;"
                 >
                   <div>
@@ -1778,7 +1778,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      0 - 32
+                      0 - 33
                     </div>
                   </div>
                 </div>
@@ -1791,7 +1791,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="1_32 - 66"
+                  id="1_33 - 67"
                   style="border-left: 4px solid #f7630c;"
                 >
                   <div>
@@ -1804,7 +1804,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      32 - 66
+                      33 - 67
                     </div>
                   </div>
                 </div>
@@ -1817,7 +1817,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
               <div>
                 <div
                   class="fui-gc__calloutBlockContainer"
-                  id="2_66 - 99"
+                  id="2_67 - 100"
                   style="border-left: 4px solid #c50f1f;"
                 >
                   <div>
@@ -1830,7 +1830,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutContentY"
                     >
-                      66 - 99
+                      67 - 100
                     </div>
                   </div>
                 </div>
@@ -1878,19 +1878,19 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -1899,9 +1899,9 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -1910,9 +1910,9 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -1921,7 +1921,7 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -2059,19 +2059,19 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -2080,9 +2080,9 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -2091,9 +2091,9 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -2102,7 +2102,7 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -2240,19 +2240,19 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-66.88,-1A3,3,0,0,1,-69.875,-4.179A70,70,0,0,1,-40.391,-57.171A3,3,0,0,1,-36.111,-56.303L-30.827,-47.788A3,3,0,0,1,-31.62,-43.774A54,54,0,0,0,-53.867,-3.789A3,3,0,0,1,-56.859,-1Z"
+          d="M-66.88,-1A3,3,0,0,1,-69.875,-4.179A70,70,0,0,1,-39.166,-58.017A3,3,0,0,1,-34.906,-57.058L-29.805,-48.432A3,3,0,0,1,-30.682,-44.436A54,54,0,0,0,-53.867,-3.789A3,3,0,0,1,-56.859,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -2261,9 +2261,9 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-34.411,-57.357A3,3,0,0,1,-33.289,-61.578A70,70,0,0,1,31.318,-62.603A3,3,0,0,1,32.574,-58.42L27.564,-49.742A3,3,0,0,1,23.652,-48.545A54,54,0,0,0,-25.18,-47.77A3,3,0,0,1,-29.128,-48.842Z"
+          d="M-33.184,-58.076A3,3,0,0,1,-31.972,-62.272A70,70,0,0,1,31.972,-62.272A3,3,0,0,1,33.184,-58.076L28.083,-49.45A3,3,0,0,1,24.159,-48.294A54,54,0,0,0,-24.159,-48.294A3,3,0,0,1,-28.083,-49.45Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -2272,9 +2272,9 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M34.306,-57.42A3,3,0,0,1,38.557,-58.424A70,70,0,0,1,69.875,-4.179A3,3,0,0,1,66.88,-1L56.859,-1A3,3,0,0,1,53.867,-3.789A54,54,0,0,0,30.215,-44.755A3,3,0,0,1,29.296,-48.742Z"
+          d="M34.906,-57.058A3,3,0,0,1,39.166,-58.017A70,70,0,0,1,69.875,-4.179A3,3,0,0,1,66.88,-1L56.859,-1A3,3,0,0,1,53.867,-3.789A54,54,0,0,0,30.682,-44.436A3,3,0,0,1,29.805,-48.432Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -2283,7 +2283,7 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -2421,19 +2421,19 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="74"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-69.993,-1A70,70,0,0,1,-37.752,-58.948L-29.315,-45.35A54,54,0,0,0,-53.991,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -2442,9 +2442,9 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-36.052,-60.002A70,70,0,0,1,34.13,-61.116L26.129,-47.257A54,54,0,0,0,-27.616,-46.405Z"
+          d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -2453,9 +2453,9 @@ exports[`Gauge chart rendering -  Should render properly without chart value 1`]
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M35.862,-60.116A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,27.861,-46.257Z"
+          d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -2603,19 +2603,19 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="98"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-93.995,-1A94,94,0,0,1,-50.406,-79.342L-39.861,-62.347A74,74,0,0,0,-73.993,-1Z"
+          d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -2624,9 +2624,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-48.707,-80.397A94,94,0,0,1,46.131,-81.902L36.131,-64.58A74,74,0,0,0,-38.161,-63.401Z"
+          d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -2635,9 +2635,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M47.863,-80.902A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,37.863,-63.58Z"
+          d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -2646,7 +2646,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
@@ -2787,19 +2787,19 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           0
         </text>
         <text
-          aria-label="Max value: 99"
+          aria-label="Max value: 100"
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
           x="98"
           y="0"
         >
-          99
+          100
         </text>
         <path
-          aria-label="Low Risk, 0 to 32"
+          aria-label="Low Risk, 0 to 33"
           class="fui-gc__segment"
-          d="M-93.995,-1A94,94,0,0,1,-50.406,-79.342L-39.861,-62.347A74,74,0,0,0,-73.993,-1Z"
+          d="M-93.995,-1A94,94,0,0,1,-48.708,-80.396L-38.526,-63.18A74,74,0,0,0,-73.993,-1Z"
           data-is-focusable="true"
           fill="#107c10"
           opacity="1"
@@ -2808,9 +2808,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="Medium Risk, 32 to 66"
+          aria-label="Medium Risk, 33 to 67"
           class="fui-gc__segment"
-          d="M-48.707,-80.397A94,94,0,0,1,46.131,-81.902L36.131,-64.58A74,74,0,0,0,-38.161,-63.401Z"
+          d="M-46.986,-81.414A94,94,0,0,1,46.986,-81.414L36.805,-64.198A74,74,0,0,0,-36.805,-64.198Z"
           data-is-focusable="true"
           fill="#f7630c"
           opacity="1"
@@ -2819,9 +2819,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           tabindex="0"
         />
         <path
-          aria-label="High Risk, 66 to 99"
+          aria-label="High Risk, 67 to 100"
           class="fui-gc__segment"
-          d="M47.863,-80.902A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,37.863,-63.58Z"
+          d="M48.708,-80.396A94,94,0,0,1,93.995,-1L73.993,-1A74,74,0,0,0,38.526,-63.18Z"
           data-is-focusable="true"
           fill="#c50f1f"
           opacity="1"
@@ -2830,7 +2830,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           tabindex="0"
         />
         <g
-          transform="rotate(54.54545454545455, 0, 0)"
+          transform="rotate(54, 0, 0)"
         >
           <path
             aria-label="Current value: 30%"
