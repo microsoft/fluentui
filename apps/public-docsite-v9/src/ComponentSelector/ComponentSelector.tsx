@@ -1,44 +1,9 @@
 import * as React from 'react';
-import {
-  Button,
-  Field,
-  Input,
-  Link,
-  Tab,
-  TabList,
-  Tag,
-  shorthands,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  TagGroup,
-  OverflowItem,
-  useIsOverflowItemVisible,
-  InteractionTag,
-  InteractionTagPrimary,
-  InteractionTagPrimaryProps,
-  TagProps,
-  Text,
-  makeStyles,
-  tokens,
-  useId,
-  Subtitle2,
-  useOverflowMenu,
-} from '@fluentui/react-components';
-import {
-  ArrowDownRegular,
-  ArrowUpRegular,
-  SearchRegular,
-  Link12Regular,
-  Link20Regular,
-  Link16Regular,
-  ArrowRightRegular,
-} from '@fluentui/react-icons';
+import { Button, Input, Tag, TagGroup, Text, makeStyles, tokens } from '@fluentui/react-components';
+import type { InputProps, TagGroupProps } from '@fluentui/react-components';
+import { SearchRegular, Link20Regular, ArrowRightRegular } from '@fluentui/react-icons';
 
 import { removeFromArray, getAllQuestions, hasQuestions } from './utils';
-import { add, create, filter, get, pad, set } from 'lodash';
 import { SelectionCard } from './SelectionCard';
 import { Question } from './Question';
 import { MatchingComponents } from './MatchingComponents';
@@ -206,15 +171,20 @@ const useStyles = makeStyles({
   },
 });
 
-interface ComponentDefinition {
+export interface NamedComponent {
   name: string;
-  component?: string;
-  story?: string;
-  link?: string;
-  attributes?: string[];
 }
 
-interface ComponentGroup {
+export interface ComponentDefinition extends NamedComponent {
+  component: string;
+  story?: string;
+  folder?: string;
+  link?: string;
+  attributes?: string[];
+  note?: string;
+}
+
+export interface ComponentGroup {
   id: string;
   title: string;
   tags: string[];
@@ -222,7 +192,7 @@ interface ComponentGroup {
   cards?: React.ReactNode[];
 }
 
-interface GroupQuestion {
+export interface GroupQuestion {
   id: string;
   question: string;
   answers: { value: string; text: string }[];
@@ -233,8 +203,7 @@ interface ComponentAttributesMapping {
   components: string[];
 }
 
-interface SelectedComponent {
-  name: string;
+interface SelectedComponent extends NamedComponent {
   displayName: string;
 }
 
@@ -260,8 +229,8 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
 
-  const firstGroupItemRef = React.useRef<Button>(null);
-  const processedComponentsDefinitions = React.useRef<Record<string, any>[]>([]);
+  const firstGroupItemRef = React.useRef<HTMLElement | null>(null);
+  const processedComponentsDefinitions = React.useRef<ComponentDefinition[]>([]);
 
   const questionsSectionRef = React.useRef<HTMLDivElement | null>(null);
 
@@ -282,15 +251,11 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     }
   };
 
-  const onJumpToCategoryClick = (index: number) => {
-    groupSectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const onFilterChange = (_, data) => {
+  const onFilterChange: InputProps['onChange'] = (_, data) => {
     setFilterText(data.value);
   };
 
-  const onSelectedComponentDismiss = (_, data) => {
+  const onSelectedComponentDismiss: TagGroupProps['onDismiss'] = (_, data) => {
     if (selectedComponents.length === 1) {
       firstGroupItemRef.current?.focus();
     }
@@ -326,27 +291,25 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   }, [setFilteredComponentsDefinitions, filterText]);
 
   const mapAttributes = () => {
-    processedComponentsDefinitions.current.forEach(definition => {
-      definition.attributes = [];
-    });
     attributesMapping.forEach(mapping => {
       mapping.components.forEach(componentName => {
         const foundDefinition = processedComponentsDefinitions.current.find(definition => {
           return definition.name === componentName;
         });
         if (foundDefinition) {
+          foundDefinition.attributes ??= [];
           foundDefinition.attributes.push(mapping.id);
         }
       });
     });
   };
 
-  const getComponentDefinitionByName = name => {
+  const getComponentDefinitionByName = (name: string) => {
     return processedComponentsDefinitions.current.find(definition => definition.name === name);
   };
 
   const matchingComponents = React.useMemo(() => {
-    const suitableComponents: any[] = [];
+    const suitableComponents: ComponentDefinition[] = [];
     selectedComponents.forEach(component => {
       const definition = getComponentDefinitionByName(component.name);
       if (definition) {
@@ -358,7 +321,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       processedComponentsDefinitions.current.forEach(definition => {
         let matchedCount = 0;
         selectedBehaviours.forEach(decision => {
-          definition.attributes.includes(decision) && matchedCount++;
+          definition.attributes?.includes(decision) && matchedCount++;
         });
         if (selectedBehaviours.length === matchedCount) {
           // if suitableComponents does not include definition, push it
@@ -440,7 +403,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     return result;
   }, [filteredComponentsDefinitions, updateComponentSelection]);
 
-  const updateDecisionForQuestion = (currentName, previousName) => {
+  const updateDecisionForQuestion = (currentName: string, previousName: string) => {
     if (currentName === previousName) {
       return;
     }

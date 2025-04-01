@@ -1,8 +1,10 @@
 import * as React from 'react';
 
+import { NamedComponent, ComponentDefinition, ComponentGroup, GroupQuestion } from './ComponentSelector';
+
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
-const formatComponentStoryUrl = (component, story) =>
+const formatComponentStoryUrl = (component: string, story: string) =>
   `https://react.fluentui.dev/?path=/docs/components-${component}--docs#${story}`;
 
 interface FullscreenLinkProps {
@@ -44,19 +46,19 @@ export const Scenario: React.FC<{ pageTitle: string }> = ({ pageTitle, children 
   );
 };
 
-export const removeFromArray = (array: string[], item: any) => {
+export const removeFromArray = (array: any[], item: any) => {
   const index = array.indexOf(item);
   if (index >= 0) {
     array.splice(index, 1);
   }
 };
 
-const camelToDashed = camel => {
+const camelToDashed = (camel: string) => {
   const dashed = camel.toLowerCase().replace(/\ |\:/g, '-');
   return dashed;
 };
 
-export const getComponentStoryUrl = component => {
+export const getComponentStoryUrl = (component: ComponentDefinition) => {
   const camelComponent = component.folder ? component.folder + ' ' + component.component : component.component;
   const dashedComponent = camelToDashed(camelComponent);
   const dashedStory = component.story ? camelToDashed(component.story) : 'default';
@@ -64,7 +66,7 @@ export const getComponentStoryUrl = component => {
   return url;
 };
 
-const getQuestionsIDs = (name: string, groups) => {
+const getQuestionsIDs = (name: string, groups: ComponentGroup[]) => {
   const questionsIds: string[] = [];
   groups.forEach(group => {
     group.tags.includes(name) ? questionsIds.push(...group.questions) : null;
@@ -72,7 +74,11 @@ const getQuestionsIDs = (name: string, groups) => {
   return questionsIds;
 };
 
-export const getAllQuestions = (selectedComponents, groups, questions) => {
+export const getAllQuestions = (
+  selectedComponents: NamedComponent[],
+  groups: ComponentGroup[],
+  questions: GroupQuestion[],
+) => {
   let allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
     getQuestionsIDs(component.name, groups).forEach(id => {
@@ -86,7 +92,7 @@ export const getAllQuestions = (selectedComponents, groups, questions) => {
   return allQuestions;
 };
 
-export const hasQuestions = (componentName, groups, questions) => {
+export const hasQuestions = (componentName: string, groups: ComponentGroup[], questions: GroupQuestion[]) => {
   const components = [{ name: componentName }];
   const componentQuestions = getAllQuestions(components, groups, questions);
   return componentQuestions.length > 0;

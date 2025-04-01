@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { Divider, Link, Text, makeStyles } from '@fluentui/react-components';
+import { Divider, Link, Text } from '@fluentui/react-components';
 
+import { ComponentDefinition } from './ComponentSelector';
 import { getComponentStoryUrl } from './utils';
 
-export const MatchingComponents = ({ components }) => {
+interface MatchingComponentsProps {
+  components: ComponentDefinition[];
+}
+
+export const MatchingComponents: React.FC<MatchingComponentsProps> = ({ components }) => {
   return (
     <>
       <div role="group" aria-labelledby="matching-heading">
