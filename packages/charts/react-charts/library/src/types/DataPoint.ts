@@ -554,6 +554,11 @@ export interface VSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 /**
@@ -602,6 +607,10 @@ export interface LineDataInVerticalStackedBarChart {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: LineChartLineOptions;
 }
 
 /**
