@@ -1,3 +1,5 @@
+/* @TODO: Fix tests to run on React 18 */
+
 import * as React from 'react';
 import { mount } from '@cypress/react';
 import {

@@ -4,6 +4,7 @@ import { renderTreeItemLayout_unstable } from './renderTreeItemLayout';
 import { useTreeItemLayoutStyles_unstable } from './useTreeItemLayoutStyles.styles';
 import type { TreeItemLayoutProps } from './TreeItemLayout.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * The `TreeItemLayout` component is used as a child of `TreeItem` to define the content and layout of a tree item.
@@ -14,6 +15,8 @@ export const TreeItemLayout: ForwardRefComponent<TreeItemLayoutProps> = React.fo
   const state = useTreeItemLayout_unstable(props, ref);
 
   useTreeItemLayoutStyles_unstable(state);
+  useCustomStyleHook_unstable('useTreeItemLayoutStyles_unstable')(state);
+
   return renderTreeItemLayout_unstable(state);
 });
 

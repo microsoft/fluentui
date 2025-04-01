@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "(feat) Implement grouped vertical bar and scatter chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

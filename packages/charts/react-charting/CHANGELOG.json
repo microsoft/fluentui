@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 27 Mar 2025 07:21:19 GMT",
+      "tag": "@fluentui/react-charting_v5.23.67",
+      "version": "5.23.67",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "47c4ebc7d4b8be9c79b4d3837ca6d27838cbed72",
+            "comment": "Accessibility bug fix"
+          },
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6db9879e20a198eb868e199916f1fef16b1ae00d",
+            "comment": "Accessibility bug fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 24 Mar 2025 07:21:12 GMT",
       "tag": "@fluentui/react-charting_v5.23.66",
       "version": "5.23.66",
