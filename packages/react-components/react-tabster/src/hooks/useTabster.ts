@@ -49,17 +49,17 @@ export function useTabster<FactoryResult>(
 
 export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
   const { targetDocument } = useFluent();
-  const factoryRef = React.useRef<FactoryResult | null>(null);
+  const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
   React.useEffect(() => {
     const tabster = createTabsterWithConfig(targetDocument);
 
     if (tabster) {
-      factoryRef.current = factory(tabster) as FactoryResult;
+      factoryResultRef.current = factory(tabster) as FactoryResult;
 
       return () => {
         disposeTabster(tabster);
-        factoryRef.current = null;
+        factoryResultRef.current = null;
       };
     }
   }, [targetDocument, factory]);
@@ -78,5 +78,5 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
     }
   }
 
-  return factoryRef;
+  return factoryResultRef;
 }
