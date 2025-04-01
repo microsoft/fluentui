@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: don't pass `null` to `createKeyborg()`",
-  "packageName": "@fluentui/react-tabster",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
