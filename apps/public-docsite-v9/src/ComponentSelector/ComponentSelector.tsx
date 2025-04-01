@@ -173,6 +173,7 @@ const useStyles = makeStyles({
 
 export interface NamedComponent {
   name: string;
+  displayName?: string;
 }
 
 export interface ComponentDefinition extends NamedComponent {
@@ -182,6 +183,10 @@ export interface ComponentDefinition extends NamedComponent {
   link?: string;
   attributes?: string[];
   note?: string;
+}
+
+interface ComponentDefinitionWithDisplayName extends ComponentDefinition {
+  displayName: string;
 }
 
 export interface ComponentGroup {
@@ -205,10 +210,6 @@ interface ComponentAttributesMapping {
 
 export type ComponentsImages = Record<string, string>;
 
-interface SelectedComponent extends NamedComponent {
-  displayName: string;
-}
-
 interface ComponentSelectorProps {
   componentsDefinitions: ComponentDefinition[];
   groups: ComponentGroup[];
@@ -227,9 +228,9 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const classes = useStyles();
 
   const [filterText, setFilterText] = React.useState('');
-  const [selectedComponents, setSelectedComponents] = React.useState<SelectedComponent[]>([]);
+  const [selectedComponents, setSelectedComponents] = React.useState<ComponentDefinitionWithDisplayName[]>([]);
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
-  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<Record<string, any>[]>([]);
+  const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<ComponentDefinition[]>([]);
 
   const firstGroupItemRef = React.useRef<HTMLElement | null>(null);
   const processedComponentsDefinitions = React.useRef<ComponentDefinition[]>([]);
@@ -347,7 +348,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         }
         const displayName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
         const newSelectedComponent = {
-          name,
+          ...definition,
           displayName,
         };
         setSelectedComponents(prevSelectedComponents => {
@@ -375,9 +376,12 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const categorizedComponents = React.useMemo(() => {
     const definitionsWithDisplayName = filteredComponentsDefinitions.map(definition => {
       const displayName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
-      definition.displayName = displayName;
-      return definition;
-    });
+      const newDefinition = {
+        ...definition,
+        displayName,
+      };
+      return newDefinition;
+    }) as ComponentDefinitionWithDisplayName[];
     definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
 
     const result = groups.map(group => {
