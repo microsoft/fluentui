@@ -2,6 +2,51 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 14:08:57 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.5.4",
+      "version": "0.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-calendar-compat to v0.2.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.2.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.5.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.10.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-portal to v9.5.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.5.3",
       "version": "0.5.3",

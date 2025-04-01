@@ -2,6 +2,21 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 14:08:57 GMT",
+      "tag": "@fluentui/react-card_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-card_v9.2.2",
       "version": "9.2.2",

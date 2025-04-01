@@ -2,6 +2,51 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 14:08:57 GMT",
+      "tag": "@fluentui/react-tree_v9.10.7",
+      "version": "9.10.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-aria to v9.14.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.7.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.4.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.3.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.3.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:50 GMT",
       "tag": "@fluentui/react-tree_v9.10.6",
       "version": "9.10.6",

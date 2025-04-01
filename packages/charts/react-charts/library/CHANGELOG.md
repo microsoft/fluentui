@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 14:08:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.2)
+
+Tue, 01 Apr 2025 14:08:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.1..@fluentui/react-charts_v9.0.2)
+
+### Patches
+
+- Migrate Gauge chart to V9 ([PR #33998](https://github.com/microsoft/fluentui/pull/33998) by 74965306+Anush2303@users.noreply.github.com)
+- (feat) Implement grouped vertical bar and scatter chart ([PR #34091](https://github.com/microsoft/fluentui/pull/34091) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.4.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
+- Bump @fluentui/react-overflow to v9.3.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
+- Bump @fluentui/react-popover to v9.10.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
+- Bump @fluentui/react-tabster to v9.24.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.1)
 

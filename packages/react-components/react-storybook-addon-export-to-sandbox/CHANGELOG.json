@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "entries": [
+    {
+      "date": "Tue, 01 Apr 2025 14:08:55 GMT",
+      "tag": "@fluentui/react-storybook-addon-export-to-sandbox_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "1cccd44e20f24027b648bd1267fbfe41b5c63012",
+            "comment": "feat: release to npm"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "comment": "Bump @fluentui/babel-preset-storybook-full-source to v0.0.1",
+            "commit": "4a1d5d368b056775fe6100c8efcffd62f25f00dc"
+          }
+        ]
+      }
+    }
+  ]
+}

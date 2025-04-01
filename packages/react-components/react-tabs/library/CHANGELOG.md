@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 14:08:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.4)
+
+Tue, 01 Apr 2025 14:08:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.7.3..@fluentui/react-tabs_v9.7.4)
+
+### Patches
+
+- fix: fix active tab indicator animation ([PR #34060](https://github.com/microsoft/fluentui/pull/34060) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-tabster to v9.24.4 ([PR #34129](https://github.com/microsoft/fluentui/pull/34129) by beachball)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.3)
 
