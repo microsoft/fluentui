@@ -134,6 +134,24 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
   }
 };
 
+const validateBarData = (data: Partial<PlotData>) => {
+  if (data.orientation === 'h' && data.base !== undefined) {
+    throw new Error('Unsupported chart type: Gantt');
+  } else if (data.orientation === 'h' && isNumberArray(data.x)) {
+    validateSeriesData(data, false);
+  } else {
+    validateSeriesData(data, true);
+  }
+};
+
+const validateScatterData = (data: Partial<PlotData>) => {
+  if (data.mode === 'markers' && !isNumberArray(data.x)) {
+    throw new Error(`Unsupported chart - type :${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
+  } else {
+    validateSeriesData(data, true);
+  }
+};
+
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
     (data: Partial<PlotData>) => {
@@ -148,53 +166,39 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
       throw new Error(`Unsupported chart - type :${data.type}`);
     },
   ],
-  bar: [
-    (data: Partial<PlotData>) => {
-      if (data.orientation === 'h' && data.base !== undefined) {
-        throw new Error('Unsupported chart type: Gantt');
-      } else if (data.orientation === 'h' && isNumberArray(data.x)) {
-        validateSeriesData(data, false);
-      } else {
-        validateSeriesData(data, true);
-      }
-    },
-  ],
-  scatter: [
-    (data: Partial<PlotData>) => {
-      if (data.mode === 'markers' && !isNumberArray(data.x)) {
-        throw new Error(`Unsupported chart - type :${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
-      } else {
-        validateSeriesData(data, true);
-      }
-    },
-  ],
+  bar: [validateBarData],
+  scatter: [validateScatterData],
 };
 
 const getValidDataIndices = (dataArr: Data[]) => {
-  let errorMessage: string | undefined;
+  const errorMessages: string[] = [];
   const validDataIndices = dataArr
     .map((data, index) => {
       let type = data.type;
       if (isLineData(data as Partial<PlotData>)) {
         type = 'scatter';
       }
+
       if (type && DATA_VALIDATORS_MAP[type]) {
         const validators = DATA_VALIDATORS_MAP[type];
         for (const validator of validators) {
           try {
             validator(data);
           } catch (error) {
-            errorMessage = `data[${index}]: ${error}`;
+            errorMessages.push(`data[${index}]: ${error}`);
             return -1;
           }
         }
       }
+
       return index;
     })
     .filter(dataIdx => dataIdx >= 0);
+
   if (validDataIndices.length === 0) {
-    throw new Error(errorMessage);
+    throw new Error(errorMessages.join('; '));
   }
+
   return validDataIndices;
 };
 
@@ -216,6 +220,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
 
     const validDataIndices = getValidDataIndices(validSchema.data);
     const firstData = validSchema.data[validDataIndices[0]];
+
     switch (firstData.type) {
       case 'pie':
         return { isValid: true, type: 'donut', validDataIndices };
@@ -237,8 +242,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, type: 'verticalstackedbar', validDataIndices };
         }
         if (containsBars) {
-          const barData = firstData as Partial<PlotData>;
-          if (barData.orientation === 'h' && isNumberArray(barData.x)) {
+          const firstBarData = firstData as Partial<PlotData>;
+          if (firstBarData.orientation === 'h' && isNumberArray(firstBarData.x)) {
             return { isValid: true, type: 'horizontalbar', validDataIndices };
           } else {
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
@@ -248,12 +253,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
           }
         }
         if (containsLines) {
-          const scatterData = firstData as Partial<PlotData>;
+          const firstScatterData = firstData as Partial<PlotData>;
           const isAreaChart = validDataIndices.some(idx =>
             ['tonexty', 'tozeroy'].includes(`${(validSchema.data[idx] as Partial<PlotData>).fill}`),
           );
-          const isXDate = isDateArray(scatterData.x);
-          const isXNumber = isNumberArray(scatterData.x);
+          const isXDate = isDateArray(firstScatterData.x);
+          const isXNumber = isNumberArray(firstScatterData.x);
           if (isXDate || isXNumber) {
             return { isValid: true, type: isAreaChart ? 'area' : 'line', validDataIndices };
           }
