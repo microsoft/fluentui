@@ -230,7 +230,7 @@ export function useEmblaCarousel(
         currentElement = viewportRef.current ?? newElement;
         if (currentElement) {
           // Stop autoplay before reinitializing.
-          emblaApi.current?.plugins().autoplay?.stop();
+          emblaApi.current?.plugins?.().autoplay?.stop();
           emblaApi.current = EmblaCarousel(
             currentElement,
             {
@@ -294,7 +294,7 @@ export function useEmblaCarousel(
     };
 
     // Stop autoplay before reinitializing.
-    emblaApi.current?.plugins().autoplay?.stop();
+    emblaApi.current?.plugins?.().autoplay?.stop();
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
