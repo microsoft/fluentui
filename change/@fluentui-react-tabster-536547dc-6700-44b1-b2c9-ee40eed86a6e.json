@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: improve support for concurrent mode",
-  "packageName": "@fluentui/react-tabster",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
