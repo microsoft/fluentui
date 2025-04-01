@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": ["jest", "node"]
+    "types": []
   },
+  "files": ["../../node_modules/@types/jest/index.d.ts", "../../node_modules/@types/node/index.d.ts"],
   "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"]
 }

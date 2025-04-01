@@ -2,6 +2,115 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 27 Mar 2025 21:12:48 GMT",
+      "tag": "@fluentui/react-components_v9.61.5",
+      "version": "9.61.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Mar 2025 21:47:46 GMT",
+      "tag": "@fluentui/react-components_v9.61.4",
+      "version": "9.61.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52",
+            "comment": "fix: handle error cases in \"element.animate()\""
+          }
+        ],
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "8f84c46776648c5f25138b30ca783e782ef1f177",
+            "comment": "fix(motion): make createPresenceComponentVariant support motion arrays"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Mar 2025 15:52:37 GMT",
+      "tag": "@fluentui/react-components_v9.61.3",
+      "version": "9.61.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "b4788ec5def0ffdede8fefe3dd240e7b189fca83",
+            "comment": "chore: Publish stable version of charts v9 package"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "41c66f3013e756eb41fde00c4dfe66a0a9ad237a",
+            "comment": "fix: fix deprecated appearance property warning for vertical sliders"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3bb2f700a31dbaa55dd2acd9e2d7da46a4a9a625",
+            "comment": "bugfix: ensure tabindex whenever tree is re-populated"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Mar 2025 09:34:58 GMT",
       "tag": "@fluentui/react-components_v9.61.2",
       "version": "9.61.2",
