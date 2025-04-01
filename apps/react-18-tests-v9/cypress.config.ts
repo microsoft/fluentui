@@ -4,6 +4,7 @@ import { baseConfig } from '@fluentui/scripts-cypress';
 // Exclude files that are not compatible with React 18 yet
 const excludedSpecs = [
   '!' + path.resolve('../../packages/react-components/react-tag-picker/library/src/**/*.cy.{tsx,ts}'),
+  '!' + path.resolve('../../packages/react-components/react-tree/library/src/components/Tree/Tree.cy.tsx'),
 ];
 
 // Include all tests from this app and the components package
