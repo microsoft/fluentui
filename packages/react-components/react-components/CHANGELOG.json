@@ -2,6 +2,75 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:01 GMT",
+      "tag": "@fluentui/react-components_v9.61.6",
+      "version": "9.61.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f",
+            "comment": "Migrate VSBC to v9 "
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "deee540be59460a04e758f1342c1b83fa9bc9992",
+            "comment": "Migrate Gauge chart to V9"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9df6da6a0dab5856eef22e8076fd44ca432b3147",
+            "comment": "(feat) Implement grouped vertical bar and scatter chart"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "9250e341ee6050334d966d9db3c53a52ca7c54f7",
+            "comment": "fix: fix active tab indicator animation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "7fb72e750b033aff7a0ca3e9d80d1793d2a98ae0",
+            "comment": "fix: improve support for concurrent mode"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b5868638cc29d589325cf986f55be9d7498ef0e6",
+            "comment": "fix: don't pass `null` to `createKeyborg()`"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "b8f675441f68d1c1dc17c4eaa85b8a802dfa2f39",
+            "comment": "bugfix: ensure external tabster attributes are merged with internals"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "1cccd44e20f24027b648bd1267fbfe41b5c63012",
+            "comment": "feat: release to npm"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon-export-to-sandbox",
+            "commit": "1cccd44e20f24027b648bd1267fbfe41b5c63012",
+            "comment": "feat: release to npm"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/babel-preset-storybook-full-source",
+            "commit": "1cccd44e20f24027b648bd1267fbfe41b5c63012",
+            "comment": "feat: release to npm"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:48 GMT",
       "tag": "@fluentui/react-components_v9.61.5",
       "version": "9.61.5",
