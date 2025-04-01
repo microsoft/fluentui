@@ -24,10 +24,10 @@ const mount = (element: JSX.Element) => {
  */
 const testSequence = (sequence: Array<string>) => {
   cy.get('#outside-button').click();
-  cy.get('#outside-button').focused();
+  cy.get('#outside-button').should('be.focused');
 
   cy.get('[data-test^=list-item-]').first().focus();
-  cy.get('[data-test^=list-item-]').focused();
+  cy.get('[data-test^=list-item-]').should('be.focused');
 
   for (const command of sequence) {
     if (command.startsWith('focused:')) {

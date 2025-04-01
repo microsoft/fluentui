@@ -31,19 +31,19 @@ describe('Toolbar', () => {
       );
 
       cy.get(button).eq(0).click();
-      cy.get(button).eq(0).focused();
+      cy.get(button).eq(0).should('be.focused');
 
       cy.get(button).eq(0).type('{rightArrow}');
-      cy.get(button).eq(1).focused();
+      cy.get(button).eq(1).should('be.focused');
 
       cy.get(button).eq(1).type('{downArrow}');
-      cy.get(button).eq(2).focused();
+      cy.get(button).eq(2).should('be.focused');
 
       cy.get(button).eq(2).type('{upArrow}');
-      cy.get(button).eq(1).focused();
+      cy.get(button).eq(1).should('be.focused');
 
       cy.get(button).eq(1).type('{leftArrow}');
-      cy.get(button).eq(0).focused();
+      cy.get(button).eq(0).should('be.focused');
     });
 
     it('should have circular navigation', () => {
@@ -57,13 +57,13 @@ describe('Toolbar', () => {
       );
 
       cy.get(button).eq(3).click();
-      cy.get(button).eq(3).focused();
+      cy.get(button).eq(3).should('be.focused');
 
       cy.get(button).eq(3).type('{rightArrow}');
-      cy.get(button).eq(0).focused();
+      cy.get(button).eq(0).should('be.focused');
 
       cy.get(button).eq(0).type('{leftArrow}');
-      cy.get(button).eq(3).focused();
+      cy.get(button).eq(3).should('be.focused');
     });
   });
 
@@ -174,7 +174,8 @@ describe('ToolbarDivider', () => {
       </Toolbar>,
     );
 
-    cy.get('html').type('Tab').type('{rightarrow}').get(button).eq(0).focused();
+    cy.get('html').type('Tab').type('{rightarrow}');
+    cy.get(button).eq(0).should('be.focused');
   });
 
   it('should navigate with arrow key', () => {
@@ -190,7 +191,7 @@ describe('ToolbarDivider', () => {
     cy.get(button).eq(0).click();
 
     cy.get(button).eq(0).type('{rightarrow}');
-    cy.get(button).eq(1).focused();
+    cy.get(button).eq(1).should('be.focused');
   });
 
   it('should have circular navigation', () => {
@@ -206,6 +207,6 @@ describe('ToolbarDivider', () => {
     cy.get(button).eq(0).click();
 
     cy.get(button).eq(0).type('{leftarrow}');
-    cy.get(button).eq(2).focused();
+    cy.get(button).eq(2).should('be.focused');
   });
 });
