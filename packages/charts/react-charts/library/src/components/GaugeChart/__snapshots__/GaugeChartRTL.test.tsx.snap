@@ -3,7 +3,7 @@
 exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
 <div>
   <div
-    class="fui-FluentProvider fui-FluentProvider85"
+    class="fui-FluentProvider fui-FluentProvider67"
     dir="ltr"
   >
     <div
@@ -92,11 +92,11 @@ exports[`Gauge Chart - Theme Change Should reflect theme change 1`] = `
           </g>
           <g>
             <text
-              aria-describedby="tooltip-87"
+              aria-describedby="tooltip-69"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="24"
-              id="tooltip-host86"
+              id="tooltip-host68"
               text-anchor="middle"
               x="0"
               y="0"
@@ -193,6 +193,7 @@ Array [
     aria-selected="false"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
+    data-overflowing=""
     role="option"
     style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
     type="button"
@@ -212,6 +213,7 @@ Array [
     aria-selected="false"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
+    data-overflowing=""
     role="option"
     style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
     type="button"
@@ -231,6 +233,7 @@ Array [
     aria-selected="false"
     class="fui-Button fui-legend__legend"
     data-overflow-item=""
+    data-overflowing=""
     role="option"
     style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
     type="button"
@@ -244,6 +247,34 @@ Array [
     >
       High Risk
     </div>
+  </button>,
+  <button
+    aria-expanded="false"
+    aria-haspopup="menu"
+    class="fui-Button fui-MenuButton"
+    data-overflow-menu=""
+    id="menu66"
+    type="button"
+  >
+    +3 more
+    <span
+      class="fui-MenuButton__menuIcon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
   </button>,
 ]
 `;
@@ -336,11 +367,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         </g>
         <g>
           <text
-            aria-describedby="tooltip-50"
+            aria-describedby="tooltip-40"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host49"
+            id="tooltip-host39"
             text-anchor="middle"
             x="0"
             y="0"
@@ -519,11 +550,11 @@ exports[`Gauge chart - Subcomponent Legend Should reduce the opacity of the othe
         </g>
         <g>
           <text
-            aria-describedby="tooltip-46"
+            aria-describedby="tooltip-37"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host45"
+            id="tooltip-host36"
             text-anchor="middle"
             x="0"
             y="0"
@@ -619,7 +650,6 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
   <div
     class="fui-gc__root"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    style="--tabster-groupper: unlimited;"
   >
     <svg
       aria-label="Gauge chart with 3 segments. "
@@ -703,11 +733,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-28"
+            aria-describedby="tooltip-22"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host27"
+            id="tooltip-host21"
             text-anchor="middle"
             x="0"
             y="0"
@@ -794,7 +824,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout30"
+      id="callout24"
     >
       <div
         class="fui-PopoverSurface"
@@ -831,7 +861,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -857,7 +887,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -883,7 +913,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -908,7 +938,6 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
   <div
     class="fui-gc__root"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    style="--tabster-groupper: unlimited;"
   >
     <svg
       aria-label="Gauge chart with 3 segments. "
@@ -992,11 +1021,11 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 2`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-28"
+            aria-describedby="tooltip-22"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host27"
+            id="tooltip-host21"
             text-anchor="middle"
             x="0"
             y="0"
@@ -1173,11 +1202,11 @@ exports[`Gauge chart interactions Should not show callout on mouse over when hid
         </g>
         <g>
           <text
-            aria-describedby="tooltip-24"
+            aria-describedby="tooltip-19"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host23"
+            id="tooltip-host18"
             text-anchor="middle"
             x="0"
             y="0"
@@ -1271,7 +1300,6 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
   <div
     class="fui-gc__root"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    style="--tabster-groupper: unlimited;"
   >
     <svg
       aria-label="Gauge chart with 3 segments. "
@@ -1355,11 +1383,11 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-34"
+            aria-describedby="tooltip-27"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host33"
+            id="tooltip-host26"
             text-anchor="middle"
             x="0"
             y="0"
@@ -1446,7 +1474,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout36"
+      id="callout29"
     >
       <div
         class="fui-PopoverSurface"
@@ -1483,7 +1511,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -1509,7 +1537,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -1535,7 +1563,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -1560,7 +1588,6 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
   <div
     class="fui-gc__root"
     data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    style="--tabster-groupper: unlimited;"
   >
     <svg
       aria-label="Gauge chart with 3 segments. "
@@ -1644,11 +1671,11 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-18"
+            aria-describedby="tooltip-14"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host17"
+            id="tooltip-host13"
             text-anchor="middle"
             x="0"
             y="0"
@@ -1735,7 +1762,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
     </div>
     <div
       class="fui-cart__calloutContainer"
-      id="callout20"
+      id="callout16"
     >
       <div
         class="fui-PopoverSurface"
@@ -1772,7 +1799,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Low Risk
                     </div>
                     <div
@@ -1798,7 +1825,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       Medium Risk
                     </div>
                     <div
@@ -1824,7 +1851,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                     <div
                       class="fui-gc__calloutlegendText"
                     >
-
+                       
                       High Risk
                     </div>
                     <div
@@ -1941,11 +1968,11 @@ exports[`Gauge chart rendering -  Should render properly with chart title 1`] = 
         </g>
         <g>
           <text
-            aria-describedby="tooltip-10"
+            aria-describedby="tooltip-8"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host9"
+            id="tooltip-host7"
             text-anchor="middle"
             x="0"
             y="0"
@@ -2122,11 +2149,11 @@ exports[`Gauge chart rendering -  Should render properly with chart value 1`] = 
         </g>
         <g>
           <text
-            aria-describedby="tooltip-6"
+            aria-describedby="tooltip-5"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host5"
+            id="tooltip-host4"
             text-anchor="middle"
             x="0"
             y="0"
@@ -2303,11 +2330,11 @@ exports[`Gauge chart rendering -  Should render properly with roundCorners 1`] =
         </g>
         <g>
           <text
-            aria-describedby="tooltip-14"
+            aria-describedby="tooltip-11"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="24"
-            id="tooltip-host13"
+            id="tooltip-host10"
             text-anchor="middle"
             x="0"
             y="0"
@@ -2666,11 +2693,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-74"
+            aria-describedby="tooltip-58"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="32"
-            id="tooltip-host73"
+            id="tooltip-host57"
             text-anchor="middle"
             x="0"
             y="0"
@@ -2850,11 +2877,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         </g>
         <g>
           <text
-            aria-describedby="tooltip-78"
+            aria-describedby="tooltip-61"
             aria-hidden="true"
             class="fui-gc__chartValue"
             font-size="32"
-            id="tooltip-host77"
+            id="tooltip-host60"
             text-anchor="middle"
             x="0"
             y="0"
