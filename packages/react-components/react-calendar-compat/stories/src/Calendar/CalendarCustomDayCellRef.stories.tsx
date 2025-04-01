@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Calendar } from '@fluentui/react-calendar-compat';
-import type { CalendarDayProps } from '@fluentui/react-calendar-compat';
+import type { CalendarDayGridStyles } from '@fluentui/react-calendar-compat';
 
 export const CalendarCustomDayCellRef = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
@@ -9,20 +9,17 @@ export const CalendarCustomDayCellRef = () => {
     setSelectedDate(date);
   }, []);
 
-  const customDayCellRef: NonNullable<CalendarDayProps['customDayCellRef']> = React.useCallback(
-    (element, date, classNames) => {
-      if (element) {
-        element.title = 'custom title from customDayCellRef: ' + date.toString();
-        if (date.getDay() === 0 || date.getDay() === 6) {
-          // We need to split the className since we use makeStyles and griffel provides a string of space
-          // separated classnames
-          classNames.dayOutsideBounds && element.classList.add(...classNames.dayOutsideBounds.split(' '));
-          (element.children[0] as HTMLButtonElement).disabled = true;
-        }
+  const customDayCellRef = React.useCallback((element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => {
+    if (element) {
+      element.title = 'custom title from customDayCellRef: ' + date.toString();
+      if (date.getDay() === 0 || date.getDay() === 6) {
+        // We need to split the className since we use makeStyles and griffel provides a string of space
+        // separated classnames
+        classNames.dayOutsideBounds && element.classList.add(...classNames.dayOutsideBounds.split(' '));
+        (element.children[0] as HTMLButtonElement).disabled = true;
       }
-    },
-    [],
-  );
+    }
+  }, []);
 
   return (
     <>

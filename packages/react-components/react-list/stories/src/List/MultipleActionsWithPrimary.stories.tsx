@@ -15,7 +15,6 @@ import {
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-components';
-import type { ListItemProps } from '@fluentui/react-components';
 
 import * as React from 'react';
 
@@ -67,7 +66,7 @@ const CustomListItem = (props: { title: string; value: string }) => {
   const { value } = props;
 
   // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback<NonNullable<ListItemProps['onAction']>>(event => {
+  const onAction = React.useCallback((event: React.SyntheticEvent | Event) => {
     // This prevents the change in selection on click/Enter
     event.preventDefault();
     alert(`Triggered custom action!`);

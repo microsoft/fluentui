@@ -86,21 +86,18 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
     [isOverflowing, portalMountNode, async, props.delay],
   );
 
-  const onTooltipMouseLeave = useCallback(
-    (_: React.MouseEvent<SVGElement>) => {
-      async.clearTimeout(dismissTimerId.current!);
-      async.clearTimeout(openTimerId.current!);
+  const onTooltipMouseLeave = useCallback(() => {
+    async.clearTimeout(dismissTimerId.current!);
+    async.clearTimeout(openTimerId.current!);
 
-      if (props.closeDelay) {
-        dismissTimerId.current = async.setTimeout(() => {
-          setIsTooltipVisible(false);
-        }, props.closeDelay);
-      } else {
+    if (props.closeDelay) {
+      dismissTimerId.current = async.setTimeout(() => {
         setIsTooltipVisible(false);
-      }
-    },
-    [async, props.closeDelay],
-  );
+      }, props.closeDelay);
+    } else {
+      setIsTooltipVisible(false);
+    }
+  }, [async, props.closeDelay]);
 
   const onTooltipFocus = useCallback(
     (ev: React.FocusEvent<SVGElement>) => {

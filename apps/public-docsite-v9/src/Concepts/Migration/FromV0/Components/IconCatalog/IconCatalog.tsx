@@ -3,7 +3,6 @@ import { Provider, teamsV2Theme } from '@fluentui/react-northstar';
 import * as v0Icons from '@fluentui/react-icons-northstar';
 import * as v9Icons from '@fluentui/react-icons';
 import { Input, Switch, Label } from '@fluentui/react-components';
-import type { InputProps, SwitchProps } from '@fluentui/react-components';
 import { iconMapping as rawMapping } from './iconMapping';
 import { IconGrid } from './IconGrid';
 import { useDebounce } from './useDebounce';
@@ -62,13 +61,13 @@ const IconCatalogInner: React.FC = () => {
     [searchTerm, searchV0],
   );
 
-  const onInputChange: NonNullable<InputProps['onChange']> = React.useCallback(
-    (_, { value }) => updateSearchDebounced(value),
+  const onInputChange = React.useCallback(
+    (_: React.ChangeEvent<HTMLInputElement>, { value }: { value: string }) => updateSearchDebounced(value),
     [updateSearchDebounced],
   );
 
-  const onSwitchChange: NonNullable<SwitchProps['onChange']> = React.useCallback(
-    (_, { checked }) => setSearchV0(checked),
+  const onSwitchChange = React.useCallback(
+    (_: React.ChangeEvent<HTMLInputElement>, { checked }: { checked: boolean }) => setSearchV0(checked),
     [],
   );
 

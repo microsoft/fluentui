@@ -4,7 +4,6 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { List } from './List';
-import type { ListProps } from './List.types';
 import { ListItem } from '../ListItem';
 import { SelectionItemId } from '@fluentui/react-utilities';
 
@@ -86,7 +85,7 @@ type SelectionTestListProps = {
 const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: SelectionTestListProps) => {
   const [selectedItems, setSelectedItems] = React.useState(defaultSelectedItems || []);
 
-  const onChange = React.useCallback<NonNullable<ListProps['onSelectionChange']>>((_, { selectedItems: selected }) => {
+  const onChange = React.useCallback((_: React.SyntheticEvent | Event, { selectedItems: selected }) => {
     setSelectedItems(selected);
   }, []);
 

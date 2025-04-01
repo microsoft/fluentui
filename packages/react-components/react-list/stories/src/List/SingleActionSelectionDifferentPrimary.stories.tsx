@@ -28,11 +28,14 @@ export const SingleActionSelectionDifferentPrimary = () => {
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Demetra Manwaring', 'Bart Merrill']);
 
   // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback<NonNullable<ListItemProps['onAction']>>((event, { value: val }) => {
-    // This prevents the change in selection on click/Enter
-    event.preventDefault();
-    alert(`Triggered custom action on ${val}`);
-  }, []);
+  const onAction = React.useCallback(
+    (event: React.SyntheticEvent | Event, { value: val }: { value: ListItemProps['value'] }) => {
+      // This prevents the change in selection on click/Enter
+      event.preventDefault();
+      alert(`Triggered custom action on ${val}`);
+    },
+    [],
+  );
 
   return (
     <List

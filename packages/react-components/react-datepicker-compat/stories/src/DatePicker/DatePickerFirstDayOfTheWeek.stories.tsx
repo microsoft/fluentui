@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DayOfWeek } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Dropdown, Field, makeStyles, Option, useId } from '@fluentui/react-components';
-import type { DropdownProps } from '@fluentui/react-components';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -25,8 +24,11 @@ export const FirstDayOfTheWeek = () => {
 
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
-  const onOptionSelect = React.useCallback<NonNullable<DropdownProps['onOptionSelect']>>(
-    (_, data: { optionValue: string | undefined; selectedOptions: string[] }) => {
+  const onOptionSelect = React.useCallback(
+    (
+      _: React.ChangeEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
+      data: { optionValue: string | undefined; selectedOptions: string[] },
+    ) => {
       if (data.optionValue) {
         setFirstDayOfWeek(DayOfWeek[data.optionValue as keyof typeof DayOfWeek]);
       }
