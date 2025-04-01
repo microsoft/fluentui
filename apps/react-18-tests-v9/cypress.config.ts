@@ -5,7 +5,6 @@ import { baseConfig } from '@fluentui/scripts-cypress';
 const excludedSpecs = [
   '!' + path.resolve('../../packages/react-components/react-overflow/library/src/**/*.cy.{tsx,ts}'),
   '!' + path.resolve('../../packages/react-components/react-tag-picker/library/src/**/*.cy.{tsx,ts}'),
-  '!' + path.resolve('../../packages/react-components/react-toolbar/library/src/**/*.cy.{tsx,ts}'),
 ];
 
 // Include all tests from this app and the components package

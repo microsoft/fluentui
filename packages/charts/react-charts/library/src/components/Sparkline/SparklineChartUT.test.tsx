@@ -2,7 +2,7 @@ import { getByClass, testWithWait } from '../../utilities/TestUtility.test';
 import { Sparkline } from './Sparkline';
 
 import { emptySparklinePoints, sparkline1Points } from './Sparkline.test';
-import { getByRole, queryAllByAttribute, render, screen } from '@testing-library/react';
+import { getByRole, queryAllByAttribute, render } from '@testing-library/react';
 import * as React from 'react';
 
 const env = require('../../../config/tests.js');
@@ -100,7 +100,6 @@ describe('Is Chart Empty', () => {
     const { container } = render(<Sparkline data={emptySparklinePoints} />);
     // Assert
     expect(container).toMatchSnapshot();
-    screen.debug(container, Infinity);
     expect(getByRole(container, /alert/i)).toBeDefined;
   });
 
@@ -110,7 +109,6 @@ describe('Is Chart Empty', () => {
     const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
-    screen.debug(container, Infinity);
     expect(getById.length).toBe(2);
   });
 });

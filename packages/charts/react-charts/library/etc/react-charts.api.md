@@ -18,6 +18,9 @@ export interface AccessibilityProps {
 }
 
 // @public (undocumented)
+export const ARC_PADDING = 2;
+
+// @public (undocumented)
 export interface Basestate {
     // (undocumented)
     activeLegend?: string;
@@ -62,6 +65,16 @@ export interface Basestate {
         color?: string;
     }[];
 }
+
+// @public (undocumented)
+export const BREAKPOINTS: {
+    minRadius: number;
+    arcWidth: number;
+    fontSize: number;
+}[];
+
+// @public (undocumented)
+export const calcNeedleRotation: (chartValue: number, minValue: number, maxValue: number) => number;
 
 // @public
 export const CartesianChart: React_2.FunctionComponent<ModifiedCartesianChartProps>;
@@ -428,16 +441,124 @@ export interface EventsAnnotationProps {
 }
 
 // @public (undocumented)
+export interface ExtendedSegment extends GaugeChartSegment {
+    // (undocumented)
+    end: number;
+    // (undocumented)
+    start: number;
+}
+
+// @public (undocumented)
+export const GaugeChart: React_2.FunctionComponent<GaugeChartProps>;
+
+// @public
+export interface GaugeChartProps {
+    calloutProps?: Partial<ChartPopoverProps>;
+    chartTitle?: string;
+    chartValue: number;
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    culture?: string;
+    enableGradient?: boolean;
+    height?: number;
+    hideLegend?: boolean;
+    hideMinMax?: boolean;
+    hideTooltip?: boolean;
+    // (undocumented)
+    legendProps?: Partial<LegendsProps>;
+    maxValue?: number;
+    minValue?: number;
+    roundCorners?: boolean;
+    segments: GaugeChartSegment[];
+    styles?: GaugeChartStyles;
+    sublabel?: string;
+    variant?: GaugeChartVariant;
+    width?: number;
+}
+
+// @public
+export interface GaugeChartSegment {
+    accessibilityData?: AccessibilityProps;
+    color?: string;
+    gradient?: [string, string];
+    legend: string;
+    size: number;
+}
+
+// @public
+export interface GaugeChartStyles {
+    calloutBlockContainer?: string;
+    calloutContentRoot?: string;
+    calloutContentX?: string;
+    calloutContentY?: string;
+    calloutDateTimeContainer?: string;
+    calloutInfoContainer?: string;
+    calloutlegendText?: string;
+    chart?: string;
+    chartTitle?: string;
+    chartValue?: string;
+    descriptionMessage?: string;
+    gradientSegment?: string;
+    legendsContainer?: string;
+    limits?: string;
+    needle?: string;
+    root?: string;
+    segment?: string;
+    shapeStyles?: string;
+    sublabel?: string;
+}
+
+// @public (undocumented)
+export type GaugeChartVariant = 'single-segment' | 'multiple-segments';
+
+// @public (undocumented)
+export type GaugeValueFormat = 'percentage' | 'fraction';
+
+// @public (undocumented)
+export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
+export const getSegmentLabel: (segment: ExtendedSegment, minValue: number, maxValue: number, variant?: GaugeChartVariant, isAriaLabel?: boolean) => string;
+
+// @public (undocumented)
+export const GroupedVerticalBarChart: React_2.FC<GroupedVerticalBarChartProps>;
+
+// @public (undocumented)
 export interface GroupedVerticalBarChartData {
     name: string;
     series: GVBarChartSeriesPoint[];
     stackCallOutAccessibilityData?: AccessibilityProps;
+}
+
+// @public
+export interface GroupedVerticalBarChartProps extends CartesianChartProps {
+    barWidth?: number | 'default' | 'auto';
+    chartTitle?: string;
+    colors?: string[];
+    culture?: string;
+    data?: GroupedVerticalBarChartData[];
+    hideLabels?: boolean;
+    isCalloutForStack?: boolean;
+    maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
+    styles?: GroupedVerticalBarChartStyles;
+    useSingleColor?: boolean;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
+}
+
+// @public
+export interface GroupedVerticalBarChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface GroupedVerticalBarChartStyles extends CartesianChartStyles {
+    barLabel: string;
 }
 
 // @public (undocumented)
@@ -595,6 +716,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
@@ -640,17 +763,9 @@ export interface LegendStyleProps {
 export const LineChart: React_2.FunctionComponent<LineChartProps>;
 
 // @public (undocumented)
-export interface LineChartDataPoint {
-    callOutAccessibilityData?: AccessibilityProps;
-    hideCallout?: boolean;
-    onDataPointClick?: () => void;
+export interface LineChartDataPoint extends BaseDataPoint {
     x: number | Date;
-    xAxisCalloutAccessibilityData?: AccessibilityProps;
-    xAxisCalloutData?: string;
     y: number;
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
 }
 
 // @public (undocumented)
@@ -672,7 +787,7 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
 // @public (undocumented)
 export interface LineChartPoints {
     color?: string;
-    data: LineChartDataPoint[];
+    data: LineChartDataPoint[] | ScatterChartDataPoint[];
     gaps?: LineChartGap[];
     hideNonActiveDots?: boolean;
     legend: string;
@@ -818,6 +933,33 @@ export interface RefArrayData {
 
 // @public (undocumented)
 export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public
+export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
+
+// @public
+export interface ScatterChartDataPoint extends BaseDataPoint {
+    markerSize?: number;
+    x: number | Date | string;
+    y: number;
+}
+
+// @public
+export interface ScatterChartProps extends CartesianChartProps {
+    culture?: string;
+    data: ChartProps;
+    getCalloutDescriptionMessage?: (calloutDataProps: CustomizedCalloutData) => string | undefined;
+    onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    styles?: ScatterChartStyles;
+}
+
+// @public
+export interface ScatterChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface ScatterChartStyles extends CartesianChartStyles {
+}
 
 // @public
 export interface Schema {
