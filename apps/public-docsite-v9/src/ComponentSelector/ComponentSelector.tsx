@@ -233,8 +233,6 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<ComponentDefinition[]>([]);
 
   const firstGroupItemRef = React.useRef<HTMLElement | null>(null);
-  const processedComponentsDefinitions = React.useRef<ComponentDefinition[]>([]);
-
   const questionsSectionRef = React.useRef<HTMLDivElement | null>(null);
 
   const scrollToQuestionsSection = () => {
@@ -271,15 +269,22 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   };
 
   React.useEffect(() => {
-    if (processedComponentsDefinitions.current.length === 0) {
-      processedComponentsDefinitions.current = [...componentsDefinitions];
-      mapAttributes();
-    }
+    attributesMapping.forEach(mapping => {
+      mapping.components.forEach(componentName => {
+        const foundDefinition = componentsDefinitions.find(definition => {
+          return definition.name === componentName;
+        });
+        if (foundDefinition) {
+          foundDefinition.attributes ??= [];
+          foundDefinition.attributes.push(mapping.id);
+        }
+      });
+    });
   }, []);
 
   React.useEffect(() => {
     setFilteredComponentsDefinitions(
-      processedComponentsDefinitions.current.filter(definition => {
+      componentsDefinitions.filter(definition => {
         const isMatchInName = definition.component.toLowerCase().includes(filterText.toLowerCase());
         const componentGroup = groups.find(group => group.tags.find(tag => tag.includes(definition.component)));
         const isMatchInStory = definition.story
@@ -293,22 +298,8 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     );
   }, [setFilteredComponentsDefinitions, filterText]);
 
-  const mapAttributes = () => {
-    attributesMapping.forEach(mapping => {
-      mapping.components.forEach(componentName => {
-        const foundDefinition = processedComponentsDefinitions.current.find(definition => {
-          return definition.name === componentName;
-        });
-        if (foundDefinition) {
-          foundDefinition.attributes ??= [];
-          foundDefinition.attributes.push(mapping.id);
-        }
-      });
-    });
-  };
-
   const getComponentDefinitionByName = (name: string) => {
-    return processedComponentsDefinitions.current.find(definition => definition.name === name);
+    return componentsDefinitions.find(definition => definition.name === name);
   };
 
   const matchingComponents = React.useMemo(() => {
@@ -321,7 +312,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     });
 
     if (selectedBehaviours.length > 0) {
-      processedComponentsDefinitions.current.forEach(definition => {
+      componentsDefinitions.forEach(definition => {
         let matchedCount = 0;
         selectedBehaviours.forEach(decision => {
           definition.attributes?.includes(decision) && matchedCount++;
@@ -342,7 +333,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       setSelectedBehaviours([]);
       if (selected) {
         // Find the definition and add the component based on the definition
-        const definition = processedComponentsDefinitions.current.find(definition => definition.name === name);
+        const definition = componentsDefinitions.find(definition => definition.name === name);
         if (!definition) {
           return;
         }
