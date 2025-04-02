@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-list
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.1.4)
+
+Tue, 01 Apr 2025 15:08:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.1.3..@fluentui/react-list_v9.1.4)
+
+### Patches
+
+- bugfix: ensure external tabster attributes are merged with internals ([PR #34117](https://github.com/microsoft/fluentui/pull/34117) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-checkbox to v9.3.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
+- Bump @fluentui/react-tabster to v9.24.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.1.3)
 
