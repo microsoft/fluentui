@@ -6,7 +6,13 @@ import { Legend } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import { useId } from '@fluentui/react-utilities';
 import { useHorizontalBarChartWithAxisStyles } from './useHorizontalBarChartWithAxisStyles.styles';
-import { AccessibilityProps, HorizontalBarChartWithAxisDataPoint, RefArrayData, Margins } from '../../index';
+import {
+  AccessibilityProps,
+  HorizontalBarChartWithAxisDataPoint,
+  RefArrayData,
+  Margins,
+  ModifiedCartesianChartProps,
+} from '../../index';
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
 import { HorizontalBarChartWithAxisProps } from './HorizontalBarChartWithAxis.types';
@@ -63,14 +69,12 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       props.legendProps?.selectedLegend !== undefined,
   );
   const [isLegendHovered, setIsLegendHovered] = React.useState<boolean>(false);
-  const [refSelected, setRefSelected] = React.useState<SVGElement | null>(null);
   const [selectedLegendTitle, setSelectedLegendTitle] = React.useState<string>(props.legendProps?.selectedLegend ?? '');
   const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<HorizontalBarChartWithAxisDataPoint>();
   const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps>();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [isPopoverOpen, setPopoverOpen] = React.useState<boolean>(false);
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const prevPropsRef = React.useRef<HorizontalBarChartWithAxisProps | null>(null);
@@ -190,7 +194,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     // eslint-disable-next-line @typescript-eslint/no-shadow
     if ((isLegendSelected === false || _isLegendHighlighted(point.legend)) && _calloutAnchorPoint !== point) {
       _calloutAnchorPoint = point;
-      setRefSelected;
       setPopoverOpen(true);
       _updatePosition(mouseEvent.clientX, mouseEvent.clientY);
       setDataForHoverCard(point.x);
@@ -219,7 +222,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
       // eslint-disable-next-line @typescript-eslint/no-shadow
       _refArray.forEach((obj: RefArrayData, index: number) => {
         if (refArrayIndexNumber === index) {
-          setRefSelected(obj.refElement!);
           setPopoverOpen(true);
           setSelectedLegendTitle(point.legend!);
           setDataForHoverCard(point.x);
@@ -464,10 +466,6 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     return bars;
   }
 
-  function _closeCallout() {
-    setPopoverOpen(false);
-  }
-
   function _onLegendHover(customMessage: string): void {
     if (!_isLegendSelected()) {
       setIsLegendHovered(true);
@@ -592,16 +590,11 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   if (!_isChartEmpty()) {
     _adjustProps();
-    const calloutProps = {
-      target: refSelected!,
-      isBeakVisible: false,
-      gapSpace: 15,
+    const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
       color: color,
       legend: selectedLegendTitle,
       XValue: xCalloutValue,
       YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
-      onDismiss: _closeCallout,
-      preventDismissOnLostFocus: true,
       ...props.calloutProps,
       ...getAccessibleDataObject(callOutAccessibilityData),
       customCallout: {
