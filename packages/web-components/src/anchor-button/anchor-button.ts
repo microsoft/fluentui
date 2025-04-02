@@ -17,7 +17,7 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  * Based on BaseAnchor and includes style and layout specific attributes
  *
  * @tag fluent-anchor-button
- * 
+ *
  */
 export class AnchorButton extends BaseAnchor {
   /**

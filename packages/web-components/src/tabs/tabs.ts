@@ -12,7 +12,7 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
  * Based on BaseTabs and includes style and layout specific attributes
  *
  * @tag fluent-tabs
- * 
+ *
  */
 export class Tabs extends BaseTabs {
   /**

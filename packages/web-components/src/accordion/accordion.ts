@@ -8,7 +8,7 @@ import { AccordionExpandMode } from './accordion.options.js';
  * Implements {@link https://www.w3.org/TR/wai-aria-practices-1.1/#accordion | ARIA Accordion}.
  *
  * @tag fluent-accordion
- * 
+ *
  * @slot - The default slot for the accordion items
  * @fires change - Fires a custom 'change' event when the active item changes
  *

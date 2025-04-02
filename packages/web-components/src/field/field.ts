@@ -7,7 +7,7 @@ import { LabelPosition } from './field.options.js';
  * Based on BaseField and includes style and layout specific attributes
  *
  * @tag fluent-field
- * 
+ *
  */
 export class Field extends BaseField {
   /**

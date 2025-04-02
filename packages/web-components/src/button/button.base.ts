@@ -9,7 +9,7 @@ import { ButtonFormTarget, ButtonType } from './button.options.js';
  * @slot start - Content which can be provided before the button content
  * @slot end - Content which can be provided after the button content
  * @slot - The default slot for button content
- * 
+ *
  * @csspart content - The button content container
  *
  */

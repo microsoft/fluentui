@@ -15,7 +15,7 @@ import {
  * Based on BaseAvatar and includes style and layout specific attributes
  *
  * @tag fluent-avatar
- * 
+ *
  */
 export class Avatar extends BaseAvatar {
   /**

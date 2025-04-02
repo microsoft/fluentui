@@ -6,7 +6,7 @@ import { LinkAppearance } from './link.options.js';
 /**
  * An Anchor Custom HTML Element.
  * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a | <a> element }.
- * 
+ *
  * @tag fluent-link
  *
  * @slot start - Content which can be provided before the link content
