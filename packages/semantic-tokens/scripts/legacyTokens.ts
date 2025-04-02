@@ -3,22 +3,33 @@ import path from 'node:path';
 
 // eslint-disable-next-line no-restricted-imports
 import * as tokensPackage from '@fluentui/tokens';
+import { fluentOverrides } from './fluentOverrides';
 
 main();
 
 function main() {
-  console.log('Importing all fluent legacy tokens as flat export');
+  console.log('Importing required fluent legacy tokens as flat export');
 
+  const semanticTokenFallbacks = Object.keys(fluentOverrides);
   const fluentTokens = Object.keys(tokensPackage.tokens);
   const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
-  const generatedTokens = fluentTokens.reduce((acc, t) => {
+  const generatedTokens = semanticTokenFallbacks.reduce((acc, t) => {
+    const fluent2Fallback = fluentOverrides[t].f2Token;
+    if (!fluent2Fallback) {
+      return '';
+    }
+    if (!fluentTokens.includes(fluent2Fallback)) {
+      // This should never occur, but let's flag if a mistake was made in fallback token names
+      throw new Error(`Fluent token ${fluentOverrides[t].f2Token} not found in fluent tokens`);
+    }
+    const fluentToken = fluent2Fallback;
     const token = `
 /**
  * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
  * @public
  */
-export const ${t} = 'var(--${t})';
+export const ${fluentToken} = 'var(--${fluentToken})';
 `;
     return acc + token;
   }, '');
@@ -30,7 +41,9 @@ export const ${t} = 'var(--${t})';
   }
 
   fs.writeFile(path.join(dir, 'tokens.ts'), comment + generatedTokens, err => {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     console.log('Legacy tokens reference created');
   });
 }

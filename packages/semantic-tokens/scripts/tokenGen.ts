@@ -63,15 +63,15 @@ function escapeMixedInlineToken(token: FluentOverrideValue) {
 function cleanFSTTokenName(originalTokenName: string) {
   // Handle any name housekeeping or small token name fixes
 
-  let newtokenName = originalTokenName.replace('-', '/');
+  let newTokenName = originalTokenName.replace('-', '/');
   // Ignore space
-  newtokenName = newtokenName.replace(' ', '');
+  newTokenName = newTokenName.replace(' ', '');
   // Ignore brackets (w/ leading slash)
-  newtokenName = newtokenName.replace('/(', '/');
+  newTokenName = newTokenName.replace('/(', '/');
   // Ignore brackets
-  newtokenName = newtokenName.replace('(', '/').replace(')', '');
+  newTokenName = newTokenName.replace('(', '/').replace(')', '');
 
-  return newtokenName;
+  return newTokenName;
 }
 
 function generateTokenRawStrings() {
