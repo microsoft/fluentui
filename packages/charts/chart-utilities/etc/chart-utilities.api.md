@@ -846,8 +846,7 @@ export interface OutputChartType {
     isValid: boolean;
     // (undocumented)
     type?: string;
-    // (undocumented)
-    validTraceIndices?: number[];
+    validTraceIndices?: [number, string][];
 }
 
 // @public (undocumented)

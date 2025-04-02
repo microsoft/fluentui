@@ -6,7 +6,10 @@ export interface OutputChartType {
   isValid: boolean;
   errorMessage?: string;
   type?: string;
-  validTraceIndices?: number[];
+  /**
+   * Array of [index, chartType] pairs
+   */
+  validTraceIndices?: [number, string][];
 }
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
@@ -173,7 +176,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
 const getValidTraceIndices = (dataArr: Data[]) => {
   const errorMessages: string[] = [];
   const validTraceIndices = dataArr
-    .map((data, index) => {
+    .map((data, index): [number, string] => {
       let type = data.type;
       if (isLineData(data as Partial<PlotData>)) {
         type = 'scatter';
@@ -186,14 +189,14 @@ const getValidTraceIndices = (dataArr: Data[]) => {
             validator(data);
           } catch (error) {
             errorMessages.push(`data[${index}]: ${error}`);
-            return -1;
+            return [-1, ''];
           }
         }
       }
 
-      return index;
+      return [index, ''];
     })
-    .filter(dataIdx => dataIdx >= 0);
+    .filter(trace => trace[0] >= 0);
 
   if (validTraceIndices.length === 0) {
     throw new Error(errorMessages.join('; '));
@@ -219,7 +222,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     }
 
     const validTraceIndices = getValidTraceIndices(validSchema.data);
-    const firstData = validSchema.data[validTraceIndices[0]];
+    const firstData = validSchema.data[validTraceIndices[0][0]];
 
     switch (firstData.type) {
       case 'pie':
@@ -234,9 +237,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
       case 'histogram':
         return { isValid: true, type: 'verticalbar', validTraceIndices };
       default:
-        const containsBars = validTraceIndices.some(idx => validSchema.data[idx].type === 'bar');
+        const containsBars = validTraceIndices.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraceIndices.some(
-          idx => validSchema.data[idx].type === 'scatter' || isLineData(validSchema.data[idx] as Partial<PlotData>),
+          trace =>
+            validSchema.data[trace[0]].type === 'scatter' ||
+            isLineData(validSchema.data[trace[0]] as Partial<PlotData>),
         );
         if (containsBars && containsLines) {
           return { isValid: true, type: 'verticalstackedbar', validTraceIndices };
@@ -254,8 +259,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         }
         if (containsLines) {
           const firstScatterData = firstData as Partial<PlotData>;
-          const isAreaChart = validTraceIndices.some(idx =>
-            ['tonexty', 'tozeroy'].includes(`${(validSchema.data[idx] as Partial<PlotData>).fill}`),
+          const isAreaChart = validTraceIndices.some(trace =>
+            ['tonexty', 'tozeroy'].includes(`${(validSchema.data[trace[0]] as Partial<PlotData>).fill}`),
           );
           const isXDate = isDateArray(firstScatterData.x);
           const isXNumber = isNumberArray(firstScatterData.x);
