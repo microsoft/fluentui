@@ -25,28 +25,74 @@ export const ScatterChartDefault = () => {
       {
         legend: 'Phase 1',
         data: [
-          { x: 10, y: 50000, markerSize: 12 },
-          { x: 20, y: 75000, markerSize: 15 },
-          { x: 30, y: 90000, markerSize: 18 },
-          { x: 40, y: 120000, markerSize: 22 },
-          { x: 50, y: 150000, markerSize: 25 },
+          {
+            x: 10,
+            y: 50000,
+            markerSize: 12, // Number of transactions
+          },
+          {
+            x: 20,
+            y: 75000,
+            markerSize: 15,
+          },
+          {
+            x: 30,
+            y: 90000,
+            markerSize: 18,
+          },
+          {
+            x: 40,
+            y: 120000,
+            markerSize: 22,
+          },
+          {
+            x: 50,
+            y: 150000,
+            markerSize: 25,
+          },
         ],
         color: DataVizPalette.color3,
       },
       {
         legend: 'Phase 2',
         data: [
-          { x: 60, y: 180000, markerSize: 28 },
-          { x: 70, y: 200000, markerSize: 30 },
-          { x: 80, y: 220000, markerSize: 32 },
-          { x: 90, y: 250000, markerSize: 35 },
-          { x: 100, y: 300000, markerSize: 40 },
+          {
+            x: 60,
+            y: 180000,
+            markerSize: 28,
+          },
+          {
+            x: 70,
+            y: 200000,
+            markerSize: 30,
+          },
+          {
+            x: 80,
+            y: 220000,
+            markerSize: 32,
+          },
+          {
+            x: 90,
+            y: 250000,
+            markerSize: 35,
+          },
+          {
+            x: 100,
+            y: 300000,
+            markerSize: 40,
+          },
         ],
         color: DataVizPalette.color4,
       },
       {
         legend: 'Milestone',
-        data: [{ x: 75, y: 250000, markerSize: 50 }],
+        data: [
+          {
+            x: 75,
+            y: 250000,
+            markerSize: 50, // Large number of transactions
+          },
+        ],
         color: DataVizPalette.color5,
       },
     ],
