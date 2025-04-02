@@ -193,7 +193,6 @@ describe('List', () => {
           'UpArrow',
           'focused:list-item-1',
         ]);
-        expect(1).eq(2);
       });
 
       it('Home/End arrow keys work', () => {

@@ -124,6 +124,7 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: apps/*/cypress/screenshots/**/*.png
+          path: |
+            apps/*/cypress/screenshots/**/*.png
             packages/**/cypress/screenshots/**/*.png
           retention-days: 1
