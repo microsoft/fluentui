@@ -47,12 +47,12 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
     }
 
     function _renderArcLabel(className: string) {
-      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = props;
+      const { data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels } = props;
 
       if (
         hideLabels ||
         Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
-        (activeArc !== data!.data.legend && activeArc !== '')
+        !_shouldHighlightArc(data!.data.legend!)
       ) {
         return null;
       }
@@ -86,10 +86,21 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
       }
     }
 
+    function _shouldHighlightArc(legend?: string): boolean {
+      const { activeArc } = props;
+      // If no activeArc is provided, highlight all arcs. Otherwise, only highlight the arcs that are active.
+      return !activeArc || activeArc.length === 0 || legend === undefined || activeArc.includes(legend);
+    }
+
     const { href, focusedArcId } = props;
     //TO DO 'replace' is throwing error
     const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
-    const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
+    const opacity: number =
+      props.activeArc && props.activeArc.length > 0
+        ? props.activeArc.includes(props.data?.data.legend!)
+          ? 1
+          : 0.1
+        : 1;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
@@ -107,7 +118,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={_onFocus.bind(this, props.data!.data, id)}
-          data-is-focusable={props.activeArc === props.data!.data.legend || props.activeArc === ''}
+          data-is-focusable={_shouldHighlightArc(props.data!.data.legend!) || props.activeArc?.length === 0}
           onMouseOver={_hoverOn.bind(this, props.data!.data)}
           onMouseMove={_hoverOn.bind(this, props.data!.data)}
           onMouseLeave={_hoverOff}

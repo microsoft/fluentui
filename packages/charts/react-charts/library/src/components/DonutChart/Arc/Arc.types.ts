@@ -68,7 +68,7 @@ export interface ArcProps {
   /**
    * Active Arc for chart
    */
-  activeArc?: string;
+  activeArc?: string[];
 
   /**
    * internal prop for href
