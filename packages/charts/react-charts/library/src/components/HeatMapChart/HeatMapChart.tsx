@@ -11,7 +11,7 @@ import {
   XAxisTypes,
   YAxisType,
 } from '../../utilities/index';
-import { CartesianChart, ChildProps } from '../CommonComponents/index';
+import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useHeatMapChartStyles } from './useHeatMapChartStyles.styles';
@@ -59,7 +59,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
   const [calloutYValue, setCalloutYValue] = React.useState<string>('');
   const [ratio, setRatio] = React.useState<[number, number]>();
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>('');
-  const [calloutId, setCalloutId] = React.useState<string>('');
   const [callOutAccessibilityData, setCallOutAccessibilityData] = React.useState<AccessibilityProps>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
 
@@ -93,7 +92,11 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     return opacity;
   };
 
-  const _onRectFocus = (id: string, data: FlattenData): void => {
+  const _onRectFocus = (id: string, data: FlattenData, focusEvent: React.FocusEvent<SVGGElement>): void => {
+    const boundingRect = focusEvent.currentTarget.getBoundingClientRect();
+    const clientX = boundingRect.left + boundingRect.width / 2;
+    const clientY = boundingRect.top + boundingRect.height / 2;
+    updatePosition(clientX, clientY);
     /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
     setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
     setCalloutYValue(`${data.rectText}`);
@@ -101,7 +104,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     setCalloutLegend(data.legend);
     setRatio(data.ratio);
     setDescriptionMessage(data.descriptionMessage || '');
-    setCalloutId(id);
     setCallOutAccessibilityData(data.callOutAccessibilityData);
   };
 
@@ -117,7 +119,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
       setCalloutLegend(data.legend);
       setRatio(data.ratio);
       setDescriptionMessage(data.descriptionMessage || '');
-      setCalloutId(id);
       setCallOutAccessibilityData(data.callOutAccessibilityData);
     }
   };
@@ -180,7 +181,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
               transform={`translate(${_xAxisScale.current(dataPointObject.x)}, ${_yAxisScale.current(
                 dataPointObject.y,
               )})`}
-              onFocus={() => _onRectFocus(id, dataPointObject)}
+              onFocus={e => _onRectFocus(id, dataPointObject, e)}
               onBlur={_onRectBlurOrMouseOut}
               onMouseOver={e => _onRectMouseOver(id, dataPointObject, e)}
               onMouseOut={_onRectBlurOrMouseOut}
@@ -220,7 +221,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
               transform={`translate(${_xAxisScale.current(dataPointObject.x)}, ${_yAxisScale.current(
                 dataPointObject.y,
               )})`}
-              onFocus={() => _onRectFocus(id, dataPointObject)}
+              onFocus={e => _onRectFocus(id, dataPointObject, e)}
               onBlur={_onRectBlurOrMouseOut}
               onMouseOver={e => _onRectMouseOver(id, dataPointObject, e)}
               onMouseOut={_onRectBlurOrMouseOut}
@@ -588,7 +589,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     // Update the position only if the distance moved is greater than the threshold
     if (distance > threshold) {
       setClickPosition({ x: newX, y: newY });
-      setPopoverOpen(true);
     }
   };
 
@@ -608,10 +608,9 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
   _dataSet.current = dataSet;
   _stringYAxisDataPoints.current = yAxisPoints;
   _stringXAxisDataPoints.current = xAxisPoints;
-  const calloutProps = {
+  const calloutProps: ChartPopoverProps = {
     ...props.calloutProps,
     isPopoverOpen,
-    id: calloutId,
     YValue: calloutYValue,
     legend: calloutLegend,
     color: calloutTextColor,

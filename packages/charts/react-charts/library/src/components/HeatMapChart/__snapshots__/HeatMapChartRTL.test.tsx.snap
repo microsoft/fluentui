@@ -70,9 +70,53 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
         </g>
         <g
           class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M0.5,265.5V20.5"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,203.14356435643566)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.85643564356437)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           aria-label="Lorem ipsum dolor sit amet"
           fill-opacity="1"
@@ -284,9 +328,53 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
         </g>
         <g
           class="fui-cart__yAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M0.5,265.5V20.5"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,203.14356435643566)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              yPoint p1
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,81.85643564356437)"
+          >
+            <line
+              stroke="currentColor"
+              x2="0"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              yPoint p2
+            </text>
+          </g>
+        </g>
         <g
           aria-label="xPoint p3, yPoint p2. Nasty, 25."
           fill-opacity="1"
