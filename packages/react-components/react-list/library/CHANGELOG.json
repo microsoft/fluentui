@@ -2,6 +2,33 @@
   "name": "@fluentui/react-list",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:01 GMT",
+      "tag": "@fluentui/react-list_v9.1.4",
+      "version": "9.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-list",
+            "commit": "b8f675441f68d1c1dc17c4eaa85b8a802dfa2f39",
+            "comment": "bugfix: ensure external tabster attributes are merged with internals"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-checkbox to v9.3.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-list",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-list_v9.1.3",
       "version": "9.1.3",

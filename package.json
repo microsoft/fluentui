@@ -11,7 +11,7 @@
     "node": "^20.0.0 || ^22.0.0"
   },
   "scripts": {
-    "dedupe": "npx yarn-deduplicate --strategy fewer",
+    "dedupe": "npx yarn-deduplicate@latest --strategy fewer --exclude @types/react",
     "change": "beachball change --no-commit",
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-modified-files",
@@ -111,7 +111,7 @@
     "@testing-library/dom": "8.11.3",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.2",
-    "@testing-library/react-hooks": "7.0.2",
+    "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "13.5.0",
     "@tsconfig/node18": "1.0.3",
     "@types/babel__core": "7.20.5",
@@ -383,7 +383,8 @@
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0",
-    "ws": "8.17.1"
+    "ws": "8.17.1",
+    "**/@mdx-js/react/@types/react": "^17"
   },
   "nx": {
     "includedScripts": []

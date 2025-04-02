@@ -179,15 +179,26 @@ export interface LegendsProps {
   onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
 
   /**
-   * Keys (title) that will be initially used to set selected items.
-   * This prop is used for multiSelect scenarios.
-   * In other cases, defaultSelectedLegend should be used.
+   * Keys (title) that will be initially used to set selected items. This prop is used for multi-select scenarios when
+   * canSelectMultipleLegends is true; for single-select, use defaultSelectedLegend.
+   *
+   * Updating this prop does not change the selection after the component has been initialized. For controlled
+   * selections, use selectedLegends instead.
+   *
+   * @see selectedLegends for setting the selected legends in controlled mode.
+   * @see defaultSelectedLegend for setting the initially selected legend when canSelectMultipleLegends is false.
    */
   defaultSelectedLegends?: string[];
 
   /**
-   * Key that will be initially used to set selected item.
-   * This prop is used for singleSelect scenarios.
+   * Key that will be initially used to set selected item. This prop is used for single-select scenarios when
+   * canSelectMultipleLegends is false or unspecified; for multi-select, use defaultSelectedLegends.
+   *
+   * Updating this prop does not change the selection after the component has been initialized. For controlled
+   * selections, use selectedLegend instead.
+   *
+   * @see selectedLegend for setting the selected legend in controlled mode.
+   * @see defaultSelectedLegends for setting the initially selected legends when canSelectMultipleLegends is true.
    */
   defaultSelectedLegend?: string;
 
