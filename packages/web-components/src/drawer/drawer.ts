@@ -6,7 +6,7 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  * @extends FASTElement
  *
  * @tag fluent-drawer
- * 
+ *
  * @csspart dialog - The dialog element of the drawer.
  *
  * @slot - Default slot for the content of the drawer.

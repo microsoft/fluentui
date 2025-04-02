@@ -21,7 +21,7 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
  * Based on BaseAccordionItem and includes style and layout specific attributes
  *
  * @tag fluent-accordion-item
- * 
+ *
  */
 export class AccordionItem extends BaseAccordionItem {
   /**

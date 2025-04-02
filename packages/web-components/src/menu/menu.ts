@@ -6,7 +6,7 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu component that provides a customizable menu element.
- * 
+ *
  * @tag fluent-menu
  *
  * @cssproperty --menu-max-height - The max-height of the menu.
@@ -16,7 +16,7 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
  * @slot - Default slot for the menu list.
  *
  * @summary The Menu component functions as a customizable menu element.
- * 
+ *
  */
 export class Menu extends FASTElement {
   /**

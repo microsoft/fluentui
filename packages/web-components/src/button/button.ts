@@ -10,7 +10,7 @@ import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
  * Based on BaseButton and includes style and layout specific attributes
  *
  * @tag fluent-button
- * 
+ *
  */
 export class Button extends BaseButton {
   /**

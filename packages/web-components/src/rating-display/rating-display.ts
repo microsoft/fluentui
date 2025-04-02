@@ -8,7 +8,7 @@ import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
  * Based on BaseRatingDisplay and includes style and layout specific attributes
  *
  * @tag fluent-rating-display
- * 
+ *
  */
 export class RatingDisplay extends BaseRatingDisplay {
   /**

@@ -8,7 +8,7 @@ import { ProgressBarShape, ProgressBarThickness } from './progress-bar.options.j
  * Based on BaseProgressBar and includes style and layout specific attributes
  *
  * @tag fluent-progress-bar
- * 
+ *
  */
 export class ProgressBar extends BaseProgressBar {
   /**

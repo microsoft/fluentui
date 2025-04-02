@@ -8,7 +8,7 @@ import { BaseDivider } from './divider.base.js';
  * Based on BaseDivider and includes style and layout specific attributes
  *
  * @tag fluent-divider
- * 
+ *
  */
 export class Divider extends BaseDivider {
   /**

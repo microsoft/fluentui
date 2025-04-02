@@ -10,7 +10,7 @@ export type SwitchOptions = {
  * Implements the {@link https://w3c.github.io/aria/#switch | ARIA switch }.
  *
  * @tag fluent-switch
- * 
+ *
  */
 export class Switch extends BaseCheckbox {
   constructor() {

@@ -11,9 +11,9 @@ import {
 
 /**
  * The base class used for constructing a fluent-badge custom element
- * 
+ *
  * @tag fluent-counter-badge
- * 
+ *
  */
 export class CounterBadge extends FASTElement {
   /**

@@ -8,7 +8,7 @@ import { TextAreaAppearance, TextAreaAppearancesForDisplayShadow, TextAreaSize }
  * Based on BaseTextArea and includes style and layout specific attributes
  *
  * @tag fluent-text-area
- * 
+ *
  */
 export class TextArea extends BaseTextArea {
   protected labelSlottedNodesChanged() {
