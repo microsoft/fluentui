@@ -39,6 +39,7 @@ import {
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
   useRtl,
+  areArraysEqual,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -97,6 +98,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
+
   React.useImperativeHandle(
     props.componentRef,
     () => ({
@@ -104,6 +107,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     }),
     [],
   );
+
+  React.useEffect(() => {
+    if (prevPropsRef.current) {
+      const prevProps = prevPropsRef.current;
+      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+        setSelectedLegends(props.legendProps?.selectedLegends || []);
+      }
+      if (prevProps.height !== props.height || prevProps.width !== props.width) {
+        _adjustProps();
+      }
+    }
+    prevPropsRef.current = props;
+  }, [props, prevPropsRef, _adjustProps]);
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -489,7 +505,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
-    setPopoverOpen(true);
+    setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(lineLegendText));
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
     setColor(lineLegendColor);
