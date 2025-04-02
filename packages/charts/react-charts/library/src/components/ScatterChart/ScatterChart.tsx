@@ -6,7 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
-import { find } from '../../utilities/index';
+import { areArraysEqual, find } from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -76,6 +76,17 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
   const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+  const prevPropsRef = React.useRef<ScatterChartProps | null>(null);
+
+  React.useEffect(() => {
+    if (prevPropsRef.current) {
+      const prevProps = prevPropsRef.current;
+      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+        setSelectedLegends(props.legendProps?.selectedLegends || []);
+      }
+    }
+    prevPropsRef.current = props;
+  }, [props]);
 
   const _xAxisType: XAxisTypes =
     props.data.lineChartData! &&
