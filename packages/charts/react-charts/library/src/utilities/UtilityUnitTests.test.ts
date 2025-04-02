@@ -397,21 +397,21 @@ describe('createYAxisForOtherCharts', () => {
     const yAxisParams = createYAxisParams({ yMaxValue: 10, yMinValue: 1, maxOfYVal: 5 });
     delete yAxisParams.yMinMaxValues;
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with specific tick padding value', () => {
     const yAxisParams = createYAxisParams({ tickPadding: 5 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a specific number of ticks', () => {
     const yAxisParams = createYAxisParams({ yAxisTickCount: 3 });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
@@ -421,35 +421,35 @@ describe('createYAxisForOtherCharts', () => {
       eventLabelHeight: 20,
     });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, true);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly for secondary scale when layout direction is RTL', () => {
     const yAxisParams = createYAxisParams();
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, true);
+    utils.createYAxisForOtherCharts(yAxisParams, true, axisData, false, utils.ChartTypes.VerticalBarChart, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
   it('should render y-axis labels correctly with a custom tick format', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: d3Format('$') });
     const axisData: utils.IAxisData = { yAxisDomainValues: [] };
-    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false);
+    utils.createYAxisForOtherCharts(yAxisParams, false, axisData, false, utils.ChartTypes.LineChart);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 });

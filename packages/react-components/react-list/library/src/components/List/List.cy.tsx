@@ -23,7 +23,12 @@ const mount = (element: JSX.Element) => {
  * ])
  */
 const testSequence = (sequence: Array<string>) => {
+  cy.get('#outside-button').click();
+  cy.get('#outside-button').should('be.focused');
+
   cy.get('[data-test^=list-item-]').first().focus();
+  cy.get('[data-test^=list-item-]').should('be.focused');
+
   for (const command of sequence) {
     if (command.startsWith('focused:')) {
       const tid = command.split(':')[1];
@@ -36,30 +41,38 @@ const testSequence = (sequence: Array<string>) => {
 
 const mountSimpleList = () => {
   mount(
-    <List navigationMode="items">
-      <ListItem data-test="list-item-1">List Item 1</ListItem>
-      <ListItem data-test="list-item-2">List Item 2</ListItem>
-      <ListItem data-test="list-item-3">List Item 3</ListItem>
-    </List>,
+    <>
+      <button id="outside-button">Outside Button</button>
+
+      <List navigationMode="items">
+        <ListItem data-test="list-item-1">List Item 1</ListItem>
+        <ListItem data-test="list-item-2">List Item 2</ListItem>
+        <ListItem data-test="list-item-3">List Item 3</ListItem>
+      </List>
+    </>,
   );
 };
 
 const mountListWithSecondaryActions = () => {
   mount(
-    <List navigationMode="composite">
-      <ListItem data-test="list-item-1">
-        List Item 1<button data-test="list-item-1-button-1">1:button1</button>
-        <button data-test="list-item-1-button-2">1:button2</button>
-      </ListItem>
-      <ListItem data-test="list-item-2">
-        List Item 2<button data-test="list-item-2-button-1">2:button1</button>
-        <button data-test="button-2-2">2:button2</button>
-      </ListItem>
-      <ListItem data-test="list-item-3">
-        List Item 3<button data-test="button-3-1">3:button1</button>
-        <button data-test="button-3-2">3:button2</button>
-      </ListItem>
-    </List>,
+    <>
+      <button id="outside-button">Outside Button</button>
+
+      <List navigationMode="composite">
+        <ListItem data-test="list-item-1">
+          List Item 1<button data-test="list-item-1-button-1">1:button1</button>
+          <button data-test="list-item-1-button-2">1:button2</button>
+        </ListItem>
+        <ListItem data-test="list-item-2">
+          List Item 2<button data-test="list-item-2-button-1">2:button1</button>
+          <button data-test="button-2-2">2:button2</button>
+        </ListItem>
+        <ListItem data-test="list-item-3">
+          List Item 3<button data-test="button-3-1">3:button1</button>
+          <button data-test="button-3-2">3:button2</button>
+        </ListItem>
+      </List>
+    </>,
   );
 };
 

@@ -280,19 +280,7 @@ export interface LineDataInVerticalBarChart {
 /**
  * {@docCategory ChartData}
  */
-export interface LineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+interface BaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -322,6 +310,42 @@ export interface LineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface LineChartDataPoint extends BaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory ChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface ScatterChartDataPoint extends BaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -398,7 +422,7 @@ export interface LineChartPoints {
   /**
    * dataPoints for the line chart
    */
-  data: LineChartDataPoint[];
+  data: LineChartDataPoint[] | ScatterChartDataPoint[];
 
   /**
    * gaps in the line chart where a line is not drawn
@@ -530,6 +554,11 @@ export interface VSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 /**
@@ -578,6 +607,10 @@ export interface LineDataInVerticalStackedBarChart {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: LineChartLineOptions;
 }
 
 /**
@@ -697,4 +730,49 @@ export interface CustomizedCalloutData {
  */
 export interface Chart {
   chartContainer: HTMLElement | null;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface HeatMapChartDataPoint {
+  x: string | Date | number;
+  y: string | Date | number;
+  value: number;
+  /**
+   * The value/ text to be rendered in the rectange
+   */
+  rectText?: string | number;
+  /**
+   * denomination to show in the callout
+   */
+  ratio?: [number, number];
+  /**
+   * description message to the callout
+   */
+  descriptionMessage?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface HeatMapChartData {
+  /**
+   * name of the legend
+   */
+  legend: string;
+  data: HeatMapChartDataPoint[];
+  /**
+   * This  number will be used to get the color for the legend
+   */
+  value: number;
 }

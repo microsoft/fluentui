@@ -2,6 +2,51 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:02 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.7.8",
+      "version": "9.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.61.6",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Mar 2025 21:12:51 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.7.7",
+      "version": "9.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.61.5",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Mar 2025 21:47:47 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.7.6",
+      "version": "9.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.61.4",
+            "commit": "94339e5b5a9c4dbb3d1446187727aa45db9aca52"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Mar 2025 15:52:38 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.7.5",
       "version": "9.7.5",
