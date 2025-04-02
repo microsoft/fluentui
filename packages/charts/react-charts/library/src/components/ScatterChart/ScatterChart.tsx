@@ -75,6 +75,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
 
   const _xAxisType: XAxisTypes =
     props.data.lineChartData! &&
@@ -207,8 +208,26 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         overflowText={props.legendsOverflowText}
         {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
         {...props.legendProps}
+        selectedLegends={selectedLegends}
+        onChange={_onLegendSelectionChange}
       />
     );
+  }
+
+  function _onLegendSelectionChange(
+    legendsSelected: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: Legend,
+  ): void {
+    if (props.legendProps?.canSelectMultipleLegends) {
+      setSelectedLegends(legendsSelected);
+    } else {
+      setSelectedLegends(legendsSelected.slice(-1));
+    }
+
+    if (props.legendProps?.onChange) {
+      props.legendProps.onChange(legendsSelected, event, currentLegend);
+    }
   }
 
   function _getPointFill(seriesColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
@@ -495,15 +514,19 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it*/
 
-  function _legendHighlighted(legend: string) {
-    return selectedLegend === legend || (selectedLegend === '' && activeLegend === legend);
+  function _legendHighlighted(legend: string): boolean {
+    return _getHighlightedLegend().includes(legend);
   }
 
   /**
    * This function checks if none of the legends is selected or hovered.*/
 
-  function _noLegendHighlighted() {
-    return selectedLegend === '' && activeLegend === '';
+  function _noLegendHighlighted(): boolean {
+    return selectedLegends.length === 0;
+  }
+
+  function _getHighlightedLegend(): string[] {
+    return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
   function _getAriaLabel(seriesIndex: number, pointIndex: number): string {
