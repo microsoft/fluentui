@@ -5,7 +5,7 @@ import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
+import { areArraysEqual, getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -42,6 +42,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+    const prevPropsRef = React.useRef<DonutChartProps | null>(null);
 
     React.useEffect(() => {
       _fitParentContainer();
@@ -62,6 +63,16 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
       }),
       [],
     );
+
+    React.useEffect(() => {
+      if (prevPropsRef.current) {
+        const prevProps = prevPropsRef.current;
+        if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+          setSelectedLegends(props.legendProps?.selectedLegends || []);
+        }
+      }
+      prevPropsRef.current = props;
+    }, [props, prevPropsRef]);
 
     function _elevateToMinimums(data: ChartDataPoint[]) {
       let sumOfData = 0;
