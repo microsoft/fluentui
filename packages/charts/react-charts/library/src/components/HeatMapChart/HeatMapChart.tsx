@@ -327,6 +327,84 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
     }
   };
 
+  const { xAxisStringFormatter } = props;
+  const _getFormattedLabelForXAxisDataPoint = React.useCallback(
+    (point: string): string => {
+      return xAxisStringFormatter ? xAxisStringFormatter(point) : point;
+    },
+    [xAxisStringFormatter],
+  );
+
+  const { yAxisStringFormatter } = props;
+  const _getFormattedLabelForYAxisDataPoint = React.useCallback(
+    (point: string): string => {
+      return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
+    },
+    [yAxisStringFormatter],
+  );
+
+  /**
+   * This function will return the final sorted and formatted x-axis points
+   * which will be rendered on the x-axis
+   * @param points
+   * @returns x-axis points
+   */
+  const _getXAxisDataPoints = React.useCallback(
+    (points: { [key: string]: '1' }): string[] => {
+      let xAxisPoints: string[] = [];
+      const unFormattedXAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
+        if (_xAxisType.current === XAxisTypes.DateAxis || _xAxisType.current === XAxisTypes.NumericAxis) {
+          return +a - +b;
+        } else {
+          return props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
+      xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
+        if (_xAxisType.current === XAxisTypes.DateAxis) {
+          return _getStringFormattedDate(xPoint, props.xAxisDateFormatString);
+        } else if (_xAxisType.current === XAxisTypes.NumericAxis) {
+          return _getStringFormattedNumber(xPoint, props.xAxisNumberFormatString);
+        } else {
+          return _getFormattedLabelForXAxisDataPoint(xPoint);
+        }
+      });
+
+      return xAxisPoints;
+    },
+    [_getFormattedLabelForXAxisDataPoint, props.sortOrder, props.xAxisDateFormatString, props.xAxisNumberFormatString],
+  );
+
+  /**
+   * This function will return the final sorted and formatted y-axis points
+   * which will be rendered on the y-axis
+   * @param points
+   * @returns yaxis points
+   */
+  const _getYAxisDataPoints = React.useCallback(
+    (points: { [key: string]: '1' }): string[] => {
+      let yAxisPoints: string[] = [];
+      const unFormattedYAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
+        if (_yAxisType.current === YAxisType.DateAxis || _yAxisType.current === YAxisType.NumericAxis) {
+          return +a - +b;
+        } else {
+          return props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
+      yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
+        if (_yAxisType.current === YAxisType.DateAxis) {
+          return _getStringFormattedDate(yPoint, props.yAxisDateFormatString);
+        } else if (_yAxisType.current === YAxisType.NumericAxis) {
+          return _getStringFormattedNumber(yPoint, props.yAxisNumberFormatString);
+        } else {
+          return _getFormattedLabelForYAxisDataPoint(yPoint);
+        }
+      });
+
+      return yAxisPoints;
+    },
+    [_getFormattedLabelForYAxisDataPoint, props.sortOrder, props.yAxisDateFormatString, props.yAxisNumberFormatString],
+  );
+
   /**
    * This will create a new data set based on the prop
    * @data
@@ -336,191 +414,145 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
    * specified in the figma
    */
 
-  const _createNewDataSet = (
-    data: HeatMapChartData[],
-    xAxisDateFormatString: string | undefined,
-    xAxisNumberFormatString: string | undefined,
-    yAxisDateFormatString: string | undefined,
-    yAxisNumberFormatString: string | undefined,
-  ): DataSet => {
-    /**
-     * please do not destructure any of the props here,
-     * instead send them as parameter to this functions so that
-     * this functions get called whenever the prop changes
-     */
-    const flattenData: FlattenData[] = [];
-    /**
-     * below for each loop will store all the datapoints in the one array.
-     * basically it will flatten the nestesd array (data prop) into single array
-     * of object. where each object contains x, y, rectText , value and legend propety of single
-     * data point.
-     */
-    data.forEach((item: HeatMapChartData) => {
-      item.data.forEach((point: HeatMapChartDataPoint) => {
-        flattenData.push({ ...point, legend: item.legend });
-      });
-    });
-    const yPoints: RectanglesGraphData = {};
-    const uniqueYPoints: { [key: string]: '1' } = {};
-    const uniqueXPoints: { [key: string]: '1' } = {};
-    flattenData.forEach((item: FlattenData) => {
-      const posX = _getXIndex(item.x);
-      const posY = _getYIndex(item.y);
-
-      uniqueXPoints[posX] = '1';
-      uniqueYPoints[posY] = '1';
-      /** we will check if the property(posY) is already there in object, if  Yes,
-       *  then we will append the item in the Array related to the pos, if not
-       *  then we will simply append the item in the new Array and
-       *  assign that array to the  property (posY) in the Object
-       *  and finally we will get the array of Objects associated to each
-       *  property (which is nothing but y data point) and object in the
-       *  array are noting but x data points associated to the property y
+  const _createNewDataSet = React.useCallback(
+    (
+      data: HeatMapChartData[],
+      xAxisDateFormatString: string | undefined,
+      xAxisNumberFormatString: string | undefined,
+      yAxisDateFormatString: string | undefined,
+      yAxisNumberFormatString: string | undefined,
+    ): DataSet => {
+      /**
+       * please do not destructure any of the props here,
+       * instead send them as parameter to this functions so that
+       * this functions get called whenever the prop changes
        */
-      if (yPoints[posY]) {
-        yPoints[posY] = [...yPoints[posY], item];
-      } else {
-        yPoints[posY] = [item];
-      }
-    });
-    /**
-     * we will now sort(ascending) the array's of y data point based on the x value
-     * sorting is important to achive the accessibility order of the
-     * rectangles and then format the x and y datapoints respectively
-     */
-    Object.keys(yPoints).forEach((item: string) => {
-      yPoints[item]
-        .sort((a: HeatMapChartDataPoint, b: HeatMapChartDataPoint) => {
-          if (_xAxisType.current === XAxisTypes.StringAxis) {
-            return props.sortOrder === 'none'
-              ? 0
-              : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-              ? 1
-              : -1;
-          } else if (_xAxisType.current === XAxisTypes.DateAxis) {
-            return (a.x as Date).getTime() - (b.x as Date).getTime();
-          } else if (_xAxisType.current === XAxisTypes.NumericAxis) {
-            return +(a.x as string) > +(b.x as string) ? 1 : -1;
-          } else {
-            return a.x > b.x ? 1 : -1;
-          }
-        })
-        .forEach((datapoint: HeatMapChartDataPoint) => {
-          if (_xAxisType.current === XAxisTypes.DateAxis) {
-            datapoint.x = _getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
-          }
-          if (_xAxisType.current === XAxisTypes.NumericAxis) {
-            datapoint.x = _getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
-          }
-          if (_xAxisType.current === XAxisTypes.StringAxis) {
-            datapoint.x = _getFormattedLabelForXAxisDataPoint(datapoint.x as string);
-          }
-          if (_yAxisType.current === YAxisType.DateAxis) {
-            datapoint.y = _getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
-          }
-          if (_yAxisType.current === YAxisType.NumericAxis) {
-            datapoint.y = _getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
-          }
-          if (_yAxisType.current === YAxisType.StringAxis) {
-            datapoint.y = _getFormattedLabelForYAxisDataPoint(datapoint.y as string);
-          }
+      const flattenData: FlattenData[] = [];
+      /**
+       * below for each loop will store all the datapoints in the one array.
+       * basically it will flatten the nestesd array (data prop) into single array
+       * of object. where each object contains x, y, rectText , value and legend propety of single
+       * data point.
+       */
+      data.forEach((item: HeatMapChartData) => {
+        item.data.forEach((point: HeatMapChartDataPoint) => {
+          flattenData.push({ ...point, legend: item.legend });
         });
-    });
-    /**
-     * if  y-axis data points are of type date or number or if we have string formatter,
-     * then we need to change data points  to their respective string
-     * format, becuase in the private variable this._stringYAxisDatapoints, points will be stored in
-     * string format. and in here `yPoint` are not so we need to change, so that
-     * function `this._createRectangles` should work perfetcly while looping, and  if we don't change
-     * then `this._createRectangles` will fail while looping, causing the error
-     * Cannot read property 'forEach' of undefined
-     */
+      });
+      const yPoints: RectanglesGraphData = {};
+      const uniqueYPoints: { [key: string]: '1' } = {};
+      const uniqueXPoints: { [key: string]: '1' } = {};
+      flattenData.forEach((item: FlattenData) => {
+        const posX = _getXIndex(item.x);
+        const posY = _getYIndex(item.y);
 
-    Object.keys(yPoints).forEach((yPoint: string) => {
-      if (_yAxisType.current === YAxisType.DateAxis) {
-        yPoints[_getStringFormattedDate(yPoint, yAxisDateFormatString)] = yPoints[yPoint];
-      } else if (_yAxisType.current === YAxisType.NumericAxis) {
-        yPoints[`${_getStringFormattedNumber(yPoint, yAxisNumberFormatString)}`] = yPoints[yPoint];
-      } else {
-        yPoints[_getFormattedLabelForYAxisDataPoint(yPoint)] = yPoints[yPoint];
-      }
-    });
-    /**
-     * assigning new data set
-     */
-    const dataSet = yPoints;
-    /**
-     * These are the Y axis data points which will get rendered in the
-     * Y axis in graph
-     */
-    const yAxisPoints = _getYAxisDataPoints(uniqueYPoints);
-    /**
-     * These are the x axis data points which will get rendered in the
-     * x axis in the graph
-     */
+        uniqueXPoints[posX] = '1';
+        uniqueYPoints[posY] = '1';
+        /** we will check if the property(posY) is already there in object, if  Yes,
+         *  then we will append the item in the Array related to the pos, if not
+         *  then we will simply append the item in the new Array and
+         *  assign that array to the  property (posY) in the Object
+         *  and finally we will get the array of Objects associated to each
+         *  property (which is nothing but y data point) and object in the
+         *  array are noting but x data points associated to the property y
+         */
+        if (yPoints[posY]) {
+          yPoints[posY] = [...yPoints[posY], item];
+        } else {
+          yPoints[posY] = [item];
+        }
+      });
+      /**
+       * we will now sort(ascending) the array's of y data point based on the x value
+       * sorting is important to achive the accessibility order of the
+       * rectangles and then format the x and y datapoints respectively
+       */
+      Object.keys(yPoints).forEach((item: string) => {
+        yPoints[item]
+          .sort((a: HeatMapChartDataPoint, b: HeatMapChartDataPoint) => {
+            if (_xAxisType.current === XAxisTypes.StringAxis) {
+              return props.sortOrder === 'none'
+                ? 0
+                : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
+                ? 1
+                : -1;
+            } else if (_xAxisType.current === XAxisTypes.DateAxis) {
+              return (a.x as Date).getTime() - (b.x as Date).getTime();
+            } else if (_xAxisType.current === XAxisTypes.NumericAxis) {
+              return +(a.x as string) > +(b.x as string) ? 1 : -1;
+            } else {
+              return a.x > b.x ? 1 : -1;
+            }
+          })
+          .forEach((datapoint: HeatMapChartDataPoint) => {
+            if (_xAxisType.current === XAxisTypes.DateAxis) {
+              datapoint.x = _getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
+            }
+            if (_xAxisType.current === XAxisTypes.NumericAxis) {
+              datapoint.x = _getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
+            }
+            if (_xAxisType.current === XAxisTypes.StringAxis) {
+              datapoint.x = _getFormattedLabelForXAxisDataPoint(datapoint.x as string);
+            }
+            if (_yAxisType.current === YAxisType.DateAxis) {
+              datapoint.y = _getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
+            }
+            if (_yAxisType.current === YAxisType.NumericAxis) {
+              datapoint.y = _getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
+            }
+            if (_yAxisType.current === YAxisType.StringAxis) {
+              datapoint.y = _getFormattedLabelForYAxisDataPoint(datapoint.y as string);
+            }
+          });
+      });
+      /**
+       * if  y-axis data points are of type date or number or if we have string formatter,
+       * then we need to change data points  to their respective string
+       * format, becuase in the private variable this._stringYAxisDatapoints, points will be stored in
+       * string format. and in here `yPoint` are not so we need to change, so that
+       * function `this._createRectangles` should work perfetcly while looping, and  if we don't change
+       * then `this._createRectangles` will fail while looping, causing the error
+       * Cannot read property 'forEach' of undefined
+       */
 
-    const xAxisPoints = _getXAxisDataPoints(uniqueXPoints);
-    return {
-      dataSet,
-      yAxisPoints,
-      xAxisPoints,
-    };
-  };
+      Object.keys(yPoints).forEach((yPoint: string) => {
+        if (_yAxisType.current === YAxisType.DateAxis) {
+          yPoints[_getStringFormattedDate(yPoint, yAxisDateFormatString)] = yPoints[yPoint];
+        } else if (_yAxisType.current === YAxisType.NumericAxis) {
+          yPoints[`${_getStringFormattedNumber(yPoint, yAxisNumberFormatString)}`] = yPoints[yPoint];
+        } else {
+          yPoints[_getFormattedLabelForYAxisDataPoint(yPoint)] = yPoints[yPoint];
+        }
+      });
+      /**
+       * assigning new data set
+       */
+      const dataSet = yPoints;
+      /**
+       * These are the Y axis data points which will get rendered in the
+       * Y axis in graph
+       */
+      const yAxisPoints = _getYAxisDataPoints(uniqueYPoints);
+      /**
+       * These are the x axis data points which will get rendered in the
+       * x axis in the graph
+       */
 
-  /**
-   * This function will return the final sorted and formatted x-axis points
-   * which will be rendered on the x-axis
-   * @param points
-   * @returns x-axis points
-   */
-  const _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
-    let xAxisPoints: string[] = [];
-    const unFormattedXAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (_xAxisType.current === XAxisTypes.DateAxis || _xAxisType.current === XAxisTypes.NumericAxis) {
-        return +a - +b;
-      } else {
-        return props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
-    xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
-      if (_xAxisType.current === XAxisTypes.DateAxis) {
-        return _getStringFormattedDate(xPoint, props.xAxisDateFormatString);
-      } else if (_xAxisType.current === XAxisTypes.NumericAxis) {
-        return _getStringFormattedNumber(xPoint, props.xAxisNumberFormatString);
-      } else {
-        return _getFormattedLabelForXAxisDataPoint(xPoint);
-      }
-    });
-
-    return xAxisPoints;
-  };
-  /**
-   * This function will return the final sorted and formatted y-axis points
-   * which will be rendered on the y-axis
-   * @param points
-   * @returns yaxis points
-   */
-  const _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
-    let yAxisPoints: string[] = [];
-    const unFormattedYAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (_yAxisType.current === YAxisType.DateAxis || _yAxisType.current === YAxisType.NumericAxis) {
-        return +a - +b;
-      } else {
-        return props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
-    yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
-      if (_yAxisType.current === YAxisType.DateAxis) {
-        return _getStringFormattedDate(yPoint, props.yAxisDateFormatString);
-      } else if (_yAxisType.current === YAxisType.NumericAxis) {
-        return _getStringFormattedNumber(yPoint, props.yAxisNumberFormatString);
-      } else {
-        return _getFormattedLabelForYAxisDataPoint(yPoint);
-      }
-    });
-
-    return yAxisPoints;
-  };
+      const xAxisPoints = _getXAxisDataPoints(uniqueXPoints);
+      return {
+        dataSet,
+        yAxisPoints,
+        xAxisPoints,
+      };
+    },
+    [
+      _getFormattedLabelForXAxisDataPoint,
+      _getFormattedLabelForYAxisDataPoint,
+      _getXAxisDataPoints,
+      _getYAxisDataPoints,
+      props.sortOrder,
+    ],
+  );
 
   const _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
@@ -530,16 +562,6 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
 
   const _getStringFormattedNumber = (point: string, formatString?: string): string => {
     return d3Format(formatString || '.2~s')(+point);
-  };
-
-  const _getFormattedLabelForXAxisDataPoint = (point: string): string => {
-    const { xAxisStringFormatter } = props;
-    return xAxisStringFormatter ? xAxisStringFormatter(point) : point;
-  };
-
-  const _getFormattedLabelForYAxisDataPoint = (point: string): string => {
-    const { yAxisStringFormatter } = props;
-    return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
   };
 
   /**
@@ -598,12 +620,23 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
   const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
     props;
   _colorScale.current = _getColorScale();
-  const { dataSet, xAxisPoints, yAxisPoints } = _createNewDataSet(
-    data,
-    xAxisDateFormatString,
-    xAxisNumberFormatString,
-    yAxisDateFormatString,
-    yAxisNumberFormatString,
+  const { dataSet, xAxisPoints, yAxisPoints } = React.useMemo(
+    () =>
+      _createNewDataSet(
+        data,
+        xAxisDateFormatString,
+        xAxisNumberFormatString,
+        yAxisDateFormatString,
+        yAxisNumberFormatString,
+      ),
+    [
+      _createNewDataSet,
+      data,
+      xAxisDateFormatString,
+      xAxisNumberFormatString,
+      yAxisDateFormatString,
+      yAxisNumberFormatString,
+    ],
   );
   _dataSet.current = dataSet;
   _stringYAxisDataPoints.current = yAxisPoints;
