@@ -4,6 +4,7 @@ import descriptionMd from './AreaChartDescription.md';
 import bestPracticesMd from './AreaChartBestPractices.md';
 
 export { AreaChartBasic } from './AreaChartDefault.stories';
+export { AreaChartCustomAccessibility } from './AreaChartCustomAccessibility.stories';
 
 export default {
   title: 'Charts/AreaChart',
