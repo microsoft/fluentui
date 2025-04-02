@@ -116,7 +116,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
   const plotlyInputWithValidData: PlotlySchema = {
     ...plotlyInput,
-    data: chart.validDataIndices!.map(idx => plotlyInput.data[idx]),
+    data: chart.validTraceIndices!.map(idx => plotlyInput.data[idx]),
   };
 
   let { selectedLegends } = plotlySchema;

@@ -847,7 +847,7 @@ export interface OutputChartType {
     // (undocumented)
     type?: string;
     // (undocumented)
-    validDataIndices?: number[];
+    validTraceIndices?: number[];
 }
 
 // @public (undocumented)
