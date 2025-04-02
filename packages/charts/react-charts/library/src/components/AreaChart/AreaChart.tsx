@@ -63,6 +63,16 @@ export interface MapXToDataSet {
 
 export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardRef<HTMLDivElement, AreaChartProps>(
   (props, forwardedRef) => {
+    const _uniqueIdForGraph: string = useId('areaChart_');
+    const _verticalLineId: string = useId('verticalLine_');
+    const _circleId: string = useId('circle');
+    const _rectId: string = useId('rectangle');
+    const _tooltipId: string = useId('AreaChartTooltipID');
+    //enableComputationOptimization is used for optimized code to group data points by x value
+    //from O(n^2) to O(n) using a map.
+    const _enableComputationOptimization: boolean = true;
+    const _firstRenderOptimization: boolean = true;
+    const _emptyChartId: string = useId('_AreaChart_empty');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any;
     let _createSet: (data: LineChartPoints[]) => {
@@ -83,16 +93,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     let _xAxisRectScale: any;
     // determines if the given area chart has multiple stacked bar charts
     let _isMultiStackChart: boolean;
-    const _uniqueIdForGraph: string = useId('areaChart_');
-    const _verticalLineId: string = useId('verticalLine_');
-    const _circleId: string = useId('circle');
-    const _rectId: string = useId('rectangle');
-    const _tooltipId: string = useId('AreaChartTooltipID');
-    //enableComputationOptimization is used for optimized code to group data points by x value
-    //from O(n^2) to O(n) using a map.
-    const _enableComputationOptimization: boolean = true;
-    const _firstRenderOptimization: boolean = true;
-    const _emptyChartId: string = useId('_AreaChart_empty');
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -620,7 +620,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                 onMouseOut={_onRectMouseOut}
                 onMouseOver={event => _onRectMouseMove(event)}
                 {...(props.optimizeLargeData && {
-                  'data-is-focusable': _legendHighlighted(points[index]!.legend) || _noLegendHighlighted(),
+                  tabIndex: _legendHighlighted(points[index]!.legend) || _noLegendHighlighted() ? 0 : undefined,
                   role: 'img',
                   'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                     points[index].data.length
@@ -659,7 +659,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
                   <circle
                     key={circleId}
                     id={circleId}
-                    data-is-focusable={_legendHighlighted(points[index]!.legend) || _noLegendHighlighted()}
+                    tabIndex={_legendHighlighted(points[index]!.legend) || _noLegendHighlighted() ? 0 : undefined}
                     cx={xScale(singlePoint.xVal)}
                     cy={yScale(singlePoint.values[1])}
                     stroke={lineColor}
