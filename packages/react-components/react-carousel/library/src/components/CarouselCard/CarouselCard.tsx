@@ -17,8 +17,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const CarouselCard: ForwardRefComponent<CarouselCardProps> = React.forwardRef((props, ref) => {
   const state = useCarouselCard_unstable(props, ref);
 
-  useCarouselCardStyles_unstable(state);
   useCustomStyleHook_unstable('useCarouselCardStyles_unstable')(state);
+  useCarouselCardStyles_unstable(state);
 
   return renderCarouselCard_unstable(state);
 });

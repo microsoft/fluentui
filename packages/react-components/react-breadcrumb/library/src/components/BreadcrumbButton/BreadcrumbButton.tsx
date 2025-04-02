@@ -12,8 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbButton_unstable(props, ref);
 
-  useBreadcrumbButtonStyles_unstable(state);
   useCustomStyleHook_unstable('useBreadcrumbButtonStyles_unstable')(state);
+  useBreadcrumbButtonStyles_unstable(state);
 
   return renderBreadcrumbButton_unstable(state);
 });

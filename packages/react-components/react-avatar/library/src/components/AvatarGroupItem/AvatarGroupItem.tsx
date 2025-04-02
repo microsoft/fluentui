@@ -13,9 +13,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps> = React.forwardRef((props, ref) => {
   const state = useAvatarGroupItem_unstable(props, ref);
 
-  useAvatarGroupItemStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAvatarGroupItemStyles_unstable')(state);
+  useAvatarGroupItemStyles_unstable(state);
 
   return renderAvatarGroupItem_unstable(state);
 });

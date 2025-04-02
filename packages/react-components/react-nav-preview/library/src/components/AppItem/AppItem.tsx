@@ -11,8 +11,6 @@ import type { AppItemProps } from './AppItem.types';
 export const AppItem: ForwardRefComponent<AppItemProps> = React.forwardRef((props, ref) => {
   const state = useAppItem_unstable(props, ref);
 
-  useAppItemStyles_unstable(state);
-
   /**
    * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
    *
@@ -22,6 +20,7 @@ export const AppItem: ForwardRefComponent<AppItemProps> = React.forwardRef((prop
    *      - verify that custom global style override works for your component
    */
   // useCustomStyleHook_unstable('useAppItemStyles_unstable')(state);
+  useAppItemStyles_unstable(state);
 
   return renderAppItem_unstable(state);
 });

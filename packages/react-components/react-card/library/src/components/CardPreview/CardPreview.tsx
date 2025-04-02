@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const CardPreview: ForwardRefComponent<CardPreviewProps> = React.forwardRef((props, ref) => {
   const state = useCardPreview_unstable(props, ref);
 
-  useCardPreviewStyles_unstable(state);
-
   useCustomStyleHook_unstable('useCardPreviewStyles_unstable')(state);
+  useCardPreviewStyles_unstable(state);
 
   return renderCardPreview_unstable(state);
 });

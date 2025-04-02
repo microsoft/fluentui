@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ToastTitle: ForwardRefComponent<ToastTitleProps> = React.forwardRef((props, ref) => {
   const state = useToastTitle_unstable(props, ref);
 
-  useToastTitleStyles_unstable(state);
   useCustomStyleHook_unstable('useToastTitleStyles_unstable')(state);
+  useToastTitleStyles_unstable(state);
 
   return renderToastTitle_unstable(state);
 });

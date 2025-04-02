@@ -14,9 +14,8 @@ export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef((prop
   const state = useTabList_unstable(props, ref);
   const contextValues = useTabListContextValues_unstable(state);
 
-  useTabListStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTabListStyles_unstable')(state);
+  useTabListStyles_unstable(state);
 
   return renderTabList_unstable(state, contextValues);
 });

@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props, ref) => {
   const state = useOption_unstable(props, ref);
 
-  useOptionStyles_unstable(state);
-
   useCustomStyleHook_unstable('useOptionStyles_unstable')(state);
+  useOptionStyles_unstable(state);
 
   return renderOption_unstable(state);
 });

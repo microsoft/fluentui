@@ -16,9 +16,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverTitle_unstable(props, ref);
 
-  useTeachingPopoverTitleStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTeachingPopoverTitleStyles_unstable')(state);
+  useTeachingPopoverTitleStyles_unstable(state);
 
   return renderTeachingPopoverTitle_unstable(state);
 });

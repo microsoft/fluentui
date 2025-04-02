@@ -13,9 +13,8 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
   const state = useDataGridRow_unstable(props, ref);
 
-  useDataGridRowStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDataGridRowStyles_unstable')(state);
+  useDataGridRowStyles_unstable(state);
 
   return renderDataGridRow_unstable(state);
 }) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);

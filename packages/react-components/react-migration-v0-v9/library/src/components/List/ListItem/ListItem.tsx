@@ -10,8 +10,8 @@ export const ListItem: ForwardRefComponent<ListItemProps> = React.forwardRef<HTM
   (props, ref) => {
     const state = useListItem_unstable(props, ref);
 
-    useListItemStyles_unstable(state);
     useCustomStyleHook_unstable('useListItemStyles_unstable')(state);
+    useListItemStyles_unstable(state);
     return renderListItem_unstable(state);
   },
 );

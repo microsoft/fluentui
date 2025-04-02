@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef((props, ref) => {
   const state = useRatingItem_unstable(props, ref);
 
-  useRatingItemStyles_unstable(state);
   useCustomStyleHook_unstable('useRatingItemStyles_unstable')(state);
+  useRatingItemStyles_unstable(state);
 
   return renderRatingItem_unstable(state);
 });

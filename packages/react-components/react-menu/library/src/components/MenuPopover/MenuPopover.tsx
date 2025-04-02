@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps> = React.forwardRef((props, ref) => {
   const state = useMenuPopover_unstable(props, ref);
 
-  useMenuPopoverStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuPopoverStyles_unstable')(state);
+  useMenuPopoverStyles_unstable(state);
 
   return renderMenuPopover_unstable(state);
 });

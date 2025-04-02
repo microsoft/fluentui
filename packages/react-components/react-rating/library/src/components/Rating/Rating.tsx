@@ -14,8 +14,8 @@ export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef((props,
   const state = useRating_unstable(props, ref);
   const contextValues = useRatingContextValues(state);
 
-  useRatingStyles_unstable(state);
   useCustomStyleHook_unstable('useRatingStyles_unstable')(state);
+  useRatingStyles_unstable(state);
   return renderRating_unstable(state, contextValues);
 });
 

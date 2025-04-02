@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ProgressBar: ForwardRefComponent<ProgressBarProps> = React.forwardRef((props, ref) => {
   const state = useProgressBar_unstable(props, ref);
 
-  useProgressBarStyles_unstable(state);
-
   useCustomStyleHook_unstable('useProgressBarStyles_unstable')(state);
+  useProgressBarStyles_unstable(state);
 
   return renderProgressBar_unstable(state);
 });

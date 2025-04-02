@@ -18,9 +18,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverFooter_unstable(props, ref);
 
-  useTeachingPopoverFooterStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTeachingPopoverFooterStyles_unstable')(state);
+  useTeachingPopoverFooterStyles_unstable(state);
 
   return renderTeachingPopoverFooter_unstable(state);
 });

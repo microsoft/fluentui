@@ -15,9 +15,8 @@ export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.
   const state = useAccordionHeader_unstable(props, ref);
   const contextValues = useAccordionHeaderContextValues_unstable(state);
 
-  useAccordionHeaderStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAccordionHeaderStyles_unstable')(state);
+  useAccordionHeaderStyles_unstable(state);
 
   return renderAccordionHeader_unstable(state, contextValues);
 });

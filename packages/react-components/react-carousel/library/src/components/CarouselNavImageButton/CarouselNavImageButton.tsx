@@ -14,8 +14,8 @@ export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonP
   (props, ref) => {
     const state = useCarouselNavImageButton_unstable(props, ref);
 
-    useCarouselNavImageButtonStyles_unstable(state);
     useCustomStyleHook_unstable('useCarouselNavImageButtonStyles_unstable')(state);
+    useCarouselNavImageButtonStyles_unstable(state);
 
     return renderCarouselNavImageButton_unstable(state);
   },

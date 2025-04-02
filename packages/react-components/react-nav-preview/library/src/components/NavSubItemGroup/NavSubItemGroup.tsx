@@ -12,10 +12,10 @@ import type { NavSubItemGroupProps } from './NavSubItemGroup.types';
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps> = React.forwardRef((props, ref) => {
   const state = useNavSubItemGroup_unstable(props, ref);
 
-  useNavSubItemGroupStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavSubItemGroupStyles_unstable')(state);
+  useNavSubItemGroupStyles_unstable(state);
   return renderNavSubItemGroup_unstable(state);
 });
 

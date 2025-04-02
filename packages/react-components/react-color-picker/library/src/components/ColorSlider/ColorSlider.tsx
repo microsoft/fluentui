@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ColorSlider: ForwardRefComponent<ColorSliderProps> = React.forwardRef((props, ref) => {
   const state = useColorSlider_unstable(props, ref);
 
-  useColorSliderStyles_unstable(state);
   useCustomStyleHook_unstable('useColorSliderStyles_unstable')(state);
+  useColorSliderStyles_unstable(state);
 
   return renderColorSlider_unstable(state);
 });

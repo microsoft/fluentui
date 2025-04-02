@@ -9,8 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 export const Field: ForwardRefComponent<FieldProps> = React.forwardRef((props, ref) => {
   const state = useField_unstable(props, ref);
-  useFieldStyles_unstable(state);
   useCustomStyleHook_unstable('useFieldStyles_unstable')(state);
+  useFieldStyles_unstable(state);
   const context = useFieldContextValues_unstable(state);
   return renderField_unstable(state, context);
 });

@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbDivider_unstable(props, ref);
 
-  useBreadcrumbDividerStyles_unstable(state);
   useCustomStyleHook_unstable('useBreadcrumbDividerStyles_unstable')(state);
+  useBreadcrumbDividerStyles_unstable(state);
 
   return renderBreadcrumbDivider_unstable(state);
 });

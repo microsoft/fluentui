@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const EmptySwatch: ForwardRefComponent<EmptySwatchProps> = React.forwardRef((props, ref) => {
   const state = useEmptySwatch_unstable(props, ref);
 
-  useEmptySwatchStyles_unstable(state);
   useCustomStyleHook_unstable('useEmptySwatchStyles_unstable')(state);
+  useEmptySwatchStyles_unstable(state);
   return renderEmptySwatch_unstable(state);
 });
 

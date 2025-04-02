@@ -11,8 +11,6 @@ import type { SplitNavItemProps } from './SplitNavItem.types';
 export const SplitNavItem: ForwardRefComponent<SplitNavItemProps> = React.forwardRef((props, ref) => {
   const state = useSplitNavItem_unstable(props, ref);
 
-  useSplitNavItemStyles_unstable(state);
-
   /**
    * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
    *
@@ -22,6 +20,7 @@ export const SplitNavItem: ForwardRefComponent<SplitNavItemProps> = React.forwar
    *      - verify that custom global style override works for your component
    */
   // useCustomStyleHook_unstable('useSplitNavItemStyles_unstable')(state);
+  useSplitNavItemStyles_unstable(state);
 
   return renderSplitNavItem_unstable(state);
 });

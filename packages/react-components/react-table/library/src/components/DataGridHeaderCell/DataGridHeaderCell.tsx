@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps> = React.forwardRef((props, ref) => {
   const state = useDataGridHeaderCell_unstable(props, ref);
 
-  useDataGridHeaderCellStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDataGridHeaderCellStyles_unstable')(state);
+  useDataGridHeaderCellStyles_unstable(state);
 
   return renderDataGridHeaderCell_unstable(state);
 });

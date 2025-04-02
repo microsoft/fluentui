@@ -14,9 +14,8 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forw
   const state = useAccordionItem_unstable(props, ref);
   const contextValues = useAccordionItemContextValues_unstable(state);
 
-  useAccordionItemStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAccordionItemStyles_unstable')(state);
+  useAccordionItemStyles_unstable(state);
 
   return renderAccordionItem_unstable(state, contextValues);
 });

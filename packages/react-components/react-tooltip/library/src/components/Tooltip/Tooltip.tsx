@@ -12,9 +12,8 @@ import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 export const Tooltip: React.FC<TooltipProps> = props => {
   const state = useTooltip_unstable(props);
 
-  useTooltipStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTooltipStyles_unstable')(state);
+  useTooltipStyles_unstable(state);
 
   return renderTooltip_unstable(state);
 };

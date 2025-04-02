@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef((props, ref) => {
   const state = useCardFooter_unstable(props, ref);
 
-  useCardFooterStyles_unstable(state);
-
   useCustomStyleHook_unstable('useCardFooterStyles_unstable')(state);
+  useCardFooterStyles_unstable(state);
 
   return renderCardFooter_unstable(state);
 });

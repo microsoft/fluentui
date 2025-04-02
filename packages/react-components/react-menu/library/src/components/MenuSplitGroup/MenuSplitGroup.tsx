@@ -13,9 +13,8 @@ import { useMenuSplitGroupContextValues } from './useMenuSplitGroupContextValues
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps> = React.forwardRef((props, ref) => {
   const state = useMenuSplitGroup_unstable(props, ref);
 
-  useMenuSplitGroupStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuSplitGroupStyles_unstable')(state);
+  useMenuSplitGroupStyles_unstable(state);
 
   return renderMenuSplitGroup_unstable(state, useMenuSplitGroupContextValues(state));
 });

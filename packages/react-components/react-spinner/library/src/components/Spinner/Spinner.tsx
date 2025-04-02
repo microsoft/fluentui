@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Spinner: ForwardRefComponent<SpinnerProps> = React.forwardRef((props, ref) => {
   const state = useSpinner_unstable(props, ref);
 
-  useSpinnerStyles_unstable(state);
-
   useCustomStyleHook_unstable('useSpinnerStyles_unstable')(state);
+  useSpinnerStyles_unstable(state);
 
   return renderSpinner_unstable(state);
 });

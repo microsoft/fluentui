@@ -15,9 +15,8 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
   React.forwardRef((props, ref) => {
     const state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
 
-    useTeachingPopoverCarouselNavButtonStyles_unstable(state);
-
     useCustomStyleHook_unstable('useTeachingPopoverCarouselNavButtonStyles_unstable')(state);
+    useTeachingPopoverCarouselNavButtonStyles_unstable(state);
 
     return renderTeachingPopoverCarouselNavButton_unstable(state);
   }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;

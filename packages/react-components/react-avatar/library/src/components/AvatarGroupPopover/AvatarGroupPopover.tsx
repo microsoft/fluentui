@@ -13,9 +13,8 @@ export const AvatarGroupPopover: React.FC<AvatarGroupPopoverProps> = props => {
   const state = useAvatarGroupPopover_unstable(props);
   const contextValues = useAvatarGroupPopoverContextValues_unstable(state);
 
-  useAvatarGroupPopoverStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAvatarGroupPopoverStyles_unstable')(state);
+  useAvatarGroupPopoverStyles_unstable(state);
 
   return renderAvatarGroupPopover_unstable(state, contextValues);
 };

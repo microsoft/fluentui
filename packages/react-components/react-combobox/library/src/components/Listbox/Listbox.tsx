@@ -14,9 +14,8 @@ export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((prop
   const state = useListbox_unstable(props, ref);
   const contextValues = useListboxContextValues(state);
 
-  useListboxStyles_unstable(state);
-
   useCustomStyleHook_unstable('useListboxStyles_unstable')(state);
+  useListboxStyles_unstable(state);
 
   return renderListbox_unstable(state, contextValues);
 });

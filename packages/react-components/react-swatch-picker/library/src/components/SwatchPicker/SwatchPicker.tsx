@@ -14,8 +14,8 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps> = React.forwar
   const state = useSwatchPicker_unstable(props, ref);
   const contextValues = useSwatchPickerContextValues(state);
 
-  useSwatchPickerStyles_unstable(state);
   useCustomStyleHook_unstable('useSwatchPickerStyles_unstable')(state);
+  useSwatchPickerStyles_unstable(state);
 
   return renderSwatchPicker_unstable(state, contextValues);
 });

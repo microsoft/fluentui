@@ -13,8 +13,8 @@ import type { DrawerFooterProps } from './DrawerFooter.types';
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef((props, ref) => {
   const state = useDrawerFooter_unstable(props, ref);
 
-  useDrawerFooterStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerFooterStyles_unstable')(state);
+  useDrawerFooterStyles_unstable(state);
 
   return renderDrawerFooter_unstable(state);
 });

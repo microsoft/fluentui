@@ -13,8 +13,8 @@ import type { DrawerBodyProps } from './DrawerBody.types';
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps> = React.forwardRef((props, ref) => {
   const state = useDrawerBody_unstable(props, ref);
 
-  useDrawerBodyStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerBodyStyles_unstable')(state);
+  useDrawerBodyStyles_unstable(state);
 
   return renderDrawerBody_unstable(state);
 });

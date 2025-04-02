@@ -14,8 +14,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerGroup_unstable(props, ref);
 
-  useTagPickerGroupStyles_unstable(state);
   useCustomStyleHook_unstable('useTagPickerGroupStyles_unstable')(state);
+  useTagPickerGroupStyles_unstable(state);
   return renderTagPickerGroup_unstable(state, useTagGroupContextValues_unstable(state));
 });
 

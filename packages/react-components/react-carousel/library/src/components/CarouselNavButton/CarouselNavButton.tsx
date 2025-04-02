@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const CarouselNavButton: ForwardRefComponent<CarouselNavButtonProps> = React.forwardRef((props, ref) => {
   const state = useCarouselNavButton_unstable(props, ref);
 
-  useCarouselNavButtonStyles_unstable(state);
   useCustomStyleHook_unstable('useCarouselNavButtonStyles_unstable')(state);
+  useCarouselNavButtonStyles_unstable(state);
 
   return renderCarouselNavButton_unstable(state);
 });

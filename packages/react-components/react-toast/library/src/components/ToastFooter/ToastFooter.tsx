@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardRef((props, ref) => {
   const state = useToastFooter_unstable(props, ref);
 
-  useToastFooterStyles_unstable(state);
   useCustomStyleHook_unstable('useToastFooterStyles_unstable')(state);
+  useToastFooterStyles_unstable(state);
 
   return renderToastFooter_unstable(state);
 });

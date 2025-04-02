@@ -13,9 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const DialogContent: ForwardRefComponent<DialogContentProps> = React.forwardRef((props, ref) => {
   const state = useDialogContent_unstable(props, ref);
 
-  useDialogContentStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDialogContentStyles_unstable')(state);
+  useDialogContentStyles_unstable(state);
 
   return renderDialogContent_unstable(state);
 });

@@ -15,9 +15,8 @@ export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceP
   (props, ref) => {
     const state = useTeachingPopoverSurface_unstable(props, ref);
 
-    useTeachingPopoverSurfaceStyles_unstable(state);
-
     useCustomStyleHook_unstable('useTeachingPopoverSurfaceStyles_unstable')(state);
+    useTeachingPopoverSurfaceStyles_unstable(state);
 
     return renderTeachingPopoverSurface_unstable(state);
   },

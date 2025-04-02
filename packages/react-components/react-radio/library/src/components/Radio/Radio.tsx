@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, ref) => {
   const state = useRadio_unstable(props, ref);
 
-  useRadioStyles_unstable(state);
-
   useCustomStyleHook_unstable('useRadioStyles_unstable')(state);
+  useRadioStyles_unstable(state);
 
   return renderRadio_unstable(state);
 });

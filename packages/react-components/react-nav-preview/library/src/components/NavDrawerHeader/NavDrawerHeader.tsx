@@ -12,10 +12,10 @@ import type { NavDrawerHeaderProps } from './NavDrawerHeader.types';
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerHeader_unstable(props, ref);
 
-  useNavDrawerHeaderStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavDrawerHeaderStyles_unstable')(state);
+  useNavDrawerHeaderStyles_unstable(state);
   return renderDrawerHeader_unstable(state);
 });
 

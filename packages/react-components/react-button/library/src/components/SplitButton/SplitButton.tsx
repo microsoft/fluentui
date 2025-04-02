@@ -13,9 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const SplitButton: ForwardRefComponent<SplitButtonProps> = React.forwardRef((props, ref) => {
   const state = useSplitButton_unstable(props, ref);
 
-  useSplitButtonStyles_unstable(state);
-
   useCustomStyleHook_unstable('useSplitButtonStyles_unstable')(state);
+  useSplitButtonStyles_unstable(state);
 
   return renderSplitButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

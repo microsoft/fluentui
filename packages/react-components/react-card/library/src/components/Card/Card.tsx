@@ -14,9 +14,8 @@ export const Card: ForwardRefComponent<CardProps> = React.forwardRef<HTMLDivElem
   const state = useCard_unstable(props, ref);
   const cardContextValue = useCardContextValue(state);
 
-  useCardStyles_unstable(state);
-
   useCustomStyleHook_unstable('useCardStyles_unstable')(state);
+  useCardStyles_unstable(state);
 
   return renderCard_unstable(state, cardContextValue);
 });

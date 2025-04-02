@@ -12,8 +12,8 @@ import type { ToasterProps } from './Toaster.types';
 export const Toaster: React.FC<ToasterProps> = props => {
   const state = useToaster_unstable(props);
 
-  useToasterStyles_unstable(state);
   useCustomStyleHook_unstable('useToasterStyles_unstable')(state);
+  useToasterStyles_unstable(state);
   return renderToaster_unstable(state);
 };
 

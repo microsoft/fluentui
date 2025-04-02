@@ -18,8 +18,8 @@ export const CarouselNav: ForwardRefComponent<CarouselNavProps> = React.forwardR
   const state = useCarouselNav_unstable(props, ref);
   const contextValues = useCarouselNavContextValues_unstable(state);
 
-  useCarouselNavStyles_unstable(state);
   useCustomStyleHook_unstable('useCarouselNavStyles_unstable')(state);
+  useCarouselNavStyles_unstable(state);
 
   return renderCarouselNav_unstable(state, contextValues);
 });

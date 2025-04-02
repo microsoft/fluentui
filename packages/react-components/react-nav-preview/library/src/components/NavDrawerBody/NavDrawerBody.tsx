@@ -12,10 +12,10 @@ import type { NavDrawerBodyProps } from './NavDrawerBody.types';
 export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerBody_unstable(props, ref);
 
-  useNavDrawerBodyStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavDrawerBodyStyles_unstable')(state);
+  useNavDrawerBodyStyles_unstable(state);
   return renderDrawerBody_unstable(state);
 });
 

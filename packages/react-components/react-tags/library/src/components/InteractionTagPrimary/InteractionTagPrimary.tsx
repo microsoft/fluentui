@@ -14,9 +14,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps> = React.forwardRef((props, ref) => {
   const state = useInteractionTagPrimary_unstable(props, ref);
 
-  useInteractionTagPrimaryStyles_unstable(state);
-
   useCustomStyleHook_unstable('useInteractionTagPrimaryStyles_unstable')(state);
+  useInteractionTagPrimaryStyles_unstable(state);
 
   return renderInteractionTagPrimary_unstable(state, useTagAvatarContextValues_unstable(state));
 });

@@ -14,8 +14,8 @@ export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationP
   (props, ref) => {
     const state = useDrawerHeaderNavigation_unstable(props, ref);
 
-    useDrawerHeaderNavigationStyles_unstable(state);
     useCustomStyleHook_unstable('useDrawerHeaderNavigationStyles_unstable')(state);
+    useDrawerHeaderNavigationStyles_unstable(state);
 
     return renderDrawerHeaderNavigation_unstable(state);
   },

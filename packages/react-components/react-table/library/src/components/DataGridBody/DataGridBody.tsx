@@ -13,9 +13,8 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
   (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
   const state = useDataGridBody_unstable(props, ref);
 
-  useDataGridBodyStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDataGridBodyStyles_unstable')(state);
+  useDataGridBodyStyles_unstable(state);
 
   return renderDataGridBody_unstable(state);
 }) as ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);

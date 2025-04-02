@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((props, ref) => {
   const state = useTextarea_unstable(props, ref);
 
-  useTextareaStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTextareaStyles_unstable')(state);
+  useTextareaStyles_unstable(state);
 
   return renderTextarea_unstable(state);
 });

@@ -13,8 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TagPickerOptionGroup: ForwardRefComponent<TagPickerOptionGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerOptionGroup(props, ref);
 
-  useTagPickerOptionGroupStyles(state);
   useCustomStyleHook_unstable('useTagPickerOptionGroupStyles_unstable')(state);
+  useTagPickerOptionGroupStyles(state);
   return renderTagPickerOptionGroup(state);
 });
 

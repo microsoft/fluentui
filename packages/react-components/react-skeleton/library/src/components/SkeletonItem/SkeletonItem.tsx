@@ -9,8 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const SkeletonItem: ForwardRefComponent<SkeletonItemProps> = React.forwardRef((props, ref) => {
   const state = useSkeletonItem_unstable(props, ref);
 
-  useSkeletonItemStyles_unstable(state);
   useCustomStyleHook_unstable('useSkeletonItemStyles_unstable')(state);
+  useSkeletonItemStyles_unstable(state);
 
   return renderSkeletonItem_unstable(state);
 });

@@ -14,9 +14,8 @@ export const Dropdown: ForwardRefComponent<DropdownProps> = React.forwardRef((pr
   const state = useDropdown_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);
 
-  useDropdownStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDropdownStyles_unstable')(state);
+  useDropdownStyles_unstable(state);
 
   return renderDropdown_unstable(state, contextValues);
 });

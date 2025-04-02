@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardRef((props, ref) => {
   const state = useMenuDivider_unstable(props, ref);
 
-  useMenuDividerStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuDividerStyles_unstable')(state);
+  useMenuDividerStyles_unstable(state);
 
   return renderMenuDivider_unstable(state);
 });

@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TableBody: ForwardRefComponent<TableBodyProps> = React.forwardRef((props, ref) => {
   const state = useTableBody_unstable(props, ref);
 
-  useTableBodyStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTableBodyStyles_unstable')(state);
+  useTableBodyStyles_unstable(state);
 
   return renderTableBody_unstable(state);
 });

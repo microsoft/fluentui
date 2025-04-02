@@ -9,8 +9,8 @@ import type { MenuItemSwitchProps } from './MenuItemSwitch.types';
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef((props, ref) => {
   const state = useMenuItemSwitch_unstable(props, ref);
 
-  useMenuItemSwitchStyles_unstable(state);
   useCustomStyleHook_unstable('useMenuItemSwitchStyles_unstable')(state);
+  useMenuItemSwitchStyles_unstable(state);
   return renderMenuItemSwitch_unstable(state);
 });
 

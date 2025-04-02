@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Text: ForwardRefComponent<TextProps> = React.forwardRef((props, ref) => {
   const state = useText_unstable(props, ref);
 
-  useTextStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTextStyles_unstable')(state);
+  useTextStyles_unstable(state);
 
   return renderText_unstable(state);
   // Work around some small mismatches in inferred types which don't matter in practice

@@ -11,8 +11,6 @@ import type { <%= componentName %>Props } from './<%= componentName %>.types';
 export const <%= componentName %>: ForwardRefComponent<<%= componentName %>Props> = React.forwardRef((props, ref) => {
   const state = use<%= componentName %>_unstable(props, ref);
 
-  use<%= componentName %>Styles_unstable(state);
-
   /**
    * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
    *
@@ -22,6 +20,8 @@ export const <%= componentName %>: ForwardRefComponent<<%= componentName %>Props
    *      - verify that custom global style override works for your component
    */
   // useCustomStyleHook_unstable('use<%= componentName %>Styles_unstable')(state);
+
+  use<%= componentName %>Styles_unstable(state);
 
   return render<%= componentName %>_unstable(state);
 });

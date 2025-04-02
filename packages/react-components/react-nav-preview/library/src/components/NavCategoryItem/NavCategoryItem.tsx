@@ -15,10 +15,9 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
   const state = useNavCategoryItem_unstable(props, ref);
   const contextValues = useNavCategoryItemContextValues_unstable(state);
 
-  useNavCategoryItemStyles_unstable(state);
-
   // todo: add custom style hook
   // useCustomStyleHook_unstable('useNavCategoryItemStyles')(state);
+  useNavCategoryItemStyles_unstable(state);
 
   return renderNavCategoryItem_unstable(state, contextValues);
 });

@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps> = React.forwardRef((props, ref) => {
   const state = useColorSwatch_unstable(props, ref);
 
-  useColorSwatchStyles_unstable(state);
   useCustomStyleHook_unstable('useColorSwatchStyles_unstable')(state);
+  useColorSwatchStyles_unstable(state);
 
   return renderColorSwatch_unstable(state);
 });

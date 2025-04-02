@@ -13,9 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps> = React.forwardRef((props, ref) => {
   const state = useTableCellLayout_unstable(props, ref);
 
-  useTableCellLayoutStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTableCellLayoutStyles_unstable')(state);
+  useTableCellLayoutStyles_unstable(state);
 
   return renderTableCellLayout_unstable(state, useTableCellLayoutContextValues_unstable(state));
 });

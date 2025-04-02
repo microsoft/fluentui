@@ -14,9 +14,8 @@ export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((pr
   const state = useMenuList_unstable(props, ref);
   const contextValues = useMenuListContextValues_unstable(state);
 
-  useMenuListStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuListStyles_unstable')(state);
+  useMenuListStyles_unstable(state);
 
   return renderMenuList_unstable(state, contextValues);
 });

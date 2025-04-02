@@ -12,9 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps> = React.forwardRef((props, ref) => {
   const state = usePresenceBadge_unstable(props, ref);
 
-  usePresenceBadgeStyles_unstable(state);
-
   useCustomStyleHook_unstable('usePresenceBadgeStyles_unstable')(state);
+  usePresenceBadgeStyles_unstable(state);
 
   return renderBadge_unstable(state);
 });

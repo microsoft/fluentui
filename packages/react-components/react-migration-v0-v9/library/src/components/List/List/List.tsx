@@ -11,8 +11,8 @@ export const List: ForwardRefComponent<ListProps> = React.forwardRef((props, ref
   const state = useList_unstable(props, ref);
   const contextValues = useListContextValues_unstable(state);
 
-  useListStyles_unstable(state);
   useCustomStyleHook_unstable('useListStyles_unstable')(state);
+  useListStyles_unstable(state);
 
   return renderList_unstable(state, contextValues);
 });

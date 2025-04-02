@@ -13,9 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef((props, ref) => {
   const state = useDialogTitle_unstable(props, ref);
 
-  useDialogTitleStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDialogTitleStyles_unstable')(state);
+  useDialogTitleStyles_unstable(state);
 
   return renderDialogTitle_unstable(state);
 });

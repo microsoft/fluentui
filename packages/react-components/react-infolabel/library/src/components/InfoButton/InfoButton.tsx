@@ -12,8 +12,8 @@ import type { InfoButtonProps } from './InfoButton.types';
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef((props, ref) => {
   const state = useInfoButton_unstable(props, ref);
 
-  useInfoButtonStyles_unstable(state);
   useCustomStyleHook_unstable('useInfoButtonStyles_unstable')(state);
+  useInfoButtonStyles_unstable(state);
 
   return renderInfoButton_unstable(state);
 });

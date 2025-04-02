@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef((props, ref) => {
   const state = useSpinButton_unstable(props, ref);
 
-  useSpinButtonStyles_unstable(state);
-
   useCustomStyleHook_unstable('useSpinButtonStyles_unstable')(state);
+  useSpinButtonStyles_unstable(state);
 
   return renderSpinButton_unstable(state);
 });

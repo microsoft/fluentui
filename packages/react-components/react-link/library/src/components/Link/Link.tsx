@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref) => {
   const state = useLink_unstable(props, ref);
 
-  useLinkStyles_unstable(state);
-
   useCustomStyleHook_unstable('useLinkStyles_unstable')(state);
+  useLinkStyles_unstable(state);
 
   return renderLink_unstable(state);
   // Work around some small mismatches in inferred types which don't matter in practice

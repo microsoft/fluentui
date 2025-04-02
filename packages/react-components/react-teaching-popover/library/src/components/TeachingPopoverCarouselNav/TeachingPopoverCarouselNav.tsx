@@ -16,9 +16,8 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
   (props, ref) => {
     const state = useTeachingPopoverCarouselNav_unstable(props, ref);
 
-    useTeachingPopoverCarouselNavStyles_unstable(state);
-
     useCustomStyleHook_unstable('useTeachingPopoverCarouselNavStyles_unstable')(state);
+    useTeachingPopoverCarouselNavStyles_unstable(state);
 
     return renderTeachingPopoverCarouselNav_unstable(state);
   },

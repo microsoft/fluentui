@@ -12,9 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps> = React.forwardRef((props, ref) => {
   const state = useCounterBadge_unstable(props, ref);
 
-  useCounterBadgeStyles_unstable(state);
-
   useCustomStyleHook_unstable('useCounterBadgeStyles_unstable')(state);
+  useCounterBadgeStyles_unstable(state);
 
   return renderBadge_unstable(state);
 });

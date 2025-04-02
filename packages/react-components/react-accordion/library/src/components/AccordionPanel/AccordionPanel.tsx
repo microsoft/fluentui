@@ -12,9 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps> = React.forwardRef((props, ref) => {
   const state = useAccordionPanel_unstable(props, ref);
 
-  useAccordionPanelStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAccordionPanelStyles_unstable')(state);
+  useAccordionPanelStyles_unstable(state);
 
   return renderAccordionPanel_unstable(state);
 });

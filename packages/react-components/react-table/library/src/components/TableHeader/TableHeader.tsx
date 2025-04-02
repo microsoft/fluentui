@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TableHeader: ForwardRefComponent<TableHeaderProps> = React.forwardRef((props, ref) => {
   const state = useTableHeader_unstable(props, ref);
 
-  useTableHeaderStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTableHeaderStyles_unstable')(state);
+  useTableHeaderStyles_unstable(state);
 
   return renderTableHeader_unstable(state);
 });

@@ -13,8 +13,8 @@ import { useMessageBarActionsContextValue_unstable } from './useMessageBarAction
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarActions_unstable(props, ref);
 
-  useMessageBarActionsStyles_unstable(state);
   useCustomStyleHook_unstable('useMessageBarActionsStyles_unstable')(state);
+  useMessageBarActionsStyles_unstable(state);
   return renderMessageBarActions_unstable(state, useMessageBarActionsContextValue_unstable());
 });
 

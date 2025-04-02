@@ -13,8 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TagPickerInput: ForwardRefComponent<TagPickerInputProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerInput_unstable(props, ref);
 
-  useTagPickerInputStyles_unstable(state);
   useCustomStyleHook_unstable('useTagPickerInputStyles_unstable')(state);
+  useTagPickerInputStyles_unstable(state);
 
   return renderTagPickerInput_unstable(state);
 });

@@ -15,9 +15,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverBody_unstable(props, ref);
 
-  useTeachingPopoverBodyStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTeachingPopoverBodyStyles_unstable')(state);
+  useTeachingPopoverBodyStyles_unstable(state);
 
   return renderTeachingPopoverBody_unstable(state);
 });

@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps> = React.forwardRef((props, ref) => {
   const state = useTableResizeHandle_unstable(props, ref);
 
-  useTableResizeHandleStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTableResizeHandleStyles_unstable')(state);
+  useTableResizeHandleStyles_unstable(state);
 
   return renderTableResizeHandle_unstable(state);
 });

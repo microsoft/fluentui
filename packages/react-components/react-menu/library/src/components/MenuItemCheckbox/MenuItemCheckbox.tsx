@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = React.forwardRef((props, ref) => {
   const state = useMenuItemCheckbox_unstable(props, ref);
 
-  useMenuItemCheckboxStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuItemCheckboxStyles_unstable')(state);
+  useMenuItemCheckboxStyles_unstable(state);
 
   return renderMenuItemCheckbox_unstable(state);
 });

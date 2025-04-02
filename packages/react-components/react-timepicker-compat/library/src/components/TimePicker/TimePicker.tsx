@@ -14,8 +14,8 @@ export const TimePicker: ForwardRefComponent<TimePickerProps> = React.forwardRef
 
   const contextValues = useComboboxContextValues(state);
 
-  useTimePickerStyles_unstable(state);
   useCustomStyleHook_unstable('useTimePickerCompatStyles_unstable')(state);
+  useTimePickerStyles_unstable(state);
 
   return renderCombobox_unstable(state, contextValues);
 });

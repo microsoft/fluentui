@@ -16,10 +16,10 @@ export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef((
   const state = useNavDrawer_unstable(props, ref);
   const contextValues = useNavContextValues_unstable(state as NavState);
 
-  useNavDrawerStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavDrawerStyles_unstable')(state);
+  useNavDrawerStyles_unstable(state);
   return renderNavDrawer_unstable(state, contextValues);
 });
 

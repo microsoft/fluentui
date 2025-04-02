@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps> = React.forwardRef((props, ref) => {
   const state = usePopoverSurface_unstable(props, ref);
 
-  usePopoverSurfaceStyles_unstable(state);
-
   useCustomStyleHook_unstable('usePopoverSurfaceStyles_unstable')(state);
+  usePopoverSurfaceStyles_unstable(state);
 
   return renderPopoverSurface_unstable(state);
 });

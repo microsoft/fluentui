@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const AlphaSlider: ForwardRefComponent<AlphaSliderProps> = React.forwardRef((props, ref) => {
   const state = useAlphaSlider_unstable(props, ref);
 
-  useAlphaSliderStyles_unstable(state);
   useCustomStyleHook_unstable('useAlphaSliderStyles_unstable')(state);
+  useAlphaSliderStyles_unstable(state);
 
   return renderAlphaSlider_unstable(state);
 });

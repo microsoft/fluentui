@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) => {
   const state = useTab_unstable(props, ref);
 
-  useTabStyles_unstable(state);
-
   useCustomStyleHook_unstable('useTabStyles_unstable')(state);
+  useTabStyles_unstable(state);
 
   return renderTab_unstable(state);
 });

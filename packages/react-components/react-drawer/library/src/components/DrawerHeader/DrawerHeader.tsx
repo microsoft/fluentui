@@ -13,8 +13,8 @@ import type { DrawerHeaderProps } from './DrawerHeader.types';
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps> = React.forwardRef((props, ref) => {
   const state = useDrawerHeader_unstable(props, ref);
 
-  useDrawerHeaderStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerHeaderStyles_unstable')(state);
+  useDrawerHeaderStyles_unstable(state);
 
   return renderDrawerHeader_unstable(state);
 });

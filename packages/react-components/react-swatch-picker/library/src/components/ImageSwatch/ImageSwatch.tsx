@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps> = React.forwardRef((props, ref) => {
   const state = useImageSwatch_unstable(props, ref);
 
-  useImageSwatchStyles_unstable(state);
   useCustomStyleHook_unstable('useImageSwatchStyles_unstable')(state);
+  useImageSwatchStyles_unstable(state);
 
   return renderImageSwatch_unstable(state);
 });

@@ -22,8 +22,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TreeItem: ForwardRefComponent<TreeItemProps> = React.forwardRef((props, ref) => {
   const state = useTreeItem_unstable(props, ref);
 
-  useTreeItemStyles_unstable(state);
   useCustomStyleHook_unstable('useTreeItemStyles_unstable')(state);
+  useTreeItemStyles_unstable(state);
 
   const contextValues = useTreeItemContextValues_unstable(state);
   return renderTreeItem_unstable(state, contextValues);

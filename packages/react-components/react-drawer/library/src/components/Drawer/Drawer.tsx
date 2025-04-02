@@ -16,8 +16,8 @@ export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props,
   const state = useDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();
 
-  useDrawerStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerStyles_unstable')(state);
+  useDrawerStyles_unstable(state);
 
   return renderDrawer_unstable(state, contextValue);
 });

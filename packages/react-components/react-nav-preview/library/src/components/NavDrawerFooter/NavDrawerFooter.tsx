@@ -12,10 +12,10 @@ import type { NavDrawerFooterProps } from './NavDrawerFooter.types';
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerFooter_unstable(props, ref);
 
-  useNavDrawerFooterStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavDrawerFooterStyles_unstable')(state);
+  useNavDrawerFooterStyles_unstable(state);
   return renderDrawerFooter_unstable(state);
 });
 

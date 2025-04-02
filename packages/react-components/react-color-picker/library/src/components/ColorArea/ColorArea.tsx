@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const ColorArea: ForwardRefComponent<ColorAreaProps> = React.forwardRef((props, ref) => {
   const state = useColorArea_unstable(props, ref);
 
-  useColorAreaStyles_unstable(state);
   useCustomStyleHook_unstable('useColorAreaStyles_unstable')(state);
+  useColorAreaStyles_unstable(state);
 
   return renderColorArea_unstable(state);
 });

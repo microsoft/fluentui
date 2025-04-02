@@ -16,8 +16,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Carousel: ForwardRefComponent<CarouselProps> = React.forwardRef((props, ref) => {
   const state = useCarousel_unstable(props, ref);
 
-  useCarouselStyles_unstable(state);
   useCustomStyleHook_unstable('useCarouselStyles_unstable')(state);
+  useCarouselStyles_unstable(state);
 
   const contextValues = useCarouselContextValues_unstable(state);
 

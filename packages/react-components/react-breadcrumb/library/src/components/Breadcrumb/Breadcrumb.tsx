@@ -14,8 +14,8 @@ export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = React.forwardRef
   const state = useBreadcrumb_unstable(props, ref);
   const contextValues = useBreadcrumbContextValues_unstable(state);
 
-  useBreadcrumbStyles_unstable(state);
   useCustomStyleHook_unstable('useBreadcrumbStyles_unstable')(state);
+  useBreadcrumbStyles_unstable(state);
 
   return renderBreadcrumb_unstable(state, contextValues);
 });

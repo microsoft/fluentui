@@ -15,8 +15,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps> = React.forwardRef((props, ref) => {
   const state = useTreeItemPersonaLayout_unstable(props, ref);
 
-  useTreeItemPersonaLayoutStyles_unstable(state);
   useCustomStyleHook_unstable('useTreeItemPersonaLayoutStyles_unstable')(state);
+  useTreeItemPersonaLayoutStyles_unstable(state);
 
   const contextValues = useTreeItemPersonaLayoutContextValues_unstable(state);
 

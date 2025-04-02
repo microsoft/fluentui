@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Label: ForwardRefComponent<LabelProps> = React.forwardRef((props, ref) => {
   const state = useLabel_unstable(props, ref);
 
-  useLabelStyles_unstable(state);
-
   useCustomStyleHook_unstable('useLabelStyles_unstable')(state);
+  useLabelStyles_unstable(state);
 
   return renderLabel_unstable(state);
 });

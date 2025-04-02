@@ -14,9 +14,8 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps> = React.forwardRef
   const state = useRadioGroup_unstable(props, ref);
   const contextValues = useRadioGroupContextValues(state);
 
-  useRadioGroupStyles_unstable(state);
-
   useCustomStyleHook_unstable('useRadioGroupStyles_unstable')(state);
+  useRadioGroupStyles_unstable(state);
 
   return renderRadioGroup_unstable(state, contextValues);
 });

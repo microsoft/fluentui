@@ -16,9 +16,9 @@ export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps> = React.forw
   const state = useOverlayDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();
 
-  useOverlayDrawerStyles_unstable(state);
   useCustomStyleHook_unstable('useDrawerOverlayStyles_unstable')(state);
   useCustomStyleHook_unstable('useOverlayDrawerStyles_unstable')(state);
+  useOverlayDrawerStyles_unstable(state);
 
   return renderOverlayDrawer_unstable(state, contextValue);
 });

@@ -15,9 +15,8 @@ export const TeachingPopoverCarouselPageCount: ForwardRefComponent<TeachingPopov
   React.forwardRef((props, ref) => {
     const state = useTeachingPopoverCarouselPageCount_unstable(props, ref);
 
-    useTeachingPopoverCarouselPageCountStyles_unstable(state);
-
     useCustomStyleHook_unstable('useTeachingPopoverCarouselPageCountStyles_unstable')(state);
+    useTeachingPopoverCarouselPageCountStyles_unstable(state);
 
     return renderTeachingPopoverCarouselPageCount_unstable(state);
   });

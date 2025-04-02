@@ -15,9 +15,8 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardR
   const state = useAvatarGroup_unstable(props, ref);
   const contextValues = useAvatarGroupContextValues(state);
 
-  useAvatarGroupStyles_unstable(state);
-
   useCustomStyleHook_unstable('useAvatarGroupStyles_unstable')(state);
+  useAvatarGroupStyles_unstable(state);
 
   return renderAvatarGroup_unstable(state, contextValues);
 });

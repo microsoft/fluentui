@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const SearchBox: ForwardRefComponent<SearchBoxProps> = React.forwardRef((props, ref) => {
   const state = useSearchBox_unstable(props, ref);
 
-  useSearchBoxStyles_unstable(state);
-
   useCustomStyleHook_unstable('useSearchBoxStyles_unstable')(state);
+  useSearchBoxStyles_unstable(state);
 
   return renderSearchBox_unstable(state);
 });

@@ -13,7 +13,6 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps> = React.forwar
   const state = useDataGridCell_unstable(props, ref);
 
   useDataGridCellStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDataGridCellStyles_unstable')(state);
 
   return renderDataGridCell_unstable(state);

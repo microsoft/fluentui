@@ -12,8 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps> = React.forwardRef((props, ref) => {
   const state = useSwatchPickerRow_unstable(props, ref);
 
-  useSwatchPickerRowStyles_unstable(state);
   useCustomStyleHook_unstable('useSwatchPickerRowStyles_unstable')(state);
+  useSwatchPickerRowStyles_unstable(state);
   return renderSwatchPickerRow_unstable(state);
 });
 

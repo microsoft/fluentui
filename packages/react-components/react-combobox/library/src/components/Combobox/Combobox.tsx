@@ -14,9 +14,8 @@ export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((pr
   const state = useCombobox_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);
 
-  useComboboxStyles_unstable(state);
-
   useCustomStyleHook_unstable('useComboboxStyles_unstable')(state);
+  useComboboxStyles_unstable(state);
 
   return renderCombobox_unstable(state, contextValues);
 });

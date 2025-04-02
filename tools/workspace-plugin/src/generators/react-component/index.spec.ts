@@ -109,8 +109,6 @@ describe('react-component generator', () => {
         (props, ref) => {
           const state = useMyOne_unstable(props, ref);
 
-          useMyOneStyles_unstable(state);
-
           /**
            * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
            *
@@ -120,6 +118,8 @@ describe('react-component generator', () => {
            *      - verify that custom global style override works for your component
            */
           // useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
+
+          useMyOneStyles_unstable(state);
 
           return renderMyOne_unstable(state);
         }

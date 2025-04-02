@@ -12,9 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef((props, ref) => {
   const state = useBadge_unstable(props, ref);
 
-  useBadgeStyles_unstable(state);
-
   useCustomStyleHook_unstable('useBadgeStyles_unstable')(state);
+  useBadgeStyles_unstable(state);
 
   return renderBadge_unstable(state);
 });

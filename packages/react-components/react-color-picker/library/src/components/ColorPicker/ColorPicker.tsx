@@ -14,8 +14,8 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps> = React.forwardR
   const state = useColorPicker_unstable(props, ref);
   const contextValues = useColorPickerContextValues(state);
 
-  useColorPickerStyles_unstable(state);
   useCustomStyleHook_unstable('useColorPickerStyles_unstable')(state);
+  useColorPickerStyles_unstable(state);
 
   return renderColorPicker_unstable(state, contextValues);
 });

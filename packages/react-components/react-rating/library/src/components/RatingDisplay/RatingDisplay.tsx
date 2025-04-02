@@ -15,8 +15,8 @@ export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forw
   const state = useRatingDisplay_unstable(props, ref);
   const contextValues = useRatingDisplayContextValues(state);
 
-  useRatingDisplayStyles_unstable(state);
   useCustomStyleHook_unstable('useRatingDisplayStyles_unstable')(state);
+  useRatingDisplayStyles_unstable(state);
 
   return renderRatingDisplay_unstable(state, contextValues);
 });

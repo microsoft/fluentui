@@ -12,10 +12,10 @@ import type { NavDividerProps } from './NavDivider.types';
 export const NavDivider: ForwardRefComponent<NavDividerProps> = React.forwardRef((props, ref) => {
   const state = useNavDivider_unstable(props, ref);
 
-  useNavDividerStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavDividerStyles_unstable')(state);
+  useNavDividerStyles_unstable(state);
   return renderDivider_unstable(state);
 });
 

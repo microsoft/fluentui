@@ -11,10 +11,10 @@ import type { NavSectionHeaderProps } from './NavSectionHeader.types';
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps> = React.forwardRef((props, ref) => {
   const state = useNavSectionHeader_unstable(props, ref);
 
-  useNavSectionHeaderStyles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavSectionHeaderStyles_unstable')(state);
+  useNavSectionHeaderStyles_unstable(state);
   return renderNavSectionHeader_unstable(state);
 });
 

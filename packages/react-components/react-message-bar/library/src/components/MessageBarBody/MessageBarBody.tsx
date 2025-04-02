@@ -14,8 +14,8 @@ export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps> = React.fo
   const state = useMessageBarBody_unstable(props, ref);
   const ctx = useMessageBarBodyContextValues_unstable(state);
 
-  useMessageBarBodyStyles_unstable(state);
   useCustomStyleHook_unstable('useMessageBarBodyStyles_unstable')(state);
+  useMessageBarBodyStyles_unstable(state);
   return renderMessageBarBody_unstable(state, ctx);
 });
 

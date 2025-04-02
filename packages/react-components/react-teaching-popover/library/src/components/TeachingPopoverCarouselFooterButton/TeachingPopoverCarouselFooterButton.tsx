@@ -16,9 +16,8 @@ export const TeachingPopoverCarouselFooterButton: ForwardRefComponent<TeachingPo
   React.forwardRef((props, ref) => {
     const state = useTeachingPopoverCarouselFooterButton_unstable(props, ref);
 
-    useTeachingPopoverCarouselFooterButtonStyles_unstable(state);
-
     useCustomStyleHook_unstable('useTeachingPopoverCarouselFooterButtonStyles_unstable')(state);
+    useTeachingPopoverCarouselFooterButtonStyles_unstable(state);
 
     return renderTeachingPopoverCarouselFooterButton_unstable(state);
   });

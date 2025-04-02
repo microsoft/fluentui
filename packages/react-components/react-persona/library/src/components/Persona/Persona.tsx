@@ -13,9 +13,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Persona: ForwardRefComponent<PersonaProps> = React.forwardRef((props, ref) => {
   const state = usePersona_unstable(props, ref);
 
-  usePersonaStyles_unstable(state);
-
   useCustomStyleHook_unstable('usePersonaStyles_unstable')(state);
+  usePersonaStyles_unstable(state);
 
   return renderPersona_unstable(state);
 });

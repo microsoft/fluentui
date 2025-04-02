@@ -16,8 +16,8 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
   (props, ref) => {
     const state = useCarouselAutoplayButton_unstable(props, ref);
 
-    useCarouselAutoplayButtonStyles_unstable(state);
     useCustomStyleHook_unstable('useCarouselAutoplayButtonStyles_unstable')(state);
+    useCarouselAutoplayButtonStyles_unstable(state);
 
     return renderCarouselAutoplayButton_unstable(state);
   },

@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   const state = useButton_unstable(props, ref);
 
-  useButtonStyles_unstable(state);
-
   useCustomStyleHook_unstable('useButtonStyles_unstable')(state);
+  useButtonStyles_unstable(state);
 
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

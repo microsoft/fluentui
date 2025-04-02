@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const DataGridSelectionCell: ForwardRefComponent<DataGridSelectionCellProps> = React.forwardRef((props, ref) => {
   const state = useDataGridSelectionCell_unstable(props, ref);
 
-  useDataGridSelectionCellStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDataGridSelectionCellStyles_unstable')(state);
+  useDataGridSelectionCellStyles_unstable(state);
 
   return renderDataGridSelectionCell_unstable(state);
 });

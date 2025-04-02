@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef((props, ref) => {
   const state = useDivider_unstable(props, ref);
 
-  useDividerStyles_unstable(state);
-
   useCustomStyleHook_unstable('useDividerStyles_unstable')(state);
+  useDividerStyles_unstable(state);
 
   return renderDivider_unstable(state);
 });

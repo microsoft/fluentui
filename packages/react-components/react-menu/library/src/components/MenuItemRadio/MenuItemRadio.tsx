@@ -12,9 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps> = React.forwardRef((props, ref) => {
   const state = useMenuItemRadio_unstable(props, ref);
 
-  useMenuItemRadioStyles_unstable(state);
-
   useCustomStyleHook_unstable('useMenuItemRadioStyles_unstable')(state);
+  useMenuItemRadioStyles_unstable(state);
 
   return renderMenuItemRadio_unstable(state);
 });

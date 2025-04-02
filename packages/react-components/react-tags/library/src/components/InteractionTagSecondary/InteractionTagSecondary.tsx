@@ -13,9 +13,8 @@ export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondar
   (props, ref) => {
     const state = useInteractionTagSecondary_unstable(props, ref);
 
-    useInteractionTagSecondaryStyles_unstable(state);
-
     useCustomStyleHook_unstable('useInteractionTagSecondaryStyles_unstable')(state);
+    useInteractionTagSecondaryStyles_unstable(state);
 
     return renderInteractionTagSecondary_unstable(state);
   },

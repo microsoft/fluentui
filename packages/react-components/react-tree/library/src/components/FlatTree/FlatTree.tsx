@@ -16,8 +16,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 export const FlatTree: ForwardRefComponent<FlatTreeProps> = React.forwardRef((props, ref) => {
   const state = useFlatTree_unstable(props, ref);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  useFlatTreeStyles_unstable(state);
   useCustomStyleHook_unstable('useFlatTreeStyles_unstable')(state);
+  useFlatTreeStyles_unstable(state);
 
   return renderFlatTree_unstable(state, contextValues);
 });
