@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { TextField, Stack, Checkbox, SearchBox, Link, Label, Text, ThemeProvider } from '@fluentui/react';
 import {

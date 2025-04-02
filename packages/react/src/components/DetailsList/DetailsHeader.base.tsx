@@ -214,6 +214,7 @@ export class DetailsHeaderBase
         aria-label={ariaLabel}
         className={classNames.root}
         componentRef={this._rootComponent}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         elementRef={this._rootElement}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"

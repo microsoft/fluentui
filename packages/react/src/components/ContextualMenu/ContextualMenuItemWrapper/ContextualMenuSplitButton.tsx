@@ -209,7 +209,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider getClassNames={getDividerClassNames} />;
+    return (
+      <VerticalDivider
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        getClassNames={getDividerClassNames}
+      />
+    );
   }
 
   private _renderSplitIconButton(

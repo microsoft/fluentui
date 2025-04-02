@@ -187,7 +187,12 @@ describe('SearchBox', () => {
   it('handles onChanged', () => {
     const onChanged = jest.fn();
 
-    wrapper = mount(<SearchBox onChanged={onChanged} />);
+    wrapper = mount(
+      <SearchBox
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        onChanged={onChanged}
+      />,
+    );
     expect(onChanged).toHaveBeenCalledTimes(0);
 
     wrapper.find('input').simulate('change', { target: { value: 'New value' } });
