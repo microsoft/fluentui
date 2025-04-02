@@ -201,7 +201,7 @@
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
     "cypress": "13.6.4",
-    "cypress-real-events": "1.11.0",
+    "cypress-real-events": "1.13.0",
     "d3-array": "3.2.4",
     "d3-axis": "3.0.0",
     "d3-format": "3.1.0",
