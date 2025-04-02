@@ -475,7 +475,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   function _lineHover(point: VerticalBarChartDataPoint, mouseEvent: React.MouseEvent<SVGElement>) {
     mouseEvent.persist();
-    // console.log('lineHover called');
     _lineHoverFocus(point, mouseEvent);
   }
 
