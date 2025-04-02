@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { CurveFactory } from 'd3-shape';
 import * as React_2 from 'react';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
@@ -15,6 +16,45 @@ export interface AccessibilityProps {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
+}
+
+// @public (undocumented)
+export const AreaChart: React_2.FunctionComponent<AreaChartProps>;
+
+// @public (undocumented)
+export interface AreaChartAreaPoint {
+    // (undocumented)
+    values: AreaChartDataSetPoint;
+    // (undocumented)
+    xVal: string | number;
+}
+
+// @public (undocumented)
+export interface AreaChartDataSetPoint {
+    // (undocumented)
+    [key: string]: number | string | number[];
+}
+
+// @public
+export interface AreaChartProps extends CartesianChartProps {
+    culture?: string;
+    data: ChartProps;
+    enableGradient?: boolean;
+    enablePerfOptimization?: boolean;
+    mode?: 'tozeroy' | 'tonexty';
+    onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+    // (undocumented)
+    optimizeLargeData?: boolean;
+    styles?: CartesianChartStyles;
+}
+
+// @public
+export interface AreaChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface AreaChartStyles extends CartesianChartStyles {
 }
 
 // @public (undocumented)
@@ -412,6 +452,18 @@ export interface DonutChartStyles {
 }
 
 // @public (undocumented)
+export interface DPointType {
+    // (undocumented)
+    values: {
+        0: number;
+        1: number;
+        data: {};
+    };
+    // (undocumented)
+    xVal: number | Date;
+}
+
+// @public (undocumented)
 export interface EventsAnnotationProps {
     // (undocumented)
     events: EventAnnotation[];
@@ -595,6 +647,8 @@ export interface LegendsProps {
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: Legend) => void;
     overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
+    selectedLegend?: string;
+    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
@@ -661,6 +715,7 @@ export interface LineChartGap {
 
 // @public (undocumented)
 export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
+    curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;
@@ -730,6 +785,14 @@ export interface LineDataInVerticalStackedBarChart {
     y: number;
     // (undocumented)
     yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export interface MapXToDataSet {
+    // (undocumented)
+    [key: string]: LineChartDataPoint[];
+    // (undocumented)
+    [key: number]: LineChartDataPoint[];
 }
 
 // @public (undocumented)
