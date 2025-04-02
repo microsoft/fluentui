@@ -15,3 +15,4 @@ export * from './Popover';
 export * from './ResponsiveContainer';
 export * from './DeclarativeChart';
 export * from './AreaChart';
+export * from './HeatMapChart';

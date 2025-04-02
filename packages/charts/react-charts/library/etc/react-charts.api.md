@@ -569,6 +569,9 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
 
 // @public (undocumented)
+export const getColorContrast: (c1: string, c2: string) => number;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
@@ -638,6 +641,58 @@ export interface GVForBarChart {
 // @public (undocumented)
 export interface GVSingleDataPoint {
     [key: string]: GVDataPoint;
+}
+
+// @public (undocumented)
+export const HeatMapChart: React_2.FunctionComponent<HeatMapChartProps>;
+
+// @public (undocumented)
+export interface HeatMapChartData {
+    // (undocumented)
+    data: HeatMapChartDataPoint[];
+    legend: string;
+    value: number;
+}
+
+// @public (undocumented)
+export interface HeatMapChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
+    descriptionMessage?: string;
+    onClick?: VoidFunction;
+    ratio?: [number, number];
+    rectText?: string | number;
+    // (undocumented)
+    value: number;
+    // (undocumented)
+    x: string | Date | number;
+    // (undocumented)
+    y: string | Date | number;
+}
+
+// @public
+export interface HeatMapChartProps extends CartesianChartProps {
+    chartTitle?: string;
+    culture?: string;
+    data: HeatMapChartData[];
+    domainValuesForColorScale: number[];
+    rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
+    styles?: HeatMapChartStyles;
+    xAxisDateFormatString?: string;
+    xAxisNumberFormatString?: string;
+    xAxisStringFormatter?: (point: string) => string;
+    yAxisDateFormatString?: string;
+    yAxisNumberFormatString?: string;
+    yAxisStringFormatter?: (point: string) => string;
+}
+
+// @public
+export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    text?: string;
 }
 
 // @public
