@@ -232,22 +232,22 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [filteredComponentsDefinitions, setFilteredComponentsDefinitions] = React.useState<ComponentDefinition[]>([]);
 
-  const firstGroupItemRef = React.useRef<HTMLElement | null>(null);
-  const questionsSectionRef = React.useRef<HTMLDivElement | null>(null);
+  const categoryHeadingsRefs = React.useRef<HTMLElement[]>([]);
+  const firstCategoryHeadingRef = React.useRef<HTMLElement | null>(null);
+  const questionsHeadingRef = React.useRef<HTMLDivElement | null>(null);
 
-  const scrollToQuestionsSection = () => {
-    if (questionsSectionRef.current) {
-      questionsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  const scrollAndFocusQuestionsHeading = () => {
+    if (questionsHeadingRef.current) {
+      questionsHeadingRef.current.focus({ preventScroll: true });
+      questionsHeadingRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  const groupSectionRefs = React.useRef<HTMLDivElement[]>([]);
-
   const setSectionRef = (el: HTMLDivElement | null, index: number) => {
     if (el) {
-      groupSectionRefs.current[index] = el;
+      categoryHeadingsRefs.current[index] = el;
       if (index === 0) {
-        firstGroupItemRef.current = el;
+        firstCategoryHeadingRef.current = el;
       }
     }
   };
@@ -258,13 +258,13 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
 
   const onSelectedComponentDismiss: TagGroupProps['onDismiss'] = (_, data) => {
     if (selectedComponents.length === 1) {
-      firstGroupItemRef.current?.focus();
+      firstCategoryHeadingRef.current?.focus();
     }
     updateComponentSelection(data.value, false);
   };
 
   const onRemoveAllComponentsClick = () => {
-    firstGroupItemRef.current?.focus();
+    firstCategoryHeadingRef.current?.focus();
     setSelectedComponents([]);
   };
 
@@ -490,7 +490,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         </div>
 
         {allQuestions.length > 0 && (
-          <h2 className={classes.heading} ref={questionsSectionRef}>
+          <h2 className={classes.heading} ref={questionsHeadingRef} tabIndex={-1}>
             Questions
           </h2>
         )}
@@ -551,7 +551,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
               <Button
                 shape="circular"
                 appearance="primary"
-                onClick={scrollToQuestionsSection}
+                onClick={scrollAndFocusQuestionsHeading}
                 icon={<ArrowRightRegular />}
                 iconPosition="after"
               >
