@@ -15,7 +15,7 @@ import {
   ChildProps,
   Margins,
   YValueHover,
-  ModifiedCartesianChartProps,
+  ChartPopoverProps,
 } from '../../index';
 import {
   calloutData,
@@ -882,7 +882,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         tickFormat: props.tickFormat,
       };
 
-      const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
+      const calloutProps: ChartPopoverProps = {
         YValueHover: YValueHover!,
         hoverXValue: hoverXValue!,
         xAxisCalloutAccessibilityData,
