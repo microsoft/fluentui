@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix active tab indicator animation",
-  "packageName": "@fluentui/react-tabs",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

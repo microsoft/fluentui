@@ -517,6 +517,9 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
 
 // @public (undocumented)
+export const getColorContrast: (c1: string, c2: string) => number;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
@@ -586,6 +589,58 @@ export interface GVForBarChart {
 // @public (undocumented)
 export interface GVSingleDataPoint {
     [key: string]: GVDataPoint;
+}
+
+// @public (undocumented)
+export const HeatMapChart: React_2.FunctionComponent<HeatMapChartProps>;
+
+// @public (undocumented)
+export interface HeatMapChartData {
+    // (undocumented)
+    data: HeatMapChartDataPoint[];
+    legend: string;
+    value: number;
+}
+
+// @public (undocumented)
+export interface HeatMapChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
+    descriptionMessage?: string;
+    onClick?: VoidFunction;
+    ratio?: [number, number];
+    rectText?: string | number;
+    // (undocumented)
+    value: number;
+    // (undocumented)
+    x: string | Date | number;
+    // (undocumented)
+    y: string | Date | number;
+}
+
+// @public
+export interface HeatMapChartProps extends CartesianChartProps {
+    chartTitle?: string;
+    culture?: string;
+    data: HeatMapChartData[];
+    domainValuesForColorScale: number[];
+    rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
+    styles?: HeatMapChartStyles;
+    xAxisDateFormatString?: string;
+    xAxisNumberFormatString?: string;
+    xAxisStringFormatter?: (point: string) => string;
+    yAxisDateFormatString?: string;
+    yAxisNumberFormatString?: string;
+    yAxisStringFormatter?: (point: string) => string;
+}
+
+// @public
+export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    text?: string;
 }
 
 // @public
@@ -840,6 +895,7 @@ export interface LineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    lineOptions?: LineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
     y: number;
@@ -863,6 +919,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     chartType: ChartTypes;
     children(props: ChildProps): React_2.ReactNode;
     culture?: string;
+    customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
     // (undocumented)
@@ -870,6 +927,7 @@ export interface ModifiedCartesianChartProps extends CartesianChartProps {
     getDomainMargins?: (containerWidth: number) => Margins;
     getGraphData?: any;
     getmargins?: (margins: Margins) => void;
+    isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
@@ -1060,6 +1118,46 @@ export interface VerticalBarChartStyles extends CartesianChartStyles {
 }
 
 // @public (undocumented)
+export const VerticalStackedBarChart: React_2.FunctionComponent<VerticalStackedBarChartProps>;
+
+// @public
+export interface VerticalStackedBarChartProps extends CartesianChartProps {
+    allowHoverOnLegend?: boolean;
+    barCornerRadius?: number;
+    barGapMax?: number;
+    barMinimumHeight?: number;
+    barWidth?: number | 'default' | 'auto';
+    chartTitle?: string;
+    culture?: string;
+    data: VerticalStackedChartProps[];
+    enableGradient?: boolean;
+    hideLabels?: boolean;
+    isCalloutForStack?: boolean;
+    lineOptions?: LineChartLineOptions;
+    maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
+    onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: VerticalStackedChartProps | VSChartDataPoint) => void;
+    onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
+    onRenderCalloutPerStack?: RenderFunction<VerticalStackedChartProps>;
+    roundCorners?: boolean;
+    styles?: VerticalStackedBarChartStyles;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
+    xAxisPadding?: number;
+    yMinValue?: undefined;
+}
+
+// @public
+export interface VerticalStackedBarChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface VerticalStackedBarChartStyles extends CartesianChartStyles {
+    barLabel: string;
+    opacityChangeOnHover?: string;
+}
+
+// @public (undocumented)
 export interface VerticalStackedBarDataPoint extends Omit<DataPoint, 'x'> {
     x: number | string | Date;
 }
@@ -1077,6 +1175,7 @@ export interface VerticalStackedChartProps {
 export interface VSChartDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
+    culture?: string;
     data: number;
     legend: string;
     xAxisCalloutData?: string;
