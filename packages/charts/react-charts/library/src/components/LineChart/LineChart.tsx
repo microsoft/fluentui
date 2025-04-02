@@ -171,7 +171,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
-    const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
@@ -343,26 +342,8 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           overflowText={props.legendsOverflowText}
           {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
           {...props.legendProps}
-          selectedLegends={selectedLegends}
-          onChange={_onLegendSelectionChange}
         />
       );
-    }
-
-    function _onLegendSelectionChange(
-      legendsSelected: string[],
-      event: React.MouseEvent<HTMLButtonElement>,
-      currentLegend?: Legend,
-    ): void {
-      if (props.legendProps?.canSelectMultipleLegends) {
-        setSelectedLegends(legendsSelected);
-      } else {
-        setSelectedLegends(legendsSelected.slice(-1));
-      }
-
-      if (props.legendProps?.onChange) {
-        props.legendProps.onChange(legendsSelected, event, currentLegend);
-      }
     }
 
     function _getBoxWidthOfShape(pointId: string, pointIndex: number, isLastPoint: boolean) {
@@ -1241,19 +1222,15 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
      * 1. selection: if the user clicks on it
      * 2. hovering: if there is no selected legend and the user hovers over it*/
 
-    function _legendHighlighted(legendTitle: string | undefined): boolean {
-      return _getHighlightedLegend().includes(legendTitle!);
+    function _legendHighlighted(legend: string) {
+      return selectedLegend === legend || (selectedLegend === '' && activeLegend === legend);
     }
 
     /**
      * This function checks if none of the legends is selected or hovered.*/
 
-    function _noLegendHighlighted(): boolean {
-      return selectedLegends.length === 0;
-    }
-
-    function _getHighlightedLegend() {
-      return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
+    function _noLegendHighlighted() {
+      return selectedLegend === '' && activeLegend === '';
     }
 
     function _getColorFillBarOpacity(colorFillBar: ColorFillBarsProps) {
