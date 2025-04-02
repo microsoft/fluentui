@@ -80,11 +80,7 @@ export const useTagPickerControl_unstable = (
     const targetWindow = targetDocument?.defaultView;
 
     if (targetWindow) {
-      if (rafIdRef.current) {
-        targetWindow.cancelAnimationFrame(rafIdRef.current);
-      }
-
-      targetWindow.requestAnimationFrame(() => {
+      rafIdRef.current = targetWindow.requestAnimationFrame(() => {
         innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
       });
     }
