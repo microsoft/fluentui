@@ -1,7 +1,7 @@
 import { modulePathResolverPlugin } from '@wc-toolkit/module-path-resolver';
 import { cemValidatorPlugin } from '@wc-toolkit/cem-validator';
-import { getTsProgram, typeParserPlugin } from "@wc-toolkit/type-parser";
-import { cemInheritancePlugin } from "@wc-toolkit/cem-inheritance";
+import { getTsProgram, typeParserPlugin } from '@wc-toolkit/type-parser';
+import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
 
 export default {
   /** Globs to analyze */
@@ -45,11 +45,9 @@ export default {
   ],
 
   /** Overrides default module creation: */
-  overrideModuleCreation({ts, globs}) {
-    const program = getTsProgram(ts, globs, "tsconfig.json");
-    return program
-      .getSourceFiles()
-      .filter((sf) => globs.find((glob) => sf.fileName.includes(glob)));
+  overrideModuleCreation({ ts, globs }) {
+    const program = getTsProgram(ts, globs, 'tsconfig.json');
+    return program.getSourceFiles().filter(sf => globs.find(glob => sf.fileName.includes(glob)));
   },
 };
 
