@@ -12,8 +12,10 @@ export function useKeyborgRef() {
   const keyborgRef = React.useRef<Keyborg | null>(null);
 
   React.useEffect(() => {
-    if (targetDocument) {
-      const keyborg = createKeyborg(targetDocument.defaultView!);
+    const targetWindow = targetDocument?.defaultView;
+
+    if (targetWindow) {
+      const keyborg = createKeyborg(targetWindow);
       keyborgRef.current = keyborg;
 
       return () => {

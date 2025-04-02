@@ -7,50 +7,50 @@ import { useTabster } from './useTabster';
  * Returns a set of helper functions that will traverse focusable elements in the context of a root DOM element
  */
 export const useFocusFinders = () => {
-  const tabster = useTabster();
+  const tabsterRef = useTabster();
   const { targetDocument } = useFluent();
 
   // Narrow props for now and let need dictate additional props in the future
   const findAllFocusable = React.useCallback(
     (container: HTMLElement, acceptCondition?: (el: HTMLElement) => boolean) =>
-      tabster?.focusable.findAll({ container, acceptCondition }) || [],
-    [tabster],
+      tabsterRef.current?.focusable.findAll({ container, acceptCondition }) || [],
+    [tabsterRef],
   );
 
   const findFirstFocusable = React.useCallback(
-    (container: HTMLElement) => tabster?.focusable.findFirst({ container }),
-    [tabster],
+    (container: HTMLElement) => tabsterRef.current?.focusable.findFirst({ container }),
+    [tabsterRef],
   );
 
   const findLastFocusable = React.useCallback(
-    (container: HTMLElement) => tabster?.focusable.findLast({ container }),
-    [tabster],
+    (container: HTMLElement) => tabsterRef.current?.focusable.findLast({ container }),
+    [tabsterRef],
   );
 
   const findNextFocusable = React.useCallback(
     (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabster || !targetDocument) {
+      if (!tabsterRef.current || !targetDocument) {
         return null;
       }
 
       const { container = targetDocument.body } = options;
 
-      return tabster.focusable.findNext({ currentElement, container });
+      return tabsterRef.current.focusable.findNext({ currentElement, container });
     },
-    [tabster, targetDocument],
+    [tabsterRef, targetDocument],
   );
 
   const findPrevFocusable = React.useCallback(
     (currentElement: HTMLElement, options: Pick<Partial<TabsterTypes.FindNextProps>, 'container'> = {}) => {
-      if (!tabster || !targetDocument) {
+      if (!tabsterRef.current || !targetDocument) {
         return null;
       }
 
       const { container = targetDocument.body } = options;
 
-      return tabster.focusable.findPrev({ currentElement, container });
+      return tabsterRef.current.focusable.findPrev({ currentElement, container });
     },
-    [tabster, targetDocument],
+    [tabsterRef, targetDocument],
   );
 
   return {

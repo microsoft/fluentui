@@ -7,6 +7,7 @@ import {
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
+  type TabsterDOMAttribute,
 } from '@fluentui/react-tabster';
 import {
   elementContains,
@@ -179,6 +180,7 @@ export const useListItem_unstable = (
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
     focusableItems ? arrowNavigationAttributes : {},
     focusableGroupAttrs,
+    props as Partial<TabsterDOMAttribute>,
   );
 
   const root = slot.always(
@@ -190,8 +192,8 @@ export const useListItem_unstable = (
       ...(isSelectionEnabled && {
         'aria-selected': isSelected,
       }),
-      ...tabsterAttributes,
       ...props,
+      ...tabsterAttributes,
       onKeyDown: handleKeyDown,
       onClick: isSelectionEnabled || onClick || onAction ? handleClick : undefined,
     }),

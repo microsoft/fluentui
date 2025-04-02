@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Wed, 26 Mar 2025 21:47:47 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 15:08:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.4.6)
+
+Tue, 01 Apr 2025 15:08:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.4.5..@fluentui/react-toast_v9.4.6)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
+- Bump @fluentui/react-portal to v9.5.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
+- Bump @fluentui/react-tabster to v9.24.4 ([PR #33909](https://github.com/microsoft/fluentui/pull/33909) by beachball)
+
+## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.4.5)
+
+Thu, 27 Mar 2025 21:12:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.4.4..@fluentui/react-toast_v9.4.5)
+
+### Patches
+
+- feat: add customStyleHook ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by dmytrokirpa@microsoft.com)
+- Bump @fluentui/react-aria to v9.14.3 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.53 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-motion to v9.7.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.4.8 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-portal to v9.5.3 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-tabster to v9.24.3 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
 
 ## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.4.4)
 

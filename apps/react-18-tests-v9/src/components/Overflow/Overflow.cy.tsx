@@ -89,7 +89,7 @@ const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
   );
 };
 
-const mount = (element: JSX.Element) => {
+const mount = (element: React.JSX.Element) => {
   mountBase(<Provider>{element}</Provider>);
 };
 

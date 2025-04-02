@@ -19,11 +19,7 @@ export interface UseFocusableGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
-  const tabster = useTabster();
-
-  if (tabster) {
-    getGroupper(tabster);
-  }
+  useTabster(getGroupper);
 
   return useTabsterAttributes({
     groupper: {
