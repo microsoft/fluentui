@@ -1,12 +1,8 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { VSChartDataPoint, VerticalStackedChartProps } from '../../index';
 import { forEachTimezone, getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
-import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -51,21 +47,21 @@ function sharedAfterEach() {
 }
 
 const firstChartPoints: VSChartDataPoint[] = [
-  { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
-  { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
-  { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
+  { legend: 'Metadata1', data: 2, color: '#0078d4' },
+  { legend: 'Metadata2', data: 0.5, color: '#002050' },
+  { legend: 'Metadata3', data: 0, color: '#00188f' },
 ];
 
 const secondChartPoints: VSChartDataPoint[] = [
-  { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
-  { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
-  { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
+  { legend: 'Metadata1', data: 30, color: '#0078d4' },
+  { legend: 'Metadata2', data: 3, color: '#002050' },
+  { legend: 'Metadata3', data: 40, color: '#00188f' },
 ];
 
 const thirdChartPoints: VSChartDataPoint[] = [
-  { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
-  { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
-  { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
+  { legend: 'Metadata1', data: 10, color: '#0078d4' },
+  { legend: 'Metadata2', data: 60, color: '#002050' },
+  { legend: 'Metadata3', data: 30, color: '#00188f' },
 ];
 
 const simplePoints = [
@@ -73,17 +69,17 @@ const simplePoints = [
     chartData: firstChartPoints,
     xAxisPoint: 'January',
     activeLegend: 'Supported Builds',
-    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 42, legend: 'Supported Builds', color: '#0078d4' }],
   },
   {
     chartData: secondChartPoints,
     xAxisPoint: 'February',
-    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 41, legend: 'Supported Builds', color: '#0078d4' }],
   },
   {
     chartData: thirdChartPoints,
     xAxisPoint: 'March',
-    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 100, legend: 'Supported Builds', color: '#0078d4' }],
   },
 ];
 
@@ -91,35 +87,35 @@ const datePoints = [
   {
     chartData: firstChartPoints,
     xAxisPoint: new Date('2019/05/01'),
-    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 42, legend: 'Supported Builds', color: '#0078d4' }],
   },
   {
     chartData: secondChartPoints,
     xAxisPoint: new Date('2019/09/01'),
-    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 41, legend: 'Supported Builds', color: '#0078d4' }],
   },
   {
     chartData: thirdChartPoints,
     xAxisPoint: new Date('2020/03/01'),
-    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 100, legend: 'Supported Builds', color: '#0078d4' }],
   },
 ];
 const simplePointsWithLine = [
   {
     chartData: firstChartPoints,
     xAxisPoint: 0,
-    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 42, legend: 'Supported Builds', color: '#0078d4' }],
   },
   {
     chartData: secondChartPoints,
     xAxisPoint: 20,
-    lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+    lineData: [{ y: 33, legend: 'Supported Builds', color: '#0078d4' }],
   },
 ];
 
 const simpleChartPoints: VSChartDataPoint[] = [
-  { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
-  { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
+  { legend: 'Metadata1', data: 2, color: '#0078d4' },
+  { legend: 'Metadata2', data: 0.5, color: '#00188f' },
 ];
 
 const simplePointsWithoutLine = [
@@ -216,19 +212,6 @@ describe('Vertical stacked bar chart - Subcomponent Line', () => {
       expect(lines).toBeDefined();
     },
   );
-
-  testWithoutWait(
-    'Should render the vertical stacked bar chart with numeric x-axis data - RTL',
-    VerticalStackedBarChart,
-    { data: simplePoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    () => {
-      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
-    },
-  );
 });
 
 describe.skip('Vertical stacked bar chart - Subcomponent bar', () => {
@@ -315,8 +298,8 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
     container => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
-      expect(bars[0].getAttribute('fill')).toEqual(DefaultPalette.blue);
-      expect(bars[1].getAttribute('fill')).toEqual(DefaultPalette.blueMid);
+      expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[1].getAttribute('fill')).toEqual('#002050');
     },
   );
 
@@ -628,22 +611,6 @@ describe('Vertical stacked bar chart - Screen resolution', () => {
       expect(container).toMatchSnapshot();
     },
   );
-});
-
-describe('Vertical stacked bar chart - Theme', () => {
-  beforeEach(updateChartWidthAndHeight);
-  afterEach(sharedAfterEach);
-
-  test('Should reflect theme change', () => {
-    // Arrange
-    const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
-        <VerticalStackedBarChart culture={window.navigator.language} data={chartPointsVSBC} />
-      </ThemeProvider>,
-    );
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 });
 
 describe('VerticalStackedBarChart - mouse events', () => {

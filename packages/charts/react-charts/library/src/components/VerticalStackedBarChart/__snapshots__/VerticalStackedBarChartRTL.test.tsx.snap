@@ -215,7 +215,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -260,7 +260,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -272,7 +272,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -317,7 +317,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -329,7 +329,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -355,7 +355,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(8, 0)"
@@ -366,7 +366,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(8, 0)"
@@ -381,7 +381,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -393,7 +393,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -405,7 +405,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -434,12 +434,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -472,12 +472,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -491,12 +491,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -726,7 +726,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -771,7 +771,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -783,7 +783,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -828,7 +828,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -840,7 +840,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -866,7 +866,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(8, 0)"
@@ -877,7 +877,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(8, 0)"
@@ -892,7 +892,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -904,7 +904,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -916,7 +916,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(8, 0)"
@@ -945,12 +945,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -983,12 +983,12 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -998,498 +998,6 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           </button>
           <button
             aria-label="Metadata3"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Metadata3
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertical stacked bar chart with numeric x-axis data - RTL 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      class="fui-cart__chartWrapper"
-      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-    >
-      <svg
-        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. "
-        height="300"
-        style="display: block;"
-        width="650"
-      >
-        <g
-          class="fui-cart__xAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_"
-          text-anchor="middle"
-          transform="translate(0, 265)"
-        >
-          <path
-            class="domain"
-            d="M279.5,6V0.5H391.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(287,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              January
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              February
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(383,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              March
-            </text>
-          </g>
-        </g>
-        <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,265.5H0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,265.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,204.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,143)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,81.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              75
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              100
-            </text>
-          </g>
-        </g>
-        <g>
-          <g>
-            <g
-              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-              data-is-focusable="true"
-              id="0-singleBar"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#0078d4"
-                height="4.9"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="279"
-                y="260.1"
-              />
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#00188f"
-                height="3"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="279"
-                y="257.1"
-              />
-            </g>
-            <text
-              aria-label="Total: 2.5"
-              class="fui-vsbc__barLabel"
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="287"
-              y="251.10000000000002"
-            >
-              2.5
-            </text>
-          </g>
-          <g>
-            <g
-              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-              data-is-focusable="true"
-              id="1-singleBar"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#0078d4"
-                height="73.49999999999999"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="327"
-                y="191.5"
-              />
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#00188f"
-                height="7.35"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="327"
-                y="184.15"
-              />
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#00bcf2"
-                height="97.99999999999999"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="327"
-                y="86.15000000000002"
-              />
-            </g>
-            <text
-              aria-label="Total: 73"
-              class="fui-vsbc__barLabel"
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="335"
-              y="80.15000000000002"
-            >
-              73
-            </text>
-          </g>
-          <g>
-            <g
-              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-              data-is-focusable="true"
-              id="2-singleBar"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#0078d4"
-                height="24.5"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="375"
-                y="240.5"
-              />
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#00188f"
-                height="147"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="375"
-                y="93.5"
-              />
-              <rect
-                class="fui-vsbc__opacityChangeOnHover default"
-                cursor="default"
-                fill="#00bcf2"
-                height="73.5"
-                opacity="1"
-                rx="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="375"
-                y="20"
-              />
-            </g>
-            <text
-              aria-label="Total: 100"
-              class="fui-vsbc__barLabel"
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="383"
-              y="14"
-            >
-              100
-            </text>
-          </g>
-        </g>
-        <g>
-          <line
-            opacity="1"
-            stroke="#e3008c"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="279"
-            x2="327"
-            y1="162.10000000000002"
-            y2="164.55"
-          />
-          <line
-            opacity="1"
-            stroke="#e3008c"
-            stroke-linecap="round"
-            stroke-width="3"
-            transform="translate(8, 0)"
-            x1="327"
-            x2="375"
-            y1="164.55"
-            y2="20"
-          />
-          <circle
-            cx="279"
-            cy="162.10000000000002"
-            data-is-focusable="false"
-            fill="var(--colorNeutralBackground1)"
-            r="8"
-            stroke="#e3008c"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-            visibility="hidden"
-          />
-          <circle
-            cx="327"
-            cy="164.55"
-            data-is-focusable="false"
-            fill="var(--colorNeutralBackground1)"
-            r="8"
-            stroke="#e3008c"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-            visibility="hidden"
-          />
-          <circle
-            cx="375"
-            cy="20"
-            data-is-focusable="false"
-            fill="var(--colorNeutralBackground1)"
-            r="8"
-            stroke="#e3008c"
-            stroke-width="3"
-            tabindex="0"
-            transform="translate(8, 0)"
-            visibility="hidden"
-          />
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-        role="listbox"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-          style="text-align: unset;"
-        >
-          <button
-            aria-label="Supported Builds"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Supported Builds
-            </div>
-          </button>
-          <button
-            aria-label="Metadata1"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Metadata1
-            </div>
-          </button>
-          <button
-            aria-label="Metadata2"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
@@ -1504,419 +1012,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             <div
               class="fui-legend__text"
             >
-              Metadata2
-            </div>
-          </button>
-          <button
-            aria-label="Metadata3"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
-            />
-            <div
-              class="fui-legend__text"
-            >
               Metadata3
             </div>
           </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
-<div>
-  <div
-    class="body-109"
-  >
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        class="fui-cart__chartWrapper"
-        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-      >
-        <svg
-          aria-label="Vertical bar chart with 2 stacked bars. "
-          height="300"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_"
-            text-anchor="middle"
-            transform="translate(0, 265)"
-          >
-            <path
-              class="domain"
-              d="M56.5,6V0.5H614.5V6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(56.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(196,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                5
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                10
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(475,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(614.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                20
-              </text>
-            </g>
-          </g>
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,265.5H0.5V20.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,265.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,204.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                13
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,143)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                26
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,81.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                39
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                52
-              </text>
-            </g>
-          </g>
-          <g>
-            <g>
-              <g
-                id="0-singleBar"
-                tabindex="0"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 40%."
-                  class="fui-vsbc__opacityChangeOnHover default"
-                  cursor="default"
-                  data-is-focusable="true"
-                  fill="aqua"
-                  height="188.46153846153845"
-                  opacity="1"
-                  role="img"
-                  rx="0"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="56"
-                  y="76.53846153846155"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 5%."
-                  class="fui-vsbc__opacityChangeOnHover default"
-                  cursor="default"
-                  data-is-focusable="true"
-                  fill="navy"
-                  height="23.557692307692307"
-                  opacity="1"
-                  role="img"
-                  rx="0"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="56"
-                  y="52.98076923076924"
-                />
-              </g>
-              <text
-                aria-label="Total: 45"
-                class="fui-vsbc__barLabel"
-                role="img"
-                text-anchor="middle"
-                transform="translate(-8, 0)"
-                x="64"
-                y="46.98076923076924"
-              >
-                45
-              </text>
-            </g>
-            <g>
-              <g
-                id="1-singleBar"
-                tabindex="0"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 30%."
-                  class="fui-vsbc__opacityChangeOnHover default"
-                  cursor="default"
-                  data-is-focusable="true"
-                  fill="aqua"
-                  height="141.34615384615384"
-                  opacity="1"
-                  role="img"
-                  rx="0"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="614"
-                  y="123.65384615384616"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 20%."
-                  class="fui-vsbc__opacityChangeOnHover default"
-                  cursor="default"
-                  data-is-focusable="true"
-                  fill="navy"
-                  height="94.23076923076923"
-                  opacity="1"
-                  role="img"
-                  rx="0"
-                  transform="translate(-8, 0)"
-                  width="16"
-                  x="614"
-                  y="29.423076923076934"
-                />
-              </g>
-              <text
-                aria-label="Total: 50"
-                class="fui-vsbc__barLabel"
-                role="img"
-                text-anchor="middle"
-                transform="translate(-8, 0)"
-                x="622"
-                y="23.423076923076934"
-              >
-                50
-              </text>
-            </g>
-          </g>
-          <g />
-        </svg>
-      </div>
-      <div
-        class="fui-cart__legendContainer"
-      >
-        <div
-          aria-label="Legends"
-          aria-multiselectable="false"
-          class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
-        >
-          <div
-            class="fui-Overflow fui-legend__resizableArea"
-            style="text-align: unset;"
-          >
-            <button
-              aria-label="Metadata1"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: aqua; border-color: aqua; --rect-content-high-contrast: linear-gradient(to right, aqua, aqua);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Metadata1
-              </div>
-            </button>
-            <button
-              aria-label="Metadata2"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: navy; border-color: navy; --rect-content-high-contrast: linear-gradient(to right, navy, navy);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Metadata2
-              </div>
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -2139,7 +1237,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -2184,7 +1282,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -2196,7 +1294,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -2241,7 +1339,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -2253,7 +1351,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -2279,7 +1377,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -2290,7 +1388,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -2305,7 +1403,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2317,7 +1415,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2329,7 +1427,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2358,12 +1456,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -2396,12 +1494,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -2415,12 +1513,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -2650,7 +1748,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -2695,7 +1793,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -2707,7 +1805,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -2752,7 +1850,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -2764,7 +1862,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -2790,7 +1888,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -2801,7 +1899,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -2816,7 +1914,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2828,7 +1926,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2840,7 +1938,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -2869,12 +1967,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -2907,12 +2005,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -2926,12 +2024,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -3305,7 +2403,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -3350,7 +2448,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -3362,7 +2460,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -3407,7 +2505,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -3419,7 +2517,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -3445,7 +2543,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -3456,7 +2554,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -3471,7 +2569,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -3483,7 +2581,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -3495,7 +2593,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -3524,12 +2622,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -3562,12 +2660,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -3581,12 +2679,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -3960,7 +3058,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -4005,7 +3103,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -4017,7 +3115,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -4062,7 +3160,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -4074,7 +3172,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -4100,7 +3198,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -4111,7 +3209,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -4126,7 +3224,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4138,7 +3236,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4150,7 +3248,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4179,12 +3277,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -4217,12 +3315,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -4236,12 +3334,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -4615,7 +3713,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -4660,7 +3758,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -4672,7 +3770,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -4717,7 +3815,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -4729,7 +3827,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -4755,7 +3853,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -4766,7 +3864,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -4781,7 +3879,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4793,7 +3891,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4805,7 +3903,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -4834,12 +3932,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -4872,12 +3970,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -4891,12 +3989,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
@@ -5270,7 +4368,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="3"
                 opacity="1"
                 rx="0"
@@ -5315,7 +4413,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="7.35"
                 opacity="1"
                 rx="0"
@@ -5327,7 +4425,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="97.99999999999999"
                 opacity="1"
                 rx="0"
@@ -5372,7 +4470,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00188f"
+                fill="#002050"
                 height="147"
                 opacity="1"
                 rx="0"
@@ -5384,7 +4482,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               <rect
                 class="fui-vsbc__opacityChangeOnHover default"
                 cursor="default"
-                fill="#00bcf2"
+                fill="#00188f"
                 height="73.5"
                 opacity="1"
                 rx="0"
@@ -5410,7 +4508,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
         <g>
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -5421,7 +4519,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           />
           <line
             opacity="1"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
@@ -5436,7 +4534,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -5448,7 +4546,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -5460,7 +4558,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             data-is-focusable="false"
             fill="var(--colorNeutralBackground1)"
             r="8"
-            stroke="#e3008c"
+            stroke="#0078d4"
             stroke-width="3"
             tabindex="0"
             transform="translate(0, 0)"
@@ -5489,12 +4587,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 4px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
+            style="--rect-height: 4px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 4px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
+              style="height: 4px; background-color: rgb(0, 120, 212); border-color: #0078d4; --rect-content-high-contrast: linear-gradient(to right, #0078d4, #0078d4);"
             />
             <div
               class="fui-legend__text"
@@ -5527,12 +4625,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
+              style="height: 12px; background-color: rgb(0, 32, 80); border-color: #002050; --rect-content-high-contrast: linear-gradient(to right, #002050, #002050);"
             />
             <div
               class="fui-legend__text"
@@ -5546,12 +4644,12 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00bcf2; --rect-borderColor: #00bcf2;"
+            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
             type="button"
           >
             <div
               class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(0, 188, 242); border-color: #00bcf2; --rect-content-high-contrast: linear-gradient(to right, #00bcf2, #00bcf2);"
+              style="height: 12px; background-color: rgb(0, 24, 143); border-color: #00188f; --rect-content-high-contrast: linear-gradient(to right, #00188f, #00188f);"
             />
             <div
               class="fui-legend__text"
