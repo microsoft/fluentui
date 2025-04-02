@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Reorder custom style hook to merge classes correctly.",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}

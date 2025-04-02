@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Reorder custom style hook to merge classes correctly.",
+  "packageName": "@fluentui/react-migration-v0-v9",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Reorder custom style hook to merge classes correctly.",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
