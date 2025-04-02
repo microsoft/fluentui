@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release to npm",
-  "packageName": "@fluentui/babel-preset-storybook-full-source",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

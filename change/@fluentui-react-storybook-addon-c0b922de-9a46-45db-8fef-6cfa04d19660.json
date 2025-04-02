@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release to npm",
-  "packageName": "@fluentui/react-storybook-addon",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

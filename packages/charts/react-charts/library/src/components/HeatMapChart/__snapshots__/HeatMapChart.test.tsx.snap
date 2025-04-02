@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render calling with respective to props No prop changes 1`] = `ReactWrapper {}`;
+
+exports[`Render calling with respective to props No prop changes 2`] = `ReactWrapper {}`;

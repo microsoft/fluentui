@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.4)
+
+Tue, 01 Apr 2025 15:08:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.3..@fluentui/react-tabster_v9.24.4)
+
+### Patches
+
+- fix: improve support for concurrent mode ([PR #34113](https://github.com/microsoft/fluentui/pull/34113) by olfedias@microsoft.com)
+- fix: don't pass `null` to `createKeyborg()` ([PR #34118](https://github.com/microsoft/fluentui/pull/34118) by olfedias@microsoft.com)
 
 ## [9.24.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.3)
 

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:02 GMT",
+      "tag": "@fluentui/react-carousel_v9.6.4",
+      "version": "9.6.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-aria to v9.14.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-button to v9.4.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-carousel_v9.6.3",
       "version": "9.6.3",
