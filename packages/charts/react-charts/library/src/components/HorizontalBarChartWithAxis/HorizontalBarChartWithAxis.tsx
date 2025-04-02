@@ -11,7 +11,7 @@ import {
   HorizontalBarChartWithAxisDataPoint,
   RefArrayData,
   Margins,
-  ModifiedCartesianChartProps,
+  ChartPopoverProps,
 } from '../../index';
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -590,7 +590,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
 
   if (!_isChartEmpty()) {
     _adjustProps();
-    const calloutProps: ModifiedCartesianChartProps['calloutProps'] = {
+    const calloutProps: ChartPopoverProps = {
       color: color,
       legend: selectedLegendTitle,
       XValue: xCalloutValue,
