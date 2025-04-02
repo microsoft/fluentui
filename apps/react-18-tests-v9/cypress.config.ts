@@ -12,6 +12,7 @@ const excludedSpecs = [
 const includedSpecs = [
   path.resolve('../../apps/react-18-tests-v9/src/**/*.cy.{tsx,ts}'),
   path.resolve('../../packages/react-components/**/library/src/**/*.cy.{tsx,ts}'),
+  path.resolve('../../packages/react-components/react-tabster/src/**/*.cy.{tsx,ts}'),
 ];
 
 const specs = [...includedSpecs, ...excludedSpecs];
