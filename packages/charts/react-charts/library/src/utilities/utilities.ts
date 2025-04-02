@@ -500,12 +500,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-        .attr('aria-hidden', 'true')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
 
@@ -600,11 +595,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
 
@@ -625,11 +616,7 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
 
@@ -759,7 +746,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   if (node === null) {
     return;
   }
-  const axisNode = d3Select(node).call(g => xAxis);
+  const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
