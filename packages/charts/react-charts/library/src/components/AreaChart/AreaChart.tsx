@@ -321,7 +321,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           points.forEach((singleChartPoint: LineChartPoints) => {
             colors.push(singleChartPoint.color!);
             opacity.push(singleChartPoint.opacity || 1);
-            allChartPoints.push(...singleChartPoint.data);
+            allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
           });
 
         const mapOfXvalToListOfDataPoints: MapXToDataSet = {};
@@ -377,7 +377,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           points.forEach((singleChartPoint: LineChartPoints) => {
             colors.push(singleChartPoint.color!);
             opacity.push(singleChartPoint.opacity || 1);
-            allChartPoints.push(...singleChartPoint.data);
+            allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
           });
 
         let tempArr = allChartPoints;

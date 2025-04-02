@@ -770,8 +770,6 @@ export interface LegendsProps {
     overflowText?: string;
     selectedLegend?: string;
     selectedLegends?: string[];
-    selectedLegend?: string;
-    selectedLegends?: string[];
     shape?: LegendShape;
     styles?: LegendsStyles;
 }
