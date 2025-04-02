@@ -22,7 +22,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value, ...rest } = props;
+  const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value } = props;
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
@@ -58,7 +58,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
 
   const iconSlot = slot.optional(icon, { elementType: 'span' });
   const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
+    defaultProps: { children: props.children as React.ReactNode },
     elementType: 'span',
   });
   const contentReservedSpace: typeof content =
@@ -78,10 +78,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
         'aria-selected': disabled ? undefined : (`${selected}` as 'true' | 'false'),
         ...focusProps,
-        ...props,
-        // FIXME: value is not a valid prop for button
-        value,
-        ...rest,
+        ...omit(props, ['content']),
         disabled,
         onClick: onTabClick,
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,
@@ -93,7 +90,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     content: contentSlot,
     contentReservedSpace: slot.optional(contentReservedSpace, {
       renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
-      defaultProps: { children: props.children },
+      defaultProps: { children: props.children as React.ReactNode },
       elementType: 'span',
     }),
     appearance,
