@@ -1,7 +1,7 @@
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from './useARIAButtonProps';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
-import type { ARIAButtonProps, ARIAButtonType } from './types';
+import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './types';
 
 /**
  * @internal
@@ -15,7 +15,7 @@ import type { ARIAButtonProps, ARIAButtonType } from './types';
  * where no attribute addition is required.
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated, @typescript-eslint/no-explicit-any
-export const useARIAButtonShorthand: ResolveShorthandFunction<any> = ((value, options) => {
+export const useARIAButtonShorthand = ((value, options) => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shorthand = resolveShorthand(value, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(
@@ -24,4 +24,4 @@ export const useARIAButtonShorthand: ResolveShorthandFunction<any> = ((value, op
   );
   return shorthand && shorthandARIAButton;
   // eslint-disable-next-line @typescript-eslint/no-deprecated, @typescript-eslint/no-explicit-any
-}) as ResolveShorthandFunction<any>;
+}) as ResolveShorthandFunction<ARIAButtonSlotProps>;

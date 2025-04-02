@@ -103,7 +103,7 @@ export type AriaLiveAnnouncerState = {
 };
 
 // @public (undocumented)
-export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSX.Element;
+export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => React_2.JSX.Element;
 
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
@@ -115,7 +115,7 @@ export const useActiveDescendantContext: () => ActiveDescendantContextValue;
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
 // @internal @deprecated (undocumented)
-export const useARIAButtonShorthand: ResolveShorthandFunction<any>;
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // @public (undocumented)
 export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => AriaLiveAnnouncerState;

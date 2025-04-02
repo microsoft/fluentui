@@ -19,7 +19,12 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import { ARIAButtonElement, ARIAButtonElementIntersection, useARIAButtonProps } from '@fluentui/react-aria';
+import {
+  ARIAButtonElement,
+  ARIAButtonElementIntersection,
+  ARIAButtonProps,
+  useARIAButtonProps,
+} from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { useIsInMenuSplitGroup, useMenuSplitGroupContext_unstable } from '../../contexts/menuSplitGroupContext';
 
@@ -33,6 +38,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
   const {
+    as = 'div',
     disabled = false,
     hasSubmenu = isSubmenuTrigger,
     persistOnClick = persistOnClickContext,
@@ -61,9 +67,9 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       subText: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps<MenuItemProps>(
-        'div',
-        useARIAButtonProps('div', {
+      getIntrinsicElementProps<MenuItemProps, 'content'>(
+        as,
+        useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
           ...rest,
           disabled: false,
@@ -97,6 +103,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             props.onClick?.(event);
           }),
         }),
+        ['content'],
       ),
       { elementType: 'div' },
     ),
@@ -114,7 +121,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     }),
     content: slot.optional(props.content, {
       renderByDefault: !!props.children,
-      defaultProps: { children: props.children },
+      defaultProps: { children: props.children as React.ReactNode },
       elementType: 'span',
     }),
     secondaryContent: slot.optional(props.secondaryContent, { elementType: 'span' }),
