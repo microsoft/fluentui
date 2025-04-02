@@ -4,6 +4,7 @@ import descriptionMd from './HorizontalBarChartWithAxisDescription.md';
 import bestPracticesMd from './HorizontalBarChartWithAxisBestPractices.md';
 
 export { HorizontalBarWithAxisBasic } from './HorizontalBarChartWithAxisDefault.stories';
+export { HorizontalBarWithAxisStringAxisTooltip } from './HorizontalBarChartWithAxisStringAxisTooltip.stories';
 
 export default {
   title: 'Charts/HorizontalBarChartWithAxis',

@@ -586,11 +586,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
 
@@ -611,11 +607,7 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(g => yAxis)
-        .selectAll('text')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
   return yAxisScale;
 };
 
@@ -745,7 +737,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   if (node === null) {
     return;
   }
-  const axisNode = d3Select(node).call(g => xAxis);
+  const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
