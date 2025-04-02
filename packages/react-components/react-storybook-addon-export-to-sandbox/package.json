@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-storybook-addon-export-to-sandbox",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Storybook addon that enables cloud/web sandbox exports for stories doc mode code examples",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -17,8 +16,8 @@
   },
   "dependencies": {
     "@swc/helpers": "^0.5.1",
-    "babel-loader": "9.1.3",
-    "codesandbox-import-utils": "2.2.3",
+    "babel-loader": "^9.1.3",
+    "codesandbox-import-utils": "^2.2.3",
     "@fluentui/babel-preset-storybook-full-source": "^0.0.1",
     "dedent": "^1.2.0"
   },
@@ -40,6 +39,7 @@
       "node": "./lib-commonjs/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./preset": "./preset.js",
     "./package.json": "./package.json"
   },
   "files": [
