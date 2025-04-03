@@ -19,8 +19,7 @@ env:
 jobs:
   bundle-size-base:
     if: ${{ github.repository_owner == 'microsoft' }}
-    # TODO: use macos-14-xlarge (arm) for faster builds once https://github.com/Azure/cli/issues/172 will be fixed
-    runs-on: ubuntu-latest
+    runs-on: macos-14-xlarge
     permissions:
       id-token: 'write'
 
@@ -40,17 +39,19 @@ jobs:
       - name: Login via Azure CLI
         uses: azure/login@a65d910e8af852a8061c627c456678983e180302 # v2.2.0
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          client-id: ${{ secrets.AZURE_BUNDLESIZE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Extract branch name
+        run: |
+          echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
       - name: Upload report
-        uses: azure/cli@089eac9d8cc39f5d003e94f8b65efc51076c9cbd # v2.1.0
-        with:
-          azcliversion: latest
-          inlineScript: |
-            yarn monosize upload-report --branch=${{ github.ref }} --commit-sha ${{ github.sha }}
+        run: |
+          yarn monosize upload-report --branch=$BRANCH_NAME --commit-sha ${{ github.sha }}
         env:
-          AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
-          SYSTEM_ACCESSTOKEN: ${{ secrets.GITHUB_TOKEN }}
           BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_BUNDLESIZE_SERVICE_CONNECTION_ID }}

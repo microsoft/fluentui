@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 27 Mar 2025 07:21:19 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Apr 2025 07:19:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.68)
+
+Thu, 03 Apr 2025 07:19:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.67..@fluentui/react-charting_v5.23.68)
+
+### Patches
+
+- fix: use valid plotly data for transformations ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.4 ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by beachball)
 
 ## [5.23.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.67)
 
