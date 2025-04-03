@@ -56,7 +56,7 @@ export const styles = css`
   }
 
   ::slotted(svg),
-  :host(${largeState}) ::slotted(svg) {
+  :host([size='large']) ::slotted(svg) {
     font-size: 40px;
     height: 40px;
     width: 40px;
@@ -70,20 +70,22 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:is(${primaryState}, ${primaryState}:hover, ${primaryState}:active)) ::slotted([slot='description']) {
+  :host(:is([appearance='primary'], [appearance='primary']:hover, [appearance='primary']:active))
+    ::slotted([slot='description']) {
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(:is(${subtleState}, ${subtleState}:hover, ${subtleState}:active)) ::slotted([slot='description']),
-  :host(${transparentState}) ::slotted([slot='description']) {
+  :host(:is([appearance='subtle'], [appearance='subtle']:hover, [appearance='subtle']:active))
+    ::slotted([slot='description']),
+  :host([appearance='transparent']) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2};
   }
 
-  :host(${transparentState}:hover) ::slotted([slot='description']) {
+  :host([appearance='transparent']:hover) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandHover};
   }
 
-  :host(${transparentState}:active) ::slotted([slot='description']) {
+  :host([appearance='transparent']:active) ::slotted([slot='description']) {
     color: ${colorNeutralForeground2BrandPressed};
   }
 
@@ -92,37 +94,37 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     padding: 8px;
     padding-bottom: 10px;
   }
 
-  :host(${iconOnlyState}) {
+  :host([icon-only]) {
     min-width: 52px;
     max-width: 52px;
     padding: ${spacingHorizontalSNudge};
   }
 
-  :host(${iconOnlyState}${smallState}) {
+  :host([icon-only][size='small']) {
     min-width: 48px;
     max-width: 48px;
     padding: ${spacingHorizontalXS};
   }
 
-  :host(${iconOnlyState}${largeState}) {
+  :host([icon-only][size='large']) {
     min-width: 56px;
     max-width: 56px;
     padding: ${spacingHorizontalS};
   }
 
-  :host(${largeState}) {
+  :host([size='large']) {
     padding-top: 18px;
     padding-inline: 16px;
     padding-bottom: 20px;
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host(${largeState}) ::slotted([slot='description']) {
+  :host([size='large']) ::slotted([slot='description']) {
     font-size: ${fontSizeBase300};
   }
 `;
