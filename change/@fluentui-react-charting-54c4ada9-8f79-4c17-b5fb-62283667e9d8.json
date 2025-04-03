@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use valid plotly data for transformations",
+  "packageName": "@fluentui/react-charting",
+  "email": "110246001+krkshitij@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
