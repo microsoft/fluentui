@@ -12,20 +12,8 @@ import { LineChartProps } from '../LineChart/index';
 import { getNextColor } from '../../utilities/colors';
 import { VerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import type {
-  Datum,
-  Layout,
-  PlotlySchema,
-  PieData,
-  PlotData,
-  TypedArray,
-} from '@fluentui/chart-utilities';
-import {
-  isArrayOfType,
-  isDate,
-  isDateArray,
-  isNumberArray,
-} from '@fluentui/chart-utilities';
+import type { Datum, Layout, PlotlySchema, PieData, PlotData, TypedArray } from '@fluentui/chart-utilities';
+import { isArrayOfType, isDate, isDateArray, isNumberArray } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 
 interface SecondaryYAxisValues {
