@@ -154,23 +154,7 @@ export default {
 export const Default: Story = {};
 
 export const IconOnly: Story = {
-  render: renderComponent(html<StoryArgs<FluentMenuButton>>`
-    <fluent-menu-button icon-only aria-label="Menu">
-      <svg
-        fill="currentColor"
-        aria-hidden="true"
-        width="1em"
-        height="1em"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M7.5 13h5a.5.5 0 0 1 .09 1H7.5a.5.5 0 0 1-.09-1h5.09-5Zm-2-4h9a.5.5 0 0 1 .09 1H5.5a.5.5 0 0 1-.09-1h9.09-9Zm-2-4h13a.5.5 0 0 1 .09 1H3.5a.5.5 0 0 1-.09-1H16.5h-13Z"
-          fill="currentColor"
-        ></path>
-      </svg>
-    </fluent-menu-button>
-  `),
+  render: renderComponent(html<StoryArgs<FluentMenuButton>>` <fluent-menu-button icon-only></fluent-menu-button> `),
 };
 
 export const Appearance: Story = {
