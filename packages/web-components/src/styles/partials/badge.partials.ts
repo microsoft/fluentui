@@ -94,7 +94,7 @@ export const badgeBaseStyles = css.partial`
  * The badge's size styles
  */
 export const badgeSizeStyles = css.partial`
-  :host([size="tiny"]) {
+  :host([size='tiny']) {
     width: 6px;
     height: 6px;
     font-size: 4px;
@@ -102,7 +102,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: 0;
     min-width: unset;
   }
-  :host([size="tiny"]) {::slotted(svg) {
+  :host([size='tiny']) ::slotted(svg) {
     font-size: 6px;
   }
   :host([size='extra-small']) {
@@ -113,7 +113,7 @@ export const badgeSizeStyles = css.partial`
     padding-inline: 0;
     min-width: unset;
   }
-  :host([size='extra-small']) {::slotted(svg) {
+  :host([size='extra-small']) ::slotted(svg) {
     font-size: 10px;
   }
   :host([size='small']) {
