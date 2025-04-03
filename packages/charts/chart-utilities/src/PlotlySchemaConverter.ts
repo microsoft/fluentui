@@ -9,7 +9,7 @@ export interface OutputChartType {
   /**
    * Array of [index, chartType] pairs
    */
-  validTraceIndices?: [number, string][];
+  validTracesInfo?: [number, string][];
 }
 
 const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
@@ -173,9 +173,10 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   scatter: [validateScatterData],
 };
 
-const getValidTraceIndices = (dataArr: Data[]) => {
+const DEFAULT_CHART_TYPE = '';
+const getValidTraces = (dataArr: Data[]) => {
   const errorMessages: string[] = [];
-  const validTraceIndices = dataArr
+  const validTraces = dataArr
     .map((data, index): [number, string] => {
       let type = data.type;
       if (isLineData(data as Partial<PlotData>)) {
@@ -189,20 +190,20 @@ const getValidTraceIndices = (dataArr: Data[]) => {
             validator(data);
           } catch (error) {
             errorMessages.push(`data[${index}]: ${error}`);
-            return [-1, ''];
+            return [-1, DEFAULT_CHART_TYPE];
           }
         }
       }
 
-      return [index, ''];
+      return [index, DEFAULT_CHART_TYPE];
     })
     .filter(trace => trace[0] >= 0);
 
-  if (validTraceIndices.length === 0) {
+  if (validTraces.length === 0) {
     throw new Error(errorMessages.join('; '));
   }
 
-  return validTraceIndices;
+  return validTraces;
 };
 
 export const mapFluentChart = (input: any): OutputChartType => {
@@ -221,53 +222,53 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
     }
 
-    const validTraceIndices = getValidTraceIndices(validSchema.data);
-    const firstData = validSchema.data[validTraceIndices[0][0]];
+    const validTraces = getValidTraces(validSchema.data);
+    const firstData = validSchema.data[validTraces[0][0]];
 
     switch (firstData.type) {
       case 'pie':
-        return { isValid: true, type: 'donut', validTraceIndices };
+        return { isValid: true, type: 'donut', validTracesInfo: validTraces };
       case 'heatmap':
-        return { isValid: true, type: 'heatmap', validTraceIndices };
+        return { isValid: true, type: 'heatmap', validTracesInfo: validTraces };
       case 'sankey':
-        return { isValid: true, type: 'sankey', validTraceIndices };
+        return { isValid: true, type: 'sankey', validTracesInfo: validTraces };
       case 'indicator':
       case 'gauge':
-        return { isValid: true, type: 'gauge', validTraceIndices };
+        return { isValid: true, type: 'gauge', validTracesInfo: validTraces };
       case 'histogram':
-        return { isValid: true, type: 'verticalbar', validTraceIndices };
+        return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       default:
-        const containsBars = validTraceIndices.some(trace => validSchema.data[trace[0]].type === 'bar');
-        const containsLines = validTraceIndices.some(
+        const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
+        const containsLines = validTraces.some(
           trace =>
             validSchema.data[trace[0]].type === 'scatter' ||
             isLineData(validSchema.data[trace[0]] as Partial<PlotData>),
         );
         if (containsBars && containsLines) {
-          return { isValid: true, type: 'verticalstackedbar', validTraceIndices };
+          return { isValid: true, type: 'verticalstackedbar', validTracesInfo: validTraces };
         }
         if (containsBars) {
           const firstBarData = firstData as Partial<PlotData>;
           if (firstBarData.orientation === 'h' && isNumberArray(firstBarData.x)) {
-            return { isValid: true, type: 'horizontalbar', validTraceIndices };
+            return { isValid: true, type: 'horizontalbar', validTracesInfo: validTraces };
           } else {
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
-              return { isValid: true, type: 'groupedverticalbar', validTraceIndices };
+              return { isValid: true, type: 'groupedverticalbar', validTracesInfo: validTraces };
             }
-            return { isValid: true, type: 'verticalstackedbar', validTraceIndices };
+            return { isValid: true, type: 'verticalstackedbar', validTracesInfo: validTraces };
           }
         }
         if (containsLines) {
           const firstScatterData = firstData as Partial<PlotData>;
-          const isAreaChart = validTraceIndices.some(trace =>
+          const isAreaChart = validTraces.some(trace =>
             ['tonexty', 'tozeroy'].includes(`${(validSchema.data[trace[0]] as Partial<PlotData>).fill}`),
           );
           const isXDate = isDateArray(firstScatterData.x);
           const isXNumber = isNumberArray(firstScatterData.x);
           if (isXDate || isXNumber) {
-            return { isValid: true, type: isAreaChart ? 'area' : 'line', validTraceIndices };
+            return { isValid: true, type: isAreaChart ? 'area' : 'line', validTracesInfo: validTraces };
           }
-          return { isValid: true, type: 'fallback', validTraceIndices };
+          return { isValid: true, type: 'fallback', validTracesInfo: validTraces };
         }
 
         return { isValid: false, errorMessage: `Unsupported chart - type :${firstData.type}}` };
