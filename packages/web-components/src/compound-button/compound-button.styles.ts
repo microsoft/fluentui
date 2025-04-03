@@ -18,14 +18,6 @@ import {
   spacingHorizontalSNudge,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import {
-  iconOnlyState,
-  largeState,
-  primaryState,
-  smallState,
-  subtleState,
-  transparentState,
-} from '../styles/states/index.js';
 
 // Need to support icon hover styles
 export const styles = css`
