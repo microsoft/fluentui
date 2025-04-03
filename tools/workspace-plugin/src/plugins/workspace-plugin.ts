@@ -151,6 +151,17 @@ function buildWorkspaceTargets(
 
   // react v9 lib
   if (projectJSON.projectType === 'library' && tags.includes('vNext')) {
+    // *-visual-regression projects
+    if (tags.includes('visual-regression')) {
+      // TODO: add VRT targets
+
+      if (storybookTarget) {
+        targets.start = { command: `nx run ${config.projectJSON.name}:storybook`, cache: true };
+      }
+
+      return targets;
+    }
+
     // *-stories projects
     if (tags.includes('type:stories')) {
       const testSsrTarget = buildTestSsrTarget(projectRoot, options, context, config);

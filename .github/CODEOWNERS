@@ -251,6 +251,7 @@ packages/react-components/react-tabs/library @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-tabs/stories @microsoft/cxe-prg @dmytrokirpa
 packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/stories @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-text/visual-regression @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-textarea/library @microsoft/cxe-prg
 packages/react-components/react-textarea/stories @microsoft/cxe-prg
 packages/react-components/react-tooltip/library @microsoft/cxe-prg

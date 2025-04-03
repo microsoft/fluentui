@@ -169,6 +169,7 @@
       ],
       "@fluentui/react-text": ["packages/react-components/react-text/library/src/index.ts"],
       "@fluentui/react-text-stories": ["packages/react-components/react-text/stories/src/index.ts"],
+      "@fluentui/react-text-visual-regression": ["packages/react-components/react-text/visual-regression/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/library/src/index.ts"],
       "@fluentui/react-textarea-stories": ["packages/react-components/react-textarea/stories/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/library/src/index.ts"],
