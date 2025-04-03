@@ -526,6 +526,9 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
 
 // @public (undocumented)
+export const getColorContrast: (c1: string, c2: string) => number;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
@@ -600,6 +603,58 @@ export interface GVSingleDataPoint {
     [key: string]: GVDataPoint;
 }
 
+// @public (undocumented)
+export const HeatMapChart: React_2.FunctionComponent<HeatMapChartProps>;
+
+// @public (undocumented)
+export interface HeatMapChartData {
+    // (undocumented)
+    data: HeatMapChartDataPoint[];
+    legend: string;
+    value: number;
+}
+
+// @public (undocumented)
+export interface HeatMapChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
+    descriptionMessage?: string;
+    onClick?: VoidFunction;
+    ratio?: [number, number];
+    rectText?: string | number;
+    // (undocumented)
+    value: number;
+    // (undocumented)
+    x: string | Date | number;
+    // (undocumented)
+    y: string | Date | number;
+}
+
+// @public
+export interface HeatMapChartProps extends CartesianChartProps {
+    chartTitle?: string;
+    culture?: string;
+    data: HeatMapChartData[];
+    domainValuesForColorScale: number[];
+    rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
+    styles?: HeatMapChartStyles;
+    xAxisDateFormatString?: string;
+    xAxisNumberFormatString?: string;
+    xAxisStringFormatter?: (point: string) => string;
+    yAxisDateFormatString?: string;
+    yAxisNumberFormatString?: string;
+    yAxisStringFormatter?: (point: string) => string;
+}
+
+// @public
+export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    text?: string;
+}
+
 // @public
 export const HorizontalBarChart: React_2.FunctionComponent<HorizontalBarChartProps>;
 
@@ -653,6 +708,9 @@ export enum HorizontalBarChartVariant {
 }
 
 // @public (undocumented)
+export const HorizontalBarChartWithAxis: React_2.FunctionComponent<HorizontalBarChartWithAxisProps>;
+
+// @public (undocumented)
 export interface HorizontalBarChartWithAxisDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
@@ -662,6 +720,40 @@ export interface HorizontalBarChartWithAxisDataPoint {
     xAxisCalloutData?: string;
     y: number | string;
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
+    barHeight?: number;
+    chartTitle?: string;
+    colors?: string[];
+    culture?: string;
+    data?: HorizontalBarChartWithAxisDataPoint[];
+    enableGradient?: boolean;
+    onRenderCalloutPerDataPoint?: RenderFunction<HorizontalBarChartWithAxisDataPoint>;
+    roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
+    styles?: HorizontalBarChartWithAxisStyles;
+    useSingleColor?: boolean;
+    yAxisPadding?: number;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyleProps extends CartesianChartStyleProps {
+    legendColor?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyles extends CartesianChartStyles {
+    chartLabel?: string;
+    opacityChangeOnHover: string;
+    xAxisDomain?: string;
+    xAxisText?: string;
+    xAxisTicks?: string;
+    yAxisDomain?: string;
+    yAxisText?: string;
+    yAxisTicks?: string;
 }
 
 // @public (undocumented)
