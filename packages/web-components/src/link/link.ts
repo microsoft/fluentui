@@ -1,6 +1,5 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseAnchor } from '../anchor-button/anchor-button.base.js';
-import { swapStates, toggleState } from '../utils/element-internals.js';
 import { LinkAppearance } from './link.options.js';
 
 /**
@@ -25,15 +24,6 @@ export class Link extends BaseAnchor {
   public appearance?: LinkAppearance | undefined;
 
   /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined) {
-    swapStates(this.elementInternals, prev, next, LinkAppearance);
-  }
-
-  /**
    * The link is inline with text
    * In chromium browsers, if the link is contained within a semantic
    * text element (`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`) or `fluent-text`,
@@ -45,13 +35,4 @@ export class Link extends BaseAnchor {
    */
   @attr({ mode: 'boolean' })
   public inline: boolean = false;
-
-  /**
-   * Handles changes to inline attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public inlineChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'inline', next);
-  }
 }
