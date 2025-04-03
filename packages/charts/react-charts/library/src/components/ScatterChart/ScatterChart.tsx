@@ -67,7 +67,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
   const [YValueHover, setYValueHover] = React.useState<[]>([]);
-  const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -158,28 +157,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     renderSeries = _createPlot(xElement!, containerHeight!);
   }
 
-  function _handleSingleLegendSelectionAction(scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps) {
-    if (selectedLegend === scatterChartItem.legend) {
-      setSelectedLegend('');
-      _handleLegendClick(scatterChartItem, null);
-    } else {
-      setSelectedLegend(scatterChartItem.legend);
-      _handleLegendClick(scatterChartItem, scatterChartItem.legend);
-    }
-  }
-
   function _onHoverCardHide() {
     setSelectedLegendPoints([]);
     setIsSelectedLegend(false);
-  }
-
-  function _handleLegendClick(
-    scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps,
-    selectedLegend: string | null | string[],
-  ): void {
-    if (scatterChartItem.onLegendClick) {
-      scatterChartItem.onLegendClick(selectedLegend);
-    }
   }
 
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
@@ -191,13 +171,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const legend: Legend = {
         title: point.legend!,
         color,
-        action: () => {
-          if (isLegendMultiSelectEnabled) {
-            _handleMultipleSeriesLegendSelectionAction(point);
-          } else {
-            _handleSingleLegendSelectionAction(point);
-          }
-        },
         onMouseOutAction: () => {
           setActiveLegend('');
         },
@@ -481,39 +454,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _handleMultipleSeriesLegendSelectionAction(selectedSeries: ScatterChartDataWithIndex) {
-    const selectedSeriesIndex = selectedLegendPoints.reduce((acc, series, index) => {
-      if (acc > -1 || series.legend !== selectedSeries.legend) {
-        return acc;
-      } else {
-        return index;
-      }
-    }, -1);
-
-    let selectedSerieses: ScatterChartDataWithIndex[];
-    if (selectedSeriesIndex === -1) {
-      selectedSerieses = [...selectedLegendPoints, selectedSeries];
-    } else {
-      selectedSerieses = selectedLegendPoints
-        .slice(0, selectedSeriesIndex)
-        .concat(selectedLegendPoints.slice(selectedSeriesIndex + 1));
-    }
-
-    const areAllSeriesLegendsSelected = props.data && selectedSerieses.length === props.data.lineChartData!.length;
-
-    if (areAllSeriesLegendsSelected || !selectedSerieses.length) {
-      // Clear all legends if no legends including color fill bar legends are selected
-      _clearMultipleLegendSelections();
-    } else {
-      // Otherwise, set state when one or more legends are selected, including color fill bar legends
-      setSelectedLegendPoints(selectedSerieses);
-      setIsSelectedLegend(true);
-    }
-
-    const selectedLegendTitlesToPass = selectedSerieses.map((series: ScatterChartDataWithIndex) => series.legend);
-    _handleLegendClick(selectedSeries, selectedLegendTitlesToPass);
-  }
-
   function _clearMultipleLegendSelections() {
     setSelectedLegendPoints([]);
     setIsSelectedLegend(false);
@@ -533,7 +473,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * This function checks if none of the legends is selected or hovered.*/
 
   function _noLegendHighlighted(): boolean {
-    return selectedLegends.length === 0;
+    return _getHighlightedLegend().length === 0;
   }
 
   function _getHighlightedLegend(): string[] {
