@@ -132,6 +132,7 @@ export class Avatar extends BaseAvatar {
         ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color ?? AvatarColor.neutral;
 
+    this.setAttribute('data-color', this.currentColor);
     swapStates(this.elementInternals, prev, this.currentColor);
   }
 

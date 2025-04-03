@@ -322,157 +322,157 @@ export const styles = css`
     border-radius: ${borderRadiusXLarge};
   }
 
-  :host([color='brand']) {
+  :host([data-color='brand']) {
     color: ${colorNeutralForegroundStaticInverted};
     background-color: ${colorBrandBackgroundStatic};
   }
 
-  :host([color='dark-red']) {
+  :host([data-color='dark-red']) {
     color: ${colorPaletteDarkRedForeground2};
     background-color: ${colorPaletteDarkRedBackground2};
   }
 
-  :host([color='cranberry']) {
+  :host([data-color='cranberry']) {
     color: ${colorPaletteCranberryForeground2};
     background-color: ${colorPaletteCranberryBackground2};
   }
 
-  :host([color='red']) {
+  :host([data-color='red']) {
     color: ${colorPaletteRedForeground2};
     background-color: ${colorPaletteRedBackground2};
   }
 
-  :host([color='pumpkin']) {
+  :host([data-color='pumpkin']) {
     color: ${colorPalettePumpkinForeground2};
     background-color: ${colorPalettePumpkinBackground2};
   }
 
-  :host([color='peach']) {
+  :host([data-color='peach']) {
     color: ${colorPalettePeachForeground2};
     background-color: ${colorPalettePeachBackground2};
   }
 
-  :host([color='marigold']) {
+  :host([data-color='marigold']) {
     color: ${colorPaletteMarigoldForeground2};
     background-color: ${colorPaletteMarigoldBackground2};
   }
 
-  :host([color='gold']) {
+  :host([data-color='gold']) {
     color: ${colorPaletteGoldForeground2};
     background-color: ${colorPaletteGoldBackground2};
   }
 
-  :host([color='brass']) {
+  :host([data-color='brass']) {
     color: ${colorPaletteBrassForeground2};
     background-color: ${colorPaletteBrassBackground2};
   }
 
-  :host([color='brown']) {
+  :host([data-color='brown']) {
     color: ${colorPaletteBrownForeground2};
     background-color: ${colorPaletteBrownBackground2};
   }
 
-  :host([color='forest']) {
+  :host([data-color='forest']) {
     color: ${colorPaletteForestForeground2};
     background-color: ${colorPaletteForestBackground2};
   }
 
-  :host([color='seafoam']) {
+  :host([data-color='seafoam']) {
     color: ${colorPaletteSeafoamForeground2};
     background-color: ${colorPaletteSeafoamBackground2};
   }
 
-  :host([color='dark-green']) {
+  :host([data-color='dark-green']) {
     color: ${colorPaletteDarkGreenForeground2};
     background-color: ${colorPaletteDarkGreenBackground2};
   }
 
-  :host([color='light-teal']) {
+  :host([data-color='light-teal']) {
     color: ${colorPaletteLightTealForeground2};
     background-color: ${colorPaletteLightTealBackground2};
   }
 
-  :host([color='teal']) {
+  :host([data-color='teal']) {
     color: ${colorPaletteTealForeground2};
     background-color: ${colorPaletteTealBackground2};
   }
 
-  :host([color='steel']) {
+  :host([data-color='steel']) {
     color: ${colorPaletteSteelForeground2};
     background-color: ${colorPaletteSteelBackground2};
   }
 
-  :host([color='blue']) {
+  :host([data-color='blue']) {
     color: ${colorPaletteBlueForeground2};
     background-color: ${colorPaletteBlueBackground2};
   }
 
-  :host([color='royal-blue']) {
+  :host([data-color='royal-blue']) {
     color: ${colorPaletteRoyalBlueForeground2};
     background-color: ${colorPaletteRoyalBlueBackground2};
   }
 
-  :host([color='cornflower']) {
+  :host([data-color='cornflower']) {
     color: ${colorPaletteCornflowerForeground2};
     background-color: ${colorPaletteCornflowerBackground2};
   }
 
-  :host([color='navy']) {
+  :host([data-color='navy']) {
     color: ${colorPaletteNavyForeground2};
     background-color: ${colorPaletteNavyBackground2};
   }
 
-  :host([color='lavender']) {
+  :host([data-color='lavender']) {
     color: ${colorPaletteLavenderForeground2};
     background-color: ${colorPaletteLavenderBackground2};
   }
 
-  :host([color='purple']) {
+  :host([data-color='purple']) {
     color: ${colorPalettePurpleForeground2};
     background-color: ${colorPalettePurpleBackground2};
   }
 
-  :host([color='grape']) {
+  :host([data-color='grape']) {
     color: ${colorPaletteGrapeForeground2};
     background-color: ${colorPaletteGrapeBackground2};
   }
 
-  :host([color='lilac']) {
+  :host([data-color='lilac']) {
     color: ${colorPaletteLilacForeground2};
     background-color: ${colorPaletteLilacBackground2};
   }
 
-  :host([color='pink']) {
+  :host([data-color='pink']) {
     color: ${colorPalettePinkForeground2};
     background-color: ${colorPalettePinkBackground2};
   }
 
-  :host([color='magenta']) {
+  :host([data-color='magenta']) {
     color: ${colorPaletteMagentaForeground2};
     background-color: ${colorPaletteMagentaBackground2};
   }
 
-  :host([color='plum']) {
+  :host([data-color='plum']) {
     color: ${colorPalettePlumForeground2};
     background-color: ${colorPalettePlumBackground2};
   }
 
-  :host([color='biege']) {
+  :host([data-color='biege']) {
     color: ${colorPaletteBeigeForeground2};
     background-color: ${colorPaletteBeigeBackground2};
   }
 
-  :host([color='mink']) {
+  :host([data-color='mink']) {
     color: ${colorPaletteMinkForeground2};
     background-color: ${colorPaletteMinkBackground2};
   }
 
-  :host([color='platinum']) {
+  :host([data-color='platinum']) {
     color: ${colorPalettePlatinumForeground2};
     background-color: ${colorPalettePlatinumBackground2};
   }
 
-  :host([color='anchor']) {
+  :host([data-color='anchor']) {
     color: ${colorPaletteAnchorForeground2};
     background-color: ${colorPaletteAnchorBackground2};
   }
