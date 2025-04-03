@@ -56,70 +56,70 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Pressed};
   }
 
-  :host(${pressedState}${primaryState}) {
+  :host(${pressedState}[appearance='primary']) {
     border-color: transparent;
     background-color: ${colorBrandBackgroundSelected};
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(${pressedState}${primaryState}:hover) {
+  :host(${pressedState}[appearance='primary']:hover) {
     background-color: ${colorBrandBackgroundHover};
   }
 
-  :host(${pressedState}${primaryState}:active) {
+  :host(${pressedState}[appearance='primary']:active) {
     background-color: ${colorBrandBackgroundPressed};
   }
 
-  :host(${pressedState}${subtleState}) {
+  :host(${pressedState}[appearance='subtle']) {
     border-color: transparent;
     background-color: ${colorSubtleBackgroundSelected};
     color: ${colorNeutralForeground2Selected};
   }
 
-  :host(${pressedState}${subtleState}:hover) {
+  :host(${pressedState}[appearance='subtle']:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground2Hover};
   }
 
-  :host(${pressedState}${subtleState}:active) {
+  :host(${pressedState}[appearance='subtle']:active) {
     background-color: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(${pressedState}${outlineState}),
-  :host(${pressedState}${transparentState}) {
+  :host(${pressedState}[appearance='outline']),
+  :host(${pressedState}[appearance='transparent']) {
     background-color: ${colorTransparentBackgroundSelected};
   }
 
-  :host(${pressedState}${outlineState}:hover),
-  :host(${pressedState}${transparentState}:hover) {
+  :host(${pressedState}[appearance='outline']:hover),
+  :host(${pressedState}[appearance='transparent']:hover) {
     background-color: ${colorTransparentBackgroundHover};
   }
 
-  :host(${pressedState}${outlineState}:active),
-  :host(${pressedState}${transparentState}:active) {
+  :host(${pressedState}[appearance='outline']:active),
+  :host(${pressedState}[appearance='transparent']:active) {
     background-color: ${colorTransparentBackgroundPressed};
   }
 
-  :host(${pressedState}${transparentState}) {
+  :host(${pressedState}[appearance='transparent']) {
     border-color: transparent;
     color: ${colorNeutralForeground2BrandSelected};
   }
 
-  :host(${pressedState}${transparentState}:hover) {
+  :host(${pressedState}[appearance='transparent']:hover) {
     color: ${colorNeutralForeground2BrandHover};
   }
 
-  :host(${pressedState}${transparentState}:active) {
+  :host(${pressedState}[appearance='transparent']:active) {
     color: ${colorNeutralForeground2BrandPressed};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     :host(${pressedState}),
-    :host(${pressedState}${primaryState}),
-    :host(${pressedState}${subtleState}),
-    :host(${pressedState}${outlineState}),
-    :host(${pressedState}${transparentState}) {
+    :host(${pressedState}[appearance='primary']),
+    :host(${pressedState}[appearance='subtle']),
+    :host(${pressedState}[appearance='outline']),
+    :host(${pressedState}[appearance='transparent']) {
       background: SelectedItem;
       color: SelectedItemText;
     }
