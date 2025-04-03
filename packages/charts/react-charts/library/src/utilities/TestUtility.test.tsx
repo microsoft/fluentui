@@ -100,3 +100,5 @@ export const conditionalTest = (shouldExecute: boolean) => {
 export const isTestEnv = () => {
   return env === 'TEST' ? true : false;
 };
+
+export const wait = (ms: number = 0) => new Promise(resolve => setTimeout(resolve, ms));
