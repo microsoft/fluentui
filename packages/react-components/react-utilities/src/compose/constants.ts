@@ -8,3 +8,8 @@ export const SLOT_RENDER_FUNCTION_SYMBOL = Symbol.for('fui.slotRenderFunction');
  * Internal reference for the render function
  */
 export const SLOT_ELEMENT_TYPE_SYMBOL = Symbol.for('fui.slotElementType');
+/**
+ * @internal
+ * Internal cache of the user-supplied className for the slot
+ */
+export const SLOT_USER_CLASS_NAME_SYMBOL = Symbol.for('fui.slotUserClassName');

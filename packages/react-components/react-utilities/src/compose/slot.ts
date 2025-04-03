@@ -6,7 +6,7 @@ import type {
   UnknownSlotProps,
 } from './types';
 import * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL, SLOT_USER_CLASS_NAME_SYMBOL } from './constants';
 
 export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
@@ -40,6 +40,7 @@ export function always<Props extends UnknownSlotProps>(
   const propsWithMetadata = {
     ...defaultProps,
     ...props,
+    [SLOT_USER_CLASS_NAME_SYMBOL]: props?.className,
     [SLOT_ELEMENT_TYPE_SYMBOL]: elementType,
   } as SlotComponentType<Props>;
 

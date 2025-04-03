@@ -9,7 +9,8 @@ import type {
   ToggleButtonState,
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
+import { overrideSlotClasses } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -30,6 +31,12 @@ const useCustomStyles = makeStyles({
     ...shorthands.borderColor('crimson'),
     ...shorthands.borderRadius('0'),
   },
+
+  purpleButton: {
+    ...shorthands.borderColor('indigo'),
+    backgroundColor: 'purple',
+    color: 'lavender',
+  },
 });
 
 export const ButtonCustomStyles = () => {
@@ -38,7 +45,7 @@ export const ButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      overrideSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -57,7 +64,7 @@ export const CompoundButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useCompoundButtonStyles_unstable: (state: unknown) => {
       const componentState = state as CompoundButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      overrideSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -76,7 +83,7 @@ export const MenuButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useMenuButtonStyles_unstable: (state: unknown) => {
       const componentState = state as MenuButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      overrideSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -96,13 +103,10 @@ export const SplitButtonCustomStyles = () => {
     useSplitButtonStyles_unstable: (state: unknown) => {
       const componentState = state as SplitButtonState;
       if (componentState.menuButton) {
-        componentState.menuButton.className = mergeClasses(componentState.menuButton.className, styles.button);
+        overrideSlotClasses(componentState.menuButton, styles.button);
       }
       if (componentState.primaryActionButton) {
-        componentState.primaryActionButton.className = mergeClasses(
-          componentState.primaryActionButton.className,
-          styles.button,
-        );
+        overrideSlotClasses(componentState.primaryActionButton, styles.button);
       }
     },
   };
@@ -122,7 +126,7 @@ export const ToggleButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useToggleButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ToggleButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      overrideSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -134,3 +138,22 @@ export const ToggleButtonCustomStyles = () => {
 };
 
 ToggleButtonCustomStyles.storyName = 'ToggleButton';
+
+export const UserStylesWithCustomStyles = () => {
+  const styles = useCustomStyles();
+
+  const customStyleHooks: FluentProviderCustomStyleHooks = {
+    useButtonStyles_unstable: (state: unknown) => {
+      const componentState = state as ButtonState;
+      overrideSlotClasses(componentState.root, styles.button);
+    },
+  };
+
+  return (
+    <FluentProvider customStyleHooks_unstable={customStyleHooks}>
+      <Button className={styles.purpleButton}>Purple button</Button>
+    </FluentProvider>
+  );
+};
+
+UserStylesWithCustomStyles.storyName = 'User Styles';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL, SLOT_USER_CLASS_NAME_SYMBOL } from './constants';
 import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (
@@ -252,6 +252,10 @@ export type SlotComponentType<Props> = Props & {
   [SLOT_ELEMENT_TYPE_SYMBOL]:
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  /**
+   * @internal
+   */
+  [SLOT_USER_CLASS_NAME_SYMBOL]?: string;
 };
 
 /**
