@@ -74,6 +74,18 @@ function cleanFSTTokenName(originalTokenName: string) {
   return newTokenName;
 }
 
+function chopLastCamelCasePart(str: string) {
+  const parts = str.split(/(?=[A-Z])/);
+  parts.pop();
+  return parts.join('');
+}
+
+function chopLastCSSVarPart(str: string) {
+  const parts = str.split('-');
+  parts.pop();
+  return parts.join('');
+}
+
 function generateTokenRawStrings() {
   let optionalRawTokens = '';
   let controlRawTokens = '';
@@ -87,11 +99,27 @@ function generateTokenRawStrings() {
   exportList[nullableVarFile] = [];
   const getComponentFile = (component: string) => `./src/components/${component}/variables.ts`;
 
+  const processedShadows: string[] = [];
+
   for (const token in tokensJSON) {
     if (tokensJSON.hasOwnProperty(token)) {
       const tokenData: Token = tokensJSON[token];
-      const tokenName = tokenData.cssName;
-      const tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
+      let tokenName = tokenData.cssName;
+      let tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
+
+      if (tokenData.name.toLowerCase().includes('shadow/')) {
+        // Handle shadow tokens
+        const shadowToken = chopLastCamelCasePart(token);
+        const shadowCSSName = chopLastCamelCasePart(tokenData.cssName);
+
+        if (processedShadows.includes(shadowToken)) {
+          // We've already processed this shadow token, skip it
+          continue;
+        }
+        tokenName = shadowCSSName;
+        tokenRawString = `export const ${shadowToken}Raw = '${tokenName}';\n`;
+        processedShadows.push(shadowToken);
+      }
 
       if (tokenData.name.startsWith('CTRL/')) {
         // We have a component level control token
