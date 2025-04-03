@@ -187,32 +187,32 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-  :host([size='small']) .control {
+  :host([control-size='small']) .control {
     font-size: ${fontSizeBase200};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase200};
   }
-  :host([size='small']) .root {
+  :host([control-size='small']) .root {
     height: 24px;
     gap: ${spacingHorizontalXXS};
     padding: 0 ${spacingHorizontalSNudge};
   }
-  :host([size='small']) ::slotted([slot='start']),
-  :host([size='small']) ::slotted([slot='end']) {
+  :host([control-size='small']) ::slotted([slot='start']),
+  :host([control-size='small']) ::slotted([slot='end']) {
     font-size: ${fontSizeBase400};
   }
-  :host([size='large']) .control {
+  :host([control-size='large']) .control {
     font-size: ${fontSizeBase400};
     font-weight: ${fontWeightRegular};
     line-height: ${lineHeightBase400};
   }
-  :host([size='large']) .root {
+  :host([control-size='large']) .root {
     height: 40px;
     gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalM};
   }
-  :host([size='large']) ::slotted([slot='start']),
-  :host([size='large']) ::slotted([slot='end']) {
+  :host([control-size='large']) ::slotted([slot='start']),
+  :host([control-size='large']) ::slotted([slot='end']) {
     font-size: ${fontSizeBase600};
   }
   :host([appearance='underline']) .root {
