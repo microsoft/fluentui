@@ -50,6 +50,8 @@ const context: ExecutorContext = {
       },
     },
   },
+  nxJsonConfiguration: {},
+  projectGraph: { nodes: {}, dependencies: {} },
 };
 
 jest.mock('node:fs/promises', () => {
