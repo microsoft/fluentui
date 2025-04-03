@@ -12,8 +12,55 @@ const project = new Project({
   tsConfigFilePath: './tsconfig.json',
 });
 
+function chopLastCamelCasePart(str: string) {
+  const parts = str.split(/(?=[A-Z])/);
+  parts.pop();
+  return parts.join('');
+}
+
+function removeLastDelimiter(str: string, delimiter: string) {
+  const lastIndex = str.lastIndexOf(delimiter);
+  if (lastIndex === -1) {
+    // Delimiter not found
+    return str;
+  }
+  return str.substring(0, lastIndex);
+}
+
+function dedupeShadowTokens(_tokenJSON: Record<string, Token>) {
+  /* Our shadow tokens come exported from Figma in parts i.e. X, Y, Blur, Color
+    This is not compatible with our token fallback structure, as V9 shadows are combined strings
+    By deduping the shadows into a single string, we reduce tokens by ~25% and simplify fallbacks
+
+    To dedupe, we chop off the specific identifier (X, Y, Blur, Color) and combine them into a single token
+
+    This enables the script to work the same for all tokens once processed.
+  */
+  for (const token in _tokenJSON) {
+    if (_tokenJSON.hasOwnProperty(token)) {
+      const tokenData: Token = _tokenJSON[token];
+      const combinedShadowName = chopLastCamelCasePart(token);
+      if (tokenData.name.toLowerCase().includes('shadow/')) {
+        if (!_tokenJSON[combinedShadowName]) {
+          // Handle shadow tokens by removing the last part (X,Y,Blur,Color)
+          tokenData.cssName = removeLastDelimiter(tokenData.cssName, '-');
+          tokenData.fst_reference = removeLastDelimiter(tokenData.fst_reference, '/');
+          tokenData.name = removeLastDelimiter(tokenData.name, '/');
+          // Add the new combined token
+          _tokenJSON[combinedShadowName] = tokenData;
+        }
+
+        // Remove original token
+        delete _tokenJSON[token];
+      }
+    }
+  }
+
+  return _tokenJSON;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const tokensJSON: Record<string, any> = tokensJSONRaw;
+const tokensJSON: Record<string, any> = dedupeShadowTokens(tokensJSONRaw);
 const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
 // Store exports so we can add them to index.ts at the end
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -74,18 +121,6 @@ function cleanFSTTokenName(originalTokenName: string) {
   return newTokenName;
 }
 
-function chopLastCamelCasePart(str: string) {
-  const parts = str.split(/(?=[A-Z])/);
-  parts.pop();
-  return parts.join('');
-}
-
-function chopLastCSSVarPart(str: string) {
-  const parts = str.split('-');
-  parts.pop();
-  return parts.join('');
-}
-
 function generateTokenRawStrings() {
   let optionalRawTokens = '';
   let controlRawTokens = '';
@@ -99,27 +134,11 @@ function generateTokenRawStrings() {
   exportList[nullableVarFile] = [];
   const getComponentFile = (component: string) => `./src/components/${component}/variables.ts`;
 
-  const processedShadows: string[] = [];
-
   for (const token in tokensJSON) {
     if (tokensJSON.hasOwnProperty(token)) {
       const tokenData: Token = tokensJSON[token];
-      let tokenName = tokenData.cssName;
-      let tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
-
-      if (tokenData.name.toLowerCase().includes('shadow/')) {
-        // Handle shadow tokens
-        const shadowToken = chopLastCamelCasePart(token);
-        const shadowCSSName = chopLastCamelCasePart(tokenData.cssName);
-
-        if (processedShadows.includes(shadowToken)) {
-          // We've already processed this shadow token, skip it
-          continue;
-        }
-        tokenName = shadowCSSName;
-        tokenRawString = `export const ${shadowToken}Raw = '${tokenName}';\n`;
-        processedShadows.push(shadowToken);
-      }
+      const tokenName = tokenData.cssName;
+      const tokenRawString = `export const ${token}Raw = '${tokenName}';\n`;
 
       if (tokenData.name.startsWith('CTRL/')) {
         // We have a component level control token
