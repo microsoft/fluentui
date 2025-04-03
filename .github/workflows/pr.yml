@@ -118,3 +118,13 @@ jobs:
 
       - name: Cypress/Playwright E2E tests
         run: yarn nx affected -t e2e --nxBail --parallel 1
+
+      - name: Upload Cypress screenshots if exist
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: |
+            apps/*/cypress/screenshots/**/*.png
+            packages/**/cypress/screenshots/**/*.png
+          retention-days: 1
