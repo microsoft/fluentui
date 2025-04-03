@@ -1,5 +1,4 @@
 import { attr } from '@microsoft/fast-element';
-import { swapStates } from '../utils/element-internals.js';
 import { BaseRatingDisplay } from './rating-display.base.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
