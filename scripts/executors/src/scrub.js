@@ -119,7 +119,7 @@ async function run() {
   console.log('\nClearing Jest cache...');
   try {
     spawn(os.platform() === 'win32' ? 'npx.cmd' : 'npx', ['jest', '--clearCache']);
-  } catch (err) {
+  } catch {
     console.error('Clearing jest cache failed, likely due to it or a dep not being installed.');
   }
   try {
@@ -127,7 +127,7 @@ async function run() {
     const cache = require('gulp-cache');
     cache.clearAll();
     console.log('...success!');
-  } catch (err) {
+  } catch {
     console.log('Clearing gulp-cache failed, likely due it not being installed.');
   }
 

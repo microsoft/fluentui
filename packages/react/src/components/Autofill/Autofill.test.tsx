@@ -123,6 +123,7 @@ describe('Autofill', () => {
       <Autofill
         componentRef={autofillRef}
         suggestedDisplayValue=""
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         updateValueInWillReceiveProps={receivePropsUpdater}
       />,
     );
@@ -159,6 +160,7 @@ describe('Autofill', () => {
 
   it('handles composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
     const onInputChange = jest.fn((a: string, b: boolean) => a);
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     component = mount(<Autofill componentRef={autofillRef} onInputChange={onInputChange} suggestedDisplayValue="he" />);
 
     autofill.inputElement!.value = 'hel';
@@ -229,6 +231,7 @@ describe('Autofill', () => {
   it('will call onInputChange w/ composition events', () => {
     const onInputChange = jest.fn((a: string, b: boolean) => a);
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     component = mount(<Autofill componentRef={autofillRef} onInputChange={onInputChange} suggestedDisplayValue="he" />);
 
     autofill.inputElement!.value = 'he';
