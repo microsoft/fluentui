@@ -32,27 +32,27 @@ export const styles = css`
     content-visibility: auto;
   }
 
-  :host(${tinyState}) {
+  :host([size='tiny']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 20px;
   }
-  :host(${extraSmallState}) {
+  :host([size='extra-small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 24px;
   }
-  :host(${smallState}) {
+  :host([size='small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 28px;
   }
-  :host(${largeState}) {
+  :host([size='large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 36px;
   }
-  :host(${extraLargeState}) {
+  :host([size='extra-large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 40px;
   }
-  :host(${hugeState}) {
+  :host([size='huge']) {
     --indicatorSize: ${strokeWidthThickest};
     --size: 44px;
   }
@@ -83,7 +83,7 @@ export const styles = css`
     border-radius: 50%;
   }
 
-  :host(${invertedState}) .background {
+  :host([appearance='inverted']) .background {
     border-color: rgba(255, 255, 255, 0.2);
   }
 
