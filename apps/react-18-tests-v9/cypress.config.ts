@@ -3,6 +3,9 @@ import { baseConfig } from '@fluentui/scripts-cypress';
 
 // Exclude files that are not compatible with React 18 yet
 const excludedSpecs = [
+  '!' + path.resolve('../../packages/react-components/react-card/library/src/components/Card/Card.cy.tsx'),
+  '!' + path.resolve('../../packages/react-components/react-overflow/library/src/**/*.cy.{tsx,ts}'),
+  '!' + path.resolve('../../packages/react-components/react-table/library/src/components/DataGrid/DataGrid.cy.tsx'),
   '!' + path.resolve('../../packages/react-components/react-tag-picker/library/src/**/*.cy.{tsx,ts}'),
   '!' + path.resolve('../../packages/react-components/react-tree/library/src/components/Tree/Tree.cy.tsx'),
 ];
@@ -26,6 +29,17 @@ config.component.devServer.webpackConfig.resolve.alias = {
   '@types/react-dom': path.resolve(__dirname, './node_modules/@types/react-dom'),
   react: path.resolve(__dirname, './node_modules/react'),
   'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+  'cypress-real-events': path.resolve(__dirname, './node_modules/cypress-real-events'),
 };
+
+/**
+ * Resolve the support file and index.html file paths
+ * This is a workaround for the issue where Cypress does not resolve the paths correctly, as it
+ * internally concatenates the __dirname, making them invalid.
+ *
+ * TODO: Remove this workaround once we upgrade the whole repo to Cypress 14
+ */
+config.component.supportFile = '../../scripts/cypress/src/support/component.js';
+config.component.indexHtmlFile = '../../scripts/cypress/src/support/component-index.html';
 
 export default config;

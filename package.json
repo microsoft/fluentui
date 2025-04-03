@@ -55,7 +55,6 @@
     "@cactuslab/usepubsub": "^1.0.2",
     "@ctrl/tinycolor": "3.3.4",
     "@cypress/react": "8.0.0",
-    "@cypress/webpack-dev-server": "1.8.3",
     "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/sortable": "^7.0.2",
     "@dnd-kit/utilities": "^3.2.1",
