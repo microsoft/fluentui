@@ -473,7 +473,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
    * This function checks if none of the legends is selected or hovered.*/
 
   function _noLegendHighlighted(): boolean {
-    return _getHighlightedLegend().length === 0;
+    return selectedLegends.length === 0;
   }
 
   function _getHighlightedLegend(): string[] {
