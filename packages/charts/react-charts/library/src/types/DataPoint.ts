@@ -1,5 +1,6 @@
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface Basestate {
   _width?: number;
@@ -491,6 +492,11 @@ export interface ChartProps {
   /**
    * data for the points in the line chart
    */
+  SankeyChartData?: SankeyChartData;
+
+  /**
+   * data for the points in the line chart
+   */
   pointOptions?: SVGProps<SVGCircleElement>;
 
   /**
@@ -731,3 +737,45 @@ export interface CustomizedCalloutData {
 export interface Chart {
   chartContainer: HTMLElement | null;
 }
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface SankeyChartData {
+  nodes: SNode[];
+  links: SLink[];
+}
+
+interface SNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
+  nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
+  name: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
+}
+
+interface SLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
+  source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
+  target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
+  value: number;
+  unnormalizedValue?: number;
+}
+
+export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;
+export type SLink = SankeyLink<SNodeExtra, SLinkExtra>;
