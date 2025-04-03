@@ -20,8 +20,6 @@ import {
   spacingVerticalS,
 } from '../theme/design-tokens.js';
 
-import { errorState, multiLineState, squareState, successState, warningState } from '../styles/states/index.js';
-
 /**
  * Styles for the MessageBar component.
  *
@@ -45,26 +43,26 @@ export const styles: ElementStyles = css`
     contain: layout style paint;
   }
 
-  :host(${squareState}) {
+  :host([shape='square']) {
     border-radius: 0;
   }
 
-  :host(${successState}) {
+  :host([intent='success']) {
     background-color: ${colorPaletteGreenBackground1};
     border-color: ${colorPaletteGreenBorder1};
   }
 
-  :host(${warningState}) {
+  :host([intent='warning']) {
     background-color: ${colorPaletteDarkOrangeBackground1};
     border-color: ${colorPaletteDarkOrangeBorder1};
   }
 
-  :host(${errorState}) {
+  :host([intent='error']) {
     background-color: ${colorPaletteRedBackground1};
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host(${multiLineState}) {
+  :host([layout='multi-line']) {
     grid-template-areas:
       'icon body dismiss'
       'actions actions actions';
@@ -81,7 +79,7 @@ export const styles: ElementStyles = css`
     padding-inline: 0;
   }
 
-  :host(${multiLineState}) .content {
+  :host([layout='multi-line']) .content {
     padding: 0;
   }
 
@@ -94,7 +92,7 @@ export const styles: ElementStyles = css`
     margin-inline-end: ${spacingHorizontalS};
   }
 
-  :host(${multiLineState}) ::slotted([slot='icon']) {
+  :host([layout='multi-line']) ::slotted([slot='icon']) {
     align-items: start;
     height: 100%;
   }
@@ -111,12 +109,12 @@ export const styles: ElementStyles = css`
     gap: ${spacingHorizontalS};
   }
 
-  :host(${multiLineState}) .actions {
+  :host([layout='multi-line']) .actions {
     margin-block-start: ${spacingVerticalMNudge};
     margin-inline-end: 0;
   }
 
-  :host(${multiLineState}) ::slotted([slot='dismiss']) {
+  :host([layout='multi-line']) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
     padding-block-start: ${spacingVerticalS};
