@@ -26,7 +26,7 @@ function getLoadSiteConfig(options) {
   let copyPlugin;
   try {
     copyPlugin = new CopyWebpackPlugin({ patterns: copyPatterns });
-  } catch (err) {
+  } catch {
     // copy-webpack-plugin >= 6 requires Node 10+ and takes an object containing patterns.
     // Fabric 5 and 6 still support Node 8, so they need to use copy-webpack-plugin@5 which
     // takes the patterns themselves as the first parameter.
