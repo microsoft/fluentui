@@ -144,6 +144,7 @@
         "scripts/**/*",
         "packages/eslint-plugin/**",
         "packages/tokens/**",
+        "packages/semantic-tokens/**",
         "packages/react-conformance/**",
         "packages/react-components/**/*",
         "packages/charts/react-charts/**/*"
