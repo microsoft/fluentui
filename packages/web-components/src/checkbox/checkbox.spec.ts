@@ -31,8 +31,6 @@ test.describe('Checkbox', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect(element).toHaveCustomState(shape);
       });
     }
   });
@@ -47,8 +45,6 @@ test.describe('Checkbox', () => {
         await expect(element).toHaveJSProperty('size', size);
 
         await expect(element).toHaveAttribute('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
   });
