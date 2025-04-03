@@ -365,6 +365,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
                 aria-label={comboLabel}
                 role="combobox"
                 disabled={disabled}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
                 onInputChange={this.props.onInputChange}
               />
             )}
@@ -1268,6 +1269,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
               role="combobox"
               id={inputId}
               disabled={disabled}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               onInputChange={this.props.onInputChange}
             />
           </div>

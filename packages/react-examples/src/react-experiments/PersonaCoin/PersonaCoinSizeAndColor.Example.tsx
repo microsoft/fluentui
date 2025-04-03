@@ -19,7 +19,11 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack
+          tokens={tokens.headingStack}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          padding={8}
+        >
           <Stack tokens={tokens.personaCoinStack}>
             <Text>Sizes</Text>
             <Stack horizontal disableShrink tokens={tokens.personaCoinStack}>

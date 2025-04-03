@@ -67,7 +67,7 @@ export const SelectedPeopleListControlledExample: React.FunctionComponent = () =
           copyMenuItemText="Copy"
           removeMenuItemText="Remove"
           onRenderItem={onRenderItem}
-          // eslint-disable-next-line react/jsx-no-bind
+          // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
           onItemDeleted={onItemDeleted}
         />
       </Stack>

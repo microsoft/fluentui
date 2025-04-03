@@ -92,7 +92,6 @@ async function movePackage(tree: Tree, schema: AssertedSchema) {
     destination: derivedDestination,
     importPath: name,
     updateImportPath,
-    projectNameAndRootFormat: 'as-provided',
   });
 
   updateApiExtractor(tree, schema);

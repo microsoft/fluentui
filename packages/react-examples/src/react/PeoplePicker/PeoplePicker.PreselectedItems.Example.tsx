@@ -92,7 +92,7 @@ export const PeoplePickerPreselectedItemsExample: React.FunctionComponent = () =
       <CompactPeoplePicker
         // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
-        // eslint-disable-next-line react/jsx-no-bind
+        // eslint-disable-next-line react/jsx-no-bind, @typescript-eslint/no-deprecated
         onEmptyInputFocus={returnMostRecentlyUsed}
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}

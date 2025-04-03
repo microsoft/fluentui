@@ -155,5 +155,6 @@
         "packages/react-components/**/*"
       ]
     }
-  ]
+  ],
+  "useLegacyCache": true
 }

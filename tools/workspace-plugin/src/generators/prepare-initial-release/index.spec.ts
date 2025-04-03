@@ -9,7 +9,7 @@ import {
   readJson,
   updateJson,
   installPackagesTask,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import childProcess from 'child_process';
 import path from 'node:path';
 
