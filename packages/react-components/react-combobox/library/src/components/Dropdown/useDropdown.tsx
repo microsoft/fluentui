@@ -42,7 +42,12 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
 
-  const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
+  const baseState = useComboboxBaseState({
+    ...props,
+    children: props.children as React.ReactNode,
+    activeDescendantController,
+    freeform: false,
+  });
   const { clearable, clearSelection, disabled, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -58,7 +63,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     state: baseState,
     triggerRef,
     defaultProps: {
-      children: props.children,
+      children: props.children as React.ReactNode,
     },
   });
 
@@ -87,7 +92,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const rootSlot = slot.always(props.root, {
     defaultProps: {
       'aria-owns': !props.inlinePopup && open ? listbox?.id : undefined,
-      children: props.children,
+      children: props.children as React.ReactNode,
       ...rootNativeProps,
     },
     elementType: 'div',
