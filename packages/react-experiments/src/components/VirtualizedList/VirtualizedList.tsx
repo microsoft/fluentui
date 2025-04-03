@@ -39,6 +39,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   private _events: EventGroup;
 
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     this._events = new EventGroup(this);

@@ -65,7 +65,12 @@ export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
 
   return (
     <span {...spanProps} className={css(SignalStyles.signal, SignalsStyles.newSignal)}>
-      <Icon ariaLabel={props.ariaLabel} className={css(SignalsStyles.newIcon)} iconName="glimmer" />
+      <Icon
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        ariaLabel={props.ariaLabel}
+        className={css(SignalsStyles.newIcon)}
+        iconName="glimmer"
+      />
     </span>
   );
 };
@@ -91,7 +96,12 @@ export const CommentsSignal: Signal = (props: ISignalProps): JSX.Element => {
 
   return (
     <Signal className={css(SignalsStyles.comments, className)} {...spanProps}>
-      <Icon ariaLabel={props.ariaLabel} className={css(SignalsStyles.commentsIcon)} iconName="MessageFill" />
+      <Icon
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        ariaLabel={props.ariaLabel}
+        className={css(SignalsStyles.commentsIcon)}
+        iconName="MessageFill"
+      />
       {children ? <span className={css(SignalsStyles.commentsCount)}>{children}</span> : null}
     </Signal>
   );
@@ -168,6 +178,11 @@ const IconSignal: React.FunctionComponent<IIconSignalProps> = props => {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
   return (
-    <Icon {...spanProps} ariaLabel={props.ariaLabel} className={css(SignalStyles.signal, signalClass, className)} />
+    <Icon
+      {...spanProps}
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      ariaLabel={props.ariaLabel}
+      className={css(SignalStyles.signal, signalClass, className)}
+    />
   );
 };
