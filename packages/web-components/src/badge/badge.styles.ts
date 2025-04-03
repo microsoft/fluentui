@@ -28,11 +28,11 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
   }
 
-  ${badgeSizeStyles}
-  ${badgeFilledStyles}
-  ${badgeGhostStyles}
-  ${badgeOutlineStyles}
   ${badgeTintStyles}
+  ${badgeOutlineStyles}
+  ${badgeGhostStyles}
+  ${badgeFilledStyles}
+  ${badgeSizeStyles}
   ${badgeBaseStyles}
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
