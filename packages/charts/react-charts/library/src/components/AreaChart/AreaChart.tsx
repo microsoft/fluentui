@@ -103,7 +103,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     const [displayOfLine, setDisplayOfLine] = React.useState<InterceptVisibility>(InterceptVisibility.hide);
     const [isCircleClicked, setIsCircleClicked] = React.useState<boolean>(false);
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<number | string | Date | null>(null);
-    const [isShowCalloutPending, setIsShowCalloutPending] = React.useState<boolean>(false);
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
@@ -120,11 +119,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         }
       }
       prevPropsRef.current = props;
-      if (isShowCalloutPending) {
-        setPopoverOpen(true);
-        setIsShowCalloutPending(false);
-      }
-    }, [isShowCalloutPending, props]);
+    }, [props]);
     const classes = useAreaChartStyles(props);
 
     function _getMargins(margins: Margins) {
@@ -188,13 +183,10 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const _nearestCircleToHighlight =
         axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
-      const pointToHighlightUpdated = nearestCircleToHighlight !== _nearestCircleToHighlight;
       // if no points need to be called out then don't show vertical line and callout card
-      if (found && pointToHighlightUpdated && !isShowCalloutPending) {
+      if (found) {
         const filteredValues = _getFilteredLegendValues(found.values);
         setNearestCircleToHighlight(_nearestCircleToHighlight);
-        setPopoverOpen(false);
-        setIsShowCalloutPending(true);
         setLineXValue(_xAxisRectScale(pointToHighlight));
         setDisplayOfLine(InterceptVisibility.show);
         setIsCircleClicked(false);
@@ -205,26 +197,6 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
         setXAxisCalloutAccessibilityData(xAxisCalloutAccessibilityData);
         setActivePoint('');
       } else {
-        /*
-      When above if condition is false but found=true, it means either
-
-      1). pointToHighlightUpdated is false.
-      For this case we dont need to do anything.
-
-      2). isShowCalloutPending is true.
-      For this case there will be no callout updation for the event.
-      This condition has been added to prevent repeated callout flashing.
-      Currently there is a fraction of second delay between hover event and subsequent callout refresh.
-      In the meantime if another event is received, the callout continues to flash for the set of
-      intermediate hover events.
-
-      This does not cause any issue as the user interaction takes atleast a fraction of second and the final
-      callout state is ultimately achieved.
-      If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience
-      remains smooth.
-      */
-      }
-      if (!found) {
         setPopoverOpen(false);
         setNearestCircleToHighlight(nearestCircleToHighlight);
         setDisplayOfLine(InterceptVisibility.hide);
