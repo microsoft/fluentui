@@ -9,9 +9,10 @@ import { Project } from 'ts-morph';
 import { format } from 'prettier';
 import { dedupeShadowTokens } from './util';
 import { ComponentTokenMap, Token } from './token.types';
+import path from 'node:path';
 
 const project = new Project({
-  tsConfigFilePath: './tsconfig.json',
+  tsConfigFilePath: path.resolve(__dirname, '../tsconfig.json'),
 });
 
 const tokensJSON = dedupeShadowTokens(tokensJSONRaw);
@@ -230,35 +231,39 @@ function generateTokenVariables() {
     }
   }
 
-  // Write files
-  fs.writeFileSync('./src/optional/tokens.ts', optionalTokens);
-  fs.writeFileSync('./src/control/tokens.ts', controlTokens);
-  fs.writeFileSync('./src/nullable/tokens.ts', nullableTokens);
-
-  // Add source files for import statements
+  // Add legacy token file
   project.addSourceFileAtPath('./src/legacy/tokens.ts');
-  project.addSourceFileAtPath('./src/optional/tokens.ts');
-  project.addSourceFileAtPath('./src/control/tokens.ts');
-  project.addSourceFileAtPath('./src/nullable/tokens.ts');
+  // Add all generated token files
+  const tokens = {
+    optional: optionalTokens,
+    control: controlTokens,
+    nullable: nullableTokens,
+  };
+  for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
+    fs.writeFileSync(`./src/${tokensCategory}/tokens.ts`, _tokens);
+    project.addSourceFileAtPathIfExists(`./src/${tokensCategory}/tokens.ts`);
+  }
 
-  for (const component in componentTokens) {
-    if (componentTokens.hasOwnProperty(component)) {
-      const dir = `./src/components/${component}/`;
-
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
-      const componentTokensPath = `./src/components/${component}/tokens.ts`;
-      fs.writeFileSync(componentTokensPath, componentTokens[component]);
-      // Add component source files for import statements
-      project.addSourceFileAtPath(componentTokensPath);
+  for (const [component, _tokens] of Object.entries(componentTokens)) {
+    const dir = `./src/components/${component}/`;
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
     }
+    const componentTokensPath = `./src/components/${component}/tokens.ts`;
+    fs.writeFileSync(componentTokensPath, _tokens);
+    // Add component source files for import statements
+    project.addSourceFileAtPath(componentTokensPath);
   }
 
   // Add import statements
   project.getSourceFiles().forEach(sourceFile => {
+    if (sourceFile.getFilePath().endsWith('legacy/tokens.ts')) {
+      // skip our legacy tokens file
+      return;
+    }
+
     console.log('Fix missing imports from:', sourceFile.getFilePath());
-    sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers().formatText();
+    sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers();
 
     // Format our text to match prettier rules
     const rawText = sourceFile.getText();
@@ -282,15 +287,13 @@ function generateTokenVariables() {
   fs.truncateSync(indexFilePath, 0);
   // Add source file after we've cleaned it
   const indexSourceFile = project.addSourceFileAtPath(indexFilePath);
-  for (const file in exportList) {
-    if (exportList.hasOwnProperty(file)) {
-      // Specifier should be relative and not include .ts
-      const importFilePath = file.replace('./src/', './').replace('.ts', '');
-      indexSourceFile.addExportDeclaration({
-        namedExports: exportList[file],
-        moduleSpecifier: importFilePath,
-      });
-    }
+  for (const [file, namedExports] of Object.entries(exportList)) {
+    // Specifier should be relative and not include .ts
+    const importFilePath = file.replace(/src\/|\.ts$/g, '');
+    indexSourceFile.addExportDeclaration({
+      namedExports,
+      moduleSpecifier: importFilePath,
+    });
   }
 
   const rawText = indexSourceFile.getText();
