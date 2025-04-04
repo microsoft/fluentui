@@ -14,11 +14,9 @@ const project = new Project({
   tsConfigFilePath: './tsconfig.json',
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tokensJSON = dedupeShadowTokens(tokensJSONRaw);
 const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
 // Store exports so we can add them to index.ts at the end
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const exportList: Record<string, string[]> = {};
 
 function generateTokens() {
