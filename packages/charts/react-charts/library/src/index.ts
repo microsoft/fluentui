@@ -17,3 +17,4 @@ export * from './DeclarativeChart';
 export * from './AreaChart';
 export * from './HorizontalBarChartWithAxis';
 export * from './HeatMapChart';
+export * from './SankeyChart';
