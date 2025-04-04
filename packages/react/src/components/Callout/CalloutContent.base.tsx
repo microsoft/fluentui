@@ -599,6 +599,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onMouseUp={mouseUpOnPopup}
             onRestoreFocus={props.onRestoreFocus}
             onScroll={onScroll}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             {...popupProps}
