@@ -350,9 +350,19 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
           props.barwidth!,
           isIntegralDataset,
           true,
+          props.supportNegativeData!,
         );
       }
-      yScale = createYAxis(YAxisParams, _useRtl, axisData, chartType, props.barwidth!, isIntegralDataset);
+      yScale = createYAxis(
+        YAxisParams,
+        _useRtl,
+        axisData,
+        chartType,
+        props.barwidth!,
+        isIntegralDataset,
+        false,
+        props.supportNegativeData!,
+      );
     }
 
     /*
