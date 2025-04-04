@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 04 Apr 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.88",
+      "version": "3.0.0-beta.88",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Mar 2025 04:07:36 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.88",
       "version": "3.0.0-beta.88",
