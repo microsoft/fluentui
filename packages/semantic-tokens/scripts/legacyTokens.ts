@@ -23,13 +23,13 @@ function main() {
       // This should never occur, but let's flag if a mistake was made in fallback token names
       throw new Error(`Fluent token ${fluentOverrides[t].f2Token} not found in fluent tokens`);
     }
-    const fluentToken = fluent2Fallback;
+
     const token = `
 /**
  * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
  * @public
  */
-export const ${fluentToken} = 'var(--${fluentToken})';
+export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';
 `;
     return acc + token;
   }, '');

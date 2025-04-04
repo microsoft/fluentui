@@ -4,86 +4,22 @@
  */
 import tokensJSONRaw from './tokens.json';
 import { fluentOverrides as fluentFallbacksRaw, FluentOverrideValue, type FluentOverrides } from './fluentOverrides';
-import fs from 'fs';
+import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
+import { dedupeShadowTokens } from './util';
+import { ComponentTokenMap, Token } from './token.types';
 
 const project = new Project({
   tsConfigFilePath: './tsconfig.json',
 });
 
-function chopLastCamelCasePart(str: string) {
-  const parts = str.split(/(?=[A-Z])/);
-  parts.pop();
-  return parts.join('');
-}
-
-function removeLastDelimiter(str: string, delimiter: string) {
-  const lastIndex = str.lastIndexOf(delimiter);
-  if (lastIndex === -1) {
-    // Delimiter not found
-    return str;
-  }
-  return str.substring(0, lastIndex);
-}
-
-function dedupeShadowTokens(_tokenJSON: Record<string, Token>) {
-  /* Our shadow tokens come exported from Figma in parts i.e. X, Y, Blur, Color
-    This is not compatible with our token fallback structure, as V9 shadows are combined strings
-    By deduping the shadows into a single string, we reduce tokens by ~25% and simplify fallbacks
-
-    To dedupe, we chop off the specific identifier (X, Y, Blur, Color) and combine them into a single token
-
-    This enables the script to work the same for all tokens once processed.
-  */
-  for (const token in _tokenJSON) {
-    if (_tokenJSON.hasOwnProperty(token)) {
-      const tokenData: Token = _tokenJSON[token];
-      const combinedShadowName = chopLastCamelCasePart(token);
-      if (tokenData.name.toLowerCase().includes('shadow/')) {
-        if (!_tokenJSON[combinedShadowName]) {
-          // Handle shadow tokens by removing the last part (X,Y,Blur,Color)
-          tokenData.cssName = removeLastDelimiter(tokenData.cssName, '-');
-          tokenData.fst_reference = removeLastDelimiter(tokenData.fst_reference, '/');
-          tokenData.name = removeLastDelimiter(tokenData.name, '/');
-          // Add the new combined token
-          _tokenJSON[combinedShadowName] = tokenData;
-        }
-
-        // Remove original token
-        delete _tokenJSON[token];
-      }
-    }
-  }
-
-  return _tokenJSON;
-}
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const tokensJSON: Record<string, any> = dedupeShadowTokens(tokensJSONRaw);
+const tokensJSON = dedupeShadowTokens(tokensJSONRaw);
 const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
 // Store exports so we can add them to index.ts at the end
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const exportList: Record<string, any> = {};
-
-interface Token {
-  no: number;
-  name: string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  fst_reference: string;
-  optional: boolean;
-  nullable: boolean;
-  description: string;
-  components: string[];
-  contrast: string;
-  fallback: string;
-  exceptions: string[];
-  cssName: string;
-}
-
-interface ComponentTokenMap {
-  [component: string]: string;
-}
+const exportList: Record<string, string[]> = {};
 
 function generateTokens() {
   console.log('Generating tokens...');
@@ -190,9 +126,7 @@ function generateTokenRawStrings() {
 }
 
 function toCamelCase(str: string) {
-  const formattedString = cleanFSTTokenName(str);
-
-  return formattedString
+  return str
     .split('/')
     .map((word: string, index: number) => {
       // If it is the first word make sure to lowercase all the chars.
