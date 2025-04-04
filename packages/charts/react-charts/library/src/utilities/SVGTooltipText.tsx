@@ -167,18 +167,24 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
 
   return (
-    <Tooltip relationship="description" {...props.tooltipProps} withArrow content={props.content} visible={showTooltip}>
-      <g>
-        {props.showBackground && (
-          <rect
-            x={rectX}
-            y={(textY ?? 0) - PADDING}
-            width={(textWidth ?? 0) + 2 * PADDING}
-            height={(textHeight ?? 0) + 2 * PADDING}
-            fill={backgroundColor}
-            transform={props.textProps?.transform}
-          />
-        )}
+    <>
+      {props.showBackground && (
+        <rect
+          x={rectX}
+          y={(textY ?? 0) - PADDING}
+          width={(textWidth ?? 0) + 2 * PADDING}
+          height={(textHeight ?? 0) + 2 * PADDING}
+          fill={backgroundColor}
+          transform={props.textProps?.transform}
+        />
+      )}
+      <Tooltip
+        relationship="description"
+        {...props.tooltipProps}
+        withArrow
+        content={props.content}
+        visible={showTooltip}
+      >
         <text
           {...props.textProps}
           id={tooltipHostId}
@@ -192,11 +198,12 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
         >
           {props.content}
         </text>
-      </g>
-    </Tooltip>
+      </Tooltip>
+    </>
   );
 });
 
 SVGTooltipText.defaultProps = {
   delay: 0,
+  showBackground: false,
 };
