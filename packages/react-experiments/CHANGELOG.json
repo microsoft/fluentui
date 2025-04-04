@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Fri, 04 Apr 2025 07:20:22 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.200",
+      "version": "8.14.200",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Mar 2025 10:22:53 GMT",
       "tag": "@fluentui/react-experiments_v8.14.200",
       "version": "8.14.200",
