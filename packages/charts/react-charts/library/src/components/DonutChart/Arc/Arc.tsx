@@ -127,6 +127,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
           onClick={props.data?.data.onClick}
           aria-label={_getAriaLabel()}
           role="img"
+          tabIndex={props.data!.data.legend! !== '' ? 0 : undefined}
         />
         {_renderArcLabel(classes.arcLabel)}
       </g>
