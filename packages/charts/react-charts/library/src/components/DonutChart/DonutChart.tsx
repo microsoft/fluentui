@@ -32,11 +32,10 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const [legend, setLegend] = React.useState<string | undefined>('');
     const [_width, setWidth] = React.useState<number | undefined>(props.width || 200);
     const [_height, setHeight] = React.useState<number | undefined>(props.height || 200);
-    const [activeLegend, setActiveLegend] = React.useState<string>('');
+    const [activeLegend, setActiveLegend] = React.useState<string | undefined>('');
     const [color, setColor] = React.useState<string | undefined>('');
     const [xCalloutValue, setXCalloutValue] = React.useState<string>('');
     const [yCalloutValue, setYCalloutValue] = React.useState<string>('');
-    const [selectedLegend, setSelectedLegend] = React.useState<string>('');
     const [focusedArcId, setFocusedArcId] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ChartDataPoint | undefined>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
@@ -102,19 +101,12 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
         const legend: Legend = {
           title: point.legend!,
           color,
-          action: () => {
-            if (selectedLegend === point.legend) {
-              setSelectedLegend('');
-            } else {
-              setSelectedLegend(point.legend!);
-            }
-          },
           hoverAction: () => {
             _handleChartMouseLeave();
             setActiveLegend(point.legend!);
           },
           onMouseOutAction: () => {
-            setActiveLegend('');
+            setActiveLegend(undefined);
           },
         };
         return legend;
@@ -194,16 +186,22 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: ChartDataPoint[]) {
-      const highlightedLegend = _getHighlightedLegend();
-      if (valueInsideDonut !== undefined && (highlightedLegend.length > 0 || isPopoverOpen)) {
-        let legendValue = valueInsideDonut;
-        data!.map((point: ChartDataPoint, index: number) => {
-          if (_legendHighlighted(point.legend) || (isPopoverOpen && point.legend === legend)) {
-            legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
+      const highlightedLegends = _getHighlightedLegend();
+      if (valueInsideDonut !== undefined && (highlightedLegends.length === 1 || isPopoverOpen)) {
+        const pointValue = data.find(point => _legendHighlighted(point.legend));
+        return pointValue
+          ? pointValue.yAxisCalloutData
+            ? pointValue.yAxisCalloutData
+            : pointValue.data!
+          : valueInsideDonut;
+      } else if (highlightedLegends.length > 0) {
+        let totalValue = 0;
+        data.forEach(point => {
+          if (highlightedLegends.includes(point.legend!)) {
+            totalValue += point.data!;
           }
-          return;
         });
-        return legendValue;
+        return totalValue;
       } else {
         return valueInsideDonut;
       }
