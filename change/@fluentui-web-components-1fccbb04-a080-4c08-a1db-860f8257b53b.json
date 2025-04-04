@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable",
-  "packageName": "@fluentui/web-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}
