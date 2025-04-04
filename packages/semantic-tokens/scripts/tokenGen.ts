@@ -61,13 +61,13 @@ function generateTokenRawStrings() {
   let controlRawTokens = '';
   let nullableRawTokens = '';
   const componentTokens: ComponentTokenMap = {};
-  const optionalVarFile = './src/optional/variables.ts';
+  const optionalVarFile = path.join(__dirname, '../src/optional/variables.ts');
   exportList[optionalVarFile] = [];
-  const controlVarFile = './src/control/variables.ts';
+  const controlVarFile = path.join(__dirname, '../src/control/variables.ts');
   exportList[controlVarFile] = [];
-  const nullableVarFile = './src/nullable/variables.ts';
+  const nullableVarFile = path.join(__dirname, '../src/nullable/variables.ts');
   exportList[nullableVarFile] = [];
-  const getComponentFile = (component: string) => `./src/components/${component}/variables.ts`;
+  const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/variables.ts`);
 
   for (const token in tokensJSON) {
     if (tokensJSON.hasOwnProperty(token)) {
@@ -112,7 +112,7 @@ function generateTokenRawStrings() {
 
   for (const component in componentTokens) {
     if (componentTokens.hasOwnProperty(component)) {
-      const dir = `./src/components/${component}/`;
+      const dir = path.join(__dirname, `../src/components/${component}`);
 
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
@@ -146,13 +146,13 @@ function generateTokenVariables() {
   let nullableTokens = '';
   const componentTokens: ComponentTokenMap = {};
 
-  const optionalVarFile = './src/optional/tokens.ts';
+  const optionalVarFile = path.join(__dirname, '../src/optional/tokens.ts');
   exportList[optionalVarFile] = [];
-  const controlVarFile = './src/control/tokens.ts';
+  const controlVarFile = path.join(__dirname, '../src/control/tokens.ts');
   exportList[controlVarFile] = [];
-  const nullableVarFile = './src/nullable/tokens.ts';
+  const nullableVarFile = path.join(__dirname, '../src/nullable/tokens.ts');
   exportList[nullableVarFile] = [];
-  const getComponentFile = (component: string) => `./src/components/${component}/tokens.ts`;
+  const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/tokens.ts`);
 
   for (const token in tokensJSON) {
     if (token.includes('(figma only)')) {
@@ -191,7 +191,7 @@ function generateTokenVariables() {
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeMixedInlineToken(
         fluentFallbacks[token],
       )})`;
-    } else if (tokenData.nullable && tokenSemanticRef) {
+    } else if (tokenData.nullable) {
       // nullable tokens should always resolve to unset
       resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset)`;
     } else if (tokenSemanticRef) {
@@ -282,14 +282,16 @@ function generateTokenVariables() {
   console.log('Added import statements');
 
   // Add export statements in index.ts
-  const indexFilePath = './src/index.ts';
+  const sourcePath = path.join(__dirname, '../src');
+  const indexFilePath = path.join(sourcePath, 'index.ts');
   // Clear index file and rewrite exports
   fs.truncateSync(indexFilePath, 0);
   // Add source file after we've cleaned it
   const indexSourceFile = project.addSourceFileAtPath(indexFilePath);
   for (const [file, namedExports] of Object.entries(exportList)) {
-    // Specifier should be relative and not include .ts
-    const importFilePath = file.replace(/src\/|\.ts$/g, '');
+    // Find relative path to index.ts, ensure forward slash directory separator, remove .ts extension
+    const importFilePath = './' + path.relative(sourcePath, file).split(path.sep).join('/').replace(/\.ts$/, '');
+
     indexSourceFile.addExportDeclaration({
       namedExports,
       moduleSpecifier: importFilePath,
