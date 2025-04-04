@@ -16,6 +16,7 @@ import {
 } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -461,9 +462,10 @@ function computeLinkAttributes(
   links: SLink[],
   linkFrom: (node: SNode) => string,
   linkAriaLabel: (link: SLink) => string,
+  linkId: string,
 ): LinkItemValues<RenderedLinkAttributes> {
   const result: LinkItemValues<RenderedLinkAttributes> = {};
-  links.forEach((link: SLink) => {
+  links.forEach((link: SLink, index: number) => {
     const sourceId = idFromNumberOrSNode(link.source);
     let sourceToTarget = result[sourceId];
     if (!sourceToTarget) {
@@ -471,8 +473,7 @@ function computeLinkAttributes(
       result[sourceId] = sourceToTarget;
     }
     sourceToTarget[idFromNumberOrSNode(link.target)] = {
-      // FIXME
-      reactId: `link${Math.random()}`, // getId('link'),
+      reactId: `${linkId}-${index}`,
       from: linkFrom(link.source as SNode),
       aria: linkAriaLabel(link),
     };
@@ -562,18 +563,22 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _numColumns = React.useRef<number>(0);
   const _strings = React.useRef<StringRenderer>();
   const _accessibility = React.useRef<AccessibilityRenderer>();
+  const _nodeBarId = useId('nodeBar');
+  const _nodeGElementId = useId('nodeGElement');
+  const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
   const [containerWidth, setContainerWidth] = React.useState<number>(912);
   const [selectedState, setSelectedState] = React.useState<boolean>(false);
   const [selectedLinks, setSelectedLinks] = React.useState(new Set<number>());
   const [selectedNodes, setSelectedNodes] = React.useState(new Set<number>());
-  const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
+  const [isCalloutVisible, setCalloutVisible] = React.useState<boolean>(false);
   const [selectedNode, setSelectedNode] = React.useState<SNode>();
   const [color, setColor] = React.useState<string>();
   const [xCalloutValue, setXCalloutValue] = React.useState<string>();
   const [yCalloutValue, setYCalloutValue] = React.useState<string>();
   const [descriptionMessage, setDescriptionMessage] = React.useState<string>();
+  const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
 
   React.useImperativeHandle(
     props.componentRef,
@@ -605,7 +610,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       .attr('font-size', '10')
       .append('tspan')
       .text(null);
-    nodes.forEach((singleNode: SNode) => {
+    nodes.forEach((singleNode: SNode, index: number) => {
       const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
       let padding = 8;
       let textLengthForNodeWeight = 0;
@@ -628,9 +633,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       const truncatedname: string = truncateText(nameSpan, singleNode.name, NODE_WIDTH - 8, padding);
       const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
       result[singleNode.nodeId] = {
-        // FIXME
-        reactId: `nodeBar${Math.random()}`, //getId('nodeBar'),
-        gElementId: `nodeGElement${Math.random()}`, //getId('nodeGElement'),
+        reactId: `${_nodeBarId}-${index}`,
+        gElementId: `${_nodeGElementId}-${index}`,
         name: truncatedname,
         aria: nodeAriaLabel(singleNode, nodeValue),
         trimmed: isTruncated,
@@ -752,7 +756,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               onFocus={event => _onFocusLink(event, singleLink, from)}
               onBlur={_onBlur}
               fillOpacity={_getOpacityStream(singleLink)}
-              data-is-focusable={true}
+              tabIndex={0}
               aria-label={aria}
               role="img"
             />
@@ -802,7 +806,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               stroke={_fillNodeBorder(singleNode)}
               strokeWidth="2"
               opacity="1"
-              data-is-focusable={true}
+              tabIndex={0}
               aria-label={aria}
               role="img"
             />
@@ -868,9 +872,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
       setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
       setSelectedNode(singleNode);
-      // FIXME
-      // setRefSelected(mouseEvent);
-      setIsCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
+      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+      setCalloutVisible(singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE);
       setColor(singleNode.color);
       setXCalloutValue(singleNode.name);
       setYCalloutValue(_formatNumber(singleNode.actualValue!));
@@ -890,8 +893,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       setSelectedState(true);
       setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
       setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
-      // FIXME
-      // setRefSelected(mouseEvent);
+      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
       const {
         isCalloutVisible: _isCalloutVisible,
         color: _color,
@@ -899,7 +901,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         yCalloutValue: _yCalloutValue,
         descriptionMessage: _descriptionMessage,
       } = _linkCalloutAttributes(singleLink, from);
-      setIsCalloutVisible(_isCalloutVisible);
+      setCalloutVisible(_isCalloutVisible);
       setColor(_color);
       setXCalloutValue(_xCalloutValue);
       setYCalloutValue(_yCalloutValue);
@@ -915,14 +917,16 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     }
   };
 
-  const _onFocusLink = (element: React.FocusEvent<SVGElement>, singleLink: SLink, from: string): void => {
+  const _onFocusLink = (focusEvent: React.FocusEvent<SVGElement>, singleLink: SLink, from: string): void => {
     // There is a big difference in how "Tab" and the "Arrow keys" are handled in this diagram.
     // In particular, I would expect the "Down" key to be like "Tab", but it jumps a little wildly. I'm not sure
     // if this behavior is an accessiblity violation, but it we might want to investigate it.
-    element.persist();
+    focusEvent.persist();
     _onCloseCallout();
-    // FIXME
-    // setRefSelected(element.currentTarget);
+    const boundingRect = focusEvent.currentTarget.getBoundingClientRect();
+    const clientX = boundingRect.left + boundingRect.width / 2;
+    const clientY = boundingRect.top + boundingRect.height / 2;
+    updatePosition(clientX, clientY);
     const {
       isCalloutVisible: _isCalloutVisible,
       color: _color,
@@ -930,7 +934,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       yCalloutValue: _yCalloutValue,
       descriptionMessage: _descriptionMessage,
     } = _linkCalloutAttributes(singleLink, from);
-    setIsCalloutVisible(_isCalloutVisible);
+    setCalloutVisible(_isCalloutVisible);
     setColor(_color);
     setXCalloutValue(_xCalloutValue);
     setYCalloutValue(_yCalloutValue);
@@ -938,9 +942,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   };
 
   const _onCloseCallout = () => {
-    setIsCalloutVisible(false);
-    // FIXME
-    // setRefSelected(undefined);
+    setCalloutVisible(false);
+    updatePosition(0, 0);
     setDescriptionMessage('');
   };
 
@@ -1058,6 +1061,17 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     );
   };
 
+  const updatePosition = (newX: number, newY: number) => {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+    }
+  };
+
   const _getStrings = (strings?: SankeyChartStrings): StringRenderer => {
     // NOTE: The `node` parameter is the sankey-generated node on the link, and not the original `node` supplied
     // by the caller.
@@ -1144,15 +1158,18 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       links,
       _strings.current.linkFrom,
       _accessibility.current.linkAriaLabel,
+      _linkId,
     );
     const linkData = _createLinks(links, linkAttributes);
 
     const calloutProps: ChartPopoverProps = {
       isPopoverOpen: isCalloutVisible,
+      clickPosition,
       color,
       XValue: xCalloutValue,
       YValue: yCalloutValue,
       descriptionMessage,
+      // fixme
       // className: classes.calloutContentRoot,
       ...props.calloutProps!,
     };
@@ -1164,7 +1181,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         - Bidirectional navigation has been disabled because it causes the up/down arrow keys to move the focus
         in a non-sequential and erratic manner within a 2D grid.
         */}
-        <div className={classes.chartWrapper}>
+        <div className={classes.chartWrapper} {..._arrowNavigationAttributes}>
           <svg width={width} height={height} id={_chartId}>
             {nodeLinkDomOrderArray.map(item => {
               if (item.type === 'node') {
@@ -1185,9 +1202,9 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                 );
               }
             })}
-            {calloutProps.isPopoverOpen && <ChartPopover {...calloutProps} />}
           </svg>
         </div>
+        {calloutProps.isPopoverOpen && <ChartPopover {...calloutProps} />}
       </div>
     );
   }

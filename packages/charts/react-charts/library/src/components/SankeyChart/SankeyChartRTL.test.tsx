@@ -7,6 +7,7 @@ import * as React from 'react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { SankeyChart } from './SankeyChart';
 import { ChartProps } from './index';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 expect.extend(toHaveNoViolations);
 
@@ -32,7 +33,13 @@ const emptyChartPoints: ChartProps = {
   chartData: [],
 };
 
+function sharedBeforeEach() {
+  resetIdsForTests();
+}
+
 describe('Sankey bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the Sankey chart with string node data',
     SankeyChart,
@@ -45,6 +52,8 @@ describe('Sankey bar chart rendering', () => {
 });
 
 describe('Sankey chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -58,6 +67,8 @@ describe('Sankey chart - Theme', () => {
 });
 
 describe('Sankey chart - Subcomponent Node', () => {
+  beforeEach(sharedBeforeEach);
+
   // Replace the original method with the mock implementation
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   Object.defineProperty(
@@ -85,6 +96,8 @@ describe('Sankey chart - Subcomponent Node', () => {
 });
 
 describe('Sankey chart - Subcomponent Label', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render sankey chart with node labels',
     SankeyChart,
@@ -98,6 +111,8 @@ describe('Sankey chart - Subcomponent Label', () => {
 });
 
 describe('Sankey chart - Mouse events', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should reset path on mouse leave from path',
     SankeyChart,
@@ -128,6 +143,8 @@ describe('Sankey chart - Mouse events', () => {
 });
 
 describe('Sankey chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should re-render the Sankey chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
@@ -145,6 +162,8 @@ describe('Sankey chart rendering', () => {
 });
 
 describe('Sankey Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<SankeyChart data={chartPointsWithStringNodeId()} />);
     let axeResults;

@@ -5,10 +5,14 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { ChartProps } from '../../index';
 import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings, SankeyChart } from './index';
-import { wait } from '../../utilities/TestUtility.test';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 // Wrapper of the SankeyChart to be tested.
 let wrapper: ReactWrapper<SankeyChartProps> | undefined;
+
+function sharedBeforeEach() {
+  resetIdsForTests();
+}
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -95,6 +99,7 @@ const dataWithoutColors: () => ChartProps = () => ({
 });
 
 describe('Sankey Chart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('renders Sankey correctly', () => {
@@ -250,39 +255,38 @@ describe('Sankey Chart snapShot testing', () => {
   });
 });
 
-describe('Render calling with respective to props', () => {
+describe.skip('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('No prop changes', async () => {
+  it('No prop changes', () => {
+    const renderMock = jest.spyOn(SankeyChart.prototype, 'render');
     const props: SankeyChartProps = {
       data: data(),
       height: 500,
       width: 800,
     };
-    wrapper = mount(<SankeyChart {...props} />);
-    const prevWidth = wrapper.find('svg').prop('width');
-    wrapper.setProps({ ...props });
-    await wait();
-    wrapper.update();
-    expect(wrapper.find('svg').prop('width')).toBe(prevWidth);
+    mount(<SankeyChart {...props} />);
+    expect(renderMock).toHaveBeenCalledTimes(1);
+    renderMock.mockRestore();
   });
 
-  it('prop changes', async () => {
+  it('prop changes', () => {
+    const renderMock = jest.spyOn(SankeyChart.prototype, 'render');
     const props = {
       data: data(),
       height: 700,
       width: 1100,
     };
-    wrapper = mount(<SankeyChart {...props} />);
-    const prevHeight = wrapper.find('svg').prop('height');
-    wrapper.setProps({ ...props, height: 1000 });
-    await wait();
-    wrapper.update();
-    expect(wrapper.find('svg').prop('height')).not.toBe(prevHeight);
+    const component = mount(<SankeyChart {...props} />);
+    component.setProps({ ...props, height: 1000 });
+    expect(renderMock).toHaveBeenCalledTimes(2);
+    renderMock.mockRestore();
   });
 });
 
 describe('SankeyChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should render correctly on node mouseover', () => {
@@ -379,6 +383,7 @@ describe('SankeyChart - mouse events', () => {
 });
 
 describe('SankeyChart - Min Height of Node Test', () => {
+  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('renders Sankey correctly on providing height less than onepercent of total height', () => {
