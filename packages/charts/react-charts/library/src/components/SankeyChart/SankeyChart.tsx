@@ -7,12 +7,7 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import { Margins, SLink, SNode } from '../../types/DataPoint';
-import {
-  SankeyChartAccessibilityProps,
-  SankeyChartData,
-  SankeyChartProps,
-  SankeyChartStrings,
-} from './SankeyChart.types';
+import { SankeyChartData, SankeyChartProps } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -540,10 +535,6 @@ type AccessibilityRenderer = {
   linkAriaLabel: (link: SLink) => string;
 };
 
-// NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
-// to a function component. This will require a significant refactor of the code in this file.
-// https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
-// I am concerned that doing so would break this contract, making it difficult for consuming code.
 export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forwardRef<
   HTMLDivElement,
   SankeyChartProps
@@ -560,8 +551,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _window = targetDocument?.defaultView;
   const _isRtl: boolean = dir === 'rtl';
   const _numColumns = React.useRef<number>(0);
-  const _strings = React.useRef<StringRenderer>();
-  const _accessibility = React.useRef<AccessibilityRenderer>();
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
   const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
@@ -588,6 +577,21 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     [],
   );
 
+  const _fitParentContainer = React.useCallback((): void => {
+    _reqID.current = _window?.requestAnimationFrame(() => {
+      // NOTE: Calls to this method trigger a re-render.
+      const container = props.parentRef ? props.parentRef : chartContainer.current;
+      if (container) {
+        const currentContainerWidth = props.enableReflow
+          ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+          : container.getBoundingClientRect().width;
+        const currentContainerHeight = container.getBoundingClientRect().height;
+        setContainerWidth(currentContainerWidth);
+        setContainerHeight(currentContainerHeight);
+      }
+    });
+  }, [_window, props.enableReflow, props.parentRef]);
+
   React.useEffect(() => {
     _fitParentContainer();
 
@@ -596,55 +600,62 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         _window?.cancelAnimationFrame(_reqID.current);
       }
     };
-  }, [props.shouldResize]);
+  }, [_fitParentContainer, _window, props.shouldResize]);
 
-  const _computeNodeAttributes = (
-    nodes: SNode[],
-    nodeAriaLabel: (node: SNode, weight: number) => string,
-  ): ItemValues<RenderedNodeAttributes> => {
-    const result: ItemValues<RenderedNodeAttributes> = {};
-    const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
-    const nameSpan = select('.nodeName')
-      .append('text')
-      .attr('class', 'tempText')
-      .attr('font-size', '10')
-      .append('tspan')
-      .text(null);
-    nodes.forEach((singleNode: SNode, index: number) => {
-      const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
-      let padding = 8;
-      let textLengthForNodeWeight = 0;
+  const _formatNumber = React.useCallback(
+    (value: number): string => {
+      return props.formatNumberOptions ? value.toLocaleString(undefined, props.formatNumberOptions) : value.toString();
+    },
+    [props.formatNumberOptions],
+  );
 
-      const nodeValue = singleNode.actualValue!;
-      // If the nodeWeight is in the same line as node description an extra padding
-      // of 6 px is required between node description and node weight.
-      if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
-        padding = padding + 6;
-        // The following `select` statement injects a `tempText` element into the DOM. This injection
-        // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
-        const measurement = measureText(weightSpan, _formatNumber(nodeValue));
-        if (measurement !== undefined) {
-          textLengthForNodeWeight = measurement;
-          padding = padding + textLengthForNodeWeight;
+  const _computeNodeAttributes = React.useCallback(
+    (nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string): ItemValues<RenderedNodeAttributes> => {
+      const result: ItemValues<RenderedNodeAttributes> = {};
+      const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+      const nameSpan = select('.nodeName')
+        .append('text')
+        .attr('class', 'tempText')
+        .attr('font-size', '10')
+        .append('tspan')
+        .text(null);
+      nodes.forEach((singleNode: SNode, index: number) => {
+        const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
+        let padding = 8;
+        let textLengthForNodeWeight = 0;
+
+        const nodeValue = singleNode.actualValue!;
+        // If the nodeWeight is in the same line as node description an extra padding
+        // of 6 px is required between node description and node weight.
+        if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
+          padding = padding + 6;
+          // The following `select` statement injects a `tempText` element into the DOM. This injection
+          // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+          const measurement = measureText(weightSpan, _formatNumber(nodeValue));
+          if (measurement !== undefined) {
+            textLengthForNodeWeight = measurement;
+            padding = padding + textLengthForNodeWeight;
+          }
         }
-      }
-      // Since the total width of the node is 124 and we are giving margin of 8px from the left .
-      // So the actual value on which it will be truncated is 124-8=116.
-      const truncatedname: string = truncateText(nameSpan, singleNode.name, NODE_WIDTH - 8, padding);
-      const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
-      result[singleNode.nodeId] = {
-        reactId: `${_nodeBarId}-${index}`,
-        gElementId: `${_nodeGElementId}-${index}`,
-        name: truncatedname,
-        aria: nodeAriaLabel(singleNode, nodeValue),
-        trimmed: isTruncated,
-        height,
-        weightOffset: textLengthForNodeWeight,
-      };
-    });
-    selectAll('.tempText').remove();
-    return result;
-  };
+        // Since the total width of the node is 124 and we are giving margin of 8px from the left .
+        // So the actual value on which it will be truncated is 124-8=116.
+        const truncatedname: string = truncateText(nameSpan, singleNode.name, NODE_WIDTH - 8, padding);
+        const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
+        result[singleNode.nodeId] = {
+          reactId: `${_nodeBarId}-${index}`,
+          gElementId: `${_nodeGElementId}-${index}`,
+          name: truncatedname,
+          aria: nodeAriaLabel(singleNode, nodeValue),
+          trimmed: isTruncated,
+          height,
+          weightOffset: textLengthForNodeWeight,
+        };
+      });
+      selectAll('.tempText').remove();
+      return result;
+    },
+    [_formatNumber, _nodeBarId, _nodeGElementId],
+  );
 
   const _linkCalloutAttributes = (singleLink: SLink, from: string) => {
     setCalloutVisible(true);
@@ -654,50 +665,62 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     setDescriptionMessage(from);
   };
 
-  const _normalizeSankeyData = (
-    data: SankeyChartData,
-    _containerWidth: number,
-    _containerHeight: number,
-    colorsForNodes: string[] | undefined,
-    borderColorsForNodes: string[] | undefined,
-  ): NormalizedData => {
-    const { sankey, height, width } = preRenderLayout(_margins.current, _containerWidth, _containerHeight, _isRtl);
-    // Clone the data before mutating it (via the SankeyLayoutGenerator) so that we don't mutate the original data.
-    const transformed: SankeyChartData = duplicateData(data);
-    sankey(transformed);
-    // NOTE: After the prior line, `transformed` is now a more-complex object than the incoming `ISankeyChartData`.
-    // `transformed` should be cast to a more-specific type. This is a breaking change because we would be eliminating
-    // fields from `ISankeyChartData` and putting those fields on a now-local type. But doing so makes it clearer what
-    // the caller needs to supply and why. For example, the `actualValue` and `layer` fields of `ISNodeExtra` should
-    // both be moved. Similarly for `unnormalizedValue` in `ISLinkExtra`.
-    // `SankeyNodeMinimal` and `SankeyLinkMinimal` are both the types after `sankey(transformed)`, but have almost no
-    // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
-    // with source index, target index, and value).
-    const nodesInColumn = groupNodesByColumn(transformed);
-    _numColumns.current = Object.keys(nodesInColumn).length;
-    // Keep track of the original values of the links and their acccumulated values in the nodes
-    // Setting these in external objects so they cannot be mutated by other code.
-    // The IDs of nodes can be numbers or strings. But, the IDs of links are always the index into the "nodes" array.
-    // After the sankey layout is computed, the each link's `source` and `target` will have the ID of the node in the
-    // type originally specified in the Nodes array. Consequently, we get the values of those links after the sankey
-    // transformation.
-    const nodeValues = valuesOfNodes(transformed.nodes);
-    const linkValues = valuesOfLinks(transformed.links);
-    adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
-    adjustPadding(sankey, height - 6, nodesInColumn);
-    // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
-    // NOTE: The second call to `sankey` is required to allow links to be hoverable.
-    // Without the second call, the links are not hoverable.
-    sankey(transformed);
-    populateNodeActualValue(transformed, nodeValues, linkValues);
-    assignNodeColors(transformed.nodes, colorsForNodes, borderColorsForNodes);
-    return {
-      width,
-      height,
-      nodes: transformed.nodes,
-      links: transformed.links,
-    };
-  };
+  const _isChartEmpty = React.useCallback(() => {
+    const sankeyChartData = props.data?.SankeyChartData;
+    return !(sankeyChartData && sankeyChartData.nodes.length > 0 && sankeyChartData.links.length > 0);
+  }, [props.data]);
+
+  const _normalizeSankeyData = React.useCallback(
+    (
+      data: SankeyChartData,
+      _containerWidth: number,
+      _containerHeight: number,
+      colorsForNodes: string[] | undefined,
+      borderColorsForNodes: string[] | undefined,
+    ): NormalizedData => {
+      if (_isChartEmpty()) {
+        return { width: 0, height: 0, nodes: [], links: [] };
+      }
+
+      const { sankey, height, width } = preRenderLayout(_margins.current, _containerWidth, _containerHeight, _isRtl);
+      // Clone the data before mutating it (via the SankeyLayoutGenerator) so that we don't mutate the original data.
+      const transformed: SankeyChartData = duplicateData(data);
+      sankey(transformed);
+      // NOTE: After the prior line, `transformed` is now a more-complex object than the incoming `ISankeyChartData`.
+      // `transformed` should be cast to a more-specific type. This is a breaking change because we would be eliminating
+      // fields from `ISankeyChartData` and putting those fields on a now-local type. But doing so makes it clearer what
+      // the caller needs to supply and why. For example, the `actualValue` and `layer` fields of `ISNodeExtra` should
+      // both be moved. Similarly for `unnormalizedValue` in `ISLinkExtra`.
+      // `SankeyNodeMinimal` and `SankeyLinkMinimal` are both the types after `sankey(transformed)`, but have almost no
+      // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
+      // with source index, target index, and value).
+      const nodesInColumn = groupNodesByColumn(transformed);
+      _numColumns.current = Object.keys(nodesInColumn).length;
+      // Keep track of the original values of the links and their acccumulated values in the nodes
+      // Setting these in external objects so they cannot be mutated by other code.
+      // The IDs of nodes can be numbers or strings. But, the IDs of links are always the index into the "nodes" array.
+      // After the sankey layout is computed, the each link's `source` and `target` will have the ID of the node in the
+      // type originally specified in the Nodes array. Consequently, we get the values of those links after the sankey
+      // transformation.
+      const nodeValues = valuesOfNodes(transformed.nodes);
+      const linkValues = valuesOfLinks(transformed.links);
+      adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
+      adjustPadding(sankey, height - 6, nodesInColumn);
+      // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
+      // NOTE: The second call to `sankey` is required to allow links to be hoverable.
+      // Without the second call, the links are not hoverable.
+      sankey(transformed);
+      populateNodeActualValue(transformed, nodeValues, linkValues);
+      assignNodeColors(transformed.nodes, colorsForNodes, borderColorsForNodes);
+      return {
+        width,
+        height,
+        nodes: transformed.nodes,
+        links: transformed.links,
+      };
+    },
+    [_isChartEmpty, _isRtl],
+  );
 
   const _createLinks = (
     dataLinks: SLink[],
@@ -860,10 +883,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     }
   };
 
-  const _formatNumber = (value: number): string => {
-    return props.formatNumberOptions ? value.toLocaleString(undefined, props.formatNumberOptions) : value.toString();
-  };
-
   const _onStreamHover = (mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) => {
     mouseEvent.persist();
     _onCloseCallout();
@@ -968,24 +987,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     return NON_SELECTED_OPACITY;
   };
 
-  const _fitParentContainer = (): void => {
-    _reqID.current = _window?.requestAnimationFrame(() => {
-      // NOTE: Calls to this method trigger a re-render.
-      const container = props.parentRef ? props.parentRef : chartContainer.current;
-      if (container) {
-        const currentContainerWidth = props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
-        const currentContainerHeight = container.getBoundingClientRect().height;
-        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
-        if (shouldResize) {
-          setContainerWidth(currentContainerWidth);
-          setContainerHeight(currentContainerHeight);
-        }
-      }
-    });
-  };
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _showTooltip = (text: string, checkTrcuncated: boolean, evt: any) => {
     if (_tooltip.current && checkTrcuncated) {
@@ -1003,11 +1004,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     if (_tooltip.current) {
       select(_tooltip.current).style('opacity', 0);
     }
-  };
-
-  const _isChartEmpty = () => {
-    const sankeyChartData = props.data?.SankeyChartData;
-    return !(sankeyChartData && sankeyChartData.nodes.length > 0 && sankeyChartData.links.length > 0);
   };
 
   const _calculateChartMinWidth = (): number => {
@@ -1032,20 +1028,20 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     }
   };
 
-  const _getStrings = (strings?: SankeyChartStrings): StringRenderer => {
-    const fromString = strings?.linkFrom || 'From {0}';
+  // Prepare the localization utilities
+  const _strings: StringRenderer = React.useMemo(() => {
+    const fromString = props.strings?.linkFrom || 'From {0}';
     // NOTE: The `node` parameter is the sankey-generated node on the link, and not the original `node` supplied
     // by the caller.
     return {
       linkFrom: (node: SNode) => format(fromString, node.name),
     };
-  };
-
-  const _getAccessibility = (accessibility?: SankeyChartAccessibilityProps): AccessibilityRenderer => {
-    const linkString = accessibility?.linkAriaLabel || 'link from {0} to {1} with weight {2}';
-    const nodeString = accessibility?.nodeAriaLabel || 'node {0} with weight {1}';
+  }, [props.strings]);
+  const _accessibility: AccessibilityRenderer = React.useMemo(() => {
+    const linkString = props.accessibility?.linkAriaLabel || 'link from {0} to {1} with weight {2}';
+    const nodeString = props.accessibility?.nodeAriaLabel || 'node {0} with weight {1}';
     return {
-      emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
+      emptyAriaLabel: props.accessibility?.emptyAriaLabel || 'Graph has no data to display',
       linkAriaLabel: (link: SLink) =>
         format(
           linkString,
@@ -1055,21 +1051,38 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         ),
       nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, _formatNumber(weight)),
     };
-  };
+  }, [_formatNumber, props.accessibility]);
 
-  _strings.current = _getStrings(props.strings);
-  _accessibility.current = _getAccessibility(props.accessibility);
+  // Compute the position of each node and link
+  const { nodes, links, width, height } = React.useMemo(
+    () =>
+      _normalizeSankeyData(
+        props.data.SankeyChartData!,
+        containerWidth,
+        containerHeight,
+        props.colorsForNodes,
+        props.borderColorsForNodes,
+      ),
+    [
+      _normalizeSankeyData,
+      containerHeight,
+      containerWidth,
+      props.borderColorsForNodes,
+      props.colorsForNodes,
+      props.data,
+    ],
+  );
+  // Pre-compute some important attributes about nodes, specifically text
+  const nodeAttributes = React.useMemo(
+    () => _computeNodeAttributes(nodes, _accessibility.nodeAriaLabel),
+    [_accessibility, _computeNodeAttributes, nodes],
+  );
+  const linkAttributes = React.useMemo(
+    () => computeLinkAttributes(links, _strings.linkFrom, _accessibility.linkAriaLabel, _linkId),
+    [_accessibility, _linkId, _strings, links],
+  );
 
   if (!_isChartEmpty()) {
-    // Compute the position of each node and link
-    const { nodes, links, width, height } = _normalizeSankeyData(
-      props.data.SankeyChartData!,
-      containerWidth,
-      containerHeight,
-      props.colorsForNodes,
-      props.borderColorsForNodes,
-    );
-
     // In FocusZone, the focus order is determined by the rendering order of the elements. We need to find
     // a rendering order such that the focus moves through the nodes and links in a logical sequence.
     // Rendering the nodes and links layer by layer in a vertical order seems to be the most effective solution
@@ -1110,16 +1123,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       return 0;
     });
 
-    // Pre-compute some important attributes about nodes, specifically text
-    const nodeAttributes = _computeNodeAttributes(nodes, _accessibility.current.nodeAriaLabel);
     // Build the nodes and links as rendered in the UX.
     const nodeData = _createNodes(nodes, nodeAttributes);
-    const linkAttributes = computeLinkAttributes(
-      links,
-      _strings.current.linkFrom,
-      _accessibility.current.linkAriaLabel,
-      _linkId,
-    );
     const linkData = _createLinks(links, linkAttributes);
 
     const calloutProps: ChartPopoverProps = {
@@ -1168,14 +1173,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       </div>
     );
   }
-  return (
-    <div
-      id={_emptyChartId}
-      role={'alert'}
-      style={{ opacity: '0' }}
-      aria-label={_accessibility.current.emptyAriaLabel}
-    />
-  );
+  return <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={_accessibility.emptyAriaLabel} />;
 });
 
 SankeyChart.displayName = 'SankeyChart';

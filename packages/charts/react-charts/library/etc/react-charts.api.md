@@ -1093,7 +1093,6 @@ export interface SankeyChartStrings {
 
 // @public
 export interface SankeyChartStyles {
-    calloutContentRoot?: string;
     chartWrapper?: string;
     links?: string;
     nodes?: string;
