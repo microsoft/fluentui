@@ -15,7 +15,6 @@ import {
   CustomizedCalloutData,
   Margins,
   RefArrayData,
-  ColorFillBarsProps,
   ScatterChartDataPoint,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
@@ -452,11 +451,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     if (isPopoverOpen) {
       setPopoverOpen(false);
     }
-  }
-
-  function _clearMultipleLegendSelections() {
-    setSelectedLegendPoints([]);
-    setIsSelectedLegend(false);
   }
 
   /**
