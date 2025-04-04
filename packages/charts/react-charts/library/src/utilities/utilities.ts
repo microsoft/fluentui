@@ -566,10 +566,7 @@ export function createYAxisForOtherCharts(
     yMax = yMax + yPadding;
   }
   const yAxisScale = d3ScaleLinear()
-    .domain([
-      supportNegativeData ? domainValues[0] : yMin,
-      yMax,
-    ])
+    .domain([supportNegativeData ? domainValues[0] : yMin, yMax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);

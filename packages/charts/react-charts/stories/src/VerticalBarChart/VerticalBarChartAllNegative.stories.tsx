@@ -163,7 +163,7 @@ export const VerticalBarAllNegative = () => {
         In this example the supportNegativeData property is enabled and all negative y points are passed to the data. As
         a result chart with negative y axis data is rendered.
       </label>
-      <br/>
+      <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
         type="range"
