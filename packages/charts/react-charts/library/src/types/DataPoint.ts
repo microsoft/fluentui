@@ -1,5 +1,6 @@
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
+import { CurveFactory } from 'd3-shape';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface Basestate {
@@ -403,6 +404,12 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
    * Color of border around the line. Default white.
    */
   lineBorderColor?: string;
+
+  /**
+   * Defines the type of interpolation used to render the line.
+   * @default 'linear'
+   */
+  curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
 }
 
 /**
