@@ -61,8 +61,8 @@ export interface MapXToDataSet {
 
 //by default d3-shape 3.2.0 limits the< path> data point precision to 3 digits(d3/d3-path#10)
 
-export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
-  React.forwardRef<HTMLDivElement, AreaChartProps>((props, forwardedRef) => {
+export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardRef<HTMLDivElement, AreaChartProps>(
+  (props, forwardedRef) => {
     const _uniqueIdForGraph: string = useId('areaChart_');
     const _verticalLineId: string = useId('verticalLine_');
     const _circleId: string = useId('circle');
@@ -75,6 +75,14 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
     const _emptyChartId: string = useId('_AreaChart_empty');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any;
+    let _createSet: (data: LineChartPoints[]) => {
+      colors: string[];
+      opacity: number[];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      calloutPoints: any;
+    };
     let _colors: string[];
     let _opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,6 +91,8 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
     let _margins: Margins;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _xAxisRectScale: any;
+    // determines if the given area chart has multiple stacked bar charts
+    let _isMultiStackChart: boolean;
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -93,6 +103,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
     const [displayOfLine, setDisplayOfLine] = React.useState<InterceptVisibility>(InterceptVisibility.hide);
     const [isCircleClicked, setIsCircleClicked] = React.useState<boolean>(false);
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<number | string | Date | null>(null);
+    const [isShowCalloutPending, setIsShowCalloutPending] = React.useState<boolean>(false);
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
@@ -109,7 +120,11 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
         }
       }
       prevPropsRef.current = props;
-    }, [props]);
+      if (isShowCalloutPending) {
+        setPopoverOpen(true);
+        setIsShowCalloutPending(false);
+      }
+    }, [isShowCalloutPending, props]);
     const classes = useAreaChartStyles(props);
 
     function _getMargins(margins: Margins) {
@@ -173,9 +188,13 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const _nearestCircleToHighlight =
         axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
-      if (found) {
+      const pointToHighlightUpdated = nearestCircleToHighlight !== _nearestCircleToHighlight;
+      // if no points need to be called out then don't show vertical line and callout card
+      if (found && pointToHighlightUpdated && !isShowCalloutPending) {
         const filteredValues = _getFilteredLegendValues(found.values);
         setNearestCircleToHighlight(_nearestCircleToHighlight);
+        setPopoverOpen(false);
+        setIsShowCalloutPending(true);
         setLineXValue(_xAxisRectScale(pointToHighlight));
         setDisplayOfLine(InterceptVisibility.show);
         setIsCircleClicked(false);
@@ -186,6 +205,26 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
         setXAxisCalloutAccessibilityData(xAxisCalloutAccessibilityData);
         setActivePoint('');
       } else {
+        /*
+      When above if condition is false but found=true, it means either
+
+      1). pointToHighlightUpdated is false.
+      For this case we dont need to do anything.
+
+      2). isShowCalloutPending is true.
+      For this case there will be no callout updation for the event.
+      This condition has been added to prevent repeated callout flashing.
+      Currently there is a fraction of second delay between hover event and subsequent callout refresh.
+      In the meantime if another event is received, the callout continues to flash for the set of
+      intermediate hover events.
+
+      This does not cause any issue as the user interaction takes atleast a fraction of second and the final
+      callout state is ultimately achieved.
+      If a user performs very swift mouse maneuver, the intermediate events will be lost but the callout experience
+      remains smooth.
+      */
+      }
+      if (!found) {
         setPopoverOpen(false);
         setNearestCircleToHighlight(nearestCircleToHighlight);
         setDisplayOfLine(InterceptVisibility.hide);
@@ -199,20 +238,17 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
       /**/
     }
 
-    const _updatePosition = React.useCallback(
-      (newX: number, newY: number) => {
-        const threshold = 1; // Set a threshold for movement
-        const { x, y } = clickPosition;
-        // Calculate the distance moved
-        const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
-        // Update the position only if the distance moved is greater than the threshold
-        if (distance > threshold) {
-          setClickPosition({ x: newX, y: newY });
-          setPopoverOpen(true);
-        }
-      },
-      [clickPosition],
-    );
+    function _updatePosition(newX: number, newY: number) {
+      const threshold = 1; // Set a threshold for movement
+      const { x, y } = clickPosition;
+      // Calculate the distance moved
+      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+      // Update the position only if the distance moved is greater than the threshold
+      if (distance > threshold) {
+        setClickPosition({ x: newX, y: newY });
+        setPopoverOpen(true);
+      }
+    }
 
     function _handleChartMouseLeave() {
       setPopoverOpen(false);
@@ -226,175 +262,173 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
       setYValueHover([]);
     }
 
-    const _getDataPoints = React.useCallback(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (keys: string[], dataSet: any) => {
-        const renderPoints: Array<AreaChartDataSetPoint[]> = [];
-        let maxOfYVal = 0;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function _getDataPoints(keys: string[], dataSet: any) {
+      const renderPoints: Array<AreaChartDataSetPoint[]> = [];
+      let maxOfYVal = 0;
 
-        if (props.mode === 'tozeroy') {
-          keys.forEach((key, index) => {
-            const currentLayer: AreaChartDataSetPoint[] = [];
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            dataSet.forEach((d: any) => {
-              currentLayer.push({
-                values: [0, d[key]], // Start from zero for "tozeroy" mode
-                xVal: d.xVal,
-              });
-              if (d[key] > maxOfYVal) {
-                maxOfYVal = d[key];
-              }
-            });
-            renderPoints.push(currentLayer);
-          });
-        } else {
-          const dataValues = d3Stack().keys(keys)(dataSet);
-          maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
+      if (props.mode === 'tozeroy') {
+        keys.forEach((key, index) => {
+          const currentLayer: AreaChartDataSetPoint[] = [];
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          dataValues.forEach((layer: any) => {
-            const currentLayer: AreaChartDataSetPoint[] = [];
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            layer.forEach((d: any) => {
-              currentLayer.push({
-                values: d,
-                xVal: d.data.xVal,
-              });
+          dataSet.forEach((d: any) => {
+            currentLayer.push({
+              values: [0, d[key]], // Start from zero for "tozeroy" mode
+              xVal: d.xVal,
             });
-            renderPoints.push(currentLayer);
-          });
-        }
-        return {
-          renderData: renderPoints,
-          maxOfYVal,
-        };
-      },
-      [props.mode],
-    );
-
-    const _createDataSet = React.useCallback(
-      (points: LineChartPoints[]) => {
-        if (props.enablePerfOptimization && _enableComputationOptimization) {
-          const allChartPoints: LineChartDataPoint[] = [];
-          const dataSet: AreaChartDataSetPoint[] = [];
-          const colors: string[] = [];
-          const opacity: number[] = [];
-          const calloutPoints = calloutData(points!);
-
-          points &&
-            points.length &&
-            points.forEach((singleChartPoint: LineChartPoints) => {
-              colors.push(singleChartPoint.color!);
-              opacity.push(singleChartPoint.opacity || 1);
-              allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
-            });
-
-          const mapOfXvalToListOfDataPoints: MapXToDataSet = {};
-          allChartPoints.forEach((dataPoint: LineChartDataPoint) => {
-            const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
-            // map of x value to the list of data points which share the same x value .
-            if (mapOfXvalToListOfDataPoints[xValue]) {
-              mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
-            } else {
-              mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
+            if (d[key] > maxOfYVal) {
+              maxOfYVal = d[key];
             }
           });
-
-          Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
-            const value: LineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
-
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const singleDataset: any = {};
-            value.forEach((singleDataPoint: LineChartDataPoint, index: number) => {
-              singleDataset.xVal = singleDataPoint.x;
-              singleDataset[`chart${index}`] = singleDataPoint.y;
+          renderPoints.push(currentLayer);
+        });
+      } else {
+        const dataValues = d3Stack().keys(keys)(dataSet);
+        maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        dataValues.forEach((layer: any) => {
+          const currentLayer: AreaChartDataSetPoint[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          layer.forEach((d: any) => {
+            currentLayer.push({
+              values: d,
+              xVal: d.data.xVal,
             });
-            dataSet.push(singleDataset);
+          });
+          renderPoints.push(currentLayer);
+        });
+      }
+
+      _isMultiStackChart = !!(props.legendProps?.selectedLegends
+        ? renderPoints?.length >= 1
+        : renderPoints?.length > 1);
+      return {
+        renderData: renderPoints,
+        maxOfYVal,
+      };
+    }
+
+    function _createDataSet(points: LineChartPoints[]) {
+      if (props.enablePerfOptimization && _enableComputationOptimization) {
+        const allChartPoints: LineChartDataPoint[] = [];
+        const dataSet: AreaChartDataSetPoint[] = [];
+        const colors: string[] = [];
+        const opacity: number[] = [];
+        const calloutPoints = calloutData(points!);
+
+        points &&
+          points.length &&
+          points.forEach((singleChartPoint: LineChartPoints) => {
+            colors.push(singleChartPoint.color!);
+            opacity.push(singleChartPoint.opacity || 1);
+            allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
           });
 
-          // get keys from dataset, used to render data
-          const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-          const keys: string[] = [];
-          for (let i = 0; i < keysLength - 1; i++) {
-            const keyVal = `chart${i}`;
-            keys.push(keyVal);
+        const mapOfXvalToListOfDataPoints: MapXToDataSet = {};
+        allChartPoints.forEach((dataPoint: LineChartDataPoint) => {
+          const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
+          // map of x value to the list of data points which share the same x value .
+          if (mapOfXvalToListOfDataPoints[xValue]) {
+            mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
+          } else {
+            mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
           }
+        });
 
-          // Data used to draw graph
-          const data = _getDataPoints(keys, dataSet);
+        Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
+          const value: LineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
 
-          return {
-            colors,
-            opacity,
-            keys,
-            data,
-            calloutPoints,
-          };
-        } else {
-          const allChartPoints: LineChartDataPoint[] = [];
-          const dataSet: AreaChartDataSetPoint[] = [];
-          const colors: string[] = [];
-          const opacity: number[] = [];
-          const calloutPoints = calloutData(points!);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const singleDataset: any = {};
+          value.forEach((singleDataPoint: LineChartDataPoint, index: number) => {
+            singleDataset.xVal = singleDataPoint.x;
+            singleDataset[`chart${index}`] = singleDataPoint.y;
+          });
+          dataSet.push(singleDataset);
+        });
 
-          points &&
-            points.length &&
-            points.forEach((singleChartPoint: LineChartPoints) => {
-              colors.push(singleChartPoint.color!);
-              opacity.push(singleChartPoint.opacity || 1);
-              allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
-            });
-
-          let tempArr = allChartPoints;
-          while (tempArr.length) {
-            const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-            const filteredChartPoints: LineChartDataPoint[] = tempArr.filter(
-              (point: LineChartDataPoint) =>
-                (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
-            );
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const singleDataset: any = {};
-            filteredChartPoints.forEach((singleDataPoint: LineChartDataPoint, index: number) => {
-              singleDataset.xVal = singleDataPoint.x;
-              singleDataset[`chart${index}`] = singleDataPoint.y;
-            });
-            dataSet.push(singleDataset);
-            // removing compared objects from array
-            const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-            tempArr = tempArr.filter(
-              (point: LineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
-            );
-          }
-
-          // get keys from dataset, used to create stacked data
-          const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-          const keys: string[] = [];
-          for (let i = 0; i < keysLength - 1; i++) {
-            const keyVal = `chart${i}`;
-            keys.push(keyVal);
-          }
-
-          // Data used to draw graph
-          const data = _getDataPoints(keys, dataSet);
-
-          return {
-            colors,
-            opacity,
-            keys,
-            data,
-            calloutPoints,
-          };
+        // get keys from dataset, used to render data
+        const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+        const keys: string[] = [];
+        for (let i = 0; i < keysLength - 1; i++) {
+          const keyVal = `chart${i}`;
+          keys.push(keyVal);
         }
-      },
-      [_enableComputationOptimization, _getDataPoints, props.enablePerfOptimization],
-    );
 
-    const _getCustomizedCallout = React.useCallback(() => {
+        // Data used to draw graph
+        const data = _getDataPoints(keys, dataSet);
+
+        return {
+          colors,
+          opacity,
+          keys,
+          data,
+          calloutPoints,
+        };
+      } else {
+        const allChartPoints: LineChartDataPoint[] = [];
+        const dataSet: AreaChartDataSetPoint[] = [];
+        const colors: string[] = [];
+        const opacity: number[] = [];
+        const calloutPoints = calloutData(points!);
+
+        points &&
+          points.length &&
+          points.forEach((singleChartPoint: LineChartPoints) => {
+            colors.push(singleChartPoint.color!);
+            opacity.push(singleChartPoint.opacity || 1);
+            allChartPoints.push(...(singleChartPoint.data as LineChartDataPoint[]));
+          });
+
+        let tempArr = allChartPoints;
+        while (tempArr.length) {
+          const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          const filteredChartPoints: LineChartDataPoint[] = tempArr.filter(
+            (point: LineChartDataPoint) =>
+              (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+          );
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const singleDataset: any = {};
+          filteredChartPoints.forEach((singleDataPoint: LineChartDataPoint, index: number) => {
+            singleDataset.xVal = singleDataPoint.x;
+            singleDataset[`chart${index}`] = singleDataPoint.y;
+          });
+          dataSet.push(singleDataset);
+          // removing compared objects from array
+          const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          tempArr = tempArr.filter(
+            (point: LineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
+          );
+        }
+
+        // get keys from dataset, used to create stacked data
+        const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+        const keys: string[] = [];
+        for (let i = 0; i < keysLength - 1; i++) {
+          const keyVal = `chart${i}`;
+          keys.push(keyVal);
+        }
+
+        // Data used to draw graph
+        const data = _getDataPoints(keys, dataSet);
+
+        return {
+          colors,
+          opacity,
+          keys,
+          data,
+          calloutPoints,
+        };
+      }
+    }
+
+    function _getCustomizedCallout() {
       return props.onRenderCalloutPerStack
         ? props.onRenderCalloutPerStack(stackCalloutProps)
         : props.onRenderCalloutPerDataPoint
         ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps)
         : null;
-    }, [dataPointCalloutProps, props, stackCalloutProps]);
+    }
 
     function _getGraphData(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -831,32 +865,24 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
       return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
     }
 
-    const { lineChartData } = props.data;
-    const points = _addDefaultColors(lineChartData);
-    const { colors, opacity, data, calloutPoints } = React.useMemo(
-      () => _createDataSet(points),
-      [_createDataSet, points],
-    );
-    const _isMultiStackChart = !!(props.legendProps?.selectedLegends
-      ? data.renderData?.length >= 1
-      : data.renderData?.length > 1);
-    _calloutPoints = calloutPoints;
-    const isXAxisDateType = getXAxisType(points);
-    _colors = colors;
-    _opacity = opacity;
-    _data = data.renderData;
-    const legends: JSX.Element = _getLegendData(points);
+    if (!_isChartEmpty()) {
+      const { lineChartData } = props.data;
+      const points = _addDefaultColors(lineChartData);
+      _createSet = _createDataSet;
+      const { colors, opacity, data, calloutPoints } = _createSet(points);
+      _calloutPoints = calloutPoints;
+      const isXAxisDateType = getXAxisType(points);
+      _colors = colors;
+      _opacity = opacity;
+      _data = data.renderData;
+      const legends: JSX.Element = _getLegendData(points);
 
-    const tickParams = React.useMemo(
-      () => ({
+      const tickParams = {
         tickValues: props.tickValues,
         tickFormat: props.tickFormat,
-      }),
-      [props.tickValues, props.tickFormat],
-    );
+      };
 
-    const calloutProps: ChartPopoverProps = React.useMemo(
-      () => ({
+      const calloutProps: ChartPopoverProps = {
         YValueHover: YValueHover!,
         hoverXValue: hoverXValue!,
         xAxisCalloutAccessibilityData,
@@ -871,88 +897,52 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.memo(
             : undefined,
         },
         isCalloutForStack: true,
-      }),
-      [
-        YValueHover,
-        hoverXValue,
-        xAxisCalloutAccessibilityData,
-        props,
-        clickPosition,
-        isPopoverOpen,
-        _getCustomizedCallout,
-        dataPointCalloutProps,
-      ],
-    );
-    return !_isChartEmpty() ? (
-      <CartesianChart
-        {...props}
-        chartTitle={_getChartTitle()}
-        points={points}
-        chartType={ChartTypes.AreaChart}
-        calloutProps={calloutProps}
-        legendBars={legends}
-        xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-        tickParams={tickParams}
-        maxOfYVal={data.maxOfYVal}
-        getGraphData={_getGraphData}
-        getmargins={_getMargins}
-        onChartMouseLeave={_handleChartMouseLeave}
-        enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop, @typescript-eslint/no-shadow
-        children={(props: ChildProps) => {
-          _xAxisRectScale = props.xScale;
-          const ticks = _xAxisRectScale.ticks();
-          const width1 = _xAxisRectScale(ticks[ticks.length - 1]);
-          const rectHeight = props.containerHeight! - _margins.top!;
-          return (
-            <>
-              <g>
-                <rect
-                  id={_rectId}
-                  width={width1}
-                  height={rectHeight}
-                  fill={'transparent'}
-                  onMouseMove={event => _onRectMouseMove(event)}
-                  onMouseOut={_onRectMouseOut}
-                  onMouseOver={event => _onRectMouseMove(event)}
-                />
-              </g>
-              <g>{_chart}</g>
-            </>
-          );
-        }}
-      />
-    ) : (
+      };
+      return (
+        <CartesianChart
+          {...props}
+          chartTitle={_getChartTitle()}
+          points={points}
+          chartType={ChartTypes.AreaChart}
+          calloutProps={calloutProps}
+          legendBars={legends}
+          xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+          tickParams={tickParams}
+          maxOfYVal={data.maxOfYVal}
+          getGraphData={_getGraphData}
+          getmargins={_getMargins}
+          onChartMouseLeave={_handleChartMouseLeave}
+          enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop, @typescript-eslint/no-shadow
+          children={(props: ChildProps) => {
+            _xAxisRectScale = props.xScale;
+            const ticks = _xAxisRectScale.ticks();
+            const width1 = _xAxisRectScale(ticks[ticks.length - 1]);
+            const rectHeight = props.containerHeight! - _margins.top!;
+            return (
+              <>
+                <g>
+                  <rect
+                    id={_rectId}
+                    width={width1}
+                    height={rectHeight}
+                    fill={'transparent'}
+                    onMouseMove={event => _onRectMouseMove(event)}
+                    onMouseOut={_onRectMouseOut}
+                    onMouseOver={event => _onRectMouseMove(event)}
+                  />
+                </g>
+                <g>{_chart}</g>
+              </>
+            );
+          }}
+        />
+      );
+    }
+    return (
       <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );
-  }),
-  areEqual,
+  },
 );
 AreaChart.displayName = 'AreaChart';
-
-/**
- * Compare only the props that should trigger a re-render
- */
-function areEqual(prevProps: AreaChartProps, nextProps: AreaChartProps) {
-  return (
-    prevProps.data === nextProps.data &&
-    prevProps.height === nextProps.height &&
-    prevProps.width === nextProps.width &&
-    prevProps.hideLegend === nextProps.hideLegend &&
-    prevProps.enablePerfOptimization === nextProps.enablePerfOptimization &&
-    prevProps.legendProps === nextProps.legendProps &&
-    prevProps.tickValues === nextProps.tickValues &&
-    prevProps.tickFormat === nextProps.tickFormat &&
-    prevProps.calloutProps === nextProps.calloutProps &&
-    prevProps.useUTC === nextProps.useUTC &&
-    prevProps.wrapXAxisLables === nextProps.wrapXAxisLables &&
-    prevProps.showXAxisLablesTooltip === nextProps.showXAxisLablesTooltip &&
-    prevProps.enabledLegendsWrapLines === nextProps.enabledLegendsWrapLines &&
-    prevProps.legendsOverflowText === nextProps.legendsOverflowText &&
-    prevProps.mode === nextProps.mode &&
-    prevProps.enableGradient === nextProps.enableGradient &&
-    prevProps.optimizeLargeData === nextProps.optimizeLargeData &&
-    prevProps.showXAxisLablesTooltip === nextProps.showXAxisLablesTooltip
-  );
-}
