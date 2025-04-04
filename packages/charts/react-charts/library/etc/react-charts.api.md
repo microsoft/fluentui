@@ -112,6 +112,7 @@ export interface CartesianChartProps {
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: CartesianChartStyles;
+    supportNegativeData?: boolean;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
@@ -1131,12 +1132,14 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: VerticalBarChartDataPoint[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
+    roundCorners?: boolean;
     styles?: VerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;

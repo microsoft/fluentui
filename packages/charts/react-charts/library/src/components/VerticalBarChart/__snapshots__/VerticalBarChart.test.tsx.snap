@@ -897,6 +897,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={48}
@@ -916,6 +917,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={18.384615384615387}
@@ -935,6 +937,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={-26.03846153846154}
@@ -1144,6 +1147,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={48}
@@ -1163,6 +1167,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={18.384615384615387}
@@ -1182,6 +1187,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             onMouseOver={[Function]}
             opacity="1"
             role="img"
+            rx={0}
             tabIndex={0}
             width={1}
             x={-26.03846153846154}
