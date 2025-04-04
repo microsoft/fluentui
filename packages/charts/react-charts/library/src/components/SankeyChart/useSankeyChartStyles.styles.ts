@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SankeyChartProps, SankeyChartStyles } from './SankeyChart.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-// import { HighContrastSelectorBlack } from '../../utilities/index';
+import { HighContrastSelectorBlack } from '../../utilities/index';
 
 export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   root: 'fui-sc__root',
@@ -10,7 +10,6 @@ export const sankeyChartClassNames: SlotClassNames<SankeyChartStyles> = {
   links: 'fui-sc__links',
   nodeTextContainer: 'fui-sc__nodeTextContainer',
   toolTip: 'fui-sc__toolTip',
-  calloutContentRoot: 'fui-sc__calloutContentRoot',
   chartWrapper: 'fui-sc__chartWrapper',
 };
 const useStyles = makeStyles({
@@ -23,18 +22,17 @@ const useStyles = makeStyles({
     overflow: 'hidden',
   },
   links: {
-    // stroke: pathColor ? pathColor : theme.palette.black,
     fill: tokens.colorNeutralBackground1,
     strokeWidth: '3px',
-    // [HighContrastSelectorBlack]: {
-    //   fill: '#000000',
-    // },
+    [HighContrastSelectorBlack]: {
+      fill: 'Canvas',
+    },
   },
   nodes: {
     fill: '#F5F5F5',
-    // [HighContrastSelectorBlack]: {
-    //   fill: '#000000',
-    // },
+    [HighContrastSelectorBlack]: {
+      fill: 'Canvas',
+    },
   },
   toolTip: {
     ...typographyStyles.body1,
@@ -50,18 +48,15 @@ const useStyles = makeStyles({
   },
   nodeTextContainer: {
     '& text': {
-      // [HighContrastSelectorBlack]: {
-      //   fill: 'rgb(179, 179, 179)',
-      // },
+      [HighContrastSelectorBlack]: {
+        fill: 'CanvasText',
+      },
     },
 
     marginTop: '4px',
     marginLeft: '8px',
     marginBottom: '4px',
     marginRight: '8px',
-  },
-  calloutContentRoot: {
-    boxShadow: tokens.shadow2,
   },
   chartWrapper: {
     overflow: 'auto',
@@ -80,10 +75,6 @@ export const useSankeyChartStyles = (props: SankeyChartProps): SankeyChartStyles
       baseStyles.nodeTextContainer /*, props.styles?.nodeTextContainer*/,
     ),
     toolTip: mergeClasses(sankeyChartClassNames.toolTip, baseStyles.toolTip /*, props.styles?.toolTip*/),
-    calloutContentRoot: mergeClasses(
-      sankeyChartClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot /*, props.styles?.calloutContentRoot*/,
-    ),
     chartWrapper: mergeClasses(
       sankeyChartClassNames.chartWrapper,
       props.enableReflow ? baseStyles.chartWrapper : '' /*, props.styles?.chartWrapper*/,

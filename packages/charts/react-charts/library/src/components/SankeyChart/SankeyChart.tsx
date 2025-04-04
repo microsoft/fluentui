@@ -4,7 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
+import { Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import { Margins, SLink, SNode } from '../../types/DataPoint';
 import {
@@ -12,11 +12,11 @@ import {
   SankeyChartData,
   SankeyChartProps,
   SankeyChartStrings,
-  SankeyChartStyles,
 } from './SankeyChart.types';
 import { useSankeyChartStyles } from './useSankeyChartStyles.styles';
 import { ChartPopover, ChartPopoverProps } from '../CommonComponents/index';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { format } from '../../utilities/string';
 
 const PADDING_PERCENTAGE = 0.3;
 
@@ -517,16 +517,15 @@ const linkArea = d3Area<AreaDataPoint>()
   .y1((p: AreaDataPoint) => p.y1)
   .curve(d3CurveBasis);
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
-
 function nodeTextColor(
-  selectedState: boolean,
-  selectedNodes: Set<number>,
-  selectedNode: SNode | undefined,
+  state: { selectedState: boolean; selectedNodes: Set<number>; selectedNode: SNode | undefined },
   singleNode: SNode,
 ): string {
-  return !(!selectedState || (selectedNodes.has(singleNode.index!) && selectedNode) || !selectedNode)
+  return !(
+    !state.selectedState ||
+    (state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
+    !state.selectedNode
+  )
     ? DEFAULT_TEXT_COLOR
     : NON_SELECTED_TEXT_COLOR;
 }
@@ -566,6 +565,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   const _nodeBarId = useId('nodeBar');
   const _nodeGElementId = useId('nodeGElement');
   const _arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'vertical' });
+  const _tooltip = React.useRef<HTMLDivElement>(null);
 
   const [containerHeight, setContainerHeight] = React.useState<number>(468);
   const [containerWidth, setContainerWidth] = React.useState<number>(912);
@@ -647,14 +647,11 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   };
 
   const _linkCalloutAttributes = (singleLink: SLink, from: string) => {
-    return {
-      selectedLink: singleLink,
-      isCalloutVisible: true,
-      color: (singleLink.source as SNode).color!,
-      xCalloutValue: (singleLink.target as SNode).name,
-      yCalloutValue: _formatNumber(singleLink.unnormalizedValue!),
-      descriptionMessage: from,
-    };
+    setCalloutVisible(true);
+    setColor((singleLink.source as SNode).color!);
+    setXCalloutValue((singleLink.target as SNode).name);
+    setYCalloutValue(_formatNumber(singleLink.unnormalizedValue!));
+    setDescriptionMessage(from);
   };
 
   const _normalizeSankeyData = (
@@ -700,21 +697,6 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       nodes: transformed.nodes,
       links: transformed.links,
     };
-  };
-
-  const _labelTooltipDiv = (classNames: SankeyChartStyles): TooltipDiv => {
-    // find the tooltip div. If it doesn't exist, then create it.
-    let tooltipDiv = select(`#${_labelTooltipId}`);
-    if (tooltipDiv.empty()) {
-      tooltipDiv = select('body')
-        .append('div')
-        .attr('id', _labelTooltipId)
-        .attr('class', classNames.toolTip!)
-        .style('opacity', 0);
-    }
-    // If the div exists, then `classNames` has changed; update the `class` on the `div`.
-    tooltipDiv.attr('class', classNames.toolTip!);
-    return tooltipDiv;
   };
 
   const _createLinks = (
@@ -768,10 +750,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   };
 
   const _createNodes = (
-    classNames: SankeyChartStyles,
     dataNodes: SNode[],
     nodeAttributes: ItemValues<RenderedNodeAttributes>,
-    tooltipDiv: TooltipDiv,
   ): React.ReactNode[] | undefined => {
     if (dataNodes) {
       const textAnchor = _isRtl ? 'end' : 'start';
@@ -790,7 +770,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
         } = nodeAttributes[singleNode.nodeId];
         const tooTall = height > MIN_HEIGHT_FOR_DOUBLINE_TYPE;
         const { name, actualValue, x0, x1, y0 } = singleNode;
-        const textColor = nodeTextColor(selectedState, selectedNodes, selectedNode, singleNode);
+        const textColor = nodeTextColor({ selectedState, selectedNodes, selectedNode }, singleNode);
         return (
           <g key={index} id={gElementId}>
             <rect
@@ -811,7 +791,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
               role="img"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
-              <g className={classNames.nodeTextContainer}>
+              <g className={classes.nodeTextContainer}>
                 <g className="nodeName">
                   <text
                     id={`${nodeId}-name`}
@@ -824,8 +804,8 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                     aria-hidden="true"
                     fill={textColor}
                     fontSize={10}
-                    onMouseOver={e => _showTooltip(name, isTruncated, tooltipDiv, e)}
-                    onMouseOut={() => _hideTooltip(tooltipDiv)}
+                    onMouseOver={e => _showTooltip(name, isTruncated, e)}
+                    onMouseOut={() => _hideTooltip()}
                   >
                     {truncatedName}
                   </text>
@@ -894,18 +874,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       setSelectedNodes(new Set<number>(Array.from(_selectedNodes).map(node => node.index!)));
       setSelectedLinks(new Set<number>(Array.from(_selectedLinks).map(link => link.index!)));
       updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      const {
-        isCalloutVisible: _isCalloutVisible,
-        color: _color,
-        xCalloutValue: _xCalloutValue,
-        yCalloutValue: _yCalloutValue,
-        descriptionMessage: _descriptionMessage,
-      } = _linkCalloutAttributes(singleLink, from);
-      setCalloutVisible(_isCalloutVisible);
-      setColor(_color);
-      setXCalloutValue(_xCalloutValue);
-      setYCalloutValue(_yCalloutValue);
-      setDescriptionMessage(_descriptionMessage);
+      _linkCalloutAttributes(singleLink, from);
     }
   };
 
@@ -927,18 +896,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
     const clientX = boundingRect.left + boundingRect.width / 2;
     const clientY = boundingRect.top + boundingRect.height / 2;
     updatePosition(clientX, clientY);
-    const {
-      isCalloutVisible: _isCalloutVisible,
-      color: _color,
-      xCalloutValue: _xCalloutValue,
-      yCalloutValue: _yCalloutValue,
-      descriptionMessage: _descriptionMessage,
-    } = _linkCalloutAttributes(singleLink, from);
-    setCalloutVisible(_isCalloutVisible);
-    setColor(_color);
-    setXCalloutValue(_xCalloutValue);
-    setYCalloutValue(_yCalloutValue);
-    setDescriptionMessage(_descriptionMessage);
+    _linkCalloutAttributes(singleLink, from);
   };
 
   const _onCloseCallout = () => {
@@ -1029,20 +987,22 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const _showTooltip = (text: string, checkTrcuncated: boolean, div: any, evt: any) => {
-    if (checkTrcuncated) {
+  const _showTooltip = (text: string, checkTrcuncated: boolean, evt: any) => {
+    if (_tooltip.current && checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
-      div.style('opacity', 0.9).style('color', tokens.colorNeutralForeground1);
-      div
-        .html(text)
+      select(_tooltip.current)
+        .style('opacity', 0.9)
+        .style('color', tokens.colorNeutralForeground1)
         .style('left', evt.pageX + 'px')
-        .style('top', evt.pageY - 28 + 'px');
+        .style('top', evt.pageY - 28 + 'px')
+        .html(text);
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const _hideTooltip = (div: any) => {
-    div.style('opacity', 0);
+  const _hideTooltip = () => {
+    if (_tooltip.current) {
+      select(_tooltip.current).style('opacity', 0);
+    }
   };
 
   const _isChartEmpty = () => {
@@ -1073,23 +1033,27 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
   };
 
   const _getStrings = (strings?: SankeyChartStrings): StringRenderer => {
+    const fromString = strings?.linkFrom || 'From {0}';
     // NOTE: The `node` parameter is the sankey-generated node on the link, and not the original `node` supplied
     // by the caller.
     return {
-      linkFrom: (node: SNode) => strings?.linkFrom || `From ${node.name}`,
+      linkFrom: (node: SNode) => format(fromString, node.name),
     };
   };
 
   const _getAccessibility = (accessibility?: SankeyChartAccessibilityProps): AccessibilityRenderer => {
+    const linkString = accessibility?.linkAriaLabel || 'link from {0} to {1} with weight {2}';
+    const nodeString = accessibility?.nodeAriaLabel || 'node {0} with weight {1}';
     return {
       emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
       linkAriaLabel: (link: SLink) =>
-        accessibility?.linkAriaLabel ||
-        `link from ${(link.source as SNode).name} to ${(link.target as SNode).name} with weight ${
-          link.unnormalizedValue ? _formatNumber(link.unnormalizedValue) : link.unnormalizedValue
-        }`,
-      nodeAriaLabel: (node: SNode, weight: number) =>
-        accessibility?.nodeAriaLabel || `node ${node.name} with weight ${_formatNumber(weight)}`,
+        format(
+          linkString,
+          (link.source as SNode).name,
+          (link.target as SNode).name,
+          link.unnormalizedValue ? _formatNumber(link.unnormalizedValue) : link.unnormalizedValue,
+        ),
+      nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, _formatNumber(weight)),
     };
   };
 
@@ -1146,14 +1110,10 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       return 0;
     });
 
-    // NOTE: I don't love this approach to caching the "select" result. Is it still valid from render-to-render?
-    // although local testing seems to indicate so, I do not trust that React will always support that instance.
-    // It might be better to perform this `fetch` within the `_showTooltip` and `_hideTooltip` methods.
-    const tooltipDiv = _labelTooltipDiv(classes);
     // Pre-compute some important attributes about nodes, specifically text
     const nodeAttributes = _computeNodeAttributes(nodes, _accessibility.current.nodeAriaLabel);
     // Build the nodes and links as rendered in the UX.
-    const nodeData = _createNodes(classes, nodes, nodeAttributes, tooltipDiv);
+    const nodeData = _createNodes(nodes, nodeAttributes);
     const linkAttributes = computeLinkAttributes(
       links,
       _strings.current.linkFrom,
@@ -1169,12 +1129,10 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
       XValue: xCalloutValue,
       YValue: yCalloutValue,
       descriptionMessage,
-      // fixme
-      // className: classes.calloutContentRoot,
       ...props.calloutProps!,
     };
     return (
-      <div className={classes.root} role={'presentation'} ref={chartContainer} onMouseLeave={_onCloseCallout}>
+      <div className={classes.root} ref={chartContainer} onMouseLeave={_onCloseCallout}>
         {/*
         - Horizontal navigation has been disabled because the nodes and links are rendered vertically,
         causing the left/right arrow keys to move focus up or down to the previous or next sibling element.
@@ -1195,6 +1153,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
                   <g
                     key={`${(links[item.index].source as SNode).nodeId}-${(links[item.index].target as SNode).nodeId}`}
                     className={classes.links}
+                    stroke={props.pathColor ? props.pathColor : tokens.colorStrokeFocus2}
                     strokeOpacity={1}
                   >
                     {linkData![item.index]}
@@ -1205,6 +1164,7 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
           </svg>
         </div>
         {calloutProps.isPopoverOpen && <ChartPopover {...calloutProps} />}
+        <div id={_labelTooltipId} className={classes.toolTip} style={{ opacity: 0 }} ref={_tooltip} />
       </div>
     );
   }

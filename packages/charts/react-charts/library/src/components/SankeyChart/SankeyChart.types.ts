@@ -123,12 +123,6 @@ export interface SankeyChartStyles {
   toolTip?: string;
 
   /**
-   *  Style for the tooltip ,when user hover over the truncated node detail.
-   */
-
-  calloutContentRoot?: string;
-
-  /**
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;

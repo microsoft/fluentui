@@ -4,7 +4,6 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -22,7 +21,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-0"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element First with size 1.33B"
             fill="#00758F"
             height={393.0582326778442}
             id="nodeBar5-0"
@@ -79,6 +78,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -101,7 +101,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="1.23B items moved from First to Second"
             d="M172,36.552C282.75,36.552,282.75,36,393.5,36L393.5,393.077C282.75,393.077,282.75,393.629,172,393.629Z"
             fillOpacity={1}
             id="link1-0"
@@ -119,6 +119,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -141,7 +142,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="100M items moved from First to Third"
             d="M172,393.629C282.75,393.629,282.75,401.077,393.5,401.077L393.5,430C282.75,430,282.75,422.552,172,422.552Z"
             fillOpacity={1}
             id="link1-1"
@@ -159,6 +160,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -181,7 +183,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="1.23K items moved from First to Six"
             d="M172,422.552C455.5,422.552,455.5,414.942,739,414.942L739,418.471C455.5,418.471,455.5,426.081,172,426.081Z"
             fillOpacity={1}
             id="link1-2"
@@ -199,6 +201,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -221,7 +224,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="100 items moved from First to Seven"
             d="M172,426.081C455.5,426.081,455.5,426.471,739,426.471L739,430C455.5,430,455.5,429.61,172,429.61Z"
             fillOpacity={1}
             id="link1-3"
@@ -244,7 +247,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-1"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Second with size 1.23B"
             fill="#77004D"
             height={357.0767805150773}
             id="nodeBar5-1"
@@ -306,7 +309,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-2"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Third with size 100M"
             fill="#4F6BED"
             height={28.923219484922583}
             id="nodeBar5-2"
@@ -363,6 +366,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -385,7 +389,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="1B items moved from Second to Fourth"
             d="M517.5,36C628.25,36,628.25,36,739,36L739,325.232C628.25,325.232,628.25,325.232,517.5,325.232Z"
             fillOpacity={1}
             id="link1-4"
@@ -403,6 +407,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -425,7 +430,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="234.57M items moved from Second to Five"
             d="M517.5,325.232C628.25,325.232,628.25,333.232,739,333.232L739,401.077C628.25,401.077,628.25,393.077,517.5,393.077Z"
             fillOpacity={1}
             id="link1-5"
@@ -443,6 +448,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -465,7 +471,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="1K items moved from Third to Fourth"
             d="M517.5,401.077C628.25,401.077,628.25,325.232,739,325.232L739,325.232C628.25,325.232,628.25,401.077,517.5,401.077Z"
             fillOpacity={1}
             id="link1-6"
@@ -483,6 +489,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -505,7 +512,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="10M items moved from Third to Five"
             d="M517.5,401.077C628.25,401.077,628.25,401.077,739,401.077L739,403.969C628.25,403.969,628.25,403.969,517.5,403.969Z"
             fillOpacity={1}
             id="link1-7"
@@ -528,7 +535,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-3"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Fourth with size 1B"
             fill="#937600"
             height={289.2324840814205}
             id="nodeBar5-3"
@@ -590,7 +597,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-4"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Five with size 244.57M"
             fill="#286EA8"
             height={70.73661838214912}
             id="nodeBar5-4"
@@ -652,7 +659,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-5"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Six with size 1.23K"
             fill="#A43FB1"
             height={3.5291163389221083}
             id="nodeBar5-5"
@@ -677,7 +684,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-6"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Seven with size 100"
             fill="#CC3595"
             height={3.5291163389221083}
             id="nodeBar5-6"
@@ -697,6 +704,15 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -704,7 +720,6 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -722,7 +737,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-0"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element First with size 100%"
             fill="#00758F"
             height={386}
             id="nodeBar5-0"
@@ -779,6 +794,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -801,7 +817,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="60% items moved from First to Second"
             d="M172,38.957C282.75,38.957,282.75,36,393.5,36L393.5,267.6C282.75,267.6,282.75,270.557,172,270.557Z"
             fillOpacity={1}
             id="link1-0"
@@ -819,6 +835,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -841,7 +858,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="40% items moved from First to Third"
             d="M172,270.557C282.75,270.557,282.75,275.6,393.5,275.6L393.5,430C282.75,430,282.75,424.957,172,424.957Z"
             fillOpacity={1}
             id="link1-1"
@@ -864,7 +881,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-1"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Second with size 60%"
             fill="#77004D"
             height={231.5999999999999}
             id="nodeBar5-1"
@@ -926,7 +943,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-2"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Third with size 40%"
             fill="#4F6BED"
             height={154.4000000000001}
             id="nodeBar5-2"
@@ -983,6 +1000,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1005,7 +1023,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="25% items moved from Second to Fourth"
             d="M517.5,36C628.25,36,628.25,36,739,36L739,132.5C628.25,132.5,628.25,132.5,517.5,132.5Z"
             fillOpacity={1}
             id="link1-2"
@@ -1023,6 +1041,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1045,7 +1064,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="35% items moved from Second to Five"
             d="M517.5,132.5C628.25,132.5,628.25,198.4,739,198.4L739,333.5C628.25,333.5,628.25,267.6,517.5,267.6Z"
             fillOpacity={1}
             id="link1-3"
@@ -1063,6 +1082,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1085,7 +1105,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="15% items moved from Third to Fourth"
             d="M517.5,275.6C628.25,275.6,628.25,132.5,739,132.5L739,190.4C628.25,190.4,628.25,333.5,517.5,333.5Z"
             fillOpacity={1}
             id="link1-4"
@@ -1103,6 +1123,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1125,7 +1146,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="25% items moved from Third to Five"
             d="M517.5,333.5C628.25,333.5,628.25,333.5,739,333.5L739,430C628.25,430,628.25,430,517.5,430Z"
             fillOpacity={1}
             id="link1-5"
@@ -1148,7 +1169,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-3"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Fourth with size 40%"
             fill="#937600"
             height={154.39999999999995}
             id="nodeBar5-3"
@@ -1210,7 +1231,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-4"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Five with size 60%"
             fill="#286EA8"
             height={231.60000000000005}
             id="nodeBar5-4"
@@ -1267,6 +1288,15 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -1274,7 +1304,6 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -1548,6 +1577,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1588,6 +1618,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1628,6 +1659,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1668,6 +1700,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1708,6 +1741,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1748,6 +1782,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1788,6 +1823,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -1828,6 +1864,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2054,6 +2091,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2094,6 +2132,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2134,6 +2173,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2174,6 +2214,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2400,6 +2441,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -2407,7 +2457,6 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -2680,6 +2729,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2720,6 +2770,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2760,6 +2811,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2800,6 +2852,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2840,6 +2893,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2880,6 +2934,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2920,6 +2975,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -2960,6 +3016,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3185,6 +3242,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3225,6 +3283,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3265,6 +3324,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3305,6 +3365,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3530,6 +3591,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -3537,7 +3607,6 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -3555,7 +3624,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
           id="nodeGElement6-0"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element First with size 10"
             fill="#00758F"
             height={394}
             id="nodeBar5-0"
@@ -3612,6 +3681,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3634,7 +3704,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
             </linearGradient>
           </defs>
           <path
-            aria-label="{2} items moved from {0} to {1}"
+            aria-label="10 items moved from First to Second"
             d="M172,36C455.5,36,455.5,36,739,36L739,430C455.5,430,455.5,430,172,430Z"
             fillOpacity={1}
             id="link1-0"
@@ -3657,7 +3727,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
           id="nodeGElement6-1"
         >
           <rect
-            aria-label="element {0} with size {1}"
+            aria-label="element Second with size 10"
             fill="#77004D"
             height={394}
             id="nodeBar5-1"
@@ -3714,6 +3784,15 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -3721,7 +3800,6 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -3958,6 +4036,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -3998,6 +4077,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4038,6 +4118,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4078,6 +4159,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4118,6 +4200,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4158,6 +4241,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4285,6 +4369,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -4292,7 +4385,6 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -4392,6 +4484,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4432,6 +4525,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4472,6 +4566,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4512,6 +4607,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
       <g
         className="fui-sc__links"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g>
@@ -4639,6 +4735,15 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -4646,7 +4751,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -4928,6 +5032,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="0-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -4971,6 +5076,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="1-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5014,6 +5120,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="1-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5057,6 +5164,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="2-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5101,6 +5209,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="4-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5144,6 +5253,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="3-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5187,6 +5297,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="3-8"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5230,6 +5341,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="5-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5463,6 +5575,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="6-9"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5506,6 +5619,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="6-10"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5549,6 +5663,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="7-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5593,6 +5708,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       <g
         className="fui-sc__links"
         key="8-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -5879,6 +5995,15 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
       </div>
     </div>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -5886,7 +6011,6 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -6173,6 +6297,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="0-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6216,6 +6341,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="1-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6260,6 +6386,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="1-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6303,6 +6430,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="2-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6346,6 +6474,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="4-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6389,6 +6518,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="3-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6432,6 +6562,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="3-8"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6475,6 +6606,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="5-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6710,6 +6842,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="6-9"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6754,6 +6887,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="6-10"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6798,6 +6932,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="7-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -6841,6 +6976,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       <g
         className="fui-sc__links"
         key="8-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7134,6 +7270,15 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
       </div>
     </div>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -7141,7 +7286,6 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -7423,6 +7567,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="0-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7466,6 +7611,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="1-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7510,6 +7656,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="1-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7554,6 +7701,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="2-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7597,6 +7745,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="4-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7640,6 +7789,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="3-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7683,6 +7833,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="3-8"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7726,6 +7877,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="5-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -7960,6 +8112,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="6-9"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8004,6 +8157,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="6-10"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8048,6 +8202,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="7-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8092,6 +8247,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       <g
         className="fui-sc__links"
         key="8-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8326,6 +8482,15 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
 
@@ -8333,7 +8498,6 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
 <div
   className="fui-sc__root"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     className="fui-sc__chartWrapper"
@@ -8620,6 +8784,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="0-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8663,6 +8828,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="1-6"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8706,6 +8872,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="1-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8749,6 +8916,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="2-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8792,6 +8960,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="4-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8835,6 +9004,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="3-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8878,6 +9048,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="3-8"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -8921,6 +9092,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="5-7"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -9156,6 +9328,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="6-9"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -9199,6 +9372,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="6-10"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -9242,6 +9416,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="7-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -9285,6 +9460,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       <g
         className="fui-sc__links"
         key="8-11"
+        stroke="var(--colorStrokeFocus2)"
         strokeOpacity={1}
       >
         <g
@@ -9519,5 +9695,14 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
       </g>
     </svg>
   </div>
+  <div
+    className="fui-sc__toolTip"
+    id="tooltip4"
+    style={
+      Object {
+        "opacity": 0,
+      }
+    }
+  />
 </div>
 `;
