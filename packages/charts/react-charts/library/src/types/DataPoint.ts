@@ -554,6 +554,11 @@ export interface VSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: AccessibilityProps;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 /**
@@ -602,6 +607,10 @@ export interface LineDataInVerticalStackedBarChart {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: LineChartLineOptions;
 }
 
 /**
@@ -721,4 +730,49 @@ export interface CustomizedCalloutData {
  */
 export interface Chart {
   chartContainer: HTMLElement | null;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface HeatMapChartDataPoint {
+  x: string | Date | number;
+  y: string | Date | number;
+  value: number;
+  /**
+   * The value/ text to be rendered in the rectange
+   */
+  rectText?: string | number;
+  /**
+   * denomination to show in the callout
+   */
+  ratio?: [number, number];
+  /**
+   * description message to the callout
+   */
+  descriptionMessage?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface HeatMapChartData {
+  /**
+   * name of the legend
+   */
+  legend: string;
+  data: HeatMapChartDataPoint[];
+  /**
+   * This  number will be used to get the color for the legend
+   */
+  value: number;
 }

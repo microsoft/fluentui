@@ -26,6 +26,7 @@ import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IAutofill } from '../../Autofill';
@@ -686,6 +687,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
@@ -1421,6 +1423,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         }
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         shouldRestoreFocus={shouldRestoreFocus}
         // eslint-disable-next-line react/jsx-no-bind
         preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}

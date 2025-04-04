@@ -25,7 +25,7 @@
     "serve": "gulp test:e2e:serve",
     "e2e": "gulp test:e2e",
     "e2e:local": "cypress open --config baseUrl=http://localhost:8082",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }
 }

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Migrate Gauge chart to V9",
+  "comment": "Migrate HBC With Axis to V9",
   "packageName": "@fluentui/react-charts",
   "email": "74965306+Anush2303@users.noreply.github.com",
   "dependentChangeType": "patch"

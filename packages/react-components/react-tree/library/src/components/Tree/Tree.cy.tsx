@@ -1,3 +1,5 @@
+/* @TODO: Fix tests to run on React 18 */
+
 import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
@@ -314,7 +316,7 @@ describe('Tree', () => {
             defaultOpenItems={['item1', 'item2', 'item2__item1']}
           >
             {Array.from({ length: 200 }, (_, index) => (
-              <TreeItem itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
+              <TreeItem key={index} itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
                 <TreeItemLayout>level 0, item {index + 1}</TreeItemLayout>
               </TreeItem>
             ))}
