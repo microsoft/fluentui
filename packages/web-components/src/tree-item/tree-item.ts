@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
-import { BaseTreeItem } from './tree-item.base';
+import { BaseTreeItem } from './tree-item.base.js';
 
 export class TreeItem extends BaseTreeItem {
   /**
