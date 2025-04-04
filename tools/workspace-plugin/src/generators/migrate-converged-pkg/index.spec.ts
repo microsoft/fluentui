@@ -779,7 +779,7 @@ describe('migrate-converged-pkg generator', () => {
         extends: './tsconfig.json',
         compilerOptions: {
           isolatedModules: false,
-          lib: ['ES2020', 'dom'],
+          lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-real-events'],
           typeRoots: ['../node_modules', '../node_modules/@types'],
         },
