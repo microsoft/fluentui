@@ -1,8 +1,8 @@
 import { html } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 
-import type { TreeItem as FluentTreeItem, TreeItem } from './tree-item';
-import { TreeItemAppearance, TreeItemSize } from './tree-item.options';
+import type { TreeItem as FluentTreeItem, TreeItem } from './tree-item.js';
+import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
 
 type Story = StoryObj<FluentTreeItem>;
 

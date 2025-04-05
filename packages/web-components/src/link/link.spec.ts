@@ -49,19 +49,19 @@ test.describe('Link', () => {
     }
   });
 
-  test('should add an "inline" state when the `inline` property is true', async ({ fastPage }) => {
+  test('should add an "inline" attribute when the `inline` property is true', async ({ fastPage }) => {
     const { element } = fastPage;
 
     await element.evaluate((node: Link) => {
       node.inline = true;
     });
 
-    await expect(element).toHaveCustomState('inline');
+    await expect(element).toHaveAttribute('inline');
 
     await element.evaluate((node: Link) => {
       node.inline = false;
     });
 
-    await expect(element).not.toHaveCustomState('inline');
+    await expect(element).not.toHaveAttribute('inline');
   });
 });

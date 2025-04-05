@@ -15,8 +15,6 @@ test.describe('Label', () => {
         await expect(element).toHaveAttribute('size', size);
 
         await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
   });
@@ -31,8 +29,6 @@ test.describe('Label', () => {
         await expect(element).toHaveAttribute('weight', weight);
 
         await expect(element).toHaveJSProperty('weight', weight);
-
-        await expect(element).toHaveCustomState(weight);
       });
     }
   });
@@ -46,8 +42,6 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('disabled', true);
 
-    await expect(element).toHaveCustomState('disabled');
-
     await element.evaluate((node: Label) => {
       node.disabled = false;
     });
@@ -55,8 +49,6 @@ test.describe('Label', () => {
     await expect(element).not.toHaveAttribute('disabled');
 
     await expect(element).toHaveJSProperty('disabled', false);
-
-    await expect(element).not.toHaveCustomState('disabled');
   });
 
   test('should set the `required` property to match the `required` attribute', async ({ fastPage }) => {

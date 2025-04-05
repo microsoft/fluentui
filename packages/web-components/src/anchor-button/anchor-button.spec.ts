@@ -122,8 +122,6 @@ test.describe('Anchor Button', () => {
       await fastPage.setTemplate({ attributes: { appearance } });
 
       await expect(element).toHaveJSProperty('appearance', appearance);
-
-      await expect(element).toHaveCustomState(appearance);
     });
   }
 
@@ -136,8 +134,6 @@ test.describe('Anchor Button', () => {
       await fastPage.setTemplate({ attributes: { shape } });
 
       await expect(element).toHaveJSProperty('shape', shape);
-
-      await expect(element).toHaveCustomState(shape);
     });
   }
 
@@ -150,8 +146,6 @@ test.describe('Anchor Button', () => {
       await fastPage.setTemplate({ attributes: { size } });
 
       await expect(element).toHaveJSProperty('size', size);
-
-      await expect(element).toHaveCustomState(size);
     });
   }
 

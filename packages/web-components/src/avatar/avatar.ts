@@ -1,8 +1,8 @@
 import { attr, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { getInitials } from '../utils/get-initials.js';
-import { swapStates } from '../utils/element-internals.js';
 import { BaseAvatar } from './avatar.base.js';
 import {
+  type AvatarActive,
   type AvatarAppearance,
   AvatarColor,
   AvatarNamedColor,
@@ -17,6 +17,19 @@ import {
  * @public
  */
 export class Avatar extends BaseAvatar {
+  /**
+   * Optional activity indicator
+   * * active: the avatar will be decorated according to activeAppearance
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * undefined: normal display
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: active
+   */
+  @attr
+  public active?: AvatarActive | undefined;
+
   /**
    * The avatar can have a circular or square shape.
    *
@@ -132,7 +145,7 @@ export class Avatar extends BaseAvatar {
         ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
         : this.color ?? AvatarColor.neutral;
 
-    swapStates(this.elementInternals, prev, this.currentColor);
+    this.setAttribute('data-color', this.currentColor);
   }
 
   /**
