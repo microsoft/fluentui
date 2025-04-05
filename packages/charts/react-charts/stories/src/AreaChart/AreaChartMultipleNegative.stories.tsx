@@ -199,7 +199,6 @@ export const AreaChartMultipleNegative = () => {
           legendProps={{
             allowFocusOnLegends: true,
           }}
-          supportNegativeData={true}
         />
       </div>
     </>

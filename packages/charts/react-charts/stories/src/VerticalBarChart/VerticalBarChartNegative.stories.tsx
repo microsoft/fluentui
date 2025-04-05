@@ -232,7 +232,6 @@ export const VerticalBarNegative = () => {
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
             hideLabels={hideLabels}
-            supportNegativeData={true}
             yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
             enableGradient={enableGradient}
@@ -255,7 +254,6 @@ export const VerticalBarNegative = () => {
             hideLabels={hideLabels}
             enableGradient={enableGradient}
             roundCorners={roundCorners}
-            supportNegativeData={true}
           />
         </div>
       )}

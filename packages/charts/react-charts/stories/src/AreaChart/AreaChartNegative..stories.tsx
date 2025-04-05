@@ -198,7 +198,6 @@ export const AreaChartNegative = () => {
             enablePerfOptimization={true}
             yAxisTitle={showAxisTitles ? 'Variation of stock market prices' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
-            supportNegativeData={true}
           />
         </div>
       )}
@@ -210,7 +209,6 @@ export const AreaChartNegative = () => {
             width={width}
             data={chartData}
             enablePerfOptimization={true}
-            supportNegativeData={true}
           />
         </div>
       )}

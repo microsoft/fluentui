@@ -191,7 +191,6 @@ export const LineChartAllNegative = () => {
           yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
           xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           useUTC={useUTC}
-          supportNegativeData={true}
         />
       </div>
     </>
