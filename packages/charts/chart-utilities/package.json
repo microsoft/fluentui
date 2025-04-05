@@ -4,7 +4,7 @@
   "description": "React web chart utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "sideEffects": [
     "lib/version.js"
   ],
@@ -36,12 +36,24 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {},
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
     "./README.md": "./README.md"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }
