@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     borderTopRightRadius: tokens.borderRadiusNone,
     borderBottomRightRadius: tokens.borderRadiusNone,
-    borderRightStyle: 'none',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       borderRadius: tokens.borderRadiusMedium,
