@@ -482,7 +482,7 @@ export function createYAxis(
   barWidth: number,
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
-  supportNegativeData: boolean = false,
+  supportNegativeData: boolean = true,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
@@ -540,7 +540,7 @@ export function createYAxisForOtherCharts(
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
-  supportNegativeData: boolean = false,
+  supportNegativeData: boolean = true,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },

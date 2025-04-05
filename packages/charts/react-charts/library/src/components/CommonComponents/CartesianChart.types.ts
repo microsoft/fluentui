@@ -414,12 +414,6 @@ export interface CartesianChartProps {
   useUTC?: string | boolean;
 
   /**
-   * @default false
-   * Used for enabling negative values in Y axis.
-   */
-  supportNegativeData?: boolean;
-
-  /**
    * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
    */

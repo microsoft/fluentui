@@ -505,7 +505,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     let xBarScale: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yBarScale: any = d3ScaleLinear()
-      .domain([props.supportNegativeData ? _yMin : 0, _yMax])
+      .domain([_yMin, _yMax])
       .range([0, containerHeight - margins.bottom! - margins.top!]);
 
     if (_xAxisType === XAxisTypes.NumericAxis) {
@@ -566,7 +566,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !props.supportNegativeData)) {
+      if (barHeight === 0) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -646,7 +646,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !props.supportNegativeData)) {
+      if (barHeight === 0) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -735,7 +735,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
       let adjustedBarHeight = barHeight;
 
-      if (barHeight === 0 || (isHeightNegative && !props.supportNegativeData)) {
+      if (barHeight === 0) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
       }
       // Adjust bar height if it's smaller than the threshold
@@ -1025,7 +1025,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     <CartesianChart
       {...props}
       points={_points}
-      supportNegativeData={props.supportNegativeData}
       chartType={ChartTypes.VerticalBarChart}
       xAxisType={_xAxisType}
       calloutProps={calloutProps}
