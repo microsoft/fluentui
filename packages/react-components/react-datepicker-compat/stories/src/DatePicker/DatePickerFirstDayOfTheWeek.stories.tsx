@@ -25,7 +25,10 @@ export const FirstDayOfTheWeek = () => {
   const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   const onOptionSelect = React.useCallback(
-    (_, data: { optionValue: string | undefined; selectedOptions: string[] }) => {
+    (
+      _: React.ChangeEvent<HTMLElement> | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
+      data: { optionValue: string | undefined; selectedOptions: string[] },
+    ) => {
       if (data.optionValue) {
         setFirstDayOfWeek(DayOfWeek[data.optionValue as keyof typeof DayOfWeek]);
       }

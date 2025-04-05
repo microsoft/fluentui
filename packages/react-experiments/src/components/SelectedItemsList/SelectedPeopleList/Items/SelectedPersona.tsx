@@ -81,7 +81,7 @@ const SelectedPersonaInner = React.memo(
         const dragDropOptions: IDragDropOptions = {
           eventMap: eventsToRegister,
           selectionIndex: index,
-          context: { data: item, index: index },
+          context: { data: item, index },
           ...dragDropEvents,
           updateDropState: _updateDroppingState,
         };
@@ -110,7 +110,7 @@ const SelectedPersonaInner = React.memo(
     );
 
     const onExpandClicked = React.useCallback(
-      ev => {
+      (ev: React.MouseEvent<HTMLElement>) => {
         ev.stopPropagation();
         ev.preventDefault();
         if (onItemChange && getExpandedItems) {
@@ -127,7 +127,7 @@ const SelectedPersonaInner = React.memo(
     );
 
     const onRemoveClicked = React.useCallback(
-      ev => {
+      (ev: React.MouseEvent<HTMLElement>) => {
         ev.stopPropagation();
         ev.preventDefault();
         onRemoveItem && onRemoveItem();

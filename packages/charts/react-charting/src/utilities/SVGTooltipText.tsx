@@ -276,7 +276,7 @@ export class SVGTooltipText
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _onTooltipMouseLeave = (ev: any): void => {
+  private _onTooltipMouseLeave = (): void => {
     const { closeDelay } = this.props;
 
     this._clearDismissTimer();

@@ -8,8 +8,6 @@ import {
   Theme,
   Input,
   makeStyles,
-  InputProps,
-  MenuProps,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
@@ -51,7 +49,7 @@ export const Colors = () => {
 
   // It returns tokens matching the input value.
   const searchToken = React.useCallback(
-    newSearchValue => {
+    (newSearchValue: string) => {
       const tokensFoundBySearch = tokens.filter(token => {
         const tokensMatchSearchValue = (tokenItem?: string | number) => tokenItem?.toString().includes(newSearchValue);
 
@@ -71,8 +69,8 @@ export const Colors = () => {
 
   const updateSearchDebounced = useDebounce(searchToken, 220);
 
-  const onInputChange: InputProps['onChange'] = React.useCallback(
-    (_, { value }) => {
+  const onInputChange = React.useCallback(
+    (_: React.ChangeEvent<HTMLInputElement>, { value }) => {
       updateSearchDebounced(value.trim().toLocaleLowerCase());
       setInputValue(value.trim().toLocaleLowerCase());
       setCheckedValue(undefined);
@@ -80,8 +78,8 @@ export const Colors = () => {
     [updateSearchDebounced],
   );
 
-  const applyFilter: MenuProps['onCheckedValueChange'] = React.useCallback(
-    (_, { name, checkedItems }) => {
+  const applyFilter = React.useCallback(
+    (_: React.MouseEvent | React.KeyboardEvent, { name, checkedItems }) => {
       // Filteringchecked items remove the selection and display the full list of tokens
       if (checkedItems[0] === checkedValue?.usecase[0]) {
         setCheckedValue(undefined);
@@ -155,10 +153,10 @@ export const Colors = () => {
 
 Colors.args = {};
 
-const useDebounce = (fn: (...args: unknown[]) => void, duration: number) => {
+const useDebounce = <T extends unknown>(fn: (...args: T[]) => void, duration: number) => {
   const timeoutRef = React.useRef(0);
   return React.useCallback(
-    (...args: unknown[]) => {
+    (...args: T[]) => {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => {
         fn(...args);

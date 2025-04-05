@@ -5,7 +5,6 @@ import { Text } from '@fluentui/react/lib/Text';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { KeyCodes } from '@fluentui/react';
 
 export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = () => {
   const [items, setItems] = React.useState(menuItems);
@@ -14,7 +13,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(menuItems);
   }, []);
 
-  const onChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
+  const onChange = React.useCallback((_: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = menuItems.filter(
       item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
     );
@@ -34,13 +33,13 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(filteredItems);
   }, []);
 
-  const onKeyDown = React.useCallback((e, ...args) => {
+  const onKeyDown = React.useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     /* Key Up, but we are not at the beginning of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.target.selectionStart > 0 && e.which === KeyCodes.up) {
+    if (e.currentTarget.selectionStart !== null && e.currentTarget.selectionStart > 0 && e.key === 'ArrowUp') {
       e.stopPropagation();
     }
     /* Key Down, but we are not at the end of the text: stop event propagation to prevent ContextualMenu to focus */
-    if (e.target.selectionStart !== e.target.value.length && e.which === KeyCodes.down) {
+    if (e.currentTarget.selectionStart !== null && e.currentTarget.selectionStart > 0 && e.key === 'ArrowDown') {
       e.stopPropagation();
     }
   }, []);
