@@ -5,9 +5,7 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -48,7 +46,7 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
-    "./README.md": "./README.md"
+    "./package.json": "./package.json"
   },
   "files": [
     "*.md",
