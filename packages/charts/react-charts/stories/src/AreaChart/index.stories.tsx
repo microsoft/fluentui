@@ -7,6 +7,9 @@ export { AreaChartBasic } from './AreaChartDefault.stories';
 export { AreaChartCustomAccessibility } from './AreaChartCustomAccessibility.stories';
 export { AreaChartLargeData } from './AreaChartLargeData.stories';
 export { AreaChartMultiple } from './AreaChartMultiple.stories';
+export { AreaChartNegative } from './AreaChartNegative..stories';
+export { AreaChartMultipleNegative } from './AreaChartMultipleNegative.stories';
+export { AreaChartAllNegative } from './AreaChartAllNegative.stories';
 
 export default {
   title: 'Charts/AreaChart',
