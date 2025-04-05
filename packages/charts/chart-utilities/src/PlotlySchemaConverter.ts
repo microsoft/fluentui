@@ -157,20 +157,20 @@ const validateScatterData = (data: Partial<PlotData>) => {
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
-    (data) => {
-      if (!((data as Partial<PlotData>).mode?.includes('gauge'))) {
+    data => {
+      if (!(data as Partial<PlotData>).mode?.includes('gauge')) {
         throw new Error(`Unsupported chart - type: ${data.type}, mode: ${(data as Partial<PlotData>).mode}`);
       }
     },
   ],
-  histogram: [(data) => validateSeriesData(data as Partial<PlotData>, false)],
+  histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
   contour: [
-    (data) => {
+    data => {
       throw new Error(`Unsupported chart - type :${data.type}`);
     },
   ],
-  bar: [(data) => validateBarData(data as Partial<PlotData>)],
-  scatter: [(data) => validateScatterData(data as Partial<PlotData>)],
+  bar: [data => validateBarData(data as Partial<PlotData>)],
+  scatter: [data => validateScatterData(data as Partial<PlotData>)],
 };
 
 const DEFAULT_CHART_TYPE = '';
