@@ -33,7 +33,7 @@ describe('SearchBox', () => {
 
   it('renders SearchBox correctly', () => {
     component = create(<SearchBox />);
-    const tree = component.toJSON();
+    const tree = component?.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -187,6 +187,7 @@ describe('SearchBox', () => {
   it('handles onChanged', () => {
     const onChanged = jest.fn();
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     wrapper = mount(<SearchBox onChanged={onChanged} />);
     expect(onChanged).toHaveBeenCalledTimes(0);
 

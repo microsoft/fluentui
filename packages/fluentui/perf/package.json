@@ -22,7 +22,7 @@
   "scripts": {
     "test-perf": "cross-env PERF=true gulp perf --times=100",
     "test-perf:debug": "cross-env PERF=true gulp perf:debug --debug",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc -p . --noEmit --baseUrl ."
   }

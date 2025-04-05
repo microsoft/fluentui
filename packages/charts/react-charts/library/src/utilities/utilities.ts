@@ -33,6 +33,14 @@ import {
   utcYear as d3UtcYear,
 } from 'd3-time';
 import {
+  CurveFactory,
+  curveLinear as d3CurveLinear,
+  curveNatural as d3CurveNatural,
+  curveStep as d3CurveStep,
+  curveStepAfter as d3CurveStepAfter,
+  curveStepBefore as d3CurveStepBefore,
+} from 'd3-shape';
+import {
   AccessibilityProps,
   EventsAnnotationProps,
   LineChartPoints,
@@ -42,6 +50,7 @@ import {
   VerticalStackedBarDataPoint,
   VerticalBarChartDataPoint,
   HorizontalBarChartWithAxisDataPoint,
+  LineChartLineOptions,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -1850,4 +1859,32 @@ export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: str
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
+  const { dangerouslySetInnerHTML, ...result } = props;
+  return result;
+}
+
+export function getCurveFactory(
+  curve: LineChartLineOptions['curve'],
+  defaultFactory: CurveFactory = d3CurveLinear,
+): CurveFactory {
+  if (typeof curve === 'function') {
+    return curve;
+  }
+
+  switch (curve) {
+    case 'natural':
+      return d3CurveNatural;
+    case 'step':
+      return d3CurveStep;
+    case 'stepAfter':
+      return d3CurveStepAfter;
+    case 'stepBefore':
+      return d3CurveStepBefore;
+    default:
+      return defaultFactory;
+  }
 }

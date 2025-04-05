@@ -153,6 +153,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       initialsColor,
       initialsTextColor,
       onPhotoLoadingStateChange,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onRenderCoin,
       onRenderInitials,
       presence,
