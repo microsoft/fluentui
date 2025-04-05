@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: improve element validation to work with React 19",
+  "packageName": "@fluentui/react-motion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
