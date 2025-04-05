@@ -1,5 +1,9 @@
 import type * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
+import {
+  SLOT_ELEMENT_TYPE_SYMBOL,
+  SLOT_RENDER_FUNCTION_SYMBOL,
+  SLOT_USER_CLASS_NAME_SYMBOL,
+} from '@fluentui/react-utilities';
 import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilities';
 
 /**
@@ -10,6 +14,7 @@ export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(typ
     as,
     [SLOT_ELEMENT_TYPE_SYMBOL]: baseElementType,
     [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+    [SLOT_USER_CLASS_NAME_SYMBOL]: _unused_userClassName,
     ...propsWithoutMetadata
   } = type;
   const props = propsWithoutMetadata as UnknownSlotProps as Props;
