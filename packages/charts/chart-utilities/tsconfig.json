@@ -1,9 +1,6 @@
 {
-  "extends": "../../../tsconfig.base.v8.json",
+  "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "experimentalDecorators": true,
@@ -11,8 +8,16 @@
     "noUnusedLocals": true,
     "strictBindCallApply": true,
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
     "isolatedModules": true
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
