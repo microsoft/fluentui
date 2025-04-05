@@ -1930,8 +1930,6 @@ export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int
 // @public (undocumented)
 export const validate2Dseries: (series: Partial<PlotData>) => boolean;
 
-// Warning: (ae-forgotten-export) The symbol "xYAxisNames" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export type XAxisName = `x${xYAxisNames}`;
 

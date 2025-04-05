@@ -55,9 +55,9 @@ function decodeBase64(value: string, dtype: string): any {
       case 'f8':
         return Array.from(new Float64Array(decodedBytes.buffer));
       case 'i8':
-        return Array.from(new BigInt64Array(decodedBytes.buffer));
+        return Array.from(new Int32Array(decodedBytes.buffer)); // BigInt64Array is supported ES2020 onwards
       case 'u8':
-        return Array.from(new BigUint64Array(decodedBytes.buffer));
+        return Array.from(new Uint32Array(decodedBytes.buffer));
       case 'i4':
         return Array.from(new Int32Array(decodedBytes.buffer));
       case 'i2':
