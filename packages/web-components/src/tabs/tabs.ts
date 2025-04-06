@@ -166,6 +166,21 @@ export class Tabs extends BaseTabs {
   }
 
   public activeidChanged(oldValue: string, newValue: string) {
+    if (oldValue && this.tabs) {
+      const oldTab = this.tabs.find(tab => tab.id === oldValue);
+      if (oldTab) {
+        const oldRect = oldTab.getBoundingClientRect();
+        const parentRect = this.getBoundingClientRect();
+
+        this.previousActiveTabData = {
+          x: oldRect.x - parentRect.x,
+          y: oldRect.y - parentRect.y,
+          height: oldRect.height,
+          width: oldRect.width,
+        } as TabData;
+      }
+    }
+
     super.activeidChanged(oldValue, newValue);
     this.setTabData();
 
@@ -177,6 +192,10 @@ export class Tabs extends BaseTabs {
   public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();
+
+    if (this.activetab) {
+      this.animationLoop(this.activetab as Tab);
+    }
   }
 }
 
