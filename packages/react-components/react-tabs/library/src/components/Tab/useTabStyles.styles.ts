@@ -190,7 +190,7 @@ const useCircularAppearanceStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForeground2,
     ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -221,7 +221,7 @@ const useCircularAppearanceStyles = makeStyles({
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForegroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
   },
   subtleDisabledSelected: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -239,6 +239,21 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':enabled:hover': {
+        backgroundColor: 'Highlight',
+        forcedColorAdjust: 'none',
+        [`& .${tabClassNames.content}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.filled}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.regular}`]: {
+          color: 'HighlightText',
+        },
+      },
+    },
   },
   filledSelected: {
     backgroundColor: tokens.colorBrandBackground,
@@ -251,10 +266,22 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
     },
+    '@media (forced-colors: active)': {
+      ':enabled': {
+        backgroundColor: 'ButtonText',
+        [`& .${tabClassNames.content}`]: {
+          color: 'ButtonFace',
+          forcedColorAdjust: 'none',
+        },
+      },
+      [`:enabled .${tabClassNames.icon}`]: {
+        color: 'ButtonFace',
+      },
+    },
   },
   filledDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
+    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForegroundDisabled,
   },
   filledDisabledSelected: {
@@ -332,6 +359,14 @@ const usePendingIndicatorStyles = makeStyles({
     },
     ':active::before': {
       backgroundColor: tokens.colorTransparentStroke,
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'transparent',
+      },
+      ':active::before': {
+        backgroundColor: 'transparent',
+      },
     },
   },
   smallHorizontal: {
@@ -717,7 +752,7 @@ export const useTabContentStyles_unstable = (state: TabState): TabState => {
     );
     // FIXME: this is a deprecated API
     // should be removed in the next major version
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 

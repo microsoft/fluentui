@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.1)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.0..@fluentui/react-motion_v9.7.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.0)
+
+Wed, 26 Mar 2025 21:47:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.10..@fluentui/react-motion_v9.7.0)
+
+### Minor changes
+
+- fix(motion): make createPresenceComponentVariant support motion arrays ([PR #33996](https://github.com/microsoft/fluentui/pull/33996) by robertpenner@microsoft.com)
+
+### Patches
+
+- fix: handle error cases in "element.animate()" ([PR #34096](https://github.com/microsoft/fluentui/pull/34096) by seanmonahan@microsoft.com)
+
+## [9.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.10)
+
+Thu, 20 Mar 2025 09:34:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.9..@fluentui/react-motion_v9.6.10)
+
+### Patches
+
+- feat: experimental createInterruptablePresence() ([PR #33994](https://github.com/microsoft/fluentui/pull/33994) by olfedias@microsoft.com)
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.9)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.8..@fluentui/react-motion_v9.6.9)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.8)
+
+Tue, 11 Mar 2025 18:58:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.7..@fluentui/react-motion_v9.6.8)
+
+### Patches
+
+- fix: apply initial styles consistently ([PR #33810](https://github.com/microsoft/fluentui/pull/33810) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.7)
+
+Wed, 22 Jan 2025 14:00:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.6..@fluentui/react-motion_v9.6.7)
+
+### Patches
+
+- feat: add extended support for reduced motion ([PR #33353](https://github.com/microsoft/fluentui/pull/33353) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
+
+## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.6)
+
+Wed, 08 Jan 2025 18:33:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.6.5..@fluentui/react-motion_v9.6.6)
+
+### Patches
+
+- fix: handle case when Animation.persist() does not exist ([PR #33282](https://github.com/microsoft/fluentui/pull/33282) by seanmonahan@microsoft.com)
 
 ## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.6.5)
 

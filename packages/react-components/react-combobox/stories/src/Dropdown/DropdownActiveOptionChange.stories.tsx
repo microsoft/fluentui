@@ -35,8 +35,8 @@ export const ActiveOptionChange = (props: Partial<DropdownProps>) => {
   return (
     <div className={styles.root}>
       {activeOptionText}
-      <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} onActiveOptionChange={onActiveOptionChange} {...props}>
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown id={dropdownId} onActiveOptionChange={onActiveOptionChange} {...props}>
         <Option text="Katri Athokas" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}

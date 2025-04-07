@@ -125,6 +125,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
 
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
+    this._async.dispose();
     this.isComponentMounted = false;
   }
 
@@ -253,7 +254,7 @@ export class BaseFloatingPicker<T extends {}, P extends IBaseFloatingPickerProps
     ) {
       return;
     }
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:

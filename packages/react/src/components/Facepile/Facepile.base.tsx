@@ -40,7 +40,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
     const {
-      chevronButtonProps, // eslint-disable-line deprecation/deprecation
+      chevronButtonProps, // eslint-disable-line @typescript-eslint/no-deprecated
       maxDisplayablePersonas,
       personas,
       overflowPersonas,

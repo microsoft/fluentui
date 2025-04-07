@@ -54,7 +54,7 @@ export class SuggestionsStore<T> {
             ? this.getAriaLabel(suggestion)
             : (suggestion as any as ITag).name ||
               (<IPersonaProps>suggestion).text ||
-              // eslint-disable-next-line deprecation/deprecation
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               (<IPersonaProps>suggestion).primaryText,
       };
     }

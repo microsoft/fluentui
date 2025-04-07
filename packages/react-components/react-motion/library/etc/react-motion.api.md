@@ -9,9 +9,9 @@ import { SlotComponentType } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type AtomMotion = {
-    keyframes: Keyframe[];
-} & KeyframeEffectOptions;
+export type AtomMotion = AtomCore & {
+    reducedMotion?: Partial<AtomCore>;
+};
 
 // @public (undocumented)
 export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
@@ -24,8 +24,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 // @public (undocumented)
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
-// @public (undocumented)
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
+// @public
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {

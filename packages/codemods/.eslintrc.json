@@ -9,7 +9,7 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/naming-convention": "off",
         "import/no-extraneous-dependencies": "off",
-        "deprecation/deprecation": "off"
+        "@typescript-eslint/no-deprecated": "off"
       }
     }
   ]

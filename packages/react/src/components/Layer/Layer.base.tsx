@@ -79,7 +79,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       hostId,
       insertFirst,
       onLayerDidMount = () => undefined,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onLayerMounted = () => undefined,
       onLayerWillUnmount,
       styles,
@@ -216,7 +216,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         {layerRef.current &&
           ReactDOM.createPortal(
             <FocusRectsProvider layerRoot providerRef={fabricRef}>
-              {/* eslint-disable deprecation/deprecation */}
+              {/* eslint-disable @typescript-eslint/no-deprecated */}
               <Fabric
                 {...(!eventBubblingEnabled && getFilteredEvents())}
                 {...fabricProps}
@@ -225,7 +225,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
               >
                 {children}
               </Fabric>
-              {/* eslint-enable deprecation/deprecation */}
+              {/* eslint-enable @typescript-eslint/no-deprecated */}
             </FocusRectsProvider>,
             layerRef.current,
           )}

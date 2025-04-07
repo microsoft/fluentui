@@ -5,7 +5,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
     "@typescript-eslint/member-ordering": "off",
-    "deprecation/deprecation": "off",
-    "no-restricted-globals": "off"
+    "no-restricted-globals": "off",
+    "@typescript-eslint/no-deprecated": "off"
   }
 }

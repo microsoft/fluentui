@@ -5,7 +5,7 @@ import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand a
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ILegend } from '../../components/Legends/Legends.types';
+import { ILegend, ILegendContainer } from '../../components/Legends/Legends.types';
 import { Legends } from '../../components/Legends/Legends';
 import {
   IAccessibilityProps,
@@ -14,6 +14,7 @@ import {
   IRefArrayData,
   IMargins,
   IChart,
+  IImageExportOptions,
 } from '../../types/IDataPoint';
 import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -42,6 +43,7 @@ import {
   getNextGradient,
   areArraysEqual,
 } from '../../utilities/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -81,6 +83,7 @@ export class HorizontalBarChartWithAxisBase
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -91,7 +94,9 @@ export class HorizontalBarChartWithAxisBase
       color: '',
       dataForHoverCard: 0,
       isCalloutVisible: false,
-      isLegendSelected: props.legendProps?.selectedLegend !== undefined,
+      isLegendSelected:
+        (props.legendProps?.selectedLegends && props.legendProps.selectedLegends.length > 0) ||
+        props.legendProps?.selectedLegend !== undefined,
       isLegendHovered: false,
       refSelected: null,
       selectedLegendTitle: props.legendProps?.selectedLegend ?? '',
@@ -114,6 +119,7 @@ export class HorizontalBarChartWithAxisBase
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
         : YAxisType.StringAxis;
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -196,6 +202,10 @@ export class HorizontalBarChartWithAxisBase
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+  };
 
   private _getDomainNRangeValues = (
     points: IHorizontalBarChartWithAxisDataPoint[],
@@ -779,6 +789,7 @@ export class HorizontalBarChartWithAxisBase
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
     return legends;

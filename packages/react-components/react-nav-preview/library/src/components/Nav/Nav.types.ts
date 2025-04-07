@@ -8,9 +8,10 @@ export type NavSlots = {
 };
 
 /***
- * Indicates the vertical size of the Nav content.
+ * Indicates the vertical density of the Nav content.
+ * This does not affect horizontal spacing.
  */
-export type NavSize = 'small' | 'medium';
+export type NavDensity = 'small' | 'medium';
 
 /**
  * Nav Props
@@ -76,10 +77,10 @@ export type NavProps = ComponentProps<NavSlots> & {
   onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 
   /**
-   * The size and density of the Nav and it's children
+   * The vertical density of the Nav and it's children
    * @default 'medium'
    */
-  size?: NavSize;
+  density?: NavDensity;
 };
 
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {

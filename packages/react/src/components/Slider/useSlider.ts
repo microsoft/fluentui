@@ -216,7 +216,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
       ? internalState.latestLowerValue
       : internalState.latestValue;
     let diff = 0;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, props.theme):
       case KeyCodes.down:
@@ -266,7 +266,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
   };
 
   const calculateCurrentSteps = (event: DragChangeEvent) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const sliderPositionRect: ClientRect = sliderLine.current!.getBoundingClientRect();
     const sliderLength: number = !props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;

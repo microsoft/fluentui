@@ -15,24 +15,24 @@ import { ObjectSlotProps, Slots } from './getSlots';
 export function getSlotsNext<R extends SlotPropsRecord>(
   state: ComponentState<R>,
 ): {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   slots: Slots<R>;
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   slotProps: ObjectSlotProps<R>;
 } {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
   const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const [slot, props] = getSlotNext(state, slotName);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return { slots, slotProps: slotProps as unknown as ObjectSlotProps<R> };
 }
 

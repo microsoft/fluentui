@@ -23,6 +23,7 @@ env:
 
 jobs:
   main:
+    if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: macos-14-xlarge
     permissions:
       contents: 'read'
@@ -34,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
         with:
           main-branch-name: 'master'
 
@@ -81,6 +82,7 @@ jobs:
           git diff-index --quiet HEAD -- || exit 1
 
   e2e:
+    if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed
     # https://github.com/microsoft/fluentui/issues/33173
     # https://github.com/microsoft/fluentui/issues/33172
@@ -95,7 +97,7 @@ jobs:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
+        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
         with:
           main-branch-name: 'master'
 
@@ -116,3 +118,13 @@ jobs:
 
       - name: Cypress/Playwright E2E tests
         run: yarn nx affected -t e2e --nxBail --parallel 1
+
+      - name: Upload Cypress screenshots if exist
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: |
+            apps/*/cypress/screenshots/**/*.png
+            packages/**/cypress/screenshots/**/*.png
+          retention-days: 1

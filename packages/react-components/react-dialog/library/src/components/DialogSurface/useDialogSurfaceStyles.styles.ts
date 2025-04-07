@@ -60,7 +60,7 @@ const useRootBaseStyle = makeResetStyles({
 
 const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
-  backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  backgroundColor: tokens.colorBackgroundOverlay,
   position: 'fixed',
 });
 

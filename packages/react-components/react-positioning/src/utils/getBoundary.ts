@@ -1,12 +1,15 @@
 import type { Boundary as FloatingUIBoundary } from '@floating-ui/dom';
 
 import { getScrollParent } from './getScrollParent';
-import type { Boundary } from '../types';
+import type { PositioningBoundary } from '../types';
 
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.
  */
-export function getBoundary(element: HTMLElement | null, boundary?: Boundary): FloatingUIBoundary | undefined {
+export function getBoundary(
+  element: HTMLElement | null,
+  boundary?: PositioningBoundary,
+): FloatingUIBoundary | undefined {
   if (boundary === 'window') {
     return element?.ownerDocument!.documentElement;
   }

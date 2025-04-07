@@ -1,212 +1,100 @@
-import { test } from '@playwright/test';
-import { expect, fixtureURL } from '../helpers.tests.js';
+import { expect, test } from '../../test/playwright/index.js';
 import type { Checkbox } from './checkbox.js';
+import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 test.describe('Checkbox', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-checkbox--checkbox'));
-
-    await page.waitForFunction(() => customElements.whenDefined('fluent-checkbox'));
+  test.use({
+    tagName: 'fluent-checkbox',
   });
 
-  test('should set and retrieve the `shape` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should have a role of `checkbox`', async ({ fastPage }) => {
+    await expect(fastPage.element).toHaveJSProperty('elementInternals.role', 'checkbox');
+  });
 
-    await expect(element).toHaveCount(1);
+  test('should initialize to the initial value if no value property is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await test.step('should set the `shape` property to `circular`', async () => {
-      await page.setContent(/* html */ `
-          <fluent-checkbox shape="circular"></fluent-checkbox>
-      `);
+    await expect(element).toHaveJSProperty('value', 'on');
+  });
 
-      await expect(element).toHaveJSProperty('shape', 'circular');
-    });
+  test('should set the `shape` property to match the `shape` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await test.step('should set the `shape` attribute to `square`', async () => {
-      await element.evaluate((node: Checkbox) => {
-        node.shape = 'square';
+    for (const shape of Object.values(CheckboxShape)) {
+      await test.step(`should set the \`shape\` property to "${shape}"`, async () => {
+        await fastPage.setTemplate({
+          attributes: {
+            shape,
+          },
+        });
+
+        await expect(element).toHaveAttribute('shape', shape);
+
+        await expect(element).toHaveJSProperty('shape', shape);
+
+        await expect(element).toHaveCustomState(shape);
       });
+    }
+  });
 
-      await expect(element).toHaveAttribute('shape', 'square');
-    });
+  test('should set the `size` property to match the `size` attribute', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await test.step('should unset the `shape` property when the attribute is removed', async () => {
-      await element.evaluate((node: Checkbox) => {
-        node.removeAttribute('shape');
+    for (const size of Object.values(CheckboxSize)) {
+      await test.step(`should set the \`size\` property to "${size}"`, async () => {
+        await fastPage.setTemplate({ attributes: { size: size } });
+
+        await expect(element).toHaveJSProperty('size', size);
+
+        await expect(element).toHaveAttribute('size', size);
+
+        await expect(element).toHaveCustomState(size);
       });
-
-      await expect(element).toHaveJSProperty('shape', null);
-    });
+    }
   });
 
-  test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-      <fluent-checkbox></fluent-checkbox>
-  `);
-
-    await element.evaluate((node: Checkbox) => {
-      node.shape = 'circular';
-    });
-
-    await expect(element).toHaveCustomState('circular');
-
-    await element.evaluate((node: Checkbox) => {
-      node.shape = 'square';
-    });
-
-    await expect(element).not.toHaveCustomState('circular');
-    await expect(element).toHaveCustomState('square');
-
-    await element.evaluate((node: Checkbox) => {
-      node.shape = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('circular');
-    await expect(element).not.toHaveCustomState('square');
-  });
-
-  test('should set and retrieve the `size` property correctly', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await element.evaluate((node: Checkbox) => {
-      node.size = 'medium';
-    });
-
-    await test.step('should set the `size` attribute to `medium`', async () => {
-      await element.evaluate((node: Checkbox) => {
-        node.size = 'medium';
-      });
-
-      await expect(element).toHaveAttribute('size', 'medium');
-    });
-
-    await test.step('should set the `size` property to `large`', async () => {
-      await element.evaluate((node: Checkbox) => {
-        node.setAttribute('size', 'large');
-      });
-
-      await expect(element).toHaveJSProperty('size', 'large');
-    });
-
-    await test.step('should unset the `size` property when the attribute is removed', async () => {
-      await element.evaluate((node: Checkbox) => {
-        node.removeAttribute('size');
-      });
-
-      await expect(element).toHaveJSProperty('size', null);
-    });
-  });
-
-  test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-      <fluent-checkbox></fluent-checkbox>
-  `);
-
-    await element.evaluate((node: Checkbox) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveCustomState('medium');
-
-    await element.evaluate((node: Checkbox) => {
-      node.size = 'large';
-    });
-
-    await expect(element).not.toHaveCustomState('medium');
-    await expect(element).toHaveCustomState('large');
-
-    await element.evaluate((node: Checkbox) => {
-      node.size = undefined;
-    });
-
-    await expect(element).not.toHaveCustomState('medium');
-    await expect(element).not.toHaveCustomState('large');
-  });
-
-  test('should have a role of `checkbox`', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
-
-    await expect(element).toHaveJSProperty('elementInternals.role', 'checkbox');
-  });
-
-  test('should set the `ariaChecked` property to `false` when `checked` is not defined', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
-
-    await expect(element).not.toHaveAttribute('checked');
+  test('should set the `ariaChecked` property equal to the `checked` property', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
-  });
 
-  test('should set the `ariaChecked` property equal to the `checked` property', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox checked></fluent-checkbox>
-    `);
+    await element.evaluate((node: Checkbox) => {
+      node.checked = true;
+    });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'true');
-
-    await element.evaluate((node: Checkbox) => {
-      node.checked = false;
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
   });
 
-  test('should NOT set a default `aria-required` value when `required` is not defined', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+  test('should NOT set a default `aria-required` value when `required` is not defined', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await expect(element).not.toHaveAttribute('required');
 
     await expect(element).not.toHaveAttribute('aria-required');
   });
 
-  test('should be focusable by default', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+  test('should be focusable by default', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.focus();
 
     await expect(element).toBeFocused();
   });
 
-  test('should NOT be focusable when the `disabled` attribute is set', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should NOT be focusable when the `disabled` attribute is set', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <fluent-checkbox disabled></fluent-checkbox>
-    `);
+    await fastPage.setTemplate({ attributes: { disabled: true } });
 
     await element.focus();
 
     await expect(element).not.toBeFocused();
   });
 
-  test('should set the `ariaChecked` attribute to "mixed" when `indeterminate` property is true', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+  test('should set the `ariaChecked` attribute to "mixed" when `indeterminate` property is true', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Checkbox) => {
       node.indeterminate = true;
@@ -221,12 +109,8 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaChecked', 'false');
   });
 
-  test('should set off `indeterminate` on `checked` change by user click', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+  test('should set `indeterminate` to false when the `checked` state changes via click', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     await element.evaluate((node: Checkbox) => {
       node.indeterminate = true;
@@ -239,14 +123,14 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('indeterminate', false);
   });
 
-  test('should NOT change the `indeterminate` property when the owning form is reset', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should NOT change the `indeterminate` property when the owning form is reset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const form = page.locator('form');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox></fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox></fluent-checkbox>
+      </form>
     `);
 
     await element.evaluate((node: Checkbox) => {
@@ -274,32 +158,24 @@ test.describe('Checkbox', () => {
     });
   });
 
-  test('should initialize to the initial value if no value property is set', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should initialize to the provided `value` attribute when set pre-connection', async ({ fastPage, page }) => {
+    const expectedValue = 'foobar';
 
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+    await fastPage.setTemplate('');
 
-    await expect(element).toHaveJSProperty('value', 'on');
+    const value = await page.evaluate(expectedValue => {
+      const node = document.createElement('fluent-checkbox') as Checkbox;
+
+      node.setAttribute('value', expectedValue);
+
+      return node.value;
+    }, expectedValue);
+
+    expect(value).toBe(expectedValue);
   });
 
-  test('should initialize to the provided `value` attribute when set pre-connection', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox value="foo"></fluent-checkbox>
-    `);
-
-    await expect(element).toHaveJSProperty('value', 'foo');
-  });
-
-  test('should initialize to the provided `value` attribute when set post-connection', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
-
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+  test('should initialize to the provided `value` attribute when set post-connection', async ({ fastPage }) => {
+    const { element } = fastPage;
 
     const expectedValue = 'foobar';
 
@@ -310,12 +186,10 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('value', expectedValue);
   });
 
-  test('should initialize to the provided `value` property when set pre-connection', async ({ page }) => {
-    // const element = page.locator('fluent-checkbox');
+  test('should initialize to the provided `value` property when set pre-connection', async ({ fastPage, page }) => {
+    await fastPage.setTemplate('');
 
-    await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
-    `);
+    await expect(fastPage.element).not.toBeAttached();
 
     const expectedValue = 'foobar';
 
@@ -324,48 +198,48 @@ test.describe('Checkbox', () => {
 
       node.value = expectedValue;
 
-      return Promise.resolve(node.value);
+      return node.value;
     }, expectedValue);
 
     expect(value).toBe(expectedValue);
   });
 
-  test('should be invalid when unchecked', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should be invalid when unchecked', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox required></fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox required></fluent-checkbox>
+      </form>
     `);
 
-    expect(await element.evaluate((node: Checkbox) => node.validity.valueMissing)).toBe(true);
+    await expect(element).toHaveJSProperty('validity.valueMissing', true);
   });
 
-  test('should be valid when checked', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should be valid when checked', async ({ fastPage }) => {
+    const { element } = fastPage;
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox required>checkbox</fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox required>checkbox</fluent-checkbox>
+      </form>
     `);
 
     await element.click();
 
     await expect(element).toHaveJSProperty('checked', true);
 
-    expect(await element.evaluate((node: Checkbox) => node.validity.valueMissing)).toBe(false);
+    await expect(element).toHaveJSProperty('validity.valueMissing', false);
   });
 
-  test('should set the `checked` property to false if the `checked` attribute is unset', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should set the `checked` property to false if the `checked` attribute is unset', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const form = page.locator('form');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox></fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox></fluent-checkbox>
+      </form>
     `);
 
     await expect(element).toHaveJSProperty('checked', false);
@@ -383,14 +257,14 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('checked', false);
   });
 
-  test('should set its checked property to true if the checked attribute is set', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should set its checked property to true if the checked attribute is set', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const form = page.locator('form');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox></fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox></fluent-checkbox>
+      </form>
     `);
 
     await expect(element).toHaveJSProperty('checked', false);
@@ -409,20 +283,21 @@ test.describe('Checkbox', () => {
   });
 
   test('should put the control into a clean state, where `checked` attribute modifications change the `checked` property prior to user or programmatic interaction', async ({
+    fastPage,
     page,
   }) => {
-    const element = page.locator('fluent-checkbox');
+    const { element } = fastPage;
     const form = page.locator('form');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox required></fluent-checkbox>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox required></fluent-checkbox>
+      </form>
     `);
 
     await element.evaluate((node: Checkbox) => {
       node.checked = true;
-      node.removeAttribute('checked');
+      node.toggleAttribute('checked', false);
     });
 
     await expect(element).toHaveJSProperty('checked', true);
@@ -434,21 +309,21 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('checked', false);
 
     await element.evaluate((node: Checkbox) => {
-      node.setAttribute('checked', '');
+      node.toggleAttribute('checked', true);
     });
 
     expect(await element.evaluate((node: Checkbox) => node.value)).toBeTruthy();
   });
 
-  test('should submit the value of the checkbox when checked', async ({ page }) => {
-    const element = page.locator('fluent-checkbox');
+  test('should submit the value of the checkbox when checked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
     const submitButton = page.locator('button');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
-            <button type="submit">submit</button>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
+        <button type="submit">submit</button>
+      </form>
     `);
 
     await element.click();
@@ -458,18 +333,18 @@ test.describe('Checkbox', () => {
     expect(page.url()).toContain('?checkbox=foo');
   });
 
-  test('should submit the values of multiple checkboxes when checked', async ({ page }) => {
-    const checkboxes = page.locator('fluent-checkbox');
+  test('should submit the values of multiple checkboxes when checked', async ({ fastPage, page }) => {
+    const { element: checkboxes } = fastPage;
     const element1 = checkboxes.nth(0);
     const element2 = checkboxes.nth(1);
     const submitButton = page.locator('button');
 
-    await page.setContent(/* html */ `
-        <form>
-            <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
-            <fluent-checkbox name="checkbox" value="bar"></fluent-checkbox>
-            <button type="submit">submit</button>
-        </form>
+    await fastPage.setTemplate(/* html */ `
+      <form>
+        <fluent-checkbox name="checkbox" value="foo"></fluent-checkbox>
+        <fluent-checkbox name="checkbox" value="bar"></fluent-checkbox>
+        <button type="submit">submit</button>
+      </form>
     `);
 
     await element1.click();
@@ -477,6 +352,6 @@ test.describe('Checkbox', () => {
 
     await submitButton.click();
 
-    expect(page.url()).toContain('?checkbox=foo&checkbox=bar');
+    await expect(page).toHaveURL(/\?checkbox=foo&checkbox=bar/);
   });
 });

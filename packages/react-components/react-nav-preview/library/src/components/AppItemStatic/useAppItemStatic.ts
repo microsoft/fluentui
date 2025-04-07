@@ -18,7 +18,7 @@ export const useAppItemStatic_unstable = (
 ): AppItemStaticState => {
   const { icon } = props;
 
-  const { size = 'medium' } = useNavContext_unstable();
+  const { density = 'medium' } = useNavContext_unstable();
   return {
     components: {
       root: 'div',
@@ -34,6 +34,6 @@ export const useAppItemStatic_unstable = (
     icon: slot.optional(icon, {
       elementType: 'span',
     }),
-    size,
+    density,
   };
 };

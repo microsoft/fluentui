@@ -35,10 +35,10 @@ export const CustomTrigger = () => {
             cumque eaque?
           </DialogContent>
           <DialogActions>
+            <Button appearance="primary">Do Something</Button>
             <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
           </DialogActions>
         </DialogBody>
       </DialogSurface>

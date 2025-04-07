@@ -2,6 +2,162 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Thu, 20 Mar 2025 10:22:53 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.131",
+      "version": "8.107.131",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.14",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 18:51:26 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.130",
+      "version": "8.107.130",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.13",
+            "commit": "4a22dec952469874af1b840a102d54dbde59e5ea"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Mar 2025 07:23:16 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.129",
+      "version": "8.107.129",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.12",
+            "commit": "a0f797cff8980ed3b05cbf73c3e602d97663e4ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2025 07:22:41 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.128",
+      "version": "8.107.128",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.11",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/set-version to v8.2.24",
+            "commit": "37cb222b6d035ea02d490aa26a2aaf7dfd94c761"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2025 07:21:16 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.127",
+      "version": "8.107.127",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.10",
+            "commit": "8264ce0435583ae69c051f109388005be3c0de2b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jan 2025 07:21:15 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.126",
+      "version": "8.107.126",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.9",
+            "commit": "111bf937b3793db68e32a90774b04f3bf61f4be5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jan 2025 07:21:49 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.125",
+      "version": "8.107.125",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.8",
+            "commit": "012298d98651800023aac24c591831e9bc51bea2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2025 07:21:32 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.124",
+      "version": "8.107.124",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.7",
+            "commit": "baf887d95f91874c814a7cae749c20e797f828be"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jan 2025 07:21:23 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.123",
+      "version": "8.107.123",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.6",
+            "commit": "bf60a56cb23b3af90bcb62462c2423468eb9fa3c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 07:21:37 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.122",
+      "version": "8.107.122",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.122.5",
+            "commit": "8f763922d713d9ccd35e65db07206c10b170fafd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jan 2025 07:21:32 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.121",
       "version": "8.107.121",

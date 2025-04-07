@@ -75,7 +75,7 @@ extends:
                 # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
               - script: |
                   date=$(date +"%Y%m%d-%H%M")
-                  #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+                  # release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
                   yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
                   git add .
                   git commit -m "bump nightly versions"
@@ -95,8 +95,8 @@ extends:
                 displayName: test
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
-                  git reset --hard origin/master
+                  yarn publish:beachball -b origin/$(Build.SourceBranchName) -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
+                  git reset --hard origin/$(Build.SourceBranchName)
                 displayName: Publish changes and bump versions
 
               - template: .devops/templates/cleanup.yml@self

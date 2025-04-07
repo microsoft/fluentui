@@ -9,6 +9,7 @@ import {
   useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import type { TagPickerControlProps, TagPickerControlState } from './TagPickerControl.types';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { ChevronDownRegular } from '@fluentui/react-icons';
@@ -43,7 +44,9 @@ export const useTagPickerControl_unstable = (
   const invalid = useFieldContext_unstable()?.validationState === 'error';
   const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
 
+  const { targetDocument } = useFluent_unstable();
   const tagPickerId = useId('tagPicker-');
+  const rafIdRef = React.useRef<number | null>(null);
 
   const innerRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLSpanElement>(null);
@@ -61,6 +64,7 @@ export const useTagPickerControl_unstable = (
     renderByDefault: !noPopover,
     defaultProps: {
       'aria-expanded': open,
+      'aria-disabled': disabled ? 'true' : undefined,
       children: <ChevronDownRegular />,
       role: 'button',
     },
@@ -73,7 +77,13 @@ export const useTagPickerControl_unstable = (
   }
 
   const observerRef = useResizeObserverRef<HTMLSpanElement>(([entry]) => {
-    innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+    const targetWindow = targetDocument?.defaultView;
+
+    if (targetWindow) {
+      rafIdRef.current = targetWindow.requestAnimationFrame(() => {
+        innerRef.current?.style.setProperty(tagPickerControlAsideWidthToken, `${entry.contentRect.width}px`);
+      });
+    }
   });
   const aside = slot.optional<ExtractSlotProps<Slot<'span'>>>(undefined, {
     elementType: 'span',
@@ -134,6 +144,12 @@ export const useTagPickerControl_unstable = (
   if (state.expandIcon) {
     state.expandIcon.ref = expandIconLabelMergeRef;
   }
+
+  React.useEffect(() => {
+    if (rafIdRef.current && targetDocument?.defaultView) {
+      targetDocument.defaultView.cancelAnimationFrame(rafIdRef.current);
+    }
+  }, [targetDocument]);
 
   return state;
 };

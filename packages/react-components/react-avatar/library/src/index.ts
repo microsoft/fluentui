@@ -11,7 +11,7 @@ export type {
   AvatarSlots,
   AvatarState,
   AvatarShape,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
 } from './Avatar';

@@ -332,19 +332,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       // Allow the caller to handle the key down
       onKeyDown?.(ev);
 
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.ctrlKey && ev.which === KeyCodes.a) {
         selectAll();
       }
 
       // This is a temporary work around, it has localization issues
       // we plan on rewriting how this works in the future
-      /* eslint-disable deprecation/deprecation */
+      /* eslint-disable @typescript-eslint/no-deprecated */
       const isDel = ev.which === KeyCodes.del;
       const isCut = (ev.shiftKey && isDel) || (ev.ctrlKey && ev.which === KeyCodes.x);
       const isBackspace = ev.which === KeyCodes.backspace;
       const isCopy = ev.ctrlKey && ev.which === KeyCodes.c;
-      /* eslint-enable deprecation/deprecation */
+      /* eslint-enable @typescript-eslint/no-deprecated */
       const needToCopy = isCut || isCopy;
       const needToDelete =
         (isBackspace && selectedItems.length > 0) || ((isCut || isDel) && focusedItemIndices.length > 0);
@@ -421,7 +421,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
       if (isSuggestionsShown) {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const keyCode = ev.which;
         switch (keyCode) {
           case KeyCodes.escape:

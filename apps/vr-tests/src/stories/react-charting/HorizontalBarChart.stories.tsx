@@ -136,12 +136,7 @@ export const Basic = () => {
 
   return (
     <div style={{ padding: '10px' }}>
-      <HorizontalBarChart
-        culture={window.navigator.language}
-        data={data}
-        hideRatio={hideRatio}
-        width={600}
-      />
+      <HorizontalBarChart culture="en-US" data={data} hideRatio={hideRatio} width={600} />
     </div>
   );
 };
@@ -345,7 +340,7 @@ export const WithAxis = () => {
   return (
     <div style={rootStyle}>
       <HorizontalBarChartWithAxis
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Horizontal bar chart basic example "
         data={points}
         width={650}

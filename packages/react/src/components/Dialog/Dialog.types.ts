@@ -20,7 +20,7 @@ export interface IDialog {}
  */
 export interface IDialogProps
   extends React.ClassAttributes<DialogBase>,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     IWithResponsiveModeState,
     IAccessiblePopupProps {
   children?: React.ReactNode;

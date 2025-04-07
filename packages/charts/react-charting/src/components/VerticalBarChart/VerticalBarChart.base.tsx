@@ -53,8 +53,11 @@ import {
   formatDate,
   getNextGradient,
   areArraysEqual,
+  calculateLongestLabelWidth,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { ILegendContainer } from '../Legends/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -109,6 +112,7 @@ export class VerticalBarChartBase
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -140,6 +144,7 @@ export class VerticalBarChartBase
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IVerticalBarChartProps): void {
@@ -254,6 +259,10 @@ export class VerticalBarChartBase
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+  };
 
   private _getDomainNRangeValues = (
     points: IDataPoint[],
@@ -785,7 +794,7 @@ export class VerticalBarChartBase
       const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
-        <g key={point.x as string}>
+        <g key={`${point.x}_${index}` as string}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
@@ -891,7 +900,7 @@ export class VerticalBarChartBase
 
       return (
         <g
-          key={point.x instanceof Date ? point.x.getTime() : point.x}
+          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
         >
           {this.props.enableGradient && (
@@ -1004,7 +1013,7 @@ export class VerticalBarChartBase
       const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
-        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
@@ -1137,6 +1146,7 @@ export class VerticalBarChartBase
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
     return legends;
@@ -1237,6 +1247,8 @@ export class VerticalBarChartBase
     /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the bars changes wrt the bar width */
+    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1244,8 +1256,6 @@ export class VerticalBarChartBase
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Rate at which the space between the bars changes wrt the bar width */
-        const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
@@ -1256,9 +1266,30 @@ export class VerticalBarChartBase
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
+      } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
+        // Calculate the remaining width after rendering bars at their maximum allowable width
+        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
+        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        const margin1 = (totalWidth - reqWidth) / 2;
+
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
+
+        this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
-      const data = (this.props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+      const uniqueX: Record<number, number | Date> = {};
+      this.props.data?.forEach(point => {
+        if (point.x instanceof Date) {
+          uniqueX[point.x.getTime()] = point.x;
+        } else {
+          uniqueX[point.x as number] = point.x as number;
+        }
+      });
+      const data = Object.values(uniqueX) as number[] | Date[];
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,

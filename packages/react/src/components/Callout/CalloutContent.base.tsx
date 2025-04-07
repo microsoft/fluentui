@@ -337,11 +337,8 @@ function useDismissHandlers(
   {
     hidden,
     onDismiss,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnScroll,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnResize,
-    // eslint-disable-next-line deprecation/deprecation
     preventDismissOnLostFocus,
     dismissOnTargetClick,
     shouldDismissOnWindowFocus,
@@ -495,7 +492,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       shouldRestoreFocus = true,
       target,
       hidden,
@@ -602,6 +599,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onMouseUp={mouseUpOnPopup}
             onRestoreFocus={props.onRestoreFocus}
             onScroll={onScroll}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             {...popupProps}

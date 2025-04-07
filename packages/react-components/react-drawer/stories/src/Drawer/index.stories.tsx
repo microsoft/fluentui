@@ -6,6 +6,7 @@ import {
   DrawerHeader,
   DrawerHeaderTitle,
   DrawerHeaderNavigation,
+  DrawerFooter,
 } from '@fluentui/react-drawer';
 import descriptionMd from './DrawerDescription.md';
 import bestPracticesMd from './DrawerBestPractices.md';
@@ -22,8 +23,7 @@ export { Separator } from './DrawerSeparator.stories';
 export { WithTitle } from './DrawerWithTitle.stories';
 export { WithNavigation } from './DrawerWithNavigation.stories';
 export { WithScroll } from './DrawerWithScroll.stories';
-// @TODO: enable when react-motion is stable
-// export { MotionCustom } from './DrawerMotionCustom.stories';
+export { MotionCustom } from './DrawerMotionCustom.stories';
 export { MotionDisabled } from './DrawerMotionDisabled.stories';
 export { MultipleLevels } from './DrawerMultipleLevels.stories';
 export { AlwaysOpen } from './DrawerAlwaysOpen.stories';
@@ -41,6 +41,7 @@ export default {
     DrawerHeaderTitle,
     DrawerHeaderNavigation,
     DrawerBody,
+    DrawerFooter,
   },
   parameters: {
     docs: {

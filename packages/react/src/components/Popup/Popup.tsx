@@ -123,7 +123,7 @@ function useRestoreFocus(props: IPopupProps, root: React.RefObject<HTMLDivElemen
 }
 
 function useHideSiblingNodes(props: IPopupProps, root: React.RefObject<HTMLDivElement | undefined>) {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shouldHideSiblings = String(props['aria-modal']).toLowerCase() === 'true' && props.enableAriaHiddenSiblings;
 
   React.useEffect(() => {
@@ -157,7 +157,7 @@ export const Popup: React.FunctionComponent<IPopupProps> = React.forwardRef<HTML
 
     const onKeyDown = React.useCallback(
       (ev: React.KeyboardEvent<HTMLElement> | KeyboardEvent): void => {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         switch (ev.which) {
           case KeyCodes.escape:
             if (onDismiss) {

@@ -123,7 +123,7 @@ export const BasicSecondaryYAxis = () => {
   return (
     <div style={rootStyle}>
       <VerticalBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Vertical bar chart basic example "
         data={points}
         width={650}
@@ -462,7 +462,7 @@ export const StackedDateAxis = () => {
   return (
     <div style={rootStyle}>
       <VerticalStackedBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Vertical stacked bar chart Date X Axis example"
         barGapMax={2}
         data={data}
@@ -647,7 +647,7 @@ export const Stacked = () => {
   return (
     <div style={rootStyle}>
       <VerticalStackedBarChart
-        culture={window.navigator.language}
+        culture="en-US"
         chartTitle="Vertical stacked bar chart basic example"
         barGapMax={2}
         data={data}
@@ -760,7 +760,7 @@ export const GroupedWrapLabels = () => {
     <>
       <div style={rootStyle}>
         <GroupedVerticalBarChart
-          culture={window.navigator.language}
+          culture="en-US"
           chartTitle="Grouped Vertical Bar chart basic example"
           data={data}
           height={400}

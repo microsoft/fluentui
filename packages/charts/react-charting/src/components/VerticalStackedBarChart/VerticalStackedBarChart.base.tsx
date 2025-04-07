@@ -19,7 +19,7 @@ import {
 } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -60,8 +60,10 @@ import {
   formatDate,
   getNextGradient,
   areArraysEqual,
+  calculateLongestLabelWidth,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -134,6 +136,7 @@ export class VerticalStackedBarChartBase
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -169,6 +172,7 @@ export class VerticalStackedBarChartBase
     this._emptyChartId = getId('_VSBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -294,6 +298,10 @@ export class VerticalStackedBarChartBase
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+  };
 
   /**
    * This function tells us what to focus either the whole stack as focusable item.
@@ -440,8 +448,9 @@ export class VerticalStackedBarChartBase
             x2={x2}
             y2={y2}
             opacity={shouldHighlight ? 1 : 0.1}
-            strokeWidth={3}
-            strokeLinecap="round"
+            strokeWidth={lineObject[item][0].lineOptions?.strokeWidth ?? 3}
+            strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
+            strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(this._isLegendHighlighted(item) && {
@@ -523,7 +532,7 @@ export class VerticalStackedBarChartBase
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
     const { theme } = this.props;
     const { palette } = theme!;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
@@ -658,6 +667,7 @@ export class VerticalStackedBarChartBase
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
   }
@@ -835,20 +845,30 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
+    readonly adjustedTotalHeight: number;
   } {
     const { barGapMax = 0 } = this.props;
 
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
+    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    let sumOfPercent = 0;
+    bars.forEach(point => {
+      let value = (Math.abs(point.data) / totalData) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+    });
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / totalData;
-
+    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
     return {
       gapHeight,
       heightValueScale,
+      adjustedTotalHeight: sumOfPercent,
     } as const;
   }
 
@@ -892,7 +912,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -929,8 +949,8 @@ export class VerticalStackedBarChartBase
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
+        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
+          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -1199,6 +1219,8 @@ export class VerticalStackedBarChartBase
     /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the bars changes wrt the bar width */
+    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1206,8 +1228,6 @@ export class VerticalStackedBarChartBase
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
       } else if (this.props.barWidth !== 'auto') {
-        /** Rate at which the space between the bars changes wrt the bar width */
-        const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
@@ -1218,6 +1238,19 @@ export class VerticalStackedBarChartBase
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
+      } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
+        // Calculate the remaining width after rendering bars at their maximum allowable width
+        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
+        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        const margin1 = (totalWidth - reqWidth) / 2;
+
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
+
+        this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
       const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
@@ -1240,7 +1273,7 @@ export class VerticalStackedBarChartBase
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData.length === 0).length === 0
+      this.props.data.some(item => item.chartData.length > 0 || (item.lineData && item.lineData.length > 0))
     );
   }
 

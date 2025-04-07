@@ -373,6 +373,10 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor('GrayText'),
       color: 'GrayText',
 
+      [`& .${buttonClassNames.icon}`]: {
+        color: 'GrayText',
+      },
+
       ':focus': {
         ...shorthands.borderColor('GrayText'),
       },
@@ -381,12 +385,20 @@ const useRootDisabledStyles = makeStyles({
         backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
         color: 'GrayText',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'GrayText',
+        },
       },
 
       ':hover:active': {
         backgroundColor: 'ButtonFace',
         ...shorthands.borderColor('GrayText'),
         color: 'GrayText',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'GrayText',
+        },
       },
     },
   },

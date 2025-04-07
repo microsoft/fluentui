@@ -14,9 +14,9 @@ import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './typ
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (value, options) => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shorthand = resolveShorthand(value, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(shorthand?.as ?? 'button', shorthand);
   return shorthand && shorthandARIAButton;

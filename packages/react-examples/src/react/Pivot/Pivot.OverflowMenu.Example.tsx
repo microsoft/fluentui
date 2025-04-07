@@ -14,7 +14,7 @@ export const PivotOverflowMenuExample: React.FunctionComponent = () => {
         <Toggle label="linkFormat" offText="links" onText="tabs" checked={tabs} onChange={toggleTabs} />
         <Toggle label="direction" offText="ltr" onText="rtl" checked={rtl} onChange={toggleRtl} />
       </div>
-      {/* eslint-disable-next-line deprecation/deprecation */}
+      {/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
       <Fabric dir={rtl ? 'rtl' : 'ltr'}>
         <Pivot
           aria-label="Pivot Overflow Menu Example"

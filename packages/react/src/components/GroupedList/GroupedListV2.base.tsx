@@ -199,7 +199,7 @@ const setGroupsCollapsedState = (groups: IGroup[] | undefined, isCollapsed: bool
 };
 
 const isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return ev.which === getRTLSafeKeyCode(KeyCodes.right);
 };
 
@@ -285,7 +285,6 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const [version, setVersion] = React.useState({});
   const [toggleVersion, setToggleVersion] = React.useState({});
 
-  // eslint-disable-next-line deprecation/deprecation
   const { shouldEnterInnerZone = isInnerZoneKeystroke } = focusZoneProps;
 
   const listView = React.useMemo(() => {

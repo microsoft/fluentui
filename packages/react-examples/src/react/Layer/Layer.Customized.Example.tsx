@@ -25,7 +25,7 @@ export const LayerCustomizedExample: React.FunctionComponent = () => {
       </p>
       <Toggle label="Show panel" inlineLabel checked={isPanelOpen} onChange={isPanelOpen ? dismissPanel : showPanel} />
       <Toggle label="Trap panel" inlineLabel checked={trapPanel} onChange={toggleTrapPanel} />
-      {/* eslint-disable-next-line deprecation/deprecation */}
+      {/* eslint-disable-next-line @typescript-eslint/no-deprecated */}
       <Customizer scopedSettings={scopedSettings}>
         {isPanelOpen && (
           <Panel

@@ -51,13 +51,13 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
   const iconStyles = useIconStyles();
   const expandIconStyles = useExpandIconStyles();
 
-  const { selected, open, size } = state;
+  const { selected, open, density } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
     defaultRootClassName,
     rootStyles.base,
-    size === 'small' && smallStyles.root,
+    density === 'small' && smallStyles.root,
     selected && open === false && indicatorStyles.base,
     selected && open === false && contentStyles.selected,
     state.root.className,

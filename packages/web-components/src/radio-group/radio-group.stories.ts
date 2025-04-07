@@ -204,6 +204,49 @@ export const DisabledItems: Story = {
   },
 };
 
+export const DisabledAndCheckedItem: Story = {
+  args: {
+    orientation: RadioGroupOrientation.vertical,
+    id: 'radio-group-disabled-and-checked-item',
+    value: 'pear',
+    defaultSlotContent: () => html`
+      ${repeat(
+        [
+          {
+            labelSlottedContent: () => html`<label slot="label">Apple</label>`,
+            value: 'apple',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Pear</label>`,
+            value: 'pear',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Banana</label>`,
+            value: 'banana',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Orange</label>`,
+            value: 'orange',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Grape</label>`,
+            value: 'grape',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Kiwi</label>`,
+            value: 'kiwi',
+            disabled: true,
+          },
+        ],
+        radioFieldTemplate,
+      )}
+    `,
+  },
+};
+
 export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentRadioGroup>>`
     <form

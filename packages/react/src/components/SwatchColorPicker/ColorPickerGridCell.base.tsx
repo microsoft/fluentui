@@ -67,7 +67,7 @@ const getColorPickerGridCellButtonClassNames = memoizeFunction(
 export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCellProps> = props => {
   const {
     item,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     idPrefix = props.id,
     isRadio,
     selected = false,

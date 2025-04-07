@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import { ChartProps, ChartDataPoint, DonutChart } from '@fluentui/react-charts-preview';
+import { ChartProps, ChartDataPoint, DonutChart } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/DonutChart',
@@ -29,7 +29,7 @@ export const Basic = () => {
   return (
     <div style={{ padding: 10 }}>
       <DonutChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data}
         innerRadius={55}
         href="https://developer.microsoft.com/en-us/"
