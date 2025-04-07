@@ -203,7 +203,7 @@ export const transformPlotlyJsonToDonutProps = (
   firstData.labels?.forEach((label: string, index: number) => {
     const color = getColor(label, colorMap, isDarkTheme);
     //ToDo how to handle string data?
-    const value = typeof firstData.values?.[index] === 'number' ? firstData.values[index] : 1;
+    const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
     if (!mapLegendToDataPoint[label]) {
       mapLegendToDataPoint[label] = {
