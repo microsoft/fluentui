@@ -199,13 +199,21 @@ export const transformPlotlyJsonToDonutProps = (
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
 
-  const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
+  const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
+  firstData.labels?.forEach((label: string, index: number) => {
     const color = getColor(label, colorMap, isDarkTheme);
-    return {
-      legend: label,
-      data: firstData.values?.[index] as number, //ToDo how to handle string data?
-      color,
-    };
+    //ToDo how to handle string data?
+    const value = typeof firstData.values?.[index] === 'number' ? firstData.values[index] : 1;
+
+    if (!mapLegendToDataPoint[label]) {
+      mapLegendToDataPoint[label] = {
+        legend: label,
+        data: value,
+        color,
+      };
+    } else {
+      mapLegendToDataPoint[label].data! += value;
+    }
   });
 
   const width: number = input.layout?.width ?? 440;
@@ -223,7 +231,7 @@ export const transformPlotlyJsonToDonutProps = (
   return {
     data: {
       chartTitle,
-      chartData: donutData,
+      chartData: Object.values(mapLegendToDataPoint),
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
     width: input.layout?.width,
