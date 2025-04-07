@@ -220,6 +220,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
+    case 'contour':
+      throw new Error(`Unsupported chart - type: ${plotlyInputWithValidData.data[0]?.type}`);
     default:
       const xValues = (plotlyInputWithValidData.data[0] as PlotData).x;
       const yValues = (plotlyInputWithValidData.data[0] as PlotData).y;
