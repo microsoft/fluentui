@@ -159,7 +159,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     componentRef: chartRef,
   };
 
-  const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
+  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
     const chartProps: LineChartProps | AreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
@@ -186,13 +186,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
     if (isXDate || isXNumber) {
-      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
+      return renderLineAreaScatter(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
         x: correctYearMonth(dataPoint.x),
       }));
-      return renderLineArea(updatedData, isAreaChart);
+      return renderLineAreaScatter(updatedData, isAreaChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
