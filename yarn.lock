@@ -6087,18 +6087,6 @@
     "@typescript-eslint/visitor-keys" "8.29.0"
     debug "^4.3.4"
 
-"@typescript-eslint/rule-tester@8.19.1":
-  version "8.19.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/rule-tester/-/rule-tester-8.19.1.tgz#440eb7fc2a7e1fb8d38979ba15db0407223306dc"
-  integrity sha512-DK86KDq2wkWqH8qN9lT3OQuvFqRHAQBrMQY6emvK8Tar1xKA4fyZh387CNPZ66l8oeXg/OYFIgJBRuxrWV/awA==
-  dependencies:
-    "@typescript-eslint/typescript-estree" "8.19.1"
-    "@typescript-eslint/utils" "8.19.1"
-    ajv "^6.12.6"
-    json-stable-stringify-without-jsonify "^1.0.1"
-    lodash.merge "4.6.2"
-    semver "^7.6.0"
-
 "@typescript-eslint/rule-tester@8.29.0":
   version "8.29.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/rule-tester/-/rule-tester-8.29.0.tgz#badc7713f72640bf3aa35b6ddfa184b06fd301a6"
