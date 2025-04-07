@@ -17,7 +17,7 @@ Tips for writing a successful RFC:
 _@hotell_
 
 _Date the RFC was originally authored here_: April 2025
-_Target end date for feedback_: April 20th
+_Target end date for feedback_: April 20, 2025
 
 <!-- If substantial updates are made add an "Updated on: $date" below, don't replace the original date -->
 
@@ -25,13 +25,13 @@ _Target end date for feedback_: April 20th
 
 <!-- Explain the proposed change -->
 
-We need to establish a new repository structure to better scope domains and support consistent and easy branching out projects in EOL/Maintenance mode.
+We propose a new repository structure to better scope domains and support consistent branching for projects entering EOL/Maintenance mode. This structure will simplify navigation, improve scalability, and ensure clear separation of concerns.
 
 > NOTE: follows https://github.com/microsoft/fluentui/pull/30552
 
 ## Background
 
-Please read https://github.com/microsoft/fluentui/pull/30552 for additional background.
+The current repository structure has grown organically, leading to challenges in maintaining clear boundaries between domains and frameworks. As some projects transition to EOL/Maintenance mode, a more structured organization is required to ensure long-term maintainability and ease of contribution.
 
 ## Problem statement
 
@@ -41,49 +41,66 @@ Why are we making this change? What problem are we solving? What do we expect to
 This section is important as the motivation or problem statement is independent from the proposed change. Even if this RFC is not accepted this Motivation can be used for alternative solutions.
 -->
 
+The current monorepo structure lacks clear separation between domains and frameworks, making it harder to:
+
+Decouple projects in active development from those in maintenance mode.
+Enforce boundaries between domains (e.g., react-components, react-northstar, web-components).
+Scale the repository as new frameworks or domains are introduced.
+
 ## Detailed Design or Proposal
 
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the intended audience to understand. -->
 
 ### Organization
 
-#### Top level folders
+#### Top-Level Folder Structure
 
-Organized by "framework"/domain:
+Organize the repository by "framework" or "domain" to ensure clear separation:
 
 ```sh
-shared/ # tools,infra, any shared domain related projects (e.g.: tokens)
-react/ # v8
-react-northstar/ # v0
-react-components/ # v9
-web-components/ # wc v3
-charts/ # v8,v9,wc (current packages/charts)
+shared/           # Shared tools, infrastructure, and domain-agnostic projects (e.g., tokens)
+react/            # React v8
+react-northstar/  # React Northstar (v0)
+react-components/ # React v9
+web-components/   # Web Components (v3)
+charts/           # Charting libraries (v8, v9, wc)
 ```
+
+**NOTE:**
+
+- After branching out `react/` and `react-northstar/`, the top-level structure will contain only four primary folders:
+  - shared
+  - react-components
+  - web-components
+  - charts
+- This structure allows for future expansion if additional frameworks are introduced.
 
 #### Domain folder organization
 
-- prefer flat structure
-- we wont introduce `apps/` and `packages/` sub-folders
-  - rather prefer using optionally `-app` suffix or prefix
-  - note that projectType is covered by nx `projectType` field within `project.json`
-- optionally we could collocate `applications` and `tools` under 1 folder
+- **Flat Structure:** Avoid nested `/apps` or `/packages` sub-folders.
+- **Naming Conventions:** Use descriptive names with optional -app suffix or prefix for applications for clarity.
+- **Project Type:** Use the projectType field in nx project.json to define project types.
+
+**NOTE:** optionally we could collocate `applications` and `tools` under 1 folder
+
+_Example: `react-components` Folder_
 
 ```sh
-react-components/ # v9
+react-components/ # React v9
   react-text/
   react-card/
   react-dialog/
-  react-components/
-  eslint-plugin-react-components/ # tool
-  react-storybook-addon/ # tool
-  docsite/ # app (current - public-docsite-v9)
-  react-18-tests/ # app (current - react-18-tests-v9)
-  ts-minbar-tests/ # app (current - ts-minbar-test-react-components)
-  ssr-tests/ # app (current - ssr-test-v9)
-  vr-tests/ # app (current - vr-tests-react-components)
+  react-components/             # Core package
+  eslint-plugin-react-components/ # Tool
+  react-storybook-addon/        # Tool
+  docsite/                      # App (current: public-docsite-v9)
+  react-18-tests/               # App (current: react-18-tests-v9)
+  ts-minbar-tests/              # App (current: ts-minbar-test-react-components)
+  ssr-tests/                    # App (current: ssr-test-v9)
+  vr-tests/                     # App (current: vr-tests-react-components)
 ```
 
-**Naming:**
+**Naming Conventions:**
 
 Applications with generic names will mirror folder structure within its name to avoid project name clashes
 
@@ -92,30 +109,60 @@ _Example:_
 - `/react-components/docsite` -> `react-components-docsite`
 - `/react-components/ssr-tests` -> `react-components-ssr-tests`
 
-If applications would live in additional nested `apps`, it will not be reflected within the project name
+If applications would live in additional nested `apps/`, it will not be reflected within the project name
 
 _Example:_
 
 - `/react-components/apps/docsite` -> `react-components-docsite`
 - `/react-components/apps/ssr-tests` -> `react-components-ssr-tests`
 
-#### Shared folder organization
+#### Shared domain folder organization
 
-Will contain anything with shared scope, eg
+Will contain anything with shared scope
 
-- infra
-- tools
-- packages used in more than 1 domain ( eg. tokens )
+- Infrastructure and tools (e.g., build scripts, linting configurations).
+- Shared packages used across multiple domains (e.g., tokens).
 
-### Execution
+### Branching strategy
 
-1. re-org current master to new proposed structure
-2. branch out react-northstar
-3. remove any react-northstar artifacts from master
+**Default Branch**
+
+The default branch will contain actively developed frameworks/domains.
+
+**Branching for Maintenance/EOL**
+
+When a framework/domain transitions to maintenance or EOL, it will be branched out from the default branch.
+
+**Branch Naming Convention:**
+
+`{framework/domain-type}-{major-version}`
+
+_Examples:_
+
+- Branching out `react-northstar` → `react-v0`
+- Branching out `react` → `react-v8`
+- Branching out `react-components` → `react-v9`
+- Branching out `web-components` → `web-components-v3`
+
+### Execution Plan
+
+1. Reorganize the current master branch to the proposed structure.
+2. Branch out react-northstar into react-v0.
+3. Remove all react-northstar artifacts from the master branch.
 
 ### Pros and Cons
 
-<!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this proposal. If there are multiple proposals include this for each. -->
+**Pros**
+
+- Clear separation of domains and frameworks.
+- Simplified branching for EOL/Maintenance projects.
+- Easier navigation and contribution for developers.
+- Scalable structure for future frameworks or domains.
+
+**Cons**
+
+- Initial reorganization effort may disrupt ongoing work.
+- Contributors will need to adapt to the new structure.
 
 ## Discarded Solutions
 
