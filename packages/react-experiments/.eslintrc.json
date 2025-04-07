@@ -3,7 +3,6 @@
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "no-restricted-globals": "off",
-    "@typescript-eslint/no-deprecated": "warn"
+    "no-restricted-globals": "off"
   }
 }
