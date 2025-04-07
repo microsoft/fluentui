@@ -47,6 +47,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
       props.content &&
       props.wrapContent &&
       props.wrapContent(props.content, tooltipHostId, props.maxWidth ?? 100, props.maxHeight)
+      // ToDo - Specify a correct fallback value here
     ) {
       setIsOverflowing(true);
     } else {
@@ -70,6 +71,10 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
       async.dispose();
     };
   }, [wrapContentCallback, async]);
+
+  useEffect(() => {
+    wrapContentCallback();
+  }, [props.maxWidth, props.maxHeight, wrapContentCallback]);
 
   useEffect(() => {
     if (isTooltipVisible) {
@@ -183,6 +188,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
         {...props.tooltipProps}
         withArrow
         content={props.content}
+        // targetElement={getTargetElement()} ToDo - This assignment is causing build failure. Needs to be fixed.
         visible={showTooltip}
       >
         <text
