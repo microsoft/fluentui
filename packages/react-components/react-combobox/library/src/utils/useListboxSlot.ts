@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   mergeCallbacks,
   useId,
@@ -43,6 +44,10 @@ export function useListboxSlot(
     isResolvedShorthand(listboxSlotFromProp) ? listboxSlotFromProp.id : undefined,
   );
 
+  const listboxFieldProps = useFieldControlProps_unstable({ id: listboxId } as FieldControlProps, {
+    supportsLabelFor: true,
+  });
+
   const listboxSlot = slot.optional(listboxSlotFromProp, {
     renderByDefault: true,
     elementType: Listbox,
@@ -50,6 +55,9 @@ export function useListboxSlot(
       id: listboxId,
       multiselect,
       tabIndex: undefined,
+      // Ensure that the `listbox` is labelled by the label when it is
+      // part of a field
+      'aria-labelledby': listboxFieldProps['aria-labelledby'],
       ...defaultProps,
     },
   });
