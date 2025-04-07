@@ -55,8 +55,6 @@ export function useListboxSlot(
       id: listboxId,
       multiselect,
       tabIndex: undefined,
-      // Ensure that the `listbox` is labelled by the label when it is
-      // part of a field
       'aria-labelledby': listboxFieldProps['aria-labelledby'],
       ...defaultProps,
     },
