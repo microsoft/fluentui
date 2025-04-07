@@ -44,10 +44,6 @@ export function useListboxSlot(
     isResolvedShorthand(listboxSlotFromProp) ? listboxSlotFromProp.id : undefined,
   );
 
-  const listboxFieldProps = useFieldControlProps_unstable({ id: listboxId } as FieldControlProps, {
-    supportsLabelFor: true,
-  });
-
   const listboxSlot = slot.optional(listboxSlotFromProp, {
     renderByDefault: true,
     elementType: Listbox,
@@ -55,10 +51,23 @@ export function useListboxSlot(
       id: listboxId,
       multiselect,
       tabIndex: undefined,
-      'aria-labelledby': listboxFieldProps['aria-labelledby'],
       ...defaultProps,
     },
   });
+
+  const fieldControlProps = useFieldControlProps_unstable({ id: listboxId } as FieldControlProps, {
+    supportsLabelFor: true,
+  });
+
+  // Use the field's label to provide an accessible name for the listbox if it doesn't already have one
+  if (
+    listboxSlot &&
+    !listboxSlot['aria-label'] &&
+    !listboxSlot['aria-labelledby'] &&
+    fieldControlProps['aria-labelledby']
+  ) {
+    listboxSlot['aria-labelledby'] = fieldControlProps['aria-labelledby'];
+  }
 
   /**
    * Clicking on the listbox should never blur the trigger
