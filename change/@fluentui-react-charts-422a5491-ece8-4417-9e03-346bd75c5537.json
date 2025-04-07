@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: port all declarative chart changes from v8 to v9",
+  "packageName": "@fluentui/react-charts",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
