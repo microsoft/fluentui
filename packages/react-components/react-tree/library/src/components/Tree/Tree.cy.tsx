@@ -1,3 +1,5 @@
+/* @TODO: Fix tests to run on React 18 */
+
 import 'cypress-real-events';
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
@@ -314,7 +316,7 @@ describe('Tree', () => {
             defaultOpenItems={['item1', 'item2', 'item2__item1']}
           >
             {Array.from({ length: 200 }, (_, index) => (
-              <TreeItem itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
+              <TreeItem key={index} itemType="branch" value={`item${index}`} data-testid={`item${index}`}>
                 <TreeItemLayout>level 0, item {index + 1}</TreeItemLayout>
               </TreeItem>
             ))}
@@ -608,6 +610,41 @@ describe('Tree', () => {
       cy.get('[data-testid="item2"]').should('be.focused').should('have.attr', 'tabindex', '0');
       cy.get('#btn-before-tree').realClick();
       cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
+    });
+
+    it('should ensure roving tab index will be properly initialized when the tree goes from empty to non-empty', () => {
+      const RovingTreeTest = () => {
+        const [show, setShow] = React.useState(false);
+        return (
+          <>
+            <button onClick={() => setShow(current => !current)} id="btn-before-tree">
+              toggle tree
+            </button>
+            <Tree>
+              {show && (
+                <>
+                  <TreeItem itemType="leaf" value="item1" data-testid="item1">
+                    <TreeItemLayout>level 1, item 1</TreeItemLayout>
+                  </TreeItem>
+                  <TreeItem itemType="leaf" value="item2" data-testid="item2">
+                    <TreeItemLayout>level 1, item 2</TreeItemLayout>
+                  </TreeItem>
+                </>
+              )}
+            </Tree>
+          </>
+        );
+      };
+      mount(<RovingTreeTest />);
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
+      cy.get('[data-testid="item2"]').should('have.attr', 'tabindex', '-1');
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('not.exist');
+      cy.get('[data-testid="item2"]').should('not.exist');
+      cy.get('#btn-before-tree').realClick();
+      cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0');
+      cy.get('[data-testid="item2"]').should('have.attr', 'tabindex', '-1');
     });
   });
 });

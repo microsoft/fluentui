@@ -7,10 +7,9 @@ import { useTabster } from './useTabster';
  * Returns a function that activates a modal by element from the modal or modal container.
  */
 export function useActivateModal(): (elementFromModal: HTMLElement | undefined) => void {
-  const tabster = useTabster();
-  const modalizerAPI = tabster ? getModalizer(tabster) : undefined;
-  const [setActivateModalTimeout] = useTimeout();
+  const modalizerRefAPI = useTabster(getModalizer);
 
+  const [setActivateModalTimeout] = useTimeout();
   const activateModal = React.useCallback(
     (elementFromModal: HTMLElement | undefined) => {
       // We call the actual activation function on the next tick, because with the typical use case,
@@ -18,10 +17,10 @@ export function useActivateModal(): (elementFromModal: HTMLElement | undefined) 
       // and on the current tick the element has just received the attributes, but Tabster has not
       // instantiated the Modalizer yet.
       setActivateModalTimeout(() => {
-        modalizerAPI?.activate(elementFromModal);
+        modalizerRefAPI.current?.activate(elementFromModal);
       }, 0);
     },
-    [modalizerAPI, setActivateModalTimeout],
+    [modalizerRefAPI, setActivateModalTimeout],
   );
 
   return activateModal;

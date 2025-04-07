@@ -2,6 +2,51 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 27 Mar 2025 21:12:51 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.75",
+      "version": "9.1.75",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.18.23",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 15:40:43 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.74",
+      "version": "9.1.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.18.22",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Mar 2025 18:58:54 GMT",
+      "tag": "@fluentui/react-context-selector_v9.1.73",
+      "version": "9.1.73",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-context-selector",
+            "comment": "Bump @fluentui/react-utilities to v9.18.21",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:21 GMT",
       "tag": "@fluentui/react-context-selector_v9.1.72",
       "version": "9.1.72",

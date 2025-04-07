@@ -2,6 +2,84 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Apr 2025 07:20:22 GMT",
+      "tag": "@fluentui/react_v8.122.14",
+      "version": "8.122.14",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 10:22:53 GMT",
+      "tag": "@fluentui/react_v8.122.14",
+      "version": "8.122.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "0ca913966f83124bcd3591aceb7f0269ab61462b",
+            "comment": "fix: restore missing files from last publish."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 18:51:26 GMT",
+      "tag": "@fluentui/react_v8.122.13",
+      "version": "8.122.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f900ebfb5523381379b2316ad837370388ece098",
+            "comment": "fix(Autofill): Revert #33700 to avoid breaking pickers."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Mar 2025 07:23:16 GMT",
+      "tag": "@fluentui/react_v8.122.12",
+      "version": "8.122.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.25",
+            "commit": "a0f797cff8980ed3b05cbf73c3e602d97663e4ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.59",
+            "commit": "a0f797cff8980ed3b05cbf73c3e602d97663e4ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.22",
+            "commit": "a0f797cff8980ed3b05cbf73c3e602d97663e4ff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.11.8",
+            "commit": "a0f797cff8980ed3b05cbf73c3e602d97663e4ff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 07:22:41 GMT",
       "tag": "@fluentui/react_v8.122.11",
       "version": "8.122.11",

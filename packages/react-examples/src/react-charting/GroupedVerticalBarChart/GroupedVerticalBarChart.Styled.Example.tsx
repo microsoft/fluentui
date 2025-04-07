@@ -115,7 +115,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Styled">Change Width:</label>
         <input
           type="range"
@@ -148,7 +148,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

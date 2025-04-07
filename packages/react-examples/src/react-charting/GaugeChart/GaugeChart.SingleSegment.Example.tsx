@@ -33,7 +33,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
 
   public render(): React.ReactNode {
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
           <StackItem>
             <label htmlFor="width-slider">Width:</label>
@@ -100,8 +100,8 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
             { size: this.state.chartValue, legend: 'Used' },
             {
               size: 100 - this.state.chartValue,
-              color: DataVizPalette.disabled,
-              gradient: getGradientFromToken(DataVizGradientPalette.disabled),
+              color: DataVizPalette.color5,
+              gradient: getGradientFromToken(DataVizGradientPalette.gradient6),
               legend: 'Available',
             },
           ]}
@@ -113,7 +113,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
           enableGradient={this.state.enableGradient}
           roundCorners={this.state.roundedCorners}
         />
-      </>
+      </div>
     );
   }
 

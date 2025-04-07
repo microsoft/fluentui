@@ -12,6 +12,8 @@ import {
   makeStyles,
   tokens,
   useId,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -51,12 +53,18 @@ export const MotionDisabled = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [type, setType] = React.useState<DrawerType>('overlay');
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div className={styles.root}>
       <Drawer
         backdropMotion={null}
         surfaceMotion={null}
         type={type}
+        {...restoreFocusSourceAttributes}
         separator
         open={isOpen}
         onOpenChange={(_, { open }) => setIsOpen(open)}
@@ -82,7 +90,7 @@ export const MotionDisabled = () => {
       </Drawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
           {type === 'inline' ? 'Toggle' : 'Open'}
         </Button>
 

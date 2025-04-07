@@ -2,6 +2,90 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:01 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.4",
+      "version": "9.24.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "7fb72e750b033aff7a0ca3e9d80d1793d2a98ae0",
+            "comment": "fix: improve support for concurrent mode"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b5868638cc29d589325cf986f55be9d7498ef0e6",
+            "comment": "fix: don't pass `null` to `createKeyborg()`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Mar 2025 21:12:51 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.3",
+      "version": "9.24.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.1",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.23",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 15:40:43 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.2",
+      "version": "9.24.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.0",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.22",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Mar 2025 18:58:54 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.1",
+      "version": "9.24.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.22.0",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.21",
+            "commit": "17389d335ea4e0e2ce7a9c730f02ed5c4273e546"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2025 14:34:04 GMT",
       "tag": "@fluentui/react-tabster_v9.24.0",
       "version": "9.24.0",

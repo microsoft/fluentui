@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/chart-web-components",
   "description": "A library of Fluent Chart Web Components",
-  "version": "0.0.5",
+  "version": "0.0.12",
   "author": {
     "name": "Microsoft"
   },
@@ -77,7 +77,7 @@
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
-    "lint": "eslint . --ext .ts",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
@@ -99,7 +99,7 @@
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "^1.0.0-alpha.21",
-    "@fluentui/web-components": "^3.0.0-beta.81",
+    "@fluentui/web-components": "^3.0.0-beta.88",
     "@types/d3-selection": "^3.0.0",
     "@types/d3-shape": "^3.0.0",
     "d3-selection": "^3.0.0",

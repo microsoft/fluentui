@@ -600,6 +600,8 @@ export class BaseDropdown extends FASTElement {
     ariaLabelledBy: string;
     changeHandler(e: Event): boolean | void;
     clickHandler(e: PointerEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
@@ -608,6 +610,8 @@ export class BaseDropdown extends FASTElement {
     controlSlot: HTMLSlotElement;
     disabled?: boolean;
     disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     get displayValue(): string;
     // @internal
     elementInternals: ElementInternals;
@@ -2484,16 +2488,9 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
-    constructor();
     appearance: DropdownAppearance;
     // @internal
     appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
     size?: DropdownSize;
     // @internal
     sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
@@ -2800,6 +2797,11 @@ export function isDropdownOption(value: Node | null, tagName?: string): value is
 
 // @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
+
+// Warning: (ae-forgotten-export) The symbol "BaseTreeItem" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
 export class Label extends FASTElement {
@@ -3521,16 +3523,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // (undocumented)
     handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handlePointerDown: (event: PointerEvent | null) => void;
-    handleThumbPointerDown: (event: PointerEvent | null) => void;
+    handleKeydown(event: KeyboardEvent): boolean;
+    // (undocumented)
+    handlePointerDown: (event: PointerEvent | null) => boolean;
+    handleThumbPointerDown: (event: PointerEvent | null) => boolean;
     increment(): void;
     initialValue: string;
     // @internal
     protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
-    // (undocumented)
-    keypressHandler: (event: KeyboardEvent) => void;
     get labels(): ReadonlyArray<Node>;
     max: string;
     // (undocumented)
@@ -4364,6 +4366,55 @@ export const TooltipStyles: ElementStyles;
 
 // @public
 export const TooltipTemplate: ViewTemplate<Tooltip, any>;
+
+// Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TreeItem extends BaseTreeItem {
+    appearance: TreeItemAppearance;
+    // @internal
+    childTreeItemsChanged(): void;
+    size: TreeItemSize;
+    updateSizeAndAppearance(): void;
+}
+
+// Warning: (ae-missing-release-tag) "TreeItemAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TreeItemAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemAppearance: {
+    readonly subtle: "subtle";
+    readonly subtleAlpha: "subtle-alpha";
+    readonly transparent: "transparent";
+};
+
+// @public (undocumented)
+export type TreeItemAppearance = ValuesOf<typeof TreeItemAppearance>;
+
+// @public (undocumented)
+export const TreeItemDefinition: FASTElementDefinition<typeof TreeItem>;
+
+// Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TreeItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+};
+
+// @public (undocumented)
+export type TreeItemSize = ValuesOf<typeof TreeItemSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TreeItemTemplate: ViewTemplate<TreeItem, any>;
 
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //

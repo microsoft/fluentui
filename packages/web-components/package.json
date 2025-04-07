@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.81",
+  "version": "3.0.0-beta.88",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -33,6 +33,10 @@
     "./utilities.js": {
       "types": "./dist/dts/utils/index.d.ts",
       "default": "./dist/esm/utils/index.js"
+    },
+    "./*/base.js": {
+      "types": "./dist/dts/*/*.base.d.ts",
+      "default": "./dist/esm/*/*.base.js"
     },
     "./*/define.js": {
       "types": "./dist/dts/*/*.define.d.ts",
@@ -80,7 +84,7 @@
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
-    "lint": "eslint . --ext .ts",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",

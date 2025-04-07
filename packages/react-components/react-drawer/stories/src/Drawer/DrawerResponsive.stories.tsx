@@ -8,6 +8,8 @@ import {
   Button,
   makeStyles,
   tokens,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -51,9 +53,21 @@ export const Responsive = () => {
     return () => match.removeEventListener('change', onMediaQueryChange);
   }, [onMediaQueryChange]);
 
+  // all Drawers need manual focus restoration attributes
+  // unless (as in the case of some inline drawers, you do not want automatic focus restoration)
+  const restoreFocusTargetAttributes = useRestoreFocusTarget();
+  const restoreFocusSourceAttributes = useRestoreFocusSource();
+
   return (
     <div className={styles.root}>
-      <Drawer type={type} separator position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <Drawer
+        type={type}
+        {...restoreFocusSourceAttributes}
+        separator
+        position="start"
+        open={isOpen}
+        onOpenChange={(_, { open }) => setIsOpen(open)}
+      >
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -75,7 +89,7 @@ export const Responsive = () => {
       </Drawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+        <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setIsOpen(!isOpen)}>
           Toggle
         </Button>
 

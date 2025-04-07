@@ -4,14 +4,19 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
-import { PlotData, PlotlySchema } from './PlotlySchema';
+import { decodeBase64Fields } from '@fluentui/chart-utilities';
+import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
   isDateArray,
   isNumberArray,
-  isMonthArray,
+  mapFluentChart,
   sanitizeJson,
-  updateXValues,
+} from '@fluentui/chart-utilities';
+
+import {
+  isMonthArray,
+  correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToScatterChartProps,
@@ -21,7 +26,6 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
-  isLineData,
 } from './PlotlySchemaAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
 import { HorizontalBarChartWithAxis } from '../HorizontalBarChartWithAxis/index';
@@ -31,8 +35,7 @@ import { SankeyChart } from '../SankeyChart/SankeyChart';
 import { GaugeChart } from '../GaugeChart/index';
 import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
-import { IImageExportOptions, toImage } from './imageExporter';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -101,7 +104,21 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const plotlyInput = plotlySchema as PlotlySchema;
+  const chart: OutputChartType = mapFluentChart(plotlySchema);
+  if (!chart.isValid) {
+    throw new Error(`Invalid chart schema: ${chart.errorMessage}`);
+  }
+  let plotlyInput = plotlySchema as PlotlySchema;
+  try {
+    plotlyInput = decodeBase64Fields(plotlyInput);
+  } catch (error) {
+    throw new Error(`Failed to decode plotly schema: ${error}`);
+  }
+  const plotlyInputWithValidData: PlotlySchema = {
+    ...plotlyInput,
+    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
+  };
+
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const theme = useTheme();
@@ -140,58 +157,63 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  const checkAndRenderChart = (
-    renderChartJsx: (chartProps: ILineChartProps | IAreaChartProps) => JSX.Element,
-    isAreaChart: boolean = false,
-  ) => {
+  const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
+    const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
+    const chartProps: ILineChartProps | IAreaChartProps = {
+      ...transformPlotlyJsonToScatterChartProps(
+        { data: plotlyData, layout: plotlyInput.layout },
+        isAreaChart,
+        colorMap,
+        isDarkTheme,
+      ),
+      ...commonProps,
+    };
+    if (isAreaChart) {
+      return <ResponsiveAreaChart {...chartProps} />;
+    }
+    return <ResponsiveLineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
+  };
+
+  const checkAndRenderChart = (isAreaChart: boolean = false) => {
     let fallbackVSBC = false;
-    const xValues = (plotlyInput.data[0] as PlotData).x;
+    const xValues = (plotlyInputWithValidData.data[0] as PlotData).x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
     if (isXDate || isXNumber) {
-      const chartProps: ILineChartProps | IAreaChartProps = {
-        ...transformPlotlyJsonToScatterChartProps(
-          { data: plotlyInput.data, layout: plotlyInput.layout },
-          isAreaChart,
-          colorMap,
-          isDarkTheme,
-        ),
-        ...commonProps,
-      };
-      return renderChartJsx(chartProps);
+      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
-      const updatedData = plotlyInput.data.map((dataPoint: PlotData) => ({
+      const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
-        x: updateXValues(dataPoint.x),
+        x: correctYearMonth(dataPoint.x),
       }));
-      const chartProps: ILineChartProps | IAreaChartProps = {
-        ...transformPlotlyJsonToScatterChartProps(
-          { data: updatedData, layout: plotlyInput.layout },
-          isAreaChart,
-          colorMap,
-          isDarkTheme,
-        ),
-        ...commonProps,
-      };
-      return renderChartJsx(chartProps);
+      return renderLineArea(updatedData, isAreaChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
     return (
       <ResponsiveVerticalStackedBarChart
-        {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme, fallbackVSBC)}
+        {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme, fallbackVSBC)}
         {...commonProps}
       />
     );
   };
 
   const exportAsImage = React.useCallback(
-    (opts?: IImageExportOptions) => {
-      return toImage(chartRef.current?.chartContainer, {
-        background: theme.semanticColors.bodyBackground,
-        scale: 5,
-        ...opts,
+    (opts?: IImageExportOptions): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        if (!chartRef.current || typeof chartRef.current.toImage !== 'function') {
+          return reject(Error('Chart cannot be exported as image'));
+        }
+
+        chartRef.current
+          .toImage({
+            background: theme.semanticColors.bodyBackground,
+            scale: 5,
+            ...opts,
+          })
+          .then(resolve)
+          .catch(reject);
       });
     },
     [theme],
@@ -205,60 +227,39 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  switch (plotlyInput.data[0].type) {
-    case 'pie':
+  switch (chart.type) {
+    case 'donut':
       return (
         <ResponsiveDonutChart
-          {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToDonutProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
-    case 'bar':
-      const orientation = plotlyInput.data[0].orientation;
-      if (orientation === 'h' && isNumberArray((plotlyInput.data[0] as PlotData).x)) {
-        return (
-          <ResponsiveHorizontalBarChartWithAxis
-            {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, colorMap, isDarkTheme)}
-            {...commonProps}
-          />
-        );
-      } else {
-        const containsLines = plotlyInput.data.some(
-          series => series.type === 'scatter' || isLineData(series as Partial<PlotData>),
-        );
-        if (['group', 'overlay'].includes(plotlySchema?.layout?.barmode) && !containsLines) {
-          return (
-            <ResponsiveGroupedVerticalBarChart
-              {...transformPlotlyJsonToGVBCProps(plotlySchema, colorMap, isDarkTheme)}
-              {...commonProps}
-            />
-          );
-        }
-        return (
-          <ResponsiveVerticalStackedBarChart
-            {...transformPlotlyJsonToVSBCProps(plotlySchema, colorMap, isDarkTheme)}
-            {...commonProps}
-          />
-        );
-      }
-    case 'scatter':
-      if (plotlyInput.data[0].mode === 'markers') {
-        throw new Error(`Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
-      }
-      const isAreaChart = plotlyInput.data.some(
-        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+    case 'horizontalbar':
+      return (
+        <ResponsiveHorizontalBarChartWithAxis
+          {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
       );
-      const renderChartJsx = (chartProps: ILineChartProps | IAreaChartProps) => {
-        if (isAreaChart) {
-          return <ResponsiveAreaChart {...chartProps} />;
-        }
-        return <ResponsiveLineChart {...chartProps} />;
-      };
-      return checkAndRenderChart(renderChartJsx, isAreaChart);
+    case 'groupedverticalbar':
+      return (
+        <ResponsiveGroupedVerticalBarChart
+          {...transformPlotlyJsonToGVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
+      );
+    case 'verticalstackedbar':
+      return (
+        <ResponsiveVerticalStackedBarChart
+          {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
+      );
     case 'heatmap':
       return (
         <ResponsiveHeatMapChart
-          {...transformPlotlyJsonToHeatmapProps(plotlySchema)}
+          {...transformPlotlyJsonToHeatmapProps(plotlyInputWithValidData)}
           {...commonProps}
           legendProps={{}}
         />
@@ -266,38 +267,34 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'sankey':
       return (
         <ResponsiveSankeyChart
-          {...transformPlotlyJsonToSankeyProps(plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToSankeyProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
-    case 'indicator':
     case 'gauge':
-      if (plotlyInput.data?.[0]?.mode?.includes('gauge') || plotlyInput.data?.[0]?.type === 'gauge') {
-        return (
-          <ResponsiveGaugeChart
-            {...transformPlotlyJsonToGaugeProps(plotlySchema, colorMap, isDarkTheme)}
-            {...commonProps}
-          />
-        );
-      }
-      throw new Error(`Unsupported chart - type: ${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
-    case 'histogram':
+      return (
+        <ResponsiveGaugeChart
+          {...transformPlotlyJsonToGaugeProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
+      );
+    case 'verticalbar':
       return (
         <ResponsiveVerticalBarChart
-          {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
+    case 'area':
+    case 'line':
+    case 'fallback':
+      // Need recheck for area chart as we don't have ability to check for valid months in previous step
+      const isAreaChart = plotlyInputWithValidData.data.some(
+        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+      );
+      return checkAndRenderChart(isAreaChart);
     default:
-      const xValues = (plotlyInput.data[0] as PlotData).x;
-      const yValues = (plotlyInput.data[0] as PlotData).y;
-      if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
-        const renderLineChartJsx = (chartProps: ILineChartProps) => {
-          return <ResponsiveLineChart {...chartProps} />;
-        };
-        return checkAndRenderChart(renderLineChartJsx);
-      }
-      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';

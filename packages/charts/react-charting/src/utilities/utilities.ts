@@ -41,8 +41,18 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
+  ILineChartLineOptions,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { getId } from '@fluentui/react';
+import {
+  CurveFactory,
+  curveLinear as d3CurveLinear,
+  curveNatural as d3CurveNatural,
+  curveStep as d3CurveStep,
+  curveStepAfter as d3CurveStepAfter,
+  curveStepBefore as d3CurveStepBefore,
+} from 'd3-shape';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1546,4 +1556,72 @@ export function resolveCSSVariables(chartContainer: HTMLElement, styleRules: str
   return styleRules.replace(cssVarRegExp, (match, group1) => {
     return containerStyles.getPropertyValue(group1);
   });
+}
+
+export function copyStyle(properties: string[] | Record<string, string>, fromEl: Element, toEl: Element) {
+  const styles = getComputedStyle(fromEl);
+  if (Array.isArray(properties)) {
+    properties.forEach(prop => {
+      d3Select(toEl).style(prop, styles.getPropertyValue(prop));
+    });
+  } else {
+    Object.entries(properties).forEach(([fromProp, toProp]) => {
+      d3Select(toEl).style(toProp, styles.getPropertyValue(fromProp));
+    });
+  }
+}
+
+const MEASUREMENT_SPAN_STYLE = {
+  position: 'absolute',
+  visibility: 'hidden',
+  top: '-20000px',
+  left: 0,
+  padding: 0,
+  margin: 0,
+  border: 'none',
+  whiteSpace: 'pre',
+};
+const MEASUREMENT_SPAN_ID = getId('measurement_span_');
+
+export const createMeasurementSpan = (text: string | number, className: string, parentElement?: HTMLElement | null) => {
+  let measurementSpan = document.getElementById(MEASUREMENT_SPAN_ID);
+  if (!measurementSpan) {
+    measurementSpan = document.createElement('span');
+    measurementSpan.setAttribute('id', MEASUREMENT_SPAN_ID);
+    measurementSpan.setAttribute('aria-hidden', 'true');
+
+    if (parentElement) {
+      parentElement.appendChild(measurementSpan);
+    } else {
+      document.body.appendChild(measurementSpan);
+    }
+  }
+
+  measurementSpan.setAttribute('class', className);
+  Object.assign(measurementSpan.style, MEASUREMENT_SPAN_STYLE);
+  measurementSpan.textContent = `${text}`;
+
+  return measurementSpan;
+};
+
+export function getCurveFactory(
+  curve: ILineChartLineOptions['curve'],
+  defaultFactory: CurveFactory = d3CurveLinear,
+): CurveFactory {
+  if (typeof curve === 'function') {
+    return curve;
+  }
+
+  switch (curve) {
+    case 'natural':
+      return d3CurveNatural;
+    case 'step':
+      return d3CurveStep;
+    case 'stepAfter':
+      return d3CurveStepAfter;
+    case 'stepBefore':
+      return d3CurveStepBefore;
+    default:
+      return defaultFactory;
+  }
 }

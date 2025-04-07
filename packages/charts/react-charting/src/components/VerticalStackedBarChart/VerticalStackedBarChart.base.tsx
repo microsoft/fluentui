@@ -19,7 +19,7 @@ import {
 } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -62,7 +62,8 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
 } from '../../utilities/index';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -135,6 +136,7 @@ export class VerticalStackedBarChartBase
   private _xAxisInnerPadding: number;
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -170,6 +172,7 @@ export class VerticalStackedBarChartBase
     this._emptyChartId = getId('_VSBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -295,6 +298,10 @@ export class VerticalStackedBarChartBase
   public get chartContainer(): HTMLElement | null {
     return this._cartesianChartRef.current?.chartContainer || null;
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, this._isRtl, opts);
+  };
 
   /**
    * This function tells us what to focus either the whole stack as focusable item.
@@ -660,6 +667,7 @@ export class VerticalStackedBarChartBase
         overflowText={this.props.legendsOverflowText}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
   }
@@ -837,20 +845,30 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
+    readonly adjustedTotalHeight: number;
   } {
     const { barGapMax = 0 } = this.props;
 
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
+    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    let sumOfPercent = 0;
+    bars.forEach(point => {
+      let value = (Math.abs(point.data) / totalData) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+    });
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / totalData;
-
+    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
     return {
       gapHeight,
       heightValueScale,
+      adjustedTotalHeight: sumOfPercent,
     } as const;
   }
 
@@ -894,7 +912,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -931,8 +949,8 @@ export class VerticalStackedBarChartBase
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
+        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
+          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
