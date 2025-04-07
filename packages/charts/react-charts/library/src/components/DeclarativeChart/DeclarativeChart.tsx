@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { DonutChart } from '../DonutChart/index';
-import { PlotData, PlotlySchema } from './PlotlySchema';
+import type { PlotData, PlotlySchema } from '@fluentui/chart-utilities';
+import { isArrayOrTypedArray, isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
 import {
-  isArrayOrTypedArray,
-  isDateArray,
-  isNumberArray,
   isMonthArray,
-  sanitizeJson,
   updateXValues,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToScatterChartProps,
