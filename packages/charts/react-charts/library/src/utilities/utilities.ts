@@ -482,21 +482,12 @@ export function createYAxis(
   barWidth: number,
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
-  supportNegativeData: boolean = true,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(
-        yAxisParams,
-        isRtl,
-        axisData,
-        isIntegralDataset,
-        chartType,
-        useSecondaryYScale,
-        supportNegativeData,
-      );
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, chartType, useSecondaryYScale);
   }
 }
 
@@ -540,7 +531,6 @@ export function createYAxisForOtherCharts(
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
-  supportNegativeData: boolean = true,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -561,11 +551,7 @@ export function createYAxisForOtherCharts(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = supportNegativeData
-    ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
-    : yMinMaxValues.startValue < yMinValue
-    ? 0
-    : yMinValue!;
+  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
@@ -575,7 +561,7 @@ export function createYAxisForOtherCharts(
     yMax = yMax + yPadding;
   }
   const yAxisScale = d3ScaleLinear()
-    .domain([supportNegativeData ? domainValues[0] : yMin, yMax])
+    .domain([domainValues[0], yMax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
