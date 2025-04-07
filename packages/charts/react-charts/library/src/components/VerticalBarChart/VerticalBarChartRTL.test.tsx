@@ -15,7 +15,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { VerticalBarChartProps } from './VerticalBarChart.types';
 import { VerticalBarChartDataPoint } from '../../index';
-import { chartPointsVBC } from '../../utilities/test-data';
+import { allNegativeChartPointsVBC, chartPointsVBC, negativeChartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
@@ -394,6 +394,26 @@ describe('Vertical bar chart rendering', () => {
     container => {
       // Assert
       expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with all negative y value bars correctly',
+    VerticalBarChart,
+    { data: allNegativeChartPointsVBC },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'should render the vertical bar chart with some positive and some negative y value bars correctly',
+    VerticalBarChart,
+    { data: negativeChartPointsVBC },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
     },
   );
 });
