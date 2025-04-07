@@ -20,7 +20,7 @@ jobs:
         name: Checkout [master]
 
       - name: Verify react-compoenents has changed
-        uses: tj-actions/changed-files@2f7c5bfce28377bc069a65ba478de0a74aa0ca32 # v46.0.1
+        uses: tj-actions/changed-files@6cb76d07bee4c9772c6882c06c37837bf82a04d3 # v46.0.4
         id: verify-react-components-changed
         with:
           files: |
