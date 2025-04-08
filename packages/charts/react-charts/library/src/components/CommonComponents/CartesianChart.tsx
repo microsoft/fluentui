@@ -77,10 +77,10 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   if (props.yAxisTitle !== undefined && props.yAxisTitle !== '') {
     margins.left! = _useRtl
       ? props.margins?.right ?? props?.secondaryYAxistitle
-        ? 60
+        ? 80
         : 40
       : props.margins?.left ?? 60;
-    margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 60 : 40;
+    margins.right! = _useRtl ? props.margins?.left ?? 60 : props.margins?.right ?? props?.secondaryYAxistitle ? 80 : 40;
   }
 
   const classes = useCartesianChartStyles(props);
@@ -555,6 +555,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               }}
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
+              showBackground={true}
             />
           )}
           <g
@@ -574,7 +575,9 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
-                transform={`translate(${_useRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
+                transform={`translate(${
+                  _useRtl ? margins.left! + startFromX : svgDimensions.width - margins.right! - startFromX
+                }, 0)`}
                 className={classes.yAxis}
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
@@ -592,6 +595,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   }}
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
+                  showBackground={true}
                 />
               )}
             </g>
@@ -612,6 +616,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               }}
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
+              showBackground={true}
             />
           )}
         </svg>
