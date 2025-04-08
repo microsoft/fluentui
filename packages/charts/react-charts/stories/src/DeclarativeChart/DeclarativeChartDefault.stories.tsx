@@ -206,13 +206,16 @@ export const DeclarativeChartBasicExample = () => {
     setShowMore(ev.currentTarget.checked);
   }, []);
 
-  const onOptionSelect = React.useCallback((ev: SelectionEvents, data: OptionOnSelectData) => {
-    setSelectedOptions(data.selectedOptions);
-    setDropdownValue(data.optionText ?? '');
-    const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
-    const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-    setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
-  }, []);
+  const onOptionSelect = React.useCallback(
+    (ev: SelectionEvents, data: OptionOnSelectData) => {
+      setSelectedOptions(data.selectedOptions);
+      setDropdownValue(data.optionText ?? '');
+      const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
+      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
+      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+    },
+    [getSchemaByKey],
+  );
 
   const onSelectedLegendsChange = React.useCallback(
     (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
