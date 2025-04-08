@@ -511,6 +511,7 @@ export class BaseDropdown extends FASTElement {
     if (!this._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
+      validationMessageFallbackControl.name = 'validation-message-fallback';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
