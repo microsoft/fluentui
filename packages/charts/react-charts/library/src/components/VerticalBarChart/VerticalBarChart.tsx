@@ -39,6 +39,7 @@ import {
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
   useRtl,
+  areArraysEqual,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -66,6 +67,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   let _bars: JSX.Element[];
   let _xAxisLabels: string[];
   let _yMax: number;
+  let _yMin: number;
   let _isHavingLine: boolean = _checkForLine();
   const _tooltipId: string = useId('VCTooltipID_');
   const _xAxisType: XAxisTypes =
@@ -85,18 +87,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
-  const [selectedLegend, setSelectedLegend] = React.useState<string | undefined>('');
-  const [activeLegend, setActiveLegend] = React.useState<string | undefined>('');
+  const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
   const [xCalloutValue, setXCalloutValue] = React.useState<string | undefined>('');
   const [yCalloutValue, setYCalloutValue] = React.useState<string | undefined>('');
   const [activeXdataPoint, setActiveXDatapoint] = React.useState<string | number | Date | null>(null);
-  const [YValueHover, setYValueHover] = React.useState<YValueHover[]>();
+  const [hoveredYValues, setYValueHover] = React.useState<YValueHover[]>();
   const [hoverXValue, setHoverXValue] = React.useState<string | number | undefined>('');
   const [calloutLegend, setCalloutLegend] = React.useState<string>('');
   const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<AccessibilityProps>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<VerticalBarChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
+  const prevPropsRef = React.useRef<VerticalBarChartProps | null>(null);
 
   React.useImperativeHandle(
     props.componentRef,
@@ -105,6 +108,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     }),
     [],
   );
+
+  React.useEffect(() => {
+    if (prevPropsRef.current) {
+      const prevProps = prevPropsRef.current;
+      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+        setSelectedLegends(props.legendProps?.selectedLegends || []);
+      }
+      if (prevProps.height !== props.height || prevProps.width !== props.width) {
+        _adjustProps();
+      }
+    }
+    prevPropsRef.current = props;
+  }, [props, prevPropsRef, _adjustProps]);
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -190,10 +206,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             id={`${_vbcPointId}-${index}`}
             cx={isStringAxis ? xScale(item.x) + 0.5 * xScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
-            onMouseOver={
+            onMouseOver={event =>
               _legendHighlighted(lineLegendText!)
-                ? _lineHover.bind(item.point)
-                : event => _onBarHover(item.point, colorScale(item.y), event)
+                ? _lineHover(item.point, event)
+                : _onBarHover(item.point, colorScale(item.y), event)
             }
             onMouseOut={_onBarLeave}
             r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
@@ -226,10 +242,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     xAxisPoint: string | number | Date,
     legend: string,
   ): { visibility: CircleVisbility; radius: number } {
-    if (selectedLegend !== '') {
-      if (xAxisPoint === activeXdataPoint && selectedLegend === legend) {
+    if (!_noLegendHighlighted()) {
+      if (xAxisPoint === activeXdataPoint && _legendHighlighted(legend)) {
         return { visibility: CircleVisbility.show, radius: 8 };
-      } else if (selectedLegend === legend) {
+      } else if (_legendHighlighted(legend)) {
         // Don't hide the circle to keep it focusable. For more information,
         // see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
         return { visibility: CircleVisbility.show, radius: 0.3 };
@@ -367,9 +383,13 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor = false } = props;
     const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     const selectedPoint = data!.filter((xDataPoint: VerticalBarChartDataPoint) => xDataPoint.x === point.x);
-    // there might be no y value of the line for the hovered bar. so we need to check this condition
-    if (_isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
-      // callout data for the  line
+    // Check if the line legend is highlighted or no legend is highlighted
+    if (
+      _isHavingLine &&
+      selectedPoint[0].lineData?.y !== undefined &&
+      (_legendHighlighted(lineLegendText) || _noLegendHighlighted())
+    ) {
+      // Add callout data for the line
       YValueHover.push({
         legend: lineLegendText,
         color: lineLegendColor,
@@ -378,18 +398,21 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yAxisCalloutData: selectedPoint[0].lineData?.yAxisCalloutData,
       });
     }
-    // callout data for the bar
-    YValueHover.push({
-      legend: selectedPoint[0].legend,
-      y: selectedPoint[0].y,
-      color: !useSingleColor
-        ? selectedPoint[0].color
+    // Check if the bar legend is highlighted or no legend is highlighted
+    if (selectedPoint[0].legend && (selectedLegends.includes(selectedPoint[0].legend) || _noLegendHighlighted())) {
+      // Add callout data for the bar
+      YValueHover.push({
+        legend: selectedPoint[0].legend,
+        y: selectedPoint[0].y,
+        color: !useSingleColor
           ? selectedPoint[0].color
-          : _createColors()(selectedPoint[0].y)
-        : _createColors()(1),
-      data: selectedPoint[0].yAxisCalloutData,
-      yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
-    });
+            ? selectedPoint[0].color
+            : _createColors()(selectedPoint[0].y)
+          : _createColors()(1),
+        data: selectedPoint[0].yAxisCalloutData,
+        yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
+      });
+    }
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const hoverXValue = point.x instanceof Date ? point.x.toLocaleString() : point.x.toString();
     return {
@@ -412,7 +435,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       _calloutAnchorPoint = point;
       /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
       updatePosition(mouseEvent.clientX, mouseEvent.clientY);
-      setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
+      setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
       setDataForHoverCard(point.y);
       setCalloutLegend(point.legend!);
       setColor(point.color || color);
@@ -448,7 +471,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _refArray.forEach((obj: RefArrayData, index: number) => {
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
+        setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(point.legend));
         setDataForHoverCard(point.y);
         setCalloutLegend(point.legend!);
         setColor(point.color || color);
@@ -483,7 +506,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
-    setPopoverOpen(false);
+    setPopoverOpen(_noLegendHighlighted() || _legendHighlighted(lineLegendText));
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
     setColor(lineLegendColor);
@@ -504,7 +527,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     let xBarScale: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yBarScale: any = d3ScaleLinear()
-      .domain([0, _yMax])
+      .domain([_yMin, _yMax])
       .range([0, containerHeight - margins.bottom! - margins.top!]);
 
     if (_xAxisType === XAxisTypes.NumericAxis) {
@@ -541,30 +564,50 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
   const classes = useVerticalBarChartStyles(props);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function _calculateMinBarHeight(yMin: number, yMax: number, yReferencePoint: number, yBarScale: any): number {
+    const maxHeightFromBaseline =
+      yMax < 0
+        ? Math.abs(yMin - yReferencePoint)
+        : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
+    return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
+  }
+
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
+    const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
 
-      const barHeight: number = Math.max(yBarScale(point.y), 0);
-      let adjustedBarHeight = 0;
-      if (barHeight <= 0) {
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      const isHeightNegative = barHeight < 0;
+      barHeight = Math.abs(barHeight);
+      // Calculate threshold for minimum visible bar height
+      const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
+      let adjustedBarHeight = barHeight;
+
+      if (barHeight === 0) {
         return <React.Fragment key={point.x as string}> </React.Fragment>;
-      } else if (barHeight <= Math.ceil(yBarScale(_yMax) / 100.0)) {
-        adjustedBarHeight = Math.ceil(yBarScale(_yMax) / 100.0);
-      } else {
-        adjustedBarHeight = barHeight;
+      }
+      // Adjust bar height if it's smaller than the threshold
+      else if (barHeight <= minBarHeight) {
+        adjustedBarHeight = minBarHeight;
       }
       const xPoint = xBarScale(point.x as number) - _barWidth / 2;
-      const yPoint = containerHeight - margins.bottom! - adjustedBarHeight;
+      const yPoint =
+        containerHeight -
+        margins.bottom! -
+        (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x as string}>
+        <g key={`${point.x}_${index}` as string}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            y={yPoint}
+            y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
@@ -580,9 +623,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
-            opacity={shouldHighlight ? '1' : '0.1'}
+            opacity={shouldHighlight ? 1 : 0.1}
+            rx={props.roundCorners ? 3 : 0}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -615,30 +659,42 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   function _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
+    const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
-      const barHeight: number = Math.max(yBarScale(point.y), 0);
-      let adjustedBarHeight = 0;
-      if (barHeight <= 0) {
-        return <React.Fragment key={point.x instanceof Date ? point.x.getTime() : point.x}> </React.Fragment>;
-      } else if (barHeight <= Math.ceil(yBarScale(_yMax) / 100.0)) {
-        adjustedBarHeight = Math.ceil(yBarScale(_yMax) / 100.0);
-      } else {
-        adjustedBarHeight = barHeight;
+      const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      const isHeightNegative = barHeight < 0;
+      barHeight = Math.abs(barHeight);
+      // Calculate threshold for minimum visible bar height
+      const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
+      let adjustedBarHeight = barHeight;
+
+      if (barHeight === 0) {
+        return <React.Fragment key={point.x as string}> </React.Fragment>;
+      }
+      // Adjust bar height if it's smaller than the threshold
+      else if (barHeight <= minBarHeight) {
+        adjustedBarHeight = minBarHeight;
       }
       const xPoint = xBarScale(point.x);
-      const yPoint = containerHeight - margins.bottom! - adjustedBarHeight;
+      const yPoint =
+        containerHeight -
+        margins.bottom! -
+        (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
-          key={point.x instanceof Date ? point.x.getTime() : point.x}
+          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
         >
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            y={yPoint}
+            y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             height={adjustedBarHeight}
             aria-label={_getAriaLabel(point)}
@@ -650,12 +706,14 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            data-is-focusable={!props.hideTooltip}
+            data-is-focusable={!props.hideTooltip && shouldHighlight}
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
+            rx={props.roundCorners ? 3 : 0}
+            opacity={shouldHighlight ? 1 : 0.1}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -691,26 +749,37 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
+    const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
-      const barHeight: number = Math.max(yBarScale(point.y), 0);
-      let adjustedBarHeight = 0;
-      if (barHeight <= 0) {
-        return <React.Fragment key={point.x instanceof Date ? point.x.getTime() : point.x}> </React.Fragment>;
-      } else if (barHeight <= Math.ceil(yBarScale(_yMax) / 100.0)) {
-        adjustedBarHeight = Math.ceil(yBarScale(_yMax) / 100.0);
-      } else {
-        adjustedBarHeight = barHeight;
+      let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
+      const isHeightNegative = barHeight < 0;
+      barHeight = Math.abs(barHeight);
+      // Calculate threshold for minimum visible bar height
+      const minBarHeight = _calculateMinBarHeight(_yMin, _yMax, yReferencePoint, yBarScale);
+      let adjustedBarHeight = barHeight;
+
+      if (barHeight === 0) {
+        return <React.Fragment key={point.x as string}> </React.Fragment>;
+      }
+      // Adjust bar height if it's smaller than the threshold
+      else if (barHeight <= minBarHeight) {
+        adjustedBarHeight = minBarHeight;
       }
       const xPoint = xBarScale(point.x as number) - _barWidth / 2;
-      const yPoint = containerHeight - margins.bottom! - adjustedBarHeight;
+      const yPoint =
+        containerHeight -
+        margins.bottom! -
+        (isHeightNegative ? -1 * adjustedBarHeight : adjustedBarHeight) -
+        yBarScale(yReferencePoint);
+      const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
+        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
             className={classes.opacityChangeOnHover}
-            y={yPoint}
+            y={!isHeightNegative ? yPoint : baselineHeight}
             width={_barWidth}
             data-is-focusable={!props.hideTooltip && shouldHighlight}
             height={adjustedBarHeight}
@@ -726,8 +795,10 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
+            rx={props.roundCorners ? 3 : 0}
+            opacity={shouldHighlight ? 1 : 0.1}
           />
-          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
+          {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
       );
     });
@@ -757,20 +828,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return bars;
   }
 
-  function _onLegendClick(legendTitle: string): void {
-    if (selectedLegend === legendTitle) {
-      setSelectedLegend('');
-    } else {
-      setSelectedLegend(legendTitle);
-    }
-  }
-
   function _onLegendHover(legendTitle: string): void {
     setActiveLegend(legendTitle);
   }
 
   function _onLegendLeave(): void {
-    setActiveLegend('');
+    setActiveLegend(undefined);
   }
 
   function _getLegendData(data: VerticalBarChartDataPoint[]): JSX.Element {
@@ -784,9 +847,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const legend: Legend = {
         title: point.legend!,
         color,
-        action: () => {
-          _onLegendClick(point.legend!);
-        },
         hoverAction: () => {
           _handleChartMouseLeave();
           _onLegendHover(point.legend!);
@@ -801,9 +861,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       const lineLegend: Legend = {
         title: lineLegendText,
         color: lineLegendColor,
-        action: () => {
-          _onLegendClick(lineLegendText);
-        },
         hoverAction: () => {
           _handleChartMouseLeave();
           _onLegendHover(lineLegendText);
@@ -821,15 +878,34 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         enabledWrapLines={props.enabledLegendsWrapLines}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
+        selectedLegends={selectedLegends}
+        onChange={_onLegendSelectionChange}
       />
     );
     return legends;
+  }
+
+  function _onLegendSelectionChange(
+    legendsSelected: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: Legend,
+  ): void {
+    if (props.legendProps?.canSelectMultipleLegends) {
+      setSelectedLegends(legendsSelected);
+    } else {
+      setSelectedLegends(legendsSelected.slice(-1));
+    }
+
+    if (props.legendProps?.onChange) {
+      props.legendProps.onChange(legendsSelected, event, currentLegend);
+    }
   }
 
   function _getAxisData(yAxisData: IAxisData) {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
       _yMax = Math.max(domainValue[domainValue.length - 1], props.yMaxValue || 0);
+      _yMin = Math.min(domainValue[0], props.yMinValue || 0);
     }
   }
 
@@ -839,15 +915,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
-  function _legendHighlighted(legendTitle: string) {
-    return selectedLegend === legendTitle || (selectedLegend === '' && activeLegend === legendTitle);
+  function _legendHighlighted(legendTitle: string | undefined): boolean {
+    return _getHighlightedLegend().includes(legendTitle!);
   }
 
   /**
    * This function checks if none of the legends is selected or hovered.
    */
-  function _noLegendHighlighted() {
-    return selectedLegend === '' && activeLegend === '';
+  function _noLegendHighlighted(): boolean {
+    return _getHighlightedLegend().length === 0;
+  }
+
+  function _getHighlightedLegend() {
+    return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
   function _getAriaLabel(point: VerticalBarChartDataPoint): string {
@@ -869,7 +949,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     );
   }
 
-  function _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+  function _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
     if (props.hideLabels || _barWidth < 16 || !(_legendHighlighted(legend) || _noLegendHighlighted())) {
       return null;
     }
@@ -877,7 +957,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     return (
       <text
         x={xPoint + _barWidth / 2}
-        y={yPoint - 6}
+        y={isNegativeBar ? yPoint + 12 : yPoint - 6}
         textAnchor="middle"
         className={classes.barLabel}
         aria-hidden={true}
@@ -926,9 +1006,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   }
 
   function _isChartEmpty(): boolean {
-    return (
-      _points.length === 0 || (d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)! <= 0 && !_isHavingLine)
-    );
+    return _points.length === 0 || (_points.every(point => point.y === 0) && !_isHavingLine);
   }
 
   function updatePosition(newX: number, newY: number) {
@@ -946,10 +1024,11 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
   _adjustProps();
   _xAxisLabels = _points.map((point: VerticalBarChartDataPoint) => point.x as string);
   _yMax = Math.max(d3Max(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
+  _yMin = Math.min(d3Min(_points, (point: VerticalBarChartDataPoint) => point.y)!, props.yMinValue || 0);
   const legendBars: JSX.Element = _getLegendData(_points);
   const calloutProps = {
     ...(_isHavingLine && {
-      YValueHover: YValueHover,
+      YValueHover: hoveredYValues,
       hoverXValue: hoverXValue,
     }),
     color: color,
@@ -960,7 +1039,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     ...getAccessibleDataObject(callOutAccessibilityData),
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
-    isCalloutForStack: _isHavingLine && _noLegendHighlighted(),
+    isCalloutForStack: _isHavingLine && (_noLegendHighlighted() || _getHighlightedLegend().length > 1),
     culture: props.culture ?? 'en-us',
     isCartesian: true,
     customCallout: {
