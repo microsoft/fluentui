@@ -8,6 +8,8 @@ import {
   Option,
   OptionOnSelectData,
   SelectionEvents,
+  Spinner,
+  Switch,
   useFluent,
 } from '@fluentui/react-components';
 
@@ -40,7 +42,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 }
 
-const options = [
+const DEFAULT_OPTIONS = [
   { key: 'areachart', text: 'Area Chart' },
   { key: 'donutchart', text: 'Donut Chart' },
   { key: 'gaugechart', text: 'Gauge Chart' },
@@ -53,7 +55,7 @@ const options = [
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
 ];
 
-const schemas = [
+const DEFAULT_SCHEMAS = [
   {
     key: 'areachart',
     schema: JSON.parse(
@@ -116,28 +118,34 @@ const schemas = [
   },
 ];
 
-const DEFAULT_OPTION = 1;
 const dropdownStyles = { width: 200 };
 const inputStyles = { maxWidth: 300 };
+
+const cachedFetch = (url: string) => {
+  const cachedData = localStorage.getItem(url);
+  if (cachedData) {
+    return Promise.resolve(JSON.parse(cachedData));
+  }
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem(url, JSON.stringify(data));
+      return data;
+    });
+};
 
 export const DeclarativeChartBasicExample = () => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
   const lastKnownValidLegends = React.useRef<string[]>();
   const { targetDocument: doc } = useFluent();
+  const loadedSchemas = React.useRef<{ key: string; schema: any }[]>([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getSchemaByKey = React.useCallback((key: string): any => {
-    const schema = schemas.find(x => x.key === key);
-    return schema ? schema.schema : null;
-  }, []);
-
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[DEFAULT_OPTION].key]);
-  const [dropdownValue, setDropdownValue] = React.useState(options[DEFAULT_OPTION].text);
-  const [selectedLegends, setSelectedLegends] = React.useState<string>(() => {
-    const selectedPlotlySchema = getSchemaByKey(options[DEFAULT_OPTION].key);
-    const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-    return JSON.stringify(_selectedLegends);
-  });
+  const [options, setOptions] = React.useState<{ key: string; text: string }[]>([]);
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [dropdownValue, setDropdownValue] = React.useState('');
+  const [selectedLegends, setSelectedLegends] = React.useState('');
+  const [showMore, setShowMore] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     doc?.addEventListener('contextmenu', e => {
@@ -145,12 +153,65 @@ export const DeclarativeChartBasicExample = () => {
     });
   }, [doc]);
 
+  React.useEffect(() => {
+    const loadSchemas = async () => {
+      setLoading(true);
+      const _schemas: { key: string; schema: any }[] = [];
+      for (let i = 1; i <= 80; i++) {
+        try {
+          const filename = `data_${('00' + i).slice(-3)}`;
+          const schema = await cachedFetch(
+            `https://raw.githubusercontent.com/microsoft/fluentui-charting-contrib/refs/heads/main/apps/plotly_examples/src/data/${filename}.json`,
+          );
+          _schemas.push({ key: filename, schema });
+        } catch (error) {
+          // Nothing to do here
+        }
+      }
+      loadedSchemas.current = _schemas;
+      setLoading(false);
+    };
+
+    loadSchemas();
+  }, []);
+
+  const getSchemaByKey = React.useCallback(
+    (key: string): any => {
+      const schema = (showMore ? loadedSchemas.current : DEFAULT_SCHEMAS).find(x => x.key === key);
+      return schema ? schema.schema : null;
+    },
+    [showMore],
+  );
+
+  React.useEffect(() => {
+    if (showMore && (isLoading || loadedSchemas.current.length === 0)) {
+      setOptions([]);
+      setSelectedOptions([]);
+      setDropdownValue('');
+      setSelectedLegends('');
+    } else {
+      const _options = showMore
+        ? loadedSchemas.current.map(schema => ({ key: schema.key, text: schema.key }))
+        : DEFAULT_OPTIONS;
+      setOptions(_options);
+      setSelectedOptions([_options[0].key]);
+      setDropdownValue(_options[0].text);
+      const selectedPlotlySchema = getSchemaByKey(_options[0].key);
+      const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
+      setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
+    }
+  }, [showMore, isLoading, getSchemaByKey]);
+
+  const onSwitchDataChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
+    setShowMore(ev.currentTarget.checked);
+  }, []);
+
   const onOptionSelect = React.useCallback((ev: SelectionEvents, data: OptionOnSelectData) => {
     setSelectedOptions(data.selectedOptions);
     setDropdownValue(data.optionText ?? '');
     const selectedPlotlySchema = getSchemaByKey(data.selectedOptions[0]);
     const { selectedLegends: _selectedLegends } = selectedPlotlySchema;
-    setSelectedLegends(JSON.stringify(_selectedLegends));
+    setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
   }, []);
 
   const onSelectedLegendsChange = React.useCallback(
@@ -162,7 +223,7 @@ export const DeclarativeChartBasicExample = () => {
 
   const handleChartSchemaChange = React.useCallback((eventData: Schema) => {
     const { selectedLegends: _selectedLegends } = eventData.plotlySchema;
-    setSelectedLegends(JSON.stringify(_selectedLegends));
+    setSelectedLegends(_selectedLegends ? JSON.stringify(_selectedLegends) : '');
   }, []);
 
   const fileSaver = React.useCallback(
@@ -181,58 +242,72 @@ export const DeclarativeChartBasicExample = () => {
     [doc],
   );
 
-  const uniqueKey = `${selectedOptions[0]}`;
-  const plotlySchema = getSchemaByKey(selectedOptions[0]);
-  if (selectedLegends === '') {
-    lastKnownValidLegends.current = undefined;
-  } else {
-    try {
-      lastKnownValidLegends.current = JSON.parse(selectedLegends);
-    } catch (error) {
-      // Nothing to do here
+  const renderDeclarativeChart = React.useCallback(() => {
+    if (showMore) {
+      if (isLoading) {
+        return <Spinner label="Loading..." />;
+      } else if (loadedSchemas.current.length === 0) {
+        return <div>More examples could not be loaded.</div>;
+      }
     }
-  }
-  const inputSchema: Schema = { plotlySchema: { ...plotlySchema, selectedLegends: lastKnownValidLegends.current } };
 
-  return (
-    <div>
-      <ErrorBoundary>
-        <Field label="Select a schema">
-          <Dropdown
-            value={dropdownValue}
-            selectedOptions={selectedOptions}
-            onOptionSelect={onOptionSelect}
-            style={dropdownStyles}
-          >
-            {options.map(option => (
-              <Option key={option.key} value={option.key}>
-                {option.text}
-              </Option>
-            ))}
-          </Dropdown>
-        </Field>
-        <br />
-        <button
-          onClick={() => {
-            declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
-              fileSaver(imgData);
-            });
-          }}
-        >
-          Download
-        </button>
-        <br />
+    const uniqueKey = `${selectedOptions[0]}`;
+    const plotlySchema = getSchemaByKey(selectedOptions[0]);
+    if (selectedLegends === '') {
+      lastKnownValidLegends.current = undefined;
+    } else {
+      try {
+        lastKnownValidLegends.current = JSON.parse(selectedLegends);
+      } catch (error) {
+        // Nothing to do here
+      }
+    }
+    const inputSchema: Schema = { plotlySchema: { ...plotlySchema, selectedLegends: lastKnownValidLegends.current } };
+
+    return (
+      <ErrorBoundary key={uniqueKey}>
         <DeclarativeChart
-          key={uniqueKey}
           chartSchema={inputSchema}
           onSchemaChange={handleChartSchemaChange}
           componentRef={declarativeChartRef}
         />
-        <br />
-        <Field label="Current Legend selection">
-          <Input value={selectedLegends} onChange={onSelectedLegendsChange} style={inputStyles} />
-        </Field>
       </ErrorBoundary>
+    );
+  }, [showMore, isLoading, selectedOptions, selectedLegends, getSchemaByKey, handleChartSchemaChange]);
+
+  return (
+    <div>
+      <Switch checked={showMore} onChange={onSwitchDataChange} label={showMore ? 'Show more' : 'Show few'} />
+      <Field label="Select a schema">
+        <Dropdown
+          value={dropdownValue}
+          selectedOptions={selectedOptions}
+          onOptionSelect={onOptionSelect}
+          style={dropdownStyles}
+        >
+          {options.map(option => (
+            <Option key={option.key} value={option.key}>
+              {option.text}
+            </Option>
+          ))}
+        </Dropdown>
+      </Field>
+      <br />
+      <button
+        onClick={() => {
+          declarativeChartRef.current?.exportAsImage().then((imgData: string) => {
+            fileSaver(imgData);
+          });
+        }}
+      >
+        Download
+      </button>
+      <br />
+      {renderDeclarativeChart()}
+      <br />
+      <Field label="Current Legend selection">
+        <Input value={selectedLegends} onChange={onSelectedLegendsChange} style={inputStyles} />
+      </Field>
     </div>
   );
 };
