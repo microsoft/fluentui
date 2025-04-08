@@ -555,6 +555,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               }}
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
+              showBackground={true}
             />
           )}
           <g
@@ -594,6 +595,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   }}
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
+                  showBackground={true}
                 />
               )}
             </g>
@@ -614,6 +616,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               }}
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
+              showBackground={true}
             />
           )}
         </svg>
