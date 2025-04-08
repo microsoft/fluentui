@@ -152,6 +152,7 @@ export interface CartesianChartProps {
         mode: 'none' | 'min-width';
     };
     rotateXAxisLables?: boolean;
+    roundedTicks?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
