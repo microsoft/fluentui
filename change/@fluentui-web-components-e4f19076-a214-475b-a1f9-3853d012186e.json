@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "deprecate tabs in favor of tablist",
+  "comment": "deprecate tabs and tab-panel in favor of tablist",
   "packageName": "@fluentui/web-components",
   "email": "13071055+chrisdholt@users.noreply.github.com",
   "dependentChangeType": "patch"
