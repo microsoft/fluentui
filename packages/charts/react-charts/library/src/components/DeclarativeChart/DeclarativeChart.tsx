@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { DonutChart } from '../DonutChart/index';
-import { PlotData, PlotlySchema } from './PlotlySchema';
+import type { PlotData, PlotlySchema } from '@fluentui/chart-utilities';
+import { isArrayOrTypedArray, isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
 import {
-  isArrayOrTypedArray,
-  isDateArray,
-  isNumberArray,
   isMonthArray,
-  sanitizeJson,
   updateXValues,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToScatterChartProps,
@@ -18,6 +15,9 @@ import { VerticalBarChart } from '../VerticalBarChart/index';
 import { ImageExportOptions, toImage } from './imageExporter';
 import { Chart } from '../../types/index';
 import { tokens } from '@fluentui/react-theme';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, webLightTheme } from '@fluentui/react-components';
+import * as d3Color from 'd3-color';
 
 /**
  * DeclarativeChart schema.
@@ -65,6 +65,19 @@ const useColorMapping = () => {
   return colorMap;
 };
 
+const useIsDarkTheme = (): boolean => {
+  const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+  const v9Theme: Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+
+  // Get background and foreground colors
+  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+
+  const isDarkTheme = backgroundColor.l < foregroundColor.l;
+
+  return isDarkTheme;
+};
+
 /**
  * DeclarativeChart component.
  * {@docCategory DeclarativeChart}
@@ -77,7 +90,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const plotlyInput = plotlySchema as PlotlySchema;
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
-  const isDarkTheme = false;
+  const isDarkTheme = useIsDarkTheme();
   const chartRef = React.useRef<Chart>(null);
 
   if (!isArrayOrTypedArray(selectedLegends)) {
