@@ -335,6 +335,48 @@ describe('prepareDatapoints', () => {
   });
 });
 
+describe('prepareDatapoints for rounded tick value cases', () => {
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is 0', () => {
+    const result = utils.prepareDatapoints(100, 0, 3, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is positive', () => {
+    const result = utils.prepareDatapoints(100, 50, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMinValue is negative', () => {
+    const result = utils.prepareDatapoints(100, -100, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points when roundedTicks is true and yMaxValue is negative', () => {
+    const result = utils.prepareDatapoints(-100, -200, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with non-integral dataset', () => {
+    const result = utils.prepareDatapoints(12.8, -8.4, 4, false, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with large numbers in dataset', () => {
+    const result = utils.prepareDatapoints(9874663, -8996557, 4, true, true);
+    matchResult(result);
+  });
+
+  it('should return an array with rounded data points with variation in dataset', () => {
+    const result = utils.prepareDatapoints(589030.78, -234.45, 4, false, true);
+    matchResult(result);
+  });
+
+  it('should return array with rounded datapoints when yMax is power of 10 with floating point precision error', () => {
+    const result = utils.prepareDatapoints(1000.000000002, -234.45, 4, false, true);
+    matchResult(result);
+  });
+});
+
 const createYAxisParams = (yAxisParams?: Partial<utils.IYAxisParams>): utils.IYAxisParams => {
   const yAxisElement = document.createElementNS('http://www.w3.org/2000/svg', 'g') as SVGSVGElement;
 

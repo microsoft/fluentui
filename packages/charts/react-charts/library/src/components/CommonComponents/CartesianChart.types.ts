@@ -414,6 +414,12 @@ export interface CartesianChartProps {
   useUTC?: string | boolean;
 
   /**
+   * @default false
+   * The prop used to decide rounded ticks on y axis
+   */
+  roundedTicks?: boolean;
+
+  /**
    * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
    */
