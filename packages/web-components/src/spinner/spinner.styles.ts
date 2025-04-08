@@ -9,15 +9,6 @@ import {
   strokeWidthThicker,
   strokeWidthThickest,
 } from '../theme/design-tokens.js';
-import {
-  extraLargeState,
-  extraSmallState,
-  hugeState,
-  invertedState,
-  largeState,
-  smallState,
-  tinyState,
-} from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -110,7 +101,7 @@ export const styles = css`
     border-right-color: currentcolor;
   }
 
-  :host(${invertedState}) .indicator {
+  :host([appearance='inverted']) .indicator {
     color: ${colorNeutralStrokeOnBrand2};
   }
 

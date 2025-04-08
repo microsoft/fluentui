@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { smallState, verticalState } from '../styles/states/index.js';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,

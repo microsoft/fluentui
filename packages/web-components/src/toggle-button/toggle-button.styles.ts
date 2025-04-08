@@ -27,7 +27,7 @@ import {
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
-import { outlineState, pressedState, primaryState, subtleState, transparentState } from '../styles/states/index.js';
+import { pressedState } from '../styles/states/index.js';
 
 /**
  * The styles for the ToggleButton component.

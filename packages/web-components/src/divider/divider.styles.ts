@@ -14,15 +14,6 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
-import {
-  alignEndState,
-  alignStartState,
-  brandState,
-  insetState,
-  strongState,
-  subtleState,
-  verticalState,
-} from '../styles/states/index.js';
 
 /** Divider styles
  * @public
