@@ -56,7 +56,7 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
             {},
           ) || {};
         setSelectedLegends(selectedLegendsState);
-      } else if (initialSelectedLegend) {
+      } else if (initialSelectedLegend !== undefined) {
         selectedLegendsState = { [initialSelectedLegend]: true };
         setSelectedLegends(selectedLegendsState);
       }
