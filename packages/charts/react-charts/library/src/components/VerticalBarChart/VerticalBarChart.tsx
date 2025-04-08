@@ -623,7 +623,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
-            opacity={shouldHighlight ? '1' : '0.1'}
+            opacity={shouldHighlight ? 1 : 0.1}
             rx={props.roundCorners ? 3 : 0}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
@@ -661,6 +661,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const colorScale = _createColors();
     const yReferencePoint = _yMax < 0 ? _yMax : 0;
     const bars = _points.map((point: VerticalBarChartDataPoint, index: number) => {
+      const shouldHighlight = _legendHighlighted(point.legend!) || _noLegendHighlighted() ? true : false;
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
@@ -705,11 +706,12 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
-            data-is-focusable={!props.hideTooltip}
+            data-is-focusable={!props.hideTooltip && shouldHighlight}
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
+            opacity={shouldHighlight ? 1 : 0.1}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
@@ -794,6 +796,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
             rx={props.roundCorners ? 3 : 0}
+            opacity={shouldHighlight ? 1 : 0.1}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!, isHeightNegative)}
         </g>
@@ -920,7 +923,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
    * This function checks if none of the legends is selected or hovered.
    */
   function _noLegendHighlighted(): boolean {
-    return selectedLegends.length === 0;
+    return _getHighlightedLegend().length === 0;
   }
 
   function _getHighlightedLegend() {
