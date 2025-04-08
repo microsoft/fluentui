@@ -62,7 +62,7 @@ export const styles: ElementStyles = css`
     border-color: ${colorPaletteRedBorder1};
   }
 
-  :host([layout='multi-line']) {
+  :host([layout='multiline']) {
     grid-template-areas:
       'icon body dismiss'
       'actions actions actions';
@@ -79,7 +79,7 @@ export const styles: ElementStyles = css`
     padding-inline: 0;
   }
 
-  :host([layout='multi-line']) .content {
+  :host([layout='multiline']) .content {
     padding: 0;
   }
 
@@ -92,7 +92,7 @@ export const styles: ElementStyles = css`
     margin-inline-end: ${spacingHorizontalS};
   }
 
-  :host([layout='multi-line']) ::slotted([slot='icon']) {
+  :host([layout='multiline']) ::slotted([slot='icon']) {
     align-items: start;
     height: 100%;
   }
@@ -109,12 +109,12 @@ export const styles: ElementStyles = css`
     gap: ${spacingHorizontalS};
   }
 
-  :host([layout='multi-line']) .actions {
+  :host([layout='multiline']) .actions {
     margin-block-start: ${spacingVerticalMNudge};
     margin-inline-end: 0;
   }
 
-  :host([layout='multi-line']) ::slotted([slot='dismiss']) {
+  :host([layout='multiline']) ::slotted([slot='dismiss']) {
     align-items: start;
     height: 100%;
     padding-block-start: ${spacingVerticalS};
