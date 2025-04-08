@@ -581,7 +581,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={`${point.x}_${index}` as string}>
+        <g key={point.x as string}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
@@ -665,7 +665,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
-          key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}
+          key={point.x instanceof Date ? point.x.getTime() : point.x}
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
         >
           <rect
@@ -750,7 +750,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         yBarScale(yReferencePoint);
       const baselineHeight = containerHeight - margins.bottom! - yBarScale(yReferencePoint);
       return (
-        <g key={point.x instanceof Date ? `${point.x.getTime()}_${index}` : `${point.x}_${index}`}>
+        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
