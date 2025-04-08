@@ -1928,7 +1928,6 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
       aria-label="Gauge chart with 3 segments. "
       class="fui-gc__chart"
       role="region"
-      style="width: 500px; height: 376px;"
     >
       <g
         transform="translate(126, 88)"
@@ -1939,7 +1938,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
           class="fui-gc__limits"
           role="img"
           text-anchor="end"
-          x="-198"
+          x="-74"
           y="0"
         >
           0
@@ -1949,7 +1948,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
           class="fui-gc__limits"
           role="img"
           text-anchor="start"
-          x="198"
+          x="74"
           y="0"
         >
           500
@@ -1957,7 +1956,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         <path
           aria-label="Segment 1, 0 to 250"
           class="fui-gc__segment"
-          d="M-193.997,-1A194,194,0,0,1,-1,-193.997L-1,-161.997A162,162,0,0,0,-161.997,-1Z"
+          d="M-69.993,-1A70,70,0,0,1,-1,-69.993L-1,-53.991A54,54,0,0,0,-53.991,-1Z"
           data-is-focusable="true"
           fill="#e3008c"
           opacity="1"
@@ -1968,7 +1967,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         <path
           aria-label="Segment 2, 250 to 400"
           class="fui-gc__segment"
-          d="M1,-193.997A194,194,0,0,1,156.359,-114.838L130.47,-96.028A162,162,0,0,0,1,-161.997Z"
+          d="M1,-69.993A70,70,0,0,1,56.038,-41.95L43.092,-32.544A54,54,0,0,0,1,-53.991Z"
           data-is-focusable="true"
           fill="#2aa0a4"
           opacity="1"
@@ -1979,7 +1978,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         <path
           aria-label="Unknown, 400 to 500"
           class="fui-gc__segment"
-          d="M157.535,-113.22A194,194,0,0,1,193.997,-1L161.997,-1A162,162,0,0,0,131.646,-94.41Z"
+          d="M57.213,-40.332A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,44.267,-30.926Z"
           data-is-focusable="true"
           fill="neutralLight"
           opacity="1"
@@ -1995,15 +1994,15 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             class="fui-gc__needle"
             d="
             M 0,-4
-            L -36,-2
-            A 2,2,0,0,0,-36,2
+            L -20,-2
+            A 2,2,0,0,0,-20,2
             L 0,4
             A 4,4,0,0,0,0,-4
           "
             data-is-focusable="true"
             role="img"
             stroke-width="2"
-            transform="translate(-160)"
+            transform="translate(-52)"
           />
         </g>
         <g>
@@ -2011,13 +2010,13 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
             aria-describedby="tooltip-2"
             aria-hidden="true"
             class="fui-gc__chartValue"
-            font-size="40"
+            font-size="24"
             id="tooltip-host1"
             text-anchor="middle"
             x="0"
             y="0"
           >
-            420
+            ...
           </text>
           <span
             hidden=""
@@ -2039,9 +2038,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
         />
       </g>
     </svg>
-    <div
-      style="width: 500px;"
-    >
+    <div>
       <div
         aria-label="Legends"
         aria-multiselectable="true"

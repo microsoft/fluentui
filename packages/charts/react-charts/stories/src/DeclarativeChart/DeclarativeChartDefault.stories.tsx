@@ -138,6 +138,7 @@ export const DeclarativeChartBasicExample = () => {
   const declarativeChartRef = React.useRef<IDeclarativeChart>(null);
   const lastKnownValidLegends = React.useRef<string[]>();
   const { targetDocument: doc } = useFluent();
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
   const loadedSchemas = React.useRef<{ key: string; schema: any }[]>([]);
 
   const [options, setOptions] = React.useState<{ key: string; text: string }[]>([]);
@@ -156,6 +157,7 @@ export const DeclarativeChartBasicExample = () => {
   React.useEffect(() => {
     const loadSchemas = async () => {
       setLoading(true);
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
       const _schemas: { key: string; schema: any }[] = [];
       for (let i = 1; i <= 80; i++) {
         try {
@@ -176,6 +178,7 @@ export const DeclarativeChartBasicExample = () => {
   }, []);
 
   const getSchemaByKey = React.useCallback(
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     (key: string): any => {
       const schema = (showMore ? loadedSchemas.current : DEFAULT_SCHEMAS).find(x => x.key === key);
       return schema ? schema.schema : null;

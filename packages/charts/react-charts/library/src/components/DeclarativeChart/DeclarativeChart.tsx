@@ -293,6 +293,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...commonProps}
         />
       );
+    // TODO: Add 'scatter' as a separate chart type
     case 'area':
     case 'line':
     case 'fallback':
