@@ -156,4 +156,4 @@ export const ClassNamePropWithCustomStyles = () => {
   );
 };
 
-UserStylesWithCustomStyles.storyName = 'className prop';
+ClassNamePropWithCustomStyles.storyName = 'className prop';
