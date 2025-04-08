@@ -16,7 +16,7 @@ import { ImageExportOptions, toImage } from './imageExporter';
 import { Chart } from '../../types/index';
 import { tokens } from '@fluentui/react-theme';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme, webLightTheme } from '@fluentui/react-components';
+import { Theme, webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
 
 /**
