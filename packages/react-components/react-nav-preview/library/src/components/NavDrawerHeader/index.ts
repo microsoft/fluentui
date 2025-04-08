@@ -1,4 +1,4 @@
-export * from './NavDrawerHeader';
-export * from './NavDrawerHeader.types';
-export * from './useNavDrawerHeader';
-export * from './useNavDrawerHeaderStyles.styles';
+export { NavDrawerHeader } from './NavDrawerHeader';
+export type { NavDrawerHeaderProps, NavDrawerHeaderSlots, NavDrawerHeaderState } from './NavDrawerHeader.types';
+export { useNavDrawerHeader_unstable } from './useNavDrawerHeader';
+export { navDrawerHeaderClassNames, useNavDrawerHeaderStyles_unstable } from './useNavDrawerHeaderStyles.styles';

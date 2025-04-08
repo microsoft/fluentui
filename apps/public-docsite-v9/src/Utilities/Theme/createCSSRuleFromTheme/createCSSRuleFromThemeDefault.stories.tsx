@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals, no-restricted-properties */
+/* eslint-disable no-restricted-properties */
 import * as React from 'react';
 import { makeStyles, tokens, mergeClasses, createCSSRuleFromTheme, webLightTheme } from '@fluentui/react-components';
 

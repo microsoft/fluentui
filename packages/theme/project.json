@@ -2,6 +2,11 @@
   "name": "theme",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
+  "tags": ["v8"],
   "implicitDependencies": [],
-  "tags": ["v8"]
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

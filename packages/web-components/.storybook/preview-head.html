@@ -1,0 +1,8 @@
+<script id="anchor-polyfill" type="module">
+  if (!CSS.supports('anchor-name: --foo')) {
+    const { default: applyPolyfill } = await import(
+      'https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js'
+    );
+    window.CSS_ANCHOR_POLYFILL = applyPolyfill;
+  }
+</script>

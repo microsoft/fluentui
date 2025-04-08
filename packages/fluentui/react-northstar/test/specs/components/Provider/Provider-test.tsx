@@ -74,7 +74,7 @@ describe('Provider', () => {
         </Provider>,
       );
 
-      expect(getContext).toBeCalledWith(
+      expect(getContext).toHaveBeenCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
@@ -101,7 +101,7 @@ describe('Provider', () => {
         </Provider>,
       );
 
-      expect(getContext).toBeCalledWith(
+      expect(getContext).toHaveBeenCalledWith(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {

@@ -1,7 +1,9 @@
-import type { Types as TabsterTypes } from 'tabster';
-
-import { useTabster } from './useTabster';
+import { type Types as TabsterTypes, disposeTabster } from 'tabster';
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useEventCallback } from '@fluentui/react-utilities';
+
+import { createTabsterWithConfig } from './useTabster';
 
 /**
  * Subscribes to the tabster focused element. Calls the callback when the focused element changes.
@@ -10,11 +12,19 @@ import * as React from 'react';
 export function useFocusedElementChange(
   callback: TabsterTypes.SubscribableCallback<HTMLElement | undefined, TabsterTypes.FocusedElementDetail>,
 ) {
-  const tabster = useTabster();
+  const { targetDocument } = useFluent();
+  const listener = useEventCallback(callback);
+
   React.useEffect(() => {
+    const tabster = createTabsterWithConfig(targetDocument);
+
     if (tabster) {
-      tabster.focusedElement.subscribe(callback);
-      return () => tabster.focusedElement.unsubscribe(callback);
+      tabster.focusedElement.subscribe(listener);
+
+      return () => {
+        tabster.focusedElement.unsubscribe(listener);
+        disposeTabster(tabster);
+      };
     }
-  }, [tabster, callback]);
+  }, [listener, targetDocument]);
 }

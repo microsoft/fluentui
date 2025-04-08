@@ -184,7 +184,7 @@ CalendarDayNavigationButtons.displayName = 'CalendarDayNavigationButtons';
 const onButtonKeyDown =
   (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) =>
   (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         callback?.();

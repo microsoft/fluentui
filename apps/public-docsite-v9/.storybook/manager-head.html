@@ -108,7 +108,13 @@
     color: #ffffff !important;
   }
 
-  .sidebar-subheading {
+  /**
+    The `button[data-action='collapse-ref']` selector is used to ensure
+    that the "Storybook Composition" (https://storybook.js.org/docs/sharing/storybook-composition) menu items
+    align with the styling of the other sidebar menu items.
+  */
+  .sidebar-subheading,
+  button[data-action='collapse-ref'] {
     font-weight: 600 !important;
     font-size: 16px !important;
     letter-spacing: 0px !important;
@@ -117,7 +123,9 @@
     color: #11100f !important;
   }
 
-  .sidebar-subheading button {
+  .sidebar-subheading button,
+  button[data-action='collapse-ref'] {
+    display: flex !important;
     align-items: center !important;
   }
 
@@ -139,6 +147,7 @@
   }
 
   .sidebar-item > span:first-child,
+  button[data-action='collapse-ref'] > span:first-child,
   .sidebar-item > svg {
     margin-top: 0 !important;
   }

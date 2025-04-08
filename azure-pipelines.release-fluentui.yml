@@ -28,8 +28,6 @@ variables:
     value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
-  # - name: dryRun # set it to true in order to execute publishing in dry run mode - nothing will be published
-  #   value: false
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
@@ -58,11 +56,6 @@ extends:
 
             steps:
               - template: .devops/templates/tools.yml@self
-
-              - script: |
-                  echo "dry run mode enabled!"
-                displayName: dry run mode notification
-                condition: eq(variables.dryRun, true)
 
               - script: |
                   git config user.name "Fluent UI Build"
@@ -122,11 +115,6 @@ extends:
             steps:
               - template: .devops/templates/tools.yml@self
 
-              - script: |
-                  echo "dry run mode enabled!"
-                displayName: dry run mode notification
-                condition: eq(variables.dryRun, true)
-
               - task: CmdLine@2
                 displayName: Checkout branch for pull
                 condition: and(succeeded(), eq(variables.publishOfficial, true))
@@ -156,7 +144,7 @@ extends:
                 inputs:
                   script: |
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
-                    NODE_ENV=production yarn northstar:build:docs
+                    NODE_ENV=production yarn nx run docs:bundle
 
               - task: AzureCLI@2
                 displayName: Upload to Azure

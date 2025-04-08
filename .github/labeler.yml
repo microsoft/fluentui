@@ -1,1 +1,29 @@
-'Type: RFC': 'rfcs/**/*.md'
+'Type: RFC':
+  - changed-files:
+      - any-glob-to-any-file: 'docs/react-v9/contributing/rfcs/**'
+
+'CI':
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+          - '.devops/**'
+          - 'azure-pipelines*.yml'
+
+'NX: core':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'tools/workspace-plugin/**'
+          - 'nx.json'
+          - '**/project.json'
+
+'NX: workspace generators':
+  - changed-files:
+      - any-glob-to-any-file: 'tools/workspace-plugin/src/generators/*'
+
+'NX: workspace executors':
+  - changed-files:
+      - any-glob-to-any-file: 'tools/workspace-plugin/src/executors/*'
+
+'NX: workspace eslint-rules':
+  - changed-files:
+      - any-glob-to-any-file: 'tools/eslint-rules/*'

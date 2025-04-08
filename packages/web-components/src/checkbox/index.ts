@@ -1,4 +1,5 @@
 export { definition as CheckboxDefinition } from './checkbox.definition.js';
+export { BaseCheckbox } from './checkbox.base.js';
 export { Checkbox } from './checkbox.js';
 export { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 export type { CheckboxOptions } from './checkbox.options.js';

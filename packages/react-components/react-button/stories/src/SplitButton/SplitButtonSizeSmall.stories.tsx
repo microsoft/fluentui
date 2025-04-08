@@ -93,3 +93,14 @@ export const SizeSmall = () => {
 };
 
 SizeSmall.storyName = 'Size: small';
+
+SizeSmall.parameters = {
+  docs: {
+    description: {
+      story:
+        'WARNING: the small SplitButton does not meet WCAG target size requirements. ' +
+        'Only use this variant if there is an equally accessible alternative way to perform the same action, ' +
+        'or if it is part of a user-selected compact theme.',
+    },
+  },
+};

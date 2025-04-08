@@ -116,6 +116,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                   line-height: 44px;
                   position: absolute;
                   speak: none;
+                  text-decoration: inherit;
                   transform: rotate(-180deg);
                   transition: transform .1s linear;
                 }
@@ -187,6 +188,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: 1px solid transparent;
@@ -198,6 +200,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                         height: 44px;
+                        justify-content: center;
                         line-height: 44px;
                         outline: transparent;
                         overflow: hidden;
@@ -362,6 +365,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        align-items: center;
                         background-color: transparent;
                         border-radius: 2px;
                         border: 1px solid transparent;
@@ -373,6 +377,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                         height: 44px;
+                        justify-content: center;
                         line-height: 44px;
                         outline: transparent;
                         overflow: hidden;
@@ -600,6 +605,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      align-items: center;
                       background-color: transparent;
                       border-radius: 2px;
                       border: 1px solid transparent;
@@ -611,6 +617,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       font-size: 14px;
                       font-weight: 400;
                       height: 44px;
+                      justify-content: center;
                       line-height: 44px;
                       outline: transparent;
                       overflow: hidden;

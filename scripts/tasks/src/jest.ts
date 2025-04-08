@@ -46,6 +46,8 @@ type JestTaskConfig = {
   verbose?: boolean;
   watchAll?: boolean;
   watch?: boolean;
+  updateSnapshot?: boolean;
+  u?: boolean;
 };
 
 /**
@@ -69,6 +71,7 @@ const jestTask = (config: JestTaskConfig) => () => {
     config.maxWorkers && `--maxWorkers=${config.maxWorkers}`,
     config.detectLeaks && '--detectLeaks',
     config.testNamePattern && `--testNamePattern="${config.testNamePattern}"`,
+    (config.updateSnapshot || config.u) && '--updateSnapshot',
     config.verbose && '--verbose',
     config.testFilePattern,
   ].filter(Boolean) as string[];

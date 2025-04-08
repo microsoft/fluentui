@@ -53,7 +53,7 @@ describe('Attachment', () => {
       findIntrinsicElement(attachment, `.${attachmentActionClassName}`).simulate('keydown', {
         keyCode: keyboardKey.Enter,
       });
-      expect(onClickAttachment).not.toBeCalled();
+      expect(onClickAttachment).not.toHaveBeenCalled();
     });
   });
 });

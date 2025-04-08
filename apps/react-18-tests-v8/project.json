@@ -2,6 +2,11 @@
   "name": "react-18-tests-v8",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
+  "tags": ["v8"],
   "implicitDependencies": [],
-  "tags": ["v8"]
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
 }

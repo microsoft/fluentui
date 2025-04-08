@@ -38,7 +38,7 @@ export const AnchorButtonSize = ButtonSize;
  */
 export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
 
-export { AnchorOptions as AnchorButtonOptions };
+export type { AnchorOptions as AnchorButtonOptions };
 
 /**
  * Anchor target values.

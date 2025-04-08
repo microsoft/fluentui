@@ -1,5 +1,6 @@
-import { attr, css, ElementStyles, FASTElement } from '@microsoft/fast-element';
-import { StartEnd, StartEndOptions } from '../patterns/index.js';
+import { attr, css, type ElementStyles, FASTElement } from '@microsoft/fast-element';
+import type { StartEndOptions } from '../patterns/start-end.js';
+import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 
 /**

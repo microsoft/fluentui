@@ -7,7 +7,15 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
-import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceDirection } from '../types';
+import type {
+  MotionParam,
+  PresenceMotion,
+  MotionImperativeRef,
+  PresenceMotionFn,
+  PresenceDirection,
+  AnimationHandle,
+} from '../types';
+import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -71,9 +79,7 @@ export type PresenceComponent<MotionParams extends Record<string, MotionParam> =
   [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
 };
 
-function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean, visible: boolean | undefined) {
-  return !appear && isFirstMount && !!visible;
-}
+const INTERRUPTABLE_MOTION_SYMBOL = Symbol.for('interruptablePresence');
 
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
@@ -84,6 +90,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
+      const skipMotions = useMotionBehaviourContext() === 'skip';
 
       const {
         appear,
@@ -105,7 +112,11 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const handleRef = useMotionImperativeRef(imperativeRef);
       const elementRef = React.useRef<HTMLElement>();
       const ref = useMergedRefs(elementRef, child.ref);
-      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
+      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
+        appear,
+        params,
+        skipMotions,
+      });
 
       const animateAtoms = useAnimateAtoms();
       const isFirstMount = useFirstMount();
@@ -130,35 +141,72 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       useIsomorphicLayoutEffect(() => {
         // Heads up!
         // We store the params in a ref to avoid re-rendering the component when the params change.
-        optionsRef.current = { appear, params };
+        optionsRef.current = { appear, params, skipMotions };
       });
 
       useIsomorphicLayoutEffect(
         () => {
           const element = elementRef.current;
 
-          if (!element || shouldSkipAnimation(optionsRef.current.appear, isFirstMount, visible)) {
+          if (!element) {
             return;
+          }
+
+          let handle: AnimationHandle | undefined;
+
+          function cleanup() {
+            if (!handle) {
+              return;
+            }
+
+            // Heads up!
+            //
+            // If the animation is interruptible & is running, we don't want to cancel it as it will be reversed in
+            // the next effect.
+            if (IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION && handle.isRunning()) {
+              return;
+            }
+
+            handle.cancel();
+            handleRef.current = undefined;
           }
 
           const presenceMotion =
             typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
+          const IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION = (
+            presenceMotion as PresenceMotion & { [INTERRUPTABLE_MOTION_SYMBOL]?: boolean }
+          )[INTERRUPTABLE_MOTION_SYMBOL];
+
+          if (IS_EXPERIMENTAL_INTERRUPTIBLE_MOTION) {
+            handle = handleRef.current;
+
+            if (handle && handle.isRunning()) {
+              handle.reverse();
+
+              return cleanup;
+            }
+          }
+
           const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
-
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
-          const forceFinishMotion = !visible && isFirstMount;
 
-          if (!forceFinishMotion) {
+          // Heads up!
+          // Initial styles are applied when the component is mounted for the first time and "appear" is set to "false" (otherwise animations are triggered)
+          const applyInitialStyles = !optionsRef.current.appear && isFirstMount;
+          const skipAnimationByConfig = optionsRef.current.skipMotions;
+
+          if (!applyInitialStyles) {
             handleMotionStart(direction);
           }
 
-          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+          handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
-          if (forceFinishMotion) {
+          if (applyInitialStyles) {
             // Heads up!
-            // .finish() is used there to skip animation on first mount, but apply animation styles immediately
+            // .finish() is used in this case to skip animation and apply animation styles immediately
             handle.finish();
-            return;
+
+            return cleanup;
           }
 
           handleRef.current = handle;
@@ -167,9 +215,11 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
             () => handleMotionCancel(direction),
           );
 
-          return () => {
-            handle.cancel();
-          };
+          if (skipAnimationByConfig) {
+            handle.finish();
+          }
+
+          return cleanup;
         },
         // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
         // eslint-disable-next-line react-hooks/exhaustive-deps

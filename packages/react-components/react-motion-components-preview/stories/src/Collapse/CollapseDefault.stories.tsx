@@ -1,4 +1,4 @@
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
+import { Field, makeStyles, tokens, Switch, PresenceComponentProps } from '@fluentui/react-components';
 import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 
@@ -35,7 +35,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = () => {
+export const Default = (props: PresenceComponentProps) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 

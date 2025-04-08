@@ -1,0 +1,10 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/jsx-no-bind": "off",
+    "@typescript-eslint/no-deprecated": "off",
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
+  }
+}

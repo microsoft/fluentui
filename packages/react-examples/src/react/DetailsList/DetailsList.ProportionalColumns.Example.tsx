@@ -88,7 +88,6 @@ export class DetailsListProportionalColumnsExample extends React.Component<{}, I
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="Row checkbox"
-        onItemInvoked={this._onItemInvoked}
         enableUpdateAnimations={true}
         getCellValueKey={this._getCellValueKey}
       />
@@ -97,10 +96,6 @@ export class DetailsListProportionalColumnsExample extends React.Component<{}, I
 
   private _onColumnButtonInvoked = (): void => {
     alert('Custom header button invoked');
-  };
-
-  private _onItemInvoked = (item: IDetailsListProportionalColumnsExampleItem): void => {
-    alert(`Item invoked: ${item.name}`);
   };
 
   private _getValueKey(item: IDetailsListProportionalColumnsExampleItem, index: number, column: IColumn): string {

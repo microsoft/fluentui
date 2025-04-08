@@ -16,7 +16,14 @@ export const useInteractionTag_unstable = (
   props: InteractionTagProps,
   ref: React.Ref<HTMLDivElement>,
 ): InteractionTagState => {
-  const { handleTagDismiss, size: contextSize, appearance: contextAppearance } = useTagGroupContext_unstable();
+  const {
+    handleTagDismiss,
+    handleTagSelect,
+    size: contextSize,
+    disabled: contextDisabled,
+    appearance: contextAppearance,
+    selectedValues = [],
+  } = useTagGroupContext_unstable();
 
   const id = useId('fui-InteractionTag-', props.id);
 
@@ -25,6 +32,7 @@ export const useInteractionTag_unstable = (
   const {
     appearance = contextAppearance ?? 'filled',
     disabled = false,
+    selected = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -32,9 +40,12 @@ export const useInteractionTag_unstable = (
 
   return {
     appearance,
-    disabled,
+    disabled: contextDisabled ? true : disabled,
     handleTagDismiss,
+    handleTagSelect,
     interactionTagPrimaryId,
+    selected: selectedValues.includes(value) || selected,
+    selectedValues,
     shape,
     size,
     value,
@@ -47,6 +58,7 @@ export const useInteractionTag_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        disabled: contextDisabled ? true : disabled,
         id,
       }),
       { elementType: 'div' },

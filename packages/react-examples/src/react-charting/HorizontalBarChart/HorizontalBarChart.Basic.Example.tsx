@@ -11,6 +11,8 @@ import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class HorizontalBarChartBasicExample extends React.Component<
@@ -21,7 +23,27 @@ export class HorizontalBarChartBasicExample extends React.Component<
     super(props);
     this.state = {
       chartMode: 'default',
+      enableGradient: false,
+      roundCorners: false,
     };
+  }
+
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
   }
 
   public render(): JSX.Element {
@@ -30,6 +52,14 @@ export class HorizontalBarChartBasicExample extends React.Component<
 
   private _onChangeChartMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ chartMode: checked ? ('percentage' as ChartDataMode) : ('default' as ChartDataMode) });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample() {
@@ -133,23 +163,33 @@ export class HorizontalBarChartBasicExample extends React.Component<
         ],
       },
     ];
+
     return (
-      <>
-        <Toggle
-          label="Show labels as percentage"
-          onText="Chart mode percentage"
-          offText="Chart mode absolute"
-          onChange={this._onChangeChartMode}
-        />
+      <div className="containerDiv">
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Show labels as percentage"
+            onText="Chart mode percentage"
+            offText="Chart mode absolute"
+            onChange={this._onChangeChartMode}
+          />
+          &nbsp;&nbsp;
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
+
         <div style={{ maxWidth: 600 }}>
           <HorizontalBarChart
             culture={window.navigator.language}
             data={data}
             hideRatio={hideRatio}
             chartDataMode={this.state.chartMode}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

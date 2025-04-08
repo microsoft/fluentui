@@ -316,6 +316,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {...focusZoneProps}
         {...groupedListRowProps}
         direction={focusZoneDirection}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         elementRef={this._root}
         componentRef={this._focusZone}
         role={role}

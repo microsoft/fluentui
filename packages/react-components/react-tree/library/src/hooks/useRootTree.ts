@@ -88,6 +88,7 @@ export function useRootTree(
     },
     contextType: 'root',
     selectionMode,
+    navigationMode: props.navigationMode ?? 'tree',
     open: true,
     appearance,
     size,
@@ -95,6 +96,9 @@ export function useRootTree(
     openItems,
     checkedItems,
     requestTreeResponse,
+    forceUpdateRovingTabIndex: () => {
+      // noop
+    },
     root: slot.always(
       getIntrinsicElementProps('div', {
         // FIXME:

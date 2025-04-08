@@ -1,0 +1,57 @@
+name: Bundle size Base
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  # see https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+  BROWSERSLIST_IGNORE_OLD_DATA: true
+
+jobs:
+  bundle-size-base:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: macos-14-xlarge
+    permissions:
+      id-token: 'write'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Build all packages & create reports (non-PR)
+        run: yarn nx run-many -t bundle-size --nxBail
+
+      - name: Login via Azure CLI
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_BUNDLESIZE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Extract branch name
+        run: |
+          echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Upload report
+        run: |
+          yarn monosize upload-report --branch=$BRANCH_NAME --commit-sha ${{ github.sha }}
+        env:
+          BUNDLESIZE_ACCOUNT_NAME: ${{ secrets.BUNDLESIZE_ACCOUNT_NAME }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_SERVICE_CONNECTION_ID: ${{ secrets.AZURE_BUNDLESIZE_SERVICE_CONNECTION_ID }}

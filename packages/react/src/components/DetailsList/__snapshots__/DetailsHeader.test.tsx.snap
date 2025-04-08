@@ -227,6 +227,7 @@ exports[`DetailsHeader can render 1`] = `
                 ms-Check-circle
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -269,6 +270,7 @@ exports[`DetailsHeader can render 1`] = `
                 ms-Check-check
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -687,6 +689,7 @@ exports[`DetailsHeader can render 1`] = `
               ms-Icon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -934,6 +937,7 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-filterChevron
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1570,6 +1574,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-Icon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -1817,6 +1822,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-filterChevron
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2131,6 +2137,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 ms-Check-circle
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2173,6 +2180,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 ms-Check-check
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2616,6 +2624,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-Icon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2889,6 +2898,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsColumn-nearIcon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2919,6 +2929,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsColumn-nearIcon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2949,6 +2960,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-filterChevron
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;

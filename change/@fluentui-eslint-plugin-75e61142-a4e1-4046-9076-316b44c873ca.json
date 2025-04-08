@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove usage of \"export *\"",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

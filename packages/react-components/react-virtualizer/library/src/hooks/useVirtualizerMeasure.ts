@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VirtualizerMeasureProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
@@ -12,16 +13,20 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
+  containerSizeRef: React.MutableRefObject<number>;
 } => {
-  const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
+  const { defaultItemSize, direction = 'vertical', bufferItems, bufferSize } = virtualizerProps;
 
   const [state, setState] = React.useState({
     virtualizerLength: 0,
-    bufferSize: 0,
-    bufferItems: 0,
+    _bufferSize: 0,
+    _bufferItems: 0,
   });
 
-  const { virtualizerLength, bufferItems, bufferSize } = state;
+  const containerSizeRef = React.useRef<number>(0);
+  const { targetDocument } = useFluent();
+
+  const { virtualizerLength, _bufferItems, _bufferSize } = state;
 
   const resizeCallback = React.useCallback(
     (
@@ -35,43 +40,51 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
         return;
       }
 
-      const containerSize =
-        direction === 'vertical'
-          ? scrollRef?.current.getBoundingClientRect().height
-          : scrollRef?.current.getBoundingClientRect().width;
-
+      if (scrollRef.current !== targetDocument?.body) {
+        // We have a local scroll container
+        containerSizeRef.current =
+          direction === 'vertical'
+            ? scrollRef?.current.getBoundingClientRect().height
+            : scrollRef?.current.getBoundingClientRect().width;
+      } else if (targetDocument?.defaultView) {
+        // If our scroll ref is the document body, we should check window height
+        containerSizeRef.current =
+          direction === 'vertical' ? targetDocument?.defaultView?.innerHeight : targetDocument?.defaultView?.innerWidth;
+      }
       /*
        * Number of items required to cover viewport.
        */
-      const length = Math.ceil(containerSize / defaultItemSize + 1);
+      const length = Math.ceil(containerSizeRef.current / defaultItemSize + 1);
 
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
+       * Minimum: 1
        */
-      const newBufferItems = Math.max(Math.floor(length / 4), 2);
+      const newBufferItems = bufferItems ?? Math.max(Math.ceil(length / 4), 1);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const newBufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
+      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2.0, 1);
 
-      const totalLength = length + newBufferItems * 2 + 1;
+      const totalLength = length + newBufferItems * 2;
 
       setState({
         virtualizerLength: totalLength,
-        bufferItems: newBufferItems,
-        bufferSize: newBufferSize,
+        _bufferItems: newBufferItems,
+        _bufferSize: newBufferSize,
       });
     },
-    [defaultItemSize, direction],
+    [bufferItems, bufferSize, defaultItemSize, direction, targetDocument?.body, targetDocument?.defaultView],
   );
 
   const scrollRef = useResizeObserverRef_unstable(resizeCallback);
 
   return {
     virtualizerLength,
-    bufferItems,
-    bufferSize,
+    bufferItems: _bufferItems,
+    bufferSize: _bufferSize,
     scrollRef,
+    containerSizeRef,
   };
 };

@@ -1,5 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+export type MessageBarBodyContextValues = {
+  link: {
+    inline?: boolean;
+  };
+};
+
 export type MessageBarBodySlots = {
   root: Slot<'div'>;
 };

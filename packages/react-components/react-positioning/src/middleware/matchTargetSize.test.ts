@@ -1,11 +1,11 @@
-import type { MiddlewareArguments } from '@floating-ui/dom';
+import * as React from 'react';
+import type { MiddlewareState } from '@floating-ui/dom';
 import { matchTargetSize, matchTargetSizeCssVar } from './matchTargetSize';
-import { CSSProperties } from 'react';
 
 describe('matchTargetSize', () => {
   const middlewareFn = matchTargetSize().fn;
   const createElementMock = () => ({
-    style: { setProperty: jest.fn() } as CSSProperties & { setProperty: jest.Mock },
+    style: { setProperty: jest.fn() } as React.CSSProperties & { setProperty: jest.Mock },
   });
   it('should match reference width if not same', async () => {
     expect.assertions(3);
@@ -21,7 +21,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -52,7 +52,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -82,7 +82,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: referenceWidth },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -103,7 +103,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 

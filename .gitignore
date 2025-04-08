@@ -71,6 +71,10 @@ dist
 dist-storybook
 screenshots
 !tools/**/lib
+tools/**/__fixtures__/**/lib
+tools/**/__fixtures__/**/lib-commonjs
+# Playwright
+test-results/
 
 *.tar.gz
 

@@ -10,17 +10,19 @@ exports[`Button renders CompoundButton correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-radius: 2px;
         border: 1px solid #8a8886;
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
         height: auto;
+        justify-content: center;
         max-width: 280px;
         min-height: 72px;
         outline: transparent;

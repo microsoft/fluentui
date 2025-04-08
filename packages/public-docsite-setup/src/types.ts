@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /** `IContextualMenuItem`-like interface, compatible with ContextualMenu in versions 5-8. */
 export interface VersionMenuItem {
   /** Major version number (a unique key for the entry). */

@@ -107,9 +107,19 @@ describe('Button', () => {
           This is a button
         </Button>,
       );
+      const anchor = getByRole('link');
+
+      expect(anchor.tagName).toBe('A');
+      expect(anchor.getAttribute('role')).toBeFalsy();
+    });
+
+    it('applies role and tabindex with no href', () => {
+      const { getByRole } = render(<Button as="a">This is a button</Button>);
       const anchor = getByRole('button');
 
       expect(anchor.tagName).toBe('A');
+      expect(anchor.getAttribute('role')).toEqual('button');
+      expect(anchor.tabIndex).toEqual(0);
     });
 
     it('can be focused', () => {
@@ -118,7 +128,7 @@ describe('Button', () => {
           This is a button
         </Button>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       userEvent.tab();
@@ -131,7 +141,7 @@ describe('Button', () => {
           This is a button
         </Button>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       userEvent.tab();
@@ -144,7 +154,7 @@ describe('Button', () => {
           This is a button
         </Button>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       userEvent.tab();

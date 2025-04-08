@@ -44,17 +44,19 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -150,6 +152,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -190,17 +193,19 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -296,6 +301,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -376,17 +382,19 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -482,6 +490,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -522,17 +531,19 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #0078d4;
               cursor: pointer;
-              display: inline-block;
+              display: inline-flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              justify-content: center;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -628,6 +639,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

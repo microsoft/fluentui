@@ -12,6 +12,8 @@
   "Next" buttons may be used.
 - Don't place the default focus on a button that destroys data. Instead, place the default focus on the button that
   performs the "safe act" and retains the content (such as "Save") or cancels the action (such as "Cancel").
+- When overriding layout styles, ensure buttons are always at least 24px by 24px to meet [WCAG target size requirements](https://w3c.github.io/wcag/understanding/target-size-minimum.html). This is already covered by our default styles for all buttons but SplitButton for all size variants if no style customizations are used.
+- Only use a small SplitButton if the user has specifically chosen a compact layout, or if there is an equally efficient alternative method to perform the same action.
 
 ### Content
 

@@ -26,7 +26,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
 
   const [openItems, setOpenItems] = useControllableOpenItems(props);
   const checkedItems = useNestedCheckedItems(props);
-  const navigation = useTreeNavigation();
+  const navigation = useTreeNavigation(props.navigationMode);
 
   return Object.assign(
     useRootTree(
@@ -60,7 +60,10 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       },
       useMergedRefs(ref, navigation.treeRef),
     ),
-    { treeType: 'nested' } as const,
+    {
+      treeType: 'nested',
+      forceUpdateRovingTabIndex: navigation.forceUpdateRovingTabIndex,
+    } as const,
   );
 }
 

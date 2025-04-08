@@ -13,6 +13,7 @@ exports[`Icon renders Icon correctly using iconName 1`] = `
         font-style: normal;
         font-weight: normal;
         speak: none;
+        text-decoration: inherit;
       }
   data-icon-name="Upload"
 >
@@ -33,6 +34,7 @@ exports[`Icon renders Icon with children correctly 1`] = `
         font-style: normal;
         font-weight: normal;
         speak: none;
+        text-decoration: inherit;
       }
   data-icon-name="Upload"
 >
@@ -55,6 +57,7 @@ exports[`Icon renders Icon with custom styles 1`] = `
         font-style: normal;
         font-weight: normal;
         speak: none;
+        text-decoration: inherit;
       }
   data-icon-name="Upload"
 >
@@ -76,6 +79,7 @@ exports[`Icon renders Icon with getStyles 1`] = `
         font-style: normal;
         font-weight: normal;
         speak: none;
+        text-decoration: inherit;
       }
   data-icon-name="Upload"
 >
@@ -97,6 +101,7 @@ exports[`Icon renders Icon with imageProps correctly 1`] = `
         font-weight: normal;
         overflow: hidden;
         speak: none;
+        text-decoration: inherit;
       }
   data-icon-name="CompassNW"
 >

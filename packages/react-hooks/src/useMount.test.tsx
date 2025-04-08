@@ -14,10 +14,10 @@ describe('useMount', () => {
       return <>Test Component</>;
     };
 
-    expect(onMount).toBeCalledTimes(0);
+    expect(onMount).toHaveBeenCalledTimes(0);
     const wrapper = mount(<TestComponent />);
-    expect(onMount).toBeCalledTimes(1);
+    expect(onMount).toHaveBeenCalledTimes(1);
     wrapper.unmount();
-    expect(onMount).toBeCalledTimes(1);
+    expect(onMount).toHaveBeenCalledTimes(1);
   });
 });

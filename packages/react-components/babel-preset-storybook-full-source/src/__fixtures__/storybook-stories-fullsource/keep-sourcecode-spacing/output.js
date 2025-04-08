@@ -1,5 +1,5 @@
 import * as React from 'react';
-export const ButtonAppearance = () => () =>
+export const ButtonAppearance = () =>
   /*#__PURE__*/ React.createElement(
     React.Fragment,
     null,
@@ -35,4 +35,4 @@ export const ButtonAppearance = () => () =>
   );
 ButtonAppearance.parameters = {};
 ButtonAppearance.parameters.fullSource =
-  'import * as React from "react";\n\nexport const ButtonAppearance = () => () =>\n  (\n    <>\n      <Button>Default button</Button>\n      <Button appearance="primary">Primary button</Button>\n      <Button appearance="outline">Outline button</Button>\n      <Button appearance="subtle">Subtle button</Button>\n      <Button appearance="transparent">Transparent button</Button>\n    </>\n  );\n';
+  'import * as React from "react";\n\nexport const ButtonAppearance = () => (\n  <>\n    <Button>Default button</Button>\n    <Button appearance="primary">Primary button</Button>\n    <Button appearance="outline">Outline button</Button>\n    <Button appearance="subtle">Subtle button</Button>\n    <Button appearance="transparent">Transparent button</Button>\n  </>\n);\n';

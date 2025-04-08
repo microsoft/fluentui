@@ -4,7 +4,7 @@ import { DrawerMotionParams, InlineDrawerMotion } from './drawerMotions';
 import { mergePresenceSlots } from './drawerMotionUtils';
 
 const TestComponent = InlineDrawerMotion;
-const testProps: DrawerMotionParams = { position: 'start', size: 'medium' };
+const testProps: DrawerMotionParams = { position: 'start', size: 'medium', dir: 'ltr' };
 
 describe('mergePresenceSlots', () => {
   it('should return null if inputSlot is null', () => {

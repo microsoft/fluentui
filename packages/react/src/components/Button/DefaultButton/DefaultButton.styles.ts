@@ -7,7 +7,7 @@ import { primaryStyles, standardStyles } from '../ButtonThemes';
 import type { IButtonStyles } from '../Button.types';
 import type { ITheme } from '../../../Styling';
 
-const DEFAULT_BUTTON_HEIGHT = '32px';
+const DEFAULT_BUTTON_MIN_HEIGHT = '32px';
 const DEFAULT_BUTTON_MIN_WIDTH = '80px';
 
 export const getStyles = memoizeFunction(
@@ -17,7 +17,7 @@ export const getStyles = memoizeFunction(
     const defaultButtonStyles: IButtonStyles = {
       root: {
         minWidth: DEFAULT_BUTTON_MIN_WIDTH,
-        height: DEFAULT_BUTTON_HEIGHT,
+        minHeight: DEFAULT_BUTTON_MIN_HEIGHT,
       },
       label: {
         fontWeight: FontWeights.semibold,

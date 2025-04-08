@@ -429,6 +429,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
               }
           data-icon-name="Contact"
         >

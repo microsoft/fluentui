@@ -1482,7 +1482,7 @@ describe('FocusZone', () => {
     const innerFocusZone = focusZone.querySelector('.innerFocusZone') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(innerFocusZone, { which: keyboardKey.Enter });
 
-    expect(keyDownHandler).toBeCalled();
+    expect(keyDownHandler).toHaveBeenCalled();
   });
 
   it('can call onActiveItemChanged when the active item is changed', () => {

@@ -50,10 +50,10 @@ const CONTEXTUAL_SPLIT_MENU_MINWIDTH = '28px';
 const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
 
 export const getSplitButtonVerticalDividerClassNames = memoizeFunction(
-  /* eslint-disable deprecation/deprecation */
+  /* eslint-disable @typescript-eslint/no-deprecated */
   (theme: ITheme): IVerticalDividerClassNames => {
     return mergeStyleSets(getDividerClassNames(theme), {
-      /* eslint-enable deprecation/deprecation */
+      /* eslint-enable @typescript-eslint/no-deprecated */
       wrapper: {
         position: 'absolute',
         right: 28, // width of the splitMenu based on the padding plus icon fontSize
@@ -267,7 +267,7 @@ export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextual
     className,
   } = props;
 
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return getItemClassNames(
     theme,
     disabled,

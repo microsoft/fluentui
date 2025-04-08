@@ -1,4 +1,4 @@
-import { expectPresenceMotionFunction, expectPresenceMotionObject } from '../../testing/testUtils';
+import { expectPresenceMotionFunction, expectPresenceMotionArray } from '../../testing/testUtils';
 import { Collapse } from './Collapse';
 
 describe('Collapse', () => {
@@ -7,6 +7,6 @@ describe('Collapse', () => {
   });
 
   it('generates a motion definition from the static function', () => {
-    expectPresenceMotionObject(Collapse);
+    expectPresenceMotionArray(Collapse);
   });
 });

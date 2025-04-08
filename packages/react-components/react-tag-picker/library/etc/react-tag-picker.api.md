@@ -13,6 +13,7 @@ import { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { DropdownProps } from '@fluentui/react-combobox';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
@@ -79,6 +80,26 @@ export type TagPickerButtonSlots = {
 export type TagPickerButtonState = ComponentState<TagPickerButtonSlots> & Pick<TagPickerContextValue, 'size'> & {
     hasSelectedOption: boolean;
 };
+
+// @public (undocumented)
+export interface TagPickerContextValue extends Pick<ComboboxBaseState, 'open' | 'clearSelection' | 'getOptionById' | 'selectedOptions' | 'selectOption' | 'setHasFocus' | 'setOpen' | 'setValue' | 'value' | 'appearance' | 'disabled'> {
+    // (undocumented)
+    noPopover?: boolean;
+    // (undocumented)
+    popoverId: string;
+    // (undocumented)
+    popoverRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    secondaryActionRef: React_2.RefObject<HTMLSpanElement>;
+    // (undocumented)
+    size: TagPickerSize;
+    // (undocumented)
+    tagPickerGroupRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    targetRef: React_2.RefObject<HTMLDivElement>;
+    // (undocumented)
+    triggerRef: React_2.RefObject<HTMLInputElement | HTMLButtonElement>;
+}
 
 // @public (undocumented)
 export type TagPickerContextValues = {
@@ -217,9 +238,10 @@ export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<O
 
 // @public
 export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSX.Element, JSX.Element | undefined | false] | JSX.Element;
     inline?: boolean;
 };
 
@@ -230,7 +252,7 @@ export type TagPickerSize = 'medium' | 'large' | 'extra-large';
 export type TagPickerSlots = {};
 
 // @public
-export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'getOptionsMatchingValue' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'> & {
+export type TagPickerState = ComponentState<TagPickerSlots> & Pick<ComboboxState, 'open' | 'activeDescendantController' | 'mountNode' | 'onOptionClick' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'value' | 'setValue' | 'setOpen' | 'setHasFocus' | 'appearance' | 'clearSelection' | 'getOptionById' | 'getOptionsMatchingValue' | 'disabled'> & Pick<TagPickerContextValue, 'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size' | 'noPopover'> & {
     trigger: React_2.ReactNode;
     popover?: React_2.ReactNode;
     inline: boolean;
@@ -244,6 +266,9 @@ export const useTagPickerButton_unstable: (props: TagPickerButtonProps, ref: Rea
 
 // @public
 export const useTagPickerButtonStyles_unstable: (state: TagPickerButtonState) => TagPickerButtonState;
+
+// @public (undocumented)
+export const useTagPickerContext_unstable: <T>(selector: ContextSelector<TagPickerContextValue, T>) => T;
 
 // @public
 export const useTagPickerControl_unstable: (props: TagPickerControlProps, ref: React_2.Ref<HTMLDivElement>) => TagPickerControlState;

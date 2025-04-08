@@ -13,6 +13,7 @@ import {
   useOnScrollOutside,
   elementContains,
   useTimeout,
+  useFirstMount,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -173,6 +174,8 @@ const useMenuOpenState = (
   > &
     Pick<MenuProps, 'open' | 'defaultOpen' | 'onOpenChange'>,
 ) => {
+  'use no memo';
+
   const { targetDocument } = useFluent();
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
@@ -265,11 +268,26 @@ const useMenuOpenState = (
     firstFocusable?.focus();
   }, [findFirstFocusable, state.menuPopoverRef]);
 
+  const firstMount = useFirstMount();
   React.useEffect(() => {
     if (open) {
       focusFirst();
+    } else {
+      if (!firstMount) {
+        if (targetDocument?.activeElement === targetDocument?.body) {
+          // We know that React effects are sync so we focus the trigger here
+          // after any event handler (event handlers will update state and re-render).
+          // Since the browser only performs the default behaviour for the Tab key once
+          // keyboard events have fully bubbled up the window, the browser will move
+          // focus to the next tabbable element before/after the trigger if needed.
+          // If the Tab key was not pressed, focus will remain on the trigger as expected.
+          state.triggerRef.current?.focus();
+        }
+      }
     }
-  }, [open, focusFirst]);
+    // firstMount change should not re-run this effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.triggerRef, state.isSubmenu, open, focusFirst, targetDocument, state.menuPopoverRef]);
 
   return [open, setOpen] as const;
 };

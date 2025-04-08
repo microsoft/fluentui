@@ -234,15 +234,15 @@ describe('useAccessibility', () => {
       keyCode: keyboardKey.ArrowDown,
     });
 
-    expect(onKeyDown).toBeCalledTimes(1);
-    expect(onKeyDown).toBeCalledWith(
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onKeyDown).toHaveBeenCalledWith(
       expect.objectContaining({
         keyCode: keyboardKey.ArrowDown,
       }),
     );
 
-    expect(onClick).toBeCalledTimes(1);
-    expect(onClick).toBeCalledWith(
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledWith(
       expect.objectContaining({
         keyCode: keyboardKey.ArrowDown,
       }),
@@ -255,7 +255,7 @@ describe('useAccessibility', () => {
     const wrapper = mount(<TestComponent accessibility={conditionalBehavior} onKeyDown={onKeyDown} />);
 
     wrapper.find('div').simulate('keydown');
-    expect(onKeyDown).toBeCalledTimes(1);
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
   });
 
   it('do not add any handlers by default', () => {
@@ -291,7 +291,7 @@ describe('useAccessibility', () => {
       keyCode: keyboardKey.ArrowDown,
     });
 
-    expect(onClick).toBeCalledTimes(2);
+    expect(onClick).toHaveBeenCalledTimes(2);
   });
 
   it('handlers are referentially stable', () => {
@@ -315,8 +315,8 @@ describe('useAccessibility', () => {
     wrapper.setProps({ onKeyDown: undefined });
     wrapper.find('div').simulate('keydown');
 
-    expect(prevOnKeyDown).toBeCalledTimes(1);
-    expect(nextOnKeyDown).toBeCalledTimes(1);
+    expect(prevOnKeyDown).toHaveBeenCalledTimes(1);
+    expect(nextOnKeyDown).toHaveBeenCalledTimes(1);
   });
 
   describe('FocusZone', () => {

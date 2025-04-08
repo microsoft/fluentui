@@ -1406,6 +1406,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
                     pointer-events: none;
                     right: 8px;
                     speak: none;
+                    text-decoration: inherit;
                     top: auto;
                   }
               data-icon-name="RedEye"

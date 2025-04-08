@@ -173,6 +173,6 @@ describe('useARIAButton', () => {
     const handleClick = jest.fn();
     const { getByRole } = render(<TestButton as={type} onClick={handleClick} aria-disabled />);
     fireEvent.click(getByRole('button'));
-    expect(handleClick).toBeCalledTimes(0);
+    expect(handleClick).toHaveBeenCalledTimes(0);
   });
 });

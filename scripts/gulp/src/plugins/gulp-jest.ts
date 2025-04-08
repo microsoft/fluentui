@@ -12,6 +12,7 @@ export type JestPluginConfig = {
   testFilePattern?: string;
   verbose?: boolean;
   watchAll?: boolean;
+  updateSnapshot?: boolean;
 };
 
 const jest = (config: JestPluginConfig) => () => {
@@ -31,6 +32,7 @@ const jest = (config: JestPluginConfig) => () => {
     config.testNamePattern && `--testNamePattern="${config.testNamePattern}"`,
     config.rootDir && `--rootDir ${config.rootDir}`,
     config.verbose && '--verbose',
+    config.updateSnapshot === true ? '' : '--updateSnapshot',
     config.cache === true ? '' : '--no-cache',
     config.testFilePattern, // !!! THIS ITEM MUST GO LAST IN THE ARRAY !!!
   ]

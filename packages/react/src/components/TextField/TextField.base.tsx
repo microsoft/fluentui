@@ -246,7 +246,7 @@ export class TextFieldBase
     }));
 
     return (
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       <div ref={this.props.elementRef} className={classNames.root}>
         <div className={classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}

@@ -157,7 +157,7 @@ describe('factories', () => {
         // @ts-ignore
         createShorthandFactory({ Component: () => <div />, mappedProp: 'children' });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('does not throw if passed a forwardRef Component', () => {
@@ -165,19 +165,19 @@ describe('factories', () => {
         // @ts-ignore
         createShorthandFactory({ Component: React.forwardRef(() => null), mappedProp: 'children' });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('does not throw if passed a string Component', () => {
       const goodUsage = () => createShorthandFactory({ Component: 'div', mappedProp: 'className' });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('does not throw if do not passed `mappedProp`', () => {
       const goodUsage = () => createShorthandFactory({ Component: () => <div /> });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('throw if passed Component that is not a string nor function', () => {
@@ -187,7 +187,7 @@ describe('factories', () => {
       _.each(badComponents, badComponent => {
         const badUsage = () => createShorthandFactory({ Component: badComponent, mappedProp: '' });
 
-        expect(badUsage).toThrowError();
+        expect(badUsage).toThrow();
       });
     });
   });
@@ -200,13 +200,13 @@ describe('factories', () => {
     test('does not throw if passed a function Component', () => {
       const goodUsage = () => createShorthand({ Component: () => <div />, mappedProp: '' });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('does not throw if passed a string Component', () => {
       const goodUsage = () => createShorthand({ Component: 'div', mappedProp: '' });
 
-      expect(goodUsage).not.toThrowError();
+      expect(goodUsage).not.toThrow();
     });
 
     test('throw if passed Component that is not a string nor function', () => {
@@ -216,7 +216,7 @@ describe('factories', () => {
       _.each(badComponents, badComponent => {
         const badUsage = () => createShorthand({ Component: badComponent, mappedProp: '' });
 
-        expect(badUsage).toThrowError();
+        expect(badUsage).toThrow();
       });
     });
 

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+changedFiles="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+node ./scripts/package-manager/src/notify-on-file-changes.js $changedFiles

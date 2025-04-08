@@ -2,22 +2,28 @@
 
 **React JSX runtime for [Fluent UI React](https://react.fluentui.dev/)**
 
-[Fluent UI React](https://react.fluentui.dev/) requires the usage of a custom JSX runtime to support the [slots API](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page)
+[Fluent UI React](https://react.fluentui.dev/) requires the usage of a custom JSX runtime to support the [slots API](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs)
 
 ## Usage
 
-This library should only be used in the case where you are trying to use the internal slot API of Fluent UI React. If you are not using the internal slot API, you should not need to use this library.
+> [!NOTE]
+> This custom JSX pragma should only be used in cases where you are trying to use the internal Fluent UI React **slot API in conjunction with `assertSlots()`**.
+>
+> If you are not using the internal slot API, don't use it.
 
-In case you want to re-compose a component and redeclare its render method then this API will be necessary, here's our documentation on [Rendering a component with slots](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--page#rendering-components-with-slots)
+In case you want to re-compose a component and redeclare its render method then this API will be necessary, learn more on [Rendering a component with slots](https://react.fluentui.dev/?path=/docs/concepts-developer-customizing-components-with-slots--docs#rendering-components-with-slots)
 
-To properly render a component with slots the `createElement` method of `@fluentui/react-jsx-runtime` can be used as a replacement for `React.createElement`:
+To properly render a component with slots, our custom `createElement` method needs to be used instead of default `React.createElement`:
+
+> NOTE: It works with both `automatic` or `classic` jsxRuntime configuration.
+
+### React 17+
+
+> infers `@jsxRuntime automatic`
 
 ```tsx
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-// createElement custom JSX pragma is required to support slot creation
-import { createElement } from '@fluentui/react-jsx-runtime';
 import { assertSlots } from '@fluentui/react-utilities';
 
 const renderButton_unstable = (state: ButtonState) => {
@@ -35,15 +41,29 @@ const renderButton_unstable = (state: ButtonState) => {
 };
 ```
 
-In case you're using typescript or any modern javascript transpiler, you can use [JSX import source](https://www.typescriptlang.org/tsconfig#jsxImportSource) feature instead of depending on declaring the runtime on every file
+### React 16
 
-In TSC case you can simply add this do `tsconfig.json` file:
+> infers `@jsxRuntime classic`
 
-```json
-{
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "@fluentui/react-jsx-runtime"
-  }
-}
+```tsx
+/** @jsx createElement */
+
+// in order to apply our custom `createElement` factory to jsx transforms, to support slot creation, we need to import it physically
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { assertSlots } from '@fluentui/react-utilities';
+
+const renderButton_unstable = (state: ButtonState) => {
+  const { iconOnly, iconPosition } = state;
+
+  assertSlots<ButtonSlots>(state);
+
+  return (
+    <state.root>
+      {iconPosition !== 'after' && state.icon && <state.icon />}
+      {!iconOnly && state.root.children}
+      {iconPosition === 'after' && state.icon && <state.icon />}
+    </state.root>
+  );
+};
 ```

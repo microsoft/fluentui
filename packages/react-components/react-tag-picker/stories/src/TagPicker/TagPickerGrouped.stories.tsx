@@ -17,6 +17,9 @@ const devs = ['Pierre Dupont', 'Amelie Dupont', 'Mario Rossi', 'Maria Rossi'];
 export const Grouped = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
   };
   const unSelectedManagers = managers.filter(option => !selectedOptions.includes(option));
@@ -26,7 +29,7 @@ export const Grouped = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
@@ -41,7 +44,9 @@ export const Grouped = () => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {unSelectedManagers.length === 0 && unSelectedDevs.length === 0 && 'No options available'}
+          {unSelectedManagers.length === 0 && unSelectedDevs.length === 0 && (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
           {unSelectedManagers.length > 0 && (
             <TagPickerOptionGroup label="Managers">
               {unSelectedManagers.map(option => (

@@ -8,7 +8,7 @@ describe('handleRef', () => {
     expect(() => {
       // handleRef() does not accept string, but in this test we want ensure that this case will be handled
       handleRef('ref' as any, node);
-    }).toThrowError();
+    }).toThrow();
   });
 
   it('calls with node when "ref" is function', () => {
@@ -16,7 +16,7 @@ describe('handleRef', () => {
     const node = document.createElement('div');
 
     handleRef(ref, node);
-    expect(ref).toBeCalledWith(node);
+    expect(ref).toHaveBeenCalledWith(node);
   });
 
   it('does not do anything when "ref" is null', () => {
@@ -24,7 +24,7 @@ describe('handleRef', () => {
 
     expect(() => {
       handleRef(null, node);
-    }).not.toThrowError();
+    }).not.toThrow();
   });
 
   it('assigns to "current" when "ref" is object', () => {

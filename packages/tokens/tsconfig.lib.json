@@ -9,6 +9,6 @@
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec-e2e.ts"],
   "include": ["./src/**/*.ts"]
 }

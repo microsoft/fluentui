@@ -222,13 +222,13 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect(onChange).toBeCalledTimes(0);
+    expect(onChange).toHaveBeenCalledTimes(0);
 
     userEvent.click(getByDisplayValue('b'));
     userEvent.click(getByDisplayValue('a'));
     userEvent.click(getByDisplayValue('c'));
 
-    expect(onChange).toBeCalledTimes(3);
+    expect(onChange).toHaveBeenCalledTimes(3);
     expect(onChange.mock.calls[0][1]).toEqual({ value: 'b' });
     expect(onChange.mock.calls[1][1]).toEqual({ value: 'a' });
     expect(onChange.mock.calls[2][1]).toEqual({ value: 'c' });

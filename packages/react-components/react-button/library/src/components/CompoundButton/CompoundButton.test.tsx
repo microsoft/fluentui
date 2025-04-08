@@ -103,7 +103,7 @@ describe('CompoundButton', () => {
           This is a button
         </CompoundButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(anchor.tagName).toBe('A');
     });
@@ -114,7 +114,7 @@ describe('CompoundButton', () => {
           This is a button
         </CompoundButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -127,7 +127,7 @@ describe('CompoundButton', () => {
           This is a button
         </CompoundButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();
@@ -140,7 +140,7 @@ describe('CompoundButton', () => {
           This is a button
         </CompoundButton>,
       );
-      const anchor = getByRole('button');
+      const anchor = getByRole('link');
 
       expect(document.activeElement).not.toEqual(anchor);
       anchor.focus();

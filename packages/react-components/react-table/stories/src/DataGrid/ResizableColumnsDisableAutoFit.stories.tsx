@@ -232,10 +232,10 @@ ResizableColumns.parameters = {
   docs: {
     description: {
       story: [
-        'In previous example, the columns are automatically fitted to the container. This means that the columns are',
+        'In the previous example, the columns are automatically fitted to the container. This means that the columns are',
         'squeezed when the container is narrowed, until the',
-        'minimum width is reached, and also the last column is extended past its optimal width to fill teh available',
-        'space. This also efectively prevents the user from making the columns wider than the total width of the ',
+        'minimum width is reached, and the last column is extended past its optimal width to fill the available',
+        'space. This also effectively prevents the user from making the columns wider than the total width of the ',
         'container, as the columns are automatically resized to fit the container.',
         '',
         'This behavior can be disabled by passing `resizableColumnsOptions` prop to Datagrid,',

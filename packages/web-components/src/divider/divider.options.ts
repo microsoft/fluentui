@@ -59,7 +59,6 @@ export const DividerAppearance = {
   strong: 'strong',
   brand: 'brand',
   subtle: 'subtle',
-  default: 'default',
 } as const;
 
 /**

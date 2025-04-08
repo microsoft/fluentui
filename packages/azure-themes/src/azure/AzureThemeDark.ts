@@ -52,6 +52,8 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   checkBoxCheckedDisabledBackground: DarkSemanticColors.checkBox.disabled.background,
   checkBoxDisabled: DarkSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: DarkSemanticColors.checkBox.rest.check,
+  checkBoxIndeterminateDetailsRowCheck: DarkSemanticColors.checkBox.indeterminate.circle.background,
+  checkBoxIndeterminateDetailsRowCheckHover: DarkSemanticColors.checkBox.indeterminate.circle.hoverBackground,
   choiceGroupUncheckedDotHover: DarkSemanticColors.choiceGroup.circle.hover,
   choiceGroupFocusBorder: DarkSemanticColors.choiceGroup.focus,
   commandBarBorder: DarkSemanticColors.commandBar.border,

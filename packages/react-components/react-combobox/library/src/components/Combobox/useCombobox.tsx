@@ -87,7 +87,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
-  const showClearIcon = selectedOptions.length > 0 && clearable && !multiselect;
+  const showClearIcon = selectedOptions.length > 0 && !disabled && clearable && !multiselect;
   const state: ComboboxState = {
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,

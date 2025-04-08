@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@proj/react-context-selector';
 
 export const MyContext = createContext({});

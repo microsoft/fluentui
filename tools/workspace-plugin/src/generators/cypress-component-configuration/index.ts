@@ -1,4 +1,4 @@
-import { Tree, formatFiles, names, joinPathFragments } from '@nx/devkit';
+import { Tree, formatFiles, names, joinPathFragments, offsetFromRoot } from '@nx/devkit';
 
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 
@@ -22,7 +22,7 @@ export default async function (tree: Tree, schema: CypressComponentConfiguration
     return;
   }
 
-  addFiles(tree, normalizedOptions);
+  addFiles(tree, { ...normalizedOptions, rootOffset: offsetFromRoot(tree.root) });
 
   await formatFiles(tree);
 }

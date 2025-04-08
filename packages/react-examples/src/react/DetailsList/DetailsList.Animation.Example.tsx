@@ -87,16 +87,11 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="select row"
-        onItemInvoked={this._onItemInvoked}
         enableUpdateAnimations={true}
         getCellValueKey={this._getCellValueKey}
       />
     );
   }
-
-  private _onItemInvoked = (item: IDetailsListAnimationExampleItem): void => {
-    alert(`Item invoked: ${item.name}`);
-  };
 
   private _getValueKey(item: IDetailsListAnimationExampleItem, index: number, column: IColumn): string {
     const key =

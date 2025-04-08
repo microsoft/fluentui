@@ -13,9 +13,11 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       treeType,
       checkedItems,
       selectionMode,
+      navigationMode,
       appearance,
       size,
       requestTreeResponse,
+      forceUpdateRovingTabIndex,
     } = state;
     /**
      * This context is created with "@fluentui/react-context-selector",
@@ -28,9 +30,11 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       appearance,
       checkedItems,
       selectionMode,
+      navigationMode,
       contextType,
       level,
       requestTreeResponse,
+      forceUpdateRovingTabIndex,
     };
 
     return { tree };

@@ -9,7 +9,7 @@ export const assertNodeContains = (parentNode: Element, childSelector: string, i
   const didFind = parentNode.querySelector(childSelector) !== null;
   try {
     expect(didFind).toEqual(isPresent);
-  } catch (err) {
+  } catch {
     throw new Error(`${didFind ? 'Found' : 'Did not find'} "${childSelector}" in the ${parentNode}.`);
   }
 };

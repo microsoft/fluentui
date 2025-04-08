@@ -8,12 +8,13 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * @returns Griffel styles to spread to a slot
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
+  // With 'accumulate' animation composition, these opacity keyframes are added onto the default opacity of 1.
   const fadeIn = {
     from: {
-      opacity: 0,
+      opacity: -1, // becomes opacity: 0
     },
     to: {
-      opacity: 1,
+      opacity: 0, // becomes opacity: 1
     },
   };
 
@@ -21,6 +22,9 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
   const slideDistanceVarY = '--fui-positioning-slide-distance-y';
 
   return {
+    // NOTE: there was a previous attempt to give fadeIn a separate composition mode:
+    //   animationComposition: 'replace, accumulate',
+    // but somehow this was linked to a performance regression observed in Teams (bug #4255933)
     animationComposition: 'accumulate',
     animationDuration: tokens.durationSlower,
     animationTimingFunction: tokens.curveDecelerateMid,

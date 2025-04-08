@@ -4,5 +4,29 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-components/src",
   "tags": ["vNext", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "build": {
+      "options": {
+        "assets": [
+          {
+            "input": "{projectRoot}/src/unstable",
+            "output": "unstable",
+            "glob": "*.json__tmpl__",
+            "substitutions": {
+              "__tmpl__": ""
+            }
+          },
+          {
+            "input": "{projectRoot}/src/unstable",
+            "output": "dist",
+            "glob": "*.d.ts__tmpl__",
+            "substitutions": {
+              "__tmpl__": ""
+            }
+          }
+        ]
+      }
+    }
+  }
 }

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ship bundled and umd code to registry",
-  "packageName": "@fluentui/azure-themes",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

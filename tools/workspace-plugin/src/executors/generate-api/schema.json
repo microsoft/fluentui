@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "GenerateApi executor",
+  "description": "Generate api.md files for the project including rolluped d.ts (usually index.d.ts)",
+  "type": "object",
+  "properties": {
+    "config": {
+      "type": "string",
+      "description": "Path to the api-extractor.json config file",
+      "default": "{projectRoot}/config/api-extractor.json"
+    },
+    "local": {
+      "type": "boolean",
+      "description": "(NOTE: this is turned off on CI). Indicates that API Extractor is running as part of a local build, e.g. on a developer's machine. This disables certain validation that would normally be performed for a ship/production build. For example, the *.api.md report file is automatically copied in a local build",
+      "default": true
+    },
+    "diagnostics": {
+      "type": "boolean",
+      "description": "Show diagnostic messages used for troubleshooting problems with API Extractor",
+      "default": false
+    }
+  },
+  "required": []
+}

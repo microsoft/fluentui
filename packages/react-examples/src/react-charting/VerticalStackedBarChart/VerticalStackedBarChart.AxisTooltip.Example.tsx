@@ -6,8 +6,8 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -25,6 +25,8 @@ interface IVerticalStackedBarState {
   xAxisOuterPadding: number;
   width: number;
   height: number;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class VerticalStackedBarChartTooltipExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -41,6 +43,8 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
       xAxisOuterPadding: 0,
       width: 650,
       height: 350,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
   public render(): JSX.Element {
@@ -75,22 +79,30 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
     this.setState({ height: Number(e.target.value) });
   };
 
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
+      { legend: 'Metadata1', data: 2, color: getColorFromToken(DataVizPalette.color1) },
+      { legend: 'Metadata2', data: 0.5, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata3', data: 0, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
+      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color1) },
+      { legend: 'Metadata2', data: 3, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color11) },
-      { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
+      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color1) },
+      { legend: 'Metadata2', data: 60, color: getColorFromToken(DataVizPalette.color2) },
       { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color6) },
     ];
 
@@ -103,7 +115,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
-      <>
+      <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
@@ -198,7 +210,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             <span>&nbsp;{this.state.xAxisOuterPadding}</span>
           </Stack>
         </Stack>
-        <div>
+        <Stack horizontal>
           <ChoiceGroup
             options={options}
             defaultSelectedKey="showTooltip"
@@ -206,7 +218,12 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
-        </div>
+          &nbsp;&nbsp;
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+        </Stack>
+
         <div style={rootStyle}>
           <VerticalStackedBarChart
             chartTitle="Vertical stacked bar chart axis tooltip example"
@@ -220,9 +237,11 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             maxBarWidth={this.state.maxBarWidth}
             xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

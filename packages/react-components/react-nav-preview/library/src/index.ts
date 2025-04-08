@@ -1,5 +1,5 @@
 export { Nav, renderNav_unstable, useNav_unstable, useNavStyles_unstable, navClassNames } from './components/Nav/index';
-export type { NavProps, NavSlots, NavState, NavSize } from './components/Nav/index';
+export type { NavProps, NavSlots, NavState, NavDensity, OnNavItemSelectData } from './components/Nav/index';
 
 export { NavCategory, renderNavCategory_unstable, useNavCategory_unstable } from './components/NavCategory/index';
 export type { NavCategoryProps, NavCategoryState } from './components/NavCategory/index';
@@ -113,3 +113,21 @@ export {
   useAppItemStaticStyles_unstable,
   useAppItemStatic_unstable,
 } from './AppItemStatic';
+export type { SplitNavItemProps, SplitNavItemSlots, SplitNavItemState } from './SplitNavItem';
+export {
+  SplitNavItem,
+  renderSplitNavItem_unstable,
+  splitNavItemClassNames,
+  useSplitNavItemStyles_unstable,
+  useSplitNavItem_unstable,
+} from './SplitNavItem';
+
+export type { NavCategoryContextValues } from './components/NavCategoryContext';
+export { NavCategoryProvider, useNavCategoryContext_unstable } from './components/NavCategoryContext';
+export { useNavCategoryContextValues_unstable } from './components/useNavCategoryContextValues_unstable';
+
+export type { NavCategoryItemContextValues } from './components/NavCategoryItem/NavCategoryItem.types';
+export { NavCategoryItemProvider, useNavCategoryItemContext_unstable } from './components/NavCategoryItemContext';
+export { useNavCategoryItemContextValues_unstable } from './components/useNavCategoryItemContextValues_unstable';
+
+export { useNavContextValues_unstable } from './components/useNavContextValues';

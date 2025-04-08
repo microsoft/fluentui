@@ -25,6 +25,7 @@ export interface TagPickerContextValue
   secondaryActionRef: React.RefObject<HTMLSpanElement>;
   tagPickerGroupRef: React.RefObject<HTMLDivElement>;
   size: TagPickerSize;
+  noPopover?: boolean;
 }
 
 /**

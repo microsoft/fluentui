@@ -27,7 +27,6 @@ describe('SpinButton', () => {
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('10');
-    expect(spinButton.getAttribute('aria-valuenow')).toEqual('10');
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -42,7 +41,6 @@ describe('SpinButton', () => {
 
     const spinButton = getSpinButtonInput();
     expect(spinButton.value).toEqual('1');
-    expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
     expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -67,7 +65,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('1');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -78,7 +75,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('$1.00');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toEqual('$1.00');
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -89,7 +85,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toEqual('$1.00');
-      expect(spinButton.getAttribute('aria-valuenow')).toEqual('1');
       expect(spinButton.getAttribute('aria-valuetext')).toEqual('Custom value text');
       expect(spinButton.getAttribute('aria-valuemin')).toBeNull();
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
@@ -102,7 +97,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toBe('');
-      expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     });
 
@@ -111,7 +105,6 @@ describe('SpinButton', () => {
 
       const spinButton = getSpinButtonInput();
       expect(spinButton.value).toBe('');
-      expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
       expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
     });
   });
@@ -131,6 +124,31 @@ describe('SpinButton', () => {
       const spinButton = getSpinButtonInput();
       expect(spinButton.getAttribute('aria-valuemin')).toEqual('0');
       expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
+    });
+
+    it('disables increment and decrement buttons and the min and max values', () => {
+      const { getByLabelText } = render(
+        <SpinButton
+          defaultValue={1}
+          min={0}
+          max={10}
+          incrementButton={{ 'aria-label': 'increment' }}
+          decrementButton={{ 'aria-label': 'decrement' }}
+        />,
+      );
+
+      const decrementBtn = getByLabelText('decrement') as HTMLButtonElement;
+      const incrementBtn = getByLabelText('increment') as HTMLButtonElement;
+
+      expect(decrementBtn.disabled).toBeFalsy();
+      expect(incrementBtn.disabled).toBeFalsy();
+
+      userEvent.click(decrementBtn);
+      expect(decrementBtn.disabled).toBeTruthy();
+
+      fireEvent.keyDown(getSpinButtonInput(), { key: End });
+      expect(decrementBtn.disabled).toBeFalsy();
+      expect(incrementBtn.disabled).toBeTruthy();
     });
 
     it('clamps value at min when uncontrolled', () => {
@@ -536,7 +554,7 @@ describe('SpinButton', () => {
       userEvent.click(decrementButton);
 
       expect(onChange).toHaveBeenCalledTimes(2);
-      expect(onChange.mock.calls[1][1]).toEqual({ value: -1, displayValue: undefined });
+      expect(onChange.mock.calls[1][1]).toEqual({ value: 0, displayValue: undefined });
     });
 
     it('calls on change when defaultValue is `null` with min when uncontrolled', () => {

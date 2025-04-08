@@ -23,6 +23,7 @@ export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';
 export { AligningWithIcons } from './MenuAligningWithIcons.stories';
 export { AligningWithSelectableItems } from './MenuAligningWithSelectableItems.stories';
 export { SecondaryContentForMenuItems } from './MenuSecondaryContentForMenuItems.stories';
+export { MultilineItems } from './MenuMultilineItems.stories';
 export { ControllingOpenAndClose } from './MenuControllingOpenAndClose.stories';
 export { GroupingItems } from './MenuGroupingItems.stories';
 export { VisualDividerOnly } from './MenuVisualDividerOnly.stories';

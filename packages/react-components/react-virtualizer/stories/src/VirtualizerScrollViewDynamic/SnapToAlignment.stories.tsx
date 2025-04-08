@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
-import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
@@ -21,7 +20,7 @@ export const SnapToAlignment = () => {
   // Array size ref stores a list of random num for div sizing and callbacks
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Set random heights on init (to be measured)
     for (let i = 0; i < childLength; i++) {
       arraySize.current[i] = Math.floor(Math.random() * maxHeightIncrease + minHeight);
@@ -33,7 +32,12 @@ export const SnapToAlignment = () => {
       numItems={childLength}
       // We can use itemSize to set an average height for minimal size change impact
       itemSize={minHeight + maxHeightIncrease / 2}
-      container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        style: { maxHeight: '80vh' },
+      }}
       enablePagination
     >
       {(index: number) => {

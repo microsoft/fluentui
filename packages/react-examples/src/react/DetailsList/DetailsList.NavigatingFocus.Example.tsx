@@ -20,7 +20,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
       name: 'File path',
       onRender: item => (
         // eslint-disable-next-line react/jsx-no-bind
-        <Link key={item} onClick={() => this._navigate(item)}>
+        <Link key={item} onClick={() => this._navigate(item)} underline>
           {item}
         </Link>
       ),

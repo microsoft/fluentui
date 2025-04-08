@@ -59,4 +59,14 @@ describe('assertSlots', () => {
     expect(consoleWarnMock).toHaveBeenCalledTimes(1);
     consoleWarnMock.mockRestore();
   });
+  it('should keep non nullable types', () => {
+    type Slots = { slot: Slot<'div'> };
+    const state: ComponentState<Slots> = {
+      components: { slot: 'div' },
+      slot: undefined,
+    };
+    assertSlots<Slots>(state);
+    // @ts-expect-error - slot can be undefined
+    expect(() => state.slot.about).toThrow();
+  });
 });

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselNavImageButton renders a default state 1`] = `
+<div>
+  <button
+    aria-selected="true"
+    class="fui-CarouselNavImageButton"
+    data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
+    role="tab"
+    type="button"
+  >
+    <img
+      alt=""
+      aria-hidden="true"
+      class="fui-CarouselNavImageButton__image"
+      role="presentation"
+      src="test"
+    />
+  </button>
+</div>
+`;

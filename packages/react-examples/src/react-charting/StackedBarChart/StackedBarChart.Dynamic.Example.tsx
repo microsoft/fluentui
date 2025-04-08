@@ -7,14 +7,19 @@ import {
   IStackedBarChartProps,
   DataVizPalette,
   getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export interface IExampleState {
   dynamicData: IChartProps;
   statusKey: number;
   statusMessage: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -31,39 +36,32 @@ const screenReaderOnlyStyle: React.CSSProperties = {
 
 export class StackedBarChartDynamicExample extends React.Component<{}, IExampleState> {
   private _colors = [
+    getColorFromToken(DataVizPalette.color1),
+    getColorFromToken(DataVizPalette.color2),
+    getColorFromToken(DataVizPalette.color3),
+    getColorFromToken(DataVizPalette.color4),
+    getColorFromToken(DataVizPalette.color5),
+    getColorFromToken(DataVizPalette.color6),
+    getColorFromToken(DataVizPalette.color7),
+    getColorFromToken(DataVizPalette.color8),
+    getColorFromToken(DataVizPalette.color9),
+    getColorFromToken(DataVizPalette.color10),
+  ];
+  private _colorSet: [String] = [''];
+
+  private _gradientColors = [
     [
-      DefaultPalette.blueMid,
-      DefaultPalette.blue,
-      getColorFromToken(DataVizPalette.color6),
-      DefaultPalette.tealDark,
-      DefaultPalette.teal,
-      DefaultPalette.tealLight,
+      getGradientFromToken(DataVizGradientPalette.gradient1),
+      getGradientFromToken(DataVizGradientPalette.gradient3),
+      getGradientFromToken(DataVizGradientPalette.gradient9),
     ],
+    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
     [
-      DefaultPalette.redDark,
-      DefaultPalette.red,
-      DefaultPalette.orange,
-      DefaultPalette.orangeLight,
-      DefaultPalette.orangeLighter,
-      getColorFromToken(DataVizPalette.color10),
-      DefaultPalette.yellowLight,
+      getGradientFromToken(DataVizGradientPalette.gradient5),
+      getGradientFromToken(DataVizGradientPalette.gradient6),
+      getGradientFromToken(DataVizGradientPalette.gradient10),
     ],
-    [
-      DefaultPalette.greenDark,
-      DefaultPalette.green,
-      getColorFromToken(DataVizPalette.color5),
-      DefaultPalette.neutralPrimary,
-      DefaultPalette.neutralSecondary,
-      DefaultPalette.neutralTertiary,
-    ],
-    [
-      DefaultPalette.purpleDark,
-      DefaultPalette.purple,
-      DefaultPalette.purpleLight,
-      DefaultPalette.magentaDark,
-      DefaultPalette.magenta,
-      DefaultPalette.magentaLight,
-    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
   ];
 
   constructor(props: IStackedBarChartProps) {
@@ -80,6 +78,8 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       },
       statusKey: 0,
       statusMessage: '',
+      enableGradient: false,
+      roundCorners: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -89,6 +89,13 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   public render(): JSX.Element {
     return (
       <div>
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
+        <br />
+
         <StackedBarChart
           data={this.state.dynamicData}
           // eslint-disable-next-line react/jsx-no-bind
@@ -101,7 +108,11 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
               />
             ) : null
           }
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
+        <br />
+
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
         <div aria-live="polite" aria-atomic="true">
@@ -131,14 +142,35 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   }
 
   private _changeColors(): void {
+    this._colorSet = [''];
     this.setState(prevState => ({
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
         chartData: [
-          { ...prevState.dynamicData.chartData![0], legend: 'first', color: this._randomColor(0) },
-          { ...prevState.dynamicData.chartData![1], legend: 'second', color: this._randomColor(1) },
-          { ...prevState.dynamicData.chartData![2], legend: 'third', color: this._randomColor(2) },
-          { ...prevState.dynamicData.chartData![3], legend: 'fourth', color: this._randomColor(3) },
+          {
+            ...prevState.dynamicData.chartData![0],
+            legend: 'first',
+            color: this._randomColor(),
+            gradient: this._randomGradient(0),
+          },
+          {
+            ...prevState.dynamicData.chartData![1],
+            legend: 'second',
+            color: this._randomColor(),
+            gradient: this._randomGradient(1),
+          },
+          {
+            ...prevState.dynamicData.chartData![2],
+            legend: 'third',
+            color: this._randomColor(),
+            gradient: this._randomGradient(2),
+          },
+          {
+            ...prevState.dynamicData.chartData![3],
+            legend: 'fourth',
+            color: this._randomColor(),
+            gradient: this._randomGradient(3),
+          },
         ],
       },
       statusKey: prevState.statusKey + 1,
@@ -150,7 +182,24 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
     return Math.random() * 45 + 5;
   }
 
-  private _randomColor(index: number): string {
-    return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
+  private _randomColor(): string {
+    const color = this._colors[Math.floor(Math.random() * this._colors.length)];
+    if (this._colorSet.includes(color)) {
+      return this._randomColor();
+    }
+    this._colorSet.push(color);
+    return color;
   }
+
+  private _randomGradient(index: number): [string, string] {
+    return this._gradientColors[index][Math.floor(Math.random() * this._gradientColors[index].length)];
+  }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ roundCorners: checked });
+  };
 }

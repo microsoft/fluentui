@@ -51,6 +51,9 @@ const useStyles = makeStyles({
 export const TruncatedText = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<Option[]>(options);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions.map(option => options.find(o => o.value === option)!));
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
@@ -60,7 +63,7 @@ export const TruncatedText = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions.map(option => option.value)}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option.value}
@@ -82,20 +85,22 @@ export const TruncatedText = () => {
           <TagPickerInput aria-label="Select Employees" />
         </TagPickerControl>
         <TagPickerList>
-          {tagPickerOptions.length > 0
-            ? tagPickerOptions.map(option => (
-                <TagPickerOption
-                  secondaryContent={{ children: 'Microsoft FTE', className: styles.optionSecondaryContent }}
-                  media={<Avatar shape="square" aria-hidden name={option.value} color="colorful" />}
-                  value={option.value}
-                  key={option.value}
-                  title={option.value}
-                  text={option.value}
-                >
-                  <div className={styles.optionContent}>{option.value}</div>
-                </TagPickerOption>
-              ))
-            : 'No options available'}
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map(option => (
+              <TagPickerOption
+                secondaryContent={{ children: 'Microsoft FTE', className: styles.optionSecondaryContent }}
+                media={<Avatar shape="square" aria-hidden name={option.value} color="colorful" />}
+                value={option.value}
+                key={option.value}
+                title={option.value}
+                text={option.value}
+              >
+                <div className={styles.optionContent}>{option.value}</div>
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
         </TagPickerList>
       </TagPicker>
     </Field>

@@ -1,5 +1,5 @@
-export * from './ImageSwatch';
-export * from './ImageSwatch.types';
-export * from './renderImageSwatch';
-export * from './useImageSwatch';
-export * from './useImageSwatchStyles.styles';
+export { ImageSwatch } from './ImageSwatch';
+export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ImageSwatch.types';
+export { renderImageSwatch_unstable } from './renderImageSwatch';
+export { useImageSwatch_unstable } from './useImageSwatch';
+export { imageSwatchClassNames, useImageSwatchStyles_unstable } from './useImageSwatchStyles.styles';

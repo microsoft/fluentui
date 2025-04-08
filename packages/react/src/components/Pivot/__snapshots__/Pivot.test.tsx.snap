@@ -47,6 +47,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -58,6 +59,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -237,6 +239,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -248,6 +251,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -487,6 +491,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -498,6 +503,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -677,6 +683,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -688,6 +695,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -915,6 +923,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -926,6 +935,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -1105,6 +1115,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -1116,6 +1127,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -1299,6 +1311,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -1310,6 +1323,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -1472,6 +1486,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                    text-decoration: inherit;
                   }
               data-icon-name="Recent"
             >
@@ -1556,6 +1571,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -1567,6 +1583,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -1746,6 +1763,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -1757,6 +1775,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -1932,6 +1951,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -1943,6 +1963,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -2087,6 +2108,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
               ms-Button-menuIcon
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2185,6 +2207,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -2196,6 +2219,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             font-size: 18px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -2375,6 +2399,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -2386,6 +2411,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             font-size: 18px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -2613,6 +2639,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
@@ -2624,6 +2651,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             font-size: 18px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 0px;
             outline: transparent;
@@ -2853,6 +2881,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
@@ -2864,6 +2893,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             font-size: 18px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 0px;
             outline: transparent;
@@ -3139,6 +3169,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -3150,6 +3181,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -3329,6 +3361,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -3340,6 +3373,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -3566,6 +3600,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
@@ -3577,6 +3612,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 0px;
             outline: transparent;
@@ -3806,6 +3842,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: #ffffff;
             border-radius: 0px;
             border: 0px;
@@ -3817,6 +3854,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 0px;
             outline: transparent;
@@ -4091,6 +4129,7 @@ exports[`Pivot supports JSX expressions 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -4102,6 +4141,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;
@@ -4274,6 +4314,7 @@ exports[`Pivot supports JSX expressions 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-items: center;
             background-color: transparent;
             border-radius: 0px;
             border: 0px;
@@ -4285,6 +4326,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             font-size: 14px;
             font-weight: 600;
             height: 44px;
+            justify-content: center;
             line-height: 44px;
             margin-right: 8px;
             outline: transparent;

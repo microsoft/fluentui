@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MergeStylesRootContext } from '../contexts/MergeStylesRootContext';
+import { MergeStylesDefaultContext } from '../contexts/MergeStylesDefaultContext';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 
 export type MergeStylesRootStylesheetsHook = () => Map<string, ExtendedCSSStyleSheet>;
@@ -8,5 +8,5 @@ export type MergeStylesRootStylesheetsHook = () => Map<string, ExtendedCSSStyleS
  * Get the map of stylesheets available in the context.
  */
 export const useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook = () => {
-  return React.useContext(MergeStylesRootContext).stylesheets;
+  return React.useContext(MergeStylesDefaultContext).stylesheets;
 };

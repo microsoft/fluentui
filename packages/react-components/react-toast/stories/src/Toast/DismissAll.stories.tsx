@@ -7,7 +7,7 @@ export const DismissAll = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle>'This is a toast</ToastTitle>
+        <ToastTitle>This is a toast</ToastTitle>
       </Toast>,
       { intent: 'info' },
     );

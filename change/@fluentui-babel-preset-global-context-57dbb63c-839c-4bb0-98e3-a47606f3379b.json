@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "upgrade to storybook v7",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "none"
-}

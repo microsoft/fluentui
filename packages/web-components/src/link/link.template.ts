@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ViewTemplate } from '@microsoft/fast-element';
+import { type ElementViewTemplate, html, ViewTemplate } from '@microsoft/fast-element';
 import type { Link } from './link.js';
 
 /**

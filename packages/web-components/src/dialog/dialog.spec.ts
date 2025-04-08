@@ -1,41 +1,28 @@
-import { expect, test } from '@playwright/test';
 import type { Locator } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
-import { Dialog } from './dialog.js';
-
-async function getPointOutside(element: Locator) {
-  // Get the bounding box of the element
-  const boundingBox = (await element.boundingBox()) as { x: number; y: number; width: number; height: number };
-
-  // Calculate a point outside the bounding box
-  return {
-    x: boundingBox.x + boundingBox.width + 10, // 10 pixels to the right
-    y: boundingBox.y + boundingBox.height + 10, // 10 pixels below
-  };
-}
+import { expect, test } from '../../test/playwright/index.js';
+import type { Dialog } from './dialog.js';
 
 test.describe('Dialog', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-dialog-dialog--default'));
-
-    await page.waitForFunction(() =>
-      Promise.all([
-        customElements.whenDefined('fluent-button'),
-        customElements.whenDefined('fluent-dialog'),
-        customElements.whenDefined('fluent-dialog-body'),
-      ]),
-    );
+  test.use({
+    tagName: 'fluent-dialog',
+    innerHTML: /* html */ `<div id="content">Dialog Body</div>`,
+    waitFor: ['fluent-button', 'fluent-dialog-body'],
   });
 
-  test('should open and close dialog programmatically', async ({ page }) => {
-    const element = page.locator('fluent-dialog');
-    const content = element.locator('#content');
+  async function getPointOutside(element: Locator) {
+    // Get the bounding box of the element
+    const boundingBox = (await element.boundingBox()) as { x: number; y: number; width: number; height: number };
 
-    await page.setContent(/* html */ `
-      <fluent-dialog>
-          <div id="content">content</div>
-      </fluent-dialog>
-    `);
+    // Calculate a point outside the bounding box
+    return {
+      x: boundingBox.x + boundingBox.width + 10, // 10 pixels to the right
+      y: boundingBox.y + boundingBox.height + 10, // 10 pixels below
+    };
+  }
+
+  test('should open and close programmatically', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
 
     await test.step('should show the dialog content when the dialog is shown', async () => {
       await expect(content).toBeHidden();
@@ -56,184 +43,230 @@ test.describe('Dialog', () => {
     });
   });
 
-  test('should handle dialog overlay clicks correctly based on type', async ({ page }) => {
-    const element = page.locator('fluent-dialog');
+  test('should close after clicking outside its bounds when its `type` attribute is set to "modal"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
     const content = element.locator('#content');
 
-    await page.setContent(/* html */ `
-        <fluent-dialog>
-            <div id="content">content</div>
-        </fluent-dialog>
-      `);
-
-    await test.step('should close modal dialog when clicking outside', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.show();
-      });
-
-      await expect(content).toBeVisible();
-
-      // Get point outside the element
-      const { x, y } = await getPointOutside(element);
-
-      // Dispatch a click event at the calculated point
-      await page.mouse.click(x, y);
-
-      await expect(content).toBeHidden();
+    await element.evaluate((node: Dialog) => {
+      node.show();
     });
 
-    await test.step('should not close non-modal dialog when clicking outside', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'non-modal');
-        node.show();
-      });
+    await expect(content).toBeVisible();
 
-      await expect(content).toBeVisible();
+    // Get point outside the element
+    const { x, y } = await getPointOutside(element);
 
-      // Get point outside the element
-      const { x, y } = await getPointOutside(element);
+    // Dispatch a click event at the calculated point
+    await page.mouse.click(x, y);
 
-      // Dispatch a click event at the calculated point
-      await page.mouse.click(x, y);
-
-      await expect(content).toBeVisible();
-    });
-
-    await test.step('should not close alert dialog when clicking outside', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'alert');
-        node.show();
-      });
-
-      await expect(content).toBeVisible();
-
-      // Get point outside the element
-      const { x, y } = await getPointOutside(element);
-
-      // Dispatch a click event at the calculated point
-      await page.mouse.click(x, y);
-
-      await expect(content).toBeVisible();
-    });
+    await expect(content).toBeHidden();
   });
 
-  test('should handle escape keypress correctly based on type', async ({ page }) => {
-    const element = page.locator('fluent-dialog');
+  test('should NOT close after clicking outside its bounds when its `type` attribute is set to "non-modal"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
     const content = element.locator('#content');
 
-    await page.setContent(/* html */ `
-      <fluent-dialog>
-          <div id="content">content</div>
-      </fluent-dialog>
-    `);
-
-    await test.step('should close modal dialog when pressing escape', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.show();
-      });
-
-      await expect(content).toBeVisible();
-
-      await page.keyboard.press('Escape');
-
-      await expect(content).toBeHidden();
+    await fastPage.setTemplate({
+      attributes: {
+        type: 'non-modal',
+      },
     });
 
-    await test.step('should not close non-modal dialog when pressing escape', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'non-modal');
-        node.show();
-      });
-
-      await expect(content).toBeVisible();
-
-      await page.keyboard.press('Escape');
-
-      await expect(content).toBeVisible();
+    await element.evaluate((node: Dialog) => {
+      node.show();
     });
 
-    await test.step('should not close alert dialog when pressing escape', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'alert');
-        node.show();
-      });
+    await expect(content).toBeVisible();
 
-      await expect(content).toBeVisible();
+    // Get point outside the element
+    const { x, y } = await getPointOutside(element);
 
-      await page.keyboard.press('Escape');
+    // Dispatch a click event at the calculated point
+    await page.mouse.click(x, y);
 
-      await expect(content).toBeVisible();
-    });
+    await expect(content).toBeVisible();
   });
 
-  test('should apply ARIA attributes correctly to dialog element based on type', async ({ page }) => {
-    const element = page.locator('fluent-dialog');
+  test('should NOT close after clicking outside its bounds when its `type` attribute is set to "alert"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
+
+    await element.evaluate((node: Dialog) => {
+      node.setAttribute('type', 'alert');
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    // Get point outside the element
+    const { x, y } = await getPointOutside(element);
+
+    // Dispatch a click event at the calculated point
+    await page.mouse.click(x, y);
+
+    await expect(content).toBeVisible();
+  });
+
+  test('should close after the escape key is pressed when its `type` attribute is set to "modal"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await page.keyboard.press('Escape');
+
+    await expect(content).toBeHidden();
+  });
+
+  test('should NOT close after the escape key is pressed when its `type` attribute is set to "non-modal"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
+
+    await fastPage.setTemplate({ attributes: { type: 'non-modal' } });
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await page.keyboard.press('Escape');
+
+    await expect(content).toBeVisible();
+  });
+
+  test('should NOT close after the escape key is pressed when its `type` attribute is set to "alert"', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
+
+    await fastPage.setTemplate({ attributes: { type: 'alert' } });
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await page.keyboard.press('Escape');
+
+    await expect(content).toBeVisible();
+  });
+
+  test('should set the `role` attribute to "dialog" on the internal dialog element when the `type` attribute is set to "dialog"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
     const dialog = element.locator('dialog');
 
-    await page.setContent(/* html */ `
-      <fluent-dialog>
-        <div id="content">content</div>
-      </fluent-dialog>
-    `);
+    await fastPage.setTemplate({ attributes: { type: 'dialog' } });
 
-    await test.step('should set role correctly on the dialog element', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'dialog');
-      });
+    await expect(dialog).toHaveRole('dialog');
+  });
 
-      await expect(dialog).toHaveRole('dialog');
+  test('should set the `role` attribute to "dialog" on the internal dialog element when the `type` attribute is set to "non-modal"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
 
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'non-modal');
-      });
+    await fastPage.setTemplate({ attributes: { type: 'non-modal' } });
 
-      await expect(dialog).toHaveRole('dialog');
+    await expect(dialog).toHaveRole('dialog');
+  });
 
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'alert');
-      });
+  test('should set the `role` attribute to "alertdialog" on the internal dialog element when the `type` attribute is set to "alert"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
 
-      await expect(dialog).toHaveRole('alertdialog');
+    await fastPage.setTemplate({ attributes: { type: 'alert' } });
+
+    await expect(dialog).toHaveRole('alertdialog');
+  });
+
+  test('should set the `aria-modal` attribute to "true" on the internal dialog element when the `type` attribute is set to "modal"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
+
+    await fastPage.setTemplate({ attributes: { type: 'modal' } });
+
+    await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  });
+
+  test('should set the `aria-modal` attribute to "false" on the internal dialog element when the `type` attribute is set to "non-modal"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
+
+    await fastPage.setTemplate({ attributes: { type: 'non-modal' } });
+
+    await expect(dialog).not.toHaveAttribute('aria-modal');
+  });
+
+  test('should set the `aria-modal` attribute to "true" on the internal dialog element when the `type` attribute is set to "alert"', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
+
+    await fastPage.setTemplate({ attributes: { type: 'alert' } });
+
+    await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  });
+
+  test('should set the `aria-labelledby` attribute on the internal dialog element when the `aria-labelledby` attribute is set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
+
+    await expect(dialog).not.toHaveAttribute('aria-labelledby');
+
+    await element.evaluate(node => {
+      node.setAttribute('aria-labelledby', 'label');
     });
 
-    await test.step('should set aria-modal correctly on the dialog element', async () => {
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'modal');
-      });
+    await expect(dialog).toHaveAttribute('aria-labelledby', 'label');
+  });
 
-      await expect(dialog).toHaveAttribute('aria-modal');
+  test('should set the `aria-describedby` attribute on the internal dialog element when the `aria-describedby` attribute is set', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+    const dialog = element.locator('dialog');
 
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'alert');
-      });
+    await expect(dialog).not.toHaveAttribute('aria-describedby');
 
-      await expect(dialog).toHaveAttribute('aria-modal');
-
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('type', 'non-modal');
-      });
-
-      await expect(dialog).not.toHaveAttribute('aria-modal');
+    await element.evaluate(node => {
+      node.setAttribute('aria-describedby', 'elementID');
     });
 
-    await test.step('should set aria-labelledby on the dialog element', async () => {
-      await expect(dialog).not.toHaveAttribute('aria-labelledby');
-
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('aria-labelledby', 'label');
-      });
-
-      await expect(dialog).toHaveAttribute('aria-labelledby', 'label');
-    });
-
-    await test.step('should set aria-describedby on the dialog element', async () => {
-      await expect(dialog).not.toHaveAttribute('aria-describedby');
-
-      await element.evaluate((node: Dialog) => {
-        node.setAttribute('aria-describedby', 'elementID');
-      });
-
-      await expect(dialog).toHaveAttribute('aria-describedby', 'elementID');
-    });
+    await expect(dialog).toHaveAttribute('aria-describedby', 'elementID');
   });
 });

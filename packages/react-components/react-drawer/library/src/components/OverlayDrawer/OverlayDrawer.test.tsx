@@ -52,4 +52,20 @@ describe('OverlayDrawer', () => {
     const result = mountNode.querySelector('#drawer');
     expect(result).toBeTruthy();
   });
+
+  it('accept mountNode as object with className', () => {
+    const customClassName = 'CustomMountNode';
+
+    const { baseElement } = render(
+      <OverlayDrawer id="drawer" mountNode={{ className: customClassName }} open={true}>
+        Default OverlayDrawer
+      </OverlayDrawer>,
+    );
+
+    const mountNodeElement = baseElement.querySelector(`.${customClassName}`);
+    const drawerInsideMountNode = mountNodeElement?.querySelector('#drawer');
+
+    expect(mountNodeElement).toBeTruthy();
+    expect(drawerInsideMountNode).toBeTruthy();
+  });
 });

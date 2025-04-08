@@ -1,5 +1,20 @@
 import { css } from '@microsoft/fast-element';
-import { disabledState } from '../styles/states/index.js';
+import {
+  badInputState,
+  customErrorState,
+  disabledState,
+  focusVisibleState,
+  hasMessageState,
+  patternMismatchState,
+  rangeOverflowState,
+  rangeUnderflowState,
+  stepMismatchState,
+  tooLongState,
+  tooShortState,
+  typeMismatchState,
+  validState,
+  valueMissingState,
+} from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorNeutralForeground1,
@@ -22,84 +37,6 @@ import {
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 import { ValidationFlags } from './field.options.js';
-
-/**
- * Selector for the `focus-visible` state.
- * @public
- */
-const focusVisibleState = css.partial`:is([state--focus-visible], :state(focus-visible))`;
-
-/**
- * Selector for the `bad-input` state.
- * @public
- */
-const badInputState = css.partial`:is([state--${ValidationFlags.badInput}], :state(${ValidationFlags.badInput}))`;
-
-/**
- * Selector for the `custom-error` state.
- * @public
- */
-const customErrorState = css.partial`:is([state--${ValidationFlags.customError}], :state(${ValidationFlags.customError}))`;
-
-/**
- * Selector for the `pattern-mismatch` state.
- * @public
- */
-const patternMismatchState = css.partial`:is([state--${ValidationFlags.patternMismatch}], :state(${ValidationFlags.patternMismatch}))`;
-
-/**
- * Selector for the `range-overflow` state.
- * @public
- */
-const rangeOverflowState = css.partial`:is([state--${ValidationFlags.rangeOverflow}], :state(${ValidationFlags.rangeOverflow}))`;
-
-/**
- * Selector for the `range-underflow` state.
- * @public
- */
-const rangeUnderflowState = css.partial`:is([state--${ValidationFlags.rangeUnderflow}], :state(${ValidationFlags.rangeUnderflow}))`;
-
-/**
- * Selector for the `step-mismatch` state.
- * @public
- */
-const stepMismatchState = css.partial`:is([state--${ValidationFlags.stepMismatch}], :state(${ValidationFlags.stepMismatch}))`;
-
-/**
- * Selector for the `too-long` state.
- * @public
- */
-const tooLongState = css.partial`:is([state--${ValidationFlags.tooLong}], :state(${ValidationFlags.tooLong}))`;
-
-/**
- * Selector for the `too-short` state.
- * @public
- */
-const tooShortState = css.partial`:is([state--${ValidationFlags.tooShort}], :state(${ValidationFlags.tooShort}))`;
-
-/**
- * Selector for the `type-mismatch` state.
- * @public
- */
-const typeMismatchState = css.partial`:is([state--${ValidationFlags.typeMismatch}], :state(${ValidationFlags.typeMismatch}))`;
-
-/**
- * Selector for the `valid` state.
- * @public
- */
-const validState = css.partial`:is([state-${ValidationFlags.valid}], :state(${ValidationFlags.valid}))`;
-
-/**
- * Selector for the `value-missing` state.
- * @public
- */
-const valueMissingState = css.partial`:is([state--${ValidationFlags.valueMissing}], :state(${ValidationFlags.valueMissing}))`;
-
-/**
- * Selector for the `has-message` state.
- * @public
- */
-const hasMessageState = css.partial`:is([state--has-message], :state(has-message))`;
 
 /**
  * The styles for the {@link Field} component.

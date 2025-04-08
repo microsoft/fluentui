@@ -1,1 +1,1 @@
-export * from './Segment';
+export { Segment, segmentClassName } from './Segment';

@@ -18,8 +18,8 @@ export type MenuProps = ComponentProps<MenuSlots> &
     'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
   > & {
     /**
-     * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
-     * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
+     * Can contain two children including `MenuTrigger` and `MenuPopover`.
+     * Alternatively can only contain `MenuPopover` if using a custom `target`.
      */
     children: [JSX.Element, JSX.Element] | JSX.Element;
 

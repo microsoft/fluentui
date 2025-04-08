@@ -1,6 +1,6 @@
 //Copied from @microsoft/fast-foundation
 
-import { CaptureType, html, ref } from '@microsoft/fast-element';
+import { type CaptureType, html, ref } from '@microsoft/fast-element';
 import type { StaticallyComposableHTML } from '../utils/index.js';
 import { staticallyCompose } from '../utils/index.js';
 
@@ -28,11 +28,27 @@ export type StartEndOptions<TSource = any, TParent = any> = StartOptions<TSource
   EndOptions<TSource, TParent>;
 
 /**
+ * A mixin class implementing start slots.
+ * @public
+ */
+export class Start {
+  public start!: HTMLSlotElement;
+}
+
+/**
+ * A mixin class implementing end slots.
+ * @public
+ */
+export class End {
+  public end!: HTMLSlotElement;
+}
+
+/**
  * A mixin class implementing start and end slots.
  * These are generally used to decorate text elements with icons or other visual indicators.
  * @public
  */
-export class StartEnd {
+export class StartEnd implements Start, End {
   public start!: HTMLSlotElement;
   public end!: HTMLSlotElement;
 }
@@ -55,7 +71,7 @@ export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = a
  *
  * @public
  */
-export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(
+export function startSlotTemplate<TSource extends Pick<StartEnd, 'start'> = StartEnd, TParent = any>(
   options: StartOptions<TSource, TParent>,
 ): CaptureType<TSource, TParent> {
   return html` <slot name="start" ${ref('start')}>${staticallyCompose(options.start)}</slot> `.inline();

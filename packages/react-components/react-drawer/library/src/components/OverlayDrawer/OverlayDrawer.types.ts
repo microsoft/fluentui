@@ -14,8 +14,15 @@ export type OverlayDrawerSlots = {
    * Slot for the root element.
    */
   root: Slot<OverlayDrawerSurfaceProps>;
-
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   backdropMotion?: Slot<PresenceMotionSlotProps<OverlayDrawerSurfaceMotionParams>>;
+  /**
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
+   *
+   */
   surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
 };
 
@@ -26,7 +33,7 @@ export type OverlayDrawerInternalSlots = Pick<OverlayDrawerSlots, 'root'> & {
   /**
    * Slot for the dialog component that wraps the drawer.
    */
-  dialog: Slot<DialogProps>;
+  dialog: NonNullable<Slot<DialogProps>>;
 };
 
 /**
@@ -45,4 +52,8 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
 /**
  * State used in rendering OverlayDrawer
  */
-export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> &
+  Required<DrawerBaseState> &
+  Pick<OverlayDrawerProps, 'mountNode'> & {
+    hasMountNodeElement: boolean;
+  };

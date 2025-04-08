@@ -18,7 +18,7 @@ import type { DrawerBodyProps, DrawerBodyState } from './DrawerBody.types';
  *
  * Get the current scroll state of the DrawerBody.
  *
- * @param param0 - HTMLElement to check scroll state of
+ * @param element - HTMLElement to check scroll state of
  */
 const getScrollState = ({ scrollTop, scrollHeight, clientHeight }: HTMLElement): DrawerScrollState => {
   if (scrollHeight <= clientHeight) {
@@ -51,26 +51,32 @@ export const useDrawerBody_unstable = (props: DrawerBodyProps, ref: React.Ref<HT
   const scrollRef = React.useRef<HTMLDivElement | null>(null);
   const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
-  const onScroll = React.useCallback(() => {
-    cancelAnimationFrame();
-    setAnimationFrame(() => {
-      if (!scrollRef.current) {
-        return;
-      }
-
-      setScrollState(getScrollState(scrollRef.current));
-    });
-  }, [cancelAnimationFrame, setAnimationFrame, setScrollState]);
-
-  useIsomorphicLayoutEffect(() => {
+  const updateScrollState = React.useCallback(() => {
     if (!scrollRef.current) {
       return;
     }
 
     setScrollState(getScrollState(scrollRef.current));
+  }, [setScrollState]);
+
+  const onScroll = React.useCallback(() => {
+    cancelAnimationFrame();
+    setAnimationFrame(() => updateScrollState());
+  }, [cancelAnimationFrame, setAnimationFrame, updateScrollState]);
+
+  useIsomorphicLayoutEffect(() => {
+    cancelAnimationFrame();
+    setAnimationFrame(() => updateScrollState());
+    /* update scroll state when children changes */
+    return () => cancelAnimationFrame();
+  }, [props.children, cancelAnimationFrame, updateScrollState, setAnimationFrame]);
+
+  useIsomorphicLayoutEffect(() => {
+    cancelAnimationFrame();
+    setAnimationFrame(() => updateScrollState());
 
     return () => cancelAnimationFrame();
-  }, [cancelAnimationFrame, setScrollState]);
+  }, [cancelAnimationFrame, updateScrollState, setAnimationFrame]);
 
   return {
     components: {

@@ -10,6 +10,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: 'Single callout' },
@@ -23,6 +24,8 @@ interface IVerticalStackedBarState {
   barCornerRadius: number;
   barMinimumHeight: number;
   selectedCallout: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -35,11 +38,21 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       barCornerRadius: 2,
       barMinimumHeight: 1,
       selectedCallout: 'MultiCallout',
+      enableGradient: false,
+      roundCorners: false,
     };
   }
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
+
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
@@ -91,7 +104,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
           paddingBottom: '45px',
         },
         chartLabel: {
-          color: DefaultPalette.blueMid,
+          color: getColorFromToken(DataVizPalette.color1),
           ...DefaultFontStyles.large,
         },
         xAxisText: {
@@ -101,7 +114,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     };
 
     return (
-      <>
+      <div className="containerDiv">
         <div>
           <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
@@ -155,13 +168,19 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
             aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
-          <ChoiceGroup
-            options={options}
-            defaultSelectedKey="MultiCallout"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
-            label="Pick one"
-          />
+          <div style={{ display: 'flex' }}>
+            <ChoiceGroup
+              options={options}
+              defaultSelectedKey="MultiCallout"
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
+              label="Pick one"
+            />
+            &nbsp;&nbsp;
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            &nbsp;&nbsp;
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          </div>
         </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
@@ -197,7 +216,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
             {...(this.state.selectedCallout === 'singleCallout' && {
               onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
                 return props ? (
@@ -214,9 +232,11 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               'aria-label': 'Example chart with metadata per month',
             }}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

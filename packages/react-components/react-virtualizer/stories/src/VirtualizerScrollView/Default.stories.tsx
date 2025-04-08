@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -12,13 +12,18 @@ const useStyles = makeStyles({
 
 export const Default = () => {
   const styles = useStyles();
-  const childLength = 100;
+  const childLength = 10000;
 
   return (
     <VirtualizerScrollView
       numItems={childLength}
       itemSize={100}
-      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+      container={{
+        role: 'list',
+        'aria-label': `Virtualized list with ${childLength} children`,
+        tabIndex: 0,
+        style: { maxHeight: '80vh' },
+      }}
     >
       {(index: number) => {
         return (

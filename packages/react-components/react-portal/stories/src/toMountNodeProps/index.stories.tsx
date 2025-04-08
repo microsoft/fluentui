@@ -1,10 +1,10 @@
+import type { Meta } from '@storybook/react';
 import descriptionMd from './toMountNodePropsDescription.md';
 
 export { Default } from './Default.stories';
 
 export default {
   title: 'Components/Portal/toMountNodeProps',
-  component: null,
   parameters: {
     docs: {
       description: {
@@ -12,4 +12,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;

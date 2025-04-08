@@ -17,6 +17,9 @@ describe('useVirtualizer', () => {
     const virtualizerLength = 50;
     const actualLength = 250;
     const divArr = new Array(actualLength).fill('Test-Node');
+    const containerSizeRef = {
+      current: 300,
+    };
 
     const rowFunc = (index: number) => {
       return divArr[index];
@@ -27,6 +30,7 @@ describe('useVirtualizer', () => {
         virtualizerLength,
         itemSize: 100, // 100 pixels
         children: rowFunc,
+        containerSizeRef,
       }),
     );
 

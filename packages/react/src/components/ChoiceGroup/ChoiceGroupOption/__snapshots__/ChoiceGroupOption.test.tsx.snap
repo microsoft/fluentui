@@ -1284,6 +1284,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                    text-decoration: inherit;
                   }
               data-icon-name="Calendar"
             >
@@ -1530,6 +1531,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                    text-decoration: inherit;
                   }
               data-icon-name="CalendarWeek"
             >
@@ -1757,6 +1759,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                    text-decoration: inherit;
                   }
               data-icon-name="CalendarDay"
             >
@@ -1960,6 +1963,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
+                    text-decoration: inherit;
                   }
               data-icon-name="CalendarWeek"
             >

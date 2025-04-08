@@ -23,7 +23,10 @@ export const Size = () => (
 Size.parameters = {
   docs: {
     description: {
-      story: 'An avatar supports a range of sizes from 16 to 128. The default is 32.',
+      story:
+        'An avatar supports a range of sizes from 16 to 128. The default is 32. \n\n' +
+        'Avoid using sizes 16 and 20 for interactive Avatars, ' +
+        'or ensure that there is at least 8px or 4px spacing respectively to meet WCAG target size requirements.',
     },
   },
 };

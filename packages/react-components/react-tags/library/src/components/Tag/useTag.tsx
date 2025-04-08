@@ -29,6 +29,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
   const {
     handleTagDismiss,
     size: contextSize,
+    disabled: contextDisabled,
     appearance: contextAppearance,
     dismissible: contextDismissible,
     role: tagGroupRole,
@@ -40,6 +41,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     appearance = contextAppearance ?? 'filled',
     disabled = false,
     dismissible = contextDismissible ?? false,
+    selected = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -65,8 +67,9 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     appearance,
     avatarShape: tagAvatarShapeMap[shape],
     avatarSize: tagAvatarSizeMap[size],
-    disabled,
+    disabled: contextDisabled ? true : disabled,
     dismissible,
+    selected,
     shape,
     size,
 
@@ -84,6 +87,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
         ref,
         role: tagGroupRole === 'listbox' ? 'option' : undefined,
         ...props,
+        disabled: contextDisabled ? true : disabled,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
@@ -104,7 +108,6 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
       renderByDefault: dismissible,
       defaultProps: {
         children: <DismissRegular />,
-        role: 'img',
       },
       elementType: 'span',
     }),

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import * as React from 'react';
 import { IComponentAs } from '@fluentui/react';
 
 export interface IDisplayToggle {
@@ -20,5 +20,5 @@ export interface IDisplayToggle {
    */
   as?: IComponentAs<IDisplayToggle>;
 
-  children: ReactNode;
+  children: React.ReactNode;
 }

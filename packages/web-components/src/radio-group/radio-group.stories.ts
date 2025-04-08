@@ -1,184 +1,271 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, ref, repeat } from '@microsoft/fast-element';
 import type { Field as FluentField } from '../field/field.js';
-import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { ValidationFlags } from '../field/field.options.js';
 import type { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
-const fieldTemplate = html<StoryArgs<FluentField>, StoryArgs<FluentRadioGroup>>`
-  <fluent-field label-position="${x => x.labelPosition ?? 'after'}">
-    <label slot="label" for="${(x, c) => `${c.parent.id}--${x.id}`}">${x => x.label}</label>
+type Story = StoryObj<FluentRadioGroup>;
+
+const radioFieldTemplate = html<StoryArgs<FluentField>>`
+  <fluent-field label-position="${story => story.labelPosition ?? 'after'}">
+    ${story => story.labelSlottedContent?.()}
     <fluent-radio
       slot="input"
-      id="${(x, c) => `${c.parent.id}--${x.id}`}"
       name="${(x, c) => c.parent.name}"
-      ?checked="${x => x.checked}"
-      ?disabled="${x => x.disabled}"
-      value="${x => x.value}"
+      ?checked="${story => story.checked}"
+      ?disabled="${story => story.disabled}"
+      value="${story => story.value}"
     ></fluent-radio>
   </fluent-field>
 `;
 
 const storyTemplate = html<StoryArgs<FluentRadioGroup>>`
-  <fluent-field>
-    <label slot="label" for="${x => x.id}">${x => x.label}</label>
+  <fluent-field label-position="above">
+    ${story => story.labelSlottedContent?.()}
     <fluent-radio-group
       slot="input"
-      id="${x => x.id}"
-      aria-labelledby="${x => x.id}--label"
-      ?disabled=${x => x.disabled}
-      ?stacked=${x => x.stacked}
-      orientation=${x => x.orientation}
-      name="${x => x.name}"
-      value="${x => x.value}"
+      aria-labelledby="${story => story.id}--label"
+      ?disabled=${story => story.disabled}
+      orientation="${story => story.orientation}"
+      name="${story => story.name}"
+      value="${story => story.value}"
+      required="${story => story.required}"
+      ${ref('radioGroup')}
     >
-      ${repeat(x => x.storyItems, fieldTemplate)}
+      ${story => story.defaultSlotContent?.()}
     </fluent-radio-group>
+    ${story => story.messageSlottedContent?.()}
   </fluent-field>
 `;
 
 export default {
   title: 'Components/RadioGroup',
+  render: renderComponent(storyTemplate),
   args: {
-    label: 'Favorite Fruit',
+    defaultSlotContent: () => html`
+      ${repeat(
+        [
+          {
+            labelSlottedContent: () => html`<label slot="label">Apple</label>`,
+            value: 'apple',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Pear</label>`,
+            value: 'pear',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Banana</label>`,
+            value: 'banana',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Orange</label>`,
+            value: 'orange',
+          },
+        ],
+        radioFieldTemplate,
+      )}
+    `,
+    labelSlottedContent: () => html`<label slot="label">Favorite Fruit</label>`,
     name: 'favorite-fruit',
-    storyItems: [
-      { id: 'apple', label: 'Apple', value: 'apple' },
-      { id: 'pear', label: 'Pear', value: 'pear' },
-      { id: 'banana', label: 'Banana', value: 'banana' },
-      { id: 'orange', label: 'Orange', value: 'orange' },
-    ],
   },
   argTypes: {
-    storyItems: {
-      table: {
-        disable: true,
-      },
-    },
     disabled: {
       control: 'boolean',
-      table: {
-        type: { summary: 'Sets disabled state on radio' },
-        defaultValue: { summary: 'false' },
-      },
+      table: { category: 'attributes' },
+      description: 'Disables the radio group and child radios.',
+      type: 'boolean',
+    },
+    name: {
+      control: 'text',
+      table: { category: 'attributes' },
+      description: 'The name of the radio group.',
+      type: 'string',
     },
     orientation: {
       control: 'select',
-      options: Object.values(RadioGroupOrientation),
+      description: 'The orientation of the radio group.',
+      options: ['', ...Object.values(RadioGroupOrientation)],
+      mapping: { '': null, ...RadioGroupOrientation },
       table: {
-        type: { summary: 'Sets orientation of radio group' },
+        category: 'attributes',
         defaultValue: { summary: RadioGroupOrientation.horizontal },
+        type: {
+          summary: Object.values(RadioGroupOrientation).join('|'),
+        },
       },
+    },
+    value: {
+      control: 'text',
+      table: { category: 'attributes' },
+      description: 'The value of the checked radio.',
+      type: 'string',
+    },
+    labelSlottedContent: { table: { disable: true } },
+    defaultSlotContent: {
+      name: '',
+      description: 'The default slot',
+      table: { category: 'slots', type: {} },
     },
   },
 } as Meta<FluentRadioGroup>;
 
-export const RadioGroup: Story<FluentRadioGroup> = renderComponent(storyTemplate).bind({});
-RadioGroup.args = {
-  id: 'radio-group',
-  orientation: RadioGroupOrientation.vertical,
+export const Default: Story = {};
+
+export const VerticalOrientation: Story = {
+  args: {
+    id: 'radio-group-vertical',
+    orientation: RadioGroupOrientation.vertical,
+  },
 };
 
-export const LayoutHorizontal: Story<FluentRadioGroup> = RadioGroup.bind({});
-LayoutHorizontal.args = {
-  id: 'radio-group-horizontal',
-  orientation: RadioGroupOrientation.horizontal,
+export const InitialValue: Story = {
+  args: {
+    id: 'radio-group-default',
+    value: 'banana',
+  },
 };
 
-export const LayoutHorizontalStacked: Story<FluentRadioGroup> = RadioGroup.bind({});
-LayoutHorizontalStacked.args = {
-  orientation: RadioGroupOrientation.horizontal,
-  id: 'radio-group-horizontal-stacked',
-  storyItems: [
-    { id: 'apple', label: 'Apple', value: 'apple', labelPosition: 'below' },
-    { id: 'pear', label: 'Pear', value: 'pear', labelPosition: 'below' },
-    { id: 'banana', label: 'Banana', value: 'banana', labelPosition: 'below' },
-    { id: 'orange', label: 'Orange', value: 'orange', labelPosition: 'below' },
-  ],
+export const InitialCheckedRadio: Story = {
+  args: {
+    id: 'radio-group-checked',
+    defaultSlotContent: () => html`
+      ${repeat(
+        [
+          {
+            labelSlottedContent: () => html`<label slot="label">Apple</label>`,
+            value: 'apple',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Pear</label>`,
+            checked: true,
+            value: 'pear',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Banana</label>`,
+            value: 'banana',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Orange</label>`,
+            value: 'orange',
+          },
+        ],
+        radioFieldTemplate,
+      )}
+    `,
+  },
 };
 
-export const DefaultValue: Story<FluentRadioGroup> = RadioGroup.bind({});
-DefaultValue.args = {
-  orientation: RadioGroupOrientation.horizontal,
-  id: 'radio-group-default',
-  value: 'banana',
-  storyItems: [
-    { id: 'apple', label: 'Apple', value: 'apple' },
-    { id: 'pear', label: 'Pear', value: 'pear' },
-    { id: 'banana', label: 'Banana', value: 'banana' },
-    { id: 'orange', label: 'Orange', value: 'orange' },
-  ],
+export const Disabled: Story = {
+  args: {
+    id: 'radio-group-disabled',
+    disabled: true,
+  },
 };
 
-export const CheckedItem: Story<FluentRadioGroup> = RadioGroup.bind({});
-CheckedItem.args = {
-  orientation: RadioGroupOrientation.horizontal,
-  id: 'radio-group-checked',
-  storyItems: [
-    { id: 'apple', label: 'Apple', value: 'apple' },
-    { id: 'pear', label: 'Pear', value: 'pear', checked: true },
-    { id: 'banana', label: 'Banana', value: 'banana' },
-    { id: 'orange', label: 'Orange', value: 'orange' },
-  ],
+export const DisabledItems: Story = {
+  args: {
+    orientation: RadioGroupOrientation.vertical,
+    id: 'radio-group-disabled-items',
+    defaultSlotContent: () => html`
+      ${repeat(
+        [
+          {
+            labelSlottedContent: () => html`<label slot="label">Apple</label>`,
+            value: 'apple',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Pear</label>`,
+            value: 'pear',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Banana</label>`,
+            value: 'banana',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Orange</label>`,
+            value: 'orange',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Grape</label>`,
+            value: 'grape',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Kiwi</label>`,
+            value: 'kiwi',
+            disabled: true,
+          },
+        ],
+        radioFieldTemplate,
+      )}
+    `,
+  },
 };
 
-export const Disabled: Story<FluentRadioGroup> = RadioGroup.bind({});
-Disabled.args = {
-  orientation: RadioGroupOrientation.horizontal,
-  id: 'radio-group-disabled',
-  disabled: true,
+export const DisabledAndCheckedItem: Story = {
+  args: {
+    orientation: RadioGroupOrientation.vertical,
+    id: 'radio-group-disabled-and-checked-item',
+    value: 'pear',
+    defaultSlotContent: () => html`
+      ${repeat(
+        [
+          {
+            labelSlottedContent: () => html`<label slot="label">Apple</label>`,
+            value: 'apple',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Pear</label>`,
+            value: 'pear',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Banana</label>`,
+            value: 'banana',
+            disabled: true,
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Orange</label>`,
+            value: 'orange',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Grape</label>`,
+            value: 'grape',
+          },
+          {
+            labelSlottedContent: () => html`<label slot="label">Kiwi</label>`,
+            value: 'kiwi',
+            disabled: true,
+          },
+        ],
+        radioFieldTemplate,
+      )}
+    `,
+  },
 };
 
-export const DisabledItems: Story<FluentRadioGroup> = RadioGroup.bind({});
-DisabledItems.args = {
-  orientation: RadioGroupOrientation.vertical,
-  id: 'radio-group-disabled-items',
-  storyItems: [
-    { id: 'apple', label: 'Apple', value: 'apple' },
-    { id: 'pear', label: 'Pear', value: 'pear', disabled: true },
-    { id: 'banana', label: 'Banana', value: 'banana', disabled: true },
-    { id: 'orange', label: 'Orange', value: 'orange' },
-    { id: 'grape', label: 'Grape', value: 'grape' },
-    { id: 'kiwi', label: 'Kiwi', value: 'kiwi', disabled: true },
-  ],
-};
-
-export const Required: Story<FluentRadioGroup> = renderComponent(html`
-  <form
-    action="#"
-    style="display: inline-grid; grid-template-rows: repeat(auto, 3); align-items: center; column-gap: 1ch;"
-  >
-    <fluent-field label-position="above" style="grid-template-rows: subgrid; grid-row: 1/4;">
-      <label slot="label" for="${x => x.id}" style="grid-row: 1/2">${x => x.label}</label>
-      <fluent-radio-group
-        ?required="${x => x.required}"
-        slot="input"
-        id="${x => x.id}"
-        ?disabled=${x => x.disabled}
-        ?stacked=${x => x.stacked}
-        orientation="${x => x.orientation}"
-        name="${x => x.name}"
-        value="${x => x.value}"
-        style="grid-row: 2/3"
-      >
-        ${repeat(x => x.storyItems, fieldTemplate)}
-      </fluent-radio-group>
-      <fluent-text flag="value-missing" slot="message" size="200" style="grid-row: 3/4"
-        >Please select a fruit.</fluent-text
-      >
-    </fluent-field>
-    <fluent-button type="submit" appearance="primary" style="grid-row: 2/3">Submit</fluent-button>
-    <fluent-button type="reset" style="grid-row: 2/3">Reset</fluent-button>
-  </form>
-`).bind({});
-Required.args = {
-  id: 'radio-group-form',
-  orientation: RadioGroupOrientation.horizontal,
-  required: true,
-  storyItems: [
-    { id: 'apple', label: 'Apple', value: 'apple' },
-    { id: 'pear', label: 'Pear', value: 'pear' },
-    { id: 'banana', label: 'Banana', value: 'banana' },
-    { id: 'orange', label: 'Orange', value: 'orange' },
-  ],
+export const Required: Story = {
+  render: renderComponent(html<StoryArgs<FluentRadioGroup>>`
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.radioGroup.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+    >
+      ${storyTemplate}
+      <br />
+      <div>
+        <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+        <fluent-button id="reset-button" type="reset" ${ref('resetButton')}> Reset </fluent-button>
+      </div>
+      <span id="success-message" hidden ${ref('successMessage')}> Form submitted successfully! </span>
+    </form>
+  `),
+  args: {
+    required: true,
+    messageSlottedContent: () => html`
+      <span slot="message" flag="${ValidationFlags.valueMissing}"> Please select a fruit. </span>
+    `,
+  },
 };

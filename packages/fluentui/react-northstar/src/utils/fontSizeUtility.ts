@@ -9,7 +9,7 @@ export const getDocumentRemSize = (): number => {
     try {
       // eslint-disable-next-line no-undef
       return getFontSizeValue(getComputedStyle(document.documentElement).fontSize) || DEFAULT_REM_SIZE_IN_PX;
-    } catch (e) {
+    } catch {
       return DEFAULT_REM_SIZE_IN_PX;
     }
   }

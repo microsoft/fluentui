@@ -95,6 +95,9 @@ const useButtonStyles = makeStyles({
 });
 
 const usePopoverSurfaceStyles = makeStyles({
+  base: {
+    maxWidth: '264px',
+  },
   smallMedium: typographyStyles.caption1,
   large: typographyStyles.body1,
 });
@@ -112,6 +115,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
 
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
+    popoverSurfaceStyles.base,
     size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );

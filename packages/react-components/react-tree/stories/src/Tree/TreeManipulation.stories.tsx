@@ -3,8 +3,6 @@ import {
   FlatTree,
   FlatTreeItem,
   TreeItemLayout,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
   TreeItemValue,
@@ -36,7 +34,6 @@ const subtrees: ItemProps[][] = [
 ];
 
 type CustomTreeItemProps = FlatTreeItemProps & {
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- FIXME @bsunderhus
   onRemoveItem?: (value: string) => void;
 };
 
@@ -58,7 +55,6 @@ const CustomTreeItem = React.forwardRef(
             <TreeItemLayout
               actions={
                 isItemRemovable ? (
-                  // this button is accessible via context menu, hence aria-hidden='true'
                   <Button
                     aria-label="Remove item"
                     appearance="subtle"
@@ -87,9 +83,8 @@ export const Manipulation = () => {
   const itemToFocusRef = React.useRef<HTMLDivElement>(null);
   const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();
 
-  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+  const handleClick = (value: string) => {
     // casting here to string as no number values are used in this example
-    const value = data.value as string;
     if (value.endsWith('-btn')) {
       const subtreeIndex = Number(value[0]) - 1;
       addFlatTreeItem(subtreeIndex);
@@ -147,7 +142,7 @@ export const Manipulation = () => {
       ],
       [trees],
     ),
-    { defaultOpenItems: ['1', '2'], onOpenChange: handleOpenChange },
+    { defaultOpenItems: ['1', '2'] },
   );
 
   React.useEffect(() => {
@@ -165,6 +160,7 @@ export const Manipulation = () => {
           <CustomTreeItem
             {...treeItemProps}
             key={item.value}
+            onClick={() => handleClick(item.value as string)}
             onRemoveItem={removeFlatTreeItem}
             ref={item.value === itemToFocusValue ? itemToFocusRef : undefined}
           >

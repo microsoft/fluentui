@@ -154,7 +154,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
 
     const ButtonAs = this._getButtonAs(item);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const name = item.text || item.name;
 
     return (
@@ -204,7 +204,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
     }
 
     const ButtonAs = this._getButtonAs(item);
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const name = item.text || item.name;
 
     return (
@@ -268,7 +268,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
       return child;
     });
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const name = item.text || item.name;
 
     if (name) {

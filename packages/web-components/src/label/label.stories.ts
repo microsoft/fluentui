@@ -1,92 +1,94 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Label as FluentLabel } from './label.js';
 import { LabelSize, LabelWeight } from './label.options.js';
 
-type LabelStoryArgs = Args & FluentLabel;
-type LabelStoryMeta = Meta<LabelStoryArgs>;
+type Story = StoryObj<FluentLabel>;
 
-const storyTemplate = html<LabelStoryArgs>`
+const storyTemplate = html<StoryArgs<FluentLabel>>`
   <fluent-label
-    weight="${x => x.weight}"
-    size="${x => x.size}"
-    ?required="${x => x.required}"
-    ?disabled="${x => x.disabled}"
-    >Label</fluent-label
+    weight="${story => story.weight}"
+    size="${story => story.size}"
+    ?required="${story => story.required}"
+    ?disabled="${story => story.disabled}"
+    >${story => story.slottedContent?.()}</fluent-label
   >
 `;
 
 export default {
   title: 'Components/Label',
+  render: renderComponent(storyTemplate),
   args: {
     required: false,
     size: LabelSize.medium,
     weight: LabelWeight.regular,
+    slottedContent: () => 'Label',
   },
   argTypes: {
     required: {
-      description: 'Sets required field styling',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
+      control: 'boolean',
+      description: 'Sets required field styling.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     disabled: {
-      description: 'Sets disabled styling',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
+      control: 'boolean',
+      description: 'Sets disabled styling.',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     size: {
-      description: 'Sets label font size',
+      control: 'select',
+      description: 'Sets label font size.',
+      mapping: { '': null, ...LabelSize },
+      options: ['', ...Object.values(LabelSize)],
       table: {
-        defaultValue: { summary: LabelSize.medium },
+        category: 'attributes',
+        type: { summary: Object.values(LabelSize).join('|') },
       },
-      control: {
-        type: 'select',
-        options: Object.values(LabelSize),
-      },
-      defaultValue: LabelSize.medium,
     },
     weight: {
-      description: 'Sets label font weight',
+      control: 'select',
+      description: 'Sets label font weight.',
+      mapping: { '': null, ...LabelWeight },
+      options: ['', ...Object.values(LabelWeight)],
       table: {
-        defaultValue: { summary: LabelWeight.regular },
+        category: 'attributes',
+        type: { summary: Object.values(LabelWeight).join('|') },
       },
-      control: {
-        type: 'select',
-        options: Object.values(LabelWeight),
-      },
-      defaultValue: LabelWeight.regular,
+    },
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
     },
   },
-} as LabelStoryMeta;
+} as Meta<FluentLabel>;
 
-export const Label = renderComponent(storyTemplate).bind({});
+export const Default = {};
 
-export const Size = renderComponent(html<LabelStoryArgs>`
-  <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
-    <fluent-label size="small">Small Label</fluent-label>
-    <fluent-label size="medium">Medium Label</fluent-label>
-    <fluent-label size="large">Large Label</fluent-label>
-  </div>
-`);
+export const Size: Story = {
+  render: renderComponent(html<StoryArgs<FluentLabel>>`
+    <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
+      <fluent-label size="small">Small Label</fluent-label>
+      <fluent-label size="medium">Medium Label</fluent-label>
+      <fluent-label size="large">Large Label</fluent-label>
+    </div>
+  `),
+};
 
-export const Weight = renderComponent(html<LabelStoryArgs>`
-  <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
-    <fluent-label weight="regular">Regular Label</fluent-label>
-    <fluent-label weight="semibold">Semibold Label</fluent-label>
-  </div>
-`);
+export const Weight: Story = {
+  render: renderComponent(html<StoryArgs<FluentLabel>>`
+    <div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; gap: 10px;">
+      <fluent-label weight="regular">Regular Label</fluent-label>
+      <fluent-label weight="semibold">Semibold Label</fluent-label>
+    </div>
+  `),
+};
 
-export const Required = renderComponent(html<LabelStoryArgs>` <fluent-label required>Required Label</fluent-label> `);
+export const Required: Story = {
+  render: renderComponent(html<StoryArgs<FluentLabel>>` <fluent-label required>Required Label</fluent-label> `),
+};
 
-export const Disabled = renderComponent(html<LabelStoryArgs>` <fluent-label disabled>Disabled Label</fluent-label> `);
+export const Disabled: Story = {
+  render: renderComponent(html<StoryArgs<FluentLabel>>` <fluent-label disabled>Disabled Label</fluent-label> `),
+};

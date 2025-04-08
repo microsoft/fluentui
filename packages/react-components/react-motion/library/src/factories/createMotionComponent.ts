@@ -6,6 +6,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
+import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 export type MotionComponentProps = {
   children: React.ReactElement;
@@ -66,7 +67,11 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
-    const paramsRef = React.useRef<MotionParams>(params);
+    const skipMotions = useMotionBehaviourContext() === 'skip';
+    const optionsRef = React.useRef<{ skipMotions: boolean; params: MotionParams }>({
+      skipMotions,
+      params,
+    });
 
     const animateAtoms = useAnimateAtoms();
     const isReducedMotion = useIsReducedMotion();
@@ -86,20 +91,23 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     useIsomorphicLayoutEffect(() => {
       // Heads up!
       // We store the params in a ref to avoid re-rendering the component when the params change.
-      paramsRef.current = params;
+      optionsRef.current = { skipMotions, params };
     });
 
     useIsomorphicLayoutEffect(() => {
       const element = elementRef.current;
 
       if (element) {
-        const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
+        const atoms = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
+
         onMotionStart();
-
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
-
-        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
         handleRef.current = handle;
+        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
+
+        if (optionsRef.current.skipMotions) {
+          handle.finish();
+        }
 
         return () => {
           handle.cancel();

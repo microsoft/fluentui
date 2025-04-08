@@ -9,4 +9,20 @@ packages/fluentui/CONTRIBUTING.md
 packages/fluentui/README.md
 packages/fluentui/.browserslistrc
 
+
+; build output
 **/dist/**
+
+; known directories to not incorporate into the workspace graph creation
+**/fixtures/**
+**/__fixtures__/**
+**/bundle-size/**
+**/fake_node_modules/**
+
+; scaffolding templates
+**/generators/**/files/**
+plop-templates
+plop-templates-*
+
+; TODO: temporary ignore - remove once https://github.com/microsoft/fluentui/pull/32371 is merged
+scripts/*/just.config.ts

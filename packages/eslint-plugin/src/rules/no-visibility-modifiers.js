@@ -87,7 +87,7 @@ module.exports = createRule({
   },
   defaultOptions: [],
   create: context => {
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     /**
      * Generates the report for rule violations
@@ -122,7 +122,7 @@ module.exports = createRule({
         nodeType = `${methodDefinition.kind} property accessor`;
       }
 
-      if (isTypeScriptFile(context.getFilename())) {
+      if (isTypeScriptFile(context.filename)) {
         const methodName = getNameFromMember(methodDefinition, sourceCode);
 
         if (methodDefinition.accessibility) {
@@ -138,7 +138,7 @@ module.exports = createRule({
     function checkPropertyAccessibilityModifier(classProperty) {
       const nodeType = 'class property';
 
-      if (isTypeScriptFile(context.getFilename())) {
+      if (isTypeScriptFile(context.filename)) {
         const propertyName = getNameFromMember(classProperty, sourceCode);
 
         if (classProperty.accessibility) {
@@ -154,7 +154,7 @@ module.exports = createRule({
     function checkParameterPropertyAccessibilityModifier(node) {
       const nodeType = 'parameter property';
 
-      if (isTypeScriptFile(context.getFilename())) {
+      if (isTypeScriptFile(context.filename)) {
         // HAS to be an identifier or assignment or TSC will throw
         if (
           node.parameter.type !== AST_NODE_TYPES.Identifier &&

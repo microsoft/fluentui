@@ -1,4 +1,4 @@
-import { StartEndOptions } from '../patterns/index.js';
+import type { StartEndOptions } from '../patterns/index.js';
 import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
 import type { Badge } from './badge.js';
 

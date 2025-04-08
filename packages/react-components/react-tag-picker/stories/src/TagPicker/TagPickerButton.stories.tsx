@@ -24,6 +24,9 @@ const options = [
 export const Button = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
+    if (data.value === 'no-options') {
+      return;
+    }
     setSelectedOptions(data.selectedOptions);
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
@@ -32,7 +35,7 @@ export const Button = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
@@ -48,18 +51,20 @@ export const Button = () => {
         </TagPickerControl>
 
         <TagPickerList>
-          {tagPickerOptions.length > 0
-            ? tagPickerOptions.map(option => (
-                <TagPickerOption
-                  secondaryContent="Microsoft FTE"
-                  media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
-                  value={option}
-                  key={option}
-                >
-                  {option}
-                </TagPickerOption>
-              ))
-            : 'No options available'}
+          {tagPickerOptions.length > 0 ? (
+            tagPickerOptions.map(option => (
+              <TagPickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar shape="square" aria-hidden name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </TagPickerOption>
+            ))
+          ) : (
+            <TagPickerOption value="no-options">No options available</TagPickerOption>
+          )}
         </TagPickerList>
       </TagPicker>
     </Field>

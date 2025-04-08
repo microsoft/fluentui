@@ -120,7 +120,7 @@ describe('EventListener', () => {
         </TestBoundary>,
       );
 
-      expect(onError).toBeCalledWith(
+      expect(onError).toHaveBeenCalledWith(
         expect.objectContaining({
           message: '`target` and `targetRef` props are mutually exclusive, please use one of them.',
         }),
@@ -141,7 +141,7 @@ describe('EventListener', () => {
         </TestBoundary>,
       );
 
-      expect(onError).toBeCalledWith(
+      expect(onError).toHaveBeenCalledWith(
         expect.objectContaining({
           message: "`target` and `targetRef` props are `undefined`, it' required to use one of them.",
         }),

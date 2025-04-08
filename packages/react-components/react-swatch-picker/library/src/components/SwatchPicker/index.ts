@@ -1,5 +1,11 @@
-export * from './SwatchPicker';
-export * from './SwatchPicker.types';
-export * from './renderSwatchPicker';
-export * from './useSwatchPicker';
-export * from './useSwatchPickerStyles.styles';
+export { SwatchPicker } from './SwatchPicker';
+export type {
+  SwatchPickerOnSelectEventHandler,
+  SwatchPickerOnSelectionChangeData,
+  SwatchPickerProps,
+  SwatchPickerSlots,
+  SwatchPickerState,
+} from './SwatchPicker.types';
+export { renderSwatchPicker_unstable } from './renderSwatchPicker';
+export { useSwatchPicker_unstable } from './useSwatchPicker';
+export { swatchPickerClassNames, useSwatchPickerStyles_unstable } from './useSwatchPickerStyles.styles';

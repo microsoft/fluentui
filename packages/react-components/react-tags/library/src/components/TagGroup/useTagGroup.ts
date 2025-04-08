@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  useControllableState,
+  useEventCallback,
+  mergeCallbacks,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
+import type { TagValue } from '../../utils/types';
 
 /**
  * Create the state required to render TagGroup.
@@ -15,11 +23,28 @@ import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/us
  * @param ref - reference to root HTMLDivElement of TagGroup
  */
 export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
-  const { onDismiss, size = 'medium', appearance = 'filled', dismissible = false, role = 'toolbar' } = props;
+  const {
+    onDismiss,
+    disabled = false,
+    defaultSelectedValues,
+    size = 'medium',
+    appearance = 'filled',
+    dismissible = false,
+    role = 'toolbar',
+    onTagSelect,
+    selectedValues,
+    ...rest
+  } = props;
 
   const innerRef = React.useRef<HTMLElement>();
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
+
+  const [items, setItems] = useControllableState<Array<TagValue>>({
+    defaultState: defaultSelectedValues,
+    state: selectedValues,
+    initialState: [],
+  });
 
   const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
     onDismiss?.(e, data);
@@ -45,6 +70,16 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
     }
   });
 
+  const handleTagSelect: TagGroupState['handleTagSelect'] = useEventCallback(
+    mergeCallbacks(onTagSelect, (_, data) => {
+      if (items.includes(data.value)) {
+        setItems(items.filter(item => item !== data.value));
+      } else {
+        setItems([...items, data.value]);
+      }
+    }),
+  );
+
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
@@ -53,8 +88,11 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
 
   return {
     handleTagDismiss,
+    handleTagSelect: onTagSelect ? handleTagSelect : undefined,
+    selectedValues: items,
     role,
     size,
+    disabled,
     appearance,
     dismissible,
     components: {
@@ -68,8 +106,9 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDi
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role,
+        'aria-disabled': disabled,
         ...arrowNavigationProps,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),

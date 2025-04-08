@@ -13,6 +13,7 @@ import type { DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -170,7 +171,9 @@ export type OverlayDrawerSlots = {
 };
 
 // @public
-export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState> & Pick<OverlayDrawerProps, 'mountNode'> & {
+    hasMountNodeElement: boolean;
+};
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState, contextValue: DrawerContextValue) => JSX.Element;

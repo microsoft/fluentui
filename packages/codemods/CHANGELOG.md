@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Tue, 09 Jul 2024 07:36:39 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Dec 2024 07:22:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.27](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.27)
+
+Mon, 23 Dec 2024 07:22:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.26..@fluentui/codemods_v8.4.27)
+
+### Patches
+
+- chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
 
 ## [8.4.26](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.26)
 

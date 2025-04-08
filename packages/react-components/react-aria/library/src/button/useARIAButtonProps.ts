@@ -122,9 +122,17 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
   // If an <a> or <div> tag is to be rendered we have to remove disabled and type,
   // and set aria-disabled, role and tabIndex.
   else {
+    // the role needs to be explicitly set if the href is undefined
+    const isLink = !!(rest as ARIAButtonResultProps<'a', Props>).href;
+    let roleOverride = isLink ? undefined : 'button';
+    if (!roleOverride && isDisabled) {
+      // need to set role=link explicitly for disabled links
+      roleOverride = 'link';
+    }
+
     const resultProps = {
-      role: 'button',
-      tabIndex: disabled && !disabledFocusable ? undefined : 0,
+      role: roleOverride,
+      tabIndex: disabledFocusable || (!isLink && !disabled) ? 0 : undefined,
       ...rest,
       // If it's not a <button> than listeners are required even with disabledFocusable
       // Since you cannot assure the default behavior of the element
@@ -132,7 +140,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
       onClick: handleClick,
       onKeyUp: handleKeyUp,
       onKeyDown: handleKeyDown,
-      'aria-disabled': disabled || disabledFocusable || normalizedARIADisabled,
+      'aria-disabled': isDisabled,
     } as ARIAButtonResultProps<Type, Props>;
 
     if (type === 'a' && isDisabled) {

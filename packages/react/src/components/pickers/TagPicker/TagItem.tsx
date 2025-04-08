@@ -25,6 +25,7 @@ export const TagItemBase = (props: ITagItemProps) => {
     removeButtonAriaLabel,
     title = typeof props.children === 'string' ? props.children : props.item.name,
     removeButtonIconProps,
+    removeButtonProps,
   } = props;
 
   const buttonRef = React.createRef<IButton>();
@@ -65,6 +66,7 @@ export const TagItemBase = (props: ITagItemProps) => {
         styles={{ icon: { fontSize: '12px' } }}
         className={classNames.close}
         aria-labelledby={`${itemId}-removeLabel ${itemId}-text`}
+        {...removeButtonProps}
       />
       <span id={`${itemId}-removeLabel`} hidden>
         {removeButtonAriaLabel}

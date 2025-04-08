@@ -32,7 +32,9 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: "InfoLabel's `size` prop affects the size of the Label and InfoButton. The default size is medium.",
+      story:
+        "InfoLabel's `size` prop affects the size of the Label and InfoButton. The default size is medium. " +
+        "The small size only meets WCAG's minimum target size requirement if it has at least 2px of non-interactive space on all sides.",
     },
   },
 };

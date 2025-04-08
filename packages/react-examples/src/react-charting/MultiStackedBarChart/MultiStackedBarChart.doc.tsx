@@ -17,7 +17,7 @@ export const MultiStackedBarChartPageProps: IDocPageProps = {
   title: 'MultiStackedBarChart',
   componentName: 'MultiStackedBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/MultiStackedBarChart',
+    'https://github.com/microsoft/fluentui/tree/master/packages/charts/react-charting/src/components/MultiStackedBarChart',
   examples: [
     {
       title: 'MultiStackedBarChart N/M',

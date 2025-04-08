@@ -27,7 +27,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 5, setFocusAtFn: setFocusAt });
 
       focusContainer.syncFocusedIndex(4);
-      expect(setFocusAt).not.toBeCalled();
+      expect(setFocusAt).not.toHaveBeenCalled();
     });
   });
 
@@ -45,7 +45,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 5, setFocusAtFn: setFocusAt });
 
       focusContainer.movePrevious();
-      expect(setFocusAt).toBeCalled();
+      expect(setFocusAt).toHaveBeenCalled();
     });
 
     test('should skip call to set focus index function if there are no items', () => {
@@ -53,7 +53,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 0, setFocusAtFn: setFocusAt });
 
       focusContainer.movePrevious();
-      expect(setFocusAt).not.toBeCalled();
+      expect(setFocusAt).not.toHaveBeenCalled();
     });
 
     test('focused item index should not ever become less than 0', () => {
@@ -80,7 +80,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 5, setFocusAtFn: setFocusAt });
 
       focusContainer.moveNext();
-      expect(setFocusAt).toBeCalled();
+      expect(setFocusAt).toHaveBeenCalled();
     });
 
     test('should skip call to set focus index function if there are no items', () => {
@@ -88,7 +88,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 0, setFocusAtFn: setFocusAt });
 
       focusContainer.moveNext();
-      expect(setFocusAt).not.toBeCalled();
+      expect(setFocusAt).not.toHaveBeenCalled();
     });
 
     test('focused item index should not exceed range of valid indexes', () => {
@@ -115,7 +115,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 5, setFocusAtFn: setFocusAt });
 
       focusContainer.moveFirst();
-      expect(setFocusAt).toBeCalled();
+      expect(setFocusAt).toHaveBeenCalled();
     });
 
     test('should skip call to set focus index function if there are no items', () => {
@@ -123,7 +123,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 0, setFocusAtFn: setFocusAt });
 
       focusContainer.moveFirst();
-      expect(setFocusAt).not.toBeCalled();
+      expect(setFocusAt).not.toHaveBeenCalled();
     });
   });
 
@@ -141,7 +141,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 5, setFocusAtFn: setFocusAt });
 
       focusContainer.moveLast();
-      expect(setFocusAt).toBeCalled();
+      expect(setFocusAt).toHaveBeenCalled();
     });
 
     test('should skip call to set focus index function if there are no items', () => {
@@ -149,7 +149,7 @@ describe('Focus Container', () => {
       const focusContainer = createFocusContainer({ itemsCount: 0, setFocusAtFn: setFocusAt });
 
       focusContainer.moveLast();
-      expect(setFocusAt).not.toBeCalled();
+      expect(setFocusAt).not.toHaveBeenCalled();
     });
   });
 });

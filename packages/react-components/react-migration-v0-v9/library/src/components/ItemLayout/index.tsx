@@ -1,2 +1,2 @@
-export * from './ItemLayout';
-export * from './ItemLayout.styles';
+export { ItemLayout, itemLayoutClassName } from './ItemLayout';
+export { useItemLayoutStyles } from './ItemLayout.styles';

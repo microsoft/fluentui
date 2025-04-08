@@ -1,23 +1,32 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+import { devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {
   reporter: 'list',
-  testMatch: /.*\.spec\.ts$/,
   retries: 3,
   fullyParallel: process.env.CI ? false : true,
   timeout: process.env.CI ? 10000 : 30000,
   use: {
-    baseURL: 'http://localhost:6006/iframe.html',
-    viewport: {
-      height: 720,
-      width: 1280,
-    },
+    baseURL: 'http://localhost:5173',
   },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
   webServer: {
-    // double-quotes are required for Windows
-    command: `node -e "import('express').then(({ default: e }) => e().use(e.static('./dist/storybook')).listen(6006))"`,
-    port: 6006,
-    reuseExistingServer: process.env.CI ? false : true,
+    command: 'yarn vite preview test/harness',
+    port: 5173,
+    reuseExistingServer: true,
   },
 };
 

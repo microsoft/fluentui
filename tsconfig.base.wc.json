@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ES2022",
+    "useDefineForClassFields": false,
     "module": "ESNext",
-    "moduleResolution": "Node16",
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true,
@@ -12,6 +12,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "@fluentui/chart-web-components": ["packages/charts/chart-web-components/src/index.ts"],
       "@fluentui/web-components": ["packages/web-components/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"]
     }

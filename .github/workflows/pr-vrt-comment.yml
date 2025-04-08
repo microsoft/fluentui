@@ -1,0 +1,139 @@
+name: VRT | Comment on PR
+on:
+  workflow_run:
+    workflows: ['VRT PR']
+    types:
+      - completed
+
+env:
+  NX_PARALLEL: 4 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
+jobs:
+  run_vr_diff:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    permissions:
+      # necessary to write comments to the PR from the vr-approval-cli
+      pull-requests: write
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+
+      # downloaded artifacts will contain screenshots from affected project including 'screenshots-report.json' which contains proper image mappings for affected project
+      # - see @{link file://./../scripts/prepare-vr-screenshots-for-upload.js#45}
+      # - see @{link file://./pr-vrt.yml#56}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: vrscreenshot
+          path: ./screenshots
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if visual regression should be run (affected projects)
+        uses: actions/github-script@v7
+        id: should_run_vrt
+        with:
+          script: |
+            const { readFileSync } = require('node:fs');
+            const json = JSON.parse(readFileSync('screenshots/screenshots-report.json','utf-8'));
+            const result = Object.keys(json).length > 0 ? true : false;
+            return result;
+          result-encoding: string
+
+      - name: Login via Azure CLI
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_VRT_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - uses: actions/download-artifact@v4
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
+        with:
+          name: pr-number
+          path: ./results
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run VR Approval CLI
+        if: ${{ steps.should_run_vrt.outputs.result == 'true' }}
+        uses: actions/github-script@v7
+        env:
+          # this is explicity needed as github token is not available in CLI context
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
+        with:
+          script: |
+            const run = require('./.github/scripts/validate-pr-number');
+            const pull_number = run({filePath:'results/pr.txt'});
+
+            const result = await github.rest.pulls.get({
+              owner: context.payload.workflow_run.repository.owner.login,
+              repo: context.payload.workflow_run.repository.name,
+              pull_number,
+            });
+
+            const pr = result.data;
+
+            if (pr.head.sha !== context.payload.workflow_run.head_commit.id) {
+              console.log(
+                "PR head sha does not match the workflow run head commit id. " +
+                "There has probably been a push to the PR, so we will not run the VR Diff for the last iteration. " +
+                "Exiting the script."
+              );
+              process.exit(0);
+            }
+
+            const headOwner = pr.head.repo.owner.login;
+            const baseOwner = pr.base.repo.owner.login;
+
+            const data = {
+              GITHUB_RUN_ID: context.payload.workflow_run.id,
+              GITHUB_REF: `refs/pull/${pr.number}/merge`,
+
+              GITHUB_SHA: pr.head.sha,
+              GITHUB_HEAD_REF: headOwner !== baseOwner ? `${headOwner}:${pr.head.ref}` : pr.head.ref,
+
+              GITHUB_REPOSITORY: context.payload.workflow_run.repository.full_name,
+
+              GITHUB_BASE_REF: pr.base.ref,
+              GITHUB_WORKFLOW: context.payload.workflow_run.name
+            };
+
+            Object.keys(data).forEach(key => {
+              process.env[key] = data[key];
+            });
+
+            console.log("Metadata", data);
+
+            const { execSync } = require('child_process');
+
+            try {
+              execSync(`npx vr-approval-cli@0.5.1 create-policy \
+                --nonBlockingPipelines '{"301":{"pipelineStatus": "PENDING","pipelineName": "Fluent UI"}}' \
+                --clientType FLUENTUI`, { stdio: 'inherit' });
+
+              execSync(`npx vr-approval-cli@0.5.1 run-diff \
+                --screenshotsDirectory ./screenshots \
+                --buildType pr \
+                --ciDefinitionId 'vrt-baseline.yml' \
+                --clientType "FLUENTUI" \
+                --groupName "Fluent UI" \
+                --locationPrefix 'fluentui-github' \
+                --locationPostfix 'vrscreenshots-github' \
+                --threshold '0.04' \
+                --pipelineId '301' \
+                --cumThreshold '1'`, { stdio: 'inherit' });
+            } catch (error) {
+              console.error("Error running vr-approval-cli commands:", error.message);
+              process.exit(1);
+            }

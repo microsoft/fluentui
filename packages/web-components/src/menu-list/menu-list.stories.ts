@@ -1,10 +1,9 @@
-import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { html, repeat } from '@microsoft/fast-element';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type MenuItem as FluentMenuItem, MenuItemRole } from '../menu-item/menu-item.js';
 import type { MenuList as FluentMenuList } from './menu-list.js';
 
-type MenuListStoryArgs = Args & FluentMenuList;
-type MenuListStoryMeta = Meta<MenuListStoryArgs>;
+type Story = StoryObj<FluentMenuList>;
 
 const Cut20Filled = html`<svg
   fill="currentColor"
@@ -34,19 +33,12 @@ const Edit20Filled = html`<svg
   ></path>
 </svg>`;
 
-const Folder24Filled = html`
-  <svg
-    fill="currentColor"
-    aria-hidden="true"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const Folder20Filled = html`
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
     <path
-      d="M13.82 6.5h5.93c1.14 0 2.08.84 2.23 1.94l.01.16.01.15v9c0 1.2-.93 2.17-2.1 2.24l-.15.01H4.25c-1.2 0-2.17-.93-2.24-2.1L2 17.75V10.5h6.4c.4-.04.77-.18 1.1-.4l.15-.12 4.17-3.48zM8.21 4c.46 0 .9.14 1.28.4l.16.12 2.1 1.75-3.06 2.56-.09.06a.75.75 0 01-.29.1l-.1.01H2V6.25c0-1.2.93-2.17 2.1-2.24L4.25 4h3.96z"
       fill="currentColor"
-    ></path>
+      d="M2 5.5A2.5 2.5 0 0 1 4.5 3h2.482c.464 0 .91.184 1.238.513l1.28 1.28l-2.06 2.06A.5.5 0 0 1 7.085 7H2zM2 8v6.5A2.5 2.5 0 0 0 4.5 17h11a2.5 2.5 0 0 0 2.5-2.5v-7A2.5 2.5 0 0 0 15.5 5h-4.793l-2.56 2.56A1.5 1.5 0 0 1 7.085 8z"
+    />
   </svg>
 `;
 const Code20Filled = html`<svg
@@ -63,266 +55,204 @@ const Code20Filled = html`<svg
   ></path>
 </svg>`;
 
-const storyTemplate = html<MenuListStoryArgs>`
-  <div style="width: 200px;">
-    <fluent-menu-list>
-      <fluent-menu-item ?disabled=${x => x.disabled}>
-        Item 1
-        <span slot="start" class="start">${Cut20Filled}</span>
-        <span slot="end">Ctrl+X</span>
-      </fluent-menu-item>
+const menuItemTemplate = html<StoryArgs<FluentMenuItem>>`
+  <fluent-menu-item
+    ?disabled="${story => story.disabled}"
+    role="${story => story.role}"
+    ?checked="${story => story.checked}"
+  >
+    ${story => story.indicatorSlottedContent?.()} ${story => story.startSlottedContent?.()}
+    ${story => story.slottedContent?.()} ${story => story.endSlottedContent?.()}
+    ${story => story.submenuGlyphSlottedContent?.()} ${story => story.submenuSlottedContent?.()}
+  </fluent-menu-item>
+`;
 
-      <fluent-menu-item ?disabled=${x => x.disabled}>
-        <span slot="start">${Edit20Filled}</span>
-        Item 2
-        <span slot="end">Ctrl+E</span>
-      </fluent-menu-item>
-
-      <fluent-menu-item ?disabled=${x => x.disabled}> Open </fluent-menu-item>
-
-      <fluent-menu-item disabled="true">
-        <span slot="start" class="start">${Code20Filled}</span>
-        <span slot="end">Win</span>
-
-        Disabled Item
-      </fluent-menu-item>
-
-      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
-
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Checkbox 1
-        <span slot="start">${Cut20Filled}</span>
-      </fluent-menu-item>
-
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}>
-        Checkbox 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-
-      <fluent-menu-item role="menuitemcheckbox" ?disabled=${x => x.disabled}> Checkbox 3 </fluent-menu-item>
-
-      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
-
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Radio 1
-        <span slot="start">${Cut20Filled}</span>
-      </fluent-menu-item>
-
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}>
-        Radio 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-
-      <fluent-menu-item role="menuitemradio" ?disabled=${x => x.disabled}> Radio 3 </fluent-menu-item>
-
-      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
-
-      <fluent-menu-item ?disabled=${x => x.disabled}>
-        <span slot="start">${Folder24Filled}</span>
-        New
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
-            File
-            <span slot="start">${Folder24Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Workspace
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-        </fluen        Create
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
-            File
-            Create
-          </fluent-menu-item>
-          <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
-            File
-            <span slot="start">${Folder24Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Workspace
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-      </fluent-menu-list>
-    </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
+const storyTemplate = html<StoryArgs<FluentMenuItem>>`
+  <fluent-menu-list>${story => story.slottedContent?.()}</fluent-menu-list>
 `;
 
 export default {
   title: 'Components/MenuList',
+  render: renderComponent(storyTemplate),
   args: {
-    disabled: false,
+    slottedContent: () => html`
+      ${repeat(
+        [{ slottedContent: () => 'Item 1' }, { slottedContent: () => 'Item 2' }, { slottedContent: () => 'Item 3' }],
+        menuItemTemplate,
+      )}
+    `,
   },
   argTypes: {
-    disabled: {
-      description: 'Disables Menu item',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: 'boolean',
-      defaultValue: false,
+    slottedContent: {
+      control: false,
+      description: 'The default slot. Contains the menu items.',
+      name: '',
+      table: { category: 'content', type: {} },
     },
   },
-} as MenuListStoryMeta;
+} as Meta<FluentMenuList>;
 
-export const MenuList = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
 
-export const MenuListWithCheckboxSelection = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px;">
-    <fluent-menu-list>
-      <fluent-menu-item role="menuitemcheckbox"> Item 1 </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox"> Item 2 </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+export const CheckboxItems: Story = {
+  args: {
+    slottedContent: () => html`
+      ${repeat(
+        [
+          { slottedContent: () => 'Check One' },
+          { slottedContent: () => 'Check Two' },
+          { slottedContent: () => 'Triple Check' },
+        ].map(x => ({
+          ...x,
+          role: MenuItemRole.menuitemcheckbox,
+          checked: true,
+        })),
+        menuItemTemplate,
+      )}
+    `,
+  },
+};
 
-export const MenuListWithRadioSelection = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px; position: relative">
-    <fluent-menu-list>
-      <fluent-menu-item role="menuitemradio"> Item 1 </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio"> Item 2 </fluent-menu-item>
-      <fluent-menu-item role="menuitemradio"> Item 3 </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+export const RadioItems: Story = {
+  args: {
+    slottedContent: () => html`
+      ${repeat(
+        [
+          { slottedContent: () => 'Yesterday' },
+          { slottedContent: () => 'Today', checked: true },
+          { slottedContent: () => 'Tomorrow' },
+        ].map(x => ({ ...x, role: MenuItemRole.menuitemradio })),
+        menuItemTemplate,
+      )}
+    `,
+  },
+};
 
-export const MenuListWithIcons = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px; position: relative">
-    <fluent-menu-list>
-      <fluent-menu-item> Item 1 </fluent-menu-item>
-      <fluent-menu-item>
-        Item 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item>
-        <span slot="start">${Edit20Filled}</span>
+export const DisabledItems: Story = {
+  args: {
+    slottedContent: () => html`
+      ${repeat(
+        [
+          { slottedContent: () => 'Item 1' },
+          { slottedContent: () => 'Item 2', disabled: true },
+          { slottedContent: () => 'Item 3' },
+        ],
+        menuItemTemplate,
+      )}
+    `,
+  },
+};
 
-        Item 3
-      </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+export const Submenus: Story = {
+  args: {
+    slottedContent: () => html`
+      ${repeat(
+        [
+          {
+            slottedContent: () => 'Item 1',
+            startSlottedContent: () => html`<span slot="start">${Edit20Filled}</span>`,
 
-export const MenuListWithIconsAndSelection = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px;">
-    <fluent-menu-list>
-      <fluent-menu-item role="menuitemcheckbox">
-        Item 1
-        <span slot="start">${Cut20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox">
-        Item 2
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-      <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+            submenuSlottedContent: () => html`
+              <fluent-menu-list slot="submenu">
+                <fluent-menu-item>
+                  Subitem 1
+                  <span slot="start">${Folder20Filled}</span>
+                </fluent-menu-item>
+                <fluent-menu-item>
+                  Subitem 2
+                  <span slot="start">${Code20Filled}</span>
+                </fluent-menu-item>
+              </fluent-menu-list>
+            `,
+          },
+          {
+            slottedContent: () => 'Item 2',
+            submenuSlottedContent: () => html`
+              <fluent-menu-list slot="submenu">
+                <fluent-menu-item>
+                  Subitem 1
+                  <span slot="start">${Folder20Filled}</span>
+                </fluent-menu-item>
+                <fluent-menu-item>
+                  Subitem 2
+                  <span slot="start">${Code20Filled}</span>
+                </fluent-menu-item>
+              </fluent-menu-list>
+            `,
+          },
+          { slottedContent: () => 'Item 3' },
+        ],
+        menuItemTemplate,
+      )}
+    `,
+  },
+};
 
-export const MenuListWithSubmenu = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 260px;">
-    <fluent-menu-list>
-      <fluent-menu-item>
-        Item 1
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item> Subitem 1 </fluent-menu-item>
-          <fluent-menu-item> Subitem 2 </fluent-menu-item>
-        </fluent-menu-list>
-      </fluent-menu-item>
-      <fluent-menu-item>
-        Item 2
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item> Subitem 1 </fluent-menu-item>
-          <fluent-menu-item> Subitem 1 </fluent-menu-item>
-        </fluent-menu-list>
-      </fluent-menu-item>
+export const DividerAlignment: Story = {
+  args: {
+    slottedContent: () => html`
+      <fluent-menu-item>Item 1</fluent-menu-item>
+      <fluent-menu-item>Item 2</fluent-menu-item>
+      <fluent-divider></fluent-divider>
       <fluent-menu-item>Item 3</fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+      <fluent-menu-item>Item 4</fluent-menu-item>
+    `,
+  },
+};
 
-export const MenuListWithSubmenuAndIcons = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 260px;">
-    <fluent-menu-list>
-      <fluent-menu-item>
-        Item 1
-        <span slot="start">${Edit20Filled}</span>
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
-            Subitem 1
-            <span slot="start">${Folder24Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Subitem 2
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-        </fluent-menu-list>
-      </fluent-menu-item>
-      <fluent-menu-item>
-        Item 2
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item>
-            Subitem 1
-            <span slot="start">${Folder24Filled}</span>
-          </fluent-menu-item>
-          <fluent-menu-item>
-            Subitem 1
-            <span slot="start">${Code20Filled}</span>
-          </fluent-menu-item>
-        </fluent-menu-list>
-      </fluent-menu-item>
-      <fluent-menu-item>Item 3</fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+export const CustomIcons: Story = {
+  args: {
+    slottedContent: () => html<StoryArgs<FluentMenuList>>`
+      ${repeat(
+        [
+          {
+            slottedContent: () => 'Submenu 1',
+            startSlottedContent: () => html`<span slot="start">${Cut20Filled}</span>`,
 
-export const MenuListAligningWithDivider = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 128px; position: relative">
-    <fluent-menu-list>
-      <fluent-menu-item> Item 1 </fluent-menu-item>
-      <fluent-menu-item> Item 2 </fluent-menu-item>
-      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+            submenuGlyphSlottedContent: () => html`<span slot="submenu-glyph">→</span>`,
 
-      <fluent-menu-item> Item 3 </fluent-menu-item>
-      <fluent-menu-item> Item 4 </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+            endSlottedContent: () => html`<span slot="end">Ctrl+S</span>`,
 
-export const MenuListWithCustomIcons = renderComponent(html<MenuListStoryArgs>`
-  <div style="width: 260px">
-    <fluent-menu-list>
-      <fluent-menu-item>
-        Submenu 1
-        <span slot="start">${Cut20Filled}</span>
-        <span slot="submenu-glyph">→</span>
-        <span slot="end">Ctrl+S</span>
-        <fluent-menu-list slot="submenu">
-          <fluent-menu-item> Subitem 1 </fluent-menu-item>
-          <fluent-menu-item> Subitem 2 </fluent-menu-item>
-        </fluent-menu-list>
-      </fluent-menu-item>
+            submenuSlottedContent: () => html`
+              <fluent-menu-list slot="submenu">
+                <fluent-menu-item>Subitem 1</fluent-menu-item>
+                <fluent-menu-item>Subitem 2</fluent-menu-item>
+              </fluent-menu-list>
+            `,
+          },
+        ],
+        menuItemTemplate,
+      )}
 
-      <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+      <fluent-divider></fluent-divider>
 
-      <fluent-menu-item role="menuitemcheckbox">
-        Checkbox 1
-        <span slot="indicator">😀</span>
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
+      ${repeat(
+        [
+          {
+            role: MenuItemRole.menuitemcheckbox,
+            slottedContent: () => 'Checkbox 1',
+            indicatorSlottedContent: () => html`<span slot="indicator">✅</span>`,
 
-      <fluent-menu-item role="menuitemcheckbox">
-        Checkbox 2
-        <span slot="indicator">😢</span>
-        <span slot="start">${Edit20Filled}</span>
-      </fluent-menu-item>
-    </fluent-menu-list>
-  </div>
-`);
+            startSlottedContent: () => html`<span slot="start">${Edit20Filled}</span>`,
+          },
 
-export const HugEnd = renderComponent(
-  html<MenuListStoryArgs>` <div style="display: flex;justify-content: end;">${storyTemplate}</div> `,
-);
+          {
+            role: MenuItemRole.menuitemcheckbox,
+            slottedContent: () => 'Checkbox 2',
+
+            indicatorSlottedContent: () => html`<span slot="indicator">👍</span>`,
+
+            startSlottedContent: () => html`<span slot="start">${Edit20Filled}</span>`,
+          },
+        ],
+        menuItemTemplate,
+      )}
+    `,
+  },
+};
+
+export const ContainerAlignment: Story = {
+  render: renderComponent(html<StoryArgs<FluentMenuList>>`
+    <div style="display: flex;justify-content: end;">${storyTemplate}</div>
+  `),
+};

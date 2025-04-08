@@ -9,12 +9,16 @@ import {
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
+  selectMultipleLegends: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -33,7 +37,28 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      enableGradient: false,
+      roundCorners: false,
+      selectMultipleLegends: false,
     };
+  }
+
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
   }
 
   public render(): JSX.Element {
@@ -58,6 +83,18 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     this.setState({ useSingleColor: checked });
   };
 
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
+  private _onToggleRoundMultipleLegendSelection = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ selectMultipleLegends: checked });
+  };
+
   private _basicExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
@@ -65,6 +102,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 5000,
         legend: 'Oranges',
         color: getColorFromToken(DataVizPalette.color1),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '10%',
       },
@@ -73,6 +111,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 50000,
         legend: 'Dogs',
         color: getColorFromToken(DataVizPalette.color2),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '20%',
       },
@@ -81,15 +120,16 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 30000,
         legend: 'Apples',
         color: getColorFromToken(DataVizPalette.color3),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '37%',
       },
-
       {
         x: 40000,
         y: 13000,
         legend: 'Bananas',
         color: getColorFromToken(DataVizPalette.color4),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '88%',
       },
@@ -100,7 +140,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"
@@ -128,6 +168,20 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Select multiple legends"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundMultipleLegendSelection}
+          />
+        </div>
+        <br />
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             culture={window.navigator.language}
@@ -143,9 +197,14 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
               ) => (props ? defaultRender(props) : null),
             })}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
+            legendProps={{
+              canSelectMultipleLegends: this.state.selectMultipleLegends,
+            }}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

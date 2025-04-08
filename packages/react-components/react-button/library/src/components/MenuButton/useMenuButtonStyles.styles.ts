@@ -66,7 +66,7 @@ const useIconExpandedStyles = makeStyles({
     // High contrast styles
     '@media (forced-colors: active)': {
       ':hover': {
-        color: 'Canvas',
+        color: 'Highlight',
       },
     },
   },

@@ -30,7 +30,6 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         setKey="set"
         columns={columns}
         onRenderItemColumn={_renderItemColumn}
-        onItemInvoked={this._onItemInvoked}
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
@@ -54,7 +53,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     // Reset the items and columns to match the state.
     this.setState({
-      sortedItems: sortedItems,
+      sortedItems,
       columns: columns.map(col => {
         col.isSorted = col.key === column.key;
 
@@ -93,10 +92,6 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   private _onColumnHeaderContextMenu(column: IColumn | undefined, ev: React.MouseEvent<HTMLElement> | undefined): void {
     console.log(`column ${column!.key} contextmenu opened.`);
   }
-
-  private _onItemInvoked(item: any, index: number | undefined): void {
-    alert(`Item ${item.name} at index ${index} has been invoked.`);
-  }
 }
 
 function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
@@ -107,7 +102,11 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
       return <Image src={fieldContent} width={50} height={50} imageFit={ImageFit.cover} />;
 
     case 'name':
-      return <Link href="#">{fieldContent}</Link>;
+      return (
+        <Link href="#" underline>
+          {fieldContent}
+        </Link>
+      );
 
     case 'color':
       return (

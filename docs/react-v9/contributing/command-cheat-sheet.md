@@ -91,16 +91,22 @@ Primary source of our generators lives in [workspace-plugin](../../../tools//wor
 yarn # installs everything. It fixes many things.
 yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
 
+# run tasks
+yarn start # our custom nx-console CLI alternative to guide you through monorepo
+
 # generators
-yarn create-package # scaffolds a new package
-yarn create-component # scaffolds a new component
+yarn nx list @fluentui/workspace-plugin # prints all available workspace generators
+yarn nx g @fluentui/workspace-plugin:<generator-name> # run <generator-name> from workspace plugin
+yarn create-package # scaffolds a new package. alias for `nx g @fluentui/workspace-plugin:react-library`
+yarn create-component # scaffolds a new component. alias for `nx g @fluentui/workspace-plugin:react-component`
+
 yarn change # creates a new change file, if needed
 
-# NOTE: following tasks will be executed against all monorepo projects ( avoid = SLOW )
+# 💡 NOTE: following tasks will be executed against all monorepo projects ( avoid = SLOW )
 yarn clean # tidies any cached dependencies in all packages
-yarn build # generates and relinks all packages and temporary files, this can be a good option if you see errors unrelated to the packages you are working on
-yarn start # runs a package. You can select the package of choice.
-yarn update-snapshots # updates snapshot tests in whole monorepo
+yarn nx run-many -t <target-name> # runs <target-name> on all monorepo projects
+yarn nx run-many -t build # triggers build target(task) on all monorepo projects, this can be a good option if you see errors unrelated to the packages you are working on
+
 
 # running project tasks
 yarn nx run <project-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
@@ -110,6 +116,8 @@ yarn nx run <project-name>:generate-api # updates API files
 yarn nx run <project-name>:type-check # quickly runs type checks and associated linting
 yarn nx run react:build  # build v8 so intellisense works.
 ```
+
+![running project tasks](https://github.com/user-attachments/assets/89d3295a-ceeb-43a7-b2d5-f913003e17ab)
 
 ```shell
 git checkout user/jdoe/some-fancy-branch-name # checks out an existing branch

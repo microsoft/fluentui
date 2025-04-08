@@ -1,2 +1,2 @@
-export * from './clampMax';
-export * from './clampValue';
+export { clampMax } from './clampMax';
+export { clampValue } from './clampValue';

@@ -19,6 +19,17 @@ export const Link: ForwardRefComponent<LinkProps>;
 export const linkClassNames: SlotClassNames<LinkSlots>;
 
 // @public (undocumented)
+export const linkContextDefaultValue: LinkContextValue;
+
+// @public (undocumented)
+export const LinkContextProvider: React_2.Provider<LinkContextValue | undefined>;
+
+// @public (undocumented)
+export type LinkContextValue = {
+    inline?: boolean;
+};
+
+// @public (undocumented)
 export type LinkProps = ComponentProps<LinkSlots> & {
     appearance?: 'default' | 'subtle';
     disabled?: boolean;
@@ -41,6 +52,9 @@ export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
 export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;
+
+// @public (undocumented)
+export const useLinkContext: () => LinkContextValue;
 
 // @public
 export const useLinkState_unstable: (state: LinkState) => LinkState;

@@ -2,6 +2,66 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 22 Jan 2025 14:00:17 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.3",
+      "version": "0.19.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "fd420e1e0b66e04c8a423cff3eea6d21d9434d2d",
+            "comment": "chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2025 18:33:33 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.3",
+      "version": "0.19.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "dc7bb663e3d93a19b611cf1892556d69c57b1269",
+            "comment": "chore: remove usage of \"export *\""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Nov 2024 10:01:11 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.2",
+      "version": "0.19.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "2558ddce7329d2a1c1f76fa1e5f614918fe6dcd9",
+            "comment": "chore: replace npm-scripts and just-scrtips with nx inferred tasks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Sep 2024 12:40:12 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.1",
+      "version": "0.19.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: reflect package.json dependencies to match actual dep graph"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:26 GMT",
       "tag": "@fluentui/react-conformance_v0.19.1",
       "version": "0.19.1",

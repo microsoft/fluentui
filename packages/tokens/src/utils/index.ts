@@ -1,4 +1,4 @@
-export * from './createLightTheme';
-export * from './createDarkTheme';
-export * from './createTeamsDarkTheme';
-export * from './createHighContrastTheme';
+export { createLightTheme } from './createLightTheme';
+export { createDarkTheme } from './createDarkTheme';
+export { createTeamsDarkTheme } from './createTeamsDarkTheme';
+export { createHighContrastTheme } from './createHighContrastTheme';
