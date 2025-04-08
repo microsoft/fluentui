@@ -1,9 +1,11 @@
 import { mergeClasses } from '@griffel/react';
-import { SLOT_USER_CLASS_NAME_SYMBOL } from '../compose/constants';
-import { UnknownSlotProps } from '../compose/types';
-import { isSlot } from './isSlot';
+import { SLOT_ORIGINAL_CLASS_NAME_SYMBOL } from '../compose/constants';
+import type { SlotComponentType, UnknownSlotProps } from '../compose/types';
 
 export const overrideDefaultSlotClasses = (slot: UnknownSlotProps, ...classNames: (string | false | undefined)[]) => {
-  const userClassName = isSlot(slot) ? slot[SLOT_USER_CLASS_NAME_SYMBOL] : undefined;
-  slot.className = mergeClasses(slot.className, ...classNames, userClassName);
+  slot.className = mergeClasses(
+    slot.className,
+    ...classNames,
+    (slot as SlotComponentType<UnknownSlotProps>)[SLOT_ORIGINAL_CLASS_NAME_SYMBOL],
+  );
 };

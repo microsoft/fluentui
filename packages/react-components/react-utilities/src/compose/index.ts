@@ -21,7 +21,7 @@ export type {
   UnknownSlotProps,
 } from './types';
 export { isResolvedShorthand } from './isResolvedShorthand';
-export { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL, SLOT_USER_CLASS_NAME_SYMBOL } from './constants';
+export { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_ORIGINAL_CLASS_NAME_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 export { isSlot } from './isSlot';
 export { assertSlots } from './assertSlots';
 export { getIntrinsicElementProps } from './getIntrinsicElementProps';

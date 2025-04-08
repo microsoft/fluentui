@@ -9,8 +9,8 @@ import type {
   ToggleButtonState,
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { makeStyles, shorthands } from '@griffel/react';
 import { overrideDefaultSlotClasses } from '@fluentui/react-utilities';
+import { makeStyles, shorthands } from '@griffel/react';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -139,7 +139,7 @@ export const ToggleButtonCustomStyles = () => {
 
 ToggleButtonCustomStyles.storyName = 'ToggleButton';
 
-export const UserStylesWithCustomStyles = () => {
+export const ClassNamePropWithCustomStyles = () => {
   const styles = useCustomStyles();
 
   const customStyleHooks: FluentProviderCustomStyleHooks = {
@@ -156,4 +156,4 @@ export const UserStylesWithCustomStyles = () => {
   );
 };
 
-UserStylesWithCustomStyles.storyName = 'User Styles';
+UserStylesWithCustomStyles.storyName = 'className prop';

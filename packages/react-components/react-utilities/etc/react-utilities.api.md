@@ -165,7 +165,7 @@ function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandVa
 } & SlotOptions<Props>): SlotComponentType<Props> | undefined;
 
 // @public (undocumented)
-export const overrideSlotClasses: (slot: UnknownSlotProps, ...classNames: (string | false | undefined)[]) => void;
+export const overrideDefaultSlotClasses: (slot: UnknownSlotProps, ...classNames: (string | false | undefined)[]) => void;
 
 // @internal (undocumented)
 export interface PriorityQueue<T> {
@@ -274,10 +274,10 @@ export { slot }
 export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
 
 // @internal
-export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
+export const SLOT_ORIGINAL_CLASS_NAME_SYMBOL: unique symbol;
 
 // @internal
-export const SLOT_USER_CLASS_NAME_SYMBOL: unique symbol;
+export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {
@@ -289,7 +289,7 @@ export type SlotComponentType<Props> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    [SLOT_USER_CLASS_NAME_SYMBOL]?: string;
+    [SLOT_ORIGINAL_CLASS_NAME_SYMBOL]?: string;
 };
 
 // @public (undocumented)

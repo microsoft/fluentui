@@ -12,8 +12,8 @@ export {
   getIntrinsicElementProps,
   overrideDefaultSlotClasses,
   SLOT_ELEMENT_TYPE_SYMBOL,
+  SLOT_ORIGINAL_CLASS_NAME_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
-  SLOT_USER_CLASS_NAME_SYMBOL,
 } from './compose/index';
 export type {
   ExtractSlotProps,
