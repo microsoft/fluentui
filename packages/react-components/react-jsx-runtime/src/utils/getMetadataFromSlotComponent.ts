@@ -14,7 +14,7 @@ export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(typ
     as,
     [SLOT_ELEMENT_TYPE_SYMBOL]: baseElementType,
     [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
-    [SLOT_ORIGINAL_CLASS_NAME_SYMBOL]: _unused_originalClassName,
+    [SLOT_ORIGINAL_CLASS_NAME_SYMBOL]: _originalClassName,
     ...propsWithoutMetadata
   } = type;
   const props = propsWithoutMetadata as UnknownSlotProps as Props;
