@@ -6,6 +6,7 @@ import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { useTableContext } from '../../contexts/tableContext';
 import { isColumnSortable } from '../../utils/isColumnSortable';
+import { TableHeaderCellProps } from '../TableHeaderCell/TableHeaderCell.types';
 
 /**
  * Create the state required to render DataGridHeaderCell.
@@ -58,6 +59,7 @@ export const useDataGridHeaderCell_unstable = (
       tabIndex: sortable ? undefined : 0,
       ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
       ...props,
+      children: props.children as React.ReactNode,
       onClick,
     },
     ref,

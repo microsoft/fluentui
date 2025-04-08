@@ -12,7 +12,6 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
@@ -158,7 +157,7 @@ export type MenuItemLinkSlots = {
 export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
 
 // @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
+export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> & Pick<Partial<MenuItemSlots>, 'content'> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
     disabled?: boolean;
@@ -190,7 +189,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
+    root: Slot<'div'>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
@@ -414,7 +413,7 @@ export type MenuTriggerState = {
 };
 
 // @public
-export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => JSX.Element;
+export const renderMenu_unstable: (state: MenuState, contextValues: MenuContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderMenuDivider_unstable: (state: MenuDividerState) => JSX.Element;
@@ -450,7 +449,7 @@ export const renderMenuPopover_unstable: (state: MenuPopoverState) => JSX.Elemen
 export const renderMenuSplitGroup_unstable: (state: MenuSplitGroupState, contexts?: MenuSplitGroupContextValues) => JSX.Element;
 
 // @public
-export const renderMenuTrigger_unstable: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger_unstable: (state: MenuTriggerState) => React_2.JSX.Element;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React_2.MouseEvent | React_2.KeyboardEvent, name: string, value: string, checked: boolean) => void;

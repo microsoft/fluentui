@@ -99,7 +99,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     primaryText: slot.optional(props.primaryText, {
       renderByDefault: true,
       defaultProps: {
-        children: props.children,
+        children: props.children as React.ReactNode,
       },
       elementType: 'span',
     }),
