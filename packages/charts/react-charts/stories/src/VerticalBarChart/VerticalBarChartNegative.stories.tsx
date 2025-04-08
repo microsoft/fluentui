@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { VerticalBarChart, VerticalBarChartDataPoint, LineChartLineOptions } from '@fluentui/react-charts';
+import {
+  VerticalBarChart,
+  VerticalBarChartDataPoint,
+  LineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charts';
 import {
   Switch,
   Checkbox,
@@ -10,14 +16,15 @@ import {
   RadioGroupOnChangeData,
 } from '@fluentui/react-components';
 
-export const VerticalBarDefault = () => {
+export const VerticalBarNegative = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
-  const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
+  const [isCalloutSelected, setIsCalloutSelected] = React.useState<boolean>(false);
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
-  const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
+  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
+  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
+  const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -25,8 +32,9 @@ export const VerticalBarDefault = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
+
   const _onChange = (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData): void => {
-    if (isCalloutselected) {
+    if (isCalloutSelected) {
       setIsCalloutSelected(false);
     } else {
       setIsCalloutSelected(true);
@@ -38,19 +46,22 @@ export const VerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  const _onSwitchAxisTitlesCheckChange = React.useCallback(ev => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
-  const _onToggleMultiLegendSelection = React.useCallback(ev => {
-    setSelectMultipleLegends(ev.currentTarget.checked);
+  const _onSwitchGradient = React.useCallback(ev => {
+    setEnableGradient(ev.currentTarget.checked);
+  }, []);
+  const _onSwitchRoundCorners = React.useCallback(ev => {
+    setRoundCorners(ev.currentTarget.checked);
   }, []);
 
-  const points: VerticalBarChartDataPoint[] = [
+  const negativePoints: VerticalBarChartDataPoint[] = [
     {
       x: 0,
       y: 10000,
       legend: 'Oranges',
-      color: 'dodgerblue',
+      color: getColorFromToken(DataVizPalette.color1),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '4%',
       lineData: {
@@ -60,21 +71,21 @@ export const VerticalBarDefault = () => {
     },
     {
       x: 10000,
-      y: 50000,
+      y: -50000,
       legend: 'Dogs',
-      color: 'midnightblue',
+      color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '21%',
+      yAxisCalloutData: '-21%',
       lineData: {
-        y: 30000,
-        yAxisCalloutData: '12%',
+        y: -30000,
+        yAxisCalloutData: '-12%',
       },
     },
     {
       x: 25000,
       y: 30000,
       legend: 'Apples',
-      color: 'darkblue',
+      color: getColorFromToken(DataVizPalette.color3),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -85,17 +96,17 @@ export const VerticalBarDefault = () => {
 
     {
       x: 40000,
-      y: 13000,
+      y: -13000,
       legend: 'Bananas',
-      color: 'blue',
+      color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '5%',
+      yAxisCalloutData: '-5%',
     },
     {
       x: 52000,
       y: 43000,
       legend: 'Giraffes',
-      color: 'darkslateblue',
+      color: getColorFromToken(DataVizPalette.color11),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '18%',
       lineData: {
@@ -105,21 +116,21 @@ export const VerticalBarDefault = () => {
     },
     {
       x: 68000,
-      y: 30000,
+      y: -30000,
       legend: 'Cats',
-      color: 'royalblue',
+      color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '12%',
+      yAxisCalloutData: '-12%',
       lineData: {
-        y: 5000,
-        yAxisCalloutData: '2%',
+        y: -5000,
+        yAxisCalloutData: '-2%',
       },
     },
     {
       x: 80000,
       y: 20000,
       legend: 'Elephants',
-      color: 'slateblue',
+      color: getColorFromToken(DataVizPalette.color11),
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '8%',
       lineData: {
@@ -129,26 +140,28 @@ export const VerticalBarDefault = () => {
     },
     {
       x: 92000,
-      y: 45000,
+      y: -45000,
       legend: 'Monkeys',
-      color: 'steelblue',
+      color: getColorFromToken(DataVizPalette.color6),
       xAxisCalloutData: '2020/04/30',
-      yAxisCalloutData: '19%',
+      yAxisCalloutData: '-19%',
       lineData: {
-        y: 40000,
-        yAxisCalloutData: '16%',
+        y: -40000,
+        yAxisCalloutData: '-16%',
       },
     },
   ];
+
   const lineOptions: LineChartLineOptions = { lineBorderWidth: '2' };
+
   const rootStyle = { width: `${width}px`, height: `${height}px` };
+
   return (
     <>
-      <text>
-        In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-        So instead of a numeric value, the callout will show the date that is passed in the{' '}
-        <code>xAxisCalloutData</code> property.
-      </text>
+      <label>
+        In this example the supportNegativeData property is enabled and some positive and some negative y points are
+        passed to the data. As a result chart with negative y axis data is rendered.
+      </label>
       <br />
       <label htmlFor="changeWidth">Change Width:</label>
       <input
@@ -176,7 +189,7 @@ export const VerticalBarDefault = () => {
           <Radio value="Custom Callout Example" label="Custom Callout Example" />
         </RadioGroup>
       </Field>
-      <div style={{ marginTop: '10px' }}>
+      <div style={{ marginTop: '20px' }}>
         <Checkbox
           label="use single color(This will have only one color)"
           checked={useSingleColor}
@@ -186,86 +199,68 @@ export const VerticalBarDefault = () => {
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-        style={{ marginTop: '10px' }}
-      />
-      <Switch
-        label="Select Multiple Legends"
-        checked={selectMultipleLegends}
-        onChange={_onToggleMultiLegendSelection}
-      />
+      <div style={{ marginTop: '10px' }}>
+        <Switch
+          label={showAxisTitles ? 'Switch Axis titles' : 'Hide Axis titles'}
+          checked={showAxisTitles}
+          onChange={_onSwitchAxisTitlesCheckChange}
+        />
+      </div>
+      <div style={{ display: 'flex' }}>
+        <Switch
+          label={enableGradient ? 'Enable Gradient ON' : 'Enable Gradient OFF'}
+          checked={enableGradient}
+          onChange={_onSwitchGradient}
+        />
+        &nbsp;&nbsp;
+        <Switch
+          label={roundCorners ? 'Rounded Corners ON' : 'Rounded Corners OFF'}
+          checked={roundCorners}
+          onChange={_onSwitchRoundCorners}
+        />
+      </div>
       {showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
+            culture={window.navigator.language}
             chartTitle="Vertical bar chart basic example "
-            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
-            data={points}
-            height={height}
+            data={negativePoints}
             width={width}
-            hideLegend={false}
             useSingleColor={useSingleColor}
-            hideLabels={hideLabels}
+            height={height}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
-            /*             {...(isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: VerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<VerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })} */
-            yAxisTitle={
-              showAxisTitles
-                ? 'Different categories of animals and fruits and their corresponding count are shown here'
-                : undefined
-            }
-            xAxisTitle={
-              showAxisTitles
-                ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
-                : undefined
-            }
+            hideLabels={hideLabels}
+            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+            enableGradient={enableGradient}
+            roundCorners={roundCorners}
           />
         </div>
       )}
       {!showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
+            culture={window.navigator.language}
             chartTitle="Vertical bar chart basic example "
-            culture={typeof window !== 'undefined' ? window.navigator.language : 'en-us'}
-            data={points}
-            height={height}
+            data={negativePoints}
             width={width}
-            hideLegend={false}
             useSingleColor={useSingleColor}
-            hideLabels={hideLabels}
+            height={height}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
-            /* {...(isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: VerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<VerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })} */
-            yAxisTitle={
-              showAxisTitles
-                ? 'Different categories of animals and fruits and their corresponding count are shown here'
-                : undefined
-            }
-            xAxisTitle={showAxisTitles ? 'Values of each category are shown in the x-axis in this chart' : undefined}
-            legendProps={{
-              canSelectMultipleLegends: selectMultipleLegends,
-            }}
+            hideLabels={hideLabels}
+            enableGradient={enableGradient}
+            roundCorners={roundCorners}
           />
         </div>
       )}
     </>
   );
 };
-VerticalBarDefault.parameters = {
+VerticalBarNegative.parameters = {
   docs: {
     description: {},
   },
