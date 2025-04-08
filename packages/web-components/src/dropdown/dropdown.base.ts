@@ -495,7 +495,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private validationFallbackMessage!: string;
+  private _validationFallbackMessage!: string;
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -508,16 +508,16 @@ export class BaseDropdown extends FASTElement {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this.validationFallbackMessage) {
+    if (!this._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
-      this.validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this.validationFallbackMessage;
+    return this._validationFallbackMessage;
   }
 
   /**
