@@ -20,15 +20,15 @@ export const useMessageBarTitle_unstable = (
 
   return {
     components: {
-      root: 'span',
+      root: props.as || 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('span', {
+      getIntrinsicElementProps(props.as || 'span', {
         ref,
         id: titleId,
         ...props,
       }),
-      { elementType: 'span' },
+      { elementType: props.as || 'span' },
     ),
   };
 };

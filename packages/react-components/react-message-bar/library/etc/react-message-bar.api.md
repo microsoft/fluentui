@@ -134,11 +134,13 @@ export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
 export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots>;
 
 // @public
-export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;
+export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {
+    as?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+};
 
 // @public (undocumented)
 export type MessageBarTitleSlots = {
-    root: Slot<'span'>;
+    root: Slot<'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'>;
 };
 
 // @public
