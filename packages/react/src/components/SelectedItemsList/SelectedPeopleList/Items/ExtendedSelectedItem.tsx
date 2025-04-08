@@ -51,6 +51,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
           <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
             <Persona
               {...item}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               onRenderCoin={this.props.renderPersonaCoin}
               onRenderPrimaryText={this.props.renderPrimaryText}
               size={PersonaSize.size32}
