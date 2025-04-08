@@ -9,7 +9,7 @@ import { RadioGroupOrientation } from './radio-group.options.js';
  * A Radio Group Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#radiogroup | ARIA `radiogroup` role}.
  *
- * @public
+ * @tag fluent-radio-group
  *
  * @slot - The default slot for the radio group
  */

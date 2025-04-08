@@ -5,7 +5,7 @@ import { toggleState } from '../utils/element-internals.js';
 /**
  * The base class used for constructing a `<fluent-toggle-button>` custom element.
  *
- * @public
+ * @tag fluent-toggle-button
  */
 export class ToggleButton extends Button {
   /**
