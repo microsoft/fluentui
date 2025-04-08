@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add overrideSlotClasses function to allow custom style hooks to override slot styles while preserving user-provided styles",
+  "comment": "Add overrideDefaultSlotClasses function to allow custom style hooks to override slot styles while preserving user-provided styles",
   "packageName": "@fluentui/react-utilities",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"

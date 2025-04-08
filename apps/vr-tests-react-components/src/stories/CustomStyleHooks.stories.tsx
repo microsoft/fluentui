@@ -10,7 +10,7 @@ import type {
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { makeStyles, shorthands } from '@griffel/react';
-import { overrideSlotClasses } from '@fluentui/react-utilities';
+import { overrideDefaultSlotClasses } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -45,7 +45,7 @@ export const ButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      overrideSlotClasses(componentState.root, styles.button);
+      overrideDefaultSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -64,7 +64,7 @@ export const CompoundButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useCompoundButtonStyles_unstable: (state: unknown) => {
       const componentState = state as CompoundButtonState;
-      overrideSlotClasses(componentState.root, styles.button);
+      overrideDefaultSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -83,7 +83,7 @@ export const MenuButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useMenuButtonStyles_unstable: (state: unknown) => {
       const componentState = state as MenuButtonState;
-      overrideSlotClasses(componentState.root, styles.button);
+      overrideDefaultSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -103,10 +103,10 @@ export const SplitButtonCustomStyles = () => {
     useSplitButtonStyles_unstable: (state: unknown) => {
       const componentState = state as SplitButtonState;
       if (componentState.menuButton) {
-        overrideSlotClasses(componentState.menuButton, styles.button);
+        overrideDefaultSlotClasses(componentState.menuButton, styles.button);
       }
       if (componentState.primaryActionButton) {
-        overrideSlotClasses(componentState.primaryActionButton, styles.button);
+        overrideDefaultSlotClasses(componentState.primaryActionButton, styles.button);
       }
     },
   };
@@ -126,7 +126,7 @@ export const ToggleButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useToggleButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ToggleButtonState;
-      overrideSlotClasses(componentState.root, styles.button);
+      overrideDefaultSlotClasses(componentState.root, styles.button);
     },
   };
 
@@ -145,7 +145,7 @@ export const UserStylesWithCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      overrideSlotClasses(componentState.root, styles.button);
+      overrideDefaultSlotClasses(componentState.root, styles.button);
     },
   };
 

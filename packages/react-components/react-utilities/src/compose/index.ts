@@ -25,7 +25,7 @@ export { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL, SLOT_USER_CLASS_
 export { isSlot } from './isSlot';
 export { assertSlots } from './assertSlots';
 export { getIntrinsicElementProps } from './getIntrinsicElementProps';
-export { overrideSlotClasses } from './overrideSlotClasses';
+export { overrideDefaultSlotClasses } from './overrideDefaultSlotClasses';
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ObjectSlotProps, Slots } from './deprecated/getSlots';
