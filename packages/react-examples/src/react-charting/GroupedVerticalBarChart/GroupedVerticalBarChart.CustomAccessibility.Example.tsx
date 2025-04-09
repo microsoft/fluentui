@@ -221,6 +221,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
