@@ -16,6 +16,7 @@ import {
   Margins,
   RefArrayData,
   ScatterChartDataPoint,
+  Chart,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -62,6 +63,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -85,6 +87,14 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
     prevPropsRef.current = props;
   }, [props]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   const _xAxisType: XAxisTypes =
     props.data.lineChartData! &&
@@ -551,6 +561,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
+      componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
