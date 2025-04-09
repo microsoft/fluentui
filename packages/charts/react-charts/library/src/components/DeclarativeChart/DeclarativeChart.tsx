@@ -1,8 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import { DonutChart } from '../DonutChart/index';
-import type { PlotData, PlotlySchema } from '@fluentui/chart-utilities';
-import { isArrayOrTypedArray, isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
+import {
+  decodeBase64Fields,
+  isArrayOrTypedArray,
+  isDateArray,
+  isNumberArray,
+  mapFluentChart,
+  sanitizeJson,
+} from '@fluentui/chart-utilities';
 import {
   isMonthArray,
   updateXValues,
@@ -87,7 +94,20 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   DeclarativeChartProps
 >((props, forwardedRef) => {
   const { plotlySchema } = sanitizeJson(props.chartSchema);
-  const plotlyInput = plotlySchema as PlotlySchema;
+  const chart: OutputChartType = mapFluentChart(plotlySchema);
+  if (!chart.isValid) {
+    throw new Error(`Invalid chart schema: ${chart.errorMessage}`);
+  }
+  let plotlyInput = plotlySchema as PlotlySchema;
+  try {
+    plotlyInput = decodeBase64Fields(plotlyInput);
+  } catch (error) {
+    throw new Error(`Failed to decode plotly schema: ${error}`);
+  }
+  const plotlyInputWithValidData: PlotlySchema = {
+    ...plotlyInput,
+    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
+  };
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const isDarkTheme = useIsDarkTheme();
@@ -101,7 +121,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const onActiveLegendsChange = (keys: string[]) => {
     setActiveLegends(keys);
     if (props.onSchemaChange) {
-      props.onSchemaChange({ plotlySchema: { plotlyInput, selectedLegends: keys } });
+      props.onSchemaChange({ plotlySchema: { plotlyInputWithValidData, selectedLegends: keys } });
     }
   };
 
@@ -128,14 +148,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     renderChartJsx: (chartProps: LineChartProps) => JSX.Element,
     isAreaChart: boolean = false,
   ) => {
-    const xValues = (plotlyInput.data[0] as PlotData).x;
+    const xValues = (plotlyInputWithValidData.data[0] as PlotData).x;
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
     if (isXDate || isXNumber) {
       const chartProps: LineChartProps = {
         ...transformPlotlyJsonToScatterChartProps(
-          { data: plotlyInput.data, layout: plotlyInput.layout },
+          { data: plotlyInputWithValidData.data, layout: plotlyInputWithValidData.layout },
           isAreaChart,
           colorMap,
           isDarkTheme,
@@ -144,13 +164,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       };
       return renderChartJsx(chartProps);
     } else if (isXMonth) {
-      const updatedData = plotlyInput.data.map((dataPoint: PlotData) => ({
+      const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
         x: updateXValues(dataPoint.x),
       }));
       const chartProps: LineChartProps = {
         ...transformPlotlyJsonToScatterChartProps(
-          { data: updatedData, layout: plotlyInput.layout },
+          { data: updatedData, layout: plotlyInputWithValidData.layout },
           isAreaChart,
           colorMap,
           isDarkTheme,
@@ -159,7 +179,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       };
       return renderChartJsx(chartProps);
     }
-    throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+    throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
   };
 
   const exportAsImage = React.useCallback((opts?: ImageExportOptions) => {
@@ -178,23 +198,25 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  switch (plotlyInput.data[0].type) {
+  switch (plotlyInputWithValidData.data[0].type) {
     case 'pie':
       return <DonutChart {...transformPlotlyJsonToDonutProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />;
     case 'bar':
-      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
     case 'scatter':
-      if (plotlyInput.data[0].mode === 'markers') {
-        throw new Error(`Unsupported chart - type :${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
+      if (plotlyInputWithValidData.data[0].mode === 'markers') {
+        throw new Error(
+          `Unsupported chart - type :${plotlyInputWithValidData.data[0]?.type}, mode: ${plotlyInputWithValidData.data[0]?.mode}`,
+        );
       }
-      const isAreaChart = plotlyInput.data.some(
+      const isAreaChart = plotlyInputWithValidData.data.some(
         (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
       );
       const renderChartJsx = (chartProps: LineChartProps) => {
         if (isAreaChart) {
           throw new Error(
-            `Unsupported chart type :${plotlyInput.data[0]?.type}, fill: ${
-              (plotlyInput.data[0] as Partial<PlotData>)?.fill
+            `Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}, fill: ${
+              (plotlyInputWithValidData.data[0] as Partial<PlotData>)?.fill
             }`,
           );
         }
@@ -202,26 +224,30 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       };
       return checkAndRenderChart(renderChartJsx, isAreaChart);
     case 'heatmap':
-      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
     case 'sankey':
-      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
     case 'indicator':
     case 'gauge':
-      throw new Error(`Unsupported chart - type: ${plotlyInput.data[0]?.type}, mode: ${plotlyInput.data[0]?.mode}`);
+      throw new Error(
+        `Unsupported chart - type: ${plotlyInputWithValidData.data[0]?.type}, mode: ${plotlyInputWithValidData.data[0]?.mode}`,
+      );
     case 'histogram':
       return (
         <VerticalBarChart {...transformPlotlyJsonToVBCProps(plotlySchema, colorMap, isDarkTheme)} {...commonProps} />
       );
+    case 'contour':
+      throw new Error(`Unsupported chart - type: ${plotlyInputWithValidData.data[0]?.type}`);
     default:
-      const xValues = (plotlyInput.data[0] as PlotData).x;
-      const yValues = (plotlyInput.data[0] as PlotData).y;
+      const xValues = (plotlyInputWithValidData.data[0] as PlotData).x;
+      const yValues = (plotlyInputWithValidData.data[0] as PlotData).y;
       if (xValues && yValues && xValues.length > 0 && yValues.length > 0) {
         const renderLineChartJsx = (chartProps: LineChartProps) => {
           return <LineChart {...chartProps} />;
         };
         return checkAndRenderChart(renderLineChartJsx);
       }
-      throw new Error(`Unsupported chart type :${plotlyInput.data[0]?.type}`);
+      throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
