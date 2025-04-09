@@ -702,18 +702,29 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
+    readonly adjustedTotalHeight: number;
   } {
     const { barGapMax = 0 } = props;
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
+    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    let sumOfPercent = 0;
+    bars.forEach(point => {
+      let value = (Math.abs(point.data) / totalData) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+    });
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / totalData;
+    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
     return {
       gapHeight,
       heightValueScale,
+      adjustedTotalHeight: sumOfPercent,
     } as const;
   }
 
@@ -879,7 +890,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         return undefined;
       }
 
-      const { gapHeight, heightValueScale } = _getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, adjustedTotalHeight } = _getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -904,8 +915,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.ceil((heightValueScale * _yMax) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.ceil((heightValueScale * _yMax) / 100.0), barMinimumHeight);
+        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
+          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
