@@ -14,7 +14,6 @@ import type { UnknownSlotProps } from '../compose/types';
  *   getSlotOriginalClassNameProp(state.root));
  * ```
  *
- * @param slot The slot to get the className from.
  * @returns The className prop set on the slot by the user, or undefined if not set.
  */
 export const getSlotOriginalClassNameProp = (slot: UnknownSlotProps) => {
