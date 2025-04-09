@@ -96,8 +96,8 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 // @internal
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
-// @public (undocumented)
-export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
+// @public
+export const getSlotOriginalClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
 
 // @public @deprecated
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
