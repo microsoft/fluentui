@@ -162,9 +162,13 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
     const [activeLegend, setActiveLegend] = React.useState<string>('');
     const [YValueHover, setYValueHover] = React.useState<[]>([]);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
-    const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
+    const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>(
+      _injectIndexPropertyInLineChartData(props.data.lineChartData, true),
+    );
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
-    const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
+    const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(
+      (props.legendProps?.selectedLegends?.length ?? 0) > 0,
+    );
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<LineChartDataPoint | null>(null);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<CustomizedCalloutData>();
@@ -193,10 +197,21 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
       [],
     );
 
-    function _injectIndexPropertyInLineChartData(lineChartData?: LineChartPoints[]): LineChartDataWithIndex[] | [] {
+    function _injectIndexPropertyInLineChartData(
+      lineChartData?: LineChartPoints[],
+      isFilterSelectedLegends: boolean = false,
+    ): LineChartDataWithIndex[] | [] {
       const { allowMultipleShapesForPoints = false } = props;
-      return lineChartData
-        ? lineChartData.map((item: LineChartPoints, index: number) => {
+      // Apply filter only if isPropChange is true
+      const filteredData = isFilterSelectedLegends
+        ? lineChartData?.filter(
+            (item: LineChartPoints) =>
+              props.legendProps?.selectedLegends?.includes(item.legend) ||
+              props.legendProps?.selectedLegend === item.legend,
+          )
+        : lineChartData;
+      return filteredData
+        ? filteredData.map((item: LineChartPoints, index: number) => {
             let color: string;
             if (typeof item.color === 'undefined') {
               color = getNextColor(index, 0);
@@ -1013,7 +1028,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         d3Select(`#${_verticalLine}`)
           .attr('transform', () => `translate(${_xAxisScale(pointToHighlight.x)}, ${_yAxisScale(pointToHighlight.y)})`)
           .attr('visibility', 'visibility')
-          .attr('y2', `${lineHeight - _yAxisScale(pointToHighlight.y)}`);
+          .attr('y2', `${lineHeight - 5 - _yAxisScale(pointToHighlight.y)}`);
 
         setNearestCircleToHighlight(pointToHighlight);
         updatePosition(mouseEvent.clientX, mouseEvent.clientY);
@@ -1083,7 +1098,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
         d3Select(`#${_verticalLine}`)
           .attr('transform', () => `translate(${_xAxisScale(x)}, ${_yAxisScale(y)})`)
           .attr('visibility', 'visibility')
-          .attr('y2', `${lineHeight - _yAxisScale(y)}`);
+          .attr('y2', `${lineHeight - 5 - _yAxisScale(y)}`);
 
         if (_uniqueCallOutID !== circleId) {
           _uniqueCallOutID = circleId;
