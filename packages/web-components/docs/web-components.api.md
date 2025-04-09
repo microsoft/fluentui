@@ -599,6 +599,7 @@ export class BaseDropdown extends FASTElement {
     activeIndexChanged(prev: number | undefined, next: number | undefined): void;
     ariaLabelledBy: string;
     changeHandler(e: Event): boolean | void;
+    checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
@@ -635,6 +636,7 @@ export class BaseDropdown extends FASTElement {
     inputHandler(e: InputEvent): boolean | void;
     protected insertControl(): void;
     keydownHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<Node>;
     // @internal
     listbox: Listbox;
     // @internal
@@ -653,6 +655,7 @@ export class BaseDropdown extends FASTElement {
     openChanged(prev: boolean | undefined, next: boolean | undefined): void;
     get options(): DropdownOption[];
     placeholder: string;
+    reportValidity(): boolean;
     required: boolean;
     // @internal
     get selectedIndex(): number;
@@ -667,9 +670,11 @@ export class BaseDropdown extends FASTElement {
     protected updateFreeformOption(value?: string): void;
     // @internal
     get validationMessage(): string;
+    get validity(): ValidityState;
     get value(): string | null;
     set value(next: string | null);
     valueAttribute: string;
+    get willValidate(): boolean;
 }
 
 // @public
