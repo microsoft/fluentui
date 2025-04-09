@@ -518,7 +518,11 @@ export class BaseDropdown extends FASTElement {
       this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this._validationFallbackMessage;
+    if (!this.disabled && this.required && this.listbox.selectedOptions.length === 0) {
+      return this._validationFallbackMessage;
+    }
+
+    return '';
   }
 
   /**
