@@ -40,6 +40,7 @@ import {
   calculateAppropriateBarWidth,
   useRtl,
   areArraysEqual,
+  calculateLongestLabelWidth,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -972,6 +973,8 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
 
     /** Total width available to render the bars */
     const totalWidth = containerWidth - (margins.left! + MIN_DOMAIN_MARGIN) - (margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the bars changes wrt the bar width */
+    const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
 
     if (_xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(props.xAxisOuterPadding, props.xAxisPadding)) {
@@ -979,8 +982,6 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         // to adjust the space before the first bar and after the last bar.
         _domainMargin = 0;
       } else if (props.barWidth !== 'auto') {
-        /** Rate at which the space between the bars changes wrt the bar width */
-        const barGapRate = _xAxisInnerPadding / (1 - _xAxisInnerPadding);
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
@@ -991,6 +992,19 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           // Center align the chart by setting equal left and right margins for domain
           _domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
+      } else if (props.mode === 'plotly' && _xAxisLabels.length > 1) {
+        // Calculate the remaining width after rendering bars at their maximum allowable width
+        const bandwidth = totalWidth / (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate);
+        const barWidth = getBarWidth(props.barWidth, props.maxBarWidth, bandwidth);
+        let reqWidth = (_xAxisLabels.length + (_xAxisLabels.length - 1) * barGapRate) * barWidth;
+        const margin1 = (totalWidth - reqWidth) / 2;
+
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(_xAxisLabels) + 20;
+        reqWidth = (_xAxisLabels.length - _xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
+
+        _domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
       const data = (props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
