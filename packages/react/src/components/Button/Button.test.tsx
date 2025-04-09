@@ -99,8 +99,14 @@ describe('Button', () => {
 
     it('can handle elementRef', () => {
       const ref = React.createRef<HTMLElement>();
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      render(<DefaultButton elementRef={ref}>Content</DefaultButton>);
+      render(
+        <DefaultButton
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          elementRef={ref}
+        >
+          Content
+        </DefaultButton>,
+      );
       expect(ref.current).toBeTruthy();
     });
 

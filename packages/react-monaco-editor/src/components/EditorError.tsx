@@ -20,8 +20,12 @@ export const EditorError: React.FunctionComponent<IEditorErrorProps> = props => 
   const errorArr = !error ? [] : Array.isArray(error) ? error : error.split('\n');
 
   return errorArr.length ? (
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    <MessageBar messageBarType={MessageBarType.error} truncated overflowButtonAriaLabel="Show more">
+    <MessageBar
+      messageBarType={MessageBarType.error}
+      truncated
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      overflowButtonAriaLabel="Show more"
+    >
       There {errorArr.length === 1 ? 'is an error' : 'are errors'} preventing the code from being rendered:
       {errorArr!.map(err => {
         return (
