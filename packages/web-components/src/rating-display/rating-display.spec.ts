@@ -75,7 +75,7 @@ test.describe('Rating Display', () => {
     });
 
     await expect(element).toHaveJSProperty('color', 'brand');
-    await expect(element).toHaveCustomState('brand');
+    await expect(element).toHaveAttribute('color', 'brand');
 
     for (const icon of await filledIcons.all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(15, 108, 189)');
@@ -90,7 +90,7 @@ test.describe('Rating Display', () => {
     });
 
     await expect(element).toHaveJSProperty('color', 'neutral');
-    await expect(element).toHaveCustomState('neutral');
+    await expect(element).toHaveAttribute('color', 'neutral');
 
     for (const icon of await filledIcons.all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(36, 36, 36)');
@@ -170,7 +170,7 @@ test.describe('Rating Display', () => {
       node.size = 'small';
     });
 
-    await expect(element).toHaveCustomState('small');
+    await expect(element).toHaveAttribute('size', 'small');
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.small);
     await expect(icon).toHaveCSS('width', '12px');
@@ -183,7 +183,7 @@ test.describe('Rating Display', () => {
       node.size = 'large';
     });
 
-    await expect(element).toHaveCustomState('large');
+    await expect(element).toHaveAttribute('size', 'large');
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.large);
     await expect(icon).toHaveCSS('width', '20px');

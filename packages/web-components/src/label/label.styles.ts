@@ -15,7 +15,6 @@ import {
   lineHeightBase400,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
-import { disabledState, largeState, semiboldState, smallState } from '../styles/states/index.js';
 
 /** Label styles
  * @public
@@ -38,22 +37,22 @@ export const styles = css`
     margin-inline-start: ${spacingHorizontalXS};
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
 
-  :host(${largeState}) {
+  :host([size='large']) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host(:is(${largeState}, ${semiboldState})) {
+  :host(:is([size='large'], [weight='semibold'])) {
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(${disabledState}),
-  :host(${disabledState}) .asterisk {
+  :host([disabled]),
+  :host([disabled]) .asterisk {
     color: ${colorNeutralForegroundDisabled};
   }
 `;

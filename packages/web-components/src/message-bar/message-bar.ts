@@ -1,5 +1,4 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { swapStates } from '../utils/element-internals.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 /**
@@ -34,15 +33,6 @@ export class MessageBar extends FASTElement {
   public shape?: MessageBarShape;
 
   /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined) {
-    swapStates(this.elementInternals, prev, next, MessageBarShape);
-  }
-
-  /**
    * Sets the layout of the control.
    *
    * @public
@@ -53,15 +43,6 @@ export class MessageBar extends FASTElement {
   public layout?: MessageBarLayout;
 
   /**
-   * Handles changes to the layout attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined) {
-    swapStates(this.elementInternals, prev, next, MessageBarLayout);
-  }
-
-  /**
    * Sets the intent of the control.
    *
    * @public
@@ -70,15 +51,6 @@ export class MessageBar extends FASTElement {
    */
   @attr
   public intent?: MessageBarIntent;
-
-  /**
-   * Handles changes to the intent attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined) {
-    swapStates(this.elementInternals, prev, next, MessageBarIntent);
-  }
 
   /**
    * @public
