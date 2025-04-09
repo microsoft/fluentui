@@ -62,8 +62,12 @@ describe('PersonaCoin', () => {
 
   it('renders correctly with onRender callback', () => {
     const component = create(
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />,
+      <PersonaCoin
+        {...coinProp}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        onRenderCoin={wrapPersona(coinProp)}
+        onRenderInitials={wrapPersona(coinProp)}
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
