@@ -268,7 +268,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     const donutMarginVertical = props.hideLabels ? 0 : 40;
     const outerRadius = Math.min(_width! - donutMarginHorizontal, _height! - donutMarginVertical) / 2;
     const chartData = _elevateToMinimums(points.filter((d: ChartDataPoint) => d.data! >= 0));
-    const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
+    const valueInsideDonut = props.innerRadius !== 0 ? _valueInsideDonut(props.valueInsideDonut!, chartData!) : '';
     const focusAttributes = useFocusableGroup();
     return !_isChartEmpty() ? (
       <div
