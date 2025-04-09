@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.8",
+    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@fluentui/react-jsx-runtime": "^9.0.51",
     "@fluentui/react-shared-contexts": "^9.22.0",
     "@fluentui/react-tabster": "^9.24.1",

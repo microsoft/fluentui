@@ -105,7 +105,7 @@ const useStyles = makeStyles({
     },
   },
 
-  // TODO: Add semantic tokens for inverted colors (not yet defined).
+  // Semantic-tokens does not include inverted tokens, use existing tokens for now.
   inverted: {
     color: tokens.colorBrandForegroundInverted,
     ':hover': {
