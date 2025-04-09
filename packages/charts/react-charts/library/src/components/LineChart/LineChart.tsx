@@ -5,7 +5,7 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { Legend, Legends } from '../Legends/index';
-import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
+import { line as d3Line } from 'd3-shape';
 import { useId } from '@fluentui/react-utilities';
 import { find } from '../../utilities/index';
 import {
@@ -37,6 +37,7 @@ import {
   getColorFromToken,
   useRtl,
   formatDate,
+  getCurveFactory,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -481,15 +482,16 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
         let gapIndex = 0;
         const gaps = _points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
+        const lineCurve = _points[i].lineOptions?.curve;
 
         // Use path rendering technique for larger datasets to optimize performance.
-        if (props.optimizeLargeData && _points[i].data.length > 1) {
+        if ((props.optimizeLargeData || lineCurve) && _points[i].data.length > 1) {
           const line = d3Line()
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .x((d: any) => _xAxisScale(d[0]))
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .y((d: any) => _yAxisScale(d[1]))
-            .curve(d3curveLinear);
+            .curve(getCurveFactory(lineCurve));
 
           const lineId = `${_lineId}_${i}`;
           const borderId = `${_borderId}_${i}`;
