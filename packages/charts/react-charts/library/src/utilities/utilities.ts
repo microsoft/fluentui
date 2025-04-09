@@ -1,5 +1,5 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -421,6 +421,35 @@ export function useRtl() {
   return dir === 'rtl';
 }
 
+function isPowerOf10(num: number): boolean {
+  const roundedfinalYMax = handleFloatingPointPrecisionError(num);
+  return Math.log10(roundedfinalYMax) % 1 === 0;
+}
+
+//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
+function handleFloatingPointPrecisionError(num: number): number {
+  const rounded = Math.round(num);
+  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
+}
+
+/**
+ * This method is used to calculate the rounded tick values for the y-axis
+ * @param {number} minVal
+ * @param {number} maxVal
+ * @param {number} splitInto
+ * @returns {number[]}
+ */
+function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
+  const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
+  const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
+  const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
+  const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(finalYmax)) {
+    ticks.pop();
+  }
+  return ticks;
+}
+
 /**
  * This method used for creating data points for the y axis.
  * @export
@@ -435,13 +464,37 @@ export function prepareDatapoints(
   minVal: number,
   splitInto: number,
   isIntegralDataset: boolean,
+  roundedTicks?: boolean,
 ): number[] {
+  if (roundedTicks) {
+    return calculateRoundedTicks(minVal, maxVal, splitInto);
+  }
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto;
-  const dataPointsArray: number[] = [minVal, minVal + val];
+  /*
+    For cases where we have negative and positive values
+    The dataPointsArray is filled from 0 to minVal by val difference
+    Then the array is reversed and values from 0(excluding 0) to maxVal are appended
+    This ensures presence of 0 to act as an anchor reference.
+    For simple cases where the scale may not encounter such a need for 0,
+    We simply fill from minVal to maxVal
+  */
+  const dataPointsArray: number[] = [minVal < 0 && maxVal >= 0 ? 0 : minVal];
+  /*For the case of all positive or all negative, we need to add another value
+     in array for atleast one interval, but in case of mix of positive and negative,
+     there will always be one more entry that will be added by the logic we have*/
+  if (dataPointsArray[0] === minVal) {
+    dataPointsArray.push(minVal + val);
+  }
+  if (minVal < 0 && maxVal >= 0) {
+    while (dataPointsArray[dataPointsArray.length - 1] > minVal) {
+      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] - val);
+    }
+    dataPointsArray.reverse();
+  }
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
   }
@@ -462,12 +515,21 @@ export function createYAxis(
   barWidth: number,
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, chartType, useSecondaryYScale);
+      return createYAxisForOtherCharts(
+        yAxisParams,
+        isRtl,
+        axisData,
+        isIntegralDataset,
+        chartType,
+        useSecondaryYScale,
+        roundedTicks,
+      );
   }
 }
 
@@ -511,6 +573,7 @@ export function createYAxisForOtherCharts(
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -531,8 +594,8 @@ export function createYAxisForOtherCharts(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
   if (chartType === ChartTypes.ScatterChart) {
@@ -541,7 +604,7 @@ export function createYAxisForOtherCharts(
     yMax = yMax + yPadding;
   }
   const yAxisScale = d3ScaleLinear()
-    .domain([yMin, yMax])
+    .domain([domainValues[0], yMax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);

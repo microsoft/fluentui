@@ -7,6 +7,9 @@ import { TabsAppearance, TabsOrientation, type TabsSize } from './tabs.options.j
 
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
+/**
+ * @deprecated - Use tablist instead
+ */
 export class Tabs extends BaseTabs {
   /**
    * activeTabData

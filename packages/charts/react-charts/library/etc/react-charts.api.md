@@ -152,6 +152,7 @@ export interface CartesianChartProps {
         mode: 'none' | 'min-width';
     };
     rotateXAxisLables?: boolean;
+    roundedTicks?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
@@ -518,6 +519,7 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    componentRef?: React.RefObject<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -1270,12 +1272,14 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: VerticalBarChartDataPoint[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
+    roundCorners?: boolean;
     styles?: VerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;

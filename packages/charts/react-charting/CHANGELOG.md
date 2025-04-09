@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 03 Apr 2025 07:19:55 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Apr 2025 07:20:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.69)
+
+Tue, 08 Apr 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.68..@fluentui/react-charting_v5.23.69)
+
+### Patches
+
+- fix: handle blank donut chart when labels exist without corresponding values in plotly json ([PR #34188](https://github.com/microsoft/fluentui/pull/34188) by kumarkshitij@microsoft.com)
 
 ## [5.23.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.68)
 
