@@ -330,6 +330,8 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker/library @microsoft/cxe-prg
 packages/react-components/react-color-picker/stories @microsoft/cxe-prg
+packages/react-components/component-selector-preview/library @microsoft/teams-prg
+packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
