@@ -57,16 +57,14 @@ export const styles = css`
   }
 
   :host([orientation='vertical']) {
+    align-items: center;
+    flex-direction: column;
     height: 100%;
     min-height: 84px;
   }
+
   :host([orientation='vertical']):empty {
     min-height: 20px;
-  }
-
-  :host([orientation='vertical']) {
-    flex-direction: column;
-    align-items: center;
   }
 
   :host([orientation='vertical'][inset])::before {
