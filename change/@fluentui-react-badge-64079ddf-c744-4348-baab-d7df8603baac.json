@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "fix: fix invisible text in Badge component when using subtle color with ghost and outline appearances by changing color token from colorNeutralForegroundStaticInverted to colorNeutralForeground3",
+  "comment": "fix: invisible text in Badge component when using subtle color with ghost and outline appearances by changing color token from colorNeutralForegroundStaticInverted to colorNeutralForeground3",
   "packageName": "@fluentui/react-badge",
-  "email": "1981616118@qq.com",
+  "email": "HangWhy@outlook.com",
   "dependentChangeType": "patch"
 }
