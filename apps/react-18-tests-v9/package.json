@@ -12,7 +12,8 @@
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
     "e2e:local": "cypress open --component",
-    "e2e": "cypress run --component"
+    "e2e": "cypress run --component",
+    "e2e:integration": "cypress run --component --config-file cypress-react-18.config.ts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
