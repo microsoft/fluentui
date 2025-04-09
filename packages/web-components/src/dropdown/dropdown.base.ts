@@ -914,7 +914,7 @@ export class BaseDropdown extends FASTElement {
       this.elementInternals.setValidity(
         { valueMissing, ...flags },
         message ?? this.validationMessage,
-        anchor ?? this.listbox.enabledOptions[0],
+        anchor ?? this.control,
       );
     }
   }
