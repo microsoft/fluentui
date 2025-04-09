@@ -319,6 +319,51 @@ test.describe('Dropdown', () => {
 
       await expect(element.locator('fluent-option[value=apple]')).toHaveJSProperty('selected', false);
     });
+
+    test('should display a validation message when the dropdown is required and the form is submitted without a value', async ({
+      fastPage,
+      page,
+      browserName,
+    }) => {
+      const { element } = fastPage;
+      const options = element.locator('fluent-option');
+      const submitButton = page.locator('button[type=submit]');
+
+      const messages: Record<string, string> = {
+        chromium: 'Please select one of these options.',
+        edge: 'Please select one of these options.',
+        firefox: 'Please select one of these options.',
+        webkit: 'Select one of these options',
+      };
+
+      await fastPage.setTemplate(/* html */ `
+        <form action="foo">
+          <fluent-dropdown name="fruit" required>
+            <fluent-listbox>
+              <fluent-option value="apple">Apple</fluent-option>
+              <fluent-option value="banana">Banana</fluent-option>
+              <fluent-option value="orange">Orange</fluent-option>
+              <fluent-option value="mango">Mango</fluent-option>
+              <fluent-option value="kiwi">Kiwi</fluent-option>
+              <fluent-option value="cherry">Cherry</fluent-option>
+              <fluent-option value="grapefruit">Grapefruit</fluent-option>
+              <fluent-option value="papaya">Papaya</fluent-option>
+            </fluent-listbox>
+          </fluent-dropdown>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+
+      await expect.soft(element).toHaveJSProperty('validationMessage', messages[browserName]);
+
+      await element.click();
+
+      await options.first().click();
+
+      await expect(element).toHaveJSProperty('validationMessage', '');
+
+      await submitButton.click();
+    });
   });
 
   test.describe('type="combobox"', () => {
