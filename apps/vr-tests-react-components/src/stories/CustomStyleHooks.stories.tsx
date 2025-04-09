@@ -9,8 +9,8 @@ import type {
   ToggleButtonState,
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
-import { overrideDefaultSlotClasses } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -45,7 +45,11 @@ export const ButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      overrideDefaultSlotClasses(componentState.root, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -64,7 +68,11 @@ export const CompoundButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useCompoundButtonStyles_unstable: (state: unknown) => {
       const componentState = state as CompoundButtonState;
-      overrideDefaultSlotClasses(componentState.root, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -83,7 +91,11 @@ export const MenuButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useMenuButtonStyles_unstable: (state: unknown) => {
       const componentState = state as MenuButtonState;
-      overrideDefaultSlotClasses(componentState.root, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -103,10 +115,18 @@ export const SplitButtonCustomStyles = () => {
     useSplitButtonStyles_unstable: (state: unknown) => {
       const componentState = state as SplitButtonState;
       if (componentState.menuButton) {
-        overrideDefaultSlotClasses(componentState.menuButton, styles.button);
+        componentState.menuButton.className = mergeClasses(
+          componentState.menuButton.className,
+          styles.button,
+          getSlotClassNameProp_unstable(componentState.menuButton),
+        );
       }
       if (componentState.primaryActionButton) {
-        overrideDefaultSlotClasses(componentState.primaryActionButton, styles.button);
+        componentState.primaryActionButton.className = mergeClasses(
+          componentState.primaryActionButton.className,
+          styles.button,
+          getSlotClassNameProp_unstable(componentState.primaryActionButton),
+        );
       }
     },
   };
@@ -126,7 +146,11 @@ export const ToggleButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useToggleButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ToggleButtonState;
-      overrideDefaultSlotClasses(componentState.root, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -145,7 +169,11 @@ export const ClassNamePropWithCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      overrideDefaultSlotClasses(componentState.root, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 

@@ -10,7 +10,7 @@ export {
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
-  overrideDefaultSlotClasses,
+  getSlotClassNameProp as getSlotClassNameProp_unstable,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_ORIGINAL_CLASS_NAME_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,

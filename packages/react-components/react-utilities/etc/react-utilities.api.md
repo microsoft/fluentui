@@ -96,6 +96,9 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 // @internal
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
+// @public (undocumented)
+export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
+
 // @public @deprecated
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
@@ -163,9 +166,6 @@ export type OnSelectionChangeData = {
 function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
     renderByDefault?: boolean;
 } & SlotOptions<Props>): SlotComponentType<Props> | undefined;
-
-// @public (undocumented)
-export const overrideDefaultSlotClasses: (slot: UnknownSlotProps, ...classNames: (string | false | undefined)[]) => void;
 
 // @internal (undocumented)
 export interface PriorityQueue<T> {
