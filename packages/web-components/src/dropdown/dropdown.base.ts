@@ -235,6 +235,8 @@ export class BaseDropdown extends FASTElement {
           .forEach((x, i) => {
             x.selected = this.multiple || i === 0;
           });
+
+        this.setValidity();
       });
     }
   }
@@ -425,6 +427,8 @@ export class BaseDropdown extends FASTElement {
 
       this.selectOption(i);
     });
+
+    this.setValidity();
   }
 
   /**
