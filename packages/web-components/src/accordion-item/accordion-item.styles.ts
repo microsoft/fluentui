@@ -157,7 +157,7 @@ export const styles = css`
 
   /* --- marker-position attr styles --- */
 
-  :host([marker-position='end']) :slotted([slot='start']) {
+  :host([marker-position='end']) ::slotted([slot='start']) {
     grid-column: 1 / span 1;
   }
 

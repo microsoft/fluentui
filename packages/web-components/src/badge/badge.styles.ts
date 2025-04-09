@@ -22,9 +22,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  :host([shape='rounded'][size='tiny']),
-  :host([shape='rounded'][size='extra-small']),
-  :host([shape='rounded'][size='small']) {
+  :host([shape='rounded']:is([size='tiny'], [size='extra-small'], [size='small'])) {
     border-radius: ${borderRadiusSmall};
   }
 

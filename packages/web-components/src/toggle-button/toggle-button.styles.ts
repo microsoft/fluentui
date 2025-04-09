@@ -116,10 +116,9 @@ export const styles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     :host(${pressedState}),
-    :host(${pressedState}[appearance='primary']),
-    :host(${pressedState}[appearance='subtle']),
-    :host(${pressedState}[appearance='outline']),
-    :host(${pressedState}[appearance='transparent']) {
+    :host(
+        ${pressedState}:is([appearance='primary'], [appearance='subtle'], [appearance='outline'], [appearance='transparent'])
+      ) {
       background: SelectedItem;
       color: SelectedItemText;
     }

@@ -79,14 +79,12 @@ export const styles = css`
     fill: var(--icon-color-empty);
   }
 
-  :host([color='neutral']:is([value^='-'], [value='0'])) svg,
-  :host([color='neutral']:not([value])) svg,
+  :host([color='neutral']:is([value^='-'], [value='0'], :not([value]))) svg,
   :host([color='neutral']) svg[selected] ~ svg {
     --icon-color-empty: ${colorNeutralBackground1Pressed};
   }
 
-  :host([color='brand']:is([value^='-'], [value='0'])) svg,
-  :host([color='brand']:not([value])) svg,
+  :host([color='brand']:is([value^='-'], [value='0'], :not([value]))) svg,
   :host([color='brand']) svg[selected] ~ svg {
     --icon-color-empty: ${colorBrandStroke2};
   }

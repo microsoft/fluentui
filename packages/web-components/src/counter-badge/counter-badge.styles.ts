@@ -10,9 +10,7 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
   }
 
-  :host([shape='rounded'][size='tiny']),
-  :host([shape='rounded'][size='extra-small']),
-  :host([shape='rounded'][size='small']) {
+  :host([shape='rounded']:is([size='tiny'], [size='extra-small'], [size='small'])) {
     border-radius: ${borderRadiusSmall};
   }
 
@@ -21,8 +19,7 @@ export const styles = css`
   ${badgeGhostStyles}
   ${badgeBaseStyles}
 
-  :host([dot]),
-  :host([dot][appearance][size]) {
+  :host(:is([dot], [dot][appearance][size])) {
     min-width: auto;
     width: 6px;
     height: 6px;

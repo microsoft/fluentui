@@ -62,14 +62,12 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
-  :host(:is([appearance='primary'], [appearance='primary']:hover, [appearance='primary']:active))
-    ::slotted([slot='description']) {
+  :host(:is([appearance='primary'], [appearance='primary']:is(:hover, :active))) ::slotted([slot='description']) {
     color: ${colorNeutralForegroundOnBrand};
   }
 
-  :host(:is([appearance='subtle'], [appearance='subtle']:hover, [appearance='subtle']:active))
-    ::slotted([slot='description']),
-  :host([appearance='transparent']) ::slotted([slot='description']) {
+  :host(:is([appearance='transparent'], [appearance='subtle'], [appearance='subtle']:is(:hover, :active)))
+    ::slotted([slot='description']) {
     color: ${colorNeutralForeground2};
   }
 
