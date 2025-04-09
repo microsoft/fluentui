@@ -8,6 +8,7 @@ import {
   Theme,
   Input,
   makeStyles,
+  MenuCheckedValueChangeData,
 } from '@fluentui/react-components';
 
 import { ColorRampItem } from './ColorRamp.stories';
@@ -70,7 +71,7 @@ export const Colors = () => {
   const updateSearchDebounced = useDebounce(searchToken, 220);
 
   const onInputChange = React.useCallback(
-    (_: React.ChangeEvent<HTMLInputElement>, { value }) => {
+    (_: React.ChangeEvent<HTMLInputElement>, { value }: { value: string }) => {
       updateSearchDebounced(value.trim().toLocaleLowerCase());
       setInputValue(value.trim().toLocaleLowerCase());
       setCheckedValue(undefined);
@@ -79,7 +80,7 @@ export const Colors = () => {
   );
 
   const applyFilter = React.useCallback(
-    (_: React.MouseEvent | React.KeyboardEvent, { name, checkedItems }) => {
+    (_: React.MouseEvent | React.KeyboardEvent, { name, checkedItems }: MenuCheckedValueChangeData) => {
       // Filteringchecked items remove the selection and display the full list of tokens
       if (checkedItems[0] === checkedValue?.usecase[0]) {
         setCheckedValue(undefined);
