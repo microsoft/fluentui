@@ -117,7 +117,6 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
           centerLegends
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
-          selectedLegends={selectedLegends}
           onChange={_onLegendSelectionChange}
         />
       );
