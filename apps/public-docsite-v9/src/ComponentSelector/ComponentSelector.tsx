@@ -216,7 +216,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     const result = groups.map(group => {
       group.cards = [];
       definitionsWithDisplayName.forEach(definition => {
-        if (hasQuestions(definition.name, groups, questions) && group.tags.includes(definition.component)) {
+        if (hasQuestions(definition.name, groups, questions) && group.tags.includes(definition.name)) {
           const selected = !!selectedComponents.find(component => definition.name === component.name);
           const card = (
             <>

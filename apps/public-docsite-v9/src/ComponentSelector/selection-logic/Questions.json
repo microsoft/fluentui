@@ -51,13 +51,13 @@
       },
       {
         "value": "appearanceAsLink",
-        "text": "it looks like a link and it navigates to an external page"
+        "text": "it looks like a link and it navigates to a different page"
       }
     ]
   },
   {
     "id": "canSelectMultipleChoices",
-    "question": "Can you select multiple choices?",
+    "question": "Can you select multiple choices within a group of these components?",
     "answers": [
       {
         "value": "multipleChoices",
@@ -99,22 +99,6 @@
       }
     ]
   },
-
-  {
-    "id": "isInstantAction",
-    "question": "Does the action need to be instant?",
-    "answers": [
-      {
-        "value": "isInstantAction",
-        "comment": "when it is instant then return switch component",
-        "text": "it should instantly make the change"
-      },
-      {
-        "value": "isNotInstantAction",
-        "text": "you have to click a 'save' or 'submit' button to implement and confirm the change"
-      }
-    ]
-  },
   {
     "id": "hasInteractiveContent",
     "question": "What is the Primary Purpose?",
@@ -135,7 +119,7 @@
     "answers": [
       {
         "value": "appearsOnHover",
-        "text": "on hover and on focus with keyboard"
+        "text": "on hover or on focus with keyboard"
       },
       {
         "value": "appearOnClick",
