@@ -3913,13 +3913,13 @@ export type TabOptions = StartEndOptions<Tab>;
 
 // Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class TabPanel extends FASTElement {
 }
 
 // Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -3936,7 +3936,7 @@ export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class Tabs extends BaseTabs {
     // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;
@@ -3965,7 +3965,7 @@ export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
 
 // Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
 
 // @public

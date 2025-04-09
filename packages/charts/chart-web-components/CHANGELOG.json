@@ -2,6 +2,36 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Wed, 09 Apr 2025 04:06:41 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.13",
+      "version": "0.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/chart-web-components",
+            "comment": "Bump @fluentui/web-components to v3.0.0-beta.89",
+            "commit": "5a43d14f3b1ee1035832588bb7b4be1b5c1533c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Apr 2025 04:07:28 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.12",
+      "version": "0.0.12",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Mar 2025 04:07:36 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.12",
       "version": "0.0.12",

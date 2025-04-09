@@ -6,7 +6,13 @@
 
 /// <reference types="react" />
 
+import { CurveFactory } from 'd3-shape';
 import * as React_2 from 'react';
+import { RefObject } from 'react';
+import { SankeyGraph } from 'd3-sankey';
+import { SankeyLayout } from 'd3-sankey';
+import { SankeyLink } from 'd3-sankey';
+import { SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
@@ -17,8 +23,50 @@ export interface AccessibilityProps {
     ariaLabelledBy?: string;
 }
 
+// @public
+export function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void;
+
 // @public (undocumented)
 export const ARC_PADDING = 2;
+
+// @public (undocumented)
+export const AreaChart: React_2.FunctionComponent<AreaChartProps>;
+
+// @public (undocumented)
+export interface AreaChartAreaPoint {
+    // (undocumented)
+    values: AreaChartDataSetPoint;
+    // (undocumented)
+    xVal: string | number;
+}
+
+// @public (undocumented)
+export interface AreaChartDataSetPoint {
+    // (undocumented)
+    [key: string]: number | string | number[];
+}
+
+// @public
+export interface AreaChartProps extends CartesianChartProps {
+    culture?: string;
+    data: ChartProps;
+    enableGradient?: boolean;
+    enablePerfOptimization?: boolean;
+    mode?: 'tozeroy' | 'tonexty';
+    onRenderCalloutPerDataPoint?: RenderFunction<CustomizedCalloutData>;
+    onRenderCalloutPerStack?: RenderFunction<CustomizedCalloutData>;
+    // (undocumented)
+    optimizeLargeData?: boolean;
+    styles?: CartesianChartStyles;
+}
+
+// @public
+export interface AreaChartStyleProps extends CartesianChartStyleProps {
+}
+
+// @public
+export interface AreaChartStyles extends CartesianChartStyles {
+}
 
 // @public (undocumented)
 export interface Basestate {
@@ -104,6 +152,7 @@ export interface CartesianChartProps {
         mode: 'none' | 'min-width';
     };
     rotateXAxisLables?: boolean;
+    roundedTicks?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
@@ -251,6 +300,7 @@ export interface ChartProps {
     lineChartData?: LineChartPoints[];
     pointLineOptions?: SVGProps<SVGLineElement>;
     pointOptions?: SVGProps<SVGCircleElement>;
+    SankeyChartData?: SankeyChartData;
 }
 
 // @public (undocumented)
@@ -425,6 +475,18 @@ export interface DonutChartStyles {
 }
 
 // @public (undocumented)
+export interface DPointType {
+    // (undocumented)
+    values: {
+        0: number;
+        1: number;
+        data: {};
+    };
+    // (undocumented)
+    xVal: number | Date;
+}
+
+// @public (undocumented)
 export interface EventsAnnotationProps {
     // (undocumented)
     events: EventAnnotation[];
@@ -457,6 +519,7 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    componentRef?: React.RefObject<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -517,6 +580,9 @@ export type GaugeValueFormat = 'percentage' | 'fraction';
 export const getChartValueLabel: (chartValue: number, minValue: number, maxValue: number, chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string) | undefined, forCallout?: boolean) => string;
 
 // @public (undocumented)
+export const getColorContrast: (c1: string, c2: string) => number;
+
+// @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
@@ -561,6 +627,9 @@ export interface GroupedVerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
 }
 
+// @public
+export function groupNodesByColumn(graph: SankeyChartData): NodesInColumns;
+
 // @public (undocumented)
 export interface GVBarChartSeriesPoint {
     callOutAccessibilityData?: AccessibilityProps;
@@ -586,6 +655,58 @@ export interface GVForBarChart {
 // @public (undocumented)
 export interface GVSingleDataPoint {
     [key: string]: GVDataPoint;
+}
+
+// @public (undocumented)
+export const HeatMapChart: React_2.FunctionComponent<HeatMapChartProps>;
+
+// @public (undocumented)
+export interface HeatMapChartData {
+    // (undocumented)
+    data: HeatMapChartDataPoint[];
+    legend: string;
+    value: number;
+}
+
+// @public (undocumented)
+export interface HeatMapChartDataPoint {
+    callOutAccessibilityData?: AccessibilityProps;
+    descriptionMessage?: string;
+    onClick?: VoidFunction;
+    ratio?: [number, number];
+    rectText?: string | number;
+    // (undocumented)
+    value: number;
+    // (undocumented)
+    x: string | Date | number;
+    // (undocumented)
+    y: string | Date | number;
+}
+
+// @public
+export interface HeatMapChartProps extends CartesianChartProps {
+    chartTitle?: string;
+    culture?: string;
+    data: HeatMapChartData[];
+    domainValuesForColorScale: number[];
+    rangeValuesForColorScale: string[];
+    showYAxisLables?: boolean;
+    sortOrder?: 'none' | 'alphabetical';
+    styles?: HeatMapChartStyles;
+    xAxisDateFormatString?: string;
+    xAxisNumberFormatString?: string;
+    xAxisStringFormatter?: (point: string) => string;
+    yAxisDateFormatString?: string;
+    yAxisNumberFormatString?: string;
+    yAxisStringFormatter?: (point: string) => string;
+}
+
+// @public
+export interface HeatMapChartStyles extends CartesianChartStyles {
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    text?: string;
 }
 
 // @public
@@ -641,6 +762,9 @@ export enum HorizontalBarChartVariant {
 }
 
 // @public (undocumented)
+export const HorizontalBarChartWithAxis: React_2.FunctionComponent<HorizontalBarChartWithAxisProps>;
+
+// @public (undocumented)
 export interface HorizontalBarChartWithAxisDataPoint {
     callOutAccessibilityData?: AccessibilityProps;
     color?: string;
@@ -650,6 +774,40 @@ export interface HorizontalBarChartWithAxisDataPoint {
     xAxisCalloutData?: string;
     y: number | string;
     yAxisCalloutData?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisProps extends CartesianChartProps {
+    barHeight?: number;
+    chartTitle?: string;
+    colors?: string[];
+    culture?: string;
+    data?: HorizontalBarChartWithAxisDataPoint[];
+    enableGradient?: boolean;
+    onRenderCalloutPerDataPoint?: RenderFunction<HorizontalBarChartWithAxisDataPoint>;
+    roundCorners?: boolean;
+    showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
+    styles?: HorizontalBarChartWithAxisStyles;
+    useSingleColor?: boolean;
+    yAxisPadding?: number;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyleProps extends CartesianChartStyleProps {
+    legendColor?: string;
+}
+
+// @public
+export interface HorizontalBarChartWithAxisStyles extends CartesianChartStyles {
+    chartLabel?: string;
+    opacityChangeOnHover: string;
+    xAxisDomain?: string;
+    xAxisText?: string;
+    xAxisTicks?: string;
+    yAxisDomain?: string;
+    yAxisText?: string;
+    yAxisTicks?: string;
 }
 
 // @public (undocumented)
@@ -776,6 +934,7 @@ export interface LineChartGap {
 
 // @public (undocumented)
 export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
+    curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
     strokeDasharray?: string | number;
@@ -846,6 +1005,14 @@ export interface LineDataInVerticalStackedBarChart {
     y: number;
     // (undocumented)
     yAxisCalloutData?: string;
+}
+
+// @public (undocumented)
+export interface MapXToDataSet {
+    // (undocumented)
+    [key: string]: LineChartDataPoint[];
+    // (undocumented)
+    [key: number]: LineChartDataPoint[];
 }
 
 // @public (undocumented)
@@ -927,6 +1094,13 @@ export interface PopoverComponentStyles {
 }
 
 // @public (undocumented)
+export function preRenderLayout(margins: Margins, containerWidth: number, containerHeight: number, isRtl: boolean): {
+    sankey: SankeyLayoutGenerator;
+    height: number;
+    width: number;
+};
+
+// @public (undocumented)
 export interface RefArrayData {
     // (undocumented)
     index?: string;
@@ -936,6 +1110,59 @@ export interface RefArrayData {
 
 // @public (undocumented)
 export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public (undocumented)
+export const SankeyChart: React_2.FunctionComponent<SankeyChartProps>;
+
+// @public
+export interface SankeyChartAccessibilityProps {
+    emptyAriaLabel?: string;
+    linkAriaLabel?: string;
+    nodeAriaLabel?: string;
+}
+
+// @public (undocumented)
+export interface SankeyChartData {
+    // (undocumented)
+    links: SLink[];
+    // (undocumented)
+    nodes: SNode[];
+}
+
+// @public
+export interface SankeyChartProps {
+    accessibility?: SankeyChartAccessibilityProps;
+    borderColorsForNodes?: string[];
+    calloutProps?: ChartPopoverProps;
+    className?: string;
+    colorsForNodes?: string[];
+    componentRef?: RefObject<Chart>;
+    data: ChartProps;
+    enableReflow?: boolean;
+    formatNumberOptions?: Intl.NumberFormatOptions;
+    height?: number;
+    parentRef?: HTMLElement | null;
+    pathColor?: string;
+    shouldResize?: number;
+    strings?: SankeyChartStrings;
+    styles?: SankeyChartStyles;
+    width?: number;
+}
+
+// @public
+export interface SankeyChartStrings {
+    linkFrom?: string;
+}
+
+// @public
+export interface SankeyChartStyles {
+    chartWrapper?: string;
+    links?: string;
+    nodes?: string;
+    nodeTextContainer?: string;
+    root?: string;
+    toolTip?: string;
+}
 
 // @public
 export const ScatterChart: React_2.FunctionComponent<ScatterChartProps>;
@@ -985,6 +1212,12 @@ export interface ShapeProps {
     // (undocumented)
     svgProps: React_2.SVGAttributes<SVGElement>;
 }
+
+// @public (undocumented)
+export type SLink = SankeyLink<SNodeExtra, SLinkExtra>;
+
+// @public (undocumented)
+export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;
 
 // @public
 export const Sparkline: React_2.FunctionComponent<SparklineProps>;
@@ -1039,12 +1272,14 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: VerticalBarChartDataPoint[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
+    roundCorners?: boolean;
     styles?: VerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;

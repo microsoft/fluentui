@@ -1,5 +1,7 @@
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
+import { CurveFactory } from 'd3-shape';
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface Basestate {
   _width?: number;
@@ -402,6 +404,12 @@ export interface LineChartLineOptions extends SVGProps<SVGPathElement> {
    * Color of border around the line. Default white.
    */
   lineBorderColor?: string;
+
+  /**
+   * Defines the type of interpolation used to render the line.
+   * @default 'linear'
+   */
+  curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
 }
 
 /**
@@ -487,6 +495,11 @@ export interface ChartProps {
    * data for the points in the line chart
    */
   lineChartData?: LineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  SankeyChartData?: SankeyChartData;
 
   /**
    * data for the points in the line chart
@@ -731,3 +744,87 @@ export interface CustomizedCalloutData {
 export interface Chart {
   chartContainer: HTMLElement | null;
 }
+
+export interface HeatMapChartDataPoint {
+  x: string | Date | number;
+  y: string | Date | number;
+  value: number;
+  /**
+   * The value/ text to be rendered in the rectange
+   */
+  rectText?: string | number;
+  /**
+   * denomination to show in the callout
+   */
+  ratio?: [number, number];
+  /**
+   * description message to the callout
+   */
+  descriptionMessage?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: AccessibilityProps;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface HeatMapChartData {
+  /**
+   * name of the legend
+   */
+  legend: string;
+  data: HeatMapChartDataPoint[];
+  /**
+   * This  number will be used to get the color for the legend
+   */
+  value: number;
+}
+
+/**
+ * {@docCategory ChartData}
+ */
+export interface SankeyChartData {
+  nodes: SNode[];
+  links: SLink[];
+}
+
+interface SNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
+  nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
+  name: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
+}
+
+interface SLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
+  source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
+  target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
+  value: number;
+  unnormalizedValue?: number;
+}
+
+export type SNode = SankeyNode<SNodeExtra, SLinkExtra>;
+export type SLink = SankeyLink<SNodeExtra, SLinkExtra>;

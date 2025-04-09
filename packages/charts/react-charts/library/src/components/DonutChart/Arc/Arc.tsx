@@ -94,13 +94,11 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
 
     const { href, focusedArcId } = props;
     //TO DO 'replace' is throwing error
-    const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
-    const opacity: number =
-      props.activeArc && props.activeArc.length > 0
-        ? props.activeArc.includes(props.data?.data.legend!)
-          ? 1
-          : 0.1
-        : 1;
+    const id =
+      props.uniqText! +
+      (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
+      props.data!.data.data;
+    const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (

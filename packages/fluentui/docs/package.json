@@ -70,7 +70,7 @@
     "prepare-storybook": "nx run-many -t build:info -p react-northstar react-component-ref react-bindings --nxBail",
     "prebuild-storybook": "yarn run prepare-storybook --verbose",
     "build-storybook": "storybook build -o dist/storybook",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
