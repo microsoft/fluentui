@@ -16,6 +16,7 @@ import {
   Margins,
   YValueHover,
   ChartPopoverProps,
+  Chart,
 } from '../../index';
 import {
   calloutData,
@@ -93,6 +94,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
     let _xAxisRectScale: any;
     // determines if the given area chart has multiple stacked bar charts
     let _isMultiStackChart: boolean;
+    const cartesianChartRef = React.useRef<Chart>(null);
 
     const [selectedLegends, setSelectedLegends] = React.useState<string[]>(props.legendProps?.selectedLegends || []);
     const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -120,6 +122,15 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
       }
       prevPropsRef.current = props;
     }, [props]);
+
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      }),
+      [],
+    );
+
     const classes = useAreaChartStyles(props);
 
     function _getMargins(margins: Margins) {
@@ -885,6 +896,7 @@ export const AreaChart: React.FunctionComponent<AreaChartProps> = React.forwardR
           getmargins={_getMargins}
           onChartMouseLeave={_handleChartMouseLeave}
           enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
+          componentRef={cartesianChartRef}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop, @typescript-eslint/no-shadow
           children={(props: ChildProps) => {

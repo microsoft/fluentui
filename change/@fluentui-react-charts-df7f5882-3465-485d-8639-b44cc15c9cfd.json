@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): Handle invalid plotly data in V9 and fixing id related error in donut chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

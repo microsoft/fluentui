@@ -12,6 +12,7 @@ import {
   RefArrayData,
   Margins,
   ChartPopoverProps,
+  Chart,
 } from '../../index';
 import { ChildProps } from '../CommonComponents/CartesianChart.types';
 import { CartesianChart } from '../CommonComponents/CartesianChart';
@@ -61,6 +62,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
   let _calloutAnchorPoint: HorizontalBarChartWithAxisDataPoint | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let tooltipElement: any;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -88,6 +90,14 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
     }
     prevPropsRef.current = props;
   }, [props]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   const classes = useHorizontalBarChartWithAxisStyles(props);
   function _adjustProps(): void {
@@ -633,6 +643,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
         getGraphData={_getGraphData}
         getAxisData={_getAxisData}
         onChartMouseLeave={_handleChartMouseLeave}
+        componentRef={cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line @typescript-eslint/no-shadow
         children={(props: ChildProps) => {

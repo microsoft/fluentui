@@ -152,6 +152,7 @@ export interface CartesianChartProps {
         mode: 'none' | 'min-width';
     };
     rotateXAxisLables?: boolean;
+    roundedTicks?: boolean;
     secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
@@ -518,6 +519,7 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    componentRef?: React.RefObject<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
