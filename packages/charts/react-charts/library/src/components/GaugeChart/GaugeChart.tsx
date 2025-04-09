@@ -151,6 +151,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       prevPropsRef.current = props;
     }, [props]);
 
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: _rootElem.current,
+      }),
+      [],
+    );
+
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
       for (let index = BREAKPOINTS.length - 1; index >= 0; index -= 1) {
