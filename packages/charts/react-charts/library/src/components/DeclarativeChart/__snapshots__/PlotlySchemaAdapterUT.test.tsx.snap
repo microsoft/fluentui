@@ -4847,6 +4847,7 @@ Object {
   ],
   "height": 350,
   "hideTickOverlap": true,
+  "mode": "plotly",
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
