@@ -187,7 +187,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     _fitParentContainer();
   }
   const margin = { ...margins };
-  if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
+  if (props.chartType === ChartTypes.HorizontalBarChartWithAxis) {
     if (!_useRtl) {
       margin.left! += startFromX;
     } else {
@@ -370,7 +370,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-    chartType === ChartTypes.HorizontalBarChartWithAxis &&
+    props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
       yScale &&
       createYAxisLabels(
         yAxisElement.current!,
