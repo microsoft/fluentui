@@ -69,8 +69,11 @@ describe('Persona', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
     const component = create(
-      // eslint-disable-next-line @typescript-eslint/no-deprecated
-      <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />,
+      <Persona
+        {...exampleWithoutImage}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        onRenderCoin={wrapPersona(exampleWithoutImage, true)}
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

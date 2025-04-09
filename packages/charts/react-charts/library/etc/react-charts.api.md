@@ -519,6 +519,7 @@ export interface GaugeChartProps {
     chartTitle?: string;
     chartValue: number;
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
+    componentRef?: React.RefObject<Chart>;
     culture?: string;
     enableGradient?: boolean;
     height?: number;
@@ -1277,6 +1278,7 @@ export interface VerticalBarChartProps extends CartesianChartProps {
     lineLegendText?: string;
     lineOptions?: LineChartLineOptions;
     maxBarWidth?: number;
+    mode?: 'default' | 'plotly';
     onRenderCalloutPerDataPoint?: RenderFunction<VerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: VerticalBarChartStyles;

@@ -316,8 +316,8 @@ packages/react-components/react-teaching-popover/library @microsoft/xc-uxe @Mitc
 packages/react-components/react-teaching-popover/stories @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat/library @microsoft/teams-prg
 packages/react-components/react-timepicker-compat/stories @microsoft/teams-prg
-packages/react-components/react-icons-compat/library @microsoft/cxe-red @tomi-msft
-packages/react-components/react-icons-compat/stories @microsoft/cxe-red @tomi-msft
+packages/react-components/react-icons-compat/library @microsoft/cxe-red
+packages/react-components/react-icons-compat/stories @microsoft/cxe-red
 packages/react-components/react-tag-picker/library @microsoft/teams-prg
 packages/react-components/react-tag-picker/stories @microsoft/teams-prg
 packages/react-components/react-carousel/library @microsoft/xc-uxe @microsoft/teams-prg @Mitch-At-Work
@@ -329,6 +329,8 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-prg
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-prg
 packages/react-components/react-color-picker/library @microsoft/cxe-prg
 packages/react-components/react-color-picker/stories @microsoft/cxe-prg
+packages/react-components/component-selector-preview/library @microsoft/teams-prg
+packages/react-components/component-selector-preview/stories @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

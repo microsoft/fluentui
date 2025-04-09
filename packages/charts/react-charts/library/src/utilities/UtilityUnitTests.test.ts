@@ -1416,3 +1416,25 @@ describe('getClosestPairDiffAndRange', () => {
     expect(result).toEqual([2 * 24 * 60 * 60 * 1000, 4 * 24 * 60 * 60 * 1000]);
   });
 });
+
+describe('test array equality utility', () => {
+  it('both arrays are undefined', () => {
+    expect(utils.areArraysEqual(undefined, undefined) === true);
+  });
+
+  it('second array is undefined', () => {
+    expect(utils.areArraysEqual(['ac', 'bd'], undefined) === true);
+  });
+
+  it('first array is undefined', () => {
+    expect(utils.areArraysEqual(undefined, ['cg', 'df']) === false);
+  });
+
+  it('both arrays are unequal', () => {
+    expect(utils.areArraysEqual(['ae', 'bf'], ['cg', 'dh']) === false);
+  });
+
+  it('both arrays are equal', () => {
+    expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
+  });
+});
