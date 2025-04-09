@@ -26,6 +26,7 @@ import {
   Legend,
   ChartPopover,
   Legends,
+  Chart,
 } from '../../index';
 import {
   ChartTypes,
@@ -96,6 +97,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
   let _domainMargin: number = MIN_DOMAIN_MARGIN;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [selectedLegends, setSelectedLegends] = React.useState(props.legendProps?.selectedLegends || []);
   const [activeLegend, setActiveLegend] = React.useState<string | undefined>(undefined);
@@ -126,6 +128,14 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
     }
     prevPropsRef.current = props;
   }, [props]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   function _getLegendData(data: VerticalStackedChartProps[], lineLegends: LineLegends[]): JSX.Element {
     if (props.hideLegend) {
@@ -1086,6 +1096,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           xAxisInnerPadding: _xAxisInnerPadding,
           xAxisOuterPadding: _xAxisOuterPadding,
         })}
+        componentRef={cartesianChartRef}
         /* eslint-disable react/jsx-no-bind */
         children={(props: ChildProps) => {
           return (

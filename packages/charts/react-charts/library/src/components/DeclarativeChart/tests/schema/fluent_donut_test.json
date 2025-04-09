@@ -1,0 +1,65 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "hole": 0.6,
+      "type": "pie",
+      "frame": null,
+      "marker": {
+        "line": {
+          "color": "transparent"
+        },
+        "color": "rgba(31,119,180,1)",
+        "fillcolor": "rgba(31,119,180,1)"
+      },
+      "labels": [
+        "AMC",
+        "Cadillac",
+        "Camaro",
+        "Chrysler",
+        "Datsun",
+        "Dodge",
+        "Duster",
+        "Ferrari",
+        "Fiat",
+        "Ford",
+        "Honda",
+        "Hornet",
+        "Lincoln",
+        "Lotus",
+        "Maserati",
+        "Mazda",
+        "Merc",
+        "Pontiac",
+        "Porsche",
+        "Toyota",
+        "Valiant",
+        "Volvo"
+      ],
+      "values": [1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 7, 1, 1, 2, 1, 1]
+    }
+  ],
+  "layout": {
+    "title": "Donut charts using Plotly",
+    "xaxis": {
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
+    },
+    "yaxis": {
+      "showgrid": false,
+      "zeroline": false,
+      "showticklabels": false
+    },
+    "margin": {
+      "b": 40,
+      "l": 60,
+      "r": 10,
+      "t": 25
+    },
+    "hovermode": "closest",
+    "showlegend": true
+  },
+  "frames": [],
+  "selectedLegends": ["Cadillac"]
+}
