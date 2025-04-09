@@ -1,6 +1,6 @@
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint, HeatMapChartDataPoint } from '../../index';
+import { ModifiedCartesianChartProps, HorizontalBarChartWithAxisDataPoint } from '../../index';
 import { useCartesianChartStyles } from './useCartesianChartStyles.styles';
 import {
   createNumericXAxis,
@@ -58,7 +58,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   const [startFromX, setStartFromX] = React.useState<number>(0);
   const [prevProps, setPrevProps] = React.useState<ModifiedCartesianChartProps | null>(null);
 
-  const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
    * So that, in RTL, left margins becomes right margins and viceversa.
@@ -93,8 +92,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     if (props !== null) {
       setPrevProps(props);
     }
-    if (chartTypesToCheck.includes(props.chartType) && props.showYAxisLables && yAxisElement) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(props.chartType, props.points, classes.yAxis!);
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
+      const maxYAxisLabelLength = calculateLongestLabelWidth(
+        props.points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${classes.yAxis} text`,
+      );
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -115,8 +117,11 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
         _fitParentContainer();
       }
     }
-    if (chartTypesToCheck.includes(props.chartType) && props.showYAxisLables && yAxisElement) {
-      const maxYAxisLabelLength = calculateMaxYAxisLabelLength(props.chartType, props.points, classes.yAxis!);
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
+      const maxYAxisLabelLength = calculateLongestLabelWidth(
+        props.points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
+        `.${classes.yAxis} text`,
+      );
       if (startFromX !== maxYAxisLabelLength) {
         setStartFromX(maxYAxisLabelLength);
       }
@@ -156,25 +161,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     [],
   );
 
-  function calculateMaxYAxisLabelLength(
-    chartType: ChartTypes,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    points: any[],
-    className: string,
-  ): number {
-    if (chartType === ChartTypes.HeatMapChart) {
-      return calculateLongestLabelWidth(
-        points[0].data.map((point: HeatMapChartDataPoint) => point.y),
-        `.${className} text`,
-      );
-    } else {
-      return calculateLongestLabelWidth(
-        points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
-        `.${className} text`,
-      );
-    }
-  }
-
   /**
    * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
    * only the calloutprops and charthover props changes.
@@ -201,7 +187,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     _fitParentContainer();
   }
   const margin = { ...margins };
-  if (chartTypesToCheck.includes(props.chartType)) {
+  if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
     if (!_useRtl) {
       margin.left! += startFromX;
     } else {
@@ -384,7 +370,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-    chartTypesToCheck.includes(props.chartType) &&
+    chartType === ChartTypes.HorizontalBarChartWithAxis &&
       yScale &&
       createYAxisLabels(
         yAxisElement.current!,
