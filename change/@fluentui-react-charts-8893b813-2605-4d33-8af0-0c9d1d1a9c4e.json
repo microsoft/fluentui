@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add support for line curves",
+  "packageName": "@fluentui/react-charts",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
