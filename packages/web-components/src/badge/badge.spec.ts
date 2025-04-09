@@ -43,8 +43,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('color', color);
 
         await expect(element).toHaveJSProperty('color', color);
-
-        await expect.soft(element).toHaveCustomState(color);
       });
     }
   });
@@ -59,8 +57,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('size', size);
 
         await expect(element).toHaveJSProperty('size', size);
-
-        await expect(element).toHaveCustomState(size);
       });
     }
   });
@@ -75,8 +71,6 @@ test.describe('Badge', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect(element).toHaveCustomState(shape);
       });
     }
   });

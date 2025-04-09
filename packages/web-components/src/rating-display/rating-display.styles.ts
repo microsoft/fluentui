@@ -17,7 +17,6 @@ import {
   spacingHorizontalXS,
   spacingHorizontalXXS,
 } from '../theme/design-tokens.js';
-import { brandState, largeState, neutralState, smallState } from '../styles/states/index.js';
 
 /**
  * The styles for the Rating Display component.
@@ -40,11 +39,11 @@ export const styles = css`
     user-select: none;
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     --icon-size: 12px;
   }
 
-  :host(${largeState}) {
+  :host([size='large']) {
     --icon-size: 20px;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
@@ -66,11 +65,11 @@ export const styles = css`
     margin-inline-end: calc(0px - var(--icon-size));
   }
 
-  :host(${neutralState}) svg {
+  :host([color='neutral']) svg {
     --icon-color-filled: ${colorNeutralForeground1};
   }
 
-  :host(${brandState}) svg {
+  :host([color='brand']) svg {
     --icon-color-filled: ${colorBrandBackground};
   }
 
@@ -80,15 +79,13 @@ export const styles = css`
     fill: var(--icon-color-empty);
   }
 
-  :host(${neutralState}:is([value^='-'], [value='0'])) svg,
-  :host(${neutralState}:not([value])) svg,
-  :host(${neutralState}) svg[selected] ~ svg {
+  :host([color='neutral']:is([value^='-'], [value='0'], :not([value]))) svg,
+  :host([color='neutral']) svg[selected] ~ svg {
     --icon-color-empty: ${colorNeutralBackground1Pressed};
   }
 
-  :host(${brandState}:is([value^='-'], [value='0'])) svg,
-  :host(${brandState}:not([value])) svg,
-  :host(${brandState}) svg[selected] ~ svg {
+  :host([color='brand']:is([value^='-'], [value='0'], :not([value]))) svg,
+  :host([color='brand']) svg[selected] ~ svg {
     --icon-color-empty: ${colorBrandStroke2};
   }
 
@@ -99,13 +96,13 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(${smallState}) .value-label,
-  :host(${smallState}) ::slotted([slot='value']) {
+  :host([size='small']) .value-label,
+  :host([size='small']) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) .value-label,
-  :host(${largeState}) ::slotted([slot='value']) {
+  :host([size='large']) .value-label,
+  :host([size='large']) ::slotted([slot='value']) {
     margin-inline-start: ${spacingHorizontalSNudge};
   }
 
@@ -119,13 +116,13 @@ export const styles = css`
     margin-inline: ${spacingHorizontalXS};
   }
 
-  :host(${smallState}) .count-label::before,
-  :host(${smallState}) ::slotted([slot='count'])::before {
+  :host([size='small']) .count-label::before,
+  :host([size='small']) ::slotted([slot='count'])::before {
     margin-inline: ${spacingHorizontalXXS};
   }
 
-  :host(${largeState}) .count-label::before,
-  :host(${largeState}) ::slotted([slot='count'])::before {
+  :host([size='large']) .count-label::before,
+  :host([size='large']) ::slotted([slot='count'])::before {
     margin-inline: ${spacingHorizontalSNudge};
   }
 `.withBehaviors(
