@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
+    "type-check:integration": "tsc -p tsconfig.react-18.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "format": "prettier -w . --ignore-path ../.prettierignore",
