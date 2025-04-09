@@ -428,8 +428,7 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    // TODO
-    // mode: 'plotly',
+    mode: 'plotly',
     hideTickOverlap: true,
   };
 };
