@@ -450,6 +450,15 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * A reference to all associated label elements.
+   *
+   * @public
+   */
+  public get labels(): ReadonlyArray<Node> {
+    return Object.freeze(Array.from(this.elementInternals.labels));
+  }
+
+  /**
    * The list formatter for the dropdown. Used to format the display value when the dropdown is in multiple selection mode.
    *
    * @internal
@@ -530,6 +539,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
+  }
+
+  /**
    * The current value of the selected option.
    *
    * @public
@@ -545,6 +565,17 @@ export class BaseDropdown extends FASTElement {
     }
     this.selectOption(this.enabledOptions.findIndex(x => x.value === next));
     Observable.track(this, 'value');
+  }
+
+  /**
+   * Determines if the control can be submitted for constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate | `ElementInternals.willValidate`} property.
+   */
+  public get willValidate(): boolean {
+    return this.elementInternals.willValidate;
   }
 
   /**
@@ -566,6 +597,17 @@ export class BaseDropdown extends FASTElement {
     this.selectOption(optionIndex, true);
 
     return true;
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
   }
 
   /**
@@ -819,6 +861,17 @@ export class BaseDropdown extends FASTElement {
     }
 
     return !isDropdownOption(e.target as HTMLElement);
+  }
+
+  /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
   }
 
   /**
