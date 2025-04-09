@@ -840,16 +840,20 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
     const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: Legend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
     data.forEach((point: VerticalBarChartDataPoint, _index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-shadow
       const color: string = !useSingleColor ? point.color! : _createColors()(1);
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: Legend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         hoverAction: () => {
           _handleChartMouseLeave();
-          _onLegendHover(point.legend!);
+          _onLegendHover(legendTitle);
         },
         onMouseOutAction: () => {
           _onLegendLeave();
@@ -993,7 +997,15 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         }
       }
     } else {
-      const data = (props.data?.map(point => point.x) as number[] | Date[] | undefined) || [];
+      const uniqueX: Record<number, number | Date> = {};
+      props.data?.forEach(point => {
+        if (point.x instanceof Date) {
+          uniqueX[point.x.getTime()] = point.x;
+        } else {
+          uniqueX[point.x as number] = point.x as number;
+        }
+      });
+      const data = Object.values(uniqueX) as number[] | Date[];
       _barWidth = getBarWidth(props.barWidth, props.maxBarWidth, calculateAppropriateBarWidth(data, totalWidth));
       _domainMargin = MIN_DOMAIN_MARGIN + _barWidth / 2;
     }
