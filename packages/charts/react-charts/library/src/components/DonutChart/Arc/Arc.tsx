@@ -103,7 +103,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
         ? props.activeArc.includes(props.data?.data.legend!)
           ? 1
           : 0.1
-        : 1;    
+        : 1;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
