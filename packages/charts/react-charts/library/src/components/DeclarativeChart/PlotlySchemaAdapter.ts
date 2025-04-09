@@ -428,8 +428,7 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    // TODO
-    // mode: 'plotly',
+    mode: 'plotly',
     hideTickOverlap: true,
   };
 };
@@ -799,9 +798,6 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
   }
 
   switch (line.shape) {
-    case 'linear':
-      lineOptions.curve = 'linear';
-      break;
     case 'spline':
       const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
       lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
@@ -815,6 +811,8 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
     case 'hvh':
       lineOptions.curve = 'step';
       break;
+    default:
+      lineOptions.curve = 'linear';
   }
 
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;

@@ -87,6 +87,55 @@ export const VerticalStackedBarDefault = () => {
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '31%',
     },
+    {
+      legend: 'Metadata4',
+      data: 10,
+      color: getColorFromToken(DataVizPalette.color4),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '1%',
+    },
+    {
+      legend: 'Metadata5',
+      data: 23,
+      color: getColorFromToken(DataVizPalette.color5),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '2%',
+    },
+    {
+      legend: 'Metadata6',
+      data: 0.4,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '3%',
+    },
+    {
+      legend: 'Metadata7',
+      data: 0.5,
+      color: getColorFromToken(DataVizPalette.color7),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '4%',
+    },
+    {
+      legend: 'Metadata8',
+      data: 0.3,
+      color: getColorFromToken(DataVizPalette.color8),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '5%',
+    },
+    {
+      legend: 'Metadata9',
+      data: 0.7,
+      color: getColorFromToken(DataVizPalette.color9),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '6%',
+    },
+    {
+      legend: 'Metadata10',
+      data: 0.1,
+      color: getColorFromToken(DataVizPalette.color10),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '7%',
+    },
   ];
 
   const secondChartPoints: VSChartDataPoint[] = [
@@ -291,6 +340,7 @@ export const VerticalStackedBarDefault = () => {
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
+            roundedTicks={true}
           />
         </div>
       )}
@@ -311,6 +361,7 @@ export const VerticalStackedBarDefault = () => {
             }}
             hideLabels={hideLabels}
             roundCorners={roundCorners}
+            roundedTicks={true}
           />
         </div>
       )}

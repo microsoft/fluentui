@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add scaling factor to height of VSBC bars",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

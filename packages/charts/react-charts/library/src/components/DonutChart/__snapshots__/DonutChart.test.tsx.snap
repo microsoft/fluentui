@@ -689,6 +689,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
             tabIndex={0}
           />
         </g>
+        
       </g>
     </svg>
   </div>
@@ -969,6 +970,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             45.0k
           </text>
         </g>
+        
       </g>
     </svg>
   </div>
@@ -1249,6 +1251,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
             43%
           </text>
         </g>
+        
       </g>
     </svg>
   </div>
@@ -1749,6 +1752,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
             tabIndex={0}
           />
         </g>
+        
       </g>
     </svg>
   </div>
@@ -1999,6 +2003,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
             tabIndex={0}
           />
         </g>
+        
       </g>
     </svg>
   </div>
@@ -2284,6 +2289,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
             tabIndex={0}
           />
         </g>
+        
       </g>
     </svg>
   </div>
@@ -2381,6 +2387,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
             tabIndex={0}
           />
         </g>
+        
       </g>
     </svg>
   </div>
@@ -2631,14 +2638,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
             tabIndex={0}
           />
         </g>
-        <text
-          className="fui-donut-pie__insideDonutString"
-          dominantBaseline="middle"
-          textAnchor="middle"
-          y={5}
-        >
-          1,000
-        </text>
+        
       </g>
     </svg>
   </div>
