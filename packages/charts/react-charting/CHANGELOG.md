@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 08 Apr 2025 07:20:28 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Apr 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.70)
+
+Thu, 10 Apr 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.69..@fluentui/react-charting_v5.23.70)
+
+### Patches
+
+- fix: add missing linear case in getCurveFactory ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
 
 ## [5.23.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.69)
 
