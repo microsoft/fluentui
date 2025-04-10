@@ -54,18 +54,15 @@ const cypressWebpackConfig = (): Configuration => {
   return baseWebpackConfig;
 };
 
-type BaseConfig = Omit<Cypress.ConfigOptions, 'component'> & {
-  component: Omit<Cypress.ConfigOptions['component'], 'devServer'> & {
-    specPattern?: Cypress.ResolvedConfigOptions['specPattern'];
-    supportFile?: Cypress.ResolvedConfigOptions['supportFile'];
-    indexHtmlFile?: Cypress.ResolvedConfigOptions['indexHtmlFile'];
+interface BaseConfig extends Cypress.ConfigOptions {
+  component: Cypress.Config['component'] & {
     devServer: {
       bundler: 'webpack';
       framework: 'react';
       webpackConfig: Configuration;
     };
   };
-};
+}
 
 export const baseConfig = defineConfig({
   video: false,
