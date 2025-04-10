@@ -32,7 +32,7 @@ export const TimePickerBasicExample: React.FC = () => {
     setBasicExampleTimeString(basicExampleTime.toString());
   }, []);
 
-  const onNonDefaultOptionsExampleChange = React.useCallback((_, nonDefaultOptionsExampleTime: Date) => {
+  const onNonDefaultOptionsExampleChange = React.useCallback((_: any, nonDefaultOptionsExampleTime: Date) => {
     setNonDefaultOptionsExampleTimeString(nonDefaultOptionsExampleTime?.toString());
   }, []);
 
