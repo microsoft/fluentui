@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix typo in avatar styles for beige color",
+  "packageName": "@fluentui/web-components",
+  "email": "13071055+chrisdholt@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
