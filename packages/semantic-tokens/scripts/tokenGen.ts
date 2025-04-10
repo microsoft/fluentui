@@ -56,9 +56,12 @@ const cleanFSTTokenName = (originalTokenName: string) => {
 
 const writeDirectoryFile = (filePath: string, data: string) => {
   const dirPath = removeLastDelimiter(filePath, path.sep);
+  console.log('dirpath: ', dirPath);
   if (!fs.existsSync(dirPath)) {
+    console.log('make dir: ', dirPath);
     fs.mkdirSync(dirPath, { recursive: true });
   }
+  console.log('filePath: ', filePath);
   fs.writeFileSync(filePath, data);
   project.addSourceFileAtPathIfExists(filePath);
 };
@@ -217,8 +220,9 @@ const generateTokenVariables = () => {
     }
   }
 
-  // Add legacy token file
-  project.addSourceFileAtPath('./src/legacy/tokens.ts');
+  // Add legacy token file to project
+  const legacyTokenFilepath = path.join(__dirname, `../src/legacy/tokens.ts`);
+  project.addSourceFileAtPath(legacyTokenFilepath);
   // Add all generated token files
   const tokens = {
     optional: optionalTokens,
@@ -226,11 +230,12 @@ const generateTokenVariables = () => {
     nullable: nullableTokens,
   };
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
-    writeDirectoryFile(`./src/${tokensCategory}/tokens.ts`, _tokens);
+    const filePath = path.join(__dirname, `../src/${tokensCategory}/tokens.ts`);
+    writeDirectoryFile(filePath, _tokens);
   }
 
   for (const [component, _tokens] of Object.entries(componentTokens)) {
-    const componentTokensPath = `./src/components/${component}/tokens.ts`;
+    const componentTokensPath = path.join(__dirname, `../src/components/${component}/tokens.ts`);
     writeDirectoryFile(componentTokensPath, _tokens);
   }
 
