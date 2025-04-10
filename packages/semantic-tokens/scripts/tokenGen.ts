@@ -56,12 +56,9 @@ const cleanFSTTokenName = (originalTokenName: string) => {
 
 const writeDirectoryFile = (filePath: string, data: string) => {
   const dirPath = removeLastDelimiter(filePath, path.sep);
-  console.log('dirpath: ', dirPath);
   if (!fs.existsSync(dirPath)) {
-    console.log('make dir: ', dirPath);
     fs.mkdirSync(dirPath, { recursive: true });
   }
-  console.log('filePath: ', filePath);
   fs.writeFileSync(filePath, data);
   project.addSourceFileAtPathIfExists(filePath);
 };
