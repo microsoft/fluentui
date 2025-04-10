@@ -226,19 +226,12 @@ const generateTokenVariables = () => {
     nullable: nullableTokens,
   };
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
-    fs.writeFileSync(`./src/${tokensCategory}/tokens.ts`, _tokens);
-    project.addSourceFileAtPathIfExists(`./src/${tokensCategory}/tokens.ts`);
+    writeDirectoryFile(`./src/${tokensCategory}/tokens.ts`, _tokens);
   }
 
   for (const [component, _tokens] of Object.entries(componentTokens)) {
-    const dir = `./src/components/${component}/`;
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
     const componentTokensPath = `./src/components/${component}/tokens.ts`;
-    fs.writeFileSync(componentTokensPath, _tokens);
-    // Add component source files for import statements
-    project.addSourceFileAtPath(componentTokensPath);
+    writeDirectoryFile(componentTokensPath, _tokens);
   }
 
   // Add import statements
