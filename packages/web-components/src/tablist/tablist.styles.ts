@@ -24,7 +24,7 @@ import {
   spacingVerticalXXS,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
-import { disabledState, largeState, smallState, subtleState, verticalState } from '../styles/states/index.js';
+
 /**
  * @public
  */
@@ -41,7 +41,7 @@ export const styles = css`
     flex-direction: row;
   }
 
-  :host(${verticalState}) {
+  :host([orientation='vertical']) {
     flex-direction: column;
   }
 
@@ -63,7 +63,7 @@ export const styles = css`
     transform: translateX(var(--tabIndicatorOffset)) scaleX(var(--tabIndicatorScale));
   }
 
-  :host(${verticalState}) ::slotted([slot='tab'])::after {
+  :host([orientation='vertical']) ::slotted([slot='tab'])::after {
     width: ${strokeWidthThicker};
     height: unset;
     margin-block-start: unset;
@@ -97,27 +97,27 @@ export const styles = css`
     transform-origin: left;
   }
 
-  :host(${verticalState}) ::slotted([slot='tab'])::before,
-  :host(${verticalState}) ::slotted([slot='tab'][aria-selected='false']:hover)::after {
+  :host([orientation='vertical']) ::slotted([slot='tab'])::before,
+  :host([orientation='vertical']) ::slotted([slot='tab'][aria-selected='false']:hover)::after {
     height: unset;
     width: ${strokeWidthThicker};
     margin-inline-end: auto;
     transform-origin: top;
   }
 
-  :host(:where(${smallState}, ${largeState})) ::slotted([slot='tab']) {
+  :host(:where([size='small'], [size='large'])) ::slotted([slot='tab']) {
     padding-inline: var(--tabPaddingInline);
     padding-block: var(--tabPaddingBlock);
   }
 
-  :host(${smallState}) ::slotted([slot='tab']) {
+  :host([size='small']) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalSNudge};
     --tabPaddingInline: ${spacingHorizontalSNudge};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
   }
 
-  :host(${largeState}) ::slotted([slot='tab']) {
+  :host([size='large']) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalL};
     --tabPaddingInline: ${spacingHorizontalMNudge};
     font-size: ${fontSizeBase400};
@@ -135,80 +135,80 @@ export const styles = css`
     --tabIndicatorInsetInline: ${spacingHorizontalMNudge};
   }
 
-  :host(${smallState}) ::slotted([slot='tab']) {
+  :host([size='small']) ::slotted([slot='tab']) {
     --tabIndicatorInsetInline: ${spacingHorizontalSNudge};
   }
 
-  :host(${largeState}) ::slotted([slot='tab']) {
+  :host([size='large']) ::slotted([slot='tab']) {
     --tabIndicatorInsetInline: ${spacingHorizontalMNudge};
   }
 
-  :host(${verticalState}) ::slotted([slot='tab']) {
+  :host([orientation='vertical']) ::slotted([slot='tab']) {
     padding-block: var(--tabPaddingBlock);
   }
 
-  :host(${verticalState}) ::slotted([slot='tab']) {
+  :host([orientation='vertical']) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalS};
   }
 
-  :host(${verticalState}${smallState}) ::slotted([slot='tab']) {
+  :host([orientation='vertical'][size='small']) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalXXS};
   }
 
-  :host(${verticalState}${largeState}) ::slotted([slot='tab']) {
+  :host([orientation='vertical'][size='large']) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalS};
   }
 
-  :host(${verticalState}) ::slotted([slot='tab'])::after,
-  :host(${verticalState}) ::slotted([slot='tab'])::before,
-  :host(${verticalState}) ::slotted([slot='tab']:hover)::after {
+  :host([orientation='vertical']) ::slotted([slot='tab'])::after,
+  :host([orientation='vertical']) ::slotted([slot='tab'])::before,
+  :host([orientation='vertical']) ::slotted([slot='tab']:hover)::after {
     inset-inline: 0;
     inset-block: var(--tabIndicatorInsetBlock);
   }
 
-  :host(${verticalState}) {
+  :host([orientation='vertical']) {
     --tabIndicatorInsetBlock: ${spacingVerticalS};
   }
 
-  :host(${verticalState}${smallState}) {
+  :host([orientation='vertical'][size='small']) {
     --tabIndicatorInsetBlock: ${spacingVerticalSNudge};
   }
 
-  :host(${verticalState}${largeState}) {
+  :host([orientation='vertical'][size='large']) {
     --tabIndicatorInsetBlock: ${spacingVerticalMNudge};
   }
 
   /* disabled styles */
-  :host(${disabledState}) {
+  :host([disabled]) {
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) ::slotted([slot='tab']) {
+  :host([disabled]) ::slotted([slot='tab']) {
     pointer-events: none;
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) ::slotted([slot='tab']:after) {
+  :host([disabled]) ::slotted([slot='tab']:after) {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) ::slotted([slot='tab'][aria-selected='true'])::after {
+  :host([disabled]) ::slotted([slot='tab'][aria-selected='true'])::after {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host(${disabledState}) ::slotted([slot='tab']:hover):before {
+  :host([disabled]) ::slotted([slot='tab']:hover):before {
     content: unset;
   }
 
-  :host(${subtleState}) ::slotted([slot='tab']:hover) {
+  :host([appearance='subtle']) ::slotted([slot='tab']:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground1Hover};
     fill: ${colorCompoundBrandForeground1Hover};
   }
 
-  :host(${subtleState}) ::slotted([slot='tab']:active) {
+  :host([appearance='subtle']) ::slotted([slot='tab']:active) {
     background-color: ${colorSubtleBackgroundPressed};
     fill: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground1};

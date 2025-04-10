@@ -1,6 +1,6 @@
-import { children, elements, html } from '@microsoft/fast-element';
+import { children, html } from '@microsoft/fast-element';
 import type { TreeItem } from './tree-item.js';
-import { isTreeItem } from './tree-item.options';
+import { isTreeItem } from './tree-item.options.js';
 
 const chevronIcon = html`
   <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
