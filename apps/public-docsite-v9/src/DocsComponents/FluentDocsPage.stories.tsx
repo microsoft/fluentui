@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { cloneDeep } from 'lodash';
 import {
   DocsContext,
   ArgsTable,
@@ -128,9 +127,6 @@ const VideoPreviews: React.FC<{
 };
 
 const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
-  if (!elements) {
-    return <></>;
-  }
   const elementsArr = elements?.map((el, idx) => [
     <code key={idx}>{`<${el}>`}</code>,
     idx !== elements.length - 1 ? ', ' : ' ',
@@ -145,9 +141,12 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 };
 
 const slotRegex = /as\?:\s*"([^"]+)"/;
-
+/**
+ * NOTE: this function mutates original story argTypes including all story subcomponents if they are present
+ */
 function withSlotEnhancer(story: PreparedStory) {
-  const hasArgAsProp = story.argTypes.as && story.argTypes.as?.type?.name === 'enum';
+  const hasArgAsProp = story.argTypes.as?.type?.name === 'enum';
+  const argAsProp = hasArgAsProp ? (story.argTypes.as.type as SBEnumType).value : null;
   let hasArgAsSlot = false;
 
   type InternalComponentApi = {
@@ -157,7 +156,7 @@ function withSlotEnhancer(story: PreparedStory) {
     [k: string]: unknown;
   };
 
-  const checkPropsForSlotShorthandValue = (props: Record<string, { type: { name: string } }>) => {
+  const transformPropsWithSlotShorthand = (props: Record<string, { type: { name: string } }>) => {
     Object.entries(props).forEach(([key, argType]) => {
       const value: string = argType?.type?.name;
       if (value.includes('WithSlotShorthandValue')) {
@@ -172,23 +171,23 @@ function withSlotEnhancer(story: PreparedStory) {
     });
   };
 
-  const processComponent = (component: InternalComponentApi) => {
+  const transformComponent = (component: InternalComponentApi) => {
     const docGenProps = component?.__docgenInfo?.props;
     if (docGenProps) {
-      checkPropsForSlotShorthandValue(docGenProps);
+      transformPropsWithSlotShorthand(docGenProps);
     }
   };
 
   const component = story.component as InternalComponentApi;
-  processComponent(component);
+  transformComponent(component);
 
   if (story.subcomponents) {
     Object.values(story.subcomponents).forEach((subcomponent: InternalComponentApi) => {
-      processComponent(subcomponent);
+      transformComponent(subcomponent);
     });
   }
 
-  return { component, hasArgAsSlot, hasArgAsProp };
+  return { component, hasArgAsSlot, hasArgAsProp, argAsProp };
 }
 
 const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({ children }) => {
@@ -203,12 +202,11 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
   );
 };
 const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideArgsTable: boolean }) => {
-  const { component, hasArgAsProp, hasArgAsSlot } = withSlotEnhancer(story);
-  const options = story.argTypes.as?.options;
+  const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story);
 
   return hideArgsTable ? null : (
     <>
-      {hasArgAsProp && options && (
+      {hasArgAsProp && (
         <AdditionalApiDocs>
           <p>
             <b>
@@ -217,13 +215,13 @@ const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideAr
             </b>
             <span>
               All HTML attributes native to the
-              {getNativeElementsList(options)}, including all <code>aria-*</code> and <code>data-*</code> attributes,
+              {getNativeElementsList(argAsProp!)}, including all <code>aria-*</code> and <code>data-*</code> attributes,
               can be applied as native props on this component.
             </span>
           </p>
         </AdditionalApiDocs>
       )}
-      {hasArgAsSlot && options && (
+      {hasArgAsSlot && (
         <AdditionalApiDocs>
           <p>
             <b>
@@ -309,7 +307,7 @@ export const FluentDocsPage = () => {
             {videos && <VideoPreviews videos={videos} />}
           </div>
           <RenderPrimaryStory primaryStory={primaryStory} skipPrimaryStory={skipPrimaryStory} />
-          <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} argTypes={primaryStoryContext.argTypes} />
+          <RenderArgsTable story={primaryStory} hideArgsTable={hideArgsTable} />
           <Stories />
         </div>
         <div className={styles.toc}>
