@@ -3,7 +3,7 @@ import { cleanFstTokenName } from './cleanFstTokenName';
 
 describe('cleanFstTokenName', () => {
   it('Cleans tokens with brackets', () => {
-    expect(cleanFstTokenName('primary/(solid)/(test)/(doubletest)')).toMatch('primary/solid/test/doubletest');
+    expect(cleanFstTokenName('primary/(solid)/(test)/(double test)')).toMatch('primary/solid/test/doubletest');
     expect(cleanFstTokenName('background/layer/primary(solid)')).toMatch('background/layer/primary/solid');
     expect(cleanFstTokenName('shadow/card/rest/(key)/(x)/test')).toMatch('shadow/card/rest/key/x/test');
     expect(cleanFstTokenName('CTRL/fab/shadow/rest/(key)')).toMatch('CTRL/fab/shadow/rest/key');
@@ -15,6 +15,8 @@ describe('cleanFstTokenName', () => {
   });
 
   it('Cleans tokens with a combination', () => {
-    expect(cleanFstTokenName('test/test1-test2(test3)/(test4)/test5')).toMatch('test/test1/test2/test3/test4/test5');
+    expect(cleanFstTokenName('test/test1-test2(test3 test)/(test4)/test5')).toMatch(
+      'test/test1/test2/test3test/test4/test5',
+    );
   });
 });

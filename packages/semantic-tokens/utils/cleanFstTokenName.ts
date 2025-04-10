@@ -4,9 +4,8 @@
  * running 'toCamelCase' on the output will result in the token's name
  */
 export const cleanFstTokenName = (originalTokenName: string) => {
-  // Handle any name housekeeping or small token name fixes
-  let newTokenName = originalTokenName;
-
+  // Ignore spaces, they shouldn't occur but may exist in brackets
+  let newTokenName = originalTokenName.replace(/ /g, '');
   // Ensure opening brackets is replaced with a slash
   // Some tokens already have a slash between brackets, handle these first
   // Handle: '/(' -> '/' (prevents '//' duplicates if already slashed)
