@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: remove use of custom states for presentational styling",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
