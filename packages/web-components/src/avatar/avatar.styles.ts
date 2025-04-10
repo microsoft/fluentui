@@ -457,7 +457,7 @@ export const styles = css`
     background-color: ${colorPalettePlumBackground2};
   }
 
-  :host([data-color='biege']) {
+  :host([data-color='beige']) {
     color: ${colorPaletteBeigeForeground2};
     background-color: ${colorPaletteBeigeBackground2};
   }
