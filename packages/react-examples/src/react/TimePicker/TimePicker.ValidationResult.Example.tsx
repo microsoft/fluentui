@@ -34,16 +34,19 @@ export const TimePickerValidationResultExample: React.FC = () => {
   const [time, setTime] = React.useState<Date>(new Date('January 1, 2023 08:00:00'));
   const [disableButton, setDisableButton] = React.useState<boolean>(false);
 
-  const onControlledExampleChange = React.useCallback((_, newTime: Date) => {
+  const onControlledExampleChange = React.useCallback((_: any, newTime: Date) => {
     setTime(newTime);
   }, []);
 
-  const onValidationResult = React.useCallback((_, timePickerValidationResultData: TimePickerValidationResultData) => {
-    if (timePickerValidationResultData.errorMessage !== undefined) {
-      console.log('Validation error message received: ', timePickerValidationResultData.errorMessage);
-      setDisableButton(timePickerValidationResultData.errorMessage.length > 0);
-    }
-  }, []);
+  const onValidationResult = React.useCallback(
+    (_: any, timePickerValidationResultData: TimePickerValidationResultData) => {
+      if (timePickerValidationResultData.errorMessage !== undefined) {
+        console.log('Validation error message received: ', timePickerValidationResultData.errorMessage);
+        setDisableButton(timePickerValidationResultData.errorMessage.length > 0);
+      }
+    },
+    [],
+  );
 
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>

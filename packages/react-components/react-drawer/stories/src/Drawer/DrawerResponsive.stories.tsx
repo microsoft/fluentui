@@ -39,7 +39,10 @@ export const Responsive = () => {
   const [isOpen, setIsOpen] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
 
-  const onMediaQueryChange = React.useCallback(({ matches }) => setType(matches ? 'overlay' : 'inline'), [setType]);
+  const onMediaQueryChange = React.useCallback(
+    ({ matches }: { matches: boolean }) => setType(matches ? 'overlay' : 'inline'),
+    [setType],
+  );
 
   React.useEffect(() => {
     const match = window.matchMedia('(max-width: 720px)');

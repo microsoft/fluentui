@@ -20,7 +20,7 @@ export function useToggleState<
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
   const onToggleClick = React.useCallback(
-    ev => {
+    (ev: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (!disabled && !disabledFocusable) {
         if (ev.defaultPrevented) {
           return;
