@@ -627,6 +627,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'TreeChart',
           url: '#/examples/TreeChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/DeclarativeChartPage').DeclarativeChartPage,
+          key: 'DeclarativeChart',
+          name: 'DeclarativeChart',
+          url: '#/examples/DeclarativeChart',
+        },
       ],
     },
     {
