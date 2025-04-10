@@ -27,7 +27,7 @@ config.component.devServer.webpackConfig.resolve.alias = {
  *
  * TODO: Remove this workaround once we upgrade the whole repo to Cypress 14
  */
-config.component.supportFile = '../../scripts/cypress/src/support/component.js';
-config.component.indexHtmlFile = '../../scripts/cypress/src/support/component-index.html';
+config.component.supportFile = path.normalize('../../scripts/cypress/src/support/component.js');
+config.component.indexHtmlFile = path.normalize('../../scripts/cypress/src/support/component-index.html');
 
 export default config;
