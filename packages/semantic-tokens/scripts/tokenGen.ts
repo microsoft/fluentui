@@ -34,7 +34,7 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
   // The FluentOverrideValue type has two mutually exclusive properties: f2Token and rawValue
   // We need to check which one is defined and use that value
   if (token.f2Token !== undefined) {
-    return `\$\{${token.f2Token}\}`;
+    return `\$\{tokens.${token.f2Token}\}`;
   } else {
     // we only have a raw value so we should print it directly.
     return `${token.rawValue}`;
@@ -59,8 +59,18 @@ const writeDirectoryFile = (filePath: string, data: string) => {
   if (!fs.existsSync(dirPath)) {
     fs.mkdirSync(dirPath, { recursive: true });
   }
+
   fs.writeFileSync(filePath, data);
   project.addSourceFileAtPathIfExists(filePath);
+};
+
+const addOptionalTokenImport = (data: string) => {
+  if (data.includes('tokens.')) {
+    const esLintIgnore = `// eslint-disable-next-line no-restricted-imports\n`;
+    const tokenImport = `import { tokens } from '@fluentui/tokens';\n`;
+    return esLintIgnore + tokenImport + data;
+  }
+  return data;
 };
 
 const generateTokenRawStrings = () => {
@@ -217,9 +227,6 @@ const generateTokenVariables = () => {
     }
   }
 
-  // Add legacy token file to project
-  const legacyTokenFilepath = path.join(__dirname, `../src/legacy/tokens.ts`);
-  project.addSourceFileAtPath(legacyTokenFilepath);
   // Add all generated token files
   const tokens = {
     optional: optionalTokens,
@@ -228,23 +235,18 @@ const generateTokenVariables = () => {
   };
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
     const filePath = path.join(__dirname, `../src/${tokensCategory}/tokens.ts`);
-    writeDirectoryFile(filePath, _tokens);
+    writeDirectoryFile(filePath, addOptionalTokenImport(_tokens));
   }
 
   for (const [component, _tokens] of Object.entries(componentTokens)) {
     const componentTokensPath = path.join(__dirname, `../src/components/${component}/tokens.ts`);
-    writeDirectoryFile(componentTokensPath, _tokens);
+    writeDirectoryFile(componentTokensPath, addOptionalTokenImport(_tokens));
   }
 
   // Add import statements
   project.getSourceFiles().forEach(sourceFile => {
-    if (sourceFile.getFilePath().endsWith('legacy/tokens.ts')) {
-      // skip our legacy tokens file
-      return;
-    }
-
     console.log('Fix missing imports from:', sourceFile.getFilePath());
-    sourceFile.fixMissingImports().organizeImports().fixUnusedIdentifiers();
+    sourceFile.fixMissingImports();
 
     // Format our text to match prettier rules
     const rawText = sourceFile.getText();
