@@ -23,6 +23,7 @@
   "dependencies": {
     "@cypress/react": "9.0.1",
     "@fluentui/react-components": "*",
+    "@fluentui/react-nav-preview": "*",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
