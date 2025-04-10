@@ -34,7 +34,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     setItems(filteredItems);
   }, []);
 
-  const onKeyDown = React.useCallback((e, ...args) => {
+  const onKeyDown = React.useCallback((e: any) => {
     /* Key Up, but we are not at the beginning of the text: stop event propagation to prevent ContextualMenu to focus */
     if (e.target.selectionStart > 0 && e.which === KeyCodes.up) {
       e.stopPropagation();

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: type useCallback params",
+  "packageName": "@fluentui/react-charts",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
