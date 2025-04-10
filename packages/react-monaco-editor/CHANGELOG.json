@@ -2,6 +2,29 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 10 Apr 2025 07:21:23 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.308",
+      "version": "1.7.308",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "lint: fix exposed lint errors"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.23.70",
+            "commit": "60d7c5af108ba9cbce34bb2a29a93ef5f5069e17"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Apr 2025 07:20:29 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.307",
       "version": "1.7.307",
