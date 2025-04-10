@@ -145,10 +145,12 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       theme,
       onRenderLink = this._onRenderLink
     } = this.props;
+    const isSelectedLink = this._isLinkSelected(link);
+    const { ariaCurrent = 'page' } = link;
 
     const classNames = getClassNames(getStyles!, {
       theme: theme!,
-      isSelected: this._isLinkSelected(link),
+      isSelected: isSelectedLink,
       isButtonEntry: link.onClick && !link.forceAnchor,
       leftPadding: _indentationSize * nestingLevel + _baseIndent,
       groups
@@ -167,6 +169,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         title={ link.title || link.name }
         target={ link.target }
         rel={ rel }
+        aria-current={ isSelectedLink ? ariaCurrent : undefined }
         aria-label={ link.ariaLabel }
       >
         { onRenderLink(link, this._onRenderLink) }
