@@ -161,23 +161,3 @@ export const SizeExtraLarge = () => {
 SizeExtraLarge.storyName = 'size: extra-large';
 
 export const SizeExtraLargeRTL = getStoryVariant(SizeExtraLarge, RTL);
-
-export const WidthConstrained = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.group}>
-      <div className={styles.widthConstrained}>
-        <Badge>1</Badge>
-        <Badge icon={<CircleRegular />} />
-        <Badge>BADGE</Badge>
-        <Badge icon={<CircleRegular />}>BADGE</Badge>
-        <Badge icon={<CircleRegular />} iconPosition="after">
-          BADGE
-        </Badge>
-      </div>
-      <span className={styles.description}>Badges should not clip their content when space constrained.</span>
-    </div>
-  );
-};
-
-WidthConstrained.storyName = 'width constrained';
