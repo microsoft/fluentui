@@ -4,10 +4,9 @@ import path from 'node:path';
 // eslint-disable-next-line no-restricted-imports
 import * as tokensPackage from '@fluentui/tokens';
 import { fluentOverrides } from './fluentOverrides';
+import { format } from 'prettier';
 
-main();
-
-function main() {
+const generateLegacyTokens = () => {
   console.log('Importing required fluent legacy tokens as flat export');
 
   const semanticTokenFallbacks = Object.keys(fluentOverrides);
@@ -24,13 +23,12 @@ function main() {
       throw new Error(`Fluent token ${fluentOverrides[t].f2Token} not found in fluent tokens`);
     }
 
-    const token = `
-/**
- * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
- * @public
- */
-export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';
-`;
+    const token = `/**
+     * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
+     * @public
+     */
+    export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';\n`;
+
     return acc + token;
   }, '');
 
@@ -40,10 +38,19 @@ export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  fs.writeFile(path.join(dir, 'tokens.ts'), comment + generatedTokens, err => {
+  // Run prettier to format the generated tokens
+  const formattedText = format(comment + generatedTokens, {
+    parser: 'typescript',
+    singleQuote: true,
+    printWidth: 120,
+  });
+
+  fs.writeFile(path.join(dir, 'tokens.ts'), formattedText, err => {
     if (err) {
       throw err;
     }
     console.log('Legacy tokens reference created');
   });
-}
+};
+
+generateLegacyTokens();

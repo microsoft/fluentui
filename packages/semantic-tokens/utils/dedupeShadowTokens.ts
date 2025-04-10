@@ -1,30 +1,13 @@
-import { Token } from './token.types';
+import { Token } from '../scripts/token.types';
+import { chopLastCamelCasePart } from './chopLastCamelCasePart';
+import { removeLastDelimiter } from './removeLastDelimiter';
 
-export const chopLastCamelCasePart = (str: string) =>
-  str
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .split(' ')
-    .slice(0, -1)
-    .join('');
-
-export function removeLastDelimiter(str: string, delimiter: string) {
-  const lastIndex = str.lastIndexOf(delimiter);
-  if (lastIndex === -1) {
-    // Delimiter not found
-    return str;
-  }
-  return str.substring(0, lastIndex);
-}
-
-export function dedupeShadowTokens(_tokenJSON: Record<string, Token>) {
+export const dedupeShadowTokens = (_tokenJSON: Record<string, Token>) => {
   /* Our shadow tokens come exported from Figma in parts i.e. X, Y, Blur, Color
-    This is not compatible with our token fallback structure, as V9 shadows are combined strings
-    By deduping the shadows into a single string, we reduce tokens by ~25% and simplify fallbacks
-
-    To dedupe, we chop off the specific identifier (X, Y, Blur, Color) and combine them into a single token
-
-    This enables the script to work the same for all tokens once processed.
-  */
+   * To dedupe, we chop off the specific identifier (X, Y, Blur, Color) and combine them into a single token
+   * If the separate shadow tokens are required, they can be re-added and formatted into a shadow token string
+   * This is backwards compatible and valid with fallbacks (if a shadow part CSSVar is missing, it will fallback)
+   */
   for (const token in _tokenJSON) {
     if (_tokenJSON.hasOwnProperty(token)) {
       const tokenData: Token = _tokenJSON[token];
@@ -46,4 +29,4 @@ export function dedupeShadowTokens(_tokenJSON: Record<string, Token>) {
   }
 
   return _tokenJSON;
-}
+};

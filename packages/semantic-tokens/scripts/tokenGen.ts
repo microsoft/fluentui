@@ -7,9 +7,11 @@ import { fluentOverrides as fluentFallbacksRaw, FluentOverrideValue, type Fluent
 import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
-import { dedupeShadowTokens } from './util';
 import { ComponentTokenMap, Token } from './token.types';
 import path from 'node:path';
+import { dedupeShadowTokens } from '../utils/dedupeShadowTokens';
+import { toCamelCase } from '../utils/toCamelCase';
+import { escapeInlineToken } from '../utils/escapeInlineToken';
 
 const project = new Project({
   tsConfigFilePath: path.resolve(__dirname, '../tsconfig.json'),
@@ -20,18 +22,14 @@ const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
 // Store exports so we can add them to index.ts at the end
 const exportList: Record<string, string[]> = {};
 
-function generateTokens() {
+const generateTokens = () => {
   console.log('Generating tokens...');
   // Simple for now, just generate the raw strings and variables
   generateTokenRawStrings();
   generateTokenVariables();
-}
+};
 
-function escapeInlineToken(token: string) {
-  return `\$\{${token}\}`;
-}
-
-function escapeMixedInlineToken(token: FluentOverrideValue) {
+const escapeMixedInlineToken = (token: FluentOverrideValue) => {
   // The FluentOverrideValue type has two mutually exclusive properties: f2Token and rawValue
   // We need to check which one is defined and use that value
   if (token.f2Token !== undefined) {
@@ -40,11 +38,10 @@ function escapeMixedInlineToken(token: FluentOverrideValue) {
     // we only have a raw value so we should print it directly.
     return `${token.rawValue}`;
   }
-}
+};
 
-function cleanFSTTokenName(originalTokenName: string) {
+const cleanFSTTokenName = (originalTokenName: string) => {
   // Handle any name housekeeping or small token name fixes
-
   let newTokenName = originalTokenName.replace('-', '/');
   // Ignore space
   newTokenName = newTokenName.replace(' ', '');
@@ -54,9 +51,9 @@ function cleanFSTTokenName(originalTokenName: string) {
   newTokenName = newTokenName.replace('(', '/').replace(')', '');
 
   return newTokenName;
-}
+};
 
-function generateTokenRawStrings() {
+const generateTokenRawStrings = () => {
   let optionalRawTokens = '';
   let controlRawTokens = '';
   let nullableRawTokens = '';
@@ -110,35 +107,50 @@ function generateTokenRawStrings() {
   project.addSourceFileAtPathIfExists(controlVarFile);
   project.addSourceFileAtPathIfExists(nullableVarFile);
 
-  for (const component in componentTokens) {
-    if (componentTokens.hasOwnProperty(component)) {
-      const dir = path.join(__dirname, `../src/components/${component}`);
+  for (const component of Object.keys(componentTokens)) {
+    const dir = path.join(__dirname, `../src/components/${component}`);
 
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
-      const variablePath = getComponentFile(component);
-      fs.writeFileSync(variablePath, componentTokens[component]);
-      project.addSourceFileAtPathIfExists(variablePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
     }
+    const variablePath = getComponentFile(component);
+    fs.writeFileSync(variablePath, componentTokens[component]);
+    project.addSourceFileAtPathIfExists(variablePath);
   }
-}
+};
 
-function toCamelCase(str: string) {
-  return str
-    .split('/')
-    .map((word: string, index: number) => {
-      // If it is the first word make sure to lowercase all the chars.
-      if (index === 0) {
-        return word.toLowerCase();
-      }
-      // If it is not the first word only upper case the first char and lowercase the rest.
-      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-    })
-    .join('');
-}
+const tokenExport = (token: string, resolvedTokenFallback: string) => {
+  return `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+};
 
-function generateTokenVariables() {
+const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string) => {
+  const tokenSemanticRef =
+    tokenData.fst_reference.length > 0 ? toCamelCase(cleanFSTTokenName(tokenData.fst_reference)) + 'Raw' : null;
+
+  const fluentFallback = fluentFallbacks[token];
+
+  if (tokenSemanticRef && fluentFallback) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
+      tokenSemanticRef,
+    )}, ${escapeMixedInlineToken(fluentFallback)}))`;
+  }
+
+  if (fluentFallback) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, ${escapeMixedInlineToken(fluentFallback)})`;
+  }
+
+  if (tokenData.nullable) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, unset)`;
+  }
+
+  if (tokenSemanticRef) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(tokenSemanticRef)}))`;
+  }
+
+  return `var(${escapeInlineToken(tokenNameRaw)})`;
+};
+
+const generateTokenVariables = () => {
   // Default our files to token imports
   // TODO: Add raw token imports
   let optionalTokens = '';
@@ -179,25 +191,7 @@ function generateTokenVariables() {
      */
 
     // Our default token value if no fallbacks found.
-    let resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)})`;
-
-    if (tokenSemanticRef && fluentFallbacks[token]) {
-      // Token has a FST fallback and a fluent override fallback
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
-        tokenSemanticRef,
-      )}, ${escapeMixedInlineToken(fluentFallbacks[token])}))`;
-    } else if (fluentFallbacks[token]) {
-      // Token has a fluent override fallback only
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, ${escapeMixedInlineToken(
-        fluentFallbacks[token],
-      )})`;
-    } else if (tokenData.nullable) {
-      // nullable tokens should always resolve to unset
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, unset)`;
-    } else if (tokenSemanticRef) {
-      // Token has a FST reference fallback only
-      resolvedTokenFallback = `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(tokenSemanticRef)}))`;
-    }
+    const resolvedTokenFallback = getResolvedToken(token, tokenData, tokenNameRaw);
 
     if (tokenData.name.startsWith('CTRL/')) {
       // We have a component level control token
@@ -205,7 +199,7 @@ function generateTokenVariables() {
       if (!componentTokens[component]) {
         componentTokens[component] = '';
       }
-      componentTokens[component] += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+      componentTokens[component] += tokenExport(token, resolvedTokenFallback);
 
       if (!exportList[getComponentFile(component)]) {
         const fileLoc = getComponentFile(component);
@@ -216,15 +210,15 @@ function generateTokenVariables() {
     } else {
       // We have a global token
       if (tokenData.optional) {
-        optionalTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        optionalTokens += tokenExport(token, resolvedTokenFallback);
         // Add to our list of exports for later
         exportList[optionalVarFile].push(token);
       } else if (tokenData.nullable) {
-        nullableTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        nullableTokens += tokenExport(token, resolvedTokenFallback);
         // Add to our list of exports for later
         exportList[nullableVarFile].push(token);
       } else {
-        controlTokens += `export const ${token} = \`${resolvedTokenFallback}\`;\n`;
+        controlTokens += tokenExport(token, resolvedTokenFallback);
         // Add to our list of exports for later
         exportList[controlVarFile].push(token);
       }
@@ -311,7 +305,7 @@ function generateTokenVariables() {
   // Save exports
   project.saveSync();
   console.log('Added export statements');
-}
+};
 
 // Run script
 generateTokens();

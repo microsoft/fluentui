@@ -12,5 +12,5 @@
     "allowSyntheticDefaultImports": true
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec-e2e.ts"],
-  "include": ["./src/**/*.ts", "./scripts/**/*.ts"]
+  "include": ["./src/**/*.ts", "./scripts/**/*.ts", "./utils/**/*.ts"]
 }
