@@ -56,7 +56,9 @@ const cypressWebpackConfig = (): Configuration => {
 
 type BaseConfig = Omit<Cypress.ConfigOptions, 'component'> & {
   component: Omit<Cypress.ConfigOptions['component'], 'devServer'> & {
-    specPattern?: string[];
+    specPattern?: Cypress.ResolvedConfigOptions['specPattern'];
+    supportFile?: Cypress.ResolvedConfigOptions['supportFile'];
+    indexHtmlFile?: Cypress.ResolvedConfigOptions['indexHtmlFile'];
     devServer: {
       bundler: 'webpack';
       framework: 'react';
