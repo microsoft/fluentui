@@ -1,4 +1,4 @@
-import { Token } from '../scripts/token.types';
+import type { Token } from '../scripts/token.types';
 import { chopLastCamelCasePart } from './chopLastCamelCasePart';
 import { removeLastDelimiter } from './removeLastDelimiter';
 

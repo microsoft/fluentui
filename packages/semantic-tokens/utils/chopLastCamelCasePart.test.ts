@@ -1,4 +1,5 @@
 import { chopLastCamelCasePart } from './chopLastCamelCasePart';
+
 describe('chopLastCamelCasePart', () => {
   it('Handles removing last camel case (full word)', () => {
     expect(chopLastCamelCasePart('testFunction')).toMatch('test');

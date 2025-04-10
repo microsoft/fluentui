@@ -7,12 +7,9 @@ import { fluentOverrides as fluentFallbacksRaw, FluentOverrideValue, type Fluent
 import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
-import { ComponentTokenMap, Token } from './token.types';
+import type { ComponentTokenMap, Token } from './token.types';
 import path from 'node:path';
-import { dedupeShadowTokens } from '../utils/dedupeShadowTokens';
-import { toCamelCase } from '../utils/toCamelCase';
-import { escapeInlineToken } from '../utils/escapeInlineToken';
-import { removeLastDelimiter } from '../utils/removeLastDelimiter';
+import { removeLastDelimiter, escapeInlineToken, toCamelCase, dedupeShadowTokens, cleanFstTokenName } from '../utils';
 
 const project = new Project({
   tsConfigFilePath: path.resolve(__dirname, '../tsconfig.json'),
@@ -39,19 +36,6 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
     // we only have a raw value so we should print it directly.
     return `${token.rawValue}`;
   }
-};
-
-const cleanFSTTokenName = (originalTokenName: string) => {
-  // Handle any name housekeeping or small token name fixes
-  let newTokenName = originalTokenName.replace('-', '/');
-  // Ignore space
-  newTokenName = newTokenName.replace(' ', '');
-  // Ignore brackets (w/ leading slash)
-  newTokenName = newTokenName.replace('/(', '/');
-  // Ignore brackets
-  newTokenName = newTokenName.replace('(', '/').replace(')', '');
-
-  return newTokenName;
 };
 
 const writeDirectoryFile = (filePath: string, data: string) => {
@@ -136,7 +120,7 @@ const tokenExport = (token: string, resolvedTokenFallback: string) => {
 
 const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string) => {
   const tokenSemanticRef =
-    tokenData.fst_reference.length > 0 ? toCamelCase(cleanFSTTokenName(tokenData.fst_reference)) + 'Raw' : null;
+    tokenData.fst_reference.length > 0 ? toCamelCase(cleanFstTokenName(tokenData.fst_reference)) + 'Raw' : null;
 
   const fluentFallback = fluentFallbacks[token];
 
