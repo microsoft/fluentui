@@ -24,7 +24,7 @@ const generateLegacyTokens = () => {
     }
 
     const token = `/**
-     * CSS custom property value for the {@link @fluentui/tokens#${t} | \`${t}\`} design token.
+     * CSS custom property value for the {@link @fluentui/semantic-tokens#${t} | \`${t}\`} design token fallback.
      * @public
      */
     export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';\n`;

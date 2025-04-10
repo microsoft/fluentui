@@ -12,6 +12,7 @@ import path from 'node:path';
 import { dedupeShadowTokens } from '../utils/dedupeShadowTokens';
 import { toCamelCase } from '../utils/toCamelCase';
 import { escapeInlineToken } from '../utils/escapeInlineToken';
+import { removeLastDelimiter } from '../utils/removeLastDelimiter';
 
 const project = new Project({
   tsConfigFilePath: path.resolve(__dirname, '../tsconfig.json'),
@@ -51,6 +52,15 @@ const cleanFSTTokenName = (originalTokenName: string) => {
   newTokenName = newTokenName.replace('(', '/').replace(')', '');
 
   return newTokenName;
+};
+
+const writeDirectoryFile = (filePath: string, data: string) => {
+  const dirPath = removeLastDelimiter(filePath, path.sep);
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
+  fs.writeFileSync(filePath, data);
+  project.addSourceFileAtPathIfExists(filePath);
 };
 
 const generateTokenRawStrings = () => {
@@ -100,22 +110,13 @@ const generateTokenRawStrings = () => {
     }
   }
 
-  fs.writeFileSync(optionalVarFile, optionalRawTokens);
-  fs.writeFileSync(controlVarFile, controlRawTokens);
-  fs.writeFileSync(nullableVarFile, nullableRawTokens);
-  project.addSourceFileAtPathIfExists(optionalVarFile);
-  project.addSourceFileAtPathIfExists(controlVarFile);
-  project.addSourceFileAtPathIfExists(nullableVarFile);
+  writeDirectoryFile(optionalVarFile, optionalRawTokens);
+  writeDirectoryFile(controlVarFile, controlRawTokens);
+  writeDirectoryFile(nullableVarFile, nullableRawTokens);
 
   for (const component of Object.keys(componentTokens)) {
-    const dir = path.join(__dirname, `../src/components/${component}`);
-
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
     const variablePath = getComponentFile(component);
-    fs.writeFileSync(variablePath, componentTokens[component]);
-    project.addSourceFileAtPathIfExists(variablePath);
+    writeDirectoryFile(variablePath, componentTokens[component]);
   }
 };
 
@@ -174,15 +175,6 @@ const generateTokenVariables = () => {
 
     const tokenData: Token = tokensJSON[token];
     const tokenNameRaw = token + 'Raw';
-
-    let tokenSemanticRef: null | string = null;
-    let tokenSemanticName: null | string = null;
-
-    if (tokenData.fst_reference.length > 0) {
-      tokenSemanticName = toCamelCase(cleanFSTTokenName(tokenData.fst_reference));
-      tokenSemanticRef = tokenSemanticName + 'Raw';
-    }
-
     /**
      * TODO, we need to account for the fact that the fallbacks can be nullable tokens and as such we need to ensure
      * that they are not wrapped in the var() css function. This is because `unset` is not a variable and a statement.
