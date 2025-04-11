@@ -34,7 +34,7 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
   // The FluentOverrideValue type has two mutually exclusive properties: f2Token and rawValue
   // We need to check which one is defined and use that value
   if (token.f2Token !== undefined) {
-    return `\$\{tokens.${token.f2Token}\}`;
+    return `\$\{${token.f2Token}\}`;
   } else {
     // we only have a raw value so we should print it directly.
     return `${token.rawValue}`;
@@ -49,15 +49,6 @@ const writeDirectoryFile = (filePath: string, data: string) => {
 
   fs.writeFileSync(filePath, data);
   project.addSourceFileAtPathIfExists(filePath);
-};
-
-const addOptionalTokenImport = (data: string) => {
-  if (data.includes('tokens.')) {
-    const esLintIgnore = `// eslint-disable-next-line no-restricted-imports\n`;
-    const tokenImport = `import { tokens } from '@fluentui/tokens';\n`;
-    return esLintIgnore + tokenImport + data;
-  }
-  return data;
 };
 
 const generateTokenRawStrings = () => {
@@ -214,13 +205,15 @@ const generateTokenVariables = () => {
   };
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
     const filePath = path.join(__dirname, `../src/${tokensCategory}/tokens.ts`);
-    writeDirectoryFile(filePath, addOptionalTokenImport(_tokens));
+    writeDirectoryFile(filePath, _tokens);
   }
 
   for (const [component, _tokens] of Object.entries(componentTokens)) {
     const componentTokensPath = path.join(__dirname, `../src/components/${component}/tokens.ts`);
-    writeDirectoryFile(componentTokensPath, addOptionalTokenImport(_tokens));
+    writeDirectoryFile(componentTokensPath, _tokens);
   }
+
+  project.addSourceFileAtPath(path.join(__dirname, '../src/legacy/tokens.ts'));
 
   // Add import statements
   project.getSourceFiles().forEach(sourceFile => {
