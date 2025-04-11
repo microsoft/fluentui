@@ -13,11 +13,11 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/tokens": ">=1.0.0-alpha"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "@fluentui/tokens": "1.0.0-alpha.21"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -42,7 +42,6 @@
     "lib-commonjs"
   ],
   "scripts": {
-    "generate-tokens": "npx ts-node scripts/tokenGen.ts",
-    "generate-legacy-tokens": "npx ts-node scripts/legacyTokens.ts"
+    "generate-tokens": "ts-node scripts/tokenGen.ts"
   }
 }
