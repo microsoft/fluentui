@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "animate indeterminate progress bar in reduced motion",
+  "packageName": "@fluentui/react-progress",
+  "email": "vrbhardw@microsoft.com",
+  "dependentChangeType": "patch"
+}
