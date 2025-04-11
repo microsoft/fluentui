@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { type FieldControlProps, useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   mergeCallbacks,
   useId,
@@ -53,6 +54,20 @@ export function useListboxSlot(
       ...defaultProps,
     },
   });
+
+  const fieldControlProps = useFieldControlProps_unstable({ id: listboxId } as FieldControlProps, {
+    supportsLabelFor: true,
+  });
+
+  // Use the field's label to provide an accessible name for the listbox if it doesn't already have one
+  if (
+    listboxSlot &&
+    !listboxSlot['aria-label'] &&
+    !listboxSlot['aria-labelledby'] &&
+    fieldControlProps['aria-labelledby']
+  ) {
+    listboxSlot['aria-labelledby'] = fieldControlProps['aria-labelledby'];
+  }
 
   /**
    * Clicking on the listbox should never blur the trigger
