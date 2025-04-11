@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix tabs animation starting position",
+  "packageName": "@fluentui/web-components",
+  "email": "1981616118@qq.com",
+  "dependentChangeType": "patch"
+}
