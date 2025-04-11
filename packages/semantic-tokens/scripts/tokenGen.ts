@@ -147,8 +147,6 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
 };
 
 const generateTokenVariables = () => {
-  // Default our files to token imports
-  // TODO: Add raw token imports
   let optionalTokens = '';
   let controlTokens = '';
   let nullableTokens = '';
@@ -170,12 +168,6 @@ const generateTokenVariables = () => {
 
     const tokenData: Token = tokensJSON[token];
     const tokenNameRaw = token + 'Raw';
-    /**
-     * TODO, we need to account for the fact that the fallbacks can be nullable tokens and as such we need to ensure
-     * that they are not wrapped in the var() css function. This is because `unset` is not a variable and a statement.
-     * We also need to ensure legacy F2 tokens are not wrapped in the var() css function because they have the var() css function
-     * already in the token value. Any other values should probably include the var() css function.
-     */
 
     // Our default token value if no fallbacks found.
     const resolvedTokenFallback = getResolvedToken(token, tokenData, tokenNameRaw);

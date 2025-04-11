@@ -117,6 +117,10 @@ describe('dedupeShadowTokens', () => {
     // New combined token exists
     expect(dedupedTokens.shadowCardRestKey).toBeTruthy();
   });
+  it('Updates token name to combined version', () => {
+    // New combined token has correct name
+    expect(dedupedTokens.shadowCardRestKey.name).toMatch('shadow/card/rest/(key)');
+  });
   it('Updates token CSS name to combined version', () => {
     // New combined token has correct name
     expect(dedupedTokens.shadowCardRestKey.cssName).toMatch('--smtc-shadow-card-rest-key');
