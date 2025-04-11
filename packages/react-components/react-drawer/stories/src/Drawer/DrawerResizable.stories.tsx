@@ -35,15 +35,23 @@ const useStyles = makeStyles({
   },
 
   resizer: {
-    borderRight: `1px solid ${tokens.colorNeutralBackground5}`,
-
-    width: '8px',
+    width: '24px',
     position: 'absolute',
     top: 0,
     right: 0,
     bottom: 0,
     cursor: 'col-resize',
     resize: 'horizontal',
+
+    '&:before': {
+      content: '""',
+      position: 'absolute',
+      borderRight: `1px solid ${tokens.colorNeutralBackground5}`,
+      width: '1px',
+      height: '100%',
+      transform: 'translateX(-50%)',
+      left: '50%',
+    },
 
     ':hover': {
       borderRightWidth: '4px',
