@@ -42,6 +42,7 @@
     "lib-commonjs"
   ],
   "scripts": {
-    "generate-tokens": "ts-node scripts/tokenGen.ts"
+    "generate-tokens": "ts-node scripts/tokenGen.ts",
+    "generate-legacy-tokens": "ts-node scripts/legacyTokens.ts"
   }
 }
