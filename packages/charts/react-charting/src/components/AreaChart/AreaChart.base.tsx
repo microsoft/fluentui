@@ -720,7 +720,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
       this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
-        fillColor = this.props.theme!.semanticColors.bodyBackground;
+        fillColor = this.props.theme?.semanticColors?.bodyBackground;
       }
     }
 
@@ -729,14 +729,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
-    const points = this._addDefaultColors(this.props.data.lineChartData);
+    const points = this._addDefaultColors(this.props.data?.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._data.forEach((singleStackedData: Array<any>, index: number) => {
-      const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
+    this._data?.forEach((singleStackedData: Array<any>, index: number) => {
+      const curveFactory = getCurveFactory(points[index]?.lineOptions?.curve, d3CurveBasis);
       const area = d3Area()
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .x((d: any) => xScale(d.xVal))
@@ -766,27 +766,27 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
             fill={'transparent'}
-            strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
-            stroke={this._colors[index]}
-            opacity={this._getLineOpacity(points[index]!.legend)}
+            strokeWidth={points[index]?.lineOptions?.strokeWidth ?? 3}
+            stroke={this._colors?.[index]}
+            opacity={this._getLineOpacity(points[index]?.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
-            strokeDasharray={points[index].lineOptions?.strokeDasharray}
-            strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
-            strokeLinecap={points[index].lineOptions?.strokeLinecap}
+            strokeDasharray={points[index]?.lineOptions?.strokeDasharray}
+            strokeDashoffset={points[index]?.lineOptions?.strokeDashoffset}
+            strokeLinecap={points[index]?.lineOptions?.strokeLinecap}
           />
           {singleStackedData.length === 1 ? (
             <circle
               id={`${index}-graph-${this._uniqueIdForGraph}`}
-              cx={xScale(singleStackedData[0].xVal)}
-              cy={yScale(singleStackedData[0].values[1])}
+              cx={xScale(singleStackedData[0]?.xVal)}
+              cy={yScale(singleStackedData[0]?.values[1])}
               r={6}
               stroke={this._colors[index]}
               strokeWidth={3}
               fill={this._colors[index]}
               opacity={layerOpacity}
-              fillOpacity={this._getOpacity(points[index]!.legend)}
+              fillOpacity={this._getOpacity(points[index]?.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
@@ -797,15 +797,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               d={area(singleStackedData)!}
               fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
               opacity={layerOpacity}
-              fillOpacity={this._getOpacity(points[index]!.legend)}
+              fillOpacity={this._getOpacity(points[index]?.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
-                'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
+                'data-is-focusable': this._legendHighlighted(points[index]?.legend) || this._noLegendHighlighted(),
                 role: 'img',
-                'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
-                  points[index].data.length
+                'aria-label': `${points[index]?.legend}, series ${index + 1} of ${points.length} with ${
+                  points[index]?.data.length
                 } data points.`,
               })}
             />
@@ -816,7 +816,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._data.forEach((singleStackedData: Array<any>, index: number) => {
+    this._data?.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
         return;
       }
@@ -832,8 +832,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               points[index].data.length
             } data points.`}
           >
-            {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
-              const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
+            {singleStackedData?.map((singlePoint: IDPointType, pointIndex: number) => {
+              const circleId = `${this._circleId}_${index * this._data[0]?.length + pointIndex}`;
               const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
               lineColor = points[index]!.color!;
               const legend = points[index]!.legend;
