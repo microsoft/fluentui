@@ -107,6 +107,7 @@ export {
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  getSlotOriginalClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,

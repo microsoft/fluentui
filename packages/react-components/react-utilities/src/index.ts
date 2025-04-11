@@ -10,7 +10,9 @@ export {
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
+  getSlotOriginalClassNameProp as getSlotOriginalClassNameProp_unstable,
   SLOT_ELEMENT_TYPE_SYMBOL,
+  SLOT_ORIGINAL_CLASS_NAME_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
