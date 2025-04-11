@@ -35,7 +35,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: PresenceComponentProps) => {
+export const Default = (props: React.ComponentProps<typeof Collapse>) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
 
