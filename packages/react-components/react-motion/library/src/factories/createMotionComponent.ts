@@ -1,10 +1,10 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useAnimateAtoms } from '../hooks/useAnimateAtoms';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
-import { getChildElement } from '../utils/getChildElement';
+import { useChildElement } from '../utils/useChildElement';
 import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
 import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
@@ -63,10 +63,9 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       ..._rest
     } = props;
     const params = _rest as Exclude<typeof props, MotionComponentProps>;
-    const child = getChildElement(children);
+    const [child, childRef] = useChildElement(children);
 
     const handleRef = useMotionImperativeRef(imperativeRef);
-    const elementRef = React.useRef<HTMLElement>();
     const skipMotions = useMotionBehaviourContext() === 'skip';
     const optionsRef = React.useRef<{ skipMotions: boolean; params: MotionParams }>({
       skipMotions,
@@ -95,7 +94,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     });
 
     useIsomorphicLayoutEffect(() => {
-      const element = elementRef.current;
+      const element = childRef.current;
 
       if (element) {
         const atoms = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
@@ -113,9 +112,9 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+    }, [animateAtoms, childRef, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
 
-    return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
+    return child;
   };
 
   return Atom;
