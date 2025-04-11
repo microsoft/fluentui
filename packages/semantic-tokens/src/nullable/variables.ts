@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const textStyleDefaultHeaderCaseRaw = '--smtc-text-style-default-header-case';
 export const textStyleAiHeaderCaseRaw = '--smtc-text-style-ai-header-case';
 export const textStyleArticleHeaderCaseRaw = '--smtc-text-style-article-header-case';

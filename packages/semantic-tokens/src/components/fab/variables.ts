@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlFabBackgroundRestRaw = '--smtc-ctrl-fab-background-rest';
 export const ctrlFabBackgroundHoverRaw = '--smtc-ctrl-fab-background-hover';
 export const ctrlFabBackgroundPressedRaw = '--smtc-ctrl-fab-background-pressed';

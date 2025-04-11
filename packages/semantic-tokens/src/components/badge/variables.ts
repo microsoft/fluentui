@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlBadgeTextPaddingTopRaw = '--smtc-ctrl-badge-text-padding-top';
 export const ctrlBadgeTextPaddingBottomRaw = '--smtc-ctrl-badge-text-padding-bottom';
 export const ctrlBadgeSmTextPaddingTopRaw = '--smtc-ctrl-badge-sm-text-padding-top';

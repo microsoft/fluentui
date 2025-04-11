@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlChoicePaddingHorizontalRaw = '--smtc-ctrl-choice-padding-horizontal';
 export const ctrlChoicePaddingVerticalRaw = '--smtc-ctrl-choice-padding-vertical';
 export const ctrlChoiceBaseSizeRaw = '--smtc-ctrl-choice-base-size';

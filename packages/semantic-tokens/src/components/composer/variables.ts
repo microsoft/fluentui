@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlComposerInputBottomStrokeWidthSelectedRestRaw =
   '--smtc-ctrl-composer-input-bottom-stroke-width-selected-rest';
 export const ctrlComposerInputBottomStrokeWidthRestRaw = '--smtc-ctrl-composer-input-bottom-stroke-width-rest';

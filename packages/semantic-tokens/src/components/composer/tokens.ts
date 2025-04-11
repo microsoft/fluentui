@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 import { backgroundFlyoutSolidRaw } from '../../control/variables';
 import {
   ctrlComposerInputBottomStrokeWidthSelectedRestRaw,

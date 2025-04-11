@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlListPillWidthRaw = '--smtc-ctrl-list-pill-width';
 export const ctrlListPillFullwidthRaw = '--smtc-ctrl-list-pill-fullwidth';
 export const ctrlListPillStretchPaddingDefaultRaw = '--smtc-ctrl-list-pill-stretch-padding-default';

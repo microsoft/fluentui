@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlSliderBarHeightRaw = '--smtc-ctrl-slider-bar-height';
 export const ctrlSliderBarCornerRaw = '--smtc-ctrl-slider-bar-corner';
 export const ctrlSliderBarForegroundFilledRestRaw = '--smtc-ctrl-slider-bar-foreground-filled-rest';

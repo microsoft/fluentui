@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlProgressBackgroundEmptyRaw = '--smtc-ctrl-progress-background-empty';
 export const ctrlProgressBackgroundFilledRaw = '--smtc-ctrl-progress-background-filled';
 export const ctrlProgressCornerRaw = '--smtc-ctrl-progress-corner';

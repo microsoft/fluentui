@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlSegmentedBackgroundRestRaw = '--smtc-ctrl-segmented-background-rest';
 export const ctrlSegmentedBackgroundHoverRaw = '--smtc-ctrl-segmented-background-hover';
 export const ctrlSegmentedBackgroundPressedRaw = '--smtc-ctrl-segmented-background-pressed';

@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 import { backgroundCtrlBrandRestRaw, cornerCircularRaw } from '../../control/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,

@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlLinkForegroundNeutralRestRaw = '--smtc-ctrl-link-foreground-neutral-rest';
 export const ctrlLinkInlineStrokewidthRestRaw = '--smtc-ctrl-link-inline-strokewidth-rest';
 export const ctrlLinkInlineStrokewidthHoverRaw = '--smtc-ctrl-link-inline-strokewidth-hover';

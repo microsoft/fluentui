@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const textGlobalDisplay1FontsizeRaw = '--smtc-text-global-display1-fontsize';
 export const textGlobalDisplay1LineheightRaw = '--smtc-text-global-display1-lineheight';
 export const textGlobalDisplay2FontsizeRaw = '--smtc-text-global-display2-fontsize';

@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlInputBackgroundRestRaw = '--smtc-ctrl-input-background-rest';
 export const ctrlInputBackgroundHoverRaw = '--smtc-ctrl-input-background-hover';
 export const ctrlInputBackgroundPressedRaw = '--smtc-ctrl-input-background-pressed';

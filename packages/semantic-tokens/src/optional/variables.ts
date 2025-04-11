@@ -1,3 +1,4 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const textStyleDefaultHeaderFontfamilyRaw = '--smtc-text-style-default-header-fontfamily';
 export const textStyleDefaultHeaderLetterspacingRaw = '--smtc-text-style-default-header-letterspacing';
 export const textStyleAiRegularFontfamilyRaw = '--smtc-text-style-ai-regular-fontfamily';
