@@ -53,7 +53,7 @@ const FrameRenderer: React.FunctionComponent<FrameRendererProps> = ({ children }
   );
 };
 
-const Example: React.FC = props => {
+const Example = (props: React.PropsWithChildren<{}>) => {
   const styles = useExampleStyles();
 
   return (

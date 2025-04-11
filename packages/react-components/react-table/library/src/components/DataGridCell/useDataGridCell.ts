@@ -33,6 +33,7 @@ export const useDataGridCell_unstable = (props: DataGridCellProps, ref: React.Re
       tabIndex: tabbable ? 0 : undefined,
       ...(resizableColumns ? getTableCellProps(columnId) : {}),
       ...props,
+      children: props.children as React.ReactNode,
     },
     ref,
   );

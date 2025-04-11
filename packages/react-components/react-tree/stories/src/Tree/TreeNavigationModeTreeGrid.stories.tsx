@@ -15,7 +15,7 @@ type CustomTreeItemProps = TreeItemProps;
 
 const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
   const focusTargetAttribute = useRestoreFocusTarget();
-  const [layoutChildren, subtree] = React.Children.toArray(children);
+  const [layoutChildren, subtree] = React.Children.toArray(children as React.ReactNode[]);
 
   // same items to be used between contextmenu and actions
   const commonMenuItems = (

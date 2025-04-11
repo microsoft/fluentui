@@ -55,7 +55,7 @@ export const useDataGridSelectionCell_unstable = (
       subtle,
       ...props,
       onClick,
-    },
+    } as DataGridSelectionCellProps,
     ref,
   );
 };

@@ -18,7 +18,7 @@ export const flattenTreeFromElement = (
     TreeItemProps & { value: TreeItemValue }
   >[];
   return children.reduce<HeadlessFlatTreeItemProps[]>((acc, curr, index) => {
-    const childrenArray = React.Children.toArray(curr.props.children);
+    const childrenArray = React.Children.toArray(curr.props.children as React.ReactNode);
     const subtree = (childrenArray.length === 3 ? childrenArray[2] : childrenArray[1]) as typeof root | undefined;
     const [content] = childrenArray;
     const actions = (childrenArray.length === 3 ? childrenArray[1] : undefined) as React.ReactNode | undefined;

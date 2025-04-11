@@ -58,6 +58,7 @@ export const useDataGridHeaderCell_unstable = (
       tabIndex: sortable ? undefined : 0,
       ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
       ...props,
+      children: props.children as React.ReactNode,
       onClick,
     },
     ref,

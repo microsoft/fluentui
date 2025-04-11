@@ -385,12 +385,12 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 
 // @public (undocumented)
 export const TreeProvider: {
-    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): React_2.JSX.Element;
     displayName: string;
 };
 
 // @public (undocumented)
-export const TreeRootReset: (props: TreeRootResetProps) => JSX.Element;
+export const TreeRootReset: (props: TreeRootResetProps) => React_2.JSX.Element;
 
 // @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;

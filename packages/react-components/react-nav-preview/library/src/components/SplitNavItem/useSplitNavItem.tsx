@@ -41,7 +41,7 @@ export const useSplitNavItem_unstable = (
 
   const navItemShorthand = slot.always(navItem, {
     defaultProps: {
-      children,
+      children: children as React.ReactNode,
     },
     elementType: isSubNav ? NavSubItem : NavItem,
   });

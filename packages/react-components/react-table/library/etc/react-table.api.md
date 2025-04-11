@@ -206,7 +206,7 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
@@ -405,7 +405,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
-    tableRef: React_2.Ref<HTMLDivElement>;
+    tableRef: React_2.Ref<HTMLDivElement & HTMLTableElement>;
 }
 
 // @public
