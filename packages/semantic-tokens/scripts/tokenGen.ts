@@ -217,6 +217,11 @@ const generateTokenVariables = () => {
 
   // Add import statements
   project.getSourceFiles().forEach(sourceFile => {
+    if (sourceFile.getFilePath().endsWith('legacy/tokens.ts')) {
+      // Skip legacy tokens file
+      return;
+    }
+
     console.log('Fix missing imports from:', sourceFile.getFilePath());
     sourceFile.fixMissingImports();
 
