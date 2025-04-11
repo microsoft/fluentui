@@ -93,7 +93,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     () => userSheets || new Map(),
   );
 
-  const sheetHandler = React.useCallback(({ key, sheet }) => {
+  const sheetHandler = React.useCallback(({ key, sheet }: { key: string; sheet: ExtendedCSSStyleSheet }) => {
     setStylesheets(prev => {
       const next = new Map<string, ExtendedCSSStyleSheet>(prev);
       next.set(key, sheet);
@@ -101,7 +101,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     });
   }, []);
 
-  // Udapte stylesheets based on user style sheet changes
+  // Update stylesheets based on user style sheet changes
   React.useEffect(() => {
     setStylesheets(userSheets || new Map());
   }, [userSheets]);

@@ -1,23 +1,8 @@
 import * as path from 'path';
 import { baseConfig } from '@fluentui/scripts-cypress';
 
-// Exclude files that are not compatible with React 18 yet
-const excludedSpecs = [
-  '!' + path.resolve('../../packages/react-components/react-tag-picker/library/src/**/*.cy.{tsx,ts}'),
-  '!' + path.resolve('../../packages/react-components/react-tree/library/src/components/Tree/Tree.cy.tsx'),
-];
-
-// Include all tests from this app and the components package
-const includedSpecs = [
-  path.resolve('../../apps/react-18-tests-v9/src/**/*.cy.{tsx,ts}'),
-  path.resolve('../../packages/react-components/**/library/src/**/*.cy.{tsx,ts}'),
-  path.resolve('../../packages/react-components/react-tabster/src/**/*.cy.{tsx,ts}'),
-];
-
-const specs = [...includedSpecs, ...excludedSpecs];
 const config = { ...baseConfig };
 
-config.component.specPattern = specs;
 config.component.devServer.webpackConfig.resolve ??= {};
 config.component.devServer.webpackConfig.resolve.alias = {
   ...config.component.devServer.webpackConfig.resolve.alias,

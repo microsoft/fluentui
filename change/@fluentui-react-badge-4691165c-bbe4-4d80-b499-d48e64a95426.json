@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: revert min-width: max-content for Badge",
+  "packageName": "@fluentui/react-badge",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "patch"
+}

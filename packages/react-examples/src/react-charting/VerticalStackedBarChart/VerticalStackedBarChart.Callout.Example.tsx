@@ -269,6 +269,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
               directionalHint: DirectionalHint.topAutoEdge,
             }}
             margins={{ left: 50 }}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             colors={['red', 'white', 'green', 'black']}
             {...(this.state.selectedCallout === 'singleCustomCallout' && {
               onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {

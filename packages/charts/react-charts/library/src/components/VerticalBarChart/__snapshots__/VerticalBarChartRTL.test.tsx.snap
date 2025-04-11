@@ -10979,57 +10979,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             class="fui-Button fui-legend__legend"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #627CEF; --rect-borderColor: #627CEF;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(98, 124, 239); border-color: #627cef; --rect-content-high-contrast: linear-gradient(to right, #627CEF, #627CEF);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #C19C00; --rect-borderColor: #C19C00;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(193, 156, 0); border-color: #c19c00; --rect-content-high-contrast: linear-gradient(to right, #C19C00, #C19C00);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #E650AF; --rect-borderColor: #E650AF;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-              style="height: 12px; background-color: rgb(230, 80, 175); border-color: #e650af; --rect-content-high-contrast: linear-gradient(to right, #E650AF, #E650AF);"
-            />
-            <div
-              class="fui-legend__text"
-            />
-          </button>
-          <button
-            aria-label="undefined"
-            aria-selected="false"
-            class="fui-Button fui-legend__legend"
-            data-overflow-item=""
-            role="option"
             style="--rect-height: 12px; --rect-backgroundColor: #0E7878; --rect-borderColor: #0E7878;"
             type="button"
           >
@@ -11039,7 +10988,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             />
             <div
               class="fui-legend__text"
-            />
+            >
+              undefined
+            </div>
           </button>
         </div>
       </div>

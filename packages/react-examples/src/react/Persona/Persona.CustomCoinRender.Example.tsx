@@ -24,6 +24,7 @@ export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
         {...examplePersona}
         size={PersonaSize.size72}
         presence={PersonaPresence.online}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         onRenderCoin={_onRenderCoin}
         imageAlt="Ted Randall, status is available at 4 PM"
         imageUrl={TestImages.personaMale}

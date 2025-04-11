@@ -12,7 +12,17 @@ export interface OutputChartType {
   validTracesInfo?: [number, string][];
 }
 
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
+const SUPPORTED_PLOT_TYPES = [
+  'pie',
+  'bar',
+  'scatter',
+  'heatmap',
+  'sankey',
+  'indicator',
+  'gauge',
+  'histogram',
+  'histogram2d',
+];
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const isDate = (value: any): boolean => {
@@ -228,6 +238,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     switch (firstData.type) {
       case 'pie':
         return { isValid: true, type: 'donut', validTracesInfo: validTraces };
+      case 'histogram2d':
       case 'heatmap':
         return { isValid: true, type: 'heatmap', validTracesInfo: validTraces };
       case 'sankey':
@@ -260,9 +271,10 @@ export const mapFluentChart = (input: any): OutputChartType => {
         }
         if (containsLines) {
           const firstScatterData = firstData as Partial<PlotData>;
-          const isAreaChart = validTraces.some(trace =>
-            ['tonexty', 'tozeroy'].includes(`${(validSchema.data[trace[0]] as Partial<PlotData>).fill}`),
-          );
+          const isAreaChart = validTraces.some(trace => {
+            const scatterData = validSchema.data[trace[0]] as Partial<PlotData>;
+            return scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
+          });
           const isXDate = isDateArray(firstScatterData.x);
           const isXNumber = isNumberArray(firstScatterData.x);
           if (isXDate || isXNumber) {

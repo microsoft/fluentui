@@ -28,6 +28,8 @@ const context: ExecutorContext = {
     projects: { proj: { root: 'proj' } },
     version: 2,
   },
+  nxJsonConfiguration: {},
+  projectGraph: { nodes: {}, dependencies: {} },
 };
 
 jest.mock('node:child_process', () => {
