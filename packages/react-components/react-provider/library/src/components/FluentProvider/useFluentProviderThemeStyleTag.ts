@@ -11,7 +11,9 @@ const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
   : useIsomorphicLayoutEffect;
 
 const createStyleTag = (target: Document | undefined, elementAttributes: Record<string, string>) => {
-  if (!target) {
+  // Document might exist but not be ready yet (e.g. during SSR)
+  // In that case, we should not create a style tag
+  if (!target?.head) {
     return undefined;
   }
 
