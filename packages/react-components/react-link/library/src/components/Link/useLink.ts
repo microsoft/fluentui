@@ -4,6 +4,7 @@ import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 import { useLinkContext } from '../../contexts/linkContext';
+import { tokens } from '@fluentui/react-theme';
 
 /**
  * Given user props, defines default props for the Link, calls useLinkState_unstable, and returns processed state.
@@ -14,6 +15,10 @@ export const useLink_unstable = (
   props: LinkProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
+  for (const token of Object.keys(tokens)) {
+    console.log('Test if this impacts bundle size:', token);
+  }
+
   const backgroundAppearance = useBackgroundAppearance();
   const { inline: inlineContext } = useLinkContext();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
