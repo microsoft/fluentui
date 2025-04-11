@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: add missing linear case in getCurveFactory",
+  "comment": "fix: map stacked plotly scatter traces to area chart",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"

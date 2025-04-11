@@ -14,6 +14,15 @@
         "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
         "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
       ]
+    },
+    "e2e:integration": {
+      "dependsOn": [],
+      "inputs": [
+        "{projectRoot}/cypress-react-18.config.ts",
+        "{workspaceRoot}/packages/react-components/**/*.cy.tsx?",
+        "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
+        "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
+      ]
     }
   }
 }

@@ -426,77 +426,79 @@ export class GroupedVerticalBarChartBase
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      // To align the centers of the generated bandwidth and the calculated one when they differ,
-      // use the following addend.
-      const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
-      const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
-      let startColor = pointData.color ? pointData.color : getNextColor(index, 0, this.props.theme?.isInverted);
-      let endColor = startColor;
+      if (pointData) {
+        // To align the centers of the generated bandwidth and the calculated one when they differ,
+        // use the following addend.
+        const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
+        const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
+        let startColor = pointData.color ? pointData.color : getNextColor(index, 0, this.props.theme?.isInverted);
+        let endColor = startColor;
 
-      if (this.props.enableGradient) {
-        startColor = pointData.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        endColor = pointData.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
-        pointData.color = startColor;
-      }
+        if (this.props.enableGradient) {
+          startColor = pointData.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+          endColor = pointData.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+          pointData.color = startColor;
+        }
 
-      const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${index}`;
+        const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${index}`;
 
-      // Not rendering data with 0.
-      pointData.data &&
-        singleGroup.push(
-          <React.Fragment key={`${singleSet.indexNum}-${index}`}>
-            {this.props.enableGradient && (
-              <defs>
-                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
-                  <stop offset="0" stopColor={startColor} />
-                  <stop offset="100%" stopColor={endColor} />
-                </linearGradient>
-              </defs>
-            )}
-            <rect
-              className={this._classNames.opacityChangeOnHover}
-              height={Math.max(yBarScale(pointData.data), 0)}
-              width={this._barWidth}
-              x={xPoint}
-              y={yPoint}
-              data-is-focusable={
-                !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
-              }
-              opacity={this._getOpacity(pointData.legend)}
-              ref={(e: SVGRectElement | null) => {
-                this._refCallback(e!, pointData.legend, refIndexNumber);
-              }}
-              fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
-              rx={this.props.roundCorners ? 3 : 0}
-              onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
-              onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
-              onMouseOut={this._onBarLeave}
-              onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
-              onBlur={this._onBarLeave}
-              onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
-              aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
-              role="img"
-            />
-          </React.Fragment>,
-        );
-      if (
+        // Not rendering data with 0.
         pointData.data &&
-        !this.props.hideLabels &&
-        this._barWidth >= 16 &&
-        (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
-      ) {
-        barLabelsForGroup.push(
-          <text
-            key={`${singleSet.indexNum}-${index}`}
-            x={xPoint + this._barWidth / 2}
-            y={yPoint - 6}
-            textAnchor="middle"
-            className={this._classNames.barLabel}
-            aria-hidden={true}
-          >
-            {formatValueWithSIPrefix(pointData.data)}
-          </text>,
-        );
+          singleGroup.push(
+            <React.Fragment key={`${singleSet.indexNum}-${index}`}>
+              {this.props.enableGradient && (
+                <defs>
+                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0" stopColor={startColor} />
+                    <stop offset="100%" stopColor={endColor} />
+                  </linearGradient>
+                </defs>
+              )}
+              <rect
+                className={this._classNames.opacityChangeOnHover}
+                height={Math.max(yBarScale(pointData.data), 0)}
+                width={this._barWidth}
+                x={xPoint}
+                y={yPoint}
+                data-is-focusable={
+                  !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+                }
+                opacity={this._getOpacity(pointData.legend)}
+                ref={(e: SVGRectElement | null) => {
+                  this._refCallback(e!, pointData.legend, refIndexNumber);
+                }}
+                fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
+                rx={this.props.roundCorners ? 3 : 0}
+                onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
+                onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
+                onMouseOut={this._onBarLeave}
+                onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
+                onBlur={this._onBarLeave}
+                onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
+                aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
+                role="img"
+              />
+            </React.Fragment>,
+          );
+        if (
+          pointData.data &&
+          !this.props.hideLabels &&
+          this._barWidth >= 16 &&
+          (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+        ) {
+          barLabelsForGroup.push(
+            <text
+              key={`${singleSet.indexNum}-${index}`}
+              x={xPoint + this._barWidth / 2}
+              y={yPoint - 6}
+              textAnchor="middle"
+              className={this._classNames.barLabel}
+              aria-hidden={true}
+            >
+              {formatValueWithSIPrefix(pointData.data)}
+            </text>,
+          );
+        }
       }
     });
     // Used to display tooltip at x axis labels.

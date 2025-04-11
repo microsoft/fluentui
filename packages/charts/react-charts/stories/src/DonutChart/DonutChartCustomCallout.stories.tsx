@@ -29,7 +29,8 @@ export const DonutChartCustomCallout = () => {
     },
   ];
 
-  const _onTogglePopoverCheckChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onTogglePopoverCheckChange = React.useCallback((ev: any) => {
     setUseCustomPopover(ev.currentTarget.checked);
   }, []);
 
