@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
+import type { ExtractSlotProps, Slot, SlotPropsDataType } from './types';
 
 /**
  * Guard method that validates if a shorthand is a slot
@@ -31,7 +31,7 @@ import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
  * })
  * ```
  */
-export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(
+export function isResolvedShorthand<Shorthand extends Slot<SlotPropsDataType>>(
   shorthand?: Shorthand,
 ): shorthand is ExtractSlotProps<Shorthand> {
   return (
