@@ -12,7 +12,17 @@ export interface OutputChartType {
   validTracesInfo?: [number, string][];
 }
 
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'gauge', 'histogram'];
+const SUPPORTED_PLOT_TYPES = [
+  'pie',
+  'bar',
+  'scatter',
+  'heatmap',
+  'sankey',
+  'indicator',
+  'gauge',
+  'histogram',
+  'histogram2d',
+];
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const isDate = (value: any): boolean => {
@@ -228,6 +238,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     switch (firstData.type) {
       case 'pie':
         return { isValid: true, type: 'donut', validTracesInfo: validTraces };
+      case 'histogram2d':
       case 'heatmap':
         return { isValid: true, type: 'heatmap', validTracesInfo: validTraces };
       case 'sankey':
