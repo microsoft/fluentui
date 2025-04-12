@@ -190,15 +190,15 @@ export const AsideSlot: Story = {
   },
 };
 
-export const ExpandedChangeTreeItem: Story = {
+export const ToggleEvent: Story = {
   render: renderComponent(html<StoryArgs<FluentTreeItem>>`
     <fluent-tree-item
       @click=${(story, context) => {
         const target = context.eventTarget() as FluentTreeItem;
         target.toggleExpansion();
       }}
-      @expandedChange=${(c, e) => {
-        console.log('expandedChange', e.event?.detail);
+      @toggle=${(c, e) => {
+        console.log('toggle', e.event?.detail);
       }}
     >
       Item 1
