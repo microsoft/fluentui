@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 10 Apr 2025 07:21:23 GMT",
+      "tag": "@fluentui/utilities_v8.15.20",
+      "version": "8.15.20",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "lint: fix exposed lint errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Apr 2025 07:20:23 GMT",
       "tag": "@fluentui/utilities_v8.15.20",
       "version": "8.15.20",

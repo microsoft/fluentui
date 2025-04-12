@@ -534,7 +534,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = (input.data[0] as PlotData).y.length;
+  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
+    return total + (item.y?.length || 0);
+  }, 0);
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
@@ -800,9 +802,6 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
   }
 
   switch (line.shape) {
-    case 'linear':
-      lineOptions.curve = 'linear';
-      break;
     case 'spline':
       const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
       lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
@@ -816,6 +815,8 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
     case 'hvh':
       lineOptions.curve = 'step';
       break;
+    default:
+      lineOptions.curve = 'linear';
   }
 
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;

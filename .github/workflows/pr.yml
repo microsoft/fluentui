@@ -81,6 +81,97 @@ jobs:
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
+  react_18_integration:
+    if: ${{ github.repository_owner == 'microsoft' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      actions: 'read'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
+        with:
+          main-branch-name: 'master'
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'yarn'
+          node-version: '20'
+
+      - run: echo number of CPUs "$(getconf _NPROCESSORS_ONLN)"
+
+      - run: yarn install --frozen-lockfile
+
+      - name: Verify Cypress install
+        run: yarn cypress verify
+
+      # add more targets as needed
+      - name: type-check (affected)
+        id: type-check
+        run: yarn nx affected -t type-check:integration --nxBail
+        continue-on-error: true
+
+      - name: Prepare TSC logs
+        if: always() && steps.type-check.outcome == 'failure'
+        run: |
+          mkdir -p tsc-logs
+          yarn tsc -p apps/react-18-tests-v9/tsconfig.react-18.json --listFilesOnly > tsc-logs/tsc-debug-files-map.md
+
+      - name: Upload TSC logs
+        if: always() && steps.type-check.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: typescript-react-18
+          path: tsc-logs
+          retention-days: 1
+
+      - name: Affected e2e:integration Projects
+        id: affected_projects_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t e2e:integration --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
+      - name: e2e (affected)
+        id: e2e
+        if: steps.affected_projects_count.outputs.value > 0
+        run: yarn workspace @fluentui/react-18-tests-v9 e2e:integration
+        continue-on-error: true
+
+      - name: Upload Cypress screenshots if exist
+        uses: actions/upload-artifact@v4
+        if: always() && steps.type-check.outcome == 'failure'
+        with:
+          name: cypress-screenshots-react-18
+          path: |
+            apps/*/cypress/screenshots/**/*.png
+            packages/**/cypress/screenshots/**/*.png
+          retention-days: 1
+
+      - name: Integration tests success
+        if: steps.type-check.outcome == 'success' && steps.e2e.outcome == 'success'
+        run: |
+          echo "React 18 integration tests passed"
+
+      - name: Integration tests failure
+        if: steps.type-check.outcome == 'failure' || steps.e2e.outcome == 'failure'
+        run: |
+          echo "React 18 integration tests failed"
+          echo "Type-check: ${{ steps.type-check.outcome }}"
+          echo "E2E: ${{ steps.e2e.outcome }}"
+          echo "Exiting with error code 1"
+
+          echo "### React 18 Integration Tests Failure" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Type-check: ${{ steps.type-check.outcome }}" >> $GITHUB_STEP_SUMMARY
+          echo "- E2E: ${{ steps.e2e.outcome }}" >> $GITHUB_STEP_SUMMARY
+
+          exit 1
+
   e2e:
     if: ${{ github.repository_owner == 'microsoft' }}
     # TODO: switch to macos once problematic tests are fixed

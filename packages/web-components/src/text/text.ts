@@ -1,5 +1,4 @@
-import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { hasMatchingState, swapStates, toggleState } from '../utils/element-internals.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
@@ -88,15 +87,6 @@ export class Text extends FASTElement {
   size?: TextSize;
 
   /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: TextSize | undefined, next: TextSize | undefined) {
-    swapStates(this.elementInternals, prev, next, TextSize, 'size-');
-  }
-
-  /**
    * THe Text font
    *
    * @public
@@ -105,15 +95,6 @@ export class Text extends FASTElement {
    */
   @attr
   font?: TextFont;
-
-  /**
-   * Handles changes to font attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public fontChanged(prev: TextFont | undefined, next: TextFont | undefined) {
-    swapStates(this.elementInternals, prev, next, TextFont);
-  }
 
   /**
    * The Text weight
@@ -126,16 +107,7 @@ export class Text extends FASTElement {
   weight?: TextWeight;
 
   /**
-   * Handles changes to weight attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined) {
-    swapStates(this.elementInternals, prev, next, TextWeight);
-  }
-
-  /**
-   * THe Text align
+   * The Text alignment
    *
    * @public
    * @remarks
@@ -143,50 +115,4 @@ export class Text extends FASTElement {
    */
   @attr
   align?: TextAlign;
-
-  /**
-   * Handles changes to align attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined) {
-    swapStates(this.elementInternals, prev, next, TextAlign);
-  }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Observable.getNotifier(this).subscribe(this);
-
-    Object.keys(this.$fastController.definition.attributeLookup).forEach(key => {
-      this.handleChange(this, key);
-    });
-  }
-
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    Observable.getNotifier(this).unsubscribe(this);
-  }
-
-  /**
-   * Handles changes to observable properties
-   * @internal
-   * @param source - the source of the change
-   * @param propertyName - the property name being changed
-   */
-  public handleChange(source: any, propertyName: string) {
-    switch (propertyName) {
-      case 'nowrap':
-      case 'truncate':
-      case 'italic':
-      case 'underline':
-      case 'strikethrough':
-      case 'block':
-        toggleState(this.elementInternals, propertyName, !!this[propertyName]);
-        break;
-      default:
-        break;
-    }
-  }
 }

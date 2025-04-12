@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { smallState, verticalState } from '../styles/states/index.js';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,
@@ -68,14 +67,14 @@ export const styles = css`
     --slider-direction: -90deg;
   }
 
-  :host(${smallState}) {
+  :host([size='small']) {
     --thumb-size: 16px;
     --track-overhang: -1px;
     --track-size: 2px;
     --border-radius: ${borderRadiusSmall};
   }
 
-  :host(${verticalState}) {
+  :host([orientation='vertical']) {
     --slider-direction: 0deg;
     --step-marker-inset: -1px var(--track-overhang);
     min-height: 120px;
@@ -120,8 +119,8 @@ export const styles = css`
     overflow: hidden;
   }
 
-  :host(${verticalState})::after,
-  :host(${verticalState}) .track {
+  :host([orientation='vertical'])::after,
+  :host([orientation='vertical']) .track {
     height: 100%;
     width: var(--track-size);
   }
@@ -139,7 +138,7 @@ export const styles = css`
     width: calc(100% - var(--slider-progress));
   }
 
-  :host(${verticalState}) .track::before {
+  :host([orientation='vertical']) .track::before {
     width: 100%;
     bottom: 0;
     height: var(--slider-progress);
@@ -167,7 +166,7 @@ export const styles = css`
     left: var(--slider-thumb);
   }
 
-  :host(${verticalState}) .thumb-container {
+  :host([orientation='vertical']) .thumb-container {
     transform: translateY(50%);
     left: unset;
     bottom: var(--slider-thumb);

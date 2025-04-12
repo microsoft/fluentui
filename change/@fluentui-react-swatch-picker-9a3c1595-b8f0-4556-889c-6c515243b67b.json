@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: design change of selected state for ColorSwatch",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "v.kozlova13@gmail.com",
+  "dependentChangeType": "patch"
+}

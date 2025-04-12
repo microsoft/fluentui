@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: map stacked plotly scatter traces to area chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
