@@ -248,6 +248,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'gauge', validTracesInfo: validTraces };
       case 'histogram':
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
+      case 'scatterpolar':
+          return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(
@@ -283,7 +285,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, type: 'fallback', validTracesInfo: validTraces };
         }
 
-        return { isValid: false, errorMessage: `Unsupported chart - type :${firstData.type}}` };
+        return { isValid: false, errorMessage: `Unsupported chart - type :${firstData.type}` };
     }
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };
