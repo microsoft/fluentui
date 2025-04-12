@@ -147,6 +147,7 @@ export {
   AnchorButtonDefinition,
   AnchorButtonShape,
   AnchorButtonSize,
+  AnchorButtonStyles,
   AnchorButtonTemplate,
   AnchorTarget,
 } from './anchor-button/index.js';
