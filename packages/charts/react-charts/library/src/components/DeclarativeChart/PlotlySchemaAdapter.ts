@@ -3,7 +3,16 @@
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
+import {
+  bin as d3Bin,
+  extent as d3Extent,
+  sum as d3Sum,
+  min as d3Min,
+  max as d3Max,
+  merge as d3Merge,
+  range as d3Range,
+  Bin,
+} from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { DonutChartProps } from '../DonutChart/index';
@@ -563,23 +572,94 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
-  (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
-    firstData.y?.forEach((yVal: any, yIdx: number) => {
-      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+  // TODO: Add support for date axes
+  if (firstData.type === 'histogram2d') {
+    const isStringArray = (arr: any) => isArrayOfType(arr, (value: any) => typeof value === 'string');
+    const findBinIndex = (
+      bins: string[][] | Bin<number, number>[],
+      value: string | number | null | undefined,
+      isString: boolean,
+    ) => {
+      if (typeof value === 'undefined' || value === null) {
+        return -1;
+      }
 
-      heatmapDataPoints.push({
-        x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
-        y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
-        value: zVal,
-        rectText: zVal,
-      });
+      return isString
+        ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
+        : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
+    };
+    const getBinSize = (bin: Bin<number, number>) => bin.x1! - bin.x0!;
+    const getBinCenter = (bin: Bin<number, number>) => (bin.x1! + bin.x0!) / 2;
 
-      if (typeof zVal === 'number') {
-        zMin = Math.min(zMin, zVal);
-        zMax = Math.max(zMax, zVal);
+    const isXString = isStringArray(firstData.x);
+    const isYString = isStringArray(firstData.y);
+    const xBins = createBins(firstData.x, firstData.xbins?.start, firstData.xbins?.end, firstData.xbins?.size);
+    const yBins = createBins(firstData.y, firstData.ybins?.start, firstData.ybins?.end, firstData.ybins?.size);
+    const zBins: number[][][] = yBins.map(() => xBins.map(() => []));
+    let total = 0;
+
+    firstData.x?.forEach((value, index) => {
+      const xVal = value as string | number | null;
+      const yVal = firstData.y?.[index] as string | number | null | undefined;
+      const xBinIdx = findBinIndex(xBins, xVal, isXString);
+      const yBinIdx = findBinIndex(yBins, yVal, isYString);
+
+      if (xBinIdx !== -1 && yBinIdx !== -1) {
+        zBins[yBinIdx][xBinIdx].push((firstData.z?.[index] as number | null | undefined) ?? 1);
       }
     });
-  });
+
+    const z = zBins.map(row => {
+      return row.map(bin => {
+        const zVal = calculateHistFunc(firstData.histfunc, bin);
+        total += zVal;
+        return zVal;
+      });
+    });
+
+    xBins.forEach((xBin, xIdx) => {
+      yBins.forEach((yBin, yIdx) => {
+        const zVal = calculateHistNorm(
+          firstData.histnorm,
+          z[yIdx][xIdx],
+          total,
+          isXString ? xBin.length : getBinSize(xBin as Bin<number, number>),
+          isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
+        );
+
+        heatmapDataPoints.push({
+          x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
+          y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
+  } else {
+    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+      firstData.y?.forEach((yVal: any, yIdx: number) => {
+        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+
+        heatmapDataPoints.push({
+          x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
+          y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
+  }
+
   const heatmapData: HeatMapChartData = {
     legend: firstData.name,
     data: heatmapDataPoints,
@@ -817,3 +897,87 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
 
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
+
+const createBins = (
+  data: TypedArray | Datum[] | Datum[][] | undefined,
+  binStart: number | string | undefined,
+  binEnd: number | string | undefined,
+  binSize: number | string | undefined,
+) => {
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  const isStringArray = isArrayOfType(data, (value: any) => typeof value === 'string');
+  if (isStringArray) {
+    const categories = Array.from(new Set(data as string[]));
+    const start = typeof binStart === 'number' ? Math.ceil(binStart) : 0;
+    const stop = typeof binEnd === 'number' ? Math.floor(binEnd) + 1 : categories.length;
+    const step = typeof binSize === 'number' ? binSize : 1;
+
+    return d3Range(start, stop, step).map(i => categories.slice(i, i + step));
+  }
+
+  const scale = d3ScaleLinear()
+    .domain(d3Extent<number>(data as number[]) as [number, number])
+    .nice();
+  let [minVal, maxVal] = scale.domain();
+
+  minVal = typeof binStart === 'number' ? binStart : minVal;
+  maxVal = typeof binEnd === 'number' ? binEnd : maxVal;
+
+  const binGenerator = d3Bin().domain([minVal, maxVal]);
+
+  if (typeof binSize === 'number') {
+    const thresholds: number[] = [];
+    let th = minVal;
+    const tolerance = 1 / Math.pow(10, binSize.toString().split('.')[1]?.length ?? 0);
+
+    while (maxVal + binSize - th > tolerance) {
+      thresholds.push(th);
+      th += binSize;
+    }
+
+    minVal = thresholds[0];
+    maxVal = thresholds[thresholds.length - 1];
+    binGenerator.domain([minVal, maxVal]).thresholds(thresholds);
+  }
+
+  return binGenerator(data as number[]).slice(0, -1);
+};
+
+const calculateHistFunc = (histfunc: PlotData['histfunc'] | undefined, bin: number[]) => {
+  switch (histfunc) {
+    case 'sum':
+      return d3Sum(bin);
+    case 'avg':
+      return bin.length === 0 ? 0 : d3Sum(bin) / bin.length;
+    case 'min':
+      return d3Min(bin) ?? 0;
+    case 'max':
+      return d3Max(bin) ?? 0;
+    default:
+      return bin.length;
+  }
+};
+
+const calculateHistNorm = (
+  histnorm: PlotData['histnorm'] | undefined,
+  value: number,
+  total: number,
+  dx: number,
+  dy: number = 1,
+) => {
+  switch (histnorm) {
+    case 'percent':
+      return total === 0 ? 0 : (value / total) * 100;
+    case 'probability':
+      return total === 0 ? 0 : value / total;
+    case 'density':
+      return dx * dy === 0 ? 0 : value / (dx * dy);
+    case 'probability density':
+      return total * dx * dy === 0 ? 0 : value / (total * dx * dy);
+    default:
+      return value;
+  }
+};
