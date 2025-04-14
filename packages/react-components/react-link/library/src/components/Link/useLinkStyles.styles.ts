@@ -1,20 +1,7 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import {
-  ctrlFocusOuterStroke,
-  ctrlLinkForegroundBrandHover,
-  ctrlLinkForegroundBrandPressed,
-  ctrlLinkForegroundNeutralRest,
-  ctrlLinkForegroundNeutralHover,
-  ctrlLinkForegroundNeutralPressed,
-  foregroundCtrlNeutralPrimaryDisabled,
-  textGlobalBody3Fontsize,
-  textStyleDefaultRegularFontfamily,
-  textStyleDefaultRegularWeight,
-  strokewidthDefault,
-  ctrlLinkForegroundBrandRest,
-} from '@fluentui/semantic-tokens';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -24,7 +11,7 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: ctrlFocusOuterStroke,
+    textDecorationColor: semanticTokens.ctrlFocusOuterStroke,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',
@@ -36,29 +23,29 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: ctrlLinkForegroundBrandRest,
+    color: semanticTokens.ctrlLinkForegroundBrandRest,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: textStyleDefaultRegularFontfamily,
-    fontSize: textGlobalBody3Fontsize,
-    fontWeight: textStyleDefaultRegularWeight,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontfamily,
+    fontSize: semanticTokens.textGlobalBody3Fontsize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     margin: '0',
     padding: '0',
     overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
-    textDecorationThickness: strokewidthDefault,
+    textDecorationThickness: semanticTokens.strokewidthDefault,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: ctrlLinkForegroundBrandHover,
+      color: semanticTokens.ctrlLinkForegroundBrandHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: ctrlLinkForegroundBrandPressed,
+      color: semanticTokens.ctrlLinkForegroundBrandPressed,
     },
   },
   // Overrides when the Link renders as a button.
@@ -71,16 +58,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: ctrlLinkForegroundNeutralRest,
+    color: semanticTokens.ctrlLinkForegroundNeutralRest,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: ctrlLinkForegroundNeutralHover,
+      color: semanticTokens.ctrlLinkForegroundNeutralHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: ctrlLinkForegroundNeutralPressed,
+      color: semanticTokens.ctrlLinkForegroundNeutralPressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -90,17 +77,17 @@ const useStyles = makeStyles({
   // Overrides when the Link is disabled.
   disabled: {
     textDecorationLine: 'none',
-    color: foregroundCtrlNeutralPrimaryDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       textDecorationLine: 'none',
-      color: foregroundCtrlNeutralPrimaryDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
 
     ':active': {
       textDecorationLine: 'none',
-      color: foregroundCtrlNeutralPrimaryDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
