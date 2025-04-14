@@ -5,7 +5,7 @@ import { useStyles } from './SelectionCard.styles';
 import { ComponentsImages } from './ComponentSelector';
 
 interface SelectionCardProps {
-  componentsImages: ComponentsImages;
+  componentsImages?: ComponentsImages;
   name: string;
   displayName: string;
   selected: boolean;
@@ -14,7 +14,7 @@ interface SelectionCardProps {
 
 export const SelectionCard: React.FC<SelectionCardProps> = props => {
   const styles = useStyles();
-  const { componentsImages, name, displayName, selected, updateComponentSelection } = props;
+  const { name, displayName, selected, updateComponentSelection } = props;
 
   const onSelectionChange = React.useCallback(
     (_, data) => {
@@ -23,18 +23,18 @@ export const SelectionCard: React.FC<SelectionCardProps> = props => {
     [updateComponentSelection, name],
   );
 
-  const componentImage = React.useMemo(() => {
-    const importName = `${name}Img`;
-    if (componentsImages[importName]) {
-      const result = {
-        src: componentsImages[importName],
-        alt: `Preview for ${props.displayName}`,
-      };
-      return result;
-    } else {
-      return undefined;
-    }
-  }, [name, displayName]);
+  // const componentImage = React.useMemo(() => {
+  //   const importName = `${name}Img`;
+  //   if (componentsImages[importName]) {
+  //     const result = {
+  //       src: componentsImages[importName],
+  //       alt: `Preview for ${props.displayName}`,
+  //     };
+  //     return result;
+  //   } else {
+  //     return undefined;
+  //   }
+  // }, [name, displayName]);
 
   return (
     <div className={styles.main}>
@@ -46,13 +46,13 @@ export const SelectionCard: React.FC<SelectionCardProps> = props => {
       >
         <CardHeader description={<Caption1 className={styles.caption}>{displayName}</Caption1>} />
         <CardPreview className={styles.grayBackground}>
-          {componentImage && (
+          {/* {componentImage && (
             <img
               className={selected ? styles.cardImageSelected : styles.cardImage}
               src={componentImage.src}
               alt={componentImage.alt}
             />
-          )}
+          )} */}
         </CardPreview>
       </Card>
     </div>

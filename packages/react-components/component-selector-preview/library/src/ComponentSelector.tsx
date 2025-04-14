@@ -53,7 +53,7 @@ interface ComponentSelectorProps {
   groups: ComponentGroup[];
   questions: GroupQuestion[];
   attributesMapping: ComponentAttributesMapping[];
-  componentsImages: ComponentsImages;
+  // componentsImages: ComponentsImages;
 }
 
 export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
@@ -61,7 +61,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   groups,
   questions,
   attributesMapping,
-  componentsImages,
+  // componentsImages,
 }) => {
   const classes = useStyles();
 
@@ -221,7 +221,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
           const card = (
             <>
               <SelectionCard
-                componentsImages={componentsImages}
+                // componentsImages={componentsImages}
                 key={definition.name}
                 name={definition.name}
                 displayName={definition.displayName}
