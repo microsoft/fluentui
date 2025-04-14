@@ -42,6 +42,7 @@ import {
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
   areArraysEqual,
+  computeDomainMax,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -220,10 +221,10 @@ export class HorizontalBarChartWithAxisBase
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    const groupedChartData = this._groupChartDataByLegend(this._points);
+    const stackedChartData = this._groupChartDataByLegend(this._points);
     if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
-        groupedChartData,
+        stackedChartData,
         margins,
         width,
         isRTL,
@@ -300,14 +301,14 @@ export class HorizontalBarChartWithAxisBase
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) => {
-    const groupedChartData = this._groupChartDataByLegend(this._points);
-    this._longestBarTotalValue = this._computeLongestBarTotalValue(groupedChartData);
+    const stackedChartData = this._groupChartDataByLegend(this._points);
+    this._longestBarTotalValue = computeDomainMax(stackedChartData);
 
     const { xBarScale, yBarScale } =
       this._yAxisType === YAxisType.NumericAxis
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
-    const allBars = groupedChartData
+    const allBars = stackedChartData
       .map(singleBarData =>
         this._yAxisType === YAxisType.NumericAxis
           ? this._createNumericBars(
@@ -477,8 +478,8 @@ export class HorizontalBarChartWithAxisBase
     isNumericScale: boolean,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
+    const xMax = this._longestBarTotalValue;
     if (isNumericScale) {
-      const xMax = this._longestBarTotalValue;
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
@@ -489,7 +490,6 @@ export class HorizontalBarChartWithAxisBase
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
-      const xMax = this._longestBarTotalValue;
       // please note these padding default values must be consistent in here
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -519,18 +519,6 @@ export class HorizontalBarChartWithAxisBase
     return Object.values(map);
   };
 
-  private _computeLongestBarTotalValue = (groupedChartData: IHorizontalBarChartWithAxisDataPoint[][]) => {
-    let longestBarTotalValue = 0;
-    groupedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
-      const barTotalValue = group!.reduce(
-        (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
-        0,
-      );
-      return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
-    });
-    return longestBarTotalValue;
-  };
-
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -553,6 +541,7 @@ export class HorizontalBarChartWithAxisBase
     let prevWidthLTR = 0;
     let prevWidthRTL = 0;
     let prevPoint = 0;
+    const totalBars = singleBarData.length;
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -600,7 +589,10 @@ export class HorizontalBarChartWithAxisBase
       prevWidthLTR += Math.max(xBarScale(prevPoint), 0) - this.margins.left!;
       prevWidthRTL += containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0);
       prevPoint = point.x;
-      const totalBars = singleBarData.length;
+      const currentWidthRTL = containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0);
+      const currentWidthLTR = Math.max(xBarScale(point.x), 0) - this.margins.left!;
+      const gapWidthRTL = index !== 0 && currentWidthRTL > 2 ? 2 : 0;
+      const gapWidthLTR = index !== totalBars - 1 && currentWidthLTR > 2 ? 2 : 0;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -617,11 +609,7 @@ export class HorizontalBarChartWithAxisBase
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={
-              this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0) - (index !== 0 ? 2 : 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left! - (index !== totalBars - 1 ? 2 : 0)
-            }
+            width={this._isRtl ? currentWidthRTL - gapWidthRTL : currentWidthLTR - gapWidthLTR}
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -736,6 +724,10 @@ export class HorizontalBarChartWithAxisBase
       prevWidthLTR += Math.max(xBarScale(prevPoint), 0) - this.margins.left!;
       prevWidthRTL += containerWidth - this.margins.right! - Math.max(xBarScale(prevPoint), 0);
       prevPoint = point.x;
+      const currentWidthRTL = containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0);
+      const currentWidthLTR = Math.max(xBarScale(point.x), 0) - this.margins.left!;
+      const gapWidthRTL = index !== 0 && currentWidthRTL > 2 ? 2 : 0;
+      const gapWidthLTR = index !== totalBars - 1 && currentWidthLTR > 2 ? 2 : 0;
 
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -754,11 +746,7 @@ export class HorizontalBarChartWithAxisBase
             x={this._isRtl ? xBarScale(point.x) - prevWidthRTL : this.margins.left! + prevWidthLTR}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
-            width={
-              this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0) - (index !== 0 ? 2 : 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left! - (index !== totalBars - 1 ? 2 : 0)
-            }
+            width={this._isRtl ? currentWidthRTL - gapWidthRTL : currentWidthLTR - gapWidthLTR}
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}

@@ -516,7 +516,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 ): IHorizontalBarChartWithAxisProps => {
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
-      const legendName = series.name;
+      const legendName = series.name ?? series.y;
       return (series.y as Datum[]).map((yValue: string, i: number) => {
         const color = getColor(legendName, colorMap, isDarkTheme);
         return {

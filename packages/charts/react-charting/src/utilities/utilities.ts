@@ -1019,6 +1019,24 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Calculates maximum domain value for Numeric x axis
+ * works for Horizontal Bar Chart With axis
+ * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeDomainMax(stackedChartData: IHorizontalBarChartWithAxisDataPoint[][]): number {
+  let longestBarTotalValue = 0;
+  stackedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const barTotalValue = group!.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
+      0,
+    );
+    return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
+  });
+  return longestBarTotalValue;
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1029,21 +1047,13 @@ export function domainRangeOfNumericForAreaChart(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForHorizontalBarChartWithAxis(
-  groupedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
 ): IDomainNRange {
-  let longestBarTotalValue = 0;
-  groupedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
-    const barTotalValue = group!.reduce(
-      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
-      0,
-    );
-    return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
-  });
-  const xMax = longestBarTotalValue;
+  const xMax = computeDomainMax(stackedChartData);
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
