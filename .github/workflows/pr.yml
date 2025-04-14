@@ -153,7 +153,9 @@ jobs:
       - name: e2e (affected)
         id: e2e
         if: steps.affected_projects_e2e_count.outputs.value > 0
-        run: yarn workspace @fluentui/react-${{ matrix.react }}-tests-v9 e2e:integration
+        run: |
+          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v9 e2e:integration
+          echo $?
         continue-on-error: true
 
       - name: Upload Cypress screenshots if exist
