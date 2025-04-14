@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 10 Apr 2025 07:21:22 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Apr 2025 07:20:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.71)
+
+Mon, 14 Apr 2025 07:20:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.70..@fluentui/react-charting_v5.23.71)
+
+### Patches
+
+- HBC bars overlapping fix ([PR #34227](https://github.com/microsoft/fluentui/pull/34227) by anushgupta@microsoft.com)
+- fix(react-charting): Adding fix for Grouped Vertical bar chart error  ([PR #34228](https://github.com/microsoft/fluentui/pull/34228) by 120183316+srmukher@users.noreply.github.com)
+- fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
 
 ## [5.23.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.70)
 
