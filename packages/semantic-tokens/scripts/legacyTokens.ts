@@ -10,7 +10,6 @@ const generateLegacyTokens = () => {
   console.log('Importing required fluent legacy tokens as flat export');
 
   const semanticTokenFallbacks = Object.keys(fluentOverrides);
-  const fluentTokens = Object.keys(tokensPackage.tokens);
   const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
   const generatedTokens = semanticTokenFallbacks.reduce((acc, t) => {
@@ -18,16 +17,17 @@ const generateLegacyTokens = () => {
     if (!fluent2Fallback) {
       return '';
     }
-    if (!fluentTokens.includes(fluent2Fallback)) {
+    if (!Object.keys(tokensPackage.tokens).includes(fluent2Fallback)) {
+      // Token does not exist in F2 tokens
       // This should never occur, but let's flag if a mistake was made in fallback token names
       throw new Error(`Fluent token ${fluentOverrides[t].f2Token} not found in fluent tokens`);
     }
-
+    const tokenValue = tokensPackage.tokens[fluent2Fallback as keyof typeof tokensPackage.tokens];
     const token = `/**
      * CSS custom property value for the {@link @fluentui/tokens#${fluent2Fallback} | \`${fluent2Fallback}\`} design token.
      * @public
      */
-    export const ${fluent2Fallback} = 'var(--${fluent2Fallback})';\n`;
+    export const ${fluent2Fallback} = '${tokenValue}';\n`;
 
     return acc + token;
   }, '');
