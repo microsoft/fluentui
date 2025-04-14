@@ -1,9 +1,9 @@
 name: VRT Baseline
 on:
   push:
-    # TODO: once testing is done enable pull_request on all branches again
     branches:
-      - vrt-gha-testing
+      # Why only master - https://github.com/microsoft/fluentui/pull/34072#discussion_r2011220032
+      - master
 
 env:
   NX_PARALLEL: 6 # ubuntu-latest = 4-core CPU / 16 GB of RAM | macos-14-xlarge (arm) = 6-core CPU / 14 GB of RAM
@@ -50,7 +50,7 @@ jobs:
           result-encoding: string
 
       - name: Login via Azure CLI
-        uses: azure/login@a65d910e8af852a8061c627c456678983e180302 # v2.2.0
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
         with:
           client-id: ${{ secrets.AZURE_VRT_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -58,10 +58,11 @@ jobs:
 
       - name: Run baseline
         env:
+          # this is explicity needed as github token is not available in CLI context
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PRINCIPAL_CLIENT_ID: ${{ secrets.AZURE_VRT_CLIENT_ID }}
         run: |
-          npx vr-approval-cli@1.0.0-test.1742488629090 run-diff \
+          npx vr-approval-cli@0.5.1 run-diff \
             --screenshotsDirectory "${{steps.screenshots_root.outputs.result}}" \
             --buildType release \
             --ciDefinitionId 'vrt-baseline.yml' \

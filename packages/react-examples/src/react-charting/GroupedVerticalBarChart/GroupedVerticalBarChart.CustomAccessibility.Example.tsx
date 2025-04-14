@@ -182,7 +182,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
       { key: 'StackCallout', text: 'Stack callout' },
     ];
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -221,6 +221,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
@@ -229,7 +230,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             roundCorners={this.state.roundCorners}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

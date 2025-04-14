@@ -1,8 +1,28 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 20 Mar 2025 07:21:55 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Apr 2025 07:19:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.4)
+
+Thu, 03 Apr 2025 07:19:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.3..@fluentui/chart-utilities_v1.1.4)
+
+### Patches
+
+- fix: filter out invalid plotly data ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by 110246001+krkshitij@users.noreply.github.com)
+
+## [1.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.3)
+
+Mon, 24 Mar 2025 07:21:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.2..@fluentui/chart-utilities_v1.1.3)
+
+### Patches
+
+- fix(react-charting): Decode binary data ([PR #34029](https://github.com/microsoft/fluentui/pull/34029) by 120183316+srmukher@users.noreply.github.com)
+- fix: Fix scatter validity condition ([PR #34070](https://github.com/microsoft/fluentui/pull/34070) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: modify check for scatter plot ([PR #33877](https://github.com/microsoft/fluentui/pull/33877) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [1.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.2)
 

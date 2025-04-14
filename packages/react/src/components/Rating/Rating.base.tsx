@@ -222,6 +222,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
         <FocusZone
           direction={FocusZoneDirection.bidirectional}
           className={css(classNames.ratingFocusZone, rootSizeClass)}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           defaultActiveElement={'#' + getStarId(id, Math.ceil(displayRating))}
           // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element
           // is read-only. https://www.w3.org/TR/wai-aria-1.1/#aria-readonly

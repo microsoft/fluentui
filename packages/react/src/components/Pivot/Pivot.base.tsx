@@ -293,6 +293,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           {overflowBehavior === 'menu' && (
             <OverflowButton
               className={css(classNames.link, classNames.overflowMenuButton)}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}

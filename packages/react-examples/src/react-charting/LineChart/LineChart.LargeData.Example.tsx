@@ -114,7 +114,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
     const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
@@ -157,7 +157,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
             enablePerfOptimization={true}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

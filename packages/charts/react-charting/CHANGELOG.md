@@ -1,8 +1,60 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 20 Mar 2025 10:22:53 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Apr 2025 07:21:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.70)
+
+Thu, 10 Apr 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.69..@fluentui/react-charting_v5.23.70)
+
+### Patches
+
+- fix: add missing linear case in getCurveFactory ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
+
+## [5.23.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.69)
+
+Tue, 08 Apr 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.68..@fluentui/react-charting_v5.23.69)
+
+### Patches
+
+- fix: handle blank donut chart when labels exist without corresponding values in plotly json ([PR #34188](https://github.com/microsoft/fluentui/pull/34188) by kumarkshitij@microsoft.com)
+
+## [5.23.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.68)
+
+Thu, 03 Apr 2025 07:19:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.67..@fluentui/react-charting_v5.23.68)
+
+### Patches
+
+- fix: use valid plotly data for transformations ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.4 ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by beachball)
+
+## [5.23.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.67)
+
+Thu, 27 Mar 2025 07:21:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.66..@fluentui/react-charting_v5.23.67)
+
+### Patches
+
+- Accessibility bug fix ([PR #34073](https://github.com/microsoft/fluentui/pull/34073) by 132879294+v-baambati@users.noreply.github.com)
+- Accessibility bug fix ([PR #34068](https://github.com/microsoft/fluentui/pull/34068) by 132879294+v-baambati@users.noreply.github.com)
+
+## [5.23.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.66)
+
+Mon, 24 Mar 2025 07:21:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.65..@fluentui/react-charting_v5.23.66)
+
+### Patches
+
+- feat: add support for line curves ([PR #33877](https://github.com/microsoft/fluentui/pull/33877) by 110246001+krkshitij@users.noreply.github.com)
+- Add scaling factor to heights of Vertical Stacked bars ([PR #34021](https://github.com/microsoft/fluentui/pull/34021) by 74965306+Anush2303@users.noreply.github.com)
+- Updated Pie chart title color and arc text colors to fix accessibility issue ([PR #33945](https://github.com/microsoft/fluentui/pull/33945) by 132879294+v-baambati@users.noreply.github.com)
+- fix(react-charting): Secondary Y Axis margin adjustment ([PR #33770](https://github.com/microsoft/fluentui/pull/33770) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Decode binary data ([PR #34029](https://github.com/microsoft/fluentui/pull/34029) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.3 ([PR #34070](https://github.com/microsoft/fluentui/pull/34070) by beachball)
 
 ## [5.23.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.65)
 

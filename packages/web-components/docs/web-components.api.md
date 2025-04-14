@@ -53,11 +53,8 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public
 export class AccordionItem extends BaseAccordionItem {
     block: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
-    markerPositionChanged(prev: AccordionItemMarkerPosition | undefined, next: AccordionItemMarkerPosition | undefined): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined): void;
 }
 
 // @internal
@@ -184,10 +181,11 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
 export class Avatar extends BaseAvatar {
+    active?: AvatarActive | undefined;
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "beige" | "blue" | "brass" | "brown" | "cornflower" | "cranberry" | "dark-green" | "dark-red" | "forest" | "gold" | "grape" | "lavender" | "light-teal" | "lilac" | "magenta" | "marigold" | "mink" | "navy" | "peach" | "pink" | "platinum" | "plum" | "pumpkin" | "purple" | "red" | "royal-blue" | "seafoam" | "steel" | "teal")[];
+    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
     // (undocumented)
     connectedCallback(): void;
     // (undocumented)
@@ -359,15 +357,9 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
-    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
-    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     shape?: BadgeShape;
-    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
-    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -437,13 +429,11 @@ export const BadgeTemplate: ElementViewTemplate<Badge>;
 // @public (undocumented)
 export class BaseAccordionItem extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
 }
@@ -475,7 +465,6 @@ export class BaseAnchor extends FASTElement {
 // @public
 export class BaseAvatar extends FASTElement {
     constructor();
-    active?: AvatarActive | undefined;
     // @internal
     elementInternals: ElementInternals;
     initials?: string | undefined;
@@ -953,13 +942,9 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 // @public
 export class Button extends BaseButton {
     appearance?: ButtonAppearance;
-    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     iconOnly: boolean;
-    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: ButtonShape;
-    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
-    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
 }
 
 // @internal (undocumented)
@@ -1039,11 +1024,7 @@ export class Checkbox extends BaseCheckbox {
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    // @internal
-    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    // @internal
-    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
 
@@ -2176,14 +2157,11 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
-    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
-    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
-    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     overflowCount: number;
@@ -2192,10 +2170,8 @@ export class CounterBadge extends FASTElement {
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
-    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
-    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -2344,13 +2320,10 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 export class Divider extends BaseDivider {
     // (undocumented)
     alignContent?: DividerAlignContent;
-    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
-    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
     inset?: boolean;
-    insetChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2489,11 +2462,7 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 // @public
 export class Dropdown extends BaseDropdown {
     appearance: DropdownAppearance;
-    // @internal
-    appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
     size?: DropdownSize;
-    // @internal
-    sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
 }
 
 // @public
@@ -2743,17 +2712,10 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
-    borderedChanged(prev: boolean, next: boolean): void;
-    // @internal
-    elementInternals: ElementInternals;
     fit?: ImageFit;
-    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
-    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
-    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2806,14 +2768,9 @@ export function isTreeItem(element?: Node | null, tagName?: string): element is 
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
-    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
-    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2886,9 +2843,7 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
-    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
     inline: boolean;
-    inlineChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -3182,11 +3137,8 @@ export class MessageBar extends FASTElement {
     // @internal
     elementInternals: ElementInternals;
     intent?: MessageBarIntent;
-    intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined): void;
     layout?: MessageBarLayout;
-    layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined): void;
     shape?: MessageBarShape;
-    shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined): void;
 }
 
 // @public
@@ -3238,9 +3190,7 @@ export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 // @public
 class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
-    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
-    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
 export { ProgressBar_2 as ProgressBar }
 
@@ -3403,14 +3353,12 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 // @public
 export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
-    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     // @override
     protected getMaxIcons(): number;
     // @override
     protected getSelectedValue(): number;
     size?: RatingDisplaySize;
-    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
 }
 
 // @public
@@ -3553,8 +3501,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    // (undocumented)
-    protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3721,9 +3667,7 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 // @public
 export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
-    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     size?: SpinnerSize;
-    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -3860,11 +3804,7 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
-    // @internal (undocumented)
-    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
     size?: TablistSize;
-    // @internal (undocumented)
-    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
     tabsChanged(): void;
 }
 
@@ -3913,13 +3853,13 @@ export type TabOptions = StartEndOptions<Tab>;
 
 // Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class TabPanel extends FASTElement {
 }
 
 // Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
 
 // Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -3936,7 +3876,7 @@ export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 // Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export class Tabs extends BaseTabs {
     // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;
@@ -3965,7 +3905,7 @@ export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
 
 // Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
 
 // @public
@@ -4016,27 +3956,17 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
-    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     font?: TextFont;
-    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
-    // @internal
-    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
-    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
-    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -4056,11 +3986,7 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 // @public (undocumented)
 export class TextArea extends BaseTextArea {
     appearance: TextAreaAppearance;
-    // (undocumented)
-    protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
     block: boolean;
-    // (undocumented)
-    protected blockChanged(): void;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
@@ -4070,8 +3996,6 @@ export class TextArea extends BaseTextArea {
     // (undocumented)
     protected labelSlottedNodesChanged(): void;
     size?: TextAreaSize;
-    // (undocumented)
-    protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
 }
 
 // Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4156,9 +4080,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
-    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     controlSize?: TextInputControlSize;
-    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
 }
 
 // @internal (undocumented)

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 21 Mar 2025 04:07:36 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Apr 2025 04:07:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.90)
+
+Thu, 10 Apr 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.89..@fluentui/web-components_v3.0.0-beta.90)
+
+### Changes
+
+- feat: remove use of custom states for presentational styling ([PR #34168](https://github.com/microsoft/fluentui/pull/34168) by 13071055+chrisdholt@users.noreply.github.com)
+- fix typo in avatar styles for beige color ([PR #34221](https://github.com/microsoft/fluentui/pull/34221) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.89)
+
+Wed, 09 Apr 2025 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.88..@fluentui/web-components_v3.0.0-beta.89)
+
+### Changes
+
+- deprecate tabs and tab-panel in favor of tablist ([PR #34206](https://github.com/microsoft/fluentui/pull/34206) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.88](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.88)
 

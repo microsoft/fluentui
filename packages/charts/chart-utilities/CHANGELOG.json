@@ -2,6 +2,48 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Thu, 03 Apr 2025 07:19:54 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "dc379e677d1026c9f5eec09bcfceb51872ea0c89",
+            "comment": "fix: filter out invalid plotly data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Mar 2025 07:21:11 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.3",
+      "version": "1.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "7729c8eaed4d2de4019ac482f869f8d8a4cf8b46",
+            "comment": "fix(react-charting): Decode binary data"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "5be6ba78f020fbf227fea845dea23a118138c2a4",
+            "comment": "fix: Fix scatter validity condition"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "14a6cb6b9a8453d49d6892b5b2718b2a160a866b",
+            "comment": "fix: modify check for scatter plot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Mar 2025 07:21:55 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.2",
       "version": "1.1.2",

@@ -62,12 +62,42 @@ export const SelectableIndicator = () => {
   const [selected3, setSelected3] = React.useState(false);
   const [selected4, setSelected4] = React.useState(false);
 
-  const setCheckboxState = React.useCallback(({ selected, checked }, setFn) => setFn(!!(selected || checked)), []);
+  const setCheckboxState = React.useCallback(
+    (
+      { selected, checked }: { selected?: boolean; checked?: boolean | 'mixed' },
+      setFn: React.Dispatch<React.SetStateAction<boolean>>,
+    ) => setFn(!!(selected || checked)),
+    [],
+  );
 
-  const onSelected1Change = React.useCallback((_, state) => setCheckboxState(state, setSelected1), [setCheckboxState]);
-  const onSelected2Change = React.useCallback((_, state) => setCheckboxState(state, setSelected2), [setCheckboxState]);
-  const onSelected3Change = React.useCallback((_, state) => setCheckboxState(state, setSelected3), [setCheckboxState]);
-  const onSelected4Change = React.useCallback((_, state) => setCheckboxState(state, setSelected4), [setCheckboxState]);
+  const onSelected1Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected1),
+    [setCheckboxState],
+  );
+  const onSelected2Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected2),
+    [setCheckboxState],
+  );
+  const onSelected3Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected3),
+    [setCheckboxState],
+  );
+  const onSelected4Change = React.useCallback(
+    (
+      _: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent,
+      state: { selected?: boolean; checked?: boolean | 'mixed' },
+    ) => setCheckboxState(state, setSelected4),
+    [setCheckboxState],
+  );
 
   return (
     <div className={styles.main}>
