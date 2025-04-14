@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 14 Apr 2025 07:20:23 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.200",
+      "version": "8.14.200",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Apr 2025 07:21:23 GMT",
       "tag": "@fluentui/react-experiments_v8.14.200",
       "version": "8.14.200",
