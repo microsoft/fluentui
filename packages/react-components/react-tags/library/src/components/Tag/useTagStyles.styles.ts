@@ -128,7 +128,20 @@ const useRootStyles = makeStyles({
     height: '24px',
   },
   'extra-small': {
+    position: 'relative',
     height: '20px',
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      height: '2px',
+      width: '100%',
+    },
+    '&:before': {
+      top: '-2px',
+    },
+    '&:after': {
+      bottom: '-2px',
+    },
   },
 });
 
