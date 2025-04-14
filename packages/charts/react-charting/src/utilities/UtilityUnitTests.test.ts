@@ -930,10 +930,7 @@ describe('domainRangeOfNumericForAreaChart', () => {
 });
 
 describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
-  const points: IHorizontalBarChartWithAxisDataPoint[] = [
-    { x: 10, y: 20 },
-    { x: 30, y: 40 },
-  ];
+  const points: IHorizontalBarChartWithAxisDataPoint[][] = [[{ x: 10, y: 20 }], [{ x: 30, y: 40 }]];
   const margins: utils.IMargins = {
     left: 5,
     right: 10,

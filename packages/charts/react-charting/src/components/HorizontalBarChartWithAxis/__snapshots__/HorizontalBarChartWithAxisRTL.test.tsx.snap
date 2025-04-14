@@ -467,7 +467,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
         </g>
         <g>
           <rect
-            aria-label="20%. 2020/04/30."
+            aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -475,32 +475,14 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#002050"
+            fill="#0078d4"
             height="32"
             role="img"
             rx="0"
             tabindex="0"
-            width="295"
+            width="147.5"
             x="40"
-            y="4"
-          />
-          <rect
-            aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcallout0"
-            class=
-
-                {
-                  opacity: ;
-                }
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="368.75"
-            x="40"
-            y="98.80000000000001"
+            y="20"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -518,10 +500,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="173.75"
           />
           <rect
-            aria-label="10%. 2020/04/30."
+            aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -529,14 +511,32 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#0078d4"
+            fill="#00188f"
             height="32"
             role="img"
             rx="0"
             tabindex="-1"
-            width="147.5"
+            width="368.75"
             x="40"
-            y="217.3"
+            y="122.5"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="71.25"
           />
         </g>
       </svg>
@@ -1471,7 +1471,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
         </g>
         <g>
           <rect
-            aria-label="20%. 2020/04/30."
+            aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -1479,32 +1479,14 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#002050"
+            fill="#0078d4"
             height="32"
             role="img"
             rx="0"
             tabindex="0"
-            width="295"
+            width="147.5"
             x="40"
-            y="4"
-          />
-          <rect
-            aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcallout0"
-            class=
-
-                {
-                  opacity: ;
-                }
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="368.75"
-            x="40"
-            y="98.80000000000001"
+            y="20"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -1522,10 +1504,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="173.75"
           />
           <rect
-            aria-label="10%. 2020/04/30."
+            aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -1533,14 +1515,32 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#0078d4"
+            fill="#00188f"
             height="32"
             role="img"
             rx="0"
             tabindex="-1"
-            width="147.5"
+            width="368.75"
             x="40"
-            y="217.3"
+            y="122.5"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="71.25"
           />
         </g>
       </svg>
@@ -2488,7 +2488,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
           </g>
           <g>
             <rect
-              aria-label="20%. 2020/04/30."
+              aria-label="10%. 2020/04/30."
               aria-labelledby="toolTipcallout3"
               class=
 
@@ -2496,32 +2496,14 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                     opacity: ;
                   }
               data-is-focusable="true"
-              fill="#002050"
+              fill="#0078d4"
               height="32"
               role="img"
               rx="0"
               tabindex="0"
-              width="295"
+              width="147.5"
               x="40"
-              y="4"
-            />
-            <rect
-              aria-label="37%. 2020/04/30."
-              aria-labelledby="toolTipcallout3"
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="32"
-              role="img"
-              rx="0"
-              tabindex="-1"
-              width="368.75"
-              x="40"
-              y="98.80000000000001"
+              y="20"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -2539,10 +2521,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="590"
               x="40"
-              y="179.38"
+              y="173.75"
             />
             <rect
-              aria-label="10%. 2020/04/30."
+              aria-label="37%. 2020/04/30."
               aria-labelledby="toolTipcallout3"
               class=
 
@@ -2550,14 +2532,32 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                     opacity: ;
                   }
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="#00188f"
               height="32"
               role="img"
               rx="0"
               tabindex="-1"
-              width="147.5"
+              width="368.75"
               x="40"
-              y="217.3"
+              y="122.5"
+            />
+            <rect
+              aria-label="20%. 2020/04/30."
+              aria-labelledby="toolTipcallout3"
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#002050"
+              height="32"
+              role="img"
+              rx="0"
+              tabindex="-1"
+              width="295"
+              x="40"
+              y="71.25"
             />
           </g>
         </svg>
@@ -3493,7 +3493,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         </g>
         <g>
           <rect
-            aria-label="20%. 2020/04/30."
+            aria-label="10%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -3501,32 +3501,14 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#002050"
+            fill="#0078d4"
             height="32"
             role="img"
             rx="0"
             tabindex="0"
-            width="295"
+            width="147.5"
             x="40"
-            y="4"
-          />
-          <rect
-            aria-label="37%. 2020/04/30."
-            aria-labelledby="toolTipcallout0"
-            class=
-
-                {
-                  opacity: ;
-                }
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="368.75"
-            x="40"
-            y="98.80000000000001"
+            y="20"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -3544,10 +3526,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="173.75"
           />
           <rect
-            aria-label="10%. 2020/04/30."
+            aria-label="37%. 2020/04/30."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -3555,14 +3537,32 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#0078d4"
+            fill="#00188f"
             height="32"
             role="img"
             rx="0"
             tabindex="-1"
-            width="147.5"
+            width="368.75"
             x="40"
-            y="217.3"
+            y="122.5"
+          />
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="71.25"
           />
         </g>
       </svg>
@@ -4520,7 +4520,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                       aria-label="undefined"
                       aria-posinset="1"
                       aria-selected="false"
-                      aria-setsize="4"
+                      aria-setsize="1"
                       class=
 
                           {
@@ -4602,301 +4602,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                               line-height: 16px;
                               opacity: ;
                             }
-                      />
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="undefined"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #002050;
-                              border-color: #002050;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #002050, #002050);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      />
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="undefined"
-                      aria-posinset="3"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #00188f;
-                              border-color: #00188f;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #00188f, #00188f);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      />
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="undefined"
-                      aria-posinset="4"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #0078d4;
-                              border-color: #0078d4;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #0078d4, #0078d4);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      />
+                      >
+                        undefined
+                      </div>
                     </button>
                   </div>
                 </div>
@@ -5377,7 +5085,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         </g>
         <g>
           <rect
-            aria-label="2020/04/30. 20%."
+            aria-label="2020/04/30. 10%."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -5385,32 +5093,14 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#002050"
+            fill="#0078d4"
             height="32"
             role="img"
             rx="0"
             tabindex="0"
-            width="295"
+            width="147.5"
             x="40"
-            y="4"
-          />
-          <rect
-            aria-label="2020/04/30. 37%."
-            aria-labelledby="toolTipcallout0"
-            class=
-
-                {
-                  opacity: ;
-                }
-            data-is-focusable="true"
-            fill="#00188f"
-            height="32"
-            role="img"
-            rx="0"
-            tabindex="-1"
-            width="368.75"
-            x="40"
-            y="98.80000000000001"
+            y="20"
           />
           <rect
             aria-label="2020/04/30. 88%."
@@ -5428,10 +5118,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="173.75"
           />
           <rect
-            aria-label="2020/04/30. 10%."
+            aria-label="2020/04/30. 37%."
             aria-labelledby="toolTipcallout0"
             class=
 
@@ -5439,14 +5129,32 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   opacity: ;
                 }
             data-is-focusable="true"
-            fill="#0078d4"
+            fill="#00188f"
             height="32"
             role="img"
             rx="0"
             tabindex="-1"
-            width="147.5"
+            width="368.75"
             x="40"
-            y="217.3"
+            y="122.5"
+          />
+          <rect
+            aria-label="2020/04/30. 20%."
+            aria-labelledby="toolTipcallout0"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            rx="0"
+            tabindex="-1"
+            width="295"
+            x="40"
+            y="71.25"
           />
         </g>
       </svg>

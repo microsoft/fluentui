@@ -1029,13 +1029,21 @@ export function domainRangeOfNumericForAreaChart(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForHorizontalBarChartWithAxis(
-  points: IHorizontalBarChartWithAxisDataPoint[],
+  groupedChartData: IHorizontalBarChartWithAxisDataPoint[][],
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  let longestBarTotalValue = 0;
+  groupedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const barTotalValue = group!.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
+      0,
+    );
+    longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+  });
+  const xMax = longestBarTotalValue;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 

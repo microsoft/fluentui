@@ -84,6 +84,7 @@ export class HorizontalBarChartWithAxisBase
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private _longestBarTotalValue: number;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -219,8 +220,15 @@ export class HorizontalBarChartWithAxisBase
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
+    const groupedChartData = this._groupChartDataByLegend(this._points);
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
+        groupedChartData,
+        margins,
+        width,
+        isRTL,
+        shiftX,
+      );
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -292,10 +300,34 @@ export class HorizontalBarChartWithAxisBase
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) => {
-    return (this._bars =
-      this._yAxisType === YAxisType.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!, yElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!, yElement!));
+    const groupedChartData = this._groupChartDataByLegend(this._points);
+    this._longestBarTotalValue = this._computeLongestBarTotalValue(groupedChartData);
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
+    const allBars = groupedChartData
+      .map(singleBarData =>
+        this._yAxisType === YAxisType.NumericAxis
+          ? this._createNumericBars(
+              containerHeight,
+              containerWidth,
+              xElement!,
+              yElement!,
+              singleBarData,
+              xBarScale,
+              yBarScale,
+            )
+          : this._createStringBars(
+              containerHeight,
+              containerWidth,
+              xElement!,
+              yElement!,
+              singleBarData,
+              xBarScale,
+              yBarScale,
+            ),
+      )
+      .flat();
+
+    return (this._bars = allBars);
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -442,7 +474,7 @@ export class HorizontalBarChartWithAxisBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
     if (isNumericScale) {
-      const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      const xMax = this._longestBarTotalValue;
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
@@ -453,7 +485,7 @@ export class HorizontalBarChartWithAxisBase
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
-      const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+      const xMax = this._longestBarTotalValue;
       // please note these padding default values must be consistent in here
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -470,21 +502,51 @@ export class HorizontalBarChartWithAxisBase
     }
   };
 
+  private _groupChartDataByLegend = (chartData: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+    chartData.forEach(dataPoint => {
+      const key = dataPoint.y;
+      if (!map[key]) {
+        map[key] = [];
+      }
+      map[key].push(dataPoint);
+    });
+
+    return Object.values(map);
+  };
+
+  private _computeLongestBarTotalValue = (groupedChartData: IHorizontalBarChartWithAxisDataPoint[][]) => {
+    let longestBarTotalValue = 0;
+    groupedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+      const barTotalValue = group!.reduce(
+        (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
+        0,
+      );
+      longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+    });
+    return longestBarTotalValue;
+  };
+
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    xBarScale: any,
+    yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
-    const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...this._points];
+    const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
       const aValue = typeof a.y === 'number' ? a.y : parseFloat(a.y);
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
 
+    let prevWidthLTR = 0;
+    let prevWidthRTL = 0;
+    let prevPoint = 0;
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -529,6 +591,10 @@ export class HorizontalBarChartWithAxisBase
 
       const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
 
+      prevWidthLTR += Math.max(xBarScale(prevPoint), 0) - this.margins.left!;
+      prevWidthRTL += containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0);
+      prevPoint = point.x;
+      const totalBars = singleBarData.length;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -541,14 +607,14 @@ export class HorizontalBarChartWithAxisBase
           )}
           <rect
             key={point.y}
-            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            x={this._isRtl ? xBarScale(point.x) - prevWidthRTL : this.margins.left! + prevWidthLTR}
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
             width={
               this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left!
+                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0) - (index !== 0 ? 2 : 0)
+                : Math.max(xBarScale(point.x), 0) - this.margins.left! - (index !== totalBars - 1 ? 2 : 0)
             }
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
@@ -610,10 +676,16 @@ export class HorizontalBarChartWithAxisBase
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    xBarScale: any,
+    yBarScale: any,
   ): JSX.Element[] {
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const { useSingleColor = false } = this.props;
-    const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+    let prevWidthLTR = 0;
+    let prevWidthRTL = 0;
+    let prevPoint = 0;
+    const totalBars = singleBarData.length;
+    const bars = singleBarData.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this._isLegendHighlighted(point.legend);
@@ -653,6 +725,9 @@ export class HorizontalBarChartWithAxisBase
       }
 
       const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
+      prevWidthLTR += Math.max(xBarScale(prevPoint), 0) - this.margins.left!;
+      prevWidthRTL += containerWidth - this.margins.right! - Math.max(xBarScale(prevPoint), 0);
+      prevPoint = point.x;
 
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -668,13 +743,13 @@ export class HorizontalBarChartWithAxisBase
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
             key={point.x}
             className={this._classNames.opacityChangeOnHover}
-            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            x={this._isRtl ? xBarScale(point.x) - prevWidthRTL : this.margins.left! + prevWidthLTR}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
             width={
               this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left!
+                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0) - (index !== 0 ? 2 : 0)
+                : Math.max(xBarScale(point.x), 0) - this.margins.left! - (index !== totalBars - 1 ? 2 : 0)
             }
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
@@ -751,6 +826,7 @@ export class HorizontalBarChartWithAxisBase
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
 
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
       let color: string = useSingleColor
@@ -765,14 +841,16 @@ export class HorizontalBarChartWithAxisBase
           color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
         }
       }
-
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(legendTitle);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
           this._onLegendLeave(isLegendSelected);
