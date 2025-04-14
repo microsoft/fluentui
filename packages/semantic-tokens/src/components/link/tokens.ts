@@ -1,5 +1,4 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { tokens } from '@fluentui/tokens';
 import {
   foregroundCtrlNeutralPrimaryRestRaw,
   strokewidthDefaultRaw,
@@ -7,6 +6,14 @@ import {
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
 } from '../../control/variables';
+import {
+  colorNeutralForeground2,
+  colorNeutralForeground2Hover,
+  colorNeutralForeground2Pressed,
+  colorBrandForegroundLink,
+  colorBrandForegroundLinkHover,
+  colorBrandForegroundLinkPressed,
+} from '../../legacy/tokens';
 import {
   ctrlLinkForegroundNeutralRestRaw,
   ctrlLinkInlineStrokewidthRestRaw,
@@ -25,16 +32,17 @@ import {
   ctrlLinkInlineShowunderlineatrestRaw,
   ctrlLinkOnpageShowunderlineatrestRaw,
 } from './variables';
-export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2}))`;
+
+export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
 export const ctrlLinkInlineStrokewidthRest = `var(${ctrlLinkInlineStrokewidthRestRaw}, var(${strokewidthDefaultRaw}))`;
 export const ctrlLinkInlineStrokewidthHover = `var(${ctrlLinkInlineStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}))`;
 export const ctrlLinkInlineUnderlineDashed = `var(${ctrlLinkInlineUnderlineDashedRaw})`;
 export const ctrlLinkInlineUnderlineSolidFigmaonly = `var(${ctrlLinkInlineUnderlineSolidFigmaonlyRaw})`;
-export const ctrlLinkForegroundNeutralHover = `var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2Hover}))`;
-export const ctrlLinkForegroundNeutralPressed = `var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${tokens.colorNeutralForeground2Pressed}))`;
-export const ctrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${tokens.colorBrandForegroundLink}))`;
-export const ctrlLinkForegroundBrandHover = `var(${ctrlLinkForegroundBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${tokens.colorBrandForegroundLinkHover}))`;
-export const ctrlLinkForegroundBrandPressed = `var(${ctrlLinkForegroundBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${tokens.colorBrandForegroundLinkPressed}))`;
+export const ctrlLinkForegroundNeutralHover = `var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Hover}))`;
+export const ctrlLinkForegroundNeutralPressed = `var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Pressed}))`;
+export const ctrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForegroundLink}))`;
+export const ctrlLinkForegroundBrandHover = `var(${ctrlLinkForegroundBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${colorBrandForegroundLinkHover}))`;
+export const ctrlLinkForegroundBrandPressed = `var(${ctrlLinkForegroundBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${colorBrandForegroundLinkPressed}))`;
 export const ctrlLinkOnpageStrokewidthRest = `var(${ctrlLinkOnpageStrokewidthRestRaw}, var(${strokewidthDefaultRaw}))`;
 export const ctrlLinkOnpageStrokewidthHover = `var(${ctrlLinkOnpageStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}))`;
 export const ctrlLinkOnpageUnderlineDashed = `var(${ctrlLinkOnpageUnderlineDashedRaw})`;
