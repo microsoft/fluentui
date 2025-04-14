@@ -9,12 +9,10 @@ import {
   sum as d3Sum,
   min as d3Min,
   max as d3Max,
-  merge as d3Merge,
   range as d3Range,
   Bin,
 } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { DonutChartProps } from '../DonutChart/index';
 import {
   ChartDataPoint,
@@ -115,7 +113,7 @@ export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean =>
   return isArrayOfType(data, isMonth);
 };
 
-const getLegend = (series: PlotData, index: number): string => {
+const getLegend = (series: Partial<PlotData>, index: number): string => {
   return series.name || `Series ${index + 1}`;
 };
 
@@ -360,70 +358,47 @@ export const transformPlotlyJsonToVBCProps = (
 ): VerticalBarChartProps => {
   const vbcData: VerticalBarChartDataPoint[] = [];
 
-  input.data.forEach((series: PlotData, index: number) => {
+  input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
       return;
     }
 
-    const scale = d3ScaleLinear()
-      .domain(d3Extent<number>(series.x as number[]) as [number, number])
-      .nice();
-    let [xMin, xMax] = scale.domain();
+    const isXString = isStringArray(series.x);
+    const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
+    const yBins: number[][] = xBins.map(() => []);
+    let total = 0;
 
-    xMin = typeof series.xbins?.start === 'number' ? series.xbins.start : xMin;
-    xMax = typeof series.xbins?.end === 'number' ? series.xbins.end : xMax;
-
-    const bin = d3Bin().domain([xMin, xMax]);
-
-    if (typeof series.xbins?.size === 'number') {
-      const thresholds: number[] = [];
-      let th = xMin;
-      const precision = d3PrecisionFixed(series.xbins.size);
-      const format = d3Format(`.${precision}f`);
-
-      while (th < xMax + series.xbins.size) {
-        thresholds.push(parseFloat(format(th)));
-        th += series.xbins.size;
+    series.x.forEach((xVal, index) => {
+      const binIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      if (binIdx !== -1) {
+        yBins[binIdx].push((series.y?.[index] as number | null | undefined) ?? 1);
       }
+    });
 
-      xMin = thresholds[0];
-      xMax = thresholds[thresholds.length - 1];
-      bin.domain([xMin, xMax]).thresholds(thresholds);
-    }
+    const y = yBins.map(bin => {
+      const yVal = calculateHistFunc(series.histfunc, bin);
+      total += yVal;
+      return yVal;
+    });
 
-    const buckets = bin(series.x as number[]);
-    // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
-    const totalDataPoints = d3Merge(buckets).length;
-
-    buckets.forEach(bucket => {
-      const legend: string = getLegend(series, index);
+    xBins.forEach((bin, index) => {
+      const legend: string = getLegend(series, seriesIdx);
       const color: string = getColor(legend, colorMap, isDarkTheme);
-      let y = bucket.length;
-
-      if (series.histnorm === 'percent') {
-        y = (bucket.length / totalDataPoints) * 100;
-      } else if (series.histnorm === 'probability') {
-        y = bucket.length / totalDataPoints;
-      } else if (series.histnorm === 'density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (bucket.x1! - bucket.x0!);
-      } else if (series.histnorm === 'probability density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
-      } else if (series.histfunc === 'sum') {
-        y = d3Sum(bucket);
-      } else if (series.histfunc === 'avg') {
-        y = bucket.length === 0 ? 0 : d3Sum(bucket) / bucket.length;
-      } else if (series.histfunc === 'min') {
-        y = d3Min(bucket)!;
-      } else if (series.histfunc === 'max') {
-        y = d3Max(bucket)!;
-      }
+      const yVal = calculateHistNorm(
+        series.histnorm,
+        y[index],
+        total,
+        isXString ? bin.length : getBinSize(bin as Bin<number, number>),
+      );
 
       vbcData.push({
-        x: (bucket.x1! + bucket.x0!) / 2,
-        y,
+        x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
+        y: yVal,
         legend,
         color,
-        xAxisCalloutData: `[${bucket.x0} - ${bucket.x1})`,
+        ...(isXString
+          ? {}
+          : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
       });
     });
   });
@@ -567,30 +542,12 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 };
 
 export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapChartProps => {
-  const firstData = input.data[0] as PlotData;
+  const firstData = input.data[0] as Partial<PlotData>;
   const heatmapDataPoints: HeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
-  // TODO: Add support for date axes
   if (firstData.type === 'histogram2d') {
-    const isStringArray = (arr: any) => isArrayOfType(arr, (value: any) => typeof value === 'string');
-    const findBinIndex = (
-      bins: string[][] | Bin<number, number>[],
-      value: string | number | null | undefined,
-      isString: boolean,
-    ) => {
-      if (typeof value === 'undefined' || value === null) {
-        return -1;
-      }
-
-      return isString
-        ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
-        : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
-    };
-    const getBinSize = (bin: Bin<number, number>) => bin.x1! - bin.x0!;
-    const getBinCenter = (bin: Bin<number, number>) => (bin.x1! + bin.x0!) / 2;
-
     const isXString = isStringArray(firstData.x);
     const isYString = isStringArray(firstData.y);
     const xBins = createBins(firstData.x, firstData.xbins?.start, firstData.xbins?.end, firstData.xbins?.size);
@@ -598,11 +555,9 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
     const zBins: number[][][] = yBins.map(() => xBins.map(() => []));
     let total = 0;
 
-    firstData.x?.forEach((value, index) => {
-      const xVal = value as string | number | null;
-      const yVal = firstData.y?.[index] as string | number | null | undefined;
-      const xBinIdx = findBinIndex(xBins, xVal, isXString);
-      const yBinIdx = findBinIndex(yBins, yVal, isYString);
+    firstData.x?.forEach((xVal, index) => {
+      const xBinIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      const yBinIdx = findBinIndex(yBins, firstData.y?.[index] as string | number | null | undefined, isYString);
 
       if (xBinIdx !== -1 && yBinIdx !== -1) {
         zBins[yBinIdx][xBinIdx].push((firstData.z?.[index] as number | null | undefined) ?? 1);
@@ -661,7 +616,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): HeatMapC
   }
 
   const heatmapData: HeatMapChartData = {
-    legend: firstData.name,
+    legend: firstData.name ?? '',
     data: heatmapDataPoints,
     value: 0,
   };
@@ -898,6 +853,33 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): LineChartLineOp
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
 
+const isStringArray = (arr: any) => {
+  return isArrayOfType(arr, (value: any) => typeof value === 'string');
+};
+
+const findBinIndex = (
+  bins: string[][] | Bin<number, number>[],
+  value: string | number | null | undefined,
+  isString: boolean,
+) => {
+  if (typeof value === 'undefined' || value === null) {
+    return -1;
+  }
+
+  return isString
+    ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
+    : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
+};
+
+const getBinSize = (bin: Bin<number, number>) => {
+  return bin.x1! - bin.x0!;
+};
+
+const getBinCenter = (bin: Bin<number, number>) => {
+  return (bin.x1! + bin.x0!) / 2;
+};
+
+// TODO: Add support for date axes
 const createBins = (
   data: TypedArray | Datum[] | Datum[][] | undefined,
   binStart: number | string | undefined,
