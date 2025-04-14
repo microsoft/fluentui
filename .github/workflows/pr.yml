@@ -88,9 +88,9 @@ jobs:
       matrix:
         react: [18, 19]
       fail-fast: false
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.react }}
-      cancel-in-progress: true
+    # concurrency:
+    #   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.job }}-${{ matrix.react }}
+    #   cancel-in-progress: true
     permissions:
       contents: 'read'
       actions: 'read'
