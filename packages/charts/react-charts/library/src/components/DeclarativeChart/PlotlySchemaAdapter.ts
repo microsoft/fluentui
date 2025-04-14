@@ -890,8 +890,7 @@ const createBins = (
     return [];
   }
 
-  const isStringArray = isArrayOfType(data, (value: any) => typeof value === 'string');
-  if (isStringArray) {
+  if (isStringArray(data)) {
     const categories = Array.from(new Set(data as string[]));
     const start = typeof binStart === 'number' ? Math.ceil(binStart) : 0;
     const stop = typeof binEnd === 'number' ? Math.floor(binEnd) + 1 : categories.length;
