@@ -20,6 +20,8 @@ const tokensJSON = dedupeShadowTokens(tokensJSONRaw);
 const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
 // Store exports so we can add them to index.ts at the end
 const exportList: Record<string, string[]> = {};
+// Add an automated header warning to each file to prevent direct modifications
+const headerWarning = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
 const generateTokens = () => {
   console.log('Generating tokens...');
@@ -234,7 +236,7 @@ const generateTokenVariables = () => {
     });
 
     // Format our text to match prettier rules
-    sourceFile.replaceWithText(formattedText);
+    sourceFile.replaceWithText(headerWarning + formattedText);
   });
 
   // Save changes so far
@@ -266,7 +268,7 @@ const generateTokenVariables = () => {
   });
 
   // Format our text to match prettier rules
-  indexSourceFile.replaceWithText(formattedText);
+  indexSourceFile.replaceWithText(headerWarning + formattedText);
 
   // Save exports
   project.saveSync();
