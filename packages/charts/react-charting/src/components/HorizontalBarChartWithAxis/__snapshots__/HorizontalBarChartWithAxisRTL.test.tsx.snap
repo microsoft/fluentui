@@ -482,7 +482,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="0"
             width="147.5"
             x="40"
-            y="20"
+            y="217.3"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -500,7 +500,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="173.75"
+            y="179.38"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -518,7 +518,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="368.75"
             x="40"
-            y="122.5"
+            y="98.80000000000001"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -536,7 +536,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="295"
             x="40"
-            y="71.25"
+            y="4"
           />
         </g>
       </svg>
@@ -1486,7 +1486,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="0"
             width="147.5"
             x="40"
-            y="20"
+            y="217.3"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -1504,7 +1504,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="173.75"
+            y="179.38"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -1522,7 +1522,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="368.75"
             x="40"
-            y="122.5"
+            y="98.80000000000001"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -1540,7 +1540,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="295"
             x="40"
-            y="71.25"
+            y="4"
           />
         </g>
       </svg>
@@ -2503,7 +2503,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="0"
               width="147.5"
               x="40"
-              y="20"
+              y="217.3"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -2521,7 +2521,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="590"
               x="40"
-              y="173.75"
+              y="179.38"
             />
             <rect
               aria-label="37%. 2020/04/30."
@@ -2539,7 +2539,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="368.75"
               x="40"
-              y="122.5"
+              y="98.80000000000001"
             />
             <rect
               aria-label="20%. 2020/04/30."
@@ -2557,7 +2557,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="295"
               x="40"
-              y="71.25"
+              y="4"
             />
           </g>
         </svg>
@@ -3508,7 +3508,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="0"
             width="147.5"
             x="40"
-            y="20"
+            y="217.3"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -3526,7 +3526,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="590"
             x="40"
-            y="173.75"
+            y="179.38"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -3544,7 +3544,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="368.75"
             x="40"
-            y="122.5"
+            y="98.80000000000001"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -3562,7 +3562,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="295"
             x="40"
-            y="71.25"
+            y="4"
           />
         </g>
       </svg>
@@ -5100,7 +5100,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="0"
             width="147.5"
             x="40"
-            y="20"
+            y="217.3"
           />
           <rect
             aria-label="2020/04/30. 88%."
@@ -5118,7 +5118,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="590"
             x="40"
-            y="173.75"
+            y="179.38"
           />
           <rect
             aria-label="2020/04/30. 37%."
@@ -5136,7 +5136,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="368.75"
             x="40"
-            y="122.5"
+            y="98.80000000000001"
           />
           <rect
             aria-label="2020/04/30. 20%."
@@ -5154,7 +5154,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="295"
             x="40"
-            y="71.25"
+            y="4"
           />
         </g>
       </svg>

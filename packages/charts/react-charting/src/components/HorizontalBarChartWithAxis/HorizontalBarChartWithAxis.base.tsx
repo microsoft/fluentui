@@ -302,7 +302,11 @@ export class HorizontalBarChartWithAxisBase
   ) => {
     const groupedChartData = this._groupChartDataByLegend(this._points);
     this._longestBarTotalValue = this._computeLongestBarTotalValue(groupedChartData);
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
+
+    const { xBarScale, yBarScale } =
+      this._yAxisType === YAxisType.NumericAxis
+        ? this._getScales(containerHeight, containerWidth, true)
+        : this._getScales(containerHeight, containerWidth, false);
     const allBars = groupedChartData
       .map(singleBarData =>
         this._yAxisType === YAxisType.NumericAxis
