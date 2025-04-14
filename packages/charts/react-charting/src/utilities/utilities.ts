@@ -1019,6 +1019,27 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: IHorizontalBarChartWithAxisDataPoint[],
+): IHorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
  * Calculates maximum domain value for Numeric x axis
  * works for Horizontal Bar Chart With axis
  * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
@@ -1047,13 +1068,13 @@ export function computeDomainMax(stackedChartData: IHorizontalBarChartWithAxisDa
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForHorizontalBarChartWithAxis(
-  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  points: IHorizontalBarChartWithAxisDataPoint[],
   margins: IMargins,
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
 ): IDomainNRange {
-  const xMax = computeDomainMax(stackedChartData);
+  const xMax = computeDomainMax(groupChartDataByYValue(points));
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 

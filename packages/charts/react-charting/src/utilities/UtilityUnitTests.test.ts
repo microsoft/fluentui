@@ -930,7 +930,36 @@ describe('domainRangeOfNumericForAreaChart', () => {
 });
 
 describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
-  const points: IHorizontalBarChartWithAxisDataPoint[][] = [[{ x: 10, y: 20 }], [{ x: 30, y: 40 }]];
+  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+  ];
+
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
+  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 20, y: 40 },
+    { x: 30, y: 40 },
+    { x: 50, y: 20 },
+  ];
   const margins: utils.IMargins = {
     left: 5,
     right: 10,

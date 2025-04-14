@@ -43,6 +43,7 @@ import {
   getNextGradient,
   areArraysEqual,
   computeDomainMax,
+  groupChartDataByYValue,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -221,15 +222,8 @@ export class HorizontalBarChartWithAxisBase
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    const stackedChartData = this._groupChartDataByLegend(this._points);
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
-        stackedChartData,
-        margins,
-        width,
-        isRTL,
-        shiftX,
-      );
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -301,7 +295,7 @@ export class HorizontalBarChartWithAxisBase
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) => {
-    const stackedChartData = this._groupChartDataByLegend(this._points);
+    const stackedChartData = groupChartDataByYValue(this._points);
     this._longestBarTotalValue = computeDomainMax(stackedChartData);
 
     const { xBarScale, yBarScale } =
@@ -504,19 +498,6 @@ export class HorizontalBarChartWithAxisBase
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
-  };
-
-  private _groupChartDataByLegend = (chartData: IHorizontalBarChartWithAxisDataPoint[]) => {
-    const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
-    chartData.forEach(dataPoint => {
-      const key = dataPoint.y;
-      if (!map[key]) {
-        map[key] = [];
-      }
-      map[key].push(dataPoint);
-    });
-
-    return Object.values(map);
   };
 
   private _createNumericBars(
