@@ -1,0 +1,13 @@
+// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
+export const ctrlFabBackgroundRestRaw = '--smtc-ctrl-fab-background-rest';
+export const ctrlFabBackgroundHoverRaw = '--smtc-ctrl-fab-background-hover';
+export const ctrlFabBackgroundPressedRaw = '--smtc-ctrl-fab-background-pressed';
+export const ctrlFabBackgroundDisabledRaw = '--smtc-ctrl-fab-background-disabled';
+export const ctrlFabCornerRestRaw = '--smtc-ctrl-fab-corner-rest';
+export const ctrlFabCornerHoverRaw = '--smtc-ctrl-fab-corner-hover';
+export const ctrlFabCornerPressedRaw = '--smtc-ctrl-fab-corner-pressed';
+export const ctrlFabShadowRestKeyRaw = '--smtc-ctrl-fab-shadow-rest-key';
+export const ctrlFabShadowRestAmbientRaw = '--smtc-ctrl-fab-shadow-rest-ambient';
+export const ctrlFabShadowHoverKeyRaw = '--smtc-ctrl-fab-shadow-hover-key';
+export const ctrlFabShadowPressedKeyRaw = '--smtc-ctrl-fab-shadow-pressed-key';
+export const ctrlFabShadowDisabledKeyRaw = '--smtc-ctrl-fab-shadow-disabled-key';
