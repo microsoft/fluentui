@@ -306,24 +306,37 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
+
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
+
       if (series.type === 'bar') {
         const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
+        const dataValue = (series.y?.[index2] as number) ?? 0;
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: (series.y?.[index2] as number) ?? 0,
-          xAxisCalloutData: x as string,
-          color,
-          legend,
-        });
+        // Check if the key already exists in the series
+        const existingDataPoint = mapXToDataPoints[x].series.find(dp => dp.key === legend);
+
+        if (existingDataPoint) {
+          // If the key exists, sum the data values
+          existingDataPoint.data += dataValue;
+        } else {
+          // Otherwise, add a new data point
+          mapXToDataPoints[x].series.push({
+            key: legend,
+            data: dataValue,
+            xAxisCalloutData: x as string,
+            color,
+            legend,
+          });
+        }
       }
     });
+
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
