@@ -1583,7 +1583,7 @@ export const ctrlFocusInnerStrokewidth = "var(--smtc-ctrl-focus-inner-strokewidt
 export const ctrlFocusInnerStrokewidthRaw = "--smtc-ctrl-focus-inner-strokewidth";
 
 // @public (undocumented)
-export const ctrlFocusOuterStroke: string;
+export const ctrlFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
 
 // @public (undocumented)
 export const ctrlFocusOuterStrokeRaw = "--smtc-ctrl-focus-outer-stroke";
@@ -1769,37 +1769,37 @@ export const ctrlInputTextselectionForeground = "var(--smtc-ctrl-input-textselec
 export const ctrlInputTextselectionForegroundRaw = "--smtc-ctrl-input-textselection-foreground";
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandHover: string;
+export const ctrlLinkForegroundBrandHover = "var(--smtc-ctrl-link-foreground-brand-hover, var(--smtc-foreground-ctrl-brand-hover, var(--colorBrandForegroundLinkHover)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundBrandHoverRaw = "--smtc-ctrl-link-foreground-brand-hover";
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandPressed: string;
+export const ctrlLinkForegroundBrandPressed = "var(--smtc-ctrl-link-foreground-brand-pressed, var(--smtc-foreground-ctrl-brand-pressed, var(--colorBrandForegroundLinkPressed)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundBrandPressedRaw = "--smtc-ctrl-link-foreground-brand-pressed";
 
 // @public (undocumented)
-export const ctrlLinkForegroundBrandRest: string;
+export const ctrlLinkForegroundBrandRest = "var(--smtc-ctrl-link-foreground-brand-rest, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForegroundLink)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundBrandRestRaw = "--smtc-ctrl-link-foreground-brand-rest";
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralHover: string;
+export const ctrlLinkForegroundNeutralHover = "var(--smtc-ctrl-link-foreground-neutral-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralHoverRaw = "--smtc-ctrl-link-foreground-neutral-hover";
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralPressed: string;
+export const ctrlLinkForegroundNeutralPressed = "var(--smtc-ctrl-link-foreground-neutral-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralPressedRaw = "--smtc-ctrl-link-foreground-neutral-pressed";
 
 // @public (undocumented)
-export const ctrlLinkForegroundNeutralRest: string;
+export const ctrlLinkForegroundNeutralRest = "var(--smtc-ctrl-link-foreground-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
 
 // @public (undocumented)
 export const ctrlLinkForegroundNeutralRestRaw = "--smtc-ctrl-link-foreground-neutral-rest";
@@ -2927,7 +2927,7 @@ export const foregroundCtrlIconOnsubtleRest = "var(--smtc-foreground-ctrl-icon-o
 export const foregroundCtrlIconOnsubtleRestRaw = "--smtc-foreground-ctrl-icon-onsubtle-rest";
 
 // @public (undocumented)
-export const foregroundCtrlNeutralPrimaryDisabled: string;
+export const foregroundCtrlNeutralPrimaryDisabled = "var(--smtc-foreground-ctrl-neutral-primary-disabled, var(--colorNeutralForegroundDisabled))";
 
 // @public (undocumented)
 export const foregroundCtrlNeutralPrimaryDisabledRaw = "--smtc-foreground-ctrl-neutral-primary-disabled";
@@ -4463,7 +4463,7 @@ export const strokewidthCtrlOutlineSelected = "var(--smtc-strokewidth-ctrl-outli
 export const strokewidthCtrlOutlineSelectedRaw = "--smtc-strokewidth-ctrl-outline-selected";
 
 // @public (undocumented)
-export const strokewidthDefault: string;
+export const strokewidthDefault = "var(--smtc-strokewidth-default, var(--strokeWidthThin))";
 
 // @public (undocumented)
 export const strokewidthDefaultRaw = "--smtc-strokewidth-default";
@@ -4547,7 +4547,7 @@ export const textGlobalBody2Lineheight = "var(--smtc-text-global-body2-lineheigh
 export const textGlobalBody2LineheightRaw = "--smtc-text-global-body2-lineheight";
 
 // @public (undocumented)
-export const textGlobalBody3Fontsize: string;
+export const textGlobalBody3Fontsize = "var(--smtc-text-global-body3-fontsize, var(--fontSizeBase300))";
 
 // @public (undocumented)
 export const textGlobalBody3FontsizeRaw = "--smtc-text-global-body3-fontsize";
@@ -5135,7 +5135,7 @@ export const textStyleDefaultHeaderWeight = "var(--smtc-text-style-default-heade
 export const textStyleDefaultHeaderWeightRaw = "--smtc-text-style-default-header-weight";
 
 // @public (undocumented)
-export const textStyleDefaultRegularFontfamily: string;
+export const textStyleDefaultRegularFontfamily = "var(--smtc-text-style-default-regular-fontfamily, var(--fontFamilyBase))";
 
 // @public (undocumented)
 export const textStyleDefaultRegularFontfamilyRaw = "--smtc-text-style-default-regular-fontfamily";
@@ -5147,7 +5147,7 @@ export const textStyleDefaultRegularLetterspacing = "var(--smtc-text-style-defau
 export const textStyleDefaultRegularLetterspacingRaw = "--smtc-text-style-default-regular-letterspacing";
 
 // @public (undocumented)
-export const textStyleDefaultRegularWeight: string;
+export const textStyleDefaultRegularWeight = "var(--smtc-text-style-default-regular-weight, var(--fontWeightRegular))";
 
 // @public (undocumented)
 export const textStyleDefaultRegularWeightRaw = "--smtc-text-style-default-regular-weight";
