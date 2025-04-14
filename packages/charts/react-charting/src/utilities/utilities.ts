@@ -1041,7 +1041,7 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
       (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
       0,
     );
-    longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+    return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
   });
   const xMax = longestBarTotalValue;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;

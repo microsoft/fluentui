@@ -522,7 +522,7 @@ export class HorizontalBarChartWithAxisBase
         (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
         0,
       );
-      longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue);
+      return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
     });
     return longestBarTotalValue;
   };
@@ -533,7 +533,9 @@ export class HorizontalBarChartWithAxisBase
     xElement: SVGElement,
     yElement: SVGElement,
     singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
@@ -677,7 +679,9 @@ export class HorizontalBarChartWithAxisBase
     xElement: SVGElement,
     yElement: SVGElement,
     singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
