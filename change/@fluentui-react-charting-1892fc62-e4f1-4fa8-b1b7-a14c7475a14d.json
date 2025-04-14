@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: map stacked plotly scatter traces to area chart",
+  "comment": "feat: transform plotly histogram2d trace to heatmap props",
   "packageName": "@fluentui/react-charting",
   "email": "kumarkshitij@microsoft.com",
   "dependentChangeType": "patch"
