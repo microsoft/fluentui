@@ -2,6 +2,12 @@ import * as React from 'react';
 import { useMergedRefs } from '@fluentui/react-utilities';
 
 const IS_REACT_19 = React.version.startsWith('19.');
+const CHILD_ERROR_MESSAGE = [
+  '@fluentui/react-motion: Invalid child element.',
+  '\n',
+  'Motion factories require a single child element to be passed. ',
+  'That element element should support ref forwarding i.e. it should be either an intrinsic element (e.g. div) or a component that uses React.forwardRef().',
+].join('');
 
 /**
  * A backwards-compatible way to get the ref from a React element without console errors.
@@ -24,14 +30,7 @@ export function useChildElement(
     if (process.env.NODE_ENV !== 'production') {
       if (mounted && !childRef.current) {
         // eslint-disable-next-line no-console
-        console.error(
-          [
-            '@fluentui/react-motion: Invalid child element.',
-            '\n',
-            'Motion factories require a single child element to be passed. ',
-            'That element element should support ref forwarding i.e. it should be either an intrinsic element (e.g. div) or a component that uses React.forwardRef().',
-          ].join(''),
-        );
+        console.error(CHILD_ERROR_MESSAGE);
       }
     }
   }, [mounted]);
@@ -51,12 +50,5 @@ export function useChildElement(
     /* empty */
   }
 
-  throw new Error(
-    [
-      '@fluentui/react-motion: Invalid child element.',
-      '\n',
-      'Motion factories require a single child element to be passed. ',
-      'That element element should support ref forwarding i.e. it should be either an intrinsic element (e.g. div) or a component that uses React.forwardRef().',
-    ].join(''),
-  );
+  throw new Error(CHILD_ERROR_MESSAGE);
 }
