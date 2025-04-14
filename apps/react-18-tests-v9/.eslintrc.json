@@ -2,6 +2,7 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
   "rules": {
-    "@nx/workspace-no-restricted-globals": "off"
+    "@nx/workspace-no-restricted-globals": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

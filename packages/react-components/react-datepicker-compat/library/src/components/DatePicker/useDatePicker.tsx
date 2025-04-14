@@ -254,7 +254,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   );
 
   const onInputChange = React.useCallback(
-    (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+    (_: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
       const { value: newValue } = data;
 
       if (allowTextInput) {

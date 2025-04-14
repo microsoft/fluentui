@@ -2,6 +2,60 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Tue, 01 Apr 2025 15:08:02 GMT",
+      "tag": "@fluentui/react-skeleton_v9.2.4",
+      "version": "9.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.2.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Mar 2025 21:12:50 GMT",
+      "tag": "@fluentui/react-skeleton_v9.2.3",
+      "version": "9.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e",
+            "comment": "feat: add customStyleHook"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.2.3",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.53",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.1",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-utilities to v9.18.23",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Mar 2025 15:40:43 GMT",
       "tag": "@fluentui/react-skeleton_v9.2.2",
       "version": "9.2.2",

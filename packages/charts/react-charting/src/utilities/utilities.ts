@@ -1613,6 +1613,8 @@ export function getCurveFactory(
   }
 
   switch (curve) {
+    case 'linear':
+      return d3CurveLinear;
     case 'natural':
       return d3CurveNatural;
     case 'step':
