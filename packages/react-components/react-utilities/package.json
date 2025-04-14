@@ -38,6 +38,12 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
+    "./next": {
+      "types": "./dist/next.d.ts",
+      "node": "./lib-commonjs/next/index.js",
+      "import": "./lib/next/index.js",
+      "require": "./lib-commonjs/next/index.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
