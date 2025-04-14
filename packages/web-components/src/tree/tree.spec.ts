@@ -167,6 +167,10 @@ test.describe('Tree', () => {
     await treeItemEl.nth(1).click();
     await expect(treeItemEl.nth(0)).not.toHaveAttribute('selected');
     await expect(treeItemEl.nth(1)).toHaveAttribute('selected');
+    // select item 2 again
+    await treeItemEl.nth(1).click();
+    await expect(treeItemEl.nth(0)).not.toHaveAttribute('selected');
+    await expect(treeItemEl.nth(1)).toHaveAttribute('selected');
   });
 
   test('should not scroll when pressing space key', async ({ fastPage, page }) => {

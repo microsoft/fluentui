@@ -114,6 +114,12 @@ export class BaseTreeItem extends FASTElement {
       return;
     }
 
+    //If a tree item is nested and initially set to selected expand the tree items so the selected item is visible
+    const selectedItems = this.querySelectorAll('[selected]');
+    if (selectedItems.length > 0) {
+      this.expanded = true;
+    }
+
     this.childTreeItems.forEach(item => {
       this.setIndent(item);
     });
@@ -125,22 +131,6 @@ export class BaseTreeItem extends FASTElement {
   private setIndent(item: BaseTreeItem): void {
     const indent = this.dataIndent ?? 0;
     item.dataIndent = indent + 1;
-  }
-
-  /**
-   * Handle focus events
-   *
-   * @public
-   */
-  public focusHandler(e: FocusEvent): void {
-    if (
-      e.target === this ||
-      // In case where the tree-item contains a focusable element, we should not set the tabindex to 0 when the focus is on its child focusable element,
-      // so users can shift+tab to navigate to the tree-item from its child focusable element.
-      this.contains(e.target as Node)
-    ) {
-      this.setAttribute('tabindex', '0');
-    }
   }
 
   /**
@@ -166,12 +156,12 @@ export class BaseTreeItem extends FASTElement {
   }
 
   /**
-   * Toggle the single selection state of the tree item
+   * Sets the selection state of the tree item
    *
    * @public
    */
-  public toggleSelection() {
-    this.selected = !this.selected;
+  public setSelection() {
+    this.selected = true;
   }
 
   /**

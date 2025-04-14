@@ -14,7 +14,6 @@ export const template = html<TreeItem>`
   <template
     tabindex="-1"
     slot="${x => (x.isNestedItem ? 'item' : void 0)}"
-    @focusin="${(x, c) => x.focusHandler(c.event as FocusEvent)}"
     @focusout="${(x, c) => x.blurHandler(c.event as FocusEvent)}"
     ${children({
       property: 'childTreeItems',
