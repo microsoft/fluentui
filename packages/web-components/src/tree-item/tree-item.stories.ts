@@ -39,7 +39,7 @@ const storyTemplate = html<StoryArgs<FluentTreeItem>>`
           (item as TreeItem).selected = false;
         }
       });
-      target.setSelection();
+      target.selected = true;
     }}
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}

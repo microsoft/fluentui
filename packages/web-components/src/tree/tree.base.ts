@@ -124,7 +124,7 @@ export class BaseTree extends FASTElement {
         return;
       }
       case keySpace: {
-        item.setSelection();
+        item.selected = true;
         return;
       }
     }
@@ -188,7 +188,7 @@ export class BaseTree extends FASTElement {
 
     const item = e.target as BaseTreeItem;
     item.toggleExpansion();
-    item.setSelection();
+    item.selected = true;
   }
 
   /**
