@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 14 Apr 2025 07:20:22 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Apr 2025 07:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.72)
+
+Tue, 15 Apr 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.71..@fluentui/react-charting_v5.23.72)
+
+### Patches
+
+- feat: transform plotly histogram2d trace to heatmap props ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- Implement stacked HBC with axis ([PR #34246](https://github.com/microsoft/fluentui/pull/34246) by anushgupta@microsoft.com)
+- Bump @fluentui/react-focus to v8.9.23 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/theme-samples to v8.7.204 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/react to v8.122.15 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
 
 ## [5.23.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.71)
 
