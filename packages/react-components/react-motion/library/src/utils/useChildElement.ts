@@ -20,6 +20,12 @@ function getRefFromReactElement<T>(element: React.ReactElement): React.Ref<T> | 
   return (element as React.ReactElement & { ref: React.Ref<T> | undefined }).ref;
 }
 
+/**
+ * Validates the child and returns a cloned child element with a ref.
+ *
+ * Throws an error if the child is not a valid React element, similar to "React.Children.only".
+ * Logs a warning in development mode if the ref is not set as the component remains functional.
+ */
 export function useChildElement(
   children: React.ReactElement,
   mounted: boolean = true,
