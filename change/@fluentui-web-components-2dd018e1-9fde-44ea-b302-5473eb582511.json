@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "switch storybook framework from html-webpack5 to html-vite",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
