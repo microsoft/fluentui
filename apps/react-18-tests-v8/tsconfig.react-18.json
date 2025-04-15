@@ -6,6 +6,7 @@
     "lib": ["ES2019", "dom"],
     "sourceMap": true,
     "strict": true,
+    "strictFunctionTypes": false,
     "pretty": true,
     "noEmit": true,
     "isolatedModules": true,
