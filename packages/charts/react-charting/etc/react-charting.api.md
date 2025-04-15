@@ -1114,6 +1114,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     onChartMouseLeave?: () => void;
     points: any;
     ref?: IRefObject<IChart>;
+    showRoundOffXTickValues?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];

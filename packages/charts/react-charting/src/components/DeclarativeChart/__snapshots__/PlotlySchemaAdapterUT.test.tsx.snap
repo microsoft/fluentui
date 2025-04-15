@@ -4588,6 +4588,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToVBCProps - Should return VBC props 1`] = `
 Object {
+  "barWidth": "auto",
   "chartTitle": "",
   "data": Array [
     Object {
@@ -4859,9 +4860,11 @@ Object {
   ],
   "height": 350,
   "hideTickOverlap": true,
+  "maxBarWidth": 100,
   "mode": "plotly",
   "supportNegativeData": true,
   "width": undefined,
+  "xAxisInnerPadding": 0,
   "xAxisTitle": "",
   "yAxisTitle": "",
 }
