@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Feat: Exported InfoButton types and component",
   "packageName": "@fluentui/react-infolabel",
   "email": "terynkum@microsoft.com",
