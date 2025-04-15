@@ -7,6 +7,7 @@ import {
   useEventCallback,
   useId,
   slot,
+  omit,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
@@ -210,7 +211,8 @@ export const useToastContainer_unstable = (
         role: 'listitem',
         'aria-labelledby': titleId,
         'aria-describedby': bodyId,
-        ...rest,
+        // The `content` is a slot and it conflicts with the `content` HTML attribute in React 18 in React 18
+        ...omit(rest, ['content']),
         ...userRootSlot,
         ...focusableGroupAttribute,
         onMouseEnter,

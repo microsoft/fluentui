@@ -5,6 +5,7 @@ import {
   getIntrinsicElementProps,
   slot,
   useIsomorphicLayoutEffect,
+  omit,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
@@ -64,7 +65,8 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
         as,
         useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
-          ...props,
+          // The `content` is a slot and it conflicts with the `content` HTML attribute in React 18
+          ...omit(props, ['content']),
           disabled: false,
           disabledFocusable: disabled,
           ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,

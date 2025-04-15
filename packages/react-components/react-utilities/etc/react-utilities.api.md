@@ -322,8 +322,9 @@ export type TriggerProps<TriggerChildProps = unknown> = {
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 // @public
-export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
+    children?: any;
 };
 
 // @internal
@@ -358,7 +359,7 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
-export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
+export function useMergedRefs<T>(...refs: (React_2.Ref<T> | React_2.LegacyRef<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {

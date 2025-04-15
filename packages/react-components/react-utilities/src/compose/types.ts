@@ -26,8 +26,10 @@ export type SlotShorthandValue = React.ReactChild | React.ReactNode[] | React.Re
  * This should ONLY be used in type templates as in `extends UnknownSlotProps`;
  * it shouldn't be used as the type of a slot.
  */
-export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
+export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'className' | 'style'> & {
   as?: keyof JSX.IntrinsicElements;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children?: any;
 };
 
 /**

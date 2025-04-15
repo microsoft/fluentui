@@ -38,7 +38,7 @@ function cloneTriggerTree<TriggerChildProps>(
   }
 
   if (isFluentTrigger(child)) {
-    const grandchild = cloneTriggerTree(child.props.children, triggerProps);
+    const grandchild = cloneTriggerTree(child.props.children as React.ReactNode, triggerProps);
     return React.cloneElement(child, undefined, grandchild);
   } else {
     return React.cloneElement(child, triggerProps as TriggerChildProps & React.Attributes);

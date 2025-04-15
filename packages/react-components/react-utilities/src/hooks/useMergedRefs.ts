@@ -12,7 +12,7 @@ export type RefObjectFunction<T> = React.RefObject<T> & ((value: T | null) => vo
  * @param refs - Refs to collectively update with one ref value.
  * @returns A function with an attached "current" prop, so that it can be treated like a RefObject.
  */
-export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T> {
+export function useMergedRefs<T>(...refs: (React.Ref<T> | React.LegacyRef<T> | undefined)[]): RefObjectFunction<T> {
   'use no memo';
 
   const mergedCallback: RefObjectFunction<T> = React.useCallback(

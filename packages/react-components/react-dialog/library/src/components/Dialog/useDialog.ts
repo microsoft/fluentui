@@ -52,7 +52,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
       // This is a problem at the moment due to UnknownSlotProps assumption
       // that `children` property is `ReactNode`, which in this case is not valid
       // as PresenceComponentProps['children'] is `ReactElement`
-      surfaceMotion: DialogSurfaceMotion as React.FC<PresenceMotionSlotProps>,
+      surfaceMotion: DialogSurfaceMotion as unknown as React.FC<PresenceMotionSlotProps>,
     },
     inertTrapFocus,
     open,

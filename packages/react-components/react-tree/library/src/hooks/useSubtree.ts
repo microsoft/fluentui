@@ -26,11 +26,10 @@ export function useSubtree(
     open,
     components: {
       root: 'div',
-      // TODO: remove once React v18 slot API is modified
       // This is a problem at the moment due to UnknownSlotProps assumption
       // that `children` property is `ReactNode`, which in this case is not valid
       // as PresenceComponentProps['children'] is `ReactElement`
-      collapseMotion: Collapse as React.FC<PresenceMotionSlotProps>,
+      collapseMotion: Collapse as unknown as React.FC<PresenceMotionSlotProps>,
     },
     level: parentLevel + 1,
     root: slot.always(
