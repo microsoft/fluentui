@@ -1260,6 +1260,16 @@ export class VerticalBarChartBase
     /** Rate at which the space between the bars changes wrt the bar width */
     const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
 
+    const mapX: Record<string, number | string | Date> = {};
+    this.props.data?.forEach(point => {
+      if (point.x instanceof Date) {
+        mapX[point.x.getTime()] = point.x;
+      } else {
+        mapX[point.x] = point.x;
+      }
+    });
+    const uniqueX = Object.values(mapX);
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
@@ -1270,41 +1280,32 @@ export class VerticalBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
+        const reqWidth = (uniqueX.length + (uniqueX.length - 1) * barGapRate) * this._barWidth;
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
-      } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
+      } else if (this.props.mode === 'plotly' && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate);
+        const bandwidth = totalWidth / (uniqueX.length + (uniqueX.length - 1) * barGapRate);
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
-        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
+        let reqWidth = (uniqueX.length + (uniqueX.length - 1) * barGapRate) * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
         // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
+        reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
         const margin2 = (totalWidth - reqWidth) / 2;
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
-      const uniqueX: Record<number, number | Date> = {};
-      this.props.data?.forEach(point => {
-        if (point.x instanceof Date) {
-          uniqueX[point.x.getTime()] = point.x;
-        } else {
-          uniqueX[point.x as number] = point.x as number;
-        }
-      });
-      const data = Object.values(uniqueX) as number[] | Date[];
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
         calculateAppropriateBarWidth(
-          data,
+          uniqueX as number[] | Date[],
           totalWidth,
           isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)
             ? this._xAxisInnerPadding
