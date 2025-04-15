@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 10 Apr 2025 04:07:19 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Apr 2025 04:06:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.91)
+
+Tue, 15 Apr 2025 04:06:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.90..@fluentui/web-components_v3.0.0-beta.91)
+
+### Changes
+
+- fix: dropdown validation message and add missing validity functions ([PR #34219](https://github.com/microsoft/fluentui/pull/34219) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.90)
 
