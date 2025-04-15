@@ -25,7 +25,7 @@ export { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNC
 export { isSlot } from './isSlot';
 export { assertSlots } from './assertSlots';
 export { getIntrinsicElementProps } from './getIntrinsicElementProps';
-export { getSlotClassNameProp_unstable } from './getSlotClassNameProp';
+export { getSlotClassNameProp as getSlotClassNameProp_unstable } from './getSlotClassNameProp';
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ObjectSlotProps, Slots } from './deprecated/getSlots';

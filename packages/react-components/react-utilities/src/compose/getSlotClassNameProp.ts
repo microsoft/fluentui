@@ -16,7 +16,7 @@ import type { UnknownSlotProps } from '../compose/types';
  *
  * @returns The className prop set on the slot by the user, or undefined if not set.
  */
-export const getSlotClassNameProp_unstable = (slot: UnknownSlotProps) => {
+export const getSlotClassNameProp = (slot: UnknownSlotProps) => {
   if (SLOT_CLASS_NAME_PROP_SYMBOL in slot && typeof slot[SLOT_CLASS_NAME_PROP_SYMBOL] === 'string') {
     return slot[SLOT_CLASS_NAME_PROP_SYMBOL];
   }
