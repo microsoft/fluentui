@@ -264,6 +264,7 @@ export class VerticalStackedBarChartBase
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
           ref={this._cartesianChartRef}
+          showRoundOffXTickValues={!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)}
           /* eslint-disable react/jsx-no-bind */
           children={(props: IChildProps) => {
             return (
@@ -1100,8 +1101,10 @@ export class VerticalStackedBarChartBase
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
+      if (!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)) {
+        xBarScale.nice();
+      }
 
       return { xBarScale, yBarScale };
     }
@@ -1257,7 +1260,13 @@ export class VerticalStackedBarChartBase
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        calculateAppropriateBarWidth(data, totalWidth),
+        calculateAppropriateBarWidth(
+          data,
+          totalWidth,
+          isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)
+            ? this._xAxisInnerPadding
+            : undefined,
+        ),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }

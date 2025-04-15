@@ -226,6 +226,7 @@ export class VerticalBarChartBase
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         ref={this._cartesianChartRef}
+        showRoundOffXTickValues={!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -706,8 +707,10 @@ export class VerticalBarChartBase
       const xMin = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
       xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
+      if (!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)) {
+        xBarScale.nice();
+      }
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
@@ -1300,7 +1303,13 @@ export class VerticalBarChartBase
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        calculateAppropriateBarWidth(data, totalWidth),
+        calculateAppropriateBarWidth(
+          data,
+          totalWidth,
+          isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)
+            ? this._xAxisInnerPadding
+            : undefined,
+        ),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }

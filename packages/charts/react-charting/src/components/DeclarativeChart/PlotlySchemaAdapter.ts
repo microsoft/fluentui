@@ -415,6 +415,9 @@ export const transformPlotlyJsonToVBCProps = (
     yAxisTitle,
     mode: 'plotly',
     hideTickOverlap: true,
+    barWidth: 'auto',
+    maxBarWidth: 100,
+    xAxisInnerPadding: 0,
   };
 };
 
