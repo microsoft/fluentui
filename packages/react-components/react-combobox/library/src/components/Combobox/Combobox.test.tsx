@@ -986,7 +986,7 @@ describe('Combobox', () => {
   it('gets props from a surrounding Field', () => {
     const result = render(
       <Field label="Test label" validationMessage="Test error message" required>
-        <Combobox>
+        <Combobox defaultOpen>
           <Option>Red</Option>
           <Option>Green</Option>
           <Option>Blue</Option>
@@ -995,13 +995,35 @@ describe('Combobox', () => {
     );
 
     const combobox = result.getByRole('combobox') as HTMLInputElement;
+    const listbox = result.getByRole('listbox') as HTMLDivElement;
     const label = result.getByText('Test label') as HTMLLabelElement;
     const message = result.getByText('Test error message');
 
+    // ensure that the combobox gets the props from the field
     expect(combobox.id).toEqual(label.htmlFor);
     expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
     expect(combobox.required).toBe(true);
+
+    // ensure that the listbox is labelled by the field label
+    expect(listbox.getAttribute('aria-labelledby')).toEqual(label.id);
+  });
+
+  it('should not override the listbox aria-label with props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Combobox defaultOpen listbox={{ 'aria-label': 'Test listbox label' }}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>
+      </Field>,
+    );
+
+    const listbox = result.getByRole('listbox') as HTMLDivElement;
+
+    expect(listbox.getAttribute('aria-label')).toEqual('Test listbox label');
+    expect(listbox.getAttribute('aria-labelledby')).toEqual(null);
   });
 
   describe('clearable', () => {

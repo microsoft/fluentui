@@ -1,5 +1,4 @@
 import { attr } from '@microsoft/fast-element';
-import { swapStates } from '../utils/element-internals.js';
 import type { Tab } from '../tab/tab.js';
 import { BaseTablist } from './tablist.base.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
@@ -40,26 +39,12 @@ export class Tablist extends BaseTablist {
   public appearance?: TablistAppearance = TablistAppearance.transparent;
 
   /**
-   * @internal
-   */
-  protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void {
-    swapStates(this.elementInternals, prev, next, TablistAppearance);
-  }
-
-  /**
    * size
    * defaults to medium.
    * Used to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.
    */
   @attr
   public size?: TablistSize;
-
-  /**
-   * @internal
-   */
-  protected sizeChanged(prev: TablistSize, next: TablistSize): void {
-    swapStates(this.elementInternals, prev, next, TablistSize);
-  }
 
   /**
    * calculateAnimationProperties

@@ -82,7 +82,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   });
 
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
-    e => {
+    (e: OpenPopoverEvents) => {
       setOpen(e, !open);
     },
     [setOpen, open],

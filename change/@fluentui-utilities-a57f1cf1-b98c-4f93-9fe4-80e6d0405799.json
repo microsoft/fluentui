@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "lint: fix exposed lint errors",
-  "packageName": "@fluentui/utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

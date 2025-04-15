@@ -16,8 +16,8 @@ describe('onActiveOptionChange', () => {
       const [lastActive, setLastActive] = React.useState('');
 
       const onActiveDescendantChange = React.useCallback(
-        event => {
-          setLastActive(event ? event.detail.id : 'no event');
+        (event: CustomEventInit<{ id: string }>) => {
+          setLastActive(event?.detail?.id || 'no event');
         },
         [setLastActive],
       );

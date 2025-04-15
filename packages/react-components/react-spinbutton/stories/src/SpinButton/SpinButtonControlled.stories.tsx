@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
-import type { SpinButtonProps } from '@fluentui/react-components';
+import type { SpinButtonOnChangeData, SpinButtonChangeEvent } from '@fluentui/react-components';
 
 const useLayoutStyles = makeStyles({
   base: {
@@ -20,8 +20,8 @@ export const Controlled = () => {
 
   const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(10);
 
-  const onSpinButtonChange: SpinButtonProps['onChange'] = React.useCallback(
-    (_ev, data) => {
+  const onSpinButtonChange = React.useCallback(
+    (_ev: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
       console.log('onSpinButtonChange', data.value, data.displayValue);
       if (data.value !== undefined) {
         setSpinButtonValue(data.value);

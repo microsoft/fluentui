@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "lint: fix exposed lint errors",
-  "packageName": "@fluentui/react-experiments",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
