@@ -450,7 +450,7 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
-import { getSlotOriginalClassNameProp_unstable } from '@fluentui/react-utilities';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelResetStyle } from '@griffel/react';
@@ -2755,7 +2755,7 @@ export { getNativeElementProps }
 
 export { getPartitionedNativeProps }
 
-export { getSlotOriginalClassNameProp_unstable }
+export { getSlotClassNameProp_unstable }
 
 export { getSlots }
 

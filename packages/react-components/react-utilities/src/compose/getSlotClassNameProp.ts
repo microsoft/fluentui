@@ -1,4 +1,4 @@
-import { SLOT_ORIGINAL_CLASS_NAME_SYMBOL } from '../compose/constants';
+import { SLOT_CLASS_NAME_PROP_SYMBOL } from '../compose/constants';
 import type { UnknownSlotProps } from '../compose/types';
 
 /**
@@ -11,14 +11,14 @@ import type { UnknownSlotProps } from '../compose/types';
  * state.root.className = mergeClasses(
  *   state.root.className,
  *   customStyles.root,
- *   getSlotOriginalClassNameProp(state.root));
+ *   getSlotClassNameProp_unstable(state.root));
  * ```
  *
  * @returns The className prop set on the slot by the user, or undefined if not set.
  */
-export const getSlotOriginalClassNameProp = (slot: UnknownSlotProps) => {
-  if (SLOT_ORIGINAL_CLASS_NAME_SYMBOL in slot && typeof slot[SLOT_ORIGINAL_CLASS_NAME_SYMBOL] === 'string') {
-    return slot[SLOT_ORIGINAL_CLASS_NAME_SYMBOL];
+export const getSlotClassNameProp_unstable = (slot: UnknownSlotProps) => {
+  if (SLOT_CLASS_NAME_PROP_SYMBOL in slot && typeof slot[SLOT_CLASS_NAME_PROP_SYMBOL] === 'string') {
+    return slot[SLOT_CLASS_NAME_PROP_SYMBOL];
   }
   return undefined;
 };

@@ -10,7 +10,7 @@ import type {
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { getSlotOriginalClassNameProp_unstable } from '@fluentui/react-utilities';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -48,7 +48,7 @@ export const ButtonCustomStyles = () => {
       componentState.root.className = mergeClasses(
         componentState.root.className,
         styles.button,
-        getSlotOriginalClassNameProp_unstable(componentState.root),
+        getSlotClassNameProp_unstable(componentState.root),
       );
     },
   };
@@ -71,7 +71,7 @@ export const CompoundButtonCustomStyles = () => {
       componentState.root.className = mergeClasses(
         componentState.root.className,
         styles.button,
-        getSlotOriginalClassNameProp_unstable(componentState.root),
+        getSlotClassNameProp_unstable(componentState.root),
       );
     },
   };
@@ -94,7 +94,7 @@ export const MenuButtonCustomStyles = () => {
       componentState.root.className = mergeClasses(
         componentState.root.className,
         styles.button,
-        getSlotOriginalClassNameProp_unstable(componentState.root),
+        getSlotClassNameProp_unstable(componentState.root),
       );
     },
   };
@@ -118,14 +118,14 @@ export const SplitButtonCustomStyles = () => {
         componentState.menuButton.className = mergeClasses(
           componentState.menuButton.className,
           styles.button,
-          getSlotOriginalClassNameProp_unstable(componentState.menuButton),
+          getSlotClassNameProp_unstable(componentState.menuButton),
         );
       }
       if (componentState.primaryActionButton) {
         componentState.primaryActionButton.className = mergeClasses(
           componentState.primaryActionButton.className,
           styles.button,
-          getSlotOriginalClassNameProp_unstable(componentState.primaryActionButton),
+          getSlotClassNameProp_unstable(componentState.primaryActionButton),
         );
       }
     },
@@ -149,7 +149,7 @@ export const ToggleButtonCustomStyles = () => {
       componentState.root.className = mergeClasses(
         componentState.root.className,
         styles.button,
-        getSlotOriginalClassNameProp_unstable(componentState.root),
+        getSlotClassNameProp_unstable(componentState.root),
       );
     },
   };
@@ -172,7 +172,7 @@ export const ClassNamePropWithCustomStyles = () => {
       componentState.root.className = mergeClasses(
         componentState.root.className,
         styles.button,
-        getSlotOriginalClassNameProp_unstable(componentState.root),
+        getSlotClassNameProp_unstable(componentState.root),
       );
     },
   };
@@ -184,4 +184,4 @@ export const ClassNamePropWithCustomStyles = () => {
   );
 };
 
-ClassNamePropWithCustomStyles.storyName = 'className prop';
+ClassNamePropWithCustomStyles.storyName = 'Button with className';

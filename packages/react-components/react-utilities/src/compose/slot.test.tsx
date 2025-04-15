@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as slot from './slot';
 import type { ComponentProps, Slot } from './types';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_ORIGINAL_CLASS_NAME_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 type TestSlots = {
   slotA?: Slot<'div'>;
@@ -93,7 +93,7 @@ describe('slot', () => {
     }
     expect(resolvedProps).toEqual({
       [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
-      [SLOT_ORIGINAL_CLASS_NAME_SYMBOL]: 'test1',
+      [SLOT_CLASS_NAME_PROP_SYMBOL]: 'test1',
       className: 'test1 test2',
     });
   });

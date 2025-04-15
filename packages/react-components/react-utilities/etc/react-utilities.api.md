@@ -97,7 +97,7 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
 // @public
-export const getSlotOriginalClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
+export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
 
 // @public @deprecated
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
@@ -271,10 +271,10 @@ declare namespace slot {
 export { slot }
 
 // @internal
-export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
+export const SLOT_CLASS_NAME_PROP_SYMBOL: unique symbol;
 
 // @internal
-export const SLOT_ORIGINAL_CLASS_NAME_SYMBOL: unique symbol;
+export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
 
 // @internal
 export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
@@ -289,7 +289,7 @@ export type SlotComponentType<Props> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    [SLOT_ORIGINAL_CLASS_NAME_SYMBOL]?: string;
+    [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 // @public (undocumented)

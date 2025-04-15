@@ -12,4 +12,4 @@ export const SLOT_ELEMENT_TYPE_SYMBOL = Symbol.for('fui.slotElementType');
  * @internal
  * Internal cache of the original className prop for the slot, before being modified by the useStyles hook.
  */
-export const SLOT_ORIGINAL_CLASS_NAME_SYMBOL = Symbol.for('fui.slotOriginalClassName');
+export const SLOT_CLASS_NAME_PROP_SYMBOL = Symbol.for('fui.slotClassNameProp');
