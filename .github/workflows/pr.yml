@@ -88,6 +88,9 @@ jobs:
       matrix:
         react: [18, 19]
         fluentui: [8, 9]
+        exclude:
+          - react: 19
+            fluentui: 8
       fail-fast: false
     permissions:
       contents: 'read'
