@@ -176,12 +176,12 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   ): number {
     if (chartType === ChartTypes.HeatMapChart) {
       return calculateLongestLabelWidth(
-        points[0].data.map((point: HeatMapChartDataPoint) => point.y),
+        points[0]?.data?.map((point: HeatMapChartDataPoint) => point.y),
         `.${className} text`,
       );
     } else {
       return calculateLongestLabelWidth(
-        points.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
+        points?.map((point: HorizontalBarChartWithAxisDataPoint) => point.y),
         `.${className} text`,
       );
     }
