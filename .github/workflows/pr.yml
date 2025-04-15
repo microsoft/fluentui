@@ -74,19 +74,24 @@ jobs:
 
       - name: build, test, lint, test-ssr (affected)
         run: |
-          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+          FLUENT_JEST_WORKER=2 yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --exclude react-19-tests-v9 --nxBail
 
       - name: 'Check for unstaged changes'
         run: |
           git status --porcelain
           git diff-index --quiet HEAD -- || exit 1
 
-  react_18_integration:
+  react_integration_tests:
     if: ${{ github.repository_owner == 'microsoft' }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        react: [18, 19]
+      fail-fast: false
     permissions:
       contents: 'read'
       actions: 'read'
+    name: React ${{ matrix.react }} Integration
     steps:
       - uses: actions/checkout@v4
         with:
@@ -109,68 +114,74 @@ jobs:
       - name: Verify Cypress install
         run: yarn cypress verify
 
-      # add more targets as needed
+      - name: Affected e2e:integration Projects
+        id: affected_projects_e2e_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t e2e:integration --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
+      - name: Affected type-check:integration Projects
+        id: affected_projects_type_check_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t type-check:integration --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
       - name: type-check (affected)
         id: type-check
-        run: yarn nx affected -t type-check:integration --nxBail
+        if: steps.affected_projects_type_check_count.outputs.value > 0
+        run: yarn nx run-many -p react-${{ matrix.react }}-tests-v9 -t type-check:integration --nxBail
         continue-on-error: true
 
       - name: Prepare TSC logs
         if: always() && steps.type-check.outcome == 'failure'
         run: |
           mkdir -p tsc-logs
-          yarn tsc -p apps/react-18-tests-v9/tsconfig.react-18.json --listFilesOnly > tsc-logs/tsc-debug-files-map.md
+          yarn tsc -p apps/react-${{ matrix.react }}-tests-v9/tsconfig.react-${{ matrix.react }}.json --listFilesOnly > tsc-logs/tsc-debug-files-map.md
 
       - name: Upload TSC logs
         if: always() && steps.type-check.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
-          name: typescript-react-18
+          name: typescript-react-${{ matrix.react }}
           path: tsc-logs
           retention-days: 1
-
-      - name: Affected e2e:integration Projects
-        id: affected_projects_count
-        run: |
-          affected_count=$(yarn --silent nx show projects -t e2e:integration --affected --verbose false | wc -l | tr -d ' ')
-          echo "value=$affected_count" >> $GITHUB_OUTPUT
 
       # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
       - name: e2e (affected)
         id: e2e
-        if: steps.affected_projects_count.outputs.value > 0
-        run: yarn workspace @fluentui/react-18-tests-v9 e2e:integration
+        if: steps.affected_projects_e2e_count.outputs.value > 0
+        run: |
+          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v9 e2e:integration
+          echo $?
         continue-on-error: true
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
         if: always() && steps.e2e.outcome == 'failure'
         with:
-          name: cypress-screenshots-react-18
+          name: cypress-screenshots-react-${{ matrix.react }}
           path: |
             apps/*/cypress/screenshots/**/*.png
             packages/**/cypress/screenshots/**/*.png
           retention-days: 1
 
-      - name: Integration tests success
-        if: steps.type-check.outcome == 'success' && steps.e2e.outcome == 'success'
+      - name: Integration tests summary
+        if: always()
         run: |
-          echo "React 18 integration tests passed"
-
-      - name: Integration tests failure
-        if: steps.type-check.outcome == 'failure' || steps.e2e.outcome == 'failure'
-        run: |
-          echo "React 18 integration tests failed"
-          echo "Type-check: ${{ steps.type-check.outcome }}"
-          echo "E2E: ${{ steps.e2e.outcome }}"
-          echo "Exiting with error code 1"
-
-          echo "### React 18 Integration Tests Failure" >> $GITHUB_STEP_SUMMARY
+          echo "### React ${{ matrix.react }} Integration Tests Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- Type-check: ${{ steps.type-check.outcome }}" >> $GITHUB_STEP_SUMMARY
           echo "- E2E: ${{ steps.e2e.outcome }}" >> $GITHUB_STEP_SUMMARY
 
-          exit 1
+          if [[ "${{ steps.type-check.outcome }}" == "success" && "${{ steps.e2e.outcome }}" == "success" ]]; then
+            echo "✅ React ${{ matrix.react }} integration tests passed"
+            exit 0
+          else
+            echo "❌ React ${{ matrix.react }} integration tests failed"
+            echo "Type-check: ${{ steps.type-check.outcome }}"
+            echo "E2E: ${{ steps.e2e.outcome }}"
+            exit 1
+          fi
 
   e2e:
     if: ${{ github.repository_owner == 'microsoft' }}
@@ -208,7 +219,7 @@ jobs:
         run: yarn cypress verify
 
       - name: Cypress/Playwright E2E tests
-        run: yarn nx affected -t e2e --nxBail --parallel 1
+        run: yarn nx affected -t e2e --exclude react-19-tests-v9 --nxBail --parallel 1
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4

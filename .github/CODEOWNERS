@@ -132,6 +132,7 @@ apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/react-18-tests-v8 @microsoft/fluentui-react-build
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
+apps/react-19-tests-v9 @microsoft/fluentui-react-build
 apps/chart-docsite @microsoft/charting-team
 
 #### Packages
