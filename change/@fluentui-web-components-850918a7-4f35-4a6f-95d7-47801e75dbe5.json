@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove unused form-associated modules",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "none"
-}

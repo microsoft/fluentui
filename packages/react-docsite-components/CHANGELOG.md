@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Mon, 14 Apr 2025 07:20:24 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Apr 2025 07:22:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.192](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.192)
+
+Tue, 15 Apr 2025 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.191..@fluentui/react-docsite-components_v8.13.192)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.15 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.310 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
 
 ## [8.13.191](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.191)
 

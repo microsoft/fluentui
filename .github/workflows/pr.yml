@@ -144,7 +144,7 @@ jobs:
 
       - name: Upload Cypress screenshots if exist
         uses: actions/upload-artifact@v4
-        if: always() && steps.type-check.outcome == 'failure'
+        if: always() && steps.e2e.outcome == 'failure'
         with:
           name: cypress-screenshots-react-18
           path: |

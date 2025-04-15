@@ -2,6 +2,27 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Tue, 15 Apr 2025 07:22:06 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "0b9572f9d73f5a860ee7bff4e9db9e01dd5d8326",
+            "comment": "Adding .page file type icon and updating CDN url."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.12.0",
+            "commit": "1e27b5f3579acf0392460ae6188e8c912fcd9e30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Mar 2025 07:23:16 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.12.9",
       "version": "8.12.9",
