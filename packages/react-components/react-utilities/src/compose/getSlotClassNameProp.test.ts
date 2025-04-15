@@ -1,4 +1,4 @@
-import { getSlotClassNameProp_unstable } from './getSlotClassNameProp';
+import { getSlotClassNameProp } from './getSlotClassNameProp';
 import * as slot from './slot';
 import type { ComponentProps, Slot } from './types';
 
@@ -16,7 +16,7 @@ describe('getSlotClassNameProp', () => {
     const slotA = slot.always(props.slotA, { elementType: 'div' });
     slotA.className = mergeClasses(slotA.className, 'overrideClassName');
 
-    expect(getSlotClassNameProp_unstable(slotA)).toEqual('originalClassName');
+    expect(getSlotClassNameProp(slotA)).toEqual('originalClassName');
     expect(slotA.className).toEqual('originalClassName overrideClassName');
   });
   it('returns undefined if the slot does not have a className', () => {
@@ -24,7 +24,7 @@ describe('getSlotClassNameProp', () => {
     const slotA = slot.always(props.slotA, { elementType: 'div' });
     slotA.className = mergeClasses(slotA.className, 'overrideClassName');
 
-    expect(getSlotClassNameProp_unstable(slotA)).toBeUndefined();
+    expect(getSlotClassNameProp(slotA)).toBeUndefined();
     expect(slotA.className).toEqual('overrideClassName');
   });
 });
