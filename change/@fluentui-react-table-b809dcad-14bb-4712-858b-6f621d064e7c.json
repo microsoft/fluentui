@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: React 18 slot support",
+  "packageName": "@fluentui/react-table",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
