@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Fri, 14 Mar 2025 07:23:15 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Apr 2025 07:22:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.0)
+
+Tue, 15 Apr 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.8..@fluentui/style-utilities_v8.12.0)
+
+### Minor changes
+
+- Adding .page file type icon and updating CDN url. ([PR #34238](https://github.com/microsoft/fluentui/pull/34238) by caperez@microsoft.com)
 
 ## [8.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.8)
 
