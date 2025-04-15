@@ -14,10 +14,10 @@ Tips for writing a successful RFC:
 
 ---
 
-_@hotell_
+_Contributors: @hotell_
 
 _Date the RFC was originally authored here_: April 2025
-_Target end date for feedback_: April 20, 2025
+_Target end date for feedback_: April 30, 2025
 
 <!-- If substantial updates are made add an "Updated on: $date" below, don't replace the original date -->
 
@@ -43,9 +43,9 @@ This section is important as the motivation or problem statement is independent 
 
 The current monorepo structure lacks clear separation between domains and frameworks, making it harder to:
 
-Decouple projects in active development from those in maintenance mode.
-Enforce boundaries between domains (e.g., react-components, react-northstar, web-components).
-Scale the repository as new frameworks or domains are introduced.
+- Decouple projects in active development from those in maintenance mode.
+- Enforce boundaries between domains (e.g., react-components, react-northstar, web-components).
+- Scale the repository as new frameworks or domains are introduced.
 
 ## Detailed Design or Proposal
 
@@ -53,14 +53,14 @@ Scale the repository as new frameworks or domains are introduced.
 
 ### Organization
 
-#### Top-Level Folder Structure
+#### 1. Top-Level Folder Structure
 
 Organize the repository by "framework" or "domain" to ensure clear separation:
 
 ```sh
 shared/           # Shared tools, infrastructure, and domain-agnostic projects (e.g., tokens)
-react/            # React v8
-react-northstar/  # React Northstar (v0)
+react-v0/         # React Northstar (v0)
+react-v8/         # React v8
 react-components/ # React v9
 web-components/   # Web Components (v3)
 charts/           # Charting libraries (v8, v9, wc)
@@ -68,66 +68,71 @@ charts/           # Charting libraries (v8, v9, wc)
 
 **NOTE:**
 
-- After branching out `react/` and `react-northstar/`, the top-level structure will contain only four primary folders:
-  - shared
-  - react-components
-  - web-components
-  - charts
-- This structure allows for future expansion if additional frameworks are introduced.
+After branching out `react-8/` and `react-v0/`, the top-level structure will contain only four primary folders:
 
-#### Domain folder organization
+```sh
+shared/           # Shared tools, infrastructure, and domain-agnostic projects (e.g., tokens)
+react-components/ # React v9
+web-components/   # Web Components (v3)
+charts/           # Charting libraries (v8, v9, wc)
+```
 
-- **Flat Structure:** Avoid nested `/apps` or `/packages` sub-folders.
-- **Naming Conventions:** Use descriptive names with optional -app suffix or prefix for applications for clarity.
-- **Project Type:** Use the projectType field in nx project.json to define project types.
+This structure allows for future expansion if additional frameworks are introduced.
 
-**NOTE:** optionally we could collocate `applications` and `tools` under 1 folder
+#### 2. Domain level Folder structure
+
+Contains 4 folders:
+
+- `/apps`
+- `/packages`
+- `/tools`
+- `/shared`
 
 _Example: `react-components` Folder_
 
 ```sh
+charting/ # Charting
+web-components/ # Web Components
 react-components/ # React v9
-  react-text/
-  react-card/
-  react-dialog/
-  react-components/             # Core package
-  eslint-plugin-react-components/ # Tool
-  react-storybook-addon/        # Tool
-  docsite/                      # App (current: public-docsite-v9)
-  react-18-tests/               # App (current: react-18-tests-v9)
-  ts-minbar-tests/              # App (current: ts-minbar-test-react-components)
-  ssr-tests/                    # App (current: ssr-test-v9)
-  vr-tests/                     # App (current: vr-tests-react-components)
+  apps/ # applications
+    docsite/                      # current: public-docsite-v9
+    react-18-tests/               # current: react-18-tests-v9
+    ts-minbar-tests/              # current: ts-minbar-test-react-components
+    ssr-tests/                    # current: ssr-test-v9
+    vr-tests/                     # current: vr-tests-react-components
+  packages/ # React/UI specific libraries
+    react-text/
+    react-card/
+    react-dialog/
+    react-components/             # Suite package
+  tools/  # any non UI specific tools ( storybook plugin, eslint plugins, nx react-components plugin etc)
+    eslint-plugin-react-components/
+    react-storybook-addon/
+  shared/ # any shared logic used in more than 2 sub-domains
+    some-shared-logic-lib/
 ```
 
-**Naming Conventions:**
-
-Applications with generic names will mirror folder structure within its name to avoid project name clashes
-
-_Example:_
-
-- `/react-components/docsite` -> `react-components-docsite`
-- `/react-components/ssr-tests` -> `react-components-ssr-tests`
-
-If applications would live in additional nested `apps/`, it will not be reflected within the project name
-
-_Example:_
-
-- `/react-components/apps/docsite` -> `react-components-docsite`
-- `/react-components/apps/ssr-tests` -> `react-components-ssr-tests`
-
-#### Shared domain folder organization
+#### 3. `Shared` domain folder organization
 
 Will contain anything with shared scope
 
 - Infrastructure and tools (e.g., build scripts, linting configurations).
 - Shared packages used across multiple domains (e.g., tokens).
 
+#### Project Naming Conventions
+
+Projects with generic names will mirror folder structure within its name to avoid project name clashes
+
+_Example (application):_
+
+- `/react-components/apps/docsite` -> `react-components-docsite`
+- `/react-components/apps/ssr-tests` -> `react-components-ssr-tests`
+
 ### Branching strategy
 
 **Default Branch**
 
-The default branch will contain actively developed frameworks/domains.
+The default branch will contain only actively developed frameworks/domains.
 
 **Branching for Maintenance/EOL**
 
@@ -146,9 +151,9 @@ _Examples:_
 
 ### Execution Plan
 
-1. Reorganize the current master branch to the proposed structure.
+1. Reorganize the current default branch to the proposed structure.
 2. Branch out react-northstar into react-v0.
-3. Remove all react-northstar artifacts from the master branch.
+3. Remove all react-northstar artifacts from the default branch.
 
 ### Pros and Cons
 
