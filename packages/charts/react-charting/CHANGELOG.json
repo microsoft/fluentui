@@ -2,6 +2,41 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 14 Apr 2025 07:20:22 GMT",
+      "tag": "@fluentui/react-charting_v5.23.71",
+      "version": "5.23.71",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "88d810df0c92744d8c9af49fc2b402d5ff7ade0d",
+            "comment": "HBC bars overlapping fix"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "4dd1d3bdccfc4d975c589efd6d06f56e9e3fa503",
+            "comment": "fix(react-charting): Adding fix for Grouped Vertical bar chart error "
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "acb947e908e0522a469077a10cc822ba764eb2ce",
+            "comment": "fix: map stacked plotly scatter traces to area chart"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: remove unused any"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Apr 2025 07:21:22 GMT",
       "tag": "@fluentui/react-charting_v5.23.70",
       "version": "5.23.70",

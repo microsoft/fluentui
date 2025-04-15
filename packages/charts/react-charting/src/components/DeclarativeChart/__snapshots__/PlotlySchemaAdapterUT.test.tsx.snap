@@ -2793,7 +2793,7 @@ Object {
           "y": "y_19",
         },
       ],
-      "legend": undefined,
+      "legend": "",
       "value": 0,
     },
   ],
