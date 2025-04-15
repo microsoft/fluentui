@@ -7,7 +7,7 @@ module.exports = () => {
   return {
     entry: ['react-app-polyfill/ie11', './src/index.tsx'],
     output: {
-      filename: 'react-18-tests-v9.js',
+      filename: 'react-19-tests-v9.js',
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
