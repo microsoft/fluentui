@@ -140,7 +140,7 @@ const useRootStyles = makeStyles({
       width: '100%',
     },
     '&:before': {
-      top: '-2px',
+      bottom: '100%',
     },
     '&:after': {
       bottom: '-2px',
