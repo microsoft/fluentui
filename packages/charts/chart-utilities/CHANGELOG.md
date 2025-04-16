@@ -1,8 +1,20 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 03 Apr 2025 07:19:54 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.5)
+
+Wed, 16 Apr 2025 19:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.4..@fluentui/chart-utilities_v1.1.5)
+
+### Patches
+
+- Change chart-utilities to es2019 and module type esnext ([PR #34183](https://github.com/microsoft/fluentui/pull/34183) by email not defined)
+- fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+- fix: add support for ybins in plotly schema ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- fix: map plotly histogram2d trace to heatmap chart ([PR #34230](https://github.com/microsoft/fluentui/pull/34230) by kumarkshitij@microsoft.com)
 
 ## [1.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.4)
 

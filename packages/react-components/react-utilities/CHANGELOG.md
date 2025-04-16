@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.19.0)
+
+Wed, 16 Apr 2025 19:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.23..@fluentui/react-utilities_v9.19.0)
+
+### Minor changes
+
+- Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className. ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
 
 ## [9.18.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.23)
 

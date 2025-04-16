@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

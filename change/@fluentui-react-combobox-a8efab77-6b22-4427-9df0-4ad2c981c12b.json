@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: ensure that the listbox is labelled by the field label",
-  "packageName": "@fluentui/react-combobox",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

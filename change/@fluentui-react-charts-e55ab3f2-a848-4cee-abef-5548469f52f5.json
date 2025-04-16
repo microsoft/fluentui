@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Enabling multiple legend selection for Scatter Chart in v9",
-  "packageName": "@fluentui/react-charts",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

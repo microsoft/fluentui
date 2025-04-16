@@ -2,6 +2,349 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:02 GMT",
+      "tag": "@fluentui/react-components_v9.62.0",
+      "version": "9.62.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "dc43bc8da69eb13d9349d5cb10a05637fc0afbf8",
+            "comment": "fix: improve element validation to work with React 19"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c299801729d7f8c8899f15871dcbd0c3f3981b57",
+            "comment": "fix(Popover): revert to a single composition mode for slide animations"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "19b2f19973f3308942d71bd757e50f94d479cadd",
+            "comment": "fix: fix infite loop caused by hydration errors in React 18"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "3b6c622dfaca775ded9a5d424483ce37c566b220",
+            "comment": "fix: design change of selected state for ColorSwatch"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "d8701785e817887fbae75a108bec64ebf7905481",
+            "comment": "fix: avoid \"ResizeObserver loop limit exceeded\" being thrown"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "8adf569ca9677a5d9bf0f726147fbfaf6587f0bd",
+            "comment": "fix: target area for extra-small Tag"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "cb14ccff78b8ee801d3f5c234bf5ed2e3ef327ae",
+            "comment": "chore: update useToastContainer callback type to support React 18"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "345029cc372c6c987125b8132ce5ccd68ec2560a",
+            "comment": "fix: rely on aria-expanded to prevent showing Tooltip when it's trigger opens Popover"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9679a921973d597dcb10a7202f127f4995a32c59",
+            "comment": "Change chart-utilities to es2019 and module type esnext"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "acb947e908e0522a469077a10cc822ba764eb2ce",
+            "comment": "fix: map stacked plotly scatter traces to area chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "c0612fecdfb4d558ae1cd991b6fb84ba8220321d",
+            "comment": "fix: add support for ybins in plotly schema"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "68a78cef4fee138fe07d17c617c55a9863fdcce7",
+            "comment": "fix: map plotly histogram2d trace to heatmap chart"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "fix: remove devDeps from deps"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e086faf1360fe2d33bfde3a82dc9c02d59b5a84f",
+            "comment": "fix: revert min-width: max-content for Badge"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "3d2e4f60f0dd9a795e4ba4b63828a5512ea6d4ae",
+            "comment": "Stop and reinitialize autoplay on carousel when autoplay interval changes"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3f81b8e46efe27414e87d520b075e5aadb036ac9",
+            "comment": "fix(react-charts): Enabling multiple legend selection for Vertical Bar Chart in V9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "897ae53b588deec87da6b8fbc9907c14f513e199",
+            "comment": "Enable Controlled legends in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "98e485a31ce5b40c14b154c6da346934b64bb01c",
+            "comment": "feat: center align bars with auto barWidth in plotly mode"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "477e0c3d4ff0f31852c2dca1b649e809503f0404",
+            "comment": "feat: add SankeyChart in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "72e211de8a77d4a9ddba9ea45af41fb2b8e50055",
+            "comment": "Full Y Axis labels in Heatmap chart"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c0e7d7a5f921718cfa259a431736f01381ed312d",
+            "comment": "feat: add HeatMapChart in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3a4efddb0999b89928dd785d0001da0f5b7d7ded",
+            "comment": "feat: port all declarative chart changes from v8 to v9"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3d6d56c7a591922372dcdfd69962e017b8759c89",
+            "comment": "fix(react-charts): Dark mode theme colors for declarative charts in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "ecfdc07ed4d06e2a2dff20c4e4d4c8fb40fc0135",
+            "comment": "Remove duplicate key warning"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9d250edbfe75f1ea9eed70f58f7f3da01634af19",
+            "comment": "Add scaling factor to height of VSBC bars"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9679a921973d597dcb10a7202f127f4995a32c59",
+            "comment": "fix(react-charts): Replace plotly schema interface and conversion logic with chart utilities"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d8c03197c18795aa51d928b5ee6581d1ea42a641",
+            "comment": "feat: add support for line curves"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cd8e61cbe348c2f35a5dac71fd9327b966c2caa7",
+            "comment": "fix(react-charts): Add background to the SVGTooltipText"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "586004ea4cd5204492ae80692f34d41f8db95457",
+            "comment": "Support rounded ticks in v9"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "881672090b223429b2f6d254d230f8c08e4fd2c4",
+            "comment": "feat(react-charts): Migrate Area Chart to v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "acb947e908e0522a469077a10cc822ba764eb2ce",
+            "comment": "fix: map stacked plotly scatter traces to area chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f9f6841514c07a4d5103c9d776256a7259cd674f",
+            "comment": "fix(react-charts): Secondary Y Axis margin adjustment in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4a1ddc1a8dcfc60e6682c5c4c815f708b6e58434",
+            "comment": "Enable Negative y value support in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "60d7c5af108ba9cbce34bb2a29a93ef5f5069e17",
+            "comment": "fix: remove duplicate legends + resolve overlapping bars across legends in VBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f914ccfcedd05c3307d6d67c71fc83f641a6fe40",
+            "comment": "Port fixes from v8 to v9"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a58ab6cebd0e3da7be5bd434f76cd69efaf8adab",
+            "comment": "Migrate HBC With Axis to V9"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "80dda31048e2098efc793406fd407d45952fe493",
+            "comment": "fix(react-charts): Handle invalid plotly data in V9 and fixing id related error in donut chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f05d137838a70ec8b789d48499aa90bf13852cc6",
+            "comment": "fix(react-charts): Enabling multiple legend selection for Scatter Chart in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c0612fecdfb4d558ae1cd991b6fb84ba8220321d",
+            "comment": "feat: transform plotly histogram2d trace to heatmap props"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "a4c775061d58db359c372f72e997caa4ff6a59d1",
+            "comment": "fix: ensure that the listbox is labelled by the field label"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff",
+            "comment": "Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "lint: fix exposed lint errors"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "refactor: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff",
+            "comment": "Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff",
+            "comment": "Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:08:01 GMT",
       "tag": "@fluentui/react-components_v9.61.6",
       "version": "9.61.6",

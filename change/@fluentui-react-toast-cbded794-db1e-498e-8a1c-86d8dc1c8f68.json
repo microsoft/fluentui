@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update useToastContainer callback type to support React 18",
-  "packageName": "@fluentui/react-toast",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

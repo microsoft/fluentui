@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Full Y Axis labels in Heatmap chart",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -39,7 +39,7 @@
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
-    "@fluentui/chart-utilities": "^1.1.4",
+    "@fluentui/chart-utilities": "^1.1.5",
     "@fluentui/react-focus": "^8.9.23",
     "@fluentui/theme-samples": "^8.7.204",
     "@microsoft/load-themed-styles": "^1.10.26",
