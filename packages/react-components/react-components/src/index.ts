@@ -1152,6 +1152,7 @@ export type {
   DataGridSelectionCellProps,
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
+  CellRenderFunction,
 } from '@fluentui/react-table';
 
 export {
