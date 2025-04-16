@@ -537,7 +537,11 @@ export class VerticalStackedBarChartBase
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
-    this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
+    this._xAxisInnerPadding = getScalePadding(
+      this.props.xAxisInnerPadding,
+      this.props.xAxisPadding,
+      this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+    );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -1260,11 +1264,10 @@ export class VerticalStackedBarChartBase
       }
     } else {
       const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
-      const innerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 1 / 2);
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        calculateAppropriateBarWidth(data, totalWidth, innerPadding),
+        calculateAppropriateBarWidth(data, totalWidth, this._xAxisInnerPadding),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }

@@ -453,7 +453,7 @@ export class VerticalBarChartBase
     this._xAxisInnerPadding = getScalePadding(
       this.props.xAxisInnerPadding,
       this.props.xAxisPadding,
-      this.props.mode === 'histogram' ? 0 : 2 / 3,
+      this.props.mode === 'histogram' ? 0 : this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
     );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
@@ -1264,12 +1264,6 @@ export class VerticalBarChartBase
   private _getDomainMargins = (containerWidth: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
-    /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
-
     const mapX: Record<string, number | string | Date> = {};
     this.props.data?.forEach(point => {
       if (point.x instanceof Date) {
@@ -1279,6 +1273,13 @@ export class VerticalBarChartBase
       }
     });
     const uniqueX = Object.values(mapX);
+
+    /** Total width available to render the bars */
+    const totalWidth =
+      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+    /** Rate at which the space between the bars changes wrt the bar width */
+    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const numBars = uniqueX.length + (uniqueX.length - 1) * barGapRate;
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
@@ -1290,7 +1291,7 @@ export class VerticalBarChartBase
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
         /** Total width required to render the bars. Directly proportional to bar width */
-        const reqWidth = (uniqueX.length + (uniqueX.length - 1) * barGapRate) * this._barWidth;
+        const reqWidth = numBars * this._barWidth;
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -1298,9 +1299,9 @@ export class VerticalBarChartBase
         }
       } else if (['plotly', 'histogram'].includes(this.props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
-        const bandwidth = totalWidth / (uniqueX.length + (uniqueX.length - 1) * barGapRate);
+        const bandwidth = totalWidth / numBars;
         const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth, this.props.mode);
-        let reqWidth = (uniqueX.length + (uniqueX.length - 1) * barGapRate) * barWidth;
+        let reqWidth = numBars * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
@@ -1314,22 +1315,30 @@ export class VerticalBarChartBase
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
-      let innerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 1 / 2);
-
       if (this.props.mode === 'histogram') {
-        innerPadding = 0;
+        // Try center-aligning the bars to eliminate any gaps caused by a restricted barWidth.
+        // This only works if the bin centers are consistent across all legend groups; otherwise,
+        // the calculated domainMargin may be too small.
         const barWidth = this.props.maxBarWidth!;
-        const reqWidth = uniqueX.length * barWidth;
+        const reqWidth = numBars * barWidth;
         this._domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
       }
 
+      // The histogram may appear distorted when bin centers/sizes vary across different legend groups.
+      // Currently, we calculate the appropriate bar width using the closest unique x-values to make
+      // the bars of the same legend group adjacent. But these x-values can come from different legend groups
+      // and result in misleading visuals. Even if we compute bar widths separately within each group,
+      // we still lack support for rendering bars with different widths and must use the minimum width,
+      // which can cause the same issue.
+      // Solution: Instead of estimating the appropriate bar width, render each bar to span the full range
+      // of its corresponding bin explicitly.
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
           totalWidth - 2 * (this._domainMargin - MIN_DOMAIN_MARGIN),
-          innerPadding,
+          this._xAxisInnerPadding,
         ),
         this.props.mode,
       );

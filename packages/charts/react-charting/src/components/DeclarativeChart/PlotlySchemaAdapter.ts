@@ -364,6 +364,8 @@ export const transformPlotlyJsonToVBCProps = (
     }
 
     const isXString = isStringArray(series.x);
+    // TODO: In case of a single bin, add an empty bin of the same size to prevent the
+    // default bar width from being used and ensure the bar spans the full intended range.
     const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
     const yBins: number[][] = xBins.map(() => []);
     let total = 0;
