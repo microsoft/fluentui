@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 07:22:26 GMT",
+      "tag": "@fluentui/react-charting_v5.23.73",
+      "version": "5.23.73",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "96fd9a0429eb73f2baa17897602c6e8226260d04",
+            "comment": "Legends order fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 07:22:06 GMT",
       "tag": "@fluentui/react-charting_v5.23.72",
       "version": "5.23.72",

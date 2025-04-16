@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 15 Apr 2025 07:22:06 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 07:22:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.73)
+
+Wed, 16 Apr 2025 07:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.72..@fluentui/react-charting_v5.23.73)
+
+### Patches
+
+- Legends order fix ([PR #34268](https://github.com/microsoft/fluentui/pull/34268) by anushgupta@microsoft.com)
 
 ## [5.23.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.72)
 

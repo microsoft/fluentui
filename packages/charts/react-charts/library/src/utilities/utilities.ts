@@ -911,6 +911,7 @@ export function createYAxisLabels(
   if (node === null) {
     return;
   }
+  let tickIndex = 0;
   const axisNode = d3Select(node).call(yAxis);
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
@@ -924,19 +925,20 @@ export function createYAxisLabels(
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
     const dx = 0;
+    const uid = tickIndex++;
     text
       .text(null)
       .append('tspan')
       .attr('x', x)
       .attr('y', y)
-      .attr('id', 'BaseSpan')
+      .attr('id', `BaseSpan-${uid}`)
       .attr('dy', dy + 'em')
       .attr('data-', totalWord);
 
     if (truncateLabel && totalWordLength > noOfCharsToTruncate) {
       text
         .append('tspan')
-        .attr('id', 'showDots')
+        .attr('id', `showDots-${uid}`)
         .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dy', dy)
@@ -946,7 +948,7 @@ export function createYAxisLabels(
       text
         .attr('text-align', 'start')
         .append('tspan')
-        .attr('id', 'LessLength')
+        .attr('id', `LessLength-${uid}`)
         .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
