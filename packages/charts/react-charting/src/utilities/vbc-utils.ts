@@ -20,11 +20,7 @@ export const getClosestPairDiffAndRange = (data: number[] | Date[]): [number, nu
   return [minDiff, range];
 };
 
-export const calculateAppropriateBarWidth = (
-  data: number[] | Date[],
-  totalWidth: number,
-  innerPadding: number = 1 / 2,
-) => {
+export const calculateAppropriateBarWidth = (data: number[] | Date[], totalWidth: number, innerPadding: number) => {
   const result = getClosestPairDiffAndRange(data);
   if (!result || result[1] === 0) {
     return 16;

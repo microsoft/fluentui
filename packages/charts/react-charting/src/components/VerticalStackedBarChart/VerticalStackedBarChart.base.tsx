@@ -1248,25 +1248,23 @@ export class VerticalStackedBarChartBase
         let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!this.props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+          reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
       const data = (this.props.data?.map(point => point.xAxisPoint) as number[] | Date[] | undefined) || [];
+      const innerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 1 / 2);
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        calculateAppropriateBarWidth(
-          data,
-          totalWidth,
-          isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)
-            ? this._xAxisInnerPadding
-            : undefined,
-        ),
+        calculateAppropriateBarWidth(data, totalWidth, innerPadding),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }

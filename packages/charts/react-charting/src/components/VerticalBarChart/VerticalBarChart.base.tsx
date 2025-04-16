@@ -226,7 +226,10 @@ export class VerticalBarChartBase
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         ref={this._cartesianChartRef}
-        showRoundOffXTickValues={!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)}
+        showRoundOffXTickValues={
+          !isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding) &&
+          this.props.mode !== 'histogram'
+        }
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -443,11 +446,15 @@ export class VerticalBarChartBase
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
+    this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, undefined, this.props.mode);
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
-    this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
+    this._xAxisInnerPadding = getScalePadding(
+      this.props.xAxisInnerPadding,
+      this.props.xAxisPadding,
+      this.props.mode === 'histogram' ? 0 : 2 / 3,
+    );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -708,7 +715,10 @@ export class VerticalBarChartBase
       xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
-      if (!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)) {
+      if (
+        !isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding) &&
+        this.props.mode !== 'histogram'
+      ) {
         xBarScale.nice();
       }
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
@@ -890,7 +900,7 @@ export class VerticalBarChartBase
       const baselineHeight = containerHeight - this.margins.bottom! - yBarScale(yReferencePoint);
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
-      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth(), this.props.mode);
 
       let startColor = point.color ? point.color : colorScale(point.y);
       let endColor = startColor;
@@ -1275,7 +1285,7 @@ export class VerticalBarChartBase
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
-      } else if (this.props.barWidth !== 'auto') {
+      } else if (this.props.barWidth !== 'auto' && this.props.mode !== 'histogram') {
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
@@ -1286,33 +1296,44 @@ export class VerticalBarChartBase
           // Center align the chart by setting equal left and right margins for domain
           this._domainMargin = MIN_DOMAIN_MARGIN + (totalWidth - reqWidth) / 2;
         }
-      } else if (this.props.mode === 'plotly' && uniqueX.length > 1) {
+      } else if (['plotly', 'histogram'].includes(this.props.mode!) && uniqueX.length > 1) {
         // Calculate the remaining width after rendering bars at their maximum allowable width
         const bandwidth = totalWidth / (uniqueX.length + (uniqueX.length - 1) * barGapRate);
-        const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth);
+        const barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, bandwidth, this.props.mode);
         let reqWidth = (uniqueX.length + (uniqueX.length - 1) * barGapRate) * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
-        reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!this.props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
+          reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
     } else {
+      let innerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 1 / 2);
+
+      if (this.props.mode === 'histogram') {
+        innerPadding = 0;
+        const barWidth = this.props.maxBarWidth!;
+        const reqWidth = uniqueX.length * barWidth;
+        this._domainMargin += Math.max(0, (totalWidth - reqWidth) / 2);
+      }
+
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
         calculateAppropriateBarWidth(
           uniqueX as number[] | Date[],
-          totalWidth,
-          isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)
-            ? this._xAxisInnerPadding
-            : undefined,
+          totalWidth - 2 * (this._domainMargin - MIN_DOMAIN_MARGIN),
+          innerPadding,
         ),
+        this.props.mode,
       );
-      this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
+      this._domainMargin += this._barWidth / 2;
     }
 
     return {
