@@ -308,7 +308,7 @@ export const transformPlotlyJsonToGVBCProps = (
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
 
   input.data.forEach((series: PlotData, index1: number) => {
-    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
@@ -316,9 +316,12 @@ export const transformPlotlyJsonToGVBCProps = (
       if (series.type === 'bar') {
         const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
-        const dataValue = (series.y?.[index2] as number) ?? 0;
+        const dataValue = (series.y?.[xIndex] as number) ?? 0;
 
-        // Check if the key already exists in the series
+        // As per the dataset
+        // https://github.com/microsoft/fluentui-charting-contrib/blob/main/apps/plotly_examples/src/data/data_385.json
+        // for the same series, for the same x value there can be multiple y values with the same legend
+        // So we need to check if the key already exists in the series and sum the data values if key exists
         const existingDataPoint = mapXToDataPoints[x].series.find(dp => dp.key === legend);
 
         if (existingDataPoint) {
