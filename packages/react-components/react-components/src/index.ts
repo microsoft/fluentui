@@ -1470,6 +1470,15 @@ export {
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
 
 export {
+  InfoButton,
+  infoButtonClassNames,
+  renderInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  useInfoButton_unstable,
+} from '@fluentui/react-infobutton';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
+
+export {
   Drawer,
   renderDrawer_unstable,
   useDrawerStyles_unstable,
