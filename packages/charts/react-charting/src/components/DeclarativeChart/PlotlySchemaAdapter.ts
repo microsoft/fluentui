@@ -322,11 +322,11 @@ export const transformPlotlyJsonToGVBCProps = (
         // https://github.com/microsoft/fluentui-charting-contrib/blob/main/apps/plotly_examples/src/data/data_385.json
         // for the same series, for the same x value there can be multiple y values with the same legend
         // So we need to check if the key already exists in the series and sum the data values if key exists
-        const existingDataPoint = mapXToDataPoints[x].series.find(dp => dp.key === legend);
+        const existingDataPointIndex = mapXToDataPoints[x].series.findIndex(dp => dp.key === legend);
 
-        if (existingDataPoint) {
+        if (existingDataPointIndex !== -1) {
           // If the key exists, sum the data values
-          existingDataPoint.data += dataValue;
+          mapXToDataPoints[x].series[existingDataPointIndex].data += dataValue;
         } else {
           // Otherwise, add a new data point
           mapXToDataPoints[x].series.push({
