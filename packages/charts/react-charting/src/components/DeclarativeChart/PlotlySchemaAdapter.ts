@@ -313,24 +313,40 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
+
   input.data.forEach((series: PlotData, index1: number) => {
-    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
+
       if (series.type === 'bar') {
         const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
+        const dataValue = (series.y?.[xIndex] as number) ?? 0;
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: (series.y?.[index2] as number) ?? 0,
-          xAxisCalloutData: x as string,
-          color,
-          legend,
-        });
+        // As per the dataset
+        // https://github.com/microsoft/fluentui-charting-contrib/blob/main/apps/plotly_examples/src/data/data_385.json
+        // for the same series, for the same x value there can be multiple y values with the same legend
+        // So we need to check if the key already exists in the series and sum the data values if key exists
+        const existingDataPointIndex = mapXToDataPoints[x].series.findIndex(dp => dp.key === legend);
+
+        if (existingDataPointIndex !== -1) {
+          // If the key exists, sum the data values
+          mapXToDataPoints[x].series[existingDataPointIndex].data += dataValue;
+        } else {
+          // Otherwise, add a new data point
+          mapXToDataPoints[x].series.push({
+            key: legend,
+            data: dataValue,
+            xAxisCalloutData: x as string,
+            color,
+            legend,
+          });
+        }
       }
     });
+
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
