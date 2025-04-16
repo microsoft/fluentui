@@ -13,14 +13,19 @@ const generateLegacyTokens = () => {
   const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
   const generatedTokens = semanticTokenFallbacks.reduce((acc, t) => {
-    const fluent2Fallback = fluentOverrides[t].f2Token;
+    const tokenOverride = fluentOverrides[t];
+    if (!tokenOverride) {
+      // Token has inline variants, skip
+      return acc;
+    }
+    const fluent2Fallback = tokenOverride.f2Token;
     if (!fluent2Fallback) {
-      return '';
+      return acc;
     }
     if (!Object.keys(tokensPackage.tokens).includes(fluent2Fallback)) {
       // Token does not exist in F2 tokens
       // This should never occur, but let's flag if a mistake was made in fallback token names
-      throw new Error(`Fluent token ${fluentOverrides[t].f2Token} not found in fluent tokens`);
+      throw new Error(`Fluent token ${tokenOverride.f2Token} not found in fluent tokens`);
     }
     const tokenValue = tokensPackage.tokens[fluent2Fallback as keyof typeof tokensPackage.tokens];
     const token = `/**
