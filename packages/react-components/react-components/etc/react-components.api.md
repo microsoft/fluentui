@@ -213,6 +213,7 @@ import { carouselViewportClassNames } from '@fluentui/react-carousel';
 import { CarouselViewportProps } from '@fluentui/react-carousel';
 import { CarouselViewportSlots } from '@fluentui/react-carousel';
 import { CarouselViewportState } from '@fluentui/react-carousel';
+import { CellRenderFunction } from '@fluentui/react-table';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -2280,6 +2281,8 @@ export { CarouselViewportProps }
 export { CarouselViewportSlots }
 
 export { CarouselViewportState }
+
+export { CellRenderFunction }
 
 export { Checkbox }
 
