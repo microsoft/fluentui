@@ -224,6 +224,8 @@ test.describe('Tree', () => {
     const treeItems = page.locator('fluent-tree-item');
     await element.focus();
     await expect(treeItems.nth(0)).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(treeItems.nth(0)).toHaveAttribute('selected');
     await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(anchor).toBeFocused();
   });

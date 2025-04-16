@@ -130,16 +130,6 @@ export class BaseTreeItem extends FASTElement {
     item.dataIndent = indent + 1;
   }
 
-  /**
-   * Handle blur events
-   *
-   * @public
-   */
-  public blurHandler(e: FocusEvent): void {
-    if (e.target === this) {
-      this.setAttribute('tabindex', '-1');
-    }
-  }
 
   /**
    * Toggle the expansion state of the tree item
