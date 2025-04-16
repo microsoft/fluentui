@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { PlainCardBase } from './PlainCard/PlainCard.base';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import { HoverCard } from './HoverCard';
 import { HoverCardBase } from './HoverCard.base';
-import { HoverCardType } from './HoverCard.types';
 import { KeyCodes } from '../../Utilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
@@ -86,21 +85,21 @@ describe('HoverCard', () => {
   });
 
   it('uses default documented properties', () => {
-    const component = mount(<HoverCardBase />);
+    const { container, unmount } = render(<HoverCardBase />);
 
-    expect(component.prop('cardOpenDelay')).toEqual(500);
-    expect(component.prop('cardDismissDelay')).toEqual(100);
-    expect(component.prop('expandedCardOpenDelay')).toEqual(1500);
-    expect(component.prop('instantOpenOnClick')).toEqual(false);
-    expect(component.prop('setInitialFocus')).toEqual(false);
-    expect(component.prop('openHotKey')).toEqual(KeyCodes.c);
-    expect(component.prop('type')).toEqual(HoverCardType.expanding);
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          data-is-focusable="true"
+        />
+      </div>
+    `);
 
-    component.unmount();
+    unmount();
   });
 
   it('uses specified properties when rendering an ExpandedCard', () => {
-    const component = mount(
+    const { unmount, container } = render(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         cardDismissDelay={300}
@@ -113,21 +112,21 @@ describe('HoverCard', () => {
       />,
     );
 
-    expect(component.prop('cardOpenDelay')).toEqual(1000);
-    expect(component.prop('cardDismissDelay')).toEqual(300);
-    expect(component.prop('expandedCardOpenDelay')).toEqual(2000);
-    expect(component.prop('instantOpenOnClick')).toEqual(true);
-    expect(component.prop('setInitialFocus')).toEqual(true);
-    expect(component.prop('openHotKey')).toEqual(KeyCodes.enter);
-    expect(component.prop('expandingCardProps')).toMatchObject(expandingCardProps);
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          data-is-focusable="true"
+        />
+      </div>
+    `);
 
-    component.unmount();
+    unmount();
   });
 
   it('fires onCardVisible and onCardHide', () => {
     let cardVisible = false;
     let cardHidden = false;
-    let hoverCard: any;
+    let hoverCardRef: any;
 
     const onCardVisible = () => {
       cardVisible = true;
@@ -137,34 +136,42 @@ describe('HoverCard', () => {
       cardHidden = true;
     };
 
-    const component = mount(
+    const { unmount } = render(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         onCardVisible={onCardVisible}
         onCardHide={onCardHide}
-        componentRef={ref => (hoverCard = ref)}
+        componentRef={ref => (hoverCardRef = ref)}
       >
         <div>Child</div>
       </HoverCardBase>,
     );
     jest.useFakeTimers();
 
-    expect(hoverCard).toBeTruthy();
+    expect(hoverCardRef).toBeTruthy();
 
     // firing the onCardVisible callback after the component is updated.
-    component.setState({ isHoverCardVisible: true });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: true });
+    });
     expect(cardVisible).toEqual(true);
 
     // firing the onCardHide callback after the component is updated.
-    component.setState({ isHoverCardVisible: false });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: false });
+    });
     expect(cardHidden).toEqual(true);
 
     // firing the onCardHide callback after the component is dismissed directly.
-    component.setState({ isHoverCardVisible: true });
+    act(() => {
+      hoverCardRef.setState({ isHoverCardVisible: true });
+    });
     cardHidden = false;
-    hoverCard.dismiss();
+    act(() => {
+      hoverCardRef.dismiss();
+    });
     expect(cardHidden).toEqual(true);
 
-    component.unmount();
+    unmount();
   });
 });

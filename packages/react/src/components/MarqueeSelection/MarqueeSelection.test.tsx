@@ -1,23 +1,45 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { MarqueeSelection } from './MarqueeSelection';
 import { Selection } from '../../utilities/selection/index';
 import { isConformant } from '../../common/isConformant';
 
+/**
+ * Helper for simulating mouse events on the document
+ */
+function simulateMouseEvent(eventName: string, options: MouseEventInit) {
+  const event = new MouseEvent(eventName, options);
+  document.body.dispatchEvent(event);
+  return event;
+}
+
+/**
+ * Helper to simulate a marquee selection drag operation
+ */
+function simulateMarqueeSelectionDrag(startPoint: { x: number; y: number }, endPoint: { x: number; y: number }) {
+  // Start drag
+  simulateMouseEvent('mousedown', { button: 0, buttons: 1, clientX: startPoint.x, clientY: startPoint.y });
+  // End drag
+  simulateMouseEvent('mousedown', { button: 0, buttons: 1, clientX: endPoint.x, clientY: endPoint.y });
+}
+
+// Mock getBoundingClientRect for testing
+function mockElementBounds(
+  element: HTMLElement,
+  bounds: Pick<DOMRect, 'top' | 'left' | 'bottom' | 'right' | 'width' | 'height'>,
+) {
+  element.getBoundingClientRect = jest.fn().mockReturnValue(bounds as DOMRect);
+}
+
 describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {
-    // It is necessary to use `mount` here so that mouse events can be properly simulated.
-    const component = mount(<MarqueeSelection selection={new Selection()} />);
-    // Simulate clicking and dragging in order to add styling to the snapshot.
-    const top = window.document.body;
-    const dragStart = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 0, clientY: 0 });
-    top.dispatchEvent(dragStart);
-    const dragEnd = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 100, clientY: 100 });
-    top.dispatchEvent(dragEnd);
-    component.update();
+    const { container } = render(<MarqueeSelection selection={new Selection()} />);
 
-    // Run snapshot test.
-    expect(component.getDOMNode()).toMatchSnapshot();
+    // Simulate clicking and dragging in order to add styling to the snapshot
+    simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
+
+    // Run snapshot test
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   isConformant({
@@ -29,7 +51,7 @@ describe('MarqueeSelection', () => {
   });
 
   it('updates the selection when an item is selected', () => {
-    // stub selection implementation to measure number of calls to setIndexSelected.
+    // stub selection implementation to measure number of calls to setIndexSelected
     class SelectionStub extends Selection {
       public numSetIndexSelectedCalls = 0;
       public setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void {
@@ -38,36 +60,27 @@ describe('MarqueeSelection', () => {
     }
 
     const selection = new SelectionStub();
-    // It is necessary to use `mount` here so that mouse events can be properly simulated.
-    const component = mount(
+    const { container } = render(
       <MarqueeSelection selection={selection}>
-        <div className={'itemToSelect'} data-selection-index="0">
+        <div className="itemToSelect" data-selection-index="0">
           0
         </div>
       </MarqueeSelection>,
     );
 
-    const element = component.getDOMNode();
-    const itemToSelect = element.querySelector('.itemToSelect') as HTMLElement;
-    itemToSelect.getBoundingClientRect = () => {
-      return {
-        top: 10,
-        left: 10,
-        bottom: 90,
-        right: 90,
-        width: 80,
-        height: 80,
-      } as DOMRect;
-    };
+    // Find the item to select and mock its position
+    const itemToSelect = container.querySelector('.itemToSelect') as HTMLElement;
+    mockElementBounds(itemToSelect, {
+      top: 10,
+      left: 10,
+      bottom: 90,
+      right: 90,
+      width: 80,
+      height: 80,
+    });
 
-    // Simulate clicking and dragging to select the div.
-    const top = window.document.body;
-    const dragStart = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 0, clientY: 0 });
-    top.dispatchEvent(dragStart);
-    const dragEnd = new MouseEvent('mousedown', { button: 0, buttons: 1, clientX: 100, clientY: 100 });
-    top.dispatchEvent(dragEnd);
-
-    component.update();
+    // Simulate clicking and dragging to select the div
+    simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
 
     expect(selection.numSetIndexSelectedCalls).toEqual(1);
   });
