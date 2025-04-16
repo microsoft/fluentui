@@ -858,6 +858,12 @@ export class VerticalBarChartBase
     const colorScale = this._createColors();
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted();
+      this._classNames = getClassNames(this.props.styles!, {
+        theme: this.props.theme!,
+        shouldHighlight,
+      });
+
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
@@ -914,6 +920,7 @@ export class VerticalBarChartBase
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
+            className={this._classNames.opacityChangeOnHover}
             y={!isHeightNegative ? yPoint : baselineHeight}
             width={this._barWidth}
             height={adjustedBarHeight}
@@ -926,7 +933,7 @@ export class VerticalBarChartBase
             onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
-            data-is-focusable={!this.props.hideTooltip}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}

@@ -17,6 +17,12 @@
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"
       ],
       "@fluentui/chart-utilities": ["packages/charts/chart-utilities/src/index.ts"],
+      "@fluentui/component-selector-preview": [
+        "packages/react-components/component-selector-preview/library/src/index.ts"
+      ],
+      "@fluentui/component-selector-preview-stories": [
+        "packages/react-components/component-selector-preview/stories/src/index.ts"
+      ],
       "@fluentui/eslint-plugin-react-components": [
         "packages/react-components/eslint-plugin-react-components/src/index.ts"
       ],

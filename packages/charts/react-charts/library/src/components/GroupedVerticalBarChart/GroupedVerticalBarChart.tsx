@@ -37,6 +37,7 @@ import {
   DataVizPalette,
   getColorFromToken,
   ChartPopoverProps,
+  Chart,
 } from '../../index';
 
 type StringAxis = D3Axis<string>;
@@ -80,6 +81,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
   let _groupWidth: number = 0;
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -102,6 +104,14 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
       setSelectedLegends(props.legendProps?.selectedLegends || []);
     }
   }, [props.legendProps?.selectedLegends]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   const _adjustProps = () => {
     _barWidth = getBarWidth(props.barWidth, props.maxBarWidth);
@@ -619,6 +629,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
         xAxisOuterPadding: _xAxisOuterPadding,
       })}
       barwidth={_barWidth}
+      componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
       children={() => {
         return <g>{_groupedVerticalBarGraph}</g>;

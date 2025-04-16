@@ -22,11 +22,13 @@ export const LineChartBasic = (props: LineChartProps) => {
     setUseUTC(checked.checked);
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
 

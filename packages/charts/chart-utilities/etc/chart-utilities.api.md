@@ -1264,6 +1264,12 @@ export interface PlotData {
     // (undocumented)
     yaxis: string;
     // (undocumented)
+    ybins: {
+        start: number | string;
+        end: number | string;
+        size: number | string;
+    };
+    // (undocumented)
     ygap: number;
     // (undocumented)
     yhoverformat: string;

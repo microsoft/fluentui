@@ -5,13 +5,15 @@
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
+    "type-check:integration": "tsc -p tsconfig.react-18.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
+    "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "e2e": "cypress run --component"
+    "e2e:integration": "npx --yes cypress@latest run --component --config-file cypress-react-18.config.ts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -21,12 +23,14 @@
   "dependencies": {
     "@cypress/react": "9.0.1",
     "@fluentui/react-components": "*",
+    "@fluentui/react-nav-preview": "*",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/react": "18.3.20",
-    "@types/react-dom": "18.3.5",
+    "@types/react-dom": "18.3.6",
     "@types/react-test-renderer": "18.3.1",
+    "cypress-real-events": "1.14.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-test-renderer": "18.3.1",

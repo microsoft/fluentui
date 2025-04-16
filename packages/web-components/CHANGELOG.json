@@ -2,6 +2,65 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 15 Apr 2025 04:06:21 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.91",
+      "version": "3.0.0-beta.91",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e3d631fb0e5c31199290bc7a0e9799d769ada55",
+            "comment": "fix: dropdown validation message and add missing validity functions"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec07aac33ce549a97cd73856c7d4615f09e0d5bb",
+            "comment": "chore: remove unused form-associated modules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Apr 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.90",
+      "version": "3.0.0-beta.90",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4a7b410dce2d36e1196dbfda2b145c6b1fc54e53",
+            "comment": "feat: remove use of custom states for presentational styling"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "64a35bb74b612aac36a8056991d5477df564bbdc",
+            "comment": "fix typo in avatar styles for beige color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Apr 2025 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.89",
+      "version": "3.0.0-beta.89",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5a43d14f3b1ee1035832588bb7b4be1b5c1533c2",
+            "comment": "deprecate tabs and tab-panel in favor of tablist"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Apr 2025 04:07:28 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.88",
       "version": "3.0.0-beta.88",

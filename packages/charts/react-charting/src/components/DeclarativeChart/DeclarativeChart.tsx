@@ -290,7 +290,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'fallback':
       // Need recheck for area chart as we don't have ability to check for valid months in previous step
       const isAreaChart = plotlyInputWithValidData.data.some(
-        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy',
+        (series: PlotData) => series.fill === 'tonexty' || series.fill === 'tozeroy' || !!series.stackgroup,
       );
       return checkAndRenderChart(isAreaChart);
     default:
