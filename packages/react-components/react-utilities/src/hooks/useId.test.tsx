@@ -41,7 +41,9 @@ describe('useId', () => {
 
   it('consumers prefix from a context', () => {
     const { result } = renderHook(() => useId(), {
-      wrapper: ({ children }) => <IdPrefixProvider value="scope-">{children}</IdPrefixProvider>,
+      wrapper: ({ children }: React.PropsWithChildren<{}>) => (
+        <IdPrefixProvider value="scope-">{children}</IdPrefixProvider>
+      ),
     });
 
     expect(result.current).toMatch(/^scope-fui-/);

@@ -25,7 +25,7 @@ describe('useIsReducedMotion', () => {
   it('should return "false" if matchMedia is not supported', () => {
     const targetDocument = createDocumentMock(undefined);
     const { result } = renderHook(() => useIsReducedMotion(), {
-      wrapper: ({ children }) => (
+      wrapper: ({ children }: React.PropsWithChildren<{}>) => (
         <Provider_unstable value={{ targetDocument, dir: 'ltr' }}>{children}</Provider_unstable>
       ),
     });
@@ -38,7 +38,7 @@ describe('useIsReducedMotion', () => {
     const targetDocument = createDocumentMock(matchMediaMock);
 
     const { result } = renderHook(() => useIsReducedMotion(), {
-      wrapper: ({ children }) => (
+      wrapper: ({ children }: React.PropsWithChildren<{}>) => (
         <Provider_unstable value={{ targetDocument, dir: 'ltr' }}>{children}</Provider_unstable>
       ),
     });

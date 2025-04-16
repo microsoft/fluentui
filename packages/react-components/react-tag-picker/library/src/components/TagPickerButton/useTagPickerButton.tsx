@@ -35,6 +35,9 @@ export const useTagPickerButton_unstable = (
     defaultProps: {
       type: 'button',
       tabIndex: 0,
+      // FIXME: props.placeholder is not a valid prop for button in React 18,
+      // so we should add it to the props types or remove it from here
+      // @ts-ignore
       children: value || props.placeholder,
       'aria-controls': open ? popoverId : undefined,
       ref,

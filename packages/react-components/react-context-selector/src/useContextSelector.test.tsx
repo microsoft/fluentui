@@ -16,7 +16,7 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
   return <div className="test-component" data-active={active} />;
 };
 
-const TestProvider: React.FC = props => {
+const TestProvider: React.FC<React.PropsWithChildren<{}>> = props => {
   const [index, setIndex] = React.useState<number>(0);
 
   return (
