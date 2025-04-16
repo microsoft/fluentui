@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Enabling multiple legend selection for Vertical Bar Chart in V9",
-  "packageName": "@fluentui/react-charts",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

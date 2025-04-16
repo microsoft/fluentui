@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className.",
-  "packageName": "@fluentui/react-components",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

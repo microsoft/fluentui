@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor: type useCallback params",
-  "packageName": "@fluentui/react-carousel",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

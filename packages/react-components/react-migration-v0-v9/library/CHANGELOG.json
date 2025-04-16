@@ -2,6 +2,59 @@
   "name": "@fluentui/react-migration-v0-v9",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:18 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.3.9",
+      "version": "9.3.9",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-aria to v9.14.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.62.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.76",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-tabster to v9.24.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:08:02 GMT",
       "tag": "@fluentui/react-migration-v0-v9_v9.3.8",
       "version": "9.3.8",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: transform plotly histogram2d trace to heatmap props",
-  "packageName": "@fluentui/react-charts",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
