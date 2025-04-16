@@ -12,7 +12,7 @@ const chevronIcon = html`
 
 export const template = html<TreeItem>`
   <template
-    tabindex="${x => x.selected ? 0 : -1}"
+    tabindex="${x => (x.selected ? 0 : -1)}"
     slot="${x => (x.isNestedItem ? 'item' : void 0)}"
     ${children({
       property: 'childTreeItems',

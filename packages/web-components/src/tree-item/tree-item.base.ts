@@ -130,7 +130,6 @@ export class BaseTreeItem extends FASTElement {
     item.dataIndent = indent + 1;
   }
 
-
   /**
    * Toggle the expansion state of the tree item
    *
