@@ -198,7 +198,7 @@ export const ToggleEvent: Story = {
         target.toggleExpansion();
       }}
       @toggle=${(c, e) => {
-        console.log('toggle', e.event?.detail);
+        console.log('toggle', (e.event as any)?.detail);
       }}
     >
       Item 1
