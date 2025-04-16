@@ -61,7 +61,7 @@ const useRootBaseClassName = makeResetStyles({
 
   padding: `${buttonSpacingMedium} ${semanticTokens.paddingCtrlTextside}`,
   minWidth: '96px',
-  borderRadius: semanticTokens.strokewidthDefault,
+  borderRadius: semanticTokens.cornerCtrlRest,
 
   fontSize: semanticTokens.textRampItembodyFontsize,
   fontWeight: semanticTokens.textCtrlButtonWeightDefault,
