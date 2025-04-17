@@ -62,8 +62,8 @@ export const fluentOverrides: FluentOverrides = {
   cornerCircular: { f2Token: 'borderRadiusCircular' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
   paddingCtrlSmHorizontalDefault: { f2Token: 'spacingHorizontalS' },
-  cornerCtrlSmRest: { f2Token: 'borderRadiusSmall' },
-  cornerCtrlLgRest: { f2Token: 'borderRadiusLarge' },
+  cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
+  cornerCtrlLgRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   paddingCtrlSmHorizontalIcononly: { rawValue: '1px' },
   paddingCtrlHorizontalIcononly: { rawValue: '5px' },
   paddingCtrlLgHorizontalIcononly: { rawValue: '7px' },

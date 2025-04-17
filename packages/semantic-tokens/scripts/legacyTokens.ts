@@ -15,14 +15,12 @@ const generateLegacyTokens = () => {
 
   const generatedTokens = semanticTokenFallbacks.reduce((acc, t) => {
     const tokenOverride = fluentOverrides[t];
-    if (!tokenOverride) {
+    const fluent2Fallback = tokenOverride?.f2Token;
+    if (!tokenOverride || !fluent2Fallback || exportedTokens.includes(fluent2Fallback)) {
       // Token has inline variants, skip
       return acc;
     }
-    const fluent2Fallback = tokenOverride.f2Token;
-    if (!fluent2Fallback || exportedTokens.includes(fluent2Fallback)) {
-      return acc;
-    }
+
     // Add it to our list of exported tokens
     exportedTokens.push(fluent2Fallback);
     if (!Object.keys(tokensPackage.tokens).includes(fluent2Fallback)) {

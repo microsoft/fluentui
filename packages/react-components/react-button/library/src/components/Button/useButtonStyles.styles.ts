@@ -295,7 +295,7 @@ const useRootStyles = makeStyles({
   small: {
     minWidth: '64px',
     padding: `${buttonSpacingSmall} ${semanticTokens.paddingCtrlSmHorizontalDefault}`,
-    borderRadius: `calc(${semanticTokens.cornerCtrlSmRest} + ${semanticTokens.ctrlFocusOuterStrokewidth})`,
+    borderRadius: semanticTokens.cornerCtrlSmRest,
 
     fontSize: semanticTokens.textRampSmItembodyFontsize,
     fontWeight: semanticTokens.textCtrlButtonWeightDefault,
@@ -311,7 +311,7 @@ const useRootStyles = makeStyles({
   large: {
     minWidth: '96px',
     padding: `${buttonSpacingLarge} ${semanticTokens.paddingCtrlLgHorizontalDefault}`,
-    borderRadius: `calc(${semanticTokens.cornerCtrlLgRest} - ${semanticTokens.ctrlFocusOuterStrokewidth})`,
+    borderRadius: semanticTokens.cornerCtrlLgRest,
 
     fontSize: semanticTokens.textRampLgItembodyFontsize,
     fontWeight: semanticTokens.textCtrlButtonWeightDefault,
@@ -499,14 +499,13 @@ const useRootFocusStyles = makeStyles({
   },
   // Size variations
   small: createCustomFocusIndicatorStyle({
-    borderRadius: semanticTokens.cornerCtrlSmRest,
+    borderRadius: `calc(${semanticTokens.cornerCtrlSmRest} - ${semanticTokens.ctrlFocusOuterStrokewidth})`,
   }),
   medium: {
     /* defined in base styles */
   },
-  // corner/ctrl-lg/rest - borderRadiusLarge
   large: createCustomFocusIndicatorStyle({
-    borderRadius: semanticTokens.cornerCtrlLgRest,
+    borderRadius: `calc(${semanticTokens.cornerCtrlLgRest} + ${semanticTokens.ctrlFocusOuterStrokewidth})`,
   }),
 });
 
