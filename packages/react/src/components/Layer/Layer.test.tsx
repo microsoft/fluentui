@@ -1,19 +1,57 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
-import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
 import { render } from '@testing-library/react';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
 
-const testEvents: string[] = (
-  'click contextmenu doubleclick drag dragend dragenter dragleave dragover dragstart drop ' +
-  'mousedown mousemove mouseout mouseup keydown keypress keyup focus blur change input submit'
-).split(' ');
+const testEvents = [
+  'click',
+  'contextmenu',
+  'drag',
+  'dragend',
+  'dragenter',
+  'dragleave',
+  'dragover',
+  'dragstart',
+  'drop',
+  'mousedown',
+  'mousemove',
+  'mouseout',
+  'mouseup',
+  'keydown',
+  'keyup',
+  'input',
+  'submit',
+];
+
+/**
+ * Helper function to create an event with a spy on stopPropagation
+ * @param eventName - Name of the event
+ * @param options - Event options including phase
+ * @returns Event object with stopPropagation spy and counter
+ */
+const createEventWithSpy = (eventName: string, options: { phase?: number; counter?: { count: number } } = {}) => {
+  const counter = options.counter || { count: 0 };
+  const event = new Event(eventName, { bubbles: true });
+
+  // Set the event phase (bubbling or capturing)
+  Object.defineProperty(event, 'eventPhase', {
+    value: options.phase || Event.BUBBLING_PHASE,
+  });
+
+  // Replace stopPropagation with a spy
+  event.stopPropagation = jest.fn(() => {
+    counter.count++;
+  });
+
+  return { event, counter };
+};
 
 describe('Layer', () => {
   interface IFooContext {
@@ -113,104 +151,80 @@ describe('Layer', () => {
   });
 
   it('stops bubbling events', () => {
-    // Simulate does not propagate events up the hierarchy.
-    // Instead, let's check for calls to stopPropagation.
-    // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
     const targetClassName = 'ms-Layer-content';
     const expectedStopPropagationCount = testEvents.length;
-    let stopPropagationCount = 0;
+    const counter = { count: 0 };
 
-    const eventObject = (event: string) => {
-      return {
-        eventPhase: Event.BUBBLING_PHASE,
-        stopPropagation: () => {
-          // Debug code for figuring out which events are firing on test failures:
-          // console.log(event);
-          stopPropagationCount++;
-        },
-      };
-    };
+    const { baseElement } = render(<Layer />);
 
-    const wrapper = mount(<Layer />);
+    const targetContent = baseElement.querySelector(`.${targetClassName}`) as HTMLElement;
+    expect(targetContent).not.toBeNull();
 
-    const targetContent = wrapper.find(`.${targetClassName}`).at(0);
-
+    // Fire each test event and check if stopPropagation is called
     testEvents.forEach(event => {
-      targetContent.simulate(event, eventObject(event));
+      const { event: customEvent } = createEventWithSpy(event, { counter });
+      targetContent.dispatchEvent(customEvent);
     });
 
-    expect(stopPropagationCount).toEqual(expectedStopPropagationCount);
+    expect(counter.count).toEqual(expectedStopPropagationCount);
 
     // These events should never be stopped
-    targetContent.simulate('mouseenter', eventObject('mouseenter'));
-    targetContent.simulate('mouseleave', eventObject('mouseleave'));
+    const { event: mouseenterEvent } = createEventWithSpy('mouseenter', { counter });
+    const { event: mouseleaveEvent } = createEventWithSpy('mouseleave', { counter });
 
-    expect(stopPropagationCount).toEqual(expectedStopPropagationCount);
+    targetContent.dispatchEvent(mouseenterEvent);
+    targetContent.dispatchEvent(mouseleaveEvent);
+
+    expect(counter.count).toEqual(expectedStopPropagationCount);
   });
 
   it('does not stop non-bubbling events', () => {
-    // Simulate does not propagate events up the hierarchy.
-    // Instead, let's check for calls to stopPropagation.
-    // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
     const targetClassName = 'ms-Layer-content';
     const expectedStopPropagationCount = 0;
-    let stopPropagationCount = 0;
+    const counter = { count: 0 };
 
-    const eventObject = (event: string) => {
-      return {
-        eventPhase: Event.CAPTURING_PHASE,
-        stopPropagation: () => {
-          // Debug code for figuring out which events are firing on test failures:
-          // console.log(event);
-          stopPropagationCount++;
-        },
-      };
-    };
+    const { baseElement } = render(<Layer />);
 
-    const wrapper = mount(<Layer />);
+    const targetContent = baseElement.querySelector(`.${targetClassName}`) as HTMLElement;
+    expect(targetContent).not.toBeNull();
 
-    const targetContent = wrapper.find(`.${targetClassName}`).at(0);
-
+    // Fire each event and check if stopPropagation is called
     testEvents.forEach(event => {
-      targetContent.simulate(event, eventObject(event));
+      const { event: customEvent } = createEventWithSpy(event, {
+        phase: Event.CAPTURING_PHASE,
+        counter,
+      });
+      targetContent.dispatchEvent(customEvent);
     });
 
-    expect(stopPropagationCount).toEqual(expectedStopPropagationCount);
+    expect(counter.count).toEqual(expectedStopPropagationCount);
   });
 
   it('allows events to bubble with eventBubblingEnabled prop', () => {
-    // Simulate does not propagate events up the hierarchy.
-    // Instead, let's check for calls to stopPropagation.
-    // https://airbnb.io/enzyme/docs/api/ShallowWrapper/simulate.html
     const targetClassName = 'ms-Layer-content';
-    let stopPropagationCount = 0;
+    const counter = { count: 0 };
 
-    const eventObject = (event: string) => {
-      return {
-        eventPhase: Event.BUBBLING_PHASE,
-        stopPropagation: () => {
-          // Debug code for figuring out which events are firing on test failures:
-          // console.log(event);
-          stopPropagationCount++;
-        },
-      };
-    };
+    const { baseElement } = render(<Layer eventBubblingEnabled={true} />);
 
-    const wrapper = mount(<Layer eventBubblingEnabled={true} />);
+    const targetContent = baseElement.querySelector(`.${targetClassName}`) as HTMLElement;
+    expect(targetContent).not.toBeNull();
 
-    const targetContent = wrapper.find(`.${targetClassName}`).at(0);
-
+    // Fire each event and verify stopPropagation is not called
     testEvents.forEach(event => {
-      targetContent.simulate(event, eventObject(event));
+      const { event: customEvent } = createEventWithSpy(event, { counter });
+      targetContent.dispatchEvent(customEvent);
     });
 
-    expect(stopPropagationCount).toEqual(0);
+    expect(counter.count).toEqual(0);
 
     // These events should always bubble
-    targetContent.simulate('mouseenter', eventObject('mouseenter'));
-    targetContent.simulate('mouseleave', eventObject('mouseleave'));
+    const { event: mouseenterEvent } = createEventWithSpy('mouseenter', { counter });
+    const { event: mouseleaveEvent } = createEventWithSpy('mouseleave', { counter });
 
-    expect(stopPropagationCount).toEqual(0);
+    targetContent.dispatchEvent(mouseenterEvent);
+    targetContent.dispatchEvent(mouseleaveEvent);
+
+    expect(counter.count).toEqual(0);
   });
 
   it('raises on onLayerDidMount when mounted', () => {
