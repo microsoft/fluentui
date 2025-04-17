@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: target area for extra-small Tag",
-  "packageName": "@fluentui/react-tags",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,71 @@
   "name": "@fluentui/react-carousel",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:09 GMT",
+      "tag": "@fluentui/react-carousel_v9.6.5",
+      "version": "9.6.5",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "refactor: type useCallback params"
+          }
+        ],
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "3d2e4f60f0dd9a795e4ba4b63828a5512ea6d4ae",
+            "comment": "Stop and reinitialize autoplay on carousel when autoplay interval changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-aria to v9.14.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-button to v9.4.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.76",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-tabster to v9.24.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:08:02 GMT",
       "tag": "@fluentui/react-carousel_v9.6.4",
       "version": "9.6.4",
