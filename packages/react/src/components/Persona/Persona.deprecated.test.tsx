@@ -1,18 +1,20 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import { create } from '@fluentui/test-utilities';
 import { setRTL, setWarningCallback } from '@fluentui/utilities';
 import { Persona } from './Persona';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { getIcon } from '../../Styling';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
-const STYLES = {
-  green: '.ms-Persona-initials--green',
-  initials: '.ms-Persona-initials',
-  black: '.ms-Persona-initials--black',
-  red: '.ms-Persona-initials--red',
-};
+// NOTES: The following styles have been used with enzyme previously, keeping here for reference.
+// const STYLES = {
+//   green: '.ms-Persona-initials--green',
+//   initials: '.ms-Persona-initials',
+//   black: '.ms-Persona-initials--black',
+//   red: '.ms-Persona-initials--red',
+// };
 
 describe('Persona', () => {
   beforeEach(() => {
@@ -50,76 +52,59 @@ describe('Persona', () => {
 
   describe('initials and colors', () => {
     it('calculates an expected initials in LTR if one was not specified', () => {
-      let wrapper = mount(<Persona primaryText="Kat Larrson" />);
-      let result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('KL');
-      wrapper.unmount();
+      render(<Persona primaryText="Kat Larrson" />);
+      const initials = screen.getByText('KL');
+      expect(initials).toBeInTheDocument();
 
-      wrapper = mount(<Persona primaryText="David Zearing-Goff" />);
-      result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('DZ');
-      wrapper.unmount();
+      render(<Persona primaryText="David Zearing-Goff" />);
+      const initialsDZ = screen.getByText('DZ');
+      expect(initialsDZ).toBeInTheDocument();
 
-      wrapper = mount(<Persona primaryText="4lex 5loo" />);
-      result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('45');
-      wrapper.unmount();
+      render(<Persona primaryText="4lex 5loo" />);
+      const initials45 = screen.getByText('45');
+      expect(initials45).toBeInTheDocument();
 
-      wrapper = mount(<Persona primaryText="+1 (555) 6789" />);
-      result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual(getIcon('contact')!.code);
-      wrapper.unmount();
+      render(<Persona primaryText="+1 (555) 6789" />);
+      const contactIcon = screen.getByText(getIcon('contact')!.code as string);
+      expect(contactIcon).toBeInTheDocument();
 
-      wrapper = mount(<Persona primaryText="+1 (555) 6789" allowPhoneInitials={true} />);
-      result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('16');
-      wrapper.unmount();
+      render(<Persona primaryText="+1 (555) 6789" allowPhoneInitials={true} />);
+      const phoneInitials = screen.getByText('16');
+      expect(phoneInitials).toBeInTheDocument();
 
-      wrapper = mount(<Persona primaryText="David (The man) Goff" />);
-      result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('DG');
+      render(<Persona primaryText="David (The man) Goff" />);
+      const initialsDG = screen.getByText('DG');
+      expect(initialsDG).toBeInTheDocument();
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {
       setRTL(true);
-      const wrapper = mount(<Persona primaryText="Kat Larrson" />);
-      const result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('LK');
-
+      render(<Persona primaryText="Kat Larrson" />);
+      const initials = screen.getByText('LK');
+      expect(initials).toBeInTheDocument();
       setRTL(false);
     });
 
     it('uses provided initial', () => {
       setRTL(true);
-      const wrapper = mount(<Persona primaryText="Kat Larrson" imageInitials="AT" />);
-      const result = wrapper.find(STYLES.initials);
-      expect(result).toHaveLength(1);
-      expect(result.text()).toEqual('AT');
-
+      render(<Persona primaryText="Kat Larrson" imageInitials="AT" />);
+      const initials = screen.getByText('AT');
+      expect(initials).toBeInTheDocument();
       setRTL(false);
     });
   });
 
   describe('image', () => {
     it('renders empty alt text by default', () => {
-      const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-      const image = wrapper.find('ImageBase');
-
-      expect(image.props().alt).toEqual('');
+      render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
+      const image = screen.getByRole('img');
+      expect(image).toHaveAttribute('alt', '');
     });
 
     it('renders its given alt text', () => {
-      const wrapper = mount(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image = wrapper.find('ImageBase');
-
-      expect(image.props().alt).toEqual('ALT TEXT');
+      render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
+      const image = screen.getByRole('img');
+      expect(image).toHaveAttribute('alt', 'ALT TEXT');
     });
   });
 });
