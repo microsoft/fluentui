@@ -799,6 +799,24 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
+export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
+  const projection: PlotlySchema = { ...input };
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series: PlotData = input.data[sindex] as PlotData;
+    series.x = [];
+    series.y = [];
+    for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
+      const thetaRad = ((series.theta[ptindex] as number) * Math.PI) / 180;
+      const radius = series.r[ptindex] as number;
+      series.x[ptindex] = radius * Math.cos(thetaRad);
+      series.y[ptindex] = radius * Math.sin(thetaRad);
+    }
+    projection.data[sindex] = series;
+  }
+
+  return projection;
+};
+
 function isPlainObject(obj: any) {
   if (window && window.process && window.process.versions) {
     return Object.prototype.toString.call(obj) === '[object Object]';
