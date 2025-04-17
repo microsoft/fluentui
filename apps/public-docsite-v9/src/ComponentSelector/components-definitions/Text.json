@@ -1,0 +1,5 @@
+{
+  "name": "Text",
+  "component": "Text",
+  "note": "Use the 'as' prop to change text to heading."
+}
