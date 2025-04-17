@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: rely on aria-expanded to prevent showing Tooltip when it's trigger opens Popover",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
