@@ -20,6 +20,8 @@ import {
   colorSubtleBackgroundPressed,
   borderRadiusNone,
   borderRadiusMedium,
+  borderRadiusSmall,
+  borderRadiusLarge,
   colorNeutralForeground1,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundOnBrand,
@@ -369,8 +371,8 @@ export const cornerFlyoutRest = `var(${cornerFlyoutRestRaw})`;
 export const cornerLayerDefault = `var(${cornerLayerDefaultRaw})`;
 export const cornerCardRest = `var(${cornerCardRestRaw})`;
 export const cornerCtrlRest = `var(${cornerCtrlRestRaw}, ${borderRadiusMedium})`;
-export const cornerCtrlSmRest = `var(${cornerCtrlSmRestRaw})`;
-export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw})`;
+export const cornerCtrlSmRest = `var(${cornerCtrlSmRestRaw}, ${borderRadiusSmall})`;
+export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw}, ${borderRadiusLarge})`;
 export const cornerImageIncard = `var(${cornerImageIncardRaw})`;
 export const foregroundCtrlNeutralPrimaryRest = `var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1})`;
 export const foregroundCtrlNeutralPrimaryDisabled = `var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;

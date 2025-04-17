@@ -195,6 +195,16 @@ export const spacingHorizontalL = 'var(--spacingHorizontalL)';
  */
 export const spacingHorizontalS = 'var(--spacingHorizontalS)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
+ * @public
+ */
+export const borderRadiusSmall = 'var(--borderRadiusSmall)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusLarge | `borderRadiusLarge`} design token.
+ * @public
+ */
+export const borderRadiusLarge = 'var(--borderRadiusLarge)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackgroundDisabled | `colorNeutralBackgroundDisabled`} design token.
  * @public
  */
