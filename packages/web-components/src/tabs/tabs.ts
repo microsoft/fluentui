@@ -122,6 +122,23 @@ export class Tabs extends BaseTabs {
   }
 
   /**
+   * Gets the position data for a tab element relative to its parent
+   * @param tab - The tab element to get position data for
+   * @returns The position data for the tab
+   */
+  private getTabPositionData(tab: HTMLElement): TabData {
+    const rect = tab.getBoundingClientRect();
+    const parentRect = this.getBoundingClientRect();
+
+    return {
+      x: rect.x - parentRect.x,
+      y: rect.y - parentRect.y,
+      height: rect.height,
+      width: rect.width,
+    } as TabData;
+  }
+
+  /**
    * Sets the data from the active tab onto the class. used for making all the animation calculations for the active
    * tab indicator.
    *
@@ -131,15 +148,8 @@ export class Tabs extends BaseTabs {
     if (this.tabs && this.tabs.length > 0) {
       const tabs = this.tabs as Tab[];
       const activeTab = this.activetab || tabs[0];
-      const activeRect = activeTab?.getBoundingClientRect();
-      const parentRect = this.getBoundingClientRect();
 
-      this.activeTabData = {
-        x: activeRect.x - parentRect.x,
-        y: activeRect.y - parentRect.y,
-        height: activeRect.height,
-        width: activeRect.width,
-      } as TabData;
+      this.activeTabData = this.getTabPositionData(activeTab);
 
       if (
         this.previousActiveTabData?.x !== this.activeTabData?.x &&
@@ -167,8 +177,14 @@ export class Tabs extends BaseTabs {
     `;
     this.$fastController.addStyles(this.styles);
   }
-
   public activeidChanged(oldValue: string, newValue: string) {
+    if (oldValue && this.tabs) {
+      const oldTab = this.tabs.find(tab => tab.id === oldValue);
+      if (oldTab) {
+        this.previousActiveTabData = this.getTabPositionData(oldTab);
+      }
+    }
+
     super.activeidChanged(oldValue, newValue);
     this.setTabData();
 
@@ -180,6 +196,10 @@ export class Tabs extends BaseTabs {
   public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();
+
+    if (this.activetab) {
+      this.animationLoop(this.activetab as Tab);
+    }
   }
 }
 
