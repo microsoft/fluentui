@@ -800,9 +800,9 @@ export const transformPlotlyJsonToGaugeProps = (
 };
 
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
-  let projection: PlotlySchema = { ...input };
+  const projection: PlotlySchema = { ...input };
   for (let sindex = 0; sindex < input.data.length; sindex++) {
-    let series: PlotData = input.data[sindex] as PlotData;
+    const series: PlotData = input.data[sindex] as PlotData;
     series.x = [];
     series.y = [];
     for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
