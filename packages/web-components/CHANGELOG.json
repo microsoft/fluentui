@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 17 Apr 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.92",
+      "version": "3.0.0-beta.92",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a625fc539f9fb0d3c2ddba9392883d07f453fa7d",
+            "comment": "tree item initial selection, tree item expands for sub selected item"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 04:06:21 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.91",
       "version": "3.0.0-beta.91",

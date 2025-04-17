@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "tree item initial selection, tree item expands for sub selected item",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
