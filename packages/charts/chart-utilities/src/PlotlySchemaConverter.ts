@@ -192,7 +192,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
         throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Non numeric r values`);
       }
     },
-  ]
+  ],
 };
 
 const DEFAULT_CHART_TYPE = '';
@@ -261,7 +261,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
       case 'histogram':
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
-          return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+        return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(
