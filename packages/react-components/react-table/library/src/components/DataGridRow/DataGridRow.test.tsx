@@ -9,7 +9,7 @@ import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
 describe('DataGridRow', () => {
-  const Wrapper: React.FC = props => {
+  const Wrapper: React.FC<React.PropsWithChildren<{}>> = props => {
     const ctx = mockDataGridContext({ selectableRows: true });
     return <DataGridContextProvider value={ctx}>{props.children}</DataGridContextProvider>;
   };
