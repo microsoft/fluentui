@@ -8,7 +8,7 @@ export type FluentOverrideValue =
       rawValue: string;
     };
 
-export type FluentOverrides = Record<string, FluentOverrideValue>;
+export type FluentOverrides = Record<string, FluentOverrideValue | null>;
 
 export const fluentOverrides: FluentOverrides = {
   ctrlFocusOuterStroke: {
