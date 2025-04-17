@@ -2,6 +2,51 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:04 GMT",
+      "tag": "@fluentui/react-tags_v9.5.3",
+      "version": "9.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "8adf569ca9677a5d9bf0f726147fbfaf6587f0bd",
+            "comment": "fix: target area for extra-small Tag"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.14.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.7.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.24.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:08:02 GMT",
       "tag": "@fluentui/react-tags_v9.5.2",
       "version": "9.5.2",

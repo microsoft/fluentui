@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add support for ybins in plotly schema",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

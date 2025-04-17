@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Tue, 01 Apr 2025 15:08:02 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.3.6)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.3.5..@fluentui/react-slider_v9.3.6)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.2.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-tabster to v9.24.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.3.5)
 

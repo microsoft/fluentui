@@ -313,24 +313,40 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
+
   input.data.forEach((series: PlotData, index1: number) => {
-    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
+
       if (series.type === 'bar') {
         const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
+        const dataValue = (series.y?.[xIndex] as number) ?? 0;
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: (series.y?.[index2] as number) ?? 0,
-          xAxisCalloutData: x as string,
-          color,
-          legend,
-        });
+        // As per the dataset
+        // https://github.com/microsoft/fluentui-charting-contrib/blob/main/apps/plotly_examples/src/data/data_385.json
+        // for the same series, for the same x value there can be multiple y values with the same legend
+        // So we need to check if the key already exists in the series and sum the data values if key exists
+        const existingDataPointIndex = mapXToDataPoints[x].series.findIndex(dp => dp.key === legend);
+
+        if (existingDataPointIndex !== -1) {
+          // If the key exists, sum the data values
+          mapXToDataPoints[x].series[existingDataPointIndex].data += dataValue;
+        } else {
+          // Otherwise, add a new data point
+          mapXToDataPoints[x].series.push({
+            key: legend,
+            data: dataValue,
+            xAxisCalloutData: x as string,
+            color,
+            legend,
+          });
+        }
       }
     });
+
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
@@ -364,6 +380,8 @@ export const transformPlotlyJsonToVBCProps = (
     }
 
     const isXString = isStringArray(series.x);
+    // TODO: In case of a single bin, add an empty bin of the same size to prevent the
+    // default bar width from being used and ensure the bar spans the full intended range.
     const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
     const yBins: number[][] = xBins.map(() => []);
     let total = 0;
@@ -413,8 +431,9 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    mode: 'plotly',
+    mode: 'histogram',
     hideTickOverlap: true,
+    maxBarWidth: 50,
   };
 };
 
@@ -511,6 +530,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         } as IHorizontalBarChartWithAxisDataPoint;
       });
     })
+    .reverse()
     .flat()
     //reversing the order to invert the Y bars order as required by plotly.
     .reverse();
@@ -779,6 +799,24 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
+export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
+  const projection: PlotlySchema = { ...input };
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series: PlotData = input.data[sindex] as PlotData;
+    series.x = [];
+    series.y = [];
+    for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
+      const thetaRad = ((series.theta[ptindex] as number) * Math.PI) / 180;
+      const radius = series.r[ptindex] as number;
+      series.x[ptindex] = radius * Math.cos(thetaRad);
+      series.y[ptindex] = radius * Math.sin(thetaRad);
+    }
+    projection.data[sindex] = series;
+  }
+
+  return projection;
+};
+
 function isPlainObject(obj: any) {
   if (window && window.process && window.process.versions) {
     return Object.prototype.toString.call(obj) === '[object Object]';
@@ -873,7 +911,11 @@ const findBinIndex = (
 
   return isString
     ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
-    : (bins as Bin<number, number>[]).findIndex(bin => (value as number) >= bin.x0! && (value as number) < bin.x1!);
+    : (bins as Bin<number, number>[]).findIndex(
+        (bin, index) =>
+          (value as number) >= bin.x0! &&
+          (index === bins.length - 1 ? (value as number) <= bin.x1! : (value as number) < bin.x1!),
+      );
 };
 
 const getBinSize = (bin: Bin<number, number>) => {
@@ -914,23 +956,27 @@ const createBins = (
 
   const binGenerator = d3Bin().domain([minVal, maxVal]);
 
-  if (typeof binSize === 'number') {
+  if (typeof binSize === 'number' && binSize > 0) {
     const thresholds: number[] = [];
-    let th = minVal;
-    const tolerance = 1 / Math.pow(10, binSize.toString().split('.')[1]?.length ?? 0);
+    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    let th = precisionRound(minVal, precision);
 
-    while (maxVal + binSize - th > tolerance) {
+    while (th < precisionRound(maxVal + binSize, precision)) {
       thresholds.push(th);
-      th += binSize;
+      th = precisionRound(th + binSize, precision);
     }
 
     minVal = thresholds[0];
     maxVal = thresholds[thresholds.length - 1];
     binGenerator.domain([minVal, maxVal]).thresholds(thresholds);
+
+    // When the domain ends at the last threshold (maxVal), d3Bin creates an extra final bin where
+    // both x0 and x1 are equal to maxVal and inclusive. The previous bin also has x1 equal to maxVal,
+    // but it is exclusive. To maintain consistent bin widths, remove the final bin,
+    // making the previous bin the last one, with both x0 and x1 inclusive.
+    return binGenerator(data as number[]).slice(0, -1);
   }
 
-  // NOTE: The last bin generated by d3Bin often has identical x0 and x1 values (both inclusive) and
-  // can be ignored if the highest value is already included in the previous bin.
   return binGenerator(data as number[]);
 };
 
@@ -968,4 +1014,13 @@ const calculateHistNorm = (
     default:
       return value;
   }
+};
+
+const getPrecision = (value: number) => {
+  return value.toString().split('.')[1]?.length ?? 0;
+};
+
+const precisionRound = (value: number, precision: number) => {
+  const factor = Math.pow(10, precision);
+  return Math.round(value * factor) / factor;
 };

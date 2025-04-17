@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove duplicate legends + resolve overlapping bars across legends in VBC",
-  "packageName": "@fluentui/react-charts",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

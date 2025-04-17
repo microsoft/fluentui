@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 15 Apr 2025 07:22:06 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Apr 2025 07:21:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.74)
+
+Thu, 17 Apr 2025 07:21:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.73..@fluentui/react-charting_v5.23.74)
+
+### Patches
+
+- fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart ([PR #34245](https://github.com/microsoft/fluentui/pull/34245) by 120183316+srmukher@users.noreply.github.com)
+- feat: add histogram mode to vertical bar chart ([PR #34265](https://github.com/microsoft/fluentui/pull/34265) by kumarkshitij@microsoft.com)
+
+## [5.23.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.73)
+
+Wed, 16 Apr 2025 07:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.72..@fluentui/react-charting_v5.23.73)
+
+### Patches
+
+- Legends order fix ([PR #34268](https://github.com/microsoft/fluentui/pull/34268) by anushgupta@microsoft.com)
 
 ## [5.23.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.72)
 
