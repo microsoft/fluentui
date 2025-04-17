@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add histogram mode to vertical bar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
