@@ -7,6 +7,7 @@ import {
   useEventCallback,
   useId,
   slot,
+  omit,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
@@ -210,7 +211,8 @@ export const useToastContainer_unstable = (
         role: 'listitem',
         'aria-labelledby': titleId,
         'aria-describedby': bodyId,
-        ...rest,
+        // The `content` type doesn't match the HTMLElement `content` attribute
+        ...omit(rest, ['content']),
         ...userRootSlot,
         ...focusableGroupAttribute,
         onMouseEnter,
