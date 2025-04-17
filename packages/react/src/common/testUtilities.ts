@@ -5,6 +5,13 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 // v2 - avoiding usage of enzyme
 
 // Helper function to find all elements with a specific class name that are not React components
+
+export function getBySelector(container: HTMLElement, selector: string) {
+  return container.querySelector(selector);
+}
+export function getByAllSelector(container: HTMLElement, selector: string) {
+  return container.querySelectorAll(selector);
+}
 export function findNodesV2(container: HTMLElement, selector: string): HTMLElement[] {
   return Array.from(container.querySelectorAll(selector)).filter(
     node => node.nodeType === Node.ELEMENT_NODE,
