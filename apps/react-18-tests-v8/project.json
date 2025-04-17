@@ -7,6 +7,17 @@
   "targets": {
     "test": {
       "dependsOn": ["^build"]
+    },
+    "type-check:integration": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "{projectRoot}/tsconfig.react-18.json",
+        "{workspaceRoot}/packages/react-examples/*/stories/**/index.stories.tsx"
+      ]
+    },
+    "e2e:integration": {
+      "dependsOn": [],
+      "inputs": ["{projectRoot}/cypress-react-18.config.ts", "{workspaceRoot}/packages/react-examples/**/*.e2e.tsx?"]
     }
   }
 }
