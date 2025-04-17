@@ -2,6 +2,33 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:08 GMT",
+      "tag": "@fluentui/react-badge_v9.2.54",
+      "version": "9.2.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "e086faf1360fe2d33bfde3a82dc9c02d59b5a84f",
+            "comment": "fix: revert min-width: max-content for Badge"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-badge_v9.2.53",
       "version": "9.2.53",

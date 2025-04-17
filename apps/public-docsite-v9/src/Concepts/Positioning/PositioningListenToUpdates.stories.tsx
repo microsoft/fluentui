@@ -9,7 +9,6 @@ import {
   PopoverTrigger,
   PopoverSurface,
   PositioningImperativeRef,
-  PopoverProps,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -54,7 +53,7 @@ export const ListenToUpdates = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [open, setOpen] = React.useState(false);
 
-  const onOpenChange: PopoverProps['onOpenChange'] = React.useCallback((e, data) => {
+  const onOpenChange = React.useCallback((_: React.SyntheticEvent | Event, data: { open: boolean }) => {
     setOpen(data.open);
     if (!data.open) {
       setStatusLog([]);

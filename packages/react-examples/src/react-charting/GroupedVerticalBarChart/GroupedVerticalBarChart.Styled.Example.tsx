@@ -142,6 +142,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
             data={data}
             width={this.state.width}
             height={this.state.height}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             yAxisTickCount={10}
             barwidth={43}

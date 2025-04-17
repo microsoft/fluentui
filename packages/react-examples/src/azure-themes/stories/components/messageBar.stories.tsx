@@ -55,6 +55,7 @@ const BlockedExample = (p: IExampleProps) => (
     onDismiss={p.resetChoice}
     dismissButtonAriaLabel="Close"
     truncated={true}
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     overflowButtonAriaLabel="See more"
   >
     <b>Blocked MessageBar - single line, with dismiss button and truncated text.</b> Truncation is not available if you

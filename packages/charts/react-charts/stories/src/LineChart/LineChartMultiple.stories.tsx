@@ -16,7 +16,8 @@ export const LineChartMultiple = (props: LineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 

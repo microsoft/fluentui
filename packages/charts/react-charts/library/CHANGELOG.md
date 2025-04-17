@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.3)
+
+Wed, 16 Apr 2025 19:42:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.2..@fluentui/react-charts_v9.0.3)
+
+### Patches
+
+- fix(react-charts): Enabling multiple legend selection for Vertical Bar Chart in V9 ([PR #34149](https://github.com/microsoft/fluentui/pull/34149) by 120183316+srmukher@users.noreply.github.com)
+- Enable Controlled legends in v9 ([PR #34197](https://github.com/microsoft/fluentui/pull/34197) by anushgupta@microsoft.com)
+- feat: center align bars with auto barWidth in plotly mode ([PR #34213](https://github.com/microsoft/fluentui/pull/34213) by kumarkshitij@microsoft.com)
+- feat: add SankeyChart in v9 ([PR #34162](https://github.com/microsoft/fluentui/pull/34162) by 110246001+krkshitij@users.noreply.github.com)
+- Full Y Axis labels in Heatmap chart ([PR #34260](https://github.com/microsoft/fluentui/pull/34260) by anushgupta@microsoft.com)
+- feat: add HeatMapChart in v9 ([PR #34095](https://github.com/microsoft/fluentui/pull/34095) by 110246001+krkshitij@users.noreply.github.com)
+- feat: port all declarative chart changes from v8 to v9 ([PR #34195](https://github.com/microsoft/fluentui/pull/34195) by kumarkshitij@microsoft.com)
+- fix(react-charts): Dark mode theme colors for declarative charts in v9 ([PR #34190](https://github.com/microsoft/fluentui/pull/34190) by 120183316+srmukher@users.noreply.github.com)
+- Remove duplicate key warning ([PR #34200](https://github.com/microsoft/fluentui/pull/34200) by anushgupta@microsoft.com)
+- Add scaling factor to height of VSBC bars ([PR #34205](https://github.com/microsoft/fluentui/pull/34205) by anushgupta@microsoft.com)
+- fix(react-charts): Replace plotly schema interface and conversion logic with chart utilities ([PR #34183](https://github.com/microsoft/fluentui/pull/34183) by atisjai@microsoft.com)
+- feat: add support for line curves ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
+- fix(react-charts): Add background to the SVGTooltipText ([PR #34176](https://github.com/microsoft/fluentui/pull/34176) by 120183316+srmukher@users.noreply.github.com)
+- Support rounded ticks in v9 ([PR #34201](https://github.com/microsoft/fluentui/pull/34201) by anushgupta@microsoft.com)
+- feat(react-charts): Migrate Area Chart to v9 ([PR #34148](https://github.com/microsoft/fluentui/pull/34148) by 74965306+Anush2303@users.noreply.github.com)
+- fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+- fix(react-charts): Secondary Y Axis margin adjustment in v9 ([PR #34192](https://github.com/microsoft/fluentui/pull/34192) by 120183316+srmukher@users.noreply.github.com)
+- Enable Negative y value support in v9 ([PR #34174](https://github.com/microsoft/fluentui/pull/34174) by anushgupta@microsoft.com)
+- fix: remove duplicate legends + resolve overlapping bars across legends in VBC ([PR #34208](https://github.com/microsoft/fluentui/pull/34208) by kumarkshitij@microsoft.com)
+- Port fixes from v8 to v9 ([PR #34210](https://github.com/microsoft/fluentui/pull/34210) by anushgupta@microsoft.com)
+- Migrate HBC With Axis to V9 ([PR #34094](https://github.com/microsoft/fluentui/pull/34094) by 74965306+Anush2303@users.noreply.github.com)
+- fix(react-charts): Handle invalid plotly data in V9 and fixing id related error in donut chart ([PR #34191](https://github.com/microsoft/fluentui/pull/34191) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charts): Enabling multiple legend selection for Scatter Chart in v9 ([PR #34156](https://github.com/microsoft/fluentui/pull/34156) by 120183316+srmukher@users.noreply.github.com)
+- feat: transform plotly histogram2d trace to heatmap props ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-button to v9.4.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-overflow to v9.3.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-popover to v9.10.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-tabster to v9.24.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.2)
 

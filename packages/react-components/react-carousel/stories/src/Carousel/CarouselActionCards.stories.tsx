@@ -26,9 +26,8 @@ import * as React from 'react';
 const useClasses = makeStyles({
   container: {
     display: 'grid',
-    gridTemplateColumns: '1fr',
+    gridTemplateColumns: 'minmax(0, 1fr)',
     gridTemplateRows: 'auto 1fr',
-
     boxShadow: tokens.shadow16,
   },
   card: {
@@ -65,7 +64,8 @@ const useClasses = makeStyles({
     gridTemplateColumns: 'minmax(100px, max-content) 1fr',
   },
   dropdown: {
-    maxWidth: 'max-content',
+    minWidth: '100px',
+    width: '1fr',
   },
 });
 

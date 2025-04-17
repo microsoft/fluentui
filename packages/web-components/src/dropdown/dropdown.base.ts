@@ -235,6 +235,8 @@ export class BaseDropdown extends FASTElement {
           .forEach((x, i) => {
             x.selected = this.multiple || i === 0;
           });
+
+        this.setValidity();
       });
     }
   }
@@ -425,6 +427,8 @@ export class BaseDropdown extends FASTElement {
 
       this.selectOption(i);
     });
+
+    this.setValidity();
   }
 
   /**
@@ -443,6 +447,15 @@ export class BaseDropdown extends FASTElement {
    */
   private get isCombobox(): boolean {
     return this.type === DropdownType.combobox;
+  }
+
+  /**
+   * A reference to all associated label elements.
+   *
+   * @public
+   */
+  public get labels(): ReadonlyArray<Node> {
+    return Object.freeze(Array.from(this.elementInternals.labels));
   }
 
   /**
@@ -495,7 +508,7 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private validationFallbackMessage!: string;
+  private _validationFallbackMessage!: string;
 
   /**
    * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
@@ -508,16 +521,32 @@ export class BaseDropdown extends FASTElement {
       return this.elementInternals.validationMessage;
     }
 
-    if (!this.validationFallbackMessage) {
+    if (!this._validationFallbackMessage) {
       const validationMessageFallbackControl = document.createElement('input');
       validationMessageFallbackControl.type = 'radio';
+      validationMessageFallbackControl.name = 'validation-message-fallback';
       validationMessageFallbackControl.required = true;
       validationMessageFallbackControl.checked = false;
 
-      this.validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
     }
 
-    return this.validationFallbackMessage;
+    if (!this.disabled && this.required && this.listbox.selectedOptions.length === 0) {
+      return this._validationFallbackMessage;
+    }
+
+    return '';
+  }
+
+  /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
   }
 
   /**
@@ -539,6 +568,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Determines if the control can be submitted for constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate | `ElementInternals.willValidate`} property.
+   */
+  public get willValidate(): boolean {
+    return this.elementInternals.willValidate;
+  }
+
+  /**
    * Handles the change events for the dropdown.
    *
    * @param e - the event object
@@ -557,6 +597,17 @@ export class BaseDropdown extends FASTElement {
     this.selectOption(optionIndex, true);
 
     return true;
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
   }
 
   /**
@@ -813,6 +864,17 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
    * Selects an option by index.
    *
    * @param index - The index of the option to select.
@@ -852,7 +914,7 @@ export class BaseDropdown extends FASTElement {
       this.elementInternals.setValidity(
         { valueMissing, ...flags },
         message ?? this.validationMessage,
-        anchor ?? this.listbox.enabledOptions[0],
+        anchor ?? this.control,
       );
     }
   }

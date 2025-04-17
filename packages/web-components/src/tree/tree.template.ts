@@ -1,5 +1,5 @@
 import { children, elements, html } from '@microsoft/fast-element';
-import { isTreeItem } from '../tree-item/tree-item.options';
+import { isTreeItem } from '../tree-item/tree-item.options.js';
 import type { Tree } from './tree.js';
 
 export const template = html<Tree>`

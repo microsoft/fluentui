@@ -1,5 +1,4 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { type AvatarActive } from './avatar.options.js';
 
 /**
  * The base class used for constructing a fluent-avatar custom element
@@ -32,19 +31,6 @@ export class BaseAvatar extends FASTElement {
    */
   @attr
   public initials?: string | undefined;
-
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
 
   constructor() {
     super();

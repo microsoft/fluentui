@@ -21,7 +21,6 @@ export const styles = css`
     gap: ${spacingVerticalL};
   }
 
-  :host(${disabledState}),
   :host([orientation='vertical']) {
     flex-direction: column;
     justify-content: flex-start;

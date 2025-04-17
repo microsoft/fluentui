@@ -27,10 +27,10 @@
     "@fluentui/react-storybook-addon-export-to-sandbox": "*"
   },
   "dependencies": {
-    "@fluentui/react-provider": "^9.20.4",
+    "@fluentui/react-provider": "^9.20.5",
     "@fluentui/react-theme": "^9.1.24",
-    "@fluentui/react-text": "^9.4.35",
-    "@fluentui/react-utilities": "^9.18.23",
+    "@fluentui/react-text": "^9.4.36",
+    "@fluentui/react-utilities": "^9.19.0",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-icons": "^2.0.245"

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Popover, PopoverSurface, PopoverTrigger, Slider, Field, makeStyles } from '@fluentui/react-components';
-import type { PositioningImperativeRef, SliderProps } from '@fluentui/react-components';
+import type { PositioningImperativeRef } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -21,7 +21,7 @@ export const ImperativePositionUpdate = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
   const [value, setValue] = React.useState(0);
 
-  const onChange: SliderProps['onChange'] = React.useCallback((e, data) => {
+  const onChange = React.useCallback((_: React.ChangeEvent<HTMLInputElement>, data: { value: number }) => {
     setValue(data.value);
   }, []);
 

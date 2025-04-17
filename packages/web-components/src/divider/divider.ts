@@ -1,5 +1,4 @@
 import { attr } from '@microsoft/fast-element';
-import { swapStates, toggleState } from '../utils/element-internals.js';
 import { DividerAlignContent, DividerAppearance } from './divider.options.js';
 import { BaseDivider } from './divider.base.js';
 
@@ -19,15 +18,6 @@ export class Divider extends BaseDivider {
   public alignContent?: DividerAlignContent;
 
   /**
-   * Handles changes to align-content attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined) {
-    swapStates(this.elementInternals, prev, next, DividerAlignContent, 'align-');
-  }
-
-  /**
    * @public
    * @remarks
    * A divider can have one of the preset appearances. Select from strong, brand, subtle. When not specified, the divider has its default appearance.
@@ -36,28 +26,10 @@ export class Divider extends BaseDivider {
   public appearance?: DividerAppearance;
 
   /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined) {
-    swapStates(this.elementInternals, prev, next, DividerAppearance);
-  }
-
-  /**
    * @public
    * @remarks
    * Adds padding to the beginning and end of the divider.
    */
   @attr({ mode: 'boolean' })
   public inset?: boolean;
-
-  /**
-   * Handles changes to inset custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public insetChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'inset', next);
-  }
 }

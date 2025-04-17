@@ -18,6 +18,7 @@ import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '.
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
@@ -209,7 +210,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider getClassNames={getDividerClassNames} />;
+    return (
+      <VerticalDivider
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        getClassNames={getDividerClassNames}
+      />
+    );
   }
 
   private _renderSplitIconButton(

@@ -10,6 +10,7 @@ import type {
 } from '@fluentui/react-button';
 import { FluentProvider, FluentProviderCustomStyleHooks } from '@fluentui/react-provider';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { type StoryParameters, Steps } from 'storywright';
 
 export default {
@@ -30,6 +31,12 @@ const useCustomStyles = makeStyles({
     ...shorthands.borderColor('crimson'),
     ...shorthands.borderRadius('0'),
   },
+
+  purpleButton: {
+    ...shorthands.borderColor('indigo'),
+    backgroundColor: 'purple',
+    color: 'lavender',
+  },
 });
 
 export const ButtonCustomStyles = () => {
@@ -38,7 +45,11 @@ export const ButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -57,7 +68,11 @@ export const CompoundButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useCompoundButtonStyles_unstable: (state: unknown) => {
       const componentState = state as CompoundButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -76,7 +91,11 @@ export const MenuButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useMenuButtonStyles_unstable: (state: unknown) => {
       const componentState = state as MenuButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -96,12 +115,17 @@ export const SplitButtonCustomStyles = () => {
     useSplitButtonStyles_unstable: (state: unknown) => {
       const componentState = state as SplitButtonState;
       if (componentState.menuButton) {
-        componentState.menuButton.className = mergeClasses(componentState.menuButton.className, styles.button);
+        componentState.menuButton.className = mergeClasses(
+          componentState.menuButton.className,
+          styles.button,
+          getSlotClassNameProp_unstable(componentState.menuButton),
+        );
       }
       if (componentState.primaryActionButton) {
         componentState.primaryActionButton.className = mergeClasses(
           componentState.primaryActionButton.className,
           styles.button,
+          getSlotClassNameProp_unstable(componentState.primaryActionButton),
         );
       }
     },
@@ -122,7 +146,11 @@ export const ToggleButtonCustomStyles = () => {
   const customStyleHooks: FluentProviderCustomStyleHooks = {
     useToggleButtonStyles_unstable: (state: unknown) => {
       const componentState = state as ToggleButtonState;
-      componentState.root.className = mergeClasses(componentState.root.className, styles.button);
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
     },
   };
 
@@ -134,3 +162,26 @@ export const ToggleButtonCustomStyles = () => {
 };
 
 ToggleButtonCustomStyles.storyName = 'ToggleButton';
+
+export const ClassNamePropWithCustomStyles = () => {
+  const styles = useCustomStyles();
+
+  const customStyleHooks: FluentProviderCustomStyleHooks = {
+    useButtonStyles_unstable: (state: unknown) => {
+      const componentState = state as ButtonState;
+      componentState.root.className = mergeClasses(
+        componentState.root.className,
+        styles.button,
+        getSlotClassNameProp_unstable(componentState.root),
+      );
+    },
+  };
+
+  return (
+    <FluentProvider customStyleHooks_unstable={customStyleHooks}>
+      <Button className={styles.purpleButton}>Purple button</Button>
+    </FluentProvider>
+  );
+};
+
+ClassNamePropWithCustomStyles.storyName = 'Button with className';

@@ -49,15 +49,6 @@ export class BaseAccordionItem extends FASTElement {
   public expanded: boolean = false;
 
   /**
-   * Handles expanded changes
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public expandedChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'expanded', next);
-  }
-
-  /**
    * Disables an accordion item
    *
    * @public
@@ -66,15 +57,6 @@ export class BaseAccordionItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
-
-  /**
-   * Handles disabled changes
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public disabledChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'disabled', next);
-  }
 
   /**
    * The item ID

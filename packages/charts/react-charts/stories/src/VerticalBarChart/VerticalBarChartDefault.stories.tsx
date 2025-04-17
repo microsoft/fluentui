@@ -17,6 +17,7 @@ export const VerticalBarDefault = () => {
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
+  const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -37,9 +38,15 @@ export const VerticalBarDefault = () => {
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked as boolean);
   };
-  const _onToggleAxisTitlesCheckChange = React.useCallback(ev => {
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onToggleAxisTitlesCheckChange = React.useCallback((ev: any) => {
     setShowAxisTitles(ev.currentTarget.checked);
   }, []);
+  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+    setSelectMultipleLegends(ev.currentTarget.checked);
+  }, []);
+
   const points: VerticalBarChartDataPoint[] = [
     {
       x: 0,
@@ -187,6 +194,11 @@ export const VerticalBarDefault = () => {
         onChange={_onToggleAxisTitlesCheckChange}
         style={{ marginTop: '10px' }}
       />
+      <Switch
+        label="Select Multiple Legends"
+        checked={selectMultipleLegends}
+        onChange={_onToggleMultiLegendSelection}
+      />
       {showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
@@ -246,6 +258,9 @@ export const VerticalBarDefault = () => {
                 : undefined
             }
             xAxisTitle={showAxisTitles ? 'Values of each category are shown in the x-axis in this chart' : undefined}
+            legendProps={{
+              canSelectMultipleLegends: selectMultipleLegends,
+            }}
           />
         </div>
       )}

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:03 GMT",
+      "tag": "@fluentui/react-positioning_v9.16.7",
+      "version": "9.16.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "c299801729d7f8c8899f15871dcbd0c3f3981b57",
+            "comment": "fix(Popover): revert to a single composition mode for slide animations"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-positioning_v9.16.6",
       "version": "9.16.6",

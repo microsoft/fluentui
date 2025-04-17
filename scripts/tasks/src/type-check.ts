@@ -76,13 +76,14 @@ export async function typeCheckWithConfigOverride(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error(err.stdout);
-    process.exit(1);
+    // set exit code to 1 to exit process naturally and allow finally block to run
+    process.exitCode = 1;
   } finally {
     const entries = Object.entries(configs);
     for (const [configPath, config] of entries) {
       fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf-8');
     }
-    exec('yarn prettier "tsconfig.*.json" -w');
+    await exec('yarn prettier "tsconfig.*.json" -w');
   }
 }
 

@@ -24,6 +24,8 @@ const mockContext: ExecutorContext = {
       },
     },
   },
+  nxJsonConfiguration: {},
+  projectGraph: { nodes: {}, dependencies: {} },
 };
 
 jest.mock('node:child_process');

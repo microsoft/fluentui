@@ -21,10 +21,11 @@ export type {
   UnknownSlotProps,
 } from './types';
 export { isResolvedShorthand } from './isResolvedShorthand';
-export { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+export { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 export { isSlot } from './isSlot';
 export { assertSlots } from './assertSlots';
 export { getIntrinsicElementProps } from './getIntrinsicElementProps';
+export { getSlotClassNameProp as getSlotClassNameProp_unstable } from './getSlotClassNameProp';
 
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 export type { ObjectSlotProps, Slots } from './deprecated/getSlots';

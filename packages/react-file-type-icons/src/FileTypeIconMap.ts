@@ -7,6 +7,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   accdb: {
     extensions: ['accdb', 'mdb'],
   },
+  aipage: {
+    extensions: ['page'],
+  },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z'],
   },

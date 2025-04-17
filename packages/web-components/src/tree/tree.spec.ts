@@ -167,6 +167,10 @@ test.describe('Tree', () => {
     await treeItemEl.nth(1).click();
     await expect(treeItemEl.nth(0)).not.toHaveAttribute('selected');
     await expect(treeItemEl.nth(1)).toHaveAttribute('selected');
+    // select item 2 again
+    await treeItemEl.nth(1).click();
+    await expect(treeItemEl.nth(0)).not.toHaveAttribute('selected');
+    await expect(treeItemEl.nth(1)).toHaveAttribute('selected');
   });
 
   test('should not scroll when pressing space key', async ({ fastPage, page }) => {
@@ -220,6 +224,8 @@ test.describe('Tree', () => {
     const treeItems = page.locator('fluent-tree-item');
     await element.focus();
     await expect(treeItems.nth(0)).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(treeItems.nth(0)).toHaveAttribute('selected');
     await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(anchor).toBeFocused();
   });

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-swatch-picker
 
-This log was last generated on Tue, 01 Apr 2025 15:08:02 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.2.5)
+
+Wed, 16 Apr 2025 19:42:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-swatch-picker_v9.2.4..@fluentui/react-swatch-picker_v9.2.5)
+
+### Patches
+
+- fix: design change of selected state for ColorSwatch ([PR #34214](https://github.com/microsoft/fluentui/pull/34214) by v.kozlova13@gmail.com)
+- Bump @fluentui/react-context-selector to v9.1.76 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-field to v9.2.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-tabster to v9.24.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-swatch-picker_v9.2.4)
 

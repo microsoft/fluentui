@@ -1,39 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/index.js';
 import {
-  anchorState,
-  beigeState,
-  blueState,
-  brandState,
-  brassState,
-  brownState,
-  cornflowerState,
-  cranberryState,
-  darkGreenState,
-  darkRedState,
-  forestState,
-  goldState,
-  grapeState,
-  lavenderState,
-  lightTealState,
-  lilacState,
-  magentaState,
-  marigoldState,
-  minkState,
-  navyState,
-  peachState,
-  pinkState,
-  platinumState,
-  plumState,
-  pumpkinState,
-  purpleState,
-  redState,
-  royalBlueState,
-  seafoamState,
-  steelState,
-  tealState,
-} from '../styles/states/index.js';
-import {
   borderRadiusCircular,
   borderRadiusLarge,
   borderRadiusMedium,
@@ -355,157 +322,157 @@ export const styles = css`
     border-radius: ${borderRadiusXLarge};
   }
 
-  :host(${brandState}) {
+  :host([data-color='brand']) {
     color: ${colorNeutralForegroundStaticInverted};
     background-color: ${colorBrandBackgroundStatic};
   }
 
-  :host(${darkRedState}) {
+  :host([data-color='dark-red']) {
     color: ${colorPaletteDarkRedForeground2};
     background-color: ${colorPaletteDarkRedBackground2};
   }
 
-  :host(${cranberryState}) {
+  :host([data-color='cranberry']) {
     color: ${colorPaletteCranberryForeground2};
     background-color: ${colorPaletteCranberryBackground2};
   }
 
-  :host(${redState}) {
+  :host([data-color='red']) {
     color: ${colorPaletteRedForeground2};
     background-color: ${colorPaletteRedBackground2};
   }
 
-  :host(${pumpkinState}) {
+  :host([data-color='pumpkin']) {
     color: ${colorPalettePumpkinForeground2};
     background-color: ${colorPalettePumpkinBackground2};
   }
 
-  :host(${peachState}) {
+  :host([data-color='peach']) {
     color: ${colorPalettePeachForeground2};
     background-color: ${colorPalettePeachBackground2};
   }
 
-  :host(${marigoldState}) {
+  :host([data-color='marigold']) {
     color: ${colorPaletteMarigoldForeground2};
     background-color: ${colorPaletteMarigoldBackground2};
   }
 
-  :host(${goldState}) {
+  :host([data-color='gold']) {
     color: ${colorPaletteGoldForeground2};
     background-color: ${colorPaletteGoldBackground2};
   }
 
-  :host(${brassState}) {
+  :host([data-color='brass']) {
     color: ${colorPaletteBrassForeground2};
     background-color: ${colorPaletteBrassBackground2};
   }
 
-  :host(${brownState}) {
+  :host([data-color='brown']) {
     color: ${colorPaletteBrownForeground2};
     background-color: ${colorPaletteBrownBackground2};
   }
 
-  :host(${forestState}) {
+  :host([data-color='forest']) {
     color: ${colorPaletteForestForeground2};
     background-color: ${colorPaletteForestBackground2};
   }
 
-  :host(${seafoamState}) {
+  :host([data-color='seafoam']) {
     color: ${colorPaletteSeafoamForeground2};
     background-color: ${colorPaletteSeafoamBackground2};
   }
 
-  :host(${darkGreenState}) {
+  :host([data-color='dark-green']) {
     color: ${colorPaletteDarkGreenForeground2};
     background-color: ${colorPaletteDarkGreenBackground2};
   }
 
-  :host(${lightTealState}) {
+  :host([data-color='light-teal']) {
     color: ${colorPaletteLightTealForeground2};
     background-color: ${colorPaletteLightTealBackground2};
   }
 
-  :host(${tealState}) {
+  :host([data-color='teal']) {
     color: ${colorPaletteTealForeground2};
     background-color: ${colorPaletteTealBackground2};
   }
 
-  :host(${steelState}) {
+  :host([data-color='steel']) {
     color: ${colorPaletteSteelForeground2};
     background-color: ${colorPaletteSteelBackground2};
   }
 
-  :host(${blueState}) {
+  :host([data-color='blue']) {
     color: ${colorPaletteBlueForeground2};
     background-color: ${colorPaletteBlueBackground2};
   }
 
-  :host(${royalBlueState}) {
+  :host([data-color='royal-blue']) {
     color: ${colorPaletteRoyalBlueForeground2};
     background-color: ${colorPaletteRoyalBlueBackground2};
   }
 
-  :host(${cornflowerState}) {
+  :host([data-color='cornflower']) {
     color: ${colorPaletteCornflowerForeground2};
     background-color: ${colorPaletteCornflowerBackground2};
   }
 
-  :host(${navyState}) {
+  :host([data-color='navy']) {
     color: ${colorPaletteNavyForeground2};
     background-color: ${colorPaletteNavyBackground2};
   }
 
-  :host(${lavenderState}) {
+  :host([data-color='lavender']) {
     color: ${colorPaletteLavenderForeground2};
     background-color: ${colorPaletteLavenderBackground2};
   }
 
-  :host(${purpleState}) {
+  :host([data-color='purple']) {
     color: ${colorPalettePurpleForeground2};
     background-color: ${colorPalettePurpleBackground2};
   }
 
-  :host(${grapeState}) {
+  :host([data-color='grape']) {
     color: ${colorPaletteGrapeForeground2};
     background-color: ${colorPaletteGrapeBackground2};
   }
 
-  :host(${lilacState}) {
+  :host([data-color='lilac']) {
     color: ${colorPaletteLilacForeground2};
     background-color: ${colorPaletteLilacBackground2};
   }
 
-  :host(${pinkState}) {
+  :host([data-color='pink']) {
     color: ${colorPalettePinkForeground2};
     background-color: ${colorPalettePinkBackground2};
   }
 
-  :host(${magentaState}) {
+  :host([data-color='magenta']) {
     color: ${colorPaletteMagentaForeground2};
     background-color: ${colorPaletteMagentaBackground2};
   }
 
-  :host(${plumState}) {
+  :host([data-color='plum']) {
     color: ${colorPalettePlumForeground2};
     background-color: ${colorPalettePlumBackground2};
   }
 
-  :host(${beigeState}) {
+  :host([data-color='beige']) {
     color: ${colorPaletteBeigeForeground2};
     background-color: ${colorPaletteBeigeBackground2};
   }
 
-  :host(${minkState}) {
+  :host([data-color='mink']) {
     color: ${colorPaletteMinkForeground2};
     background-color: ${colorPaletteMinkBackground2};
   }
 
-  :host(${platinumState}) {
+  :host([data-color='platinum']) {
     color: ${colorPalettePlatinumForeground2};
     background-color: ${colorPalettePlatinumBackground2};
   }
 
-  :host(${anchorState}) {
+  :host([data-color='anchor']) {
     color: ${colorPaletteAnchorForeground2};
     background-color: ${colorPaletteAnchorBackground2};
   }

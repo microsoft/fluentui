@@ -57,18 +57,4 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     columnGap: tokens.spacingHorizontalS,
   },
-
-  widthConstrained: {
-    display: 'inline-flex',
-    width: '150px',
-    columnGap: tokens.spacingHorizontalS,
-    ...shorthands.padding('1px'),
-    ...shorthands.border('2px', 'dashed', tokens.colorPaletteRedBorder1),
-    backgroundColor: tokens.colorPaletteRedBackground1,
-  },
-
-  description: {
-    color: tokens.colorNeutralForeground3,
-    ...typographyStyles.caption1,
-  },
 });

@@ -8,12 +8,13 @@ import { DATA_POSITIONING_PLACEMENT } from './constants';
  * @returns Griffel styles to spread to a slot
  */
 export function createSlideStyles(mainAxis: number): GriffelStyle {
+  // With 'accumulate' animation composition, these opacity keyframes are added onto the default opacity of 1.
   const fadeIn = {
     from: {
-      opacity: 0,
+      opacity: -1, // becomes opacity: 0
     },
     to: {
-      opacity: 1,
+      opacity: 0, // becomes opacity: 1
     },
   };
 
@@ -21,8 +22,10 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
   const slideDistanceVarY = '--fui-positioning-slide-distance-y';
 
   return {
-    // The fade has absolute values, whereas the slide amount is relative.
-    animationComposition: 'replace, accumulate',
+    // NOTE: there was a previous attempt to give fadeIn a separate composition mode:
+    //   animationComposition: 'replace, accumulate',
+    // but somehow this was linked to a performance regression observed in Teams (bug #4255933)
+    animationComposition: 'accumulate',
     animationDuration: tokens.durationSlower,
     animationTimingFunction: tokens.curveDecelerateMid,
     [slideDistanceVarX]: `0px`,
@@ -55,7 +58,6 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     // Note: at-rules have more specificity in Griffel
     '@media(prefers-reduced-motion)': {
       [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
-        animationComposition: 'replace',
         animationDuration: '1ms',
         animationName: fadeIn,
       },
@@ -64,7 +66,6 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     // Tested in Firefox 79
     '@supports not (animation-composition: accumulate)': {
       [`&[${DATA_POSITIONING_PLACEMENT}]`]: {
-        animationComposition: 'replace',
         animationName: fadeIn,
       },
     },

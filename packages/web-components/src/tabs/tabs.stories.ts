@@ -28,7 +28,7 @@ const tabsDefault = html<StoryArgs<FluentTabs>>`
 `;
 
 export default {
-  title: 'Components/Tabs',
+  title: 'Components/Tabs (Deprecated)',
   render: renderComponent(tabsDefault),
   argTypes: {
     appearance: {

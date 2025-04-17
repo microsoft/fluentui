@@ -39,7 +39,11 @@ export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
           This CollapsibleSection has been customized with a TooltipHost around its entire title and an icon in its
           title.
         </p>
-        <Stack maxWidth={200} styles={{ root: { border: '1px solid black' } }}>
+        <Stack
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          maxWidth={200}
+          styles={{ root: { border: '1px solid black' } }}
+        >
           <CollapsibleSection
             key={1}
             defaultCollapsed={true}

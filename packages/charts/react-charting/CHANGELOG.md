@@ -1,8 +1,69 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 27 Mar 2025 07:21:19 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 07:22:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.73)
+
+Wed, 16 Apr 2025 07:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.72..@fluentui/react-charting_v5.23.73)
+
+### Patches
+
+- Legends order fix ([PR #34268](https://github.com/microsoft/fluentui/pull/34268) by anushgupta@microsoft.com)
+
+## [5.23.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.72)
+
+Tue, 15 Apr 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.71..@fluentui/react-charting_v5.23.72)
+
+### Patches
+
+- feat: transform plotly histogram2d trace to heatmap props ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- Implement stacked HBC with axis ([PR #34246](https://github.com/microsoft/fluentui/pull/34246) by anushgupta@microsoft.com)
+- Bump @fluentui/react-focus to v8.9.23 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/theme-samples to v8.7.204 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/react to v8.122.15 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+
+## [5.23.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.71)
+
+Mon, 14 Apr 2025 07:20:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.70..@fluentui/react-charting_v5.23.71)
+
+### Patches
+
+- HBC bars overlapping fix ([PR #34227](https://github.com/microsoft/fluentui/pull/34227) by anushgupta@microsoft.com)
+- fix(react-charting): Adding fix for Grouped Vertical bar chart error  ([PR #34228](https://github.com/microsoft/fluentui/pull/34228) by 120183316+srmukher@users.noreply.github.com)
+- fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+
+## [5.23.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.70)
+
+Thu, 10 Apr 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.69..@fluentui/react-charting_v5.23.70)
+
+### Patches
+
+- fix: add missing linear case in getCurveFactory ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
+
+## [5.23.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.69)
+
+Tue, 08 Apr 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.68..@fluentui/react-charting_v5.23.69)
+
+### Patches
+
+- fix: handle blank donut chart when labels exist without corresponding values in plotly json ([PR #34188](https://github.com/microsoft/fluentui/pull/34188) by kumarkshitij@microsoft.com)
+
+## [5.23.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.68)
+
+Thu, 03 Apr 2025 07:19:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.67..@fluentui/react-charting_v5.23.68)
+
+### Patches
+
+- fix: use valid plotly data for transformations ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.4 ([PR #34067](https://github.com/microsoft/fluentui/pull/34067) by beachball)
 
 ## [5.23.67](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.67)
 

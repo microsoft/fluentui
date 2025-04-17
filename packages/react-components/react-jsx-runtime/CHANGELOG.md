@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.54)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.53..@fluentui/react-jsx-runtime_v9.0.54)
+
+### Patches
+
+- Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.0.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.53)
 

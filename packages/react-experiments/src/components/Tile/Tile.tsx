@@ -79,6 +79,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _events: EventGroup;
 
   constructor(props: ITileProps, context: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     initializeComponentRef(this);
@@ -94,8 +95,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.state = {
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     };
 
     this._events = new EventGroup(this);
@@ -112,8 +113,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
-        isSelected: isSelected,
-        isModal: isModal,
+        isSelected,
+        isModal,
       });
     }
   }
@@ -290,7 +291,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected,
+              isSelected,
             })
           : null}
       </div>
@@ -406,8 +407,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const isModal = !!selection && !!selection.isModal && selection.isModal();
 
     this.setState({
-      isSelected: isSelected,
-      isModal: isModal,
+      isSelected,
+      isModal,
     });
   };
 }

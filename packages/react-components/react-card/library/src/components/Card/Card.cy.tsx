@@ -13,7 +13,7 @@ import {
   cardPreviewClassNames,
   CardPreview,
 } from '@fluentui/react-card';
-import type { CardProps } from '@fluentui/react-card';
+import type { CardProps, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -431,7 +431,10 @@ describe('Card', () => {
       const Example = () => {
         const [checked, setChecked] = React.useState(false);
 
-        const onSelectionChange = React.useCallback((event, { selected }) => setChecked(selected), []);
+        const onSelectionChange = React.useCallback(
+          (_: CardOnSelectionChangeEvent, { selected }: { selected: boolean }) => setChecked(selected),
+          [],
+        );
 
         return (
           <CardSample

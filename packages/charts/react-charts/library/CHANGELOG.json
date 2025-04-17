@@ -2,6 +2,215 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:09 GMT",
+      "tag": "@fluentui/react-charts_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3f81b8e46efe27414e87d520b075e5aadb036ac9",
+            "comment": "fix(react-charts): Enabling multiple legend selection for Vertical Bar Chart in V9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "897ae53b588deec87da6b8fbc9907c14f513e199",
+            "comment": "Enable Controlled legends in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "98e485a31ce5b40c14b154c6da346934b64bb01c",
+            "comment": "feat: center align bars with auto barWidth in plotly mode"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "477e0c3d4ff0f31852c2dca1b649e809503f0404",
+            "comment": "feat: add SankeyChart in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "72e211de8a77d4a9ddba9ea45af41fb2b8e50055",
+            "comment": "Full Y Axis labels in Heatmap chart"
+          },
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c0e7d7a5f921718cfa259a431736f01381ed312d",
+            "comment": "feat: add HeatMapChart in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3a4efddb0999b89928dd785d0001da0f5b7d7ded",
+            "comment": "feat: port all declarative chart changes from v8 to v9"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "3d6d56c7a591922372dcdfd69962e017b8759c89",
+            "comment": "fix(react-charts): Dark mode theme colors for declarative charts in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "ecfdc07ed4d06e2a2dff20c4e4d4c8fb40fc0135",
+            "comment": "Remove duplicate key warning"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9d250edbfe75f1ea9eed70f58f7f3da01634af19",
+            "comment": "Add scaling factor to height of VSBC bars"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9679a921973d597dcb10a7202f127f4995a32c59",
+            "comment": "fix(react-charts): Replace plotly schema interface and conversion logic with chart utilities"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "d8c03197c18795aa51d928b5ee6581d1ea42a641",
+            "comment": "feat: add support for line curves"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "cd8e61cbe348c2f35a5dac71fd9327b966c2caa7",
+            "comment": "fix(react-charts): Add background to the SVGTooltipText"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "586004ea4cd5204492ae80692f34d41f8db95457",
+            "comment": "Support rounded ticks in v9"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "881672090b223429b2f6d254d230f8c08e4fd2c4",
+            "comment": "feat(react-charts): Migrate Area Chart to v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "acb947e908e0522a469077a10cc822ba764eb2ce",
+            "comment": "fix: map stacked plotly scatter traces to area chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f9f6841514c07a4d5103c9d776256a7259cd674f",
+            "comment": "fix(react-charts): Secondary Y Axis margin adjustment in v9"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4a1ddc1a8dcfc60e6682c5c4c815f708b6e58434",
+            "comment": "Enable Negative y value support in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "60d7c5af108ba9cbce34bb2a29a93ef5f5069e17",
+            "comment": "fix: remove duplicate legends + resolve overlapping bars across legends in VBC"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f914ccfcedd05c3307d6d67c71fc83f641a6fe40",
+            "comment": "Port fixes from v8 to v9"
+          },
+          {
+            "author": "74965306+Anush2303@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "a58ab6cebd0e3da7be5bd434f76cd69efaf8adab",
+            "comment": "Migrate HBC With Axis to V9"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "80dda31048e2098efc793406fd407d45952fe493",
+            "comment": "fix(react-charts): Handle invalid plotly data in V9 and fixing id related error in donut chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f05d137838a70ec8b789d48499aa90bf13852cc6",
+            "comment": "fix(react-charts): Enabling multiple legend selection for Scatter Chart in v9"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "c0612fecdfb4d558ae1cd991b6fb84ba8220321d",
+            "comment": "feat: transform plotly histogram2d trace to heatmap props"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.4.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.3.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.10.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.24.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "622a30743a392d2fd1239adbc92453ddbca8d3fa",
+            "comment": "chore: type useCallback params"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Apr 2025 15:08:01 GMT",
       "tag": "@fluentui/react-charts_v9.0.2",
       "version": "9.0.2",

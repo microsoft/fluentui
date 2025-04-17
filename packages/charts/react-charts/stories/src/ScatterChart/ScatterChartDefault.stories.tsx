@@ -1,16 +1,23 @@
 import * as React from 'react';
 import { ScatterChart, DataVizPalette, ChartProps } from '@fluentui/react-charts';
+import { Switch } from '@fluentui/react-components';
 
 export const ScatterChartDefault = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
+  const [selectMultipleLegends, setSelectMultipleLegends] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
   };
+
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
+
+  const _onToggleMultiLegendSelection = React.useCallback(ev => {
+    setSelectMultipleLegends(ev.currentTarget.checked);
+  }, []);
 
   const data: ChartProps = {
     chartTitle: 'Project Revenue and Transactions Over Time',
@@ -92,6 +99,7 @@ export const ScatterChartDefault = () => {
   };
 
   const rootStyle = { width: `${width}px`, height: `${height}px` };
+
   return (
     <>
       <text>Scatter chart numeric x example.</text>
@@ -116,6 +124,13 @@ export const ScatterChartDefault = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
+      <div style={{ marginBottom: '10px' }}>
+        <Switch
+          label="Select Multiple Legends"
+          checked={selectMultipleLegends}
+          onChange={_onToggleMultiLegendSelection}
+        />
+      </div>
       <div style={rootStyle}>
         <ScatterChart
           culture={window.navigator.language}
@@ -124,11 +139,15 @@ export const ScatterChartDefault = () => {
           width={width}
           xAxisTitle={'Days since project start'}
           yAxisTitle={'Revenue in dollars'}
+          legendProps={{
+            canSelectMultipleLegends: selectMultipleLegends,
+          }}
         />
       </div>
     </>
   );
 };
+
 ScatterChartDefault.parameters = {
   docs: {
     description: {},

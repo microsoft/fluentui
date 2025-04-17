@@ -1114,6 +1114,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     onChartMouseLeave?: () => void;
     points: any;
     ref?: IRefObject<IChart>;
+    showRoundOffXTickValues?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
@@ -1510,7 +1511,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
-    mode?: 'default' | 'plotly';
+    mode?: 'default' | 'plotly' | 'histogram';
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;

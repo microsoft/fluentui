@@ -3,7 +3,6 @@ import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { swapStates, toggleState } from '../utils/element-internals.js';
 import { BaseAccordionItem } from './accordion-item.base.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
@@ -34,15 +33,6 @@ export class AccordionItem extends BaseAccordionItem {
   public size?: AccordionItemSize;
 
   /**
-   * Handles changes to size attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public sizeChanged(prev: AccordionItemSize | undefined, next: AccordionItemSize | undefined) {
-    swapStates(this.elementInternals, prev, next, AccordionItemSize);
-  }
-
-  /**
    * Sets expand and collapsed icon position.
    *
    * @public
@@ -53,18 +43,6 @@ export class AccordionItem extends BaseAccordionItem {
   public markerPosition?: AccordionItemMarkerPosition;
 
   /**
-   * Handles changes to marker-position attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public markerPositionChanged(
-    prev: AccordionItemMarkerPosition | undefined,
-    next: AccordionItemMarkerPosition | undefined,
-  ) {
-    swapStates(this.elementInternals, prev, next, AccordionItemMarkerPosition, 'align-');
-  }
-
-  /**
    * Sets the width of the focus state.
    *
    * @public
@@ -73,15 +51,6 @@ export class AccordionItem extends BaseAccordionItem {
    */
   @attr({ mode: 'boolean' })
   public block: boolean = false;
-
-  /**
-   * Handles changes to block attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public blockChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'block', next);
-  }
 }
 
 /**

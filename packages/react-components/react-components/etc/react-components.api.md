@@ -213,6 +213,7 @@ import { carouselViewportClassNames } from '@fluentui/react-carousel';
 import { CarouselViewportProps } from '@fluentui/react-carousel';
 import { CarouselViewportSlots } from '@fluentui/react-carousel';
 import { CarouselViewportState } from '@fluentui/react-carousel';
+import { CellRenderFunction } from '@fluentui/react-table';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
@@ -450,6 +451,7 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelResetStyle } from '@griffel/react';
@@ -2280,6 +2282,8 @@ export { CarouselViewportSlots }
 
 export { CarouselViewportState }
 
+export { CellRenderFunction }
+
 export { Checkbox }
 
 export { checkboxClassNames }
@@ -2753,6 +2757,8 @@ export { getIntrinsicElementProps }
 export { getNativeElementProps }
 
 export { getPartitionedNativeProps }
+
+export { getSlotClassNameProp_unstable }
 
 export { getSlots }
 

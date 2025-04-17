@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Fri, 04 Apr 2025 07:20:23 GMT",
+      "tag": "@fluentui/cra-template_v8.4.204",
+      "version": "8.4.204",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/cra-template",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 07:31:11 GMT",
       "tag": "@fluentui/cra-template_v8.4.163",
       "version": "8.4.163",

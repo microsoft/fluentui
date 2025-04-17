@@ -52,7 +52,7 @@ export class BaseTree extends FASTElement {
   private updateCurrentSelected() {
     // force single selection
     // defaults to first one found
-    const selectedItem = this.querySelector<HTMLElement>(`[aria-selected='true']`);
+    const selectedItem = this.querySelector<HTMLElement>(`[selected]`);
     this.currentSelected = selectedItem;
 
     // invalidate the current focused item if it is no longer valid
@@ -124,7 +124,7 @@ export class BaseTree extends FASTElement {
         return;
       }
       case keySpace: {
-        item.toggleSelection();
+        item.selected = true;
         return;
       }
     }
@@ -145,13 +145,8 @@ export class BaseTree extends FASTElement {
     }
 
     if (e.target === this) {
-      if (this.currentFocused === null) {
-        this.currentFocused = this.getValidFocusableItem();
-      }
-
-      if (this.currentFocused !== null) {
-        this.currentFocused.focus();
-      }
+      this.currentFocused = this.getValidFocusableItem();
+      this.currentFocused?.focus();
 
       return;
     }
@@ -193,7 +188,7 @@ export class BaseTree extends FASTElement {
 
     const item = e.target as BaseTreeItem;
     item.toggleExpansion();
-    item.toggleSelection();
+    item.selected = true;
   }
 
   /**

@@ -287,7 +287,7 @@ export class CartesianChartBase
         containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
         margins: this.margins,
         xAxisElement: this.xAxisElement!,
-        showRoundOffXTickValues: true,
+        showRoundOffXTickValues: this.props.showRoundOffXTickValues ?? true,
         xAxisCount: this.props.xAxisTickCount,
         xAxistickSize: this.props.xAxistickSize,
         tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,

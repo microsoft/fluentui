@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as slot from './slot';
 import type { ComponentProps, Slot } from './types';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 type TestSlots = {
   slotA?: Slot<'div'>;
@@ -84,6 +84,20 @@ describe('slot', () => {
       [SLOT_RENDER_FUNCTION_SYMBOL]: expect.any(Function),
     });
   });
+
+  it('saves the original className', () => {
+    const props: TestProps = { slotA: { className: 'test1' } };
+    const resolvedProps = slot.optional(props.slotA, { elementType: 'div' });
+    if (resolvedProps) {
+      resolvedProps.className = [resolvedProps.className, 'test2'].join(' ');
+    }
+    expect(resolvedProps).toEqual({
+      [SLOT_ELEMENT_TYPE_SYMBOL]: 'div',
+      [SLOT_CLASS_NAME_PROP_SYMBOL]: 'test1',
+      className: 'test1 test2',
+    });
+  });
+
   describe('.resolveShorthand', () => {
     it('resolves a string', () => {
       expect(slot.resolveShorthand('hello')).toEqual({ children: 'hello' });

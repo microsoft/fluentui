@@ -1,5 +1,5 @@
 import { LegendsProps } from '../Legends/index';
-import { AccessibilityProps } from '../../types/index';
+import { AccessibilityProps, Chart } from '../../types/index';
 import { ChartPopoverProps } from '../CommonComponents/ChartPopover.types';
 
 /**
@@ -150,6 +150,12 @@ export interface GaugeChartProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Optional callback to access the Chart interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: React.RefObject<Chart>;
 }
 
 /**

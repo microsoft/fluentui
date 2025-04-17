@@ -224,6 +224,29 @@ describe('Legends - multi Legends', () => {
   });
 });
 
+describe('Legends - controlled legend selection', () => {
+  afterEach(sharedAfterEach);
+  it('follows updates in the selectedLegends prop', () => {
+    wrapper = mount(<Legends legends={legends} canSelectMultipleLegends={true} selectedLegends={[legends[0].title]} />);
+    let renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(1);
+
+    wrapper.setProps({ selectedLegends: [legends[1].title, legends[2].title] });
+    renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(2);
+  });
+
+  it('follows updates in the selectedLegend prop', () => {
+    wrapper = mount(<Legends legends={legends} selectedLegend={legends[0].title} />);
+    let renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(1);
+
+    wrapper.setProps({ selectedLegend: legends[1].title });
+    renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(1);
+  });
+});
+
 describe('Legends - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<Legends legends={legends} />);

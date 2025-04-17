@@ -1,0 +1,39 @@
+{
+  "name": "@fluentui/react-19-tests-v9",
+  "description": "React 19 test application and playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "type-check": "just-scripts type-check",
+    "type-check:integration": "tsc -p tsconfig.react-19.json --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
+    "test": "jest --passWithNoTests",
+    "format": "prettier -w . --ignore-path ../.prettierignore",
+    "format:check": "yarn format -c",
+    "start": "webpack-dev-server --mode=development",
+    "e2e": "npx --yes cypress@latest run --component",
+    "e2e:local": "npx --yes cypress@latest open --component",
+    "e2e:integration": "npx --yes cypress@latest run --component --config-file cypress-react-19.config.ts"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@cypress/react": "9.0.1",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-nav-preview": "*",
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.2",
+    "@types/react-test-renderer": "19.1.0",
+    "cypress-real-events": "1.14.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-test-renderer": "19.1.0",
+    "tslib": "^2.1.0"
+  }
+}
