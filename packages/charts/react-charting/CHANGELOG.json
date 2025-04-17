@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 17 Apr 2025 07:21:12 GMT",
+      "tag": "@fluentui/react-charting_v5.23.74",
+      "version": "5.23.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8ef09323ee9e2b9460b9389a245d84f02b49ede3",
+            "comment": "fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "03df65ab40acbb9238d925a21ef6bdeb2d87074b",
+            "comment": "feat: add histogram mode to vertical bar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 07:22:26 GMT",
       "tag": "@fluentui/react-charting_v5.23.73",
       "version": "5.23.73",
