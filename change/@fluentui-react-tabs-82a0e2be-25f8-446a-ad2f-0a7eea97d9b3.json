@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: slot api react v17/18 support",
+  "packageName": "@fluentui/react-tabs",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}

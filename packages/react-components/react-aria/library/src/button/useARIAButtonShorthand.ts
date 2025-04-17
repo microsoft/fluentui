@@ -15,9 +15,9 @@ import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './typ
  * where no attribute addition is required.
  */
 // eslint-disable-next-line @typescript-eslint/no-deprecated
-export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (value, options) => {
+export const useARIAButtonShorthand = ((value, options) => {
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   const shorthand = resolveShorthand(value, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(shorthand?.as ?? 'button', shorthand);
   return shorthand && shorthandARIAButton;
-};
+}) as ResolveShorthandFunction<ARIAButtonSlotProps>;
