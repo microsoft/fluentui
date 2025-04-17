@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[fix] only set expanded is expanded is not set",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
