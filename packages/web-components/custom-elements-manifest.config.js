@@ -69,7 +69,3 @@ function getFileName(baseName) {
   // Construct the file path
   return `${kebabCaseName}${baseName.includes('Base') ? '.base' : ''}.js`;
 }
-
-function getBaseTag(tagName) {
-  return tagName?.replace('fluent-', '');
-}
