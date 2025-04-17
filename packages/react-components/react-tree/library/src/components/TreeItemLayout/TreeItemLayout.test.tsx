@@ -4,7 +4,7 @@ import { TreeItemLayout } from './TreeItemLayout';
 import { isConformant } from '../../testing/isConformant';
 import { TreeItemProvider } from '../../contexts';
 
-const Wrapper: React.FC = ({ children }) => (
+const Wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
   <TreeItemProvider
     value={{
       value: '',
