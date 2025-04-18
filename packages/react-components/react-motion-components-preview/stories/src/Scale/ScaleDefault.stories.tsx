@@ -35,7 +35,7 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = () => {
+export const Default = (props: React.ComponentProps<typeof Scale>) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(true);
 
