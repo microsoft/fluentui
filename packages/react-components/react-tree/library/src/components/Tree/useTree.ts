@@ -47,6 +47,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
           if (!event.isDefaultPrevented()) {
             navigation.navigate(data, {
               preventScroll: data.isScrollPrevented(),
+              onNavigateIn: props.onNavigationIn,
             });
           }
         }),

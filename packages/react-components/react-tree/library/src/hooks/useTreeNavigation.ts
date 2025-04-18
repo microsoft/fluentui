@@ -1,4 +1,4 @@
-import { TreeNavigationData_unstable, TreeNavigationMode } from '../components/Tree/Tree.types';
+import { TreeNavigationData_unstable, TreeNavigationMode, TreeProps } from '../components/Tree/Tree.types';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
 import { useRovingTabIndex } from './useRovingTabIndexes';
@@ -8,6 +8,7 @@ import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
 import { useFocusFinders } from '@fluentui/react-tabster';
+import { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
 
 /**
  * @internal
@@ -70,8 +71,20 @@ export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
         return walkerRef.current.previousElement();
     }
   };
-  function navigate(data: TreeNavigationData_unstable, focusOptions?: FocusOptions) {
+  function navigate(
+    data: TreeNavigationData_unstable,
+    focusOptions?: FocusOptions & { onNavigateIn?: TreeProps['onNavigationIn'] },
+  ) {
     const nextElement = getNextElement(data);
+    // TODO types
+    // @ts-expect-error
+    const value = nextElement._treeItem?.value as TreeItemValue;
+    // @ts-expect-error
+    const itemType = nextElement._treeItem?.itemType as TreeItemType;
+    if (value) {
+      focusOptions?.onNavigateIn?.(data.event, { value, itemType });
+    }
+
     if (nextElement) {
       rove(nextElement, focusOptions);
     }
