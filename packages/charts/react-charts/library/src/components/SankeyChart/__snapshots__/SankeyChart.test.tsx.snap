@@ -21,7 +21,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-0"
         >
           <rect
-            aria-label="element First with size 133.46Cr"
+            aria-label="element First with size 1.33B"
             fill="#00758F"
             height={393.0582326778442}
             id="nodeBar5-0"
@@ -71,7 +71,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               x={48}
               y={36.55209219392178}
             >
-              133.46Cr
+              1.33B
             </text>
           </g>
         </g>
@@ -101,7 +101,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="123.46Cr items moved from First to Second"
+            aria-label="1.23B items moved from First to Second"
             d="M172,36.552C282.75,36.552,282.75,36,393.5,36L393.5,393.077C282.75,393.077,282.75,393.629,172,393.629Z"
             fillOpacity={1}
             id="link1-0"
@@ -142,7 +142,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="10Cr items moved from First to Third"
+            aria-label="100M items moved from First to Third"
             d="M172,393.629C282.75,393.629,282.75,401.077,393.5,401.077L393.5,430C282.75,430,282.75,422.552,172,422.552Z"
             fillOpacity={1}
             id="link1-1"
@@ -247,7 +247,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-1"
         >
           <rect
-            aria-label="element Second with size 123.46Cr"
+            aria-label="element Second with size 1.23B"
             fill="#77004D"
             height={357.0767805150773}
             id="nodeBar5-1"
@@ -297,7 +297,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               x={393.5}
               y={36}
             >
-              123.46Cr
+              1.23B
             </text>
           </g>
         </g>
@@ -309,7 +309,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-2"
         >
           <rect
-            aria-label="element Third with size 10Cr"
+            aria-label="element Third with size 100M"
             fill="#4F6BED"
             height={28.923219484922583}
             id="nodeBar5-2"
@@ -359,7 +359,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               x={509.5}
               y={401.0767805150773}
             >
-              10Cr
+              100M
             </text>
           </g>
         </g>
@@ -389,7 +389,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="100Cr items moved from Second to Fourth"
+            aria-label="1B items moved from Second to Fourth"
             d="M517.5,36C628.25,36,628.25,36,739,36L739,325.232C628.25,325.232,628.25,325.232,517.5,325.232Z"
             fillOpacity={1}
             id="link1-4"
@@ -430,7 +430,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="23.46Cr items moved from Second to Five"
+            aria-label="234.57M items moved from Second to Five"
             d="M517.5,325.232C628.25,325.232,628.25,333.232,739,333.232L739,401.077C628.25,401.077,628.25,393.077,517.5,393.077Z"
             fillOpacity={1}
             id="link1-5"
@@ -512,7 +512,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             </linearGradient>
           </defs>
           <path
-            aria-label="99.99L items moved from Third to Five"
+            aria-label="10M items moved from Third to Five"
             d="M517.5,401.077C628.25,401.077,628.25,401.077,739,401.077L739,403.969C628.25,403.969,628.25,403.969,517.5,403.969Z"
             fillOpacity={1}
             id="link1-7"
@@ -535,7 +535,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-3"
         >
           <rect
-            aria-label="element Fourth with size 100Cr"
+            aria-label="element Fourth with size 1B"
             fill="#937600"
             height={289.2324840814205}
             id="nodeBar5-3"
@@ -585,7 +585,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               x={739}
               y={36}
             >
-              100Cr
+              1B
             </text>
           </g>
         </g>
@@ -597,7 +597,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
           id="nodeGElement6-4"
         >
           <rect
-            aria-label="element Five with size 24.46Cr"
+            aria-label="element Five with size 244.57M"
             fill="#286EA8"
             height={70.73661838214912}
             id="nodeBar5-4"
@@ -647,7 +647,7 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               x={739}
               y={333.2324840814205}
             >
-              24.46Cr
+              244.57M
             </text>
           </g>
         </g>
@@ -5970,7 +5970,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderInlineStart": "4px solid #8764B8",
+              "borderLeft": "4px solid #8764B8",
             }
           }
         >
@@ -7240,7 +7240,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderInlineStart": "4px solid #8764B8",
+              "borderLeft": "4px solid #8764B8",
             }
           }
         >
