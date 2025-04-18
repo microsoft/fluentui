@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 17 Apr 2025 07:21:12 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Apr 2025 07:20:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.75)
+
+Fri, 18 Apr 2025 07:20:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.74..@fluentui/react-charting_v5.23.75)
+
+### Patches
+
+- feat(react-charting): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
 
 ## [5.23.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.74)
 
