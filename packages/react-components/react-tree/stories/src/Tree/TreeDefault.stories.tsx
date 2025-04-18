@@ -39,6 +39,13 @@ export const Default = () => {
     }
   };
 
+  const imperativeRef: NonNullable<TreeProps['imperativeRef']> = React.useRef(null);
+
+  const selectedItem = checked[0];
+  React.useEffect(() => {
+    imperativeRef.current?.focus(selectedItem);
+  }, [selectedItem]);
+
   return (
     <>
       <pre>Selected: {checked[0]}</pre>
@@ -51,6 +58,7 @@ export const Default = () => {
         <Button onClick={() => setChecked([itemToSelect])}>Select item imperatively</Button>
       </div>
       <Tree
+        imperativeRef={imperativeRef}
         aria-label="Default"
         selectionMode="single"
         checkedItems={checked}

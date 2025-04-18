@@ -10,6 +10,7 @@ import { useTreeNavigation } from '../../hooks/useTreeNavigation';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { ImmutableSet } from '../../utils/ImmutableSet';
 import { ImmutableMap } from '../../utils/ImmutableMap';
+import { TreeItemValue } from '../TreeItem/TreeItem.types';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
   'use no memo';
@@ -27,6 +28,16 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const [openItems, setOpenItems] = useControllableOpenItems(props);
   const checkedItems = useNestedCheckedItems(props);
   const navigation = useTreeNavigation(props.navigationMode);
+
+  React.useImperativeHandle(
+    props.imperativeRef,
+    () => ({
+      focus: (value: TreeItemValue) => {
+        navigation.focusOnItem(value);
+      },
+    }),
+    [navigation],
+  );
 
   return Object.assign(
     useRootTree(

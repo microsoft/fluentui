@@ -8,7 +8,7 @@ import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { treeItemLayoutClassNames } from '../TreeItemLayout';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
+import { TreeItemType, TreeItemValue } from '../TreeItem';
 
 /**
  * @internal
@@ -89,10 +89,32 @@ export function useTreeNavigation(navigationMode: TreeNavigationMode = 'tree') {
       rove(nextElement, focusOptions);
     }
   }
+
+  function focusOnItem(value: TreeItemValue) {
+    if (!walkerRef.current) {
+      return;
+    }
+    const walker = walkerRef.current;
+    walker.currentElement = walker.root;
+    let cur = walker.firstChild();
+    while (cur) {
+      // @ts-expect-error
+      if (cur._treeItem?.value === value) {
+        break;
+      }
+
+      cur = walker.nextElement();
+    }
+
+    if (cur) {
+      rove(cur);
+    }
+  }
   return {
     navigate,
     treeRef: useMergedRefs(walkerRootRef, rootRefCallback) as React.RefCallback<HTMLElement>,
     forceUpdateRovingTabIndex,
+    focusOnItem,
   } as const;
 }
 

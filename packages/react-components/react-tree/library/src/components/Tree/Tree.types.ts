@@ -172,7 +172,13 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * such as checked value and type of interaction that created the event.
    */
   onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
+
+  imperativeRef?: React.RefObject<TreeImperativeRef>;
 };
+
+interface TreeImperativeRef {
+  focus(value: TreeItemValue): void;
+}
 
 /**
  * State used in rendering Tree
