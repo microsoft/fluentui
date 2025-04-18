@@ -60,6 +60,7 @@ const useStyles = makeStyles({
   },
   calloutBlockContainertoDrawShapefalse: {
     paddingLeft: tokens.spacingHorizontalS,
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
   shapeStyles: {
