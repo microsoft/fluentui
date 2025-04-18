@@ -58,20 +58,13 @@ const useStyles = makeStyles({
     '& text': {
       fill: tokens.colorNeutralForeground1,
       ...typographyStyles.caption2Strong,
-      [HighContrastSelectorBlack]: {
-        fill: 'rgb(179, 179, 179)',
-        forcedColorAdjust: 'none',
-      },
+      forcedColorAdjust: 'auto',
     },
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       width: '1px',
-      [HighContrastSelectorBlack]: {
-        opacity: 0.1,
-        stroke: 'rgb(179, 179, 179)',
-        forcedColorAdjust: 'none',
-      },
+      forcedColorAdjust: 'auto',
     },
     '& path': {
       display: 'none',
@@ -81,19 +74,12 @@ const useStyles = makeStyles({
     '& text': {
       ...typographyStyles.caption2Strong,
       fill: tokens.colorNeutralForeground1,
-      [HighContrastSelectorBlack]: {
-        fill: 'rgb(179, 179, 179)',
-        forcedColorAdjust: 'none',
-      },
+      forcedColorAdjust: 'auto',
     },
     '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
-      [HighContrastSelectorBlack]: {
-        opacity: 0.1,
-        stroke: 'rgb(179, 179, 179)',
-        forcedColorAdjust: 'none',
-      },
+      forcedColorAdjust: 'auto',
     },
     '& path': {
       display: 'none',

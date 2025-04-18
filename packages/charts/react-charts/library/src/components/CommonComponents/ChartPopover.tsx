@@ -4,7 +4,7 @@ import { mergeClasses } from '@griffel/react';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
+import { getAccessibleDataObject, Points, pointTypes, useRtl } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './useChartPopoverStyles.styles';
@@ -34,6 +34,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
   const classes = usePopoverStyles_unstable(props);
   const legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
+  const _isRTL = useRtl();
   return (
     <div id={useId('callout')} ref={forwardedRef} className={classes.calloutContainer}>
       <Popover
@@ -63,7 +64,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                     display: 'flex',
                     alignItems: 'flex-end',
                   }),
-                  borderLeft: `4px solid ${props.color}`,
+                  [_isRTL ? 'borderRight' : 'borderLeft']: `4px solid ${props.color}`,
                 }}
               >
                 <div className={classes.calloutBlockContainer}>
@@ -187,7 +188,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
                 ? {
-                    borderLeft: `4px solid ${xValue.color}`,
+                    [_isRTL ? 'borderRight' : 'borderLeft']: `4px solid ${props.color}`,
                   }
                 : {}),
             }}
