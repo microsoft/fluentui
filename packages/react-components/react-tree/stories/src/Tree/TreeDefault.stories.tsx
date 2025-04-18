@@ -13,6 +13,23 @@ const values = [
   'pmDiscussion',
 ];
 
+export function useDebounce(cb: any, delay: number) {
+  const timeoutRef = React.useRef<number>(0);
+  React.useEffect(() => {
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
+  return React.useCallback(
+    (...args) => {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        cb(...args);
+      }, delay);
+    },
+    [cb, delay],
+  );
+}
+
 export const Default = () => {
   const [checked, setChecked] = React.useState(['maxMustermann']);
   const [itemToSelect, setItemToSelect] = React.useState<string>('maxMustermann');
@@ -20,10 +37,14 @@ export const Default = () => {
     setChecked([data.value as string]);
   };
 
+  const debouncedSetChecked = useDebounce(setChecked, 500);
+
+  const selectedItem = checked[0];
+
   const onNavigationIn: TreeProps['onNavigationIn'] = (e, data) => {
     console.log(data);
     if (data.itemType === 'leaf') {
-      setChecked([data.value as string]);
+      debouncedSetChecked([data.value as string]);
     }
   };
 
@@ -41,14 +62,13 @@ export const Default = () => {
 
   const imperativeRef: NonNullable<TreeProps['imperativeRef']> = React.useRef(null);
 
-  const selectedItem = checked[0];
   React.useEffect(() => {
     imperativeRef.current?.focus(selectedItem);
   }, [selectedItem]);
 
   return (
     <>
-      <pre>Selected: {checked[0]}</pre>
+      <pre>Selected: {selectedItem}</pre>
       <div style={{ display: 'grid', gap: '10px', gridTemplateColumns: '200px 120px' }}>
         <Select value={itemToSelect} onChange={(e, data) => setItemToSelect(data.value)}>
           {values.map(value => (
@@ -61,7 +81,7 @@ export const Default = () => {
         imperativeRef={imperativeRef}
         aria-label="Default"
         selectionMode="single"
-        checkedItems={checked}
+        checkedItems={[selectedItem]}
         onCheckedChange={onCheckedChange}
         onNavigationIn={onNavigationIn}
         onClick={onClick}
