@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 18 Apr 2025 04:06:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.93",
+      "version": "3.0.0-beta.93",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "1981616118@qq.com",
+            "package": "@fluentui/web-components",
+            "commit": "5963862db50ff936c31337fc2884d3ba87ffa03e",
+            "comment": "fix tabs animation starting position"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a651243eacece939174bf213e1392a07b1cfff6f",
+            "comment": "[fix] only set expanded is expanded is not set"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Apr 2025 04:07:28 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.92",
       "version": "3.0.0-beta.92",
