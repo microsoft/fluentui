@@ -44,6 +44,7 @@
     "@cssprop": true,
     "@cssproperty": true,
     "@event": true,
-    "@fires": true
+    "@fires": true,
+    "@tag": true
   }
 }
