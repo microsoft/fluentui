@@ -5963,7 +5963,6 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             className="fui-cart__calloutContentX"
           >
             124.360.55.1
-
           </div>
         </div>
         <div
@@ -7233,7 +7232,6 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             className="fui-cart__calloutContentX"
           >
             inbox
-
           </div>
         </div>
         <div
