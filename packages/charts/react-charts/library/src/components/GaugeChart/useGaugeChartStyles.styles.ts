@@ -2,7 +2,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { GaugeChartProps, GaugeChartStyles } from './GaugeChart.types';
-import { HighContrastSelector } from '../../utilities/utilities';
 
 export const gaugeChartClassNames: SlotClassNames<GaugeChartStyles> = {
   root: 'fui-gc__root',
@@ -91,9 +90,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     paddingLeft: '8px',
     display: 'block',
-    [HighContrastSelector]: {
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'none',
   },
   shapeStyles: {
     marginRight: '8px',

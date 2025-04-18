@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
+import { HighContrastSelectorBlack } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useRtl } from '../../utilities/utilities';
@@ -122,9 +122,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainertoDrawShapefalse: {
-    [HighContrastSelector]: {
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'none',
     ...shorthands.borderLeft('4px solid'),
     paddingLeft: tokens.spacingHorizontalS,
   },

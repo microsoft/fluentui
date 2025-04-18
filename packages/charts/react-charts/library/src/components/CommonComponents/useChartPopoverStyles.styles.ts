@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
@@ -52,16 +51,12 @@ const useStyles = makeStyles({
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,
     marginTop: '13px',
-    [HighContrastSelector]: {
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainerNonCartesian: {
     fontSize: tokens.fontSizeHero700,
     lineHeight: '22px',
-    [HighContrastSelector]: {
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainertoDrawShapefalse: {
     paddingLeft: tokens.spacingHorizontalS,
@@ -104,9 +99,7 @@ const useStyles = makeStyles({
   },
   calloutInfoContainer: {
     paddingLeft: tokens.spacingHorizontalS,
-    [HighContrastSelector]: {
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'none',
   },
   calloutContainer: {},
 });
