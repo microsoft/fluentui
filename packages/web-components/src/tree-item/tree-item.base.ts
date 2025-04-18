@@ -115,7 +115,9 @@ export class BaseTreeItem extends FASTElement {
     }
 
     //If a tree item is nested and initially set to selected expand the tree items so the selected item is visible
-    this.expanded = Array.from(this.querySelectorAll('*')).some(el => isTreeItem(el) && el.selected);
+    if (!this.expanded) {
+      this.expanded = Array.from(this.querySelectorAll('[selected]')).some(el => isTreeItem(el));
+    }
 
     this.childTreeItems.forEach(item => {
       this.setIndent(item);

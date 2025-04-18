@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 17 Apr 2025 04:07:28 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Apr 2025 04:06:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.93)
+
+Fri, 18 Apr 2025 04:06:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.92..@fluentui/web-components_v3.0.0-beta.93)
+
+### Changes
+
+- fix tabs animation starting position ([PR #34185](https://github.com/microsoft/fluentui/pull/34185) by 1981616118@qq.com)
+- [fix] only set expanded is expanded is not set ([PR #34282](https://github.com/microsoft/fluentui/pull/34282) by jes@microsoft.com)
 
 ## [3.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.92)
 
