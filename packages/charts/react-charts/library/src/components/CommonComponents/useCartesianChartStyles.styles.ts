@@ -1,6 +1,5 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useRtl } from '../../utilities/utilities';
@@ -99,61 +98,6 @@ const useStyles = makeStyles({
     marginTop: tokens.spacingVerticalS,
     marginLeft: tokens.spacingHorizontalXL,
   },
-  calloutContentRoot: {
-    display: 'grid',
-    overflow: 'hidden',
-    ...shorthands.padding('11px 16px 10px 16px'),
-    backgroundColor: tokens.colorNeutralBackground1,
-    backgroundBlendMode: 'normal, luminosity',
-  },
-  calloutDateTimeContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  calloutContentX: {
-    ...typographyStyles.caption1,
-    opacity: '0.8',
-    color: tokens.colorNeutralForeground2,
-  },
-  calloutBlockContainer: {
-    ...typographyStyles.body2,
-    marginTop: '13px',
-    color: tokens.colorNeutralForeground2,
-  },
-  calloutBlockContainertoDrawShapefalse: {
-    forcedColorAdjust: 'none',
-    ...shorthands.borderLeft('4px solid'),
-    paddingLeft: tokens.spacingHorizontalS,
-  },
-  calloutBlockContainertoDrawShapetrue: {
-    display: 'flex',
-  },
-  shapeStyles: {
-    marginRight: tokens.spacingHorizontalS,
-  },
-  calloutLegendText: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground2,
-    [HighContrastSelectorBlack]: {
-      color: 'rgb(255, 255, 255)',
-      forcedColorAdjust: 'none',
-    },
-  },
-  calloutContentY: {
-    ...typographyStyles.subtitle2Stronger,
-    [HighContrastSelectorBlack]: {
-      color: 'rgb(255, 255, 255)',
-      forcedColorAdjust: 'none',
-    },
-  },
-  descriptionMessage: {
-    ...typographyStyles.caption1,
-    color: tokens.colorNeutralForeground2,
-    marginTop: tokens.spacingVerticalMNudge,
-    paddingTop: tokens.spacingVerticalMNudge,
-    ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
-  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -181,46 +125,6 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     legendContainer: mergeClasses(
       cartesianchartClassNames.legendContainer,
       baseStyles.legendContainer /*props.styles?.legendContainer*/,
-    ),
-    calloutContentRoot: mergeClasses(
-      cartesianchartClassNames.calloutContentRoot,
-      baseStyles.calloutContentRoot /*props.styles?. calloutContentRoot*/,
-    ),
-    calloutDateTimeContainer: mergeClasses(
-      cartesianchartClassNames.calloutDateTimeContainer,
-      baseStyles.calloutDateTimeContainer /*props.styles?.calloutDateTimeContainer*/,
-    ),
-    calloutContentX: mergeClasses(
-      cartesianchartClassNames.calloutContentX,
-      baseStyles.calloutContentX /*props.styles?.calloutContentX*/,
-    ),
-    calloutBlockContainer: mergeClasses(
-      cartesianchartClassNames.calloutBlockContainer,
-      baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainer*/,
-    ),
-    calloutBlockContainertoDrawShapefalse: mergeClasses(
-      cartesianchartClassNames.calloutBlockContainertoDrawShapefalse,
-      baseStyles.calloutBlockContainertoDrawShapefalse /*props.styles?.calloutBlockContainertoDrawShapefalse*/,
-    ),
-    calloutBlockContainertoDrawShapetrue: mergeClasses(
-      cartesianchartClassNames.calloutBlockContainertoDrawShapetrue,
-      baseStyles.calloutBlockContainertoDrawShapetrue /*props.styles?.calloutBlockContainertoDrawShapetrue*/,
-    ),
-    shapeStyles: mergeClasses(
-      cartesianchartClassNames.shapeStyles,
-      baseStyles.shapeStyles /*props.styles?.shapeStyles*/,
-    ),
-    calloutlegendText: mergeClasses(
-      cartesianchartClassNames.calloutlegendText,
-      baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
-    ),
-    calloutContentY: mergeClasses(
-      cartesianchartClassNames.calloutContentY,
-      baseStyles.calloutContentY /*props.styles?.calloutContentY*/,
-    ),
-    descriptionMessage: mergeClasses(
-      cartesianchartClassNames.descriptionMessage,
-      baseStyles.descriptionMessage /*props.styles?. descriptionMessage*/,
     ),
   };
 };
