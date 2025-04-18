@@ -70,10 +70,7 @@ const useStyles = makeStyles({
   text: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground1,
-    [HighContrastSelector]: {
-      color: 'WindowText',
-      forcedColorAdjust: 'none',
-    },
+    forcedColorAdjust: 'auto',
   },
   // TO DO Add props when these styles are used in the component
   hoverChange: {

@@ -1,6 +1,5 @@
 import { PieProps, PieStyles } from './Pie.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { HighContrastSelectorBlack } from '../../../utilities/index';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,9 +20,7 @@ const useStyles = makeStyles({
   insideDonutString: {
     ...typographyStyles.title2,
     fill: tokens.colorNeutralForeground1,
-    [HighContrastSelectorBlack]: {
-      fill: 'rgb(179, 179, 179)',
-    },
+    forcedColorAdjust: 'auto',
   },
 });
 

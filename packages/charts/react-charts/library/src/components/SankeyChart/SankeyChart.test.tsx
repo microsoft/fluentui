@@ -200,6 +200,7 @@ describe('Sankey Chart snapShot testing', () => {
             notation: 'compact',
             compactDisplay: 'short',
           }}
+          culture="en-US"
         />,
       );
       // ASSERT
@@ -246,6 +247,7 @@ describe('Sankey Chart snapShot testing', () => {
           formatNumberOptions={{
             style: 'percent',
           }}
+          culture="en-US"
         />,
       );
       // ASSERT

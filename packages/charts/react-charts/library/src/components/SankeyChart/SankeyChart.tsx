@@ -604,9 +604,11 @@ export const SankeyChart: React.FunctionComponent<SankeyChartProps> = React.forw
 
   const _formatNumber = React.useCallback(
     (value: number): string => {
-      return props.formatNumberOptions ? value.toLocaleString(undefined, props.formatNumberOptions) : value.toString();
+      return props.formatNumberOptions
+        ? value.toLocaleString(props.culture, props.formatNumberOptions)
+        : value.toString();
     },
-    [props.formatNumberOptions],
+    [props.formatNumberOptions, props.culture],
   );
 
   const _computeNodeAttributes = React.useCallback(

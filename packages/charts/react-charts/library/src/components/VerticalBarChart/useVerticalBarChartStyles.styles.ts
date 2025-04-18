@@ -44,6 +44,7 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
 });
 

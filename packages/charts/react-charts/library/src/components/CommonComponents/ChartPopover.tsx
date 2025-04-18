@@ -63,7 +63,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
                     display: 'flex',
                     alignItems: 'flex-end',
                   }),
-                  borderLeft: `4px solid ${props.color}`,
+                  borderInlineStart: `4px solid ${props.color}`,
                 }}
               >
                 <div className={classes.calloutBlockContainer}>
@@ -187,7 +187,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
               marginTop: props.XValue ? '13px' : 'unset',
               ...(!toDrawShape
                 ? {
-                    borderLeft: `4px solid ${xValue.color}`,
+                    borderInlineStart: `4px solid ${xValue.color}`,
                   }
                 : {}),
             }}

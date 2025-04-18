@@ -5970,7 +5970,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderLeft": "4px solid #8764B8",
+              "borderInlineStart": "4px solid #8764B8",
             }
           }
         >
@@ -7240,7 +7240,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderLeft": "4px solid #8764B8",
+              "borderInlineStart": "4px solid #8764B8",
             }
           }
         >
