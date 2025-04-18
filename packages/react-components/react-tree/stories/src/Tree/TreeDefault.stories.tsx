@@ -1,8 +1,21 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, TreeProps } from '@fluentui/react-components';
+import { Tree, TreeItem, TreeItemLayout, TreeProps, Select, Button } from '@fluentui/react-components';
+
+const values = [
+  'maxMustermann',
+  'johnDoe',
+  'pierreDupont',
+  'janNovak',
+  'janeDoe',
+  'erikaMustermann',
+  'general',
+  'engPlanning',
+  'pmDiscussion',
+];
 
 export const Default = () => {
   const [checked, setChecked] = React.useState(['maxMustermann']);
+  const [itemToSelect, setItemToSelect] = React.useState<string>('maxMustermann');
   const onCheckedChange: TreeProps['onCheckedChange'] = (e, data) => {
     setChecked([data.value as string]);
   };
@@ -29,6 +42,14 @@ export const Default = () => {
   return (
     <>
       <pre>Selected: {checked[0]}</pre>
+      <div style={{ display: 'grid', gap: '10px', gridTemplateColumns: '200px 120px' }}>
+        <Select value={itemToSelect} onChange={(e, data) => setItemToSelect(data.value)}>
+          {values.map(value => (
+            <option key={value}>{value}</option>
+          ))}
+        </Select>
+        <Button onClick={() => setChecked([itemToSelect])}>Select item imperatively</Button>
+      </div>
       <Tree
         aria-label="Default"
         selectionMode="single"
