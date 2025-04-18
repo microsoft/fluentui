@@ -90,6 +90,11 @@ export interface SankeyChartProps {
    * props for the callout in the chart
    */
   calloutProps?: ChartPopoverProps;
+
+  /**
+   * The prop used to define the culture to localize the numbers and date
+   */
+  culture?: string;
 }
 
 /**

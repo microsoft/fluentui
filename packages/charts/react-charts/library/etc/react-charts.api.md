@@ -1137,6 +1137,7 @@ export interface SankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     componentRef?: RefObject<Chart>;
+    culture?: string;
     data: ChartProps;
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;
