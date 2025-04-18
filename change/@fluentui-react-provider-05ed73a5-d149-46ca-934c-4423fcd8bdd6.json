@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: improve SSR validation",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
