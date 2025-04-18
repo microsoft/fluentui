@@ -1488,7 +1488,7 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
   integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
 
-"@custom-elements-manifest/analyzer@^0.10.4":
+"@custom-elements-manifest/analyzer@0.10.4", "@custom-elements-manifest/analyzer@^0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.4.tgz#7bd063cd1249a75b13d5bcc6ed4302dd72dd1f88"
   integrity sha512-hse8o20Jd82BwWank29/J9OC4PmSTwUoEmll3LEjDF3WLY/Lc8g3TUYSib/3GARCS8Q5myT2RPqEWfRa+6bkIg==
@@ -6234,12 +6234,17 @@
   dependencies:
     tslib "^1.10.0"
 
-"@wc-toolkit/cem-inheritance@^1.0.4":
+"@wc-toolkit/cem-inheritance@1.0.4", "@wc-toolkit/cem-inheritance@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-inheritance/-/cem-inheritance-1.0.4.tgz#eb50611bc07706e38d6db293bda7ebabb1cedcbe"
   integrity sha512-jhw9MiGdbEIdwDUYbLHAZ7FadIbNXXtgNIkFFTfp6DHWe/XE9/ro1KEW6w/GYy86VOQLXYTU6pbMFRnXb9zXAQ==
   dependencies:
     "@wc-toolkit/jsdoc-tags" "^1.1.0"
+
+"@wc-toolkit/cem-validator@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-validator/-/cem-validator-1.0.2.tgz#8d41a495093f447f3f5d702c22f49be215a92840"
+  integrity sha512-j9ijx4gmeD2+E41qBWGjWLsp4TzO9dM+bNYqk6fHEx5+QG/Cv339m3C2nnaADdnWfX+PKRnFRZ2xv9WEnIjt3g==
 
 "@wc-toolkit/cem-validator@^1.0.2":
   version "1.0.3"
@@ -6251,12 +6256,12 @@
   resolved "https://registry.yarnpkg.com/@wc-toolkit/jsdoc-tags/-/jsdoc-tags-1.1.0.tgz#b2ff6ea7208057eaa8f451a27ec83764e446741d"
   integrity sha512-7MHpQ3FtRNJBJONMChkfIWxOWy1rvDtwOJJ4ubeGJBUEj2hp8Xy/9G8GqqNvPGzp38haAfdMcmwx6rySu4AAqg==
 
-"@wc-toolkit/module-path-resolver@^1.0.0":
+"@wc-toolkit/module-path-resolver@1.0.0", "@wc-toolkit/module-path-resolver@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@wc-toolkit/module-path-resolver/-/module-path-resolver-1.0.0.tgz#747cf297161a2ef4ac26269600d186daddf6e8cd"
   integrity sha512-J8wFceraqTGiJTX+od+e3UkSk2zeklwcaNOwxCHfkzpPMV4TC7332jc9TNA2GNt5eDTy4pNUr3egXtM3HFpu0g==
 
-"@wc-toolkit/type-parser@^1.0.3":
+"@wc-toolkit/type-parser@1.0.3", "@wc-toolkit/type-parser@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@wc-toolkit/type-parser/-/type-parser-1.0.3.tgz#0fc4372b3175c291b2c2ddbf07c189718f042f1a"
   integrity sha512-Y3oiu4Z2pTF27A2hURDL/9hN7/tBl/sa+udwjWl3gZR92mpqpAtVgQB3oCD36JgknMZu+2J3RBEGORu1Fr7wwg==
