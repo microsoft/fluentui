@@ -31,6 +31,10 @@ export class BaseTreeItem extends FASTElement {
    * @public
    */
   public expandedChanged(prev: boolean, next: boolean): void {
+    this.$emit('toggle', {
+      oldState: prev ? 'open' : 'closed',
+      newState: next ? 'open' : 'closed',
+    });
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
