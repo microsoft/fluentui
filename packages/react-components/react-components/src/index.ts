@@ -107,6 +107,7 @@ export {
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  getSlotClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
@@ -1151,6 +1152,7 @@ export type {
   DataGridSelectionCellProps,
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
+  CellRenderFunction,
 } from '@fluentui/react-table';
 
 export {
@@ -2006,3 +2008,40 @@ export type {
   ListItemSlots,
   ListItemState,
 } from '@fluentui/react-list';
+
+export {
+  ColorSlider,
+  colorSliderClassNames,
+  renderColorSlider_unstable,
+  useColorSliderStyles_unstable,
+  useColorSlider_unstable,
+  ColorPicker,
+  colorPickerClassNames,
+  renderColorPicker_unstable,
+  useColorPickerStyles_unstable,
+  useColorPicker_unstable,
+  ColorArea,
+  colorAreaClassNames,
+  renderColorArea_unstable,
+  useColorAreaStyles_unstable,
+  useColorArea_unstable,
+  AlphaSlider,
+  alphaSliderClassNames,
+  renderAlphaSlider_unstable,
+  useAlphaSliderStyles_unstable,
+  useAlphaSlider_unstable,
+} from '@fluentui/react-color-picker';
+export type {
+  ColorSliderProps,
+  ColorSliderSlots,
+  ColorSliderState,
+  ColorPickerProps,
+  ColorPickerSlots,
+  ColorPickerState,
+  ColorAreaProps,
+  ColorAreaSlots,
+  ColorAreaState,
+  AlphaSliderProps,
+  AlphaSliderSlots,
+  AlphaSliderState,
+} from '@fluentui/react-color-picker';

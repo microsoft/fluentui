@@ -21,14 +21,11 @@ export const useCarouselViewport_unstable = (
   const viewportRef = useCarouselContext(ctx => ctx.viewportRef);
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
 
-  const handleFocusCapture = React.useCallback(
-    (e: React.FocusEvent) => {
-      hasFocus.current = true;
-      // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
-      enableAutoplay(false, true);
-    },
-    [enableAutoplay],
-  );
+  const handleFocusCapture = React.useCallback(() => {
+    hasFocus.current = true;
+    // Will pause autoplay when focus is captured within viewport (if autoplay is initialized)
+    enableAutoplay(false, true);
+  }, [enableAutoplay]);
 
   const handleBlurCapture = React.useCallback(
     (e: React.FocusEvent) => {
@@ -43,22 +40,16 @@ export const useCarouselViewport_unstable = (
     [enableAutoplay],
   );
 
-  const handleMouseEnter = React.useCallback(
-    (event: React.MouseEvent) => {
-      hasMouse.current = true;
-      enableAutoplay(false, true);
-    },
-    [enableAutoplay],
-  );
-  const handleMouseLeave = React.useCallback(
-    (event: React.MouseEvent) => {
-      hasMouse.current = false;
-      if (!hasFocus.current) {
-        enableAutoplay(true, true);
-      }
-    },
-    [enableAutoplay],
-  );
+  const handleMouseEnter = React.useCallback(() => {
+    hasMouse.current = true;
+    enableAutoplay(false, true);
+  }, [enableAutoplay]);
+  const handleMouseLeave = React.useCallback(() => {
+    hasMouse.current = false;
+    if (!hasFocus.current) {
+      enableAutoplay(true, true);
+    }
+  }, [enableAutoplay]);
 
   const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
   const onBlurCapture = mergeCallbacks(props.onBlurCapture, handleBlurCapture);

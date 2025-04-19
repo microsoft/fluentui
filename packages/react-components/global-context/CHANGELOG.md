@@ -1,8 +1,38 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.83)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.82..@fluentui/global-context_v9.0.0-beta.83)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.76 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+
+## [9.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.82)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.81..@fluentui/global-context_v9.0.0-beta.82)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.75 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.81)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.80..@fluentui/global-context_v9.0.0-beta.81)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.74 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.80)
 

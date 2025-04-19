@@ -62,7 +62,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // Sets the focus visible className when the FocusRectsProvider for the layer is rendered
     // This allows the current focus visibility style to be carried over to the layer content
     const focusRectsRef = React.useCallback(
-      el => {
+      (el: any) => {
         const isFocusVisible = getFocusVisibility(focusContext?.providerRef);
         if (el && isFocusVisible) {
           el.classList.add(IsFocusVisibleClassName);

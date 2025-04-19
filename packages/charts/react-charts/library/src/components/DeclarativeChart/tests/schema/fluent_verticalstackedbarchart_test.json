@@ -1,0 +1,75 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "type": "bar",
+      "x": ["Jan", "Feb", "Mar", "Apr", "May"],
+      "y": [2000, 2100, 2200, 2300, 2400],
+      "name": "Category A",
+      "xaxis": "x1",
+      "yaxis": "y1",
+      "marker": {
+        "line": {
+          "width": 1
+        },
+        "color": "#0000FF"
+      },
+      "opacity": 1,
+      "orientation": "v"
+    },
+    {
+      "type": "bar",
+      "x": ["Jan", "Feb", "Mar", "Apr", "May"],
+      "y": [3000, 3100, 3200, 3300, 3400],
+      "name": "Category B",
+      "xaxis": "x1",
+      "yaxis": "y1",
+      "marker": {
+        "line": {
+          "width": 1
+        },
+        "color": "#007F00"
+      },
+      "opacity": 1,
+      "orientation": "v"
+    }
+  ],
+  "layout": {
+    "bargap": 11.864179406671795,
+    "xaxis1": {
+      "side": "bottom",
+      "type": "linear",
+      "range": [50, 300],
+      "ticks": "inside",
+      "anchor": "y1",
+      "domain": [0, 1],
+      "mirror": "ticks",
+      "nticks": 6,
+      "showgrid": false,
+      "showline": true,
+      "tickfont": {
+        "size": 12
+      },
+      "zeroline": false
+    },
+    "yaxis1": {
+      "side": "left",
+      "type": "linear",
+      "range": [0, 350],
+      "ticks": "inside",
+      "anchor": "x1",
+      "domain": [0, 1],
+      "mirror": "ticks",
+      "nticks": 8,
+      "showgrid": false,
+      "showline": true,
+      "tickfont": {
+        "size": 12
+      },
+      "zeroline": false
+    },
+    "hovermode": "closest",
+    "showlegend": false
+  },
+  "frames": []
+}

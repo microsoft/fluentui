@@ -112,7 +112,7 @@ export const WithOverflow = () => {
   const { x: overflowXParent } = useIsOverflow(parentRef);
   const { x: overflowXText } = useIsOverflow(textRef);
 
-  const handleForceOverflow = React.useCallback(ev => {
+  const handleForceOverflow = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>) => {
     setIsForced(ev.currentTarget.checked);
   }, []);
 

@@ -2,6 +2,120 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:04 GMT",
+      "tag": "@fluentui/react-provider_v9.20.5",
+      "version": "9.20.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "19b2f19973f3308942d71bd757e50f94d479cadd",
+            "comment": "fix: fix infite loop caused by hydration errors in React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.24.5",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.54",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Apr 2025 15:08:02 GMT",
+      "tag": "@fluentui/react-provider_v9.20.4",
+      "version": "9.20.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.24.4",
+            "commit": "585c4c328200e3e39097195b8cc302b25a54f11f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Mar 2025 21:12:51 GMT",
+      "tag": "@fluentui/react-provider_v9.20.3",
+      "version": "9.20.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.1",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.24.3",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.18.23",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.53",
+            "commit": "79c4ef242f754118fd614cd8642dc603f677284e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Mar 2025 15:40:43 GMT",
+      "tag": "@fluentui/react-provider_v9.20.2",
+      "version": "9.20.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.23.0",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.24.2",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.18.22",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.52",
+            "commit": "0b9dc9fb09cd640fbaaa2555472d32f3db04a508"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Mar 2025 18:58:54 GMT",
       "tag": "@fluentui/react-provider_v9.20.1",
       "version": "9.20.1",

@@ -41,9 +41,18 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
+  ILineChartLineOptions,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
+import {
+  CurveFactory,
+  curveLinear as d3CurveLinear,
+  curveNatural as d3CurveNatural,
+  curveStep as d3CurveStep,
+  curveStepAfter as d3CurveStepAfter,
+  curveStepBefore as d3CurveStepBefore,
+} from 'd3-shape';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -1010,6 +1019,45 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: IHorizontalBarChartWithAxisDataPoint[],
+): IHorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
+ * Calculates maximum domain value for Numeric x axis
+ * works for Horizontal Bar Chart With axis
+ * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeDomainMax(stackedChartData: IHorizontalBarChartWithAxisDataPoint[][]): number {
+  let longestBarTotalValue = 0;
+  stackedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const barTotalValue = group!.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
+      0,
+    );
+    return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
+  });
+  return longestBarTotalValue;
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1026,7 +1074,7 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   isRTL: boolean,
   shiftX: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const xMax = computeDomainMax(groupChartDataByYValue(points));
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
@@ -1485,14 +1533,15 @@ export const getBarWidth = (
   barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
   adjustedValue = DEFAULT_BAR_WIDTH,
+  modeProp?: string,
 ): number => {
   let barWidth: number;
-  if (typeof barWidthProp === 'number') {
-    barWidth = barWidthProp;
-  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
-  } else {
+  if (barWidthProp === 'auto' || modeProp === 'histogram') {
     barWidth = adjustedValue;
+  } else if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else {
+    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
   }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);
@@ -1594,3 +1643,27 @@ export const createMeasurementSpan = (text: string | number, className: string, 
 
   return measurementSpan;
 };
+
+export function getCurveFactory(
+  curve: ILineChartLineOptions['curve'],
+  defaultFactory: CurveFactory = d3CurveLinear,
+): CurveFactory {
+  if (typeof curve === 'function') {
+    return curve;
+  }
+
+  switch (curve) {
+    case 'linear':
+      return d3CurveLinear;
+    case 'natural':
+      return d3CurveNatural;
+    case 'step':
+      return d3CurveStep;
+    case 'stepAfter':
+      return d3CurveStepAfter;
+    case 'stepBefore':
+      return d3CurveStepBefore;
+    default:
+      return defaultFactory;
+  }
+}

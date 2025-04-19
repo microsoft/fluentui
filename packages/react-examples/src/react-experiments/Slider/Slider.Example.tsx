@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { Slider as DeprecatedSlider } from '@fluentui/react-experiments';
 import { IStackTokens, Stack } from '@fluentui/react';

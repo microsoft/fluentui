@@ -1,0 +1,7 @@
+{
+  "name": "visual-regression-utilities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/visual-regression-utilities/src",
+  "projectType": "library",
+  "tags": ["platform:any", "tools"]
+}

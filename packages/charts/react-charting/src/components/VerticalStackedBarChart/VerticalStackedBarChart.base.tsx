@@ -264,6 +264,7 @@ export class VerticalStackedBarChartBase
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
           ref={this._cartesianChartRef}
+          showRoundOffXTickValues={!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)}
           /* eslint-disable react/jsx-no-bind */
           children={(props: IChildProps) => {
             return (
@@ -536,7 +537,11 @@ export class VerticalStackedBarChartBase
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
-    this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
+    this._xAxisInnerPadding = getScalePadding(
+      this.props.xAxisInnerPadding,
+      this.props.xAxisPadding,
+      this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+    );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -845,20 +850,30 @@ export class VerticalStackedBarChartBase
   ): {
     readonly gapHeight: number;
     readonly heightValueScale: number;
+    readonly adjustedTotalHeight: number;
   } {
     const { barGapMax = 0 } = this.props;
 
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
+    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
     const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    let sumOfPercent = 0;
+    bars.forEach(point => {
+      let value = (Math.abs(point.data) / totalData) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      }
+      sumOfPercent += value;
+    });
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / totalData;
-
+    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
     return {
       gapHeight,
       heightValueScale,
+      adjustedTotalHeight: sumOfPercent,
     } as const;
   }
 
@@ -902,7 +917,7 @@ export class VerticalStackedBarChartBase
         return undefined;
       }
 
-      const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
+      const { gapHeight, heightValueScale, adjustedTotalHeight } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
       if (heightValueScale < 0) {
         return undefined;
@@ -939,8 +954,8 @@ export class VerticalStackedBarChartBase
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.ceil((heightValueScale * this._yMax) / 100.0), barMinimumHeight);
+        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
+          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -1090,8 +1105,10 @@ export class VerticalStackedBarChartBase
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
-        .nice()
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
+      if (!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)) {
+        xBarScale.nice();
+      }
 
       return { xBarScale, yBarScale };
     }
@@ -1235,10 +1252,13 @@ export class VerticalStackedBarChartBase
         let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * barWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        // Calculate the remaining width after accounting for the space required to render x-axis labels
-        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
-        const margin2 = (totalWidth - reqWidth) / 2;
+        let margin2 = Number.POSITIVE_INFINITY;
+        if (!this.props.hideTickOverlap) {
+          // Calculate the remaining width after accounting for the space required to render x-axis labels
+          const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+          reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+          margin2 = (totalWidth - reqWidth) / 2;
+        }
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
@@ -1247,7 +1267,7 @@ export class VerticalStackedBarChartBase
       this._barWidth = getBarWidth(
         this.props.barWidth,
         this.props.maxBarWidth,
-        calculateAppropriateBarWidth(data, totalWidth),
+        calculateAppropriateBarWidth(data, totalWidth, this._xAxisInnerPadding),
       );
       this._domainMargin = MIN_DOMAIN_MARGIN + this._barWidth / 2;
     }
