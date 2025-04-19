@@ -2,6 +2,12 @@ import { attr, Observable } from '@microsoft/fast-element';
 import { BaseTextArea } from './textarea.base.js';
 import { TextAreaAppearance, TextAreaSize } from './textarea.options.js';
 
+/**
+ * The Fluent TextArea Element.
+ *
+ * @tag fluent-text-area
+ *
+ */
 export class TextArea extends BaseTextArea {
   protected labelSlottedNodesChanged() {
     super.labelSlottedNodesChanged();

@@ -3751,7 +3751,7 @@ export { styles as MenuButtonStyles }
 
 // Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Switch extends BaseCheckbox {
     constructor();
 }
@@ -3988,7 +3988,7 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 
 // Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class TextArea extends BaseTextArea {
     appearance: TextAreaAppearance;
     block: boolean;
@@ -4296,7 +4296,7 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
     // @internal
@@ -4472,7 +4472,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/dts/accordion-item/accordion-item.d.ts:14:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

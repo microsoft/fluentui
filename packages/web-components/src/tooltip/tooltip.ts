@@ -6,6 +6,9 @@ import type { TooltipPositioningOption } from './tooltip.options.js';
 /**
  * A Tooltip Custom HTML Element.
  * Based on ARIA APG Tooltip Pattern {@link https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ }
+ *
+ * @tag fluent-tooltip
+ *
  * @public
  */
 export class Tooltip extends FASTElement {

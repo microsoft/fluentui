@@ -9,6 +9,8 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
  * @deprecated - Use tablist instead
+ *
+ * @tag fluent-tabs
  */
 export class Tabs extends BaseTabs {
   /**

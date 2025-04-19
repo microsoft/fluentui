@@ -3,6 +3,9 @@ import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
  * The base class used for constructing a fluent-text custom element
+ *
+ * @tag fluent-text
+ *
  * @public
  */
 export class Text extends FASTElement {

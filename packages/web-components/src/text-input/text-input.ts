@@ -9,6 +9,8 @@ import { TextInputAppearance, TextInputControlSize } from './text-input.options.
  * A Text Input Custom HTML Element.
  * Based on BaseTextInput and includes style and layout specific attributes
  *
+ * @tag fluent-text-input
+ *
  * @public
  */
 export class TextInput extends BaseTextInput {

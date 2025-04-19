@@ -7,6 +7,8 @@ import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
  * A Checkbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#checkbox | ARIA checkbox }.
  *
+ * @tag fluent-checkbox
+ *
  * @slot checked-indicator - The checked indicator
  * @slot indeterminate-indicator - The indeterminate indicator
  * @fires change - Emits a custom change event when the checked state changes

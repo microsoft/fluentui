@@ -8,6 +8,9 @@ import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './a
 
 /**
  * Anchor configuration options
+ *
+ * @tag fluent-anchor-button
+ *
  * @public
  */
 export type AnchorOptions = StartEndOptions<AnchorButton>;

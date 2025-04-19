@@ -4,6 +4,8 @@ import { DialogType } from './dialog.options.js';
 /**
  * A Dialog Custom HTML Element.
  *
+ * @tag fluent-dialog
+ *
  * @public
  */
 export class Dialog extends FASTElement {
