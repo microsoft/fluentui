@@ -178,7 +178,7 @@
     "@types/yargs-unparser": "2.0.1",
     "@typescript-eslint/rule-tester": "8.29.0",
     "@wc-toolkit/cem-inheritance": "1.0.4",
-    "@wc-toolkit/cem-validator": "1.0.2",
+    "@wc-toolkit/cem-validator": "1.0.3",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",

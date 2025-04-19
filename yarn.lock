@@ -6241,10 +6241,10 @@
   dependencies:
     "@wc-toolkit/jsdoc-tags" "^1.1.0"
 
-"@wc-toolkit/cem-validator@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-validator/-/cem-validator-1.0.2.tgz#8d41a495093f447f3f5d702c22f49be215a92840"
-  integrity sha512-j9ijx4gmeD2+E41qBWGjWLsp4TzO9dM+bNYqk6fHEx5+QG/Cv339m3C2nnaADdnWfX+PKRnFRZ2xv9WEnIjt3g==
+"@wc-toolkit/cem-validator@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@wc-toolkit/cem-validator/-/cem-validator-1.0.3.tgz#265f3e8f5f2a80e6892bf8afe85d6ea664594ad8"
+  integrity sha512-teKgwoyUaIUmJQCnYVjaxOLo6wOSNN/cCRh3jeeF84rNDuzyygl+zHfwgU5H8Z02hSvgvCJjKX+r7un9A70svw==
 
 "@wc-toolkit/jsdoc-tags@^1.1.0":
   version "1.1.0"
