@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "lint: fix exposed lint errors",
-  "packageName": "@fluentui/react-motion",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

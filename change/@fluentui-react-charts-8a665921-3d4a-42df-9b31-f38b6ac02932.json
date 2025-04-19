@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Add background to the SVGTooltipText",
-  "packageName": "@fluentui/react-charts",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

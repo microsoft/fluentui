@@ -108,7 +108,7 @@ export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
 
     // Overwrite the 'y', 'x', or 'z' value with the decoded 'bdata'
     for (const item of plotlySchema.data || []) {
-      ['y', 'x', 'z'].forEach(key => {
+      ['y', 'x', 'z', 'r', 'theta'].forEach(key => {
         if (
           item[key as keyof typeof item] &&
           typeof item[key as keyof typeof item] === 'object' &&

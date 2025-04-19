@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Popover): revert to a single composition mode for slide animations",
-  "packageName": "@fluentui/react-positioning",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}
