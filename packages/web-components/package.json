@@ -23,7 +23,8 @@
     "dist/dts/",
     "dist/esm/",
     "dist/*.js",
-    "dist/*.d.ts"
+    "dist/*.d.ts",
+    "custom-elements.json"
   ],
   "exports": {
     ".": {
@@ -76,6 +77,7 @@
     "./dist/web-components.min.js"
   ],
   "scripts": {
+    "analyze": "cem analyze",
     "verify-packaging": "node ./scripts/verify-packaging",
     "type-check": "node ./scripts/type-check",
     "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
@@ -83,7 +85,7 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
-    "build": "yarn compile && yarn rollup -c && yarn generate-api",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn analyze",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
@@ -96,11 +98,16 @@
     "e2e:local": "node ./scripts/e2e.js --ui"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.0",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
+    "@wc-toolkit/cem-validator": "1.0.3",
+    "@wc-toolkit/cem-inheritance": "1.0.4",
+    "@wc-toolkit/module-path-resolver": "1.0.0",
+    "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {
@@ -119,5 +126,6 @@
       "patch"
     ],
     "tag": "beta"
-  }
+  },
+  "customElements": "./custom-elements.json"
 }

@@ -11,6 +11,8 @@ export type TabOptions = StartEndOptions<Tab>;
 
 /**
  * Tab extends the FASTTab and is a child of the TabList
+ *
+ * @tag fluent-tab
  */
 export class Tab extends FASTElement {
   /**
