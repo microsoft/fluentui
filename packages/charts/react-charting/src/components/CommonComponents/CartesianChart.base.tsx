@@ -422,7 +422,7 @@ export class CartesianChartBase
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = yScaleSecondary = this.props.createYAxis(
+          yScaleSecondary = this.props.createYAxis(
             YAxisParamsSecondary,
             this._isRtl,
             axisData,
@@ -460,7 +460,7 @@ export class CartesianChartBase
 
       this.props.getAxisData && this.props.getAxisData(axisData);
       // Callback function for chart, returns axis
-      this._getData(xScale, yScale);
+      this._getData(xScale, yScale, yScaleSecondary);
 
       children = this.props.children({
         ...this.state,
@@ -889,7 +889,7 @@ export class CartesianChartBase
 
   // Call back to the chart.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getData = (xScale: any, yScale: any) => {
+  private _getData = (xScale: any, yScale: any, yScaleSecondary: any) => {
     this.props.getGraphData &&
       this.props.getGraphData(
         xScale,
@@ -898,6 +898,7 @@ export class CartesianChartBase
         this.state.containerWidth,
         this.xAxisElement,
         this.yAxisElement,
+        yScaleSecondary,
       );
   };
 

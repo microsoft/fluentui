@@ -168,14 +168,14 @@ export const getColor = (
 
 const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
   const secondaryYAxisValues: ISecondaryYAxisValues = {};
-  if (layout && layout.yaxis2 && series.yaxis === 'y2') {
+  if (series.yaxis === 'y2') {
     secondaryYAxisValues.secondaryYAxistitle =
-      typeof layout.yaxis2.title === 'string'
+      typeof layout?.yaxis2?.title === 'string'
         ? layout.yaxis2.title
-        : typeof layout.yaxis2.title?.text === 'string'
+        : typeof layout?.yaxis2?.title?.text === 'string'
         ? layout.yaxis2.title.text
         : '';
-    if (layout.yaxis2.range) {
+    if (layout?.yaxis2?.range) {
       secondaryYAxisValues.secondaryYScaleOptions = {
         yMinValue: layout.yaxis2.range[0],
         yMaxValue: layout.yaxis2.range[1],
@@ -259,6 +259,8 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
+    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
+
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
@@ -280,12 +282,12 @@ export const transformPlotlyJsonToVSBCProps = (
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
+          useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
         });
       }
 
       yMaxValue = Math.max(yMaxValue, yVal);
     });
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
@@ -315,6 +317,8 @@ export const transformPlotlyJsonToGVBCProps = (
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
 
   input.data.forEach((series: PlotData, index1: number) => {
+    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
+
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
@@ -342,12 +346,11 @@ export const transformPlotlyJsonToGVBCProps = (
             xAxisCalloutData: x as string,
             color,
             legend,
+            useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
           });
         }
       }
     });
-
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
