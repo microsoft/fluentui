@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
-import { ScaleLinear, scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import {
   classNamesFunction,
   getId,

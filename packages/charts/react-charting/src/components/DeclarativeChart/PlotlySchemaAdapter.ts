@@ -472,6 +472,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       })),
       color: lineColor,
       ...(lineOptions ? { lineOptions } : {}),
+      useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
     } as ILineChartPoints;
   });
 

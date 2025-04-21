@@ -465,6 +465,12 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking  line
    */
   onLineClick?: () => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**

@@ -679,6 +679,7 @@ export interface IGVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
+    useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
@@ -1008,6 +1009,7 @@ export interface ILineChartPoints {
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public
