@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Making tabster instance live for the duration of component calling useTabster hook.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
