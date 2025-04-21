@@ -78,7 +78,7 @@ ButtonDefinition.define(FluentDesignSystem.registry);
 
 ## Developer Experience
 
-For convenience we have included a [CEM (custom elements manifest)](https://github.com/webcomponents/custom-elements-manifest).
+For convenience we have included a [CEM (custom elements manifest)](https://github.com/webcomponents/custom-elements-manifest) at the root of the project.
 
 ```js
 import CEM from '@fluentui/custom-elements.json' with { type: 'json' };
