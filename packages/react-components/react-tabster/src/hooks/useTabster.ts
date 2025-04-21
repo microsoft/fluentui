@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { getParent, usePrevious } from '@fluentui/react-utilities';
+import { getParent, useIsomorphicLayoutEffect, usePrevious } from '@fluentui/react-utilities';
 
 interface WindowWithTabsterShadowDOMAPI extends Window {
   __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
@@ -52,7 +52,7 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
   const tabster = createTabsterWithConfig(targetDocument);
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (tabster) {
       factoryResultRef.current = factory(tabster) as FactoryResult;
 
