@@ -229,7 +229,7 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />
-          <Label id={multipleLabelId}>Categories</Label>
+          <Label id={multipleLabelId}>Allow multiple expanded categories</Label>
           <Switch
             checked={isMultiple}
             onChange={(_, data) => setIsMultiple(!!data.checked)}
