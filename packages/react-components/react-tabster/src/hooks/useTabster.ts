@@ -51,9 +51,8 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
   const { targetDocument } = useFluent();
   const factoryResultRef = React.useRef<FactoryResult | null>(null);
 
+  const tabster = createTabsterWithConfig(targetDocument);
   React.useEffect(() => {
-    const tabster = createTabsterWithConfig(targetDocument);
-
     if (tabster) {
       factoryResultRef.current = factory(tabster) as FactoryResult;
 
