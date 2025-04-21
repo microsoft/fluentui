@@ -61,7 +61,7 @@ export function useTabster<FactoryResult>(factory = DEFAULT_FACTORY) {
         factoryResultRef.current = null;
       };
     }
-  }, [targetDocument, factory]);
+  }, [factory, tabster, targetDocument]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line
