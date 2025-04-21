@@ -210,7 +210,7 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
       </NavDrawer>
       <div className={styles.content}>
         <Tooltip content="Toggle navigation pane" relationship="label">
-          <Hamburger onClick={() => setIsOpen(!isOpen)} {...restoreFocusTargetAttributes} />
+          <Hamburger onClick={() => setIsOpen(!isOpen)} {...restoreFocusTargetAttributes} aria-expanded={isOpen} />
         </Tooltip>
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
