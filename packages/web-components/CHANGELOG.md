@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 18 Apr 2025 04:06:38 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Apr 2025 04:07:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.94)
+
+Tue, 22 Apr 2025 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.93..@fluentui/web-components_v3.0.0-beta.94)
+
+### Changes
+
+- Added custom elements manifest to project and included it in published package ([PR #34283](https://github.com/microsoft/fluentui/pull/34283) by burtonsmith@microsoft.com)
 
 ## [3.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.93)
 
