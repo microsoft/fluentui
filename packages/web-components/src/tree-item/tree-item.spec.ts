@@ -75,4 +75,44 @@ test.describe('Tree Item', () => {
     });
     expect(await element.getAttribute('selected')).not.toBeNull();
   });
+
+  test('should expand parent items when child item is set to selected', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+        Item 1
+        <fluent-tree-item>
+          Nested Item A
+          <fluent-tree-item>
+            Nested Item B
+            <fluent-tree-item selected>Nested Item C</fluent-tree-item>
+          </fluent-tree-item>
+        </fluent-tree-item>
+      `,
+    });
+    const selectedItems = element.locator('[selected]');
+
+    await expect(element.nth(0)).toHaveAttribute('expanded');
+    await expect(selectedItems).toBeVisible();
+  });
+
+  test('should keep intitally set expanded attribute when no child item is set to selected', async ({ fastPage }) => {
+    const { element } = fastPage;
+    await fastPage.setTemplate({
+      attributes: { expanded: true },
+      innerHTML: /* html */ `
+        Item 1
+        <fluent-tree-item>
+          Nested Item A
+          <fluent-tree-item>
+            Nested Item B
+            <fluent-tree-item>Nested Item C</fluent-tree-item>
+          </fluent-tree-item>
+        </fluent-tree-item>
+      `,
+    });
+    const nestedItem = element.nth(0).locator('fluent-tree-item').nth(0);
+    await expect(element.nth(0)).toHaveAttribute('expanded');
+    await expect(nestedItem).toBeVisible();
+  });
 });

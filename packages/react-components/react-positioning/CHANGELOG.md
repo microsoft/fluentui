@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.7)
+
+Wed, 16 Apr 2025 19:42:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.6..@fluentui/react-positioning_v9.16.7)
+
+### Patches
+
+- fix(Popover): revert to a single composition mode for slide animations ([PR #34160](https://github.com/microsoft/fluentui/pull/34160) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.6)
 

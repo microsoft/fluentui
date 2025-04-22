@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

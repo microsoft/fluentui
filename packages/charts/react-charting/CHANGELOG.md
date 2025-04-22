@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 16 Apr 2025 07:22:26 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Apr 2025 07:20:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.76)
+
+Tue, 22 Apr 2025 07:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.75..@fluentui/react-charting_v5.23.76)
+
+### Patches
+
+- fix(react-charting): Fixing legends disappear when hovering over the scrollbar in more legends ([PR #34289](https://github.com/microsoft/fluentui/pull/34289) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.75)
+
+Fri, 18 Apr 2025 07:20:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.74..@fluentui/react-charting_v5.23.75)
+
+### Patches
+
+- feat(react-charting): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
+
+## [5.23.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.74)
+
+Thu, 17 Apr 2025 07:21:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.73..@fluentui/react-charting_v5.23.74)
+
+### Patches
+
+- fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart ([PR #34245](https://github.com/microsoft/fluentui/pull/34245) by 120183316+srmukher@users.noreply.github.com)
+- feat: add histogram mode to vertical bar chart ([PR #34265](https://github.com/microsoft/fluentui/pull/34265) by kumarkshitij@microsoft.com)
 
 ## [5.23.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.73)
 

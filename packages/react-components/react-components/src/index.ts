@@ -107,6 +107,7 @@ export {
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  getSlotClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
@@ -1151,6 +1152,7 @@ export type {
   DataGridSelectionCellProps,
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
+  CellRenderFunction,
 } from '@fluentui/react-table';
 
 export {
@@ -1468,6 +1470,15 @@ export {
   useInfoLabel_unstable,
 } from '@fluentui/react-infolabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  InfoButton,
+  infoButtonClassNames,
+  renderInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  useInfoButton_unstable,
+} from '@fluentui/react-infobutton';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
 
 export {
   Drawer,
