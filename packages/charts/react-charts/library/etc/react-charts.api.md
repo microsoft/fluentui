@@ -197,15 +197,6 @@ export interface CartesianChartStyleProps {
 // @public
 export interface CartesianChartStyles {
     axisTitle?: string;
-    calloutBlockContainer?: string;
-    calloutBlockContainertoDrawShapefalse?: string;
-    calloutBlockContainertoDrawShapetrue?: string;
-    calloutContentRoot?: string;
-    calloutContentX?: string;
-    calloutContentY?: string;
-    calloutDateTimeContainer?: string;
-    calloutInfoContainer?: string;
-    calloutlegendText?: string;
     chartTitle?: string;
     chartWrapper?: string;
     descriptionMessage?: string;
@@ -1137,6 +1128,7 @@ export interface SankeyChartProps {
     className?: string;
     colorsForNodes?: string[];
     componentRef?: RefObject<Chart>;
+    culture?: string;
     data: ChartProps;
     enableReflow?: boolean;
     formatNumberOptions?: Intl.NumberFormatOptions;

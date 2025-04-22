@@ -167,26 +167,28 @@ export const AreaChartLargeData = () => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Large">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Large"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthslider${width}`}
-      />
-      <label htmlFor="changeHeight_Large">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Large"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Large">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Large"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthslider${width}`}
+        />
+        <label htmlFor="changeHeight_Large">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Large"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
       <div style={rootStyle}>
         <AreaChart
           height={height}
