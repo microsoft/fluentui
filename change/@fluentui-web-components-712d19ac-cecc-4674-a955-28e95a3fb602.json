@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added custom elements manifest to project and included it in published package",
-  "packageName": "@fluentui/web-components",
-  "email": "burtonsmith@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 22 Apr 2025 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.94",
+      "version": "3.0.0-beta.94",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "08186717313e73d222f34ce68df41685ce106609",
+            "comment": "Added custom elements manifest to project and included it in published package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Apr 2025 04:06:38 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.93",
       "version": "3.0.0-beta.93",
