@@ -660,7 +660,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _getRangeForScatterMarkerSize(yScale: ScaleLinear<number,number>): number {
+  private _getRangeForScatterMarkerSize(yScale: ScaleLinear<number, number>): number {
     const extraXPixels = this._isRTL
       ? this._xAxisScale(this._xMax - this._xPadding) - this._xAxisScale(this._xMax)
       : this._xAxisScale(this._xMin + this._xPadding) - this._xAxisScale(this._xMin);
@@ -694,7 +694,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       const yScale =
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yAxisScale;
-        const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale) : 0;
+      const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale) : 0;
 
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
