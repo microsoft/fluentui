@@ -106,6 +106,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   implements IBasePicker<T>
 {
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   // Refs
   protected root = React.createRef<HTMLDivElement>();

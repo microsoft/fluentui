@@ -30,6 +30,7 @@ type MouseTouchEvent<T> = React.MouseEvent<T> & React.TouchEvent<T> & Event;
 
 export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggableZoneState> {
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _touchId?: number;
   private _currentEventType = eventMapping.mouse;

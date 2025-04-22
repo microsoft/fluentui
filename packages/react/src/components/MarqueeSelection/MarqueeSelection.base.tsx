@@ -44,6 +44,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _async: Async;
   private _events: EventGroup;

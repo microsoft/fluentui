@@ -127,6 +127,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     'data-tabster': '{"uncontrolled": {}}',
   } as IFocusZonePropsWithTabster;
 
+  public context: React.ContextType<typeof MergeStylesShadowRootContext>;
+
   private _root: React.RefObject<HTMLElement> = React.createRef();
   private _mergedRef = createMergedRef<HTMLElement>();
 
