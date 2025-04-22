@@ -326,14 +326,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -346,7 +346,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -1113,14 +1113,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -1133,7 +1133,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -1913,14 +1913,14 @@ exports[`Theme Change Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="47.400000000000006"
+                height="47.39999999999998"
                 id="_VBC_bar_11"
                 role="img"
                 rx="0"
                 tabindex="0"
                 width="16"
                 x="48"
-                y="209.6"
+                y="209.60000000000002"
               />
               <text
                 aria-hidden="true"
@@ -1933,7 +1933,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="56"
-                y="203.6"
+                y="203.60000000000002"
               >
                 10.0k
               </text>
@@ -2660,14 +2660,14 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="279"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -2680,7 +2680,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                   }
               text-anchor="middle"
               x="287"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -12545,14 +12545,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -12565,7 +12565,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -13462,14 +13462,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_8"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -13482,7 +13482,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -14896,7 +14896,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                   }
               data-is-focusable="true"
               fill="#002050"
-              height="118.49999999999999"
+              height="118.5"
               id="_VBC_bar_16"
               role="img"
               rx="0"
@@ -15648,14 +15648,14 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -15668,7 +15668,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>
@@ -16481,14 +16481,14 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="47.400000000000006"
+              height="47.39999999999998"
               id="_VBC_bar_14"
               role="img"
               rx="0"
               tabindex="0"
               width="16"
               x="48"
-              y="209.6"
+              y="209.60000000000002"
             />
             <text
               aria-hidden="true"
@@ -16501,7 +16501,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               text-anchor="middle"
               x="56"
-              y="203.6"
+              y="203.60000000000002"
             >
               10.0k
             </text>

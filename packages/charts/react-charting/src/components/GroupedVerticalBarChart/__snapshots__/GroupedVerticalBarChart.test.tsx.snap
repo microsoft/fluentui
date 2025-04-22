@@ -128,7 +128,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -943,7 +943,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -2306,7 +2306,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -3017,7 +3017,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={10}
-            y={26.413043478260864}
+            y={26.413043478260875}
           />
           <rect
             aria-label="2010. MetaData3, 33."

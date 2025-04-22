@@ -429,12 +429,15 @@ export class GroupedVerticalBarChartBase
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
       if (pointData) {
-        const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+        const yBarScale = (value: number): number => {
+          const scale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+          return containerHeight - this.margins.bottom! - scale(value);
+        };
 
         // To align the centers of the generated bandwidth and the calculated one when they differ,
         // use the following addend.
         const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
-        const yPoint = yBarScale(pointData.data);
+        const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
         let startColor = pointData.color ? pointData.color : getNextColor(index, 0, this.props.theme?.isInverted);
         let endColor = startColor;
 
@@ -460,7 +463,7 @@ export class GroupedVerticalBarChartBase
               )}
               <rect
                 className={this._classNames.opacityChangeOnHover}
-                height={Math.max(containerHeight - this.margins.bottom! - yPoint, 0)}
+                height={Math.max(yBarScale(pointData.data), 0)}
                 width={this._barWidth}
                 x={xPoint}
                 y={yPoint}

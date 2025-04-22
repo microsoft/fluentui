@@ -8,6 +8,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  ScaleLinear,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -35,7 +36,6 @@ import {
   IAxisData,
   getAccessibleDataObject,
   XAxisTypes,
-  NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
   formatValueWithSIPrefix,
@@ -510,17 +510,19 @@ export class VerticalBarChartBase
   private _getGraphData = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
-    yScale: NumericAxis,
+    yScale: ScaleLinear<number, number>,
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+        ? this._createNumericBars(containerHeight, containerWidth, xElement!, yScale, yScaleSecondary)
         : this._xAxisType === XAxisTypes.DateAxis
-        ? this._createDateBars(containerHeight, containerWidth, xElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!));
+        ? this._createDateBars(containerHeight, containerWidth, xElement!, yScale, yScaleSecondary)
+        : this._createStringBars(containerHeight, containerWidth, xElement!, yScale, yScaleSecondary));
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -755,9 +757,15 @@ export class VerticalBarChartBase
         : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
     return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
   }
-  private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createNumericBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yScale: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+  ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
+    const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
 
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
@@ -769,6 +777,10 @@ export class VerticalBarChartBase
         shouldHighlight,
       });
 
+      const yBarScale = (value: number): number => {
+        const scale = point.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+        return containerHeight - this.margins.bottom! - scale(value);
+      };
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
@@ -865,9 +877,15 @@ export class VerticalBarChartBase
     return bars;
   }
 
-  private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createStringBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yScale: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+  ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
+    const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
@@ -877,6 +895,10 @@ export class VerticalBarChartBase
         shouldHighlight,
       });
 
+      const yBarScale = (value: number): number => {
+        const scale = point.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+        return containerHeight - this.margins.bottom! - scale(value);
+      };
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
@@ -981,9 +1003,15 @@ export class VerticalBarChartBase
     return bars;
   }
 
-  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+  private _createDateBars(
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement,
+    yScale: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+  ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
+    const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
 
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
@@ -995,6 +1023,10 @@ export class VerticalBarChartBase
         shouldHighlight,
       });
 
+      const yBarScale = (value: number): number => {
+        const scale = point.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+        return containerHeight - this.margins.bottom! - scale(value);
+      };
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
       const isHeightNegative = barHeight < 0;
       barHeight = Math.abs(barHeight);
