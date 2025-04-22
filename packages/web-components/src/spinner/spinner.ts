@@ -6,6 +6,8 @@ import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
  * A Spinner Custom HTML Element.
  * Based on BaseSpinner and includes style and layout specific attributes
  *
+ * @tag fluent-spinner
+ *
  * @public
  */
 export class Spinner extends BaseSpinner {
