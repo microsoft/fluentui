@@ -47,6 +47,7 @@ import type {
   SankeyData,
   ScatterLine,
   TypedArray,
+  Data,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -166,37 +167,48 @@ export const getColor = (
   return colorMap.current.get(legendLabel) as string;
 };
 
-const getSecondaryYAxisValues = (series: PlotData, layout: Partial<Layout> | undefined) => {
-  const secondaryYAxisValues: ISecondaryYAxisValues = {};
-  if (series.yaxis === 'y2') {
-    secondaryYAxisValues.secondaryYAxistitle =
+const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
+  return series.yaxis === 'y2';
+};
+
+const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefined): ISecondaryYAxisValues => {
+  let containsSecondaryYAxis = false;
+  let yMinValue: number | undefined;
+  let yMaxValue: number | undefined;
+
+  data.forEach((series: Partial<PlotData>) => {
+    if (usesSecondaryYScale(series)) {
+      containsSecondaryYAxis = true;
+
+      const yValues = series.y as number[];
+      if (yValues) {
+        yMinValue = Math.min(...yValues);
+        yMaxValue = Math.max(...yValues);
+      }
+    }
+  });
+
+  if (!containsSecondaryYAxis) {
+    return {};
+  }
+
+  if (layout?.yaxis2?.range) {
+    yMinValue = layout.yaxis2.range[0];
+    yMaxValue = layout.yaxis2.range[1];
+  }
+
+  return {
+    secondaryYAxistitle:
       typeof layout?.yaxis2?.title === 'string'
         ? layout.yaxis2.title
         : typeof layout?.yaxis2?.title?.text === 'string'
         ? layout.yaxis2.title.text
-        : '';
-    if (layout?.yaxis2?.range) {
-      secondaryYAxisValues.secondaryYScaleOptions = {
-        yMinValue: layout.yaxis2.range[0],
-        yMaxValue: layout.yaxis2.range[1],
-      };
-    } else {
-      const yValues = series.y as number[];
-      if (yValues) {
-        secondaryYAxisValues.secondaryYScaleOptions = {
-          yMinValue: Math.min(...yValues),
-          yMaxValue: Math.max(...yValues),
-        };
-      }
-    }
-  }
-  secondaryYAxisValues.secondaryYAxistitle =
-    secondaryYAxisValues.secondaryYAxistitle !== '' ? secondaryYAxisValues.secondaryYAxistitle : undefined;
-  secondaryYAxisValues.secondaryYScaleOptions =
-    secondaryYAxisValues.secondaryYScaleOptions && Object.keys(secondaryYAxisValues.secondaryYScaleOptions).length !== 0
-      ? secondaryYAxisValues.secondaryYScaleOptions
-      : undefined;
-  return secondaryYAxisValues;
+        : undefined,
+    secondaryYScaleOptions: {
+      yMinValue,
+      yMaxValue,
+    },
+  };
 };
 
 export const transformPlotlyJsonToDonutProps = (
@@ -257,10 +269,8 @@ export const transformPlotlyJsonToVSBCProps = (
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
-  let secondaryYAxisValues: ISecondaryYAxisValues = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
-
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
@@ -282,7 +292,7 @@ export const transformPlotlyJsonToVSBCProps = (
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
-          useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
+          useSecondaryYScale: usesSecondaryYScale(series),
         });
       }
 
@@ -302,8 +312,7 @@ export const transformPlotlyJsonToVSBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    ...secondaryYAxisValues,
     hideTickOverlap: true,
   };
 };
@@ -314,11 +323,9 @@ export const transformPlotlyJsonToGVBCProps = (
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  let secondaryYAxisValues: ISecondaryYAxisValues = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
 
   input.data.forEach((series: PlotData, index1: number) => {
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
-
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
@@ -346,7 +353,7 @@ export const transformPlotlyJsonToGVBCProps = (
             xAxisCalloutData: x as string,
             color,
             legend,
-            useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
+            useSecondaryYScale: usesSecondaryYScale(series),
           });
         }
       }
@@ -364,8 +371,7 @@ export const transformPlotlyJsonToGVBCProps = (
     xAxisTitle,
     yAxisTitle,
     mode: 'plotly',
-    secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-    secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+    ...secondaryYAxisValues,
     hideTickOverlap: true,
   };
 };
@@ -446,7 +452,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  let secondaryYAxisValues: ISecondaryYAxisValues = {};
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   let mode: string = 'tonexty';
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
@@ -455,7 +461,6 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXNumber = isNumberArray(xValues);
     const legend: string = getLegend(series, index);
     const lineColor = getColor(legend, colorMap, isDarkTheme);
-    secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
 
@@ -472,7 +477,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       })),
       color: lineColor,
       ...(lineOptions ? { lineOptions } : {}),
-      useSecondaryYScale: !!secondaryYAxisValues.secondaryYScaleOptions,
+      useSecondaryYScale: usesSecondaryYScale(series),
     } as ILineChartPoints;
   });
 
@@ -490,8 +495,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
-      secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-      secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      ...secondaryYAxisValues,
       mode,
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
@@ -503,8 +507,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
-      secondaryYAxistitle: secondaryYAxisValues.secondaryYAxistitle,
-      secondaryYScaleOptions: secondaryYAxisValues.secondaryYScaleOptions,
+      ...secondaryYAxisValues,
       roundedTicks: true,
       yMinValue: yMinMaxValues.startValue,
       yMaxValue: yMinMaxValues.endValue,
