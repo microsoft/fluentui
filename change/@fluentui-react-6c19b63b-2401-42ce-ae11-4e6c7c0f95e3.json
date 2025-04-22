@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "Added KeyboardEvent to union type on onLinkClick prop",
+  "comment": "fix(Pivot): Added KeyboardEvent to union type on onLinkClick prop.",
   "packageName": "@fluentui/react",
-  "email": "email not defined",
+  "email": "eddylynch@microsoft.com",
   "dependentChangeType": "patch"
 }
