@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 18 Apr 2025 07:20:42 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Apr 2025 07:20:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.76)
+
+Tue, 22 Apr 2025 07:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.75..@fluentui/react-charting_v5.23.76)
+
+### Patches
+
+- fix(react-charting): Fixing legends disappear when hovering over the scrollbar in more legends ([PR #34289](https://github.com/microsoft/fluentui/pull/34289) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.23.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.75)
 
