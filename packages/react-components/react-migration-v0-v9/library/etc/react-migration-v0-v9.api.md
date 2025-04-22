@@ -21,7 +21,6 @@ import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities
 import { Slot } from '@fluentui/react-components';
 import { Slot as Slot_2 } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export const Attachment: React_2.ForwardRefExoticComponent<AttachmentProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -157,12 +156,10 @@ export const input: {
 // @public (undocumented)
 export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots, "root"> & Omit<{
     as?: "div" | undefined;
-} & Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+} & Omit<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-} & {
-    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
-    ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }>;
+}, "children"> & {
+    children?: any;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
