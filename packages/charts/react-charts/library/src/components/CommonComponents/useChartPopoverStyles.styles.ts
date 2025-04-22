@@ -1,5 +1,4 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { ChartPopoverProps, PopoverComponentStyles } from './ChartPopover.types';
@@ -52,23 +51,16 @@ const useStyles = makeStyles({
   calloutBlockContainerCartesian: {
     ...typographyStyles.caption1,
     marginTop: '13px',
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainerNonCartesian: {
     fontSize: tokens.fontSizeHero700,
     lineHeight: '22px',
-    '& selectors': {
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
-    },
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainertoDrawShapefalse: {
-    '& selectors': {
-      [HighContrastSelector]: {
-        forcedColorAdjust: 'none',
-      },
-    },
     paddingLeft: tokens.spacingHorizontalS,
+    forcedColorAdjust: 'none',
   },
   calloutBlockContainertoDrawShapetrue: { display: 'inline-grid' },
   shapeStyles: {
@@ -77,18 +69,10 @@ const useStyles = makeStyles({
   calloutLegendText: {
     ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground2,
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        color: 'rgb(255, 255, 255)',
-      },
-    },
+    forcedColorAdjust: 'auto',
   },
   calloutContentY: {
-    '& selectors': {
-      [HighContrastSelectorBlack]: {
-        color: 'rgb(255, 255, 255)',
-      },
-    },
+    forcedColorAdjust: 'auto',
   },
   calloutContentYCartesian: {
     ...typographyStyles.subtitle2Stronger,
@@ -116,13 +100,9 @@ const useStyles = makeStyles({
   },
   calloutInfoContainer: {
     paddingLeft: tokens.spacingHorizontalS,
+    forcedColorAdjust: 'none',
   },
-  calloutContainer: {
-    [HighContrastSelector]: {
-      fill: 'WindowText', // Ensure visibility in high contrast mode
-      forcedColorAdjust: 'none',
-    },
-  },
+  calloutContainer: {},
 });
 /**
  * Apply styling to the Carousel slots based on the state
