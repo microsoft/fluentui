@@ -16,7 +16,7 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story: 'A badge can have a `ghost`, `filled`, `outline`, or `tint` appearance. The default is `filled`.',
+      story: 'A badge can have a `filled`, `ghost`, `outline`, or `tint` appearance. The default is `filled`.',
     },
   },
 };
