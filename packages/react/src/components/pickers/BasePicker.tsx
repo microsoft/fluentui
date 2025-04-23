@@ -1278,7 +1278,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
             />
           </div>
         </div>
-        {this.renderSuggestions()}
+        {this.renderSuggestions(classNames.subComponentStyles?.callout)}
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.single}>
           <div
             id={this._ariaMap.selectedItems}
