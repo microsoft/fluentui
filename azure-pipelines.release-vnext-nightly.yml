@@ -91,7 +91,7 @@ extends:
                 displayName: lint
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: test
 
               - script: |
