@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   brand: {
     display: 'flex',
     backgroundColor: tokens.colorBrandBackground,
-    borderRadius: tokens.borderRadiusCircular,
     padding: tokens.spacingHorizontalXXS,
   },
 });
