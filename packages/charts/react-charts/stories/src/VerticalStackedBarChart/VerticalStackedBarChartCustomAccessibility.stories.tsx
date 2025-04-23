@@ -157,36 +157,38 @@ export const VerticalStackedBarCustomAccessibility = () => {
 
   return (
     <div className="containerDiv">
-      <label htmlFor="changeWidth_Custom">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Custom"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Custom">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Custom"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <label htmlFor="ChangeBarGapMax_Custom">BarGapMax:</label>
-      <input
-        type="range"
-        value={barGapMax}
-        min={0}
-        max={10}
-        id="ChangeBarGapMax_Custom"
-        onChange={e => setBarGapMax(+e.target.value)}
-        aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Custom">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Custom"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Custom">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Custom"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <label htmlFor="ChangeBarGapMax_Custom">BarGapMax:</label>
+        <input
+          type="range"
+          value={barGapMax}
+          min={0}
+          max={10}
+          id="ChangeBarGapMax_Custom"
+          onChange={e => setBarGapMax(+e.target.value)}
+          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+        />
+      </div>
       <div style={{ marginTop: '20px' }}>
         <Checkbox label="show the lines (hide or show the lines)" checked={showLine} onChange={_onShowLineChange} />
       </div>

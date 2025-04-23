@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Tue, 01 Apr 2025 15:08:02 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.3)
+
+Wed, 16 Apr 2025 19:42:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.5.2..@fluentui/react-tags_v9.5.3)
+
+### Patches
+
+- fix: target area for extra-small Tag ([PR #34261](https://github.com/microsoft/fluentui/pull/34261) by v.kozlova13@gmail.com)
+- Bump @fluentui/react-aria to v9.14.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-avatar to v9.7.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-tabster to v9.24.5 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.2)
 

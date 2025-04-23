@@ -2,6 +2,29 @@
   "name": "@fluentui/eslint-plugin-react-components",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:07 GMT",
+      "tag": "@fluentui/eslint-plugin-react-components_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin-react-components",
+            "commit": "c8bd0bd5924241703b05314feacbad3957c8190c",
+            "comment": "fix: remove devDeps from deps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Jan 2025 18:33:32 GMT",
       "tag": "@fluentui/eslint-plugin-react-components_v0.1.1",
       "version": "0.1.1",

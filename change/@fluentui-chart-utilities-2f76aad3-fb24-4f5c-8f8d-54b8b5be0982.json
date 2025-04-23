@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Change chart-utilities to es2019 and module type esnext",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

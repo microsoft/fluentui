@@ -7,7 +7,7 @@ type Story = StoryObj<FluentTree>;
 
 const storyTemplate = html<StoryArgs<FluentTree>>`
   <fluent-tree size="${x => x.size}" appearance="${x => x.appearance}">
-    <fluent-tree-item>
+    <fluent-tree-item expanded>
       Item 1
       <fluent-tree-item>
         <span slot="start">
@@ -95,11 +95,11 @@ const storyTemplate = html<StoryArgs<FluentTree>>`
           fill="red"
         ></path>
       </svg>
-      <fluent-tree-item expanded>
+      <fluent-tree-item>
         Item 2-1
         <fluent-tree-item>
           Item 2-1-1
-          <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
+          <fluent-tree-item selected>Item 2-1-1-1</fluent-tree-item>
           <fluent-tree-item>Item 2-1-1-1</fluent-tree-item>
         </fluent-tree-item>
         <fluent-tree-item>Item 2-1-2</fluent-tree-item>

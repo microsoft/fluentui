@@ -2,6 +2,39 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:06 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.5",
+      "version": "1.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9679a921973d597dcb10a7202f127f4995a32c59",
+            "comment": "Change chart-utilities to es2019 and module type esnext"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "acb947e908e0522a469077a10cc822ba764eb2ce",
+            "comment": "fix: map stacked plotly scatter traces to area chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "c0612fecdfb4d558ae1cd991b6fb84ba8220321d",
+            "comment": "fix: add support for ybins in plotly schema"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "68a78cef4fee138fe07d17c617c55a9863fdcce7",
+            "comment": "fix: map plotly histogram2d trace to heatmap chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Apr 2025 07:19:54 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.4",
       "version": "1.1.4",
