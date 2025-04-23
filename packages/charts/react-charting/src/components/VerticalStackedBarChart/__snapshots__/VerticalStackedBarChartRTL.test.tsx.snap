@@ -3219,7 +3219,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                13
+                10
               </text>
             </g>
             <g
@@ -3237,7 +3237,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                26
+                20
               </text>
             </g>
             <g
@@ -3255,7 +3255,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                39
+                30
               </text>
             </g>
             <g
@@ -3273,7 +3273,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                52
+                40
               </text>
             </g>
           </g>
@@ -3292,14 +3292,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       }
                   data-is-focusable="true"
                   fill="#0078d4"
-                  height="182.30769230769232"
+                  height="237"
                   role="img"
                   rx="0"
                   tabindex="0"
                   transform="translate(-8, 0)"
                   width="16"
                   x="56"
-                  y="74.69230769230768"
+                  y="20"
                 />
                 <rect
                   aria-label="2020/04/30. Metadata2, 5%."
@@ -3311,14 +3311,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       }
                   data-is-focusable="true"
                   fill="#00188f"
-                  height="22.78846153846154"
+                  height="29.625"
                   role="img"
                   rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
                   x="56"
-                  y="51.90384615384614"
+                  y="-9.625"
                 />
               </g>
               <text
@@ -3334,7 +3334,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 text-anchor="middle"
                 transform="translate(-8, 0)"
                 x="64"
-                y="45.90384615384614"
+                y="-15.625"
               >
                 45
               </text>
@@ -3353,14 +3353,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       }
                   data-is-focusable="true"
                   fill="#0078d4"
-                  height="136.73076923076923"
+                  height="177.75"
                   role="img"
                   rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
                   x="614"
-                  y="120.26923076923077"
+                  y="79.25"
                 />
                 <rect
                   aria-label="2020/04/30. Metadata2, 20%."
@@ -3372,14 +3372,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       }
                   data-is-focusable="true"
                   fill="#00188f"
-                  height="91.15384615384615"
+                  height="118.5"
                   role="img"
                   rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
                   x="614"
-                  y="29.115384615384627"
+                  y="-39.25"
                 />
               </g>
               <text
@@ -3395,7 +3395,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 text-anchor="middle"
                 transform="translate(-8, 0)"
                 x="622"
-                y="23.115384615384627"
+                y="-45.25"
               >
                 50
               </text>
@@ -9995,7 +9995,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               x="-10"
             >
-              13
+              10
             </text>
           </g>
           <g
@@ -10013,7 +10013,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               x="-10"
             >
-              26
+              20
             </text>
           </g>
           <g
@@ -10031,7 +10031,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               x="-10"
             >
-              39
+              30
             </text>
           </g>
           <g
@@ -10049,7 +10049,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               fill="currentColor"
               x="-10"
             >
-              52
+              40
             </text>
           </g>
         </g>
@@ -10068,14 +10068,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="182.30769230769232"
+                height="237"
                 role="img"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="74.69230769230768"
+                y="20"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -10087,14 +10087,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="22.78846153846154"
+                height="29.625"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="51.90384615384614"
+                y="-9.625"
               />
             </g>
             <text
@@ -10110,7 +10110,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
-              y="45.90384615384614"
+              y="-15.625"
             >
               45
             </text>
@@ -10129,14 +10129,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="136.73076923076923"
+                height="177.75"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="120.26923076923077"
+                y="79.25"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -10148,14 +10148,14 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="91.15384615384615"
+                height="118.5"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="29.115384615384627"
+                y="-39.25"
               />
             </g>
             <text
@@ -10171,7 +10171,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
-              y="23.115384615384627"
+              y="-45.25"
             >
               50
             </text>
@@ -10682,7 +10682,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              13
+              10
             </text>
           </g>
           <g
@@ -10700,7 +10700,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              26
+              20
             </text>
           </g>
           <g
@@ -10718,7 +10718,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              39
+              30
             </text>
           </g>
           <g
@@ -10736,7 +10736,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              52
+              40
             </text>
           </g>
         </g>
@@ -10755,14 +10755,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="182.30769230769232"
+                height="237"
                 role="img"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="74.69230769230768"
+                y="20"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -10774,14 +10774,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="22.78846153846154"
+                height="29.625"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="51.90384615384614"
+                y="-9.625"
               />
             </g>
             <text
@@ -10797,7 +10797,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
-              y="45.90384615384614"
+              y="-15.625"
             >
               45
             </text>
@@ -10816,14 +10816,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="136.73076923076923"
+                height="177.75"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="120.26923076923077"
+                y="79.25"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -10835,14 +10835,14 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="91.15384615384615"
+                height="118.5"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="29.115384615384627"
+                y="-39.25"
               />
             </g>
             <text
@@ -10858,7 +10858,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
-              y="23.115384615384627"
+              y="-45.25"
             >
               50
             </text>
@@ -11358,7 +11358,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              13
+              10
             </text>
           </g>
           <g
@@ -11376,7 +11376,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              26
+              20
             </text>
           </g>
           <g
@@ -11394,7 +11394,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              39
+              30
             </text>
           </g>
           <g
@@ -11412,7 +11412,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              52
+              40
             </text>
           </g>
         </g>
@@ -11431,14 +11431,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="182.30769230769232"
+                height="237"
                 role="img"
                 rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="74.69230769230768"
+                y="20"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -11450,14 +11450,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="22.78846153846154"
+                height="29.625"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="51.90384615384614"
+                y="-9.625"
               />
             </g>
             <text
@@ -11473,7 +11473,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
-              y="45.90384615384614"
+              y="-15.625"
             >
               45
             </text>
@@ -11492,14 +11492,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="136.73076923076923"
+                height="177.75"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="120.26923076923077"
+                y="79.25"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -11511,14 +11511,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="91.15384615384615"
+                height="118.5"
                 role="img"
                 rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="29.115384615384627"
+                y="-39.25"
               />
             </g>
             <text
@@ -11534,7 +11534,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
-              y="23.115384615384627"
+              y="-45.25"
             >
               50
             </text>
@@ -12034,7 +12034,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              13
+              10
             </text>
           </g>
           <g
@@ -12052,7 +12052,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              26
+              20
             </text>
           </g>
           <g
@@ -12070,7 +12070,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              39
+              30
             </text>
           </g>
           <g
@@ -12088,7 +12088,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               fill="currentColor"
               x="-10"
             >
-              52
+              40
             </text>
           </g>
         </g>
@@ -12109,12 +12109,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="182.30769230769232"
+                height="237"
                 rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="74.69230769230768"
+                y="20"
               />
               <rect
                 class=
@@ -12124,12 +12124,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="22.78846153846154"
+                height="29.625"
                 rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
-                y="51.90384615384614"
+                y="-9.625"
               />
             </g>
             <text
@@ -12145,7 +12145,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="64"
-              y="45.90384615384614"
+              y="-15.625"
             >
               45
             </text>
@@ -12166,12 +12166,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="136.73076923076923"
+                height="177.75"
                 rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="120.26923076923077"
+                y="79.25"
               />
               <rect
                 class=
@@ -12181,12 +12181,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="91.15384615384615"
+                height="118.5"
                 rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
-                y="29.115384615384627"
+                y="-39.25"
               />
             </g>
             <text
@@ -12202,7 +12202,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(-8, 0)"
               x="622"
-              y="23.115384615384627"
+              y="-45.25"
             >
               50
             </text>
@@ -12217,12 +12217,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0, 0)"
             x1="56"
             x2="614"
-            y1="188.6346153846154"
-            y2="120.26923076923077"
+            y1="168.125"
+            y2="79.25"
           />
           <circle
             cx="56"
-            cy="188.6346153846154"
+            cy="168.125"
             data-is-focusable="false"
             fill="#ffffff"
             r="8"
@@ -12234,7 +12234,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           />
           <circle
             cx="614"
-            cy="120.26923076923077"
+            cy="79.25"
             data-is-focusable="false"
             fill="#ffffff"
             r="8"

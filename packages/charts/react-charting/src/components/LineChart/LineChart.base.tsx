@@ -51,6 +51,7 @@ import {
   formatDate,
   areArraysEqual,
   getCurveFactory,
+  YAxisType,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -198,6 +199,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _xPadding: number = 0;
   private _yPadding: number = 0;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
+  private _yPaddingSecondary: number = 0;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -467,15 +469,25 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       : null;
   };
 
-  private _getNumericMinMaxOfY = (points: ILineChartPoints[]): { startValue: number; endValue: number } => {
+  private _getNumericMinMaxOfY = (
+    points: ILineChartPoints[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ): { startValue: number; endValue: number } => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { startValue, endValue } = findNumericMinMaxOfY(points);
+    const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
+    let yPadding = 0;
     if (this.props.lineMode === 'scatter') {
-      this._yPadding = (endValue - startValue) * 0.1;
+      yPadding = (endValue - startValue) * 0.1;
+      if (useSecondaryYScale) {
+        this._yPaddingSecondary = yPadding;
+      } else {
+        this._yPadding = yPadding;
+      }
     }
     return {
-      startValue: startValue - this._yPadding,
-      endValue: endValue + this._yPadding,
+      startValue: startValue - yPadding,
+      endValue: endValue + yPadding,
     };
   };
 
@@ -660,13 +672,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       }
     }
   };
-  private _getRangeForScatterMarkerSize(yScale: ScaleLinear<number, number>): number {
+  private _getRangeForScatterMarkerSize(yScale: ScaleLinear<number, number>, yPadding: number): number {
     const extraXPixels = this._isRTL
       ? this._xAxisScale(this._xMax - this._xPadding) - this._xAxisScale(this._xMax)
       : this._xAxisScale(this._xMin + this._xPadding) - this._xAxisScale(this._xMin);
 
     const yMin = yScale.domain()[0];
-    const extraYPixels = yScale(yMin) - yScale(yMin + this._yPadding);
+    const extraYPixels = yScale(yMin) - yScale(yMin + yPadding);
     return Math.min(extraXPixels, extraYPixels);
   }
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
@@ -694,7 +706,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       const yScale =
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yAxisScale;
-      const extraMaxPixels = this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale) : 0;
+      const yPadding =
+        this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yPaddingSecondary : this._yPadding;
+      const extraMaxPixels =
+        this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
 
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];

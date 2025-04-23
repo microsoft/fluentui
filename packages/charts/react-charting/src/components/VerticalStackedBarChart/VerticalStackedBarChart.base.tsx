@@ -50,7 +50,6 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
-  findVSBCNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -61,6 +60,7 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  YAxisType,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -244,7 +244,7 @@ export class VerticalStackedBarChartBase
           createYAxis={createNumericYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
-          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
           getDomainNRangeValues={this._getDomainNRangeValues}
@@ -1296,5 +1296,27 @@ export class VerticalStackedBarChartBase
       (numLines > 0 ? ` and ${numLines} lines` : '') +
       '. '
     );
+  };
+
+  private _getMinMaxOfYAxis = (
+    dataset: IDataPoint[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ): { startValue: number; endValue: number } => {
+    const values: number[] = [];
+    this.props.data.forEach(xPoint => {
+      if (!useSecondaryYScale) {
+        xPoint.chartData.forEach(point => {
+          values.push(point.data);
+        });
+      }
+      xPoint.lineData?.forEach(point => {
+        if (!useSecondaryYScale === !point.useSecondaryYScale) {
+          values.push(point.y);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
   };
 }

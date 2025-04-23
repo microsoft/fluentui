@@ -417,8 +417,7 @@ export class CartesianChartBase
             yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
-            maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
+            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType, true),
             yAxisPadding: this.props.yAxisPadding,
           };
 
