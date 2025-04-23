@@ -83,7 +83,7 @@ extends:
                 displayName: 'Bump and commit nightly versions'
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,tag:type:stories,apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: build
 
               - script: |
