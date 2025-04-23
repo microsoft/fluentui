@@ -222,12 +222,6 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Whether to use the secondary y scale or not
-   * False by default.
-   */
-  useSecondaryYScale?: boolean;
 }
 
 /**

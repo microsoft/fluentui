@@ -1265,7 +1265,7 @@ export function findVerticalNumericMinMaxOfY(
 } {
   const values: number[] = [];
   points.forEach(point => {
-    if (!useSecondaryYScale === !point.useSecondaryYScale) {
+    if (!useSecondaryYScale) {
       values.push(point.y);
     }
     if (typeof point.lineData !== 'undefined') {

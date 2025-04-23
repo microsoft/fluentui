@@ -1494,7 +1494,6 @@ export interface IVerticalBarChartDataPoint {
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
-    useSecondaryYScale?: boolean;
     x: number | string | Date;
     xAxisCalloutData?: string;
     y: number;

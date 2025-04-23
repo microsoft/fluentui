@@ -292,7 +292,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -323,7 +323,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -362,7 +362,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -393,7 +393,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1030,7 +1030,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1061,7 +1061,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1100,7 +1100,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1131,7 +1131,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1768,7 +1768,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1799,7 +1799,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1838,7 +1838,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1869,7 +1869,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -2506,7 +2506,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -2537,7 +2537,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -2576,7 +2576,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -2607,7 +2607,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -3244,7 +3244,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -3275,7 +3275,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -3314,7 +3314,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -3345,7 +3345,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -3829,7 +3829,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130437}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -4644,7 +4644,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130437}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -6007,7 +6007,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130437}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -6718,7 +6718,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={10}
-            y={26.413043478260875}
+            y={26.413043478260864}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -9591,7 +9591,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 tabindex="0"
                 width="16"
                 x="0"
-                y="100.57999999999998"
+                y="100.58"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
@@ -9622,7 +9622,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="8"
-                y="94.57999999999998"
+                y="94.58"
               >
                 33.0k
               </text>
@@ -9661,7 +9661,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 tabindex="-1"
                 width="16"
                 x="0"
-                y="100.57999999999998"
+                y="100.58"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
@@ -9692,7 +9692,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="8"
-                y="94.57999999999998"
+                y="94.58"
               >
                 33.0k
               </text>
