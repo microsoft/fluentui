@@ -3767,12 +3767,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       <tspan
         data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-0"
         x="-18"
       />
       <tspan
         dx="1em"
-        id="LessLength"
+        id="LessLength-0"
         x="-18"
       >
         Y-axis label 1
@@ -3797,12 +3797,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       <tspan
         data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-1"
         x="-18"
       />
       <tspan
         dx="1em"
-        id="LessLength"
+        id="LessLength-1"
         x="-18"
       >
         Y-axis label 2
@@ -3827,12 +3827,12 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
       <tspan
         data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-2"
         x="-18"
       />
       <tspan
         dx="1em"
-        id="LessLength"
+        id="LessLength-2"
         x="-18"
       >
         Y-axis label 3
@@ -3872,13 +3872,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       <tspan
         data-="Y-axis label 1"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-0"
         x="-18"
       />
       <tspan
         dx="1.5em"
         dy="0.32"
-        id="showDots"
+        id="showDots-0"
         x="-18"
       >
         Y-axis lab...
@@ -3902,13 +3902,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       <tspan
         data-="Y-axis label 2"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-1"
         x="-18"
       />
       <tspan
         dx="1.5em"
         dy="0.32"
-        id="showDots"
+        id="showDots-1"
         x="-18"
       >
         Y-axis lab...
@@ -3932,13 +3932,13 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
       <tspan
         data-="Y-axis label 3"
         dy="0.32em"
-        id="BaseSpan"
+        id="BaseSpan-2"
         x="-18"
       />
       <tspan
         dx="1.5em"
         dy="0.32"
-        id="showDots"
+        id="showDots-2"
         x="-18"
       >
         Y-axis lab...

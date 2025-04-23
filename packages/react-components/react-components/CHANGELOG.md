@@ -1,8 +1,79 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.62.0)
+
+Wed, 16 Apr 2025 19:42:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.61.6..@fluentui/react-components_v9.62.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className. ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className. ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-motion`
+  - fix: improve element validation to work with React 19 ([PR #34164](https://github.com/microsoft/fluentui/pull/34164) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix(Popover): revert to a single composition mode for slide animations ([PR #34160](https://github.com/microsoft/fluentui/pull/34160) by robertpenner@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: fix infite loop caused by hydration errors in React 18 ([PR #34194](https://github.com/microsoft/fluentui/pull/34194) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - fix: design change of selected state for ColorSwatch ([PR #34214](https://github.com/microsoft/fluentui/pull/34214) by v.kozlova13@gmail.com)
+- `@fluentui/react-tag-picker`
+  - fix: avoid "ResizeObserver loop limit exceeded" being thrown ([PR #34139](https://github.com/microsoft/fluentui/pull/34139) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: target area for extra-small Tag ([PR #34261](https://github.com/microsoft/fluentui/pull/34261) by v.kozlova13@gmail.com)
+- `@fluentui/react-toast`
+  - chore: update useToastContainer callback type to support React 18 ([PR #34253](https://github.com/microsoft/fluentui/pull/34253) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: rely on aria-expanded to prevent showing Tooltip when it's trigger opens Popover ([PR #34086](https://github.com/microsoft/fluentui/pull/34086) by vgenaev@gmail.com)
+- `@fluentui/chart-utilities`
+  - Change chart-utilities to es2019 and module type esnext ([PR #34183](https://github.com/microsoft/fluentui/pull/34183) by email not defined)
+  - fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+  - fix: add support for ybins in plotly schema ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+  - fix: map plotly histogram2d trace to heatmap chart ([PR #34230](https://github.com/microsoft/fluentui/pull/34230) by kumarkshitij@microsoft.com)
+- `@fluentui/eslint-plugin-react-components`
+  - fix: remove devDeps from deps ([PR #34157](https://github.com/microsoft/fluentui/pull/34157) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: revert min-width: max-content for Badge ([PR #34215](https://github.com/microsoft/fluentui/pull/34215) by vgenaev@gmail.com)
+- `@fluentui/react-carousel`
+  - Stop and reinitialize autoplay on carousel when autoplay interval changes ([PR #34142](https://github.com/microsoft/fluentui/pull/34142) by mifraser@microsoft.com)
+- `@fluentui/react-charts`
+  - fix(react-charts): Enabling multiple legend selection for Vertical Bar Chart in V9 ([PR #34149](https://github.com/microsoft/fluentui/pull/34149) by 120183316+srmukher@users.noreply.github.com)
+  - Enable Controlled legends in v9 ([PR #34197](https://github.com/microsoft/fluentui/pull/34197) by anushgupta@microsoft.com)
+  - feat: center align bars with auto barWidth in plotly mode ([PR #34213](https://github.com/microsoft/fluentui/pull/34213) by kumarkshitij@microsoft.com)
+  - feat: add SankeyChart in v9 ([PR #34162](https://github.com/microsoft/fluentui/pull/34162) by 110246001+krkshitij@users.noreply.github.com)
+  - Full Y Axis labels in Heatmap chart ([PR #34260](https://github.com/microsoft/fluentui/pull/34260) by anushgupta@microsoft.com)
+  - feat: add HeatMapChart in v9 ([PR #34095](https://github.com/microsoft/fluentui/pull/34095) by 110246001+krkshitij@users.noreply.github.com)
+  - feat: port all declarative chart changes from v8 to v9 ([PR #34195](https://github.com/microsoft/fluentui/pull/34195) by kumarkshitij@microsoft.com)
+  - fix(react-charts): Dark mode theme colors for declarative charts in v9 ([PR #34190](https://github.com/microsoft/fluentui/pull/34190) by 120183316+srmukher@users.noreply.github.com)
+  - Remove duplicate key warning ([PR #34200](https://github.com/microsoft/fluentui/pull/34200) by anushgupta@microsoft.com)
+  - Add scaling factor to height of VSBC bars ([PR #34205](https://github.com/microsoft/fluentui/pull/34205) by anushgupta@microsoft.com)
+  - fix(react-charts): Replace plotly schema interface and conversion logic with chart utilities ([PR #34183](https://github.com/microsoft/fluentui/pull/34183) by atisjai@microsoft.com)
+  - feat: add support for line curves ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
+  - fix(react-charts): Add background to the SVGTooltipText ([PR #34176](https://github.com/microsoft/fluentui/pull/34176) by 120183316+srmukher@users.noreply.github.com)
+  - Support rounded ticks in v9 ([PR #34201](https://github.com/microsoft/fluentui/pull/34201) by anushgupta@microsoft.com)
+  - feat(react-charts): Migrate Area Chart to v9 ([PR #34148](https://github.com/microsoft/fluentui/pull/34148) by 74965306+Anush2303@users.noreply.github.com)
+  - fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+  - fix(react-charts): Secondary Y Axis margin adjustment in v9 ([PR #34192](https://github.com/microsoft/fluentui/pull/34192) by 120183316+srmukher@users.noreply.github.com)
+  - Enable Negative y value support in v9 ([PR #34174](https://github.com/microsoft/fluentui/pull/34174) by anushgupta@microsoft.com)
+  - fix: remove duplicate legends + resolve overlapping bars across legends in VBC ([PR #34208](https://github.com/microsoft/fluentui/pull/34208) by kumarkshitij@microsoft.com)
+  - Port fixes from v8 to v9 ([PR #34210](https://github.com/microsoft/fluentui/pull/34210) by anushgupta@microsoft.com)
+  - Migrate HBC With Axis to V9 ([PR #34094](https://github.com/microsoft/fluentui/pull/34094) by 74965306+Anush2303@users.noreply.github.com)
+  - fix(react-charts): Handle invalid plotly data in V9 and fixing id related error in donut chart ([PR #34191](https://github.com/microsoft/fluentui/pull/34191) by 120183316+srmukher@users.noreply.github.com)
+  - fix(react-charts): Enabling multiple legend selection for Scatter Chart in v9 ([PR #34156](https://github.com/microsoft/fluentui/pull/34156) by 120183316+srmukher@users.noreply.github.com)
+  - feat: transform plotly histogram2d trace to heatmap props ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: ensure that the listbox is labelled by the field label ([PR #34196](https://github.com/microsoft/fluentui/pull/34196) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
 
 ## [9.61.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.61.6)
 

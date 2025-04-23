@@ -588,6 +588,7 @@ export class BaseDropdown extends FASTElement {
     activeIndexChanged(prev: number | undefined, next: number | undefined): void;
     ariaLabelledBy: string;
     changeHandler(e: Event): boolean | void;
+    checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
@@ -624,6 +625,7 @@ export class BaseDropdown extends FASTElement {
     inputHandler(e: InputEvent): boolean | void;
     protected insertControl(): void;
     keydownHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<Node>;
     // @internal
     listbox: Listbox;
     // @internal
@@ -642,6 +644,7 @@ export class BaseDropdown extends FASTElement {
     openChanged(prev: boolean | undefined, next: boolean | undefined): void;
     get options(): DropdownOption[];
     placeholder: string;
+    reportValidity(): boolean;
     required: boolean;
     // @internal
     get selectedIndex(): number;
@@ -656,9 +659,11 @@ export class BaseDropdown extends FASTElement {
     protected updateFreeformOption(value?: string): void;
     // @internal
     get validationMessage(): string;
+    get validity(): ValidityState;
     get value(): string | null;
     set value(next: string | null);
     valueAttribute: string;
+    get willValidate(): boolean;
 }
 
 // @public
@@ -3746,7 +3751,7 @@ export { styles as MenuButtonStyles }
 
 // Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Switch extends BaseCheckbox {
     constructor();
 }
@@ -3983,7 +3988,7 @@ export type TextAlign = ValuesOf<typeof TextAlign>;
 
 // Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class TextArea extends BaseTextArea {
     appearance: TextAreaAppearance;
     block: boolean;
@@ -4291,7 +4296,7 @@ export const TooltipTemplate: ViewTemplate<Tooltip, any>;
 
 // Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class TreeItem extends BaseTreeItem {
     appearance: TreeItemAppearance;
     // @internal
@@ -4467,7 +4472,7 @@ export const zIndexPriority = "var(--zIndexPriority)";
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
+// dist/dts/accordion-item/accordion-item.d.ts:14:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -7,6 +7,8 @@ import { uniqueId } from '../utils/unique-id.js';
  * A DropdownOption Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#option | ARIA option } role.
  *
+ * @tag fluent-dropdown-option
+ *
  * @slot - The default slot for the option's content.
  * @slot checked-indicator - The checked indicator.
  * @slot description - Optional description content.

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "fluentui react storybook addon",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -16,8 +16,8 @@
     "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.14.4",
-    "@fluentui/react-provider": "^9.20.4",
+    "@fluentui/react-aria": "^9.14.5",
+    "@fluentui/react-provider": "^9.20.5",
     "@fluentui/react-theme": "^9.1.24",
     "@swc/helpers": "^0.5.1"
   },

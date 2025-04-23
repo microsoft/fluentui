@@ -2,6 +2,27 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Wed, 16 Apr 2025 19:42:18 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.54",
+      "version": "9.0.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff",
+            "comment": "Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-jsx-runtime",
+            "comment": "Bump @fluentui/react-utilities to v9.19.0",
+            "commit": "f4eaf10b78c110ab74994db06112a38d7c941cff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Mar 2025 21:12:51 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.53",
       "version": "9.0.53",

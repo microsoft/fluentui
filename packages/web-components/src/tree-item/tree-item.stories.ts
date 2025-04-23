@@ -19,7 +19,7 @@ const CalendarIcon = html`<svg
     fill="currentColor"
   ></path>
 </svg>`;
-const FilterIcon = html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+const FilterIcon = html`<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
   <path
     fill="currentColor"
     d="M7.5 13h5a.5.5 0 0 1 .09.992L12.5 14h-5a.5.5 0 0 1-.09-.992zh5zm-2-4h9a.5.5 0 0 1 .09.992L14.5 10h-9a.5.5 0 0 1-.09-.992zh9zm-2-4h13a.5.5 0 0 1 .09.992L16.5 6h-13a.5.5 0 0 1-.09-.992zh13z"
@@ -39,7 +39,7 @@ const storyTemplate = html<StoryArgs<FluentTreeItem>>`
           (item as TreeItem).selected = false;
         }
       });
-      target.toggleSelection();
+      target.selected = true;
     }}
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
