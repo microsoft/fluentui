@@ -44,8 +44,8 @@ const Badges = (props: BadgeProps) => {
             : React.Fragment;
 
         return (
-          <BadgeWrapper>
-            <Badge key={`${appearance}-${color}`} appearance={appearance} color={color} icon={<PasteIcon />}>
+          <BadgeWrapper key={`${appearance}-${color}`}>
+            <Badge appearance={appearance} color={color} icon={<PasteIcon />}>
               999+
             </Badge>
           </BadgeWrapper>
