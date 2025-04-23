@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "support callback for expand change",
+  "packageName": "@fluentui/web-components",
+  "email": "HangWhy@outlook.com",
+  "dependentChangeType": "patch"
+}
