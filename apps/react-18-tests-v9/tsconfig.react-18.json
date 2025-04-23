@@ -25,7 +25,8 @@
   },
   "exclude": [
     "../../packages/react-components/**/index.stories.tsx",
-    "../../packages/react-components/**/index.stories.ts"
+    "../../packages/react-components/**/index.stories.ts",
+    "../../packages/react-components/react-migration-v0-v9/**"
   ],
   "include": [
     "../../packages/react-components/*/stories/**/*.stories.tsx",
