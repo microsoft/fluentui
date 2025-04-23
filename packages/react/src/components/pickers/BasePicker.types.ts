@@ -3,7 +3,7 @@ import { Autofill } from '../../Autofill';
 import type { IPickerItemProps } from './PickerItem.types';
 import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
-import type { ICalloutProps } from '../../Callout';
+import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 import { IIconProps } from '../Icon/Icon.types';
@@ -367,6 +367,9 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
 export interface IBasePickerSubComponentStyles {
   /** Styling for Label child component. */
   label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+
+  /** Styling for Callout child component. */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
 }
 
 /**
