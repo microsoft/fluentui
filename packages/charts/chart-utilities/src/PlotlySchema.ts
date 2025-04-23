@@ -1274,6 +1274,11 @@ export interface PlotData {
     end: number | string;
     size: number | string;
   };
+  ybins: {
+    start: number | string;
+    end: number | string;
+    size: number | string;
+  };
   value: number;
   values: Datum[];
   labels: Datum[];

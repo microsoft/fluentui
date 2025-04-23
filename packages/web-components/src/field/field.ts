@@ -6,6 +6,8 @@ import { LabelPosition } from './field.options.js';
  * A Field Custom HTML Element.
  * Based on BaseField and includes style and layout specific attributes
  *
+ * @tag fluent-field
+ *
  * @public
  */
 export class Field extends BaseField {

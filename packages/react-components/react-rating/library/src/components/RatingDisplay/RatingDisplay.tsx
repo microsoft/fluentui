@@ -5,6 +5,7 @@ import { renderRatingDisplay_unstable } from './renderRatingDisplay';
 import { useRatingDisplayStyles_unstable } from './useRatingDisplayStyles.styles';
 import type { RatingDisplayProps } from './RatingDisplay.types';
 import { useRatingDisplayContextValues } from './useRatingDisplayContextValues';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * RatingDisplay is a wrapper for one or more rating items that will be used to display a rating value
@@ -15,6 +16,8 @@ export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forw
   const contextValues = useRatingDisplayContextValues(state);
 
   useRatingDisplayStyles_unstable(state);
+  useCustomStyleHook_unstable('useRatingDisplayStyles_unstable')(state);
+
   return renderRatingDisplay_unstable(state, contextValues);
 });
 

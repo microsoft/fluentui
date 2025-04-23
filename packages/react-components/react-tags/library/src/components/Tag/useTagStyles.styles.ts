@@ -128,7 +128,23 @@ const useRootStyles = makeStyles({
     height: '24px',
   },
   'extra-small': {
+    position: 'relative',
     height: '20px',
+
+    // Increase clickable area to meet WCAG 2.2 AA
+    // https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+    '&:before, &:after': {
+      content: '""',
+      position: 'absolute',
+      height: '2px',
+      width: '100%',
+    },
+    '&:before': {
+      bottom: '100%',
+    },
+    '&:after': {
+      top: '100%',
+    },
   },
 });
 

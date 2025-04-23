@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (
@@ -252,6 +252,11 @@ export type SlotComponentType<Props> = Props & {
   [SLOT_ELEMENT_TYPE_SYMBOL]:
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+  /**
+   * @internal
+   * The original className prop for the slot, before being modified by the useStyles hook.
+   */
+  [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 /**

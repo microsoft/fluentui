@@ -3,9 +3,16 @@
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { bin as d3Bin, extent as d3Extent, sum as d3Sum, min as d3Min, max as d3Max, merge as d3Merge } from 'd3-array';
+import {
+  bin as d3Bin,
+  extent as d3Extent,
+  sum as d3Sum,
+  min as d3Min,
+  max as d3Max,
+  range as d3Range,
+  Bin,
+} from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { format as d3Format, precisionFixed as d3PrecisionFixed } from 'd3-format';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -18,6 +25,7 @@ import {
   IGroupedVerticalBarChartData,
   IVerticalBarChartDataPoint,
   ISankeyChartData,
+  ILineChartLineOptions,
 } from '../../types/IDataPoint';
 import { ISankeyChartProps } from '../SankeyChart/index';
 import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart/index';
@@ -30,15 +38,32 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
-import type { Datum, Layout, PlotlySchema, PieData, PlotData, SankeyData, TypedArray } from '@fluentui/chart-utilities';
+import type {
+  Datum,
+  Layout,
+  PlotlySchema,
+  PieData,
+  PlotData,
+  SankeyData,
+  ScatterLine,
+  TypedArray,
+} from '@fluentui/chart-utilities';
+import {
+  isArrayOfType,
+  isArrayOrTypedArray,
+  isDate,
+  isDateArray,
+  isNumberArray,
+  isLineData,
+} from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
+import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
   secondaryYScaleOptions?: { yMinValue?: number; yMaxValue?: number };
 }
 
-const SUPPORTED_PLOT_TYPES = ['pie', 'bar', 'scatter', 'heatmap', 'sankey', 'indicator', 'histogram'];
 const dashOptions = {
   dot: {
     strokeDasharray: '1, 5',
@@ -77,20 +102,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-const isDate = (value: any): boolean => {
-  const parsedDate = new Date(Date.parse(value));
-  if (isNaN(parsedDate.getTime())) {
-    return false;
-  }
-  const parsedYear = parsedDate.getFullYear();
-  const yearInString = /\b\d{4}\b/.test(value);
-  if (!yearInString && (parsedYear === 2000 || parsedYear === 2001)) {
-    return false;
-  }
-  return true;
-};
-
-const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 const isMonth = (possiblyMonthValue: any): boolean => {
   const parseFullMonth = timeParse('%B');
@@ -98,60 +109,11 @@ const isMonth = (possiblyMonthValue: any): boolean => {
   return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
 };
 
-const isArrayOfType = (
-  plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
-  typeCheck: (datum: any, ...args: any[]) => boolean,
-  ...args: any[]
-): boolean => {
-  if (!isArrayOrTypedArray(plotCoordinates)) {
-    return false;
-  }
-
-  if (plotCoordinates!.length === 0) {
-    return false;
-  }
-
-  if (Array.isArray(plotCoordinates![0])) {
-    // Handle 2D array
-    return (plotCoordinates as Datum[][]).every(innerArray => innerArray.every(datum => typeCheck(datum, ...args)));
-  } else {
-    // Handle 1D array
-    return (plotCoordinates as Datum[]).every(datum => typeCheck(datum, ...args));
-  }
-};
-
-export const isDateArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isDate);
-};
-
-export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isNumber);
-};
-
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   return isArrayOfType(data, isMonth);
 };
 
-export const isLineData = (data: Partial<PlotData>): boolean => {
-  return (
-    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
-    Array.isArray(data.x) &&
-    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
-    data.x.length > 0 &&
-    data.x.length === data.y!.length
-  );
-};
-
-const invalidate2Dseries = (series: PlotData, chartType: string): void => {
-  if (series.x?.length > 0 && Array.isArray(series.x[0])) {
-    throw new Error(`transform to ${chartType}:: 2D x array not supported`);
-  }
-  if (series.y?.length > 0 && Array.isArray(series.y[0])) {
-    throw new Error(`transform to ${chartType}:: 2D y array not supported`);
-  }
-};
-
-const getLegend = (series: PlotData, index: number): string => {
+const getLegend = (series: Partial<PlotData>, index: number): string => {
   return series.name || `Series ${index + 1}`;
 };
 
@@ -164,7 +126,7 @@ function getTitles(layout: Partial<Layout> | undefined) {
   return titles;
 }
 
-export const updateXValues = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
+export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
   if (xValues.length > 0 && Array.isArray(xValues[0])) {
     throw new Error('updateXValues:: 2D array not supported');
@@ -244,13 +206,21 @@ export const transformPlotlyJsonToDonutProps = (
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
 
-  const donutData = firstData.labels?.map((label: string, index: number): IChartDataPoint => {
+  const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
+  firstData.labels?.forEach((label: string, index: number) => {
     const color = getColor(label, colorMap, isDarkTheme);
-    return {
-      legend: label,
-      data: firstData.values?.[index] as number, //ToDo how to handle string data?
-      color,
-    };
+    //ToDo how to handle string data?
+    const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
+
+    if (!mapLegendToDataPoint[label]) {
+      mapLegendToDataPoint[label] = {
+        legend: label,
+        data: value,
+        color,
+      };
+    } else {
+      mapLegendToDataPoint[label].data! += value;
+    }
   });
 
   const width: number = input.layout?.width ?? 440;
@@ -268,7 +238,7 @@ export const transformPlotlyJsonToDonutProps = (
   return {
     data: {
       chartTitle,
-      chartData: donutData,
+      chartData: Object.values(mapLegendToDataPoint),
     },
     hideLegend: input.layout?.showlegend === false ? true : false,
     width: input.layout?.width,
@@ -289,12 +259,6 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
-    invalidate2Dseries(series, 'VSBC');
-
-    if (!isNumberArray(series.y)) {
-      throw new Error('transform to VSBC:: y values should be numeric');
-    }
-
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
@@ -310,13 +274,12 @@ export const transformPlotlyJsonToVSBCProps = (
         });
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
+        const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
           legend,
-          ...(series.line?.dash && dashOptions[series.line.dash]
-            ? { lineOptions: { ...dashOptions[series.line.dash] } }
-            : {}),
           y: yVal,
           color,
+          ...(lineOptions ? { lineOptions } : {}),
         });
       }
 
@@ -350,30 +313,40 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
+
   input.data.forEach((series: PlotData, index1: number) => {
-    invalidate2Dseries(series, 'GVBC');
-
-    if (!isNumberArray(series.y)) {
-      throw new Error('transform to GVBC:: y values should be numeric');
-    }
-
-    (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
+    (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
       if (!mapXToDataPoints[x]) {
         mapXToDataPoints[x] = { name: x.toString(), series: [] };
       }
+
       if (series.type === 'bar') {
         const legend: string = getLegend(series, index1);
         const color = getColor(legend, colorMap, isDarkTheme);
+        const dataValue = (series.y?.[xIndex] as number) ?? 0;
 
-        mapXToDataPoints[x].series.push({
-          key: legend,
-          data: (series.y?.[index2] as number) ?? 0,
-          xAxisCalloutData: x as string,
-          color,
-          legend,
-        });
+        // As per the dataset
+        // https://github.com/microsoft/fluentui-charting-contrib/blob/main/apps/plotly_examples/src/data/data_385.json
+        // for the same series, for the same x value there can be multiple y values with the same legend
+        // So we need to check if the key already exists in the series and sum the data values if key exists
+        const existingDataPointIndex = mapXToDataPoints[x].series.findIndex(dp => dp.key === legend);
+
+        if (existingDataPointIndex !== -1) {
+          // If the key exists, sum the data values
+          mapXToDataPoints[x].series[existingDataPointIndex].data += dataValue;
+        } else {
+          // Otherwise, add a new data point
+          mapXToDataPoints[x].series.push({
+            key: legend,
+            data: dataValue,
+            xAxisCalloutData: x as string,
+            color,
+            legend,
+          });
+        }
       }
     });
+
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
 
@@ -401,72 +374,49 @@ export const transformPlotlyJsonToVBCProps = (
 ): IVerticalBarChartProps => {
   const vbcData: IVerticalBarChartDataPoint[] = [];
 
-  input.data.forEach((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'VBC');
-
+  input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
       return;
     }
 
-    const scale = d3ScaleLinear()
-      .domain(d3Extent<number>(series.x as number[]) as [number, number])
-      .nice();
-    let [xMin, xMax] = scale.domain();
+    const isXString = isStringArray(series.x);
+    // TODO: In case of a single bin, add an empty bin of the same size to prevent the
+    // default bar width from being used and ensure the bar spans the full intended range.
+    const xBins = createBins(series.x, series.xbins?.start, series.xbins?.end, series.xbins?.size);
+    const yBins: number[][] = xBins.map(() => []);
+    let total = 0;
 
-    xMin = typeof series.xbins?.start === 'number' ? series.xbins.start : xMin;
-    xMax = typeof series.xbins?.end === 'number' ? series.xbins.end : xMax;
-
-    const bin = d3Bin().domain([xMin, xMax]);
-
-    if (typeof series.xbins?.size === 'number') {
-      const thresholds: number[] = [];
-      let th = xMin;
-      const precision = d3PrecisionFixed(series.xbins.size);
-      const format = d3Format(`.${precision}f`);
-
-      while (th < xMax + series.xbins.size) {
-        thresholds.push(parseFloat(format(th)));
-        th += series.xbins.size;
+    series.x.forEach((xVal, index) => {
+      const binIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      if (binIdx !== -1) {
+        yBins[binIdx].push((series.y?.[index] as number | null | undefined) ?? 1);
       }
+    });
 
-      xMin = thresholds[0];
-      xMax = thresholds[thresholds.length - 1];
-      bin.domain([xMin, xMax]).thresholds(thresholds);
-    }
+    const y = yBins.map(bin => {
+      const yVal = calculateHistFunc(series.histfunc, bin);
+      total += yVal;
+      return yVal;
+    });
 
-    const buckets = bin(series.x as number[]);
-    // If the start or end of xbins is specified, then the number of datapoints may become less than x.length
-    const totalDataPoints = d3Merge(buckets).length;
-
-    buckets.forEach(bucket => {
-      const legend: string = getLegend(series, index);
+    xBins.forEach((bin, index) => {
+      const legend: string = getLegend(series, seriesIdx);
       const color: string = getColor(legend, colorMap, isDarkTheme);
-      let y = bucket.length;
-
-      if (series.histnorm === 'percent') {
-        y = (bucket.length / totalDataPoints) * 100;
-      } else if (series.histnorm === 'probability') {
-        y = bucket.length / totalDataPoints;
-      } else if (series.histnorm === 'density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (bucket.x1! - bucket.x0!);
-      } else if (series.histnorm === 'probability density') {
-        y = bucket.x0 === bucket.x1 ? 0 : bucket.length / (totalDataPoints * (bucket.x1! - bucket.x0!));
-      } else if (series.histfunc === 'sum') {
-        y = d3Sum(bucket);
-      } else if (series.histfunc === 'avg') {
-        y = bucket.length === 0 ? 0 : d3Sum(bucket) / bucket.length;
-      } else if (series.histfunc === 'min') {
-        y = d3Min(bucket)!;
-      } else if (series.histfunc === 'max') {
-        y = d3Max(bucket)!;
-      }
+      const yVal = calculateHistNorm(
+        series.histnorm,
+        y[index],
+        total,
+        isXString ? bin.length : getBinSize(bin as Bin<number, number>),
+      );
 
       vbcData.push({
-        x: (bucket.x1! + bucket.x0!) / 2,
-        y,
+        x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
+        y: yVal,
         legend,
         color,
-        xAxisCalloutData: `[${bucket.x0} - ${bucket.x1})`,
+        ...(isXString
+          ? {}
+          : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
       });
     });
   });
@@ -481,8 +431,9 @@ export const transformPlotlyJsonToVBCProps = (
     chartTitle,
     xAxisTitle,
     yAxisTitle,
-    mode: 'plotly',
+    mode: 'histogram',
     hideTickOverlap: true,
+    maxBarWidth: 50,
   };
 };
 
@@ -495,7 +446,6 @@ export const transformPlotlyJsonToScatterChartProps = (
   let secondaryYAxisValues: ISecondaryYAxisValues = {};
   let mode: string = 'tonexty';
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
-    invalidate2Dseries(series, 'Scatter');
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
@@ -504,12 +454,10 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
+    const lineOptions = getLineOptions(series.line);
 
     return {
       legend,
-      ...(series.line?.dash && dashOptions[series.line.dash]
-        ? { lineOptions: { ...dashOptions[series.line.dash] } }
-        : {}),
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -520,6 +468,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           : {}),
       })),
       color: lineColor,
+      ...(lineOptions ? { lineOptions } : {}),
     } as ILineChartPoints;
   });
 
@@ -570,18 +519,18 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 ): IHorizontalBarChartWithAxisProps => {
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
-      invalidate2Dseries(series, 'HBC');
-
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const color = getColor(yValue, colorMap, isDarkTheme);
+        const legendName = series.name ?? yValue;
+        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: yValue,
+          legend: legendName,
           color,
         } as IHorizontalBarChartWithAxisDataPoint;
       });
     })
+    .reverse()
     .flat()
     //reversing the order to invert the Y bars order as required by plotly.
     .reverse();
@@ -590,7 +539,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = (input.data[0] as PlotData).y.length;
+  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
+    return total + (item.y?.length || 0);
+  }, 0);
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
@@ -615,30 +566,80 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 };
 
 export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMapChartProps => {
-  const firstData = input.data[0] as PlotData;
+  const firstData = input.data[0] as Partial<PlotData>;
   const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
   let zMax = Number.NEGATIVE_INFINITY;
 
-  (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
-    firstData.y?.forEach((yVal: any, yIdx: number) => {
-      const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+  if (firstData.type === 'histogram2d') {
+    const isXString = isStringArray(firstData.x);
+    const isYString = isStringArray(firstData.y);
+    const xBins = createBins(firstData.x, firstData.xbins?.start, firstData.xbins?.end, firstData.xbins?.size);
+    const yBins = createBins(firstData.y, firstData.ybins?.start, firstData.ybins?.end, firstData.ybins?.size);
+    const zBins: number[][][] = yBins.map(() => xBins.map(() => []));
+    let total = 0;
 
-      heatmapDataPoints.push({
-        x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
-        y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
-        value: zVal,
-        rectText: zVal,
-      });
-
-      if (typeof zVal === 'number') {
-        zMin = Math.min(zMin, zVal);
-        zMax = Math.max(zMax, zVal);
+    firstData.x?.forEach((xVal, index) => {
+      const xBinIdx = findBinIndex(xBins, xVal as string | number | null, isXString);
+      const yBinIdx = findBinIndex(yBins, firstData.y?.[index] as string | number | null | undefined, isYString);
+      if (xBinIdx !== -1 && yBinIdx !== -1) {
+        zBins[yBinIdx][xBinIdx].push((firstData.z?.[index] as number | null | undefined) ?? 1);
       }
     });
-  });
+
+    const z = zBins.map(row => {
+      return row.map(bin => {
+        const zVal = calculateHistFunc(firstData.histfunc, bin);
+        total += zVal;
+        return zVal;
+      });
+    });
+
+    xBins.forEach((xBin, xIdx) => {
+      yBins.forEach((yBin, yIdx) => {
+        const zVal = calculateHistNorm(
+          firstData.histnorm,
+          z[yIdx][xIdx],
+          total,
+          isXString ? xBin.length : getBinSize(xBin as Bin<number, number>),
+          isYString ? yBin.length : getBinSize(yBin as Bin<number, number>),
+        );
+
+        heatmapDataPoints.push({
+          x: isXString ? xBin.join(', ') : getBinCenter(xBin as Bin<number, number>),
+          y: isYString ? yBin.join(', ') : getBinCenter(yBin as Bin<number, number>),
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
+  } else {
+    (firstData.x as Datum[])?.forEach((xVal, xIdx: number) => {
+      firstData.y?.forEach((yVal: any, yIdx: number) => {
+        const zVal = (firstData.z as number[][])?.[yIdx]?.[xIdx];
+
+        heatmapDataPoints.push({
+          x: input.layout?.xaxis?.type === 'date' ? (xVal as Date) : xVal ?? 0,
+          y: input.layout?.yaxis?.type === 'date' ? (yVal as Date) : yVal,
+          value: zVal,
+          rectText: zVal,
+        });
+
+        if (typeof zVal === 'number') {
+          zMin = Math.min(zMin, zVal);
+          zMax = Math.max(zMax, zVal);
+        }
+      });
+    });
+  }
+
   const heatmapData: IHeatMapChartData = {
-    legend: firstData.name,
+    legend: firstData.name ?? '',
     data: heatmapDataPoints,
     value: 0,
   };
@@ -798,34 +799,23 @@ export const transformPlotlyJsonToGaugeProps = (
   };
 };
 
-const MAX_DEPTH = 15;
-export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
-  if (depth > MAX_DEPTH) {
-    throw new Error('Maximum json depth exceeded');
-  }
-
-  if (typeof jsonObject === 'object' && jsonObject !== null) {
-    for (const key in jsonObject) {
-      if (jsonObject.hasOwnProperty(key)) {
-        if (typeof jsonObject[key] === 'string') {
-          jsonObject[key] = jsonObject[key].replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        } else {
-          jsonObject[key] = sanitizeJson(jsonObject[key], depth + 1);
-        }
-      }
+export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
+  const projection: PlotlySchema = { ...input };
+  for (let sindex = 0; sindex < input.data.length; sindex++) {
+    const series: PlotData = input.data[sindex] as PlotData;
+    series.x = [];
+    series.y = [];
+    for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
+      const thetaRad = ((series.theta[ptindex] as number) * Math.PI) / 180;
+      const radius = series.r[ptindex] as number;
+      series.x[ptindex] = radius * Math.cos(thetaRad);
+      series.y[ptindex] = radius * Math.sin(thetaRad);
     }
+    projection.data[sindex] = series;
   }
 
-  return jsonObject;
+  return projection;
 };
-
-function isTypedArray(a: any) {
-  return ArrayBuffer.isView(a) && !(a instanceof DataView);
-}
-
-export function isArrayOrTypedArray(a: any) {
-  return Array.isArray(a) || isTypedArray(a);
-}
 
 function isPlainObject(obj: any) {
   if (window && window.process && window.process.versions) {
@@ -873,3 +863,164 @@ function crawlIntoTrace(container: any, i: number, astrPartial: any) {
     }
   }
 }
+
+function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineOptions | undefined {
+  if (!line) {
+    return;
+  }
+
+  let lineOptions: ILineChartLineOptions = {};
+  if (line.dash) {
+    lineOptions = { ...lineOptions, ...dashOptions[line.dash] };
+  }
+
+  switch (line.shape) {
+    case 'spline':
+      const smoothing = typeof line.smoothing === 'number' ? line.smoothing : 1;
+      lineOptions.curve = d3CurveCardinal.tension(1 - smoothing / 1.3);
+      break;
+    case 'hv':
+      lineOptions.curve = 'stepAfter';
+      break;
+    case 'vh':
+      lineOptions.curve = 'stepBefore';
+      break;
+    case 'hvh':
+      lineOptions.curve = 'step';
+      break;
+    default:
+      lineOptions.curve = 'linear';
+  }
+
+  return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
+}
+
+const isStringArray = (arr: any) => {
+  return isArrayOfType(arr, (value: any) => typeof value === 'string');
+};
+
+// TODO: Use binary search to find the appropriate bin for numeric value.
+const findBinIndex = (
+  bins: string[][] | Bin<number, number>[],
+  value: string | number | null | undefined,
+  isString: boolean,
+) => {
+  if (typeof value === 'undefined' || value === null) {
+    return -1;
+  }
+
+  return isString
+    ? (bins as string[][]).findIndex(bin => bin.includes(value as string))
+    : (bins as Bin<number, number>[]).findIndex(
+        (bin, index) =>
+          (value as number) >= bin.x0! &&
+          (index === bins.length - 1 ? (value as number) <= bin.x1! : (value as number) < bin.x1!),
+      );
+};
+
+const getBinSize = (bin: Bin<number, number>) => {
+  return bin.x1! - bin.x0!;
+};
+
+const getBinCenter = (bin: Bin<number, number>) => {
+  return (bin.x1! + bin.x0!) / 2;
+};
+
+// TODO: Add support for date axes
+const createBins = (
+  data: TypedArray | Datum[] | Datum[][] | undefined,
+  binStart?: number | string,
+  binEnd?: number | string,
+  binSize?: number | string,
+) => {
+  if (!data || data.length === 0) {
+    return [];
+  }
+
+  if (isStringArray(data)) {
+    const categories = Array.from(new Set(data as string[]));
+    const start = typeof binStart === 'number' ? Math.ceil(binStart) : 0;
+    const stop = typeof binEnd === 'number' ? Math.floor(binEnd) + 1 : categories.length;
+    const step = typeof binSize === 'number' ? binSize : 1;
+
+    return d3Range(start, stop, step).map(i => categories.slice(i, i + step));
+  }
+
+  const scale = d3ScaleLinear()
+    .domain(d3Extent<number>(data as number[]) as [number, number])
+    .nice();
+  let [minVal, maxVal] = scale.domain();
+
+  minVal = typeof binStart === 'number' ? binStart : minVal;
+  maxVal = typeof binEnd === 'number' ? binEnd : maxVal;
+
+  const binGenerator = d3Bin().domain([minVal, maxVal]);
+
+  if (typeof binSize === 'number' && binSize > 0) {
+    const thresholds: number[] = [];
+    const precision = Math.max(getPrecision(minVal), getPrecision(binSize));
+    let th = precisionRound(minVal, precision);
+
+    while (th < precisionRound(maxVal + binSize, precision)) {
+      thresholds.push(th);
+      th = precisionRound(th + binSize, precision);
+    }
+
+    minVal = thresholds[0];
+    maxVal = thresholds[thresholds.length - 1];
+    binGenerator.domain([minVal, maxVal]).thresholds(thresholds);
+
+    // When the domain ends at the last threshold (maxVal), d3Bin creates an extra final bin where
+    // both x0 and x1 are equal to maxVal and inclusive. The previous bin also has x1 equal to maxVal,
+    // but it is exclusive. To maintain consistent bin widths, remove the final bin,
+    // making the previous bin the last one, with both x0 and x1 inclusive.
+    return binGenerator(data as number[]).slice(0, -1);
+  }
+
+  return binGenerator(data as number[]);
+};
+
+const calculateHistFunc = (histfunc: PlotData['histfunc'] | undefined, bin: number[]) => {
+  switch (histfunc) {
+    case 'sum':
+      return d3Sum(bin);
+    case 'avg':
+      return bin.length === 0 ? 0 : d3Sum(bin) / bin.length;
+    case 'min':
+      return d3Min(bin) ?? 0;
+    case 'max':
+      return d3Max(bin) ?? 0;
+    default:
+      return bin.length;
+  }
+};
+
+const calculateHistNorm = (
+  histnorm: PlotData['histnorm'] | undefined,
+  value: number,
+  total: number,
+  dx: number,
+  dy: number = 1,
+) => {
+  switch (histnorm) {
+    case 'percent':
+      return total === 0 ? 0 : (value / total) * 100;
+    case 'probability':
+      return total === 0 ? 0 : value / total;
+    case 'density':
+      return dx * dy === 0 ? 0 : value / (dx * dy);
+    case 'probability density':
+      return total * dx * dy === 0 ? 0 : value / (total * dx * dy);
+    default:
+      return value;
+  }
+};
+
+const getPrecision = (value: number) => {
+  return value.toString().split('.')[1]?.length ?? 0;
+};
+
+const precisionRound = (value: number, precision: number) => {
+  const factor = Math.pow(10, precision);
+  return Math.round(value * factor) / factor;
+};

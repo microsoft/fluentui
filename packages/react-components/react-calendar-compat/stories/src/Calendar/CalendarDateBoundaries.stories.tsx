@@ -9,7 +9,7 @@ export const CalendarDateBoundaries = () => {
 
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
-  const onSelectDate = React.useCallback((date: Date, _): void => {
+  const onSelectDate = React.useCallback((date: Date): void => {
     setSelectedDate(date);
   }, []);
 

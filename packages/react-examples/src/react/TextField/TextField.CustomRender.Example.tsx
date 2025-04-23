@@ -44,7 +44,13 @@ const onWrapDefaultLabelRenderer = (
     <>
       <Stack horizontal verticalAlign="center" tokens={stackTokens}>
         <span>{defaultRender(props)}</span>
-        <Icon iconName="Globe" title="Globe" ariaLabel="Globe" styles={iconStyles} />
+        <Icon
+          iconName="Globe"
+          title="Globe"
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          ariaLabel="Globe"
+          styles={iconStyles}
+        />
       </Stack>
     </>
   );

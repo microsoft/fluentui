@@ -147,6 +147,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
             height={this.state.height}
             width={this.state.width}
             data={chartData}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines={false}
             enablePerfOptimization={true}
             enableReflow={true}

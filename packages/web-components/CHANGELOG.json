@@ -2,6 +2,161 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 22 Apr 2025 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.94",
+      "version": "3.0.0-beta.94",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "08186717313e73d222f34ce68df41685ce106609",
+            "comment": "Added custom elements manifest to project and included it in published package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Apr 2025 04:06:38 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.93",
+      "version": "3.0.0-beta.93",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "1981616118@qq.com",
+            "package": "@fluentui/web-components",
+            "commit": "5963862db50ff936c31337fc2884d3ba87ffa03e",
+            "comment": "fix tabs animation starting position"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a651243eacece939174bf213e1392a07b1cfff6f",
+            "comment": "[fix] only set expanded is expanded is not set"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Apr 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.92",
+      "version": "3.0.0-beta.92",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a625fc539f9fb0d3c2ddba9392883d07f453fa7d",
+            "comment": "tree item initial selection, tree item expands for sub selected item"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Apr 2025 04:06:21 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.91",
+      "version": "3.0.0-beta.91",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "6e3d631fb0e5c31199290bc7a0e9799d769ada55",
+            "comment": "fix: dropdown validation message and add missing validity functions"
+          }
+        ],
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec07aac33ce549a97cd73856c7d4615f09e0d5bb",
+            "comment": "chore: remove unused form-associated modules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Apr 2025 04:07:19 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.90",
+      "version": "3.0.0-beta.90",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4a7b410dce2d36e1196dbfda2b145c6b1fc54e53",
+            "comment": "feat: remove use of custom states for presentational styling"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "64a35bb74b612aac36a8056991d5477df564bbdc",
+            "comment": "fix typo in avatar styles for beige color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Apr 2025 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.89",
+      "version": "3.0.0-beta.89",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5a43d14f3b1ee1035832588bb7b4be1b5c1533c2",
+            "comment": "deprecate tabs and tab-panel in favor of tablist"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Apr 2025 04:07:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.88",
+      "version": "3.0.0-beta.88",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbe040968966a7b8654dfc4d120271e5f4759cd7",
+            "comment": "chore: add ESLINT_USE_FLAT_CONFIG env variable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Mar 2025 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.88",
+      "version": "3.0.0-beta.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "90f14e0aa5f0d8283c4bd7b6f41fa5c80dc8cd8c",
+            "comment": "fix: emit change event on tablist only when active tab changed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Mar 2025 04:07:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.87",
+      "version": "3.0.0-beta.87",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "683cd05a2ff1f8da232d6ac356e82d1087b14517",
+            "comment": "[chore]: move core functionality to base dropdown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Mar 2025 04:07:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.86",
       "version": "3.0.0-beta.86",

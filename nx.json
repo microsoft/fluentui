@@ -73,7 +73,7 @@
         "{workspaceRoot}/eslint.config.js"
       ],
       "options": {
-        "command": "eslint src"
+        "command": "cross-env ESLINT_USE_FLAT_CONFIG=false eslint src"
       }
     },
     "format": {
@@ -156,5 +156,6 @@
         "packages/react-components/**/*"
       ]
     }
-  ]
+  ],
+  "useLegacyCache": true
 }

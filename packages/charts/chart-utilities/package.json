@@ -1,13 +1,11 @@
 {
   "name": "@fluentui/chart-utilities",
-  "version": "1.0.0",
+  "version": "1.1.5",
   "description": "React web chart utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -36,12 +34,24 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {},
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major"
+    ]
+  },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
-    "./README.md": "./README.md"
-  }
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

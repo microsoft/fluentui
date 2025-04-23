@@ -20,7 +20,7 @@
     "build": "just-scripts build",
     "prebundle": "yarn build",
     "bundle": "just-scripts bundle",
-    "lint": "eslint --ext .js,.ts,.tsx ./src",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 11 Mar 2025 18:58:54 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.7)
+
+Wed, 16 Apr 2025 19:42:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.6..@fluentui/react-positioning_v9.16.7)
+
+### Patches
+
+- fix(Popover): revert to a single composition mode for slide animations ([PR #34160](https://github.com/microsoft/fluentui/pull/34160) by robertpenner@microsoft.com)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+
+## [9.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.6)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.5..@fluentui/react-positioning_v9.16.6)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.5)
+
+Wed, 19 Mar 2025 15:40:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.4..@fluentui/react-positioning_v9.16.5)
+
+### Patches
+
+- fix: don't throw on window.getComputedStyle() ([PR #34016](https://github.com/microsoft/fluentui/pull/34016) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
 
 ## [9.16.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.4)
 

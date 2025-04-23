@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: minor accessibility cleanup",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

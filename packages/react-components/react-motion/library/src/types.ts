@@ -31,8 +31,9 @@ export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = 
 
 // ---
 
-export type AnimationHandle = Pick<Animation, 'cancel' | 'finish' | 'pause' | 'play' | 'playbackRate'> & {
+export type AnimationHandle = Pick<Animation, 'cancel' | 'finish' | 'pause' | 'play' | 'playbackRate' | 'reverse'> & {
   setMotionEndCallbacks: (onfinish: () => void, oncancel: () => void) => void;
+  isRunning: () => boolean;
 };
 
 export type MotionImperativeRef = {

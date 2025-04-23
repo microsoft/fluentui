@@ -1,7 +1,13 @@
 import { attr } from '@microsoft/fast-element';
 import { TreeItemAppearance, TreeItemSize } from './tree-item.options.js';
-import { BaseTreeItem } from './tree-item.base';
+import { BaseTreeItem } from './tree-item.base.js';
 
+/**
+ * The Fluent Tree Item Element. Implements {@link @microsoft/fast-foundation#BaseTreeItem}.
+ *
+ * @tag fluent-tree-item
+ *
+ */
 export class TreeItem extends BaseTreeItem {
   /**
    * The size of the tree item element
