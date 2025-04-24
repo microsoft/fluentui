@@ -189,3 +189,20 @@ export const AsideSlot: Story = {
     asideSlottedContent: () => html`<span slot="aside">${FilterIcon}</span>`,
   },
 };
+
+export const ToggleEvent: Story = {
+  render: renderComponent(html<StoryArgs<FluentTreeItem>>`
+    <fluent-tree-item
+      @click=${(story, context) => {
+        const target = context.eventTarget() as FluentTreeItem;
+        target.toggleExpansion();
+      }}
+      @toggle=${(c, e) => {
+        console.log('toggle', (e.event as any)?.detail);
+      }}
+    >
+      Item 1
+      <fluent-tree-item>Item 1-1</fluent-tree-item>
+    </fluent-tree-item>
+  `),
+};
