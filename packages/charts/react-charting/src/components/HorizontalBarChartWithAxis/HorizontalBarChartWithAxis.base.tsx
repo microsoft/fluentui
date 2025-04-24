@@ -526,7 +526,9 @@ export class HorizontalBarChartWithAxisBase
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
-    const totalPositiveBars = singleBarData.filter((point: IHorizontalBarChartWithAxisDataPoint) => point.x > 0).length;
+    const totalPositiveBars = singleBarData.filter(
+      (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= 0,
+    ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
     let currPositiveIndex = 0;
     let currNegativeIndex = 0;
@@ -585,22 +587,24 @@ export class HorizontalBarChartWithAxisBase
       const prevBarWidth = Math.abs(xBarScale(prevPoint) - xBarScale(0));
       prevPoint > 0 ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
       const currentWidth = Math.abs(xBarScale(point.x) - xBarScale(0));
+      const gapWidthLTR =
+        currentWidth > 2 &&
+        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) ||
+          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeIndex !== 1)))
+          ? 2
+          : 0;
+      const gapWidthRTL =
+        currentWidth > 2 &&
+        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveIndex !== 1)) ||
+          (point.x < 0 && currNegativeIndex !== totalNegativeBars))
+          ? 2
+          : 0;
       let xStart = 0;
       if (this._isRtl) {
         xStart = point.x > 0 ? barStartX - prevWidthPositive : barStartX + prevWidthNegative;
       } else {
         xStart = point.x > 0 ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
       }
-      const gapWidthLTR =
-        currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) || (point.x < 0 && currNegativeIndex !== 1))
-          ? 2
-          : 0;
-      const gapWidthRTL =
-        currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== 1) || (point.x < 0 && currNegativeIndex !== totalNegativeBars))
-          ? 2
-          : 0;
       prevPoint = point.x;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
@@ -686,10 +690,13 @@ export class HorizontalBarChartWithAxisBase
     yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
+    this._isRtl = true;
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
-    const totalPositiveBars = singleBarData.filter((point: IHorizontalBarChartWithAxisDataPoint) => point.x > 0).length;
+    const totalPositiveBars = singleBarData.filter(
+      (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= 0,
+    ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
     let currPositiveIndex = 0;
     let currNegativeIndex = 0;
@@ -747,12 +754,14 @@ export class HorizontalBarChartWithAxisBase
       const currentWidth = Math.abs(xBarScale(point.x) - xBarScale(0));
       const gapWidthLTR =
         currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) || (point.x < 0 && currNegativeIndex !== 1))
+        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) ||
+          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeIndex !== 1)))
           ? 2
           : 0;
       const gapWidthRTL =
         currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== 1) || (point.x < 0 && currNegativeIndex !== totalNegativeBars))
+        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveIndex !== 1)) ||
+          (point.x < 0 && currNegativeIndex !== totalNegativeBars))
           ? 2
           : 0;
       prevPoint = point.x;
