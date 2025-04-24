@@ -406,6 +406,11 @@ export class CartesianChartBase
           this.props.barwidth,
         );
       } else {
+        // TODO: Since the scale domain values are now computed independently for both the primary and
+        // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
+        // rendering the secondary y-axis. Therefore, rather than checking the secondaryYScaleOptions
+        // prop to determine whether to create a secondary y-axis, it's more appropriate to check if any
+        // data points are assigned to use the secondary y-scale.
         if (this.props?.secondaryYScaleOptions) {
           const YAxisParamsSecondary = {
             margins: this.margins,

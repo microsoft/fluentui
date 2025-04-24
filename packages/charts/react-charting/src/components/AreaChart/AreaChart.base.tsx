@@ -484,6 +484,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : renderPoints?.length > 1);
     return {
       renderData: renderPoints,
+      // The maxOfYVal prop is only required for the primary y-axis. When the data includes
+      // a secondary y-axis, the mode defaults to tozeroy, so maxOfYVal should be calculated using
+      // only the data points associated with the primary y-axis.
       maxOfYVal: this._containsSecondaryYAxis
         ? findNumericMinMaxOfY(this.props.data.lineChartData!).endValue
         : maxOfYVal,

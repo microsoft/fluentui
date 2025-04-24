@@ -169,6 +169,8 @@ export class GroupedVerticalBarChartBase
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
     this._adjustProps();
 
+    // The maxOfYVal prop is only required for the primary y-axis, so yMax should be calculated
+    // using only the data points associated with the primary y-axis.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yMax = this._getMinMaxOfYAxis(this._datasetForBars).endValue;
     this._yMax = Math.max(yMax, this.props.yMaxValue || 0);

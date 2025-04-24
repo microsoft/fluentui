@@ -506,13 +506,6 @@ export const transformPlotlyJsonToScatterChartProps = (
   };
 
   if (isAreaChart) {
-    if (typeof secondaryYAxisValues.secondaryYScaleOptions?.yMinValue === 'number') {
-      secondaryYAxisValues.secondaryYScaleOptions.yMinValue = Math.min(
-        secondaryYAxisValues.secondaryYScaleOptions.yMinValue,
-        0,
-      );
-    }
-
     return {
       data: chartProps,
       supportNegativeData: true,
