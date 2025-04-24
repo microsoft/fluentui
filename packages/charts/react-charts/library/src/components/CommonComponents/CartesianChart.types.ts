@@ -86,54 +86,9 @@ export interface CartesianChartStyles {
   hover?: string;
 
   /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: string;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: string;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: string;
-
-  /**
    * styles for description message
    */
   descriptionMessage?: string;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutDateTimeContainer?: string;
-
-  /**
-   * styles for callout info container
-   */
-  calloutInfoContainer?: string;
-
-  /**
-   * styles for callout block container
-   */
-  calloutBlockContainer?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is false
-   */
-  calloutBlockContainertoDrawShapefalse?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is true
-   */
-  calloutBlockContainertoDrawShapetrue?: string;
-
-  /**
-   * styles for callout legend text
-   */
-  calloutlegendText?: string;
 
   /**
    * styles for tooltip

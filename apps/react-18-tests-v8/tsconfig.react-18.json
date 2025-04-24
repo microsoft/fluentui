@@ -6,6 +6,7 @@
     "lib": ["ES2019", "dom"],
     "sourceMap": true,
     "strict": true,
+    "strictFunctionTypes": false,
     "pretty": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -24,13 +25,9 @@
     }
   },
   "exclude": [
-    "../../packages/react-components/**/index.stories.tsx",
-    "../../packages/react-components/**/index.stories.ts",
-    "../../packages/react-components/react-migration-v0-v9/**"
+    "../../packages/react-examples/src/react-charting/**",
+    "../../packages/react-examples/src/react-experiments/**"
   ],
-  "include": [
-    "../../packages/react-components/*/stories/**/*.stories.tsx",
-    "../../packages/react-components/*/stories/**/*.stories.ts"
-  ],
+  "include": ["../../packages/react-examples/**/index.stories.tsx"],
   "files": ["../../typings/static-assets/index.d.ts"]
 }

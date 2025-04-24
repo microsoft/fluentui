@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 16 Apr 2025 19:42:05 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.6.6)
+
+Thu, 24 Apr 2025 09:59:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.6.5..@fluentui/react-tooltip_v9.6.6)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.5.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-tabster to v9.24.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
 
 ## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.6.5)
 
