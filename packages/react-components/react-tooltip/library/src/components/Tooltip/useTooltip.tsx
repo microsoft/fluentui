@@ -97,12 +97,12 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   );
 
   // In StrictMode, the component may be unmounted while the visible delay timer is still pending.
-  // This effect will restart the timer upon remounting.
+  // Use an effect to restart the timer upon remounting.
   // See https://github.com/microsoft/fluentui/issues/34296
   React.useEffect(() => {
     if (pendingVisibleDelayRef.current) {
       const { ev, data, delayUntil } = pendingVisibleDelayRef.current;
-      setVisibleDelay(ev, data, delayUntil - Date.now());
+      setVisibleDelay(ev, data, Math.max(0, delayUntil - Date.now()));
     }
   }, [setVisibleDelay]);
 
