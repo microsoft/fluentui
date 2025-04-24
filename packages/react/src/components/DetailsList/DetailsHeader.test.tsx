@@ -12,6 +12,10 @@ import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
 import type { IColumn } from './DetailsList.types';
 import { getBySelector } from '../../common/testUtilities';
 
+function getBySelector(container: HTMLElement, selector: string) {
+  return container.querySelector(selector);
+}
+
 const _items: {}[] = [];
 const _selection = new Selection();
 const _MOUSEDOWN = 'mousedown';
