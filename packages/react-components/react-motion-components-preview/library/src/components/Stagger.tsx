@@ -50,8 +50,7 @@ export function useStaggeredReveal(count: number, delay: number, onMotionFinish?
     };
   }, [count, delay, visibleCount, onMotionFinish]);
 
-  // return visibleCount + 1; // +1 since we render the current one too
-  return visibleCount; // +1 since we render the current one too
+  return visibleCount;
 }
 
 // A Stagger is a component that accepts JSX children and renders them in a staggered manner with a set delay
@@ -94,11 +93,18 @@ export const Stagger: React.FC<{
   );
 };
 
-// TODO: use visible Boolean prop similar to Presence
-// A PresenceStagger is a component that accepts JSX children and renders them in a staggered manner with a set delay
+/**
+ * A PresenceStagger is a component that accepts JSX children and renders them in a staggered manner with a set delay.
+ * The difference from Stagger is that PresenceStagger wraps Presence motion components,
+ * and shows/hides them by toggling their `visible` properties.
+ * Whereas Stagger works with regular JSX children, and it shows/hides them by adding/removing from the DOM.
+ * An advantage of PresenceStagger is that the because the children remain in the DOM,
+ * they can occupy space while they are hidden, preventing layout shifts.
+ */
 export const PresenceStagger: React.FC<{
   children: React.ReactNode;
   delay?: number;
+  // TODO: refactor to a `visible` Boolean prop similar to Presence
   mode?: 'enter' | 'exit' | 'enterReverse' | 'exitReverse';
   exit?: boolean;
   reverse?: boolean;
