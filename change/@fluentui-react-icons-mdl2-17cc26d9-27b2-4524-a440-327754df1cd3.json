@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(react-icons-mdl2): add proper ts lib types so tsc wont complain",
+  "packageName": "@fluentui/react-icons-mdl2",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
