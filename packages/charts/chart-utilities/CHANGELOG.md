@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.6)
+
+Thu, 24 Apr 2025 09:59:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.5..@fluentui/chart-utilities_v1.1.6)
+
+### Patches
+
+- feat(chart-utilities): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
 
 ## [1.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.5)
 
