@@ -57,7 +57,7 @@ describe('SelectedPeopleList', () => {
     expect(onItemsRemoved).toHaveBeenCalledTimes(1);
   });
 
-  it('edit render of the items in selected items list', async () => {
+  it('edit render of the items in selected items list', () => {
     const SelectedItem: ItemCanDispatchTrigger<any> = ItemWithContextMenu({
       menuItems: item => [
         {
