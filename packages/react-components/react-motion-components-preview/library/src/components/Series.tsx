@@ -1,15 +1,20 @@
 import * as React from 'react';
 
+/** Convert ReactNode to an array of ReactElements, filtering out nulls, strings, numbers, etc. */
+export const toElementArray = (children: React.ReactNode): React.ReactElement[] => {
+  return React.Children.toArray(children).filter(React.isValidElement) as React.ReactElement[];
+};
+
 export const isFragment = (child: React.ReactNode): child is React.ReactElement => {
   return React.isValidElement(child) && child.type === React.Fragment;
 };
 
-// Convert children that is either React.Fragment or regular React.Children to an array of React elements
+/** Convert React children that might be a Fragment or other JSX into a clean array of React elements. */
 export const childrenOrFragmentToArray = (children: React.ReactNode): React.ReactElement[] => {
   if (isFragment(children)) {
-    return React.Children.toArray(children.props.children) as React.ReactElement[];
+    return toElementArray(children.props.children);
   }
-  return React.Children.toArray(children) as React.ReactElement[];
+  return toElementArray(children);
 };
 
 // A Series is a component that accepts an array of motion components and plays them in sequence
