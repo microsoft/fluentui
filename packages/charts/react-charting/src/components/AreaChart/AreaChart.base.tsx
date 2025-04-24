@@ -484,7 +484,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : renderPoints?.length > 1);
     return {
       renderData: renderPoints,
-      maxOfYVal,
+      maxOfYVal: this._containsSecondaryYAxis
+        ? findNumericMinMaxOfY(this.props.data.lineChartData!).endValue
+        : maxOfYVal,
     };
   };
 

@@ -18,6 +18,7 @@ import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Exa
 import { VerticalBarChartNegativeExample } from './VerticalBarChart.Negative.Example';
 import { VerticalBarChartAllNegativeExample } from './VerticalBarChart.AllNegative.Example';
 import { VerticalBarChartResponsiveExample } from './VerticalBarChart.Responsive.Example';
+import { VerticalBarChartSecondaryYAxisExample } from './VerticalBarChart.SecondaryYAxis.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
@@ -39,6 +40,8 @@ const VerticalBarChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.AllNegative.Example.tsx') as string;
 const VerticalBarChartResponsiveExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Responsive.Example.tsx') as string;
+const VerticalBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.SecondaryYAxis.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -80,6 +83,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ExampleCard>
             <ExampleCard title="VerticalBarChart responsive" code={VerticalBarChartResponsiveExampleCode}>
               <VerticalBarChartResponsiveExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalBarChart secondary y-axis" code={VerticalBarChartSecondaryYAxisExampleCode}>
+              <VerticalBarChartSecondaryYAxisExample />
             </ExampleCard>
           </div>
         }
