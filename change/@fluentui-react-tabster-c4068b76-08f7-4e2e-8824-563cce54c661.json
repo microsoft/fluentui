@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix:  use useLayoutEffect() for Tabster creation",
-  "packageName": "@fluentui/react-tabster",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:44 GMT",
+      "tag": "@fluentui/react-infolabel_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "terynkum@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "fafc2559121e0d89939ba0605b5c8613a52223ee",
+            "comment": "Feat: Exported InfoButton types and component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.10.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.24.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:18 GMT",
       "tag": "@fluentui/react-infolabel_v9.1.5",
       "version": "9.1.5",
