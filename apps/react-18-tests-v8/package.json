@@ -13,6 +13,7 @@
     "e2e:integration": "npx --yes cypress@latest run --component --config-file cypress-react-18.config.ts",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
+    "test:integration": "jest --passWithNoTests -c jest-react-18.config.js",
     "start": "webpack-dev-server --mode=development"
   },
   "devDependencies": {
@@ -29,11 +30,16 @@
     "@fluentui/react-cards": "*",
     "@fluentui/react-hooks": "*",
     "@fluentui/react-examples": "*",
+    "@fluentui/font-icons-mdl2": "*",
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
     "cypress-real-events": "1.14.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-test-renderer": "18.3.1",
+    "react-is": "18.3.1",
     "tslib": "^2.1.0"
   }
 }
