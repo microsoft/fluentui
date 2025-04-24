@@ -171,7 +171,12 @@ const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
   return series.yaxis === 'y2';
 };
 
-const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefined): ISecondaryYAxisValues => {
+const getSecondaryYAxisValues = (
+  data: Data[],
+  layout: Partial<Layout> | undefined,
+  maxAllowedMinY?: number,
+  minAllowedMaxY?: number,
+): ISecondaryYAxisValues => {
   let containsSecondaryYAxis = false;
   let yMinValue: number | undefined;
   let yMaxValue: number | undefined;
@@ -192,6 +197,12 @@ const getSecondaryYAxisValues = (data: Data[], layout: Partial<Layout> | undefin
     return {};
   }
 
+  if (typeof yMinValue === 'number' && typeof maxAllowedMinY === 'number') {
+    yMinValue = Math.min(yMinValue, maxAllowedMinY);
+  }
+  if (typeof yMaxValue === 'number' && typeof minAllowedMaxY === 'number') {
+    yMaxValue = Math.max(yMaxValue, minAllowedMaxY);
+  }
   if (layout?.yaxis2?.range) {
     yMinValue = layout.yaxis2.range[0];
     yMaxValue = layout.yaxis2.range[1];
@@ -323,7 +334,7 @@ export const transformPlotlyJsonToGVBCProps = (
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
-  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
 
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
@@ -452,7 +463,12 @@ export const transformPlotlyJsonToScatterChartProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
-  const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  const secondaryYAxisValues = getSecondaryYAxisValues(
+    input.data,
+    input.layout,
+    isAreaChart ? 0 : undefined,
+    isAreaChart ? 0 : undefined,
+  );
   let mode: string = 'tonexty';
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
