@@ -94,10 +94,11 @@ export const Stagger: React.FC<{
 };
 
 /**
- * A PresenceStagger is a component that accepts JSX children and renders them in a staggered manner with a set delay.
- * The difference from Stagger is that PresenceStagger wraps Presence motion components,
- * and shows/hides them by toggling their `visible` properties.
- * Whereas Stagger works with regular JSX children, and it shows/hides them by adding/removing from the DOM.
+ * A PresenceStagger is a component that accepts Presence motion components
+ * and renders them in a staggered manner with a set delay.
+ * The difference from Stagger is that PresenceStagger wraps shows/hides its Presence children
+ * by toggling their `visible` properties, whereas Stagger works with regular JSX children,
+ * and it shows/hides them by adding/removing from the DOM.
  * An advantage of PresenceStagger is that the because the children remain in the DOM,
  * they can occupy space while they are hidden, preventing layout shifts.
  */
