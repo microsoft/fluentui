@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(react-experiments): add proper ts lib types so tsc wont complain",
+  "packageName": "@fluentui/react-experiments",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
