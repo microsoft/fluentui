@@ -34,7 +34,7 @@ export const SelectionCard: React.FC<SelectionCardProps> = props => {
     } else {
       return undefined;
     }
-  }, [name, displayName]);
+  }, [name, props.displayName, componentsImages]);
 
   return (
     <div className={styles.main}>

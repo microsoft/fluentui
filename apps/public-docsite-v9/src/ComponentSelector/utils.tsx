@@ -1,50 +1,7 @@
-import * as React from 'react';
-
 import { NamedComponent, ComponentDefinition, ComponentGroup, GroupQuestion } from './ComponentSelector';
 
-const APP_TITLE = 'Component Selector';
-const APP_TITLE_SEPARATOR = ' | ';
 const formatComponentStoryUrl = (component: string, story: string) =>
   `https://react.fluentui.dev/?path=/docs/components-${component}--docs#${story}`;
-
-interface FullscreenLinkProps {
-  parent: string;
-  story: string;
-  content: string;
-}
-
-// https://storybook.js.org/addons/@storybook/addon-links does not allow opening a story in new tab
-// so this is a naive attempt for opening a story in full screen
-export const FullscreenLink = (props: FullscreenLinkProps) => (
-  <a className="sbdocs sbdocs-a" href={`iframe.html?id=${props.parent}--${props.story}`} target="_blank">
-    {props.content}
-  </a>
-);
-
-export const ScenariosListLink: React.FC = props => (
-  <a
-    className="sbdocs sbdocs-a"
-    href={`iframe.html?id=concepts-developer-accessibility-stories-list-of-scenarios--page`}
-  >
-    {props.children}
-  </a>
-);
-
-export const BackLink = () => <ScenariosListLink>Go back to main menu</ScenariosListLink>;
-
-export const Scenario: React.FC<{ pageTitle: string }> = ({ pageTitle, children }) => {
-  React.useEffect(() => {
-    document.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;
-  }, [pageTitle]);
-
-  return (
-    <div role="main">
-      <BackLink />
-      <br />
-      {children}
-    </div>
-  );
-};
 
 export const removeFromArray = (array: any[], item: any) => {
   const index = array.indexOf(item);
@@ -79,7 +36,7 @@ export const getAllQuestions = (
   groups: ComponentGroup[],
   questions: GroupQuestion[],
 ) => {
-  let allQuestionsIDs: string[] = [];
+  const allQuestionsIDs: string[] = [];
   selectedComponents.forEach(component => {
     getQuestionsIDs(component.name, groups).forEach(id => {
       allQuestionsIDs.includes(id) ? null : allQuestionsIDs.push(id);

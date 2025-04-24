@@ -74,12 +74,12 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
   const firstCategoryHeadingRef = React.useRef<HTMLElement | null>(null);
   const questionsHeadingRef = React.useRef<HTMLDivElement | null>(null);
 
-  const scrollAndFocusQuestionsHeading = () => {
+  const onContinueAnsweringClick = React.useCallback(() => {
     if (questionsHeadingRef.current) {
       questionsHeadingRef.current.focus({ preventScroll: true });
       questionsHeadingRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
   const setSectionRef = (el: HTMLDivElement | null, index: number) => {
     if (el) {
@@ -88,22 +88,6 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         firstCategoryHeadingRef.current = el;
       }
     }
-  };
-
-  const onFilterChange: InputProps['onChange'] = (_, data) => {
-    setFilterText(data.value);
-  };
-
-  const onSelectedComponentDismiss: TagGroupProps['onDismiss'] = (_, data) => {
-    if (selectedComponents.length === 1) {
-      firstCategoryHeadingRef.current?.focus();
-    }
-    updateComponentSelection(data.value, false);
-  };
-
-  const onRemoveAllComponentsClick = () => {
-    firstCategoryHeadingRef.current?.focus();
-    setSelectedComponents([]);
   };
 
   React.useEffect(() => {
@@ -118,7 +102,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         }
       });
     });
-  }, []);
+  }, [attributesMapping, componentsDefinitions]);
 
   React.useEffect(() => {
     setFilteredComponentsDefinitions(
@@ -134,11 +118,14 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         return isMatchInName || isMatchInStory || isMatchInGroupTitle;
       }),
     );
-  }, [setFilteredComponentsDefinitions, filterText]);
+  }, [filterText, componentsDefinitions, groups]);
 
-  const getComponentDefinitionByName = (name: string) => {
-    return componentsDefinitions.find(definition => definition.name === name);
-  };
+  const getComponentDefinitionByName = React.useCallback(
+    (name: string) => {
+      return componentsDefinitions.find(definition => definition.name === name);
+    },
+    [componentsDefinitions],
+  );
 
   const matchingComponents = React.useMemo(() => {
     const suitableComponents: ComponentDefinition[] = [];
@@ -164,20 +151,22 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       });
     }
     return suitableComponents;
-  }, [selectedComponents, selectedBehaviours]);
+  }, [selectedComponents, selectedBehaviours, componentsDefinitions, getComponentDefinitionByName]);
 
   const updateComponentSelection = React.useCallback(
     (name, selected) => {
       setSelectedBehaviours([]);
       if (selected) {
         // Find the definition and add the component based on the definition
-        const definition = componentsDefinitions.find(definition => definition.name === name);
-        if (!definition) {
+        const foundDefinition = componentsDefinitions.find(definition => definition.name === name);
+        if (!foundDefinition) {
           return;
         }
-        const displayName = definition.story ? `${definition.component} : ${definition.story}` : definition.name;
+        const displayName = foundDefinition.story
+          ? `${foundDefinition.component} : ${foundDefinition.story}`
+          : foundDefinition.name;
         const newSelectedComponent = {
-          ...definition,
+          ...foundDefinition,
           displayName,
         };
         setSelectedComponents(prevSelectedComponents => {
@@ -199,7 +188,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
         });
       }
     },
-    [selectedComponents],
+    [componentsDefinitions],
   );
 
   const categorizedComponents = React.useMemo(() => {
@@ -236,9 +225,16 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       return group;
     });
     return result;
-  }, [filteredComponentsDefinitions, updateComponentSelection]);
+  }, [
+    filteredComponentsDefinitions,
+    updateComponentSelection,
+    selectedComponents,
+    componentsImages,
+    groups,
+    questions,
+  ]);
 
-  const updateDecisionForQuestion = (currentName: string, previousName: string) => {
+  const updateDecisionForQuestion = React.useCallback((currentName: string, previousName: string) => {
     if (currentName === previousName) {
       return;
     }
@@ -252,7 +248,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
       const behaviorsWithoutPreviousItem = previousBehaviors.filter(item => item !== previousName);
       return [...behaviorsWithoutPreviousItem, currentName];
     });
-  };
+  }, []);
 
   const allQuestions = React.useMemo(
     () => getAllQuestions(selectedComponents, groups, questions),
@@ -264,12 +260,30 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
     [categorizedComponents],
   );
 
+  const onFilterChange: InputProps['onChange'] = React.useCallback((_, data) => {
+    setFilterText(data.value);
+  }, []);
+
+  const onSelectedComponentDismiss: TagGroupProps['onDismiss'] = React.useCallback(
+    (_, data) => {
+      if (selectedComponents.length === 1) {
+        firstCategoryHeadingRef.current?.focus();
+      }
+      updateComponentSelection(data.value, false);
+    },
+    [selectedComponents.length, updateComponentSelection],
+  );
+
+  const onRemoveAllComponentsClick = React.useCallback(() => {
+    firstCategoryHeadingRef.current?.focus();
+    setSelectedComponents([]);
+  }, []);
+
   return (
     <div className={classes.componentWrapper}>
       <div id="#header" className={classes.headerWrapper}>
         <Input
           contentBefore={<SearchRegular />}
-          // size="small"
           placeholder="Search for component or category"
           aria-label="Search for component or category"
           value={filterText}
@@ -338,7 +352,7 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
               <Question
                 key={question.id}
                 question={question}
-                number={index + 1}
+                questionNumber={index + 1}
                 updateDecisionForQuestion={updateDecisionForQuestion}
               />
             ))}
@@ -389,11 +403,11 @@ export const ComponentSelector: React.FC<ComponentSelectorProps> = ({
               <Button
                 shape="circular"
                 appearance="primary"
-                onClick={scrollAndFocusQuestionsHeading}
+                onClick={onContinueAnsweringClick}
                 icon={<ArrowRightRegular />}
                 iconPosition="after"
               >
-                Continue answer questions
+                Continue answering questions
               </Button>
             </div>
           )}
