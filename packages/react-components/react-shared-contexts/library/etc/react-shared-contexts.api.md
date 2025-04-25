@@ -57,6 +57,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useCarouselAutoplayButtonStyles_unstable: CustomStyleHook;
     useCarouselButtonStyles_unstable: CustomStyleHook;
     useCarouselCardStyles_unstable: CustomStyleHook;
+    useCarouselCardButtonStyles_unstable: CustomStyleHook;
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
@@ -239,6 +240,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useCarouselAutoplayButtonStyles_unstable: CustomStyleHook;
     useCarouselButtonStyles_unstable: CustomStyleHook;
     useCarouselCardStyles_unstable: CustomStyleHook;
+    useCarouselCardButtonStyles_unstable: CustomStyleHook;
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;
@@ -421,6 +423,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useCarouselAutoplayButtonStyles_unstable: CustomStyleHook;
     useCarouselButtonStyles_unstable: CustomStyleHook;
     useCarouselCardStyles_unstable: CustomStyleHook;
+    useCarouselCardButtonStyles_unstable: CustomStyleHook;
     useCarouselNavButtonStyles_unstable: CustomStyleHook;
     useCarouselNavContainerStyles_unstable: CustomStyleHook;
     useCarouselNavImageButtonStyles_unstable: CustomStyleHook;

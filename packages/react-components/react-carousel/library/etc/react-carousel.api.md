@@ -81,10 +81,12 @@ export const CarouselCardButton: ForwardRefComponent<CarouselCardButtonProps>;
 export const carouselCardButtonClassNames: SlotClassNames<CarouselCardButtonSlots>;
 
 // @public
-export type CarouselCardButtonProps = ComponentProps<CarouselCardButtonSlots> & {};
+export type CarouselCardButtonProps = ComponentProps<CarouselCardButtonSlots> & {
+    autoSize?: boolean;
+};
 
 // @public
-export type CarouselCardButtonState = ComponentState<CarouselCardButtonSlots>;
+export type CarouselCardButtonState = ComponentState<CarouselCardButtonSlots> & Pick<CarouselCardButtonProps, 'autoSize'>;
 
 // @public (undocumented)
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
@@ -336,7 +338,7 @@ export const useCarouselButtonStyles_unstable: (state: CarouselButtonState) => C
 export const useCarouselCard_unstable: (props: CarouselCardProps, ref: React_2.Ref<HTMLDivElement>) => CarouselCardState;
 
 // @public
-export const useCarouselCardButton_unstable: (props: CarouselCardButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselCardButtonState;
+export const useCarouselCardButton_unstable: (props: CarouselCardButtonProps, ref: React_2.Ref<HTMLAnchorElement>) => CarouselCardButtonState;
 
 // @public
 export const useCarouselCardButtonStyles_unstable: (state: CarouselCardButtonState) => CarouselCardButtonState;
