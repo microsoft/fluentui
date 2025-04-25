@@ -2134,7 +2134,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           rx={0}
           transform="translate(0,-5.125)"
           width={12}
-          x={-20}
+          x={28}
           y={14.25}
         />
          
@@ -2444,7 +2444,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           rx={0}
           transform="translate(0,-5.125)"
           width={12}
-          x={-20}
+          x={28}
           y={14.25}
         />
          

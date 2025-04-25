@@ -4392,7 +4392,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="0"
             transform="translate(0,9.625)"
             width="118"
-            x="512"
+            x="40"
             y="36"
           />
           <rect
@@ -4430,7 +4430,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             transform="translate(0,9.625)"
             width="354"
-            x="276"
+            x="40"
             y="138.5"
           />
           <rect
@@ -4449,7 +4449,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             transform="translate(0,9.625)"
             width="236"
-            x="394"
+            x="40"
             y="189.75"
           />
         </g>

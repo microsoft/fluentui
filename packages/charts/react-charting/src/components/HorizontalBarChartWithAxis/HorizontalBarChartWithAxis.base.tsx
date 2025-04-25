@@ -690,7 +690,6 @@ export class HorizontalBarChartWithAxisBase
     yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    this._isRtl = true;
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
     let prevPoint = 0;
