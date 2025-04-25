@@ -530,8 +530,8 @@ export class HorizontalBarChartWithAxisBase
       (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= 0,
     ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
-    let currPositiveIndex = 0;
-    let currNegativeIndex = 0;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -543,10 +543,10 @@ export class HorizontalBarChartWithAxisBase
         shouldHighlight,
       });
       if (point.x >= 0) {
-        ++currPositiveIndex;
+        ++currPositiveCounter;
       }
       if (point.x < 0) {
-        ++currNegativeIndex;
+        ++currNegativeCounter;
       }
       const barStartX = this._isRtl
         ? containerWidth - (this.margins.right! + Math.max(xBarScale(point.x), xBarScale(0)) - this.margins.left!)
@@ -589,14 +589,14 @@ export class HorizontalBarChartWithAxisBase
       const currentWidth = Math.abs(xBarScale(point.x) - xBarScale(0));
       const gapWidthLTR =
         currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) ||
-          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeIndex !== 1)))
+        ((point.x > 0 && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeCounter !== 1)))
           ? 2
           : 0;
       const gapWidthRTL =
         currentWidth > 2 &&
-        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveIndex !== 1)) ||
-          (point.x < 0 && currNegativeIndex !== totalNegativeBars))
+        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveCounter !== 1)) ||
+          (point.x < 0 && currNegativeCounter !== totalNegativeBars))
           ? 2
           : 0;
       let xStart = 0;
@@ -622,7 +622,7 @@ export class HorizontalBarChartWithAxisBase
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={this._isRtl ? currentWidth - gapWidthRTL : currentWidth - gapWidthLTR}
+            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -697,8 +697,8 @@ export class HorizontalBarChartWithAxisBase
       (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= 0,
     ).length;
     const totalNegativeBars = singleBarData.length - totalPositiveBars;
-    let currPositiveIndex = 0;
-    let currNegativeIndex = 0;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
     const bars = singleBarData.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -710,10 +710,10 @@ export class HorizontalBarChartWithAxisBase
         shouldHighlight,
       });
       if (point.x >= 0) {
-        ++currPositiveIndex;
+        ++currPositiveCounter;
       }
       if (point.x < 0) {
-        ++currNegativeIndex;
+        ++currNegativeCounter;
       }
       const barStartX = this._isRtl
         ? containerWidth - (this.margins.right! + Math.max(xBarScale(point.x), xBarScale(0)) - this.margins.left!)
@@ -753,14 +753,14 @@ export class HorizontalBarChartWithAxisBase
       const currentWidth = Math.abs(xBarScale(point.x) - xBarScale(0));
       const gapWidthLTR =
         currentWidth > 2 &&
-        ((point.x > 0 && currPositiveIndex !== totalPositiveBars) ||
-          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeIndex !== 1)))
+        ((point.x > 0 && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < 0 && (totalPositiveBars !== 0 || currNegativeCounter !== 1)))
           ? 2
           : 0;
       const gapWidthRTL =
         currentWidth > 2 &&
-        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveIndex !== 1)) ||
-          (point.x < 0 && currNegativeIndex !== totalNegativeBars))
+        ((point.x > 0 && (totalNegativeBars !== 0 || currPositiveCounter !== 1)) ||
+          (point.x < 0 && currNegativeCounter !== totalNegativeBars))
           ? 2
           : 0;
       prevPoint = point.x;
@@ -787,7 +787,7 @@ export class HorizontalBarChartWithAxisBase
             x={xStart}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
-            width={this._isRtl ? currentWidth - gapWidthRTL : currentWidth - gapWidthLTR}
+            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
