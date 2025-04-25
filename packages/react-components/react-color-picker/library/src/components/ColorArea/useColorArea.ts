@@ -51,7 +51,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   const [activeAxis, setActiveAxis] = React.useState<'x' | 'y' | null>(null);
 
-  const requestColorChange = useEventCallback((event: MouseEvent) => {
+  const requestColorChange = useEventCallback((event: MouseEvent | TouchEvent) => {
     if (!rootRef.current) {
       return;
     }
@@ -64,7 +64,11 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     };
 
     setColor(newColor);
-    onChange?.(event, { type: 'change', event, color: newColor });
+    onChange?.(event, {
+      type: 'change',
+      event: event,
+      color: newColor,
+    });
   });
 
   const handleDocumentMouseMove = React.useCallback(
@@ -73,8 +77,20 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
     },
     [requestColorChange],
   );
+
+  const handleDocumentTouchMove = React.useCallback(
+    (event: TouchEvent) => {
+      requestColorChange(event);
+    },
+    [requestColorChange],
+  );
+
   const handleDocumentMouseUp = useEventCallback(() => {
     targetDocument?.removeEventListener('mousemove', handleDocumentMouseMove);
+  });
+
+  const handleDocumentTouchEnd = useEventCallback(() => {
+    targetDocument?.removeEventListener('touchmove', handleDocumentTouchMove);
   });
 
   const handleRootOnMouseDown: React.MouseEventHandler<HTMLDivElement> = useEventCallback(event => {
@@ -85,6 +101,15 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
     targetDocument?.addEventListener('mousemove', handleDocumentMouseMove);
     targetDocument?.addEventListener('mouseup', handleDocumentMouseUp, { once: true });
+  });
+
+  const handleRootOnTouchStart: React.TouchEventHandler<HTMLDivElement> = useEventCallback(event => {
+    event.stopPropagation();
+
+    requestColorChange(event.nativeEvent);
+
+    targetDocument?.addEventListener('touchmove', handleDocumentTouchMove);
+    targetDocument?.addEventListener('touchend', handleDocumentTouchEnd, { once: true });
   });
 
   const handleInputOnChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
@@ -203,6 +228,7 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
 
   state.root.onMouseDown = useEventCallback(mergeCallbacks(state.root.onMouseDown, handleRootOnMouseDown));
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, handleRootOnKeyDown));
+  state.root.onTouchStart = useEventCallback(mergeCallbacks(state.root.onTouchStart, handleRootOnTouchStart));
   state.inputX.onChange = useEventCallback(mergeCallbacks(state.inputX.onChange, handleInputOnChange));
   state.inputY.onChange = useEventCallback(mergeCallbacks(state.inputY.onChange, handleInputOnChange));
 
