@@ -54,7 +54,7 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   return (
     <CarouselCardButton
       className={classes.bannerCard}
-      aria-label={`${index + 1} of ${IMAGES.length}`}
+      aria-label={`Carousel card button ${index + 1} of ${IMAGES.length} links to Google`}
       id={`test-${index}`}
       href="http://www.google.com"
     >
