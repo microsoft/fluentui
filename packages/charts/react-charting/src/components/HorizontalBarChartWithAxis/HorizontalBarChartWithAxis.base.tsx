@@ -88,6 +88,7 @@ export class HorizontalBarChartWithAxisBase
   private _legendsRef: React.RefObject<ILegendContainer>;
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
+  private readonly REFERENCE_POINT: number = 0;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -542,10 +543,10 @@ export class HorizontalBarChartWithAxisBase
         legendColor: this.state.color,
         shouldHighlight,
       });
-      if (point.x >= 0) {
+      if (point.x >= this.REFERENCE_POINT) {
         ++currPositiveCounter;
       }
-      if (point.x < 0) {
+      if (point.x < this.REFERENCE_POINT) {
         ++currNegativeCounter;
       }
       const barStartX = this._isRtl
@@ -709,10 +710,10 @@ export class HorizontalBarChartWithAxisBase
         legendColor: this.state.color,
         shouldHighlight,
       });
-      if (point.x >= 0) {
+      if (point.x >= this.REFERENCE_POINT) {
         ++currPositiveCounter;
       }
-      if (point.x < 0) {
+      if (point.x < this.REFERENCE_POINT) {
         ++currNegativeCounter;
       }
       const barStartX = this._isRtl
