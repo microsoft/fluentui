@@ -295,6 +295,7 @@ export const transformPlotlyJsonToVSBCProps = (
           data: yVal,
           color,
         });
+        yMaxValue = Math.max(yMaxValue, yVal);
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
@@ -305,9 +306,10 @@ export const transformPlotlyJsonToVSBCProps = (
           ...(lineOptions ? { lineOptions } : {}),
           useSecondaryYScale: usesSecondaryYScale(series),
         });
+        if (!usesSecondaryYScale(series)) {
+          yMaxValue = Math.max(yMaxValue, yVal);
+        }
       }
-
-      yMaxValue = Math.max(yMaxValue, yVal);
     });
   });
 
