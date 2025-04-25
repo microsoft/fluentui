@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Wed, 16 Apr 2025 19:42:09 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.4)
+
+Thu, 24 Apr 2025 09:59:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.3..@fluentui/react-charts_v9.0.4)
+
+### Patches
+
+- fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart ([PR #34288](https://github.com/microsoft/fluentui/pull/34288) by 120183316+srmukher@users.noreply.github.com)
+- High contrast bug fixes ([PR #34284](https://github.com/microsoft/fluentui/pull/34284) by anushgupta@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-button to v9.4.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-overflow to v9.3.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-popover to v9.10.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-tabster to v9.24.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.3)
 

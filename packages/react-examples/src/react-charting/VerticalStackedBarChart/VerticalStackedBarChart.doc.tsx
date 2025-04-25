@@ -8,6 +8,7 @@ import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
+import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -21,6 +22,8 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalStackedBarChartDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.DateAxis.Example.tsx') as string;
+const VerticalStackedBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.SecondaryYAxis.Example.tsx') as string;
 
 export const VerticalStackedBarChartPageProps: IDocPageProps = {
   title: 'VerticalStackedBarChart',
@@ -57,6 +60,11 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
       title: 'VerticalStackedBarChart Date Axis',
       code: VerticalStackedBarChartDateAxisExampleCode,
       view: <VerticalStackedBarChartDateAxisExample />,
+    },
+    {
+      title: 'VerticalStackedBarChart secondary y-axis',
+      code: VerticalStackedBarChartSecondaryYAxisExampleCode,
+      view: <VerticalStackedBarChartSecondaryYAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartOverview.md'),

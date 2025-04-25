@@ -34,6 +34,7 @@ import type { IPickerItemProps } from './PickerItem.types';
 import { WindowContext } from '@fluentui/react-window-provider';
 import { getDocumentEx } from '../../utilities/dom';
 import type { ILabelStyleProps, ILabelStyles } from '../../Label';
+import type { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 
 const legacyStyles: any = stylesImport;
 
@@ -372,7 +373,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
           </div>
         </SelectionZone>
         {this.renderError(classNames.error)}
-        {this.renderSuggestions()}
+        {this.renderSuggestions(classNames.subComponentStyles?.callout)}
       </div>
     );
   }
@@ -421,7 +422,9 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   }
 
-  protected renderSuggestions(): JSX.Element | null {
+  protected renderSuggestions(
+    styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined,
+  ): JSX.Element | null {
     const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
@@ -434,6 +437,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
         // eslint-disable-next-line react/jsx-no-bind
         preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
+        styles={styles}
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
@@ -1274,7 +1278,7 @@ export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> ex
             />
           </div>
         </div>
-        {this.renderSuggestions()}
+        {this.renderSuggestions(classNames.subComponentStyles?.callout)}
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.single}>
           <div
             id={this._ariaMap.selectedItems}

@@ -292,7 +292,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -323,7 +323,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -362,7 +362,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -373,14 +373,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="14.219999999999999"
+              height="14.220000000000027"
               opacity=""
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
-              y="242.78"
+              y="242.77999999999997"
             />
             <text
               aria-hidden="true"
@@ -393,7 +393,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -408,7 +408,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               text-anchor="middle"
               x="25.77777777777778"
-              y="236.78"
+              y="236.77999999999997"
             >
               3.0k
             </text>
@@ -425,7 +425,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="66.36"
+              height="66.36000000000001"
               opacity=""
               role="img"
               rx="0"
@@ -1030,7 +1030,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1061,7 +1061,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1100,7 +1100,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1111,14 +1111,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="14.219999999999999"
+              height="14.220000000000027"
               opacity=""
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
-              y="242.78"
+              y="242.77999999999997"
             />
             <text
               aria-hidden="true"
@@ -1131,7 +1131,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1146,7 +1146,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               text-anchor="middle"
               x="25.77777777777778"
-              y="236.78"
+              y="236.77999999999997"
             >
               3.0k
             </text>
@@ -1163,7 +1163,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="66.36"
+              height="66.36000000000001"
               opacity=""
               role="img"
               rx="0"
@@ -1768,7 +1768,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -1799,7 +1799,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1838,7 +1838,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -1849,14 +1849,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="14.219999999999999"
+              height="14.220000000000027"
               opacity=""
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
-              y="242.78"
+              y="242.77999999999997"
             />
             <text
               aria-hidden="true"
@@ -1869,7 +1869,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -1884,7 +1884,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               text-anchor="middle"
               x="25.77777777777778"
-              y="236.78"
+              y="236.77999999999997"
             >
               3.0k
             </text>
@@ -1901,7 +1901,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="66.36"
+              height="66.36000000000001"
               opacity=""
               role="img"
               rx="0"
@@ -2506,7 +2506,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -2537,7 +2537,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -2576,7 +2576,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -2587,14 +2587,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="14.219999999999999"
+              height="14.220000000000027"
               opacity=""
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
-              y="242.78"
+              y="242.77999999999997"
             />
             <text
               aria-hidden="true"
@@ -2607,7 +2607,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -2622,7 +2622,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="25.77777777777778"
-              y="236.78"
+              y="236.77999999999997"
             >
               3.0k
             </text>
@@ -2639,7 +2639,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="66.36"
+              height="66.36000000000001"
               opacity=""
               role="img"
               rx="0"
@@ -3244,7 +3244,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="0"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/04/30. MetaData4, 44%."
@@ -3275,7 +3275,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -3314,7 +3314,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               tabindex="-1"
               width="16"
               x="0"
-              y="100.57999999999998"
+              y="100.58"
             />
             <rect
               aria-label="2020/05/30. MetaData4, 3%."
@@ -3325,14 +3325,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="14.219999999999999"
+              height="14.220000000000027"
               opacity=""
               role="img"
               rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
-              y="242.78"
+              y="242.77999999999997"
             />
             <text
               aria-hidden="true"
@@ -3345,7 +3345,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="8"
-              y="94.57999999999998"
+              y="94.58"
             >
               33.0k
             </text>
@@ -3360,7 +3360,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               text-anchor="middle"
               x="25.77777777777778"
-              y="236.78"
+              y="236.77999999999997"
             >
               3.0k
             </text>
@@ -3377,7 +3377,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                   }
               data-is-focusable="true"
               fill="#00bcf2"
-              height="66.36"
+              height="66.36000000000001"
               opacity=""
               role="img"
               rx="0"
@@ -3818,7 +3818,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={182.93478260869566}
+            height={182.93478260869563}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3829,7 +3829,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130434}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -3840,7 +3840,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={36.03260869565217}
+            height={36.03260869565216}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3851,7 +3851,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={10}
-            y={238.9673913043478}
+            y={238.96739130434784}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -3862,7 +3862,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={94.23913043478261}
+            height={94.2391304347826}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3873,7 +3873,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={20}
-            y={180.76086956521738}
+            y={180.7608695652174}
           />
         </g>
         <g
@@ -3889,7 +3889,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={38.80434782608696}
+            height={38.80434782608697}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3933,7 +3933,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={91.46739130434783}
+            height={91.46739130434784}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3944,7 +3944,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={20}
-            y={183.5326086956522}
+            y={183.53260869565216}
           />
         </g>
       </g>
@@ -4633,7 +4633,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={182.93478260869566}
+            height={182.93478260869563}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4644,7 +4644,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130434}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -4655,7 +4655,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={36.03260869565217}
+            height={36.03260869565216}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4666,7 +4666,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={10}
-            y={238.9673913043478}
+            y={238.96739130434784}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -4677,7 +4677,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={94.23913043478261}
+            height={94.2391304347826}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4688,7 +4688,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={20}
-            y={180.76086956521738}
+            y={180.7608695652174}
           />
         </g>
         <g
@@ -4704,7 +4704,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={38.80434782608696}
+            height={38.80434782608697}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4748,7 +4748,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={91.46739130434783}
+            height={91.46739130434784}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4759,7 +4759,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={20}
-            y={183.5326086956522}
+            y={183.53260869565216}
           />
         </g>
       </g>
@@ -5996,7 +5996,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={182.93478260869566}
+            height={182.93478260869563}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6007,7 +6007,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130434}
+            y={92.06521739130436}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -6018,7 +6018,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={36.03260869565217}
+            height={36.03260869565216}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6029,7 +6029,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={10}
-            y={238.9673913043478}
+            y={238.96739130434784}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -6040,7 +6040,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={94.23913043478261}
+            height={94.2391304347826}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6051,7 +6051,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={20}
-            y={180.76086956521738}
+            y={180.7608695652174}
           />
         </g>
         <g
@@ -6067,7 +6067,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={38.80434782608696}
+            height={38.80434782608697}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6111,7 +6111,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={91.46739130434783}
+            height={91.46739130434784}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6122,7 +6122,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={20}
-            y={183.5326086956522}
+            y={183.53260869565216}
           />
         </g>
       </g>
@@ -6636,7 +6636,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={41.68478260869565}
+            height={41.68478260869563}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6685,7 +6685,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={44.89130434782609}
+            height={44.891304347826065}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6696,7 +6696,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={0}
-            y={270.1086956521739}
+            y={270.10869565217394}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -6718,7 +6718,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={10}
-            y={26.413043478260875}
+            y={26.413043478260864}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -6729,7 +6729,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={105.81521739130434}
+            height={105.81521739130437}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6740,7 +6740,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={20}
-            y={209.18478260869566}
+            y={209.18478260869563}
           />
         </g>
       </g>
@@ -9591,7 +9591,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 tabindex="0"
                 width="16"
                 x="0"
-                y="100.57999999999998"
+                y="100.58"
               />
               <rect
                 aria-label="2020/04/30. MetaData4, 44%."
@@ -9622,7 +9622,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="8"
-                y="94.57999999999998"
+                y="94.58"
               >
                 33.0k
               </text>
@@ -9661,7 +9661,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 tabindex="-1"
                 width="16"
                 x="0"
-                y="100.57999999999998"
+                y="100.58"
               />
               <rect
                 aria-label="2020/05/30. MetaData4, 3%."
@@ -9672,14 +9672,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="14.219999999999999"
+                height="14.220000000000027"
                 opacity=""
                 role="img"
                 rx="0"
                 tabindex="-1"
                 width="16"
                 x="17.77777777777778"
-                y="242.78"
+                y="242.77999999999997"
               />
               <text
                 aria-hidden="true"
@@ -9692,7 +9692,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="8"
-                y="94.57999999999998"
+                y="94.58"
               >
                 33.0k
               </text>
@@ -9707,7 +9707,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 text-anchor="middle"
                 x="25.77777777777778"
-                y="236.78"
+                y="236.77999999999997"
               >
                 3.0k
               </text>
@@ -9724,7 +9724,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
-                height="66.36"
+                height="66.36000000000001"
                 opacity=""
                 role="img"
                 rx="0"

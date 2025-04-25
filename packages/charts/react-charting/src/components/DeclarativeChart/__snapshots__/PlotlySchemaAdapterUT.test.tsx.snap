@@ -256,6 +256,7 @@ Object {
           "data": 2000,
           "key": "Category A",
           "legend": "Category A",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Jan",
         },
         Object {
@@ -263,6 +264,7 @@ Object {
           "data": 3000,
           "key": "Category B",
           "legend": "Category B",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Jan",
         },
       ],
@@ -275,6 +277,7 @@ Object {
           "data": 2100,
           "key": "Category A",
           "legend": "Category A",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Feb",
         },
         Object {
@@ -282,6 +285,7 @@ Object {
           "data": 3100,
           "key": "Category B",
           "legend": "Category B",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Feb",
         },
       ],
@@ -294,6 +298,7 @@ Object {
           "data": 2200,
           "key": "Category A",
           "legend": "Category A",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Mar",
         },
         Object {
@@ -301,6 +306,7 @@ Object {
           "data": 3200,
           "key": "Category B",
           "legend": "Category B",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Mar",
         },
       ],
@@ -313,6 +319,7 @@ Object {
           "data": 2300,
           "key": "Category A",
           "legend": "Category A",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Apr",
         },
         Object {
@@ -320,6 +327,7 @@ Object {
           "data": 3300,
           "key": "Category B",
           "legend": "Category B",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "Apr",
         },
       ],
@@ -332,6 +340,7 @@ Object {
           "data": 2400,
           "key": "Category A",
           "legend": "Category A",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "May",
         },
         Object {
@@ -339,6 +348,7 @@ Object {
           "data": 3400,
           "key": "Category B",
           "legend": "Category B",
+          "useSecondaryYScale": false,
           "xAxisCalloutData": "May",
         },
       ],
@@ -347,8 +357,6 @@ Object {
   "height": 742,
   "hideTickOverlap": true,
   "mode": "plotly",
-  "secondaryYAxistitle": undefined,
-  "secondaryYScaleOptions": undefined,
   "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
@@ -3178,6 +3186,7 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
       Object {
         "color": "#9bd9db",
@@ -3227,6 +3236,7 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
       Object {
         "color": "#b29ad4",
@@ -3276,6 +3286,7 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
       Object {
         "color": "#a4cc6c",
@@ -3325,14 +3336,13 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
     ],
   },
   "height": 350,
   "hideTickOverlap": true,
   "mode": "tonexty",
-  "secondaryYAxistitle": undefined,
-  "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
   "width": undefined,
   "xAxisTitle": "",
@@ -3753,6 +3763,7 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
       Object {
         "color": "#83bdeb",
@@ -4162,6 +4173,7 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
       Object {
         "color": "#df8e64",
@@ -4571,14 +4583,13 @@ Object {
         "lineOptions": Object {
           "curve": "linear",
         },
+        "useSecondaryYScale": false,
       },
     ],
   },
   "height": 350,
   "hideTickOverlap": true,
   "mode": "tonexty",
-  "secondaryYAxistitle": undefined,
-  "secondaryYScaleOptions": undefined,
   "supportNegativeData": true,
   "width": undefined,
   "xAxisTitle": "",
@@ -4957,8 +4968,6 @@ Object {
   "height": 350,
   "hideTickOverlap": true,
   "mode": "plotly",
-  "secondaryYAxistitle": undefined,
-  "secondaryYScaleOptions": undefined,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",

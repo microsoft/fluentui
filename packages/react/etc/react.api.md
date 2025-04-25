@@ -772,7 +772,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)

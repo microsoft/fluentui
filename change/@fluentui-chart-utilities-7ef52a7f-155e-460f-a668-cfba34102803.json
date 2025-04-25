@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(chart-utilities): Add support for scatter polar chart",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

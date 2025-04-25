@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Added InfoButton component to react-components package export",
-  "packageName": "@fluentui/react-components",
-  "email": "terynkum@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 04:06:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.95",
+      "version": "3.0.0-beta.95",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "HangWhy@outlook.com",
+            "package": "@fluentui/web-components",
+            "commit": "4cb47af0cc0de0dde8d71dc5d31a4ff3d59de83e",
+            "comment": "support callback for expand change"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Apr 2025 04:07:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.94",
       "version": "3.0.0-beta.94",

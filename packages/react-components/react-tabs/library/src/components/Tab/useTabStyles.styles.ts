@@ -217,6 +217,9 @@ const useCircularAppearanceStyles = makeStyles({
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
       color: tokens.colorBrandForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      border: `solid ${tokens.strokeWidthThin} Highlight`,
+    },
   },
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,

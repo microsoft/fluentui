@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 16 Apr 2025 19:42:02 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.63.0)
+
+Thu, 24 Apr 2025 09:59:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.62.0..@fluentui/react-components_v9.63.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Added InfoButton component to react-components package export ([PR #34255](https://github.com/microsoft/fluentui/pull/34255) by terynkum@microsoft.com)
+  - chore: Re-exporting CellRenderFunction from @fluentui/react-components. ([PR #34267](https://github.com/microsoft/fluentui/pull/34267) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-infolabel`
+  - Feat: Exported InfoButton types and component ([PR #34255](https://github.com/microsoft/fluentui/pull/34255) by terynkum@microsoft.com)
+
+### Patches
+
+- `@fluentui/chart-utilities`
+  - feat(chart-utilities): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
+- `@fluentui/react-charts`
+  - fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart ([PR #34288](https://github.com/microsoft/fluentui/pull/34288) by 120183316+srmukher@users.noreply.github.com)
+  - High contrast bug fixes ([PR #34284](https://github.com/microsoft/fluentui/pull/34284) by anushgupta@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix:  use useLayoutEffect() for Tabster creation ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by olfedias@microsoft.com)
 
 ## [9.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.62.0)
 

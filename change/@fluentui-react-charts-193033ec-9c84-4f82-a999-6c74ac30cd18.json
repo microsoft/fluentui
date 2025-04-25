@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart",
-  "packageName": "@fluentui/react-charts",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

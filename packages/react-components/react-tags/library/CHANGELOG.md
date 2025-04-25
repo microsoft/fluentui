@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Wed, 16 Apr 2025 19:42:04 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.4)
+
+Thu, 24 Apr 2025 09:59:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.5.3..@fluentui/react-tags_v9.5.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-avatar to v9.7.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
+- Bump @fluentui/react-tabster to v9.24.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
 
 ## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.3)
 
