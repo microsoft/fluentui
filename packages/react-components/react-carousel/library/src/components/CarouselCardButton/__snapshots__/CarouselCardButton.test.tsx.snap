@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselCardButton renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CarouselCardButton"
+  >
+    Default CarouselCardButton
+  </div>
+</div>
+`;

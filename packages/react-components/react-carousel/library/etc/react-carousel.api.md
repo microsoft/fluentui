@@ -74,6 +74,18 @@ export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlo
 // @public
 export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 
+// @public
+export const CarouselCardButton: ForwardRefComponent<CarouselCardButtonProps>;
+
+// @public (undocumented)
+export const carouselCardButtonClassNames: SlotClassNames<CarouselCardButtonSlots>;
+
+// @public
+export type CarouselCardButtonProps = ComponentProps<CarouselCardButtonSlots> & {};
+
+// @public
+export type CarouselCardButtonState = ComponentState<CarouselCardButtonSlots>;
+
 // @public (undocumented)
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
@@ -285,6 +297,9 @@ export const renderCarouselButton_unstable: (state: CarouselButtonState) => JSX.
 export const renderCarouselCard_unstable: (state: CarouselCardState) => JSX.Element;
 
 // @public
+export const renderCarouselCardButton_unstable: (state: CarouselCardButtonState) => JSX.Element;
+
+// @public
 export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSX.Element;
 
 // @public
@@ -319,6 +334,12 @@ export const useCarouselButtonStyles_unstable: (state: CarouselButtonState) => C
 
 // @public
 export const useCarouselCard_unstable: (props: CarouselCardProps, ref: React_2.Ref<HTMLDivElement>) => CarouselCardState;
+
+// @public
+export const useCarouselCardButton_unstable: (props: CarouselCardButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselCardButtonState;
+
+// @public
+export const useCarouselCardButtonStyles_unstable: (state: CarouselCardButtonState) => CarouselCardButtonState;
 
 // @public
 export const useCarouselCardStyles_unstable: (state: CarouselCardState) => CarouselCardState;
