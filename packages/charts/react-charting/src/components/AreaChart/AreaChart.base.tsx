@@ -736,82 +736,84 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
-      const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
-      const area = d3Area()
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .x((d: any) => xScale(d.xVal))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .y0((d: any) => yScale(d.values[0]))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .y1((d: any) => yScale(d.values[1]))
-        .curve(curveFactory);
-      const line = d3Line()
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .x((d: any) => xScale(d.xVal))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .y((d: any) => yScale(d.values[1]))
-        .curve(curveFactory);
-      const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
-      graph.push(
-        <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
-          {this.props.enableGradient && (
-            <defs>
-              <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
-                <stop offset="0" stopColor={this._colors[index]} />
-                <stop offset="100%" stopColor="transparent" />
-              </linearGradient>
-            </defs>
-          )}
-          <path
-            id={`${index}-line-${this._uniqueIdForGraph}`}
-            d={line(singleStackedData)!}
-            fill={'transparent'}
-            strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
-            stroke={this._colors[index]}
-            opacity={this._getLineOpacity(points[index]!.legend)}
-            onMouseMove={this._onRectMouseMove}
-            onMouseOut={this._onRectMouseOut}
-            onMouseOver={this._onRectMouseMove}
-            strokeDasharray={points[index].lineOptions?.strokeDasharray}
-            strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
-            strokeLinecap={points[index].lineOptions?.strokeLinecap}
-          />
-          {singleStackedData.length === 1 ? (
-            <circle
-              id={`${index}-graph-${this._uniqueIdForGraph}`}
-              cx={xScale(singleStackedData[0].xVal)}
-              cy={yScale(singleStackedData[0].values[1])}
-              r={6}
-              stroke={this._colors[index]}
-              strokeWidth={3}
-              fill={this._colors[index]}
-              opacity={layerOpacity}
-              fillOpacity={this._getOpacity(points[index]!.legend)}
-              onMouseMove={this._onRectMouseMove}
-              onMouseOut={this._onRectMouseOut}
-              onMouseOver={this._onRectMouseMove}
-            />
-          ) : (
+      if (points[index]) {
+        const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
+        const area = d3Area()
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .x((d: any) => xScale(d.xVal))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .y0((d: any) => yScale(d.values[0]))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .y1((d: any) => yScale(d.values[1]))
+          .curve(curveFactory);
+        const line = d3Line()
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .x((d: any) => xScale(d.xVal))
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .y((d: any) => yScale(d.values[1]))
+          .curve(curveFactory);
+        const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
+        graph.push(
+          <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
+            {this.props.enableGradient && (
+              <defs>
+                <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
+                  <stop offset="0" stopColor={this._colors[index]} />
+                  <stop offset="100%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+            )}
             <path
-              id={`${index}-graph-${this._uniqueIdForGraph}`}
-              d={area(singleStackedData)!}
-              fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
-              opacity={layerOpacity}
-              fillOpacity={this._getOpacity(points[index]!.legend)}
+              id={`${index}-line-${this._uniqueIdForGraph}`}
+              d={line(singleStackedData)!}
+              fill={'transparent'}
+              strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
+              stroke={this._colors[index]}
+              opacity={this._getLineOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
-              {...(this.props.optimizeLargeData && {
-                'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
-                role: 'img',
-                'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
-                  points[index].data.length
-                } data points.`,
-              })}
+              strokeDasharray={points[index].lineOptions?.strokeDasharray}
+              strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
+              strokeLinecap={points[index].lineOptions?.strokeLinecap}
             />
-          )}
-        </React.Fragment>,
-      );
+            {singleStackedData.length === 1 ? (
+              <circle
+                id={`${index}-graph-${this._uniqueIdForGraph}`}
+                cx={xScale(singleStackedData[0].xVal)}
+                cy={yScale(singleStackedData[0].values[1])}
+                r={6}
+                stroke={this._colors[index]}
+                strokeWidth={3}
+                fill={this._colors[index]}
+                opacity={layerOpacity}
+                fillOpacity={this._getOpacity(points[index]!.legend)}
+                onMouseMove={this._onRectMouseMove}
+                onMouseOut={this._onRectMouseOut}
+                onMouseOver={this._onRectMouseMove}
+              />
+            ) : (
+              <path
+                id={`${index}-graph-${this._uniqueIdForGraph}`}
+                d={area(singleStackedData)!}
+                fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
+                opacity={layerOpacity}
+                fillOpacity={this._getOpacity(points[index]!.legend)}
+                onMouseMove={this._onRectMouseMove}
+                onMouseOut={this._onRectMouseOut}
+                onMouseOver={this._onRectMouseMove}
+                {...(this.props.optimizeLargeData && {
+                  'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
+                  role: 'img',
+                  'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
+                    points[index].data.length
+                  } data points.`,
+                })}
+              />
+            )}
+          </React.Fragment>,
+        );
+      }
     });
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
