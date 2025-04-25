@@ -4,8 +4,7 @@ import type { CarouselCardButtonSlots, CarouselCardButtonState } from './Carouse
 import { carouselCardClassNames } from '../CarouselCard/useCarouselCardStyles.styles';
 
 export const carouselCardButtonClassNames: SlotClassNames<CarouselCardButtonSlots> = {
-  // Root button className needs to match our regular CarouselCard so they can be detected for carousel logic
-  root: carouselCardClassNames.root,
+  root: 'fui-CarouselCardButton',
 };
 
 /**
@@ -34,6 +33,8 @@ export const useCarouselCardButtonStyles_unstable = (state: CarouselCardButtonSt
 
   const styles = useStyles();
   state.root.className = mergeClasses(
+    carouselCardButtonClassNames.root,
+    // Must include CarouselCard className so they can be detected for carousel logic
     carouselCardClassNames.root,
     styles.root,
     autoSize && styles.autoSize,
