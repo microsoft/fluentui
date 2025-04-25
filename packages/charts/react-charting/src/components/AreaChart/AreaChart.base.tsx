@@ -447,7 +447,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
     let maxOfYVal = 0;
 
-    if (this.props.mode === 'tozeroy' || this._containsSecondaryYAxis) {
+    if (this._shouldFillToZeroY()) {
       keys.forEach((key, index) => {
         const currentLayer: IAreaChartDataSetPoint[] = [];
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -769,7 +769,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .y((d: any) => yScale(d.values[1]))
         .curve(curveFactory);
-      const layerOpacity = this.props.mode === 'tozeroy' || this._containsSecondaryYAxis ? 0.8 : this._opacity[index];
+      const layerOpacity = this._shouldFillToZeroY() ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
@@ -1084,4 +1084,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { chartTitle, lineChartData } = this.props.data;
     return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
   };
+
+  private _shouldFillToZeroY() {
+    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis;
+  }
 }

@@ -11,83 +11,113 @@ import { getId } from '@fluentui/react';
 
 const firstChartPoints: IVSChartDataPoint[] = [
   {
-    legend: 'Metadata1',
-    data: 40,
+    legend: 'Electronics',
+    data: 120,
     color: getColorFromToken(DataVizPalette.color1),
   },
   {
-    legend: 'Metadata2',
-    data: 5,
+    legend: 'Furniture',
+    data: 80,
     color: getColorFromToken(DataVizPalette.color2),
   },
   {
-    legend: 'Metadata3',
-    data: 20,
+    legend: 'Clothing',
+    data: 150,
     color: getColorFromToken(DataVizPalette.color3),
   },
   {
-    legend: 'Metadata4',
-    data: 10,
+    legend: 'Groceries',
+    data: 200,
     color: getColorFromToken(DataVizPalette.color4),
   },
   {
-    legend: 'Metadata5',
-    data: 23,
+    legend: 'Toys',
+    data: 90,
     color: getColorFromToken(DataVizPalette.color5),
   },
 ];
 
 const secondChartPoints: IVSChartDataPoint[] = [
   {
-    legend: 'Metadata1',
-    data: 30,
+    legend: 'Electronics',
+    data: 140,
     color: getColorFromToken(DataVizPalette.color1),
   },
   {
-    legend: 'Metadata2',
-    data: 20,
+    legend: 'Furniture',
+    data: 100,
     color: getColorFromToken(DataVizPalette.color2),
   },
   {
-    legend: 'Metadata3',
-    data: 40,
+    legend: 'Clothing',
+    data: 130,
     color: getColorFromToken(DataVizPalette.color3),
+  },
+  {
+    legend: 'Groceries',
+    data: 220,
+    color: getColorFromToken(DataVizPalette.color4),
+  },
+  {
+    legend: 'Toys',
+    data: 110,
+    color: getColorFromToken(DataVizPalette.color5),
   },
 ];
 
 const thirdChartPoints: IVSChartDataPoint[] = [
   {
-    legend: 'Metadata1',
-    data: 44,
+    legend: 'Electronics',
+    data: 160,
     color: getColorFromToken(DataVizPalette.color1),
   },
   {
-    legend: 'Metadata2',
-    data: 28,
+    legend: 'Furniture',
+    data: 120,
     color: getColorFromToken(DataVizPalette.color2),
   },
   {
-    legend: 'Metadata3',
-    data: 30,
+    legend: 'Clothing',
+    data: 140,
     color: getColorFromToken(DataVizPalette.color3),
+  },
+  {
+    legend: 'Groceries',
+    data: 250,
+    color: getColorFromToken(DataVizPalette.color4),
+  },
+  {
+    legend: 'Toys',
+    data: 100,
+    color: getColorFromToken(DataVizPalette.color5),
   },
 ];
 
 const fourthChartPoints: IVSChartDataPoint[] = [
   {
-    legend: 'Metadata1',
-    data: 88,
+    legend: 'Electronics',
+    data: 180,
     color: getColorFromToken(DataVizPalette.color1),
   },
   {
-    legend: 'Metadata2',
-    data: 22,
+    legend: 'Furniture',
+    data: 140,
     color: getColorFromToken(DataVizPalette.color2),
   },
   {
-    legend: 'Metadata3',
-    data: 30,
+    legend: 'Clothing',
+    data: 160,
     color: getColorFromToken(DataVizPalette.color3),
+  },
+  {
+    legend: 'Groceries',
+    data: 300,
+    color: getColorFromToken(DataVizPalette.color4),
+  },
+  {
+    legend: 'Toys',
+    data: 120,
+    color: getColorFromToken(DataVizPalette.color5),
   },
 ];
 
@@ -97,8 +127,8 @@ const data: IVerticalStackedChartProps[] = [
     xAxisPoint: 0,
     lineData: [
       {
-        y: 10,
-        legend: 'Recommended Builds',
+        y: 150,
+        legend: 'Sales Target',
         color: getColorFromToken(DataVizPalette.color9),
         useSecondaryYScale: true,
       },
@@ -107,26 +137,22 @@ const data: IVerticalStackedChartProps[] = [
   {
     chartData: secondChartPoints,
     xAxisPoint: 20,
-  },
-  {
-    chartData: thirdChartPoints,
-    xAxisPoint: 40,
     lineData: [
       {
-        y: 20,
-        legend: 'Recommended Builds',
+        y: 180,
+        legend: 'Sales Target',
         color: getColorFromToken(DataVizPalette.color9),
         useSecondaryYScale: true,
       },
     ],
   },
   {
-    chartData: firstChartPoints,
-    xAxisPoint: 60,
+    chartData: thirdChartPoints,
+    xAxisPoint: 40,
     lineData: [
       {
-        y: 10,
-        legend: 'Recommended Builds',
+        y: 200,
+        legend: 'Sales Target',
         color: getColorFromToken(DataVizPalette.color9),
         useSecondaryYScale: true,
       },
@@ -134,19 +160,15 @@ const data: IVerticalStackedChartProps[] = [
   },
   {
     chartData: fourthChartPoints,
-    xAxisPoint: 80,
+    xAxisPoint: 60,
     lineData: [
       {
-        y: 70,
-        legend: 'Recommended Builds',
+        y: 250,
+        legend: 'Sales Target',
         color: getColorFromToken(DataVizPalette.color9),
         useSecondaryYScale: true,
       },
     ],
-  },
-  {
-    chartData: firstChartPoints,
-    xAxisPoint: 100,
   },
 ];
 
@@ -204,7 +226,7 @@ export class VerticalStackedBarChartSecondaryYAxisExample extends React.Componen
             hideTickOverlap={true}
             yAxisTitle="Variation of number of sales"
             xAxisTitle="Number of days"
-            yMaxValue={150}
+            yMaxValue={1000}
             secondaryYScaleOptions={{}}
           />
         </div>
