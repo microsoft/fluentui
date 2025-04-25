@@ -742,7 +742,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     containerHeight: number,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
-    yScale1: ScaleLinear<number, number>,
+    yScalePrimary: ScaleLinear<number, number>,
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     xElement: SVGElement,
   ): JSX.Element[] => {
@@ -753,7 +753,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
-      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale1;
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
       const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
       const area = d3Area()
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -839,7 +839,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         return;
       }
 
-      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale1;
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
       if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
         // Render circles for all data points

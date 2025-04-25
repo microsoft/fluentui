@@ -294,7 +294,7 @@ export class GroupedVerticalBarChartBase
 
   private _getGraphData = (
     xScale: StringAxis | NumericAxis,
-    yScale: ScaleLinear<number, number>,
+    yScalePrimary: ScaleLinear<number, number>,
     containerHeight: number,
     containerWidth: number,
     xElement?: SVGElement | null,
@@ -316,7 +316,7 @@ export class GroupedVerticalBarChartBase
     const allGroupsBars: JSX.Element[] = [];
     this._datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
       allGroupsBars.push(
-        this._buildGraph(singleSet, xScale0, xScale1, yScale, yScaleSecondary, containerHeight, xElement!),
+        this._buildGraph(singleSet, xScale0, xScale1, yScalePrimary, yScaleSecondary, containerHeight, xElement!),
       );
     });
     this._groupedVerticalBarGraph = allGroupsBars;
@@ -429,7 +429,7 @@ export class GroupedVerticalBarChartBase
     xScale0: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale1: any,
-    yScale: ScaleLinear<number, number>,
+    yScalePrimary: ScaleLinear<number, number>,
     yScaleSecondary: ScaleLinear<number, number> | undefined,
     containerHeight: number,
     xElement: SVGElement,
@@ -442,7 +442,7 @@ export class GroupedVerticalBarChartBase
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
       if (pointData) {
-        const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScale;
+        const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
         // To align the centers of the generated bandwidth and the calculated one when they differ,
         // use the following addend.

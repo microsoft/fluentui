@@ -439,7 +439,7 @@ export interface IChildProps {
     // (undocumented)
     xScale?: any;
     // (undocumented)
-    yScale?: any;
+    yScalePrimary?: any;
     // (undocumented)
     yScaleSecondary?: any;
 }

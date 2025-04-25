@@ -172,7 +172,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisScale: any = '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _yAxisScale: any = '';
+  private _yScalePrimary: any = '';
   private _circleId: string;
   private _lineId: string;
   private _borderId: string;
@@ -197,7 +197,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _xMin: number = Number.NEGATIVE_INFINITY;
   private _xMax: number = Number.POSITIVE_INFINITY;
   private _xPadding: number = 0;
-  private _yPadding: number = 0;
+  private _yPaddingPrimary: number = 0;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _yPaddingSecondary: number = 0;
 
@@ -336,7 +336,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale!;
-          this._yAxisScale = props.yScale!;
+          this._yScalePrimary = props.yScalePrimary!;
           this._yScaleSecondary = props.yScaleSecondary;
           return (
             <>
@@ -482,7 +482,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       if (useSecondaryYScale) {
         this._yPaddingSecondary = yPadding;
       } else {
-        this._yPadding = yPadding;
+        this._yPaddingPrimary = yPadding;
       }
     }
     return {
@@ -497,7 +497,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   private _initializeLineChartData = (
     xScale: NumericAxis,
-    yScale: NumericAxis,
+    yScalePrimary: NumericAxis,
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
@@ -505,7 +505,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
     this._xAxisScale = xScale;
-    this._yAxisScale = yScale;
+    this._yScalePrimary = yScalePrimary;
     this._yScaleSecondary = yScaleSecondary;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
     this.lines = this._createLines(xElement!, containerHeight!);
@@ -705,9 +705,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const { theme } = this.props;
       const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
       const yScale =
-        this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yAxisScale;
+        this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yScalePrimary;
       const yPadding =
-        this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yPaddingSecondary : this._yPadding;
+        this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yPaddingSecondary : this._yPaddingPrimary;
       const extraMaxPixels =
         this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
 
@@ -1279,10 +1279,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
             x={this._isRTL ? this._xAxisScale(endX) : this._xAxisScale(startX)}
-            y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
+            y={this._yScalePrimary(yMinMaxValues.endValue) - FILL_Y_PADDING}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
             height={
-              this._yAxisScale(this.props.yMinValue || 0) - this._yAxisScale(yMinMaxValues.endValue) + FILL_Y_PADDING
+              this._yScalePrimary(this.props.yMinValue || 0) -
+              this._yScalePrimary(yMinMaxValues.endValue) +
+              FILL_Y_PADDING
             }
             key={`${colorFillBarId}${j}`}
           />,
