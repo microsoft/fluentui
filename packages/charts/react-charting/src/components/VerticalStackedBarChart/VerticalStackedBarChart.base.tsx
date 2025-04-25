@@ -50,6 +50,7 @@ import {
   getScalePadding,
   isScalePaddingDefined,
   calculateAppropriateBarWidth,
+  findVSBCNumericMinMaxOfY,
   createNumericYAxis,
   IDomainNRange,
   domainRangeOfDateForAreaLineVerticalBarChart,
@@ -1307,15 +1308,14 @@ export class VerticalStackedBarChartBase
     yAxisType?: YAxisType,
     useSecondaryYScale?: boolean,
   ): { startValue: number; endValue: number } => {
+    if (!useSecondaryYScale) {
+      return findVSBCNumericMinMaxOfY(dataset);
+    }
+
     const values: number[] = [];
     this.props.data.forEach(xPoint => {
-      if (!useSecondaryYScale) {
-        xPoint.chartData.forEach(point => {
-          values.push(point.data);
-        });
-      }
       xPoint.lineData?.forEach(point => {
-        if (!useSecondaryYScale === !point.useSecondaryYScale) {
+        if (point.useSecondaryYScale) {
           values.push(point.y);
         }
       });

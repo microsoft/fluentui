@@ -226,7 +226,6 @@ export class VerticalStackedBarChartSecondaryYAxisExample extends React.Componen
             hideTickOverlap={true}
             yAxisTitle="Variation of number of sales"
             xAxisTitle="Number of days"
-            yMaxValue={1000}
             secondaryYScaleOptions={{}}
           />
         </div>
