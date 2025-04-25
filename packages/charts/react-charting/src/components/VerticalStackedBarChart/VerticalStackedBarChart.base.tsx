@@ -61,6 +61,7 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  YAxisType,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -244,7 +245,7 @@ export class VerticalStackedBarChartBase
           createYAxis={createNumericYAxis}
           tickParams={tickParams}
           legendBars={legendBars}
-          getMinMaxOfYAxis={findVSBCNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           datasetForXAxisDomain={this._xAxisLabels}
           isCalloutForStack={shouldFocusWholeStack}
           getDomainNRangeValues={this._getDomainNRangeValues}
@@ -274,7 +275,7 @@ export class VerticalStackedBarChartBase
                   {_isHavingLines &&
                     this._createLines(
                       props.xScale!,
-                      props.yScale!,
+                      props.yScalePrimary!,
                       props.containerHeight!,
                       props.containerWidth!,
                       props.yScaleSecondary,
@@ -399,10 +400,10 @@ export class VerticalStackedBarChartBase
   private _createLines = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
-    yScale: NumericScale,
+    yScalePrimary: NumericScale,
     containerHeight: number,
     containerWidth: number,
-    secondaryYScale?: NumericScale,
+    yScaleSecondary?: NumericScale,
   ): JSX.Element => {
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
@@ -419,10 +420,12 @@ export class VerticalStackedBarChartBase
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
         const useSecondaryYScale =
-          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
-        const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
+          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && yScaleSecondary;
+        const y1 = useSecondaryYScale
+          ? yScaleSecondary!(lineObject[item][i - 1].y)
+          : yScalePrimary(lineObject[item][i - 1].y);
         const x2 = xScale(lineObject[item][i].xItem.xAxisPoint);
-        const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
+        const y2 = useSecondaryYScale ? yScaleSecondary!(lineObject[item][i].y) : yScalePrimary(lineObject[item][i].y);
 
         if (lineBorderWidth > 0) {
           borderForLines.push(
@@ -471,7 +474,9 @@ export class VerticalStackedBarChartBase
             key={`${index}-${subIndex}-dot`}
             cx={xScale(circlePoint.xItem.xAxisPoint)}
             cy={
-              circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
+              circlePoint.useSecondaryYScale && yScaleSecondary
+                ? yScaleSecondary(circlePoint.y)
+                : yScalePrimary(circlePoint.y)
             }
             onMouseOver={
               this._isLegendHighlighted(item)
@@ -1296,5 +1301,26 @@ export class VerticalStackedBarChartBase
       (numLines > 0 ? ` and ${numLines} lines` : '') +
       '. '
     );
+  };
+
+  private _getMinMaxOfYAxis = (
+    dataset: IDataPoint[],
+    yAxisType?: YAxisType,
+    useSecondaryYScale?: boolean,
+  ): { startValue: number; endValue: number } => {
+    if (!useSecondaryYScale) {
+      return findVSBCNumericMinMaxOfY(dataset);
+    }
+
+    const values: number[] = [];
+    this.props.data.forEach(xPoint => {
+      xPoint.lineData?.forEach(point => {
+        if (point.useSecondaryYScale) {
+          values.push(point.y);
+        }
+      });
+    });
+
+    return { startValue: d3Min(values)!, endValue: d3Max(values)! };
   };
 }
