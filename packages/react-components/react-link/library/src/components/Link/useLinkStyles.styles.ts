@@ -11,7 +11,7 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: semanticTokens.ctrlFocusOuterStroke,
+    textDecorationColor: semanticTokens.ctrlFocusInnerStroke,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',

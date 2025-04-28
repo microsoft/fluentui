@@ -3,8 +3,31 @@ import {
   fontSizeBase300,
   fontFamilyBase,
   fontWeightRegular,
+  spacingHorizontalM,
+  spacingHorizontalS,
+  spacingHorizontalL,
+  spacingHorizontalSNudge,
+  spacingHorizontalXS,
+  borderRadiusCircular,
   strokeWidthThin,
+  colorNeutralStroke1,
+  colorNeutralStrokeDisabled,
+  colorNeutralStrokeOnBrand,
+  colorBrandBackground,
+  colorBrandBackgroundHover,
+  colorBrandBackgroundPressed,
+  colorNeutralBackground1,
+  colorNeutralBackground1Hover,
+  colorNeutralBackground1Pressed,
+  colorNeutralBackgroundDisabled,
+  colorSubtleBackgroundHover,
+  colorSubtleBackgroundPressed,
+  borderRadiusNone,
+  borderRadiusMedium,
+  colorNeutralForeground1,
   colorNeutralForegroundDisabled,
+  colorNeutralForeground2,
+  colorNeutralForegroundOnBrand,
 } from '../legacy/tokens';
 import {
   textGlobalDisplay1FontsizeRaw,
@@ -243,15 +266,15 @@ export const textStyleDefaultRegularFontfamily = `var(${textStyleDefaultRegularF
 export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
 export const textStyleDefaultRegularLetterspacing = `var(${textStyleDefaultRegularLetterspacingRaw})`;
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
-export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw})`;
-export const sizeCtrlIcon = `var(${sizeCtrlIconRaw})`;
+export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw}, 96px)`;
+export const sizeCtrlIcon = `var(${sizeCtrlIconRaw}, 20px)`;
 export const sizeCtrlIconFigmaonly = `var(${sizeCtrlIconFigmaonlyRaw})`;
 export const sizeCtrlIconsecondary = `var(${sizeCtrlIconsecondaryRaw})`;
 export const textCtrlWeightSelected = `var(${textCtrlWeightSelectedRaw})`;
-export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw})`;
-export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw})`;
-export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw})`;
-export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw})`;
+export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw}, 64px)`;
+export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw}, 20px)`;
+export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw}, 96px)`;
+export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw}, 24px)`;
 export const sizeCtrlSmIconFigmaonly = `var(${sizeCtrlSmIconFigmaonlyRaw})`;
 export const sizeCtrlLgIconFigmaonly = `var(${sizeCtrlLgIconFigmaonlyRaw})`;
 export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
@@ -266,17 +289,17 @@ export const paddingContentLarge = `var(${paddingContentLargeRaw})`;
 export const paddingContentXlarge = `var(${paddingContentXlargeRaw})`;
 export const paddingContentXxlarge = `var(${paddingContentXxlargeRaw})`;
 export const paddingContentXxxlarge = `var(${paddingContentXxxlargeRaw})`;
-export const paddingCtrlHorizontalDefault = `var(${paddingCtrlHorizontalDefaultRaw})`;
-export const paddingCtrlHorizontalIcononly = `var(${paddingCtrlHorizontalIcononlyRaw})`;
-export const paddingCtrlTexttop = `var(${paddingCtrlTexttopRaw})`;
-export const paddingCtrlTextside = `var(${paddingCtrlTextsideRaw})`;
+export const paddingCtrlHorizontalDefault = `var(${paddingCtrlHorizontalDefaultRaw}, ${spacingHorizontalM})`;
+export const paddingCtrlHorizontalIcononly = `var(${paddingCtrlHorizontalIcononlyRaw}, 5px)`;
+export const paddingCtrlTexttop = `var(${paddingCtrlTexttopRaw}, 5px)`;
+export const paddingCtrlTextside = `var(${paddingCtrlTextsideRaw}, 0px)`;
 export const paddingCtrlTonestedcontrol = `var(${paddingCtrlTonestedcontrolRaw})`;
-export const paddingCtrlSmHorizontalDefault = `var(${paddingCtrlSmHorizontalDefaultRaw})`;
-export const paddingCtrlSmHorizontalIcononly = `var(${paddingCtrlSmHorizontalIcononlyRaw})`;
+export const paddingCtrlSmHorizontalDefault = `var(${paddingCtrlSmHorizontalDefaultRaw}, ${spacingHorizontalS})`;
+export const paddingCtrlSmHorizontalIcononly = `var(${paddingCtrlSmHorizontalIcononlyRaw}, 1px)`;
 export const paddingCtrlSmTexttop = `var(${paddingCtrlSmTexttopRaw})`;
 export const paddingCtrlSmTonestedcontrol = `var(${paddingCtrlSmTonestedcontrolRaw})`;
-export const paddingCtrlLgHorizontalDefault = `var(${paddingCtrlLgHorizontalDefaultRaw})`;
-export const paddingCtrlLgHorizontalIcononly = `var(${paddingCtrlLgHorizontalIcononlyRaw})`;
+export const paddingCtrlLgHorizontalDefault = `var(${paddingCtrlLgHorizontalDefaultRaw}, ${spacingHorizontalL})`;
+export const paddingCtrlLgHorizontalIcononly = `var(${paddingCtrlLgHorizontalIcononlyRaw}, 7px)`;
 export const paddingCtrlLgTexttop = `var(${paddingCtrlLgTexttopRaw})`;
 export const paddingCtrlLgTonestedcontrol = `var(${paddingCtrlLgTonestedcontrolRaw})`;
 export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
@@ -290,25 +313,25 @@ export const gapBetweenContentXlarge = `var(${gapBetweenContentXlargeRaw})`;
 export const gapBetweenContentXxlarge = `var(${gapBetweenContentXxlargeRaw})`;
 export const gapBetweenCtrlLgDefault = `var(${gapBetweenCtrlLgDefaultRaw})`;
 export const gapBetweenCtrlSmDefault = `var(${gapBetweenCtrlSmDefaultRaw})`;
-export const gapInsideCtrlDefault = `var(${gapInsideCtrlDefaultRaw})`;
-export const gapInsideCtrlSmDefault = `var(${gapInsideCtrlSmDefaultRaw})`;
+export const gapInsideCtrlDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+export const gapInsideCtrlSmDefault = `var(${gapInsideCtrlSmDefaultRaw}, ${spacingHorizontalXS})`;
 export const gapInsideCtrlSmTosecondaryicon = `var(${gapInsideCtrlSmTosecondaryiconRaw})`;
-export const gapInsideCtrlLgDefault = `var(${gapInsideCtrlLgDefaultRaw})`;
+export const gapInsideCtrlLgDefault = `var(${gapInsideCtrlLgDefaultRaw}, ${spacingHorizontalSNudge})`;
 export const gapInsideCtrlLgTosecondaryicon = `var(${gapInsideCtrlLgTosecondaryiconRaw})`;
 export const gapInsideCtrlTosecondaryicon = `var(${gapInsideCtrlTosecondaryiconRaw})`;
 export const gapInsideCtrlTolabel = `var(${gapInsideCtrlTolabelRaw})`;
 export const gapInsideCtrlSmTolabel = `var(${gapInsideCtrlSmTolabelRaw})`;
 export const gapInsideCtrlLgTolabel = `var(${gapInsideCtrlLgTolabelRaw})`;
-export const cornerCircular = `var(${cornerCircularRaw})`;
+export const cornerCircular = `var(${cornerCircularRaw}, ${borderRadiusCircular})`;
 export const strokewidthDefault = `var(${strokewidthDefaultRaw}, ${strokeWidthThin})`;
 export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
-export const strokeCtrlOnoutlineRest = `var(${strokeCtrlOnoutlineRestRaw})`;
-export const strokeCtrlOnoutlineHover = `var(${strokeCtrlOnoutlineHoverRaw})`;
-export const strokeCtrlOnoutlinePressed = `var(${strokeCtrlOnoutlinePressedRaw})`;
-export const strokeCtrlOnoutlineDisabled = `var(${strokeCtrlOnoutlineDisabledRaw})`;
-export const strokeCtrlDividerOnbrand = `var(${strokeCtrlDividerOnbrandRaw})`;
+export const strokeCtrlOnoutlineRest = `var(${strokeCtrlOnoutlineRestRaw}, ${colorNeutralStroke1})`;
+export const strokeCtrlOnoutlineHover = `var(${strokeCtrlOnoutlineHoverRaw}, ${colorNeutralStroke1})`;
+export const strokeCtrlOnoutlinePressed = `var(${strokeCtrlOnoutlinePressedRaw}, ${colorNeutralStroke1})`;
+export const strokeCtrlOnoutlineDisabled = `var(${strokeCtrlOnoutlineDisabledRaw}, ${colorNeutralStrokeDisabled})`;
+export const strokeCtrlDividerOnbrand = `var(${strokeCtrlDividerOnbrandRaw}, ${colorNeutralStrokeOnBrand})`;
 export const strokeCtrlDividerOnneutral = `var(${strokeCtrlDividerOnneutralRaw})`;
-export const strokeCtrlDividerOnoutline = `var(${strokeCtrlDividerOnoutlineRaw})`;
+export const strokeCtrlDividerOnoutline = `var(${strokeCtrlDividerOnoutlineRaw}, ${colorNeutralStroke1})`;
 export const strokeDividerDefault = `var(${strokeDividerDefaultRaw})`;
 export const strokeWindowActive = `var(${strokeWindowActiveRaw})`;
 export const backgroundWindowPrimarySolid = `var(${backgroundWindowPrimarySolidRaw})`;
@@ -332,37 +355,37 @@ export const backgroundCardOnprimaryDefaultHover = `var(${backgroundCardOnprimar
 export const backgroundCardOnprimaryDefaultPressed = `var(${backgroundCardOnprimaryDefaultPressedRaw})`;
 export const backgroundCardOnprimaryDefaultDisabled = `var(${backgroundCardOnprimaryDefaultDisabledRaw})`;
 export const backgroundFlyoutSolid = `var(${backgroundFlyoutSolidRaw})`;
-export const backgroundCtrlBrandRest = `var(${backgroundCtrlBrandRestRaw})`;
-export const backgroundCtrlBrandHover = `var(${backgroundCtrlBrandHoverRaw})`;
-export const backgroundCtrlBrandPressed = `var(${backgroundCtrlBrandPressedRaw})`;
+export const backgroundCtrlBrandRest = `var(${backgroundCtrlBrandRestRaw}, ${colorBrandBackground})`;
+export const backgroundCtrlBrandHover = `var(${backgroundCtrlBrandHoverRaw}, ${colorBrandBackgroundHover})`;
+export const backgroundCtrlBrandPressed = `var(${backgroundCtrlBrandPressedRaw}, ${colorBrandBackgroundPressed})`;
 export const backgroundCtrlBrandDisabled = `var(${backgroundCtrlBrandDisabledRaw})`;
-export const backgroundCtrlNeutralRest = `var(${backgroundCtrlNeutralRestRaw})`;
-export const backgroundCtrlNeutralHover = `var(${backgroundCtrlNeutralHoverRaw})`;
-export const backgroundCtrlNeutralPressed = `var(${backgroundCtrlNeutralPressedRaw})`;
-export const backgroundCtrlNeutralDisabled = `var(${backgroundCtrlNeutralDisabledRaw})`;
-export const backgroundCtrlSubtleHover = `var(${backgroundCtrlSubtleHoverRaw})`;
-export const backgroundCtrlSubtlePressed = `var(${backgroundCtrlSubtlePressedRaw})`;
+export const backgroundCtrlNeutralRest = `var(${backgroundCtrlNeutralRestRaw}, ${colorNeutralBackground1})`;
+export const backgroundCtrlNeutralHover = `var(${backgroundCtrlNeutralHoverRaw}, ${colorNeutralBackground1Hover})`;
+export const backgroundCtrlNeutralPressed = `var(${backgroundCtrlNeutralPressedRaw}, ${colorNeutralBackground1Pressed})`;
+export const backgroundCtrlNeutralDisabled = `var(${backgroundCtrlNeutralDisabledRaw}, ${colorNeutralBackgroundDisabled})`;
+export const backgroundCtrlSubtleHover = `var(${backgroundCtrlSubtleHoverRaw}, ${colorSubtleBackgroundHover})`;
+export const backgroundCtrlSubtlePressed = `var(${backgroundCtrlSubtlePressedRaw}, ${colorSubtleBackgroundPressed})`;
 export const backgroundFlyoutLumblend = `var(${backgroundFlyoutLumblendRaw})`;
 export const backgroundFlyoutColorblend = `var(${backgroundFlyoutColorblendRaw})`;
-export const cornerZero = `var(${cornerZeroRaw})`;
+export const cornerZero = `var(${cornerZeroRaw}, ${borderRadiusNone})`;
 export const cornerBezel = `var(${cornerBezelRaw})`;
 export const cornerWindowDefault = `var(${cornerWindowDefaultRaw})`;
 export const cornerFlyoutRest = `var(${cornerFlyoutRestRaw})`;
 export const cornerLayerDefault = `var(${cornerLayerDefaultRaw})`;
 export const cornerCardRest = `var(${cornerCardRestRaw})`;
-export const cornerCtrlRest = `var(${cornerCtrlRestRaw})`;
-export const cornerCtrlSmRest = `var(${cornerCtrlSmRestRaw})`;
-export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw})`;
+export const cornerCtrlRest = `var(${cornerCtrlRestRaw}, ${borderRadiusMedium})`;
+export const cornerCtrlSmRest = `var(${cornerCtrlSmRestRaw}, ${borderRadiusMedium})`;
+export const cornerCtrlLgRest = `var(${cornerCtrlLgRestRaw}, ${borderRadiusMedium})`;
 export const cornerImageIncard = `var(${cornerImageIncardRaw})`;
-export const foregroundCtrlNeutralPrimaryRest = `var(${foregroundCtrlNeutralPrimaryRestRaw})`;
+export const foregroundCtrlNeutralPrimaryRest = `var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1})`;
 export const foregroundCtrlNeutralPrimaryDisabled = `var(${foregroundCtrlNeutralPrimaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;
-export const foregroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw})`;
-export const foregroundCtrlNeutralSecondaryDisabled = `var(${foregroundCtrlNeutralSecondaryDisabledRaw})`;
+export const foregroundCtrlNeutralSecondaryRest = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2})`;
+export const foregroundCtrlNeutralSecondaryDisabled = `var(${foregroundCtrlNeutralSecondaryDisabledRaw}, ${colorNeutralForegroundDisabled})`;
 export const foregroundCtrlBrandRest = `var(${foregroundCtrlBrandRestRaw})`;
 export const foregroundCtrlBrandHover = `var(${foregroundCtrlBrandHoverRaw})`;
 export const foregroundCtrlBrandPressed = `var(${foregroundCtrlBrandPressedRaw})`;
 export const foregroundCtrlBrandDisabled = `var(${foregroundCtrlBrandDisabledRaw})`;
-export const foregroundCtrlOnbrandRest = `var(${foregroundCtrlOnbrandRestRaw})`;
+export const foregroundCtrlOnbrandRest = `var(${foregroundCtrlOnbrandRestRaw}, ${colorNeutralForegroundOnBrand})`;
 export const foregroundCtrlOnbrandDisabled = `var(${foregroundCtrlOnbrandDisabledRaw})`;
 export const materialAcrylicBlur = `var(${materialAcrylicBlurRaw})`;
 export const materialMicaBlur = `var(${materialMicaBlurRaw})`;

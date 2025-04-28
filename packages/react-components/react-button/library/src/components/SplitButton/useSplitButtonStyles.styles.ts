@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitButtonSlots, SplitButtonState } from './SplitButton.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { tokens } from '@fluentui/react-theme';
 
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   root: 'fui-SplitButton',
@@ -50,22 +51,39 @@ const useRootStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    /* No styles */
-  },
-  primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeOnBrand,
+      borderRightColor: semanticTokens.strokeCtrlDividerOnoutline,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnoutline,
+      },
+
+      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
+    },
+
+    ':hover:active': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: semanticTokens.strokeCtrlDividerOnoutline,
+      },
+      [`& .${splitButtonClassNames.menuButton}`]: { borderLeftWidth: 0 },
+    },
+  },
+  primary: {
+    [`& .${splitButtonClassNames.primaryActionButton}`]: {
+      borderRightColor: semanticTokens.strokeCtrlDividerOnbrand,
+    },
+
+    ':hover': {
+      [`& .${splitButtonClassNames.primaryActionButton}`]: {
+        borderRightColor: semanticTokens.strokeCtrlDividerOnbrand,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnbrand,
       },
     },
 
@@ -92,18 +110,18 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorTransparentBackground,
+      borderRightColor: semanticTokens.strokeCtrlDividerOnsubtle,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundHover,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnsubtle,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorTransparentBackgroundPressed,
+        borderRightColor: semanticTokens.strokeCtrlDividerOnsubtle,
       },
     },
   },
@@ -133,18 +151,18 @@ const useRootStyles = makeStyles({
   // Disabled styles
   disabled: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeDisabled,
+      borderRightColor: semanticTokens.strokeCtrlOnneutralDisabled,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: semanticTokens.strokeCtrlOnneutralDisabled,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: semanticTokens.strokeCtrlOnneutralDisabled,
       },
     },
   },
