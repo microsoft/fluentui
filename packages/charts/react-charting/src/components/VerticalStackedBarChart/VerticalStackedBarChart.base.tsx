@@ -965,7 +965,7 @@ export class VerticalStackedBarChartBase
           barHeight = minHeight;
         }
         const gapOffset = index ? gapHeight : 0;
-        if (point.data >= 0) {
+        if (point.data >= this.Y_ORIGIN) {
           yPositiveStart -= barHeight + gapOffset;
           yPoint = yPositiveStart;
         } else {
@@ -1111,7 +1111,7 @@ export class VerticalStackedBarChartBase
   };
 
   private _getScales = (containerHeight: number, containerWidth: number) => {
-    const yDomain = [Math.min(0, this._yMin), Math.max(0, this._yMax)];
+    const yDomain = [Math.min(this.Y_ORIGIN, this._yMin), Math.max(this.Y_ORIGIN, this._yMax)];
     const yBarScale = d3ScaleLinear()
       .domain(yDomain)
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
