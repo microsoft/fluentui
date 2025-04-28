@@ -138,6 +138,7 @@ export class VerticalStackedBarChartBase
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private readonly Y_ORIGIN: number = 0;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -858,7 +859,7 @@ export class VerticalStackedBarChartBase
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
     const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
-    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(0));
+    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(this.Y_ORIGIN));
     let sumOfPercent = 0;
     bars.forEach(point => {
       let value = (Math.abs(point.data) / totalData) * 100;
@@ -922,7 +923,7 @@ export class VerticalStackedBarChartBase
       if (heightValueScale < 0) {
         return undefined;
       }
-      const yBaseline = containerHeight - this.margins.bottom! - yBarScale(0);
+      const yBaseline = containerHeight - this.margins.bottom! - yBarScale(this.Y_ORIGIN);
       let yPositiveStart = yBaseline;
       let yNegativeStart = yBaseline;
       let yPoint = 0;
