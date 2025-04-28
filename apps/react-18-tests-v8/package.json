@@ -28,6 +28,7 @@
     "@fluentui/react": "*",
     "@fluentui/react-cards": "*",
     "@fluentui/react-hooks": "*",
+    "@fluentui/react-examples": "*",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
     "cypress-real-events": "1.14.0",
