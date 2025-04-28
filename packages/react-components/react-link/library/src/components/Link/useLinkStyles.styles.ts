@@ -1,6 +1,7 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -10,7 +11,7 @@ export const linkClassNames: SlotClassNames<LinkSlots> = {
 
 const useStyles = makeStyles({
   focusIndicator: createCustomFocusIndicatorStyle({
-    textDecorationColor: tokens.colorStrokeFocus2,
+    textDecorationColor: semanticTokens.ctrlFocusOuterStroke,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
     outlineStyle: 'none',
@@ -22,29 +23,29 @@ const useStyles = makeStyles({
     },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorBrandForegroundLink,
+    color: semanticTokens.ctrlLinkForegroundBrandRest,
     cursor: 'pointer',
     display: 'inline',
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontfamily,
+    fontSize: semanticTokens.textGlobalBody3Fontsize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     margin: '0',
     padding: '0',
     overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
-    textDecorationThickness: tokens.strokeWidthThin,
+    textDecorationThickness: semanticTokens.strokewidthDefault,
     textOverflow: 'inherit',
     userSelect: 'text',
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkHover,
+      color: semanticTokens.ctrlLinkForegroundBrandHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorBrandForegroundLinkPressed,
+      color: semanticTokens.ctrlLinkForegroundBrandPressed,
     },
   },
   // Overrides when the Link renders as a button.
@@ -57,16 +58,16 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link appears subtle.
   subtle: {
-    color: tokens.colorNeutralForeground2,
+    color: semanticTokens.ctrlLinkForegroundNeutralRest,
 
     ':hover': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Hover,
+      color: semanticTokens.ctrlLinkForegroundNeutralHover,
     },
 
     ':active': {
       textDecorationLine: 'underline',
-      color: tokens.colorNeutralForeground2Pressed,
+      color: semanticTokens.ctrlLinkForegroundNeutralPressed,
     },
   },
   // Overrides when the Link is rendered inline within text.
@@ -76,20 +77,21 @@ const useStyles = makeStyles({
   // Overrides when the Link is disabled.
   disabled: {
     textDecorationLine: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     cursor: 'not-allowed',
 
     ':hover': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
 
     ':active': {
       textDecorationLine: 'none',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
+  // Semantic-tokens does not include inverted tokens, use existing tokens for now.
   inverted: {
     color: tokens.colorBrandForegroundInverted,
     ':hover': {
