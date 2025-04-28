@@ -1176,8 +1176,8 @@ export class VerticalStackedBarChartBase
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
-      this._yMin = Math.min(domainValue[0], this.props.yMinValue || 0);
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || this.Y_ORIGIN);
+      this._yMin = Math.min(domainValue[0], this.props.yMinValue || this.Y_ORIGIN);
     }
   };
 
