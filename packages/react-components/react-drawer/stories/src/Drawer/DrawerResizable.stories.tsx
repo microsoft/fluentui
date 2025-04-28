@@ -168,7 +168,7 @@ export const Resizable = () => {
                 <DialogContent>
                   <div className={styles.dialogContent}>
                     <Label htmlFor={inputId}>Enter desired drawer width pixels:</Label>
-                    <Input id={inputId} onChange={onResizeInputChange} defaultValue={resizeInput} />
+                    <Input id={inputId} onChange={onResizeInputChange} defaultValue={resizeInput} type="number" />
                   </div>
                 </DialogContent>
                 <DialogActions>
