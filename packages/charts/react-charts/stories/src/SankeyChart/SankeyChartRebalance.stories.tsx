@@ -366,15 +366,17 @@ export const SankeyChartRebalance: React.FunctionComponent<{}> = () => {
 
   return (
     <div>
-      <Switch
-        label={`Data Source: ${dataSource === DataSouce.Simple ? 'simple' : 'complex'}`}
-        checked={dataSource === DataSouce.Simple}
-        onChange={_onDataSourceChange}
-      />
-      <label>change Width:</label>
-      <input type="range" value={width} min={400} max={1600} onChange={_onWidthChange} />
-      <label>change Height:</label>
-      <input type="range" value={height} min={312} max={400} onChange={_onHeightChange} />
+      <div style={{ display: 'flex' }}>
+        <Switch
+          label={`Data Source: ${dataSource === DataSouce.Simple ? 'simple' : 'complex'}`}
+          checked={dataSource === DataSouce.Simple}
+          onChange={_onDataSourceChange}
+        />
+        <label>change Width:</label>
+        <input type="range" value={width} min={400} max={1600} onChange={_onWidthChange} />
+        <label>change Height:</label>
+        <input type="range" value={height} min={312} max={400} onChange={_onHeightChange} />
+      </div>
       <div style={rootStyle}>
         <SankeyChart
           data={data}

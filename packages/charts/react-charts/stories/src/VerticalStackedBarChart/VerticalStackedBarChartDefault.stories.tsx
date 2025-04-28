@@ -271,36 +271,38 @@ export const VerticalStackedBarDefault = () => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Basic">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Basic"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Basic">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Basic"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
-      <input
-        type="range"
-        value={barGapMax}
-        min={0}
-        max={10}
-        id="changeBarGapMax_Basic"
-        onChange={e => setBarGapMax(+e.target.value)}
-        aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
+        <input
+          type="range"
+          value={barGapMax}
+          min={0}
+          max={10}
+          id="changeBarGapMax_Basic"
+          onChange={e => setBarGapMax(+e.target.value)}
+          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+        />
+      </div>
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="show the lines (hide or show the lines)" checked={showLine} onChange={_onShowLineChange} />
       </div>

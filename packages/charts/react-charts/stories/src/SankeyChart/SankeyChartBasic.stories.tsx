@@ -102,26 +102,28 @@ export const SankeyChartBasic: React.FunctionComponent<{}> = () => {
 
   return (
     <div>
-      <label htmlFor="changeWidth_Basic">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={400}
-        max={1000}
-        id="changeWidth_Basic"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Basic">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={312}
-        max={400}
-        id="changeHeight_Basic"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={400}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={312}
+          max={400}
+          id="changeHeight_Basic"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
       <div style={rootStyle}>
         <SankeyChart data={data} height={height} width={width} shouldResize={width + height} />
       </div>

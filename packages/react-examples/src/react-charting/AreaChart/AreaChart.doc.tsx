@@ -10,6 +10,7 @@ import { AreaChartLargeDataExample } from './AreaChart.LargeData.Example';
 import { AreaChartNegativeExample } from './AreaChart.Negative.Example';
 import { AreaChartMultipleNegativeExample } from './AreaChart.MultipleNegative.Example';
 import { AreaChartAllNegativeExample } from './AreaChart.AllNegative.Example';
+import { AreaChartSecondaryYAxisExample } from './AreaChart.SecondaryYAxis.Example';
 
 const AreaChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
@@ -27,6 +28,9 @@ const AreaChartMultipleNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.MultipleNegative.Example.tsx') as string;
 const AreaChartAllNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.AllNegative.Example.tsx') as string;
+const AreaChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.SecondaryYAxis.Example.tsx') as string;
+
 export const AreaChartPageProps: IDocPageProps = {
   title: 'AreaChart',
   componentName: 'AreaChart',
@@ -72,6 +76,11 @@ export const AreaChartPageProps: IDocPageProps = {
       title: 'AreaChart All Negative y value data',
       code: AreaChartAllNegativeExampleCode,
       view: <AreaChartAllNegativeExample />,
+    },
+    {
+      title: 'AreaChart secondary y-axis',
+      code: AreaChartSecondaryYAxisExampleCode,
+      view: <AreaChartSecondaryYAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md'),

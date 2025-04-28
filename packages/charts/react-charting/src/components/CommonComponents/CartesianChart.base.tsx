@@ -394,18 +394,23 @@ export class CartesianChartBase
        * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
        */
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      let yScale: any;
+      let yScalePrimary: any;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-        yScale = this.props.createStringYAxis(
+        yScalePrimary = this.props.createStringYAxis(
           YAxisParams,
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
           this.props.barwidth,
         );
       } else {
+        // TODO: Since the scale domain values are now computed independently for both the primary and
+        // secondary y-axes, the yMinValue and yMaxValue props are no longer necessary for accurately
+        // rendering the secondary y-axis. Therefore, rather than checking the secondaryYScaleOptions
+        // prop to determine whether to create a secondary y-axis, it's more appropriate to check if any
+        // data points are assigned to use the secondary y-scale.
         if (this.props?.secondaryYScaleOptions) {
           const YAxisParamsSecondary = {
             margins: this.margins,
@@ -417,12 +422,11 @@ export class CartesianChartBase
             yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
-            maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
+            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType, true),
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = yScaleSecondary = this.props.createYAxis(
+          yScaleSecondary = this.props.createYAxis(
             YAxisParamsSecondary,
             this._isRtl,
             axisData,
@@ -432,7 +436,7 @@ export class CartesianChartBase
             this.props.roundedTicks!,
           );
         }
-        yScale = this.props.createYAxis(
+        yScalePrimary = this.props.createYAxis(
           YAxisParams,
           this._isRtl,
           axisData,
@@ -449,10 +453,10 @@ export class CartesianChartBase
     or showing the whole string,
      * */
       chartTypesToCheck.includes(this.props.chartType) &&
-        yScale &&
+        yScalePrimary &&
         createYAxisLabels(
           this.yAxisElement,
-          yScale,
+          yScalePrimary,
           this.props.noOfCharsToTruncate || 4,
           this.props.showYAxisLablesTooltip || false,
           this._isRtl,
@@ -460,12 +464,12 @@ export class CartesianChartBase
 
       this.props.getAxisData && this.props.getAxisData(axisData);
       // Callback function for chart, returns axis
-      this._getData(xScale, yScale);
+      this._getData(xScale, yScalePrimary, yScaleSecondary);
 
       children = this.props.children({
         ...this.state,
         xScale,
-        yScale,
+        yScalePrimary,
         yScaleSecondary,
       });
 
@@ -889,15 +893,16 @@ export class CartesianChartBase
 
   // Call back to the chart.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getData = (xScale: any, yScale: any) => {
+  private _getData = (xScale: any, yScalePrimary: any, yScaleSecondary: any) => {
     this.props.getGraphData &&
       this.props.getGraphData(
         xScale,
-        yScale,
+        yScalePrimary,
         this.state.containerHeight - this.state._removalValueForTextTuncate!,
         this.state.containerWidth,
         this.xAxisElement,
         this.yAxisElement,
+        yScaleSecondary,
       );
   };
 
