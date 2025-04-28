@@ -49,12 +49,15 @@ const useStyles = makeStyles({
 
   resizer: {
     width: '24px',
+    height: '100%',
     position: 'absolute',
     top: 0,
     right: 0,
     bottom: 0,
     cursor: 'col-resize',
-    resize: 'horizontal',
+    border: 'none',
+    minWidth: 'unset',
+    borderRadius: tokens.borderRadiusNone,
 
     '&:before': {
       content: '""',
@@ -65,9 +68,14 @@ const useStyles = makeStyles({
       transform: 'translateX(-50%)',
       left: '50%',
     },
-
     ':hover': {
       borderRightWidth: '4px',
+      cursor: 'col-resize',
+      backgroundColor: 'transparent',
+    },
+    ':hover:active': {
+      backgroundColor: 'transparent',
+      cursor: 'col-resize',
     },
   },
 
@@ -149,9 +157,10 @@ export const Resizable = () => {
           </InlineDrawer>
           <Dialog>
             <DialogTrigger disableButtonEnhancement>
-              <div
+              <Button
                 className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
                 onMouseDown={startResizing}
+                aria-label="Resize drawer"
               />
             </DialogTrigger>
             <DialogSurface>
