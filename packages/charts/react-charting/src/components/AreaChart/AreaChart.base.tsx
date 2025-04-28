@@ -208,7 +208,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const calloutProps = {
         target: this.state.refSelected,
-        isCalloutVisible: this.state.isCalloutVisible,
+        isCalloutVisible: !this._containsDuplicate() && !this._containsMissingValues() && this.state.isCalloutVisible,
         directionalHint: DirectionalHint.topAutoEdge,
         YValueHover: this.state.YValueHover,
         hoverXValue: this.state.hoverXValue,
@@ -494,7 +494,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _createDataSet = (points: ILineChartPoints[]) => {
-    if (this.props.enablePerfOptimization && this._enableComputationOptimization) {
+    if (this.props.enablePerfOptimization && this._enableComputationOptimization && !this._containsDuplicate()) {
       const allChartPoints: ILineChartDataPoint[] = [];
       const dataSet: IAreaChartDataSetPoint[] = [];
       const colors: string[] = [];
@@ -556,45 +556,61 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       const colors: string[] = [];
       const opacity: number[] = [];
       const calloutPoints = calloutData(points!);
-
+      let data = {};
+      const keys: string[] = [];
+      const hasDuplicate = this._containsDuplicate();
+      let index = 0;
       points &&
         points.length &&
         points.forEach((singleChartPoint: ILineChartPoints) => {
+          // if legend is not populated, then assign a legend
+          if (hasDuplicate && !singleChartPoint.legend) {
+            singleChartPoint.legend = `chart${index}`;
+            ++index;
+          }
+          singleChartPoint.data.forEach((point: ILineChartDataPoint) => {
+            point.legend = singleChartPoint.legend;
+          });
           colors.push(singleChartPoint.color!);
           opacity.push(singleChartPoint.opacity || 1);
           allChartPoints.push(...singleChartPoint.data);
         });
 
-      let tempArr = allChartPoints;
-      while (tempArr.length) {
-        const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-        const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
-        );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const singleDataset: any = {};
-        filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
-          singleDataset.xVal = singleDataPoint.x;
-          singleDataset[`chart${index}`] = singleDataPoint.y;
-        });
-        dataSet.push(singleDataset);
-        // removing compared objects from array
-        const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-        tempArr = tempArr.filter(
-          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
-        );
-      }
+      if (!this._containsDuplicate()) {
+        let tempArr = allChartPoints;
+        while (tempArr.length) {
+          const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
+            (point: ILineChartDataPoint) =>
+              (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+          );
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const singleDataset: any = {};
+          filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, id: number) => {
+            singleDataset.xVal = singleDataPoint.x;
+            singleDataset[`chart${id}`] = singleDataPoint.y;
+          });
+          dataSet.push(singleDataset);
+          // removing compared objects from array
+          const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          tempArr = tempArr.filter(
+            (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
+          );
+        }
 
-      // get keys from dataset, used to create stacked data
-      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-      const keys: string[] = [];
-      for (let i = 0; i < keysLength - 1; i++) {
-        const keyVal = `chart${i}`;
-        keys.push(keyVal);
-      }
+        // get keys from dataset, used to create stacked data
+        const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+        for (let i = 0; i < keysLength - 1; i++) {
+          const keyVal = `chart${i}`;
+          keys.push(keyVal);
+        }
 
-      // Data used to draw graph
-      const data = this._getDataPoints(keys, dataSet);
+        // Data used to draw graph
+        data = this._getDataPoints(keys, dataSet);
+      } else {
+        const datasetForDuplicateValues = this._createDatasetForDuplicateValues(allChartPoints);
+        data = this._getDataPoints(datasetForDuplicateValues.keys, datasetForDuplicateValues.filteredDataSet);
+      }
 
       return {
         colors,
@@ -604,6 +620,63 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         calloutPoints,
       };
     }
+  };
+
+  private _createDatasetForDuplicateValues = (allChartPoints: ILineChartDataPoint[]) => {
+    const dataSet: IAreaChartDataSetPoint[] = [];
+
+    // Group data points by x-axis value
+    const groupedData: Record<string | number, ILineChartDataPoint[]> = {};
+    allChartPoints.forEach((dataPoint: ILineChartDataPoint) => {
+      const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
+      if (!groupedData[xValue]) {
+        groupedData[xValue] = [];
+      }
+      groupedData[xValue].push(dataPoint);
+    });
+
+    // Aggregate data points for each x-axis value
+    Object.keys(groupedData).forEach(xValue => {
+      const dataPoints = groupedData[xValue];
+      dataPoints.forEach((dataPoint, id) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = { xVal: dataPoints[0].x };
+
+        const key = dataPoint.legend ? dataPoint.legend : `chart${id}`;
+        singleDataset[key] = dataPoint.y;
+        dataSet.push(singleDataset);
+      });
+    });
+
+    // get all unique keys from each array within the dataSet
+    const allLegends: string[] = [];
+    dataSet.forEach(item => {
+      Object.keys(item).forEach(key => {
+        if (key !== 'xVal' && !allLegends.includes(key)) {
+          allLegends.push(key);
+        }
+      });
+    });
+
+    dataSet.forEach(item => {
+      allLegends.forEach(legend => {
+        if (!item[legend]) {
+          item[legend] = 0; // Fill with 0 if the legend is missing
+        }
+      });
+    });
+
+    // exclude all items within dataset having all legend values 0
+    const filteredDataSet = dataSet.filter(item => {
+      return allLegends.some(legend => item[legend] !== 0);
+    });
+
+    const keys = Array.from(new Set(filteredDataSet.flatMap(item => Object.keys(item).filter(key => key !== 'xVal'))));
+
+    return {
+      keys,
+      filteredDataSet,
+    };
   };
 
   private _getCustomizedCallout = () => {
@@ -871,13 +944,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
-                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                  {...(!this._containsDuplicate() &&
+                    !this._containsMissingValues() && {
+                      onClick: this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!),
+                    })}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
                   onBlur={this._handleBlur}
                   {...getSecureProps(pointOptions)}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
                   role="img"
-                  aria-label={this._getAriaLabel(index, pointIndex)}
+                  aria-label={
+                    (!this._containsDuplicate() &&
+                      !this._containsMissingValues() &&
+                      this._getAriaLabel(index, pointIndex)) ||
+                    undefined
+                  }
                 />
               );
             })}
@@ -902,7 +983,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
-                onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                {...(!this._containsDuplicate() &&
+                  !this._containsMissingValues() && {
+                    onClick: this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!),
+                  })}
                 {...getSecureProps(pointOptions)}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
               />,
@@ -1003,14 +1087,38 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
-    //for each series, sort the series values by xvalue
-    lineChartData?.forEach((item: ILineChartPoints) => {
-      item.data = item.data.sort((a: ILineChartDataPoint, b: ILineChartDataPoint) => {
-        const x1 = a.x instanceof Date ? a.x.getTime() : a.x;
-        const x2 = b.x instanceof Date ? b.x.getTime() : b.x;
-        return x1 - x2;
-      });
-    });
+    if (this._containsMissingValues()) {
+      // get union of all x values
+      const allXValues: Set<string | number> = new Set();
+      lineChartData &&
+        lineChartData.forEach((line: ILineChartPoints) => {
+          line.data.forEach((point: ILineChartDataPoint) => {
+            const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+            allXValues.add(xValue);
+          });
+        });
+      lineChartData &&
+        lineChartData.forEach((line: ILineChartPoints) => {
+          allXValues.forEach((xValue: string | number) => {
+            const point = line.data.find((item: ILineChartDataPoint) => {
+              return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
+            });
+            if (!point || point.y === 0) {
+              line.data.push({
+                x: typeof xValue === 'string' ? new Date(xValue) : xValue,
+                y: 0,
+                legend: line.legend,
+              });
+            }
+          });
+          // sort the data points by x value
+          line.data.sort((a: ILineChartDataPoint, b: ILineChartDataPoint) => {
+            const xA = a.x instanceof Date ? a.x.getTime() : a.x;
+            const xB = b.x instanceof Date ? b.x.getTime() : b.x;
+            return xA < xB ? -1 : xA > xB ? 1 : 0;
+          });
+        });
+    }
     return lineChartData
       ? lineChartData.map((item, index) => {
           let color: string;
@@ -1097,33 +1205,53 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _containsDuplicate(): boolean {
     const { lineChartData } = this.props.data;
-
     if (!lineChartData) {
       return false;
     }
-
     for (const item of lineChartData) {
       const xValueMap: Record<string, number[]> = {};
-
       for (const point of item.data) {
         const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
-
         if (!xValueMap[xValue]) {
           xValueMap[xValue] = [];
         }
-
         xValueMap[xValue].push(point.y);
-
         if (xValueMap[xValue].length > 1) {
-          return true; // Duplicate found
+          return true;
         }
       }
     }
+    return false;
+  }
 
-    return false; // No duplicates found
+  private _containsMissingValues(): boolean {
+    const { lineChartData } = this.props.data;
+    if (!lineChartData) {
+      return false;
+    }
+    const allXValues: Set<string | number> = new Set();
+    lineChartData.forEach((line: ILineChartPoints) => {
+      line.data.forEach((point: ILineChartDataPoint) => {
+        const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+        allXValues.add(xValue);
+      });
+    });
+    // for all x values, check if the x value is present in all series
+    let hasMissingValues = false;
+    lineChartData.forEach((line: ILineChartPoints) => {
+      allXValues.forEach((xValue: string | number) => {
+        const point = line.data.find((item: ILineChartDataPoint) => {
+          return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
+        });
+        if (!point || point.y === 0) {
+          hasMissingValues = true;
+        }
+      });
+    });
+    return hasMissingValues;
   }
 
   private _shouldFillToZeroY() {
-    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis || this._containsDuplicate();
+    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis;
   }
 }
