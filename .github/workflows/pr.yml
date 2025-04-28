@@ -160,7 +160,9 @@ jobs:
       - name: test (affected)
         id: test
         if: steps.affected_projects_test_count.outputs.value > 0
-        run: yarn nx run-many -p react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} -t test:integration --nxBail
+        run: |
+          yarn nx run-many -p react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} -t build:integration --nxBail
+          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} test:integration
         continue-on-error: true
 
       # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562

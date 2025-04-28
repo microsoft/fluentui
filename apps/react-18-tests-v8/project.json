@@ -22,6 +22,10 @@
     "test:integration": {
       "dependsOn": ["^build"],
       "inputs": ["{projectRoot}/jest-react-18.config.js", "{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
+    },
+    "build:integration": {
+      "dependsOn": ["^build"],
+      "inputs": ["{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
     }
   }
 }

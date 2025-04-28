@@ -6,6 +6,7 @@ const jestConfig = require('./jest.config');
  */
 const config = {
   ...jestConfig,
+  displayName: 'react-18-tests-v8-integration',
   roots: ['<rootDir>/../../packages/react/src', '<rootDir>/../../packages/react-hooks/src'],
 };
 
