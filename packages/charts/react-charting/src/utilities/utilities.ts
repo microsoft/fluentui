@@ -1045,7 +1045,10 @@ export function groupChartDataByYValue(
  * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
  * @returns {number}
  */
-export function computeLongestBars(stackedChartData: IHorizontalBarChartWithAxisDataPoint[][]): {
+export function computeLongestBars(
+  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
   longestPositiveBar: number;
   longestNegativeBar: number;
 } {
@@ -1055,12 +1058,12 @@ export function computeLongestBars(stackedChartData: IHorizontalBarChartWithAxis
   stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
     const positiveBarTotal = group.reduce(
       (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
-      0,
+      X_ORIGIN,
     );
 
     const negativeBarTotal = group.reduce(
       (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
-      0,
+      X_ORIGIN,
     );
 
     longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
@@ -1086,16 +1089,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN: number,
 ): IDomainNRange {
-  const longestBars = computeLongestBars(groupChartDataByYValue(points));
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
   const xMax = longestBars.longestPositiveBar;
   const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: Math.min(xMin, 0), rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: Math.min(xMin, 0), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**
