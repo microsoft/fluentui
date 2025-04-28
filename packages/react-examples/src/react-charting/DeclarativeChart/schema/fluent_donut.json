@@ -1,25 +1,56 @@
 {
   "data": [
     {
-      "hovertemplate": "r=%{r}\u003cbr\u003etheta=%{theta}\u003cextra\u003e\u003c\u002fextra\u003e",
-      "legendgroup": "",
+      "fillpattern": {
+        "shape": ""
+      },
+      "hovertemplate": "Model=Sedan<br>Date=%{x}<br>Sales Volume=%{y}<extra></extra>",
+      "legendgroup": "Sedan",
       "line": {
-        "color": "#636efa",
-        "dash": "solid"
+        "color": "#636efa"
       },
       "marker": {
         "symbol": "circle"
       },
       "mode": "lines",
-      "name": "",
-      "r": {
-        "dtype": "i1",
-        "bdata": "ChQeKDIK"
+      "name": "Sedan",
+      "orientation": "v",
+      "showlegend": true,
+      "stackgroup": "1",
+      "x": ["2023-01-01", "2023-01-01", "2023-01-01", "2023-03-01", "2023-03-01", "2023-03-01"],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i2",
+        "bdata": "lgAsAZAByABeAcIB"
       },
-      "showlegend": false,
-      "subplot": "polar",
-      "theta": ["A", "B", "C", "D", "E", "A"],
-      "type": "scatterpolar"
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "fillpattern": {
+        "shape": ""
+      },
+      "hovertemplate": "Model=SUV<br>Date=%{x}<br>Sales Volume=%{y}<extra></extra>",
+      "legendgroup": "SUV",
+      "line": {
+        "color": "#EF553B"
+      },
+      "marker": {
+        "symbol": "circle"
+      },
+      "mode": "lines",
+      "name": "SUV",
+      "orientation": "v",
+      "showlegend": true,
+      "stackgroup": "1",
+      "x": ["2023-02-01", "2023-02-01", "2023-02-01", "2023-04-01", "2023-04-01", "2023-04-01"],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i2",
+        "bdata": "yAD6AF4B+gAsAZAB"
+      },
+      "yaxis": "y",
+      "type": "scatter"
     }
   ],
   "layout": {
@@ -556,22 +587,29 @@
         }
       }
     },
-    "polar": {
-      "domain": {
-        "x": [0.0, 1.0],
-        "y": [0.0, 1.0]
-      },
-      "angularaxis": {
-        "direction": "clockwise",
-        "rotation": 90
+    "xaxis": {
+      "anchor": "y",
+      "domain": [0.0, 1.0],
+      "title": {
+        "text": "Date"
+      }
+    },
+    "yaxis": {
+      "anchor": "x",
+      "domain": [0.0, 1.0],
+      "title": {
+        "text": "Sales Volume"
       }
     },
     "legend": {
+      "title": {
+        "text": "Model"
+      },
       "tracegroupgap": 0
     },
     "title": {
-      "text": "Polar Area Chart"
+      "text": "Sales Volume Over Time by Model"
     }
   },
-  "id": 431
+  "id": "563"
 }
