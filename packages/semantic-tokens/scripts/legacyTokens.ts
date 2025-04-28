@@ -17,6 +17,7 @@ const generateLegacyTokens = () => {
     const tokenOverride = fluentOverrides[t];
     const fluent2Fallback = tokenOverride?.f2Token;
     if (!tokenOverride || !fluent2Fallback || exportedTokens.includes(fluent2Fallback)) {
+      // Token has inline variants, skip
       return acc;
     }
     // Add it to our list of exported tokens
