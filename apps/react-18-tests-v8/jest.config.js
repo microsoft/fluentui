@@ -18,6 +18,7 @@ config.moduleNameMapper = {
   ...moduleNameMapper,
   '^react$': join(__dirname, '/node_modules/react'),
   '^react-dom$': join(__dirname, 'node_modules/react-dom'),
+  '^react-dom/test-utils$': join(__dirname, 'node_modules/react-dom/test-utils'),
   '^react-test-renderer$': join(__dirname, 'node_modules/react-test-renderer'),
   '^react-is$': join(__dirname, 'node_modules/react-is'),
   '^@testing-library/(react|dom)$': join(__dirname, 'node_modules/@testing-library/$1'),
