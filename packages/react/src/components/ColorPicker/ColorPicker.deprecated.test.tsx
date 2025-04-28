@@ -5,13 +5,7 @@ import { render, screen } from '@testing-library/react';
 import { ColorPicker } from './ColorPicker';
 import type { IColorPickerStrings } from './ColorPicker.types';
 import { setWarningCallback } from '@fluentui/utilities';
-
-function getBySelector(container: HTMLElement, selector: string) {
-  return container.querySelector(selector);
-}
-function getByAllSelector(container: HTMLElement, selector: string) {
-  return container.querySelectorAll(selector);
-}
+import { getByAllSelector, getBySelector } from '../../common/testUtilities';
 
 describe('ColorPicker', () => {
   beforeAll(() => {

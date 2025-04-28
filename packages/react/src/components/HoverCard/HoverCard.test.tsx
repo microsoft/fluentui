@@ -12,7 +12,7 @@ import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import type { IPlainCardProps } from './PlainCard/PlainCard.types';
 import type { IExpandingCardProps } from './ExpandingCard.types';
-import type { IHoverCardProps } from './HoverCard.types';
+import { HoverCardType, type IHoverCardProps } from './HoverCard.types';
 
 const expandingCardProps: IExpandingCardProps = {
   onRenderCompactCard: (item: any) => {
@@ -35,7 +35,7 @@ const PlainCardProps: IPlainCardProps = {
 
 describe('HoverCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
-    const createNodeMock = (el: React.ReactElement<{}>) => {
+    const createNodeMock = (_el: React.ReactElement<{}>) => {
       return {
         __events__: {},
       };
@@ -85,21 +85,36 @@ describe('HoverCard', () => {
   });
 
   it('uses default documented properties', () => {
-    const { container, unmount } = render(<HoverCardBase />);
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+    const component = renderer.create(<HoverCardBase />);
 
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <div
-          data-is-focusable="true"
-        />
-      </div>
-    `);
+    expect(component.root.props.cardOpenDelay).toEqual(500);
+    expect(component.root.props.cardDismissDelay).toEqual(100);
+    expect(component.root.props.expandedCardOpenDelay).toEqual(1500);
+    expect(component.root.props.instantOpenOnClick).toEqual(false);
+    expect(component.root.props.setInitialFocus).toEqual(false);
+    expect(component.root.props.openHotKey).toEqual(KeyCodes.c);
+    expect(component.root.props.type).toEqual(HoverCardType.expanding);
 
-    unmount();
+    component.unmount();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   it('uses specified properties when rendering an ExpandedCard', () => {
-    const { unmount, container } = render(
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    const createPortal = ReactDOM.createPortal;
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
       <HoverCardBase
         expandingCardProps={expandingCardProps}
         cardDismissDelay={300}
@@ -112,15 +127,17 @@ describe('HoverCard', () => {
       />,
     );
 
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <div
-          data-is-focusable="true"
-        />
-      </div>
-    `);
+    expect(component.root.props.cardOpenDelay).toEqual(1000);
+    expect(component.root.props.cardDismissDelay).toEqual(300);
+    expect(component.root.props.expandedCardOpenDelay).toEqual(2000);
+    expect(component.root.props.instantOpenOnClick).toEqual(true);
+    expect(component.root.props.setInitialFocus).toEqual(true);
+    expect(component.root.props.openHotKey).toEqual(KeyCodes.enter);
+    expect(component.root.props.expandingCardProps).toMatchObject(expandingCardProps);
 
-    unmount();
+    component.unmount();
+
+    ReactDOM.createPortal = createPortal;
   });
 
   it('fires onCardVisible and onCardHide', () => {

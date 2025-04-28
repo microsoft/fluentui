@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { getBySelector } from '../../common/testUtilities';
+import { getBySelector, getByAllSelector } from '../../common/testUtilities';
 import { SelectionMode, Selection } from '../../Selection';
 import { GroupedList } from './GroupedList';
 import { DetailsRow } from '../DetailsList/DetailsRow';
@@ -10,14 +10,6 @@ import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import type { IGroup } from './GroupedList.types';
 import type { IColumn } from '../DetailsList/DetailsList.types';
-
-/**
- * Helper function to query for multiple elements by selector
- */
-function getAllBySelector(container: HTMLElement, selector: string): HTMLElement[] {
-  const elements = container.querySelectorAll(selector);
-  return Array.from(elements) as HTMLElement[];
-}
 
 /**
  * Helper function to render a cell for GroupedList tests
@@ -115,7 +107,7 @@ describe('GroupedList', () => {
       />,
     );
 
-    const detailsRows = getAllBySelector(container, '[data-automationid="DetailsRow"]');
+    const detailsRows = getByAllSelector(container, '[data-automationid="DetailsRow"]');
     expect(detailsRows.length).toBe(3);
   });
 
@@ -144,12 +136,14 @@ describe('GroupedList', () => {
       />,
     );
 
-    const detailsRows = getAllBySelector(container, '[data-automationid="DetailsRow"]');
+    const detailsRows = getByAllSelector(container, '[data-automationid="DetailsRow"]');
     expect(detailsRows.length).toBe(3);
 
     // Check correct items are rendered based on startIndex
     // We can check data attributes or inner text to verify the correct rows
-    const detailsRowsContents = detailsRows.map(row => row.querySelector('[data-automation-key="key"]')?.textContent);
+    const detailsRowsContents = Array.from(detailsRows).map(
+      row => row.querySelector('[data-automation-key="key"]')?.textContent,
+    );
 
     expect(detailsRowsContents).toEqual(['3', '4', '5']);
   });
@@ -179,7 +173,7 @@ describe('GroupedList', () => {
       />,
     );
 
-    const detailsRows = getAllBySelector(container, '[data-automationid="DetailsRow"]');
+    const detailsRows = getByAllSelector(container, '[data-automationid="DetailsRow"]');
     expect(detailsRows.length).toBe(0);
   });
 
@@ -209,7 +203,7 @@ describe('GroupedList', () => {
     );
 
     // Initially we should see only one row (count: 1)
-    let detailsRows = getAllBySelector(container, '[data-automationid="DetailsRow"]');
+    let detailsRows = getByAllSelector(container, '[data-automationid="DetailsRow"]');
     expect(detailsRows.length).toBe(1);
 
     // Find the "Show All" link and click it
@@ -218,7 +212,7 @@ describe('GroupedList', () => {
     fireEvent.click(showAllLink);
 
     // After clicking "Show All", we should see all 3 rows
-    detailsRows = getAllBySelector(container, '[data-automationid="DetailsRow"]');
+    detailsRows = getByAllSelector(container, '[data-automationid="DetailsRow"]');
     expect(detailsRows.length).toBe(3);
   });
 

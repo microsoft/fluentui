@@ -10,10 +10,7 @@ import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
 import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
 import type { IColumn } from './DetailsList.types';
-
-function getBySelector(container: HTMLElement, selector: string) {
-  return container.querySelector(selector);
-}
+import { getBySelector } from '../../common/testUtilities';
 
 const _items: {}[] = [];
 const _selection = new Selection();

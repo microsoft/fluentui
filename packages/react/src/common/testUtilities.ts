@@ -31,19 +31,6 @@ export function delay(millisecond: number): Promise<void> {
   return new Promise<void>(resolve => setTimeout(resolve, millisecond));
 }
 
-/**
- * Mounts the element attached to a child of document.body. This is primarily for tests involving
- * event handlers (which don't work right unless the element is attached).
- * @deprecated Use `safeMount` from `@fluentui/test-utilities` instead
- */
-// export function mountAttached<C extends React.Component, P = C['props'], S = C['state']>(
-//   element: React.ReactElement<P>,
-// ): ReactWrapper<P, S, C> {
-//   const parent = document.createElement('div');
-//   document.body.appendChild(parent);
-//   return mount(element, { attachTo: parent });
-// }
-
 export function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
   const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);

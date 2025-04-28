@@ -10,7 +10,6 @@ import { KeyCodes } from '../../../Utilities';
 import type { IColor } from '../../../utilities/color/colors';
 
 describe('ColorRectangle', () => {
-  // let wrapper: ReactWrapper<IColorRectangleProps, IColorRectangleState, ColorRectangleBase> | undefined;
   let component: renderer.ReactTestRenderer | undefined;
   let colorRectangle: ColorRectangleBase | null = null;
   const colorRectRef = (ref: ColorRectangleBase | null) => {
@@ -30,10 +29,6 @@ describe('ColorRectangle', () => {
       } as DOMRect);
 
   afterEach(() => {
-    // if (wrapper) {
-    //   wrapper.unmount();
-    //   wrapper = undefined;
-    // }
     if (component) {
       component.unmount();
       component = undefined;
