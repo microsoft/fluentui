@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 22 Apr 2025 07:20:43 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Apr 2025 07:22:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.77)
+
+Mon, 28 Apr 2025 07:22:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.76..@fluentui/react-charting_v5.23.77)
+
+### Patches
+
+- feat: add support for secondary y-axis in cartesian charts ([PR #34301](https://github.com/microsoft/fluentui/pull/34301) by kumarkshitij@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.205 ([PR #34317](https://github.com/microsoft/fluentui/pull/34317) by beachball)
+- Bump @fluentui/react to v8.122.16 ([PR #34317](https://github.com/microsoft/fluentui/pull/34317) by beachball)
 
 ## [5.23.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.76)
 
