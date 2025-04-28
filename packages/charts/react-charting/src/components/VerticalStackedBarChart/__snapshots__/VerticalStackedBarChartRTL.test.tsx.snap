@@ -29,7 +29,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -563,7 +563,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1018,7 +1018,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1552,7 +1552,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2007,7 +2007,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone13"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2541,7 +2541,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone14"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3009,7 +3009,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
 
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -3441,7 +3441,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone9"
+                  data-focuszone-id="FocusZone13"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -9785,7 +9785,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10217,7 +10217,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10472,7 +10472,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10896,7 +10896,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone10"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11148,7 +11148,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -11572,7 +11572,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone10"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11824,7 +11824,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -12276,7 +12276,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone10"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
