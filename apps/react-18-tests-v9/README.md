@@ -4,6 +4,24 @@
 
 ## Usage
 
+### React 18 integration tests against all v9 code in monorepo
+
+Following Targets are used:
+
+#### type-check:integration
+
+`yarn nx run react-18-tests-v9:type-check:integration`
+
+runs `tsc` against all monorepo v9 stories with properly pinned `@types/react@18`
+
+_Note:_ react-migration-v8-v9, react-migration-v0-v9 and any `react-*-compat` are excluded from this check
+
+#### e2e:integration
+
+`yarn nx run react-18-tests-v9:e2e:integration`
+
+runs `cypress` against all monorepo v9 `*.cy.tsx?` with properly pinned `react18` runtime deps
+
 ### `start`
 
 ```shell

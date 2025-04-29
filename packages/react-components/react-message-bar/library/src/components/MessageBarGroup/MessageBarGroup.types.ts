@@ -18,9 +18,7 @@ export type MessageBarGroupProps = ComponentProps<MessageBarGroupSlots> & {
  */
 export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> &
   Pick<MessageBarGroupProps, 'animate'> & {
-    /** @deprecated property is unused; these CSS animations were replaced by motion components */
     enterStyles: string;
-    /** @deprecated property is unused; these CSS animations were replaced by motion components */
     exitStyles: string;
     children: React.ReactElement[];
   };

@@ -217,6 +217,9 @@ const useCircularAppearanceStyles = makeStyles({
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorCompoundBrandStrokePressed}`,
       color: tokens.colorBrandForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      border: `solid ${tokens.strokeWidthThin} Highlight`,
+    },
   },
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -239,6 +242,21 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':enabled:hover': {
+        backgroundColor: 'Highlight',
+        forcedColorAdjust: 'none',
+        [`& .${tabClassNames.content}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.filled}`]: {
+          color: 'HighlightText',
+        },
+        [`& .${iconClassNames.regular}`]: {
+          color: 'HighlightText',
+        },
+      },
+    },
   },
   filledSelected: {
     backgroundColor: tokens.colorBrandBackground,
@@ -250,6 +268,18 @@ const useCircularAppearanceStyles = makeStyles({
     ':enabled:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
       color: tokens.colorNeutralForegroundOnBrand,
+    },
+    '@media (forced-colors: active)': {
+      ':enabled': {
+        backgroundColor: 'ButtonText',
+        [`& .${tabClassNames.content}`]: {
+          color: 'ButtonFace',
+          forcedColorAdjust: 'none',
+        },
+      },
+      [`:enabled .${tabClassNames.icon}`]: {
+        color: 'ButtonFace',
+      },
     },
   },
   filledDisabled: {
@@ -332,6 +362,14 @@ const usePendingIndicatorStyles = makeStyles({
     },
     ':active::before': {
       backgroundColor: tokens.colorTransparentStroke,
+    },
+    '@media (forced-colors: active)': {
+      ':hover::before': {
+        backgroundColor: 'transparent',
+      },
+      ':active::before': {
+        backgroundColor: 'transparent',
+      },
     },
   },
   smallHorizontal: {

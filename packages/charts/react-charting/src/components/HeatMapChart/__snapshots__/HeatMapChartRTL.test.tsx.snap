@@ -622,9 +622,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone3"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1222,9 +1220,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone3"
       data-tabster="{\\"uncontrolled\\": {}}"
     >

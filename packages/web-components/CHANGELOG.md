@@ -1,8 +1,148 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 13 Feb 2025 04:06:52 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Apr 2025 04:06:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.95](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.95)
+
+Thu, 24 Apr 2025 04:06:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.94..@fluentui/web-components_v3.0.0-beta.95)
+
+### Changes
+
+- support callback for expand change ([PR #34234](https://github.com/microsoft/fluentui/pull/34234) by HangWhy@outlook.com)
+
+## [3.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.94)
+
+Tue, 22 Apr 2025 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.93..@fluentui/web-components_v3.0.0-beta.94)
+
+### Changes
+
+- Added custom elements manifest to project and included it in published package ([PR #34283](https://github.com/microsoft/fluentui/pull/34283) by burtonsmith@microsoft.com)
+
+## [3.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.93)
+
+Fri, 18 Apr 2025 04:06:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.92..@fluentui/web-components_v3.0.0-beta.93)
+
+### Changes
+
+- fix tabs animation starting position ([PR #34185](https://github.com/microsoft/fluentui/pull/34185) by 1981616118@qq.com)
+- [fix] only set expanded is expanded is not set ([PR #34282](https://github.com/microsoft/fluentui/pull/34282) by jes@microsoft.com)
+
+## [3.0.0-beta.92](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.92)
+
+Thu, 17 Apr 2025 04:07:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.91..@fluentui/web-components_v3.0.0-beta.92)
+
+### Changes
+
+- tree item initial selection, tree item expands for sub selected item ([PR #34258](https://github.com/microsoft/fluentui/pull/34258) by jes@microsoft.com)
+
+## [3.0.0-beta.91](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.91)
+
+Tue, 15 Apr 2025 04:06:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.90..@fluentui/web-components_v3.0.0-beta.91)
+
+### Changes
+
+- fix: dropdown validation message and add missing validity functions ([PR #34219](https://github.com/microsoft/fluentui/pull/34219) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.90)
+
+Thu, 10 Apr 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.89..@fluentui/web-components_v3.0.0-beta.90)
+
+### Changes
+
+- feat: remove use of custom states for presentational styling ([PR #34168](https://github.com/microsoft/fluentui/pull/34168) by 13071055+chrisdholt@users.noreply.github.com)
+- fix typo in avatar styles for beige color ([PR #34221](https://github.com/microsoft/fluentui/pull/34221) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.89)
+
+Wed, 09 Apr 2025 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.88..@fluentui/web-components_v3.0.0-beta.89)
+
+### Changes
+
+- deprecate tabs and tab-panel in favor of tablist ([PR #34206](https://github.com/microsoft/fluentui/pull/34206) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.88](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.88)
+
+Fri, 21 Mar 2025 04:07:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.87..@fluentui/web-components_v3.0.0-beta.88)
+
+### Changes
+
+- fix: emit change event on tablist only when active tab changed ([PR #34055](https://github.com/microsoft/fluentui/pull/34055) by machi@microsoft.com)
+
+## [3.0.0-beta.87](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.87)
+
+Thu, 20 Mar 2025 04:07:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.86..@fluentui/web-components_v3.0.0-beta.87)
+
+### Changes
+
+- [chore]: move core functionality to base dropdown ([PR #34033](https://github.com/microsoft/fluentui/pull/34033) by jes@microsoft.com)
+
+## [3.0.0-beta.86](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.86)
+
+Fri, 14 Mar 2025 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.85..@fluentui/web-components_v3.0.0-beta.86)
+
+### Changes
+
+- refactor out base classes for tree and tree item ([PR #33990](https://github.com/microsoft/fluentui/pull/33990) by jes@microsoft.com)
+- move filtering for tree-items to template ([PR #33989](https://github.com/microsoft/fluentui/pull/33989) by jes@microsoft.com)
+
+## [3.0.0-beta.85](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.85)
+
+Thu, 13 Mar 2025 04:07:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.84..@fluentui/web-components_v3.0.0-beta.85)
+
+### Changes
+
+- fix: export AnchorButtonStyles in its index.ts ([PR #33957](https://github.com/microsoft/fluentui/pull/33957) by wes.ngrongsen@gmail.com)
+
+## [3.0.0-beta.84](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.84)
+
+Mon, 10 Mar 2025 21:05:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.83..@fluentui/web-components_v3.0.0-beta.84)
+
+### Changes
+
+- fix: move base classes to a separate file and provide export paths for improved tree shaking ([PR #33962](https://github.com/microsoft/fluentui/pull/33962) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.83](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.83)
+
+Wed, 05 Mar 2025 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.82..@fluentui/web-components_v3.0.0-beta.83)
+
+### Changes
+
+- feat: auto associate tabpanels with tabs ([PR #33939](https://github.com/microsoft/fluentui/pull/33939) by machi@microsoft.com)
+
+## [3.0.0-beta.82](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.82)
+
+Fri, 28 Feb 2025 04:07:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.81..@fluentui/web-components_v3.0.0-beta.82)
+
+### Changes
+
+- Fixed button start and end slots inline spacing. ([PR #33917](https://github.com/microsoft/fluentui/pull/33917) by 601470+mlijanto@users.noreply.github.com)
+- fix: position thumb properly at pointer coordinates ([PR #33916](https://github.com/microsoft/fluentui/pull/33916) by machi@microsoft.com)
+- fix: enable keyboard interactions after clicking on thumb ([PR #33922](https://github.com/microsoft/fluentui/pull/33922) by machi@microsoft.com)
+
+## [3.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.81)
+
+Tue, 25 Feb 2025 04:07:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.80..@fluentui/web-components_v3.0.0-beta.81)
+
+### Changes
+
+- fix: dropdown should emit a change event when the value changes via user input ([PR #33885](https://github.com/microsoft/fluentui/pull/33885) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.80)
 

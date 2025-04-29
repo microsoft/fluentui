@@ -1,8 +1,38 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Apr 2025 07:22:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.26](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.26)
+
+Tue, 15 Apr 2025 07:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.4.25..@fluentui/foundation-legacy_v8.4.26)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.12.0 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+
+## [8.4.25](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.25)
+
+Fri, 14 Mar 2025 07:23:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.4.24..@fluentui/foundation-legacy_v8.4.25)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.11.8 ([PR #33981](https://github.com/microsoft/fluentui/pull/33981) by beachball)
+
+## [8.4.24](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.24)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.4.23..@fluentui/foundation-legacy_v8.4.24)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.14 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/style-utilities to v8.11.7 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/utilities to v8.15.20 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
 
 ## [8.4.23](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.23)
 

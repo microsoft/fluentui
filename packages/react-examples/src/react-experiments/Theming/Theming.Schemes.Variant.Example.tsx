@@ -88,7 +88,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
       <Stack horizontal tokens={stackTokens}>
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+            <Stack
+              styles={regionStyles}
+              tokens={stackTokens}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
+              padding={5}
+            >
               <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this._toggleSide} />
               <CollapsibleSectionRecursiveExample />
@@ -98,7 +103,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
           <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+              <Stack
+                styles={regionStyles}
+                tokens={stackTokens}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this._toggleTop} />
@@ -107,7 +117,12 @@ export class ThemingSchemesVariantExample extends React.Component<{}, IThemingEx
               </Stack>
             </ThemeProvider>
             <ThemeProvider scheme={bodyScheme}>
-              <Stack styles={regionStyles} verticalFill={true} padding={5}>
+              <Stack
+                styles={regionStyles}
+                verticalFill={true}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{bodyCaption}</Text>
                   <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this._toggleBody} />

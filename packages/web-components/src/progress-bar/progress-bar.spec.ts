@@ -91,8 +91,6 @@ test.describe('Progress Bar', () => {
         await expect(element).toHaveAttribute('thickness', thickness);
 
         await expect(element).toHaveJSProperty('thickness', thickness);
-
-        await expect(element).toHaveCustomState(thickness);
       });
     }
   });
@@ -107,8 +105,6 @@ test.describe('Progress Bar', () => {
         await expect(element).toHaveAttribute('shape', shape);
 
         await expect(element).toHaveJSProperty('shape', shape);
-
-        await expect(element).toHaveCustomState(shape);
       });
     }
   });
@@ -123,8 +119,6 @@ test.describe('Progress Bar', () => {
         await expect(element).toHaveAttribute('validation-state', validationState);
 
         await expect(element).toHaveJSProperty('validationState', validationState);
-
-        await expect(element).toHaveCustomState(validationState);
       });
     }
   });

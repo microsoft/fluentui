@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Calendar } from '@fluentui/react-calendar-compat';
-import type { CalendarDayProps } from '@fluentui/react-calendar-compat';
+import type { CalendarDayGridStyles } from '@fluentui/react-calendar-compat';
 
 export const CalendarCustomDayCellRef = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
-  const onSelectDate = React.useCallback((date: Date, _): void => {
+  const onSelectDate = React.useCallback((date: Date): void => {
     setSelectedDate(date);
   }, []);
 
-  const customDayCellRef: CalendarDayProps['customDayCellRef'] = React.useCallback((element, date, classNames) => {
+  const customDayCellRef = React.useCallback((element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => {
     if (element) {
       element.title = 'custom title from customDayCellRef: ' + date.toString();
       if (date.getDay() === 0 || date.getDay() === 6) {

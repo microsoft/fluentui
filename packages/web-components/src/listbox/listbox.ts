@@ -1,5 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import type { BaseDropdown } from '../dropdown/dropdown.js';
+import type { BaseDropdown } from '../dropdown/dropdown.base.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
 import { toggleState } from '../utils/element-internals.js';
@@ -8,6 +8,8 @@ import { uniqueId } from '../utils/unique-id.js';
 /**
  * A Listbox Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#listbox | ARIA listbox } role.
+ *
+ * @tag fluent-listbox
  *
  * @slot - The default slot for the options.
  * @emits connected - Dispatched when the element is connected to the DOM.
@@ -144,6 +146,10 @@ export class Listbox extends FASTElement {
    * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
+    if (this.dropdown) {
+      return true;
+    }
+
     const target = e.target as HTMLElement;
 
     if (isDropdownOption(target)) {

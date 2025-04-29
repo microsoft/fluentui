@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { LegendShape } from '../components/Legends/Legends.types';
+import { CurveFactory } from 'd3-shape';
 
 export interface IBasestate {
   _width?: number;
@@ -341,6 +342,11 @@ export interface ILineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -397,6 +403,12 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * Color of border around the line. Default white.
    */
   lineBorderColor?: string;
+
+  /**
+   * Defines the type of interpolation used to render the line.
+   * @default 'linear'
+   */
+  curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
 }
 
 /**
@@ -453,6 +465,12 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking  line
    */
   onLineClick?: () => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**
@@ -707,6 +725,12 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**
@@ -824,4 +848,15 @@ export interface ICustomizedCalloutData {
  */
 export interface IChart {
   chartContainer: HTMLElement | null;
+  toImage?: (opts?: IImageExportOptions) => Promise<string>;
+}
+
+/**
+ * {@docCategory Chart}
+ */
+export interface IImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
 }

@@ -1,5 +1,5 @@
 import * as Babel from '@babel/core';
-import { ESLint } from 'eslint';
+import { LegacyESLint as ESLint } from 'eslint/use-at-your-own-risk';
 import gutil from 'gulp-util';
 import prettier from 'prettier';
 import through from 'through2';
@@ -12,6 +12,7 @@ import { ExampleSource } from './util/docs-types';
 
 const prettierConfig = require('../../../../prettier.config');
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const eslint = new ESLint({
   fix: true,
 });

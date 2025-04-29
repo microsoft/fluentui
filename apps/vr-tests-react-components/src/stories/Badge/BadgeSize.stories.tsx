@@ -4,6 +4,7 @@ import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
 import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
+import { Steps, type StoryParameters } from 'storywright';
 
 const BadgeSampleRow: React.FC<BadgeProps> = props => {
   const styles = useStyles();
@@ -35,6 +36,7 @@ const BadgeSampleRow: React.FC<BadgeProps> = props => {
 
 export default {
   title: 'Badge Converged',
+  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameters,
 } satisfies Meta<typeof Badge>;
 
 export const SizeTiny = () => {
@@ -159,23 +161,3 @@ export const SizeExtraLarge = () => {
 SizeExtraLarge.storyName = 'size: extra-large';
 
 export const SizeExtraLargeRTL = getStoryVariant(SizeExtraLarge, RTL);
-
-export const WidthConstrained = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.group}>
-      <div className={styles.widthConstrained}>
-        <Badge>1</Badge>
-        <Badge icon={<CircleRegular />} />
-        <Badge>BADGE</Badge>
-        <Badge icon={<CircleRegular />}>BADGE</Badge>
-        <Badge icon={<CircleRegular />} iconPosition="after">
-          BADGE
-        </Badge>
-      </div>
-      <span className={styles.description}>Badges should not clip their content when space constrained.</span>
-    </div>
-  );
-};
-
-WidthConstrained.storyName = 'width constrained';

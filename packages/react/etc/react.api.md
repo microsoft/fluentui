@@ -477,7 +477,7 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // Warning: (ae-forgotten-export) The symbol "ICursorLocation" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    componentDidUpdate(_: any, previousState: IAutofillState, cursor: ICursorLocation | null): void;
+    componentDidUpdate(_: any, _1: any, cursor: ICursorLocation | null): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -772,7 +772,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)

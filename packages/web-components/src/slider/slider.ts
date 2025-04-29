@@ -20,6 +20,8 @@ import { convertPixelToPercent } from './slider-utilities.js';
 /**
  * The base class used for constructing a fluent-slider custom element
  *
+ * @tag fluent-slider
+ *
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
@@ -60,9 +62,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public size?: SliderSize;
-  protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined) {
-    swapStates(this.elementInternals, prev, next, SliderSize);
-  }
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
@@ -502,8 +501,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
 
-    swapStates(this.elementInternals, prev, next, Orientation);
-
     if (this.$fastController.isConnected) {
       this.setSliderPosition();
     }
@@ -537,7 +534,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.setDisabledSideEffect(this.disabled);
     this.updateStepMultiplier();
     this.setupTrackConstraints();
-    this.setupListeners();
     this.setupDefaultValue();
     this.setSliderPosition();
 
@@ -553,8 +549,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-
-    this.setupListeners(true);
 
     Observable.getNotifier(this).unsubscribe(this, 'max');
     Observable.getNotifier(this).unsubscribe(this, 'min');
@@ -593,9 +587,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
-  public keypressHandler = (event: KeyboardEvent): void => {
+  public handleKeydown(event: KeyboardEvent): boolean {
     if (this.disabled) {
-      return;
+      return true;
     }
 
     switch (event.key) {
@@ -628,7 +622,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
         }
         break;
     }
-  };
+
+    return true;
+  }
 
   /**
    * Places the thumb based on the current value
@@ -666,15 +662,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
   };
 
-  private setupListeners = (remove: boolean = false): void => {
-    //TODO Bug: https://github.com/microsoft/fluentui/issues/30087
-    this.addEventListener('keydown', this.keypressHandler);
-
-    if (remove) {
-      this.removeEventListener('keydown', this.keypressHandler);
-    }
-  };
-
   private get midpoint(): string {
     return `${this.convertToConstrainedValue((this.maxAsNumber + this.minAsNumber) / 2)}`;
   }
@@ -698,13 +685,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *  Handle mouse moves during a thumb drag operation
    *  If the event handler is null it removes the events
    */
-  public handleThumbPointerDown = (event: PointerEvent | null): void => {
+  public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
     windowFn('pointerup', this.handleWindowPointerUp);
     windowFn('pointermove', this.handlePointerMove, { passive: true });
     windowFn('touchmove', this.handlePointerMove, { passive: true });
     windowFn('touchend', this.handleWindowPointerUp);
     this.isDragging = event !== null;
+    return true;
   };
 
   /**
@@ -717,10 +705,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
     // update the value based on current position
     const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
+
+    const thumbWidth = this.thumb.getBoundingClientRect().width;
+
     const eventValue: number =
       this.orientation === Orientation.vertical
         ? sourceEvent.pageY - document.documentElement.scrollTop
-        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft;
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -772,16 +763,19 @@ export class Slider extends FASTElement implements SliderConfiguration {
       documentFn('mouseleave', this.handleWindowPointerUp);
       windowFn('pointermove', this.handlePointerMove);
 
+      const thumbWidth = this.thumb.getBoundingClientRect().width;
+
       if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
           this.orientation === Orientation.vertical
             ? event.pageY - document.documentElement.scrollTop
-            : event.pageX - document.documentElement.scrollLeft - this.trackLeft;
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft - thumbWidth / 2;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
     }
+    return true;
   };
 
   private convertToConstrainedValue(value: number): number {

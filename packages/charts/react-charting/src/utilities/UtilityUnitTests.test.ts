@@ -17,6 +17,7 @@ const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
+const X_ORIGIN = 0;
 
 describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
@@ -389,6 +390,11 @@ describe('prepareDatapoints for rounded tick value cases', () => {
 
   it('should return an array with rounded data points with variation in dataset', () => {
     const result = utils.prepareDatapoints(589030.78, -234.45, 4, false, true);
+    matchResult(result);
+  });
+
+  it('should return array with rounded datapoints when yMax is power of 10 with floating point precision error', () => {
+    const result = utils.prepareDatapoints(1000.000000002, -234.45, 4, false, true);
     matchResult(result);
   });
 });
@@ -929,6 +935,7 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
     { x: 10, y: 20 },
     { x: 30, y: 40 },
   ];
+
   const margins: utils.IMargins = {
     left: 5,
     right: 10,
@@ -937,12 +944,37 @@ describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
   };
 
   it('should return domain and range values correctly for numeric x-axis', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
     matchResult(result);
   });
 
   it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1);
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForHorizontalBarChartWithAxisStacked', () => {
+  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 20, y: 40 },
+    { x: 30, y: 40 },
+    { x: 50, y: 20 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1, X_ORIGIN);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1, X_ORIGIN);
     matchResult(result);
   });
 });

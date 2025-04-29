@@ -2,15 +2,16 @@ import * as React from 'react';
 import { SplitButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
+import type { StoryParameters } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'SplitButton Converged',
   component: SplitButton,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof SplitButton>;
 
 export const Default = () => <SplitButton id={buttonId}>Hello, world</SplitButton>;

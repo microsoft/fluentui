@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 22 Jan 2025 14:00:12 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.19.0)
+
+Wed, 16 Apr 2025 19:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.23..@fluentui/react-utilities_v9.19.0)
+
+### Minor changes
+
+- Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className. ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+
+## [9.18.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.23)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.22..@fluentui/react-utilities_v9.18.23)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.18.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.22)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.21..@fluentui/react-utilities_v9.18.22)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.18.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.21)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.20..@fluentui/react-utilities_v9.18.21)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
 
 ## [9.18.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.20)
 

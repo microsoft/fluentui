@@ -28,9 +28,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -817,9 +815,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -1619,9 +1615,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-            {
-              overflow: auto;
-            }
+
         data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
@@ -2420,9 +2414,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -2661,6 +2653,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <rect
               aria-label="2020/04/30. First, 10%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
@@ -2693,6 +2690,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <rect
               aria-label="2020/04/30. Second, 20%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#002050"
               height="237"
@@ -2725,6 +2727,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           >
             <rect
               aria-label="2020/04/30. Third, 37%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
@@ -9971,9 +9978,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -12242,9 +12247,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -13031,9 +13034,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -13950,9 +13951,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -14209,6 +14208,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a medium long label. . 3500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#627CEF"
               height="237"
@@ -14241,6 +14245,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This is a long label This is a long label. 2500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#C19C00"
               height="169.28571428571428"
@@ -14273,6 +14282,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="This label is as long as the previous one. 1900."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#E650AF"
               height="128.65714285714284"
@@ -14305,6 +14319,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           >
             <rect
               aria-label="A short label. 2800."
+              class=
+
+                  {
+                    opacity: ;
+                  }
               data-is-focusable="true"
               fill="#0E7878"
               height="189.60000000000002"
@@ -14526,9 +14545,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -15333,9 +15350,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
@@ -16168,9 +16183,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           &:focus {
             outline: none;
           }
-          {
-            overflow: auto;
-          }
+
       data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
