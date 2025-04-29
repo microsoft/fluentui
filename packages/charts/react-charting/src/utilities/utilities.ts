@@ -501,11 +501,14 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickFormat,
     yAxisTickCount = 4,
   } = yAxisParams;
+  // console.log('here in createYAxisForHorizontalBarChartWithAxis');
+  // should not come here for numerical values treated as categorical
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmax = yMinMaxValues.endValue;
+  const finalYmin = Math.max(0, yMinMaxValues.startValue);
+  // console.log('finalYmin', finalYmin);
+  // console.log('finalYmax', finalYmax);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);

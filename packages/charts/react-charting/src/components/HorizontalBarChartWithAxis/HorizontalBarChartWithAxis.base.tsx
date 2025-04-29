@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  ScaleLinear as D3ScaleLinear,
+  scaleBand as d3ScaleBand,
+  ScaleBand,
+} from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -70,7 +75,7 @@ export class HorizontalBarChartWithAxisBase
   implements IChart
 {
   private _points: IHorizontalBarChartWithAxisDataPoint[];
-  private _barHeight: number;
+  private _barHeight: number = this.props.barHeight || 32;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IHorizontalBarChartWithAxisStyles>;
   private _refArray: IRefArrayData[];
@@ -114,13 +119,15 @@ export class HorizontalBarChartWithAxisBase
     };
     this._calloutId = getId('callout');
     this._tooltipId = getId('HBCWATooltipID_');
+    // console.log('this._checkForOverlappingBars() = ', this._checkForOverlappingBars());
+    // console.log('this._checkSkewedBars() = ', this._checkSkewedBars());
     this._refArray = [];
     this._xAxisType =
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.NumericAxis;
     this._yAxisType =
-      this.props.data! && this.props.data!.length > 0
+      this.props.data! && this.props.data!.length > 0 && !this._checkForOverlappingBars() && !this._checkSkewedBars()
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
         : YAxisType.StringAxis;
     this._cartesianChartRef = React.createRef();
@@ -168,9 +175,14 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+    const yAxisTickCount =
+      this.props.yAxisTickCount ||
+      //calculate yAxisTickCount based on the number of yAxisLabels
+      Math.ceil(this._yAxisLabels.length / 2);
     return (
       <CartesianChart
         {...this.props}
+        yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
@@ -296,6 +308,28 @@ export class HorizontalBarChartWithAxisBase
       : null;
   };
 
+  private _checkForOverlappingBars(): boolean {
+    const sortedYValues = this.props.data!.map(point => point.y as number).sort((a, b) => a - b);
+
+    for (let i = 1; i < sortedYValues.length; i++) {
+      if (Math.abs(sortedYValues[i] - sortedYValues[i - 1]) < this._barHeight) {
+        // Bars are too close and may overlap
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  private _checkSkewedBars(): boolean {
+    const sortedYValues = this.props.data!.map(point => point.y as number).sort((a, b) => a - b);
+    const yRange = Math.max(...sortedYValues) - Math.min(...sortedYValues);
+    // console.log('yRange = ', yRange);
+    const barHeight = this._barHeight;
+    // console.log('barHeight = ', barHeight);
+    return yRange > barHeight * 2; // Adjust the threshold as needed
+  }
+
   private _getGraphData = (
     xScale: NumericAxis,
     yScale: NumericAxis | StringAxis,
@@ -308,13 +342,18 @@ export class HorizontalBarChartWithAxisBase
     const longestBars = computeLongestBars(stackedChartData, this.X_ORIGIN);
     this._longestBarPositiveTotalValue = longestBars.longestPositiveBar;
     this._longestBarNegativeTotalValue = longestBars.longestNegativeBar;
+    // this._yAxisType = YAxisType.StringAxis;
+    const isOverlapping =
+      this._yAxisType === YAxisType.NumericAxis && (this._checkForOverlappingBars() || this._checkSkewedBars());
+    // console.log('isOverlapping = ', isOverlapping);
+    // console.log('isOverlapping = ', isOverlapping);
     const { xBarScale, yBarScale } =
-      this._yAxisType === YAxisType.NumericAxis
+      this._yAxisType === YAxisType.NumericAxis && !isOverlapping
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
     const allBars = stackedChartData
       .map(singleBarData =>
-        this._yAxisType === YAxisType.NumericAxis
+        this._yAxisType === YAxisType.NumericAxis && !isOverlapping
           ? this._createNumericBars(
               containerHeight,
               containerWidth,
@@ -486,23 +525,45 @@ export class HorizontalBarChartWithAxisBase
     const xMin = this._longestBarNegativeTotalValue;
     const xDomain = [Math.min(this.X_ORIGIN, xMin), Math.max(this.X_ORIGIN, xMax)];
     if (isNumericScale) {
-      const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      let yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      let yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const maxDiff = Math.abs(yMax - yMin) * 0.5;
+      yMax = yMax + maxDiff;
+      yMin = yMin - maxDiff;
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
+        .domain([Math.max(0, yMin), yMax])
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
+
       return { xBarScale, yBarScale };
     } else {
+      // console.log('string scale');
       // please note these padding default values must be consistent in here
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
-      const yBarScale = d3ScaleBand()
-        .domain(this._yAxisLabels)
-        .range([containerHeight - this.margins.bottom! - this._barHeight / 2, this.margins.top! + this._barHeight / 2])
-        .padding(this.props.yAxisPadding || 0);
+      const isOverlapping = this._checkForOverlappingBars() || this._checkSkewedBars();
+      let yBarScale: ScaleBand<string>;
+      if (isOverlapping) {
+        // console.log('overlapping bars');
+        // Adjust y-axis ticks to align centrally on the bars
+        const uniqueYValues = this._yAxisLabels.map(String); // Ensure y-axis labels are strings
+        // console.log('uniqueYValues = ', uniqueYValues);
+        yBarScale = d3ScaleBand()
+          .domain(uniqueYValues)
+          .range([containerHeight - this.margins.bottom!, this.margins.top!])
+          .padding(this.props.yAxisPadding || 0); // Add padding to center the ticks on the bars
+      } else {
+        yBarScale = d3ScaleBand()
+          .domain(this._yAxisLabels)
+          .padding(this.props.yAxisPadding || 0);
+      }
+      yBarScale.range([
+        containerHeight - this.margins.bottom! - this._barHeight / 2,
+        this.margins.top! + this._barHeight / 2,
+      ]);
 
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -700,6 +761,7 @@ export class HorizontalBarChartWithAxisBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yBarScale: any,
   ): JSX.Element[] {
+    // console.log('string bars');
     const { useSingleColor = false } = this.props;
     let prevWidthPositive = 0;
     let prevWidthNegative = 0;
@@ -795,14 +857,16 @@ export class HorizontalBarChartWithAxisBase
             </defs>
           )}
           <rect
-            transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
+            transform={`translate(0,${
+              0.5 * (yBarScale.bandwidth() - Math.min(this._barHeight, yBarScale.bandwidth()))
+            })`}
             key={point.x}
             className={this._classNames.opacityChangeOnHover}
             x={xStart}
-            y={yBarScale(point.y)}
+            y={yBarScale(point.y.toString())}
             rx={this.props.roundCorners ? 3 : 0}
             width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
-            height={this._barHeight}
+            height={Math.min(this._barHeight, yBarScale.bandwidth())}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
             role="img"
