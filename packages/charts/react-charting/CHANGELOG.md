@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 28 Apr 2025 07:22:20 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Apr 2025 07:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.78)
+
+Tue, 29 Apr 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.77..@fluentui/react-charting_v5.23.78)
+
+### Patches
+
+- feat(react-charting): Adding support for negative x-axis values for Horizontal bar chart with Axis ([PR #34313](https://github.com/microsoft/fluentui/pull/34313) by 120183316+srmukher@users.noreply.github.com)
+- fix: set button role for event labels in line chart ([PR #34334](https://github.com/microsoft/fluentui/pull/34334) by kumarkshitij@microsoft.com)
+- Negative y value support in VSBC ([PR #34337](https://github.com/microsoft/fluentui/pull/34337) by anushgupta@microsoft.com)
 
 ## [5.23.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.77)
 

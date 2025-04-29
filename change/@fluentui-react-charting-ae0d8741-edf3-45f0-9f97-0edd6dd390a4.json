@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Negative y value support in VSBC",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
