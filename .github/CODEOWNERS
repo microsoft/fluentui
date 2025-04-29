@@ -204,8 +204,8 @@ packages/react-components/react-avatar/library @microsoft/cxe-prg
 packages/react-components/react-avatar/stories @microsoft/cxe-prg
 packages/react-components/react-badge/library @microsoft/cxe-prg
 packages/react-components/react-badge/stories @microsoft/cxe-prg
-packages/react-components/react-button/library @microsoft/cxe-red @khmakoto
-packages/react-components/react-button/stories @microsoft/cxe-red @khmakoto
+packages/react-components/react-button/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-button/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-card/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox/library @microsoft/cxe-prg
