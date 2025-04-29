@@ -3,6 +3,7 @@
   "root": true,
   "rules": {
     "no-restricted-globals": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@fluentui/max-len": "off"
   }
 }
