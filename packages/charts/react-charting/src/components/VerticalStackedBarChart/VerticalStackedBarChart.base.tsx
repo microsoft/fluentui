@@ -1074,7 +1074,7 @@ export class VerticalStackedBarChartBase
             <text
               x={xPoint + this._barWidth / 2}
               //if total bar value >=0, show label above top bar, otherwise below bottom bar
-              y={barLabel >= 0 ? yPoint - 6 : yPoint + heightOfLastBar + 12}
+              y={barLabel >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
