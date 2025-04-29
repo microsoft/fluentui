@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as path from 'path';
-import { act } from 'react-dom/test-utils';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { getBySelector } from '../../common/testUtilities';
 import { SelectionMode, Selection } from '../../Selection';
 import { GroupedListV2_unstable as GroupedListV2 } from './GroupedListV2';

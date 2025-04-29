@@ -5,7 +5,7 @@ import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
 import { safeCreate } from '@fluentui/test-utilities';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
@@ -99,7 +99,7 @@ describe('Layer', () => {
     try {
       document.body.appendChild(appElement);
 
-      ReactTestUtils.act(() => {
+      act(() => {
         ReactDOM.render(<TestApp hostId="foo" />, appElement);
       });
 
@@ -125,12 +125,12 @@ describe('Layer', () => {
     try {
       document.body.appendChild(appElement);
       // first render with no host id
-      ReactTestUtils.act(() => {
+      act(() => {
         ReactDOM.render(<TestApp />, appElement);
       });
 
       // re-render with host id
-      ReactTestUtils.act(() => {
+      act(() => {
         ReactDOM.render(<TestApp hostId="foo" />, appElement);
       });
 

@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { create } from '@fluentui/test-utilities';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 
 import { SpinButton } from './SpinButton';
 import { KeyCodes, resetIds } from '../../Utilities';
@@ -490,7 +489,7 @@ describe('SpinButton', () => {
       fireEvent.input(inputDOM, mockEvent('2 2'));
 
       simulateArrowButton('up');
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
 
@@ -507,7 +506,7 @@ describe('SpinButton', () => {
       fireEvent.input(inputDOM, mockEvent('garbage'));
 
       simulateArrowKey(KeyCodes.down);
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
 
@@ -756,7 +755,7 @@ describe('SpinButton', () => {
       const buttonDOM = screen.getAllByRole('button').find(node => node.classList.contains('ms-UpButton'))!;
 
       // start spinning (component will re-render after act() call)
-      ReactTestUtils.act(() => {
+      act(() => {
         fireEvent.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
       });
       expect(onIncrement).toHaveBeenCalledTimes(1);
@@ -764,7 +763,7 @@ describe('SpinButton', () => {
       expect(onChange).toHaveBeenCalledTimes(1); // called on every spin
 
       // spin again (at one point subsequent spins were broken)
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
       expect(onIncrement).toHaveBeenCalledTimes(2);
@@ -787,11 +786,11 @@ describe('SpinButton', () => {
       const buttonDOM = screen.getAllByRole('button').find(node => node.classList.contains('ms-UpButton'))!;
 
       // start spinning (component will re-render after act() call)
-      ReactTestUtils.act(() => {
+      act(() => {
         fireEvent.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
       });
       // spin again
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
 
@@ -879,7 +878,7 @@ describe('SpinButton', () => {
       verifyValue('5');
 
       // now verify that the spin was triggered
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(2);
@@ -887,7 +886,7 @@ describe('SpinButton', () => {
       verifyValue('6');
 
       // spin again to be sure it worked
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(3);
@@ -923,7 +922,7 @@ describe('SpinButton', () => {
       verifyValue('5');
 
       // now verify that the spin was triggered
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runOnlyPendingTimers();
       });
       expect(onChange).toHaveBeenCalledTimes(2);
