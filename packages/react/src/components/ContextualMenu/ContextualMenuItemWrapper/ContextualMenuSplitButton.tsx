@@ -115,7 +115,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
             aria-setsize={totalItemCount}
             onMouseEnter={this._onItemMouseEnterPrimary}
             onMouseLeave={
-              onItemMouseLeave ? onItemMouseLeave.bind(this, { ...item, subMenuProps: null, items: null }) : undefined
+              onItemMouseLeave
+                ? onItemMouseLeave.bind(this, { ...item, subMenuProps: undefined, items: undefined })
+                : undefined
             }
             onMouseMove={this._onItemMouseMovePrimary}
             onKeyDown={this._onItemKeyDown}

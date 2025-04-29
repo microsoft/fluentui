@@ -726,7 +726,7 @@ function useMouseHandlers(
 
 export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> = React.memo(
   React.forwardRef<HTMLDivElement, IContextualMenuProps>((propsWithoutDefaults, forwardedRef) => {
-    const { ref, ...props } = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+    const { ref, ...props } = getPropsWithDefaults<IContextualMenuProps>(DEFAULT_PROPS, propsWithoutDefaults);
     const hostElement = React.useRef<HTMLDivElement>(null);
     const asyncTracker = useAsync();
     const menuId = useId(COMPONENT_NAME, props.id);
