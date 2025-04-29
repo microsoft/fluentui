@@ -1,6 +1,6 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { render } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
 import { customizable } from './customizable';
@@ -70,25 +70,25 @@ describe('customizable', () => {
 
   it('can receive global customizations', () => {
     Customizations.applySettings({ field: 'globalName' });
-    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
+    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
   });
 
   it('can receive scoped customizations', () => {
     Customizations.applySettings({ field: 'globalName' });
     Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
-    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>scopedName</div>');
+    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>scopedName</div>');
   });
 
   it('can ignore scoped customizations that do not apply', () => {
     Customizations.applySettings({ field: 'globalName' });
     Customizations.applyScopedSettings('Bar', { field: 'scopedName' });
-    expect(ReactDOM.renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
+    expect(renderToStaticMarkup(<Foo />)).toEqual('<div>globalName</div>');
   });
 
   it('can accept props over global/scoped values', () => {
     Customizations.applySettings({ field: 'globalName' });
     Customizations.applyScopedSettings('Foo', { field: 'scopedName' });
-    expect(ReactDOM.renderToStaticMarkup(<Foo field="name" />)).toEqual('<div>name</div>');
+    expect(renderToStaticMarkup(<Foo field="name" />)).toEqual('<div>name</div>');
   });
 
   it('can concatenate global styles and component styles', () => {
