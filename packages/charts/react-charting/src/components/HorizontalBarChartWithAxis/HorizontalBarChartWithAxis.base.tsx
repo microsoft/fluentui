@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
@@ -168,9 +168,17 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+
+    const yAxisTickCount =
+      this.props.yAxisTickCount ||
+      // calculate the tick count based on the data
+      Math.ceil((this._yAxisLabels.length - 1) / 2) + 2;
+    const yDiff = Math.abs(this._longestBarPositiveTotalValue - this._longestBarNegativeTotalValue);
+
     return (
       <CartesianChart
         {...this.props}
+        yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
@@ -485,14 +493,26 @@ export class HorizontalBarChartWithAxisBase
     const xMax = this._longestBarPositiveTotalValue;
     const xMin = this._longestBarNegativeTotalValue;
     const xDomain = [Math.min(this.X_ORIGIN, xMin), Math.max(this.X_ORIGIN, xMax)];
+
     if (isNumericScale) {
-      const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      // calculate the max diff between 2 y values
+      const yDiff = Math.abs(this._longestBarPositiveTotalValue - this._longestBarNegativeTotalValue);
+
+      let yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      let yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yRange = yMax - yMin;
+      const maxDiff = yRange * 0.5; // 10% of the range
+      // console.log('yRange', yRange, 'maxDiff', maxDiff);
+      yMin = yMin - maxDiff;
+      yMax = yMax + maxDiff;
+      // console.log('yMin', yMin, 'yMax', yMax);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
+      const yDomain = [yMin, yMax];
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
+        .domain(yDomain)
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {

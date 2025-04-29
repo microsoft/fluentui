@@ -502,16 +502,41 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  // Determine the final min and max values for the y-axis
+  const yRange = yMinMaxValues.endValue - yMinMaxValues.startValue;
+  const maxDiff = yRange * 0.5; // 10% of the range
+  const finalYmax = yMinMaxValues.endValue + maxDiff;
+  const finalYmin = yMinMaxValues.startValue - maxDiff;
+
+  // Create a linear scale for the y-axis
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
+
+  // Custom tick formatting function
+  const customTickFormat = (value: number, maxValue: number) => {
+    // Calculate the number of digits in the maximum value
+    const numDigits = Math.ceil(Math.log10(maxValue));
+
+    // Determine the precision (x) based on the number of digits
+    let x: number;
+    if (numDigits >= 5) {
+      x = 1; // Use 3 significant digits for large numbers
+    } else if (numDigits >= 3) {
+      x = 2; // Use 2 significant digits for medium numbers
+    } else {
+      x = 3; // Use 1 significant digit for small numbers
+    }
+
+    // Apply the dynamically determined x in the format
+    return d3Format(`.${x}~s`)(value);
+  };
+  // Create the y-axis with the specified scale
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+
+  // Configure the tick padding and tick count
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(customTickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
