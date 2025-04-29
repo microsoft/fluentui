@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: set button role for event labels in line chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 15 Apr 2025 07:22:07 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Apr 2025 07:22:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.16](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.16)
+
+Mon, 28 Apr 2025 07:22:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.15..@fluentui/react_v8.122.16)
+
+### Patches
+
+- fix: Picker suggestions handle scroll overflow at small screen sizes ([PR #34312](https://github.com/microsoft/fluentui/pull/34312) by sarah.higley@microsoft.com)
 
 ## [8.122.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.15)
 

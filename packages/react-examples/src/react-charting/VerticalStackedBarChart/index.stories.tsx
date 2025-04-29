@@ -7,6 +7,7 @@ import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalSta
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
 import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.Styled.Example';
 import { VerticalStackedBarChartNegativeExample } from './VerticalStackedBarChart.Negative.Example';
+import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
 
 export const Basic = () => <VerticalStackedBarChartBasicExample />;
 
@@ -21,6 +22,8 @@ export const Styled = () => <VerticalStackedBarChartStyledExample />;
 export const Tooltip = () => <VerticalStackedBarChartTooltipExample />;
 
 export const Negative = () => <VerticalStackedBarChartNegativeExample />;
+
+export const SecondaryYAxis = () => <VerticalStackedBarChartSecondaryYAxisExample />;
 
 export default {
   title: 'Components/VerticalStackedBarChart',

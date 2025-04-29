@@ -51,6 +51,11 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr min-content',
   },
+  additionalInfoWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalM,
+  },
   additionalInfo: {
     display: 'flex',
     flexDirection: 'column',
@@ -203,43 +208,46 @@ const AdditionalApiDocs: React.FC<{ children: React.ReactElement | React.ReactEl
 };
 const RenderArgsTable = ({ hideArgsTable, story }: { story: PrimaryStory; hideArgsTable: boolean }) => {
   const { component, hasArgAsProp, hasArgAsSlot, argAsProp } = withSlotEnhancer(story);
+  const styles = useStyles();
 
   return hideArgsTable ? null : (
     <>
-      {hasArgAsProp && (
-        <AdditionalApiDocs>
-          <p>
-            <b>
-              Native props are supported <span role="presentation">🙌</span>
+      <div className={styles.additionalInfoWrapper}>
+        {hasArgAsProp && (
+          <AdditionalApiDocs>
+            <p>
+              <b>
+                Native props are supported <span role="presentation">🙌</span>
+                <br />
+              </b>
+              <span>
+                All HTML attributes native to the
+                {getNativeElementsList(argAsProp!)}, including all <code>aria-*</code> and <code>data-*</code>{' '}
+                attributes, can be applied as native props on this component.
+              </span>
+            </p>
+          </AdditionalApiDocs>
+        )}
+        {hasArgAsSlot && (
+          <AdditionalApiDocs>
+            <p>
+              <b>
+                Customizing components with slots <span role="presentation">🙌</span>
+              </b>
               <br />
-            </b>
-            <span>
-              All HTML attributes native to the
-              {getNativeElementsList(argAsProp!)}, including all <code>aria-*</code> and <code>data-*</code> attributes,
-              can be applied as native props on this component.
-            </span>
-          </p>
-        </AdditionalApiDocs>
-      )}
-      {hasArgAsSlot && (
-        <AdditionalApiDocs>
-          <p>
-            <b>
-              Customizing components with slots <span role="presentation">🙌</span>
-            </b>
-            <br />
-            <span>
-              Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible approach
-              to customizing components. Each slot is exposed as a top-level prop and can be filled with primitive
-              values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable component
-              structures, similar to slots in other frameworks.{' '}
-              <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
-                Customizing components with slots{' '}
-              </Link>
-            </span>
-          </p>
-        </AdditionalApiDocs>
-      )}
+              <span>
+                Slots in Fluent UI React components are designed to be modified or replaced, providing a flexible
+                approach to customizing components. Each slot is exposed as a top-level prop and can be filled with
+                primitive values, JSX/TSX, props objects, or render functions. This allows for more dynamic and reusable
+                component structures, similar to slots in other frameworks.{' '}
+                <Link href="/?path=/docs/concepts-developer-customizing-components-with-slots--docs">
+                  Customizing components with slots{' '}
+                </Link>
+              </span>
+            </p>
+          </AdditionalApiDocs>
+        )}
+      </div>
       <ArgsTable of={component} />
     </>
   );

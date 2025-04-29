@@ -239,7 +239,7 @@ export class VerticalBarChartBase
                 <g>
                   {this._createLine(
                     props.xScale!,
-                    props.yScale!,
+                    props.yScalePrimary!,
                     props.containerHeight,
                     props.containerWidth,
                     props.yScaleSecondary,
@@ -302,7 +302,7 @@ export class VerticalBarChartBase
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    yScale: any,
+    yScalePrimary: any,
     containerHeight: number = 0,
     containerWidth: number = 0,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -332,7 +332,7 @@ export class VerticalBarChartBase
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .x((d: any) => (isStringAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
+      .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScalePrimary(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
     const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
       ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
@@ -383,7 +383,7 @@ export class VerticalBarChartBase
             key={index}
             id={getId('_VBC_point_')}
             cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
-            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
+            cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScalePrimary(item.y)}
             onMouseOver={
               this._legendHighlighted(lineLegendText!)
                 ? this._lineHover.bind(this, item.point)
