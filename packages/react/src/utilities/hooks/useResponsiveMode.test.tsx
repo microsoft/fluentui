@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { mount, ReactWrapper } from 'enzyme';
+import { render, cleanup } from '@testing-library/react';
 import { ResponsiveMode } from '../decorators/withResponsiveMode';
 import { useResponsiveMode } from './useResponsiveMode';
 
@@ -15,32 +15,35 @@ const resizeTo = (width: number, height: number = 100) => {
 
 describe('useResponsiveMode', () => {
   let responsiveModes: ResponsiveMode[] = [];
-  let wrapper: ReactWrapper | undefined;
+  let container: HTMLElement | undefined;
 
   const TestComponent: React.FunctionComponent = () => {
-    const ref = React.useRef(null);
+    const ref = React.useRef<HTMLDivElement>(null);
 
     responsiveModes.push(useResponsiveMode(ref));
 
-    return null;
+    return <div ref={ref} data-testid="test-component" />;
   };
 
-  const cleanup = () => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
+  const cleanupTest = () => {
+    if (container) {
+      container = undefined;
       responsiveModes = [];
     }
   };
 
-  afterEach(cleanup);
+  afterEach(() => {
+    cleanup();
+    cleanupTest();
+  });
 
   it('can return the correct value', () => {
     // Set initial window size.
     resizeTo(400);
 
-    // Mount with initial value.
-    wrapper = mount(<TestComponent />);
+    // Render with initial value
+    const renderResult = render(<TestComponent />);
+    container = renderResult.container;
     expect(responsiveModes).toEqual([ResponsiveMode.large, ResponsiveMode.small]);
 
     // Set to max small constraint, should not re-render.
@@ -60,10 +63,11 @@ describe('useResponsiveMode', () => {
       ResponsiveMode.large,
     ]);
 
-    cleanup();
+    cleanupTest();
 
     // Expect only one render as the size has not changed.
-    wrapper = mount(<TestComponent />);
+    const newRenderResult = render(<TestComponent />);
+    container = newRenderResult.container;
     expect(responsiveModes).toEqual([ResponsiveMode.large]);
   });
 });

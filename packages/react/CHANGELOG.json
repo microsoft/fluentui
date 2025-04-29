@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 28 Apr 2025 07:22:19 GMT",
+      "tag": "@fluentui/react_v8.122.16",
+      "version": "8.122.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a7824c7e63504a9f4c02299ee6996897d1a96fc8",
+            "comment": "fix: Picker suggestions handle scroll overflow at small screen sizes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 07:22:07 GMT",
       "tag": "@fluentui/react_v8.122.15",
       "version": "8.122.15",

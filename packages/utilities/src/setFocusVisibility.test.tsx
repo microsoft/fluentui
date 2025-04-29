@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { FocusRects } from './useFocusRects';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName, setFocusVisibility } from './setFocusVisibility';
 import * as getWindow from './dom/getWindow';
-import { mount, ReactWrapper } from 'enzyme';
 
 describe('setFocusVisibility', () => {
-  let wrapper: ReactWrapper;
+  let component: renderer.ReactTestRenderer;
   let classNames: string[] = [];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,10 +48,10 @@ describe('setFocusVisibility', () => {
     jest.spyOn(getWindow, 'getWindow').mockReturnValue(mockWindow as Window);
     classNames = [];
 
-    wrapper = mount(<FocusRects />);
+    component = renderer.create(<FocusRects />);
   });
 
-  afterEach(() => wrapper.unmount());
+  afterEach(() => component.unmount());
 
   it('hints to show focus', () => {
     setFocusVisibility(true);

@@ -23,7 +23,7 @@ interface IVerticalStackedBarState {
   legendMultiSelect: boolean;
 }
 
-export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
+export class VerticalStackedBarChartNegativeExample extends React.Component<{}, IVerticalStackedBarState> {
   constructor(props: IVerticalStackedChartProps) {
     super(props);
     this.state = {
@@ -125,91 +125,91 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 40,
         color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '68%',
       },
       {
         legend: 'Metadata2',
         data: 5,
         color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '8.5%',
       },
       {
         legend: 'Metadata3',
-        data: 20,
+        data: -20,
         color: getColorFromToken(DataVizPalette.color3),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '34%',
       },
       {
         legend: 'Metadata4',
         data: 10,
         color: getColorFromToken(DataVizPalette.color4),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '17%',
       },
       {
         legend: 'Metadata5',
         data: 23,
         color: getColorFromToken(DataVizPalette.color5),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '23%',
+        yAxisCalloutData: '39%',
       },
       {
         legend: 'Metadata6',
         data: 0.4,
         color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '0.4%',
+        yAxisCalloutData: '0.7%',
       },
       {
         legend: 'Metadata7',
-        data: 0.5,
+        data: -0.5,
         color: getColorFromToken(DataVizPalette.color7),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '0.5%',
+        yAxisCalloutData: '0.85%',
       },
       {
         legend: 'Metadata8',
-        data: 0.3,
+        data: -0.3,
         color: getColorFromToken(DataVizPalette.color8),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '0.3%',
+        yAxisCalloutData: '0.5%',
       },
       {
         legend: 'Metadata9',
         data: 0.7,
         color: getColorFromToken(DataVizPalette.color9),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '0.7%',
+        yAxisCalloutData: '1.2%',
       },
       {
         legend: 'Metadata10',
         data: 0.1,
         color: getColorFromToken(DataVizPalette.color10),
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '0.1%',
+        yAxisCalloutData: '0.2%',
       },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: 30,
+        data: -30,
         color: getColorFromToken(DataVizPalette.color1),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
       },
       {
         legend: 'Metadata2',
-        data: 20,
+        data: -20,
         color: getColorFromToken(DataVizPalette.color2),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '22%',
       },
       {
         legend: 'Metadata3',
-        data: 40,
+        data: -40,
         color: getColorFromToken(DataVizPalette.color3),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '45%',
@@ -409,6 +409,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
               roundedTicks={true}
+              supportNegativeData={true}
             />
           </div>
         )}
@@ -432,6 +433,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               enableGradient={this.state.enableGradient}
               roundCorners={this.state.roundCorners}
               roundedTicks={true}
+              supportNegativeData={true}
             />
           </div>
         )}

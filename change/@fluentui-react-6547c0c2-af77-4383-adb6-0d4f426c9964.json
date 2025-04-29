@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Picker suggestions handle scroll overflow at small screen sizes",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
