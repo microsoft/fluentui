@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
@@ -100,7 +99,7 @@ describe('Layer', () => {
       document.body.appendChild(appElement);
 
       act(() => {
-        ReactDOM.render(<TestApp hostId="foo" />, appElement);
+        render(<TestApp hostId="foo" />, { container: appElement });
       });
 
       const parentElement = appElement.querySelector('#parent');
@@ -114,7 +113,6 @@ describe('Layer', () => {
 
       expect(childElement.textContent).toEqual('bar');
     } finally {
-      ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
     }
   });
@@ -126,12 +124,12 @@ describe('Layer', () => {
       document.body.appendChild(appElement);
       // first render with no host id
       act(() => {
-        ReactDOM.render(<TestApp />, appElement);
+        render(<TestApp />, { container: appElement }).unmount;
       });
 
       // re-render with host id
       act(() => {
-        ReactDOM.render(<TestApp hostId="foo" />, appElement);
+        render(<TestApp hostId="foo" />, { container: appElement });
       });
 
       const parentElement = appElement.querySelector('#parent');
@@ -145,7 +143,6 @@ describe('Layer', () => {
       expect(childElement).toBeTruthy();
       expect(childElement!.textContent).toEqual('bar');
     } finally {
-      ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
     }
   });
@@ -300,15 +297,14 @@ describe('Layer', () => {
     try {
       document.body.appendChild(appElement);
 
-      ReactTestUtils.act(() => {
-        ReactDOM.render(<FocusProviderTest />, appElement);
+      act(() => {
+        render(<FocusProviderTest />, { container: appElement });
       });
 
       const focusProvider = appElement.querySelector('.innerFocusProvider');
       expect(focusProvider).toBeTruthy();
       expect(focusProvider?.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
     } finally {
-      ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
     }
   });

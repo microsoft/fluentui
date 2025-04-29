@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, fireEvent, act } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
 
 import { TagPicker } from './TagPicker';
@@ -32,7 +31,7 @@ function onResolveSuggestions(text: string): ITag[] {
 }
 
 const runAllTimers = () =>
-  ReactTestUtils.act(() => {
+  act(() => {
     jest.runAllTimers();
   });
 
@@ -67,18 +66,16 @@ describe('TagPicker', () => {
 
   it('can search for and select tags', () => {
     jest.useFakeTimers();
-    const root = document.createElement('div');
-    document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ITag>>();
 
-    ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />, root);
+    render(<TagPicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />);
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'bl';
 
-    ReactTestUtils.Simulate.input(input);
+    fireEvent.input(input);
     runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
@@ -87,82 +84,70 @@ describe('TagPicker', () => {
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
     expect(suggestionOptions.length).toEqual(2);
-    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    fireEvent.click(suggestionOptions[0]);
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
     expect(currentPicker![0].name).toEqual('black');
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
   it('can be a controlled component', () => {
     jest.useFakeTimers();
-    const root = document.createElement('div');
-    document.body.appendChild(root);
 
     const pickerBeforeUpdate = React.createRef<IBasePicker<ITag>>();
     const pickerAfterUpdate = React.createRef<IBasePicker<ITag>>();
 
-    ReactDOM.render(
+    const { rerender } = render(
       <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} componentRef={pickerBeforeUpdate} />,
-      root,
     );
+
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
     input.focus();
     input.value = 'bl';
-    ReactTestUtils.Simulate.input(input);
+    fireEvent.input(input);
     runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
-    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    fireEvent.click(suggestionOptions[0]);
 
     const currentPicker = pickerBeforeUpdate.current!.items;
     expect(currentPicker).toHaveLength(0);
 
-    ReactDOM.render(
+    rerender(
       <TagPicker
         onResolveSuggestions={onResolveSuggestions}
         selectedItems={[{ key: 'testColor', name: 'testColor' }]}
         componentRef={pickerAfterUpdate}
       />,
-      root,
     );
 
     const updatedPicker = pickerAfterUpdate.current!.items;
     expect(updatedPicker).toHaveLength(1);
     expect(updatedPicker![0].name).toEqual('testColor');
-
-    ReactDOM.unmountComponentAtNode(root);
   });
 
-  it('fires change events correctly for controlled components', done => {
+  it('fires change events correctly for controlled components', () => {
     jest.useFakeTimers();
-    const root = document.createElement('div');
-    document.body.appendChild(root);
-    const onChange = (items: ITag[] | undefined): void => {
+
+    const onChange = jest.fn((items: ITag[] | undefined): void => {
       expect(items!.length).toBe(1);
       expect(items![0].name).toBe('black');
-      done();
-    };
+    });
 
-    ReactDOM.render(
-      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />,
-      root,
-    );
+    render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />);
+
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
     input.focus();
     input.value = 'bl';
-    ReactTestUtils.Simulate.input(input);
+    fireEvent.input(input);
     runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
-    ReactTestUtils.Simulate.click(suggestionOptions[0]);
-
-    ReactDOM.unmountComponentAtNode(root);
+    fireEvent.click(suggestionOptions[0]);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 });

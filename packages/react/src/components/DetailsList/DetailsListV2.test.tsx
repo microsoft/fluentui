@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
@@ -698,11 +697,11 @@ describe('DetailsListV2', () => {
       );
     };
 
-    const container = document.createElement('div');
+    // const container = document.createElement('div');
     const items = mockData(5);
     const columns = mockData(5, true);
 
-    ReactDOM.render(
+    const { container, rerender } = render(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -710,7 +709,6 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents}
         groupProps={groupProps}
       />,
-      container,
     );
 
     let detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -722,7 +720,7 @@ describe('DetailsListV2', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(1);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
+    rerender(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -730,7 +728,6 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents}
         groupProps={groupProps}
       />,
-      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -741,7 +738,7 @@ describe('DetailsListV2', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(2);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
+    rerender(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -749,7 +746,6 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents2}
         groupProps={groupProps}
       />,
-      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -852,7 +848,9 @@ describe('DetailsListV2', () => {
     );
 
     // verify that focusedItemIndex is reset to 0 and 0th row is focused
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(0);
     expect(
       (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -939,7 +937,9 @@ describe('DetailsListV2', () => {
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
     expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
 
-    selection.setAllSelected(true);
+    act(() => {
+      selection.setAllSelected(true);
+    });
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
     expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
@@ -1163,7 +1163,6 @@ describe('DetailsListV2', () => {
   });
 
   it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
-    const container = document.createElement('div');
     const columns = [
       {
         key: 'column1',
@@ -1178,7 +1177,7 @@ describe('DetailsListV2', () => {
     ];
     const items = mockData(1);
 
-    ReactDOM.render(
+    const { container } = render(
       <DetailsListBase
         items={mockData(1)}
         columns={columns}
@@ -1187,7 +1186,6 @@ describe('DetailsListV2', () => {
         checkButtonAriaLabel="select row"
         groupProps={groupProps}
       />,
-      container,
     );
 
     const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
@@ -1216,8 +1214,7 @@ describe('DetailsListV2', () => {
   });
 
   it('names group header checkboxes based on checkButtonGroupAriaLabel', () => {
-    const container = document.createElement('div');
-    ReactDOM.render(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         groups={[
@@ -1237,7 +1234,6 @@ describe('DetailsListV2', () => {
         checkButtonGroupAriaLabel="select section"
         groupProps={groupProps}
       />,
-      container,
     );
 
     const checkbox = container.querySelector('[role="checkbox"][aria-label="select section"]') as HTMLElement;

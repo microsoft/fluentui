@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
@@ -22,6 +22,7 @@ describe('Tooltip', () => {
       return element as React.ReactPortal;
     });
   });
+
   it('renders default Tooltip correctly', () => {
     const component = renderer.create(<TooltipBase />);
     const tree = component.toJSON();
@@ -48,7 +49,11 @@ describe('Tooltip', () => {
 
     const directionalHint = DirectionalHint.bottomLeftEdge;
     const directionalHintForRTL = DirectionalHint.topRightEdge;
-    const targetElement = ReactTestUtils.renderIntoDocument(<div />) as unknown as HTMLElement;
+
+    // Create a target element with React Testing Library instead of ReactTestUtils
+    const { container } = render(<div data-testid="tooltip-target" />);
+    const targetElement = container.firstElementChild as HTMLElement;
+
     let onRenderCalled = false;
 
     const component = renderer.create(
