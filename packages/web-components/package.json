@@ -35,6 +35,10 @@
       "types": "./dist/dts/utils/index.d.ts",
       "default": "./dist/esm/utils/index.js"
     },
+    "./theme/*.js": {
+      "types": "./dist/dts/theme/*.d.ts",
+      "default": "./dist/esm/theme/*.js"
+    },
     "./*/base.js": {
       "types": "./dist/dts/*/*.base.d.ts",
       "default": "./dist/esm/*/*.base.js"
