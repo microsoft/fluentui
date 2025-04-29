@@ -16,8 +16,8 @@ Tips for writing a successful RFC:
 
 _Contributors: @hotell_
 
-_Date the RFC was originally authored here_: April 2025
-_Target end date for feedback_: April 30, 2025
+- _Date the RFC was originally authored here_: April 2025
+- _Target end date for feedback_: April 30, 2025
 
 <!-- If substantial updates are made add an "Updated on: $date" below, don't replace the original date -->
 
@@ -118,6 +118,50 @@ Will contain anything with shared scope
 
 - Infrastructure and tools (e.g., build scripts, linting configurations).
 - Shared packages used across multiple domains (e.g., tokens).
+
+#### 4. Miscellaneous folders at current root organization
+
+Current repo structure contains additional folders at the root:
+
+```
+/docs
+/specs
+/starter-templates
+/typings
+```
+
+These will be moved to appropriate domains based on structure outlined in previous paragraphs, like following:
+
+**/docs**
+
+_💡NOTE:_ we can consider keeping this as is.
+
+```
+/docs/react-wiki-archive -> /react-v8/docs
+/docs/react-v9 -> /react-components/docs
+```
+
+**/starter-templates**
+
+```
+/starter-templates -> /react-components/apps/starter-templates
+```
+
+**/specs**
+
+_💡NOTE:_ this contains only v8 related specs. to align with existing pattern we will move those under package `/docs` folder
+
+```
+/specs -> /react-v8/packages/react/docs
+```
+
+**/typings**
+
+_💡NOTE:_ we can consider keeping this as is as it affects global TypeScript types and aligns to single version policy.
+
+```
+/typings -> /shared/typings
+```
 
 #### Project Naming Conventions
 
