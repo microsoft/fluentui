@@ -115,7 +115,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderLeft": "4px solid #E5E5E5",
+              "borderInlineStart": "4px solid #E5E5E5",
             }
           }
         >
@@ -413,7 +413,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           className="fui-cart__calloutInfoContainer"
           style={
             Object {
-              "borderLeft": "4px solid #E5E5E5",
+              "borderInlineStart": "4px solid #E5E5E5",
             }
           }
         >

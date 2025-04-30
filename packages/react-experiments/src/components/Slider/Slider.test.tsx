@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-import { mount } from 'enzyme';
 import { Slider } from './Slider';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes } from '../../Utilities';
@@ -25,12 +26,14 @@ describe('Slider', () => {
       changedValue = val;
     };
 
-    const wrapper = mount(<Slider onChange={onChange} />);
+    const { container } = render(<Slider onChange={onChange} />);
 
-    const sliderLine = wrapper.find('.ms-Slider-line');
-    const sliderThumb = wrapper.find('.ms-Slider-slideBox');
+    const sliderLine = container.querySelector('.ms-Slider-line') as HTMLElement;
+    const sliderThumb = container.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
-    sliderLine.getDOMNode().getBoundingClientRect = () =>
+    // Mock getBoundingClientRect
+    const originalGetBoundingClientRect = sliderLine.getBoundingClientRect;
+    sliderLine.getBoundingClientRect = () =>
       ({
         left: 0,
         top: 0,
@@ -40,8 +43,8 @@ describe('Slider', () => {
         height: 40,
       } as DOMRect);
 
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
+    // Simulate mousedown at max position
+    fireEvent.mouseDown(sliderThumb, {
       clientX: 100,
       clientY: 0,
     });
@@ -49,64 +52,72 @@ describe('Slider', () => {
     // Default max is 10.
     expect(changedValue).toEqual(10);
 
-    sliderThumb.simulate('mousedown', {
-      type: 'mousedown',
+    // Simulate mousedown at min position
+    fireEvent.mouseDown(sliderThumb, {
       clientX: 0,
       clientY: 0,
     });
 
     // Default min is 0.
     expect(changedValue).toEqual(0);
+
+    // Restore original function
+    sliderLine.getBoundingClientRect = originalGetBoundingClientRect;
   });
 
   it('has type=button on all buttons', () => {
-    const component = mount(<Slider />);
+    const { container } = render(<Slider />);
+    const buttons = container.querySelectorAll('button');
 
-    component.find('button').forEach(button => {
-      expect(button.prop('type')).toEqual('button');
+    buttons.forEach(button => {
+      expect(button).toHaveAttribute('type', 'button');
     });
   });
 
   it('can provide the current value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
+    render(<Slider label="slider" defaultValue={12} min={0} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(12);
   });
 
   it('should be able to handler zero default value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
+    render(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(0);
   });
 
   it('should be able to handle zero value', () => {
     const slider = React.createRef<ISlider>();
 
-    mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
+    render(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
     expect(slider.current!.value).toEqual(0);
   });
 
   it('renders correct aria-valuetext', () => {
-    let component = mount(<Slider />);
+    // First test with default slider
+    let { container } = render(<Slider />);
+    let slideBox = container.querySelector('.ms-Slider-slideBox');
+    expect(slideBox).not.toHaveAttribute('aria-valuetext');
 
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toBeUndefined();
-
+    // Then test with custom aria value text
     const values = ['small', 'medium', 'large'];
     const selected = 1;
     const getTextValue = (value: number) => values[value];
 
-    component = mount(<Slider value={selected} ariaValueText={getTextValue} />);
-
-    expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
+    ({ container } = render(<Slider value={selected} ariaValueText={getTextValue} />));
+    slideBox = container.querySelector('.ms-Slider-slideBox');
+    expect(slideBox).toHaveAttribute('aria-valuetext', values[selected]);
   });
 
   it('formats the value when a format function is passed', () => {
     const value = 10;
     const valueFormat = (val: any) => `${val}%`;
-    const component = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
-    expect(component.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
+    const { container } = render(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
+
+    const valueLabel = container.querySelector('label.ms-Label.ms-Slider-value');
+    expect(valueLabel).toHaveTextContent(valueFormat(value));
   });
 
   it('calls onChanged after keyboard event', () => {
@@ -146,19 +157,18 @@ describe('Slider', () => {
       { label: '100°C', value: 100 },
     ];
     const expectedValuesArray = [20, 80, 100];
-    const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
+    const { container } = render(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
 
-    const allLabels = component.find('.ms-Slider-regularLabel');
-    const labels = allLabels.getElements();
-    const labelNumber = component.find('.ms-Slider-regularLabel').length;
-    const tickNumber = component.find('.ms-Slider-regularTick').length;
+    const labels = container.querySelectorAll('.ms-Slider-regularLabel');
+    const ticks = container.querySelectorAll('.ms-Slider-regularTick');
 
-    expect(labelNumber).toEqual(3);
-    expect(tickNumber).toEqual(11);
+    expect(labels.length).toEqual(3);
+    expect(ticks.length).toEqual(11);
 
     for (let i = 0; i < labelsArray.length; i++) {
-      expect(labels[i].props.children).toEqual(`${expectedValuesArray[i]}°C`);
-      expect(labels[i].props.style.left).toEqual(`${expectedValuesArray[i]}%`);
+      const label = labels[i] as HTMLElement;
+      expect(label.textContent).toEqual(`${expectedValuesArray[i]}°C`);
+      expect(label.style.left).toEqual(`${expectedValuesArray[i]}%`);
     }
   });
 
@@ -167,21 +177,20 @@ describe('Slider', () => {
       { label: '-20°C', value: -20 },
       { label: '1000°C', value: 1000 },
     ];
-    const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
+    const { container } = render(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
     const expectedLabelsArray = [-20, 1000];
     const expectedValuesArray = [0, 100];
 
-    const allLabels = component.find('.ms-Slider-regularLabel');
-    const labels = allLabels.getElements();
-    const labelNumber = component.find('.ms-Slider-regularLabel').length;
-    const tickNumber = component.find('.ms-Slider-regularTick').length;
+    const labels = container.querySelectorAll('.ms-Slider-regularLabel');
+    const ticks = container.querySelectorAll('.ms-Slider-regularTick');
 
-    expect(labelNumber).toEqual(2);
-    expect(tickNumber).toEqual(11);
+    expect(labels.length).toEqual(2);
+    expect(ticks.length).toEqual(11);
 
     for (let i = 0; i < labelsArray.length; i++) {
-      expect(labels[i].props.children).toBe(`${expectedLabelsArray[i]}°C`);
-      expect(labels[i].props.style.left).toBe(`${expectedValuesArray[i]}%`);
+      const label = labels[i] as HTMLElement;
+      expect(label.textContent).toBe(`${expectedLabelsArray[i]}°C`);
+      expect(label.style.left).toBe(`${expectedValuesArray[i]}%`);
     }
   });
 });

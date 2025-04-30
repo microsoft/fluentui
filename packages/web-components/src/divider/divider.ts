@@ -6,6 +6,8 @@ import { BaseDivider } from './divider.base.js';
  * A Divider Custom HTML Element.
  * Based on BaseDivider and includes style and layout specific attributes
  *
+ * @tag fluent-divider
+ *
  * @public
  */
 export class Divider extends BaseDivider {

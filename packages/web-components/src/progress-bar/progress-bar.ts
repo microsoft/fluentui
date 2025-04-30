@@ -6,6 +6,8 @@ import { ProgressBarShape, ProgressBarThickness } from './progress-bar.options.j
  * A Progress HTML Element.
  * Based on BaseProgressBar and includes style and layout specific attributes
  *
+ * @tag fluent-progress-bar
+ *
  * @public
  */
 export class ProgressBar extends BaseProgressBar {

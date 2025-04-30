@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:45 GMT",
+      "tag": "@fluentui/react-tabster_v9.24.6",
+      "version": "9.24.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72",
+            "comment": "fix:  use useLayoutEffect() for Tabster creation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:18 GMT",
       "tag": "@fluentui/react-tabster_v9.24.5",
       "version": "9.24.5",

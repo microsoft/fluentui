@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { safeSetTimeout } from './safeSetTimeout';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 
 describe('safeSetTimeout', () => {
   let setTimeoutCalled = false;
@@ -31,7 +31,7 @@ describe('safeSetTimeout', () => {
   });
 
   it('can request animation frame', () => {
-    mount(<Foo />);
+    renderer.create(<Foo />);
 
     expect(setTimeoutCalled).toEqual(false);
 
@@ -41,11 +41,11 @@ describe('safeSetTimeout', () => {
   });
 
   it('can cancel request animation frame', () => {
-    const wrapper = mount(<Foo />);
+    const component = renderer.create(<Foo />);
 
     expect(setTimeoutCalled).toEqual(false);
 
-    wrapper.unmount();
+    component.unmount();
 
     jest.advanceTimersByTime(100);
 

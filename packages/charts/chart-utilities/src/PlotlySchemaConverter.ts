@@ -24,6 +24,8 @@ const SUPPORTED_PLOT_TYPES = [
   'histogram2d',
 ];
 
+const UNSUPPORTED_MSG_PREFIX = 'Unsupported chart - type :';
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const isDate = (value: any): boolean => {
   const parsedDate = new Date(Date.parse(value));
@@ -149,7 +151,7 @@ const validateSeriesData = (series: Partial<PlotData>, validateNumericY: boolean
 
 const validateBarData = (data: Partial<PlotData>) => {
   if (data.orientation === 'h' && data.base !== undefined) {
-    throw new Error('Unsupported chart type: Gantt');
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} Gantt`);
   } else if (data.orientation === 'h' && isNumberArray(data.x)) {
     validateSeriesData(data, false);
   } else {
@@ -159,7 +161,7 @@ const validateBarData = (data: Partial<PlotData>) => {
 
 const validateScatterData = (data: Partial<PlotData>) => {
   if (data.mode === 'markers' && !isNumberArray(data.x)) {
-    throw new Error(`Unsupported chart - type :${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
   } else {
     validateSeriesData(data, true);
   }
@@ -169,18 +171,28 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
     data => {
       if (!(data as Partial<PlotData>).mode?.includes('gauge')) {
-        throw new Error(`Unsupported chart - type: ${data.type}, mode: ${(data as Partial<PlotData>).mode}`);
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${(data as Partial<PlotData>).mode}`);
       }
     },
   ],
   histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
   contour: [
     data => {
-      throw new Error(`Unsupported chart - type :${data.type}`);
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}`);
     },
   ],
   bar: [data => validateBarData(data as Partial<PlotData>)],
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
+  scatterpolar: [
+    data => {
+      if (!isNumberArray((data as Partial<PlotData>).theta)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Non numeric theta values`);
+      }
+      if (!isNumberArray((data as Partial<PlotData>).r)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Non numeric r values`);
+      }
+    },
+  ],
 };
 
 const DEFAULT_CHART_TYPE = '';
@@ -248,6 +260,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'gauge', validTracesInfo: validTraces };
       case 'histogram':
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
+      case 'scatterpolar':
+        return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(
@@ -283,7 +297,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, type: 'fallback', validTracesInfo: validTraces };
         }
 
-        return { isValid: false, errorMessage: `Unsupported chart - type :${firstData.type}}` };
+        return { isValid: false, errorMessage: `${UNSUPPORTED_MSG_PREFIX} :${firstData.type}` };
     }
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };

@@ -1,17 +1,8 @@
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useMergedRefs } from './useMergedRefs';
 
 describe('useMergedRefs', () => {
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper && wrapper.exists()) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-  });
-
   it('always returns the same ref (refs should be immutable)', () => {
     let lastMergedRef;
     const refFunc = () => null;
@@ -20,9 +11,9 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    const { rerender } = render(<TestComponent />);
     const ref1 = lastMergedRef;
-    wrapper.setProps({});
+    rerender(<TestComponent />);
     const ref2 = lastMergedRef;
 
     expect(ref1).toBe(ref2);
@@ -36,9 +27,9 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    const { rerender } = render(<TestComponent />);
     const ref1 = lastMergedRef;
-    wrapper.setProps({});
+    rerender(<TestComponent />);
     const ref2 = lastMergedRef;
 
     expect(ref1).not.toBe(ref2);
@@ -54,7 +45,7 @@ describe('useMergedRefs', () => {
 
       return null;
     };
-    wrapper = mount(<TestComponent />);
+    render(<TestComponent />);
 
     expect(refObject.current).toBe(true);
     expect(refValue).toBe(true);
@@ -71,7 +62,7 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    render(<TestComponent />);
 
     expect(mergedRef).toBeTruthy();
     expect(mergedRef!.current).toEqual('123');
@@ -89,12 +80,12 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    const { rerender } = render(<TestComponent />);
 
     const firstRefCallback = refCallback;
 
     // Re-render the component
-    wrapper.update();
+    rerender(<TestComponent />);
 
     expect(refCallback).toBe(firstRefCallback);
   });
@@ -105,7 +96,7 @@ describe('useMergedRefs', () => {
     let firstRefValue: boolean | null = null;
     let refValueFunc = (val: boolean) => (firstRefValue = val);
 
-    const TestComponent: React.FunctionComponent = () => {
+    const TestComponent: React.FunctionComponent<{ update?: boolean }> = () => {
       const mergedRef = useMergedRefs<boolean>(refObject, refValueFunc);
 
       mergedRef(true);
@@ -113,13 +104,13 @@ describe('useMergedRefs', () => {
       return null;
     };
 
-    wrapper = mount(<TestComponent />);
+    const { rerender } = render(<TestComponent />);
 
     let secondRefValue: boolean | null = null;
     refValueFunc = (val: boolean) => (secondRefValue = val);
 
     // Re-render the component
-    wrapper.setProps({});
+    rerender(<TestComponent update={true} />);
 
     expect(firstRefValue).toBe(true);
     expect(secondRefValue).toBe(true);

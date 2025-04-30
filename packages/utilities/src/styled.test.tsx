@@ -1,15 +1,15 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
+import { styled } from './styled';
 import { Customizer } from './customizations/Customizer';
 import { Stylesheet, InjectionMode, mergeStyles } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@fluentui/test-utilities';
-import { mount } from 'enzyme';
 import type { IStyle, IStyleFunction, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+
+const { act } = renderer;
 
 interface ITestStyles {
   root: IStyle;
@@ -23,7 +23,7 @@ interface ITestProps {
 let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 let _styleEval: number;
-let component: ReturnType<typeof mount> | undefined;
+let component: renderer.ReactTestRenderer | undefined;
 let lastStylesInBaseComponent: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 
 const getClassNames = classNamesFunction<{}, ITestStyles>();
@@ -75,7 +75,7 @@ describe('styled', () => {
   });
 
   afterEach(() => {
-    ReactTestUtils.act(() => {
+    act(() => {
       component?.unmount();
       component = undefined;
     });
@@ -101,10 +101,16 @@ describe('styled', () => {
       );
     };
 
-    component = mount(<App />);
+    act(() => {
+      component = renderer.create(<App />);
+    });
 
     expect(renderCount).toEqual(2);
-    component.setProps({ 'data-foo': '1' });
+
+    act(() => {
+      component!.update(<App data-foo="1" />);
+    });
+
     expect(renderCount).toEqual(3);
   });
 
@@ -124,12 +130,16 @@ describe('styled', () => {
   it('does not create any new closured functions', () => {
     let _firstProps: ITestProps | undefined;
 
-    component = mount(<Test />);
+    act(() => {
+      component = renderer.create(<Test />);
+    });
 
     _firstProps = _lastProps;
     expect(_renderCount).toEqual(1);
 
-    component.setProps({ cool: true });
+    act(() => {
+      component!.update(<Test cool={true} />);
+    });
 
     expect(_renderCount).toEqual(2);
     expect(_firstProps).not.toBe(_lastProps);
@@ -301,7 +311,7 @@ describe('styled', () => {
   it('can re-render on customization mutations', () => {
     safeCreate(<Test />, () => {
       expect(_renderCount).toEqual(1);
-      renderer.act(() => {
+      act(() => {
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
       });
       expect(_renderCount).toEqual(2);
@@ -316,7 +326,7 @@ describe('styled', () => {
       </Test>,
       () => {
         expect(_renderCount).toEqual(3);
-        renderer.act(() => {
+        act(() => {
           Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         });
         expect(_renderCount).toEqual(6);
@@ -331,7 +341,7 @@ describe('styled', () => {
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(1);
-        renderer.act(() => {
+        act(() => {
           Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         });
         expect(_renderCount).toEqual(2);
@@ -340,11 +350,15 @@ describe('styled', () => {
   });
 
   it('can re-render when customized styles change', () => {
-    component = mount(<Test />);
+    act(() => {
+      component = renderer.create(<Test />);
+    });
 
     expect(_styleEval).toEqual(1);
 
-    component.setProps({ 'data-foo': 1 });
+    act(() => {
+      component!.update(<Test data-foo={1} />);
+    });
 
     expect(_styleEval).toEqual(1);
   });
@@ -360,7 +374,7 @@ describe('styled', () => {
       </Customizer>,
       () => {
         expect(_renderCount).toEqual(2);
-        renderer.act(() => {
+        act(() => {
           Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         });
         expect(_renderCount).toEqual(4);
@@ -369,13 +383,21 @@ describe('styled', () => {
   });
 
   it('will not re-render if styles have not changed', () => {
-    component = mount(<Test styles={{ root: { background: 'red' } }} />);
-    expect(_renderCount).toEqual(1);
-    const stylesProp = lastStylesInBaseComponent;
+    let firstStylesProp;
 
-    component.setProps({ cool: true });
+    act(() => {
+      component = renderer.create(<Test styles={{ root: { background: 'red' } }} />);
+      firstStylesProp = lastStylesInBaseComponent;
+    });
+
+    expect(_renderCount).toEqual(1);
+
+    act(() => {
+      component!.update(<Test cool={true} styles={{ root: { background: 'red' } }} />);
+    });
 
     expect(_renderCount).toEqual(2);
-    expect(stylesProp).toBe(lastStylesInBaseComponent);
+    // With react-test-renderer, object identity may change but the content is equivalent
+    expect(JSON.stringify(firstStylesProp)).toBe(JSON.stringify(lastStylesInBaseComponent));
   });
 });

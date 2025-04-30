@@ -164,26 +164,28 @@ export const VerticalBarAllNegative = () => {
         a result chart with negative y axis data is rendered.
       </label>
       <br />
-      <label htmlFor="changeWidth">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        onChange={_onWidthChange}
-        id="changeWidth"
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          onChange={_onWidthChange}
+          id="changeWidth"
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
       <Field label="Pick one">
         <RadioGroup defaultValue="basicExample" onChange={_onChange}>
           <Radio value="Basic Example" label="Basic Example" />

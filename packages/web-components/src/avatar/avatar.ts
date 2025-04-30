@@ -14,6 +14,8 @@ import {
  * An Avatar Custom HTML Element.
  * Based on BaseAvatar and includes style and layout specific attributes
  *
+ * @tag fluent-avatar
+ *
  * @public
  */
 export class Avatar extends BaseAvatar {

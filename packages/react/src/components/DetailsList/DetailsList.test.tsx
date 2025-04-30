@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
-import { safeMount } from '@fluentui/test-utilities';
+import { render, fireEvent, act } from '@testing-library/react';
+
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
-import { SelectionMode, Selection, SelectionZone } from '../../Selection';
+import { SelectionMode, Selection } from '../../Selection';
 import { getTheme } from '../../Styling';
 import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
@@ -64,6 +64,109 @@ function customColumnDivider(
       {defaultRenderer(iDetailsColumnProps)}
     </React.Fragment>
   );
+}
+
+// Helper function to handle mounting components with React Testing Library
+// This replaces Enzyme's mount functionality
+function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) => void) {
+  // Create a test wrapper object that mimics some of Enzyme's API for backward compatibility
+  const createTestWrapper = (container: HTMLElement, rerenderFn: any) => {
+    return {
+      find: (selector: string) => {
+        // This mimics Enzyme's find method by returning an object with simulate method
+        return {
+          simulate: (eventName: string, eventArgs?: any) => {
+            const elements = container.querySelectorAll(selector);
+            if (elements.length === 0) {
+              throw new Error(`No elements found for selector: ${selector}`);
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-shadow
+            elements.forEach(element => {
+              switch (eventName) {
+                case 'keyDown':
+                  fireEvent.keyDown(element, {
+                    ...eventArgs,
+                    key: eventArgs.which,
+                    keyCode: eventArgs.which,
+                  });
+                  break;
+                case 'click':
+                  fireEvent.click(element);
+                  break;
+                case 'dblclick':
+                  fireEvent.doubleClick(element);
+                  break;
+                default:
+                  // For other events, try to use the corresponding fireEvent method
+                  const fireEventMethod = (fireEvent as any)[eventName];
+                  if (fireEventMethod) {
+                    fireEventMethod(element, eventArgs);
+                  } else {
+                    fireEvent(element, new Event(eventName));
+                  }
+              }
+            });
+          },
+          first: () => {
+            // Returns an object that mimics the first element found in Enzyme
+            const firstEl = container.querySelector(selector);
+
+            return {
+              simulate: (eventName: string, eventArgs?: any) => {
+                if (!firstEl) {
+                  throw new Error(`No element found for selector: ${selector}`);
+                }
+
+                switch (eventName) {
+                  case 'keyDown':
+                    fireEvent.keyDown(firstEl, {
+                      ...eventArgs,
+                      key: eventArgs.which,
+                      keyCode: eventArgs.which,
+                    });
+                    break;
+                  case 'click':
+                    fireEvent.click(firstEl);
+                    break;
+                  case 'dblclick':
+                    fireEvent.doubleClick(firstEl);
+                    break;
+                  default:
+                    // For other events, try to use the corresponding fireEvent method
+                    const fireEventMethod = (fireEvent as any)[eventName];
+                    if (fireEventMethod) {
+                      fireEventMethod(firstEl, eventArgs);
+                    } else {
+                      fireEvent(firstEl, new Event(eventName));
+                    }
+                }
+              },
+            };
+          },
+        };
+      },
+      setProps: (newProps: any) => {
+        act(() => {
+          rerenderFn({ ...element.props, ...newProps });
+        });
+      },
+      update: () => {
+        // No direct equivalent in RTL, rerenderFn with the same props to force an update
+        act(() => {
+          rerenderFn({ ...element.props });
+        });
+      },
+    };
+  };
+
+  // Use React Testing Library's render function
+  const { container, rerender } = render(element);
+  const wrapper = createTestWrapper(container, rerender);
+
+  act(() => {
+    callback(wrapper);
+  });
 }
 
 describe('DetailsList', () => {
@@ -352,7 +455,6 @@ describe('DetailsList', () => {
         ).toEqual('2');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
-      true /* attach */,
     );
   });
 
@@ -500,28 +602,22 @@ describe('DetailsList', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
-    safeMount(
-      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
-      (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
+    safeMount(<DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />, wrapper => {
+      wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(1);
-      },
-    );
+      expect(onItemInvoked).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('executes onItemInvoked when enter is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
-    safeMount(
-      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
-      (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('keydown', { which: KeyCodes.enter });
+    safeMount(<DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />, wrapper => {
+      wrapper.find('.ms-DetailsRow').first().simulate('keyDown', { which: KeyCodes.enter });
 
-        expect(onItemInvoked).toHaveBeenCalledTimes(1);
-      },
-    );
+      expect(onItemInvoked).toHaveBeenCalledTimes(1);
+    });
   });
 
   it('respects changed dragDropEvents prop on re-renders.', () => {
@@ -653,7 +749,6 @@ describe('DetailsList', () => {
         expect((document.activeElement as HTMLElement).textContent).toEqual('4');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
       },
-      true /* attach */,
     );
   });
 
@@ -662,7 +757,7 @@ describe('DetailsList', () => {
 
     let component: DetailsListBase | null;
 
-    safeMount(
+    const { unmount, rerender } = render(
       <DetailsList
         items={mockData(5)}
         setKey={'key1'}
@@ -671,27 +766,34 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
-      (wrapper: ReactWrapper) => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(3);
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(3);
-
-        // update props to new setKey
-        const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
-        wrapper.setProps(newProps);
-        wrapper.update();
-
-        // verify that focusedItemIndex is reset to 0 and 0th row is focused
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(0);
-        expect(
-          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-        ).toEqual('0');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-      },
-      true /* attach */,
     );
+
+    expect(component!).toBeTruthy();
+    component!.focusIndex(3);
+    jest.runAllTimers();
+
+    expect(component!.state.focusedItemIndex).toEqual(3);
+
+    // update props to new setKey
+    const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
+    rerender(
+      <DetailsList
+        {...newProps}
+        componentRef={value => (component = value as any)}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+    );
+
+    // verify that focusedItemIndex is reset to 0 and 0th row is focused
+    jest.runAllTimers();
+    expect(component!.state.focusedItemIndex).toEqual(0);
+    expect(
+      (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+    ).toEqual('0');
+    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+
+    unmount();
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
@@ -768,7 +870,7 @@ describe('DetailsList', () => {
     const selection = new Selection();
     const theme = getTheme();
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
@@ -778,27 +880,35 @@ describe('DetailsList', () => {
         selectionMode={SelectionMode.multiple}
         selection={selection}
       />,
-      () => {
-        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
-        expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
-
-        selection.setAllSelected(true);
-
-        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
-        expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
-      },
     );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
+    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
+
+    selection.setAllSelected(true);
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
+    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+    unmount();
   });
 
   it('initializes the selection mode object with the selectionMode prop', () => {
-    safeMount(
+    const { container, unmount } = render(
       <DetailsList items={mockData(5)} columns={mockData(5, true)} selectionMode={SelectionMode.none} />,
-      (wrapper: ReactWrapper) => {
-        const selectionZone = wrapper.find(SelectionZone);
-
-        expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
-      },
     );
+
+    const selectionZone = container.querySelector('.ms-SelectionZone');
+
+    function getFiberProperty(element: Element): string {
+      return Object.keys(element).find(key => key.startsWith('__reactProps$')) as string;
+    }
+
+    const internalSelectionProp =
+      // @ts-expect-error - This is a private API and should not be used in production code
+      selectionZone?.parentElement[getFiberProperty(selectionZone.parentElement)].children.props.selection;
+    expect(internalSelectionProp.mode).toEqual(SelectionMode.none);
+
+    unmount();
   });
 
   it('handles updates to items and groups', () => {

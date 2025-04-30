@@ -2,6 +2,63 @@
   "name": "@fluentui/react-charts",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:43 GMT",
+      "tag": "@fluentui/react-charts_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8939f82c4e60bf4f2fb0e1d65abb2780a4f0bd8a",
+            "comment": "fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "956b6ff07a4a12bf4281e7efd4cc55ce412c9e64",
+            "comment": "High contrast bug fixes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-button to v9.4.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-overflow to v9.3.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-popover to v9.10.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tabster to v9.24.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charts",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:09 GMT",
       "tag": "@fluentui/react-charts_v9.0.3",
       "version": "9.0.3",

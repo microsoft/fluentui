@@ -8,6 +8,7 @@ const excludedSpecs = [
 
 // Include all tests from this app and the components package
 const specs = [
+  path.resolve('./src/**/*.cy.{tsx,ts}'),
   path.resolve('../../packages/react-components/**/library/src/**/*.cy.{tsx,ts}'),
   path.resolve('../../packages/react-components/react-tabster/src/**/*.cy.{tsx,ts}'),
   ...excludedSpecs,
@@ -18,7 +19,7 @@ config.component.specPattern = specs;
 config.component.devServer.webpackConfig.resolve ??= {};
 config.component.devServer.webpackConfig.resolve.alias = {
   ...config.component.devServer.webpackConfig.resolve.alias,
-  '@cypress/react': path.resolve(__dirname, './node_modules/@cypress/react'),
+  '@cypress/react': path.resolve(__dirname, './config/cypressWithStrictMode.ts'),
   '@types/react': path.resolve(__dirname, './node_modules/@types/react'),
   '@types/react-dom': path.resolve(__dirname, './node_modules/@types/react-dom'),
   react: path.resolve(__dirname, './node_modules/react'),

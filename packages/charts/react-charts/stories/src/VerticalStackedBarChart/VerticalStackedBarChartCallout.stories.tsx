@@ -170,47 +170,49 @@ export const VerticalStackedBarCallout = () => {
 
   return (
     <div className="containerDiv">
-      <label htmlFor="changeWidth_Callout">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Callout"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Callout">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Callout"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <label htmlFor="changeBarGapMax_Callout">BarGapMax:</label>
-      <input
-        type="range"
-        value={barGapMax}
-        min={0}
-        max={10}
-        id="changeBarGapMax_Callout"
-        onChange={e => setBarGapMax(+e.target.value)}
-        aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
-      />
-      <label htmlFor="barWidthSlider">BarWidth:</label>
-      <input
-        type="range"
-        value={barWidth}
-        min={1}
-        max={50}
-        id="barWidthSlider"
-        onChange={e => setBarWidth(+e.target.value)}
-        aria-valuetext={`BarWidthSlider${barWidth}`}
-      />
-      <span>{barWidth}</span>
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Callout">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Callout"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Callout">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Callout"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <label htmlFor="changeBarGapMax_Callout">BarGapMax:</label>
+        <input
+          type="range"
+          value={barGapMax}
+          min={0}
+          max={10}
+          id="changeBarGapMax_Callout"
+          onChange={e => setBarGapMax(+e.target.value)}
+          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+        />
+        <label htmlFor="barWidthSlider">BarWidth:</label>
+        <input
+          type="range"
+          value={barWidth}
+          min={1}
+          max={50}
+          id="barWidthSlider"
+          onChange={e => setBarWidth(+e.target.value)}
+          aria-valuetext={`BarWidthSlider${barWidth}`}
+        />
+        <span>{barWidth}</span>
+      </div>
       <Field label="Pick one">
         <RadioGroup
           defaultValue="MultiCallout"

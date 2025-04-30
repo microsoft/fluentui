@@ -26,7 +26,6 @@
     "@fluentui/react-nav-preview": "*",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.2",
     "@types/react": "18.3.20",
     "@types/react-dom": "18.3.6",
     "@types/react-test-renderer": "18.3.1",

@@ -3,7 +3,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, setWarningCallback } from '../../Utilities';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
 import type { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
@@ -88,9 +88,10 @@ describe('ContextualMenu', () => {
   it('applies in-line style property if present on ContextualMenuItem', () => {
     const items: IContextualMenuItem[] = [{ name: 'Test 1', key: 'Test1', style: { background: 'red' } }];
 
-    const wrapper = mount(<ContextualMenu items={items} />);
+    render(<ContextualMenu items={items} />);
+    const button = screen.getByRole('menuitem', { name: 'Test 1' });
 
-    expect(wrapper.find('[background="red"]'));
+    expect(button.getAttribute('style')).toBe('background: red;');
   });
 
   it('applies getItemClassNames for split menu items', () => {

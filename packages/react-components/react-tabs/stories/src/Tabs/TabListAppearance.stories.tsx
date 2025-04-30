@@ -30,16 +30,16 @@ export const Appearance = () => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2" appearance="transparent">
+      <TabList defaultSelectedValue="tab3" appearance="transparent">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" appearance="subtle">
+      <TabList defaultSelectedValue="tab3" appearance="subtle">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" appearance="subtle-circular">
+      <TabList defaultSelectedValue="tab3" appearance="subtle-circular">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" appearance="filled-circular">
+      <TabList defaultSelectedValue="tab3" appearance="filled-circular">
         {renderTabs()}
       </TabList>
     </div>

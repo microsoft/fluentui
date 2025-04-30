@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useConstCallback } from './useConstCallback';
 import { validateHookValueNotChanged } from './testUtilities';
 
@@ -14,6 +14,6 @@ describe('useConstCallback', () => {
       expect(cb).toHaveBeenCalledTimes(0);
       return <div>{cb()}</div>;
     };
-    mount(<TestComponent />);
+    render(<TestComponent />);
   });
 });

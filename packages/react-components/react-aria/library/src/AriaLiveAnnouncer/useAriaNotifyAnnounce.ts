@@ -5,9 +5,7 @@ import * as React from 'react';
 import type { AriaLiveAnnounceFn } from './AriaLiveAnnouncer.types';
 
 type AriaNotifyOptions = {
-  notificationID?: string;
-  priority?: 'none' | 'important';
-  interrupt?: 'all' | 'pending' | 'none';
+  priority?: 'high' | 'normal';
 };
 
 type DocumentWithAriaNotify = Document & {
@@ -24,7 +22,7 @@ export const useAriaNotifyAnnounce_unstable = (): AriaLiveAnnounceFn => {
         return;
       }
 
-      const { alert = false, polite, batchId } = options;
+      const { alert = false, polite } = options;
 
       // default priority to 0 if polite, 2 if alert, and 1 by default
       // used to set both ariaNotify's priority and interrupt
@@ -33,9 +31,7 @@ export const useAriaNotifyAnnounce_unstable = (): AriaLiveAnnounceFn => {
 
       // map fluent announce options to ariaNotify options
       const ariaNotifyOptions: AriaNotifyOptions = {
-        notificationID: batchId,
-        priority: priority > 1 ? 'important' : 'none',
-        interrupt: batchId ? (priority > 0 ? 'all' : 'pending') : 'none',
+        priority: priority > 1 ? 'high' : 'normal',
       };
 
       (targetDocument as DocumentWithAriaNotify).ariaNotify(message, ariaNotifyOptions);

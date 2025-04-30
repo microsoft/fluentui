@@ -4,6 +4,8 @@ import { BaseCheckbox } from '../checkbox/checkbox.base.js';
  * A Radio Custom HTML Element.
  * Implements the {@link https://w3c.github.io/aria/#radio | ARIA `radio` role}.
  *
+ * @tag fluent-radio
+ *
  * @slot checked-indicator - The checked indicator slot
  * @fires change - Emits a custom change event when the checked state changes
  * @fires input - Emits a custom input event when the checked state changes

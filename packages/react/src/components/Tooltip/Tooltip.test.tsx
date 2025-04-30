@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-
-import { mount } from 'enzyme';
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import type { ICalloutProps } from '../../Callout';
+import { Callout, type ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
   isBeakVisible: true,
@@ -17,27 +16,25 @@ const defaultCalloutProps: ICalloutProps = {
 };
 
 describe('Tooltip', () => {
-  it('renders default Tooltip correctly', () => {
+  beforeEach(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    const ReactDOM = require('react-dom');
-    const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
+    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(element => {
+      return element as React.ReactPortal;
     });
-
+  });
+  it('renders default Tooltip correctly', () => {
     const component = renderer.create(<TooltipBase />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-
-    ReactDOM.createPortal = createPortal;
   });
 
   it('uses default documented properties', () => {
-    const component = mount(<TooltipBase />);
+    const component = renderer.create(<TooltipBase />);
+    const instance = component.getInstance()!;
 
-    expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
-    expect(component.prop('maxWidth')).toEqual('364px');
-    expect(component.prop('calloutProps')).toEqual(defaultCalloutProps);
+    expect(instance.props.directionalHint).toEqual(DirectionalHint.topCenter);
+    expect(instance.props.maxWidth).toEqual('364px');
+    expect(instance.props.calloutProps).toEqual(defaultCalloutProps);
   });
 
   it('uses specified properties', () => {
@@ -54,7 +51,7 @@ describe('Tooltip', () => {
     const targetElement = ReactTestUtils.renderIntoDocument(<div />) as unknown as HTMLElement;
     let onRenderCalled = false;
 
-    const component = mount(
+    const component = renderer.create(
       <TooltipBase
         calloutProps={calloutProps}
         tabIndex={-1}
@@ -70,15 +67,15 @@ describe('Tooltip', () => {
 
     expect(onRenderCalled).toEqual(true);
 
-    const callout = component.find('Callout');
+    const callout = component.root.findByType(Callout);
 
     Object.keys(calloutProps).forEach((key: keyof ICalloutProps) => {
-      expect(callout.prop(key)).toEqual(calloutProps[key]);
+      expect(callout.props[key]).toEqual(calloutProps[key]);
     });
 
-    expect(callout.prop('tabIndex')).toEqual(-1);
-    expect(callout.prop('directionalHint')).toEqual(directionalHint);
-    expect(callout.prop('directionalHintForRTL')).toEqual(directionalHintForRTL);
-    expect(callout.prop('target')).toEqual(targetElement);
+    expect(callout.props.tabIndex).toEqual(-1);
+    expect(callout.props.directionalHint).toEqual(directionalHint);
+    expect(callout.props.directionalHintForRTL).toEqual(directionalHintForRTL);
+    expect(callout.props.target).toEqual(targetElement);
   });
 });

@@ -88,7 +88,7 @@ export const VerticalStackedBarDateAxis = () => {
   ];
   return (
     <div className="containerDiv">
-      <div>
+      <div style={{ display: 'flex' }}>
         <label htmlFor="ChangeWidth_Styled">Width:</label>
         <input
           type="range"

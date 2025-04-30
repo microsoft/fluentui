@@ -9,6 +9,7 @@ export { Sizes } from './BadgeSizes.stories';
 export { Shapes } from './BadgeShapes.stories';
 export { Color } from './BadgeColor.stories';
 export { Icon } from './BadgeIcon.stories';
+export { ColorAndAppearance } from './BadgeColorVsAppearance.stories';
 
 export default {
   title: 'Components/Badge/Badge',

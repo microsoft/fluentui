@@ -2,11 +2,12 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import * as Enzyme from 'enzyme';
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { getTheme } from '@fluentui/react';
 import { CommandBarButton } from '@fluentui/react/lib/Button';
-import * as React from 'react';
-import { Sidebar, SidebarButton } from './index';
+import { Sidebar } from './index';
 import type { ISidebar, ISidebarProps } from './index';
 
 describe('Sidebar', () => {
@@ -77,33 +78,40 @@ describe('Sidebar', () => {
   });
 
   it('should render the component', () => {
-    const wrapper = Enzyme.shallow(<Sidebar collapsible={false} id={'1'} theme={getTheme()} items={[]} />);
-    expect(wrapper.find('.ba-Sidebar').length).toBe(1);
+    const { container } = render(<Sidebar collapsible={false} id={'1'} theme={getTheme()} items={[]} />);
+    expect(container.querySelector('.ba-Sidebar')).toBeInTheDocument();
   });
 
   it('should render the component with buttons', () => {
-    const wrapper = Enzyme.shallow(<Sidebar {...sidebarButtonExampleProps} />);
-    expect(wrapper.find(SidebarButton).length).toBe(2);
+    const { container } = render(<Sidebar {...sidebarButtonExampleProps} />);
+    // SidebarButton components render with class 'ms-Button'
+    const buttons = container.querySelectorAll('.ms-Button');
+    expect(buttons.length).toBe(2);
   });
 
   it('should render the component with accordion', () => {
-    const wrapper = Enzyme.shallow(<Sidebar {...sidebarAccordionExampleProps} />);
-    expect(wrapper.find('.ba-SidebarAccordion').length).toBe(2);
+    const { container } = render(<Sidebar {...sidebarAccordionExampleProps} />);
+    const accordions = container.querySelectorAll('.ba-SidebarAccordion');
+    expect(accordions.length).toBe(2);
   });
 
   it('should render the component with context menu when collapsed', () => {
     const sidebar = React.createRef<ISidebar>();
 
-    const wrapper = Enzyme.shallow(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
+    const { container, rerender } = render(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
 
-    sidebar.current && sidebar.current.setCollapsed(true);
-    wrapper.update();
+    // Set collapsed state
+    sidebar.current?.setCollapsed(true);
 
-    expect(wrapper.find('.ba-SidebarContextualMenuButton').length).toBe(2);
+    // Re-render with updated state
+    rerender(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
+
+    const contextMenuButtons = container.querySelectorAll('.ba-SidebarContextualMenuButton');
+    expect(contextMenuButtons.length).toBe(2);
   });
 
   it('should render the component using default button', () => {
-    const wrapper = Enzyme.shallow(
+    const { container } = render(
       <Sidebar
         collapsible={false}
         id={'1'}
@@ -125,11 +133,14 @@ describe('Sidebar', () => {
         ]}
       />,
     );
-    expect(wrapper.find(TestButton).length).toBe(2);
+
+    // CommandBarButton renders with class 'ms-Button--commandBar'
+    const commandBarButtons = container.querySelectorAll('.ms-Button--commandBar');
+    expect(commandBarButtons.length).toBe(2);
   });
 
   it('should render the component item with custom buttons', () => {
-    const wrapper = Enzyme.shallow(
+    const { container } = render(
       <Sidebar
         collapsible={false}
         id={'1'}
@@ -151,12 +162,20 @@ describe('Sidebar', () => {
         ]}
       />,
     );
-    expect(wrapper.find(TestButton).length).toBe(1);
-    expect(wrapper.find(SidebarButton).length).toBe(1);
+
+    // First item should use CommandBarButton
+    const commandBarButtons = container.querySelectorAll('.ms-Button--commandBar');
+    expect(commandBarButtons.length).toBe(1);
+
+    // Second item should use default SidebarButton
+    // Count total buttons and subtract the CommandBarButtons
+    const allButtons = container.querySelectorAll('.ms-Button');
+    const sidebarButtons = allButtons.length - commandBarButtons.length;
+    expect(sidebarButtons).toBe(1);
   });
 
-  it('should render the component item with custom buttons', () => {
-    const wrapper = Enzyme.shallow(
+  it('should render the component item with custom onRender', () => {
+    const { container } = render(
       <Sidebar
         collapsible={false}
         id={'1'}
@@ -169,7 +188,7 @@ describe('Sidebar', () => {
             active: false,
             onRender: item => {
               return (
-                <div key={item.key}>
+                <div key={item.key} data-testid="custom-render">
                   <TestButton text={item.name} iconProps={item.iconProps} checked={item.active} />
                 </div>
               );
@@ -184,7 +203,18 @@ describe('Sidebar', () => {
         ]}
       />,
     );
-    expect(wrapper.find(TestButton).length).toBe(1);
-    expect(wrapper.find(SidebarButton).length).toBe(1);
+
+    // Check for custom rendered element
+    const customRender = container.querySelector('[data-testid="custom-render"]');
+    expect(customRender).toBeInTheDocument();
+
+    // CommandBarButton for custom rendered item
+    const commandBarButtons = container.querySelectorAll('.ms-Button--commandBar');
+    expect(commandBarButtons.length).toBe(1);
+
+    // One regular button for the second item
+    const allButtons = container.querySelectorAll('.ms-Button');
+    const regularButtons = allButtons.length - commandBarButtons.length;
+    expect(regularButtons).toBe(1);
   });
 });

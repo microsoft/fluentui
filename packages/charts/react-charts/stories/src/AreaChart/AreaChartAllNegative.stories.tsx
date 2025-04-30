@@ -168,26 +168,28 @@ export const AreaChartAllNegative = () => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Multiple">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Multiple"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthslider${width}`}
-      />
-      <label htmlFor="changeHeight_Multiple">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Multiple"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Multiple">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Multiple"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthslider${width}`}
+        />
+        <label htmlFor="changeHeight_Multiple">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Multiple"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
       <div style={rootStyle}>
         <AreaChart
           height={height}

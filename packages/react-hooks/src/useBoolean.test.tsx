@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useBoolean } from './useBoolean';
 import { validateHookValueNotChanged } from './testUtilities';
 import type { IUseBooleanCallbacks } from './useBoolean';
@@ -13,10 +13,10 @@ describe('useBoolean', () => {
       return <div />;
     };
 
-    mount(<TestComponent initialValue={true} />);
+    render(<TestComponent initialValue={true} />);
     expect(value!).toBe(true);
 
-    mount(<TestComponent initialValue={false} />);
+    render(<TestComponent initialValue={false} />);
     expect(value!).toBe(false);
   });
 
@@ -34,7 +34,7 @@ describe('useBoolean', () => {
       return <div>{value}</div>;
     };
 
-    mount(<TestComponent />);
+    render(<TestComponent />);
     expect(value!).toBe(true);
 
     act(() => callbacks.setFalse());
@@ -56,7 +56,7 @@ describe('useBoolean', () => {
       return <div />;
     };
 
-    mount(<TestComponent />);
+    render(<TestComponent />);
 
     // Toggle the value
     act(() => callbacks.toggle());

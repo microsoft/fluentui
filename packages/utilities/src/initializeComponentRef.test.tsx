@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { initializeComponentRef } from './initializeComponentRef';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import type { IBaseProps } from './BaseComponent.types';
 
 describe('initializeComponentRef', () => {
@@ -18,11 +18,11 @@ describe('initializeComponentRef', () => {
   it('can resolve componentRef', () => {
     const fooRef = React.createRef();
 
-    const wrapper = mount(<Foo componentRef={fooRef} />);
+    const component = renderer.create(<Foo componentRef={fooRef} />);
 
-    expect(fooRef.current).toBe(wrapper.instance());
+    expect(fooRef.current).toBe(component.getInstance());
 
-    wrapper.unmount();
+    component.unmount();
 
     expect(fooRef.current).toBeNull();
   });

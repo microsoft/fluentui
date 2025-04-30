@@ -31,6 +31,10 @@ export class BaseTreeItem extends FASTElement {
    * @public
    */
   public expandedChanged(prev: boolean, next: boolean): void {
+    this.$emit('toggle', {
+      oldState: prev ? 'open' : 'closed',
+      newState: next ? 'open' : 'closed',
+    });
     toggleState(this.elementInternals, 'expanded', next);
     if (this.childTreeItems && this.childTreeItems.length > 0) {
       this.elementInternals.ariaExpanded = next ? 'true' : 'false';
@@ -115,7 +119,9 @@ export class BaseTreeItem extends FASTElement {
     }
 
     //If a tree item is nested and initially set to selected expand the tree items so the selected item is visible
-    this.expanded = Array.from(this.querySelectorAll('*')).some(el => isTreeItem(el) && el.selected);
+    if (!this.expanded) {
+      this.expanded = Array.from(this.querySelectorAll('[selected]')).some(el => isTreeItem(el));
+    }
 
     this.childTreeItems.forEach(item => {
       this.setIndent(item);

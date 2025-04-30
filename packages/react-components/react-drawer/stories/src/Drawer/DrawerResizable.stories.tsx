@@ -7,7 +7,20 @@ import {
   makeStyles,
   mergeClasses,
   tokens,
+  Button,
+  Input,
+  InputProps,
+  Label,
+  useId,
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogTitle,
+  DialogBody,
+  DialogActions,
+  DialogContent,
 } from '@fluentui/react-components';
+import { Dismiss20Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -67,6 +80,11 @@ const useStyles = makeStyles({
     margin: `${tokens.spacingVerticalXL} ${tokens.spacingHorizontalXL}`,
     flex: '1',
   },
+
+  dialogContent: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 });
 
 export const Resizable = () => {
@@ -76,6 +94,7 @@ export const Resizable = () => {
   const sidebarRef = React.useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState(320);
+  const inputId = useId('input');
 
   const startResizing = React.useCallback(() => setIsResizing(true), []);
   const stopResizing = React.useCallback(() => setIsResizing(false), []);
@@ -91,10 +110,6 @@ export const Resizable = () => {
     [isResizing],
   );
 
-  const ResizeComponent: React.FC = () => (
-    <div className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)} onMouseDown={startResizing} />
-  );
-
   React.useEffect(() => {
     window.addEventListener('mousemove', resize);
     window.addEventListener('mouseup', stopResizing);
@@ -106,27 +121,78 @@ export const Resizable = () => {
     };
   }, [resize, stopResizing]);
 
+  const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
+
+  const onResizeInputChange: InputProps['onChange'] = (ev, data) => {
+    if (data.value) {
+      setResizeInput(data.value);
+    }
+  };
+
   return (
-    <div className={mergeClasses(styles.root, isResizing && styles.rootResizerActive)}>
-      <div className={styles.container}>
-        <InlineDrawer
-          open
-          ref={sidebarRef}
-          className={styles.drawer}
-          style={{ width: `${sidebarWidth}px` }}
-          onMouseDown={e => e.preventDefault()}
-        >
-          <DrawerHeader>
-            <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>
-          </DrawerHeader>
-          <DrawerBody>
-            <p>Resizable content</p>
-          </DrawerBody>
-        </InlineDrawer>
-        <ResizeComponent />
+    <>
+      <div className={mergeClasses(styles.root, isResizing && styles.rootResizerActive)}>
+        <div className={styles.container}>
+          <InlineDrawer
+            open
+            ref={sidebarRef}
+            className={styles.drawer}
+            style={{ width: `${sidebarWidth}px` }}
+            onMouseDown={e => e.preventDefault()}
+          >
+            <DrawerHeader>
+              <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>
+            </DrawerHeader>
+            <DrawerBody>
+              <p>Resizable content</p>
+            </DrawerBody>
+          </InlineDrawer>
+          <Dialog>
+            <DialogTrigger disableButtonEnhancement>
+              <div
+                className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
+                onMouseDown={startResizing}
+              />
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogTitle
+                  action={
+                    <DialogTrigger action="close">
+                      <Button appearance="subtle" aria-label="close" icon={<Dismiss20Regular />} />
+                    </DialogTrigger>
+                  }
+                >
+                  Resize drawer
+                </DialogTitle>
+                <DialogContent>
+                  <div className={styles.dialogContent}>
+                    <Label htmlFor={inputId}>Enter desired drawer width pixels:</Label>
+                    <Input id={inputId} onChange={onResizeInputChange} defaultValue={resizeInput} type="number" />
+                  </div>
+                </DialogContent>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button
+                      appearance="primary"
+                      onClick={() => {
+                        setSidebarWidth(Number(resizeInput));
+                      }}
+                    >
+                      Resize
+                    </Button>
+                  </DialogTrigger>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button>Cancel</Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+        </div>
+        <p className={styles.content}>Resize the drawer to see the change</p>
       </div>
-      <p className={styles.content}>Resize the drawer to see the change</p>
-    </div>
+    </>
   );
 };
 

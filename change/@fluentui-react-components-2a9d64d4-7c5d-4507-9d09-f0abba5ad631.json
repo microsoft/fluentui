@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Re-exporting CellRenderFunction from @fluentui/react-components.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

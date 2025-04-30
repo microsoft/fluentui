@@ -2,6 +2,21 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Tue, 29 Apr 2025 07:20:24 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.4.26",
+      "version": "8.4.26",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/foundation-legacy",
+            "commit": "9fe4778a263ab2843c55fa9bc2f5bcff316cc6ca",
+            "comment": "fix(foundation-legacy): add proper ts lib types so tsc wont complain"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 07:22:07 GMT",
       "tag": "@fluentui/foundation-legacy_v8.4.26",
       "version": "8.4.26",

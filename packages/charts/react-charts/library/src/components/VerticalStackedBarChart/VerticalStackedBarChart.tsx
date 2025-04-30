@@ -1061,7 +1061,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       ...getAccessibleDataObject(callOutAccessibilityData),
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
-      isCalloutForStack: props.isCalloutForStack || (_isHavingLines && _noLegendHighlighted()),
+      isCalloutForStack:
+        props.isCalloutForStack || (_isHavingLines && (_noLegendHighlighted() || _getHighlightedLegend().length > 1)),
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,

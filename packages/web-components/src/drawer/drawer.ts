@@ -3,6 +3,9 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 /**
  * A Drawer component that allows content to be displayed in a side panel. It can be rendered as modal or non-modal.
+ *
+ * @tag fluent-drawer
+ *
  * @extends FASTElement
  *
  * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.

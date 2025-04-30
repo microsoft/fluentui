@@ -123,6 +123,9 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     ],
     hoverCardRoot: {
       padding: '8px',
+      position: 'relative',
+      overflowY: 'auto',
+      maxHeight: '300px',
     },
     subComponentStyles: {
       hoverCardStyles: {

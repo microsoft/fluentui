@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ButtonGrid } from './ButtonGrid';
 import { getStyles } from './ButtonGrid.styles';
 import { isConformant } from '../../common/isConformant';
-import { safeMount } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
+import { getBySelector, getByAllSelector } from '../../common/testUtilities';
 
 const DEFAULT_ITEMS: any[] = [
   { id: 'a', text: '0,0' },
@@ -29,7 +30,7 @@ describe('ButtonGrid', () => {
   });
 
   it('Can render a ButtonGrid with width of four', () => {
-    safeMount(
+    const { container } = render(
       <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={4}
@@ -38,17 +39,17 @@ describe('ButtonGrid', () => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
-      wrapper => {
-        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-        expect(wrapper.find('tr[role="row"]').length).toEqual(2);
-        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-        expect(wrapper.find('[aria-posinset]').length).toEqual(0);
-        expect(wrapper.find('[aria-setsize]').length).toEqual(0);
-      },
     );
+
+    expect(getBySelector(container, 'table[role="grid"]')).toBeTruthy();
+    expect(getByAllSelector(container, 'tr[role="row"]').length).toEqual(2);
+    expect(getByAllSelector(container, 'td [role="gridcell"]').length).toEqual(8);
+    expect(getByAllSelector(container, '[aria-posinset]').length).toEqual(0);
+    expect(getByAllSelector(container, '[aria-setsize]').length).toEqual(0);
   });
+
   it('Can render a ButtonGrid with width of 2', () => {
-    safeMount(
+    const { container } = render(
       <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={2}
@@ -57,17 +58,17 @@ describe('ButtonGrid', () => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
-      wrapper => {
-        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-        expect(wrapper.find('tr[role="row"]').length).toEqual(4);
-        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-        expect(wrapper.find('[aria-posinset]').length).toEqual(0);
-        expect(wrapper.find('[aria-setsize]').length).toEqual(0);
-      },
     );
+
+    expect(getBySelector(container, 'table[role="grid"]')).toBeTruthy();
+    expect(getByAllSelector(container, 'tr[role="row"]').length).toEqual(4);
+    expect(getByAllSelector(container, 'td [role="gridcell"]').length).toEqual(8);
+    expect(getByAllSelector(container, '[aria-posinset]').length).toEqual(0);
+    expect(getByAllSelector(container, '[aria-setsize]').length).toEqual(0);
   });
+
   it('Can render a ButtonGrid with posInSet and setSize', () => {
-    safeMount(
+    const { container } = render(
       <ButtonGrid
         items={DEFAULT_ITEMS}
         columnCount={2}
@@ -80,15 +81,18 @@ describe('ButtonGrid', () => {
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         setSize={2}
       />,
-      wrapper => {
-        expect(wrapper.find('table[role="grid"]').length).toEqual(1);
-        expect(wrapper.find('tr[role="row"]').length).toEqual(4);
-        expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
-        expect(wrapper.find('[aria-posinset]').length).toEqual(1);
-        expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-posinset="1"'));
-        expect(wrapper.find('[aria-setsize]').length).toEqual(1);
-        expect(wrapper.find('[aria-posinset]').html()).toEqual(expect.stringMatching('aria-setsize="2"'));
-      },
     );
+
+    expect(getBySelector(container, 'table[role="grid"]')).toBeTruthy();
+    expect(getByAllSelector(container, 'tr[role="row"]').length).toEqual(4);
+    expect(getByAllSelector(container, 'td [role="gridcell"]').length).toEqual(8);
+    expect(getByAllSelector(container, '[aria-posinset]').length).toEqual(1);
+
+    const elementWithPosInSet = getBySelector(container, '[aria-posinset]');
+    expect(elementWithPosInSet?.getAttribute('aria-posinset')).toEqual('1');
+
+    expect(getByAllSelector(container, '[aria-setsize]').length).toEqual(1);
+    const elementWithSetSize = getBySelector(container, '[aria-setsize]');
+    expect(elementWithSetSize?.getAttribute('aria-setsize')).toEqual('2');
   });
 });

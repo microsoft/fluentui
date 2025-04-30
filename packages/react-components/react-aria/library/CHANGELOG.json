@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:45 GMT",
+      "tag": "@fluentui/react-aria_v9.14.6",
+      "version": "9.14.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-tabster to v9.24.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:18 GMT",
       "tag": "@fluentui/react-aria_v9.14.5",
       "version": "9.14.5",

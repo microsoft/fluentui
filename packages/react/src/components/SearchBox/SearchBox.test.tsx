@@ -1,15 +1,14 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import { create } from '@fluentui/test-utilities';
-import { mount, ReactWrapper } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { SearchBox } from './SearchBox';
-import { KeyCodes, resetIds } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 import { isConformant } from '../../common/isConformant';
 import type { ReactTestRenderer } from 'react-test-renderer';
-import type { ISearchBoxProps } from './SearchBox.types';
 
 describe('SearchBox', () => {
   let component: ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper<ISearchBoxProps> | undefined;
 
   beforeEach(() => {
     resetIds();
@@ -19,10 +18,6 @@ describe('SearchBox', () => {
     if (component) {
       component.unmount();
       component = undefined;
-    }
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
     }
   });
 
@@ -38,14 +33,13 @@ describe('SearchBox', () => {
   });
 
   it('renders SearchBox role on the container div', () => {
-    wrapper = mount(<SearchBox role="search" />);
-
-    expect(wrapper.getDOMNode().getAttribute('role')).toEqual('search');
+    render(<SearchBox role="search" />);
+    expect(screen.getByRole('search')).toBeInTheDocument();
   });
 
   it('can execute an onClick on clear button', () => {
     let clickExecuted = false;
-    wrapper = mount(
+    render(
       <SearchBox
         clearButtonProps={{
           onClick: () => (clickExecuted = true),
@@ -53,17 +47,17 @@ describe('SearchBox', () => {
       />,
     );
 
-    expect(wrapper.find('input').prop('value')).toEqual('');
+    const input = screen.getByRole('searchbox');
+    expect(input).toHaveValue('');
 
-    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+    fireEvent.change(input, { target: { value: 'New value' } });
+    expect(input).toHaveValue('New value');
 
-    expect(wrapper.find('input').prop('value')).toEqual('New value');
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
 
-    wrapper.find('button').simulate('click');
-
-    expect(clickExecuted).toEqual(true);
-
-    expect(wrapper.find('input').prop('value')).toEqual('');
+    expect(clickExecuted).toBe(true);
+    expect(input).toHaveValue('');
   });
 
   it('renders SearchBox without animation correctly', () => {
@@ -74,20 +68,20 @@ describe('SearchBox', () => {
 
   it('can execute search when SearchBox is empty', () => {
     let searchExecuted = false;
-    wrapper = mount(<SearchBox onSearch={() => (searchExecuted = true)} />);
+    render(<SearchBox onSearch={() => (searchExecuted = true)} />);
 
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Enter', code: 'Enter', charCode: 13, keyCode: 13 });
     expect(searchExecuted).toEqual(true);
   });
 
   it('has a default icon with empty iconProps', () => {
-    wrapper = mount(<SearchBox iconProps={{}} />);
+    render(<SearchBox iconProps={{}} />);
     const searchIcon = '';
-    expect(wrapper.find('i').text()).toEqual(searchIcon);
+    expect(screen.getByText(searchIcon)).toBeInTheDocument();
   });
 
   it('supports overriding the icon iconName', () => {
-    wrapper = mount(
+    render(
       <SearchBox
         iconProps={{
           iconName: 'Filter',
@@ -96,12 +90,12 @@ describe('SearchBox', () => {
     );
 
     const filterIcon = '';
-    expect(wrapper.find('i').text()).toEqual(filterIcon);
+    expect(screen.getByText(filterIcon)).toBeInTheDocument();
   });
 
   it('supports native props on inner input', () => {
-    wrapper = mount(<SearchBox autoComplete="on" />);
-    const inputEl = wrapper.find('input').getDOMNode();
+    render(<SearchBox autoComplete="on" />);
+    const inputEl = screen.getByRole('searchbox');
     const autocompleteVal = inputEl.getAttribute('autocomplete');
 
     expect(autocompleteVal).toBe('on');
@@ -109,77 +103,77 @@ describe('SearchBox', () => {
 
   it('supports setting a placeholder value', () => {
     const placeholder = 'Search';
-    wrapper = mount(<SearchBox placeholder={placeholder} />);
-    const inputEl = wrapper.find('input').getDOMNode();
+    render(<SearchBox placeholder={placeholder} />);
+    const inputEl = screen.getByRole('searchbox');
     const placeholderVal = inputEl.getAttribute('placeholder');
 
     expect(placeholderVal).toBe(placeholder);
   });
 
   it('supports setting id on input', () => {
-    wrapper = mount(<SearchBox id="foo" />);
-    expect(wrapper.find('input').prop('id')).toBe('foo');
+    render(<SearchBox id="foo" />);
+    expect(screen.getByRole('searchbox').id).toBe('foo');
   });
 
   it('generates id for input if none passed in', () => {
-    wrapper = mount(<SearchBox />);
-    expect(wrapper.find('input').prop('id')).toBeTruthy();
+    render(<SearchBox />);
+    expect(screen.getByRole('searchbox').id).toBeTruthy();
   });
 
   it('only invokes onFocus callback once per focus event', () => {
     const onFocus = jest.fn();
-    wrapper = mount(<SearchBox onFocus={onFocus} />);
-    wrapper.simulate('focus');
+    render(<SearchBox onFocus={onFocus} />);
+    fireEvent.focus(screen.getByRole('searchbox'));
 
     expect(onFocus).toHaveBeenCalledTimes(1);
   });
 
   it('can be disabled via props', () => {
-    wrapper = mount(<SearchBox disabled />);
-    const inputEl = wrapper.find('input').getDOMNode();
+    render(<SearchBox disabled />);
+    const inputEl = screen.getByRole('searchbox');
     const disabledVal = inputEl.getAttribute('disabled');
 
     expect(disabledVal).toBe('');
   });
 
   it('is not disabled by default', () => {
-    wrapper = mount(<SearchBox />);
-    const inputEl = wrapper.find('input').getDOMNode();
+    render(<SearchBox />);
+    const inputEl = screen.getByRole('searchbox');
     const disabledVal = inputEl.getAttribute('disabled');
 
     expect(disabledVal).toBeFalsy();
   });
 
   it('handles setting value', () => {
-    wrapper = mount(<SearchBox value="test" />);
-    expect(wrapper.find('input').prop('value')).toBe('test');
+    render(<SearchBox value="test" />);
+    expect(screen.getByRole('searchbox')).toHaveValue('test');
   });
 
   it('handles updating value to empty string', () => {
-    wrapper = mount(<SearchBox value="test" />);
-    wrapper.setProps({ value: '' });
-    expect(wrapper.find('input').prop('value')).toBe('');
+    const { rerender } = render(<SearchBox value="test" />);
+    rerender(<SearchBox value="" />);
+    expect(screen.getByRole('searchbox')).toHaveValue('');
   });
 
   it('handles setting null value', () => {
     // this is not allowed per typings, but users might do it anyway
-    wrapper = mount(<SearchBox value={null as any} />);
-    expect(wrapper.find('input').prop('value')).toBe(`null`);
+    render(<SearchBox value={null as any} />);
+    expect(screen.getByRole('searchbox')).toHaveValue('null');
   });
 
   it('handles rendering 0', () => {
-    wrapper = mount(<SearchBox value={0 as any} />);
+    render(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
-    expect(wrapper.find('input').getDOMNode().getAttribute('value')).toBe('0');
+    expect(screen.getByRole('searchbox').getAttribute('value')).toBe('0');
   });
 
   it('handles onChange', () => {
     const onChange = jest.fn();
 
-    wrapper = mount(<SearchBox onChange={onChange} />);
+    render(<SearchBox onChange={onChange} />);
     expect(onChange).toHaveBeenCalledTimes(0);
 
-    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'New value' } });
 
     expect(onChange).toHaveBeenCalledTimes(1);
   });
@@ -187,7 +181,7 @@ describe('SearchBox', () => {
   it('handles onChanged', () => {
     const onChanged = jest.fn();
 
-    wrapper = mount(
+    render(
       <SearchBox
         // eslint-disable-next-line @typescript-eslint/no-deprecated
         onChanged={onChanged}
@@ -195,7 +189,7 @@ describe('SearchBox', () => {
     );
     expect(onChanged).toHaveBeenCalledTimes(0);
 
-    wrapper.find('input').simulate('change', { target: { value: 'New value' } });
+    fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'New value' } });
 
     expect(onChanged).toHaveBeenCalledTimes(1);
   });
@@ -203,8 +197,16 @@ describe('SearchBox', () => {
   it('invokes onEscape callback on escape keydown', () => {
     const onEscape = jest.fn();
 
-    wrapper = mount(<SearchBox onEscape={onEscape} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    render(<SearchBox onEscape={onEscape} />);
+
+    expect(onEscape).toHaveBeenCalledTimes(0);
+
+    fireEvent.keyDown(screen.getByRole('searchbox'), {
+      key: 'Escape',
+      code: 'Escape',
+      charCode: 27,
+      keyCode: 27,
+    });
 
     expect(onEscape).toHaveBeenCalledTimes(1);
   });
@@ -212,18 +214,18 @@ describe('SearchBox', () => {
   it('invokes onClear callback on escape keydown and clears the value, if it has a value', () => {
     const onClear = jest.fn();
 
-    wrapper = mount(<SearchBox onClear={onClear} defaultValue="test" />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    render(<SearchBox onClear={onClear} defaultValue="test" />);
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape', code: 'Escape', charCode: 27, keyCode: 27 });
 
     expect(onClear).toHaveBeenCalledTimes(1);
-    expect(wrapper.find('input').prop('value')).toBe('');
+    expect(screen.getByRole('searchbox')).toHaveValue('');
   });
 
   it('does not invoke onClear callback on escape keydown, if it does not have a value', () => {
     const onClear = jest.fn();
 
-    wrapper = mount(<SearchBox onClear={onClear} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    render(<SearchBox onClear={onClear} />);
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape', code: 'Escape', charCode: 27, keyCode: 27 });
 
     expect(onClear).not.toHaveBeenCalled();
   });
@@ -231,36 +233,36 @@ describe('SearchBox', () => {
   it('does not clear the value on escape keydown, if onClear calls preventDefault', () => {
     const onClear = jest.fn(ev => ev.preventDefault());
 
-    wrapper = mount(<SearchBox onClear={onClear} defaultValue="test" />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    render(<SearchBox onClear={onClear} defaultValue="test" />);
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape', code: 'Escape', charCode: 27, keyCode: 27 });
 
     expect(onClear).toHaveBeenCalledTimes(1);
-    expect(wrapper.find('input').prop('value')).toBe('test');
+    expect(screen.getByRole('searchbox')).toHaveValue('test');
   });
 
   it('prevents escape keypress from bubbling, if and only if it has a value', () => {
     const onParentKeyDown = jest.fn();
 
-    wrapper = mount(
+    render(
       <div onKeyDown={onParentKeyDown}>
         <SearchBox defaultValue="test" />
       </div>,
     );
 
     // First escape clears the value and should not bubble
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape', code: 'Escape', charCode: 27, keyCode: 27 });
     expect(onParentKeyDown).not.toHaveBeenCalled();
 
     // Second escape should bubble
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Escape', code: 'Escape', charCode: 27, keyCode: 27 });
     expect(onParentKeyDown).toHaveBeenCalledTimes(1);
   });
 
   it('invokes onSearch callback on enter keydown', () => {
     const onSearch = jest.fn();
 
-    wrapper = mount(<SearchBox onSearch={onSearch} />);
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    render(<SearchBox onSearch={onSearch} />);
+    fireEvent.keyDown(screen.getByRole('searchbox'), { key: 'Enter', code: 'Enter', charCode: 13, keyCode: 13 });
 
     expect(onSearch).toHaveBeenCalledTimes(1);
   });
@@ -268,8 +270,8 @@ describe('SearchBox', () => {
   it('invokes onKeyDown callback on keydown', () => {
     const onKeyDown = jest.fn();
 
-    wrapper = mount(<SearchBox onKeyDown={onKeyDown} />);
-    wrapper.find('input').simulate('keydown');
+    render(<SearchBox onKeyDown={onKeyDown} />);
+    fireEvent.keyDown(screen.getByRole('searchbox'));
 
     expect(onKeyDown).toHaveBeenCalledTimes(1);
   });

@@ -2,6 +2,9 @@ import { FASTElement } from '@microsoft/fast-element';
 
 /**
  * A DrawerBody component to layout drawer content
+ *
+ * @tag fluent-drawer-body
+ *
  * @extends FASTElement
  *
  * @slot title - The title slot

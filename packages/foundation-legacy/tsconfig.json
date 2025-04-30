@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "isolatedModules": true,
-    "lib": ["es5", "dom", "ES2015.Iterable"],
+    "lib": ["es5", "dom", "ES2015.Iterable", "ES2015.Core"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "custom-global"]
   },

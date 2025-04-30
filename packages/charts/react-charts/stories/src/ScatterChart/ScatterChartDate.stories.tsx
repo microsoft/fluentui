@@ -117,26 +117,28 @@ export const ScatterChartDate = () => {
     <>
       <text>Scatter chart date x example.</text>
       <br />
-      <label htmlFor="changeWidth">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        onChange={_onWidthChange}
-        id="changeWidth"
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          onChange={_onWidthChange}
+          id="changeWidth"
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+      </div>
       <div style={rootStyle}>
         <ScatterChart
           culture={window.navigator.language}

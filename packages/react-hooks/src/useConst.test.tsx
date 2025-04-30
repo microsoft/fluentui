@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useConst } from './useConst';
 import { validateHookValueNotChanged } from './testUtilities';
 
@@ -16,12 +16,13 @@ describe('useConst', () => {
       const value = useConst(initializer);
       return <div>{value}</div>;
     };
-    const wrapper = mount(<TestComponent />);
-    const firstValue = wrapper.text();
+    const wrapper = render(<TestComponent />);
+
+    const firstValue = wrapper.container.textContent;
     // Re-render the component
-    wrapper.update();
+    wrapper.rerender(<TestComponent />);
     // Text should be the same
-    expect(wrapper.text()).toBe(firstValue);
+    expect(wrapper.container.textContent).toBe(firstValue);
     // Function shouldn't have been called again
     expect(initializer).toHaveBeenCalledTimes(1);
   });
@@ -32,9 +33,9 @@ describe('useConst', () => {
       const value = useConst(initializer);
       return <div>{value}</div>;
     };
-    const wrapper = mount(<TestComponent />);
+    const wrapper = render(<TestComponent />);
     // Re-render the component
-    wrapper.update();
+    wrapper.rerender(<TestComponent />);
     // Function shouldn't have been called again
     expect(initializer).toHaveBeenCalledTimes(1);
   });

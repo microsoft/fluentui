@@ -1,9 +1,10 @@
 /*  eslint-disable @typescript-eslint/no-deprecated */
+import '@testing-library/jest-dom';
 import * as React from 'react';
+import { render, screen } from '@testing-library/react';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
-import { safeMount } from '@fluentui/test-utilities';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
@@ -31,40 +32,34 @@ describe('Customizer', () => {
   });
 
   it('can provide new defaults', () => {
-    safeMount(
+    render(
       <Customizer settings={{ field: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>customName</div>');
-      },
     );
+    expect(screen.getByText('customName')).toBeInTheDocument();
   });
 
   it('can pass through global settings', () => {
     Customizations.applySettings({ field: 'globalName' });
 
-    safeMount(
+    render(
       <Customizer settings={{ nonMatch: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>globalName</div>');
-      },
     );
+    expect(screen.getByText('globalName')).toBeInTheDocument();
   });
 
   it('can override global settings', () => {
     Customizations.applySettings({ field: 'globalName' });
 
-    safeMount(
+    render(
       <Customizer settings={{ field: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>customName</div>');
-      },
     );
+    expect(screen.getByText('customName')).toBeInTheDocument();
   });
 
   it('can scope settings to specific components', () => {
@@ -73,51 +68,46 @@ describe('Customizer', () => {
       Bar: { field: 'scopedToBar' },
     };
 
-    safeMount(
+    render(
       <Customizer scopedSettings={scopedSettings}>
         <div>
           <Foo />
           <Bar />
         </div>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      },
     );
+    expect(screen.getByText('scopedToFoo')).toBeInTheDocument();
+    expect(screen.getByText('scopedToBar')).toBeInTheDocument();
   });
 
   it('can layer global settings', () => {
-    safeMount(
+    render(
       <Customizer settings={{ field: 'field' }}>
         <Customizer settings={{ field2: 'field2' }}>
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>fieldfield2</div>');
-      },
     );
+    expect(screen.getByText('fieldfield2')).toBeInTheDocument();
   });
 
   it('can layer scoped settings', () => {
     Customizations.applySettings({ field3: 'field3' });
 
-    safeMount(
+    render(
       <Customizer scopedSettings={{ Bar: { field: 'field', field2: 'oldfield2' } }}>
         <Customizer scopedSettings={{ Bar: { field2: 'field2' } }}>
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      },
     );
+    expect(screen.getByText('fieldfield2field3')).toBeInTheDocument();
   });
 
   it('can layer scoped settings with scopedSettingsFunction', () => {
     Customizations.applySettings({ field3: 'field3' });
 
-    safeMount(
+    render(
       <Customizer scopedSettings={{ Bar: { field: 'field' } }}>
         <Customizer
           scopedSettings={(scopedSettings: { Bar: { field2: string } }) => ({
@@ -127,14 +117,12 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      },
     );
+    expect(screen.getByText('fieldfield2field3')).toBeInTheDocument();
   });
 
   it('it allows scopedSettings to be merged when a function is passed', () => {
-    safeMount(
+    render(
       <Customizer scopedSettings={{ Foo: { field: 'scopedToFoo' } }}>
         <Customizer
           scopedSettings={(settings: { Foo: { field: string } }) => ({ ...settings, Bar: { field: 'scopedToBar' } })}
@@ -145,86 +133,77 @@ describe('Customizer', () => {
           </div>
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      },
     );
+    expect(screen.getByText('scopedToFoo')).toBeInTheDocument();
+    expect(screen.getByText('scopedToBar')).toBeInTheDocument();
   });
 
   it('overrides previously set settings', () => {
-    safeMount(
+    render(
       <Customizer settings={{ field: 'field1' }}>
         <Customizer settings={{ field: 'field2' }}>
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>field2</div>');
-      },
     );
+    expect(screen.getByText('field2')).toBeInTheDocument();
   });
 
   it('overrides the old settings when the parameter is ignored', () => {
-    safeMount(
+    render(
       <Customizer settings={{ field: 'field1' }}>
         <Customizer settings={(settings: { field: string }) => ({ field: 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>field2</div>');
-      },
     );
+    expect(screen.getByText('field2')).toBeInTheDocument();
   });
 
   it('can use a function to merge settings', () => {
-    safeMount(
+    render(
       <Customizer settings={{ field: 'field1' }}>
         <Customizer settings={(settings: { field: string }) => ({ field: settings.field + 'field2' })}>
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
-        expect(wrapper.html()).toEqual('<div>field1field2</div>');
-      },
     );
+    expect(screen.getByText('field1field2')).toBeInTheDocument();
   });
 
   it('can suppress updates', () => {
     Customizations.applySettings({ field: 'globalName' });
 
-    safeMount(
+    render(
       <Customizer settings={{ nonMatch: 'customName' }}>
         <Bar />
       </Customizer>,
-      wrapper => {
-        // verify base state
-        expect(wrapper.html()).toEqual('<div>globalName</div>');
-
-        // verify it doesn't update during suppressUpdates(), and it works through errors, and it updates after
-        Customizations.applyBatchedUpdates(() => {
-          Customizations.applySettings({ field: 'notGlobalName' });
-          // it should not update inside
-          expect(wrapper.html()).toEqual('<div>globalName</div>');
-          throw new Error();
-        });
-        // afterwards it should have updated
-        expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
-
-        // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
-        Customizations.applyBatchedUpdates(() => {
-          Customizations.applySettings({ field: 'notUpdated' });
-          // it should not update inside
-          expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
-          throw new Error();
-        }, true);
-        // afterwards, it should still be on the old value
-        expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
-
-        // verify it updates after suppressUpdates()
-        Customizations.applySettings({ field2: 'lastGlobalName' });
-        expect(wrapper.html()).toEqual('<div>notUpdatedlastGlobalName</div>');
-      },
     );
+    // verify base state
+    expect(screen.getByText('globalName')).toBeInTheDocument();
+
+    // verify it doesn't update during suppressUpdates(), and it works through errors, and it updates after
+    Customizations.applyBatchedUpdates(() => {
+      Customizations.applySettings({ field: 'notGlobalName' });
+      // it should not update inside
+      expect(screen.getByText('globalName')).toBeInTheDocument();
+      throw new Error();
+    });
+    // afterwards it should have updated
+    expect(screen.getByText('notGlobalName')).toBeInTheDocument();
+
+    // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
+    Customizations.applyBatchedUpdates(() => {
+      Customizations.applySettings({ field: 'notUpdated' });
+      // it should not update inside
+      expect(screen.getByText('notGlobalName')).toBeInTheDocument();
+      throw new Error();
+    }, true);
+    // afterwards, it should still be on the old value
+    expect(screen.getByText('notGlobalName')).toBeInTheDocument();
+
+    // verify it updates after suppressUpdates()
+    Customizations.applySettings({ field2: 'lastGlobalName' });
+    expect(screen.getByText('notUpdatedlastGlobalName')).toBeInTheDocument();
   });
 });

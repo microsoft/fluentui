@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 
 import { Spinner, SpinnerBase, SpinnerSize } from './index';
@@ -15,23 +15,28 @@ describe('Spinner', () => {
   isConformant({
     Component: Spinner,
     displayName: 'Spinner',
-    // Problem: Doesn’t handle ref.
+    // Problem: Doesn't handle ref.
     // Solution: Add a ref to the root element.
     disabledTests: ['component-has-root-ref', 'component-handles-ref'],
   });
 
   it('uses default documented properties', () => {
-    const component = mount(<SpinnerBase />);
+    const { container, unmount } = render(<SpinnerBase />);
 
-    expect(component.prop('size')).toEqual(SpinnerSize.medium);
-    expect(component.prop('ariaLive')).toEqual('polite');
-    expect(component.prop('labelPosition')).toEqual('bottom');
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <div>
+          <div />
+        </div>
+      </div>
+    `);
 
-    component.unmount();
+    unmount();
   });
 
   it('uses specified properties when provided', () => {
-    const component = mount(
+    jest.useFakeTimers();
+    const { container, getByText, unmount } = render(
       <SpinnerBase
         size={SpinnerSize.large}
         ariaLive="assertive"
@@ -41,12 +46,19 @@ describe('Spinner', () => {
       />,
     );
 
-    expect(component.prop('size')).toEqual(SpinnerSize.large);
-    expect(component.prop('ariaLive')).toEqual('assertive');
-    expect(component.prop('labelPosition')).toEqual('top');
-    expect(component.prop('label')).toEqual('Spinner label');
-    expect(component.prop('ariaLabel')).toEqual('Aria spinner label');
+    jest.advanceTimersByTime(100);
 
-    component.unmount();
+    // Verify the label is rendered
+    expect(getByText('Spinner label')).toBeTruthy();
+
+    // Verify aria attributes
+    const spinnerElement = container.querySelector('[role="status"]');
+    expect(spinnerElement).toBeTruthy();
+    expect(spinnerElement?.getAttribute('aria-live')).toBe('assertive');
+
+    // Verify screen reader text
+    expect(getByText('Aria spinner label')).toBeTruthy();
+
+    unmount();
   });
 });

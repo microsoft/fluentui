@@ -439,7 +439,7 @@ export interface IChildProps {
     // (undocumented)
     xScale?: any;
     // (undocumented)
-    yScale?: any;
+    yScalePrimary?: any;
     // (undocumented)
     yScaleSecondary?: any;
 }
@@ -679,6 +679,7 @@ export interface IGVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
+    useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
@@ -1008,6 +1009,7 @@ export interface ILineChartPoints {
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public
@@ -1104,7 +1106,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };

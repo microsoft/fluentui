@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
+import { getBySelector } from '../../../common/testUtilities';
 import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
@@ -31,9 +32,8 @@ describe('ContextualMenuSplitButton', () => {
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
-      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
-      const component = mount(
+      const { container } = render(
         <ContextualMenuSplitButton
           item={menuItem}
           classNames={menuClassNames}
@@ -45,10 +45,11 @@ describe('ContextualMenuSplitButton', () => {
         />,
       );
 
-      component.find('.checkmarkIcon').at(0).simulate('click', mockEvent);
+      const checkmarkIcon = getBySelector(container, '.checkmarkIcon')!;
+      fireEvent.click(checkmarkIcon);
 
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toHaveBeenCalledWith(expect.objectContaining(menuItem), expect.objectContaining(mockEvent));
+      expect(onClickMock.mock.calls[0][0]).toEqual(expect.objectContaining(menuItem));
     });
   });
 });

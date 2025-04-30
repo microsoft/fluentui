@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import { Rating } from './Rating';
 import { KeyCodes } from '../../Utilities';
 import { isConformant } from '../../common/isConformant';
-import type { IRatingProps, IRating } from './Rating.types';
+import type { IRating } from './Rating.types';
 
 describe('Rating', () => {
   const ref = React.createRef<IRating>();
@@ -30,58 +30,61 @@ describe('Rating', () => {
 
   it('can change rating', () => {
     const onChange = jest.fn();
-    const rating = mount(<Rating onChange={onChange} componentRef={ref} />);
+    const { container } = render(<Rating onChange={onChange} componentRef={ref} />);
 
     expect(ref.current?.rating).toBe(1);
-    _checkState(rating, [100, 0, 0, 0, 0]);
+    _checkState(container, [100, 0, 0, 0, 0]);
 
-    rating.find('.ms-Rating-button').at(0).simulate('keyDown', { which: KeyCodes.right });
+    // Find the first rating button and trigger right arrow key
+    const ratingButtons = container.querySelector('.ms-Rating-button')!;
+    fireEvent.keyDown(ratingButtons, { which: KeyCodes.right, keyCode: KeyCodes.right });
 
     expect(ref.current?.rating).toBe(2);
-    _checkState(rating, [100, 100, 0, 0, 0]);
+    _checkState(container, [100, 100, 0, 0, 0]);
   });
 
   it('clamps input rating to allowed range', () => {
-    const rating = mount(<Rating defaultRating={10} componentRef={ref} />);
+    const { container } = render(<Rating defaultRating={10} componentRef={ref} />);
 
-    expect(rating.find('.ms-Rating-button').length).toEqual(5);
+    const ratingButtons = container.querySelectorAll('.ms-Rating-button');
+    expect(ratingButtons.length).toEqual(5);
 
     expect(ref.current?.rating).toBe(5);
-    _checkState(rating, [100, 100, 100, 100, 100]);
+    _checkState(container, [100, 100, 100, 100, 100]);
   });
 
   it('displays half star when 2.5 value is passed', () => {
-    const rating = mount(<Rating defaultRating={2.5} componentRef={ref} />);
+    const { container } = render(<Rating defaultRating={2.5} componentRef={ref} />);
 
     expect(ref.current?.rating).toBe(2.5);
-    _checkState(rating, [100, 100, 50, 0, 0]);
+    _checkState(container, [100, 100, 50, 0, 0]);
   });
 
   it('cannot change when disabled', () => {
-    const rating = mount(<Rating disabled />);
-    const ratingButtons = rating.find('.ms-Rating-button');
+    const { container } = render(<Rating disabled />);
+    const ratingButtons = container.querySelectorAll('.ms-Rating-button');
 
     for (let i = 0; i < 5; i++) {
-      expect(ratingButtons.at(i).prop('disabled')).toEqual(true);
+      expect(ratingButtons[i].hasAttribute('disabled')).toBeTruthy();
     }
   });
 
   it('behaves correctly when controlled with allowZeroStars enabled', () => {
-    const rating = mount(<Rating rating={3} allowZeroStars componentRef={ref} onChange={noOp} />);
+    const { container, rerender } = render(<Rating rating={3} allowZeroStars componentRef={ref} onChange={noOp} />);
     expect(ref.current?.rating).toBe(3);
 
-    rating.setProps({ rating: 0 });
+    rerender(<Rating rating={0} allowZeroStars componentRef={ref} onChange={noOp} />);
 
     expect(ref.current?.rating).toBe(0);
-    _checkState(rating, [0, 0, 0, 0, 0]);
+    _checkState(container, [0, 0, 0, 0, 0]);
   });
 });
 
-function _checkState(rating: ReactWrapper<IRatingProps>, states: number[]) {
+function _checkState(container: HTMLElement, states: number[]) {
   for (let i = 0; i < states.length; i++) {
-    const ratingFrontStars = rating.find('.ms-RatingStar-front').hostNodes();
-    const width = ratingFrontStars.at(i).props().style!.width;
+    const ratingFrontStars = container.querySelectorAll('.ms-RatingStar-front');
+    const width = ratingFrontStars[i].getAttribute('style');
 
-    expect(width).toEqual(`${states[i]}%`);
+    expect(width).toContain(`width: ${states[i]}%`);
   }
 }

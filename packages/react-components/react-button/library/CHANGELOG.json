@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:45 GMT",
+      "tag": "@fluentui/react-button_v9.4.6",
+      "version": "9.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.14.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.24.6",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:08 GMT",
       "tag": "@fluentui/react-button_v9.4.5",
       "version": "9.4.5",

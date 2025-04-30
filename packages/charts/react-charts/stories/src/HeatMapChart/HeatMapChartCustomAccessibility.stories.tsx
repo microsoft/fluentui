@@ -96,26 +96,28 @@ export const HeatMapChartCustomAccessibility: React.FunctionComponent<{}> = () =
 
   return (
     <>
-      <label htmlFor="ChangeWidth_Custom">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="ChangeWidth_Custom"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="ChangeHeight_Custom">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Custom"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightSlider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="ChangeWidth_Custom">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="ChangeWidth_Custom"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="ChangeHeight_Custom">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Custom"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightSlider${height}`}
+        />
+      </div>
       <h4>Heat map showing population growth over decades</h4>
       <div style={rootStyle}>
         <HeatMapChart

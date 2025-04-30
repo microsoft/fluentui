@@ -1,11 +1,14 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
 
 import { List } from './List';
 import { isConformant } from '../../common/isConformant';
 import type { IPage, IListProps } from './List.types';
+
+function getFiberProperty(element: Element): string {
+  return Object.keys(element).find(key => key.startsWith('__reactFiber$')) as string;
+}
 
 type IMockItem = { key: number; name: string; value: number };
 
@@ -44,64 +47,64 @@ describe('List', () => {
   });
 
   it('can complete rendering', done => {
-    const wrapper = mount(<List items={mockData(50)} />);
+    const { rerender } = render(<List items={mockData(50)} />);
 
-    wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+    rerender(<List items={mockData(100)} onPagesUpdated={(pages: IPage[]) => done()} />);
   });
 
   describe('by default', () => {
     it('renders 1 page containing 10 rows', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const rows = wrapper.find('.ms-List-cell');
-
+      const rows = container.querySelectorAll('.ms-List-cell');
       expect(rows).toHaveLength(10);
     });
 
     it("sets each row's key equal to the row's index value", done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const firstRow = wrapper.find('.ms-List-cell').first();
+      const firstRow = container.querySelector('.ms-List-cell');
 
-      expect(firstRow.key()).toEqual('0');
+      expect(firstRow?.textContent).toContain('Item 0');
+      expect(firstRow?.getAttribute('data-list-index')).toEqual('0');
+      const __fiberProp = getFiberProperty(firstRow!);
+      // @ts-expect-error - accessing react internals on DOM element
+      expect(firstRow[__fiberProp].key).toEqual('0');
     });
 
     it("sets the root element's role to 'list'", done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const listRoot = wrapper.find(List);
-
-      expect(listRoot.getDOMNode().getAttribute('role')).toEqual('list');
+      const listRoot = container.querySelector('.ms-List');
+      expect(listRoot?.getAttribute('role')).toEqual('list');
     });
 
     it("does not set the root element's role in case of an empty list", done => {
-      const wrapper = mount(<List items={mockData(0)} />);
+      const { container, rerender } = render(<List items={mockData(0)} />);
 
-      wrapper.setProps({ items: mockData(0), onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(0)} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const listRoot = wrapper.find(List);
-
-      expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
+      const listRoot = container.querySelector('.ms-List');
+      expect(listRoot?.getAttribute('role')).toBeNull();
     });
 
     it("sets the row elements' role to 'listitem'", done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const firstRow = wrapper.find('.ms-List-cell').first();
-
-      expect(firstRow.getDOMNode().getAttribute('role')).toEqual('listitem');
+      const firstRow = container.querySelector('.ms-List-cell');
+      expect(firstRow?.getAttribute('role')).toEqual('listitem');
     });
 
     it('renders rows for a sparse array containing items that are primitive values', done => {
-      const wrapper = mount(<List />);
+      const { container, rerender } = render(<List />);
 
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
         <div className="cell" key={index}>
@@ -109,16 +112,17 @@ describe('List', () => {
         </div>
       );
 
-      // eslint-disable-next-line no-sparse-arrays
-      wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(
+        // eslint-disable-next-line no-sparse-arrays
+        <List items={[, , 'foo', 'bar']} onRenderCell={onRenderCell} onPagesUpdated={(pages: IPage[]) => done()} />,
+      );
 
-      const rows = wrapper.find('.cell');
-
+      const rows = container.querySelectorAll('.cell');
       expect(rows).toHaveLength(4);
     });
 
     it('renders rows for a sparse array of items that are undefined', done => {
-      const wrapper = mount(<List />);
+      const { container, rerender } = render(<List />);
 
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
         <div className="cell" key={index}>
@@ -127,10 +131,9 @@ describe('List', () => {
       );
 
       // eslint-disable-next-line no-sparse-arrays
-      wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={[, , , ,]} onRenderCell={onRenderCell} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const rows = wrapper.find('.cell');
-
+      const rows = container.querySelectorAll('.cell');
       expect(rows).toHaveLength(4);
     });
 
@@ -147,81 +150,80 @@ describe('List', () => {
     // This test is causing intermittent PR failures so it's disabled for now.
     xit('invokes optional onRenderCell prop per item render', done => {
       const onRenderCellMock = jest.fn();
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({
-        items: mockData(100),
-        onRenderCell: onRenderCellMock,
-        onPagesUpdated: (pages: IPage[]) => done(),
-      });
+      rerender(
+        <List items={mockData(100)} onRenderCell={onRenderCellMock} onPagesUpdated={(pages: IPage[]) => done()} />,
+      );
 
       expect(onRenderCellMock).toHaveBeenCalledTimes(10);
     });
 
     it('respects optional startIndex prop during row rendering', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(10), startIndex: 5, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(10)} startIndex={5} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const rows = wrapper.find('.ms-List-cell');
-
+      const rows = container.querySelectorAll('.ms-List-cell');
       expect(rows).toHaveLength(5);
     });
 
     it('respects optional renderCount prop as row rendering limit', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), renderCount: 5, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} renderCount={5} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const rows = wrapper.find('.ms-List-cell');
-
+      const rows = container.querySelectorAll('.ms-List-cell');
       expect(rows).toHaveLength(5);
     });
 
     it("sets optional className to List's root", done => {
       const data = mockData(100);
+      const { container, rerender } = render(<List items={data} />);
 
-      const wrapper = mount(<List items={data} />);
+      rerender(<List items={data} className="foo" />);
 
-      wrapper.setProps({ items: data, className: 'foo' });
-
-      const listRoot = wrapper.find(List);
-
-      expect(listRoot.getDOMNode().className).toContain('foo');
-
+      const listRoot = container.querySelector('.ms-List');
+      expect(listRoot?.className).toContain('foo');
       done();
     });
 
     it('renders the return value of optional onRenderCell prop per row', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
       const onRenderCell = (item: any, index: number, isScrolling: boolean) => <div className="foo">{item.name}</div>;
 
-      wrapper.setProps({ items: mockData(100), onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} onRenderCell={onRenderCell} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const rows = wrapper.find('.foo');
-
+      const rows = container.querySelectorAll('.foo');
       expect(rows).toHaveLength(10);
     });
 
     it('sets the return value of optional getKey prop as React key per row', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
       const getKey = (item: any, index: number) => `foo-${item.key}`;
 
-      wrapper.setProps({ items: mockData(100), getKey, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(<List items={mockData(100)} getKey={getKey} onPagesUpdated={(pages: IPage[]) => done()} />);
 
-      const firstRow = wrapper.find('.ms-List-cell').first();
-
-      expect(firstRow.key()).toEqual('foo-0');
+      const firstRow = container.querySelector('.ms-List-cell');
+      expect(firstRow?.textContent).toContain('Item 0');
+      const __fiberProp = getFiberProperty(firstRow!);
+      // @ts-expect-error - accessing react internals on DOM element
+      expect(firstRow[__fiberProp].key).toEqual('foo-0');
     });
 
     it('renders all rows if optional onShouldVirtualize prop returns false', done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const { container, rerender } = render(<List items={mockData(100)} />);
       const onShouldVirtualize = (props: IListProps) => false;
 
-      wrapper.setProps({ items: mockData(100), onShouldVirtualize, onPagesUpdated: (pages: IPage[]) => done() });
+      rerender(
+        <List
+          items={mockData(100)}
+          onShouldVirtualize={onShouldVirtualize}
+          onPagesUpdated={(pages: IPage[]) => done()}
+        />,
+      );
 
-      const rows = wrapper.find('.ms-List-cell');
-
+      const rows = container.querySelectorAll('.ms-List-cell');
       expect(rows).toHaveLength(100);
     });
   });

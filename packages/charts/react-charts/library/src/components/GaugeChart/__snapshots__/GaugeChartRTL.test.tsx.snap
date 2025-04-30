@@ -855,7 +855,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="0_0 - 33"
-                  style="border-left: 4px solid #107c10;"
+                  style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
@@ -881,7 +881,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="1_33 - 67"
-                  style="border-left: 4px solid #f7630c;"
+                  style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
@@ -907,7 +907,7 @@ exports[`Gauge chart interactions Should hide callout on mouse leave 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="2_67 - 100"
-                  style="border-left: 4px solid #c50f1f;"
+                  style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div
@@ -1505,7 +1505,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="0_0 - 33"
-                  style="border-left: 4px solid #107c10;"
+                  style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
@@ -1531,7 +1531,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="1_33 - 67"
-                  style="border-left: 4px solid #f7630c;"
+                  style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
@@ -1557,7 +1557,7 @@ exports[`Gauge chart interactions Should show callout on focus 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="2_67 - 100"
-                  style="border-left: 4px solid #c50f1f;"
+                  style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div
@@ -1793,7 +1793,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="0_0 - 33"
-                  style="border-left: 4px solid #107c10;"
+                  style="border-inline-start: 4px solid #107c10;"
                 >
                   <div>
                     <div
@@ -1819,7 +1819,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="1_33 - 67"
-                  style="border-left: 4px solid #f7630c;"
+                  style="border-inline-start: 4px solid #f7630c;"
                 >
                   <div>
                     <div
@@ -1845,7 +1845,7 @@ exports[`Gauge chart interactions Should show callout on mouse over 1`] = `
                 <div
                   class="fui-gc__calloutBlockContainer"
                   id="2_67 - 100"
-                  style="border-left: 4px solid #c50f1f;"
+                  style="border-inline-start: 4px solid #c50f1f;"
                 >
                   <div>
                     <div

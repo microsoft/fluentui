@@ -22,6 +22,7 @@ describe('ContextualMenu in React 18', () => {
     expect(queryAllByRole('menu').length).toBe(0);
 
     const menuTrigger = getByRole('button');
+
     userEvent.click(menuTrigger);
 
     expect(queryAllByRole('menu').length).toBe(1);
