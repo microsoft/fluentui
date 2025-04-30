@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 22 Apr 2025 04:07:05 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Apr 2025 04:06:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.96](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.96)
+
+Wed, 30 Apr 2025 04:06:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.95..@fluentui/web-components_v3.0.0-beta.96)
+
+### Changes
+
+- feat: add endpoint for f2 design token exports ([PR #34344](https://github.com/microsoft/fluentui/pull/34344) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.95](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.95)
+
+Thu, 24 Apr 2025 04:06:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.94..@fluentui/web-components_v3.0.0-beta.95)
+
+### Changes
+
+- support callback for expand change ([PR #34234](https://github.com/microsoft/fluentui/pull/34234) by HangWhy@outlook.com)
 
 ## [3.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.94)
 

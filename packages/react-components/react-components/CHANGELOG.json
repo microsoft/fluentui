@@ -2,6 +2,59 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 24 Apr 2025 09:59:43 GMT",
+      "tag": "@fluentui/react-components_v9.63.0",
+      "version": "9.63.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "c58269abf0e5b52715ac617fa80828ae6b26a80b",
+            "comment": "feat(chart-utilities): Add support for scatter polar chart"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "8939f82c4e60bf4f2fb0e1d65abb2780a4f0bd8a",
+            "comment": "fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "956b6ff07a4a12bf4281e7efd4cc55ce412c9e64",
+            "comment": "High contrast bug fixes"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "dad85ff518c246959499dde0fb59c80a9876ee72",
+            "comment": "fix:  use useLayoutEffect() for Tabster creation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "terynkum@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "fafc2559121e0d89939ba0605b5c8613a52223ee",
+            "comment": "feat: Added InfoButton component to react-components package export"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "40465f3e0a8412cd1a7a65ef63ed423ea13656ac",
+            "comment": "chore: Re-exporting CellRenderFunction from @fluentui/react-components."
+          },
+          {
+            "author": "terynkum@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "fafc2559121e0d89939ba0605b5c8613a52223ee",
+            "comment": "Feat: Exported InfoButton types and component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:02 GMT",
       "tag": "@fluentui/react-components_v9.62.0",
       "version": "9.62.0",

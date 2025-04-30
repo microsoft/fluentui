@@ -29,7 +29,7 @@ export const GaugeChartSingleSegment = () => {
   return (
     <>
       <div style={{ display: 'flex', gap: '20px' }}>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="width-slider">Width:</label>
           <input
             type="range"
@@ -42,7 +42,7 @@ export const GaugeChartSingleSegment = () => {
           />
           <span>{width}</span>
         </div>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="height-slider">Height:</label>
           <input
             type="range"
@@ -55,7 +55,7 @@ export const GaugeChartSingleSegment = () => {
           />
           <span>{height}</span>
         </div>
-        <div>
+        <div style={{ display: 'flex' }}>
           <label htmlFor="value-slider">Current value:</label>
           <input
             type="range"
