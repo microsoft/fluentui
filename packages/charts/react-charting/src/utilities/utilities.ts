@@ -497,21 +497,39 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     containerHeight,
     margins,
     tickPadding = 12,
-    maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
   } = yAxisParams;
 
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const yRange = yMinMaxValues.endValue - yMinMaxValues.startValue;
+  const maxDiff = yRange * 0.2;
+  const finalYmax = Math.max(yMinMaxValues.endValue + maxDiff, yMaxValue);
+  const finalYmin = Math.max(yMinMaxValues.startValue - maxDiff, Math.min(yMinValue || 0, 0));
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
+  // Custom tick formatting function
+  const customTickFormat = (value: number, maxValue: number) => {
+    // Calculate the number of digits in the maximum value
+    const numDigits = Math.ceil(Math.log10(maxValue));
+
+    // Determine the precision (x) based on the number of digits
+    let x: number;
+    if (numDigits >= 5) {
+      x = 1; // Use 3 significant digits for large numbers
+    } else if (numDigits >= 3) {
+      x = 3; // Use 2 significant digits for medium numbers
+    } else {
+      x = 3; // Use 1 significant digit for small numbers
+    }
+
+    // Apply the dynamically determined x in the format
+    return d3Format(`.${x}~s`)(value);
+  };
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(customTickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }

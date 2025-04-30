@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
@@ -89,6 +89,7 @@ export class HorizontalBarChartWithAxisBase
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
+  private _maxYDiff: number;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -125,6 +126,7 @@ export class HorizontalBarChartWithAxisBase
         : YAxisType.StringAxis;
     this._cartesianChartRef = React.createRef();
     this._legendsRef = React.createRef();
+    this._maxYDiff = 0;
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -168,9 +170,12 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+    const yAxisTickCount =
+      this.props.yAxisTickCount || Math.ceil(this._yAxisLabels.length / 2) + (this._maxYDiff >= 1 ? 2 : 0);
     return (
       <CartesianChart
         {...this.props}
+        yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
@@ -486,13 +491,17 @@ export class HorizontalBarChartWithAxisBase
     const xMin = this._longestBarNegativeTotalValue;
     const xDomain = [Math.min(this.X_ORIGIN, xMin), Math.max(this.X_ORIGIN, xMax)];
     if (isNumericScale) {
-      const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      let yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      let yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      this._maxYDiff = Math.abs(yMax - yMin) * 0.2;
+      yMax = yMax + this._maxYDiff;
+      yMin = yMin - this._maxYDiff;
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
+        .domain([Math.max(0, yMin), yMax])
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
