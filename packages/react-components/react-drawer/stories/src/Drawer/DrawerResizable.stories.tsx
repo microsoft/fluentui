@@ -19,6 +19,7 @@ import {
   DialogBody,
   DialogActions,
   DialogContent,
+  shorthands,
 } from '@fluentui/react-components';
 import { Dismiss20Regular } from '@fluentui/react-icons';
 
@@ -93,6 +94,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  errorMessage: {
+    color: tokens.colorPaletteRedForeground1,
+  },
+  invalidInput: {
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+  },
 });
 
 export const Resizable = () => {
@@ -102,6 +109,7 @@ export const Resizable = () => {
   const sidebarRef = React.useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState(320);
+  const [showMessage, setShowMessage] = React.useState(false);
   const inputId = useId('input');
 
   const startResizing = React.useCallback(() => setIsResizing(true), []);
@@ -177,15 +185,32 @@ export const Resizable = () => {
                 <DialogContent>
                   <div className={styles.dialogContent}>
                     <Label htmlFor={inputId}>Enter desired drawer width pixels:</Label>
-                    <Input id={inputId} onChange={onResizeInputChange} defaultValue={resizeInput} type="number" />
+                    <Input
+                      id={inputId}
+                      onChange={onResizeInputChange}
+                      defaultValue={resizeInput}
+                      type="number"
+                      className={showMessage ? styles.invalidInput : ''}
+                    />
+                    {showMessage ? (
+                      <Label className={styles.errorMessage}>
+                        Recommended minimum width of the drawer should be greater than or equal to `240px`.
+                      </Label>
+                    ) : null}
                   </div>
                 </DialogContent>
                 <DialogActions>
                   <DialogTrigger disableButtonEnhancement>
                     <Button
                       appearance="primary"
-                      onClick={() => {
-                        setSidebarWidth(Number(resizeInput));
+                      onClick={e => {
+                        if (resizeInput && parseInt(resizeInput) >= 240) {
+                          setSidebarWidth(Number(resizeInput));
+                          setShowMessage(false);
+                        } else {
+                          setShowMessage(true);
+                          e.preventDefault();
+                        }
                       }}
                     >
                       Resize
