@@ -244,11 +244,11 @@ describe('Autofill', () => {
     expect(onInputChange.mock.calls).toEqual([
       ['hel', false],
       ['help', true],
-      ['🆘', true],
-      ['🆘', false],
+      ['🆘', true], // from input event
+      ['🆘', false], // from timeout on compositionend event
       ['🆘m', true],
-      ['🆘Ⓜ', false],
-      ['🆘Ⓜ', false],
+      ['🆘Ⓜ', false], // from input event
+      ['🆘Ⓜ', false], // from timeout on compositionend event
     ]);
 
     expect(autofillRef.current!.value).toBe('🆘Ⓜ');

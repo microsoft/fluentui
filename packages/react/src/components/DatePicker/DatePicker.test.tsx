@@ -7,7 +7,7 @@ import { DatePickerBase } from './DatePicker.base';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { resetIds, setWarningCallback } from '@fluentui/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { Callout } from '../../Callout';
 import { safeCreate } from '@fluentui/test-utilities';
 import { TextField } from '../../TextField';
@@ -19,10 +19,6 @@ import { IDatePickerStrings } from './DatePicker.types';
 
 describe('DatePicker', () => {
   beforeEach(() => {
-    setWarningCallback(() => {
-      /* no-op */
-    });
-
     resetIds();
     jest.useFakeTimers();
   });

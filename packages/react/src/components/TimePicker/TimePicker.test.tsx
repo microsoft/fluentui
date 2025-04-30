@@ -4,6 +4,7 @@ import * as React from 'react';
 import { render, cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setWarningCallback, resetIds } from '@fluentui/utilities';
+import { create } from '@fluentui/test-utilities';
 import { TimePicker } from './TimePicker';
 import type { ITimeRange, TimePickerValidationResultData } from './TimePicker.types';
 import type { IComboBox } from '../ComboBox/ComboBox.types';
@@ -29,11 +30,15 @@ describe('TimePicker', () => {
   });
 
   it('renders correctly', () => {
-    const timeRange: ITimeRange = { start: 0, end: 5 };
-    const { asFragment } = render(
+    const timeRange: ITimeRange = {
+      start: 0,
+      end: 5,
+    };
+    const component = create(
       <TimePicker label="I am a TimePicker" timeRange={timeRange} placeholder="Select a time" />,
     );
-    expect(asFragment()).toMatchSnapshot();
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('generates the formatted option', () => {
@@ -254,14 +259,14 @@ describe('TimePicker', () => {
   });
 
   describe('validates entered text when', () => {
-    const simulateValidation = async (props: Parameters<typeof render>[0]) => {
-      render(props);
+    const renderAndValidate = async (component: React.ReactElement) => {
+      render(component);
       const input = screen.getByRole('combobox');
       return input;
     };
 
     it('invalid hour for 24-hour no-seconds format', async () => {
-      const input = await simulateValidation(
+      const input = await renderAndValidate(
         <TimePicker id="test" allowFreeform useHour12={false} showSeconds={false} />,
       );
       userEvent.type(input, '95:22{enter}');
@@ -270,35 +275,35 @@ describe('TimePicker', () => {
     });
 
     it('invalid hour for 24-hour with-seconds format', async () => {
-      const input = await simulateValidation(<TimePicker id="test" allowFreeform useHour12={false} showSeconds />);
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12={false} showSeconds />);
       userEvent.type(input, '24:22:42{enter}');
       const alert = await screen.findByRole('alert');
       expect(alert.textContent).toMatch(/24-hour format: hh:mm:ss/);
     });
 
     it('invalid hour for 12-hour no-seconds format', async () => {
-      const input = await simulateValidation(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
       userEvent.type(input, '13:26 PM{enter}');
       const alert = await screen.findByRole('alert');
       expect(alert.textContent).toMatch(/12-hour format: hh:mm AP/);
     });
 
     it('incomplete time for 12-hour no-seconds format', async () => {
-      const input = await simulateValidation(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds={false} />);
       userEvent.type(input, '3:26{enter}');
       const alert = await screen.findByRole('alert');
       expect(alert.textContent).toMatch(/12-hour format: hh:mm AP/);
     });
 
     it('invalid hour for 12-hour with-seconds format', async () => {
-      const input = await simulateValidation(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
       userEvent.type(input, '15:26:37 AM{enter}');
       const alert = await screen.findByRole('alert');
       expect(alert.textContent).toMatch(/12-hour format: hh:mm:ss AP/);
     });
 
     it('incomplete time for 12-hour with-seconds format', async () => {
-      const input = await simulateValidation(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
+      const input = await renderAndValidate(<TimePicker id="test" allowFreeform useHour12 showSeconds />);
       userEvent.type(input, '5:26:37{enter}');
       const alert = await screen.findByRole('alert');
       expect(alert.textContent).toMatch(/12-hour format: hh:mm:ss AP/);
