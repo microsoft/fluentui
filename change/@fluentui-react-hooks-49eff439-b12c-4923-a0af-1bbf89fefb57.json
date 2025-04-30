@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate internal testing utils away from enzyme",
-  "packageName": "@fluentui/react-hooks",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
