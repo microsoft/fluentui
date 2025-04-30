@@ -42,6 +42,8 @@ import {
   createStringYAxisForHorizontalBarChartWithAxis,
   getNextGradient,
   areArraysEqual,
+  computeLongestBars,
+  groupChartDataByYValue,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -84,6 +86,9 @@ export class HorizontalBarChartWithAxisBase
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private _longestBarPositiveTotalValue: number;
+  private _longestBarNegativeTotalValue: number;
+  private readonly X_ORIGIN: number = 0;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -220,7 +225,14 @@ export class HorizontalBarChartWithAxisBase
   ) => {
     let domainNRangeValue: IDomainNRange;
     if (xAxisType === XAxisTypes.NumericAxis) {
-      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(
+        points,
+        margins,
+        width,
+        isRTL,
+        shiftX,
+        this.X_ORIGIN,
+      );
     } else {
       domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
     }
@@ -292,10 +304,39 @@ export class HorizontalBarChartWithAxisBase
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) => {
-    return (this._bars =
+    const stackedChartData = groupChartDataByYValue(this._points);
+    const longestBars = computeLongestBars(stackedChartData, this.X_ORIGIN);
+    this._longestBarPositiveTotalValue = longestBars.longestPositiveBar;
+    this._longestBarNegativeTotalValue = longestBars.longestNegativeBar;
+    const { xBarScale, yBarScale } =
       this._yAxisType === YAxisType.NumericAxis
-        ? this._createNumericBars(containerHeight, containerWidth, xElement!, yElement!)
-        : this._createStringBars(containerHeight, containerWidth, xElement!, yElement!));
+        ? this._getScales(containerHeight, containerWidth, true)
+        : this._getScales(containerHeight, containerWidth, false);
+    const allBars = stackedChartData
+      .map(singleBarData =>
+        this._yAxisType === YAxisType.NumericAxis
+          ? this._createNumericBars(
+              containerHeight,
+              containerWidth,
+              xElement!,
+              yElement!,
+              singleBarData,
+              xBarScale,
+              yBarScale,
+            )
+          : this._createStringBars(
+              containerHeight,
+              containerWidth,
+              xElement!,
+              yElement!,
+              singleBarData,
+              xBarScale,
+              yBarScale,
+            ),
+      )
+      .flat();
+
+    return (this._bars = allBars);
   };
 
   private _createColors(): D3ScaleLinear<string, string> | ColorScale {
@@ -441,11 +482,13 @@ export class HorizontalBarChartWithAxisBase
     isNumericScale: boolean,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
+    const xMax = this._longestBarPositiveTotalValue;
+    const xMin = this._longestBarNegativeTotalValue;
+    const xDomain = [Math.min(this.X_ORIGIN, xMin), Math.max(this.X_ORIGIN, xMax)];
     if (isNumericScale) {
-      const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
@@ -453,7 +496,6 @@ export class HorizontalBarChartWithAxisBase
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
-      const xMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
       // please note these padding default values must be consistent in here
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
@@ -463,7 +505,7 @@ export class HorizontalBarChartWithAxisBase
         .padding(this.props.yAxisPadding || 0);
 
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
@@ -475,16 +517,29 @@ export class HorizontalBarChartWithAxisBase
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yBarScale: any,
   ): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
-    const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...this._points];
+    const sortedBars: IHorizontalBarChartWithAxisDataPoint[] = [...singleBarData];
     sortedBars.sort((a, b) => {
       const aValue = typeof a.y === 'number' ? a.y : parseFloat(a.y);
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
 
+    let prevWidthPositive = 0;
+    let prevWidthNegative = 0;
+    let prevPoint = 0;
+    const totalPositiveBars = singleBarData.filter(
+      (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= this.X_ORIGIN,
+    ).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -495,6 +550,18 @@ export class HorizontalBarChartWithAxisBase
         legendColor: this.state.color,
         shouldHighlight,
       });
+      if (point.x >= this.X_ORIGIN) {
+        ++currPositiveCounter;
+      }
+      if (point.x < this.X_ORIGIN) {
+        ++currNegativeCounter;
+      }
+      const barStartX = this._isRtl
+        ? containerWidth -
+          (this.margins.right! +
+            Math.max(xBarScale(point.x + this.X_ORIGIN), xBarScale(this.X_ORIGIN)) -
+            this.margins.left!)
+        : Math.min(xBarScale(point.x + this.X_ORIGIN), xBarScale(this.X_ORIGIN));
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -528,7 +595,28 @@ export class HorizontalBarChartWithAxisBase
       }
 
       const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
-
+      const prevBarWidth = Math.abs(xBarScale(prevPoint + this.X_ORIGIN) - xBarScale(this.X_ORIGIN));
+      prevPoint > this.X_ORIGIN ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
+      const currentWidth = Math.abs(xBarScale(point.x + this.X_ORIGIN) - xBarScale(this.X_ORIGIN));
+      const gapWidthLTR =
+        currentWidth > 2 &&
+        ((point.x > this.X_ORIGIN && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < this.X_ORIGIN && (totalPositiveBars !== 0 || currNegativeCounter > 1)))
+          ? 2
+          : 0;
+      const gapWidthRTL =
+        currentWidth > 2 &&
+        ((point.x > this.X_ORIGIN && (totalNegativeBars !== 0 || currPositiveCounter > 1)) ||
+          (point.x < this.X_ORIGIN && currNegativeCounter !== totalNegativeBars))
+          ? 2
+          : 0;
+      let xStart = this.X_ORIGIN;
+      if (this._isRtl) {
+        xStart = point.x > this.X_ORIGIN ? barStartX - prevWidthPositive : barStartX + prevWidthNegative;
+      } else {
+        xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
+      }
+      prevPoint = point.x;
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -541,15 +629,11 @@ export class HorizontalBarChartWithAxisBase
           )}
           <rect
             key={point.y}
-            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            x={xStart}
             className={this._classNames.opacityChangeOnHover}
             y={yBarScale(point.y) - this._barHeight / 2}
             data-is-focusable={shouldHighlight}
-            width={
-              this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left!
-            }
+            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
             height={this._barHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
@@ -610,10 +694,23 @@ export class HorizontalBarChartWithAxisBase
     containerWidth: number,
     xElement: SVGElement,
     yElement: SVGElement,
+    singleBarData: IHorizontalBarChartWithAxisDataPoint[],
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xBarScale: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yBarScale: any,
   ): JSX.Element[] {
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
     const { useSingleColor = false } = this.props;
-    const bars = this._points.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
+    let prevWidthPositive = 0;
+    let prevWidthNegative = 0;
+    let prevPoint = 0;
+    const totalPositiveBars = singleBarData.filter(
+      (point: IHorizontalBarChartWithAxisDataPoint) => point.x >= this.X_ORIGIN,
+    ).length;
+    const totalNegativeBars = singleBarData.length - totalPositiveBars;
+    let currPositiveCounter = 0;
+    let currNegativeCounter = 0;
+    const bars = singleBarData.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this._isLegendHighlighted(point.legend);
@@ -623,6 +720,18 @@ export class HorizontalBarChartWithAxisBase
         legendColor: this.state.color,
         shouldHighlight,
       });
+      if (point.x >= this.X_ORIGIN) {
+        ++currPositiveCounter;
+      }
+      if (point.x < this.X_ORIGIN) {
+        ++currNegativeCounter;
+      }
+      const barStartX = this._isRtl
+        ? containerWidth -
+          (this.margins.right! +
+            Math.max(xBarScale(point.x + this.X_ORIGIN), xBarScale(this.X_ORIGIN)) -
+            this.margins.left!)
+        : Math.min(xBarScale(point.x + this.X_ORIGIN), xBarScale(this.X_ORIGIN));
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -653,7 +762,28 @@ export class HorizontalBarChartWithAxisBase
       }
 
       const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
-
+      const prevBarWidth = Math.abs(xBarScale(prevPoint + this.X_ORIGIN) - xBarScale(this.X_ORIGIN));
+      prevPoint > 0 ? (prevWidthPositive += prevBarWidth) : (prevWidthNegative += prevBarWidth);
+      const currentWidth = Math.abs(xBarScale(point.x + this.X_ORIGIN) - xBarScale(this.X_ORIGIN));
+      const gapWidthLTR =
+        currentWidth > 2 &&
+        ((point.x > this.X_ORIGIN && currPositiveCounter !== totalPositiveBars) ||
+          (point.x < this.X_ORIGIN && (totalPositiveBars !== 0 || currNegativeCounter > 1)))
+          ? 2
+          : 0;
+      const gapWidthRTL =
+        currentWidth > 2 &&
+        ((point.x > this.X_ORIGIN && (totalNegativeBars !== 0 || currPositiveCounter > 1)) ||
+          (point.x < this.X_ORIGIN && currNegativeCounter !== totalNegativeBars))
+          ? 2
+          : 0;
+      prevPoint = point.x;
+      let xStart = this.X_ORIGIN;
+      if (this._isRtl) {
+        xStart = point.x > this.X_ORIGIN ? barStartX - prevWidthPositive : barStartX + prevWidthNegative;
+      } else {
+        xStart = point.x > this.X_ORIGIN ? barStartX + prevWidthPositive : barStartX - prevWidthNegative;
+      }
       return (
         <React.Fragment key={`${index}_${point.x}`}>
           {this.props.enableGradient && (
@@ -668,14 +798,10 @@ export class HorizontalBarChartWithAxisBase
             transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
             key={point.x}
             className={this._classNames.opacityChangeOnHover}
-            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            x={xStart}
             y={yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
-            width={
-              this._isRtl
-                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-                : Math.max(xBarScale(point.x), 0) - this.margins.left!
-            }
+            width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
             height={this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
@@ -751,6 +877,7 @@ export class HorizontalBarChartWithAxisBase
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
+    const mapLegendToColor: Record<string, string> = {};
 
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
       let color: string = useSingleColor
@@ -765,14 +892,16 @@ export class HorizontalBarChartWithAxisBase
           color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
         }
       }
-
+      mapLegendToColor[point.legend!] = color;
+    });
+    Object.entries(mapLegendToColor).forEach(([legendTitle, color]) => {
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(legendTitle);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
           this._onLegendLeave(isLegendSelected);

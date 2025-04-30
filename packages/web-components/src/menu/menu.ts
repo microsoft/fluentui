@@ -6,6 +6,9 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu component that provides a customizable menu element.
+ *
+ * @tag fluent-menu
+ *
  * @class Menu
  * @extends FASTElement
  *

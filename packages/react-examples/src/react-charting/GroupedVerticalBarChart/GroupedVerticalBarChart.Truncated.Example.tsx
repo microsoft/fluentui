@@ -218,6 +218,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             data={data}
             height={this.state.height}
             width={this.state.width}
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             showYAxisGridLines
             showXAxisLablesTooltip
             noOfCharsToTruncate={6}

@@ -11,9 +11,8 @@
   "dependencies": {
     "@griffel/eslint-plugin": "^2.0.0",
     "@rnx-kit/eslint-plugin": "^0.8.4",
-    "typescript-eslint": "8.19.1",
+    "typescript-eslint": "^8.19.1",
     "@typescript-eslint/utils": "^8.19.1",
-    "@typescript-eslint/rule-tester": "8.19.1",
     "@typescript-eslint/type-utils": "^8.19.1",
     "eslint-plugin-compat": "^6.0.2",
     "eslint-config-airbnb": "^18.2.1",

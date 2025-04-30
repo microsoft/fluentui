@@ -45,16 +45,28 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal', memorizeCurrent: true });
 
     React.useEffect(() => {
-      let defaultSelectedLegends = {};
+      const initialSelectedLegends = props.selectedLegends ?? props.defaultSelectedLegends;
+      const initialSelectedLegend = props.selectedLegend ?? props.defaultSelectedLegend;
+      let selectedLegendsState = {};
       if (props.canSelectMultipleLegends) {
-        defaultSelectedLegends =
-          props.defaultSelectedLegends?.reduce((combinedDict, key) => ({ [key]: true, ...combinedDict }), {}) || {};
-      } else if (props.defaultSelectedLegend) {
-        defaultSelectedLegends = { [props.defaultSelectedLegend]: true };
+        selectedLegendsState =
+          (initialSelectedLegends ?? [])?.reduce(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (combineDict: any, key: any) => ({ [key]: true, ...combineDict }),
+            {},
+          ) || {};
+        setSelectedLegends(selectedLegendsState);
+      } else if (initialSelectedLegend !== undefined) {
+        selectedLegendsState = { [initialSelectedLegend]: true };
+        setSelectedLegends(selectedLegendsState);
       }
-
-      setSelectedLegends(defaultSelectedLegends);
-    }, [props.canSelectMultipleLegends, props.defaultSelectedLegend, props.defaultSelectedLegends]);
+    }, [
+      props.canSelectMultipleLegends,
+      props.defaultSelectedLegend,
+      props.defaultSelectedLegends,
+      props.selectedLegend,
+      props.selectedLegends,
+    ]);
 
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
@@ -151,11 +163,19 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
     }
 
     /**
-     * This function will get called when there is an ability to
-     * select  multiple legends
-     * @param legend ILegend
+     * Determine whether the component is in "controlled" mode for selections, where the selected legend(s) are
+     * determined entirely by props passed in from the parent component.
      */
-    function _canSelectMultipleLegends(legend: Legend): { [key: string]: boolean } {
+    function _isInControlledMode(): boolean {
+      return props.canSelectMultipleLegends ? props.selectedLegends !== undefined : props.selectedLegend !== undefined;
+    }
+
+    /**
+     * Get the new selected legends based on the legend that was clicked when multi-select is enabled.
+     * @param legend The legend that was clicked
+     * @returns An object with the new selected legend(s) state data.
+     */
+    function _getNewSelectedLegendsForMultiselect(legend: Legend): { [key: string]: boolean } {
       let legendsSelected = { ...selectedLegends };
       if (legendsSelected[legend.title]) {
         // Delete entry for the deselected legend to make
@@ -168,37 +188,28 @@ export const Legends: React.FunctionComponent<LegendsProps> = React.forwardRef<H
           legendsSelected = {};
         }
       }
-      setSelectedLegends(legendsSelected);
       return legendsSelected;
     }
 
     /**
-     * This function will get called when there is
-     * ability to select only single legend
-     * @param legend ILegend
+     * Get the new selected legends based on the legend that was clicked when single-select is enabled.
+     * @param legend The legend that was clicked
+     * @returns An object with the new selected legend state data.
      */
-
-    function _canSelectOnlySingleLegend(legend: Legend): boolean {
-      if (selectedLegends[legend.title]) {
-        setSelectedLegends({});
-        return false;
-      } else {
-        setSelectedLegends({ [legend.title]: true });
-        return true;
-      }
+    function _getNewSelectedLegendsForSingleSelect(legend: Legend): { [key: string]: boolean } {
+      return selectedLegends[legend.title] ? {} : { [legend.title]: true };
     }
 
     function _onClick(legend: Legend, event: React.MouseEvent<HTMLButtonElement>): void {
       const { canSelectMultipleLegends = false } = props;
-      let selectedLegends: string[] = [];
-      if (canSelectMultipleLegends) {
-        const nextSelectedLegends = _canSelectMultipleLegends(legend);
-        selectedLegends = Object.keys(nextSelectedLegends);
-      } else {
-        const isSelected = _canSelectOnlySingleLegend(legend);
-        selectedLegends = isSelected ? [legend.title] : [];
+      const nextSelectedLegends = canSelectMultipleLegends
+        ? _getNewSelectedLegendsForMultiselect(legend)
+        : _getNewSelectedLegendsForSingleSelect(legend);
+
+      if (!_isInControlledMode()) {
+        setSelectedLegends(nextSelectedLegends);
       }
-      props.onChange?.(selectedLegends, event, legend);
+      props.onChange?.(Object.keys(nextSelectedLegends), event, legend);
       legend.action?.();
     }
 

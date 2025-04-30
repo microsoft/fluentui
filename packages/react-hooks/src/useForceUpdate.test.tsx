@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { useForceUpdate } from './useForceUpdate';
 import { validateHookValueNotChanged } from './testUtilities';
 
@@ -14,7 +14,7 @@ describe('useForceUpdate', () => {
       return <>Test Component</>;
     };
 
-    mount(<TestComponent />);
+    render(<TestComponent />);
     expect(renderCount).toBe(2);
   });
 

@@ -111,6 +111,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
       <CompactPeoplePicker
         /* eslint-disable react/jsx-no-bind */
         onResolveSuggestions={onFilterChangedWithLimit}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         onEmptyInputFocus={returnMostRecentlyUsedWithLimit}
         getTextFromItem={getTextFromItem}
         className={'ms-PeoplePicker'}

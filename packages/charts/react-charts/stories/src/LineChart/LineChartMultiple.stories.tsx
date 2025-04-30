@@ -16,7 +16,8 @@ export const LineChartMultiple = (props: LineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = React.useCallback(ev => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _onShapeChange = React.useCallback((ev: any) => {
     setAllowMultipleShapes(ev.currentTarget.checked);
   }, []);
 
@@ -256,31 +257,35 @@ export const LineChartMultiple = (props: LineChartProps) => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Multiple">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Multiple"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Multiple">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Multiple"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <Switch
-        label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
-        onChange={_onShapeChange}
-        checked={allowMultipleShapes}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Multiple">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Multiple"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Multiple">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Multiple"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <Switch
+          label={
+            allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'
+          }
+          onChange={_onShapeChange}
+          checked={allowMultipleShapes}
+        />
+      </div>
       <div style={rootStyle}>
         <LineChart
           data={data}

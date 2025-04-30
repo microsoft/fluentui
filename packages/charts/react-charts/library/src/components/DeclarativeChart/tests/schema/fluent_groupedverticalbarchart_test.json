@@ -1,0 +1,95 @@
+{
+  "visualizer": "plotly",
+  "data": [
+    {
+      "uid": "2f399e",
+      "type": "bar",
+      "x": ["Jan", "Feb", "Mar", "Apr", "May"],
+      "y": [2000, 2100, 2200, 2300, 2400],
+      "name": "Category A",
+      "zmax": 1,
+      "zmin": 0,
+      "xbins": {
+        "end": 2499.5,
+        "size": 500,
+        "start": -500.5
+      },
+      "ybins": {
+        "end": 23.5,
+        "size": 1,
+        "start": -1.5
+      },
+      "opacity": 1,
+      "visible": true,
+      "autobinx": true,
+      "autobiny": true,
+      "contours": {
+        "end": 0.901,
+        "size": 0.1,
+        "start": 0.1,
+        "coloring": "fill",
+        "showlines": true
+      },
+      "showlegend": true,
+      "orientation": "v"
+    },
+    {
+      "uid": "2f399e",
+      "type": "bar",
+      "x": ["Jan", "Feb", "Mar", "Apr", "May"],
+      "y": [3000, 3100, 3200, 3300, 3400],
+      "name": "Category B",
+      "zmax": 1,
+      "zmin": 0,
+      "xbins": {
+        "end": 2499.5,
+        "size": 500,
+        "start": -500.5
+      },
+      "ybins": {
+        "end": 23.5,
+        "size": 1,
+        "start": -1.5
+      },
+      "opacity": 1,
+      "visible": true,
+      "autobinx": true,
+      "autobiny": true,
+      "contours": {
+        "end": 0.901,
+        "size": 0.1,
+        "start": 0.1,
+        "coloring": "fill",
+        "showlines": true
+      },
+      "showlegend": true,
+      "orientation": "v"
+    }
+  ],
+  "layout": {
+    "title": "PHP Framework Popularity at Work - SitePoint, 2015",
+    "width": 850,
+    "xaxis": {
+      "type": "linear",
+      "range": [-198.2562959184288, 1830.6731869091736],
+      "title": "Votes",
+      "autorange": false
+    },
+    "yaxis": {
+      "type": "category",
+      "range": [-3.301575351429676, 23.42061223132087],
+      "title": "Framework",
+      "autorange": false
+    },
+    "height": 742,
+    "margin": {
+      "l": 210,
+      "pad": 4
+    },
+    "barmode": "group",
+    "barnorm": "",
+    "autosize": true,
+    "showlegend": false
+  },
+  "frames": []
+}

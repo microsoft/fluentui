@@ -20,16 +20,18 @@ export const ActiveOptionChange = (props: Partial<ComboboxProps>) => {
 
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
-  const onActiveOptionChange = React.useCallback(
+  const onActiveOptionChange = React.useCallback<NonNullable<ComboboxProps['onActiveOptionChange']>>(
     (_, data) => {
-      setActiveOptionText(data?.nextOption?.text);
+      if (data?.nextOption?.text) {
+        setActiveOptionText(data?.nextOption?.text);
+      }
     },
     [setActiveOptionText],
   );
 
   const onMouseEnter = React.useCallback(
-    e => {
-      setActiveOptionText(`${e.target.textContent} (Mouse enter)`);
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      setActiveOptionText(`${e.currentTarget.textContent} (Mouse enter)`);
     },
     [setActiveOptionText],
   );

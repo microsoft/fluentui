@@ -85,8 +85,8 @@ export const Default = () => {
     }
   };
 
-  const onAlphaChange: SpinButtonProps['onChange'] = React.useCallback(
-    (_ev, data) => {
+  const onAlphaChange = React.useCallback(
+    (_ev: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => {
       const value = data.value ?? parseFloat(data.displayValue ?? '');
 
       if (Number.isNaN(value) || value < 0 || value > 1) {

@@ -87,6 +87,55 @@ export const VerticalStackedBarDefault = () => {
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '31%',
     },
+    {
+      legend: 'Metadata4',
+      data: 10,
+      color: getColorFromToken(DataVizPalette.color4),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '1%',
+    },
+    {
+      legend: 'Metadata5',
+      data: 23,
+      color: getColorFromToken(DataVizPalette.color5),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '2%',
+    },
+    {
+      legend: 'Metadata6',
+      data: 0.4,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '3%',
+    },
+    {
+      legend: 'Metadata7',
+      data: 0.5,
+      color: getColorFromToken(DataVizPalette.color7),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '4%',
+    },
+    {
+      legend: 'Metadata8',
+      data: 0.3,
+      color: getColorFromToken(DataVizPalette.color8),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '5%',
+    },
+    {
+      legend: 'Metadata9',
+      data: 0.7,
+      color: getColorFromToken(DataVizPalette.color9),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '6%',
+    },
+    {
+      legend: 'Metadata10',
+      data: 0.1,
+      color: getColorFromToken(DataVizPalette.color10),
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '7%',
+    },
   ];
 
   const secondChartPoints: VSChartDataPoint[] = [
@@ -222,36 +271,38 @@ export const VerticalStackedBarDefault = () => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Basic">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        id="changeWidth_Basic"
-        onChange={_onWidthChange}
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Basic">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Basic"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
-      <input
-        type="range"
-        value={barGapMax}
-        min={0}
-        max={10}
-        id="changeBarGapMax_Basic"
-        onChange={e => setBarGapMax(+e.target.value)}
-        aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={_onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
+        <input
+          type="range"
+          value={barGapMax}
+          min={0}
+          max={10}
+          id="changeBarGapMax_Basic"
+          onChange={e => setBarGapMax(+e.target.value)}
+          aria-valuetext={`ChangebarGapMaxSlider${barGapMax}`}
+        />
+      </div>
       <div style={{ marginTop: '10px' }}>
         <Checkbox label="show the lines (hide or show the lines)" checked={showLine} onChange={_onShowLineChange} />
       </div>
@@ -291,6 +342,7 @@ export const VerticalStackedBarDefault = () => {
             yAxisTitle={showAxisTitles ? 'Variation of number of sales' : undefined}
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
+            roundedTicks={true}
           />
         </div>
       )}
@@ -311,6 +363,7 @@ export const VerticalStackedBarDefault = () => {
             }}
             hideLabels={hideLabels}
             roundCorners={roundCorners}
+            roundedTicks={true}
           />
         </div>
       )}

@@ -1019,6 +1019,61 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: IHorizontalBarChartWithAxisDataPoint[],
+): IHorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
+ * Calculates maximum domain values for Numeric x axis for both positive and negative values
+ * works for Horizontal Bar Chart With axis
+ * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeLongestBars(
+  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
+  longestPositiveBar: number;
+  longestNegativeBar: number;
+} {
+  let longestPositiveBar = 0;
+  let longestNegativeBar = 0;
+
+  stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const positiveBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    const negativeBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
+    longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
+  });
+
+  return { longestPositiveBar, longestNegativeBar };
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1034,14 +1089,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**
@@ -1177,17 +1235,23 @@ export function domainRageOfVerticalNumeric(
  * @param {ILineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
-  })!;
-  const yMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
-  })!;
+export function findNumericMinMaxOfY(
+  points: ILineChartPoints[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): { startValue: number; endValue: number } {
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale === !point.useSecondaryYScale) {
+      point.data.forEach(data => {
+        values.push(data.y);
+      });
+    }
+  });
 
   return {
-    startValue: yMin,
-    endValue: yMax,
+    startValue: d3Min(values)!,
+    endValue: d3Max(values)!,
   };
 }
 
@@ -1210,34 +1274,27 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
  * @param {IVerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(
+  points: IVerticalBarChartDataPoint[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): {
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y > point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
-      }
-    } else {
-      return point.y;
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale) {
+      values.push(point.y);
     }
-  })!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y < point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
+    if (typeof point.lineData !== 'undefined') {
+      if (!useSecondaryYScale === !point.lineData.useSecondaryYScale) {
+        values.push(point.lineData.y);
       }
-    } else {
-      return point.y;
     }
-  })!;
+  });
 
-  return { startValue: yMin, endValue: yMax };
+  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
@@ -1494,14 +1551,15 @@ export const getBarWidth = (
   barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
   adjustedValue = DEFAULT_BAR_WIDTH,
+  modeProp?: string,
 ): number => {
   let barWidth: number;
-  if (typeof barWidthProp === 'number') {
-    barWidth = barWidthProp;
-  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
-  } else {
+  if (barWidthProp === 'auto' || modeProp === 'histogram') {
     barWidth = adjustedValue;
+  } else if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else {
+    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
   }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);
@@ -1613,6 +1671,8 @@ export function getCurveFactory(
   }
 
   switch (curve) {
+    case 'linear':
+      return d3CurveLinear;
     case 'natural':
       return d3CurveNatural;
     case 'step':

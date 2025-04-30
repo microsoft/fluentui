@@ -108,6 +108,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private listRef: React.RefObject<List>;
 
   constructor(props: ITilesListProps<TItem>, context: any) {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     super(props, context);
 
     this.listRef = React.createRef();
@@ -299,7 +300,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return finalOnRenderRoot({
       surfaceElement: props.surfaceElement,
       divProps: props.divProps,
-      rowCount: rowCount,
+      rowCount,
       columnCount: maxColCount,
     });
   };
@@ -694,12 +695,12 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     const itemCount = i - (extraCells ? extraCells.length : 0) - startIndex;
 
     const pageSpecification: IPageSpecification<TItem> = {
-      itemCount: itemCount,
+      itemCount,
       data: {
         pageWidths: widths,
         rows: startCells,
-        extraCells: extraCells,
-        cellSizes: cellSizes,
+        extraCells,
+        cellSizes,
       },
     };
 
@@ -789,10 +790,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         const grid: ITileGrid = {
           minRowHeight: item.minRowHeight,
-          spacing: spacing,
+          spacing,
           mode: item.mode,
           key: `grid-${item.key}`,
-          maxScaleFactor: maxScaleFactor,
+          maxScaleFactor,
           marginTop: item.isPlaceholder ? 0 : marginTop,
           marginBottom: item.isPlaceholder ? 0 : marginBottom,
           isPlaceholder: item.isPlaceholder,
@@ -818,10 +819,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             });
 
           cells.push({
-            aspectRatio: aspectRatio,
+            aspectRatio,
             content: gridItem.content,
             onRender,
-            grid: grid,
+            grid,
             key: gridItem.key,
             isPlaceholder: gridItem.isPlaceholder,
             desiredHeight: desiredSize ? desiredSize.height : undefined,

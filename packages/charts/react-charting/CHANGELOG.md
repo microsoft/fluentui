@@ -1,8 +1,109 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 03 Apr 2025 07:19:55 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Apr 2025 07:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.78)
+
+Tue, 29 Apr 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.77..@fluentui/react-charting_v5.23.78)
+
+### Patches
+
+- feat(react-charting): Adding support for negative x-axis values for Horizontal bar chart with Axis ([PR #34313](https://github.com/microsoft/fluentui/pull/34313) by 120183316+srmukher@users.noreply.github.com)
+- fix: set button role for event labels in line chart ([PR #34334](https://github.com/microsoft/fluentui/pull/34334) by kumarkshitij@microsoft.com)
+- Negative y value support in VSBC ([PR #34337](https://github.com/microsoft/fluentui/pull/34337) by anushgupta@microsoft.com)
+
+## [5.23.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.77)
+
+Mon, 28 Apr 2025 07:22:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.76..@fluentui/react-charting_v5.23.77)
+
+### Patches
+
+- feat: add support for secondary y-axis in cartesian charts ([PR #34301](https://github.com/microsoft/fluentui/pull/34301) by kumarkshitij@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.205 ([PR #34317](https://github.com/microsoft/fluentui/pull/34317) by beachball)
+- Bump @fluentui/react to v8.122.16 ([PR #34317](https://github.com/microsoft/fluentui/pull/34317) by beachball)
+
+## [5.23.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.76)
+
+Tue, 22 Apr 2025 07:20:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.75..@fluentui/react-charting_v5.23.76)
+
+### Patches
+
+- fix(react-charting): Fixing legends disappear when hovering over the scrollbar in more legends ([PR #34289](https://github.com/microsoft/fluentui/pull/34289) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.23.75](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.75)
+
+Fri, 18 Apr 2025 07:20:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.74..@fluentui/react-charting_v5.23.75)
+
+### Patches
+
+- feat(react-charting): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
+
+## [5.23.74](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.74)
+
+Thu, 17 Apr 2025 07:21:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.73..@fluentui/react-charting_v5.23.74)
+
+### Patches
+
+- fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart ([PR #34245](https://github.com/microsoft/fluentui/pull/34245) by 120183316+srmukher@users.noreply.github.com)
+- feat: add histogram mode to vertical bar chart ([PR #34265](https://github.com/microsoft/fluentui/pull/34265) by kumarkshitij@microsoft.com)
+
+## [5.23.73](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.73)
+
+Wed, 16 Apr 2025 07:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.72..@fluentui/react-charting_v5.23.73)
+
+### Patches
+
+- Legends order fix ([PR #34268](https://github.com/microsoft/fluentui/pull/34268) by anushgupta@microsoft.com)
+
+## [5.23.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.72)
+
+Tue, 15 Apr 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.71..@fluentui/react-charting_v5.23.72)
+
+### Patches
+
+- feat: transform plotly histogram2d trace to heatmap props ([PR #34240](https://github.com/microsoft/fluentui/pull/34240) by kumarkshitij@microsoft.com)
+- Implement stacked HBC with axis ([PR #34246](https://github.com/microsoft/fluentui/pull/34246) by anushgupta@microsoft.com)
+- Bump @fluentui/react-focus to v8.9.23 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/theme-samples to v8.7.204 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+- Bump @fluentui/react to v8.122.15 ([commit](https://github.com/microsoft/fluentui/commit/1e27b5f3579acf0392460ae6188e8c912fcd9e30) by beachball)
+
+## [5.23.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.71)
+
+Mon, 14 Apr 2025 07:20:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.70..@fluentui/react-charting_v5.23.71)
+
+### Patches
+
+- HBC bars overlapping fix ([PR #34227](https://github.com/microsoft/fluentui/pull/34227) by anushgupta@microsoft.com)
+- fix(react-charting): Adding fix for Grouped Vertical bar chart error  ([PR #34228](https://github.com/microsoft/fluentui/pull/34228) by 120183316+srmukher@users.noreply.github.com)
+- fix: map stacked plotly scatter traces to area chart ([PR #34229](https://github.com/microsoft/fluentui/pull/34229) by kumarkshitij@microsoft.com)
+
+## [5.23.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.70)
+
+Thu, 10 Apr 2025 07:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.69..@fluentui/react-charting_v5.23.70)
+
+### Patches
+
+- fix: add missing linear case in getCurveFactory ([PR #34209](https://github.com/microsoft/fluentui/pull/34209) by kumarkshitij@microsoft.com)
+
+## [5.23.69](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.69)
+
+Tue, 08 Apr 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.68..@fluentui/react-charting_v5.23.69)
+
+### Patches
+
+- fix: handle blank donut chart when labels exist without corresponding values in plotly json ([PR #34188](https://github.com/microsoft/fluentui/pull/34188) by kumarkshitij@microsoft.com)
 
 ## [5.23.68](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.68)
 

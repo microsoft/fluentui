@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { tokens, useId, Button, Caption1, Input } from '@fluentui/react-components';
+import type { InputOnChangeData } from '@fluentui/react-components';
 import { Theme } from '@fluentui/react-theme';
 import { SearchRegular } from '@fluentui/react-icons';
 
@@ -74,7 +75,10 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     return themeColor.includes(filter) || color.toLowerCase().includes(filter.toLowerCase());
   });
 
-  const changeFilter = React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter]);
+  const changeFilter = React.useCallback(
+    (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => setFilter(ev.target.value),
+    [setFilter],
+  );
 
   return (
     <div>

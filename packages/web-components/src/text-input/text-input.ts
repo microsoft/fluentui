@@ -9,6 +9,8 @@ import { TextInputAppearance, TextInputControlSize } from './text-input.options.
  * A Text Input Custom HTML Element.
  * Based on BaseTextInput and includes style and layout specific attributes
  *
+ * @tag fluent-text-input
+ *
  * @public
  */
 export class TextInput extends BaseTextInput {
@@ -23,15 +25,6 @@ export class TextInput extends BaseTextInput {
   public appearance?: TextInputAppearance;
 
   /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
-    swapStates(this.elementInternals, prev, next, TextInputAppearance);
-  }
-
-  /**
    * Sets the size of the control.
    *
    * @public
@@ -40,15 +33,6 @@ export class TextInput extends BaseTextInput {
    */
   @attr({ attribute: 'control-size' })
   public controlSize?: TextInputControlSize;
-
-  /**
-   * Handles changes to `control-size` attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
-    swapStates(this.elementInternals, prev, next, TextInputControlSize);
-  }
 }
 
 /**

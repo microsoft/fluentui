@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import { Shimmer } from './Shimmer';
 import { ShimmerElementType as ElemType } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
-import { safeMount } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import { act, render } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 
 describe('Shimmer', () => {
   beforeEach(() => {
@@ -65,24 +65,29 @@ describe('Shimmer', () => {
   });
 
   it('removes Shimmer animation div when data is loaded', () => {
-    safeMount(
+    const { container, rerender } = render(
       <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'}>
         <div>TEST DATA</div>
       </Shimmer>,
-      shimmer => {
-        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
-
-        // update props to trigger the setTimeout.
-        ReactTestUtils.act(() => {
-          shimmer.setProps({ isDataLoaded: true });
-        });
-
-        ReactTestUtils.act(() => {
-          jest.runAllTimers();
-        });
-
-        expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(2);
-      },
     );
+
+    let shimmerContainer = getBySelector(container, '.ms-Shimmer-container')!;
+
+    expect(shimmerContainer.children.length).toBe(3);
+
+    // update props to trigger the setTimeout.
+    rerender(
+      <Shimmer isDataLoaded={true} ariaLabel={'Shimmer component'}>
+        <div>TEST DATA</div>
+      </Shimmer>,
+    );
+
+    // Run timers to trigger the animation completion
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    shimmerContainer = getBySelector(container, '.ms-Shimmer-container')!;
+    expect(shimmerContainer.children.length).toBe(1);
   });
 });

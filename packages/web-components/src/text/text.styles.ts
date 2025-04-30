@@ -29,31 +29,6 @@ import {
   lineHeightHero800,
   lineHeightHero900,
 } from '../theme/design-tokens.js';
-import {
-  blockState,
-  boldState,
-  centerState,
-  endState,
-  italicState,
-  justifyState,
-  mediumState,
-  monospaceState,
-  nowrapState,
-  numericState,
-  semiboldState,
-  size1000State,
-  size100State,
-  size200State,
-  size400State,
-  size500State,
-  size600State,
-  size700State,
-  size800State,
-  size900State,
-  strikethroughState,
-  truncateState,
-  underlineState,
-} from '../styles/states/index.js';
 
 /** Text styles
  * @public
@@ -70,88 +45,88 @@ export const styles = css`
     text-align: start;
   }
 
-  :host(${nowrapState}),
-  :host(${nowrapState}) ::slotted(*) {
+  :host([nowrap]),
+  :host([nowrap]) ::slotted(*) {
     white-space: nowrap;
     overflow: hidden;
   }
-  :host(${truncateState}),
-  :host(${truncateState}) ::slotted(*) {
+  :host([truncate]),
+  :host([truncate]) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host(${blockState}) {
+  :host([block]) {
     display: block;
   }
-  :host(${italicState}) {
+  :host([italic]) {
     font-style: italic;
   }
-  :host(${underlineState}) {
+  :host([underline]) {
     text-decoration-line: underline;
   }
-  :host(${strikethroughState}) {
+  :host([strikethrough]) {
     text-decoration-line: line-through;
   }
-  :host(${underlineState}${strikethroughState}) {
+  :host([underline][strikethrough]) {
     text-decoration-line: line-through underline;
   }
-  :host(${size100State}) {
+  :host([size='100']) {
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
   }
-  :host(${size200State}) {
+  :host([size='200']) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host(${size400State}) {
+  :host([size='400']) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host(${size500State}) {
+  :host([size='500']) {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
-  :host(${size600State}) {
+  :host([size='600']) {
     font-size: ${fontSizeBase600};
     line-height: ${lineHeightBase600};
   }
-  :host(${size700State}) {
+  :host([size='700']) {
     font-size: ${fontSizeHero700};
     line-height: ${lineHeightHero700};
   }
-  :host(${size800State}) {
+  :host([size='800']) {
     font-size: ${fontSizeHero800};
     line-height: ${lineHeightHero800};
   }
-  :host(${size900State}) {
+  :host([size='900']) {
     font-size: ${fontSizeHero900};
     line-height: ${lineHeightHero900};
   }
-  :host(${size1000State}) {
+  :host([size='1000']) {
     font-size: ${fontSizeHero1000};
     line-height: ${lineHeightHero1000};
   }
-  :host(${monospaceState}) {
+  :host([font='monospace']) {
     font-family: ${fontFamilyMonospace};
   }
-  :host(${numericState}) {
+  :host([font='numeric']) {
     font-family: ${fontFamilyNumeric};
   }
-  :host(${mediumState}) {
+  :host([weight='medium']) {
     font-weight: ${fontWeightMedium};
   }
-  :host(${semiboldState}) {
+  :host([weight='semibold']) {
     font-weight: ${fontWeightSemibold};
   }
-  :host(${boldState}) {
+  :host([weight='bold']) {
     font-weight: ${fontWeightBold};
   }
-  :host(${centerState}) {
+  :host([align='center']) {
     text-align: center;
   }
-  :host(${endState}) {
+  :host([align='end']) {
     text-align: end;
   }
-  :host(${justifyState}) {
+  :host([align='justify']) {
     text-align: justify;
   }
 

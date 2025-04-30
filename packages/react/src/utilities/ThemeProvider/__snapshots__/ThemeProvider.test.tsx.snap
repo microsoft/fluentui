@@ -13,7 +13,15 @@ exports[`ThemeProvider can apply body theme to body 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
-/>
+>
+  <div>
+    <div
+      class="foo"
+    >
+      app
+    </div>
+  </div>
+</body>
 `;
 
 exports[`ThemeProvider can apply body theme to body 2`] = `
