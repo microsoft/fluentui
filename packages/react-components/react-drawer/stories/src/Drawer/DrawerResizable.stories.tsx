@@ -104,6 +104,8 @@ const useStyles = makeStyles({
 
 export const Resizable = () => {
   const styles = useStyles();
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [isDialogOpen, setDialogOpen] = React.useState(false);
 
   const animationFrame = React.useRef<number>(0);
   const sidebarRef = React.useRef<HTMLDivElement>(null);
@@ -137,6 +139,12 @@ export const Resizable = () => {
     };
   }, [resize, stopResizing]);
 
+  React.useEffect(() => {
+    if (isDialogOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isDialogOpen]);
+
   const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
 
   const onResizeInputChange: InputProps['onChange'] = (ev, data) => {
@@ -163,7 +171,7 @@ export const Resizable = () => {
               <p>Resizable content</p>
             </DrawerBody>
           </InlineDrawer>
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={(event, data) => setDialogOpen(data.open)}>
             <DialogTrigger disableButtonEnhancement>
               <Button
                 className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
@@ -187,6 +195,7 @@ export const Resizable = () => {
                     <Label htmlFor={inputId}>Enter desired drawer width pixels:</Label>
                     <Input
                       id={inputId}
+                      ref={inputRef}
                       onChange={onResizeInputChange}
                       defaultValue={resizeInput}
                       type="number"
