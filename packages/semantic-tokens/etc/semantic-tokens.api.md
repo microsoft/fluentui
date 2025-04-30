@@ -2789,7 +2789,7 @@ export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-bran
 export const foregroundContentBrandPrimaryRaw = "--smtc-foreground-content-brand-primary";
 
 // @public (undocumented)
-export const foregroundContentNeutralPrimary = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest))";
+export const foregroundContentNeutralPrimary = "var(--smtc-foreground-content-neutral-primary, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
 
 // @public (undocumented)
 export const foregroundContentNeutralPrimaryRaw = "--smtc-foreground-content-neutral-primary";
@@ -3857,7 +3857,7 @@ export const statusDangerTintBackground = "var(--smtc-status-danger-tint-backgro
 export const statusDangerTintBackgroundRaw = "--smtc-status-danger-tint-background";
 
 // @public (undocumented)
-export const statusDangerTintForeground = "var(--smtc-status-danger-tint-foreground)";
+export const statusDangerTintForeground = "var(--smtc-status-danger-tint-foreground, var(--colorPaletteRedForeground3))";
 
 // @public (undocumented)
 export const statusDangerTintForegroundRaw = "--smtc-status-danger-tint-foreground";
@@ -4523,25 +4523,25 @@ export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected)";
 export const textCtrlWeightSelectedRaw = "--smtc-text-ctrl-weight-selected";
 
 // @public (undocumented)
-export const textGlobalBody1Fontsize = "var(--smtc-text-global-body1-fontsize)";
+export const textGlobalBody1Fontsize = "var(--smtc-text-global-body1-fontsize, var(--fontSizeBase500))";
 
 // @public (undocumented)
 export const textGlobalBody1FontsizeRaw = "--smtc-text-global-body1-fontsize";
 
 // @public (undocumented)
-export const textGlobalBody1Lineheight = "var(--smtc-text-global-body1-lineheight)";
+export const textGlobalBody1Lineheight = "var(--smtc-text-global-body1-lineheight, var(--lineHeightBase500))";
 
 // @public (undocumented)
 export const textGlobalBody1LineheightRaw = "--smtc-text-global-body1-lineheight";
 
 // @public (undocumented)
-export const textGlobalBody2Fontsize = "var(--smtc-text-global-body2-fontsize)";
+export const textGlobalBody2Fontsize = "var(--smtc-text-global-body2-fontsize, var(--fontSizeBase400))";
 
 // @public (undocumented)
 export const textGlobalBody2FontsizeRaw = "--smtc-text-global-body2-fontsize";
 
 // @public (undocumented)
-export const textGlobalBody2Lineheight = "var(--smtc-text-global-body2-lineheight)";
+export const textGlobalBody2Lineheight = "var(--smtc-text-global-body2-lineheight, var(--lineHeightBase400))";
 
 // @public (undocumented)
 export const textGlobalBody2LineheightRaw = "--smtc-text-global-body2-lineheight";
@@ -4553,31 +4553,31 @@ export const textGlobalBody3Fontsize = "var(--smtc-text-global-body3-fontsize, v
 export const textGlobalBody3FontsizeRaw = "--smtc-text-global-body3-fontsize";
 
 // @public (undocumented)
-export const textGlobalBody3Lineheight = "var(--smtc-text-global-body3-lineheight)";
+export const textGlobalBody3Lineheight = "var(--smtc-text-global-body3-lineheight, var(--lineHeightBase300))";
 
 // @public (undocumented)
 export const textGlobalBody3LineheightRaw = "--smtc-text-global-body3-lineheight";
 
 // @public (undocumented)
-export const textGlobalCaption1Fontsize = "var(--smtc-text-global-caption1-fontsize)";
+export const textGlobalCaption1Fontsize = "var(--smtc-text-global-caption1-fontsize, var(--fontSizeBase200))";
 
 // @public (undocumented)
 export const textGlobalCaption1FontsizeRaw = "--smtc-text-global-caption1-fontsize";
 
 // @public (undocumented)
-export const textGlobalCaption1Lineheight = "var(--smtc-text-global-caption1-lineheight)";
+export const textGlobalCaption1Lineheight = "var(--smtc-text-global-caption1-lineheight, var(--lineHeightBase200))";
 
 // @public (undocumented)
 export const textGlobalCaption1LineheightRaw = "--smtc-text-global-caption1-lineheight";
 
 // @public (undocumented)
-export const textGlobalCaption2Fontsize = "var(--smtc-text-global-caption2-fontsize)";
+export const textGlobalCaption2Fontsize = "var(--smtc-text-global-caption2-fontsize, var(--fontSizeBase100))";
 
 // @public (undocumented)
 export const textGlobalCaption2FontsizeRaw = "--smtc-text-global-caption2-fontsize";
 
 // @public (undocumented)
-export const textGlobalCaption2Lineheight = "var(--smtc-text-global-caption2-lineheight)";
+export const textGlobalCaption2Lineheight = "var(--smtc-text-global-caption2-lineheight, var(--lineHeightBase100))";
 
 // @public (undocumented)
 export const textGlobalCaption2LineheightRaw = "--smtc-text-global-caption2-lineheight";
@@ -4595,61 +4595,61 @@ export const textGlobalDisplay1Lineheight = "var(--smtc-text-global-display1-lin
 export const textGlobalDisplay1LineheightRaw = "--smtc-text-global-display1-lineheight";
 
 // @public (undocumented)
-export const textGlobalDisplay2Fontsize = "var(--smtc-text-global-display2-fontsize)";
+export const textGlobalDisplay2Fontsize = "var(--smtc-text-global-display2-fontsize, var(--fontSizeHero1000))";
 
 // @public (undocumented)
 export const textGlobalDisplay2FontsizeRaw = "--smtc-text-global-display2-fontsize";
 
 // @public (undocumented)
-export const textGlobalDisplay2Lineheight = "var(--smtc-text-global-display2-lineheight)";
+export const textGlobalDisplay2Lineheight = "var(--smtc-text-global-display2-lineheight, var(--lineHeightHero1000))";
 
 // @public (undocumented)
 export const textGlobalDisplay2LineheightRaw = "--smtc-text-global-display2-lineheight";
 
 // @public (undocumented)
-export const textGlobalSubtitle1Fontsize = "var(--smtc-text-global-subtitle1-fontsize)";
+export const textGlobalSubtitle1Fontsize = "var(--smtc-text-global-subtitle1-fontsize, var(--fontSizeHero700))";
 
 // @public (undocumented)
 export const textGlobalSubtitle1FontsizeRaw = "--smtc-text-global-subtitle1-fontsize";
 
 // @public (undocumented)
-export const textGlobalSubtitle1Lineheight = "var(--smtc-text-global-subtitle1-lineheight)";
+export const textGlobalSubtitle1Lineheight = "var(--smtc-text-global-subtitle1-lineheight, var(--lineHeightHero700))";
 
 // @public (undocumented)
 export const textGlobalSubtitle1LineheightRaw = "--smtc-text-global-subtitle1-lineheight";
 
 // @public (undocumented)
-export const textGlobalSubtitle2Fontsize = "var(--smtc-text-global-subtitle2-fontsize)";
+export const textGlobalSubtitle2Fontsize = "var(--smtc-text-global-subtitle2-fontsize, var(--fontSizeBase600))";
 
 // @public (undocumented)
 export const textGlobalSubtitle2FontsizeRaw = "--smtc-text-global-subtitle2-fontsize";
 
 // @public (undocumented)
-export const textGlobalSubtitle2Lineheight = "var(--smtc-text-global-subtitle2-lineheight)";
+export const textGlobalSubtitle2Lineheight = "var(--smtc-text-global-subtitle2-lineheight, var(--lineHeightBase600))";
 
 // @public (undocumented)
 export const textGlobalSubtitle2LineheightRaw = "--smtc-text-global-subtitle2-lineheight";
 
 // @public (undocumented)
-export const textGlobalTitle1Fontsize = "var(--smtc-text-global-title1-fontsize)";
+export const textGlobalTitle1Fontsize = "var(--smtc-text-global-title1-fontsize, var(--fontSizeHero900))";
 
 // @public (undocumented)
 export const textGlobalTitle1FontsizeRaw = "--smtc-text-global-title1-fontsize";
 
 // @public (undocumented)
-export const textGlobalTitle1Lineheight = "var(--smtc-text-global-title1-lineheight)";
+export const textGlobalTitle1Lineheight = "var(--smtc-text-global-title1-lineheight, var(--lineHeightHero900))";
 
 // @public (undocumented)
 export const textGlobalTitle1LineheightRaw = "--smtc-text-global-title1-lineheight";
 
 // @public (undocumented)
-export const textGlobalTitle2Fontsize = "var(--smtc-text-global-title2-fontsize)";
+export const textGlobalTitle2Fontsize = "var(--smtc-text-global-title2-fontsize, var(--fontSizeHero800))";
 
 // @public (undocumented)
 export const textGlobalTitle2FontsizeRaw = "--smtc-text-global-title2-fontsize";
 
 // @public (undocumented)
-export const textGlobalTitle2Lineheight = "var(--smtc-text-global-title2-lineheight)";
+export const textGlobalTitle2Lineheight = "var(--smtc-text-global-title2-lineheight, var(--lineHeightHero800))";
 
 // @public (undocumented)
 export const textGlobalTitle2LineheightRaw = "--smtc-text-global-title2-lineheight";
