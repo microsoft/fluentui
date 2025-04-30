@@ -297,26 +297,28 @@ export const HeatMapChartBasic: React.FunctionComponent<{}> = () => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Example">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        onChange={_onWidthChange}
-        id="changeWidth_Example"
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Example">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Example"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightSlider${height}`}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Example">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          onChange={_onWidthChange}
+          id="changeWidth_Example"
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Example">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Example"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightSlider${height}`}
+        />
+      </div>
       <h4>Heat map explaining the Air Quality Index</h4>
       <div style={rootStyle}>
         <HeatMapChart

@@ -1,11 +1,12 @@
 import { attr } from '@microsoft/fast-element';
-import { swapStates } from '../utils/element-internals.js';
 import { BaseRatingDisplay } from './rating-display.base.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * A Rating Display Custom HTML Element.
  * Based on BaseRatingDisplay and includes style and layout specific attributes
+ *
+ * @tag fluent-rating-display
  *
  * @public
  */
@@ -22,16 +23,6 @@ export class RatingDisplay extends BaseRatingDisplay {
   public color?: RatingDisplayColor;
 
   /**
-   * Handles changes to the color attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    swapStates(this.elementInternals, prev, next, RatingDisplayColor);
-  }
-
-  /**
    * The size of the component.
    *
    * @public
@@ -41,16 +32,6 @@ export class RatingDisplay extends BaseRatingDisplay {
    */
   @attr
   public size?: RatingDisplaySize;
-
-  /**
-   * Handles changes to the size attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined) {
-    swapStates(this.elementInternals, prev, next, RatingDisplaySize);
-  }
 
   /**
    * Renders a single filled icon with a label next to it.

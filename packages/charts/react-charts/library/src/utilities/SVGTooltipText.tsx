@@ -5,6 +5,8 @@ import { Tooltip } from '@fluentui/react-tooltip';
 import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { useRtl } from './utilities';
 
 interface SVGTooltipTextProps {
   closeDelay?: number;
@@ -17,6 +19,7 @@ interface SVGTooltipTextProps {
   shouldReceiveFocus?: boolean;
   isTooltipVisibleProp?: boolean;
   wrapContent?: (content: string, id: string, maxWidth: number, maxHeight?: number) => boolean;
+  showBackground?: boolean;
 }
 
 export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = React.forwardRef<
@@ -25,6 +28,11 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
 >((props, forwardedRef) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
+  const [textX, setTextX] = useState(0);
+  const [textY, setTextY] = useState(0);
+  const [textWidth, setTextWidth] = useState(0);
+  const [textHeight, setTextHeight] = useState(0);
+
   const tooltipHostRef = useRef<SVGTextElement>(null);
   const async = useRef(new Async()).current;
   const dismissTimerId = useRef<number>();
@@ -32,18 +40,30 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const tooltipHostId = useRef(useId('tooltip-host')).current;
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
+  const PADDING = 4;
 
   const wrapContentCallback = useCallback(() => {
     if (
       props.content &&
       props.wrapContent &&
-      props.wrapContent(props.content, tooltipHostId, props.maxWidth ?? 100, props.maxHeight) // ToDo - Specify a correct fallback value here
+      props.wrapContent(props.content, tooltipHostId, props.maxWidth ?? 100, props.maxHeight)
+      // ToDo - Specify a correct fallback value here
     ) {
       setIsOverflowing(true);
     } else {
       setIsOverflowing(false);
     }
   }, [props, tooltipHostId]);
+
+  const measureText = useCallback((): void => {
+    if (tooltipHostRef.current && typeof tooltipHostRef.current.getBBox === 'function') {
+      const bbox = tooltipHostRef.current.getBBox();
+      setTextX(bbox.x);
+      setTextY(bbox.y);
+      setTextWidth(bbox.width);
+      setTextHeight(bbox.height);
+    }
+  }, []);
 
   useEffect(() => {
     wrapContentCallback();
@@ -55,6 +75,17 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   useEffect(() => {
     wrapContentCallback();
   }, [props.maxWidth, props.maxHeight, wrapContentCallback]);
+
+  useEffect(() => {
+    if (isTooltipVisible) {
+      measureText();
+    }
+  }, [isTooltipVisible, measureText]);
+
+  useEffect(() => {
+    // Recalculate text dimensions when content or dimensions change
+    measureText();
+  }, [props.content, props.textProps, props.maxWidth, props.maxHeight, measureText]);
 
   const hideTooltip = useCallback(() => {
     async.clearTimeout(openTimerId.current!);
@@ -136,8 +167,22 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const showTooltip =
     (props.isTooltipVisibleProp && isOverflowing && !!props.content) || (isTooltipVisible && !!props.content);
 
+  const backgroundColor = tokens.colorNeutralBackground1;
+  const isRTL = useRtl();
+  const rectX = isRTL ? (textX ?? 0) + (textWidth ?? 0) - PADDING : (textX ?? 0) - PADDING;
+
   return (
     <>
+      {props.showBackground && (
+        <rect
+          x={rectX}
+          y={(textY ?? 0) - PADDING}
+          width={(textWidth ?? 0) + 2 * PADDING}
+          height={(textHeight ?? 0) + 2 * PADDING}
+          fill={backgroundColor}
+          transform={props.textProps?.transform}
+        />
+      )}
       <Tooltip
         relationship="description"
         {...props.tooltipProps}
@@ -166,4 +211,5 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
 
 SVGTooltipText.defaultProps = {
   delay: 0,
+  showBackground: false,
 };

@@ -1,10 +1,15 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
 import { resetIds } from '@fluentui/utilities';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
 import { isConformant } from '../../common/isConformant';
+import { render, screen } from '@testing-library/react';
+
+function getBySelector(container: HTMLElement, selector: string) {
+  return container.querySelector(selector);
+}
 
 describe('MessageBar', () => {
   beforeEach(() => {
@@ -138,195 +143,190 @@ describe('MessageBar', () => {
   });
 
   it('renders custom message bar icon correctly', () => {
-    const wrapper = mount(
+    const { container } = render(
       <MessageBar messageBarType={MessageBarType.success} messageBarIconProps={{ iconName: 'AddFriend' }} />,
     );
-    const dismissIcon = wrapper.find('[data-icon-name="AddFriend"]');
-    expect(dismissIcon.exists()).toBe(true);
+    const dismissIcon = container.querySelector('[data-icon-name="AddFriend"]');
+    expect(dismissIcon).toBeInTheDocument();
   });
 
   it('can reflect props changes', () => {
-    const wrapper = mount(<MessageBar messageBarType={MessageBarType.success} />);
+    const { rerender, container } = render(<MessageBar messageBarType={MessageBarType.success} />);
 
-    expect(wrapper.find('.ms-MessageBar--success').length).toEqual(1);
-    wrapper.setProps({ messageBarType: MessageBarType.error });
+    expect(getBySelector(container, '.ms-MessageBar')).toHaveClass('ms-MessageBar--success');
+    rerender(<MessageBar messageBarType={MessageBarType.error} />);
 
-    expect(wrapper.find('.ms-MessageBar--success').length).toEqual(0);
-    expect(wrapper.find('.ms-MessageBar--error').length).toEqual(1);
+    expect(getBySelector(container, '.ms-MessageBar')).not.toHaveClass('ms-MessageBar--success');
+    expect(getBySelector(container, '.ms-MessageBar')).toHaveClass('ms-MessageBar--error');
   });
 
   it('delay renders message by default', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
+    render(
       <MessageBar>
         <span id="test">content</span>
       </MessageBar>,
     );
 
     // message not rendered initially
-    expect(wrapper.find('#test')).toHaveLength(0);
+    expect(screen.queryByText('content')).not.toBeInTheDocument();
 
     // run timers to render
     jest.runOnlyPendingTimers();
-    // update recorded state of wrapper so .find() works
-    wrapper.update();
+
     // message is rendered
-    expect(wrapper.find('#test')).toHaveLength(1);
-    expect(wrapper.find('#test').text()).toBe('content');
+    expect(screen.getByText('content')).toBeInTheDocument();
   });
 
   it('can disable delayed rendering', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
+    render(
       <MessageBar delayedRender={false}>
         <span id="test">content</span>
       </MessageBar>,
     );
 
     // message IS rendered initially
-    expect(wrapper.find('#test')).toHaveLength(1);
-    expect(wrapper.find('#test').text()).toBe('content');
+    expect(screen.getByText('content')).toBeInTheDocument();
   });
 
   it('respects updates to message', () => {
     jest.useFakeTimers();
-    const wrapper = mount(
+    const { rerender } = render(
       <MessageBar>
         <span id="test1">content 1</span>
       </MessageBar>,
     );
     // run timers to render
     jest.runOnlyPendingTimers();
-    wrapper.update();
 
     // check for first message
-    expect(wrapper.find('#test1').text()).toBe('content 1');
+    expect(screen.getByText('content 1')).toBeInTheDocument();
 
     // update message
-    wrapper.setProps({ children: <span id="test2">content 2</span> });
-    wrapper.update();
-    expect(wrapper.find('#test1')).toHaveLength(0);
-    expect(wrapper.find('#test2')).toHaveLength(1);
-    expect(wrapper.find('#test2').text()).toBe('content 2');
+    rerender(
+      <MessageBar>
+        <span id="test2">content 2</span>
+      </MessageBar>,
+    );
+    expect(screen.queryByText('content 1')).not.toBeInTheDocument();
+    expect(screen.getByText('content 2')).toBeInTheDocument();
   });
 
   describe('dismiss', () => {
     describe('single-line', () => {
       it('is present when onDismiss exists', () => {
-        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={false} />);
-        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
-        expect(dismissElement.exists()).toBe(true);
+        render(<MessageBar onDismiss={noop} isMultiline={false} />);
+        const dismissElement = screen.getByRole('button');
+        expect(dismissElement).toBeInTheDocument();
       });
 
       it('is not present when onDismiss is missing', () => {
-        const wrapper = mount(<MessageBar isMultiline={false} />);
-        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
-        expect(dismissElement.exists()).toBe(false);
+        render(<MessageBar isMultiline={false} />);
+        const dismissElement = screen.queryByRole('button', { name: /dismiss/i });
+        expect(dismissElement).not.toBeInTheDocument();
       });
 
       it('has custom dismiss icon', () => {
-        const wrapper = mount(
+        const { container } = render(
           <MessageBar onDismiss={noop} isMultiline={false} dismissIconProps={{ iconName: 'AddFriend' }} />,
         );
-        const dismissIcon = wrapper.find('[data-icon-name="AddFriend"]');
-        expect(dismissIcon.exists()).toBe(true);
+        const dismissIcon = getBySelector(container, '[data-icon-name="AddFriend"]');
+        expect(dismissIcon).toBeInTheDocument();
       });
 
       it('mixes in native props to the inner text element, except className', () => {
-        const wrapper = mount(
+        const { container } = render(
           <MessageBar aria-live={'polite'} isMultiline={false} className={'sampleClassName'}>
             Message
           </MessageBar>,
         );
 
-        const innerText = wrapper.find('.ms-MessageBar-innerText');
-        expect(innerText.prop('aria-live')).toEqual('polite');
+        const innerText = getBySelector(container, '.ms-MessageBar-innerText');
+        expect(innerText).toHaveAttribute('aria-live', 'polite');
 
-        const singleLine = wrapper.find('.ms-MessageBar-singleline');
-        expect(singleLine.prop('className')).toContain('sampleClassName');
-        expect(innerText.prop('className')).not.toContain('sampleClassName');
+        const singleLine = getBySelector(container, '.ms-MessageBar-singleline');
+        expect(singleLine).toHaveClass('sampleClassName');
+        expect(innerText).not.toHaveClass('sampleClassName');
       });
     });
 
     describe('multi-line', () => {
       it('is present when onDismiss exists', () => {
-        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={true} />);
-        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
-        expect(dismissElement.exists()).toBe(true);
+        render(<MessageBar onDismiss={noop} isMultiline={true} />);
+        const dismissElement = screen.getByRole('button');
+        expect(dismissElement).toBeInTheDocument();
       });
 
       it('is not present when onDismiss is missing', () => {
-        const wrapper = mount(<MessageBar isMultiline={true} />);
-        const dismissElement = wrapper.find('.ms-MessageBar-dismissal');
-        expect(dismissElement.exists()).toBe(false);
+        render(<MessageBar isMultiline={true} />);
+        const dismissElement = screen.queryByRole('button', { name: /dismiss/i });
+        expect(dismissElement).not.toBeInTheDocument();
       });
 
       it('mixes in native props to the inner text element', () => {
-        const wrapper = mount(
+        const { container } = render(
           <MessageBar aria-live={'polite'} isMultiline={true}>
             Message
           </MessageBar>,
         );
 
-        const innerText = wrapper.find('.ms-MessageBar-innerText');
-        expect(innerText.prop('aria-live')).toEqual('polite');
+        const innerText = getBySelector(container, '.ms-MessageBar-innerText');
+        expect(innerText).toHaveAttribute('aria-live', 'polite');
       });
     });
   });
 
   describe('truncated', () => {
     it('is present when onDismiss exists', () => {
-      const wrapper = mount(<MessageBar truncated={true} isMultiline={false} />);
-      const expandElement = wrapper.find('.ms-MessageBar-expand');
-      expect(expandElement.exists()).toBe(true);
+      render(<MessageBar truncated={true} isMultiline={false} />);
+      const expandElement = screen.getByRole('button');
+      expect(expandElement).toBeInTheDocument();
     });
 
     it('is not present when truncated is missing', () => {
-      const wrapper = mount(<MessageBar isMultiline={false} />);
-      const expandElement = wrapper.find('.ms-MessageBar-expand');
-      expect(expandElement.exists()).toBe(false);
+      render(<MessageBar isMultiline={false} />);
+      const expandElement = screen.queryByRole('button', { name: /expand/i });
+      expect(expandElement).not.toBeInTheDocument();
     });
   });
 
   describe('role attribute', () => {
     it('is present only once', () => {
-      const wrapper = mount(<MessageBar />);
-      const roleElements = wrapper.find('.ms-MessageBar [role]');
+      render(<MessageBar />);
+      const roleElements = screen.getAllByRole('status');
       expect(roleElements.length).toBe(1);
     });
 
     it('is present only once when custom role attribute exists', () => {
       const role = 'none';
-      const wrapper = mount(<MessageBar role={role} />);
-      const roleElements = wrapper.find('.ms-MessageBar [role]');
+      render(<MessageBar role={role} />);
+      const roleElements = screen.getAllByRole(role);
       expect(roleElements.length).toBe(1);
-      expect(roleElements.prop('role')).toBe(role);
+      expect(roleElements[0]).toHaveAttribute('role', role);
     });
 
     it('uses correct default based on messageBarType', () => {
-      const wrapper = mount(<MessageBar>content</MessageBar>);
+      const { rerender } = render(<MessageBar>content</MessageBar>);
 
       // Status messages
       for (const messageBarType of [MessageBarType.info, MessageBarType.success, MessageBarType.warning]) {
         const typeName = `MessageBarType.${MessageBarType[messageBarType]}`;
-        wrapper.setProps({ messageBarType });
-        wrapper.update();
-        const roleElem = wrapper.find('[role]');
-        expect(roleElem).toHaveLength(1);
+        rerender(<MessageBar messageBarType={messageBarType}>content</MessageBar>);
+        const roleElem = screen.getByRole('status');
+        expect(roleElem).toBeInTheDocument();
         // include the MessageBarType in the assertion so it's clearer what failed
-        expect([typeName, roleElem.prop('role')]).toEqual([typeName, 'status']);
-        expect([typeName, roleElem.prop('aria-live')]).toEqual([typeName, 'polite']);
+        expect([typeName, roleElem.getAttribute('role')]).toEqual([typeName, 'status']);
+        expect([typeName, roleElem.getAttribute('aria-live')]).toEqual([typeName, 'polite']);
       }
 
       // Alert messages
       for (const messageBarType of [MessageBarType.error, MessageBarType.blocked, MessageBarType.severeWarning]) {
         const typeName = `MessageBarType.${MessageBarType[messageBarType]}`;
-        wrapper.setProps({ messageBarType });
-        wrapper.update();
-        const roleElem = wrapper.find('[role]');
-        expect(roleElem).toHaveLength(1);
-        expect([typeName, roleElem.prop('role')]).toEqual([typeName, 'alert']);
-        expect([typeName, roleElem.prop('aria-live')]).toEqual([typeName, 'assertive']);
+        rerender(<MessageBar messageBarType={messageBarType}>content</MessageBar>);
+        const roleElem = screen.getByRole('alert');
+        expect(roleElem).toBeInTheDocument();
+        expect([typeName, roleElem.getAttribute('role')]).toEqual([typeName, 'alert']);
+        expect([typeName, roleElem.getAttribute('aria-live')]).toEqual([typeName, 'assertive']);
       }
     });
   });

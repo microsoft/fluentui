@@ -247,11 +247,9 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
-    try {
-      expect(transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true)).toMatchSnapshot();
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'map')"));
-    }
+    expect(() => {
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true);
+    }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {

@@ -169,8 +169,6 @@ test.describe('Slider', () => {
       await fastPage.setTemplate({ attributes: { size } });
 
       await expect(element).toHaveJSProperty('size', size);
-
-      await expect(element).toHaveCustomState(size);
     });
   }
 

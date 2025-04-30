@@ -3,6 +3,9 @@ import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import type { Tabs } from './tabs.js';
 import type { TabsOptions } from './tabs.options.js';
 
+/**
+ * @deprecated - Use tablist instead
+ */
 export function tabsTemplate<T extends Tabs>(options: TabsOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     ${startSlotTemplate(options)}

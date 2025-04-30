@@ -6,7 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { Legend, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { useId } from '@fluentui/react-utilities';
-import { find } from '../../utilities/index';
+import { areArraysEqual, find } from '../../utilities/index';
 import {
   AccessibilityProps,
   CartesianChart,
@@ -15,8 +15,8 @@ import {
   CustomizedCalloutData,
   Margins,
   RefArrayData,
-  ColorFillBarsProps,
   ScatterChartDataPoint,
+  Chart,
 } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -63,11 +63,11 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   let _xAxisLabels: string[] = [];
   let xAxisCalloutAccessibilityData: AccessibilityProps = {};
   let _xBandwidth = 0;
+  const cartesianChartRef = React.useRef<Chart>(null);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
   const [YValueHover, setYValueHover] = React.useState<[]>([]);
-  const [selectedLegend, setSelectedLegend] = React.useState<string>('');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
   const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -75,6 +75,26 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
   const [stackCalloutProps, setStackCalloutProps] = React.useState<CustomizedCalloutData>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [selectedLegends, setSelectedLegends] = React.useState<string[]>([]);
+  const prevPropsRef = React.useRef<ScatterChartProps | null>(null);
+
+  React.useEffect(() => {
+    if (prevPropsRef.current) {
+      const prevProps = prevPropsRef.current;
+      if (!areArraysEqual(prevProps.legendProps?.selectedLegends, props.legendProps?.selectedLegends)) {
+        setSelectedLegends(props.legendProps?.selectedLegends || []);
+      }
+    }
+    prevPropsRef.current = props;
+  }, [props]);
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+    }),
+    [],
+  );
 
   const _xAxisType: XAxisTypes =
     props.data.lineChartData! &&
@@ -146,28 +166,9 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     renderSeries = _createPlot(xElement!, containerHeight!);
   }
 
-  function _handleSingleLegendSelectionAction(scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps) {
-    if (selectedLegend === scatterChartItem.legend) {
-      setSelectedLegend('');
-      _handleLegendClick(scatterChartItem, null);
-    } else {
-      setSelectedLegend(scatterChartItem.legend);
-      _handleLegendClick(scatterChartItem, scatterChartItem.legend);
-    }
-  }
-
   function _onHoverCardHide() {
     setSelectedLegendPoints([]);
     setIsSelectedLegend(false);
-  }
-
-  function _handleLegendClick(
-    scatterChartItem: ScatterChartDataWithIndex | ColorFillBarsProps,
-    selectedLegend: string | null | string[],
-  ): void {
-    if (scatterChartItem.onLegendClick) {
-      scatterChartItem.onLegendClick(selectedLegend);
-    }
   }
 
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
@@ -179,13 +180,6 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       const legend: Legend = {
         title: point.legend!,
         color,
-        action: () => {
-          if (isLegendMultiSelectEnabled) {
-            _handleMultipleSeriesLegendSelectionAction(point);
-          } else {
-            _handleSingleLegendSelectionAction(point);
-          }
-        },
         onMouseOutAction: () => {
           setActiveLegend('');
         },
@@ -207,8 +201,26 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
         overflowText={props.legendsOverflowText}
         {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
         {...props.legendProps}
+        selectedLegends={selectedLegends}
+        onChange={_onLegendSelectionChange}
       />
     );
+  }
+
+  function _onLegendSelectionChange(
+    legendsSelected: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: Legend,
+  ): void {
+    if (props.legendProps?.canSelectMultipleLegends) {
+      setSelectedLegends(legendsSelected);
+    } else {
+      setSelectedLegends(legendsSelected.slice(-1));
+    }
+
+    if (props.legendProps?.onChange) {
+      props.legendProps.onChange(legendsSelected, event, currentLegend);
+    }
   }
 
   function _getPointFill(seriesColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
@@ -451,59 +463,25 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
     }
   }
 
-  function _handleMultipleSeriesLegendSelectionAction(selectedSeries: ScatterChartDataWithIndex) {
-    const selectedSeriesIndex = selectedLegendPoints.reduce((acc, series, index) => {
-      if (acc > -1 || series.legend !== selectedSeries.legend) {
-        return acc;
-      } else {
-        return index;
-      }
-    }, -1);
-
-    let selectedSerieses: ScatterChartDataWithIndex[];
-    if (selectedSeriesIndex === -1) {
-      selectedSerieses = [...selectedLegendPoints, selectedSeries];
-    } else {
-      selectedSerieses = selectedLegendPoints
-        .slice(0, selectedSeriesIndex)
-        .concat(selectedLegendPoints.slice(selectedSeriesIndex + 1));
-    }
-
-    const areAllSeriesLegendsSelected = props.data && selectedSerieses.length === props.data.lineChartData!.length;
-
-    if (areAllSeriesLegendsSelected || !selectedSerieses.length) {
-      // Clear all legends if no legends including color fill bar legends are selected
-      _clearMultipleLegendSelections();
-    } else {
-      // Otherwise, set state when one or more legends are selected, including color fill bar legends
-      setSelectedLegendPoints(selectedSerieses);
-      setIsSelectedLegend(true);
-    }
-
-    const selectedLegendTitlesToPass = selectedSerieses.map((series: ScatterChartDataWithIndex) => series.legend);
-    _handleLegendClick(selectedSeries, selectedLegendTitlesToPass);
-  }
-
-  function _clearMultipleLegendSelections() {
-    setSelectedLegendPoints([]);
-    setIsSelectedLegend(false);
-  }
-
   /**
    * This function checks if the given legend is highlighted or not.
    * A legend can be highlighted in 2 ways:
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it*/
 
-  function _legendHighlighted(legend: string) {
-    return selectedLegend === legend || (selectedLegend === '' && activeLegend === legend);
+  function _legendHighlighted(legend: string): boolean {
+    return _getHighlightedLegend().includes(legend);
   }
 
   /**
    * This function checks if none of the legends is selected or hovered.*/
 
-  function _noLegendHighlighted() {
-    return selectedLegend === '' && activeLegend === '';
+  function _noLegendHighlighted(): boolean {
+    return selectedLegends.length === 0;
+  }
+
+  function _getHighlightedLegend(): string[] {
+    return selectedLegends.length > 0 ? selectedLegends : activeLegend ? [activeLegend] : [];
   }
 
   function _getAriaLabel(seriesIndex: number, pointIndex: number): string {
@@ -583,6 +561,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
       onChartMouseLeave={_handleChartMouseLeave}
       enableFirstRenderOptimization={_firstRenderOptimization}
       datasetForXAxisDomain={_xAxisLabels}
+      componentRef={cartesianChartRef}
       /* eslint-disable react/jsx-no-bind */
       // eslint-disable-next-line react/no-children-prop
       children={(props: ChildProps) => {
