@@ -124,6 +124,10 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
     )}, ${escapeMixedInlineToken(fluentFallback)}))`;
   }
 
+  if (fluentFallback && tokenData.nullable) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeMixedInlineToken(fluentFallback)}}, unset))`;
+  }
+
   if (fluentFallback) {
     return `var(${escapeInlineToken(tokenNameRaw)}, ${escapeMixedInlineToken(fluentFallback)})`;
   }
