@@ -138,8 +138,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
           onMouseOver={[Function]}
           role="img"
           rx={0}
-          width={-30}
-          x={40}
+          width={30}
+          x={10}
           y={4}
         />
       </g>
@@ -759,8 +759,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
           onMouseOver={[Function]}
           role="img"
           rx={3}
-          width={-30}
-          x={40}
+          width={30}
+          x={10}
           y={4}
         />
       </g>
@@ -1380,8 +1380,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           onMouseOver={[Function]}
           role="img"
           rx={0}
-          width={-30}
-          x={40}
+          width={30}
+          x={10}
           y={4}
         />
       </g>
@@ -2001,8 +2001,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           onMouseOver={[Function]}
           role="img"
           rx={0}
-          width={-30}
-          x={40}
+          width={30}
+          x={10}
           y={4}
         />
       </g>
@@ -2133,8 +2133,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           role="img"
           rx={0}
           transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
+          width={12}
+          x={28}
           y={14.25}
         />
          
@@ -2443,8 +2443,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           role="img"
           rx={0}
           transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
+          width={12}
+          x={28}
           y={14.25}
         />
          

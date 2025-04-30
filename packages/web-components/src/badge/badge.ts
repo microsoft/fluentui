@@ -11,6 +11,8 @@ export class Badge extends FASTElement {
   /**
    * The appearance the badge should have.
    *
+   * @tag fluent-badge
+   *
    * @public
    * @remarks
    * HTML Attribute: appearance

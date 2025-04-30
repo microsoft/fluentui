@@ -6,6 +6,7 @@ import { GroupedVerticalBarChartBasicExample } from './GroupedVerticalBarChart.B
 import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVerticalBarChart.CustomAccessibility.Example';
+import { GroupedVerticalBarChartSecondaryYAxisExample } from './GroupedVerticalBarChart.SecondaryYAxis.Example';
 
 const GroupedVerticalBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Basic.Example.tsx') as string;
@@ -15,6 +16,8 @@ const GroupedVerticalTruncatedExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.Truncated.Example.tsx') as string;
 const GroupedVerticalCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.CustomAccessibility.Example.tsx') as string;
+const GroupedVerticalBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/GroupedVerticalBarChart.SecondaryYAxis.Example.tsx') as string;
 
 export const GroupedVerticalBarChartPageProps: IDocPageProps = {
   title: 'GroupedVerticalBarChart',
@@ -41,6 +44,11 @@ export const GroupedVerticalBarChartPageProps: IDocPageProps = {
       title: 'GroupedVerticalBarChart custom accessibility',
       code: GroupedVerticalCustomAccessibilityExampleCode,
       view: <GroupedVerticalBarChartCustomAccessibilityExample />,
+    },
+    {
+      title: 'GroupedVerticalBarChart secondary y-axis',
+      code: GroupedVerticalBarChartSecondaryYAxisExampleCode,
+      view: <GroupedVerticalBarChartSecondaryYAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/docs/GroupedVerticalBarChartOverview.md'),

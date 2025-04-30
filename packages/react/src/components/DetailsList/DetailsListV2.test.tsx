@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
-import { safeMount } from '@fluentui/test-utilities';
+import { render, fireEvent, act } from '@testing-library/react';
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
-import { SelectionMode, Selection, SelectionZone } from '../../Selection';
+import { SelectionMode, Selection } from '../../Selection';
 import { getTheme } from '../../Styling';
 import { DetailsHeader } from './DetailsHeader';
 import { DetailsList } from './DetailsList';
@@ -65,6 +64,111 @@ function customColumnDivider(
       {defaultRenderer(iDetailsColumnProps)}
     </React.Fragment>
   );
+}
+
+// Helper function to handle mounting components with React Testing Library
+// This replaces Enzyme's mount functionality
+function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) => void, attachToDom: boolean = false) {
+  // Create a test wrapper object that mimics some of Enzyme's API for backward compatibility
+  const createTestWrapper = (container: HTMLElement, rerenderFn: any, component?: any) => {
+    return {
+      find: (selector: string) => {
+        // This mimics Enzyme's find method by returning an object with simulate method
+        const elements = container.querySelectorAll(selector);
+        return {
+          simulate: (eventName: string, eventArgs?: any) => {
+            if (elements.length === 0) {
+              throw new Error(`No elements found for selector: ${selector}`);
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-shadow
+            elements.forEach(element => {
+              switch (eventName) {
+                case 'keyDown':
+                  fireEvent.keyDown(element, {
+                    ...eventArgs,
+                    key: eventArgs.which,
+                    which: eventArgs.which,
+                    keyCode: eventArgs.which,
+                  });
+                  break;
+                case 'click':
+                  fireEvent.click(element, eventArgs);
+                  break;
+                case 'dblclick':
+                  fireEvent.doubleClick(element, eventArgs);
+                  break;
+                default:
+                  // For other events, try to use the corresponding fireEvent method
+                  const fireEventMethod = (fireEvent as any)[eventName];
+                  if (fireEventMethod) {
+                    fireEventMethod(element, eventArgs);
+                  } else {
+                    fireEvent(element, new Event(eventName));
+                  }
+              }
+            });
+          },
+          first: () => {
+            // Returns an object that mimics the first element found in Enzyme
+            const firstEl = container.querySelector(selector);
+            return {
+              simulate: (eventName: string, eventArgs?: any) => {
+                if (!firstEl) {
+                  throw new Error(`No element found for selector: ${selector}`);
+                }
+
+                switch (eventName) {
+                  case 'keyDown':
+                    fireEvent.keyDown(firstEl, {
+                      ...eventArgs,
+                      key: eventArgs.which,
+                      which: eventArgs.which,
+                      keyCode: eventArgs.which,
+                    });
+                    break;
+                  case 'click':
+                    fireEvent.click(firstEl, eventArgs);
+                    break;
+                  case 'dblclick':
+                    fireEvent.doubleClick(firstEl, eventArgs);
+                    break;
+                  default:
+                    // For other events, try to use the corresponding fireEvent method
+                    const fireEventMethod = (fireEvent as any)[eventName];
+                    if (fireEventMethod) {
+                      fireEventMethod(firstEl, eventArgs);
+                    } else {
+                      fireEvent(firstEl, new Event(eventName));
+                    }
+                }
+              },
+            };
+          },
+          length: elements.length,
+        };
+      },
+    };
+  };
+
+  // Use React Testing Library's render function
+  let componentRef: any = null;
+  const refCallback = (ref: any) => {
+    componentRef = ref;
+  };
+
+  // Add ref to the element
+  const elementWithRef = React.cloneElement(element, { ref: refCallback });
+
+  // Render with RTL
+  const { container, rerender } = render(elementWithRef);
+
+  // Create wrapper with component ref for tests that need to access component instance
+  const wrapper = createTestWrapper(container, rerender, componentRef);
+
+  act(() => {
+    callback(wrapper);
+  });
 }
 
 const groupProps: IDetailsGroupRenderProps = {
@@ -539,7 +643,7 @@ describe('DetailsListV2', () => {
 
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} groupProps={groupProps} />,
-      (wrapper: ReactWrapper) => {
+      wrapper => {
         wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
 
         expect(onItemInvoked).toHaveBeenCalledTimes(1);
@@ -553,8 +657,8 @@ describe('DetailsListV2', () => {
 
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} groupProps={groupProps} />,
-      (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('keydown', { which: KeyCodes.enter });
+      wrapper => {
+        wrapper.find('.ms-DetailsRow').first().simulate('keyDown', { which: KeyCodes.enter });
 
         expect(onItemInvoked).toHaveBeenCalledTimes(1);
       },
@@ -718,7 +822,7 @@ describe('DetailsListV2', () => {
 
     let component: DetailsListBase | null;
 
-    safeMount(
+    const { rerender } = render(
       <DetailsList
         items={mockData(5)}
         setKey={'key1'}
@@ -728,27 +832,32 @@ describe('DetailsListV2', () => {
         onShouldVirtualize={() => false}
         groupProps={groupProps}
       />,
-      (wrapper: ReactWrapper) => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(3);
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(3);
-
-        // update props to new setKey
-        const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
-        wrapper.setProps(newProps);
-        wrapper.update();
-
-        // verify that focusedItemIndex is reset to 0 and 0th row is focused
-        jest.runAllTimers();
-        expect(component!.state.focusedItemIndex).toEqual(0);
-        expect(
-          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-        ).toEqual('0');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-      },
-      true /* attach */,
     );
+
+    expect(component!).toBeTruthy();
+    component!.focusIndex(3);
+    jest.runAllTimers();
+    expect(component!.state.focusedItemIndex).toEqual(3);
+
+    // update props to new setKey
+    const newProps = { items: mockData(7), setKey: 'set2', initialFocusedIndex: 0 };
+    rerender(
+      <DetailsList
+        {...newProps}
+        componentRef={value => (component = value as any)}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        groupProps={groupProps}
+      />,
+    );
+
+    // verify that focusedItemIndex is reset to 0 and 0th row is focused
+    jest.runAllTimers();
+    expect(component!.state.focusedItemIndex).toEqual(0);
+    expect(
+      (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+    ).toEqual('0');
+    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
   });
 
   it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
@@ -814,7 +923,7 @@ describe('DetailsListV2', () => {
     const selection = new Selection();
     const theme = getTheme();
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
@@ -825,32 +934,40 @@ describe('DetailsListV2', () => {
         selection={selection}
         groupProps={groupProps}
       />,
-      () => {
-        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
-        expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
-
-        selection.setAllSelected(true);
-
-        expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
-        expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
-      },
     );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
+    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
+
+    selection.setAllSelected(true);
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
+    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
+
+    unmount();
   });
 
   it('initializes the selection mode object with the selectionMode prop', () => {
-    safeMount(
+    const { container, unmount } = render(
       <DetailsList
         items={mockData(5)}
         columns={mockData(5, true)}
         selectionMode={SelectionMode.none}
         groupProps={groupProps}
       />,
-      (wrapper: ReactWrapper) => {
-        const selectionZone = wrapper.find(SelectionZone);
-
-        expect(selectionZone.props().selection.mode).toEqual(SelectionMode.none);
-      },
     );
+    const selectionZone = container.querySelector('.ms-SelectionZone');
+
+    function getFiberProperty(element: Element): string {
+      return Object.keys(element).find(key => key.startsWith('__reactProps$')) as string;
+    }
+
+    const internalSelectionProp =
+      // @ts-expect-error - This is a private API and should not be used in production code
+      selectionZone?.parentElement[getFiberProperty(selectionZone.parentElement)].children.props.selection;
+    expect(internalSelectionProp.mode).toEqual(SelectionMode.none);
+
+    unmount();
   });
 
   it('handles updates to items and groups', () => {

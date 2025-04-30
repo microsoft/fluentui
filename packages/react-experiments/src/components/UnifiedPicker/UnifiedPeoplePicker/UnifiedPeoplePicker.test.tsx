@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import { create } from 'react-test-renderer';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
 import { people, mru } from '@fluentui/example-data';
@@ -9,8 +9,6 @@ import type {
   IFloatingPeopleSuggestionsProps,
 } from '../../../FloatingPeopleSuggestionsComposite';
 import type { ISelectedPeopleListProps } from '../../../SelectedItemsList';
-
-type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
 
 const _onSuggestionRemoved = jest.fn();
 const _onSuggestionSelected = jest.fn();
@@ -78,7 +76,7 @@ describe('UnifiedPeoplePicker', () => {
       const allPeople = people;
       const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
       suggestionList = suggestions.map(item => {
-        return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+        return { item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
       });
     };
 
@@ -88,7 +86,7 @@ describe('UnifiedPeoplePicker', () => {
 
     floatingPeoplePickerProps.suggestions = suggestionList;
 
-    const wrapper = mount(
+    const wrapper = render(
       <UnifiedPeoplePicker
         floatingSuggestionProps={floatingPeoplePickerProps}
         selectedItemsListProps={selectedPeopleListProps}
@@ -96,9 +94,9 @@ describe('UnifiedPeoplePicker', () => {
       />,
     );
 
-    const inputElement: InputElementWrapper = wrapper.find('input');
-    expect(inputElement).toHaveLength(1);
-    inputElement.simulate('input', { target: { value: 'annie' } });
+    const inputElement = wrapper.container.querySelector('input') as HTMLInputElement;
+    expect(inputElement).toBeDefined();
+    fireEvent.input(inputElement, { target: { value: 'annie' } });
 
     // still just validating the suggestionlist, as enzyme has a bug for
     // re-render

@@ -83,15 +83,15 @@ extends:
                 displayName: 'Bump and commit nightly versions'
 
               - script: |
-                  yarn nx run react-components:build --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: build
 
               - script: |
-                  yarn nx run react-components:lint --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting" --nxBail
                 displayName: lint
 
               - script: |
-                  yarn nx run react-components:test --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p "tag:vNext"  --exclude "tag:npm:private,tag:tools,tag:charting"--nxBail
                 displayName: test
 
               - script: |
