@@ -70,6 +70,7 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
 
         elementRef.current.innerText = '';
         elementRef.current.appendChild(wrappingEl);
+        console.log('Announcing:', wrappingEl.innerText);
 
         messageQueue.clear();
         batchMessages.current = [];
@@ -86,7 +87,12 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
       }
     };
 
-    runCycle();
+    // Run the first cycle with a 0 timeout to ensure multiple messages in the same tick are handled
+    timeoutRef.current = setAnnounceTimeout(() => {
+      runCycle();
+    }, 0);
+
+    // runCycle();
   }, [clearAnnounceTimeout, messageQueue, setAnnounceTimeout, targetDocument]);
 
   const announce: AriaLiveAnnounceFn = React.useCallback(
