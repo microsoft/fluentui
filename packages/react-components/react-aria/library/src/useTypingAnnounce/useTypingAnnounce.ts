@@ -5,6 +5,11 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import { AriaLiveAnnounceFn } from '../AriaLiveAnnouncer/AriaLiveAnnouncer.types';
 
+type Message = {
+  message: string;
+  options: AnnounceOptions;
+};
+
 const valueMutationOptions = {
   attributes: true,
   subtree: true,
@@ -13,31 +18,41 @@ const valueMutationOptions = {
 };
 
 export const useTypingAnnounce = (inputEl: React.RefObject<HTMLElement>): { typingAnnounce: AriaLiveAnnounceFn } => {
-  const [setTypingTimeout, clearTypingTimeout] = useTimeout();
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { announce } = useAnnounce();
+
+  const observer = React.useRef<MutationObserver>();
+  const [setTypingTimeout, clearTypingTimeout] = useTimeout();
+  const messageQueue = React.useRef<Message[]>([]);
+
+  const callback: MutationCallback = React.useCallback((mutationList, observer) => {
+    clearTypingTimeout();
+    setTypingTimeout(() => {
+      messageQueue.current.forEach(({ message, options }) => {
+        announce(message, options);
+      });
+      messageQueue.current = [];
+      observer.disconnect();
+    }, 500);
+  }, []);
 
   const typingAnnounce: AriaLiveAnnounceFn = React.useCallback((message: string, options: AnnounceOptions = {}) => {
     if (!win || !inputEl?.current) {
       return;
     }
 
-    const callback: MutationCallback = (mutationList, observer) => {
-      clearTypingTimeout();
-      setTypingTimeout(() => {
-        console.log('announcing:', message);
-        announce(message, options);
-        observer.disconnect();
-      }, 500);
-    };
+    messageQueue.current.push({ message, options });
 
-    // create mutation observer
-    const observer = new win.MutationObserver(callback);
-    observer.observe(inputEl.current, valueMutationOptions);
+    if (!observer.current) {
+      // create mutation observer if it doesn't exist
+      observer.current = new win.MutationObserver(callback);
+    }
+
+    observer.current.observe(inputEl.current, valueMutationOptions);
 
     setTypingTimeout(() => {
-      announce(message, options);
+      callback([], observer.current!);
     }, 500);
   }, []);
 
