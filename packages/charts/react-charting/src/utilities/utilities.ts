@@ -57,6 +57,9 @@ import {
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
+export const GAP_PROPORTION_HBC: number = 0.2;
+export const MINIMUM_Y_AXIS_GAP_HBC: number = 0.5;
+
 export enum ChartTypes {
   AreaChart,
   LineChart,
@@ -501,29 +504,24 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const yRange = yMinMaxValues.endValue - yMinMaxValues.startValue;
-  const maxDiff = yRange * 0.2;
+  const maxDiff = Math.max(yRange * GAP_PROPORTION_HBC, MINIMUM_Y_AXIS_GAP_HBC);
   const finalYmax = Math.max(yMinMaxValues.endValue + maxDiff, yMaxValue);
   const finalYmin = Math.max(yMinMaxValues.startValue - maxDiff, Math.min(yMinValue || 0, 0));
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   // Custom tick formatting function
-  const customTickFormat = (value: number, maxValue: number) => {
+  const customTickFormat = (value: number, _index: number) => {
     // Calculate the number of digits in the maximum value
-    const numDigits = Math.ceil(Math.log10(maxValue));
-
+    const numDigits = Math.max(Math.ceil(Math.log10(value)), Math.floor(Math.log10(value)) + 1);
     // Determine the precision (x) based on the number of digits
     let x: number;
     if (numDigits >= 5) {
-      x = 1; // Use 3 significant digits for large numbers
-    } else if (numDigits >= 3) {
-      x = 3; // Use 2 significant digits for medium numbers
+      x = 1;
     } else {
-      x = 3; // Use 1 significant digit for small numbers
+      x = 3;
     }
-
     // Apply the dynamically determined x in the format
     return d3Format(`.${x}~s`)(value);
   };

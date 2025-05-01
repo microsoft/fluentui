@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  ScaleLinear as D3ScaleLinear,
+  scaleBand as d3ScaleBand,
+  ScaleBand,
+} from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -44,6 +49,8 @@ import {
   areArraysEqual,
   computeLongestBars,
   groupChartDataByYValue,
+  GAP_PROPORTION_HBC,
+  MINIMUM_Y_AXIS_GAP_HBC,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -90,6 +97,8 @@ export class HorizontalBarChartWithAxisBase
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
   private _maxYDiff: number;
+  private _gap: number;
+  private _isDataSkewed: boolean = false;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -116,17 +125,19 @@ export class HorizontalBarChartWithAxisBase
     this._calloutId = getId('callout');
     this._tooltipId = getId('HBCWATooltipID_');
     this._refArray = [];
+    this._maxYDiff = 0;
+    this._gap = 0;
+    this._isDataSkewed = this._checkSkewedBars();
     this._xAxisType =
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.NumericAxis;
     this._yAxisType =
-      this.props.data! && this.props.data!.length > 0
+      this.props.data! && this.props.data!.length > 0 && !this._isDataSkewed
         ? (getTypeOfAxis(this.props.data![0].y, false) as YAxisType)
         : YAxisType.StringAxis;
     this._cartesianChartRef = React.createRef();
     this._legendsRef = React.createRef();
-    this._maxYDiff = 0;
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -170,8 +181,9 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+
     const yAxisTickCount =
-      this.props.yAxisTickCount || Math.ceil(this._yAxisLabels.length / 2) + (this._maxYDiff >= 1 ? 2 : 0);
+      this.props.yAxisTickCount || this._yAxisLabels.length + (this._gap >= this._maxYDiff ? 2 : 0);
     return (
       <CartesianChart
         {...this.props}
@@ -314,12 +326,12 @@ export class HorizontalBarChartWithAxisBase
     this._longestBarPositiveTotalValue = longestBars.longestPositiveBar;
     this._longestBarNegativeTotalValue = longestBars.longestNegativeBar;
     const { xBarScale, yBarScale } =
-      this._yAxisType === YAxisType.NumericAxis
+      this._yAxisType === YAxisType.NumericAxis && !this._isDataSkewed
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
     const allBars = stackedChartData
       .map(singleBarData =>
-        this._yAxisType === YAxisType.NumericAxis
+        this._yAxisType === YAxisType.NumericAxis && !this._isDataSkewed
           ? this._createNumericBars(
               containerHeight,
               containerWidth,
@@ -493,9 +505,9 @@ export class HorizontalBarChartWithAxisBase
     if (isNumericScale) {
       let yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       let yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-      this._maxYDiff = Math.abs(yMax - yMin) * 0.2;
-      yMax = yMax + this._maxYDiff;
-      yMin = yMin - this._maxYDiff;
+      this._gap = Math.max(Math.abs(yMax - yMin) * GAP_PROPORTION_HBC, MINIMUM_Y_AXIS_GAP_HBC);
+      yMax = yMax + this._gap;
+      yMin = yMin - this._gap;
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
@@ -509,9 +521,10 @@ export class HorizontalBarChartWithAxisBase
       // and CatrtesianChartBase w for more details refer example
       // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
-        .domain(this._yAxisLabels)
-        .range([containerHeight - this.margins.bottom! - this._barHeight / 2, this.margins.top! + this._barHeight / 2])
-        .padding(this.props.yAxisPadding || 0);
+        .domain(this._yAxisLabels.map(String))
+        .range([containerHeight - this.margins.bottom!, this.margins.top!])
+        .padding(this.props.yAxisPadding || 0)
+        .range([containerHeight - this.margins.bottom! - this._barHeight / 2, this.margins.top! + this._barHeight / 2]);
 
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -808,10 +821,10 @@ export class HorizontalBarChartWithAxisBase
             key={point.x}
             className={this._classNames.opacityChangeOnHover}
             x={xStart}
-            y={yBarScale(point.y)}
+            y={this._isDataSkewed ? yBarScale(point.y.toString()) : yBarScale(point.y)}
             rx={this.props.roundCorners ? 3 : 0}
             width={currentWidth - (this._isRtl ? gapWidthRTL : gapWidthLTR)}
-            height={this._barHeight}
+            height={this._isDataSkewed ? Math.min(this._barHeight, yBarScale.bandwidth()) : this._barHeight}
             aria-labelledby={`toolTip${this._calloutId}`}
             aria-label={this._getAriaLabel(point)}
             role="img"
@@ -996,4 +1009,24 @@ export class HorizontalBarChartWithAxisBase
     const { chartTitle, data } = this.props;
     return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
   };
+
+  private _checkSkewedBars(): boolean {
+    const yValues = this.props.data!.map(point => point.y as number);
+    const yDiffs = yValues.map((yValue, index) => {
+      if (index === 0) {
+        return 0;
+      }
+      return Math.abs(yValue - yValues[index - 1]);
+    });
+    const maxYDiff = Math.max(...yDiffs);
+    this._maxYDiff = maxYDiff;
+
+    const minYDiff = Math.min(...yDiffs.filter(diff => diff > 0));
+    const yRange = Math.max(...yValues) - Math.min(...yValues);
+    const avgYDiff = yDiffs.reduce((sum, diff) => sum + diff, 0) / yDiffs.length;
+    // Define threshold dynamically based on y-axis scale
+    const threshold = avgYDiff > 0 ? yRange / avgYDiff : 1;
+    this._isDataSkewed = minYDiff > 0 ? Math.ceil(maxYDiff / minYDiff) > Math.floor(threshold) : true;
+    return this._isDataSkewed;
+  }
 }
