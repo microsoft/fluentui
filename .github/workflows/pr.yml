@@ -130,6 +130,12 @@ jobs:
           affected_count=$(yarn --silent nx show projects -t type-check:integration --affected --verbose false | wc -l | tr -d ' ')
           echo "value=$affected_count" >> $GITHUB_OUTPUT
 
+      - name: Affected test:integration Projects
+        id: affected_projects_test_count
+        run: |
+          affected_count=$(yarn --silent nx show projects -t test:integration --affected --verbose false | wc -l | tr -d ' ')
+          echo "value=$affected_count" >> $GITHUB_OUTPUT
+
       - name: type-check (affected)
         id: type-check
         if: steps.affected_projects_type_check_count.outputs.value > 0
@@ -149,6 +155,15 @@ jobs:
           name: typescript-react-${{ matrix.react }}-v${{ matrix.fluentui }}
           path: tsc-logs
           retention-days: 1
+
+      # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
+      - name: test (affected)
+        id: test
+        if: steps.affected_projects_test_count.outputs.value > 0
+        run: |
+          yarn nx run-many -p react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} -t build:integration --nxBail
+          yarn workspace @fluentui/react-${{ matrix.react }}-tests-v${{ matrix.fluentui }} test:integration
+        continue-on-error: true
 
       # run targets only on affected changes - need to run this outside nx runner context to avoid https://github.com/nrwl/nx/issues/30562
       - name: e2e (affected)
@@ -176,14 +191,16 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- Type-check: ${{ steps.type-check.outcome }}" >> $GITHUB_STEP_SUMMARY
           echo "- E2E: ${{ steps.e2e.outcome }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Test: ${{ steps.test.outcome }}" >> $GITHUB_STEP_SUMMARY
 
-          if [[ "${{ steps.type-check.outcome }}" == "success" && "${{ steps.e2e.outcome }}" == "success" ]]; then
+          if [[ "${{ steps.type-check.outcome }}" == "success" && "${{ steps.e2e.outcome }}" == "success" && "${{ steps.test.outcome }}" == "success" ]]; then
             echo "✅ React ${{ matrix.react }} / v${{ matrix.fluentui }} integration tests passed"
             exit 0
           else
             echo "❌ React ${{ matrix.react }} / v${{ matrix.fluentui }} integration tests failed"
             echo "Type-check: ${{ steps.type-check.outcome }}"
             echo "E2E: ${{ steps.e2e.outcome }}"
+            echo "Test: ${{ steps.test.outcome }}"
             exit 1
           fi
 

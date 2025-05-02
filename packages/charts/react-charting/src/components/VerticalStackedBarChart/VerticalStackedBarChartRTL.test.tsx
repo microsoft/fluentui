@@ -67,6 +67,24 @@ const thirdChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
 ];
 
+const firstChartNegativePoints: IVSChartDataPoint[] = [
+  { legend: 'Metadata1', data: -2, color: DefaultPalette.blue },
+  { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
+  { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
+];
+
+const secondChartNegativePoints: IVSChartDataPoint[] = [
+  { legend: 'Metadata1', data: -30, color: DefaultPalette.blue },
+  { legend: 'Metadata2', data: -3, color: DefaultPalette.blueMid },
+  { legend: 'Metadata3', data: -40, color: DefaultPalette.blueLight },
+];
+
+const thirdChartNegativePoints: IVSChartDataPoint[] = [
+  { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
+  { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
+  { legend: 'Metadata3', data: -30, color: DefaultPalette.blueLight },
+];
+
 const simplePoints = [
   {
     chartData: firstChartPoints,
@@ -81,6 +99,25 @@ const simplePoints = [
   },
   {
     chartData: thirdChartPoints,
+    xAxisPoint: 'March',
+    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+];
+
+const negativePoints = [
+  {
+    chartData: firstChartNegativePoints,
+    xAxisPoint: 'January',
+    activeLegend: 'Supported Builds',
+    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: secondChartNegativePoints,
+    xAxisPoint: 'February',
+    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: thirdChartNegativePoints,
     xAxisPoint: 'March',
     lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
   },
@@ -211,6 +248,16 @@ describe('Vertical stacked bar chart rendering', () => {
       !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
     );
   });
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with negative points',
+    VerticalStackedBarChart,
+    { data: negativePoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {

@@ -1,9 +1,12 @@
+import '@testing-library/jest-dom';
+
 import * as React from 'react';
-import { Calendar } from '../../Calendar';
 import { DatePicker } from './DatePicker';
+import { Calendar } from '../Calendar';
 import { DatePickerBase } from './DatePicker.base';
 import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { resetIds } from '@fluentui/utilities';
 import { Callout } from '../../Callout';
 import { safeCreate } from '@fluentui/test-utilities';
@@ -12,7 +15,7 @@ import * as renderer from 'react-test-renderer';
 import * as ReactDOM from 'react-dom';
 import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
 import { isConformant } from '../../common/isConformant';
-import type { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
+import { IDatePickerStrings } from './DatePicker.types';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -54,89 +57,73 @@ describe('DatePicker', () => {
   });
 
   it('can add an id to the container', () => {
-    const wrapper = mount(<DatePickerBase id="foo" />);
+    const { container } = render(<DatePickerBase id="foo" />);
 
-    expect(wrapper.getElement().props.id).toEqual('foo');
+    expect(container.firstChild).toHaveAttribute('id', 'foo');
   });
 
   it('should not open DatePicker when disabled, no label', () => {
-    const wrapper = mount(<DatePickerBase disabled />);
-    wrapper.find('i').simulate('click');
-
-    expect(wrapper.find('[role="dialog"]').length).toBe(0);
+    const { container } = render(<DatePickerBase disabled />);
+    const icon = container.querySelector('i');
+    userEvent.click(icon!);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  // if isDatePickerShown is not set, the DatePicker should not
-  // be rendered and therefore aria-owns should not exist
   it('should not render DatePicker when isDatePickerShown is not set', () => {
-    const datePicker = mount(<DatePickerBase />);
-
-    expect(datePicker.getDOMNode().getAttribute('aria-owns')).toBeNull();
+    render(<DatePickerBase />);
+    const input = screen.getByRole('combobox');
+    expect(input.getAttribute('aria-owns')).toBeNull();
   });
 
-  // if isDatePickerShown is set, the DatePicker should be rendered
-  // and aria-owns should exist
   it('should render DatePicker when isDatePickerShown is set', () => {
-    const datePicker = mount(<DatePickerBase />);
-    datePicker.find('i').simulate('click');
-
-    expect(datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns')).toBeDefined();
+    const { container } = render(<DatePickerBase />);
+    const icon = container.querySelector('i');
+    userEvent.click(icon!);
+    const input = screen.getByRole('combobox');
+    expect(input.getAttribute('aria-owns')).toBeDefined();
   });
 
-  // if isDatePickerShown is set, the DatePicker should be rendered
-  // and the calloutId should exist in the DOM
   it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
-    const datePicker = mount(<DatePickerBase />);
-    datePicker.find('i').simulate('click');
-
-    const calloutId = datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns');
-
-    expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
+    const { container } = render(<DatePickerBase />);
+    const icon = container.querySelector('i');
+    userEvent.click(icon!);
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 
   it('should not open DatePicker when disabled, with label', () => {
-    const wrapper = mount(<DatePickerBase disabled label="label" />);
-    wrapper.find('i').simulate('click');
-    expect(wrapper.find('[role="dialog"]').length).toBe(0);
+    const { container } = render(<DatePickerBase disabled label="label" />);
+    const icon = container.querySelector('i');
+    userEvent.click(icon!);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
   it('with allowTextInput false, renders read-only input as a div with placeholder', () => {
-    // This works around a bug with Talkback on Android (see comments in onRenderInput in DatePickerBase)
-    const wrapper = mount(<DatePickerBase placeholder="Select a date" />);
-    expect(wrapper.find('input')).toHaveLength(0);
-    const fieldElement = wrapper.find('.ms-TextField-field');
-    expect(fieldElement).toHaveLength(1);
-    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
-    expect(fieldElement.prop('role')).toBe('combobox');
-    expect(fieldElement.text()).toBe('Select a date');
+    const placeholder = 'Select a date';
+    render(<DatePickerBase placeholder={placeholder} />);
+    expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+    const combobox = screen.getByRole('combobox');
+    expect(combobox).toHaveTextContent(placeholder);
   });
 
   it('with allowTextInput false, renders read-only input as a div with value', () => {
-    const wrapper = mount(
-      <DatePickerBase placeholder="Select a date" value={new Date()} formatDate={() => 'fake date'} />,
-    );
-    expect(wrapper.find('input')).toHaveLength(0);
-    const fieldElement = wrapper.find('.ms-TextField-field');
-    expect(fieldElement).toHaveLength(1);
-    expect(fieldElement.getDOMNode().tagName).toBe('DIV');
-    expect(fieldElement.prop('role')).toBe('combobox');
-    expect(fieldElement.text()).toBe('fake date');
+    render(<DatePickerBase placeholder="Select a date" value={new Date()} formatDate={() => 'fake date'} />);
+    expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+    const combobox = screen.getByRole('combobox');
+    expect(combobox).toHaveTextContent('fake date');
   });
 
   it('with allowTextInput true, renders normal input', () => {
-    const wrapper = mount(<DatePickerBase allowTextInput />);
-    expect(wrapper.find('input')).toHaveLength(1);
+    render(<DatePickerBase allowTextInput />);
+    expect(screen.getByRole('combobox')).toBeInTheDocument();
   });
 
   it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
     const onSelectDate = jest.fn();
-    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
-    const textField = datePicker.find('input');
+    render(<DatePickerBase isRequired allowTextInput onSelectDate={onSelectDate} />);
+    const input = screen.getByRole('combobox');
 
-    expect(textField).toHaveLength(1);
-
-    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
-    textField.simulate('change', { target: { value: '' } }).simulate('blur');
+    userEvent.type(input, 'Jan 1 2030');
+    userEvent.clear(input);
 
     expect(onSelectDate).toHaveBeenCalledTimes(2);
   });
@@ -309,7 +296,6 @@ describe('DatePicker', () => {
     });
   });
 
-  // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
   it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     // See https://github.com/facebook/react/issues/11565
     jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
@@ -354,7 +340,6 @@ describe('DatePicker', () => {
     const initiallySelectedDate = new Date('January 10, 2020');
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
-
     // See https://github.com/facebook/react/issues/11565
     jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
 
@@ -376,7 +361,7 @@ describe('DatePicker', () => {
     );
   });
 
-  xit('reflects the correct date in the input field when selecting a value and a different format is given', () => {
+  it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
     const today = new Date('January 15, 2020');
     const initiallySelectedDate = new Date('January 10, 2020');
     const onFormatDate = (date: Date): string => {
@@ -410,195 +395,136 @@ describe('DatePicker', () => {
       },
     );
   });
+});
 
-  describe('when Calendar properties are not specified', () => {
-    const datePicker = shallow(<DatePickerBase />);
-    datePicker
-      .find(TextField)
-      ?.props()
-      .onClick?.({} as any);
-    const calendarProps = datePicker.find(Calendar).props();
+describe('DatePickerBase - custom calendar properties', () => {
+  const value = new Date(2017, 10, 1);
+  const today = new Date(2017, 9, 31);
+  const dateTimeFormatter = {
+    formatMonthDayYear: () => 'm/d/y',
+    formatMonthYear: () => 'm/y',
+    formatDay: () => 'd',
+    formatMonth: () => 'm',
+    formatYear: () => 'y',
+  };
 
-    it('renders Calendar with isMonthPickerVisible as true by defaut', () => {
-      expect(calendarProps.isMonthPickerVisible).toBe(true);
-    });
+  it('renders Calendar with provided props and custom formatter', () => {
+    // See https://github.com/facebook/react/issues/11565
+    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
 
-    it('renders Calendar with showMonthPickerAsOverlay as false by defaut', () => {
-      expect(calendarProps.showMonthPickerAsOverlay).toBe(false);
-    });
-
-    it('renders Calendar with highlightCurrentMonth as false by defaut', () => {
-      expect(calendarProps.highlightCurrentMonth).toBe(false);
-    });
-
-    it('renders Calendar with showWeekNumbers as false by defaut', () => {
-      expect(calendarProps.showWeekNumbers).toBe(false);
-    });
-
-    it('renders Calendar with firstWeekOfYear as FirstWeekOfYear.FirstDay by defaut', () => {
-      expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstDay);
-    });
-
-    it('renders Calendar with showGoToToday as true by defaut', () => {
-      expect(calendarProps.showGoToToday).toBe(true);
-    });
-  });
-
-  describe('when Calendar properties are specified', () => {
-    const value = new Date(2017, 10, 1);
-    const today = new Date(2017, 9, 31);
-
-    const dateTimeFormatter: IDatePickerProps['dateTimeFormatter'] = {
-      formatMonthDayYear: () => 'm/d/y',
-      formatMonthYear: () => 'm/y',
-      formatDay: () => 'd',
-      formatMonth: () => 'm',
-      formatYear: () => 'y',
-    };
-
-    const datePicker = shallow(
+    safeCreate(
       <DatePickerBase
         isMonthPickerVisible={false}
-        showMonthPickerAsOverlay={true}
+        showMonthPickerAsOverlay
         value={value}
         today={today}
         firstDayOfWeek={2}
-        highlightCurrentMonth={true}
-        showWeekNumbers={true}
+        highlightCurrentMonth
+        showWeekNumbers
         firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
         showGoToToday={false}
         dateTimeFormatter={dateTimeFormatter}
       />,
+      datePicker => {
+        const input = datePicker.root.findAllByType('div')[5];
+
+        renderer.act(() => {
+          input.props.onClick();
+        });
+
+        const calendar = datePicker.root.findByType(Calendar);
+
+        expect(calendar.props.isMonthPickerVisible).toBe(false);
+        expect(calendar.props.showMonthPickerAsOverlay).toBe(true);
+        expect(calendar.props.value).toBe(value);
+        expect(calendar.props.today).toBe(today);
+        expect(calendar.props.firstDayOfWeek).toBe(2);
+        expect(calendar.props.highlightCurrentMonth).toBe(true);
+        expect(calendar.props.showWeekNumbers).toBe(true);
+        expect(calendar.props.firstWeekOfYear).toBe(FirstWeekOfYear.FirstFullWeek);
+        expect(calendar.props.showGoToToday).toBe(false);
+        expect(calendar.props.dateTimeFormatter).toBe(dateTimeFormatter);
+      },
     );
-    datePicker
-      .find(TextField)
-      ?.props()
-      .onClick?.({} as any);
+  });
+});
 
-    const calendarProps = datePicker.find(Calendar).props();
+describe('DatePickerBase - date boundaries', () => {
+  const defaultDate = new Date('Dec 15 2017');
+  const minDate = new Date('Jan 1 2017');
+  const maxDate = new Date('Dec 31 2017');
+  const strings: IDatePickerStrings = {
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    goToToday: 'Go to today',
+    isOutOfBoundsErrorMessage: 'out of bounds',
+  };
 
-    it('renders Calendar with same isMonthPickerVisible', () => {
-      expect(calendarProps.isMonthPickerVisible).toBe(false);
-    });
+  it('should display error for dates outside boundary', () => {
+    render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
+    const input = screen.getByRole('combobox');
 
-    it('renders Calendar with same showMonthPickerAsOverlay', () => {
-      expect(calendarProps.showMonthPickerAsOverlay).toBe(true);
-    });
+    userEvent.type(input, 'Jan 1 2010');
+    userEvent.tab();
 
-    it('renders Calendar with same value', () => {
-      expect(calendarProps.value).toBe(value);
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'true');
 
-    it('renders Calendar with same today', () => {
-      expect(calendarProps.today).toBe(today);
-    });
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2020');
+    userEvent.tab();
 
-    it('renders Calendar with same firstDayOfWeek', () => {
-      expect(calendarProps.firstDayOfWeek).toBe(2);
-    });
-
-    it('renders Calendar with same highlightCurrentMonth', () => {
-      expect(calendarProps.highlightCurrentMonth).toBe(true);
-    });
-
-    it('renders Calendar with same showWeekNumbers', () => {
-      expect(calendarProps.showWeekNumbers).toBe(true);
-    });
-
-    it('renders Calendar with same firstWeekOfYear', () => {
-      expect(calendarProps.firstWeekOfYear).toBe(FirstWeekOfYear.FirstFullWeek);
-    });
-
-    it('renders Calendar with same showGoToToday', () => {
-      expect(calendarProps.showGoToToday).toBe(false);
-    });
-
-    it('renders Calendar with same dateTimeFormatter', () => {
-      expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 
-  describe('when date boundaries are specified', () => {
-    const defaultDate = new Date('Dec 15 2017');
-    const minDate = new Date('Jan 1 2017');
-    const maxDate = new Date('Dec 31 2017');
-    const strings: IDatePickerStrings = {
-      months: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ],
-      shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-      goToToday: 'Go to today',
-      isOutOfBoundsErrorMessage: 'out of bounds',
-    };
-    let datePicker: ReactWrapper<IDatePickerProps, never>;
+  it('should not display error for dates within or on boundary', () => {
+    render(<DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} strings={strings} />);
+    const input = screen.getByRole('combobox');
 
-    beforeEach(() => {
-      datePicker = mount(
-        <DatePickerBase
-          allowTextInput={true}
-          minDate={minDate}
-          maxDate={maxDate}
-          value={defaultDate}
-          strings={strings}
-        />,
-      );
-    });
+    userEvent.type(input, 'Dec 16 2017');
+    userEvent.tab();
 
-    afterEach(() => {
-      datePicker.unmount();
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'false');
 
-    it('should throw validation error for date outside boundary', () => {
-      // before minDate
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2010' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
+    userEvent.clear(input);
+    userEvent.type(input, 'Jan 1 2017');
+    userEvent.tab();
 
-      // after maxDate
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2020' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+  });
 
-    it('should not throw validation error for date inside boundary', () => {
-      // in boundary
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Dec 16 2017' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
+  it('should show error when boundaries change and intersect value', () => {
+    const { rerender } = render(
+      <DatePickerBase allowTextInput minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />,
+    );
 
-      // on boundary
-      datePicker
-        .find('input')
-        .simulate('change', { target: { value: 'Jan 1 2017' } })
-        .simulate('blur');
-      expect(datePicker.find(TextField).props().errorMessage).toBeFalsy();
-    });
+    const input = screen.getByRole('combobox');
 
-    it('should throw validation error if boundaries are moved to intersect selected date', () => {
-      // ReactTestUtils.act(() => {
-      datePicker.setProps({ minDate: new Date('Dec 16 2017') });
-      datePicker.update();
-      // });
-      expect(datePicker.find(TextField).props().errorMessage).toBe('out of bounds');
-    });
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+
+    rerender(
+      <DatePickerBase
+        allowTextInput
+        minDate={new Date('Dec 16 2017')}
+        maxDate={maxDate}
+        value={defaultDate}
+        strings={strings}
+      />,
+    );
+    expect(input).toHaveAttribute('aria-invalid', 'true');
   });
 });
