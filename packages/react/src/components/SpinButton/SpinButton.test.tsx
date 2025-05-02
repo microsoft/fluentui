@@ -1,17 +1,17 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { create } from '@fluentui/test-utilities';
-import { ReactWrapper, mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { SpinButton } from './SpinButton';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent } from '../../common/testUtilities';
 import { isConformant } from '../../common/isConformant';
-import type { ISpinButton, ISpinButtonProps } from './SpinButton.types';
+import type { ISpinButton } from './SpinButton.types';
 
 describe('SpinButton', () => {
   let ref: React.RefObject<ISpinButton>;
-  let wrapper: ReactWrapper<ISpinButtonProps> | undefined;
 
   /**
    * Verify the value of the input field and related properties.
@@ -23,7 +23,7 @@ describe('SpinButton', () => {
   function verifyValue(value: string, intermediateValue?: string) {
     expect(ref.current!.value).toBe(value);
 
-    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    const inputDOM = screen.getByRole('spinbutton') as HTMLInputElement;
     expect(inputDOM.value).toBe(intermediateValue ?? value);
 
     // These don't update until editing is complete
@@ -34,9 +34,9 @@ describe('SpinButton', () => {
   }
 
   function getButton(button: 'up' | 'down') {
-    const buttonDOM = wrapper!
-      .getDOMNode()
-      .getElementsByClassName(button === 'up' ? 'ms-UpButton' : 'ms-DownButton')[0];
+    const buttonElements = screen.getAllByRole('button');
+    const className = button === 'up' ? 'ms-UpButton' : 'ms-DownButton';
+    const buttonDOM = buttonElements.find(node => node.classList.contains(className))!;
 
     expect(buttonDOM.tagName).toBe('BUTTON');
     return buttonDOM;
@@ -48,8 +48,8 @@ describe('SpinButton', () => {
   function simulateArrowButton(button: 'up' | 'down', expectedValue?: string) {
     const buttonDOM = getButton(button);
 
-    ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
-    ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
+    fireEvent.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+    fireEvent.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
 
     if (typeof expectedValue === 'string') {
       verifyValue(expectedValue);
@@ -60,10 +60,10 @@ describe('SpinButton', () => {
    * Simulate a single press of an arrow key. If `expectedValue` is provided, verify the result.
    */
   function simulateArrowKey(which: KeyCodes, expectedValue?: string) {
-    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    const inputDOM = screen.getByRole('spinbutton');
 
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which });
-    ReactTestUtils.Simulate.keyUp(inputDOM, { which });
+    fireEvent.keyDown(inputDOM, { which, keyCode: which });
+    fireEvent.keyUp(inputDOM, { which, keyCode: which });
 
     if (typeof expectedValue === 'string') {
       verifyValue(expectedValue);
@@ -79,19 +79,19 @@ describe('SpinButton', () => {
    * `enteredValue` is invalid and is corrected.
    */
   function simulateInput(enteredValue: string | string[], expectedValue?: string) {
-    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    const inputDOM = screen.getByRole('spinbutton') as HTMLInputElement;
     const oldValue = inputDOM.value;
 
-    ReactTestUtils.Simulate.focus(inputDOM);
+    fireEvent.focus(inputDOM);
 
     const enteredValues = typeof enteredValue === 'string' ? [enteredValue] : enteredValue;
     for (const value of enteredValues) {
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(value));
+      fireEvent.input(inputDOM, mockEvent(value));
       // Verify the intermediate value is correctly handled
       verifyValue(oldValue, value);
     }
 
-    ReactTestUtils.Simulate.blur(inputDOM);
+    fireEvent.blur(inputDOM);
     // Verify the committed value is correctly handled
     verifyValue(expectedValue ?? enteredValues.slice(-1)[0]);
   }
@@ -102,10 +102,6 @@ describe('SpinButton', () => {
   });
 
   afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
     if ((setTimeout as any).mock) {
       jest.useRealTimers();
     }
@@ -134,63 +130,62 @@ describe('SpinButton', () => {
 
   describe('basic props', () => {
     it('respects label', () => {
-      wrapper = mount(<SpinButton label="my label" />);
+      render(<SpinButton label="my label" />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      const labelDOM = wrapper.getDOMNode().querySelector('label')!;
+      const input = screen.getByRole('spinbutton');
+      const label = screen.getByText('my label');
 
-      expect(labelDOM.textContent).toBe('my label');
-      expect(labelDOM.htmlFor).toBe(inputDOM.id);
-      expect(inputDOM.getAttribute('aria-labelledby')).toBe(labelDOM.id);
+      expect(label).toBeInTheDocument();
+      expect(label).toHaveAttribute('for', input.id);
+      expect(input).toHaveAttribute('aria-labelledby', label.id);
     });
 
     it('leaves min and max unset by default', () => {
-      wrapper = mount(<SpinButton />);
+      render(<SpinButton />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const input = screen.getByRole('spinbutton');
 
-      expect(inputDOM.getAttribute('aria-valuemin')).toBe(null);
-      expect(inputDOM.getAttribute('aria-valuemax')).toBe(null);
+      expect(input).not.toHaveAttribute('aria-valuemin');
+      expect(input).not.toHaveAttribute('aria-valuemax');
     });
 
     it('respects min', () => {
-      wrapper = mount(<SpinButton min={-1} />);
+      render(<SpinButton min={-1} />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const input = screen.getByRole('spinbutton');
 
-      expect(inputDOM.getAttribute('aria-valuemin')).toBe('-1');
-      expect(inputDOM.getAttribute('aria-valuemax')).toBe(null);
+      expect(input).toHaveAttribute('aria-valuemin', '-1');
+      expect(input).not.toHaveAttribute('aria-valuemax');
     });
 
     it('respects max', () => {
-      wrapper = mount(<SpinButton max={22} />);
+      render(<SpinButton max={22} />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const input = screen.getByRole('spinbutton');
 
-      expect(inputDOM.getAttribute('aria-valuemin')).toBe(null);
-      expect(inputDOM.getAttribute('aria-valuemax')).toBe('22');
+      expect(input).not.toHaveAttribute('aria-valuemin');
+      expect(input).toHaveAttribute('aria-valuemax', '22');
     });
 
     it('respects custom ariaDescribedBy id to the input', () => {
       const customId = 'customAriaDescriptionId';
-      wrapper = mount(<SpinButton label="label" ariaDescribedBy={customId} />);
+      render(<SpinButton label="label" ariaDescribedBy={customId} />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
+      const input = screen.getByRole('spinbutton');
 
-      const ariaDescribedByAttribute = inputDOM.getAttribute('aria-describedby');
-      expect(ariaDescribedByAttribute).toBe(customId);
+      expect(input).toHaveAttribute('aria-describedby', customId);
     });
   });
 
   describe('value props', () => {
     it('respects defaultValue', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
+      render(<SpinButton componentRef={ref} defaultValue="12" />);
 
       verifyValue('12');
     });
 
     it('respects empty defaultValue', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="" />);
+      render(<SpinButton componentRef={ref} defaultValue="" />);
 
       verifyValue('');
     });
@@ -198,7 +193,7 @@ describe('SpinButton', () => {
     // This is probably a behavior we should get rid of in the future (replace with custom rendering
     // or something), but documenting it for now...
     it('respects non-numeric defaultValue', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12 pt" />);
+      render(<SpinButton componentRef={ref} defaultValue="12 pt" />);
 
       verifyValue('12 pt');
     });
@@ -206,16 +201,17 @@ describe('SpinButton', () => {
     it('ignores updates to defaultValue', () => {
       const onChange = jest.fn();
       const onValidate = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="3" onChange={onChange} onValidate={onValidate} />);
+      const { rerender } = render(
+        <SpinButton componentRef={ref} defaultValue="3" onChange={onChange} onValidate={onValidate} />,
+      );
 
       expect(ref.current!.value).toBe('3');
-      expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('3');
+      expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('3');
 
-      wrapper.setProps({ defaultValue: '4' });
-      wrapper.update();
+      rerender(<SpinButton componentRef={ref} defaultValue="4" onChange={onChange} onValidate={onValidate} />);
 
       expect(ref.current!.value).toBe('3');
-      expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('3');
+      expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('3');
 
       // these are only called on user updates, not prop updates
       expect(onChange).not.toHaveBeenCalled();
@@ -224,13 +220,13 @@ describe('SpinButton', () => {
 
     // It's somewhat debatable whether this is the correct behavior (documenting for now)
     it('respects defaultValue even if invalid', () => {
-      wrapper = mount(<SpinButton componentRef={ref} value="-1" min={0} max={100} />);
+      render(<SpinButton componentRef={ref} value="-1" min={0} max={100} />);
 
       verifyValue('-1');
     });
 
     it('respects value', () => {
-      wrapper = mount(<SpinButton componentRef={ref} value="3" />);
+      render(<SpinButton componentRef={ref} value="3" />);
 
       verifyValue('3');
     });
@@ -238,16 +234,17 @@ describe('SpinButton', () => {
     it('respects updates to value', () => {
       const onChange = jest.fn();
       const onValidate = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} value="3" onChange={onChange} onValidate={onValidate} />);
+      const { rerender } = render(
+        <SpinButton componentRef={ref} value="3" onChange={onChange} onValidate={onValidate} />,
+      );
 
       expect(ref.current!.value).toBe('3');
-      expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('3');
+      expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('3');
 
-      wrapper.setProps({ value: '4' });
-      wrapper.update();
+      rerender(<SpinButton componentRef={ref} value="4" onChange={onChange} onValidate={onValidate} />);
 
       expect(ref.current!.value).toBe('4');
-      expect((wrapper.find('input').getDOMNode() as HTMLInputElement).value).toBe('4');
+      expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('4');
 
       // these are only called on user updates, not prop updates
       expect(onChange).not.toHaveBeenCalled();
@@ -257,32 +254,32 @@ describe('SpinButton', () => {
     // This is probably a behavior we should get rid of in the future (replace with custom rendering
     // or something), but documenting it for now...
     it('respects non-numeric value', () => {
-      wrapper = mount(<SpinButton componentRef={ref} value="12 pt" />);
+      render(<SpinButton componentRef={ref} value="12 pt" />);
 
       verifyValue('12 pt');
     });
 
     it('respects empty value', () => {
-      wrapper = mount(<SpinButton componentRef={ref} value="" />);
+      render(<SpinButton componentRef={ref} value="" />);
 
       verifyValue('');
     });
 
     // Per standard fully controlled behavior, props.value should NOT be validated
     it('respects value even if invalid', () => {
-      wrapper = mount(<SpinButton componentRef={ref} value="-1" min={0} max={100} />);
+      render(<SpinButton componentRef={ref} value="-1" min={0} max={100} />);
 
       verifyValue('-1');
     });
 
     it('uses min as default if neither value nor defaultValue is provided', () => {
-      wrapper = mount(<SpinButton componentRef={ref} min={2} />);
+      render(<SpinButton componentRef={ref} min={2} />);
 
       verifyValue('2');
     });
 
     it('uses 0 as default if neither value, defaultValue nor min is provided', () => {
-      wrapper = mount(<SpinButton componentRef={ref} />);
+      render(<SpinButton componentRef={ref} />);
 
       verifyValue('0');
     });
@@ -291,7 +288,7 @@ describe('SpinButton', () => {
   describe('increment and decrement', () => {
     it('increments value when up button is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateArrowButton('up', '13');
       // There was a bug where going twice didn't work
@@ -302,7 +299,7 @@ describe('SpinButton', () => {
 
     it('decrements value when down button is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateArrowButton('down', '11');
       simulateArrowButton('down', '10');
@@ -312,7 +309,7 @@ describe('SpinButton', () => {
 
     it('does not go above max when up button is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" max={12} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" max={12} onChange={onChange} />);
 
       simulateArrowButton('up', '12');
       expect(onChange).not.toHaveBeenCalled(); // shouldn't call onChange if value didn't change
@@ -320,7 +317,7 @@ describe('SpinButton', () => {
 
     it('does not go below min when down button is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" min={12} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" min={12} onChange={onChange} />);
 
       simulateArrowButton('down', '12');
       expect(onChange).not.toHaveBeenCalled(); // shouldn't call onChange if value didn't change
@@ -328,7 +325,7 @@ describe('SpinButton', () => {
 
     it('increments value when up arrow key is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateArrowKey(KeyCodes.up, '13');
       simulateArrowKey(KeyCodes.up, '14');
@@ -338,7 +335,7 @@ describe('SpinButton', () => {
 
     it('decrements value when down arrow key is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateArrowKey(KeyCodes.down, '11');
       simulateArrowKey(KeyCodes.down, '10');
@@ -348,7 +345,7 @@ describe('SpinButton', () => {
 
     it('does not go above max when up arrow is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" max={12} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" max={12} onChange={onChange} />);
 
       simulateArrowKey(KeyCodes.up, '12');
       expect(onChange).not.toHaveBeenCalled(); // shouldn't call onChange if value didn't change
@@ -356,21 +353,21 @@ describe('SpinButton', () => {
 
     it('does not go below min when down arrow is pressed', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" min={12} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" min={12} onChange={onChange} />);
 
       simulateArrowKey(KeyCodes.down, '12');
       expect(onChange).not.toHaveBeenCalled(); // shouldn't call onChange if value didn't change
     });
 
     it('respects step when incrementing value', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
 
       simulateArrowKey(KeyCodes.up, '14');
       simulateArrowKey(KeyCodes.up, '16');
     });
 
     it('respects step when decrementing value', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" step={2} />);
 
       simulateArrowKey(KeyCodes.down, '10');
       simulateArrowKey(KeyCodes.down, '8');
@@ -380,9 +377,7 @@ describe('SpinButton', () => {
       // In this case incrementing or decrementing by the full step takes the value out of bounds.
       // The update should still be respected but clamped within valid range.
       const onChange = jest.fn();
-      wrapper = mount(
-        <SpinButton componentRef={ref} defaultValue="12" step={2} min={11} max={12} onChange={onChange} />,
-      );
+      render(<SpinButton componentRef={ref} defaultValue="12" step={2} min={11} max={12} onChange={onChange} />);
 
       simulateArrowKey(KeyCodes.down, '11');
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -395,20 +390,20 @@ describe('SpinButton', () => {
     });
 
     it('can step below 0 if min is unspecified', () => {
-      wrapper = mount(<SpinButton componentRef={ref} />);
+      render(<SpinButton componentRef={ref} />);
 
       simulateArrowKey(KeyCodes.down, '-1');
     });
 
     it('supports decimal steps', () => {
-      wrapper = mount(<SpinButton componentRef={ref} step={0.1} />);
+      render(<SpinButton componentRef={ref} step={0.1} />);
 
       simulateArrowButton('up', '0.1');
       simulateArrowButton('up', '0.2');
     });
 
     it('allows stepping when no props are defined', () => {
-      wrapper = mount(<SpinButton componentRef={ref} />);
+      render(<SpinButton componentRef={ref} />);
 
       simulateArrowButton('up', '1');
       simulateArrowKey(KeyCodes.up, '2');
@@ -418,7 +413,7 @@ describe('SpinButton', () => {
   describe('editing value', () => {
     it('allows value updates when no props are defined', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} onChange={onChange} />);
 
       simulateInput('7');
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -426,7 +421,7 @@ describe('SpinButton', () => {
     });
 
     it('accepts user-entered values when uncontrolled', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
+      render(<SpinButton componentRef={ref} defaultValue="12" />);
 
       simulateInput(['21', '22', '7']);
     });
@@ -435,7 +430,7 @@ describe('SpinButton', () => {
     // it should only be called for committed/validated values
     it('does not call onChange for intermediate values', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateInput(['21', '22', '7']);
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -444,7 +439,7 @@ describe('SpinButton', () => {
 
     it('accepts entering 0', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateInput('0');
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -452,7 +447,7 @@ describe('SpinButton', () => {
     });
 
     it('accepts empty intermediate values', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" />);
+      render(<SpinButton componentRef={ref} defaultValue="12" />);
 
       // The important part here is that the empty string is respected as an intermediate value
       // (simulateInput will verify this for each value), not immediately replaced with the
@@ -462,7 +457,7 @@ describe('SpinButton', () => {
 
     it('does not commit user-entered values when controlled', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} value="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} value="12" onChange={onChange} />);
 
       // The intermediate values 21, 22, 7 will all be shown in the field before commit (blur),
       // but on blur it will go back to the previous value since onChange didn't trigger a prop update
@@ -473,7 +468,7 @@ describe('SpinButton', () => {
 
     it('resets value when user entry is invalid', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       // resets after garbage value
       simulateInput('garbage', '12');
@@ -486,13 +481,13 @@ describe('SpinButton', () => {
     });
 
     it('uses last known good value when stepping from invalid value via buttons', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="0" />);
+      render(<SpinButton componentRef={ref} defaultValue="0" />);
       jest.useFakeTimers();
 
-      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+      const inputDOM = screen.getByRole('spinbutton');
 
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('2 2'));
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('2 2'));
 
       simulateArrowButton('up');
       ReactTestUtils.act(() => {
@@ -503,13 +498,13 @@ describe('SpinButton', () => {
     });
 
     it('uses last known good value when stepping from invalid value via keyboard', () => {
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="1" />);
+      render(<SpinButton componentRef={ref} defaultValue="1" />);
       jest.useFakeTimers();
 
-      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+      const inputDOM = screen.getByRole('spinbutton');
 
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('garbage'));
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('garbage'));
 
       simulateArrowKey(KeyCodes.down);
       ReactTestUtils.act(() => {
@@ -521,7 +516,7 @@ describe('SpinButton', () => {
 
     it('resets value when input is cleared (empty)', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onChange={onChange} />);
 
       simulateInput('', '12');
       expect(onChange).not.toHaveBeenCalled();
@@ -529,7 +524,7 @@ describe('SpinButton', () => {
 
     it('resets to max when user-entered value is too high', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" onChange={onChange} />);
 
       simulateInput('23', '22');
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -538,7 +533,7 @@ describe('SpinButton', () => {
 
     it('resets to min when user-entered value is too low', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} min={2} max={22} defaultValue="12" onChange={onChange} />);
 
       simulateInput('0', '2');
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -547,7 +542,7 @@ describe('SpinButton', () => {
 
     it('resets to latest valid value if garbage is typed after valid updates', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="2" onChange={onChange} />);
 
       simulateArrowButton('up', '3');
 
@@ -559,7 +554,7 @@ describe('SpinButton', () => {
     // Not sure if this behavior is correct. Adding a test to document it for now, but we
     // could consider changing it later (to round user input as well as steps).
     it('does not round user input even if precision is 0', () => {
-      wrapper = mount(<SpinButton componentRef={ref} step={1} precision={0} />);
+      render(<SpinButton componentRef={ref} step={1} precision={0} />);
 
       simulateInput('1.7', '1.7');
     });
@@ -568,7 +563,7 @@ describe('SpinButton', () => {
   describe('custom handlers', () => {
     it('uses onBlur prop', () => {
       const onBlur = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} onBlur={onBlur} />);
+      render(<SpinButton componentRef={ref} onBlur={onBlur} />);
 
       simulateInput('10');
       expect(onBlur).toHaveBeenCalledTimes(1);
@@ -576,7 +571,7 @@ describe('SpinButton', () => {
 
     it('uses onFocus prop', () => {
       const onFocus = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} onFocus={onFocus} />);
+      render(<SpinButton componentRef={ref} onFocus={onFocus} />);
 
       simulateInput('10');
       expect(onFocus).toHaveBeenCalledTimes(1);
@@ -594,7 +589,7 @@ describe('SpinButton', () => {
         }
       });
 
-      wrapper = mount(
+      render(
         <SpinButton
           componentRef={ref}
           min={min}
@@ -622,7 +617,7 @@ describe('SpinButton', () => {
         }
       });
 
-      wrapper = mount(
+      render(
         <SpinButton
           componentRef={ref}
           min={min}
@@ -642,7 +637,7 @@ describe('SpinButton', () => {
       const onChange = jest.fn();
       const onValidate = jest.fn(() => '5');
 
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="12" onValidate={onValidate} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="12" onValidate={onValidate} onChange={onChange} />);
 
       simulateInput('10', '5');
       expect(onValidate).toHaveBeenCalledTimes(1);
@@ -657,7 +652,7 @@ describe('SpinButton', () => {
       });
       const onChange = jest.fn();
 
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" onIncrement={onIncrement} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="2" onIncrement={onIncrement} onChange={onChange} />);
 
       simulateArrowButton('up', '3');
       expect(onIncrement).toHaveBeenCalledTimes(1);
@@ -677,7 +672,7 @@ describe('SpinButton', () => {
       });
       const onChange = jest.fn();
 
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="2" onDecrement={onDecrement} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="2" onDecrement={onDecrement} onChange={onChange} />);
 
       simulateArrowButton('down', '1');
       expect(onDecrement).toHaveBeenCalledTimes(1);
@@ -701,24 +696,24 @@ describe('SpinButton', () => {
         return value;
       });
 
-      wrapper = mount(<SpinButton componentRef={ref} onValidate={onValidate} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} onValidate={onValidate} onChange={onChange} />);
 
       // input text => no handlers called yet
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('99'));
+      const inputDOM = screen.getByRole('spinbutton');
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('99'));
       expect(onChange).not.toHaveBeenCalled();
       expect(onValidate).not.toHaveBeenCalled();
 
       // press enter => handlers called, value updated
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
       expect(onValidate).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(keyCode).toBe(KeyCodes.enter);
       verifyValue('99');
 
       // blur => don't call handlers again
-      ReactTestUtils.Simulate.blur(inputDOM);
+      fireEvent.blur(inputDOM);
       expect(onValidate).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
     });
@@ -727,24 +722,24 @@ describe('SpinButton', () => {
       const onChange = jest.fn();
       const onValidate = jest.fn((value: string) => value);
 
-      wrapper = mount(<SpinButton componentRef={ref} onValidate={onValidate} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} onValidate={onValidate} onChange={onChange} />);
 
       // input text, press enter => handlers called
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('99'));
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+      const inputDOM = screen.getByRole('spinbutton');
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('99'));
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
       expect(onValidate).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
 
       // press enter again without modifications => don't call handlers again
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
       expect(onValidate).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
 
       // input more text, press enter => handlers called
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('10'));
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+      fireEvent.input(inputDOM, mockEvent('10'));
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
       expect(onValidate).toHaveBeenCalledTimes(2);
       expect(onChange).toHaveBeenCalledTimes(2);
       verifyValue('10');
@@ -756,13 +751,13 @@ describe('SpinButton', () => {
       const onIncrement = jest.fn(value => String(+value + 1));
       const onChange = jest.fn();
 
-      wrapper = mount(<SpinButton componentRef={ref} onIncrement={onIncrement} onChange={onChange} />);
+      render(<SpinButton componentRef={ref} onIncrement={onIncrement} onChange={onChange} />);
 
-      const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton') as HTMLButtonElement;
+      const buttonDOM = screen.getAllByRole('button').find(node => node.classList.contains('ms-UpButton'))!;
 
       // start spinning (component will re-render after act() call)
       ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+        fireEvent.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
       });
       expect(onIncrement).toHaveBeenCalledTimes(1);
       expect(onIncrement).toHaveBeenLastCalledWith('0');
@@ -776,7 +771,7 @@ describe('SpinButton', () => {
       expect(onIncrement).toHaveBeenLastCalledWith('1');
       expect(onChange).toHaveBeenCalledTimes(2);
 
-      ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
+      fireEvent.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
       jest.runAllTimers();
 
       verifyValue('2');
@@ -786,21 +781,21 @@ describe('SpinButton', () => {
     it('stops spinning if text field is focused while actively spinning', () => {
       jest.useFakeTimers();
 
-      wrapper = mount(<SpinButton componentRef={ref} />);
+      render(<SpinButton componentRef={ref} />);
 
-      const inputDOM = wrapper.getDOMNode().querySelector('input')!;
-      const buttonDOM = wrapper.getDOMNode().querySelector('.ms-UpButton') as HTMLButtonElement;
+      const inputDOM = screen.getByRole('spinbutton');
+      const buttonDOM = screen.getAllByRole('button').find(node => node.classList.contains('ms-UpButton'))!;
 
       // start spinning (component will re-render after act() call)
       ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
+        fireEvent.mouseDown(buttonDOM, { type: 'mousedown', clientX: 0, clientY: 0 });
       });
       // spin again
       ReactTestUtils.act(() => {
         jest.runOnlyPendingTimers();
       });
 
-      ReactTestUtils.Simulate.focus(inputDOM);
+      fireEvent.focus(inputDOM);
       jest.runAllTimers();
 
       verifyValue('2');
@@ -818,7 +813,7 @@ describe('SpinButton', () => {
         return <SpinButton componentRef={ref} value={value} onChange={onChange} />;
       };
 
-      wrapper = mount(<WrappedSpinButton />);
+      render(<WrappedSpinButton />);
 
       // onChange won't do an update based on this value, so the control won't update
       simulateInput('30', '12');
@@ -831,23 +826,23 @@ describe('SpinButton', () => {
 
     it('handles props.value updates while editing', () => {
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} value="12" onChange={onChange} />);
+      const { rerender } = render(<SpinButton componentRef={ref} value="12" onChange={onChange} />);
 
       // enter a new value but don't commit yet
-      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('10'));
+      const inputDOM = screen.getByRole('spinbutton');
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('10'));
       verifyValue('12', '10');
 
       // update props.value to original value => intermediate value preserved
-      wrapper.setProps({ value: '12' });
+      rerender(<SpinButton componentRef={ref} value="12" onChange={onChange} />);
       verifyValue('12', '10');
 
       // update props.value to different value => intermediate value cleared
-      wrapper.setProps({ value: '13' });
+      rerender(<SpinButton componentRef={ref} value="13" onChange={onChange} />);
       verifyValue('13');
 
-      ReactTestUtils.Simulate.blur(inputDOM);
+      fireEvent.blur(inputDOM);
       verifyValue('13');
       expect(onChange).not.toHaveBeenCalled();
     });
@@ -857,12 +852,12 @@ describe('SpinButton', () => {
 
       const onChange = jest.fn();
       const onBlur = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="1" onChange={onChange} onBlur={onBlur} />);
+      render(<SpinButton componentRef={ref} defaultValue="1" onChange={onChange} onBlur={onBlur} />);
 
       // enter a new value but don't commit yet (not using the helper here because we don't want to blur)
-      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('5'));
+      const inputDOM = screen.getByRole('spinbutton');
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('5'));
       verifyValue('1', '5');
       expect(onChange).not.toHaveBeenCalled();
       expect(onBlur).not.toHaveBeenCalled();
@@ -870,17 +865,17 @@ describe('SpinButton', () => {
       // press an arrow button--the real sequence of events in the browser is button mousedown,
       // input blur, button focus, but we unfortunately have to simulate that in the test
       const buttonDOM = getButton('up');
-      ReactTestUtils.Simulate.mouseDown(buttonDOM, {
+      fireEvent.mouseDown(buttonDOM, {
         type: 'mousedown',
         clientX: 0,
         clientY: 0,
       } as any);
       // simulate the blur event which will cause the text edit to be committed
-      ReactTestUtils.Simulate.blur(inputDOM);
+      fireEvent.blur(inputDOM);
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toBe('5');
-      ReactTestUtils.Simulate.focus(buttonDOM);
+      fireEvent.focus(buttonDOM);
       verifyValue('5');
 
       // now verify that the spin was triggered
@@ -899,7 +894,7 @@ describe('SpinButton', () => {
       expect(onChange.mock.calls[2][1]).toBe('7');
       verifyValue('7');
 
-      ReactTestUtils.Simulate.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
+      fireEvent.mouseUp(buttonDOM, { type: 'mouseup', clientX: 0, clientY: 0 });
       jest.runAllTimers();
 
       verifyValue('7');
@@ -912,17 +907,17 @@ describe('SpinButton', () => {
       jest.useFakeTimers();
 
       const onChange = jest.fn();
-      wrapper = mount(<SpinButton componentRef={ref} defaultValue="1" onChange={onChange} />);
+      render(<SpinButton componentRef={ref} defaultValue="1" onChange={onChange} />);
 
       // enter a new value but don't commit yet (not using the helper here because we don't want keyup)
-      const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
-      ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('5'));
+      const inputDOM = screen.getByRole('spinbutton');
+      fireEvent.focus(inputDOM);
+      fireEvent.input(inputDOM, mockEvent('5'));
       verifyValue('1', '5');
       expect(onChange).not.toHaveBeenCalled();
 
       // press an arrow key
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.up, keyCode: KeyCodes.up });
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange.mock.calls[0][1]).toBe('5');
       verifyValue('5');
@@ -936,12 +931,12 @@ describe('SpinButton', () => {
       verifyValue('6');
 
       // spin again
-      ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
+      fireEvent.keyDown(inputDOM, { which: KeyCodes.up, keyCode: KeyCodes.up });
       expect(onChange).toHaveBeenCalledTimes(3);
       expect(onChange.mock.calls[2][1]).toBe('7');
       verifyValue('7');
 
-      ReactTestUtils.Simulate.keyUp(inputDOM, { which: KeyCodes.up });
+      fireEvent.keyUp(inputDOM, { which: KeyCodes.up, keyCode: KeyCodes.up });
       jest.runAllTimers();
 
       verifyValue('7');

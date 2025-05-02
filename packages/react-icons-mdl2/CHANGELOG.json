@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Tue, 29 Apr 2025 07:20:26 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.85",
+      "version": "1.3.85",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "9fe4778a263ab2843c55fa9bc2f5bcff316cc6ca",
+            "comment": "fix(react-icons-mdl2): add proper ts lib types so tsc wont complain"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 07:22:07 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.3.85",
       "version": "1.3.85",

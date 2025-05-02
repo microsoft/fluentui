@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createMergedRef } from './createMergedRef';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 describe('createMergedRef', () => {
   it('can merge refs', () => {
@@ -13,7 +13,7 @@ describe('createMergedRef', () => {
       }
     }
     const ref2 = React.createRef<HTMLDivElement>();
-    const wrapper = mount(<Foo domRef={ref2} />);
+    const wrapper = render(<Foo domRef={ref2} />);
 
     expect(ref1.current).toBeTruthy();
     expect(ref2.current).toBeTruthy();

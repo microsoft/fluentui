@@ -529,7 +529,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             <div
               id={`${index}_${xValue.y}`}
               className={classes.calloutBlockContainer}
-              style={{ borderLeft: `4px solid ${xValue.color}` }}
+              style={{ borderInlineStart: `4px solid ${xValue.color}` }}
             >
               {toDrawShape && (
                 <Shape
