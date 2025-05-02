@@ -2,16 +2,22 @@ import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   Input,
-  type InputProps,
   Label,
   makeStyles,
   SpinButton,
-  type SpinButtonChangeEvent,
-  type SpinButtonOnChangeData,
-  type SpinButtonProps,
   useId,
+  AlphaSlider,
+  ColorArea,
+  ColorPicker,
+  ColorSlider,
 } from '@fluentui/react-components';
-import { AlphaSlider, ColorArea, ColorPicker, ColorPickerProps, ColorSlider } from '@fluentui/react-components';
+import type {
+  ColorPickerProps,
+  InputProps,
+  SpinButtonChangeEvent,
+  SpinButtonOnChangeData,
+  SpinButtonProps,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

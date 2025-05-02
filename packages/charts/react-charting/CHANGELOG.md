@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 29 Apr 2025 07:20:25 GMT and should not be manually modified.
+This log was last generated on Fri, 02 May 2025 07:20:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.79)
+
+Fri, 02 May 2025 07:20:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.78..@fluentui/react-charting_v5.23.79)
+
+### Patches
+
+- feat: add support for stacked bars in GVBC ([PR #34353](https://github.com/microsoft/fluentui/pull/34353) by kumarkshitij@microsoft.com)
 
 ## [5.23.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.78)
 

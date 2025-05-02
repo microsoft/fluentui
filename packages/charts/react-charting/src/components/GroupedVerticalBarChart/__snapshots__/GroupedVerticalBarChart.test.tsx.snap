@@ -118,6 +118,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869563}
+            key="0-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -128,7 +129,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -140,6 +141,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565216}
+            key="0-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -162,6 +164,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.2391304347826}
+            key="0-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -189,6 +192,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608697}
+            key="1-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -211,6 +215,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
+            key="1-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -233,6 +238,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434784}
+            key="1-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -933,6 +939,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869563}
+            key="0-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -943,7 +950,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -955,6 +962,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565216}
+            key="0-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -977,6 +985,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.2391304347826}
+            key="0-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1004,6 +1013,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608697}
+            key="1-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1026,6 +1036,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
+            key="1-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1048,6 +1059,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434784}
+            key="1-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2296,6 +2308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869563}
+            key="0-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2306,7 +2319,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             rx={0}
             width={9}
             x={0}
-            y={92.06521739130436}
+            y={92.06521739130437}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -2318,6 +2331,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565216}
+            key="0-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2340,6 +2354,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.2391304347826}
+            key="0-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2367,6 +2382,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608697}
+            key="1-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2389,6 +2405,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
+            key="1-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2411,6 +2428,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434784}
+            key="1-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2914,6 +2932,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={211.6304347826087}
+            key="0-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2936,6 +2955,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={41.68478260869563}
+            key="0-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2958,6 +2978,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={109.02173913043478}
+            key="0-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2985,6 +3006,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={44.891304347826065}
+            key="1-0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3007,6 +3029,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={288.5869565217391}
+            key="1-1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3017,7 +3040,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             rx={0}
             width={9}
             x={10}
-            y={26.413043478260864}
+            y={26.413043478260875}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -3029,6 +3052,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={105.81521739130437}
+            key="1-2-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
