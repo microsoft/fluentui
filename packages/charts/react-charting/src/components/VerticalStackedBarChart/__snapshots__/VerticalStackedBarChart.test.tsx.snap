@@ -13,7 +13,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -511,7 +511,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -1081,7 +1081,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -1579,7 +1579,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -2077,7 +2077,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -2555,7 +2555,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -2774,7 +2774,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -3272,7 +3272,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -3752,7 +3752,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -4250,7 +4250,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -4748,7 +4748,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"

@@ -14,7 +14,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -1003,7 +1003,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -1992,7 +1992,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -2994,7 +2994,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_6"
@@ -9770,7 +9770,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -10759,7 +10759,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -11446,7 +11446,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -12122,7 +12122,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -12798,7 +12798,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"

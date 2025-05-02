@@ -13,7 +13,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_6"
@@ -581,7 +581,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_6"
@@ -1046,7 +1046,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_6"

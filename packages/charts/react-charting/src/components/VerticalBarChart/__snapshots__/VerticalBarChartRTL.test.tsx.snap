@@ -14,7 +14,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -801,7 +801,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -1601,7 +1601,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_6"
@@ -2400,7 +2400,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -9964,7 +9964,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -12233,7 +12233,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -13020,7 +13020,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -13937,7 +13937,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -14531,7 +14531,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -15336,7 +15336,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -16169,7 +16169,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"

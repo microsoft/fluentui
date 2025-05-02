@@ -13,7 +13,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -834,7 +834,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -2203,7 +2203,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -2827,7 +2827,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"

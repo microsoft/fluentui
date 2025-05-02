@@ -17,7 +17,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_6"
@@ -4864,7 +4864,7 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_1"
@@ -18751,7 +18751,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_9"

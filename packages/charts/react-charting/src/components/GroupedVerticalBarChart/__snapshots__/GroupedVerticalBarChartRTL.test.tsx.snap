@@ -25,7 +25,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -763,7 +763,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -1501,7 +1501,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -2239,7 +2239,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -2977,7 +2977,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_3"
@@ -3714,7 +3714,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -4535,7 +4535,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -5904,7 +5904,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -6528,7 +6528,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_3"
@@ -9348,7 +9348,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 100%;
-            overflow: hidden;
+            overflow: auto;
             width: 100%;
           }
       id="chart_6"

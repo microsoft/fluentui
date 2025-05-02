@@ -608,7 +608,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_1"
@@ -1206,7 +1206,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           font-size: 14px;
           font-weight: 400;
           height: 100%;
-          overflow: hidden;
+          overflow: auto;
           width: 100%;
         }
     id="chart_1"

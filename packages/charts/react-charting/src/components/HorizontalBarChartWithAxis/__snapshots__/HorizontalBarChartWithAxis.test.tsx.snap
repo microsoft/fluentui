@@ -13,7 +13,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
@@ -648,7 +648,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
@@ -1269,7 +1269,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
@@ -1890,7 +1890,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
@@ -2024,7 +2024,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
@@ -2334,7 +2334,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-size: 14px;
         font-weight: 400;
         height: 100%;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
       }
   id="chart_2"
