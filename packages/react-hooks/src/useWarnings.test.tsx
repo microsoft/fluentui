@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { setWarningCallback } from '@fluentui/utilities';
 import { useWarnings } from './useWarnings';
 import type { IWarningOptions } from './useWarnings';
@@ -28,18 +28,22 @@ describe('useWarnings', () => {
   };
 
   function validateWarnOnFirstRender(props: ITestComponentProps, warningMessage: string) {
-    const wrapper = mount(<TestComponent {...props} />);
+    const wrapper = render(<TestComponent {...props} />);
     expect(warn).toHaveBeenCalledTimes(1);
     expect(warn).toHaveBeenLastCalledWith(warningMessage);
 
     // ensure all the props change in case there was a dep on any of them where there shouldn't be
-    wrapper.setProps({
-      value: 'new',
-      defaultValue: 'updated',
-      deprecated: (props.deprecated || 0) + 1,
-      onChange: () => undefined,
-      readOnly: !props.readOnly,
-    });
+    wrapper.rerender(
+      <TestComponent
+        {...{
+          value: 'new',
+          defaultValue: 'updated',
+          deprecated: (props.deprecated || 0) + 1,
+          onChange: () => undefined,
+          readOnly: !props.readOnly,
+        }}
+      />,
+    );
     expect(renderCount).toBe(2);
     expect(warn).toHaveBeenCalledTimes(1);
   }
@@ -93,22 +97,23 @@ describe('useWarnings', () => {
       },
     };
 
-    const wrapper = mount(<TestComponent value="foo" />);
+    const wrapper = render(<TestComponent value="foo" />);
     expect(warn).toHaveBeenCalledTimes(1);
     expect(getLastWarning()).toMatch(
       "Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler.",
     );
 
     // doesn't call again if prop values don't change
-    wrapper.setProps({});
+    wrapper.rerender(<TestComponent value="foo" />);
     expect(warn).toHaveBeenCalledTimes(1);
 
     // doesn't call again if the message would be the same
-    wrapper.setProps({ value: 'bar' });
+
+    wrapper.rerender(<TestComponent value={'bar'} />);
     expect(warn).toHaveBeenCalledTimes(1);
 
     // calls again for a new message
-    wrapper.setProps({ value: undefined, defaultValue: 'foo' });
+    wrapper.rerender(<TestComponent value={undefined} defaultValue={'foo'} />);
     expect(warn).toHaveBeenCalledTimes(2);
     expect(getLastWarning()).toMatch('Warning: A component is changing a controlled TestComponent');
   });

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 30 Apr 2025 07:20:06 GMT",
+      "tag": "@fluentui/react_v8.122.16",
+      "version": "8.122.16",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "448bf80384cfd415989a5823fdcd0a6b86e204fa",
+            "comment": "chore: migrate internal testing utils away from enzyme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Apr 2025 07:22:19 GMT",
       "tag": "@fluentui/react_v8.122.16",
       "version": "8.122.16",

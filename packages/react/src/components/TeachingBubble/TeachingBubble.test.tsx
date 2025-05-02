@@ -4,7 +4,8 @@ import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { resetIds } from '../../Utilities';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
@@ -18,7 +19,7 @@ describe('TeachingBubble', () => {
   });
 
   it('renders TeachingBubble using a <div> for the child content if the child is not a string', () => {
-    const component = mount(
+    const { container } = render(
       <TeachingBubble
         isWide={true}
         calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
@@ -28,11 +29,11 @@ describe('TeachingBubble', () => {
       </TeachingBubble>,
     );
 
-    expect(component.find(TeachingBubbleContent).find('div#content').length).toBe(1);
+    expect(getBySelector(container, 'div#content')).toBeTruthy();
   });
 
   it('renders TeachingBubble using a <p> for the child content if the child is a string', () => {
-    const component = mount(
+    const { container } = render(
       <TeachingBubble
         isWide={true}
         calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
@@ -42,20 +43,20 @@ describe('TeachingBubble', () => {
       </TeachingBubble>,
     );
 
-    expect(component.find(TeachingBubbleContent).find('p#content').length).toBe(1);
+    expect(getBySelector(container, 'p#content')).toBeTruthy();
   });
 
   it('renders TeachingBubble with provided aria-describedby and aria-labelledby', () => {
-    const component = mount(
+    const { baseElement } = render(
       <TeachingBubble headline="Test Title" ariaDescribedBy="content" ariaLabelledBy="title">
         Test Content
       </TeachingBubble>,
     );
 
-    expect(component.find('div[aria-describedby="content"]').length).toBe(1);
-    expect(component.find('div[aria-labelledby="title"]').length).toBe(1);
-    expect(component.find('p[id="content"]').length).toBe(1);
-    expect(component.find('p[id="title"]').length).toBe(1);
+    expect(getBySelector(baseElement, 'div[aria-describedby="content"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'div[aria-labelledby="title"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'p[id="content"]')).toBeTruthy();
+    expect(getBySelector(baseElement, 'p[id="title"]')).toBeTruthy();
   });
 
   it('renders TeachingBubbleContent with generated aria-describedby and aria-labelledby', () => {

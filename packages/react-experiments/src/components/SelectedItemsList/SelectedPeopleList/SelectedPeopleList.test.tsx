@@ -2,7 +2,7 @@ import * as React from 'react';
 import { create } from 'react-test-renderer';
 
 import { people } from '@fluentui/example-data';
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import { SelectedPeopleList, SelectedPersona, ItemWithContextMenu, TriggerOnContextMenu } from '../index';
 import type { ISelectedPeopleList, ItemCanDispatchTrigger } from '../index';
 
@@ -43,7 +43,7 @@ describe('SelectedPeopleList', () => {
 
   it('remove personas', () => {
     const onItemsRemoved = jest.fn();
-    const wrapper = mount(
+    const wrapper = render(
       <SelectedPeopleList
         key="normal"
         removeButtonAriaLabel="Remove"
@@ -52,7 +52,7 @@ describe('SelectedPeopleList', () => {
       />,
     );
 
-    wrapper.find('button.ms-PickerItem-removeButton').at(1).simulate('click');
+    fireEvent.click(wrapper.container.querySelectorAll('button.ms-PickerItem-removeButton')[1]);
 
     expect(onItemsRemoved).toHaveBeenCalledTimes(1);
   });
@@ -77,7 +77,7 @@ describe('SelectedPeopleList', () => {
     const removeItems = jest.fn();
     const _getCopyItemsText = jest.fn();
     const onItemsRemoved = jest.fn();
-    const wrapper = mount(
+    const wrapper = render(
       <SelectedPeopleList
         key="normal"
         removeButtonAriaLabel="Remove"
@@ -88,15 +88,15 @@ describe('SelectedPeopleList', () => {
     );
 
     // Simulate right click to get the context menu
-    wrapper.find('.ms-PickerPersona-container').simulate('contextmenu');
+    fireEvent.contextMenu(wrapper.container.querySelector('.ms-PickerPersona-container')!);
 
     // Remove and copy should show up in the menu
-    expect(wrapper.find('.ms-ContextualMenu-item')).toHaveLength(2);
-    expect(wrapper.find('.ms-ContextualMenu-item').at(0).text()).toEqual('Remove');
+    expect(wrapper.baseElement.querySelectorAll('.ms-ContextualMenu-item')).toHaveLength(2);
+    expect(wrapper.baseElement.querySelector('.ms-ContextualMenu-item')!.textContent).toEqual('Remove');
 
-    expect(wrapper.find('.ms-ContextualMenu-item').at(1).text()).toEqual('Copy');
+    expect(wrapper.baseElement.querySelectorAll('.ms-ContextualMenu-item')[1].textContent).toEqual('Copy');
 
-    wrapper.find('.ms-ContextualMenu-item').at(0).simulate('click');
+    fireEvent.click(wrapper.baseElement.querySelector('.ms-ContextualMenu-item')!);
     expect(removeItems).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,11 +1,22 @@
-import { mount } from 'enzyme';
 import * as React from 'react';
 import { create } from '@fluentui/test-utilities';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit, ImageCoverStyle } from './Image.types';
 import { act } from 'react-dom/test-utils';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
+
+/**
+ * Helper function to simulate image load/error events that updates the component state
+ * @param element - The image element to simulate the event on
+ * @param eventType - The type of event to simulate ('load' or 'error')
+ */
+function simulateImageEvent(element: HTMLElement, eventType: 'load' | 'error'): void {
+  act(() => {
+    fireEvent[eventType](element);
+  });
+}
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -33,40 +44,35 @@ describe('Image', () => {
   });
 
   it('renders an image', done => {
-    const component = mount(<ImageBase src={testImage1x1} onLoad={() => done()} />);
-
-    act(() => {
-      component.find('img').simulate('load');
-    });
+    render(<ImageBase src={testImage1x1} onLoad={() => done()} />);
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'load');
   });
 
   it('can cover a portrait (tall) frame with a square image', () => {
-    const component = mount(
+    const { container } = render(
       <div>
         <Image src={testImage1x1} width={1} height={3} imageFit={ImageFit.cover} className="is-portraitFrame" />
       </div>,
     );
-
-    act(() => {
-      component.find('img').simulate('load');
-    });
-    expect(component.find('.ms-Image-image--landscape')).toHaveLength(1);
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'load');
+    expect(container.querySelector('.ms-Image-image--landscape')).toBeTruthy();
   });
 
   it('can cover a landscape (wide) frame with a square image', () => {
-    const component = mount(
+    const { container } = render(
       <div>
         <Image src={testImage1x1} width={3} height={1} imageFit={ImageFit.cover} className="is-landscapeFrame" />
       </div>,
     );
-    act(() => {
-      component.find('img').simulate('load');
-    });
-    expect(component.find('.ms-Image-image--portrait')).toHaveLength(1);
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'load');
+    expect(container.querySelector('.ms-Image-image--portrait')).toBeTruthy();
   });
 
   it('can cover a landscape (wide) parent element with a square image', () => {
-    const component = mount(
+    const { container } = render(
       <div style={{ width: '10px', height: '20px' }}>
         <Image
           className="is-frameMaximizedPortrait"
@@ -81,15 +87,14 @@ describe('Image', () => {
     // Manually set client height and width since there is no DOM
     Object.defineProperty(HTMLDivElement.prototype, 'clientHeight', { get: () => 10, configurable: true });
     Object.defineProperty(HTMLDivElement.prototype, 'clientWidth', { get: () => 20, configurable: true });
-    act(() => {
-      component.find('img').simulate('load');
-    });
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'load');
 
-    expect(component.getDOMNode().querySelector('.ms-Image-image--portrait')).toBeTruthy();
+    expect(container.querySelector('.ms-Image-image--portrait')).toBeTruthy();
   });
 
   it('can cover a portrait (tall) parent element with a square image', () => {
-    const component = mount(
+    const { container } = render(
       <div style={{ width: '10px', height: '20px' }}>
         <Image
           src={testImage1x1}
@@ -105,10 +110,9 @@ describe('Image', () => {
     Object.defineProperty(HTMLDivElement.prototype, 'clientHeight', { get: () => 20, configurable: true });
     Object.defineProperty(HTMLDivElement.prototype, 'clientWidth', { get: () => 10, configurable: true });
 
-    act(() => {
-      component.find('img').simulate('load');
-    });
-    expect(component.getDOMNode().querySelector('.ms-Image-image--landscape')).toBeTruthy();
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'load');
+    expect(container.querySelector('.ms-Image-image--landscape')).toBeTruthy();
   });
 
   it('renders ImageFit.centerContain correctly', () => {
@@ -122,10 +126,8 @@ describe('Image', () => {
   });
 
   it('allows onError events to be attached', done => {
-    const component = mount(<ImageBase src={brokenImage} onError={() => done()} />);
-
-    act(() => {
-      component.find('img').simulate('error');
-    });
+    render(<ImageBase src={brokenImage} onError={() => done()} />);
+    const imgElement = screen.getByRole('img');
+    simulateImageEvent(imgElement, 'error');
   });
 });
