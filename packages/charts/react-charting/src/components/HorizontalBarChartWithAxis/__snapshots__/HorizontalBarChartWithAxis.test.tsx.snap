@@ -29,14 +29,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={
@@ -104,12 +104,117 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
         <defs>
           <linearGradient
-            id="HBCWA_Gradient4_0_20000"
+            id="HBCWA_Gradient4_0_10000"
+          >
+            <stop
+              offset="0"
+              stopColor="#4760D5"
+            />
+            <stop
+              offset="100%"
+              stopColor="#637CEF"
+            />
+          </linearGradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. 10%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="url(#HBCWA_Gradient4_0_10000)"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={15}
+          x={25}
+          y={14.25}
+        />
+        <defs>
+          <linearGradient
+            id="HBCWA_Gradient5_0_40000"
+          >
+            <stop
+              offset="0"
+              stopColor="#B146C2"
+            />
+            <stop
+              offset="100%"
+              stopColor="#C36BD1"
+            />
+          </linearGradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. 88%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="url(#HBCWA_Gradient5_0_40000)"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={60}
+          x={-20}
+          y={-51}
+        />
+        <defs>
+          <linearGradient
+            id="HBCWA_Gradient6_0_25000"
+          >
+            <stop
+              offset="0"
+              stopColor="#159195"
+            />
+            <stop
+              offset="100%"
+              stopColor="#2AA0A4"
+            />
+          </linearGradient>
+        </defs>
+        <rect
+          aria-label="2020/04/30. 37%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="url(#HBCWA_Gradient6_0_25000)"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={37.5}
+          x={2.5}
+          y={-29.25}
+        />
+        <defs>
+          <linearGradient
+            id="HBCWA_Gradient7_0_20000"
           >
             <stop
               offset="0"
@@ -130,17 +235,18 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 opacity: ;
               }
           data-is-focusable={true}
-          fill="url(#HBCWA_Gradient4_0_20000)"
-          height={32}
+          fill="url(#HBCWA_Gradient7_0_20000)"
+          height={21.75}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
           rx={0}
+          transform="translate(0,-5.125)"
           width={30}
           x={10}
-          y={4}
+          y={-7.5}
         />
       </g>
     </svg>
@@ -191,7 +297,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone9"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -664,14 +770,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={
@@ -739,9 +845,72 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <rect
+          aria-label="2020/04/30. 10%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#4760D5"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={3}
+          transform="translate(0,-5.125)"
+          width={15}
+          x={25}
+          y={14.25}
+        />
+        <rect
+          aria-label="2020/04/30. 88%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#B146C2"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={3}
+          transform="translate(0,-5.125)"
+          width={60}
+          x={-20}
+          y={-51}
+        />
+        <rect
+          aria-label="2020/04/30. 37%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#159195"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={3}
+          transform="translate(0,-5.125)"
+          width={37.5}
+          x={2.5}
+          y={-29.25}
+        />
         <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout0"
@@ -752,16 +921,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               }
           data-is-focusable={true}
           fill="#795AA6"
-          height={32}
+          height={21.75}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
           rx={3}
+          transform="translate(0,-5.125)"
           width={30}
           x={10}
-          y={4}
+          y={-7.5}
         />
       </g>
     </svg>
@@ -812,7 +982,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone9"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -903,8 +1073,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                       className=
 
                           {
-                            background-color: #0078d4;
-                            border-color: #0078d4;
+                            background-color: #4760D5;
+                            border-color: #4760D5;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -912,7 +1082,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #0078d4, #0078d4);
+                            content: linear-gradient(to right, #4760D5, #4760D5);
                             opacity: ;
                           }
                     />
@@ -1111,8 +1281,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                       className=
 
                           {
-                            background-color: #00188f;
-                            border-color: #00188f;
+                            background-color: #159195;
+                            border-color: #159195;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1120,7 +1290,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00188f, #00188f);
+                            content: linear-gradient(to right, #159195, #159195);
                             opacity: ;
                           }
                     />
@@ -1215,8 +1385,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                       className=
 
                           {
-                            background-color: #00bcf2;
-                            border-color: #00bcf2;
+                            background-color: #B146C2;
+                            border-color: #B146C2;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1224,7 +1394,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00bcf2, #00bcf2);
+                            content: linear-gradient(to right, #B146C2, #B146C2);
                             opacity: ;
                           }
                     />
@@ -1285,14 +1455,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={
@@ -1360,9 +1530,72 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <rect
+          aria-label="2020/04/30. 10%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#0078d4"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={15}
+          x={25}
+          y={14.25}
+        />
+        <rect
+          aria-label="2020/04/30. 88%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#00bcf2"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={60}
+          x={-20}
+          y={-51}
+        />
+        <rect
+          aria-label="2020/04/30. 37%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#00188f"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={37.5}
+          x={2.5}
+          y={-29.25}
+        />
         <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout0"
@@ -1373,16 +1606,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               }
           data-is-focusable={true}
           fill="#002050"
-          height={32}
+          height={21.75}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
           rx={0}
+          transform="translate(0,-5.125)"
           width={30}
           x={10}
-          y={4}
+          y={-7.5}
         />
       </g>
     </svg>
@@ -1433,7 +1667,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone9"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1906,14 +2140,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+      aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
       height={0}
       role="region"
       style={
@@ -1981,9 +2215,72 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <rect
+          aria-label="2020/04/30. 10%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#0078d4"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={15}
+          x={25}
+          y={14.25}
+        />
+        <rect
+          aria-label="2020/04/30. 88%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#00bcf2"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={60}
+          x={-20}
+          y={-51}
+        />
+        <rect
+          aria-label="2020/04/30. 37%."
+          aria-labelledby="toolTipcallout0"
+          className=
+
+              {
+                opacity: ;
+              }
+          data-is-focusable={true}
+          fill="#00188f"
+          height={21.75}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          rx={0}
+          transform="translate(0,-5.125)"
+          width={37.5}
+          x={2.5}
+          y={-29.25}
+        />
         <rect
           aria-label="2020/04/30. 20%."
           aria-labelledby="toolTipcallout0"
@@ -1994,16 +2291,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               }
           data-is-focusable={true}
           fill="#002050"
-          height={32}
+          height={21.75}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
           rx={0}
+          transform="translate(0,-5.125)"
           width={30}
           x={10}
-          y={4}
+          y={-7.5}
         />
       </g>
     </svg>

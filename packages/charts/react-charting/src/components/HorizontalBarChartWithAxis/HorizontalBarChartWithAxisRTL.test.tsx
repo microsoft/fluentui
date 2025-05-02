@@ -113,10 +113,10 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars).toHaveLength(4);
-      expect(bars[0].getAttribute('height')).toEqual('50');
-      expect(bars[1].getAttribute('height')).toEqual('50');
-      expect(bars[2].getAttribute('height')).toEqual('50');
-      expect(bars[3].getAttribute('height')).toEqual('50');
+      expect(bars[0].getAttribute('height')).toEqual('26.25');
+      expect(bars[1].getAttribute('height')).toEqual('26.25');
+      expect(bars[2].getAttribute('height')).toEqual('26.25');
+      expect(bars[3].getAttribute('height')).toEqual('26.25');
     },
   );
 });

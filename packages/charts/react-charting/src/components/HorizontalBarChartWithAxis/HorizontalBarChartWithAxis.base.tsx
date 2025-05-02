@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
-import {
-  scaleLinear as d3ScaleLinear,
-  ScaleLinear as D3ScaleLinear,
-  scaleBand as d3ScaleBand,
-  ScaleBand,
-} from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
