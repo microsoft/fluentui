@@ -128,6 +128,11 @@ export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnoun
 // @public (undocumented)
 export const useHasParentActiveDescendantContext: () => boolean;
 
+// @public (undocumented)
+export const useTypingAnnounce: (inputEl: React_2.RefObject<HTMLElement>) => {
+    typingAnnounce: AriaLiveAnnounceFn;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
