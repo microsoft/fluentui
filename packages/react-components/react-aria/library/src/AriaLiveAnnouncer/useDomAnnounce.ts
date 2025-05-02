@@ -91,8 +91,6 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
     timeoutRef.current = setAnnounceTimeout(() => {
       runCycle();
     }, 0);
-
-    // runCycle();
   }, [clearAnnounceTimeout, messageQueue, setAnnounceTimeout, targetDocument]);
 
   const announce: AriaLiveAnnounceFn = React.useCallback(

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useTimeout } from '@fluentui/react-utilities';
-import { useAnnounce } from '@fluentui/react-components';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAnnounce, useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { AnnounceOptions } from '@fluentui/react-shared-contexts';
 import { AriaLiveAnnounceFn } from '../AriaLiveAnnouncer/AriaLiveAnnouncer.types';
 
