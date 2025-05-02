@@ -518,7 +518,7 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     // Determine the precision (x) based on the number of digits
     let x: number;
     if (numDigits >= 5) {
-      x = 1;
+      x = 4;
     } else {
       x = 3;
     }
