@@ -31,7 +31,6 @@ export const ContentEditable = () => {
   const [count, setCount] = React.useState(0);
   const styles = useStyles();
 
-  // pass typingAnnounce a batchId to ensure new charCount updates override old ones
   const announceId = useId('charCount');
 
   const { typingAnnounce } = useTypingAnnounce(inputRef);
@@ -41,6 +40,7 @@ export const ContentEditable = () => {
 
     const message = charCountMessage(ev.target.textContent.length);
     if (message) {
+      // pass typingAnnounce a batchId to ensure new charCount updates override old ones
       typingAnnounce(message, { batchId: announceId });
     }
   };

@@ -70,7 +70,6 @@ export const useDomAnnounce_unstable = (): AriaLiveAnnounceFn => {
 
         elementRef.current.innerText = '';
         elementRef.current.appendChild(wrappingEl);
-        console.log('Announcing:', wrappingEl.innerText);
 
         messageQueue.clear();
         batchMessages.current = [];
