@@ -472,27 +472,26 @@ describe('GroupedListV2', () => {
       );
     }
 
+    const { unmount } = render(
+      <div data-is-scrollable style={{ overflow: 'scroll' }}>
+        <GroupedListV2
+          componentRef={ref}
+          items={_items}
+          groups={_groups}
+          onRenderCell={_onRenderCell}
+          selection={_selection}
+        />
+      </div>,
+    );
+
+    expect(typeof ref.current?.scrollToIndex).toBe('function');
     act(() => {
-      const { unmount } = render(
-        <div data-is-scrollable style={{ overflow: 'scroll' }}>
-          <GroupedListV2
-            componentRef={ref}
-            items={_items}
-            groups={_groups}
-            onRenderCell={_onRenderCell}
-            selection={_selection}
-          />
-        </div>,
-      );
-
-      expect(typeof ref.current?.scrollToIndex).toBe('function');
-
       ref.current?.scrollToIndex(4, measureItem);
-
-      expect(measureItem).toHaveBeenCalled();
-      expect(measureItem).toHaveBeenLastCalledWith(4);
-
-      unmount();
     });
+
+    expect(measureItem).toHaveBeenCalled();
+    expect(measureItem).toHaveBeenLastCalledWith(4);
+
+    unmount();
   });
 });
