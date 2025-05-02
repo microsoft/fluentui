@@ -49,6 +49,7 @@ import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { ScaleLinear } from 'd3-scale';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -133,6 +134,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private _containsSecondaryYAxis = false;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -189,6 +191,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
+      this._containsSecondaryYAxis =
+        !!this.props.secondaryYScaleOptions && points.some(point => point.useSecondaryYScale);
       const { colors, opacity, data, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
       const isXAxisDateType = getXAxisType(points);
@@ -443,7 +447,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
     let maxOfYVal = 0;
 
-    if (this.props.mode === 'tozeroy') {
+    if (this._shouldFillToZeroY()) {
       keys.forEach((key, index) => {
         const currentLayer: IAreaChartDataSetPoint[] = [];
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -480,7 +484,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : renderPoints?.length > 1);
     return {
       renderData: renderPoints,
-      maxOfYVal,
+      // The maxOfYVal prop is only required for the primary y-axis. When the data includes
+      // a secondary y-axis, the mode defaults to tozeroy, so maxOfYVal should be calculated using
+      // only the data points associated with the primary y-axis.
+      maxOfYVal: this._containsSecondaryYAxis
+        ? findNumericMinMaxOfY(this.props.data.lineChartData!).endValue
+        : maxOfYVal,
     };
   };
 
@@ -613,8 +622,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, yScaleSecondary, xElement!);
   };
 
   private _onLegendHover(legend: string): void {
@@ -727,8 +738,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return fillColor;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
+  private _drawGraph = (
+    containerHeight: number,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScalePrimary: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+    xElement: SVGElement,
+  ): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
@@ -736,84 +753,83 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
-      if (points[index]) {
-        const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
-        const area = d3Area()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .x((d: any) => xScale(d.xVal))
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y0((d: any) => yScale(d.values[0]))
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y1((d: any) => yScale(d.values[1]))
-          .curve(curveFactory);
-        const line = d3Line()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .x((d: any) => xScale(d.xVal))
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y((d: any) => yScale(d.values[1]))
-          .curve(curveFactory);
-        const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
-        graph.push(
-          <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
-            {this.props.enableGradient && (
-              <defs>
-                <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
-                  <stop offset="0" stopColor={this._colors[index]} />
-                  <stop offset="100%" stopColor="transparent" />
-                </linearGradient>
-              </defs>
-            )}
-            <path
-              id={`${index}-line-${this._uniqueIdForGraph}`}
-              d={line(singleStackedData)!}
-              fill={'transparent'}
-              strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
+      const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
+      const area = d3Area()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y0((d: any) => yScale(d.values[0]))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y1((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const line = d3Line()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const layerOpacity = this._shouldFillToZeroY() ? 0.8 : this._opacity[index];
+      graph.push(
+        <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0" stopColor={this._colors[index]} />
+                <stop offset="100%" stopColor="transparent" />
+              </linearGradient>
+            </defs>
+          )}
+          <path
+            id={`${index}-line-${this._uniqueIdForGraph}`}
+            d={line(singleStackedData)!}
+            fill={'transparent'}
+            strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
+            stroke={this._colors[index]}
+            opacity={this._getLineOpacity(points[index]!.legend)}
+            onMouseMove={this._onRectMouseMove}
+            onMouseOut={this._onRectMouseOut}
+            onMouseOver={this._onRectMouseMove}
+            strokeDasharray={points[index].lineOptions?.strokeDasharray}
+            strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
+            strokeLinecap={points[index].lineOptions?.strokeLinecap}
+          />
+          {singleStackedData.length === 1 ? (
+            <circle
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              cx={xScale(singleStackedData[0].xVal)}
+              cy={yScale(singleStackedData[0].values[1])}
+              r={6}
               stroke={this._colors[index]}
-              opacity={this._getLineOpacity(points[index]!.legend)}
+              strokeWidth={3}
+              fill={this._colors[index]}
+              opacity={layerOpacity}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
-              strokeDasharray={points[index].lineOptions?.strokeDasharray}
-              strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
-              strokeLinecap={points[index].lineOptions?.strokeLinecap}
             />
-            {singleStackedData.length === 1 ? (
-              <circle
-                id={`${index}-graph-${this._uniqueIdForGraph}`}
-                cx={xScale(singleStackedData[0].xVal)}
-                cy={yScale(singleStackedData[0].values[1])}
-                r={6}
-                stroke={this._colors[index]}
-                strokeWidth={3}
-                fill={this._colors[index]}
-                opacity={layerOpacity}
-                fillOpacity={this._getOpacity(points[index]!.legend)}
-                onMouseMove={this._onRectMouseMove}
-                onMouseOut={this._onRectMouseOut}
-                onMouseOver={this._onRectMouseMove}
-              />
-            ) : (
-              <path
-                id={`${index}-graph-${this._uniqueIdForGraph}`}
-                d={area(singleStackedData)!}
-                fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
-                opacity={layerOpacity}
-                fillOpacity={this._getOpacity(points[index]!.legend)}
-                onMouseMove={this._onRectMouseMove}
-                onMouseOut={this._onRectMouseOut}
-                onMouseOver={this._onRectMouseMove}
-                {...(this.props.optimizeLargeData && {
-                  'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
-                  role: 'img',
-                  'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
-                    points[index].data.length
-                  } data points.`,
-                })}
-              />
-            )}
-          </React.Fragment>,
-        );
-      }
+          ) : (
+            <path
+              id={`${index}-graph-${this._uniqueIdForGraph}`}
+              d={area(singleStackedData)!}
+              fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
+              opacity={layerOpacity}
+              fillOpacity={this._getOpacity(points[index]!.legend)}
+              onMouseMove={this._onRectMouseMove}
+              onMouseOut={this._onRectMouseOut}
+              onMouseOver={this._onRectMouseMove}
+              {...(this.props.optimizeLargeData && {
+                'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
+                role: 'img',
+                'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
+                  points[index].data.length
+                } data points.`,
+              })}
+            />
+          )}
+        </React.Fragment>,
+      );
     });
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
@@ -822,6 +838,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (points.length === index) {
         return;
       }
+
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
       if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
         // Render circles for all data points
@@ -835,50 +853,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             } data points.`}
           >
             {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
-              if (points[index] && points[index]!.data[pointIndex]) {
-                const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
-                const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-                lineColor = points[index]!.color!;
-                const legend = points[index]!.legend;
-                return (
-                  <circle
-                    key={circleId}
-                    id={circleId}
-                    data-is-focusable={this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted()}
-                    cx={xScale(singlePoint.xVal)}
-                    cy={yScale(singlePoint.values[1])}
-                    stroke={lineColor}
-                    strokeWidth={3}
-                    fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
-                    onMouseOut={this._onRectMouseOut}
-                    onMouseOver={this._onRectMouseMove}
-                    onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex]?.onDataPointClick!)}
-                    onFocus={() => this._handleFocus(index, pointIndex, circleId)}
-                    onBlur={this._handleBlur}
-                    {...getSecureProps(pointOptions)}
-                    r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
-                    role="img"
-                    aria-label={this._getAriaLabel(index, pointIndex)}
-                  />
-                );
-              }
-              return null;
-            })}
-          </g>,
-        );
-      } else {
-        // Render circles for data points close to the mouse pointer only
-        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
-          if (points[index] && points[index]!.data[pointIndex]) {
-            const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-            if (this.state.nearestCircleToHighlight === xDataPoint) {
               const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
+              const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
               lineColor = points[index]!.color!;
               const legend = points[index]!.legend;
-              graph.push(
+              return (
                 <circle
                   key={circleId}
                   id={circleId}
+                  data-is-focusable={this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted()}
                   cx={xScale(singlePoint.xVal)}
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
@@ -886,12 +869,42 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
-                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex]?.onDataPointClick!)}
+                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                  onFocus={() => this._handleFocus(index, pointIndex, circleId)}
+                  onBlur={this._handleBlur}
                   {...getSecureProps(pointOptions)}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
-                />,
+                  role="img"
+                  aria-label={this._getAriaLabel(index, pointIndex)}
+                />
               );
-            }
+            })}
+          </g>,
+        );
+      } else {
+        // Render circles for data points close to the mouse pointer only
+        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
+          const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+          if (this.state.nearestCircleToHighlight === xDataPoint) {
+            const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
+            lineColor = points[index]!.color!;
+            const legend = points[index]!.legend;
+            graph.push(
+              <circle
+                key={circleId}
+                id={circleId}
+                cx={xScale(singlePoint.xVal)}
+                cy={yScale(singlePoint.values[1])}
+                stroke={lineColor}
+                strokeWidth={3}
+                fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
+                onMouseOut={this._onRectMouseOut}
+                onMouseOver={this._onRectMouseMove}
+                onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                {...getSecureProps(pointOptions)}
+                r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
+              />,
+            );
           }
         });
       }
@@ -1071,4 +1084,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { chartTitle, lineChartData } = this.props.data;
     return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
   };
+
+  private _shouldFillToZeroY() {
+    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis;
+  }
 }
