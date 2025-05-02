@@ -25,14 +25,14 @@ export const useTypingAnnounce = (inputEl: React.RefObject<HTMLElement>): { typi
   const [setTypingTimeout, clearTypingTimeout] = useTimeout();
   const messageQueue = React.useRef<Message[]>([]);
 
-  const callback: MutationCallback = React.useCallback((mutationList, observer) => {
+  const callback: MutationCallback = React.useCallback((mutationList, observer?) => {
     clearTypingTimeout();
     setTypingTimeout(() => {
       messageQueue.current.forEach(({ message, options }) => {
         announce(message, options);
       });
-      messageQueue.current = [];
-      observer.disconnect();
+      messageQueue.current.length = 0;
+      observer?.disconnect();
     }, 500);
   }, []);
 
