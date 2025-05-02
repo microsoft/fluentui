@@ -29,11 +29,11 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
         role="region"
@@ -275,27 +275,26 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,241.5H0.5V36.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,215.375)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="0"
+                data-="13000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -305,28 +304,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                0
+                13000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
+            transform="translate(0,164.125)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="10k"
+                data-="30000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -336,28 +334,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                10k
+                30000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,112.875)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="20k"
+                data-="50000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -367,28 +364,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                20k
+                50000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
+            transform="translate(0,61.625)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="30k"
+                data-="5000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -398,69 +394,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                40k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
+                5000
               </tspan>
             </text>
           </g>
@@ -480,9 +414,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="0"
+            transform="translate(0,9.625)"
             width="147.5"
             x="40"
-            y="217.3"
+            y="36"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -498,9 +433,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="590"
             x="40"
-            y="179.38"
+            y="189.75"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -516,9 +452,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="138.5"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -534,9 +471,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="295"
             x="40"
-            y="4"
+            y="87.25"
           />
         </g>
       </svg>
@@ -578,7 +516,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1033,11 +971,11 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
         role="region"
@@ -1279,27 +1217,26 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,241.5H0.5V36.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,215.375)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="0"
+                data-="13000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -1309,28 +1246,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                0
+                13000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
+            transform="translate(0,164.125)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="10k"
+                data-="30000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -1340,28 +1276,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                10k
+                30000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,112.875)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="20k"
+                data-="50000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -1371,28 +1306,27 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                20k
+                50000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
+            transform="translate(0,61.625)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="30k"
+                data-="5000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -1402,69 +1336,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 id="LessLength"
                 x="-16"
               >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                40k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
+                5000
               </tspan>
             </text>
           </g>
@@ -1484,9 +1356,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="0"
+            transform="translate(0,9.625)"
             width="147.5"
             x="40"
-            y="217.3"
+            y="36"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -1502,9 +1375,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="590"
             x="40"
-            y="179.38"
+            y="189.75"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -1520,9 +1394,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="138.5"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -1538,9 +1413,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="295"
             x="40"
-            y="4"
+            y="87.25"
           />
         </g>
       </svg>
@@ -1582,7 +1458,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2050,11 +1926,11 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               outline: none;
             }
 
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
           focusable="false"
           height="292"
           role="region"
@@ -2296,27 +2172,26 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
           >
             <path
               class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
+              d="M-6,241.5H0.5V36.5H-6"
               stroke="currentColor"
             />
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,215.375)"
             >
               <line
                 stroke="currentColor"
                 x2="-6"
               />
               <text
-                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 text-align="start"
                 x="-16"
               >
                 <tspan
-                  data-="0"
+                  data-="13000"
                   dy="0.32em"
                   id="BaseSpan"
                   x="-16"
@@ -2326,28 +2201,27 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   id="LessLength"
                   x="-16"
                 >
-                  0
+                  13000
                 </tspan>
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,210.10000000000002)"
+              transform="translate(0,164.125)"
             >
               <line
                 stroke="currentColor"
                 x2="-6"
               />
               <text
-                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 text-align="start"
                 x="-16"
               >
                 <tspan
-                  data-="10k"
+                  data-="30000"
                   dy="0.32em"
                   id="BaseSpan"
                   x="-16"
@@ -2357,28 +2231,27 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   id="LessLength"
                   x="-16"
                 >
-                  10k
+                  30000
                 </tspan>
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,162.7)"
+              transform="translate(0,112.875)"
             >
               <line
                 stroke="currentColor"
                 x2="-6"
               />
               <text
-                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 text-align="start"
                 x="-16"
               >
                 <tspan
-                  data-="20k"
+                  data-="50000"
                   dy="0.32em"
                   id="BaseSpan"
                   x="-16"
@@ -2388,28 +2261,27 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   id="LessLength"
                   x="-16"
                 >
-                  20k
+                  50000
                 </tspan>
               </text>
             </g>
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,115.30000000000001)"
+              transform="translate(0,61.625)"
             >
               <line
                 stroke="currentColor"
                 x2="-6"
               />
               <text
-                aria-hidden="true"
                 dy="0.32em"
                 fill="currentColor"
                 text-align="start"
                 x="-16"
               >
                 <tspan
-                  data-="30k"
+                  data-="5000"
                   dy="0.32em"
                   id="BaseSpan"
                   x="-16"
@@ -2419,69 +2291,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   id="LessLength"
                   x="-16"
                 >
-                  30k
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,67.89999999999999)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-16"
-              >
-                <tspan
-                  data-="40k"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  40k
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-16"
-              >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  50k
+                  5000
                 </tspan>
               </text>
             </g>
@@ -2501,9 +2311,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               role="img"
               rx="0"
               tabindex="0"
+              transform="translate(0,9.625)"
               width="147.5"
               x="40"
-              y="217.3"
+              y="36"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -2519,9 +2330,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               role="img"
               rx="0"
               tabindex="-1"
+              transform="translate(0,9.625)"
               width="590"
               x="40"
-              y="179.38"
+              y="189.75"
             />
             <rect
               aria-label="37%. 2020/04/30."
@@ -2537,9 +2349,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               role="img"
               rx="0"
               tabindex="-1"
+              transform="translate(0,9.625)"
               width="368.75"
               x="40"
-              y="98.80000000000001"
+              y="138.5"
             />
             <rect
               aria-label="20%. 2020/04/30."
@@ -2555,9 +2368,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               role="img"
               rx="0"
               tabindex="-1"
+              transform="translate(0,9.625)"
               width="295"
               x="40"
-              y="4"
+              y="87.25"
             />
           </g>
         </svg>
@@ -2599,7 +2413,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone9"
+                  data-focuszone-id="FocusZone12"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -3055,11 +2869,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
         role="region"
@@ -3301,27 +3115,26 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,241.5H0.5V36.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,215.375)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="0"
+                data-="13000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -3331,28 +3144,27 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                0
+                13000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
+            transform="translate(0,164.125)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="10k"
+                data-="30000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -3362,28 +3174,27 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                10k
+                30000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,112.875)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="20k"
+                data-="50000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -3393,28 +3204,27 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                20k
+                50000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
+            transform="translate(0,61.625)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="30k"
+                data-="5000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -3424,69 +3234,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                40k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
+                5000
               </tspan>
             </text>
           </g>
@@ -3506,9 +3254,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             role="img"
             rx="0"
             tabindex="0"
+            transform="translate(0,9.625)"
             width="147.5"
             x="40"
-            y="217.3"
+            y="36"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -3524,9 +3273,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="590"
             x="40"
-            y="179.38"
+            y="189.75"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -3542,9 +3292,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="138.5"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -3560,9 +3311,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="295"
             x="40"
-            y="4"
+            y="87.25"
           />
         </g>
       </svg>
@@ -3604,7 +3356,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -4647,11 +4399,11 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone8"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
         role="region"
@@ -4893,27 +4645,26 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         >
           <path
             class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+            d="M-6,241.5H0.5V36.5H-6"
             stroke="currentColor"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,215.375)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="0"
+                data-="13000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -4923,28 +4674,27 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 id="LessLength"
                 x="-16"
               >
-                0
+                13000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
+            transform="translate(0,164.125)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="10k"
+                data-="30000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -4954,28 +4704,27 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 id="LessLength"
                 x="-16"
               >
-                10k
+                30000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,112.875)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="20k"
+                data-="50000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -4985,28 +4734,27 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 id="LessLength"
                 x="-16"
               >
-                20k
+                50000
               </tspan>
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
+            transform="translate(0,61.625)"
           >
             <line
               stroke="currentColor"
               x2="-6"
             />
             <text
-              aria-hidden="true"
               dy="0.32em"
               fill="currentColor"
               text-align="start"
               x="-16"
             >
               <tspan
-                data-="30k"
+                data-="5000"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -5016,69 +4764,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 id="LessLength"
                 x="-16"
               >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="40k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                40k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
+                5000
               </tspan>
             </text>
           </g>
@@ -5098,9 +4784,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             role="img"
             rx="0"
             tabindex="0"
+            transform="translate(0,9.625)"
             width="147.5"
             x="40"
-            y="217.3"
+            y="36"
           />
           <rect
             aria-label="2020/04/30. 88%."
@@ -5116,9 +4803,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="590"
             x="40"
-            y="179.38"
+            y="189.75"
           />
           <rect
             aria-label="2020/04/30. 37%."
@@ -5134,9 +4822,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="138.5"
           />
           <rect
             aria-label="2020/04/30. 20%."
@@ -5152,9 +4841,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             role="img"
             rx="0"
             tabindex="-1"
+            transform="translate(0,9.625)"
             width="295"
             x="40"
-            y="4"
+            y="87.25"
           />
         </g>
       </svg>
@@ -5196,7 +4886,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone9"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
