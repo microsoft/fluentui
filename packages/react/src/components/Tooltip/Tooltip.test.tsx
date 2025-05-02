@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 
@@ -15,14 +14,15 @@ const defaultCalloutProps: ICalloutProps = {
   doNotLayer: false,
 };
 
-describe('Tooltip', () => {
-  beforeEach(() => {
+jest.mock('react-dom', () => {
+  return {
+    ...jest.requireActual('react-dom'),
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(element => {
-      return element as React.ReactPortal;
-    });
-  });
+    createPortal: jest.fn((node: any) => node),
+  };
+});
 
+describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
     const component = renderer.create(<TooltipBase />);
     const tree = component.toJSON();
