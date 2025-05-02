@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
 import { isConformant } from '../../common/isConformant';
 import type { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
@@ -76,7 +76,9 @@ describe('SelectedItemsList', () => {
         { key: '1', name: 'a' },
         { key: '2', name: 'b' },
       ];
-      itemsList.addItems(items);
+      act(() => {
+        itemsList.addItems(items);
+      });
 
       expect(itemsList.items.length).toEqual(2);
     });

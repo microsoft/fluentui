@@ -532,11 +532,15 @@ describe('DetailsList', () => {
       />,
       wrapper => {
         expect(component).toBeTruthy();
-        selection.setAllSelected(true);
+        act(() => {
+          selection.setAllSelected(true);
+        });
         jest.runAllTimers();
 
         onSelectionChanged.mockClear();
-        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        act(() => {
+          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        });
         expect(onSelectionChanged).toHaveBeenCalledTimes(1);
         expect(selection.getSelectedCount()).toEqual(0);
       },
@@ -562,11 +566,15 @@ describe('DetailsList', () => {
       />,
       wrapper => {
         expect(component).toBeTruthy();
-        selection.setAllSelected(true);
+        act(() => {
+          selection.setAllSelected(true);
+        });
         jest.runAllTimers();
 
         onSelectionChanged.mockClear();
-        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        act(() => {
+          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        });
         expect(onSelectionChanged).toHaveBeenCalledTimes(0);
         expect(selection.getSelectedCount()).toEqual(5);
       },
@@ -641,15 +649,17 @@ describe('DetailsList', () => {
     };
 
     const _RaiseEvent = (target: any, _eventName: string, _clientX: number) => {
-      EventGroup.raise(
-        target,
-        _eventName,
-        {
-          clientX: _clientX,
-          button: 0,
-        } as DragEvent,
-        true,
-      );
+      act(() => {
+        EventGroup.raise(
+          target,
+          _eventName,
+          {
+            clientX: _clientX,
+            button: 0,
+          } as DragEvent,
+          true,
+        );
+      });
     };
 
     const items = mockData(5);
@@ -668,9 +678,16 @@ describe('DetailsList', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(1);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    rerender(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
-    );
+    act(() => {
+      rerender(
+        <DetailsListBase
+          columns={columns}
+          skipViewportMeasures={true}
+          items={items}
+          dragDropEvents={_dragDropEvents}
+        />,
+      );
+    });
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
@@ -680,9 +697,16 @@ describe('DetailsList', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(2);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    rerender(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents2} />,
-    );
+    act(() => {
+      rerender(
+        <DetailsListBase
+          columns={columns}
+          skipViewportMeasures={true}
+          items={items}
+          dragDropEvents={_dragDropEvents2}
+        />,
+      );
+    });
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
@@ -765,7 +789,9 @@ describe('DetailsList', () => {
 
     expect(component!).toBeTruthy();
     component!.focusIndex(3);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(component!.state.focusedItemIndex).toEqual(3);
 
@@ -780,8 +806,10 @@ describe('DetailsList', () => {
       />,
     );
 
-    // verify that focusedItemIndex is reset to 0 and 0th row is focused
-    jest.runAllTimers();
+    act(() => {
+      // verify that focusedItemIndex is reset to 0 and 0th row is focused
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(0);
     expect(
       (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
