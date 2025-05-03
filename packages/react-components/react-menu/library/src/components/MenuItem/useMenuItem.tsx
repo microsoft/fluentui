@@ -37,6 +37,7 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
+  const mouseInputState = useMenuListContext_unstable(ctx => ctx.mouseInputState);
   const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
@@ -75,6 +76,10 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             }
           }),
           onMouseMove: useEventCallback(event => {
+            if (!mouseInputState?.isMouseInput()) {
+              mouseInputState?.setMouseInput(true);
+            }
+
             if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget) {
               innerRef.current?.focus();
             }
