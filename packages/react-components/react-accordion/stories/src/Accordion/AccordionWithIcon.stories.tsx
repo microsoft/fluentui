@@ -33,3 +33,24 @@ WithIcon.parameters = {
     },
   },
 };
+
+export const WithLongHeaderText = () => (
+  <Accordion>
+    <AccordionItem value="1">
+      <AccordionHeader icon={<RocketRegular />}>
+        Accordion Header with a very long text that overflows to the next line
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>Accordion Panel 1</div>
+      </AccordionPanel>
+    </AccordionItem>
+  </Accordion>
+);
+
+WithLongHeaderText.parameters = {
+  docs: {
+    description: {
+      story: 'An accordion header with a long text that overflows to the next line, demonstrating icon alignment.',
+    },
+  },
+};
