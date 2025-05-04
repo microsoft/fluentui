@@ -102,6 +102,7 @@ export class GroupedVerticalBarChartBase
   private _classNames: IProcessedStyleSet<IGroupedVerticalBarChartStyles>;
   private _refArray: IRefArrayData[];
   private _yMax: number;
+  private _yMin: number;
   private _calloutId: string;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
@@ -173,7 +174,9 @@ export class GroupedVerticalBarChartBase
     // using only the data points associated with the primary y-axis.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yMax = this._getMinMaxOfYAxis(this._datasetForBars).endValue;
+    const yMin = this._getMinMaxOfYAxis(this._datasetForBars).startValue;
     this._yMax = Math.max(yMax, this.props.yMaxValue || 0);
+    this._yMin = Math.max(yMin, this.props.yMinValue || 0);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       href: this.props.href!,
@@ -422,6 +425,15 @@ export class GroupedVerticalBarChartBase
     this._refArray[refIndexNumber] = { index: legendTitle, refElement: element };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _calculateMinBarHeight(yMin: number, yMax: number, yReferencePoint: number, yBarScale: any): number {
+    const maxHeightFromBaseline =
+      yMax < 0
+        ? Math.abs(yMin - yReferencePoint)
+        : Math.max(Math.abs(yMax - yReferencePoint), Math.abs(yMin - yReferencePoint));
+    return Math.ceil(yBarScale(maxHeightFromBaseline) / 100.0);
+  }
+
   private _buildGraph = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     singleSet: any,
@@ -438,16 +450,31 @@ export class GroupedVerticalBarChartBase
     const barLabelsForGroup: JSX.Element[] = [];
 
     const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, this._keys.length);
+    const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
       if (pointData) {
         const yBarScale = pointData.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
+        let barHeight: number = yBarScale(yReferencePoint) - yBarScale(pointData.data);
+        const isHeightNegative = barHeight < 0;
+        barHeight = Math.abs(barHeight);
+        // Calculate threshold for minimum visible bar height
+        const minBarHeight = this._calculateMinBarHeight(this._yMin, this._yMax, yReferencePoint, yBarScale);
+        let adjustedBarHeight = barHeight;
+
+        if (barHeight === 0 || (isHeightNegative && !this.props.supportNegativeData)) {
+          return <React.Fragment key={pointData.data as string}> </React.Fragment>;
+        }
+        // Adjust bar height if it's smaller than the threshold
+        else if (barHeight <= minBarHeight) {
+          adjustedBarHeight = minBarHeight;
+        }
         // To align the centers of the generated bandwidth and the calculated one when they differ,
         // use the following addend.
         const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
-        const yPoint = Math.max(yBarScale(pointData.data), 0);
+        const yPoint = yBarScale(yReferencePoint) - adjustedBarHeight;
         let startColor = pointData.color ? pointData.color : getNextColor(index, 0, this.props.theme?.isInverted);
         let endColor = startColor;
 
@@ -473,10 +500,10 @@ export class GroupedVerticalBarChartBase
               )}
               <rect
                 className={this._classNames.opacityChangeOnHover}
-                height={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
+                height={adjustedBarHeight}
                 width={this._barWidth}
                 x={xPoint}
-                y={yPoint}
+                y={!isHeightNegative ? yPoint : yBarScale(yReferencePoint)}
                 data-is-focusable={
                   !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
                 }
@@ -685,6 +712,7 @@ export class GroupedVerticalBarChartBase
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+      this._yMin = Math.min(domainValue[0], this.props.yMinValue || 0);
     }
   };
 
