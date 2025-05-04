@@ -192,7 +192,7 @@ function useOpenState(
  */
 function usePopoverRefs(
   state: Pick<PopoverState, 'size' | 'contextTarget'> &
-    Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow'>,
+    Pick<PopoverProps, 'positioning' | 'openOnContext' | 'withArrow' | 'scrollParents'>,
 ) {
   'use no memo';
 
@@ -202,6 +202,7 @@ function usePopoverRefs(
     arrowPadding: 2 * popoverSurfaceBorderRadius,
     target: state.openOnContext ? state.contextTarget : undefined,
     ...resolvePositioningShorthand(state.positioning),
+    scrollParents: state.scrollParents,
   };
 
   // no reason to render arrow when covering the target

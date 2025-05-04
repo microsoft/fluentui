@@ -42,6 +42,10 @@ interface PositionManagerOptions {
    * Disables the resize observer that updates position on target or dimension change
    */
   disableUpdateOnResize?: boolean;
+  /**
+   * Allows the user to pass in custom scroll parent elements to listen to scroll events on
+   */
+  scrollParents?: HTMLElement[];
 }
 
 /**
@@ -84,7 +88,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       });
 
   let isFirstUpdate = true;
-  const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
+  const scrollParents: Set<HTMLElement> = options.scrollParents ? new Set<HTMLElement>(options.scrollParents) : new Set<HTMLElement>();
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
