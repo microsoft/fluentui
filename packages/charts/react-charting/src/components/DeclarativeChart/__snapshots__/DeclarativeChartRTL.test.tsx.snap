@@ -4347,6 +4347,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                    fill: rgb(179, 179, 179);
+                  }
               role="img"
               text-anchor="end"
               x="74"
@@ -4362,6 +4365,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                    fill: rgb(179, 179, 179);
                   }
               role="img"
               text-anchor="start"
@@ -4453,6 +4459,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                       font-size: 20px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      fill: rgb(179, 179, 179);
+                    }
                 data-is-focusable="true"
                 id="tooltip-host4"
                 tabindex="-1"
@@ -4470,6 +4479,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #107c10;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                    fill: rgb(179, 179, 179);
                   }
               data-is-focusable="true"
               dominant-baseline="hanging"

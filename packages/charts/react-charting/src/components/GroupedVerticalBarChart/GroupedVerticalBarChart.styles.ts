@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
@@ -26,6 +26,11 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          fill: 'rgb(179, 179, 179)',
+        },
+      },
     },
   };
 };

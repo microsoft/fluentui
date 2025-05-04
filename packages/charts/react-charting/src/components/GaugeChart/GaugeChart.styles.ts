@@ -39,18 +39,33 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          fill: 'rgb(179, 179, 179)',
+        },
+      },
     },
 
     chartValue: {
       fontSize: chartValueSize,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          fill: 'rgb(179, 179, 179)',
+        },
+      },
     },
 
     sublabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          fill: 'rgb(179, 179, 179)',
+        },
+      },
     },
 
     needle: {
@@ -61,6 +76,11 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     chartTitle: {
       fontSize: FontSizes.small,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelectorBlack]: {
+          fill: 'rgb(179, 179, 179)',
+        },
+      },
     },
 
     segment: {
