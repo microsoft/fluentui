@@ -46,25 +46,22 @@ jobs:
           echo $PR_DETAILS
         env:
           W_RUN: ${{ toJSON(github.event) }}
-          PR_DETAILS: ${{steps.pr_details.outputs.result}}
+          PR_DETAILS: ${{fromJson(steps.pr_details.outputs.result)}}
 
       - name: Checkout Forked Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.pr_details.outputs.result.head.ref }}
-          repository: ${{ steps.pr_details.outputs.result.repo.full_name }}
-          fetch-depth: 0
+          ref: ${{ fromJson(steps.pr_details.outputs.result).head.ref }}
+          repository: ${{ fromJson(steps.pr_details.outputs.result).head.repo.full_name }}
+          fetch-depth: 10
 
       - name: Debug2
         run: |
-          echo "--base ${{ steps.pr_details.outputs.result.base.sha }} --head ${{ steps.pr_details.outputs.result.head.sha }}"
+          echo "--base ${{ fromJson(steps.pr_details.outputs.result).base.sha }} --head ${{ fromJson(steps.pr_details.outputs.result).head.sha }}"
           echo "===="
           git status
           echo '===='
           ls -la packages/react-components/react-text/visual-regression
-        env:
-          W_RUN: ${{ toJSON(github.event) }}
-          PR_DETAILS: ${{steps.pr_details.outputs.result}}
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@dbe0650947e5f2c81f59190a38512cf49126fe6b # v4.3.0
@@ -82,7 +79,7 @@ jobs:
 
       - name: Update VR tests diff
         id: update_diff
-        run: yarn nx affected -t test-vr-cli -u --nxBail --base ${{ steps.pr_details.outputs.result.base.sha }} --head ${{ steps.pr_details.outputs.result.head.sha }}
+        run: yarn nx affected -t test-vr-cli -u --nxBail --base ${{ fromJson(steps.pr_details.outputs.result).base.sha }} --head ${{ fromJson(steps.pr_details.outputs.result).head.sha }}
 
       - name: Configure Git
         run: |
@@ -95,7 +92,7 @@ jobs:
           git add *.png
           if [[ -n $(git status --porcelain) ]]; then
             git commit -m "chore: update vrt baseline / triggered by PR comment"
-            git push origin ${{ github.event.pull_request.head.ref }}
+            git push origin ${{ fromJson(steps.pr_details.outputs.result).head.ref }}
             echo "name=changes=true" >> $GITHUB_OUTPUT
           else
             echo "No Visual Regression image changes to commit."
