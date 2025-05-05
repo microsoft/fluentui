@@ -53,6 +53,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
+import { IScatterChartDataPoint } from '../types/IDataPoint';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -65,6 +66,7 @@ export enum ChartTypes {
   GroupedVerticalBarChart,
   HeatMapChart,
   HorizontalBarChartWithAxis,
+  ScatterChart,
 }
 
 export enum XAxisTypes {
@@ -1684,4 +1686,213 @@ export function getCurveFactory(
     default:
       return defaultFactory;
   }
+}
+
+/**
+ * Calculates Domain and range values for Date X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfDateForScatterChart(
+  points: ILineChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  tickValues: Date[] = [],
+): IDomainNRange {
+  let sDate: Date;
+  let lDate: Date;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sDate = d3Min(points, (point: any) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  lDate = d3Max(points, (point: any) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+
+  const xPadding = (lDate.getTime() - sDate.getTime()) * 0.1;
+  sDate = new Date(sDate.getTime() - xPadding);
+  lDate = new Date(lDate.getTime() + xPadding);
+  // Need to draw graph with given small and large date
+  // (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  sDate = d3Min([...tickValues, sDate])!;
+  lDate = d3Max([...tickValues, lDate])!;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
+    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+}
+
+/**
+ * Calculates Domain and range values for Numeric X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfNumericForScatterChart(
+  points: ILineChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+): IDomainNRange {
+  let xMin = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
+  })!;
+
+  let xMax = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data as IScatterChartDataPoint[], (item: ILineChartDataPoint) => {
+      return item.x as number;
+    });
+  })!;
+
+  const xPadding = (xMax - xMin) * 0.1;
+  xMin = xMin - xPadding;
+  xMax = xMax + xPadding;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+}
+
+/**
+ * For creating X axis, need to calculate x axis domain and range values from given points.
+ * This may vary based on chart type and type of x axis
+ * So, this method will define which method need to call based on chart type and axis type.
+ * @export
+ * @param {*} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {ChartTypes} chartType
+ * @param {boolean} isRTL
+ * @param {XAxisTypes} xAxisType
+ * @param {number} [barWidth]
+ * @returns {IDomainNRange}
+ */
+export function getDomainNRangeValuesScatterChart(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  points: any,
+  margins: IMargins,
+  width: number,
+  _chartType: ChartTypes,
+  isRTL: boolean,
+  xAxisType: XAxisTypes,
+  _barWidth: number,
+  tickValues: number[] | Date[] | string[] | undefined,
+) {
+  if (xAxisType === XAxisTypes.NumericAxis) {
+    return domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+  } else if (xAxisType === XAxisTypes.DateAxis) {
+    return domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+  }
+  // String Axis type
+  return domainRangeOfXStringAxis(margins, width, isRTL);
+}
+
+export function createYAxisForScatterChart(
+  yAxisParams: IYAxisParams,
+  isRtl: boolean,
+  axisData: IAxisData,
+  isIntegralDataset: boolean,
+  useSecondaryYScale: boolean = false,
+  _supportNegativeData: boolean = false,
+  roundedTicks: boolean = false,
+) {
+  const {
+    yMinMaxValues = { startValue: 0, endValue: 0 },
+    yAxisElement = null,
+    yMaxValue = 0,
+    yMinValue = 0,
+    containerHeight,
+    containerWidth,
+    margins,
+    tickPadding = 12,
+    maxOfYVal = 0,
+    yAxisTickFormat,
+    yAxisTickCount = 4,
+    eventAnnotationProps,
+    eventLabelHeight,
+  } = yAxisParams;
+
+  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
+  let yMin = finalYmin;
+  let yMax = domainValues[domainValues.length - 1];
+  const yPadding = (yMax - yMin) * 0.1;
+  yMin = yMin - yPadding;
+  yMax = yMax + yPadding;
+  const yAxisScale = d3ScaleLinear()
+    .domain([domainValues[0], yMax])
+    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
+  const axis =
+    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(domainValues)
+    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  axisData.yAxisDomainValues = domainValues;
+  return yAxisScale;
+}
+
+/**
+ * Helper to find the index of an item within an array, using a callback to
+ * determine the match.
+ *
+ * @public
+ * @param array - Array to search.
+ * @param cb - Callback which returns true on matches.
+ * @param fromIndex - Optional index to start from (defaults to 0)
+ */
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex: number = 0): number {
+  let index = -1;
+
+  for (let i = fromIndex; array && i < array.length; i++) {
+    if (cb(array[i], i)) {
+      index = i;
+      break;
+    }
+  }
+
+  return index;
+}
+
+/**
+ * Helper to find the first item within an array that satisfies the callback.
+ * @param array - Array to search
+ * @param cb - Callback which returns true on matches
+ */
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
+  const index = findIndex(array, cb);
+
+  if (index < 0) {
+    return undefined;
+  }
+
+  return array[index];
 }

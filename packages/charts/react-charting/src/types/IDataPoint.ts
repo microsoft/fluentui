@@ -860,3 +860,59 @@ export interface IImageExportOptions {
   scale?: number;
   background?: string;
 }
+
+/**
+ * {@docCategory IChartData}
+ */
+interface IBaseDataPoint {
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
+}
+
+/**
+ * {@docCategory IChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
+}

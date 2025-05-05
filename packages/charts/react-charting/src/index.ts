@@ -27,6 +27,7 @@ export type {
   ILineChartStyles,
 } from './LineChart';
 export { LineChart, Textbox } from './LineChart';
+export { ScatterChart } from './ScatterChart';
 export type { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart';
 export { AreaChart } from './AreaChart';
 export type { IPieChart, IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart';
