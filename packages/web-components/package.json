@@ -107,8 +107,7 @@
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@fluentui/scripts-api-extractor": "*",
-    "@microsoft/fast-element": "2.0.0"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",

@@ -89,8 +89,7 @@
     "test:dev": "playwright test"
   },
   "devDependencies": {
-    "@fluentui/scripts-api-extractor": "*",
-    "@microsoft/fast-element": "2.0.0"
+    "@fluentui/scripts-api-extractor": "*"
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
