@@ -385,7 +385,9 @@
     "**/@mdx-js/react/@types/react": "^17",
     "**/prismjs": "^1.30.0",
     "**/@tensile-perf/runner/express": "^4.21.2",
-    "**/tar-fs": "^2.1.2"
+    "**/tar-fs": "^2.1.2",
+    "**/glob-watcher/**/braces": "^3.0.3",
+    "**/micromatch/braces": "^3.0.3"
   },
   "nx": {
     "includedScripts": []
