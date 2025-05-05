@@ -52,7 +52,7 @@ export function App() {
 A little scaffodling is required to get here first. Define a `useFancyButtonStyles.ts`, and calculate the style similar to how you would for any other Fluent component:
 
 ```ts
-import { makeStyles, type ButtonState } from '@fluentui/react-components';
+import { makeStyles, getSlotClassNameProp_unstable, type ButtonState } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -70,15 +70,27 @@ const useStyles = makeStyles({
 export const useFancyButtonStyles = (state: unknown) => {
   const buttonState = state as ButtonState;
   const styles = useStyles();
-  buttonState.root.className = mergeClasses(buttonState.root.className, styles.root);
+  buttonState.root.className = mergeClasses(
+    buttonState.root.className,
+    styles.root,
+    getSlotClassNameProp_unstable(buttonState.root),
+  );
 
   if (buttonState.icon) {
-    buttonState.icon.className = mergeClasses(buttonState.icon.className, styles.icon);
+    buttonState.icon.className = mergeClasses(
+      buttonState.icon.className,
+      styles.icon,
+      getSlotClassNameProp_unstable(buttonState.root),
+    );
   }
 };
 ```
 
-Define the value for `CustomStyleHooksProvider_unstable` in `FancyAppCustomStyleHooksValue.ts` that consumes custom style hooks:
+**Note:** `getSlotClassNameProp_unstable` is a function that gets the user-provided class names for each slot in the component. It is used to apply custom styles through user-provided class names in addition to customStyleHooks. This will need to be imported from `@fluentui/react-components` and added to the end of each `mergeClasses` call as shown in the example above.
+
+> 💡See [microsoft/fluentui#34166](https://github.com/microsoft/fluentui/pull/34166) for a detailed explanation.
+
+Next, define the value for `CustomStyleHooksProvider_unstable` in `FancyAppCustomStyleHooksValue.ts` that consumes custom style hooks:
 
 ```ts
 import { type CustomStyleHooksContextValue } from '@fluentui/react-components';
