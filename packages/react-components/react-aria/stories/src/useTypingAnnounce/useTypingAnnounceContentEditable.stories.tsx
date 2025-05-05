@@ -55,3 +55,11 @@ export const ContentEditable = () => {
     </AriaLiveAnnouncer>
   );
 };
+
+ContentEditable.parameters = {
+  docs: {
+    description: {
+      story: `Updates on remaining characters will begin being announced once you are within 10 characters of the max length.`,
+    },
+  },
+};
