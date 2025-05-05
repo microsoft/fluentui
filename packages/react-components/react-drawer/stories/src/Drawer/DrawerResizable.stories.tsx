@@ -153,6 +153,26 @@ export const Resizable = () => {
     }
   };
 
+  const handleKeyDown = (ev: React.KeyboardEvent) => {
+    if (ev.key === 'Enter') {
+      submitWidth(ev);
+    }
+    if (ev.key === 'Escape') {
+      setDialogOpen(false);
+    }
+  };
+
+  function submitWidth(e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent) {
+    if (resizeInput && parseInt(resizeInput) >= 240) {
+      setSidebarWidth(Number(resizeInput));
+      setShowMessage(false);
+      setDialogOpen(false);
+    } else {
+      setShowMessage(true);
+      e.preventDefault();
+    }
+  }
+
   return (
     <>
       <div className={mergeClasses(styles.root, isResizing && styles.rootResizerActive)}>
@@ -177,6 +197,8 @@ export const Resizable = () => {
                 className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
                 onMouseDown={startResizing}
                 aria-label="Resize drawer"
+                role="separator"
+                aria-orientation="vertical"
               />
             </DialogTrigger>
             <DialogSurface>
@@ -200,6 +222,7 @@ export const Resizable = () => {
                       defaultValue={resizeInput}
                       type="number"
                       className={showMessage ? styles.invalidInput : ''}
+                      onKeyDown={handleKeyDown}
                     />
                     {showMessage ? (
                       <Label className={styles.errorMessage}>
@@ -210,18 +233,7 @@ export const Resizable = () => {
                 </DialogContent>
                 <DialogActions>
                   <DialogTrigger disableButtonEnhancement>
-                    <Button
-                      appearance="primary"
-                      onClick={e => {
-                        if (resizeInput && parseInt(resizeInput) >= 240) {
-                          setSidebarWidth(Number(resizeInput));
-                          setShowMessage(false);
-                        } else {
-                          setShowMessage(true);
-                          e.preventDefault();
-                        }
-                      }}
-                    >
+                    <Button appearance="primary" onClick={e => submitWidth(e)}>
                       Resize
                     </Button>
                   </DialogTrigger>
