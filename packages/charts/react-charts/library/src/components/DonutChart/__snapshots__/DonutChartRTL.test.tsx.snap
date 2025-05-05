@@ -28,6 +28,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #E5E5E5; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -40,6 +41,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #0078D4; cursor: default;"
+              tabindex="0"
             />
           </g>
           <g>
@@ -52,6 +54,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               opacity="1"
               role="img"
               style="fill: #DADADA; cursor: default;"
+              tabindex="0"
             />
           </g>
         </g>
@@ -171,6 +174,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #E5E5E5; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -183,6 +187,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #0078D4; cursor: default;"
+                tabindex="0"
               />
             </g>
             <g>
@@ -195,6 +200,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 opacity="1"
                 role="img"
                 style="fill: #DADADA; cursor: default;"
+                tabindex="0"
               />
             </g>
           </g>
