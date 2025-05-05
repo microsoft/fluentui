@@ -697,7 +697,6 @@ describe('DetailsListV2', () => {
       );
     };
 
-    // const container = document.createElement('div');
     const items = mockData(5);
     const columns = mockData(5, true);
 
