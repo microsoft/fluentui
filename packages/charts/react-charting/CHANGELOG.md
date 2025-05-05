@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 02 May 2025 07:20:19 GMT and should not be manually modified.
+This log was last generated on Mon, 05 May 2025 07:20:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.80)
+
+Mon, 05 May 2025 07:20:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.79..@fluentui/react-charting_v5.23.80)
+
+### Patches
+
+- fix(react-charting): Enable support for negative Y for horizontal bar chart ([PR #34362](https://github.com/microsoft/fluentui/pull/34362) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [5.23.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.79)
 
