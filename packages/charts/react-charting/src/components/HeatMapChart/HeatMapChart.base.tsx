@@ -256,7 +256,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale;
-          this._yAxisScale = props.yScale;
+          this._yAxisScale = props.yScalePrimary;
           return this._createRectangles();
         }}
       />

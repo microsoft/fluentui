@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { asAsync } from './asAsync';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
+import type { ReactTestRenderer, ReactTestRendererJSON } from 'react-test-renderer';
+
+const getChildren = (testRenderer: ReactTestRenderer) => (testRenderer.toJSON() as ReactTestRendererJSON)?.children;
 
 describe('asAsync', () => {
   it('can async load exports', (done: () => undefined) => {
@@ -17,23 +20,24 @@ describe('asAsync', () => {
         return loadThingPromise;
       },
     });
-    const wrapper = mount(<AsyncThing />);
+    const component = renderer.create(<AsyncThing />);
 
     expect(_loadCalled).toBe(true);
-    expect(wrapper.text()).toBeFalsy();
+    expect(getChildren(component)).toBeUndefined();
     expect(_resolve).toBeTruthy();
 
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
-      wrapper.update();
-      expect(wrapper.text()).toEqual('thing');
+      component.update(<AsyncThing />);
+
+      expect(getChildren(component)![0]).toEqual('thing');
       _loadCalled = false;
 
       // Test cached case.
-      mount(<AsyncThing />);
+      renderer.create(<AsyncThing />);
       expect(_loadCalled).toBe(false);
-      expect(wrapper.text()).toEqual('thing');
+      expect(getChildren(component)![0]).toEqual('thing');
       done();
     });
   });
@@ -52,17 +56,17 @@ describe('asAsync', () => {
         return loadThingPromise;
       },
     });
-    const wrapper = mount(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);
+    const component = renderer.create(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);
 
     expect(_loadCalled).toBe(true);
-    expect(wrapper.text()).toEqual('placeholder');
+    expect(getChildren(component)![0]).toEqual('placeholder');
     expect(_resolve).toBeTruthy();
 
     _resolve(() => <div>thing</div>);
 
     process.nextTick(() => {
-      wrapper.update();
-      expect(wrapper.text()).toEqual('thing');
+      component.update(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);
+      expect(getChildren(component)![0]).toEqual('thing');
       done();
     });
   });

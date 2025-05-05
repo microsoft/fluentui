@@ -49,6 +49,7 @@ import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { ScaleLinear } from 'd3-scale';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -133,6 +134,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private _containsSecondaryYAxis = false;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -189,6 +191,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
+      this._containsSecondaryYAxis =
+        !!this.props.secondaryYScaleOptions && points.some(point => point.useSecondaryYScale);
       const { colors, opacity, data, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
       const isXAxisDateType = getXAxisType(points);
@@ -443,7 +447,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
     let maxOfYVal = 0;
 
-    if (this.props.mode === 'tozeroy') {
+    if (this._shouldFillToZeroY()) {
       keys.forEach((key, index) => {
         const currentLayer: IAreaChartDataSetPoint[] = [];
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -480,7 +484,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : renderPoints?.length > 1);
     return {
       renderData: renderPoints,
-      maxOfYVal,
+      // The maxOfYVal prop is only required for the primary y-axis. When the data includes
+      // a secondary y-axis, the mode defaults to tozeroy, so maxOfYVal should be calculated using
+      // only the data points associated with the primary y-axis.
+      maxOfYVal: this._containsSecondaryYAxis
+        ? findNumericMinMaxOfY(this.props.data.lineChartData!).endValue
+        : maxOfYVal,
     };
   };
 
@@ -613,8 +622,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, yScaleSecondary, xElement!);
   };
 
   private _onLegendHover(legend: string): void {
@@ -727,8 +738,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return fillColor;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
+  private _drawGraph = (
+    containerHeight: number,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScalePrimary: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+    xElement: SVGElement,
+  ): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
 
@@ -736,6 +753,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this._data.forEach((singleStackedData: Array<any>, index: number) => {
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
       const curveFactory = getCurveFactory(points[index].lineOptions?.curve, d3CurveBasis);
       const area = d3Area()
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -751,7 +769,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .y((d: any) => yScale(d.values[1]))
         .curve(curveFactory);
-      const layerOpacity = this.props.mode === 'tozeroy' ? 0.8 : this._opacity[index];
+      const layerOpacity = this._shouldFillToZeroY() ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
@@ -820,6 +838,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       if (points.length === index) {
         return;
       }
+
+      const yScale = points[index].useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
       if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
         // Render circles for all data points
@@ -1064,4 +1084,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { chartTitle, lineChartData } = this.props.data;
     return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
   };
+
+  private _shouldFillToZeroY() {
+    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis;
+  }
 }

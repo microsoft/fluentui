@@ -8,6 +8,9 @@ import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item
 
 /**
  * Accordion Item configuration options
+ *
+ * @tag fluent-accordion-item
+ *
  * @public
  */
 export type AccordionItemOptions = StartEndOptions<AccordionItem> & {

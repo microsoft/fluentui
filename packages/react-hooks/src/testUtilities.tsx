@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 
 /**
  * Validate that value(s) returned by a hook do not change in identity.
@@ -26,13 +26,13 @@ export function validateHookValueNotChanged<TValues extends NonNullable<any>[]>(
       return <div />;
     };
 
-    const wrapper = mount(<TestComponent />);
+    const wrapper = render(<TestComponent />);
     expect(callCount).toBe(1);
     const firstValues = latestValues;
     expect(firstValues).toBeDefined();
     latestValues = undefined;
 
-    wrapper.setProps({});
+    wrapper.rerender(<TestComponent />);
     expect(callCount).toBe(2);
     expect(latestValues).toBeDefined();
     expect(latestValues).toHaveLength(firstValues!.length);
