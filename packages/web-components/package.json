@@ -105,7 +105,7 @@
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@fluentui/scripts-api-extractor": "*",
     "@microsoft/fast-element": "2.0.0",
-    "@tensile-perf/web-components": "~0.2.0",
+    "@tensile-perf/web-components": "~0.2.2",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
     "@wc-toolkit/cem-validator": "1.0.3",

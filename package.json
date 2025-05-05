@@ -383,7 +383,8 @@
     "puppeteer": "19.6.0",
     "ws": "8.17.1",
     "**/@mdx-js/react/@types/react": "^17",
-    "**/prismjs": "^1.30.0"
+    "**/prismjs": "^1.30.0",
+    "**/@tensile-perf/runner/express": "^4.21.2"
   },
   "nx": {
     "includedScripts": []
