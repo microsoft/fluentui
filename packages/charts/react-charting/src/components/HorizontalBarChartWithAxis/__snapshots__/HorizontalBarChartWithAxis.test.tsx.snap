@@ -140,7 +140,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
           rx={0}
           width={30}
           x={10}
-          y={4}
+          y={-0.19491525423729072}
         />
       </g>
     </svg>
@@ -761,7 +761,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
           rx={3}
           width={30}
           x={10}
-          y={4}
+          y={-0.19491525423729072}
         />
       </g>
     </svg>
@@ -1382,7 +1382,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           rx={0}
           width={30}
           x={10}
-          y={4}
+          y={-0.19491525423729072}
         />
       </g>
     </svg>
@@ -2003,7 +2003,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           rx={0}
           width={30}
           x={10}
-          y={4}
+          y={-0.19491525423729072}
         />
       </g>
     </svg>
