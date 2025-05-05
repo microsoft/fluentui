@@ -112,7 +112,7 @@ describe('FocusZone', () => {
       </div>,
     );
 
-    const focusZone = container.firstChild!.firstChild as Element;
+    const focusZone = getFocusZone(container) as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
