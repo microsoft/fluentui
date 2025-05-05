@@ -291,7 +291,7 @@
     "postcss-modules": "4.1.3",
     "prettier": "2.8.8",
     "progress": "2.0.3",
-    "puppeteer": "19.6.0",
+    "puppeteer": "19.6.3",
     "raw-loader": "4.0.2",
     "react": "17.0.2",
     "react-app-polyfill": "2.0.0",
@@ -380,11 +380,12 @@
     "@microsoft/api-extractor/typescript": "5.3.3",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
-    "puppeteer": "19.6.0",
+    "puppeteer": "19.6.3",
     "ws": "8.17.1",
     "**/@mdx-js/react/@types/react": "^17",
     "**/prismjs": "^1.30.0",
-    "**/@tensile-perf/runner/express": "^4.21.2"
+    "**/@tensile-perf/runner/express": "^4.21.2",
+    "**/tar-fs": "^2.1.2"
   },
   "nx": {
     "includedScripts": []
