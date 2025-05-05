@@ -292,7 +292,20 @@ export class BaseTextInput extends FASTElement {
    *
    * @internal
    */
+  @observable
   public control!: HTMLInputElement;
+
+  /**
+   * Calls the `setValidity` method when the control reference changes.
+   *
+   * @param prev - the previous control reference
+   * @param next - the current control reference
+   *
+   * @internal
+   */
+  public controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void {
+    this.setValidity();
+  }
 
   /**
    * A reference to the internal label element.
@@ -589,18 +602,18 @@ export class BaseTextInput extends FASTElement {
    *
    * @internal
    */
-  public setValidity(
-    flags: Partial<ValidityState> = this.control.validity,
-    message: string = this.validationMessage,
-    anchor: HTMLElement = this.control,
-  ): void {
-    if (this.$fastController.isConnected) {
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
+    if (this.$fastController.isConnected && this.control) {
       if (this.disabled) {
         this.elementInternals.setValidity({});
         return;
       }
 
-      this.elementInternals.setValidity(flags, message, anchor);
+      this.elementInternals.setValidity(
+        flags ?? this.control.validity,
+        message ?? this.validationMessage,
+        anchor ?? this.control,
+      );
     }
   }
 }
