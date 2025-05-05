@@ -34,6 +34,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _rootElement = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IDocumentCardStyles>;
