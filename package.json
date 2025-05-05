@@ -190,7 +190,7 @@
     "beachball": "2.31.0",
     "chalk": "4.1.0",
     "chrome-remote-interface": "0.28.2",
-    "ci-info": "3.8.0",
+    "ci-info": "3.9.0",
     "circular-dependency-plugin": "5.2.2",
     "clean-css": "4.2.3",
     "clean-webpack-plugin": "4.0.0",
@@ -382,7 +382,8 @@
     "prettier": "2.8.8",
     "puppeteer": "19.6.0",
     "ws": "8.17.1",
-    "**/@mdx-js/react/@types/react": "^17"
+    "**/@mdx-js/react/@types/react": "^17",
+    "**/prismjs": "^1.30.0"
   },
   "nx": {
     "includedScripts": []
