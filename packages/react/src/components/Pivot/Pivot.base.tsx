@@ -58,7 +58,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
   return result;
 };
 
-const isPivotItem = (item: React.ReactNode): item is PivotItem => {
+const isPivotItem = (item: unknown): item is PivotItem => {
   return React.isValidElement(item) && (item.type as React.ComponentType)?.name === PivotItem.name;
 };
 

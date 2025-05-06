@@ -502,7 +502,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     const hostElement = React.useRef<HTMLDivElement>(null);
     const popupRef = React.useRef<HTMLDivElement>(null);
-    const mergedPopupRefs = useMergedRefs(popupRef, popupProps?.ref);
+    const mergedPopupRefs = useMergedRefs(popupRef, popupProps?.ref as React.Ref<HTMLDivElement>);
     const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
     const calloutCallback = React.useCallback((calloutEl: any) => {
       setCalloutElement(calloutEl);
