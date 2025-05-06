@@ -49,7 +49,7 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
         story['--dialog-backdrop'] !== '' ? `--dialog-backdrop: ${story['--dialog-backdrop']};` : ''}"
     >
       <fluent-drawer-body>
-        <span slot="title"> Drawer Header</span>
+        <h2 slot="title"> Drawer Header</h2>
         <fluent-button
           slot="close"
           appearance="transparent"
