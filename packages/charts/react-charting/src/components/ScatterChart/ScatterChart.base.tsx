@@ -15,7 +15,6 @@ import {
 import {
   IAccessibilityProps,
   CartesianChart,
-  ILineChartPoints,
   ICustomizedCalloutData,
   IMargins,
   IRefArrayData,
@@ -32,11 +31,11 @@ import {
   formatDate,
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, getId } from '@fluentui/react';
-import { IScatterChartDataPoint } from '../../types/index';
+import { IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
-type ScatterChartDataWithIndex = ILineChartPoints & { index: number };
+type ScatterChartDataWithIndex = IScatterChartPoints & { index: number };
 const getClassNames = classNamesFunction<IScatterChartStyleProps, IScatterChartStyles>();
 
 // Create a ScatterChart variant which uses these default styles and this styled subcomponent.
@@ -55,10 +54,10 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _firstRenderOptimization = true;
   const _emptyChartId: string = React.useMemo(() => getId('_ScatterChart_empty'), []);
   const _points = React.useRef<ScatterChartDataWithIndex[]>(
-    _injectIndexPropertyInScatterChartData(props.data.lineChartData),
+    _injectIndexPropertyInScatterChartData(props.data.scatterChartData),
   );
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let _calloutPoints = React.useMemo(() => calloutData(_points.current) || [], [_points]);
+  let _calloutPoints = React.useMemo(() => calloutData(_points.current as any) || [], [_points]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const _xAxisScale: any = React.useRef<any>('');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -104,11 +103,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   );
 
   const _xAxisType: XAxisTypes =
-    props.data.lineChartData! &&
-    props.data.lineChartData!.length > 0 &&
-    props.data.lineChartData![0].data &&
-    props.data.lineChartData![0].data.length > 0
-      ? (getTypeOfAxis(props.data.lineChartData![0].data[0].x, true) as XAxisTypes)
+    props.data.scatterChartData! &&
+    props.data.scatterChartData!.length > 0 &&
+    props.data.scatterChartData![0].data &&
+    props.data.scatterChartData![0].data.length > 0
+      ? (getTypeOfAxis(props.data.scatterChartData![0].data[0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
 
   const pointsRef = React.useRef<ScatterChartDataWithIndex[] | []>([]);
@@ -120,19 +119,19 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
      */
 
     if (
-      _points.current !== _injectIndexPropertyInScatterChartData(props.data.lineChartData) ||
+      _points.current !== _injectIndexPropertyInScatterChartData(props.data.scatterChartData) ||
       props.data !== _points.current
     ) {
-      pointsRef.current = _injectIndexPropertyInScatterChartData(props.data.lineChartData);
+      pointsRef.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
       calloutPointsRef.current = calloutData(pointsRef.current);
     }
   }, [props.height, props.width, props.data, _points]);
 
   function _injectIndexPropertyInScatterChartData(
-    scatterChartData?: ILineChartPoints[],
+    scatterChartData?: IScatterChartPoints[],
   ): ScatterChartDataWithIndex[] | [] {
     return scatterChartData
-      ? scatterChartData.map((item: ILineChartPoints, index: number) => {
+      ? scatterChartData.map((item: IScatterChartPoints, index: number) => {
           let color: string;
           if (typeof item.color === 'undefined') {
             color = getNextColor(index, 0);
@@ -338,13 +337,13 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       if (isSelectedLegend) {
         _points.current = selectedLegendPoints;
       } else {
-        _points.current = _injectIndexPropertyInScatterChartData(props.data.lineChartData);
+        _points.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
       }
 
-      const yMax = d3Max(_points.current, (point: ILineChartPoints) => {
+      const yMax = d3Max(_points.current, (point: IScatterChartPoints) => {
         return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
       })!;
-      const yMin = d3Min(_points.current, (point: ILineChartPoints) => {
+      const yMin = d3Min(_points.current, (point: IScatterChartPoints) => {
         return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.y)!;
       })!;
       const yPadding = (yMax - yMin) * 0.1;
@@ -356,11 +355,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         _xBandwidth.current = _xAxisScale.current?.bandwidth() / 2;
         xPaddingRange = _xBandwidth.current;
       } else if (_xAxisType === XAxisTypes.DateAxis) {
-        const xMin = d3Min(_points.current, (point: ILineChartPoints) => {
+        const xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
           return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as Date)!;
         })!;
 
-        const xMax = d3Max(_points.current, (point: ILineChartPoints) => {
+        const xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
           return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
             return item.x as Date;
           });
@@ -371,11 +370,11 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           _xAxisScale.current?.(new Date(xMin.getTime() + xPadding)) - _xAxisScale.current?.(xMin),
         );
       } else {
-        const xMin = d3Min(_points.current, (point: ILineChartPoints) => {
+        const xMin = d3Min(_points.current, (point: IScatterChartPoints) => {
           return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
         })!;
 
-        const xMax = d3Max(_points.current, (point: ILineChartPoints) => {
+        const xMax = d3Max(_points.current, (point: IScatterChartPoints) => {
           return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
             return item.x as number;
           });
@@ -386,7 +385,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       }
       maxMarkerRange = Math.min(maxMarkerRange, Math.min(xPaddingRange, yPaddingRange));
 
-      const maxMarkerSize = d3Max(_points.current, (point: ILineChartPoints) => {
+      const maxMarkerSize = d3Max(_points.current, (point: IScatterChartPoints) => {
         return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
           return item.markerSize as number;
         });
@@ -481,7 +480,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [
       _xAxisScale,
       _yAxisScale,
-      props.data.lineChartData,
+      props.data.scatterChartData,
       props.theme,
       props.styles,
       props.showXAxisLablesTooltip,
@@ -535,9 +534,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   function _isChartEmpty(): boolean {
     return !(
       props.data &&
-      props.data.lineChartData &&
-      props.data.lineChartData.length > 0 &&
-      props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+      props.data.scatterChartData &&
+      props.data.scatterChartData.length > 0 &&
+      props.data.scatterChartData.filter((item: IScatterChartPoints) => item.data.length).length > 0
     );
   }
 
@@ -550,7 +549,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }, []);
 
   const { legendProps, tickValues, tickFormat } = props;
-  _points.current = _injectIndexPropertyInScatterChartData(props.data.lineChartData);
+  _points.current = _injectIndexPropertyInScatterChartData(props.data.scatterChartData);
 
   let points = _points.current;
   if (legendProps && !!legendProps.canSelectMultipleLegends) {

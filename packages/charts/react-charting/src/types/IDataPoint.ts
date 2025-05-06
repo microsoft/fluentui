@@ -429,7 +429,7 @@ export interface ILineChartPoints {
   /**
    * dataPoints for the line chart
    */
-  data: ILineChartDataPoint[] | IScatterChartDataPoint[];
+  data: ILineChartDataPoint[];
 
   /**
    * gaps in the line chart where a line is not drawn
@@ -500,6 +500,11 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  scatterChartData?: IScatterChartPoints[];
 
   /**
    * data for the points in the line chart
@@ -864,7 +869,7 @@ export interface IImageExportOptions {
 /**
  * {@docCategory IChartData}
  */
-interface IBaseDataPoint {
+export interface IBaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -915,4 +920,51 @@ export interface IScatterChartDataPoint extends IBaseDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: IScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }

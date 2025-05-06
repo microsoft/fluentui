@@ -620,18 +620,22 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * This methos creates an object for those 2 charts.
  * @param values
  */
-
-export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: (ILineChartDataPoint & {
+// changing the type to any as it is used by multiple charts with different data types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function calloutData(values: (any & { index?: number })[]) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let combinedResult: (any & {
     legend: string;
     color?: string;
     index?: number;
   })[] = [];
-
-  values.forEach((line: ILineChartPoints & { index?: number }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  values.forEach((line: any & { index?: number }) => {
     const elements = line.data
-      .filter((point: ILineChartDataPoint) => !point.hideCallout)
-      .map((point: ILineChartDataPoint) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .filter((point: any) => !point.hideCallout)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .map((point: any) => {
         return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);

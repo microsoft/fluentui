@@ -100,6 +100,9 @@ export type {
   SNode,
   IChart,
   IImageExportOptions,
+  IScatterChartPoints,
+  IScatterChartDataPoint,
+  IBaseDataPoint,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -142,5 +145,6 @@ export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './Declara
 export { DeclarativeChart } from './DeclarativeChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
+export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
 
 import './version';
