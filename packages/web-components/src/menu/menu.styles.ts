@@ -17,7 +17,7 @@ export const styles = css`
     max-height: var(--menu-max-height, auto);
     position-anchor: --menu-trigger;
     position-area: block-end span-inline-end;
-    position-try-fallbacks: flip-block;
+    position-try-fallbacks: flip-inline, flip-block, flip-inline flip-block;
     position: absolute;
     z-index: 1;
   }
