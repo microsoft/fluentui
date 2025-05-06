@@ -130,6 +130,7 @@ export class VerticalStackedBarChartBase
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
+  private _yMin: number;
   private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
@@ -138,6 +139,7 @@ export class VerticalStackedBarChartBase
   private _xAxisOuterPadding: number;
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
+  private readonly Y_ORIGIN: number = 0;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -862,7 +864,7 @@ export class VerticalStackedBarChartBase
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
     const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
-    const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(this.Y_ORIGIN));
     let sumOfPercent = 0;
     bars.forEach(point => {
       let value = (Math.abs(point.data) / totalData) * 100;
@@ -902,7 +904,6 @@ export class VerticalStackedBarChartBase
     }
 
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
-      let yPoint = containerHeight - this.margins.bottom!;
       const xPoint = xBarScale(
         this._xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
@@ -916,7 +917,7 @@ export class VerticalStackedBarChartBase
       let barTotalValue = 0;
 
       // Removing datapoints with zero data
-      const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
+      const barsToDisplay = singleChartData.chartData.filter(point => point.data !== 0);
 
       if (!barsToDisplay.length) {
         return undefined;
@@ -927,6 +928,11 @@ export class VerticalStackedBarChartBase
       if (heightValueScale < 0) {
         return undefined;
       }
+      const yBaseline = containerHeight - this.margins.bottom! - yBarScale(this.Y_ORIGIN);
+      let yPositiveStart = yBaseline;
+      let yNegativeStart = yBaseline;
+      let yPoint = 0;
+      let heightOfLastBar = 0;
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
         let startColor = point.color ? point.color : this._colors[index];
@@ -958,12 +964,22 @@ export class VerticalStackedBarChartBase
           role: 'img',
         };
 
-        let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight)) {
-          barHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+        let barHeight = Math.abs(heightValueScale * point.data);
+        const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+        if (barHeight < minHeight) {
+          barHeight = minHeight;
         }
-        yPoint = yPoint - barHeight - (index ? gapHeight : 0);
+        const gapOffset = index ? gapHeight : 0;
+        if (point.data >= this.Y_ORIGIN) {
+          yPositiveStart -= barHeight + gapOffset;
+          yPoint = yPositiveStart;
+        } else {
+          yPoint = yNegativeStart + gapOffset;
+          yNegativeStart = yPoint + barHeight;
+        }
+
         barTotalValue += point.data;
+        heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
 
         const gradientId = getId('VSBC_Gradient') + `_${indexNumber}_${index}`;
 
@@ -1062,7 +1078,8 @@ export class VerticalStackedBarChartBase
           {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
-              y={yPoint - 6}
+              //if total bar value >=0, show label above top bar, otherwise below bottom bar
+              y={barLabel >= this.Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
@@ -1100,9 +1117,9 @@ export class VerticalStackedBarChartBase
   };
 
   private _getScales = (containerHeight: number, containerWidth: number) => {
-    const yMax = this._yMax;
+    const yDomain = [Math.min(this.Y_ORIGIN, this._yMin), Math.max(this.Y_ORIGIN, this._yMax)];
     const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
+      .domain(yDomain)
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
     if (this._xAxisType === XAxisTypes.NumericAxis) {
       const xMax = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => point.x as number)!;
@@ -1165,7 +1182,8 @@ export class VerticalStackedBarChartBase
   private _getAxisData = (yAxisData: IAxisData) => {
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
-      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+      this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || this.Y_ORIGIN);
+      this._yMin = Math.min(domainValue[0], this.props.yMinValue || this.Y_ORIGIN);
     }
   };
 

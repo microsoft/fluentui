@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
+import { getBySelector } from '../../../common/testUtilities';
 import { ContextualMenuButton } from './ContextualMenuButton';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
@@ -31,9 +32,8 @@ describe('ContextualMenuButton', () => {
     });
 
     it('invokes optional onItemClick on checkmark node "click"', () => {
-      const mockEvent = { foo: 'bar' };
       const onClickMock = jest.fn();
-      const component = mount(
+      const { container } = render(
         <ContextualMenuButton
           item={menuItem}
           classNames={menuClassNames}
@@ -45,10 +45,11 @@ describe('ContextualMenuButton', () => {
         />,
       );
 
-      component.find('.checkmarkIcon').at(0).simulate('click', mockEvent);
+      const checkmarkIcon = getBySelector(container, '.checkmarkIcon')!;
+      fireEvent.click(checkmarkIcon);
 
       expect(onClickMock).toHaveBeenCalledTimes(1);
-      expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));
+      expect(onClickMock.mock.calls[0][0]).toBe(menuItem);
     });
 
     it('does not update when props values do not change', () => {
@@ -60,9 +61,11 @@ describe('ContextualMenuButton', () => {
         focusableElementIndex: 0,
         totalItemCount: 1,
       };
-      const component = mount(<ContextualMenuButton {...props} />);
 
-      component.setProps({ ...props });
+      // For testing component updates, we'll still use a reference to the component
+      const { rerender } = render(<ContextualMenuButton {...props} />);
+
+      rerender(<ContextualMenuButton {...props} />);
 
       expect(renderMock).toHaveBeenCalledTimes(1);
 
@@ -78,9 +81,10 @@ describe('ContextualMenuButton', () => {
         focusableElementIndex: 0,
         totalItemCount: 1,
       };
-      const component = mount(<ContextualMenuButton {...props} />);
 
-      component.setProps({ ...props, index: 1 });
+      const { rerender } = render(<ContextualMenuButton {...props} />);
+
+      rerender(<ContextualMenuButton {...props} index={1} />);
 
       expect(renderMock).toHaveBeenCalledTimes(2);
 
@@ -88,7 +92,7 @@ describe('ContextualMenuButton', () => {
     });
 
     it('renders a description when ariaDescription is passed in', () => {
-      const component = mount(
+      const { container } = render(
         <ContextualMenuButton
           item={{ ...menuItem, ariaDescription: 'test' }}
           classNames={menuClassNames}
@@ -99,11 +103,12 @@ describe('ContextualMenuButton', () => {
         />,
       );
 
-      const descriptionId = component.find('button').at(0).getDOMNode().getAttribute('aria-describedby');
+      const button = getBySelector(container, 'button') as HTMLButtonElement;
+      const descriptionId = button.getAttribute('aria-describedby');
       expect(descriptionId).toBeTruthy();
 
-      const descriptionEl = component.find(`#${descriptionId}`).at(0);
-      expect(descriptionEl.text()).toEqual('test');
+      const descriptionEl = container.querySelector(`#${descriptionId}`);
+      expect(descriptionEl?.textContent).toEqual('test');
     });
   });
 });

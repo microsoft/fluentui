@@ -1040,21 +1040,37 @@ export function groupChartDataByYValue(
 }
 
 /**
- * Calculates maximum domain value for Numeric x axis
+ * Calculates maximum domain values for Numeric x axis for both positive and negative values
  * works for Horizontal Bar Chart With axis
  * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
  * @returns {number}
  */
-export function computeDomainMax(stackedChartData: IHorizontalBarChartWithAxisDataPoint[][]): number {
-  let longestBarTotalValue = 0;
-  stackedChartData!.map((group: IHorizontalBarChartWithAxisDataPoint[]) => {
-    const barTotalValue = group!.reduce(
-      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x ? point.x : 0),
-      0,
+export function computeLongestBars(
+  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
+  longestPositiveBar: number;
+  longestNegativeBar: number;
+} {
+  let longestPositiveBar = 0;
+  let longestNegativeBar = 0;
+
+  stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const positiveBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
+      X_ORIGIN,
     );
-    return (longestBarTotalValue = Math.max(longestBarTotalValue, barTotalValue));
+
+    const negativeBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
+    longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
   });
-  return longestBarTotalValue;
+
+  return { longestPositiveBar, longestNegativeBar };
 }
 
 /**
@@ -1073,14 +1089,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN: number,
 ): IDomainNRange {
-  const xMax = computeDomainMax(groupChartDataByYValue(points));
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**

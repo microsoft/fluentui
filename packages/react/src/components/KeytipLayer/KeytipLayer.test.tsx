@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, cleanup, act } from '@testing-library/react';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
-import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { find, KeyCodes } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
@@ -11,7 +10,6 @@ import type { IKeytipProps } from '../../Keytip';
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();
   const layerRef = React.createRef<KeytipLayerBase>();
-  let ktpLayer: ReactWrapper;
   let ktpTree: KeytipTree;
 
   // Sample keytips
@@ -58,33 +56,25 @@ describe('KeytipLayer', () => {
   };
 
   function getKeytip(keytips: IKeytipProps[], content: string): IKeytipProps | undefined {
-    return find(keytips, (keytip: IKeytipProps) => {
-      return keytip.content === content;
-    });
+    return find(keytips, kt => kt.content === content);
   }
 
   beforeEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
-  afterEach(() => {
-    if (ktpLayer) {
-      ktpLayer.unmount();
-    }
-  });
+  describe('constructor', () => {
+    it('initializes the keytips state from KeytipManager.keytips', () => {
+      ktpMgr.keytips = {
+        [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+        [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG },
+      };
 
-  it('constructor initializes the keytips state from KeytipManager.keytips', () => {
-    // Add some keytips to the Manager
-    ktpMgr.keytips = {
-      [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
-      [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG },
-    };
-
-    // Create layer
-    ktpLayer = mount(<KeytipLayerBase content="Alt Windows" />);
-
-    const layerKeytips = ktpLayer.state('keytips');
-    expect(layerKeytips).toHaveLength(2);
+      render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      const stateKeytips = layerRef.current!.state.keytips;
+      expect(stateKeytips).toHaveLength(2);
+    });
   });
 
   describe('enter and exit test', () => {
@@ -92,7 +82,6 @@ describe('KeytipLayer', () => {
     const onExit = jest.fn();
 
     beforeEach(() => {
-      // Add keytips to the manager
       ktpMgr.keytips = {
         [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
         [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
@@ -100,8 +89,7 @@ describe('KeytipLayer', () => {
       };
       ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
-      // Create layer
-      ktpLayer = mount(
+      render(
         <KeytipLayerBase
           componentRef={layerRef}
           content="Alt Windows"
@@ -112,137 +100,129 @@ describe('KeytipLayer', () => {
     });
 
     it('correctly sets variables when entering and exiting', () => {
-      // Call enterKeytipMode
+      // enter
       ktpMgr.enterKeytipMode();
-      expect(ktpLayer.state('inKeytipMode')).toEqual(true);
+      expect(layerRef.current!.state.inKeytipMode).toBe(true);
       expect(onEnter).toHaveBeenCalled();
-      ktpTree = layerRef.current!.getKeytipTree();
 
-      // 4 nodes + the root
+      ktpTree = layerRef.current!.getKeytipTree();
+      // 4 nodes + root
       expect(Object.keys(ktpTree.nodeMap)).toHaveLength(5);
       expect(ktpTree.getNode(keytipIdB)).toBeDefined();
       expect(ktpTree.getNode(keytipIdC)).toBeDefined();
       expect(ktpTree.getNode(keytipIdD)).toBeDefined();
       expect(ktpTree.getNode(keytipIdG)).toBeDefined();
 
-      // Should show B and C
-      let visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(2);
-      expect(getKeytip(visibleKeytips, 'B')).toBeDefined();
-      expect(getKeytip(visibleKeytips, 'C')).toBeDefined();
+      let visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(2);
+      expect(getKeytip(visible, 'B')).toBeDefined();
+      expect(getKeytip(visible, 'C')).toBeDefined();
 
       expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
 
-      // Call enterKeytipMode
+      // exit
       ktpMgr.exitKeytipMode();
-      expect(ktpLayer.state('inKeytipMode')).toEqual(false);
+      expect(layerRef.current!.state.inKeytipMode).toBe(false);
       expect(onExit).toHaveBeenCalled();
-      ktpTree = layerRef.current!.getKeytipTree();
 
-      visibleKeytips = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(0);
-
-      expect(layerRef.current!.getCurrentSequence()).toEqual('');
+      visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(0);
+      expect(layerRef.current!.getCurrentSequence()).toBe('');
       expect(ktpTree.currentKeytip).toBeUndefined();
     });
 
     it('respects shouldEnterKeytipMode', () => {
       ktpMgr.shouldEnterKeytipMode = false;
       ktpMgr.enterKeytipMode();
-      expect(ktpLayer.state('inKeytipMode')).toEqual(false);
+      expect(layerRef.current!.state.inKeytipMode).toBe(false);
+
       ktpMgr.shouldEnterKeytipMode = true;
       ktpMgr.enterKeytipMode();
-      expect(ktpLayer.state('inKeytipMode')).toEqual(true);
+      expect(layerRef.current!.state.inKeytipMode).toBe(true);
       expect(onEnter).toHaveBeenCalled();
     });
   });
 
   describe('input tests', () => {
-    let layerValue: KeytipLayerBase;
-
+    let layerInstance: KeytipLayerBase;
     const onEnter = jest.fn();
     const onExit = jest.fn();
 
     describe('processTransitionInput', () => {
-      describe('with a default layer', () => {
-        beforeEach(() => {
-          // Add keytips to the manager
-          ktpMgr.keytips = {
-            [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
-            [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
-            [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
-          };
-          ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
+      beforeEach(() => {
+        ktpMgr.keytips = {
+          [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+          [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+          [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
+        };
+        ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
-          // Create layer
-          ktpLayer = mount(
-            <KeytipLayerBase
-              componentRef={layerRef}
-              content="Alt Windows"
-              onEnterKeytipMode={onEnter}
-              onExitKeytipMode={onExit}
-            />,
-          );
-          layerValue = layerRef.current!;
-          ktpTree = layerValue.getKeytipTree();
-        });
-
-        it('calls on enter keytip mode when we process alt + left win', () => {
-          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onEnter).toHaveBeenCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-        });
-
-        it('calls on exit keytip mode when we process alt + left win', () => {
-          ktpTree.currentKeytip = ktpTree.root;
-          layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onExit).toHaveBeenCalled();
-        });
-
-        it('calls on exit keytip mode because we are going back when on the root', () => {
-          ktpTree.currentKeytip = ktpTree.root;
-          layerValue.processTransitionInput({ key: 'Escape' });
-          expect(onExit).toHaveBeenCalled();
-        });
-
-        it('hitting Esc when on a root child node will go up to the root', () => {
-          const onReturn: jest.Mock = jest.fn();
-          const nodeC = ktpTree.getNode(keytipIdC)!;
-          nodeC.onReturn = onReturn;
-          ktpTree.currentKeytip = nodeC;
-          layerValue.processTransitionInput({ key: 'Escape' });
-          expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
-          expect(onReturn).toHaveBeenCalled();
-        });
-
-        it('hitting Esc when on a child node will go up one level', () => {
-          const onReturn: jest.Mock = jest.fn();
-          const nodeD = ktpTree.getNode(keytipIdD)!;
-          nodeD.onReturn = onReturn;
-          ktpTree.currentKeytip = nodeD;
-          layerValue.processTransitionInput({ key: 'Escape' });
-          expect(ktpTree.currentKeytip).toEqual(ktpTree.getNode(keytipIdC));
-        });
+        render(
+          <KeytipLayerBase
+            componentRef={layerRef}
+            content="Alt Windows"
+            onEnterKeytipMode={onEnter}
+            onExitKeytipMode={onExit}
+          />,
+        );
+        layerInstance = layerRef.current!;
+        ktpTree = layerInstance.getKeytipTree();
       });
 
-      it('can handle using a single key that is also a modifier for transitions', () => {
-        // Create layer
-        ktpLayer = mount(
+      it('calls onEnter when we process alt + Meta', () => {
+        layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        expect(onEnter).toHaveBeenCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+      });
+
+      it('calls onExit when toggling off', () => {
+        ktpTree.currentKeytip = ktpTree.root;
+        layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        expect(onExit).toHaveBeenCalled();
+      });
+
+      it('Escape at root exits', () => {
+        ktpTree.currentKeytip = ktpTree.root;
+        layerInstance.processTransitionInput({ key: 'Escape' });
+        expect(onExit).toHaveBeenCalled();
+      });
+
+      it('Escape on child at root invokes onReturn', () => {
+        const onReturn = jest.fn();
+        const nodeC = ktpTree.getNode(keytipIdC)!;
+        nodeC.onReturn = onReturn;
+        ktpTree.currentKeytip = nodeC;
+        layerInstance.processTransitionInput({ key: 'Escape' });
+        expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
+        expect(onReturn).toHaveBeenCalled();
+      });
+
+      it('Escape on deeper node goes up one', () => {
+        const onReturn = jest.fn();
+        const nodeD = ktpTree.getNode(keytipIdD)!;
+        nodeD.onReturn = onReturn;
+        ktpTree.currentKeytip = nodeD;
+        layerInstance.processTransitionInput({ key: 'Escape' });
+        expect(ktpTree.currentKeytip).toEqual(ktpTree.getNode(keytipIdC));
+      });
+
+      it('single-key startSequences works', () => {
+        cleanup();
+        render(
           <KeytipLayerBase
-            content="Alt Windows"
             componentRef={layerRef}
+            content="Alt Windows"
             keytipStartSequences={[{ key: 'Meta' }]}
             onEnterKeytipMode={onEnter}
           />,
         );
-        layerValue = layerRef.current!;
-        layerValue.processTransitionInput({ key: 'Meta' });
+        layerInstance = layerRef.current!;
+        layerInstance.processTransitionInput({ key: 'Meta' });
         expect(onEnter).toHaveBeenCalledWith({ key: 'Meta' });
       });
     });
 
     describe('processInput', () => {
       beforeEach(() => {
-        // Add keytips to the manager
         ktpMgr.keytips = {
           [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
           [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
@@ -252,8 +232,7 @@ describe('KeytipLayer', () => {
         };
         ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
-        // Create layer
-        ktpLayer = mount(
+        render(
           <KeytipLayerBase
             componentRef={layerRef}
             content="Alt Windows"
@@ -261,77 +240,69 @@ describe('KeytipLayer', () => {
             onExitKeytipMode={onExit}
           />,
         );
-        layerValue = layerRef.current!;
-        ktpTree = layerValue.getKeytipTree();
+        layerInstance = layerRef.current!;
+        ktpTree = layerInstance.getKeytipTree();
       });
 
-      // Processing keys tests
-      it('Processing a leaf node should execute it`s onExecute func and trigger onExitKeytipMode', () => {
-        const onExecute: jest.Mock = jest.fn();
+      it('leaf node executes onExecute and exits', () => {
+        const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipB, onExecute }, uniqueIdB);
         ktpTree.currentKeytip = ktpTree.root;
-        layerValue.processInput('b');
+        layerInstance.processInput('b');
         expect(onExecute).toHaveBeenCalled();
         expect(onExit).toHaveBeenCalled();
-        expect(layerValue.getCurrentSequence().length).toEqual(0);
+        expect(layerInstance.getCurrentSequence()).toHaveLength(0);
       });
 
-      it('Processing a node with two keys should save sequence and wait for second key', () => {
-        const onExecuteE2: jest.Mock = jest.fn();
-        ktpTree.addNode({ ...keytipE2, onExecute: onExecuteE2 }, uniqueIdE2);
+      it('multi-key node buffers then executes', () => {
+        const onExecute = jest.fn();
+        ktpTree.addNode({ ...keytipE2, onExecute }, uniqueIdE2);
         ktpTree.currentKeytip = ktpTree.root;
-        layerValue.processInput('e');
-        // We are still waiting for second key
-        expect(layerValue.getCurrentSequence().length).toEqual(1);
-        layerValue.processInput('2');
-        expect(onExecuteE2).toHaveBeenCalled();
-        expect(layerValue.getCurrentSequence().length).toEqual(0);
+        layerInstance.processInput('e');
+        expect(layerInstance.getCurrentSequence()).toHaveLength(1);
+        layerInstance.processInput('2');
+        expect(onExecute).toHaveBeenCalled();
         expect(onExit).toHaveBeenCalled();
+        expect(layerInstance.getCurrentSequence()).toHaveLength(0);
       });
 
-      it('Processing a node which is not leaf but its children are not in the DOM', () => {
-        const onExecute: jest.Mock = jest.fn();
+      it('dynamic children node executes but stays in mode', () => {
+        const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipB, onExecute, hasDynamicChildren: true }, uniqueIdB);
         ktpTree.currentKeytip = ktpTree.root;
-        layerValue.processInput('b');
-        // Node B's onExecute should be called
+        layerInstance.processInput('b');
         expect(onExecute).toHaveBeenCalled();
-        // There is no more buffer in the sequence
-        expect(layerValue.getCurrentSequence().length).toEqual(0);
-        // We haven't exited keytip mode (current keytip is set to the matched keytip)
         expect(ktpTree.currentKeytip.id).toEqual(keytipIdB);
+        expect(layerInstance.getCurrentSequence()).toHaveLength(0);
       });
 
-      it('with a persisted node will partially match the keytip but won`t show it', () => {
-        // Make E2 a persisted node
+      it('persisted node doesn’t show intermediate keytip', () => {
         const nodeE2 = ktpTree.getNode(keytipIdE2)!;
         nodeE2.persisted = true;
         nodeE2.onExecute = jest.fn();
         ktpTree.currentKeytip = ktpTree.root;
-        layerValue.processInput('e');
-        // Only E1 should be visible
-        const visibleLayerKtps: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-        expect(visibleLayerKtps).toHaveLength(1);
-        expect(visibleLayerKtps[0].content).toEqual('E1');
-        layerValue.processInput('2');
-        // E2 should be triggered
+        layerInstance.processInput('e');
+
+        const visible = layerRef.current!.state.visibleKeytips;
+        expect(visible).toHaveLength(1);
+        expect(visible[0].content).toBe('E1');
+
+        layerInstance.processInput('2');
         expect(nodeE2.onExecute).toHaveBeenCalled();
       });
-      it('Process a node with no matching visible element and is a submenu in an overflow', () => {
-        // Make C2 a submenu in an overflow
-        const onExecuteC2: jest.Mock = jest.fn();
-        ktpTree.addNode({ ...keytipC, hasOverflowSubMenu: true, onExecute: onExecuteC2 }, uniqueIdC2);
+
+      it('overflow submenu executes immediately', () => {
+        const onExecute = jest.fn();
+        ktpTree.addNode({ ...keytipC, hasOverflowSubMenu: true, onExecute }, uniqueIdC2);
         ktpTree.currentKeytip = ktpTree.root;
-        layerValue.processInput('c');
-        // C2 should be triggered
-        expect(onExecuteC2).toHaveBeenCalled();
+        layerInstance.processInput('c');
+        expect(onExecute).toHaveBeenCalled();
       });
     });
   });
 
   describe('showKeytips', () => {
-    // Create layer
-    it('shows the defined keytips and hides all others', () => {
+    it('shows only the requested keytips', () => {
       ktpMgr.keytips = {
         [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
         [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
@@ -339,21 +310,18 @@ describe('KeytipLayer', () => {
         [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
         [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 },
       };
-      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
       layerRef.current!.showKeytips([keytipIdB, keytipIdC]);
-      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(2);
-      expect(getKeytip(visibleKeytips, 'B')).toBeDefined();
-      expect(getKeytip(visibleKeytips, 'C')).toBeDefined();
+      const visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(2);
+      expect(getKeytip(visible, 'B')).toBeDefined();
+      expect(getKeytip(visible, 'C')).toBeDefined();
     });
 
-    it('should handle overflowSetSequence correctly', () => {
+    it('respects overflowSetSequence', () => {
       ktpMgr.keytips = {
         [uniqueIdB]: {
-          keytip: {
-            ...keytipB,
-            overflowSetSequence: ['x'],
-          },
+          keytip: { ...keytipB, overflowSetSequence: ['x'] },
           uniqueID: uniqueIdB,
         },
         [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
@@ -361,11 +329,11 @@ describe('KeytipLayer', () => {
         [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
         [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 },
       };
-      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
       layerRef.current!.showKeytips(['ktp-x-b']);
-      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(1);
-      expect(getKeytip(visibleKeytips, 'B')).toBeDefined();
+      const visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(1);
+      expect(getKeytip(visible, 'B')).toBeDefined();
     });
   });
 
@@ -375,7 +343,6 @@ describe('KeytipLayer', () => {
       ktpMgr.delayUpdatingKeytipChange = false;
       ktpMgr.inKeytipMode = false;
 
-      // Add keytips to the manager
       ktpMgr.keytips = {
         [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
         [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
@@ -385,8 +352,7 @@ describe('KeytipLayer', () => {
       };
       ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
-      // Create layer
-      ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
+      render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
       ktpTree = layerRef.current!.getKeytipTree();
     });
 
@@ -394,57 +360,39 @@ describe('KeytipLayer', () => {
       jest.useRealTimers();
     });
 
-    it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
+    it('keytipAdded delay-shows child when active', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      // Add a child under B
-      ktpMgr.register({
-        content: 'X',
-        keySequences: ['b', 'x'],
-      });
-      ReactTestUtils.act(() => {
+      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
         jest.runAllTimers();
       });
-
-      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(1);
-      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
+      const visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(1);
+      expect(getKeytip(visible, 'X')).toBeDefined();
     });
 
-    // eslint-disable-next-line @fluentui/max-len
-    it('keytipAdded event does not show a keytip if the current keytip is its parent when delay updating and not in keytip mode', () => {
+    it('does not show when delaying and not in mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      // Add a child under B
-      ktpMgr.register({
-        content: 'X',
-        keySequences: ['b', 'x'],
-      });
-      ReactTestUtils.act(() => {
+      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
         jest.runAllTimers();
       });
-
-      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(0);
-      expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
+      const visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(0);
     });
 
-    // eslint-disable-next-line @fluentui/max-len
-    it('keytipAdded event delay-shows a keytip if the current keytip is its parent when delay updating and in keytip mode', () => {
+    it('does show when delaying and already in mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpMgr.inKeytipMode = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      // Add a child under B
-      ktpMgr.register({
-        content: 'X',
-        keySequences: ['b', 'x'],
-      });
-      ReactTestUtils.act(() => {
+      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
         jest.runAllTimers();
       });
-
-      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-      expect(visibleKeytips).toHaveLength(1);
-      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
+      const visible = layerRef.current!.state.visibleKeytips;
+      expect(visible).toHaveLength(1);
+      expect(getKeytip(visible, 'X')).toBeDefined();
     });
   });
 });

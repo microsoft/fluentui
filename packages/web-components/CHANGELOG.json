@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 30 Apr 2025 04:06:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.96",
+      "version": "3.0.0-beta.96",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2325ef93e248c8a60d132595759024a8fc051c67",
+            "comment": "feat: add endpoint for f2 design token exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 04:06:27 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.95",
       "version": "3.0.0-beta.95",
