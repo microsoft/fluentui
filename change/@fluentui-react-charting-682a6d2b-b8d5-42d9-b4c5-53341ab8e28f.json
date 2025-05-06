@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use system colors with HighContrastSelector instead of color scheme selectors",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
