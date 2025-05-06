@@ -205,10 +205,11 @@ export const ModalWithNoTitleOrActions: Story = {
 };
 
 export const NonModalWithNoTitleOrActions: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialog>>` <div style="min-height: 300px">${storyTemplate}</div> `),
   args: {
     type: DialogType.nonModal,
     slottedContent: () => html`
-      <p>A non-modal dialog without a title or actions will render a close button by default.</p>
+      <p>Test A non-modal dialog without a title or actions will render a close button by default.</p>
     `,
   },
 };
