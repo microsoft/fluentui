@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[fix]: Hitting escape once should close alert dialog",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
