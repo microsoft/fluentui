@@ -868,6 +868,8 @@ export class BaseTextInput extends FASTElement {
     // @internal
     control: HTMLInputElement;
     // @internal
+    controlChanged(prev: HTMLInputElement | undefined, next: HTMLInputElement | undefined): void;
+    // @internal
     controlLabel: HTMLLabelElement;
     currentValue: string;
     // @internal
