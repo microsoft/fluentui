@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 
 import { Panel } from './Panel';
@@ -44,7 +43,6 @@ describe('Panel', () => {
   describe('open', () => {
     afterEach(() => {
       if (div) {
-        ReactDOM.unmountComponentAtNode(div);
         div = undefined;
       }
     });
