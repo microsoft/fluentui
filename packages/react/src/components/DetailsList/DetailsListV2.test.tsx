@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 import { EventGroup, KeyCodes, resetIds } from '../../Utilities';
@@ -85,26 +84,36 @@ function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) =
             elements.forEach(element => {
               switch (eventName) {
                 case 'keyDown':
-                  fireEvent.keyDown(element, {
-                    ...eventArgs,
-                    key: eventArgs.which,
-                    which: eventArgs.which,
-                    keyCode: eventArgs.which,
+                  act(() => {
+                    fireEvent.keyDown(element, {
+                      ...eventArgs,
+                      key: eventArgs.which,
+                      which: eventArgs.which,
+                      keyCode: eventArgs.which,
+                    });
                   });
                   break;
                 case 'click':
-                  fireEvent.click(element, eventArgs);
+                  act(() => {
+                    fireEvent.click(element, eventArgs);
+                  });
                   break;
                 case 'dblclick':
-                  fireEvent.doubleClick(element, eventArgs);
+                  act(() => {
+                    fireEvent.doubleClick(element, eventArgs);
+                  });
                   break;
                 default:
                   // For other events, try to use the corresponding fireEvent method
                   const fireEventMethod = (fireEvent as any)[eventName];
                   if (fireEventMethod) {
-                    fireEventMethod(element, eventArgs);
+                    act(() => {
+                      fireEventMethod(element, eventArgs);
+                    });
                   } else {
-                    fireEvent(element, new Event(eventName));
+                    act(() => {
+                      fireEvent(element, new Event(eventName));
+                    });
                   }
               }
             });
@@ -120,26 +129,36 @@ function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) =
 
                 switch (eventName) {
                   case 'keyDown':
-                    fireEvent.keyDown(firstEl, {
-                      ...eventArgs,
-                      key: eventArgs.which,
-                      which: eventArgs.which,
-                      keyCode: eventArgs.which,
+                    act(() => {
+                      fireEvent.keyDown(firstEl, {
+                        ...eventArgs,
+                        key: eventArgs.which,
+                        which: eventArgs.which,
+                        keyCode: eventArgs.which,
+                      });
                     });
                     break;
                   case 'click':
-                    fireEvent.click(firstEl, eventArgs);
+                    act(() => {
+                      fireEvent.click(firstEl, eventArgs);
+                    });
                     break;
                   case 'dblclick':
-                    fireEvent.doubleClick(firstEl, eventArgs);
+                    act(() => {
+                      fireEvent.doubleClick(firstEl, eventArgs);
+                    });
                     break;
                   default:
                     // For other events, try to use the corresponding fireEvent method
                     const fireEventMethod = (fireEvent as any)[eventName];
                     if (fireEventMethod) {
-                      fireEventMethod(firstEl, eventArgs);
+                      act(() => {
+                        fireEventMethod(firstEl, eventArgs);
+                      });
                     } else {
-                      fireEvent(firstEl, new Event(eventName));
+                      act(() => {
+                        fireEvent(firstEl, new Event(eventName));
+                      });
                     }
                 }
               },
@@ -698,11 +717,10 @@ describe('DetailsListV2', () => {
       );
     };
 
-    const container = document.createElement('div');
     const items = mockData(5);
     const columns = mockData(5, true);
 
-    ReactDOM.render(
+    const { container, rerender } = render(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -710,19 +728,20 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents}
         groupProps={groupProps}
       />,
-      container,
     );
 
     let detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
-    _RaiseEvent(detailsRowSource, 'mousedown', 270);
-    _RaiseEvent(detailsRowSource, 'dragstart', 270);
+    act(() => {
+      _RaiseEvent(detailsRowSource, 'mousedown', 270);
+      _RaiseEvent(detailsRowSource, 'dragstart', 270);
+    });
 
     // original eventhandler should be fired
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(1);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
+    rerender(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -730,7 +749,6 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents}
         groupProps={groupProps}
       />,
-      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -741,7 +759,7 @@ describe('DetailsListV2', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(2);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
+    rerender(
       <DetailsListBase
         columns={columns}
         skipViewportMeasures={true}
@@ -749,7 +767,6 @@ describe('DetailsListV2', () => {
         dragDropEvents={_dragDropEvents2}
         groupProps={groupProps}
       />,
-      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -836,7 +853,9 @@ describe('DetailsListV2', () => {
 
     expect(component!).toBeTruthy();
     component!.focusIndex(3);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(3);
 
     // update props to new setKey
@@ -852,7 +871,9 @@ describe('DetailsListV2', () => {
     );
 
     // verify that focusedItemIndex is reset to 0 and 0th row is focused
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(0);
     expect(
       (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -939,7 +960,9 @@ describe('DetailsListV2', () => {
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
     expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
 
-    selection.setAllSelected(true);
+    act(() => {
+      selection.setAllSelected(true);
+    });
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
     expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
@@ -1163,7 +1186,6 @@ describe('DetailsListV2', () => {
   });
 
   it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
-    const container = document.createElement('div');
     const columns = [
       {
         key: 'column1',
@@ -1178,7 +1200,7 @@ describe('DetailsListV2', () => {
     ];
     const items = mockData(1);
 
-    ReactDOM.render(
+    const { container } = render(
       <DetailsListBase
         items={mockData(1)}
         columns={columns}
@@ -1187,7 +1209,6 @@ describe('DetailsListV2', () => {
         checkButtonAriaLabel="select row"
         groupProps={groupProps}
       />,
-      container,
     );
 
     const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
@@ -1216,8 +1237,7 @@ describe('DetailsListV2', () => {
   });
 
   it('names group header checkboxes based on checkButtonGroupAriaLabel', () => {
-    const container = document.createElement('div');
-    ReactDOM.render(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         groups={[
@@ -1237,7 +1257,6 @@ describe('DetailsListV2', () => {
         checkButtonGroupAriaLabel="select section"
         groupProps={groupProps}
       />,
-      container,
     );
 
     const checkbox = container.querySelector('[role="checkbox"][aria-label="select section"]') as HTMLElement;

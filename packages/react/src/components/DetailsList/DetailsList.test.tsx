@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { render, fireEvent, act } from '@testing-library/react';
 
@@ -533,11 +532,15 @@ describe('DetailsList', () => {
       />,
       wrapper => {
         expect(component).toBeTruthy();
-        selection.setAllSelected(true);
+        act(() => {
+          selection.setAllSelected(true);
+        });
         jest.runAllTimers();
 
         onSelectionChanged.mockClear();
-        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        act(() => {
+          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        });
         expect(onSelectionChanged).toHaveBeenCalledTimes(1);
         expect(selection.getSelectedCount()).toEqual(0);
       },
@@ -563,11 +566,15 @@ describe('DetailsList', () => {
       />,
       wrapper => {
         expect(component).toBeTruthy();
-        selection.setAllSelected(true);
+        act(() => {
+          selection.setAllSelected(true);
+        });
         jest.runAllTimers();
 
         onSelectionChanged.mockClear();
-        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        act(() => {
+          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        });
         expect(onSelectionChanged).toHaveBeenCalledTimes(0);
         expect(selection.getSelectedCount()).toEqual(5);
       },
@@ -642,24 +649,24 @@ describe('DetailsList', () => {
     };
 
     const _RaiseEvent = (target: any, _eventName: string, _clientX: number) => {
-      EventGroup.raise(
-        target,
-        _eventName,
-        {
-          clientX: _clientX,
-          button: 0,
-        } as DragEvent,
-        true,
-      );
+      act(() => {
+        EventGroup.raise(
+          target,
+          _eventName,
+          {
+            clientX: _clientX,
+            button: 0,
+          } as DragEvent,
+          true,
+        );
+      });
     };
 
-    const container = document.createElement('div');
     const items = mockData(5);
     const columns = mockData(5, true);
 
-    ReactDOM.render(
+    const { rerender, container } = render(
       <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
-      container,
     );
 
     let detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -671,10 +678,16 @@ describe('DetailsList', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(1);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
-      container,
-    );
+    act(() => {
+      rerender(
+        <DetailsListBase
+          columns={columns}
+          skipViewportMeasures={true}
+          items={items}
+          dragDropEvents={_dragDropEvents}
+        />,
+      );
+    });
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
@@ -684,10 +697,16 @@ describe('DetailsList', () => {
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(2);
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
-    ReactDOM.render(
-      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents2} />,
-      container,
-    );
+    act(() => {
+      rerender(
+        <DetailsListBase
+          columns={columns}
+          skipViewportMeasures={true}
+          items={items}
+          dragDropEvents={_dragDropEvents2}
+        />,
+      );
+    });
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
@@ -770,7 +789,9 @@ describe('DetailsList', () => {
 
     expect(component!).toBeTruthy();
     component!.focusIndex(3);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(component!.state.focusedItemIndex).toEqual(3);
 
@@ -785,8 +806,10 @@ describe('DetailsList', () => {
       />,
     );
 
-    // verify that focusedItemIndex is reset to 0 and 0th row is focused
-    jest.runAllTimers();
+    act(() => {
+      // verify that focusedItemIndex is reset to 0 and 0th row is focused
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(0);
     expect(
       (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
@@ -885,7 +908,9 @@ describe('DetailsList', () => {
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
     expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
 
-    selection.setAllSelected(true);
+    act(() => {
+      selection.setAllSelected(true);
+    });
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
     expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
@@ -1104,7 +1129,6 @@ describe('DetailsList', () => {
   });
 
   it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
-    const container = document.createElement('div');
     const columns = [
       {
         key: 'column1',
@@ -1119,7 +1143,7 @@ describe('DetailsList', () => {
     ];
     const items = mockData(1);
 
-    ReactDOM.render(
+    const { container } = render(
       <DetailsListBase
         items={mockData(1)}
         columns={columns}
@@ -1127,7 +1151,6 @@ describe('DetailsList', () => {
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="select row"
       />,
-      container,
     );
 
     const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
@@ -1155,8 +1178,7 @@ describe('DetailsList', () => {
   });
 
   it('names group header checkboxes based on checkButtonGroupAriaLabel', () => {
-    const container = document.createElement('div');
-    ReactDOM.render(
+    const { container } = render(
       <DetailsList
         items={mockData(5)}
         groups={[
@@ -1175,7 +1197,6 @@ describe('DetailsList', () => {
         ]}
         checkButtonGroupAriaLabel="select section"
       />,
-      container,
     );
 
     const checkbox = container.querySelector('[role="checkbox"][aria-label="select section"]') as HTMLElement;
