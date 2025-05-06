@@ -618,7 +618,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         // Data used to draw graph
         data = this._getDataPoints(keys, dataSet);
       } else {
-        const datasetForDuplicateValues = this._createDatasetForDuplicateValues(allChartPoints);
+        const datasetForDuplicateValues = this._createDatasetForXCoordinateWithMultipleYValues(allChartPoints);
         data = this._getDataPoints(datasetForDuplicateValues.keys, datasetForDuplicateValues.filteredDataSet);
       }
 
@@ -632,7 +632,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
-  private _createDatasetForDuplicateValues = (allChartPoints: ILineChartDataPoint[]) => {
+  private _createDatasetForXCoordinateWithMultipleYValues = (allChartPoints: ILineChartDataPoint[]) => {
     const dataSet: IAreaChartDataSetPoint[] = [];
 
     // Group data points by x-axis value
