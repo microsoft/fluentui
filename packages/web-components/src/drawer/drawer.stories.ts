@@ -36,30 +36,9 @@ const hideDrawer = (drawerID: string) => {
 };
 
 const storyTemplate = html<StoryArgs<FluentDrawer>>`
-  <style>
-    #docs-root .innerZoomElementWrapper > div,
-    #docs-root .innerZoomElementWrapper > div > div {
-      padding: 0;
-    }
-
-    .demo {
-      display: flex;
-      align-items: center;
-      min-height: 22rem;
-      width: 100%;
-    }
-
-    .demo-content {
-      grid-area: content;
-      padding: 48px 24px;
-    }
-
-    .demo:has([position='end']) [position='end'] {
-      order: 1;
-    }
-  </style>
-
-  <div class="demo">
+    <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-default')}">
+      Toggle Drawer
+    </fluent-button>
     <fluent-drawer
       id="drawer-default"
       position="${story => story.position}"
@@ -114,27 +93,6 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
         </div>
       </fluent-drawer-body>
     </fluent-drawer>
-    <div class="demo-content">
-      <fluent-text font="base" size="300" weight="regular" as="p">
-        <p>
-          The Drawer gives users a quick entry point to configuration and information. It should be used when retaining
-          context is beneficial to users.
-        </p>
-      </fluent-text>
-      <br />
-      <br />
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>fluent-drawer</code>
-      </fluent-text>
-      <br />
-      <br />
-      <div>
-        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-default')}"
-          >Toggle Drawer</fluent-button
-        >
-      </div>
-    </div>
-  </div>
 `;
 
 export default {
