@@ -685,7 +685,8 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   });
 
   const result = Object.keys(xValToDataPoints).map(xValue => {
-    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+    const originalXValue = isNaN(Number(xValue)) ? xValue : Number(xValue);
+    return { x: originalXValue, values: xValToDataPoints[xValue] };
   });
   return result;
 }

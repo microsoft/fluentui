@@ -429,7 +429,7 @@ export interface ILineChartPoints {
   /**
    * dataPoints for the line chart
    */
-  data: ILineChartDataPoint[];
+  data: ILineChartDataPoint[] | IScatterChartDataPoint[];
 
   /**
    * gaps in the line chart where a line is not drawn
