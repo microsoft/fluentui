@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[fix] drawer title should use h2 tag",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
