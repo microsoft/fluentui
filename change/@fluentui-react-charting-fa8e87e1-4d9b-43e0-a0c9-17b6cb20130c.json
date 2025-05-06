@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: handle empty Plotly trace names and respect showlegend property to hide legends",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
