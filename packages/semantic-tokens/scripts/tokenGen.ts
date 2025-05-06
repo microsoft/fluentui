@@ -41,6 +41,15 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
   }
 };
 
+const isInvalidToken = (token: string) => {
+  // Blacklist for non-valid tokens
+  if (token.includes('Figmaonly') || token.startsWith('null')) {
+    // Superfluous tokens - SKIP
+    return true;
+  }
+  return false;
+};
+
 const writeDirectoryFile = (filePath: string, data: string) => {
   const dirPath = removeLastDelimiter(filePath, path.sep);
   if (!fs.existsSync(dirPath)) {
@@ -65,6 +74,11 @@ const generateTokenRawStrings = () => {
   const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/variables.ts`);
 
   for (const token in tokensJSON) {
+    if (isInvalidToken(token)) {
+      // Superfluous tokens - SKIP
+      continue;
+    }
+
     if (tokensJSON.hasOwnProperty(token)) {
       const tokenData: Token = tokensJSON[token];
       const tokenName = tokenData.cssName;
@@ -113,8 +127,8 @@ const tokenExport = (token: string, resolvedTokenFallback: string) => {
 };
 
 const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string) => {
-  const tokenSemanticRef =
-    tokenData.fst_reference.length > 0 ? toCamelCase(cleanFstTokenName(tokenData.fst_reference)) + 'Raw' : null;
+  const isValidToken = !tokenData.fst_reference.startsWith('NULL/') && tokenData.fst_reference.length > 0;
+  const tokenSemanticRef = isValidToken ? toCamelCase(cleanFstTokenName(tokenData.fst_reference)) + 'Raw' : null;
 
   const fluentFallback = fluentFallbacks[token];
 
@@ -158,7 +172,7 @@ const generateTokenVariables = () => {
   const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/tokens.ts`);
 
   for (const token in tokensJSON) {
-    if (token.includes('(figma only)')) {
+    if (isInvalidToken(token)) {
       // Superfluous tokens - SKIP
       continue;
     }

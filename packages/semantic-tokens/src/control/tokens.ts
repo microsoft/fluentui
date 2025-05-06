@@ -35,15 +35,12 @@ import {
   textStyleDefaultHeaderWeightRaw,
   sizeCtrlDefaultRaw,
   sizeCtrlIconRaw,
-  sizeCtrlIconFigmaonlyRaw,
   sizeCtrlIconsecondaryRaw,
   textCtrlWeightSelectedRaw,
   sizeCtrlSmDefaultRaw,
   sizeCtrlSmIconRaw,
   sizeCtrlLgDefaultRaw,
   sizeCtrlLgIconRaw,
-  sizeCtrlSmIconFigmaonlyRaw,
-  sizeCtrlLgIconFigmaonlyRaw,
   paddingContentAlignDefaultRaw,
   paddingContentAlignOutdentIcononsubtleRaw,
   paddingContentAlignOutdentTextonsubtleRaw,
@@ -190,12 +187,9 @@ import {
   aiShimmerStop2Raw,
   aiShimmerStop3Raw,
   aiShimmerStop4Raw,
-  nullColorRaw,
   statusNeutralBackgroundRaw,
   statusNeutralTintBackgroundRaw,
   statusNeutralTintStrokeRaw,
-  nullNumberRaw,
-  nullStringRaw,
   backgroundCardOnsecondaryDefaultRestRaw,
   backgroundCardOnsecondaryAltRestRaw,
   backgroundCardOnsecondaryAltHoverRaw,
@@ -245,15 +239,12 @@ export const textStyleDefaultRegularLetterspacing = `var(${textStyleDefaultRegul
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
 export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw})`;
 export const sizeCtrlIcon = `var(${sizeCtrlIconRaw})`;
-export const sizeCtrlIconFigmaonly = `var(${sizeCtrlIconFigmaonlyRaw})`;
 export const sizeCtrlIconsecondary = `var(${sizeCtrlIconsecondaryRaw})`;
 export const textCtrlWeightSelected = `var(${textCtrlWeightSelectedRaw})`;
 export const sizeCtrlSmDefault = `var(${sizeCtrlSmDefaultRaw})`;
 export const sizeCtrlSmIcon = `var(${sizeCtrlSmIconRaw})`;
 export const sizeCtrlLgDefault = `var(${sizeCtrlLgDefaultRaw})`;
 export const sizeCtrlLgIcon = `var(${sizeCtrlLgIconRaw})`;
-export const sizeCtrlSmIconFigmaonly = `var(${sizeCtrlSmIconFigmaonlyRaw})`;
-export const sizeCtrlLgIconFigmaonly = `var(${sizeCtrlLgIconFigmaonlyRaw})`;
 export const paddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw})`;
 export const paddingContentAlignOutdentIcononsubtle = `var(${paddingContentAlignOutdentIcononsubtleRaw})`;
 export const paddingContentAlignOutdentTextonsubtle = `var(${paddingContentAlignOutdentTextonsubtleRaw})`;
@@ -400,12 +391,9 @@ export const aiShimmerStop1 = `var(${aiShimmerStop1Raw})`;
 export const aiShimmerStop2 = `var(${aiShimmerStop2Raw})`;
 export const aiShimmerStop3 = `var(${aiShimmerStop3Raw})`;
 export const aiShimmerStop4 = `var(${aiShimmerStop4Raw})`;
-export const nullColor = `var(${nullColorRaw})`;
 export const statusNeutralBackground = `var(${statusNeutralBackgroundRaw})`;
 export const statusNeutralTintBackground = `var(${statusNeutralTintBackgroundRaw})`;
 export const statusNeutralTintStroke = `var(${statusNeutralTintStrokeRaw})`;
-export const nullNumber = `var(${nullNumberRaw})`;
-export const nullString = `var(${nullStringRaw})`;
 export const backgroundCardOnsecondaryDefaultRest = `var(${backgroundCardOnsecondaryDefaultRestRaw})`;
 export const backgroundCardOnsecondaryAltRest = `var(${backgroundCardOnsecondaryAltRestRaw})`;
 export const backgroundCardOnsecondaryAltHover = `var(${backgroundCardOnsecondaryAltHoverRaw})`;

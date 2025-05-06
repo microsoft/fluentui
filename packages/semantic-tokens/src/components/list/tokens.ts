@@ -51,9 +51,7 @@ import {
   ctrlListChoiceBackgroundSelectedDisabledRaw,
   ctrlListChoiceCheckboxCornerRaw,
   ctrlListChoiceCheckboxIconSizeRaw,
-  ctrlListChoiceCheckboxIconSizeFigmaonlyRaw,
   ctrlListChoiceDotSizeRaw,
-  ctrlListChoiceDotSizeFigmaonlyRaw,
   ctrlListSplitDividerPaddingInsetRaw,
   ctrlListSplitDividerStrokeRaw,
   ctrlListSmCornerRestRaw,
@@ -104,9 +102,7 @@ export const ctrlListChoiceBackgroundSelectedRest = `var(${ctrlListChoiceBackgro
 export const ctrlListChoiceBackgroundSelectedDisabled = `var(${ctrlListChoiceBackgroundSelectedDisabledRaw}, unset)`;
 export const ctrlListChoiceCheckboxCorner = `var(${ctrlListChoiceCheckboxCornerRaw}, var(${ctrlChoiceCheckboxCornerRaw}))`;
 export const ctrlListChoiceCheckboxIconSize = `var(${ctrlListChoiceCheckboxIconSizeRaw}, var(${sizeCtrlIconsecondaryRaw}))`;
-export const ctrlListChoiceCheckboxIconSizeFigmaonly = `var(${ctrlListChoiceCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlListChoiceDotSize = `var(${ctrlListChoiceDotSizeRaw})`;
-export const ctrlListChoiceDotSizeFigmaonly = `var(${ctrlListChoiceDotSizeFigmaonlyRaw})`;
 export const ctrlListSplitDividerPaddingInset = `var(${ctrlListSplitDividerPaddingInsetRaw})`;
 export const ctrlListSplitDividerStroke = `var(${ctrlListSplitDividerStrokeRaw}, var(${strokeCtrlDividerOnneutralRaw}))`;
 export const ctrlListSmCornerRest = `var(${ctrlListSmCornerRestRaw}, var(${cornerCtrlSmRestRaw}))`;
