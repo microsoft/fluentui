@@ -89,10 +89,6 @@ export const chartPointsWithAxisToolTipHBCWA: HorizontalBarChartWithAxisDataPoin
   },
 ];
 
-beforeEach(() => {
-  resetIds();
-});
-
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
   global.ResizeObserver = class ResizeObserver {
