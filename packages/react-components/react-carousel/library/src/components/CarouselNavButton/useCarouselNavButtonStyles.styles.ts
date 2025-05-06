@@ -86,27 +86,27 @@ const useStyles = makeStyles({
   },
   brand: {
     '::after': {
-      backgroundColor: tokens.colorBrandBackground,
+      backgroundColor: tokens.colorCompoundBrandBackground,
       opacity: 1,
     },
     ':hover': {
       '::after': {
-        backgroundColor: tokens.colorBrandBackgroundHover,
+        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
         opacity: 1,
       },
     },
     ':active': {
       '::after': {
-        backgroundColor: tokens.colorBrandBackgroundPressed,
+        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
         opacity: 1,
       },
     },
   },
   unselectedBrand: {
     '::after': {
-      opacity: 0.6,
-      backgroundColor: tokens.colorNeutralForeground1,
-      // backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 70%, ${tokens.colorNeutralForeground1})`,
+      opacity: 0.66,
+      backgroundColor: tokens.colorCompoundBrandBackground,
+      // backgroundColor: `color-mix(in srgb, ${tokens.colorCompoundBrandBackground} 75%, ${tokens.colorNeutralBackground1})`,
       // '@supports not (color: color-mix(in lch, white, black))': {
       //   opacity: 0.6,
       //   backgroundColor: tokens.colorBrandBackground,
