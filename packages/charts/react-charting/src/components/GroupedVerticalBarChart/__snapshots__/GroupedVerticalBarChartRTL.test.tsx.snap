@@ -61,18 +61,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -154,20 +149,15 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -320,9 +310,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -338,9 +326,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -396,9 +382,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -414,9 +398,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -472,9 +454,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -490,9 +470,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -817,18 +795,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -910,20 +883,15 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -1076,9 +1044,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -1094,9 +1060,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1152,9 +1116,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -1170,9 +1132,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1228,9 +1188,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -1246,9 +1204,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1573,18 +1529,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -1666,20 +1617,15 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -1832,9 +1778,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -1850,9 +1794,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1908,9 +1850,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -1926,9 +1866,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1984,9 +1922,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -2002,9 +1938,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2329,18 +2263,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -2422,20 +2351,15 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -2588,9 +2512,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -2606,9 +2528,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2664,9 +2584,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -2682,9 +2600,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2740,9 +2656,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -2758,9 +2672,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3085,18 +2997,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -3178,20 +3085,15 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -3344,9 +3246,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -3362,9 +3262,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3420,9 +3318,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -3438,9 +3334,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3496,9 +3390,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="8"
@@ -3514,9 +3406,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3847,18 +3737,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -3876,20 +3761,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -4668,18 +4548,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -4697,20 +4572,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -6037,18 +5907,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -6066,20 +5931,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -6661,18 +6521,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -6690,20 +6545,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -9474,18 +9324,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
                 & path {
                   display: none;
@@ -9567,20 +9412,15 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #f3f2f1;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -9733,9 +9573,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="8"
@@ -9751,9 +9589,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"
@@ -9809,9 +9645,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="8"
@@ -9827,9 +9661,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"
@@ -9885,9 +9717,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="8"
@@ -9903,9 +9733,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"

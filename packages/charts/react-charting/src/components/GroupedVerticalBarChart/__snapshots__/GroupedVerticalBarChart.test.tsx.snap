@@ -56,18 +56,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -85,20 +80,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -877,18 +867,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -906,20 +891,15 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -2246,18 +2226,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -2275,20 +2250,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -2870,18 +2840,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -2899,20 +2864,15 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"

@@ -56,18 +56,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -85,20 +80,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -691,18 +681,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -720,20 +705,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -1312,18 +1292,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -1341,20 +1316,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -1933,18 +1903,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -1962,20 +1927,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -2067,18 +2027,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -2096,20 +2051,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -2377,18 +2327,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
@@ -2406,20 +2351,15 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+              forced-color-adjust: auto;
             }
             & path {
               display: none;
             }
             & line {
+              forced-color-adjust: auto;
               opacity: 0.2;
               stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"

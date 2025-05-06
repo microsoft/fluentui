@@ -1,5 +1,5 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { FontSizes, FontWeights, HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { NeutralColors, isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
@@ -49,23 +49,14 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           {
             fill: theme.semanticColors.bodyText,
             fontWeight: '600',
-            selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
-              },
-            },
+            forcedColorAdjust: 'auto',
           },
         ],
         line: {
           opacity: 0.2,
           stroke: theme.semanticColors.bodyText,
           width: '1px',
-          selectors: {
-            [HighContrastSelectorBlack]: {
-              opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
-            },
-          },
+          forcedColorAdjust: 'auto',
         },
         path: {
           display: 'none',
@@ -79,11 +70,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           {
             fill: theme.semanticColors.bodyText,
             fontWeight: '600',
-            selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
-              },
-            },
+            forcedColorAdjust: 'auto',
           },
         ],
         path: {
@@ -92,12 +79,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         line: {
           opacity: 0.2,
           stroke: theme.semanticColors.bodyText,
-          selectors: {
-            [HighContrastSelectorBlack]: {
-              opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
-            },
-          },
+          forcedColorAdjust: 'auto',
         },
         g: [
           isRtl &&
@@ -148,11 +130,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         color: theme.semanticColors.bodyText,
       },
       !toDrawShape && {
-        selectors: {
-          [HighContrastSelector]: {
-            forcedColorAdjust: 'none',
-          },
-        },
+        forcedColorAdjust: 'none',
         borderLeft: `4px solid ${lineColor}`,
         paddingLeft: '8px',
       },
@@ -166,11 +144,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     calloutlegendText: {
       ...fonts.small,
       lineHeight: '16px',
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
-        },
-      },
+      forcedColorAdjust: 'auto',
       color: theme.semanticColors.bodySubtext,
     },
     calloutContentY: [
@@ -178,21 +152,13 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         ...fonts.mediumPlus,
         fontWeight: 'bold',
         lineHeight: '22px',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
+        forcedColorAdjust: 'auto',
       },
     ],
     descriptionMessage: [
       theme.fonts.small,
       {
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
+        forcedColorAdjust: 'auto',
         color: theme.semanticColors.bodyText,
         marginTop: '10px',
         paddingTop: '10px',

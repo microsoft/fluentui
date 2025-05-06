@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react';
+import { FontSizes, FontWeights } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
@@ -39,33 +39,21 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+      forcedColorAdjust: 'auto',
     },
 
     chartValue: {
       fontSize: chartValueSize,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+      forcedColorAdjust: 'auto',
     },
 
     sublabel: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+      forcedColorAdjust: 'auto',
     },
 
     needle: {
@@ -76,11 +64,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     chartTitle: {
       fontSize: FontSizes.small,
       fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+      forcedColorAdjust: 'auto',
     },
 
     segment: {
@@ -130,11 +114,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
         color: theme.semanticColors.bodyText,
       },
       !toDrawShape && {
-        selectors: {
-          [HighContrastSelector]: {
-            forcedColorAdjust: 'none',
-          },
-        },
+        forcedColorAdjust: 'none',
         borderLeft: `4px solid ${lineColor}`,
         paddingLeft: '8px',
       },
@@ -148,11 +128,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     calloutlegendText: {
       ...theme.fonts.small,
       lineHeight: '16px',
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
-        },
-      },
+      forcedColorAdjust: 'auto',
       color: theme.semanticColors.bodySubtext,
     },
     calloutContentY: [
@@ -160,21 +136,13 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
         ...theme.fonts.mediumPlus,
         fontWeight: 'bold',
         lineHeight: '22px',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
+        forcedColorAdjust: 'auto',
       },
     ],
     descriptionMessage: [
       theme.fonts.small,
       {
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
+        forcedColorAdjust: 'auto',
         color: theme.semanticColors.bodyText,
         marginTop: '10px',
         paddingTop: '10px',

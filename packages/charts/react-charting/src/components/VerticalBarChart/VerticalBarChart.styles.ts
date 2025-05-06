@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
@@ -39,11 +39,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: 'rgb(179, 179, 179)',
-        },
-      },
+      forcedColorAdjust: 'auto',
     },
   };
 };

@@ -42,9 +42,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -74,8 +72,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -117,9 +115,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -149,8 +145,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -192,11 +188,9 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #ffffff;
+                forced-color-adjust: none;
                 stroke-width: 3px;
                 stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
               }
           stroke-opacity="1"
         >
@@ -238,11 +232,9 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #ffffff;
+                forced-color-adjust: none;
                 stroke-width: 3px;
                 stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
               }
           stroke-opacity="1"
         >
@@ -284,9 +276,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -316,8 +306,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -359,9 +349,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -391,8 +379,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -490,9 +478,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -522,8 +508,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -565,9 +551,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -597,8 +581,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -640,11 +624,9 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #1b1a19;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #ffffff;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -686,11 +668,9 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #1b1a19;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #ffffff;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -732,9 +712,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -764,8 +742,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -807,9 +785,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -839,8 +815,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -938,9 +914,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -970,8 +944,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -1013,9 +987,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -1045,8 +1017,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -1088,11 +1060,9 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #ffffff;
+                forced-color-adjust: none;
                 stroke-width: 3px;
                 stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
               }
           stroke-opacity="1"
         >
@@ -1134,11 +1104,9 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #ffffff;
+                forced-color-adjust: none;
                 stroke-width: 3px;
                 stroke: #000000;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
               }
           stroke-opacity="1"
         >
@@ -1180,9 +1148,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -1212,8 +1178,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g
@@ -1255,9 +1221,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
 
               {
                 fill: #F5F5F5;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+                forced-color-adjust: none;
               }
         >
           <g
@@ -1287,8 +1251,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  & text {
+                    forced-color-adjust: auto;
                   }
             >
               <g

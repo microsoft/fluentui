@@ -644,18 +644,13 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -719,20 +714,15 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -1242,18 +1232,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -1317,20 +1302,15 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"

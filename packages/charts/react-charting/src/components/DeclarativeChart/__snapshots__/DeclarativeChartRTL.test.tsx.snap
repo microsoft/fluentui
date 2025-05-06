@@ -53,18 +53,13 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
                 & path {
                   display: none;
@@ -272,20 +267,15 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -4346,9 +4336,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               role="img"
               text-anchor="end"
@@ -4365,9 +4353,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               role="img"
               text-anchor="start"
@@ -4458,9 +4444,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                       fill: #323130;
                       font-size: 20px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 data-is-focusable="true"
                 id="tooltip-host4"
@@ -4479,9 +4463,7 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #107c10;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               data-is-focusable="true"
               dominant-baseline="hanging"
@@ -4912,18 +4894,13 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
                 & path {
                   display: none;
@@ -5311,20 +5288,15 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -18799,18 +18771,13 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
                 & path {
                   display: none;
@@ -19090,20 +19057,15 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -20358,9 +20320,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -20390,8 +20350,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -20433,9 +20393,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -20465,8 +20423,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -20508,9 +20466,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -20540,8 +20496,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -20583,9 +20539,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -20615,8 +20569,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -20658,9 +20612,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -20690,8 +20642,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -20733,11 +20685,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -20779,11 +20729,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -20825,11 +20773,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -20871,11 +20817,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -20917,11 +20861,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -20963,11 +20905,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21009,11 +20949,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21055,11 +20993,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21101,11 +21037,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21147,11 +21081,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21193,11 +21125,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21239,11 +21169,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21285,11 +21213,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21331,11 +21257,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21377,11 +21301,9 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #ffffff;
+                  forced-color-adjust: none;
                   stroke-width: 3px;
                   stroke: #000000;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
                 }
             stroke-opacity="1"
           >
@@ -21423,9 +21345,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -21455,8 +21375,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -21498,9 +21418,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -21530,8 +21448,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g
@@ -21573,9 +21491,7 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
 
                 {
                   fill: #F5F5F5;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                  forced-color-adjust: none;
                 }
           >
             <g
@@ -21605,8 +21521,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    & text {
+                      forced-color-adjust: auto;
                     }
               >
                 <g

@@ -50,18 +50,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -197,20 +192,15 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -343,9 +333,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -381,9 +369,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -419,9 +405,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -846,18 +830,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -993,20 +972,15 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -1139,9 +1113,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -1177,9 +1149,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -1215,9 +1185,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -1655,18 +1623,13 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
                 & path {
                   display: none;
@@ -1802,20 +1765,15 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #f3f2f1;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -1948,9 +1906,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="56"
@@ -1986,9 +1942,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="270.61538461538464"
@@ -2024,9 +1978,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                      forced-color-adjust: auto;
                     }
                 text-anchor="middle"
                 x="592.5384615384615"
@@ -2463,18 +2415,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -2556,20 +2503,15 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -2704,9 +2646,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="287"
@@ -2744,9 +2684,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="335"
@@ -2784,9 +2722,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="383"
@@ -10036,18 +9972,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -10183,20 +10114,15 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -10329,9 +10255,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -10367,9 +10291,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -10405,9 +10327,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -12314,18 +12234,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -12461,20 +12376,15 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -12607,9 +12517,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -12645,9 +12553,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -12683,9 +12589,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -13110,18 +13014,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -13257,20 +13156,15 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -13386,20 +13280,15 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 10px;
                   font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                  forced-color-adjust: auto;
                 }
                 & path {
                   display: none;
                 }
                 & line {
+                  forced-color-adjust: auto;
                   opacity: 0.2;
                   stroke: #323130;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
                 }
             fill="none"
             font-family="sans-serif"
@@ -13533,9 +13422,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -13571,9 +13458,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="262.92307692307696"
@@ -13609,9 +13494,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="573.3076923076924"
@@ -14036,18 +13919,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -14147,20 +14025,15 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -14295,9 +14168,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="263"
@@ -14335,9 +14206,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="311"
@@ -14375,9 +14244,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="359"
@@ -14415,9 +14282,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="407"
@@ -14642,18 +14507,13 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -14789,20 +14649,15 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -14953,9 +14808,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -14991,9 +14844,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -15029,9 +14880,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -15456,18 +15305,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -15603,20 +15447,15 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -15749,9 +15588,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -15787,9 +15624,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -15825,9 +15660,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -16298,18 +16131,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
               & path {
                 display: none;
@@ -16445,20 +16273,15 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+                forced-color-adjust: auto;
               }
               & path {
                 display: none;
               }
               & line {
+                forced-color-adjust: auto;
                 opacity: 0.2;
                 stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
               }
           fill="none"
           font-family="sans-serif"
@@ -16591,9 +16414,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="56"
@@ -16629,9 +16450,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="270.61538461538464"
@@ -16667,9 +16486,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                    fill: rgb(179, 179, 179);
+                    forced-color-adjust: auto;
                   }
               text-anchor="middle"
               x="592.5384615384615"
