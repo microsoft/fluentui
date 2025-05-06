@@ -23,6 +23,7 @@ import {
 } from '@fluentui/react-components';
 import { Dismiss20Regular } from '@fluentui/react-icons';
 
+const MIN_SIDEBAR_WIDTH = 240;
 const useStyles = makeStyles({
   root: {
     border: '2px solid #ccc',
@@ -163,13 +164,21 @@ export const Resizable = () => {
   };
 
   function submitWidth(e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent) {
-    if (resizeInput && parseInt(resizeInput) >= 240) {
+    if (resizeInput && parseInt(resizeInput) >= MIN_SIDEBAR_WIDTH) {
       setSidebarWidth(Number(resizeInput));
       setShowMessage(false);
       setDialogOpen(false);
     } else {
       setShowMessage(true);
       e.preventDefault();
+    }
+  }
+
+  function resizeWithArrows(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+      setSidebarWidth(prev => prev + 10);
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+      setSidebarWidth(prev => prev - 10);
     }
   }
 
@@ -199,6 +208,10 @@ export const Resizable = () => {
                 aria-label="Resize drawer"
                 role="separator"
                 aria-orientation="vertical"
+                onKeyDown={resizeWithArrows}
+                aria-valuenow={sidebarWidth * 0.01}
+                aria-valuemin={MIN_SIDEBAR_WIDTH * 0.01}
+                aria-valuemax={100}
               />
             </DialogTrigger>
             <DialogSurface>
@@ -219,7 +232,7 @@ export const Resizable = () => {
                       id={inputId}
                       ref={inputRef}
                       onChange={onResizeInputChange}
-                      defaultValue={resizeInput}
+                      value={resizeInput}
                       type="number"
                       className={showMessage ? styles.invalidInput : ''}
                       onKeyDown={handleKeyDown}
