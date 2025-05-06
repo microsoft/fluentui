@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList } from './SelectedPeopleList';
@@ -72,13 +72,8 @@ describe('SelectedPeopleList', () => {
       const ref = React.createRef<SelectedPeopleList>();
 
       // EditingItem has unlisted constraints on being mounted on an actual DOM.
-      // so we can't render it with `renderer` and expect the internal state of the EditingItem to be
-      // initialized
-      const root = document.createElement('div');
-      ReactDOM.render(
-        <SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />,
-        root,
-      );
+      render(<SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />);
+
       expect(ref.current).not.toBeNull();
       const picker = ref.current;
       if (picker === null) {

@@ -3,7 +3,7 @@ import type { ComponentState, Slot, EventHandler, EventData, ComponentProps } fr
 import type { HsvColor } from '../../types/color';
 import type { ColorPickerProps } from '../ColorPicker/ColorPicker.types';
 
-export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | MouseEvent> & {
+export type ColorAreaOnColorChangeData = EventData<'change', React.SyntheticEvent | PointerEvent> & {
   color: HsvColor;
 };
 

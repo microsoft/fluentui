@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import { fireEvent, render, act } from '@testing-library/react';
+
 import { BaseExtendedPicker } from './BaseExtendedPicker';
 import { BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
 import { BaseSelectedItemsList } from '../../SelectedItemsList';
@@ -87,12 +87,11 @@ describe('Pickers', () => {
     const create = (elem: React.ReactElement) => {
       hostNode = document.createElement('div');
       document.body.appendChild(hostNode);
-      ReactDOM.render(elem, hostNode);
+      render(elem, { container: hostNode });
     };
 
     afterEach(() => {
       if (hostNode) {
-        ReactDOM.unmountComponentAtNode(hostNode);
         document.body.removeChild(hostNode);
         hostNode = null;
       }
@@ -158,13 +157,13 @@ describe('Pickers', () => {
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
-        ReactTestUtils.Simulate.input(picker.inputElement);
-        ReactTestUtils.act(() => {
+        fireEvent.input(picker.inputElement);
+        act(() => {
           jest.runAllTimers();
         });
       }
 
-      ReactDOM.render(
+      render(
         <BaseExtendedPickerWithType
           ref={pickerRef}
           defaultSelectedItems={[]}
@@ -173,7 +172,7 @@ describe('Pickers', () => {
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
-        hostNode,
+        { container: hostNode! },
       );
 
       expect(picker.state.queryString).toBe('bl');
@@ -183,7 +182,7 @@ describe('Pickers', () => {
       // Force resolve to the first suggestions
       picker.floatingPicker.current && picker.floatingPicker.current.forceResolveSuggestion();
 
-      ReactDOM.render(
+      render(
         <BaseExtendedPickerWithType
           ref={pickerRef}
           defaultSelectedItems={[]}
@@ -192,7 +191,7 @@ describe('Pickers', () => {
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
-        hostNode,
+        { container: hostNode! },
       );
 
       expect(picker.items.length).toBe(1);
@@ -217,10 +216,10 @@ describe('Pickers', () => {
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
-        ReactTestUtils.Simulate.input(picker.inputElement);
+        fireEvent.input(picker.inputElement);
       }
 
-      ReactTestUtils.act(() => {
+      act(() => {
         jest.runAllTimers();
       });
 
@@ -250,9 +249,9 @@ describe('Pickers', () => {
       // setup
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
-        ReactTestUtils.Simulate.input(picker.inputElement);
-        ReactTestUtils.Simulate.keyDown(picker.inputElement, { which: KeyCodes.down });
-        ReactTestUtils.act(() => {
+        fireEvent.input(picker.inputElement);
+        fireEvent.keyDown(picker.inputElement, { which: KeyCodes.down });
+        act(() => {
           jest.runAllTimers();
         });
       }
@@ -288,12 +287,9 @@ describe('Pickers', () => {
 
     describe('aria-owns', () => {
       it('does not render an aria-owns when the floating picker has not been opened', () => {
-        const root = document.createElement('div');
-        document.body.appendChild(root);
-
         const pickerRef = React.createRef<TypedBaseExtendedPicker>();
 
-        ReactDOM.render(
+        render(
           <BaseExtendedPickerWithType
             ref={pickerRef}
             floatingPickerProps={floatingPickerProps}
@@ -301,22 +297,16 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root,
         );
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
         expect(document.querySelector('#suggestion-list')).not.toBeTruthy();
-
-        ReactDOM.unmountComponentAtNode(root);
       });
 
       it('renders an aria-owns when the floating picker is open', () => {
-        const root = document.createElement('div');
-        document.body.appendChild(root);
-
         const pickerRef = React.createRef<TypedBaseExtendedPicker>();
 
-        ReactDOM.render(
+        render(
           <BaseExtendedPickerWithType
             ref={pickerRef}
             floatingPickerProps={floatingPickerProps}
@@ -324,15 +314,12 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root,
         );
 
         pickerRef.current!.floatingPicker.current!.showPicker();
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).toBeTruthy();
         expect(document.querySelector('#suggestion-list')).toBeTruthy();
-
-        ReactDOM.unmountComponentAtNode(root);
       });
 
       it('does not render an aria-owns when the floating picker has been opened and closed', () => {
@@ -341,7 +328,7 @@ describe('Pickers', () => {
 
         const pickerRef = React.createRef<TypedBaseExtendedPicker>();
 
-        ReactDOM.render(
+        render(
           <BaseExtendedPickerWithType
             ref={pickerRef}
             floatingPickerProps={floatingPickerProps}
@@ -349,7 +336,6 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root,
         );
 
         pickerRef.current!.floatingPicker.current!.showPicker();
@@ -358,8 +344,6 @@ describe('Pickers', () => {
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
         expect(document.querySelector('#suggestion-list')).not.toBeTruthy();
-
-        ReactDOM.unmountComponentAtNode(root);
       });
     });
   });

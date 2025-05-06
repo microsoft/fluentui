@@ -505,9 +505,10 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
+  const yDomainPadding = Math.abs(finalYmax - finalYmin) * 0.1;
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, finalYmax])
+    .domain([finalYmin - yDomainPadding, finalYmax + yDomainPadding])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
