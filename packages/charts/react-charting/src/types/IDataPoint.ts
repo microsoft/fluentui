@@ -347,11 +347,6 @@ export interface ILineChartDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
-
-  /**
-   * Legend text for the datapoint in the chart
-   */
-  legend?: string;
 }
 
 /**
