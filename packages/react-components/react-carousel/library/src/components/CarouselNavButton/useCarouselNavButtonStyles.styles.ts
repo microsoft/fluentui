@@ -105,6 +105,12 @@ const useStyles = makeStyles({
   unselectedBrand: {
     '::after': {
       opacity: 0.6,
+      backgroundColor: tokens.colorNeutralForeground1,
+      // backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 70%, ${tokens.colorNeutralForeground1})`,
+      // '@supports not (color: color-mix(in lch, white, black))': {
+      //   opacity: 0.6,
+      //   backgroundColor: tokens.colorBrandBackground,
+      // },
     },
   },
 });
