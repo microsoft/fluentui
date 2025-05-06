@@ -9,7 +9,6 @@ These design toolkits provide styles, controls and layout templates that enable 
   <li className="mdut--half">[Download iOS toolkit (Figma)](https://www.figma.com/community/file/836833645402438850/microsoft-fluent-2-ios)</li>
   <li className="mdut--half">[Download Android toolkit (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
   <li className="mdut--half">[Download Android toolkit (Figma)](https://www.figma.com/community/file/836835062056249539/microsoft-fluent-android)</li>
-  <li className="mdut--half">[Download Windows toolkit (Figma)](https://fluent2.microsoft.design/get-started/design)</li>
 </ul>
 
 <!-- headings get auto-generated IDs usually, and this page has two "SharePoint Framework" headings -->
