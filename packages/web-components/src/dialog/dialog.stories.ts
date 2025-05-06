@@ -209,7 +209,7 @@ export const NonModalWithNoTitleOrActions: Story = {
   args: {
     type: DialogType.nonModal,
     slottedContent: () => html`
-      <p>Test A non-modal dialog without a title or actions will render a close button by default.</p>
+      <p>A non-modal dialog without a title or actions will render a close button by default.</p>
     `,
   },
 };
