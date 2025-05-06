@@ -62,7 +62,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}
@@ -109,7 +109,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}
@@ -156,7 +156,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}
@@ -242,7 +242,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}
@@ -289,7 +289,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}
@@ -336,7 +336,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                   fill: #323130;
                   outline: none;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             data-is-focusable={false}

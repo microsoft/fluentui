@@ -270,8 +270,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                       font-weight: 400;
                       line-height: 16px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      color: rgb(255, 255, 255);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      color: CanvasText;
                     }
               >
                 2020/04/30
@@ -288,8 +288,8 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                       font-weight: bold;
                       line-height: 36px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      color: rgb(255, 255, 255);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      color: CanvasText;
                     }
               >
                 20,000

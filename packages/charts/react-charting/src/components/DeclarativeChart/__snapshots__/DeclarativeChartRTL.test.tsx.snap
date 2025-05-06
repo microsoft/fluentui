@@ -54,17 +54,17 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -273,8 +273,8 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -283,9 +283,9 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -2005,8 +2005,8 @@ exports[`DeclarativeChart Should render donutchart in DeclarativeChart 1`] = `
                       font-size: 24px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 dominant-baseline="middle"
                 text-anchor="middle"
@@ -4901,17 +4901,17 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -5300,8 +5300,8 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -5310,9 +5310,9 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -18788,17 +18788,17 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -19079,8 +19079,8 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -19089,9 +19089,9 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -20347,8 +20347,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -20378,8 +20378,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -20422,8 +20422,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -20453,8 +20453,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -20497,8 +20497,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -20528,8 +20528,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -20572,8 +20572,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -20603,8 +20603,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -20647,8 +20647,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -20678,8 +20678,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -20724,8 +20724,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -20770,8 +20770,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -20816,8 +20816,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -20862,8 +20862,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -20908,8 +20908,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -20954,8 +20954,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21000,8 +21000,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21046,8 +21046,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21092,8 +21092,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21138,8 +21138,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21184,8 +21184,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21230,8 +21230,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21276,8 +21276,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21322,8 +21322,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21368,8 +21368,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                   stroke-width: 3px;
                   stroke: #000000;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -21412,8 +21412,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -21443,8 +21443,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -21487,8 +21487,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -21518,8 +21518,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -21562,8 +21562,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -21593,8 +21593,8 @@ exports[`DeclarativeChart Should render sankeychart in DeclarativeChart 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
