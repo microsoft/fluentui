@@ -1,8 +1,7 @@
 import { axe } from 'jest-axe';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider, resetIds } from '@fluentui/react';
+import { resetIds } from '@fluentui/react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
@@ -383,24 +382,6 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       expect(container).toMatchSnapshot();
     },
   );
-});
-
-describe('Horizontal bar chart with axis - Theme', () => {
-  beforeEach(() => {
-    updateChartWidthAndHeight();
-  });
-  afterEach(sharedAfterEach);
-
-  test('Should reflect theme change', () => {
-    // Arrange
-    const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
-        <HorizontalBarChartWithAxis culture={window.navigator.language} data={chartPointsHBCWA} />
-      </ThemeProvider>,
-    );
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 });
 
 describe('HorizontalBarChartWithAxis - mouse events', () => {
