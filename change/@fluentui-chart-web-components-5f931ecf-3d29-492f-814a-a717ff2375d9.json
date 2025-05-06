@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: disallow patch change type",
+  "packageName": "@fluentui/chart-web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

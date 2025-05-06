@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: adopt single version policy for dev deps",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
