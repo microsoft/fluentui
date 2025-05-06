@@ -102,6 +102,11 @@ interface ILineChartDataPointWithLegend extends ILineChartDataPoint {
   legend?: string;
 }
 
+type ILineChartPointsWithoutData = Omit<ILineChartPoints, 'data'>;
+interface ILineChartPointsWithLegend extends ILineChartPointsWithoutData {
+  data: ILineChartDataPointWithLegend[];
+}
+
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> implements IChart {
   public static defaultProps: Partial<IAreaChartProps> = {
     useUTC: true,
@@ -1107,15 +1112,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           });
         });
       lineChartData &&
-        // making the line type any as the data type within lineChartData cannot be changed to
-        // ILineChartDataPointWithLegend[] externally
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        lineChartData.forEach((line: any) => {
+        lineChartData.forEach((line: ILineChartPointsWithLegend) => {
           allXValues.forEach((xValue: string | number) => {
             const point = line.data.find((item: ILineChartDataPointWithLegend) => {
               return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
             });
-            if (!point || point.y === 0) {
+            if (!point) {
               line.data.push({
                 x: typeof xValue === 'string' ? new Date(xValue) : xValue,
                 y: 0,
@@ -1255,7 +1257,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         const point = line.data.find((item: ILineChartDataPoint) => {
           return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
         });
-        if (!point || point.y === 0) {
+        if (!point) {
           hasMissingValues = true;
         }
       });
