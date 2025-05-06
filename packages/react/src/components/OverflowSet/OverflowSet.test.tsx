@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { create } from '@fluentui/test-utilities';
-import { RenderResult, fireEvent, render } from '@testing-library/react';
+import * as path from 'path';
+import { RenderResult, act, fireEvent, render } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { create } from '@fluentui/test-utilities';
+
 import { CommandBarButton } from '../../Button';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
 import { KeytipManager, ktpTargetFromId } from '../../Keytips';
 import { OverflowSet } from './OverflowSet';
-import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import type { IKeytipProps, IUniqueKeytip } from '../../Keytips';
 import type { IOverflowSetItemProps } from './OverflowSet.types';
@@ -36,7 +36,7 @@ function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]
 const noOp = (): any => undefined;
 
 const runAllTimers = () =>
-  ReactTestUtils.act(() => {
+  act(() => {
     jest.runAllTimers();
   });
 

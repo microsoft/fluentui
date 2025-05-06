@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -10,6 +9,13 @@ import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import type { IComboBox, IComboBoxOption } from './ComboBox.types';
+
+jest.mock('react-dom', () => {
+  return {
+    ...jest.requireActual('react-dom'),
+    createPortal: jest.fn((node: any) => node),
+  };
+});
 
 const RENDER_OPTIONS: IComboBoxOption[] = [
   { key: 'header', text: 'Header', itemType: SelectableOptionMenuItemType.Header },
@@ -51,18 +57,8 @@ const RUSSIAN_OPTIONS: IComboBoxOption[] = [
 const returnUndefined = () => undefined;
 
 describe('ComboBox', () => {
-  const createPortal = ReactDOM.createPortal;
-
-  function mockCreatePortal() {
-    (ReactDOM as any).createPortal = (node: any) => node;
-  }
-
   beforeEach(() => {
     resetIds();
-  });
-
-  afterEach(() => {
-    (ReactDOM as any).createPortal = createPortal;
   });
 
   isConformant({
@@ -76,9 +72,6 @@ describe('ComboBox', () => {
   });
 
   it('Renders correctly when open', () => {
-    // Mock createPortal so that the options list ends up inside the wrapper for snapshotting.
-    mockCreatePortal();
-
     const ref = React.createRef<IComboBox>();
     const { container, getByRole } = render(
       <ComboBox options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />,
@@ -88,7 +81,6 @@ describe('ComboBox', () => {
   });
 
   it('Renders correctly when opened in multi-select mode', () => {
-    mockCreatePortal();
     const ref = React.createRef<IComboBox>();
     const { container, getByRole } = render(
       <ComboBox multiSelect options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />,

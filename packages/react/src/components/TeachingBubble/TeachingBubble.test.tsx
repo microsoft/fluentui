@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
@@ -188,7 +187,7 @@ describe('TeachingBubble', () => {
   });
 
   it('merges callout classNames', () => {
-    ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
+    render(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {
       const callout = document.querySelector('.ms-Callout') as HTMLElement;
       expect(callout).toBeTruthy();
