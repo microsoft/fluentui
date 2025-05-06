@@ -36,63 +36,60 @@ const hideDrawer = (drawerID: string) => {
 };
 
 const storyTemplate = html<StoryArgs<FluentDrawer>>`
-    <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-default')}">
-      Toggle Drawer
-    </fluent-button>
-    <fluent-drawer
-      id="drawer-default"
-      position="${story => story.position}"
-      size="${story => story.size}"
-      type="${story => story.type}"
-      style="${story =>
-        story['--drawer-width'] !== '' ? `--drawer-width: ${story['--drawer-width']};` : ''} ${story =>
-        story['--dialog-backdrop'] !== '' ? `--dialog-backdrop: ${story['--dialog-backdrop']};` : ''}"
-    >
-      <fluent-drawer-body>
-        <h2 slot="title"> Drawer Header</h2>
-        <fluent-button
-          slot="close"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-default')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <div>
-          <fluent-text>
-            The drawer gives users a quick entry point to configuration and information. It should be used when
-            retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
-            with the background content is beneficial to the user's context/scenario. An overlay makes the drawer
-            blocking and signifies that the users full attention is required when making configurations.
-          </fluent-text>
+  <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-default')}"> Toggle Drawer </fluent-button>
+  <fluent-drawer
+    id="drawer-default"
+    position="${story => story.position}"
+    size="${story => story.size}"
+    type="${story => story.type}"
+    style="${story => (story['--drawer-width'] !== '' ? `--drawer-width: ${story['--drawer-width']};` : '')} ${story =>
+      story['--dialog-backdrop'] !== '' ? `--dialog-backdrop: ${story['--dialog-backdrop']};` : ''}"
+  >
+    <fluent-drawer-body>
+      <h2 slot="title">Drawer Header</h2>
+      <fluent-button
+        slot="close"
+        appearance="transparent"
+        icon-only
+        aria-label="close"
+        @click="${() => hideDrawer('drawer-default')}"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <div>
+        <fluent-text>
+          The drawer gives users a quick entry point to configuration and information. It should be used when retaining
+          context is beneficial to users. An overlay is optional depending on whether or not interacting with the
+          background content is beneficial to the user's context/scenario. An overlay makes the drawer blocking and
+          signifies that the users full attention is required when making configurations.
+        </fluent-text>
 
-          <div>
-            <fluent-field>
-              <label slot="label">Please select an option</label>
-              <fluent-radio-group id="demo-options" slot="input" orientation="vertical">
-                <fluent-field label-position="after">
-                  <label for="option-one" slot="label">Option 1</label>
-                  <fluent-radio id="option-one" slot="input" name="demo-options" value="1"></fluent-radio>
-                </fluent-field>
-                <fluent-field label-position="after">
-                  <label for="option-two" slot="label">Option 2</label>
-                  <fluent-radio id="option-two" slot="input" name="demo-options" value="2"></fluent-radio>
-                </fluent-field>
-                <fluent-field label-position="after">
-                  <label for="option-three" slot="label">Option 3</label>
-                  <fluent-radio id="option-three" slot="input" name="demo-options" value="3"></fluent-radio>
-                </fluent-field>
-              </fluent-radio-group>
-            </fluent-field>
-          </div>
+        <div>
+          <fluent-field>
+            <label slot="label">Please select an option</label>
+            <fluent-radio-group id="demo-options" slot="input" orientation="vertical">
+              <fluent-field label-position="after">
+                <label for="option-one" slot="label">Option 1</label>
+                <fluent-radio id="option-one" slot="input" name="demo-options" value="1"></fluent-radio>
+              </fluent-field>
+              <fluent-field label-position="after">
+                <label for="option-two" slot="label">Option 2</label>
+                <fluent-radio id="option-two" slot="input" name="demo-options" value="2"></fluent-radio>
+              </fluent-field>
+              <fluent-field label-position="after">
+                <label for="option-three" slot="label">Option 3</label>
+                <fluent-radio id="option-three" slot="input" name="demo-options" value="3"></fluent-radio>
+              </fluent-field>
+            </fluent-radio-group>
+          </fluent-field>
         </div>
-        <div slot="footer">
-          <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default')}">Close</fluent-button>
-          <fluent-button appearance="secondary">Do Something</fluent-button>
-        </div>
-      </fluent-drawer-body>
-    </fluent-drawer>
+      </div>
+      <div slot="footer">
+        <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default')}">Close</fluent-button>
+        <fluent-button appearance="secondary">Do Something</fluent-button>
+      </div>
+    </fluent-drawer-body>
+  </fluent-drawer>
 `;
 
 export default {

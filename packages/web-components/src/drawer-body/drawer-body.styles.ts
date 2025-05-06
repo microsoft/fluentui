@@ -29,7 +29,7 @@ export const styles = css`
     gap: ${spacingHorizontalM};
   }
 
-  ::slotted([slot="title"]) {
+  ::slotted([slot='title']) {
     font: inherit;
     padding: 0;
     margin: 0;
