@@ -1,4 +1,4 @@
-import { html } from '@microsoft/fast-element';
+import { html, ref } from '@microsoft/fast-element';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { SliderOrientation as SliderSetOrientation, SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
@@ -98,6 +98,21 @@ export const MediumSize: Story = {
   args: {
     size: SliderSetSize.medium,
   },
+};
+
+export const SliderWithValue: Story = {
+  render: renderComponent(html`
+    <fluent-field label-position="above">
+      <label slot="label" ${ref('label')} for="slider-in-field">Slider</label>
+      <fluent-slider
+        slot="input"
+        id="slider-in-field"
+        @change="${(x, c) => {
+                x.label.textContent = `Slider Value ${(c.event.target as FluentSlider).value}`;
+              }}"
+      ></fluent-slider>
+    </fluent-field>
+  `),
 };
 
 export const MinMax: Story = {
