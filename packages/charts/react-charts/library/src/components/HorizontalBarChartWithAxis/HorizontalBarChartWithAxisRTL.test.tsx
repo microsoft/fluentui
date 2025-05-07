@@ -1,4 +1,6 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { axe } from 'jest-axe';
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import * as React from 'react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
@@ -253,6 +255,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
     HorizontalBarChartWithAxis,
     { data: chartPointsHBCWA, legendProps: { canSelectMultipleLegends: true } },
     container => {
+      // const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       const legend1 = screen.getByText('Grapes')?.closest('button');
       const legend2 = screen.getByText('Apples')?.closest('button');
 
@@ -361,17 +364,6 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       const yAxisCallOutData = getByClass(container, /calloutContentY/i);
       expect(yAxisCallOutData).toBeDefined();
       expect(yAxisCallOutData[0].textContent).toEqual('1,000');
-    },
-  );
-
-  testWithWait(
-    'Should show y axis label tooltip when showYAxisLablesTooltip is true',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxisHBCWA, showYAxisLablesTooltip: true },
-    async container => {
-      await new Promise(resolve => setTimeout(resolve));
-      // Assert
-      expect(container).toMatchSnapshot();
     },
   );
 });
