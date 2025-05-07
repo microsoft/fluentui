@@ -11,6 +11,8 @@ export type FocusRectsProviderProps = {
    * Indicates that this is the root of a layer, and should not inherit the providerRef from a parent context.
    */
   layerRoot?: boolean;
+
+  children?: React.ReactNode;
 };
 
 export const FocusRectsProvider: React.FC<FocusRectsProviderProps> = props => {

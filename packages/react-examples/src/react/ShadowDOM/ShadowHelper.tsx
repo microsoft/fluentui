@@ -3,6 +3,7 @@ import { FocusRectsProvider, MergeStylesRootProvider, MergeStylesShadowRootProvi
 import root from 'react-shadow';
 
 export type ShadowProps = {
+  children?: React.ReactNode;
   window?: Window;
 };
 

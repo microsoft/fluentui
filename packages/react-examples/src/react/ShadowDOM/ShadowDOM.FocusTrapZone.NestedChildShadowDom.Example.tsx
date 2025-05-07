@@ -5,6 +5,7 @@ import { FocusTrapZone, Toggle } from '@fluentui/react';
 type ZoneProps = {
   zoneNumber: number;
   depth: number;
+  children?: React.ReactNode;
 };
 
 const Zone: React.FC<ZoneProps> = ({ zoneNumber, depth, children }) => {
