@@ -63,7 +63,7 @@
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2 {
+#storybook-docs .sbdocs h2:not([slot]) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -139,10 +139,12 @@
 
 #storybook-docs .sbdocs-preview {
   border-radius: 16px;
-  background: #fff; /* --colorBrandBackgroundInverted */
+  background: #fff;
+  /* --colorBrandBackgroundInverted */
   padding: 0;
   box-shadow: none;
-  border: 1px solid #d1d1d1; /* --colorNeutralStroke1 */
+  border: 1px solid #d1d1d1;
+  /* --colorNeutralStroke1 */
 }
 
 /* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
@@ -300,7 +302,8 @@
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
   border-radius: 2px;
-  width: fit-content; /* prevent wrapping kebab-case words when they'll fit on one line */
+  width: fit-content;
+  /* prevent wrapping kebab-case words when they'll fit on one line */
 }
 
 .os-content-glue {
@@ -409,9 +412,11 @@ h1.fluent {
 
 h1 .fluent-version {
   display: block;
-  font-size: 24px; /* --font-size-base-600 */
+  font-size: 24px;
+  /* --font-size-base-600 */
   line-height: 32px;
-  color: #707070; /* --color-neutral-foreground-3 */
+  color: #707070;
+  /* --color-neutral-foreground-3 */
 }
 
 h2.fluent {
@@ -444,7 +449,8 @@ h2.fluent {
   padding: 12px;
   width: 100%;
   top: 0;
-  box-sizing: border-box; /* keep from overflowing body making x scroll bar*/
+  box-sizing: border-box;
+  /* keep from overflowing body making x scroll bar*/
   background: #fff;
   box-shadow: 0 0 3px rgb(0 0 0 / 22%);
   z-index: 10;
