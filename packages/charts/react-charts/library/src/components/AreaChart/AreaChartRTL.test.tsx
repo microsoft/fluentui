@@ -3,10 +3,10 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider, resetIds } from '@fluentui/react';
-import { AreaChart, AreaChartProps } from './index';
+import { AreaChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
