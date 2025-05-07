@@ -89,10 +89,6 @@ type LineLegends = {
   title: string;
   color: string;
 };
-enum CircleVisbility {
-  show = 'visibility',
-  hide = 'hidden',
-}
 
 type CalloutAnchorPointData = {
   xAxisDataPoint: string;
@@ -459,10 +455,8 @@ export class VerticalStackedBarChartBase
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            {...(this._isLegendHighlighted(item) && {
-              onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
-              onMouseLeave: this._lineHoverOut,
-            })}
+            onMouseOver={this._lineHover.bind(this, lineObject[item][i - 1])}
+            onMouseLeave={this._handleMouseOut}
           />,
         );
       }
@@ -471,6 +465,11 @@ export class VerticalStackedBarChartBase
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         // Create an object to store line point ref so that the object can be passed by reference to the focus handler
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
+        // FIXME: rename
+        const noBarsActive =
+          circlePoint.xItem.chartData.filter(
+            dataPoint => this._noLegendHighlighted() || this._isLegendHighlighted(dataPoint.legend),
+          ).length === 0;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
@@ -480,27 +479,26 @@ export class VerticalStackedBarChartBase
                 ? yScaleSecondary(circlePoint.y)
                 : yScalePrimary(circlePoint.y)
             }
-            onMouseOver={
-              this._isLegendHighlighted(item)
-                ? this._lineHover.bind(this, circlePoint)
-                : this._onStackHover.bind(this, circlePoint.xItem)
-            }
-            {...(this._isLegendHighlighted(item) && {
-              onMouseLeave: this._lineHoverOut,
-            })}
-            r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
+            onMouseOver={this._lineHover.bind(this, circlePoint)}
+            onMouseLeave={this._handleMouseOut}
+            r={this._getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
             fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
-            visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
+            // TODO: add comment
+            opacity={this._getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-            // When no legend is highlighted: Line points are automatically displayed along with the bars
-            // at the same x-axis point in the stack callout. So to prevent an increase in focusable elements
-            // and avoid conveying duplicate info, make these line points non-focusable.
-            data-is-focusable={this._isLegendHighlighted(item)}
             ref={e => (circleRef.refElement = e)}
-            onFocus={this._lineFocus.bind(this, circlePoint, circleRef)}
-            onBlur={this._lineHoverOut}
+            // TODO: add comment
+            {...(noBarsActive
+              ? {
+                  'data-is-focusable': this._noLegendHighlighted() || this._isLegendHighlighted(item),
+                  onFocus: this._lineFocus.bind(this, circlePoint, circleRef),
+                  onBlur: this._handleMouseOut,
+                  role: 'img',
+                  'aria-label': this._getAriaLabel(circlePoint.xItem, circlePoint, true),
+                }
+              : {})}
           />,
         );
       });
@@ -514,22 +512,22 @@ export class VerticalStackedBarChartBase
     );
   };
 
-  private _getCircleVisibilityAndRadius = (
+  private _getCircleOpacityAndRadius = (
     xAxisPoint: string | number | Date,
     legend: string,
-  ): { visibility: CircleVisbility; radius: number } => {
+  ): { opacity: number; radius: number } => {
     const { activeXAxisDataPoint } = this.state;
     if (!this._noLegendHighlighted()) {
       if (xAxisPoint === activeXAxisDataPoint && this._isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 8 };
+        return { opacity: 1, radius: 8 };
       } else if (this._isLegendHighlighted(legend)) {
-        return { visibility: CircleVisbility.show, radius: 0.3 };
+        return { opacity: 1, radius: 0.3 };
       } else {
-        return { visibility: CircleVisbility.hide, radius: 0 };
+        return { opacity: 0, radius: 0 };
       }
     } else {
       return {
-        visibility: activeXAxisDataPoint === xAxisPoint ? CircleVisbility.show : CircleVisbility.hide,
+        opacity: activeXAxisDataPoint === xAxisPoint ? 1 : 0,
         radius: 8,
       };
     }
@@ -751,17 +749,6 @@ export class VerticalStackedBarChartBase
     this._lineHoverFocus(lineData, mouseEvent);
   };
 
-  private _lineHoverOut = () => {
-    this.setState({
-      refSelected: null,
-      isCalloutVisible: false,
-      xCalloutValue: '',
-      yCalloutValue: '',
-      activeXAxisDataPoint: '',
-      color: '',
-    });
-  };
-
   private _lineFocus = (lineData: LinePoint, ref: { refElement: SVGCircleElement | null }) => {
     if (ref.refElement) {
       this._lineHoverFocus(lineData, ref.refElement);
@@ -769,14 +756,20 @@ export class VerticalStackedBarChartBase
   };
 
   private _lineHoverFocus = (lineData: LinePoint, refSelected: React.MouseEvent<SVGElement> | SVGCircleElement) => {
-    this.setState({
-      refSelected,
-      isCalloutVisible: true,
-      xCalloutValue: `${lineData.xItem.xAxisPoint}`,
-      yCalloutValue: `${lineData.yAxisCalloutData || lineData.data || lineData.y}`,
-      activeXAxisDataPoint: lineData.xItem.xAxisPoint,
-      color: lineData.color,
-    });
+    if (this._getHighlightedLegend().length === 1) {
+      if (this._noLegendHighlighted() || this._isLegendHighlighted(lineData.legend)) {
+        this.setState({
+          refSelected,
+          isCalloutVisible: true,
+          xCalloutValue: `${lineData.xItem.xAxisPoint}`,
+          yCalloutValue: `${lineData.yAxisCalloutData || lineData.data || lineData.y}`,
+          activeXAxisDataPoint: lineData.xItem.xAxisPoint,
+          color: lineData.color,
+        });
+      }
+    } else {
+      this._onStackHoverFocus(lineData.xItem, refSelected);
+    }
   };
 
   private _onStackHover(stack: IVerticalStackedChartProps, mouseEvent: React.MouseEvent<SVGElement>): void {
@@ -1044,8 +1037,12 @@ export class VerticalStackedBarChartBase
         );
       });
       const groupRef: IRefArrayData = {};
+      const someBarsActive =
+        singleChartData.chartData.filter(
+          dataPoint => this._noLegendHighlighted() || this._isLegendHighlighted(dataPoint.legend),
+        ).length > 0;
       const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': !this.props.hideTooltip,
+        'data-is-focusable': !this.props.hideTooltip && someBarsActive,
         'aria-label': this._getAriaLabel(singleChartData),
         onMouseOver: this._onStackHover.bind(this, singleChartData),
         onMouseMove: this._onStackHover.bind(this, singleChartData),
@@ -1204,7 +1201,11 @@ export class VerticalStackedBarChartBase
     return this._getHighlightedLegend().length === 0;
   };
 
-  private _getAriaLabel = (singleChartData: IVerticalStackedChartProps, point?: IVSChartDataPoint): string => {
+  private _getAriaLabel = (
+    singleChartData: IVerticalStackedChartProps,
+    point?: IVSChartDataPoint | ILineDataInVerticalStackedBarChart,
+    isLinePoint?: boolean,
+  ): string => {
     if (!point) {
       /** if shouldFocusWholeStack is true */
       const xValue =
@@ -1234,13 +1235,17 @@ export class VerticalStackedBarChartBase
     /** if shouldFocusWholeStack is false */
     const xValue =
       singleChartData.xAxisCalloutData ||
-      point.xAxisCalloutData ||
+      (!isLinePoint && (point as IVSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
         ? formatDate(singleChartData.xAxisPoint)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
-    const yValue = point.yAxisCalloutData || point.data;
-    return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
+    const yValue =
+      point.yAxisCalloutData || (isLinePoint ? (point as ILineDataInVerticalStackedBarChart).y : point.data);
+    return (
+      (!isLinePoint && (point as IVSChartDataPoint).callOutAccessibilityData?.ariaLabel) ||
+      `${xValue}. ${legend}, ${yValue}.`
+    );
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
