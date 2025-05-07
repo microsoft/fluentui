@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, fireEvent, act } from '@testing-library/react';
 
 import { SelectionZone } from './SelectionZone';
 import { Selection } from './Selection';
@@ -14,18 +13,18 @@ const SELECTABLE_ITEMS = [{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }
 
 let _selection: Selection;
 let _selectionZone: any;
-let _componentElement: Element;
-let _toggleAll: Element;
-let _surface0: Element;
-let _invoke0: Element;
-let _toggle0: Element;
-let _surface1: Element;
-let _toggle1: Element;
-let _noSelect1: Element;
-let _select1: Element;
-let _toggle2: Element;
-let _surface3: Element;
-let _invoke4: Element;
+let _componentElement: HTMLElement;
+let _toggleAll: HTMLElement;
+let _surface0: HTMLElement;
+let _invoke0: HTMLElement;
+let _toggle0: HTMLElement;
+let _surface1: HTMLElement;
+let _toggle1: HTMLElement;
+let _noSelect1: HTMLElement;
+let _select1: HTMLElement;
+let _toggle2: HTMLElement;
+let _surface3: HTMLElement;
+let _invoke4: HTMLElement;
 
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
@@ -45,7 +44,10 @@ function _initializeSelection(props?: {
 
   _selection = new Selection();
   _selection.setItems(SELECTABLE_ITEMS);
-  _selectionZone = ReactTestUtils.renderIntoDocument(
+  _onItemInvokeCalled = 0;
+  _lastItemInvoked = undefined;
+
+  const { container } = render(
     <SelectionZone
       selection={_selection}
       selectionMode={selectionMode}
@@ -57,6 +59,11 @@ function _initializeSelection(props?: {
       onItemInvoked={(item: IObjectWithKey) => {
         _onItemInvokeCalled++;
         _lastItemInvoked = item;
+      }}
+      // @ts-expect-error - wrong componentRef type definition
+      componentRef={ref => {
+        _selectionZone = ref;
+        return;
       }}
     >
       <button id="toggleAll" data-selection-all-toggle={true}>
@@ -99,21 +106,25 @@ function _initializeSelection(props?: {
     </SelectionZone>,
   );
 
-  _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
-  _toggleAll = _componentElement.querySelector('#toggleAll')!;
-  _surface0 = _componentElement.querySelector('#surface0')!;
-  _invoke0 = _componentElement.querySelector('#invoke0')!;
-  _toggle0 = _componentElement.querySelector('#toggle0')!;
-  _surface1 = _componentElement.querySelector('#surface1')!;
-  _toggle1 = _componentElement.querySelector('#toggle1')!;
-  _noSelect1 = _componentElement.querySelector('#noSelect1')!;
-  _select1 = _componentElement.querySelector('#select1')!;
-  _toggle2 = _componentElement.querySelector('#toggle2')!;
-  _surface3 = _componentElement.querySelector('#surface3')!;
-  _invoke4 = _componentElement.querySelector('#invoke4')!;
+  _componentElement = container.firstChild as HTMLElement;
+  _toggleAll = container.querySelector('#toggleAll') as HTMLElement;
+  _surface0 = container.querySelector('#surface0') as HTMLElement;
+  _invoke0 = container.querySelector('#invoke0') as HTMLElement;
+  _toggle0 = container.querySelector('#toggle0') as HTMLElement;
+  _surface1 = container.querySelector('#surface1') as HTMLElement;
+  _toggle1 = container.querySelector('#toggle1') as HTMLElement;
+  _noSelect1 = container.querySelector('#noSelect1') as HTMLElement;
+  _select1 = container.querySelector('#select1') as HTMLElement;
+  _toggle2 = container.querySelector('#toggle2') as HTMLElement;
+  _surface3 = container.querySelector('#surface3') as HTMLElement;
+  _invoke4 = container.querySelector('#invoke4') as HTMLElement;
+}
 
-  _onItemInvokeCalled = 0;
-  _lastItemInvoked = undefined;
+// Helper function to simulate click events
+function _simulateClick(el: HTMLElement, eventData?: Record<string, boolean>): void {
+  fireEvent.mouseDown(el, eventData);
+  fireEvent.focus(el, eventData);
+  fireEvent.click(el, eventData);
 }
 
 describe('SelectionZone - disabled touch targets', () => {
@@ -123,7 +134,7 @@ describe('SelectionZone - disabled touch targets', () => {
     Component: SelectionZone,
     displayName: 'SelectionZone',
     requiredProps: { selection: new Selection() },
-    // Problem: Doesn’t pass ref to the root element.
+    // Problem: Doesn't pass ref to the root element.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: [
       'component-has-root-ref',
@@ -142,13 +153,13 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('toggles an item on dblclick of toggle element', () => {
-    ReactTestUtils.Simulate.doubleClick(_toggle0);
+    fireEvent.doubleClick(_toggle0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_onItemInvokeCalled).toEqual(0);
   });
 
   it('does not toggle an item on mousedown of toggle element', () => {
-    ReactTestUtils.Simulate.mouseDown(_toggle0);
+    fireEvent.mouseDown(_toggle0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_onItemInvokeCalled).toEqual(0);
   });
@@ -158,7 +169,7 @@ describe('SelectionZone - disabled touch targets', () => {
     _selection.setIndexSelected(0, false, true);
 
     // Mousedown on the only unselected item's invoke surface should deselect all and select that one.
-    ReactTestUtils.Simulate.mouseDown(_surface0);
+    fireEvent.mouseDown(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(true);
     expect(_selection.getSelectedCount()).toEqual(1);
   });
@@ -167,7 +178,7 @@ describe('SelectionZone - disabled touch targets', () => {
     // Mousedown on an item that's already selected should do nothing.
     _selection.setAllSelected(true);
 
-    ReactTestUtils.Simulate.mouseDown(_invoke0);
+    fireEvent.mouseDown(_invoke0);
     expect(_selection.isAllSelected()).toEqual(true);
   });
 
@@ -190,12 +201,12 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('selects an unselected item on mousedown of item surface element', () => {
-    ReactTestUtils.Simulate.mouseDown(_surface0);
+    fireEvent.mouseDown(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(true);
   });
 
   it('invokes an item on double clicking the surface element', () => {
-    ReactTestUtils.Simulate.doubleClick(_surface0);
+    fireEvent.doubleClick(_surface0);
     expect(_onItemInvokeCalled).toEqual(1);
     expect(_lastItemInvoked.key).toEqual('a');
   });
@@ -240,42 +251,45 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('selects all on ctrl-a', () => {
-    ReactTestUtils.Simulate.keyDown(_componentElement, { ctrlKey: true, which: KeyCodes.a });
+    // Use both which and key for better compatibility
+    fireEvent.keyDown(_componentElement, { ctrlKey: true, which: KeyCodes.a, key: 'a', keyCode: KeyCodes.a });
     expect(_selection.isAllSelected()).toEqual(true);
   });
 
   it('unselects all on escape', () => {
     _selection.setAllSelected(true);
-    ReactTestUtils.Simulate.keyDown(_componentElement, { which: KeyCodes.escape });
+    // Use both which and key for better compatibility
+    fireEvent.keyDown(_componentElement, { which: KeyCodes.escape, key: 'Escape', keyCode: KeyCodes.escape });
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
   it('does not select item on focus', () => {
-    ReactTestUtils.Simulate.focus(_surface0);
+    fireEvent.focus(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
   });
 
   it('does not select an item on focus if ctrl/meta is pressed', () => {
-    ReactTestUtils.Simulate.keyDown(_componentElement, { ctrlKey: true });
-    ReactTestUtils.Simulate.focus(_surface0);
+    fireEvent.keyDown(_componentElement, { ctrlKey: true });
+    fireEvent.focus(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
   });
 
   it('does not select an item on focus when ignoreNextFocus is called', () => {
     _selectionZone.ignoreNextFocus();
-    ReactTestUtils.Simulate.focus(_surface0);
+    fireEvent.focus(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
   });
 
   it('toggles an item when pressing space', () => {
-    ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+    // Use both which and key for better compatibility
+    fireEvent.keyDown(_surface0, { which: KeyCodes.space, key: ' ', keyCode: KeyCodes.space });
     expect(_selection.isIndexSelected(0)).toEqual(true);
-    ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+    fireEvent.keyDown(_surface0, { which: KeyCodes.space, key: ' ', keyCode: KeyCodes.space });
     expect(_selection.isIndexSelected(0)).toEqual(false);
   });
 
   it('does not select the row when clicking on a toggle within an invoke element', () => {
-    ReactTestUtils.Simulate.mouseDown(_toggle2);
+    fireEvent.mouseDown(_toggle2);
     expect(_selection.isIndexSelected(2)).toEqual(false);
   });
 
@@ -283,7 +297,9 @@ describe('SelectionZone - disabled touch targets', () => {
     _selection.setAllSelected(true);
 
     // Raise real browser event.
-    document.documentElement.click();
+    act(() => {
+      document.documentElement.click();
+    });
 
     expect(_selection.getSelectedCount()).toEqual(0);
   });
@@ -293,29 +309,31 @@ describe('SelectionZone - disabled touch targets', () => {
 
     _simulateClick(_toggle0);
     // Raise real browser event.
-    document.documentElement.click();
+    act(() => {
+      document.documentElement.click();
+    });
 
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
   it('does not select an item on mousedown of the surface with no modifiers', () => {
-    ReactTestUtils.Simulate.mouseDown(_invoke0);
+    fireEvent.mouseDown(_invoke0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_onItemInvokeCalled).toEqual(0);
   });
 
   it('does not select an item when a button is clicked', () => {
-    ReactTestUtils.Simulate.mouseDown(_noSelect1);
+    fireEvent.mouseDown(_noSelect1);
     expect(_selection.isIndexSelected(1)).toEqual(false);
   });
 
   it('selects an item when a button is clicked that has data-selection-select', () => {
-    ReactTestUtils.Simulate.mouseDown(_select1);
+    fireEvent.mouseDown(_select1);
     expect(_selection.isIndexSelected(1)).toEqual(true);
   });
 
   it('selects an item when a button is clicked that has data-selection-select', () => {
-    ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
+    fireEvent.keyDown(_select1, { which: KeyCodes.enter });
     expect(_selection.isIndexSelected(1)).toEqual(true);
   });
 
@@ -354,8 +372,8 @@ describe('SelectionZone - disabled touch targets', () => {
   it('enters modal selection state on a touch event', () => {
     EventGroup.raise(document.body, 'touchstart', {}, true);
 
-    ReactTestUtils.Simulate.focus(_surface0);
-    ReactTestUtils.Simulate.click(_surface0);
+    fireEvent.focus(_surface0);
+    fireEvent.click(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(true);
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
   });
@@ -364,14 +382,14 @@ describe('SelectionZone - disabled touch targets', () => {
     it('when touch target wraps generic target', () => {
       EventGroup.raise(document.body, 'touchstart', {}, true);
 
-      ReactTestUtils.Simulate.click(_surface1);
+      fireEvent.click(_surface1);
       expect(_onItemInvokeCalled).toEqual(0);
     });
 
     it('when touch target does not wrap generic target', () => {
       EventGroup.raise(document.body, 'touchstart', {}, true);
 
-      ReactTestUtils.Simulate.click(_invoke4);
+      fireEvent.click(_invoke4);
       expect(_onItemInvokeCalled).toEqual(0);
     });
   });
@@ -387,7 +405,7 @@ describe('SelectionZone - override default keyboard behavior', () => {
 
     it('does not unselect all on escape when selectionClearedOnEscapePress is false', () => {
       _selection.setAllSelected(true);
-      ReactTestUtils.Simulate.keyDown(_componentElement, { which: KeyCodes.escape });
+      fireEvent.keyDown(_componentElement, { which: KeyCodes.escape });
       expect(_selection.getSelectedCount()).toEqual(5);
     });
   });
@@ -400,9 +418,10 @@ describe('SelectionZone - override default keyboard behavior', () => {
     });
 
     it('toggles value when pressing space key without a modifier key', () => {
-      ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+      // Using a more complete keyboard event simulation
+      fireEvent.keyDown(_surface0, { which: KeyCodes.space, key: ' ', keyCode: KeyCodes.space });
       expect(_selection.isIndexSelected(0)).toEqual(true);
-      ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+      fireEvent.keyDown(_surface0, { which: KeyCodes.space, key: ' ', keyCode: KeyCodes.space });
       expect(_selection.isIndexSelected(0)).toEqual(false);
     });
   });
@@ -416,7 +435,7 @@ describe('SelectionZone - SelectionMode.none', () => {
   );
 
   it('does not select an item when selection mode is SelectionMode.none', () => {
-    ReactTestUtils.Simulate.mouseDown(_surface0);
+    fireEvent.mouseDown(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_selection.getSelectedCount()).toEqual(0);
   });
@@ -428,7 +447,7 @@ describe('SelectionZone - SelectionMode.none', () => {
   });
 
   it('still invokes on double-click', () => {
-    ReactTestUtils.Simulate.doubleClick(_surface0);
+    fireEvent.doubleClick(_surface0);
     expect(_onItemInvokeCalled).toEqual(1);
     expect(_lastItemInvoked.key).toEqual('a');
   });
@@ -450,19 +469,19 @@ describe('SelectionZone - enabled touch targets', () => {
   it('invokes generic targets on touch click', () => {
     EventGroup.raise(document.body, 'touchstart', {}, true);
 
-    ReactTestUtils.Simulate.click(_invoke0);
+    fireEvent.click(_invoke0);
     expect(_onItemInvokeCalled).toEqual(1);
     expect(_lastItemInvoked.key).toEqual('a');
   });
 
   describe('does not invoke touch targets when not using touch', () => {
     it('when touch target wraps generic target', () => {
-      ReactTestUtils.Simulate.click(_surface1);
+      fireEvent.click(_surface1);
       expect(_onItemInvokeCalled).toEqual(0);
     });
 
     it('when touch target does not wrap generic target', () => {
-      ReactTestUtils.Simulate.click(_invoke4);
+      fireEvent.click(_invoke4);
       expect(_onItemInvokeCalled).toEqual(0);
     });
   });
@@ -471,7 +490,7 @@ describe('SelectionZone - enabled touch targets', () => {
     it('when touch target wraps generic target', () => {
       EventGroup.raise(document.body, 'touchstart', {}, true);
 
-      ReactTestUtils.Simulate.click(_surface1);
+      fireEvent.click(_surface1);
       expect(_onItemInvokeCalled).toEqual(1);
       expect(_lastItemInvoked.key).toEqual('b');
     });
@@ -479,15 +498,9 @@ describe('SelectionZone - enabled touch targets', () => {
     it('when touch target does not wrap generic target', () => {
       EventGroup.raise(document.body, 'touchstart', {}, true);
 
-      ReactTestUtils.Simulate.click(_invoke4);
+      fireEvent.click(_invoke4);
       expect(_onItemInvokeCalled).toEqual(1);
       expect(_lastItemInvoked.key).toEqual('e');
     });
   });
 });
-
-function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
-  ReactTestUtils.Simulate.mouseDown(el, eventData);
-  ReactTestUtils.Simulate.focus(el, eventData);
-  ReactTestUtils.Simulate.click(el, eventData);
-}

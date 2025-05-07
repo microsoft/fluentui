@@ -1930,7 +1930,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,100.5)"
+    transform="translate(0,92.16666666666666)"
   >
     <line
       stroke="currentColor"
@@ -1948,7 +1948,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,80.5)"
+    transform="translate(0,75.5)"
   >
     <line
       stroke="currentColor"
@@ -1966,7 +1966,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,60.5)"
+    transform="translate(0,58.83333333333333)"
   >
     <line
       stroke="currentColor"
@@ -1984,7 +1984,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,40.5)"
+    transform="translate(0,42.166666666666664)"
   >
     <line
       stroke="currentColor"
@@ -2002,7 +2002,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,20.499999999999996)"
+    transform="translate(0,25.5)"
   >
     <line
       stroke="currentColor"
@@ -2020,7 +2020,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,0.5)"
+    transform="translate(0,8.833333333333337)"
   >
     <line
       stroke="currentColor"
@@ -2053,7 +2053,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,100.5)"
+    transform="translate(0,92.16666666666666)"
   >
     <line
       stroke="currentColor"
@@ -2071,7 +2071,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,80.5)"
+    transform="translate(0,75.5)"
   >
     <line
       stroke="currentColor"
@@ -2089,7 +2089,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,60.5)"
+    transform="translate(0,58.83333333333333)"
   >
     <line
       stroke="currentColor"
@@ -2107,7 +2107,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,40.5)"
+    transform="translate(0,42.166666666666664)"
   >
     <line
       stroke="currentColor"
@@ -2125,7 +2125,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,20.499999999999996)"
+    transform="translate(0,25.5)"
   >
     <line
       stroke="currentColor"
@@ -2143,7 +2143,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,0.5)"
+    transform="translate(0,8.833333333333337)"
   >
     <line
       stroke="currentColor"
@@ -2176,7 +2176,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,100.5)"
+    transform="translate(0,92.16666666666666)"
   >
     <line
       stroke="currentColor"
@@ -2212,7 +2212,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,0.5)"
+    transform="translate(0,8.833333333333337)"
   >
     <line
       stroke="currentColor"
@@ -2245,7 +2245,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,100.5)"
+    transform="translate(0,92.16666666666666)"
   >
     <line
       stroke="currentColor"
@@ -2263,7 +2263,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,80.5)"
+    transform="translate(0,75.5)"
   >
     <line
       stroke="currentColor"
@@ -2281,7 +2281,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,60.5)"
+    transform="translate(0,58.83333333333333)"
   >
     <line
       stroke="currentColor"
@@ -2299,7 +2299,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,40.5)"
+    transform="translate(0,42.166666666666664)"
   >
     <line
       stroke="currentColor"
@@ -2317,7 +2317,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,20.499999999999996)"
+    transform="translate(0,25.5)"
   >
     <line
       stroke="currentColor"
@@ -2335,7 +2335,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,0.5)"
+    transform="translate(0,8.833333333333337)"
   >
     <line
       stroke="currentColor"
@@ -2368,7 +2368,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,100.5)"
+    transform="translate(0,92.16666666666666)"
   >
     <line
       stroke="currentColor"
@@ -2386,7 +2386,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,80.5)"
+    transform="translate(0,75.5)"
   >
     <line
       stroke="currentColor"
@@ -2404,7 +2404,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,60.5)"
+    transform="translate(0,58.83333333333333)"
   >
     <line
       stroke="currentColor"
@@ -2422,7 +2422,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,40.5)"
+    transform="translate(0,42.166666666666664)"
   >
     <line
       stroke="currentColor"
@@ -2440,7 +2440,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,20.499999999999996)"
+    transform="translate(0,25.5)"
   >
     <line
       stroke="currentColor"
@@ -2458,7 +2458,7 @@ exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels co
   <g
     class="tick"
     opacity="1"
-    transform="translate(0,0.5)"
+    transform="translate(0,8.833333333333337)"
   >
     <line
       stroke="currentColor"

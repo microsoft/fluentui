@@ -293,6 +293,11 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const isXNumber = isNumberArray(firstScatterData.x);
           if (isXDate || isXNumber) {
             return { isValid: true, type: isAreaChart ? 'area' : 'line', validTracesInfo: validTraces };
+          } else if (isAreaChart) {
+            return {
+              isValid: false,
+              errorMessage: 'Fallback to VerticalStackedBarChart is not allowed for Area Charts.',
+            };
           }
           return { isValid: true, type: 'fallback', validTracesInfo: validTraces };
         }

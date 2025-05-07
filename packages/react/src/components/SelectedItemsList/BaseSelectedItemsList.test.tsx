@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { BaseSelectedItemsList } from './BaseSelectedItemsList';
 import { isConformant } from '../../common/isConformant';
 import type { IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
@@ -42,15 +42,16 @@ describe('SelectedItemsList', () => {
     });
 
     it('can remove items', () => {
-      const root = document.createElement('div');
-
       const onChange = (items: ISimple[] | undefined): void => {
         expect(items!.length).toBe(1);
         expect(items![0].name).toBe('b');
       };
 
-      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
+      const ref = React.createRef<TypedBaseSelectedItemsList>();
+
+      render(
         <BaseSelectedItemsListWithType
+          componentRef={ref}
           onRenderItem={basicItemRenderer}
           selectedItems={[
             { key: '1', name: 'a' },
@@ -58,20 +59,19 @@ describe('SelectedItemsList', () => {
           ]}
           onChange={onChange}
         />,
-        root,
-      ) as unknown as TypedBaseSelectedItemsList;
+      );
 
+      const itemsList = ref.current!;
       expect(itemsList.items.length).toEqual(2);
       itemsList.removeItemAt(0);
     });
 
     it('can add items', () => {
-      const root = document.createElement('div');
-      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
-        <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
-        root,
-      ) as unknown as TypedBaseSelectedItemsList;
+      const ref = React.createRef<TypedBaseSelectedItemsList>();
 
+      render(<BaseSelectedItemsListWithType componentRef={ref} onRenderItem={basicItemRenderer} />);
+
+      const itemsList = ref.current!;
       const items: ISimple[] = [
         { key: '1', name: 'a' },
         { key: '2', name: 'b' },

@@ -5,7 +5,7 @@ import { SelectAllVisibility } from './DetailsHeader.types';
 import { DetailsListLayoutMode, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
 import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
@@ -287,16 +287,18 @@ describe('DetailsHeader', () => {
     const sizerElement = container.querySelector('[data-sizer-index="0"]') as HTMLElement;
     const header: any = headerRef.current!;
 
-    // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
-    EventGroup.raise(
-      sizerElement,
-      'mousedown',
-      {
-        clientX: 0,
-        button: 0,
-      },
-      true,
-    );
+    act(() => {
+      // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
+      EventGroup.raise(
+        sizerElement,
+        'mousedown',
+        {
+          clientX: 0,
+          button: 0,
+        },
+        true,
+      );
+    });
     // Validate we go into resize mode.
     expect(sizerElement.classList.contains('is-resizing')).toBe(true);
     expect(Boolean(header.state.isSizing)).toBe(false);
