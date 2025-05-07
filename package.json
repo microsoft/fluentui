@@ -275,7 +275,7 @@
     "loader-utils": "2.0.4",
     "lodash": "4.17.21",
     "markdown-table": "2.0.0",
-    "memfs": "3.2.2",
+    "memfs": "3.5.3",
     "monosize": "0.6.3",
     "monosize-bundler-webpack": "0.1.6",
     "monosize-storage-azure": "0.0.16",
