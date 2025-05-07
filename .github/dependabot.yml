@@ -13,3 +13,7 @@ updates:
       - dependency-type: 'development'
     open-pull-requests-limit: 6
     versioning-strategy: increase
+    ignore:
+      # Ignore major version bumps for all npm dependencies
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
