@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 07 May 2025 07:20:51 GMT",
+      "tag": "@fluentui/react-charting_v5.23.81",
+      "version": "5.23.81",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5dd9a6d47375ef647a5d143d315681275608904d",
+            "comment": "fix: use system colors with HighContrastSelector instead of color scheme selectors"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "94096dd09224a7ef7ab362942a895d4c80fef21c",
+            "comment": "fix(react-charting): Fixing area chart bugs for undefined property access"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "121d2bf316e244264c250bc51de5244c355684d9",
+            "comment": "fix: handle empty Plotly trace names and respect showlegend property to hide legends"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 May 2025 07:20:26 GMT",
       "tag": "@fluentui/react-charting_v5.23.80",
       "version": "5.23.80",
