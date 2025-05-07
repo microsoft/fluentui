@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: deprecate safeMount",
+  "packageName": "@fluentui/test-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

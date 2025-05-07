@@ -65,109 +65,6 @@ function customColumnDivider(
   );
 }
 
-// Helper function to handle mounting components with React Testing Library
-// This replaces Enzyme's mount functionality
-function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) => void) {
-  // Create a test wrapper object that mimics some of Enzyme's API for backward compatibility
-  const createTestWrapper = (container: HTMLElement, rerenderFn: any) => {
-    return {
-      find: (selector: string) => {
-        // This mimics Enzyme's find method by returning an object with simulate method
-        return {
-          simulate: (eventName: string, eventArgs?: any) => {
-            const elements = container.querySelectorAll(selector);
-            if (elements.length === 0) {
-              throw new Error(`No elements found for selector: ${selector}`);
-            }
-
-            // eslint-disable-next-line @typescript-eslint/no-shadow
-            elements.forEach(element => {
-              switch (eventName) {
-                case 'keyDown':
-                  fireEvent.keyDown(element, {
-                    ...eventArgs,
-                    key: eventArgs.which,
-                    keyCode: eventArgs.which,
-                  });
-                  break;
-                case 'click':
-                  fireEvent.click(element);
-                  break;
-                case 'dblclick':
-                  fireEvent.doubleClick(element);
-                  break;
-                default:
-                  // For other events, try to use the corresponding fireEvent method
-                  const fireEventMethod = (fireEvent as any)[eventName];
-                  if (fireEventMethod) {
-                    fireEventMethod(element, eventArgs);
-                  } else {
-                    fireEvent(element, new Event(eventName));
-                  }
-              }
-            });
-          },
-          first: () => {
-            // Returns an object that mimics the first element found in Enzyme
-            const firstEl = container.querySelector(selector);
-
-            return {
-              simulate: (eventName: string, eventArgs?: any) => {
-                if (!firstEl) {
-                  throw new Error(`No element found for selector: ${selector}`);
-                }
-
-                switch (eventName) {
-                  case 'keyDown':
-                    fireEvent.keyDown(firstEl, {
-                      ...eventArgs,
-                      key: eventArgs.which,
-                      keyCode: eventArgs.which,
-                    });
-                    break;
-                  case 'click':
-                    fireEvent.click(firstEl);
-                    break;
-                  case 'dblclick':
-                    fireEvent.doubleClick(firstEl);
-                    break;
-                  default:
-                    // For other events, try to use the corresponding fireEvent method
-                    const fireEventMethod = (fireEvent as any)[eventName];
-                    if (fireEventMethod) {
-                      fireEventMethod(firstEl, eventArgs);
-                    } else {
-                      fireEvent(firstEl, new Event(eventName));
-                    }
-                }
-              },
-            };
-          },
-        };
-      },
-      setProps: (newProps: any) => {
-        act(() => {
-          rerenderFn({ ...element.props, ...newProps });
-        });
-      },
-      update: () => {
-        // No direct equivalent in RTL, rerenderFn with the same props to force an update
-        act(() => {
-          rerenderFn({ ...element.props });
-        });
-      },
-    };
-  };
-
-  // Use React Testing Library's render function
-  const { container, rerender } = render(element);
-  const wrapper = createTestWrapper(container, rerender);
-
-  act(() => {
-    callback(wrapper);
-  });
-}
-
 describe('DetailsList', () => {
   let spy: jest.SpyInstance;
   beforeEach(() => {
@@ -245,8 +142,9 @@ describe('DetailsList', () => {
   it('renders a single proportional column with correct width', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
-    safeMount(
+    let component: IDetailsList | null = null;
+
+    render(
       <DetailsList
         className="list"
         items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
@@ -261,44 +159,46 @@ describe('DetailsList', () => {
         skipViewportMeasures={false}
         onShouldVirtualize={() => false}
       />,
-      () => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(2);
-        setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
-          elements.forEach((element: Element, index: number) => {
-            if (index === 0) {
-              return;
-            }
-
-            const style = element.getAttribute('style')!;
-            expect(style).toBeDefined();
-
-            const width = style.match(/(?<=width: )\d+/g)!;
-            expect(width).toBeDefined();
-            expect(width[0]).toBeDefined();
-
-            if (index === 1) {
-              expect(width[0]).toBe('121');
-            } else if (index === 2) {
-              expect(width[0]).toBe('348');
-            } else if (index === 3) {
-              expect(width[0]).toBe('123');
-            } else {
-              fail('Unexpected index.');
-            }
-          });
-        }, 0);
-        jest.runOnlyPendingTimers();
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(2);
+      jest.runAllTimers();
+    });
+
+    const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+    elements.forEach((element: Element, index: number) => {
+      if (index === 0) {
+        return;
+      }
+
+      const style = element.getAttribute('style')!;
+      expect(style).toBeDefined();
+
+      const width = style.match(/(?<=width: )\d+/g)!;
+      expect(width).toBeDefined();
+      expect(width[0]).toBeDefined();
+
+      if (index === 1) {
+        expect(width[0]).toBe('121');
+      } else if (index === 2) {
+        expect(width[0]).toBe('348');
+      } else if (index === 3) {
+        expect(width[0]).toBe('123');
+      } else {
+        fail('Unexpected index.');
+      }
+    });
   });
 
   it('renders proportional columns with proper width ratios', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
-    safeMount(
+    let component: IDetailsList | null = null;
+
+    render(
       <DetailsList
         className="list"
         items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
@@ -312,42 +212,44 @@ describe('DetailsList', () => {
         skipViewportMeasures={false}
         onShouldVirtualize={() => false}
       />,
-      () => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(2);
-        setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
-          elements.forEach((element: Element, index: number) => {
-            if (index === 0) {
-              return;
-            }
-
-            const style = element.getAttribute('style')!;
-            expect(style).toBeDefined();
-
-            const width = style.match(/(?<=width: )\d+/g)!;
-            expect(width).toBeDefined();
-            expect(width[0]).toBeDefined();
-
-            if (index === 1) {
-              expect(width[0]).toBe('336');
-            } else if (index === 2) {
-              expect(width[0]).toBe('255');
-            } else {
-              fail('Unexpected index.');
-            }
-          });
-        }, 0);
-        jest.runOnlyPendingTimers();
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(2);
+      jest.runAllTimers();
+    });
+
+    const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+    elements.forEach((element: Element, index: number) => {
+      if (index === 0) {
+        return;
+      }
+
+      const style = element.getAttribute('style')!;
+      expect(style).toBeDefined();
+
+      const width = style.match(/(?<=width: )\d+/g)!;
+      expect(width).toBeDefined();
+      expect(width[0]).toBeDefined();
+
+      if (index === 1) {
+        expect(width[0]).toBe('336');
+      } else if (index === 2) {
+        expect(width[0]).toBe('255');
+      } else {
+        fail('Unexpected index.');
+      }
+    });
   });
 
   it('renders proportional columns with proper width ratios when delayFirstMeasure', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
-    safeMount(
+    let component: IDetailsList | null = null;
+
+    render(
       <DetailsList
         className="list"
         items={[{ key: 'item1' }, { key: 'item2' }, { key: 'item3' }]}
@@ -362,35 +264,36 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
         delayFirstMeasure
       />,
-      () => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(2);
-        setTimeout(() => {
-          const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
-          elements.forEach((element: Element, index: number) => {
-            if (index === 0) {
-              return;
-            }
-
-            const style = element.getAttribute('style')!;
-            expect(style).toBeDefined();
-
-            const width = style.match(/(?<=width: )\d+/g)!;
-            expect(width).toBeDefined();
-            expect(width[0]).toBeDefined();
-
-            if (index === 1) {
-              expect(width[0]).toBe('336');
-            } else if (index === 2) {
-              expect(width[0]).toBe('255');
-            } else {
-              fail('Unexpected index.');
-            }
-          });
-        }, 0);
-        jest.runOnlyPendingTimers();
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(2);
+      jest.runAllTimers();
+    });
+
+    const elements = (document.activeElement as HTMLElement).querySelectorAll('div[role=columnheader]');
+    elements.forEach((element: Element, index: number) => {
+      if (index === 0) {
+        return;
+      }
+
+      const style = element.getAttribute('style')!;
+      expect(style).toBeDefined();
+
+      const width = style.match(/(?<=width: )\d+/g)!;
+      expect(width).toBeDefined();
+      expect(width[0]).toBeDefined();
+
+      if (index === 1) {
+        expect(width[0]).toBe('336');
+      } else if (index === 2) {
+        expect(width[0]).toBe('255');
+      } else {
+        fail('Unexpected index.');
+      }
+    });
   });
 
   it('renders List in compact mode correctly', () => {
@@ -437,35 +340,40 @@ describe('DetailsList', () => {
   it('focuses row by index', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
-    safeMount(
+    let component: IDetailsList | null = null;
+
+    render(
       <DetailsList
         items={mockData(5)}
         componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
-      () => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(2);
-        jest.runAllTimers();
-        expect(
-          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-        ).toEqual('2');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(2);
+      jest.runAllTimers();
+    });
+
+    expect(
+      (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+    ).toEqual('2');
+    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
   });
 
   it('focuses row by arrow key', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
+    let component: IDetailsList | null = null;
     const onSelectionChanged = jest.fn();
     const selection = new Selection({
       onSelectionChanged,
     });
-    safeMount(
+
+    const { container } = render(
       <DetailsList
         componentRef={ref => (component = ref)}
         items={mockData(5)}
@@ -473,27 +381,35 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
-      wrapper => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(0);
-        jest.runAllTimers();
-
-        onSelectionChanged.mockClear();
-        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
-        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(0);
+      jest.runAllTimers();
+    });
+
+    onSelectionChanged.mockClear();
+
+    act(() => {
+      const headerWrapper = container.querySelector('.ms-DetailsList-headerWrapper');
+      fireEvent.keyDown(headerWrapper!, { which: KeyCodes.down, keyCode: KeyCodes.down });
+    });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
   });
 
   it('does not focus by arrow key when isSelectedOnFocus is `false`', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
+    let component: IDetailsList | null = null;
     const onSelectionChanged = jest.fn();
     const selection = new Selection({
       onSelectionChanged,
     });
-    safeMount(
+
+    const { container } = render(
       <DetailsList
         componentRef={ref => (component = ref)}
         items={mockData(5)}
@@ -502,27 +418,35 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
         isSelectedOnFocus={false}
       />,
-      wrapper => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(0);
-        jest.runAllTimers();
-
-        onSelectionChanged.mockClear();
-        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
-        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(0);
+      jest.runAllTimers();
+    });
+
+    onSelectionChanged.mockClear();
+
+    act(() => {
+      const headerWrapper = container.querySelector('.ms-DetailsList-headerWrapper');
+      fireEvent.keyDown(headerWrapper!, { which: KeyCodes.down, keyCode: KeyCodes.down });
+    });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
   });
 
   it('clears selection when escape key is pressed and isSelectedOnFocus is `true`', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
+    let component: IDetailsList | null = null;
     const onSelectionChanged = jest.fn();
     const selection = new Selection({
       onSelectionChanged,
     });
-    safeMount(
+
+    const { container } = render(
       <DetailsList
         componentRef={ref => (component = ref)}
         items={mockData(5)}
@@ -530,32 +454,36 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
-      wrapper => {
-        expect(component).toBeTruthy();
-        act(() => {
-          selection.setAllSelected(true);
-        });
-        jest.runAllTimers();
-
-        onSelectionChanged.mockClear();
-        act(() => {
-          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
-        });
-        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
-        expect(selection.getSelectedCount()).toEqual(0);
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      selection.setAllSelected(true);
+      jest.runAllTimers();
+    });
+
+    onSelectionChanged.mockClear();
+
+    act(() => {
+      const selectionZone = container.querySelector('.ms-SelectionZone');
+      fireEvent.keyDown(selectionZone!, { which: KeyCodes.escape, keyCode: KeyCodes.escape });
+    });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+    expect(selection.getSelectedCount()).toEqual(0);
   });
 
   it('does not clear selection when escape key is pressed and isSelectedOnFocus is `false`', () => {
     jest.useFakeTimers();
 
-    let component: IDetailsList | null;
+    let component: IDetailsList | null = null;
     const onSelectionChanged = jest.fn();
     const selection = new Selection({
       onSelectionChanged,
     });
-    safeMount(
+
+    const { container } = render(
       <DetailsList
         componentRef={ref => (component = ref)}
         items={mockData(5)}
@@ -564,67 +492,72 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
         isSelectedOnFocus={false}
       />,
-      wrapper => {
-        expect(component).toBeTruthy();
-        act(() => {
-          selection.setAllSelected(true);
-        });
-        jest.runAllTimers();
-
-        onSelectionChanged.mockClear();
-        act(() => {
-          wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
-        });
-        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
-        expect(selection.getSelectedCount()).toEqual(5);
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      selection.setAllSelected(true);
+      jest.runAllTimers();
+    });
+
+    onSelectionChanged.mockClear();
+
+    act(() => {
+      const selectionZone = container.querySelector('.ms-SelectionZone');
+      fireEvent.keyDown(selectionZone!, { which: KeyCodes.escape, keyCode: KeyCodes.escape });
+    });
+
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+    expect(selection.getSelectedCount()).toEqual(5);
   });
 
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
-      () => {
-        expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
-      },
     );
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(2);
+    unmount();
   });
 
   it('does not invoke optional onRenderMissingItem prop if no missing items are rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = mockData(5);
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList items={items} skipViewportMeasures={true} onRenderMissingItem={onRenderMissingItem} />,
-      () => {
-        expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
-      },
     );
+
+    expect(onRenderMissingItem).toHaveBeenCalledTimes(0);
+    unmount();
   });
 
   it('executes onItemInvoked when double click is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
-    safeMount(<DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />, wrapper => {
-      wrapper.find('.ms-DetailsRow').first().simulate('dblclick');
+    const { container } = render(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+    );
 
-      expect(onItemInvoked).toHaveBeenCalledTimes(1);
-    });
+    fireEvent.doubleClick(container.querySelector('.ms-DetailsRow')!);
+    expect(onItemInvoked).toHaveBeenCalledTimes(1);
   });
 
   it('executes onItemInvoked when enter is pressed', () => {
     const items = mockData(5);
     const onItemInvoked = jest.fn();
 
-    safeMount(<DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />, wrapper => {
-      wrapper.find('.ms-DetailsRow').first().simulate('keyDown', { which: KeyCodes.enter });
+    const { container } = render(
+      <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
+    );
 
-      expect(onItemInvoked).toHaveBeenCalledTimes(1);
-    });
+    fireEvent.keyDown(container.querySelector('.ms-DetailsRow')!, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
+    expect(onItemInvoked).toHaveBeenCalledTimes(1);
   });
 
   it('respects changed dragDropEvents prop on re-renders.', () => {
@@ -737,8 +670,9 @@ describe('DetailsList', () => {
       return valueKey;
     };
 
-    let component: IDetailsList | null;
-    safeMount(
+    let component: IDetailsList | null = null;
+
+    render(
       <DetailsList
         items={mockData(5)}
         componentRef={ref => (component = ref)}
@@ -747,28 +681,38 @@ describe('DetailsList', () => {
         onRenderItemColumn={onRenderColumn}
         getCellValueKey={getCellValueKey}
       />,
-      () => {
-        expect(component).toBeTruthy();
-        component!.focusIndex(3);
-        jest.runOnlyPendingTimers();
-        expect(
-          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-        ).toEqual('3');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-
-        // Set element visibility manually as a test workaround
-        component!.focusIndex(4);
-        jest.runOnlyPendingTimers();
-        ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
-        ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
-        ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
-
-        component!.focusIndex(4, true);
-        jest.runOnlyPendingTimers();
-        expect((document.activeElement as HTMLElement).textContent).toEqual('4');
-        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
-      },
     );
+
+    expect(component).toBeTruthy();
+
+    act(() => {
+      component!.focusIndex(3);
+      jest.runAllTimers();
+    });
+
+    expect(
+      (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+    ).toEqual('3');
+    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
+
+    // Set element visibility manually as a test workaround
+    act(() => {
+      component!.focusIndex(4);
+      jest.runAllTimers();
+    });
+
+    // Manually set elements as visible for testing
+    ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
+    ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
+    ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
+
+    act(() => {
+      component!.focusIndex(4, true);
+      jest.runAllTimers();
+    });
+
+    expect((document.activeElement as HTMLElement).textContent).toEqual('4');
+    expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
   });
 
   it('reset focusedItemIndex when setKey updates', () => {
@@ -826,27 +770,32 @@ describe('DetailsList', () => {
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    safeMount(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />, () => {
-      jest.runOnlyPendingTimers();
-      expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
-      expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+    const { unmount } = render(<DetailsList items={mockData(2)} columns={columns} onShouldVirtualize={() => false} />);
+
+    act(() => {
+      jest.runAllTimers();
     });
+
+    expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
+    expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
+
+    unmount();
   });
 
   it('invokes optional onRenderDetailsHeader prop to customize DetailsHeader rendering when provided', () => {
     const onRenderDetailsHeaderMock = jest.fn();
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList
         items={mockData(2)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeaderMock}
       />,
-      () => {
-        expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
-      },
     );
+
+    expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
+    unmount();
   });
 
   it('calculates DetailsHeader and DetailsFooter in rowcount', () => {
@@ -875,17 +824,17 @@ describe('DetailsList', () => {
       return <DetailsHeader {...props} onRenderColumnHeaderTooltip={onRenderColumnHeaderTooltipMock} />;
     };
 
-    safeMount(
+    const { unmount } = render(
       <DetailsList
         items={mockData(NUM_COLUMNS)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeader}
       />,
-      () => {
-        expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(4);
-      },
     );
+
+    expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(4);
+    unmount();
   });
 
   it('invokes optional onRenderCheckbox callback to customize checkbox rendering when provided', () => {
