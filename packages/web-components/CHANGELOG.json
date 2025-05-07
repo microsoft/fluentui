@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 07 May 2025 04:08:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.97",
+      "version": "3.0.0-beta.97",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "21605e79b52e86cd971e869bf14492c2a48da661",
+            "comment": "[fix]: Hitting escape once should close alert dialog"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cff30a731bab00b179f604205d62ecea09cbfdc",
+            "comment": "fix: text-input setValidity fails if control is not available"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfd2a6eee326a795cf686178e994cebbd7c4a6c8",
+            "comment": "[fix] drawer title should use h2 tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Apr 2025 04:06:34 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.96",
       "version": "3.0.0-beta.96",

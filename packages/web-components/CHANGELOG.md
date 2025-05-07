@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 30 Apr 2025 04:06:34 GMT and should not be manually modified.
+This log was last generated on Wed, 07 May 2025 04:08:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.97](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.97)
+
+Wed, 07 May 2025 04:08:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.96..@fluentui/web-components_v3.0.0-beta.97)
+
+### Changes
+
+- [fix]: Hitting escape once should close alert dialog ([PR #34382](https://github.com/microsoft/fluentui/pull/34382) by jes@microsoft.com)
+- fix: text-input setValidity fails if control is not available ([PR #34372](https://github.com/microsoft/fluentui/pull/34372) by 863023+radium-v@users.noreply.github.com)
+- [fix] drawer title should use h2 tag ([PR #34380](https://github.com/microsoft/fluentui/pull/34380) by jes@microsoft.com)
 
 ## [3.0.0-beta.96](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.96)
 
