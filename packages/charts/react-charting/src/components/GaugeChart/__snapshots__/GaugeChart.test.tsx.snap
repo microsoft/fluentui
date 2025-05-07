@@ -657,8 +657,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: 400;
                               line-height: 16px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                          
@@ -675,8 +675,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: bold;
                               line-height: 22px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                         0 - 33
@@ -722,8 +722,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: 400;
                               line-height: 16px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                          
@@ -740,8 +740,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: bold;
                               line-height: 22px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                         33 - 67
@@ -787,8 +787,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: 400;
                               line-height: 16px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                          
@@ -805,8 +805,8 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                               font-weight: bold;
                               line-height: 22px;
                             }
-                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                              color: rgb(255, 255, 255);
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              color: CanvasText;
                             }
                       >
                         67 - 100
