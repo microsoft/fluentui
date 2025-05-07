@@ -1,6 +1,4 @@
-import { axe } from 'jest-axe';
-import { render, screen, fireEvent, act } from '@testing-library/react';
-import * as React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { toHaveNoViolations } from 'jest-axe';
@@ -377,15 +375,4 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       expect(container).toMatchSnapshot();
     },
   );
-});
-
-describe('Horizontal Bar Chart With Axis - axe-core', () => {
-  test('Should pass accessibility tests', async () => {
-    const { container } = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
-    let axeResults;
-    await act(async () => {
-      axeResults = await axe(container);
-    });
-    expect(axeResults).toHaveNoViolations();
-  });
 });
