@@ -534,7 +534,7 @@ export class GroupedVerticalBarChartBase
             <text
               key={`${singleSet.indexNum}-${index}`}
               x={xPoint + this._barWidth / 2}
-              y={yPoint - 6}
+              y={isHeightNegative ? yBarScale(yReferencePoint) + adjustedBarHeight + 12 : yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-hidden={true}
