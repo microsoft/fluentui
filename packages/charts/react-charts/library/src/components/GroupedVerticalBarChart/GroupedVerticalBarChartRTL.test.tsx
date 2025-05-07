@@ -1,10 +1,8 @@
-import * as React from 'react';
 import { screen, fireEvent } from '@testing-library/react';
-import { render } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { GroupedVerticalBarChartData, VSChartDataPoint } from '../../index';
+import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
