@@ -108,8 +108,8 @@ export const SliderWithValue: Story = {
         slot="input"
         id="slider-in-field"
         @change="${(x, c) => {
-                x.label.textContent = `Slider Value ${(c.event.target as FluentSlider).value}`;
-              }}"
+          x.label.textContent = `Slider value ${(c.event.target as FluentSlider).value}`;
+        }}"
       ></fluent-slider>
     </fluent-field>
   `),
