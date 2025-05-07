@@ -253,7 +253,6 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
     HorizontalBarChartWithAxis,
     { data: chartPointsHBCWA, legendProps: { canSelectMultipleLegends: true } },
     container => {
-      // const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       const legend1 = screen.getByText('Grapes')?.closest('button');
       const legend2 = screen.getByText('Apples')?.closest('button');
 
