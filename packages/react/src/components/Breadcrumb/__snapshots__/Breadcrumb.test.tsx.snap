@@ -301,7 +301,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     <div
                       hidden=""
                       id="tooltip4"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText3
                     </div>
@@ -398,7 +398,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                     <div
                       hidden=""
                       id="tooltip5"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText4
                     </div>
@@ -525,7 +525,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     <div
                       hidden=""
                       id="tooltip1"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText1
                     </div>
@@ -622,7 +622,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     <div
                       hidden=""
                       id="tooltip2"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText2
                     </div>
@@ -719,7 +719,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     <div
                       hidden=""
                       id="tooltip3"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText3
                     </div>
@@ -816,7 +816,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                     <div
                       hidden=""
                       id="tooltip4"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText4
                     </div>
@@ -943,7 +943,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     <div
                       hidden=""
                       id="tooltip1"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText1
                     </div>
@@ -1012,7 +1012,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     <div
                       hidden=""
                       id="tooltip2"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText2
                     </div>
@@ -1081,7 +1081,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     <div
                       hidden=""
                       id="tooltip3"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText3
                     </div>
@@ -1150,7 +1150,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                     <div
                       hidden=""
                       id="tooltip4"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText4
                     </div>
@@ -1277,7 +1277,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                     <div
                       hidden=""
                       id="tooltip1"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText1
                     </div>
@@ -2049,7 +2049,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     <div
                       hidden=""
                       id="tooltip4"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText3
                     </div>
@@ -2146,7 +2146,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                     <div
                       hidden=""
                       id="tooltip5"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText4
                     </div>
@@ -2273,7 +2273,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     <div
                       hidden=""
                       id="tooltip1"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText1
                     </div>
@@ -2575,7 +2575,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                     <div
                       hidden=""
                       id="tooltip5"
-                      style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                      style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                     >
                       TestText4
                     </div>

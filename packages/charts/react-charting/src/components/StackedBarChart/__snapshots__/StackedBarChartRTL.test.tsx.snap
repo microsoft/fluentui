@@ -61,7 +61,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <div
             hidden=""
             id="tooltip11"
-            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+            style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
           </div>
@@ -733,7 +733,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <div
             hidden=""
             id="tooltip11"
-            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+            style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
           </div>
@@ -1418,7 +1418,7 @@ exports[`Stacked Bar Chart - Theme Should reflect theme change 1`] = `
             <div
               hidden=""
               id="tooltip14"
-              style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+              style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
             >
               Stacked Bar chart example
             </div>
@@ -2091,7 +2091,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
           <div
             hidden=""
             id="tooltip12"
-            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+            style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
           </div>
@@ -2676,7 +2676,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
           <div
             hidden=""
             id="tooltip11"
-            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+            style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
           </div>

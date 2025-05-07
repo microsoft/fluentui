@@ -381,6 +381,7 @@ Array [
                       "overflow": "hidden",
                       "padding": 0,
                       "position": "absolute",
+                      "top": 0,
                       "whiteSpace": "nowrap",
                       "width": 1,
                     }
@@ -931,6 +932,7 @@ Array [
                       "overflow": "hidden",
                       "padding": 0,
                       "position": "absolute",
+                      "top": 0,
                       "whiteSpace": "nowrap",
                       "width": 1,
                     }
@@ -1486,6 +1488,7 @@ Array [
                       "overflow": "hidden",
                       "padding": 0,
                       "position": "absolute",
+                      "top": 0,
                       "whiteSpace": "nowrap",
                       "width": 1,
                     }
@@ -2036,6 +2039,7 @@ Array [
                       "overflow": "hidden",
                       "padding": 0,
                       "position": "absolute",
+                      "top": 0,
                       "whiteSpace": "nowrap",
                       "width": 1,
                     }

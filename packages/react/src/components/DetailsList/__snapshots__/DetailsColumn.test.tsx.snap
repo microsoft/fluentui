@@ -564,6 +564,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   padding-right: 0px;
                   padding-top: 0px;
                   position: absolute;
+                  top: 0px;
                   white-space: nowrap;
                   width: 1px;
                 }

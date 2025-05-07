@@ -87,7 +87,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip21"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Monitored
                 </div>
@@ -315,7 +315,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip24"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Monitored Second Chart
                 </div>
@@ -543,7 +543,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                 <div
                   hidden=""
                   id="tooltip27"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                  style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Unmonitored
                 </div>
@@ -1305,7 +1305,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               <div
                 hidden=""
                 id="tooltip18"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
               </div>
@@ -1533,7 +1533,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               <div
                 hidden=""
                 id="tooltip21"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
               </div>
@@ -1761,7 +1761,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               <div
                 hidden=""
                 id="tooltip24"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
               </div>
@@ -2522,7 +2522,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <div
                 hidden=""
                 id="tooltip18"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
               </div>
@@ -2750,7 +2750,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <div
                 hidden=""
                 id="tooltip21"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
               </div>
@@ -2978,7 +2978,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <div
                 hidden=""
                 id="tooltip24"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
               </div>
@@ -3739,7 +3739,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <div
                 hidden=""
                 id="tooltip18"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
               </div>
@@ -3967,7 +3967,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <div
                 hidden=""
                 id="tooltip21"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
               </div>
@@ -4195,7 +4195,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <div
                 hidden=""
                 id="tooltip24"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+                style="position: absolute; top: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
               </div>
