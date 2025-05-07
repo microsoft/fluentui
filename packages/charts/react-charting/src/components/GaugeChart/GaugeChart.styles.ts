@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react';
+import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react';
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
@@ -129,8 +129,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       ...theme.fonts.small,
       lineHeight: '16px',
       selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
+        [HighContrastSelector]: {
+          color: 'CanvasText',
         },
       },
       color: theme.semanticColors.bodySubtext,
@@ -141,8 +141,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
         fontWeight: 'bold',
         lineHeight: '22px',
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
       },
@@ -151,8 +151,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       theme.fonts.small,
       {
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
         color: theme.semanticColors.bodyText,
