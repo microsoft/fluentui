@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { resetIds } from '@fluentui/react';
 import { AreaChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
