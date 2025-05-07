@@ -1887,6 +1887,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="auto"
               textAnchor="start"
               x={35.43557344375781}
@@ -1929,6 +1932,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="hanging"
               textAnchor="start"
               x={42.16983494620299}
@@ -1970,6 +1976,9 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               dominantBaseline="auto"
               textAnchor="end"
@@ -2454,6 +2463,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="auto"
               textAnchor="start"
               x={35.43557344375781}
@@ -2496,6 +2508,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="hanging"
               textAnchor="start"
               x={42.16983494620299}
@@ -2537,6 +2552,9 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               dominantBaseline="auto"
               textAnchor="end"

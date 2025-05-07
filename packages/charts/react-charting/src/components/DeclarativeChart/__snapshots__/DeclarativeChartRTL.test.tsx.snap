@@ -4347,6 +4347,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="end"
               x="74"
@@ -4362,6 +4365,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               role="img"
               text-anchor="start"
@@ -4453,6 +4459,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                       font-size: 20px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 data-is-focusable="true"
                 id="tooltip-host4"
                 tabindex="-1"
@@ -4470,6 +4479,9 @@ exports[`DeclarativeChart Should render gaugechart in DeclarativeChart 1`] = `
                     fill: #107c10;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               data-is-focusable="true"
               dominant-baseline="hanging"
@@ -19707,6 +19719,9 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         font-size: 12px;
                         font-weight: 600;
                       }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        fill: CanvasText;
+                      }
                   dominant-baseline="hanging"
                   text-anchor="start"
                   x="-1.9949542646383942"
@@ -19744,6 +19759,9 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         fill: #323130;
                         font-size: 12px;
                         font-weight: 600;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        fill: CanvasText;
                       }
                   dominant-baseline="hanging"
                   text-anchor="end"
@@ -19783,6 +19801,9 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         font-size: 12px;
                         font-weight: 600;
                       }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        fill: CanvasText;
+                      }
                   dominant-baseline="auto"
                   text-anchor="end"
                   x="1.3986943586327552"
@@ -19820,6 +19841,9 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                         fill: #323130;
                         font-size: 12px;
                         font-weight: 600;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        fill: CanvasText;
                       }
                   dominant-baseline="auto"
                   text-anchor="end"

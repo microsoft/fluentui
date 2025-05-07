@@ -1373,6 +1373,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="central"
               transform="translate(4)"
               x="10.286666666666665%"
@@ -1522,6 +1525,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               dominantBaseline="central"
               transform="translate(4)"

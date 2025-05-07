@@ -52,6 +52,9 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                   font-size: 12px;
                   font-weight: 600;
                 }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
             role="img"
             text-anchor="end"
             x="54"
@@ -67,6 +70,9 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                   fill: #323130;
                   font-size: 12px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             role="img"
             text-anchor="start"
@@ -157,6 +163,9 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                     fill: #323130;
                     font-size: 20px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               data-is-focusable="true"
               id="tooltip-host4"
@@ -966,6 +975,9 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                   font-size: 20px;
                   font-weight: 600;
                 }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
             data-is-focusable={false}
             id="tooltip-host4"
             onBlurCapture={[Function]}
@@ -1424,6 +1436,9 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={52}
@@ -1439,6 +1454,9 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -1545,6 +1563,9 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
                   font-size: 20px;
                   font-weight: 600;
                 }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
             data-is-focusable={false}
             id="tooltip-host4"
             onBlurCapture={[Function]}
@@ -1618,6 +1639,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={54}
@@ -1633,6 +1657,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -1738,6 +1765,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host4"
@@ -2210,6 +2240,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                   font-size: 12px;
                   font-weight: 600;
                 }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
             role="img"
             textAnchor="end"
             x={54}
@@ -2225,6 +2258,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                   fill: #f3f2f1;
                   font-size: 12px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             role="img"
             textAnchor="start"
@@ -2330,6 +2366,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                     fill: #f3f2f1;
                     font-size: 20px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               data-is-focusable={false}
               id="tooltip-host7"
@@ -2790,6 +2829,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={-54}
@@ -2805,6 +2847,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -2910,6 +2955,9 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host4"
@@ -3369,6 +3417,9 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={54}
@@ -3384,6 +3435,9 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -3470,6 +3524,9 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host3"
@@ -3825,6 +3882,9 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={54}
@@ -3840,6 +3900,9 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -3926,6 +3989,9 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host3"
@@ -4279,6 +4345,9 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                 fill: #323130;
                 font-size: 12px;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           textAnchor="middle"
           x={0}
           y={72}
@@ -4293,6 +4362,9 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="end"
@@ -4309,6 +4381,9 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -4414,6 +4489,9 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host4"
@@ -4873,6 +4951,9 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={54}
@@ -4888,6 +4969,9 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -4993,6 +5077,9 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                   fill: #323130;
                   font-size: 20px;
                   font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
                 }
             data-is-focusable={false}
             id="tooltip-host4"
@@ -5452,6 +5539,9 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                 font-size: 12px;
                 font-weight: 600;
               }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
+              }
           role="img"
           textAnchor="end"
           x={74}
@@ -5467,6 +5557,9 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           role="img"
           textAnchor="start"
@@ -5573,6 +5666,9 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                   font-size: 20px;
                   font-weight: 600;
                 }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: CanvasText;
+                }
             data-is-focusable={false}
             id="tooltip-host4"
             onBlurCapture={[Function]}
@@ -5594,6 +5690,9 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                 fill: #323130;
                 font-size: 12px;
                 font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: CanvasText;
               }
           data-is-focusable={false}
           dominantBaseline="hanging"
