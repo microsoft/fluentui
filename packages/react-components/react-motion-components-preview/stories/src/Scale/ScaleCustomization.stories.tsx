@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react-components';
 
 import description from './ScaleCustomization.stories.md';
-import { Scale } from '../../../library/src/index';
+import { Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -53,22 +53,6 @@ const useClasses = makeStyles({
     height: '100px',
   },
 });
-
-// const curveEmphasized = `linear(
-//     0, 0.002, 0.01 3.6%, 0.034, 0.074 9.1%, 0.128 11.4%, 0.194 13.4%, 0.271 15%,
-//     0.344 16.1%, 0.544, 0.66 20.6%, 0.717 22.4%, 0.765 24.6%, 0.808 27.3%,
-//     0.845 30.4%, 0.883 35.1%, 0.916 40.6%, 0.942 47.2%, 0.963 55%, 0.979 64%,
-//     0.991 74.4%, 0.998 86.4%, 1
-//   )`;
-
-// const curveSpringOut = `linear(
-//     0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017,
-//     1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%,
-//     1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%,
-//     0.997 69.8%, 1.003 76.9%, 1.004 83.8%, 1
-//   )`;
-
-// const curveEaseOutBack = `cubic-bezier(0.34, 1.56, 0.64, 1)`;
 
 const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   exitDuration: motionTokens.durationSlow,
