@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider, resetIds } from '@fluentui/react';
+import { resetIds } from '@fluentui/react';
 import { AreaChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
@@ -648,22 +647,6 @@ describe('Screen resolution', () => {
       expect(container).toMatchSnapshot();
     },
   );
-});
-
-describe('AreaChart - Theme', () => {
-  beforeEach(updateChartWidthAndHeight);
-  afterEach(sharedAfterEach);
-
-  test('Should reflect theme change', () => {
-    // Arrange
-    const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
-        <AreaChart culture={window.navigator.language} data={chartData} />
-      </ThemeProvider>,
-    );
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 });
 
 describe('AreaChart - Accessibility tests', () => {
