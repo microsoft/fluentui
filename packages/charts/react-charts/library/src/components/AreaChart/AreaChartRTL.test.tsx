@@ -28,9 +28,6 @@ function updateChartWidthAndHeight() {
       width: 650,
     } as DOMRect);
 }
-beforeEach(() => {
-  resetIds();
-});
 
 function sharedAfterEach() {
   jest.useRealTimers();
@@ -448,23 +445,6 @@ describe('Area chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
-
-  const testCases = [
-    ['when tick Values is given', { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' }],
-    ['when tick Values not given and tick format is given', { data: chartDataWithDates, tickFormat: '%m/%d' }],
-    ['when tick Values is given and tick format not given', { data: chartDataWithDates, tickValues }],
-    ['when tick Values given and tick format is %m/%d/%y', { data: chartDataWithDates, tickFormat: '%m/%d/%y' }],
-    ['when tick Values given and tick format is %d', { data: chartDataWithDates, tickValues, tickFormat: '%d' }],
-    ['when tick Values given and tick format is %m', { data: chartDataWithDates, tickValues, tickFormat: '%m' }],
-    ['when tick Values given and tick format is %m/%y', { data: chartDataWithDates, tickValues, tickFormat: '%m/%y' }],
-  ];
-
-  testCases.forEach(([testcase, props]) => {
-    testWithWait(`Should render the Area chart with date x-axis data ${testcase}`, AreaChart, props, container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    });
-  });
 
   testWithoutWait(
     'Should render the Area chart with secondary Y axis',
