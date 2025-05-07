@@ -2010,30 +2010,30 @@
   resolved "https://registry.yarnpkg.com/@github/catalyst/-/catalyst-1.7.0.tgz#12dd1097a66260f0dde1d1d1f5ebfe7d1f576a80"
   integrity sha512-qOAxrDdRZz9+v4y2WoAfh11rpRY/x4FRofPNmJyZFzAjubtzE3sCa/tAycWWufmQGoYiwwzL/qJBBgyg7avxPw==
 
-"@griffel/babel-preset@1.5.8", "@griffel/babel-preset@^1.5.8":
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.5.8.tgz#2ee5e404b34350fcb40a2506d73b0467f1a66be0"
-  integrity sha512-WXJvNvxaEIajdd1BgIM7TfvSXDuadpnkGYyPw1vpk+TKzOA0bWiif7YxRLOgVIpi7HxhpEwO0fdyviu+k4MXQQ==
+"@griffel/babel-preset@1.6.7", "@griffel/babel-preset@^1.5.8":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.6.7.tgz#36ecd359b6aaa0298b744c1265112890b5b826ce"
+  integrity sha512-+PSv10casZl0jOuwik0uWmY/C6lYsFlZ4W81L57+BcG0A33MgdAVACe7N/xuiRnhyL12sW3TH4ZzyfH/V/lYag==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/generator" "^7.23.0"
     "@babel/helper-plugin-utils" "^7.22.5"
     "@babel/template" "^7.22.15"
     "@babel/traverse" "^7.23.2"
-    "@griffel/core" "^1.16.0"
+    "@griffel/core" "^1.19.2"
     "@linaria/babel-preset" "^3.0.0-beta.24"
     "@linaria/shaker" "^3.0.0-beta.22"
     ajv "^8.4.0"
     stylis "^4.2.0"
     tslib "^2.1.0"
 
-"@griffel/core@^1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.16.0.tgz#b022756dd35b88f612cd67e366005acbde8dd555"
-  integrity sha512-7xy9sWxmyFok0chZXJ91z4VH0HdwhAPUln5Ctpg6S/WRKoPhpIg9EieiL5CRFhIp1krPIncJSes4WqaB9OKiow==
+"@griffel/core@^1.16.0", "@griffel/core@^1.19.2":
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.19.2.tgz#994070585bb49795d882355fc0787eb9878db71c"
+  integrity sha512-WkB/QQkjy9dE4vrNYGhQvRRUHFkYVOuaznVOMNTDT4pS9aTJ9XPrMTXXlkpcwaf0D3vNKoerj4zAwnU2lBzbOg==
   dependencies:
     "@emotion/hash" "^0.9.0"
-    "@griffel/style-types" "^1.1.0"
+    "@griffel/style-types" "^1.3.0"
     csstype "^3.1.3"
     rtl-css-js "^1.16.1"
     stylis "^4.2.0"
@@ -2072,10 +2072,10 @@
     "@griffel/core" "^1.16.0"
     tslib "^2.1.0"
 
-"@griffel/style-types@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.1.0.tgz#b7e8d8f03d32162c81ab539fe59886ea0aa1dea2"
-  integrity sha512-cINLeC14/YUHlrtL96vzCrsFr19WUO0i9DuljBtX5S7B8pMyiNf6Pw0htjroLojvfD2okhdsr9CHwpUxz1u4kw==
+"@griffel/style-types@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.3.0.tgz#42b4f1902a0221a9a8334fda12a2fe88f13d65ee"
+  integrity sha512-bHwD3sUE84Xwv4dH011gOKe1jul77M1S6ZFN9Tnq8pvZ48UMdY//vtES6fv7GRS5wXYT4iqxQPBluAiYAfkpmw==
   dependencies:
     csstype "^3.1.3"
 
