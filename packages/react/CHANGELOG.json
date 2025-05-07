@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 07 May 2025 07:20:51 GMT",
+      "tag": "@fluentui/react_v8.122.16",
+      "version": "8.122.16",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a275842e0c839bf8b628c2cdd863f208022c84c9",
+            "comment": "test: replace react-dom api with RTL to make tests compatible with react 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Apr 2025 07:20:06 GMT",
       "tag": "@fluentui/react_v8.122.16",
       "version": "8.122.16",

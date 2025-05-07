@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 May 2025 07:20:26 GMT and should not be manually modified.
+This log was last generated on Wed, 07 May 2025 07:20:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.81)
+
+Wed, 07 May 2025 07:20:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.80..@fluentui/react-charting_v5.23.81)
+
+### Patches
+
+- fix: use system colors with HighContrastSelector instead of color scheme selectors ([PR #34381](https://github.com/microsoft/fluentui/pull/34381) by kumarkshitij@microsoft.com)
+- fix(react-charting): Fixing area chart bugs for undefined property access ([PR #34299](https://github.com/microsoft/fluentui/pull/34299) by 120183316+srmukher@users.noreply.github.com)
+- fix: handle empty Plotly trace names and respect showlegend property to hide legends ([PR #34377](https://github.com/microsoft/fluentui/pull/34377) by kumarkshitij@microsoft.com)
 
 ## [5.23.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.80)
 
