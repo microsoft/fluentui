@@ -47,7 +47,7 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
     }),
     '::after': {
-      opacity: 0.65,
+      opacity: 0.6,
     },
     ':hover': {
       '::after': {
@@ -104,13 +104,18 @@ const useStyles = makeStyles({
   },
   unselectedBrand: {
     '::after': {
-      opacity: 0.66,
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      // backgroundColor: `color-mix(in srgb, ${tokens.colorCompoundBrandBackground} 75%, ${tokens.colorNeutralBackground1})`,
-      // '@supports not (color: color-mix(in lch, white, black))': {
-      //   opacity: 0.6,
-      //   backgroundColor: tokens.colorBrandBackground,
-      // },
+      opacity: 0.6,
+      backgroundColor: tokens.colorNeutralForeground1,
+    },
+    ':hover': {
+      '::after': {
+        opacity: 0.75,
+      },
+    },
+    ':active': {
+      '::after': {
+        opacity: 1,
+      },
     },
   },
 });
