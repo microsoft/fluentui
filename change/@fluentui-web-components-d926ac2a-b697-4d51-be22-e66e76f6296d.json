@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix the selected primary focus state",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
