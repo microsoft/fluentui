@@ -113,6 +113,7 @@ export const Resizable = () => {
   const [isResizing, setIsResizing] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState(320);
   const [showMessage, setShowMessage] = React.useState(false);
+  const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
   const inputId = useId('input');
 
   const startResizing = React.useCallback(() => setIsResizing(true), []);
@@ -122,7 +123,9 @@ export const Resizable = () => {
     ({ clientX }: { clientX: number }) => {
       animationFrame.current = requestAnimationFrame(() => {
         if (isResizing && sidebarRef.current) {
-          setSidebarWidth(clientX - sidebarRef.current.getBoundingClientRect().left);
+          const newSidebarWidth = clientX - sidebarRef.current.getBoundingClientRect().left;
+          setSidebarWidth(newSidebarWidth);
+          setResizeInput(Math.round(newSidebarWidth).toString());
         }
       });
     },
@@ -145,8 +148,6 @@ export const Resizable = () => {
       inputRef.current.focus();
     }
   }, [isDialogOpen]);
-
-  const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
 
   const onResizeInputChange: InputProps['onChange'] = (ev, data) => {
     if (data.value) {
@@ -177,8 +178,10 @@ export const Resizable = () => {
   function resizeWithArrows(e: React.KeyboardEvent) {
     if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
       setSidebarWidth(prev => prev + 10);
+      setResizeInput((prev: string) => (parseInt(prev) + 10).toString());
     } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
       setSidebarWidth(prev => prev - 10);
+      setResizeInput((prev: string) => (parseInt(prev) - 10).toString());
     }
   }
 
