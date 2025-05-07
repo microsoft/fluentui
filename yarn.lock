@@ -11147,10 +11147,10 @@ eslint-plugin-playwright@2.1.0:
   dependencies:
     globals "^13.23.0"
 
-eslint-plugin-react-compiler@0.0.0-experimental-a97cca1-20240529:
-  version "0.0.0-experimental-a97cca1-20240529"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-compiler/-/eslint-plugin-react-compiler-0.0.0-experimental-a97cca1-20240529.tgz#3bd69917e04f9fe9e5db2ac5885b5fb7623a846a"
-  integrity sha512-njzsfZUekKIFtohmf8UFynUEczq/+riFeXQgtuQjoHGEihArcwdSUmxZZ5yPSqbHjAju3mE807LybaZfiyP7xA==
+eslint-plugin-react-compiler@0.0.0-experimental-7670337-20240918:
+  version "0.0.0-experimental-7670337-20240918"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-compiler/-/eslint-plugin-react-compiler-0.0.0-experimental-7670337-20240918.tgz#c67181d5a63121219be31462ce63b6bb20412be5"
+  integrity sha512-FZXoYqGK3BiJw2BFQIUL0C9GgEF2QS+y6oiVPm4GooX6SXrg/UVtCi1nMAaBhqTpsF/KF2RjobgePY8KgbqXow==
   dependencies:
     "@babel/core" "^7.24.4"
     "@babel/parser" "^7.24.4"
