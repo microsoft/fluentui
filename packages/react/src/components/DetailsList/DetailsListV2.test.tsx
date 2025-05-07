@@ -84,26 +84,36 @@ function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) =
             elements.forEach(element => {
               switch (eventName) {
                 case 'keyDown':
-                  fireEvent.keyDown(element, {
-                    ...eventArgs,
-                    key: eventArgs.which,
-                    which: eventArgs.which,
-                    keyCode: eventArgs.which,
+                  act(() => {
+                    fireEvent.keyDown(element, {
+                      ...eventArgs,
+                      key: eventArgs.which,
+                      which: eventArgs.which,
+                      keyCode: eventArgs.which,
+                    });
                   });
                   break;
                 case 'click':
-                  fireEvent.click(element, eventArgs);
+                  act(() => {
+                    fireEvent.click(element, eventArgs);
+                  });
                   break;
                 case 'dblclick':
-                  fireEvent.doubleClick(element, eventArgs);
+                  act(() => {
+                    fireEvent.doubleClick(element, eventArgs);
+                  });
                   break;
                 default:
                   // For other events, try to use the corresponding fireEvent method
                   const fireEventMethod = (fireEvent as any)[eventName];
                   if (fireEventMethod) {
-                    fireEventMethod(element, eventArgs);
+                    act(() => {
+                      fireEventMethod(element, eventArgs);
+                    });
                   } else {
-                    fireEvent(element, new Event(eventName));
+                    act(() => {
+                      fireEvent(element, new Event(eventName));
+                    });
                   }
               }
             });
@@ -119,26 +129,36 @@ function safeMount(element: React.ReactElement<any>, callback: (wrapper?: any) =
 
                 switch (eventName) {
                   case 'keyDown':
-                    fireEvent.keyDown(firstEl, {
-                      ...eventArgs,
-                      key: eventArgs.which,
-                      which: eventArgs.which,
-                      keyCode: eventArgs.which,
+                    act(() => {
+                      fireEvent.keyDown(firstEl, {
+                        ...eventArgs,
+                        key: eventArgs.which,
+                        which: eventArgs.which,
+                        keyCode: eventArgs.which,
+                      });
                     });
                     break;
                   case 'click':
-                    fireEvent.click(firstEl, eventArgs);
+                    act(() => {
+                      fireEvent.click(firstEl, eventArgs);
+                    });
                     break;
                   case 'dblclick':
-                    fireEvent.doubleClick(firstEl, eventArgs);
+                    act(() => {
+                      fireEvent.doubleClick(firstEl, eventArgs);
+                    });
                     break;
                   default:
                     // For other events, try to use the corresponding fireEvent method
                     const fireEventMethod = (fireEvent as any)[eventName];
                     if (fireEventMethod) {
-                      fireEventMethod(firstEl, eventArgs);
+                      act(() => {
+                        fireEventMethod(firstEl, eventArgs);
+                      });
                     } else {
-                      fireEvent(firstEl, new Event(eventName));
+                      act(() => {
+                        fireEvent(firstEl, new Event(eventName));
+                      });
                     }
                 }
               },
@@ -712,8 +732,10 @@ describe('DetailsListV2', () => {
 
     let detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
 
-    _RaiseEvent(detailsRowSource, 'mousedown', 270);
-    _RaiseEvent(detailsRowSource, 'dragstart', 270);
+    act(() => {
+      _RaiseEvent(detailsRowSource, 'mousedown', 270);
+      _RaiseEvent(detailsRowSource, 'dragstart', 270);
+    });
 
     // original eventhandler should be fired
     expect(_dragDropEvents.onDragStart).toHaveBeenCalledTimes(1);
@@ -831,7 +853,9 @@ describe('DetailsListV2', () => {
 
     expect(component!).toBeTruthy();
     component!.focusIndex(3);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component!.state.focusedItemIndex).toEqual(3);
 
     // update props to new setKey

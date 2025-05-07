@@ -118,20 +118,24 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-        pickerCalloutProps={{ doNotLayer: true, id: 'test' }}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+          pickerCalloutProps={{ doNotLayer: true, id: 'test' }}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'b';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'b';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     const calloutParent = document.getElementById('test')?.closest('.ms-BasePicker');
@@ -142,26 +146,33 @@ describe('BasePicker', () => {
     jest.useFakeTimers();
 
     const picker = React.createRef<IBasePicker<ISimple>>();
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'bl';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'bl';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(2);
-    fireEvent.click(suggestionOptions[0]);
+
+    act(() => {
+      fireEvent.click(suggestionOptions[0]);
+    });
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
@@ -183,28 +194,35 @@ describe('BasePicker', () => {
       };
     };
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-        createGenericItem={createGenericItem}
-        onValidateInput={onValidateInput}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+          createGenericItem={createGenericItem}
+          onValidateInput={onValidateInput}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'asdff';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'asdff';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     expect(suggestionOptions.length).toEqual(0);
-    fireEvent.keyDown(input, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
+
+    act(() => {
+      fireEvent.keyDown(input, { which: KeyCodes.enter, keyCode: KeyCodes.enter });
+    });
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
@@ -228,32 +246,39 @@ describe('BasePicker', () => {
 
     const showForceSuggestionsText = () => true;
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-        createGenericItem={createGenericItem}
-        onValidateInput={onValidateInput}
-        pickerSuggestionsProps={{
-          showForceResolve: showForceSuggestionsText,
-          forceResolveText: 'Force',
-        }}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+          createGenericItem={createGenericItem}
+          onValidateInput={onValidateInput}
+          pickerSuggestionsProps={{
+            showForceResolve: showForceSuggestionsText,
+            forceResolveText: 'Force',
+          }}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'asdff';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'asdff';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
     const forceButton = document.querySelectorAll('[data-automationid=sug-forceResolve]');
     expect(forceButton.length).toEqual(1);
-    fireEvent.click(forceButton[0]);
+
+    act(() => {
+      fireEvent.click(forceButton[0]);
+    });
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
@@ -265,24 +290,31 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        itemLimit={1}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          itemLimit={1}
+          componentRef={picker}
+        />,
+      );
+    });
 
     let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'bl';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'bl';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
-    fireEvent.click(suggestionOptions[0]);
+
+    act(() => {
+      fireEvent.click(suggestionOptions[0]);
+    });
 
     const currentPicker = picker.current!.items;
     expect(currentPicker).toHaveLength(1);
@@ -292,14 +324,16 @@ describe('BasePicker', () => {
   });
 
   it('will still render with itemLimit set to 0', () => {
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        itemLimit={0}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          itemLimit={0}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     expect(input).toBeNull();
@@ -308,19 +342,21 @@ describe('BasePicker', () => {
   it('can be set with selectedItems and a lower itemLimit', () => {
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        selectedItems={[
-          { key: '1', name: 'blue' },
-          { key: '2', name: 'black' },
-        ]}
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        itemLimit={0}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          selectedItems={[
+            { key: '1', name: 'blue' },
+            { key: '2', name: 'black' },
+          ]}
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          itemLimit={0}
+          componentRef={picker}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     expect(input).toBeNull();
@@ -334,19 +370,24 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        // eslint-disable-next-line @typescript-eslint/no-deprecated
-        onEmptyInputFocus={resolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
+          onEmptyInputFocus={resolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    fireEvent.focus(input);
+
+    act(() => {
+      fireEvent.focus(input);
+    });
 
     expect(getSuggestions(document)).toBeTruthy();
 
@@ -362,24 +403,31 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'asdff';
-    fireEvent.input(input);
+
+    act(() => {
+      input.focus();
+      input.value = 'asdff';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
-    fireEvent.keyDown(input, { which: 27 });
+    act(() => {
+      fireEvent.keyDown(input, { which: 27 });
+    });
 
     expect(getSuggestions(document)).toBeFalsy();
   });
@@ -389,27 +437,36 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'asdff';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'asdff';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
-    fireEvent.keyDown(input, { which: 27 });
+    act(() => {
+      fireEvent.keyDown(input, { which: 27 });
+    });
 
     expect(getSuggestions(document)).toBeFalsy();
-    fireEvent.click(input, { button: 0 });
+
+    act(() => {
+      fireEvent.click(input, { button: 0 });
+    });
 
     runAllTimers();
 
@@ -422,22 +479,26 @@ describe('BasePicker', () => {
 
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <div>
-        <BasePickerWithType
-          onResolveSuggestions={onResolveSuggestions}
-          onRenderItem={onRenderItem}
-          onRenderSuggestionsItem={basicSuggestionRenderer}
-          componentRef={picker}
-        />
-        <button id="toFocus">focus me</button>
-      </div>,
-    );
+    act(() => {
+      render(
+        <div>
+          <BasePickerWithType
+            onResolveSuggestions={onResolveSuggestions}
+            onRenderItem={onRenderItem}
+            onRenderSuggestionsItem={basicSuggestionRenderer}
+            componentRef={picker}
+          />
+          <button id="toFocus">focus me</button>
+        </div>,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'bl';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'bl';
+      fireEvent.input(input);
+    });
     // For some reason with act() this has to be run twice to make the callout dismiss callback
     // actually be called?
     runAllTimers();
@@ -445,13 +506,18 @@ describe('BasePicker', () => {
 
     expect(getSuggestions(document)).toBeTruthy();
 
-    (document.querySelector('#toFocus') as any).focus();
+    act(() => {
+      (document.querySelector('#toFocus') as any).focus();
+    });
 
     // Implicit test to ensure suggestions are dismissed when focus lost
     expect(getSuggestions(document)).toBeFalsy();
 
     runAllTimers();
-    fireEvent.focus(input);
+
+    act(() => {
+      fireEvent.focus(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
@@ -464,18 +530,23 @@ describe('BasePicker', () => {
     const resolveMock = jest.fn(onResolveSuggestions);
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={resolveMock}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-        inputProps={{ defaultVisibleValue: 'bl' }}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={resolveMock}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+          inputProps={{ defaultVisibleValue: 'bl' }}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    fireEvent.focus(input);
+
+    act(() => {
+      fireEvent.focus(input);
+    });
     runAllTimers();
 
     expect(resolveMock).toHaveBeenCalledTimes(1);
@@ -500,31 +571,38 @@ describe('BasePicker', () => {
       };
     };
 
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        componentRef={picker}
-        createGenericItem={createGenericItem}
-        onValidateInput={onValidateInput}
-        pickerSuggestionsProps={{
-          searchForMoreText: 'More Options',
-        }}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          componentRef={picker}
+          createGenericItem={createGenericItem}
+          onValidateInput={onValidateInput}
+          pickerSuggestionsProps={{
+            searchForMoreText: 'More Options',
+          }}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'b';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'b';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     expect(getSuggestions(document)).toBeTruthy();
 
     const moreButton = document.querySelector('[data-automationid=sug-searchForMore]') as HTMLElement;
     expect(moreButton).toBeTruthy();
-    fireEvent.keyDown(input, { which: KeyCodes.up, keyCode: KeyCodes.up });
+
+    act(() => {
+      fireEvent.keyDown(input, { which: KeyCodes.up, keyCode: KeyCodes.up });
+    });
 
     expect(moreButton.id).toEqual('sug-selectedAction');
     expect(input.getAttribute('aria-activedescendant')).toEqual('sug-selectedAction');
@@ -533,17 +611,22 @@ describe('BasePicker', () => {
   it('focuses the input when the focus method is called', () => {
     const picker = React.createRef<IBasePicker<ISimple>>();
 
-    render(
-      <BasePickerWithType
-        componentRef={picker}
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-      />,
-    );
+    act(() => {
+      render(
+        <BasePickerWithType
+          componentRef={picker}
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    picker.current?.focus();
+
+    act(() => {
+      picker.current?.focus();
+    });
 
     expect(document.activeElement).toBe(input);
   });
@@ -556,23 +639,30 @@ describe('BasePicker', () => {
         <button>{basicRenderer(props)}</button>
       </div>
     );
-    render(
-      <BasePickerWithType
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderFocusableItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-        itemLimit={1}
-      />,
-    );
+
+    act(() => {
+      render(
+        <BasePickerWithType
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderFocusableItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+          itemLimit={1}
+        />,
+      );
+    });
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
-    input.value = 'bl';
-    fireEvent.input(input);
+    act(() => {
+      input.focus();
+      input.value = 'bl';
+      fireEvent.input(input);
+    });
     runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
-    fireEvent.click(suggestionOptions[0]);
+    act(() => {
+      fireEvent.click(suggestionOptions[0]);
+    });
 
     const selectedItem = document.querySelector('[data-selection-index] > button');
 
@@ -589,23 +679,31 @@ describe('BasePicker', () => {
         </div>
       );
     };
-    render(
-      <BasePickerWithType
-        defaultSelectedItems={[
-          { key: '1', name: 'blue' },
-          { key: '2', name: 'black' },
-        ]}
-        onResolveSuggestions={onResolveSuggestions}
-        onRenderItem={onRenderFocusableItem}
-        onRenderSuggestionsItem={basicSuggestionRenderer}
-      />,
-    );
+
+    act(() => {
+      render(
+        <BasePickerWithType
+          defaultSelectedItems={[
+            { key: '1', name: 'blue' },
+            { key: '2', name: 'black' },
+          ]}
+          onResolveSuggestions={onResolveSuggestions}
+          onRenderItem={onRenderFocusableItem}
+          onRenderSuggestionsItem={basicSuggestionRenderer}
+        />,
+      );
+    });
 
     const selectedEls = document.querySelectorAll('[data-selection-index] > button');
-    (selectedEls[0] as HTMLButtonElement).focus();
-    fireEvent.click(selectedEls[0]);
 
-    jest.runAllTimers();
+    act(() => {
+      (selectedEls[0] as HTMLButtonElement).focus();
+      fireEvent.click(selectedEls[0]);
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(document.activeElement).toBe(selectedEls[1]);
   });
