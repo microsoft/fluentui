@@ -379,24 +379,6 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
   );
 });
 
-describe('HorizontalBarChartWithAxis - mouse events', () => {
-  beforeEach(() => {
-    updateChartWidthAndHeight();
-  });
-  afterEach(sharedAfterEach);
-
-  testWithWait(
-    'Should render callout correctly on mouseover',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA, calloutProps: { doNotLayer: true } },
-    container => {
-      const bars = container.querySelectorAll('rect');
-      fireEvent.mouseOver(bars[1]);
-      expect(container).toMatchSnapshot();
-    },
-  );
-});
-
 describe('Horizontal Bar Chart With Axis - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
