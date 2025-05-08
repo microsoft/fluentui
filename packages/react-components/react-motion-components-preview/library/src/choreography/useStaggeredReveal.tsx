@@ -24,8 +24,9 @@ export function useStaggeredReveal({
 
       const elapsed = now - startTimeRef.current;
       // TODO: make easing a parameter
+      const easing = (t: number) => t; // linear
       // const easing = (t: number) => t * t * t; // easeInCubic
-      const easing = (t: number) => t * t * t * t; // easeInQuart
+      // const easing = (t: number) => t * t * t * t; // easeInQuart
 
       // TODO: consider whether this is the best calculation for total duration
       const totalDuration = count * delay;
