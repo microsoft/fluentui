@@ -500,4 +500,15 @@ test.describe('Dropdown', () => {
 
     await expect(element.locator('fluent-option[value=kiwi]')).toHaveJSProperty('selected', true);
   });
+
+  test('should not focus listbox when tabbing from combobox', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+
+    const listbox = element.locator('fluent-listbox');
+
+    await element.focus();
+    await page.keyboard.press('Tab');
+
+    await expect(listbox).toBeHidden()
+  });
 });
