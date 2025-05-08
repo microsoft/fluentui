@@ -30,12 +30,12 @@ export function setTabsterDefault(element: Element, isDefault: boolean) {
   const tabsterAttr = element.getAttribute('data-tabster');
 
   if (tabsterAttr) {
+    // If tabsterAttr exists, modify it
     const tabsterAttributes = JSON.parse(tabsterAttr);
-    if (tabsterAttributes.focusable) {
-      // If tabster.focusable isn't present, we will ignore.
-      tabsterAttributes.focusable.isDefault = isDefault;
-      element.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
-    }
+    tabsterAttributes.focusable.isDefault = isDefault;
+    element.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
+  } else {
+    element.setAttribute('data-tabster', JSON.stringify({ focusable: { isDefault } }));
   }
 }
 
