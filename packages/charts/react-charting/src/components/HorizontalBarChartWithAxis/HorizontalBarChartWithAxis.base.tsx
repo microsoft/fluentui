@@ -44,6 +44,8 @@ import {
   areArraysEqual,
   computeLongestBars,
   groupChartDataByYValue,
+  getClosestPairDiffAndRange,
+  MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -89,6 +91,8 @@ export class HorizontalBarChartWithAxisBase
   private _longestBarPositiveTotalValue: number;
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
+  private _domainMargin: number;
+  private _yAxisInnerPadding: number;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -125,6 +129,8 @@ export class HorizontalBarChartWithAxisBase
         : YAxisType.StringAxis;
     this._cartesianChartRef = React.createRef();
     this._legendsRef = React.createRef();
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._yAxisInnerPadding = 0.5;
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -168,9 +174,11 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+    const yAxisTickCount = this.props.yAxisTickCount || this._getUniqueYValues().length;
     return (
       <CartesianChart
         {...this.props}
+        yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
@@ -188,6 +196,7 @@ export class HorizontalBarChartWithAxisBase
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}
         getmargins={this._getMargins}
+        getYDomainMargins={this._getDomainMarginsForHorizontalBarChart}
         getGraphData={this._getGraphData}
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
@@ -312,29 +321,33 @@ export class HorizontalBarChartWithAxisBase
       this._yAxisType === YAxisType.NumericAxis
         ? this._getScales(containerHeight, containerWidth, true)
         : this._getScales(containerHeight, containerWidth, false);
-    const allBars = stackedChartData
-      .map(singleBarData =>
-        this._yAxisType === YAxisType.NumericAxis
-          ? this._createNumericBars(
-              containerHeight,
-              containerWidth,
-              xElement!,
-              yElement!,
-              singleBarData,
-              xBarScale,
-              yBarScale,
-            )
-          : this._createStringBars(
-              containerHeight,
-              containerWidth,
-              xElement!,
-              yElement!,
-              singleBarData,
-              xBarScale,
-              yBarScale,
-            ),
-      )
-      .flat();
+    const xRange = xBarScale.range();
+    let allBars: JSX.Element[] = [];
+    if (xRange[0] < xRange[1]) {
+      allBars = stackedChartData
+        .map(singleBarData =>
+          this._yAxisType === YAxisType.NumericAxis
+            ? this._createNumericBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              )
+            : this._createStringBars(
+                containerHeight,
+                containerWidth,
+                xElement!,
+                yElement!,
+                singleBarData,
+                xBarScale,
+                yBarScale,
+              ),
+        )
+        .flat();
+    }
 
     return (this._bars = allBars);
   };
@@ -488,18 +501,12 @@ export class HorizontalBarChartWithAxisBase
     if (isNumericScale) {
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-      const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
-      const yMinProp = this.props.yMinValue || 0;
-      const yDomainMin = yMin < yMinProp ? Math.min(0, yMin) : yMinProp;
-
-      const yDomainPadding = Math.abs((yMax - yMin) * 0.1);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
-        .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([yDomainMin - yDomainPadding, yDomainMax + yDomainPadding])
-        .range([containerHeight - this.margins.bottom!, this.margins.top!]);
+        .domain([Math.max(0, yMin), yMax])
+        .range([containerHeight - (this.margins.bottom! + this._domainMargin), this.margins.top! + this._domainMargin]);
       return { xBarScale, yBarScale };
     } else {
       // please note these padding default values must be consistent in here
@@ -507,7 +514,7 @@ export class HorizontalBarChartWithAxisBase
       // http://using-d3js.com/04_07_ordinal_scales.html
       const yBarScale = d3ScaleBand()
         .domain(this._yAxisLabels)
-        .range([containerHeight - this.margins.bottom! - this._barHeight / 2, this.margins.top! + this._barHeight / 2])
+        .range([containerHeight - (this.margins.bottom! + this._domainMargin), this.margins.top! + this._domainMargin])
         .padding(this.props.yAxisPadding || 0);
 
       const xBarScale = d3ScaleLinear()
@@ -660,6 +667,53 @@ export class HorizontalBarChartWithAxisBase
     });
     return bars;
   }
+
+  private _calculateBarHeight = (uniqueY: number[] | Date[], totalHeight: number, innerPadding: number): number => {
+    const result = getClosestPairDiffAndRange(uniqueY);
+    if (!result || result[1] === 0) {
+      return 16;
+    }
+    const [closestPairDiff, range] = result;
+
+    // Formula for bar height
+    const barHeight = Math.floor(
+      (totalHeight * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
+    );
+
+    return Math.max(barHeight, 1);
+  };
+
+  private _getUniqueYValues() {
+    const mapY: Record<string, number | string> = {};
+    this.props.data?.forEach((point: IHorizontalBarChartWithAxisDataPoint) => {
+      mapY[point.y] = point.y;
+    });
+    const uniqueY = Object.values(mapY);
+    return uniqueY;
+  }
+
+  private _getDomainMarginsForHorizontalBarChart = (containerHeight: number): IMargins => {
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+    const uniqueY = this._getUniqueYValues();
+
+    // Total height available to render the bars
+    const totalHeight =
+      containerHeight - (this.margins.top! + MIN_DOMAIN_MARGIN) - (this.margins.bottom! + MIN_DOMAIN_MARGIN);
+
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      // Calculate bar height dynamically
+      this._barHeight = this._calculateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisInnerPadding);
+    }
+
+    this._domainMargin += this._barHeight / 2;
+
+    return {
+      ...this.margins,
+      top: this.margins.top! + this._domainMargin,
+      bottom: this.margins.bottom! + this._domainMargin,
+    };
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _tooltipOfYAxislabels(ytooltipProps: any) {
     const { tooltipCls, yAxis, id } = ytooltipProps;
