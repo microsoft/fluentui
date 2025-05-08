@@ -344,6 +344,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -379,6 +382,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -413,6 +419,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -1131,6 +1140,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -1166,6 +1178,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -1200,6 +1215,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -1931,6 +1949,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="56"
                 y="203.6"
@@ -1966,6 +1987,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="270.61538461538464"
                 y="14"
@@ -2000,6 +2024,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 text-anchor="middle"
                 x="592.5384615384615"
@@ -2678,6 +2705,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="287"
               y="203.6"
@@ -2715,6 +2745,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="335"
               y="14"
@@ -2751,6 +2784,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="383"
@@ -10294,6 +10330,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="79.39999999999998"
@@ -10329,6 +10368,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="269"
@@ -10363,6 +10405,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -12563,6 +12608,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -12598,6 +12646,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -12632,6 +12683,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -13480,6 +13534,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -13515,6 +13572,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="262.92307692307696"
               y="14"
@@ -13549,6 +13609,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="573.3076923076924"
@@ -14233,6 +14296,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="263"
               y="14"
@@ -14269,6 +14335,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="311"
@@ -14307,6 +14376,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="359"
               y="122.34285714285716"
@@ -14343,6 +14415,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="407"
@@ -14879,6 +14954,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="85.10000000000002"
@@ -14914,6 +14992,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="245.3"
@@ -14948,6 +15029,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -15666,6 +15750,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -15701,6 +15788,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -15735,6 +15825,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -16499,6 +16592,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -16534,6 +16630,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -16568,6 +16667,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
