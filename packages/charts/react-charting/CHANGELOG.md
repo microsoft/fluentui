@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 07 May 2025 07:20:51 GMT and should not be manually modified.
+This log was last generated on Thu, 08 May 2025 07:22:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.82)
+
+Thu, 08 May 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.81..@fluentui/react-charting_v5.23.82)
+
+### Patches
+
+- fix(react-charting): Handling missing and duplicate values in Area chart ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/react-focus to v8.9.24 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
+- Bump @fluentui/theme-samples to v8.7.206 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
+- Bump @fluentui/react to v8.122.17 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
 
 ## [5.23.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.81)
 
