@@ -465,7 +465,6 @@ export class VerticalStackedBarChartBase
       lineObject[item].forEach((circlePoint: LinePoint, subIndex: number) => {
         // Create an object to store line point ref so that the object can be passed by reference to the focus handler
         const circleRef: { refElement: SVGCircleElement | null } = { refElement: null };
-        // FIXME: rename
         const noBarsActive =
           circlePoint.xItem.chartData.filter(
             dataPoint => this._noLegendHighlighted() || this._isLegendHighlighted(dataPoint.legend),
@@ -485,14 +484,14 @@ export class VerticalStackedBarChartBase
             stroke={circlePoint.color}
             fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
-            // TODO: add comment
+            // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
+            // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
             opacity={this._getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             ref={e => (circleRef.refElement = e)}
-            // TODO: add comment
-            {...(noBarsActive
+            {...(noBarsActive && (this._noLegendHighlighted() || this._isLegendHighlighted(item))
               ? {
-                  'data-is-focusable': this._noLegendHighlighted() || this._isLegendHighlighted(item),
+                  'data-is-focusable': !this.props.hideTooltip,
                   onFocus: this._lineFocus.bind(this, circlePoint, circleRef),
                   onBlur: this._handleMouseOut,
                   role: 'img',
@@ -945,17 +944,18 @@ export class VerticalStackedBarChartBase
           shouldHighlight,
           href: this.props.href,
         });
-        const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': !this.props.hideTooltip && shouldHighlight,
-          'aria-label': this._getAriaLabel(singleChartData, point),
-          onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
-          onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
-          onMouseLeave: this._handleMouseOut,
-          onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, startColor, ref),
-          onBlur: this._handleMouseOut,
-          onClick: this._onClick.bind(this, point),
-          role: 'img',
-        };
+        const rectFocusProps = !shouldFocusWholeStack &&
+          shouldHighlight && {
+            'data-is-focusable': !this.props.hideTooltip,
+            'aria-label': this._getAriaLabel(singleChartData, point),
+            onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
+            onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
+            onMouseLeave: this._handleMouseOut,
+            onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, startColor, ref),
+            onBlur: this._handleMouseOut,
+            onClick: this._onClick.bind(this, point),
+            role: 'img',
+          };
 
         let barHeight = Math.abs(heightValueScale * point.data);
         const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
@@ -1041,17 +1041,21 @@ export class VerticalStackedBarChartBase
         singleChartData.chartData.filter(
           dataPoint => this._noLegendHighlighted() || this._isLegendHighlighted(dataPoint.legend),
         ).length > 0;
-      const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': !this.props.hideTooltip && someBarsActive,
-        'aria-label': this._getAriaLabel(singleChartData),
-        onMouseOver: this._onStackHover.bind(this, singleChartData),
-        onMouseMove: this._onStackHover.bind(this, singleChartData),
-        onMouseLeave: this._handleMouseOut,
-        onFocus: this._onStackFocus.bind(this, singleChartData, groupRef),
-        onBlur: this._handleMouseOut,
-        onClick: this._onClick.bind(this, singleChartData),
-        role: 'img',
-      };
+      // FIXME: Making the entire stack focusable when stack callout is enabled adds unnecessary complexity
+      // and can reduce usability in certain scenarios. Instead, each individual element within the stack
+      // should be focusable on its own, with its own aria-label. This behavior is also seen in Highcharts.
+      const stackFocusProps = shouldFocusWholeStack &&
+        someBarsActive && {
+          'data-is-focusable': !this.props.hideTooltip,
+          'aria-label': this._getAriaLabel(singleChartData),
+          onMouseOver: this._onStackHover.bind(this, singleChartData),
+          onMouseMove: this._onStackHover.bind(this, singleChartData),
+          onMouseLeave: this._handleMouseOut,
+          onFocus: this._onStackFocus.bind(this, singleChartData, groupRef),
+          onBlur: this._handleMouseOut,
+          onClick: this._onClick.bind(this, singleChartData),
+          role: 'img',
+        };
       let showLabel = false;
       let barLabel = 0;
       if (!this.props.hideLabels) {
@@ -1217,15 +1221,17 @@ export class VerticalStackedBarChartBase
         .map(pt => {
           const legend = pt.legend;
           const yValue = pt.yAxisCalloutData || pt.data;
-          return `${legend}, ${yValue}.`;
+          return this._noLegendHighlighted() || this._isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       const lineValues = singleChartData.lineData
         ?.map(ln => {
           const legend = ln.legend;
           const yValue = ln.yAxisCalloutData || ln.data || ln.y;
-          return `${legend}, ${yValue}.`;
+          return this._noLegendHighlighted() || this._isLegendHighlighted(legend) ? `${legend}, ${yValue}.` : '';
         })
+        .filter(str => str !== '')
         .join(' ');
       return (
         singleChartData.stackCallOutAccessibilityData?.ariaLabel ||
@@ -1241,7 +1247,8 @@ export class VerticalStackedBarChartBase
         : singleChartData.xAxisPoint);
     const legend = point.legend;
     const yValue =
-      point.yAxisCalloutData || (isLinePoint ? (point as ILineDataInVerticalStackedBarChart).y : point.data);
+      point.yAxisCalloutData ||
+      (isLinePoint ? point.data || (point as ILineDataInVerticalStackedBarChart).y : point.data);
     return (
       (!isLinePoint && (point as IVSChartDataPoint).callOutAccessibilityData?.ariaLabel) ||
       `${xValue}. ${legend}, ${yValue}.`
