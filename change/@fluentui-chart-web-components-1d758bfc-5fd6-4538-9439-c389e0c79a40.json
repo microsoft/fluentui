@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: bump dev deps",
-  "packageName": "@fluentui/chart-web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

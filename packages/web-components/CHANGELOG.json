@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 08 May 2025 04:06:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.97",
+      "version": "3.0.0-beta.97",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8d0ea6a986584df2842772de9a7fababfa8935b0",
+            "comment": "chore: bump dev deps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 May 2025 04:08:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.97",
       "version": "3.0.0-beta.97",

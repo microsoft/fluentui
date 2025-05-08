@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-web-components",
   "entries": [
     {
+      "date": "Thu, 08 May 2025 04:06:28 GMT",
+      "tag": "@fluentui/chart-web-components_v0.0.21",
+      "version": "0.0.21",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/chart-web-components",
+            "commit": "8d0ea6a986584df2842772de9a7fababfa8935b0",
+            "comment": "chore: bump dev deps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 May 2025 04:08:27 GMT",
       "tag": "@fluentui/chart-web-components_v0.0.21",
       "version": "0.0.21",
