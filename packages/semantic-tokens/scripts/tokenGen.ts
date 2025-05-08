@@ -41,6 +41,19 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
   }
 };
 
+const isInvalidToken = (token: string) => {
+  // Safety check string exists
+  if (token.length === 0) {
+    return true;
+  }
+  // Blacklist for non-valid tokens
+  if (token.includes('Figmaonly') || token.startsWith('null')) {
+    // Superfluous tokens - SKIP
+    return true;
+  }
+  return false;
+};
+
 const writeDirectoryFile = (filePath: string, data: string) => {
   const dirPath = removeLastDelimiter(filePath, path.sep);
   if (!fs.existsSync(dirPath)) {
@@ -65,6 +78,11 @@ const generateTokenRawStrings = () => {
   const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/variables.ts`);
 
   for (const token in tokensJSON) {
+    if (isInvalidToken(token)) {
+      // Superfluous tokens - SKIP
+      continue;
+    }
+
     if (tokensJSON.hasOwnProperty(token)) {
       const tokenData: Token = tokensJSON[token];
       const tokenName = tokenData.cssName;
@@ -113,8 +131,8 @@ const tokenExport = (token: string, resolvedTokenFallback: string) => {
 };
 
 const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string) => {
-  const tokenSemanticRef =
-    tokenData.fst_reference.length > 0 ? toCamelCase(cleanFstTokenName(tokenData.fst_reference)) + 'Raw' : null;
+  const fstReferenceName = toCamelCase(cleanFstTokenName(tokenData.fst_reference));
+  const tokenSemanticRef = isInvalidToken(fstReferenceName) ? null : fstReferenceName + 'Raw';
 
   const fluentFallback = fluentFallbacks[token];
 
@@ -122,6 +140,10 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
     return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
       tokenSemanticRef,
     )}, ${escapeMixedInlineToken(fluentFallback)}))`;
+  }
+
+  if (fluentFallback && tokenData.nullable) {
+    return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeMixedInlineToken(fluentFallback)}}, unset))`;
   }
 
   if (fluentFallback) {
@@ -154,7 +176,7 @@ const generateTokenVariables = () => {
   const getComponentFile = (component: string) => path.join(__dirname, `../src/components/${component}/tokens.ts`);
 
   for (const token in tokensJSON) {
-    if (token.includes('(figma only)')) {
+    if (isInvalidToken(token)) {
       // Superfluous tokens - SKIP
       continue;
     }
