@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "occasionally focusing off of combobox would open and focus listbox",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
