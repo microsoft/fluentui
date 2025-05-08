@@ -509,6 +509,6 @@ test.describe('Dropdown', () => {
     await element.focus();
     await page.keyboard.press('Tab');
 
-    await expect(listbox).toBeHidden()
+    await expect(listbox).toBeHidden();
   });
 });
