@@ -56,7 +56,7 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Pressed};
   }
 
-  :host(${pressedState}[appearance='primary']) :not(:focus-visible) {
+  :host(${pressedState}[appearance='primary']:not(:focus-visible)) {
     border-color: transparent;
   }
 
