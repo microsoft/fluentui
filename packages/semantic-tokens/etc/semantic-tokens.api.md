@@ -752,12 +752,6 @@ export const ctrlBadgeGapRaw = "--smtc-ctrl-badge-gap";
 export const ctrlBadgeIconSize = "var(--smtc-ctrl-badge-icon-size)";
 
 // @public (undocumented)
-export const ctrlBadgeIconSizeFigmaonly = "var(--smtc-ctrl-badge-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlBadgeIconSizeFigmaonlyRaw = "--smtc-ctrl-badge-icon-sizefigmaonly";
-
-// @public (undocumented)
 export const ctrlBadgeIconSizeRaw = "--smtc-ctrl-badge-icon-size";
 
 // @public (undocumented)
@@ -774,12 +768,6 @@ export const ctrlBadgeLgCornerRaw = "--smtc-ctrl-badge-lg-corner";
 
 // @public (undocumented)
 export const ctrlBadgeLgIconSize = "var(--smtc-ctrl-badge-lg-icon-size)";
-
-// @public (undocumented)
-export const ctrlBadgeLgIconSizeFigmaonly = "var(--smtc-ctrl-badge-lg-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlBadgeLgIconSizeFigmaonlyRaw = "--smtc-ctrl-badge-lg-icon-sizefigmaonly";
 
 // @public (undocumented)
 export const ctrlBadgeLgIconSizeRaw = "--smtc-ctrl-badge-lg-icon-size";
@@ -828,12 +816,6 @@ export const ctrlBadgeSmCornerRaw = "--smtc-ctrl-badge-sm-corner";
 
 // @public (undocumented)
 export const ctrlBadgeSmIconSize = "var(--smtc-ctrl-badge-sm-icon-size)";
-
-// @public (undocumented)
-export const ctrlBadgeSmIconSizeFigmaonly = "var(--smtc-ctrl-badge-sm-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlBadgeSmIconSizeFigmaonlyRaw = "--smtc-ctrl-badge-sm-icon-sizefigmaonly";
 
 // @public (undocumented)
 export const ctrlBadgeSmIconSizeRaw = "--smtc-ctrl-badge-sm-icon-size";
@@ -1010,12 +992,6 @@ export const ctrlChoiceLgCheckboxCornerRaw = "--smtc-ctrl-choice-lg-checkbox-cor
 export const ctrlChoiceLgCheckboxIconSize = "var(--smtc-ctrl-choice-lg-checkbox-icon-size, var(--smtc-size-ctrl-iconsecondary))";
 
 // @public (undocumented)
-export const ctrlChoiceLgCheckboxIconSizeFigmaonly = "var(--smtc-ctrl-choice-lg-checkbox-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlChoiceLgCheckboxIconSizeFigmaonlyRaw = "--smtc-ctrl-choice-lg-checkbox-icon-sizefigmaonly";
-
-// @public (undocumented)
 export const ctrlChoiceLgCheckboxIconSizeRaw = "--smtc-ctrl-choice-lg-checkbox-icon-size";
 
 // @public (undocumented)
@@ -1116,12 +1092,6 @@ export const ctrlChoiceSmCheckboxCornerRaw = "--smtc-ctrl-choice-sm-checkbox-cor
 
 // @public (undocumented)
 export const ctrlChoiceSmCheckboxIconSize = "var(--smtc-ctrl-choice-sm-checkbox-icon-size, var(--smtc-size-ctrl-iconsecondary))";
-
-// @public (undocumented)
-export const ctrlChoiceSmCheckboxIconSizeFigmaonly = "var(--smtc-ctrl-choice-sm-checkbox-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlChoiceSmCheckboxIconSizeFigmaonlyRaw = "--smtc-ctrl-choice-sm-checkbox-icon-sizefigmaonly";
 
 // @public (undocumented)
 export const ctrlChoiceSmCheckboxIconSizeRaw = "--smtc-ctrl-choice-sm-checkbox-icon-size";
@@ -1595,12 +1565,6 @@ export const ctrlFocusOuterStrokewidth = "var(--smtc-ctrl-focus-outer-strokewidt
 export const ctrlFocusOuterStrokewidthRaw = "--smtc-ctrl-focus-outer-strokewidth";
 
 // @public (undocumented)
-export const ctrlFocusPositionFigmaonly = "var(--smtc-ctrl-focus-positionfigmaonly)";
-
-// @public (undocumented)
-export const ctrlFocusPositionFigmaonlyRaw = "--smtc-ctrl-focus-positionfigmaonly";
-
-// @public (undocumented)
 export const ctrlInputBackgroundDisabled = "var(--smtc-ctrl-input-background-disabled, var(--smtc-background-ctrl-neutral-disabled))";
 
 // @public (undocumented)
@@ -1829,12 +1793,6 @@ export const ctrlLinkInlineUnderlineDashed = "var(--smtc-ctrl-link-inline-underl
 export const ctrlLinkInlineUnderlineDashedRaw = "--smtc-ctrl-link-inline-underline-dashed";
 
 // @public (undocumented)
-export const ctrlLinkInlineUnderlineSolidFigmaonly = "var(--smtc-ctrl-link-inline-underline-solidfigmaonly)";
-
-// @public (undocumented)
-export const ctrlLinkInlineUnderlineSolidFigmaonlyRaw = "--smtc-ctrl-link-inline-underline-solidfigmaonly";
-
-// @public (undocumented)
 export const ctrlLinkOnpageShowunderlineatrest = "var(--smtc-ctrl-link-onpage-showunderlineatrest)";
 
 // @public (undocumented)
@@ -1857,12 +1815,6 @@ export const ctrlLinkOnpageUnderlineDashed = "var(--smtc-ctrl-link-onpage-underl
 
 // @public (undocumented)
 export const ctrlLinkOnpageUnderlineDashedRaw = "--smtc-ctrl-link-onpage-underline-dashed";
-
-// @public (undocumented)
-export const ctrlLinkOnpageUnderlineSolidFigmaonly = "var(--smtc-ctrl-link-onpage-underline-solidfigmaonly)";
-
-// @public (undocumented)
-export const ctrlLinkOnpageUnderlineSolidFigmaonlyRaw = "--smtc-ctrl-link-onpage-underline-solidfigmaonly";
 
 // @public (undocumented)
 export const ctrlListBackgroundSelectedDisabled = "var(--smtc-ctrl-list-background-selected-disabled, var(--smtc-background-ctrl-subtle-disabled))";
@@ -1922,22 +1874,10 @@ export const ctrlListChoiceCheckboxCornerRaw = "--smtc-ctrl-list-choice-checkbox
 export const ctrlListChoiceCheckboxIconSize = "var(--smtc-ctrl-list-choice-checkbox-icon-size, var(--smtc-size-ctrl-iconsecondary))";
 
 // @public (undocumented)
-export const ctrlListChoiceCheckboxIconSizeFigmaonly = "var(--smtc-ctrl-list-choice-checkbox-icon-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlListChoiceCheckboxIconSizeFigmaonlyRaw = "--smtc-ctrl-list-choice-checkbox-icon-sizefigmaonly";
-
-// @public (undocumented)
 export const ctrlListChoiceCheckboxIconSizeRaw = "--smtc-ctrl-list-choice-checkbox-icon-size";
 
 // @public (undocumented)
 export const ctrlListChoiceDotSize = "var(--smtc-ctrl-list-choice-dot-size)";
-
-// @public (undocumented)
-export const ctrlListChoiceDotSizeFigmaonly = "var(--smtc-ctrl-list-choice-dot-sizefigmaonly)";
-
-// @public (undocumented)
-export const ctrlListChoiceDotSizeFigmaonlyRaw = "--smtc-ctrl-list-choice-dot-sizefigmaonly";
 
 // @public (undocumented)
 export const ctrlListChoiceDotSizeRaw = "--smtc-ctrl-list-choice-dot-size";
@@ -3419,24 +3359,6 @@ export const materialMicaThinSolid = "var(--smtc-material-mica-thin-solid, var(-
 export const materialMicaThinSolidRaw = "--smtc-material-mica-thin-solid";
 
 // @public (undocumented)
-export const nullColor = "var(--smtc-null-color)";
-
-// @public (undocumented)
-export const nullColorRaw = "--smtc-null-color";
-
-// @public (undocumented)
-export const nullNumber = "var(--smtc-null-number)";
-
-// @public (undocumented)
-export const nullNumberRaw = "--smtc-null-number";
-
-// @public (undocumented)
-export const nullString = "var(--smtc-null-string)";
-
-// @public (undocumented)
-export const nullStringRaw = "--smtc-null-string";
-
-// @public (undocumented)
 export const paddingCardNestedimage = "var(--smtc-padding-card-nestedimage, var(--smtc-padding-content-align-default))";
 
 // @public (undocumented)
@@ -3740,12 +3662,6 @@ export const sizeCtrlDefaultRaw = "--smtc-size-ctrl-default";
 export const sizeCtrlIcon = "var(--smtc-size-ctrl-icon)";
 
 // @public (undocumented)
-export const sizeCtrlIconFigmaonly = "var(--smtc-size-ctrl-iconfigmaonly)";
-
-// @public (undocumented)
-export const sizeCtrlIconFigmaonlyRaw = "--smtc-size-ctrl-iconfigmaonly";
-
-// @public (undocumented)
 export const sizeCtrlIconRaw = "--smtc-size-ctrl-icon";
 
 // @public (undocumented)
@@ -3764,12 +3680,6 @@ export const sizeCtrlLgDefaultRaw = "--smtc-size-ctrl-lg-default";
 export const sizeCtrlLgIcon = "var(--smtc-size-ctrl-lg-icon)";
 
 // @public (undocumented)
-export const sizeCtrlLgIconFigmaonly = "var(--smtc-size-ctrl-lg-iconfigmaonly)";
-
-// @public (undocumented)
-export const sizeCtrlLgIconFigmaonlyRaw = "--smtc-size-ctrl-lg-iconfigmaonly";
-
-// @public (undocumented)
 export const sizeCtrlLgIconRaw = "--smtc-size-ctrl-lg-icon";
 
 // @public (undocumented)
@@ -3780,12 +3690,6 @@ export const sizeCtrlSmDefaultRaw = "--smtc-size-ctrl-sm-default";
 
 // @public (undocumented)
 export const sizeCtrlSmIcon = "var(--smtc-size-ctrl-sm-icon)";
-
-// @public (undocumented)
-export const sizeCtrlSmIconFigmaonly = "var(--smtc-size-ctrl-sm-iconfigmaonly)";
-
-// @public (undocumented)
-export const sizeCtrlSmIconFigmaonlyRaw = "--smtc-size-ctrl-sm-iconfigmaonly";
 
 // @public (undocumented)
 export const sizeCtrlSmIconRaw = "--smtc-size-ctrl-sm-icon";
