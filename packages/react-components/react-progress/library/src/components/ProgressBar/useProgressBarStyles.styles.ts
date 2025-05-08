@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 import { tokens } from '@fluentui/react-theme';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -32,7 +33,7 @@ const indeterminateProgressBar = {
 const useRootStyles = makeStyles({
   root: {
     display: 'block',
-    backgroundColor: tokens.colorNeutralBackground6,
+    backgroundColor: semanticTokens.ctrlProgressBackgroundEmpty,
     width: '100%',
     overflow: 'hidden',
 
@@ -41,10 +42,10 @@ const useRootStyles = makeStyles({
     },
   },
   rounded: {
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: semanticTokens.ctrlProgressCorner,
   },
   square: {
-    borderRadius: tokens.borderRadiusNone,
+    borderRadius: semanticTokens.cornerZero,
   },
   medium: {
     height: barThicknessValues.medium,
@@ -75,9 +76,9 @@ const useBarStyles = makeStyles({
     position: 'relative',
     backgroundImage: `linear-gradient(
       to right,
-      ${tokens.colorNeutralBackground6} 0%,
+      ${semanticTokens.ctrlProgressBackgroundEmpty} 0%,
       ${tokens.colorTransparentBackground} 50%,
-      ${tokens.colorNeutralBackground6} 100%
+      ${semanticTokens.ctrlProgressBackgroundEmpty} 100%
     )`,
     animationName: indeterminateProgressBar,
     animationDuration: '3s',
@@ -90,17 +91,17 @@ const useBarStyles = makeStyles({
   },
 
   brand: {
-    backgroundColor: tokens.colorCompoundBrandBackground,
+    backgroundColor: semanticTokens.ctrlProgressBackgroundFilled,
   },
 
   error: {
-    backgroundColor: tokens.colorPaletteRedBackground3,
+    backgroundColor: semanticTokens.statusDangerBackground,
   },
   warning: {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
+    backgroundColor: semanticTokens.statusWarningBackground,
   },
   success: {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
+    backgroundColor: semanticTokens.statusSuccessBackground,
   },
 });
 
