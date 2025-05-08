@@ -103,14 +103,11 @@ export const MediumSize: Story = {
 export const SliderWithValue: Story = {
   render: renderComponent(html`
     <fluent-field label-position="above">
-      <label slot="label" ${ref('label')} for="slider-in-field">Slider</label>
-      <fluent-slider
-        slot="input"
-        id="slider-in-field"
-        @change="${(x, c) => {
-          x.label.textContent = `Slider value ${(c.event.target as FluentSlider).value}`;
-        }}"
-      ></fluent-slider>
+      <label slot="label" for="slider-in-field">Slider value</label>
+      <fluent-slider slot="input" id="slider-in-field" ${ref('slider')}></fluent-slider>
+      <fluent-text slot="message" size="200">
+        Current value: <output :value="${x => x.slider.value}"></output>
+      </fluent-text>
     </fluent-field>
   `),
 };
