@@ -504,6 +504,11 @@ export interface IChartProps {
   /**
    * data for the points in the line chart
    */
+  scatterChartData?: IScatterChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
   SankeyChartData?: ISankeyChartData;
 
   /**
@@ -859,4 +864,107 @@ export interface IImageExportOptions {
   height?: number;
   scale?: number;
   background?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IBaseDataPoint {
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
+}
+
+/**
+ * {@docCategory IChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: IScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
