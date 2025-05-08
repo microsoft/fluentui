@@ -48,7 +48,6 @@ import {
   ctrlChoiceSmBaseSizeRaw,
   ctrlChoiceSmCheckboxCornerRaw,
   ctrlChoiceSmCheckboxIconSizeRaw,
-  ctrlChoiceSmCheckboxIconSizeFigmaonlyRaw,
   ctrlChoiceSmRadioDotSizeRaw,
   ctrlChoiceSmSwitchWidthRaw,
   ctrlChoiceSmSwitchHeightRaw,
@@ -58,7 +57,6 @@ import {
   ctrlChoiceLgBaseSizeRaw,
   ctrlChoiceLgCheckboxCornerRaw,
   ctrlChoiceLgCheckboxIconSizeRaw,
-  ctrlChoiceLgCheckboxIconSizeFigmaonlyRaw,
   ctrlChoiceLgRadioDotSizeRestRaw,
   ctrlChoiceLgRadioDotSizeHoverRaw,
   ctrlChoiceLgRadioDotSizePressedRaw,
@@ -104,7 +102,6 @@ export const ctrlChoiceSwitchThumbWidthPressed = `var(${ctrlChoiceSwitchThumbWid
 export const ctrlChoiceSmBaseSize = `var(${ctrlChoiceSmBaseSizeRaw}, var(${sizeCtrlSmIconRaw}))`;
 export const ctrlChoiceSmCheckboxCorner = `var(${ctrlChoiceSmCheckboxCornerRaw})`;
 export const ctrlChoiceSmCheckboxIconSize = `var(${ctrlChoiceSmCheckboxIconSizeRaw}, var(${sizeCtrlIconsecondaryRaw}))`;
-export const ctrlChoiceSmCheckboxIconSizeFigmaonly = `var(${ctrlChoiceSmCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlChoiceSmRadioDotSize = `var(${ctrlChoiceSmRadioDotSizeRaw})`;
 export const ctrlChoiceSmSwitchWidth = `var(${ctrlChoiceSmSwitchWidthRaw})`;
 export const ctrlChoiceSmSwitchHeight = `var(${ctrlChoiceSmSwitchHeightRaw}, var(${sizeCtrlSmIconRaw}))`;
@@ -114,7 +111,6 @@ export const ctrlChoiceSmSwitchThumbWidthPressed = `var(${ctrlChoiceSmSwitchThum
 export const ctrlChoiceLgBaseSize = `var(${ctrlChoiceLgBaseSizeRaw}, var(${sizeCtrlLgIconRaw}))`;
 export const ctrlChoiceLgCheckboxCorner = `var(${ctrlChoiceLgCheckboxCornerRaw})`;
 export const ctrlChoiceLgCheckboxIconSize = `var(${ctrlChoiceLgCheckboxIconSizeRaw}, var(${sizeCtrlIconsecondaryRaw}))`;
-export const ctrlChoiceLgCheckboxIconSizeFigmaonly = `var(${ctrlChoiceLgCheckboxIconSizeFigmaonlyRaw})`;
 export const ctrlChoiceLgRadioDotSizeRest = `var(${ctrlChoiceLgRadioDotSizeRestRaw})`;
 export const ctrlChoiceLgRadioDotSizeHover = `var(${ctrlChoiceLgRadioDotSizeHoverRaw}, var(${ctrlChoiceLgRadioDotSizeRestRaw}))`;
 export const ctrlChoiceLgRadioDotSizePressed = `var(${ctrlChoiceLgRadioDotSizePressedRaw}, var(${ctrlChoiceLgRadioDotSizeRestRaw}))`;
