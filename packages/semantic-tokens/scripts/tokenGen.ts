@@ -42,6 +42,10 @@ const escapeMixedInlineToken = (token: FluentOverrideValue) => {
 };
 
 const isInvalidToken = (token: string) => {
+  // Safety check string exists
+  if (token.length === 0) {
+    return true;
+  }
   // Blacklist for non-valid tokens
   if (token.includes('Figmaonly') || token.startsWith('null')) {
     // Superfluous tokens - SKIP
@@ -127,8 +131,8 @@ const tokenExport = (token: string, resolvedTokenFallback: string) => {
 };
 
 const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string) => {
-  const isValidToken = !tokenData.fst_reference.startsWith('NULL/') && tokenData.fst_reference.length > 0;
-  const tokenSemanticRef = isValidToken ? toCamelCase(cleanFstTokenName(tokenData.fst_reference)) + 'Raw' : null;
+  const fstReferenceName = toCamelCase(cleanFstTokenName(tokenData.fst_reference));
+  const tokenSemanticRef = isInvalidToken(fstReferenceName) ? null : fstReferenceName + 'Raw';
 
   const fluentFallback = fluentFallbacks[token];
 
