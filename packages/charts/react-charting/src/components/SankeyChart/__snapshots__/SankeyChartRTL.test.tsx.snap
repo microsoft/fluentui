@@ -43,8 +43,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -74,8 +74,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -118,8 +118,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -149,8 +149,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -195,8 +195,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -241,8 +241,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -285,8 +285,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -316,8 +316,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -360,8 +360,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -391,8 +391,8 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -491,8 +491,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -522,8 +522,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -566,8 +566,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -597,8 +597,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -643,8 +643,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   stroke-width: 3px;
                   stroke: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -689,8 +689,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                   stroke-width: 3px;
                   stroke: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
             stroke-opacity="1"
           >
@@ -733,8 +733,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -764,8 +764,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -808,8 +808,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 {
                   fill: #F5F5F5;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                  fill: #000000;
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  fill: Canvas;
                 }
           >
             <g
@@ -839,8 +839,8 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                       margin-right: 8px;
                       margin-top: 4px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                      fill: CanvasText;
                     }
               >
                 <g
@@ -939,8 +939,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -970,8 +970,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1014,8 +1014,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1045,8 +1045,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1091,8 +1091,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -1137,8 +1137,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                 stroke-width: 3px;
                 stroke: #000000;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
           stroke-opacity="1"
         >
@@ -1181,8 +1181,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1212,8 +1212,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g
@@ -1256,8 +1256,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               {
                 fill: #F5F5F5;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                fill: #000000;
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                fill: Canvas;
               }
         >
           <g
@@ -1287,8 +1287,8 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                     margin-right: 8px;
                     margin-top: 4px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                    fill: rgb(179, 179, 179);
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                    fill: CanvasText;
                   }
             >
               <g

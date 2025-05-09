@@ -3935,17 +3935,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -4082,8 +4082,8 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4092,9 +4092,9 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -4805,17 +4805,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -4952,8 +4952,8 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4962,9 +4962,9 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -5677,17 +5677,17 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -5824,8 +5824,8 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -5834,9 +5834,9 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -5953,8 +5953,8 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -5963,9 +5963,9 @@ exports[`Line chart rendering Should render the line chart with secondary Y axis
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -6677,17 +6677,17 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -6824,8 +6824,8 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -6834,9 +6834,9 @@ exports[`Line chart rendering should render the line chart with all negative y v
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -7547,17 +7547,17 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -7694,8 +7694,8 @@ exports[`Line chart rendering should render the line chart with negative y value
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -7704,9 +7704,9 @@ exports[`Line chart rendering should render the line chart with negative y value
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -8435,17 +8435,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -8582,8 +8582,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -8592,9 +8592,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -9305,17 +9305,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -9452,8 +9452,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -9462,9 +9462,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -10188,17 +10188,17 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -10335,8 +10335,8 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -10345,9 +10345,9 @@ exports[`Theme and accessibility Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"

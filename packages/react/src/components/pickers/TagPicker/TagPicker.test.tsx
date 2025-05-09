@@ -72,10 +72,13 @@ describe('TagPicker', () => {
     render(<TagPicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />);
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-    input.focus();
+    act(() => {
+      input.focus();
+    });
     input.value = 'bl';
 
     fireEvent.input(input);
+
     runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
@@ -103,7 +106,9 @@ describe('TagPicker', () => {
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
-    input.focus();
+    act(() => {
+      input.focus();
+    });
     input.value = 'bl';
     fireEvent.input(input);
     runAllTimers();
@@ -140,7 +145,9 @@ describe('TagPicker', () => {
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
 
-    input.focus();
+    act(() => {
+      input.focus();
+    });
     input.value = 'bl';
     fireEvent.input(input);
     runAllTimers();

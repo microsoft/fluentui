@@ -205,6 +205,7 @@ export const ModalWithNoTitleOrActions: Story = {
 };
 
 export const NonModalWithNoTitleOrActions: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialog>>` <div style="min-height: 300px">${storyTemplate}</div> `),
   args: {
     type: DialogType.nonModal,
     slottedContent: () => html`

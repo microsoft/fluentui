@@ -96,14 +96,14 @@ describe('Persona', () => {
 
   describe('image', () => {
     it('renders empty alt text by default', () => {
-      render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
-      const image = screen.getByRole('img');
+      const { container } = render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} />);
+      const image = container.querySelector('img');
       expect(image).toHaveAttribute('alt', '');
     });
 
     it('renders its given alt text', () => {
-      render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image = screen.getByRole('img');
+      const { container } = render(<Persona primaryText="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
+      const image = container.querySelector('img');
       expect(image).toHaveAttribute('alt', 'ALT TEXT');
     });
   });
