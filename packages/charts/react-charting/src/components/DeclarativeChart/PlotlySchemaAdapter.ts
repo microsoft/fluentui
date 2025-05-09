@@ -169,33 +169,33 @@ function createDateFromNumber(value: number): Date | number {
  * - Otherwise, it returns the value as is.
  *
  * @param value - The input value to be converted.
- * @param isString - Indicates if the value is a string.
- * @param isXDate - Indicates if the value is a valid date.
- * @param isXNumber - Indicates if the value is a number.
+ * @param isStringType - Indicates if the value is a string.
+ * @param isXDateType - Indicates if the value is a valid date.
+ * @param isXNumberType - Indicates if the value is a number.
  * @returns The converted value or the original value if no conversion is needed.
  */
 function tryTypeParseInternal(
   value: Datum,
-  isString: boolean,
-  isDate: boolean,
-  isNumber: boolean,
+  isStringType: boolean,
+  isDateType: boolean,
+  isNumberType: boolean,
 ): Date | number | string {
   if (value === null || value === undefined) {
     return 0;
   }
-  if (isString) {
-    if (isDate) {
+  if (isStringType) {
+    if (isDateType) {
       // Convert string to Date if it's a valid date string
       return new Date(value as string);
-    } else if (isNumber) {
+    } else if (isNumberType) {
       // Convert string to a number if it's numeric
       return parseFloat(value as string);
     } else {
       // Return the original string if it's neither a date nor a number
       return value;
     }
-  } else if (isNumber) {
-    if (isDate) {
+  } else if (isNumberType) {
+    if (isDateType) {
       // Convert numeric value to a Date object (e.g., timestamp or year)
       return createDateFromNumber(value as number);
     } else {
