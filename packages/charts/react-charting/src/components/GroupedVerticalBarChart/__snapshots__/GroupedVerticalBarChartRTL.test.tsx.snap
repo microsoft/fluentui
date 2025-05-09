@@ -321,6 +321,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -335,6 +338,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -391,6 +397,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -405,6 +414,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -461,6 +473,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
@@ -475,6 +490,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1059,6 +1077,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -1073,6 +1094,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1129,6 +1153,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -1143,6 +1170,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1199,6 +1229,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
@@ -1213,6 +1246,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1797,6 +1833,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -1811,6 +1850,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1867,6 +1909,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -1881,6 +1926,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -1937,6 +1985,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
@@ -1951,6 +2002,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2535,6 +2589,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -2549,6 +2606,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2605,6 +2665,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -2619,6 +2682,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -2675,6 +2741,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
@@ -2689,6 +2758,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3273,6 +3345,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -3287,6 +3362,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3343,6 +3421,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
@@ -3357,6 +3438,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -3413,6 +3497,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
@@ -3427,6 +3514,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="25.77777777777778"
@@ -9644,6 +9734,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="94.57999999999998"
@@ -9658,6 +9751,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"
@@ -9714,6 +9810,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="94.57999999999998"
@@ -9728,6 +9827,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"
@@ -9784,6 +9886,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="184.64"
@@ -9798,6 +9903,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 text-anchor="middle"
                 x="25.77777777777778"

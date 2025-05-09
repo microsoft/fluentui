@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 09 May 2025 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.98",
+      "version": "3.0.0-beta.98",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "97087c93d855ce4ada199767b930dc419f2556a8",
+            "comment": "fix the selected primary focus state"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 May 2025 04:06:28 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.97",
       "version": "3.0.0-beta.97",
