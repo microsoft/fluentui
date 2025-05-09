@@ -499,12 +499,14 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     containerHeight,
     margins,
     tickPadding = 12,
+    maxOfYVal = 0,
     yAxisTickFormat,
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  const finalYmax = Math.max(yMinMaxValues.endValue, yMaxValue);
-  const finalYmin = Math.max(yMinMaxValues.startValue, Math.min(yMinValue || 0, 0));
+  const tempVal = maxOfYVal || yMinMaxValues.endValue;
+  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);

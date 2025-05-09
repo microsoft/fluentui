@@ -503,11 +503,14 @@ export class HorizontalBarChartWithAxisBase
     if (isNumericScale) {
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
+      const yMinProp = this.props.yMinValue || 0;
+      const yDomainMin = yMin < yMinProp ? Math.min(0, yMin) : yMinProp;
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([Math.max(0, yMin), yMax])
+        .domain([yDomainMin, yDomainMax])
         .range([containerHeight - (this.margins.bottom! + this._domainMargin), this.margins.top! + this._domainMargin]);
       return { xBarScale, yBarScale };
     } else {

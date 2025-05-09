@@ -146,7 +146,6 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
             data={this.state.dynamicData}
             colors={this._colors}
             hideLegend={true}
-            yMaxValue={100}
             width={this.state.width}
             enableGradient={this.state.enableGradient}
             roundCorners={this.state.roundCorners}
@@ -182,25 +181,31 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
     this.setState({ width: Number(e.target.value) });
   };
   private _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-    this.setState({
+    this.setState(prevState => ({
       yAxisType: option.key,
       dynamicData: this._getData(this.state.dataSize, option.key),
-      statusKey: this.state.statusKey + 1,
-    });
+      statusKey: prevState.statusKey + 1,
+    }));
   };
   private _onYAxisPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    this.setState({ yAxisPaddingEnabled: checked, statusKey: this.state.statusKey + 1 });
+    this.setState(prevState => ({
+      yAxisPaddingEnabled: checked,
+      statusKey: prevState.statusKey + 1,
+    }));
   };
   private _onYAxisPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ yAxisPadding: Number(e.target.value), statusKey: this.state.statusKey + 1 });
+    this.setState(prevState => ({
+      yAxisPadding: Number(e.target.value),
+      statusKey: prevState.statusKey + 1,
+    }));
   };
   private _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dataSize = Number(e.target.value);
-    this.setState({
+    this.setState(prevState => ({
       dataSize,
       dynamicData: this._getData(dataSize, this.state.yAxisType),
-      statusKey: this.state.statusKey + 1,
-    });
+      statusKey: prevState.statusKey + 1,
+    }));
   };
 
   private _getData = (dataSize: number, yAxisType: string) => {
@@ -218,7 +223,6 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
           data.push({ x: this._randomX(), y });
         }
       }
-      data.sort((a, b) => (a.x as number) - (b.x as number));
     }
     return data;
   };
