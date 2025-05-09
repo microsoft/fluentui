@@ -1,5 +1,5 @@
 import { screen, fireEvent } from '@testing-library/react';
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { ScatterChart } from './ScatterChart';
 import { toHaveNoViolations } from 'jest-axe';
 import { ChartProps } from '../../ScatterChart';
