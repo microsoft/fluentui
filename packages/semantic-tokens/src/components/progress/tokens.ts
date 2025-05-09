@@ -1,5 +1,6 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 import { backgroundCtrlBrandRestRaw, cornerCircularRaw } from '../../control/variables';
+import { colorNeutralBackground6, colorCompoundBrandBackground, borderRadiusMedium } from '../../legacy/tokens';
 import {
   ctrlProgressBackgroundEmptyRaw,
   ctrlProgressBackgroundFilledRaw,
@@ -12,9 +13,9 @@ import {
   ctrlProgressLgHeightEmptyRaw,
 } from './variables';
 
-export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw})`;
-export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, var(${backgroundCtrlBrandRestRaw}))`;
-export const ctrlProgressCorner = `var(${ctrlProgressCornerRaw}, var(${cornerCircularRaw}))`;
+export const ctrlProgressBackgroundEmpty = `var(${ctrlProgressBackgroundEmptyRaw}, ${colorNeutralBackground6})`;
+export const ctrlProgressBackgroundFilled = `var(${ctrlProgressBackgroundFilledRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandBackground}))`;
+export const ctrlProgressCorner = `var(${ctrlProgressCornerRaw}, var(${cornerCircularRaw}, ${borderRadiusMedium}))`;
 export const ctrlProgressHeightFilled = `var(${ctrlProgressHeightFilledRaw})`;
 export const ctrlProgressHeightEmpty = `var(${ctrlProgressHeightEmptyRaw}, var(${ctrlProgressHeightFilledRaw}))`;
 export const ctrlProgressSmHeightFilled = `var(${ctrlProgressSmHeightFilledRaw})`;

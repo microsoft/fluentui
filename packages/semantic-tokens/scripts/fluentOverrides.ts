@@ -14,6 +14,13 @@ export const fluentOverrides: FluentOverrides = {
   ctrlFocusOuterStroke: {
     f2Token: 'colorStrokeFocus2',
   },
+  cornerZero: { f2Token: 'borderRadiusNone' },
+  ctrlProgressBackgroundEmpty: { f2Token: 'colorNeutralBackground6' },
+  ctrlProgressBackgroundFilled: { f2Token: 'colorCompoundBrandBackground' },
+  ctrlProgressCorner: { f2Token: 'borderRadiusMedium' },
+  statusDangerBackground: { f2Token: 'colorPaletteRedBackground3' },
+  statusWarningBackground: { f2Token: 'colorPaletteDarkOrangeBackground3' },
+  statusSuccessBackground: { f2Token: 'colorPaletteGreenBackground3' },
   ctrlLinkForegroundBrandRest: { f2Token: 'colorBrandForegroundLink' },
   textStyleDefaultRegularFontfamily: { f2Token: 'fontFamilyBase' },
   textGlobalBody3Fontsize: { f2Token: 'fontSizeBase300' },
