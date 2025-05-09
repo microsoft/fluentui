@@ -165,6 +165,11 @@ export const AnchorButtonSize: {
 // @public
 export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const AnchorButtonStyles: ElementStyles;
+
 // @public
 export const AnchorButtonTemplate: ElementViewTemplate<AnchorButton>;
 
