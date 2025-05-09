@@ -92,7 +92,7 @@ export class HorizontalBarChartWithAxisBase
   private _longestBarNegativeTotalValue: number;
   private readonly X_ORIGIN: number = 0;
   private _domainMargin: number;
-  private _yAxisInnerPadding: number;
+  private _yAxisPadding: number;
 
   public constructor(props: IHorizontalBarChartWithAxisProps) {
     super(props);
@@ -130,8 +130,8 @@ export class HorizontalBarChartWithAxisBase
     this._cartesianChartRef = React.createRef();
     this._legendsRef = React.createRef();
     this._domainMargin = MIN_DOMAIN_MARGIN;
-    this._yAxisInnerPadding = this.props.yAxisPadding || 0.5;
-    this._bars = [];
+    this._yAxisPadding = this.props.yAxisPadding ?? 0.5;
+    this._yAxisPadding = this._yAxisPadding === 1 ? 0.99 : this._yAxisPadding;
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -314,7 +314,6 @@ export class HorizontalBarChartWithAxisBase
     xElement?: SVGElement | null,
     yElement?: SVGElement | null,
   ) => {
-    this._bars = [];
     const stackedChartData = groupChartDataByYValue(this._points);
     const longestBars = computeLongestBars(stackedChartData, this.X_ORIGIN);
     this._longestBarPositiveTotalValue = longestBars.longestPositiveBar;
@@ -517,7 +516,7 @@ export class HorizontalBarChartWithAxisBase
       const yBarScale = d3ScaleBand()
         .domain(this._yAxisLabels)
         .range([containerHeight - (this.margins.bottom! + this._domainMargin), this.margins.top! + this._domainMargin])
-        .padding(this._yAxisInnerPadding);
+        .padding(this._yAxisPadding);
 
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -697,24 +696,24 @@ export class HorizontalBarChartWithAxisBase
   private _getDomainMarginsForHorizontalBarChart = (containerHeight: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
     const uniqueY = this._getUniqueYValues();
-    /** Rate at which the space between the bars changes wrt the bar width */
-    const barGapRate = this._yAxisInnerPadding / (1 - this._yAxisInnerPadding);
+    /** Rate at which the space between the bars changes wrt the bar height */
+    const barGapRate = this._yAxisPadding / (1 - this._yAxisPadding);
     const numBars = uniqueY.length + (uniqueY.length - 1) * barGapRate;
     // Total height available to render the bars
     const totalHeight =
       containerHeight - (this.margins.top! + MIN_DOMAIN_MARGIN) - (this.margins.bottom! + MIN_DOMAIN_MARGIN);
     if (this._yAxisType !== YAxisType.StringAxis) {
       // Calculate bar height dynamically
-      this._barHeight = this._calculateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisInnerPadding);
+      this._barHeight = this._calculateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisPadding);
       this._domainMargin += this._barHeight / 2;
     } else {
+      // Calculate the appropriate bar height
+      this._barHeight = totalHeight / numBars;
       /** Total height required to render the bars. Directly proportional to bar height */
       const reqHeight = numBars * this._barHeight;
       if (totalHeight >= reqHeight) {
         // Center align the chart by setting equal left and right margins for domain
         this._domainMargin = MIN_DOMAIN_MARGIN + (totalHeight - reqHeight) / 2;
-      } else if (totalHeight > 0 && reqHeight > totalHeight) {
-        this._barHeight = Math.max(Math.floor(totalHeight / numBars), 1);
       }
     }
 

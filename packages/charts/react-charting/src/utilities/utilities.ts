@@ -591,11 +591,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom!, margins.top!]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
