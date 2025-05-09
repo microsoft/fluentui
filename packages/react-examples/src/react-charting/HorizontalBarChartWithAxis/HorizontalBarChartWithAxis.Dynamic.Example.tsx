@@ -182,10 +182,14 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
     this.setState({ width: Number(e.target.value) });
   };
   private _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-    this.setState({ yAxisType: option.key, dynamicData: this._getData(this.state.dataSize, option.key) });
+    this.setState({
+      yAxisType: option.key,
+      dynamicData: this._getData(this.state.dataSize, option.key),
+      statusKey: this.state.statusKey + 1,
+    });
   };
   private _onYAxisPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    this.setState({ yAxisPaddingEnabled: checked });
+    this.setState({ yAxisPaddingEnabled: checked, statusKey: this.state.statusKey + 1 });
   };
   private _onYAxisPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ yAxisPadding: Number(e.target.value), statusKey: this.state.statusKey + 1 });

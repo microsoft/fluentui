@@ -179,6 +179,7 @@ export class HorizontalBarChartWithAxisBase
     return (
       <CartesianChart
         {...this.props}
+        yAxisPadding={this._yAxisPadding}
         yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
