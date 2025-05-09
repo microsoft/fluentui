@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 09 May 2025 07:21:57 GMT",
+      "tag": "@fluentui/react-charting_v5.23.83",
+      "version": "5.23.83",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8df021f6234e2934de235dc9b2c602c1242f099d",
+            "comment": "fix(react-charting): High contrast bug fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 May 2025 07:22:41 GMT",
       "tag": "@fluentui/react-charting_v5.23.82",
       "version": "5.23.82",
