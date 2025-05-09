@@ -16,17 +16,17 @@ export const Provider = () => {
     <div className={classes.root}>
       <Text size={500} weight="bold">
         This is a really long text that is going to be used to showcase the text component. Among those words, we have a
-        few styled ones, like this <Text underline>underlined</Text>, this <Text italic>italic</Text>, this{' '}
-        <Text strikethrough>strikethrough</Text>, and this <Text size={100}>small</Text>. Notice that all of the styled
-        ones lost the size and bold formatting.
+        few styled ones, like <Text underline>this underlined</Text>, <Text italic>this italic</Text>,{' '}
+        <Text strikethrough>this strikethrough</Text>, and <Text size={100}>this small</Text>. Notice that all of the
+        styled ones lost the size and bold formatting.
       </Text>
 
       <TextProvider value={{ size: 500, weight: 'bold' }}>
         <Text>
           This is a really long text that is going to be used to showcase the text component. Among those words, we have
-          a few styled ones, like this <Text underline>underlined</Text>, this <Text italic>italic</Text>, this{' '}
-          <Text strikethrough>strikethrough</Text>, and this <Text size={100}>small</Text>. Notice that now everything
-          is formmatted correctly.
+          a few styled ones, like <Text underline>this underlined</Text>, <Text italic>this italic</Text>,{' '}
+          <Text strikethrough>this strikethrough</Text>, and <Text size={100}>this small</Text>. Notice that now
+          everything is formmatted correctly.
         </Text>
       </TextProvider>
     </div>
