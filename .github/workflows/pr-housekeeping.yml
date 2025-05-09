@@ -17,15 +17,3 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           sync-labels: true
           configuration-path: .github/labeler.yml
-
-  assign-to-current-milestone:
-    if: ${{ github.repository_owner == 'microsoft' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Assign to latest milestone
-        uses: andrefcdias/add-to-milestone@33bbeee733bc6b1241fdc5842c279b8d080b7c22 # v1.3.0
-        with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          use-expression: true
-          milestone: '* Project Cycle *'
-          users-file-path: '.github/MAINTAINERS'

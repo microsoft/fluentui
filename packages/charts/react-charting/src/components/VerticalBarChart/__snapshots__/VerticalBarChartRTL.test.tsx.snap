@@ -51,17 +51,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -198,8 +198,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -208,9 +208,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -344,6 +344,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -379,6 +382,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -413,6 +419,9 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -838,17 +847,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -985,8 +994,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -995,9 +1004,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -1131,6 +1140,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -1166,6 +1178,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -1200,6 +1215,9 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -1638,17 +1656,17 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -1785,8 +1803,8 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -1795,9 +1813,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -1931,6 +1949,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="56"
                 y="203.6"
@@ -1966,6 +1987,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="270.61538461538464"
                 y="14"
@@ -2000,6 +2024,9 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       fill: #f3f2f1;
                       font-size: 12px;
                       font-weight: 600;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
                     }
                 text-anchor="middle"
                 x="592.5384615384615"
@@ -2437,17 +2464,17 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -2530,8 +2557,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -2540,9 +2567,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -2678,6 +2705,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="287"
               y="203.6"
@@ -2715,6 +2745,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="335"
               y="14"
@@ -2751,6 +2784,9 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="383"
@@ -10001,17 +10037,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -10148,8 +10184,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -10158,9 +10194,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -10294,6 +10330,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="79.39999999999998"
@@ -10329,6 +10368,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="269"
@@ -10363,6 +10405,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -12270,17 +12315,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -12417,8 +12462,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -12427,9 +12472,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -12563,6 +12608,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -12598,6 +12646,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -12632,6 +12683,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -13057,17 +13111,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -13204,8 +13258,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -13214,9 +13268,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -13333,8 +13387,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -13343,9 +13397,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -13480,6 +13534,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -13515,6 +13572,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="262.92307692307696"
               y="14"
@@ -13549,6 +13609,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="573.3076923076924"
@@ -13974,17 +14037,17 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -14085,8 +14148,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -14095,9 +14158,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -14233,6 +14296,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="263"
               y="14"
@@ -14269,6 +14335,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="311"
@@ -14307,6 +14376,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="359"
               y="122.34285714285716"
@@ -14343,6 +14415,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="407"
@@ -14568,17 +14643,17 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -14715,8 +14790,8 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -14725,9 +14800,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -14879,6 +14954,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="85.10000000000002"
@@ -14914,6 +14992,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="245.3"
@@ -14948,6 +15029,9 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -15373,17 +15457,17 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -15520,8 +15604,8 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -15530,9 +15614,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -15666,6 +15750,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -15701,6 +15788,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -15735,6 +15825,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"
@@ -16206,17 +16299,17 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -16353,8 +16446,8 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -16363,9 +16456,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -16499,6 +16592,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
@@ -16534,6 +16630,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
@@ -16568,6 +16667,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               text-anchor="middle"
               x="592.5384615384615"

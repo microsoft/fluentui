@@ -38,7 +38,9 @@ describe('PeoplePicker', () => {
     render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />);
 
     const input = screen.getByRole('combobox') as HTMLInputElement;
-    input.focus();
+    act(() => {
+      input.focus();
+    });
     input.value = 'Valentyna';
 
     fireEvent.input(input);

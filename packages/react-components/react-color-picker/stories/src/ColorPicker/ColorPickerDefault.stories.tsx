@@ -47,14 +47,14 @@ const useStyles = makeStyles({
     gap: '6px',
   },
   input: {
-    width: '80px',
+    width: '96px',
   },
   spinButton: {
     minWidth: '60px',
   },
 });
 
-const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,6})$/;
+const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,8})$/;
 const NUMBER_REGEX = /^\d+$/;
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
@@ -136,6 +136,7 @@ export const Default = () => {
             if (newColor.isValid) {
               setColor(newColor.toHsv());
               setRgb(newColor.toRgb());
+              setAlpha(newColor.a);
             }
             setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}
