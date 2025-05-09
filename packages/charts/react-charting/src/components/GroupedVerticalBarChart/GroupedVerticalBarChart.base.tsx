@@ -499,7 +499,7 @@ export class GroupedVerticalBarChartBase
 
           barTotalValue += pointData.data;
         });
-        if (barTotalValue != null && !this.props.hideLabels && this._barWidth >= 16 && isLegendActive) {
+        if (barTotalValue !== null && !this.props.hideLabels && this._barWidth >= 16 && isLegendActive) {
           barLabelsForGroup.push(
             <text
               key={`${singleSet.indexNum}-${legendIndex}`}
