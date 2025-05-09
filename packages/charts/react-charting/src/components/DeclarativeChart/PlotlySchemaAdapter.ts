@@ -180,7 +180,7 @@ function tryTypeParseInternal(
   value: Datum,
   isString: boolean,
   isDate: boolean,
-  isNumber: boolean
+  isNumber: boolean,
 ): Date | number | string {
   if (value === null || value === undefined) {
     return 0;
