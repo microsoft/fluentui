@@ -166,3 +166,117 @@ export const getColorContrast = (c1: string, c2: string): number => {
   const l2 = lrgbLuminance(rgbLrgb(d3Rgb(c2)));
   return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
 };
+
+/**
+ * Converts various color formats (hex, RGB, RGBA, HSL, HSV, named colors) into a standard hex color code (#RRGGBB).
+ * @param color - The input color in hex, RGB, RGBA, HSL, HSV, or named string format.
+ * @returns The hex color code (#RRGGBB) or null if the input is invalid.
+ */
+export function convertToHex(color: string): string | null {
+  // Check if the color is already in hex format
+  if (/^#([0-9A-F]{3}){1,2}$/i.test(color)) {
+    return color.length === 4
+      ? `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}` // Expand shorthand hex (#RGB to #RRGGBB)
+      : color.toUpperCase();
+  }
+
+  // Check if the color is in RGB or RGBA format
+  const rgbMatch = color.match(/^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})(?:,\s*[\d.]+)?\)$/i);
+  if (rgbMatch) {
+    const [_, r, g, b] = rgbMatch.map(Number);
+    if (r <= 255 && g <= 255 && b <= 255) {
+      return `#${[r.toString(16).padStart(2, '0'), g.toString(16).padStart(2, '0'), b.toString(16).padStart(2, '0')]
+        .join('')
+        .toUpperCase()}`;
+    }
+  }
+
+  // Check if the color is in HSL format
+  const hslMatch = color.match(/^hsl\((\d{1,3}),\s*(\d{1,3})%,\s*(\d{1,3})%\)$/i);
+  if (hslMatch) {
+    const [_, h, s, l] = hslMatch.map(Number);
+    if (h <= 360 && s <= 100 && l <= 100) {
+      const rgb = hslToRgb(h, s / 100, l / 100);
+      return `#${rgb
+        .map(x => x.toString(16).padStart(2, '0'))
+        .join('')
+        .toUpperCase()}`;
+    }
+  }
+
+  // Check if the color is in HSV format
+  const hsvMatch = color.match(/^hsv\((\d{1,3}),\s*(\d{1,3})%,\s*(\d{1,3})%\)$/i);
+  if (hsvMatch) {
+    const [_, h, s, v] = hsvMatch.map(Number);
+    if (h <= 360 && s <= 100 && v <= 100) {
+      const rgb = hsvToRgb(h, s / 100, v / 100);
+      return `#${rgb
+        .map(x => x.toString(16).padStart(2, '0'))
+        .join('')
+        .toUpperCase()}`;
+    }
+  }
+
+  // Check if the color is a named color
+  const ctx = document.createElement('canvas').getContext('2d');
+  if (ctx) {
+    ctx.fillStyle = color;
+    const computedColor = ctx.fillStyle;
+    if (/^#([0-9A-F]{3}){1,2}$/i.test(computedColor)) {
+      return computedColor.toUpperCase();
+    }
+  }
+
+  // Invalid color format
+  return null;
+}
+
+/**
+ * Converts HSL to RGB.
+ * @param h - Hue (0-360)
+ * @param s - Saturation (0-1)
+ * @param l - Lightness (0-1)
+ * @returns An array of RGB values [R, G, B].
+ */
+function hslToRgb(h: number, s: number, l: number): [number, number, number] {
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = l - c / 2;
+  let r = 0;
+    let g = 0;
+    let b = 0;
+
+  if (h < 60) {[r, g, b] = [c, x, 0];}
+  else if (h < 120) {[r, g, b] = [x, c, 0];}
+  else if (h < 180) {[r, g, b] = [0, c, x];}
+  else if (h < 240) {[r, g, b] = [0, x, c];}
+  else if (h < 300) {[r, g, b] = [x, 0, c];}
+  else {[r, g, b] = [c, 0, x];}
+
+  return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+}
+
+/**
+ * Converts HSV to RGB.
+ * @param h - Hue (0-360)
+ * @param s - Saturation (0-1)
+ * @param v - Value (0-1)
+ * @returns An array of RGB values [R, G, B].
+ */
+function hsvToRgb(h: number, s: number, v: number): [number, number, number] {
+  const c = v * s;
+  const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+  const m = v - c;
+  let r = 0;
+    let g = 0;
+    let b = 0;
+
+  if (h < 60) {[r, g, b] = [c, x, 0];}
+  else if (h < 120) {[r, g, b] = [x, c, 0];}
+  else if (h < 180) {[r, g, b] = [0, c, x];}
+  else if (h < 240) {[r, g, b] = [0, x, c];}
+  else if (h < 300) {[r, g, b] = [x, 0, c];}
+  else {[r, g, b] = [c, 0, x];}
+
+  return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+}

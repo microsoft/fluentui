@@ -33,7 +33,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
+import { convertToHex, DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -48,6 +48,7 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  Color,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -218,16 +219,40 @@ const getSecondaryYAxisValues = (
   };
 };
 
+const getSchemaColors = (colors: Color | Color[] | undefined): string[] => {
+  const hexColors: string[] = [];
+  if (isStringArray(colors)) {
+    (colors as string[]).forEach(element => {
+      hexColors.push(convertToHex(element)!);
+    });
+  } else if (typeof colors === 'string') {
+    return [convertToHex(colors as string)!];
+  }
+  return hexColors;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
+  const colors: string[] | string | null | undefined = firstData.marker?.colors
+    ? getSchemaColors(firstData?.marker?.color)
+    : firstData.marker?.color
+    ? convertToHex(firstData.marker?.color.toString())
+    : undefined;
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
-    const color = getColor(label, colorMap, isDarkTheme);
+    let color: string = '';
+    if (colors && isStringArray(colors)) {
+      color = colors[index % colors.length];
+    } else if (typeof colors === 'string') {
+      color = colors;
+    } else {
+      color = getColor(label, colorMap, isDarkTheme);
+    }
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
