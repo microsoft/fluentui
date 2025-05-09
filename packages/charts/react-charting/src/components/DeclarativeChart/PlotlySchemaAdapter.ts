@@ -149,6 +149,67 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
   return xValues;
 };
 
+/**
+ * Creates a Date object from a year or a timestamp in milliseconds.
+ * @param value - The input value, either a year (e.g., 2023) or a timestamp in milliseconds.
+ * @returns A Date object.
+ */
+function createDateFromNumber(value: number): Date {
+  if (value < 10000) {
+    // If the value is less than 10000, assume it's a year
+    return new Date(value, 0, 1); // January 1st of the given year
+  } else {
+    // Otherwise, assume it's a timestamp in milliseconds
+    return new Date(value);
+  }
+}
+
+/**
+ * Try to parse a value into the most appropriate type.
+ * - If the value is a string, it checks if it's a valid date string and converts it.
+ * - If the value is a number, it determines whether it's a year or a timestamp and converts it accordingly.
+ * - Otherwise, it returns the value as is.
+ *
+ * @param value - The input value to be converted.
+ * @param isString - Indicates if the value is a string.
+ * @param isXDate - Indicates if the value is a valid date.
+ * @param isXNumber - Indicates if the value is a number.
+ * @returns The converted value or the original value if no conversion is needed.
+ */
+function tryTypeParseInternal(
+  value: Datum,
+  isString: boolean,
+  isDate: boolean,
+  isNumber: boolean
+): Date | number | string {
+  if (value === null || value === undefined) {
+    return 0;
+  }
+  if (isString) {
+    if (isDate) {
+      // Convert string to Date if it's a valid date string
+      return new Date(value as string);
+    } else if (isNumber) {
+      // Convert string to a number if it's numeric
+      return parseFloat(value as string);
+    } else {
+      // Return the original string if it's neither a date nor a number
+      return value;
+    }
+  } else if (isNumber) {
+    if (isDate) {
+      // Convert numeric value to a Date object (e.g., timestamp or year)
+      return createDateFromNumber(value as number);
+    } else {
+      // Return the numeric value as is
+      return value;
+    }
+  }
+
+  // Return the original value if no better conversion is needed
+  return value;
+}
+
 export const getColor = (
   legendLabel: string,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -475,7 +536,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     return {
       legend,
       data: xValues.map((x, i: number) => ({
-        x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
+        x: tryTypeParseInternal(x, isString, isXDate, isXNumber),
         y: series.y[i],
         ...(Array.isArray(series.marker?.size)
           ? { markerSize: series.marker.size[i] }
@@ -509,6 +570,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       hideLegend,
+      useUTC: false,
     } as IAreaChartProps;
   } else {
     return {
@@ -525,6 +587,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       hideTickOverlap: true,
       enableReflow: false,
       hideLegend,
+      useUTC: false,
     } as ILineChartProps;
   }
 };
