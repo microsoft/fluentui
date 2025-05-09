@@ -151,17 +151,15 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
 
 /**
  * Creates a Date object from a year or a timestamp in milliseconds.
- * @param value - The input value, either a year (e.g., 2023) or a timestamp in milliseconds.
+ * @param value - The input value, either a year (e.g., 2023) or a possible timestamp in milliseconds.
  * @returns A Date object.
  */
-function createDateFromNumber(value: number): Date {
-  if (value < 10000) {
-    // If the value is less than 10000, assume it's a year
+function createDateFromNumber(value: number): Date | number {
+  if (value >= 1900 && value <= 2100) {
+    // If the value is between 1900 and 2100, assume it's a year
     return new Date(value, 0, 1); // January 1st of the given year
-  } else {
-    // Otherwise, assume it's a timestamp in milliseconds
-    return new Date(value);
   }
+  return value; // If the value is not a valid year, return it as is
 }
 
 /**
