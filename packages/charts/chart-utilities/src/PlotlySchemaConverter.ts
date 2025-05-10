@@ -26,6 +26,7 @@ const SUPPORTED_PLOT_TYPES = [
 
 const UNSUPPORTED_MSG_PREFIX = 'Unsupported chart - type :';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
