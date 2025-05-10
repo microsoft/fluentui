@@ -233,11 +233,9 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
-    try {
-      expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
-    }
+    expect(() => {
+      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true);
+    }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
@@ -266,13 +264,9 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
-    try {
-      expect(
-        transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true),
-      ).toMatchSnapshot();
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'map')"));
-    }
+    expect(() => {
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true);
+    }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should return heatmap chart props', () => {

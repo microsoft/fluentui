@@ -57,17 +57,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -86,8 +86,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -96,9 +96,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -692,17 +692,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -721,8 +721,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -731,9 +731,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -1313,17 +1313,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -1342,8 +1342,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1352,9 +1352,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -1934,17 +1934,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -1963,8 +1963,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1973,9 +1973,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -2068,17 +2068,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -2097,8 +2097,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2107,9 +2107,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
@@ -2378,17 +2378,17 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -2407,8 +2407,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2417,9 +2417,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"

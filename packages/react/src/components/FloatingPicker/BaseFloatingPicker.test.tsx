@@ -78,10 +78,14 @@ describe('Pickers', () => {
       const picker = pickerRef.current!;
 
       input.value = 'a';
-      picker.onQueryStringChanged('a');
+      act(() => {
+        picker.onQueryStringChanged('a');
+      });
 
       input.value = '';
-      picker.onQueryStringChanged('');
+      act(() => {
+        picker.onQueryStringChanged('');
+      });
 
       expect(picker.suggestions.length).toEqual(4);
     });
@@ -104,9 +108,8 @@ describe('Pickers', () => {
       const picker = pickerRef.current!;
 
       input.value = 'b';
-      picker.onQueryStringChanged('b');
-
       act(() => {
+        picker.onQueryStringChanged('b');
         jest.runAllTimers();
       });
 

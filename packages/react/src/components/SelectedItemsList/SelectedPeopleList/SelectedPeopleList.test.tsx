@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { isConformant } from '../../../common/isConformant';
 
 import { SelectedPeopleList } from './SelectedPeopleList';
@@ -79,24 +79,26 @@ describe('SelectedPeopleList', () => {
       if (picker === null) {
         throw new Error('already checked ref instance was not null');
       }
-      picker.addItems([
-        {
-          key: 'person-A',
-          text: 'Person A',
-          isValid: true,
-          isEditing: true,
-        },
-        {
-          key: 'person-B',
-          text: 'Person B',
-          isValid: true,
-        },
-      ]);
+      act(() => {
+        picker.addItems([
+          {
+            key: 'person-A',
+            text: 'Person A',
+            isValid: true,
+            isEditing: true,
+          },
+          {
+            key: 'person-B',
+            text: 'Person B',
+            isValid: true,
+          },
+        ]);
+      });
 
       const result = picker.render();
       expect(result).toBeInstanceOf(Array);
-      expect(result[0].key).toBe('person-A');
-      expect(result[1].key).toBe('person-B');
+      expect(result![0].key).toBe('person-A');
+      expect(result![1].key).toBe('person-B');
     });
   });
 });

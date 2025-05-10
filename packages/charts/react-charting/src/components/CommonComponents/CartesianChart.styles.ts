@@ -1,5 +1,5 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { FontSizes, FontWeights, HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { NeutralColors, isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
@@ -50,8 +50,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
             fill: theme.semanticColors.bodyText,
             fontWeight: '600',
             selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
+              [HighContrastSelector]: {
+                fill: 'CanvasText',
               },
             },
           },
@@ -61,9 +61,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           stroke: theme.semanticColors.bodyText,
           width: '1px',
           selectors: {
-            [HighContrastSelectorBlack]: {
+            [HighContrastSelector]: {
               opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
+              stroke: 'CanvasText',
             },
           },
         },
@@ -80,8 +80,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
             fill: theme.semanticColors.bodyText,
             fontWeight: '600',
             selectors: {
-              [HighContrastSelectorBlack]: {
-                fill: 'rgb(179, 179, 179)',
+              [HighContrastSelector]: {
+                fill: 'CanvasText',
               },
             },
           },
@@ -93,9 +93,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           opacity: 0.2,
           stroke: theme.semanticColors.bodyText,
           selectors: {
-            [HighContrastSelectorBlack]: {
+            [HighContrastSelector]: {
               opacity: 0.1,
-              stroke: 'rgb(179, 179, 179)',
+              stroke: 'CanvasText',
             },
           },
         },
@@ -167,8 +167,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       ...fonts.small,
       lineHeight: '16px',
       selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
+        [HighContrastSelector]: {
+          color: 'CanvasText',
         },
       },
       color: theme.semanticColors.bodySubtext,
@@ -179,8 +179,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         fontWeight: 'bold',
         lineHeight: '22px',
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
       },
@@ -189,8 +189,8 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       theme.fonts.small,
       {
         selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
+          [HighContrastSelector]: {
+            color: 'CanvasText',
           },
         },
         color: theme.semanticColors.bodyText,
