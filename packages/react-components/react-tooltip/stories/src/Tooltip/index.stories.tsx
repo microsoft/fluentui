@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Tooltip } from '@fluentui/react-components';
 import descriptionMd from './TooltipDescription.md';
+import accessibilityMd from './TooltipAccessibility.md';
 export { Default } from './TooltipDefault.stories';
 export { RelationshipLabel } from './TooltipRelationshipLabel.stories';
 export { RelationshipDescription } from './TooltipRelationshipDescription.stories';
@@ -13,7 +14,6 @@ export { Controlled } from './TooltipControlled.stories';
 export { Positioning } from './TooltipPositioning.stories';
 export { Target } from './TooltipTarget.stories';
 export { Icon } from './TooltipIcon.stories';
-export { WithOverflow } from './TooltipWithOverflow.stories';
 
 export default {
   title: 'Components/Tooltip',
@@ -21,7 +21,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, accessibilityMd].join('\n'),
       },
     },
   },
