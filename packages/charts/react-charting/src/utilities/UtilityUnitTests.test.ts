@@ -1189,7 +1189,7 @@ test('formatValueLimitWidth should format a numeric value with appropriate SI pr
   expect(utils.formatValueLimitWidth(19.53)).toBe('19.53');
   expect(utils.formatValueLimitWidth(983)).toBe('983');
   expect(utils.formatValueLimitWidth(9801)).toBe('9.8k');
-  expect(utils.formatValueLimitWidth(100990000)).toBe('101.0M');
+  expect(utils.formatValueLimitWidth(100990000)).toBe('101M');
 });
 
 describe('getClosestPairDiffAndRange', () => {
@@ -1302,6 +1302,13 @@ describe('test array equality utility', () => {
 });
 
 describe('defaultYAxisTickFormatter tests', () => {
+  it('should format small numbers and maintain precision', () => {
+    expect(utils.defaultYAxisTickFormatter(1000)).toBe('1k');
+    expect(utils.defaultYAxisTickFormatter(123.56)).toBe('123.56');
+    expect(utils.defaultYAxisTickFormatter(148)).toBe('148');
+    expect(utils.defaultYAxisTickFormatter(999.56)).toBe('999.56');
+    expect(utils.defaultYAxisTickFormatter(1995.89)).toBe('2k');
+  });
   it('should format large numbers with SI prefixes', () => {
     expect(utils.defaultYAxisTickFormatter(1e6)).toBe('1M'); // 1 million
     expect(utils.defaultYAxisTickFormatter(1e9)).toBe('1B'); // 1 billion (G replaced with B)

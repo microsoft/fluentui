@@ -351,7 +351,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -389,7 +389,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -427,7 +427,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -1147,7 +1147,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -1185,7 +1185,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -1223,7 +1223,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -1956,7 +1956,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 x="56"
                 y="203.6"
               >
-                10.0k
+                10k
               </text>
             </g>
             <g>
@@ -1994,7 +1994,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 x="270.61538461538464"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
             <g>
@@ -2032,7 +2032,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 x="592.5384615384615"
                 y="108.80000000000001"
               >
-                30.0k
+                30k
               </text>
             </g>
           </g>
@@ -2712,7 +2712,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               x="287"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g
@@ -2752,7 +2752,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               x="335"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g
@@ -2792,7 +2792,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               x="383"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -12615,7 +12615,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -12653,7 +12653,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -12691,7 +12691,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -13541,7 +13541,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -13579,7 +13579,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="262.92307692307696"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -13617,7 +13617,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               x="573.3076923076924"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -14207,7 +14207,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               x="-10"
             >
-              880
+              875
             </text>
           </g>
           <g
@@ -14961,7 +14961,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               x="56"
               y="85.10000000000002"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -15037,7 +15037,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               x="592.5384615384615"
               y="37.69999999999999"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -15757,7 +15757,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -15795,7 +15795,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -15833,7 +15833,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -16599,7 +16599,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -16637,7 +16637,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -16675,7 +16675,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
