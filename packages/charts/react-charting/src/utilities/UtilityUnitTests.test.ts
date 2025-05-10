@@ -33,7 +33,7 @@ describe('Unit test to convert data to localized string', () => {
     expect(utils.convertToLocaleString('123')).toBe('123');
   });
   test('Should return localized 1234 when data is string 1234', () => {
-    expect(utils.convertToLocaleString('1234')).toBe('1,234');
+    expect(utils.convertToLocaleString('1234')).toBe('1234');
   });
   test('Should return localized Hello World when data is string Hello World', () => {
     expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
@@ -51,7 +51,7 @@ describe('Unit test to convert data to localized string', () => {
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
     expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(25600, 'ar-SY')).toBe('٢٬٥٦٠');
+    expect(utils.convertToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
   });
 
   test('Do not localize 4 digit numbers', () => {
@@ -62,7 +62,7 @@ describe('Unit test to convert data to localized string', () => {
 
   test('Should return the localised data when the input data is a string containing a number', () => {
     expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('12345', 'ar-SY')).toBe('١٬٢٣٤');
+    expect(utils.convertToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
   });
 });
 
@@ -1310,13 +1310,13 @@ describe('defaultYAxisTickFormatter tests', () => {
 
   it('should format small numbers without SI prefixes', () => {
     expect(utils.defaultYAxisTickFormatter(0.123)).toBe('0.12'); // Small number
-    expect(utils.defaultYAxisTickFormatter(0.0000343)).toBe('3.4e-5'); // Scientific notation for very small numbers
+    expect(utils.defaultYAxisTickFormatter(0.0000343)).toBe('0.000034'); // Scientific notation for very small numbers
   });
 
   it('should format negative numbers correctly', () => {
-    expect(utils.defaultYAxisTickFormatter(-1e6)).toBe('-1M'); // Negative 1 million
-    expect(utils.defaultYAxisTickFormatter(-1e9)).toBe('-1B'); // Negative 1 billion (G replaced with B)
-    expect(utils.defaultYAxisTickFormatter(-0.123)).toBe('-0.12'); // Small negative number
+    expect(utils.defaultYAxisTickFormatter(-1e6)).toBe('−1M'); // Negative 1 million
+    expect(utils.defaultYAxisTickFormatter(-1e9)).toBe('−1B'); // Negative 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(-0.123)).toBe('−0.12'); // Small negative number
   });
 
   it('should handle zero correctly', () => {

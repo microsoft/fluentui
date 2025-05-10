@@ -1468,6 +1468,9 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
     return data.toLocaleString(culture);
   } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
     const num = Number(data);
+    if (Math.abs(num) < 10000) {
+      return num.toString();
+    }
     return num.toLocaleString(culture);
   } else if (data instanceof Date) {
     return data.toLocaleDateString(culture);
