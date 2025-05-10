@@ -51,12 +51,18 @@ describe('Unit test to convert data to localized string', () => {
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
     expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('٢٬٥٦٠');
+    expect(utils.convertToLocaleString(25600, 'ar-SY')).toBe('٢٬٥٦٠');
+  });
+
+  test('Do not localize 4 digit numbers', () => {
+    expect(utils.convertToLocaleString(1000, 'en-GB')).toBe('1000');
+    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('2560');
+    expect(utils.convertToLocaleString('2000')).toBe('2000');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
     expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('1234', 'ar-SY')).toBe('١٬٢٣٤');
+    expect(utils.convertToLocaleString('12345', 'ar-SY')).toBe('١٬٢٣٤');
   });
 });
 
@@ -1292,5 +1298,36 @@ describe('test array equality utility', () => {
 
   it('both arrays are equal', () => {
     expect(utils.areArraysEqual(['ab', 'cd', 'ef', 'gh'], ['ab', 'cd', 'ef', 'gh']) === true);
+  });
+});
+
+describe('defaultYAxisTickFormatter tests', () => {
+  it('should format large numbers with SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(1e6)).toBe('1M'); // 1 million
+    expect(utils.defaultYAxisTickFormatter(1e9)).toBe('1B'); // 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(1.5e9)).toBe('1.5B'); // 1.5 billion
+  });
+
+  it('should format small numbers without SI prefixes', () => {
+    expect(utils.defaultYAxisTickFormatter(0.123)).toBe('0.12'); // Small number
+    expect(utils.defaultYAxisTickFormatter(0.0000343)).toBe('3.4e-5'); // Scientific notation for very small numbers
+  });
+
+  it('should format negative numbers correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(-1e6)).toBe('-1M'); // Negative 1 million
+    expect(utils.defaultYAxisTickFormatter(-1e9)).toBe('-1B'); // Negative 1 billion (G replaced with B)
+    expect(utils.defaultYAxisTickFormatter(-0.123)).toBe('-0.12'); // Small negative number
+  });
+
+  it('should handle zero correctly', () => {
+    expect(utils.defaultYAxisTickFormatter(0)).toBe('0'); // Zero
+  });
+
+  it('should not replace G with B for values less than 1e9', () => {
+    expect(utils.defaultYAxisTickFormatter(1e8)).toBe('100M'); // 100 million (no G to replace)
+  });
+
+  it('should format very small numbers in scientific notation', () => {
+    expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
   });
 });
