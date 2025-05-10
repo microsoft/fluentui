@@ -257,7 +257,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -293,7 +293,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g

@@ -214,7 +214,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -250,7 +250,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -970,7 +970,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1006,7 +1006,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1726,7 +1726,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1762,7 +1762,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -2482,7 +2482,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -2518,7 +2518,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -3238,7 +3238,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -3274,7 +3274,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -9627,7 +9627,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -9663,7 +9663,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g

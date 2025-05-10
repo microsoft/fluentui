@@ -167,14 +167,12 @@ export interface IYAxisParams {
 }
 
 function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
-  let formatter = d3Format('.2~s');
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
 
   if (Math.abs(value) < 1) {
     // Don't use SI notation for small numbers as it is less readable
     formatter = d3Format('.2~g');
-  } else if (Math.abs(value) < 1000) {
-    // Use SI format prefix to maintain floating point precision
-    formatter = d3FormatPrefix('.2~', value);
   } else if (limitWidth && Math.abs(value) >= 1000) {
     // If width is limited, use SI format prefix with 1 point precision
     formatter = d3FormatPrefix('.1~', value);

@@ -13,12 +13,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import {
-  ChartHoverCard,
-  formatValueLimitWidth,
-  getAccessibleDataObject,
-  getNextGradient,
-} from '../../utilities/index';
+import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
