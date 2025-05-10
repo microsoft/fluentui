@@ -131,7 +131,6 @@ export class HorizontalBarChartWithAxisBase
     this._legendsRef = React.createRef();
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._yAxisPadding = this.props.yAxisPadding ?? 0.5;
-    this._yAxisPadding = this._yAxisPadding === 1 ? 0.99 : this._yAxisPadding;
   }
 
   public componentDidUpdate(prevProps: IHorizontalBarChartWithAxisProps): void {
@@ -702,6 +701,7 @@ export class HorizontalBarChartWithAxisBase
     this._domainMargin = MIN_DOMAIN_MARGIN;
     const uniqueY = this._getUniqueYValues();
     /** Rate at which the space between the bars changes wrt the bar height */
+    this._yAxisPadding = this._yAxisPadding === 1 ? 0.99 : this._yAxisPadding;
     const barGapRate = this._yAxisPadding / (1 - this._yAxisPadding);
     const numBars = uniqueY.length + (uniqueY.length - 1) * barGapRate;
     // Total height available to render the bars
