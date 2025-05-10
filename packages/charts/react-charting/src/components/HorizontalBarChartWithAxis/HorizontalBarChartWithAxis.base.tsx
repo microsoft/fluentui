@@ -504,8 +504,9 @@ export class HorizontalBarChartWithAxisBase
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
-      const yMinProp = this.props.yMinValue || 0;
-      const yDomainMin = yMin < yMinProp ? Math.min(0, yMin) : yMinProp;
+      // Default to yMin if yMinValue is not provided.
+      const yMinProp = this.props.yMinValue ?? yMin;
+      const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .range([this.margins.left!, containerWidth - this.margins.right!]);
