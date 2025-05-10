@@ -111,7 +111,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -907,7 +907,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -1716,7 +1716,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -10097,7 +10097,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -12375,7 +12375,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -13171,7 +13171,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -14703,7 +14703,7 @@ exports[`Vertical bar chart rendering should render the vertical bar chart with 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -15517,7 +15517,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -16359,7 +16359,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g

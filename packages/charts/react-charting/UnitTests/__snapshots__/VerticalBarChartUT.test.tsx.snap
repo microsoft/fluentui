@@ -111,7 +111,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
