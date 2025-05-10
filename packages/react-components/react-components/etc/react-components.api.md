@@ -1287,8 +1287,10 @@ import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
 import { textClassNames } from '@fluentui/react-text';
+import { TextContextValue } from '@fluentui/react-text';
 import { TextPresetProps } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
+import { TextProvider } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
 import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
@@ -1819,6 +1821,7 @@ import { useTeachingPopoverSurfaceStyles_unstable } from '@fluentui/react-teachi
 import { useTeachingPopoverTitle_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverTitleStyles_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverTrigger_unstable } from '@fluentui/react-teaching-popover';
+import { useText } from '@fluentui/react-text';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
@@ -4438,9 +4441,13 @@ export { TextareaState }
 
 export { textClassNames }
 
+export { TextContextValue }
+
 export { TextPresetProps }
 
 export { TextProps }
+
+export { TextProvider }
 
 export { TextSlots }
 
@@ -5501,6 +5508,8 @@ export { useTeachingPopoverTitle_unstable }
 export { useTeachingPopoverTitleStyles_unstable }
 
 export { useTeachingPopoverTrigger_unstable }
+
+export { useText }
 
 export { useText_unstable }
 
