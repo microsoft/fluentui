@@ -303,7 +303,7 @@ export class CartesianChartBase
       };
 
       const YAxisParams = {
-        margins: this.margins,
+        margins: this.props.getYDomainMargins ? this.props.getYDomainMargins(this.state.containerHeight) : this.margins,
         containerWidth: this.state.containerWidth,
         containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
         yAxisElement: this.yAxisElement,

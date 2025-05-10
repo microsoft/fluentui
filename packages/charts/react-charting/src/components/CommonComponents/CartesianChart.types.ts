@@ -641,6 +641,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => IMargins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => IMargins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 

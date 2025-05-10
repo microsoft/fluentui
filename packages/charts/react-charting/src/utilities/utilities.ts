@@ -54,6 +54,8 @@ import {
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
 
+export const MIN_DOMAIN_MARGIN = 8;
+
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
 
@@ -502,17 +504,24 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
-  const yDomainPadding = Math.abs(finalYmax - finalYmin) * 0.1;
+  const finalYmin = Math.max(yMinMaxValues.startValue, Math.min(yMinValue || 0, 0));
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin - yDomainPadding, finalYmax + yDomainPadding])
+    .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
+  // Custom tick formatting function
+  const customTickFormat = (value: number, _index: number) => {
+    // Calculate the number of digits in the maximum value
+    const numDigits = Math.max(Math.ceil(Math.log10(finalYmax)), Math.floor(Math.log10(finalYmax)) + 1);
+    // Determine the precision (x) based on the number of digits
+    const x = numDigits >= 5 ? 5 : 4;
+    // Apply the dynamically determined x in the format
+    return d3Format(`.${x}~s`)(value);
+  };
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(customTickFormat);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
@@ -579,11 +588,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
@@ -1310,7 +1322,6 @@ export function findHBCWANumericMinMaxOfY(
   if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
     const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
     const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
