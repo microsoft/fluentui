@@ -38,7 +38,7 @@ import {
   NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatValueLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -1256,7 +1256,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {formatValueWithSIPrefix(barValue)}
+        {formatValueLimitWidth(barValue)}
       </text>
     );
   }

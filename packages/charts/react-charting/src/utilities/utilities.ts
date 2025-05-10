@@ -43,7 +43,6 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
 } from '../index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
 import {
   CurveFactory,
@@ -166,15 +165,12 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
-/**
- * Formatter for y axis ticks.
- * @param value - The number to format.
- * @returns The formatted string .
- */
-export function defaultYAxisTickFormatter(value: number): string {
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
   let formatter = d3Format('.2~s');
   if (Math.abs(value) < 1) {
     formatter = d3Format('.2~g');
+  } else if (limitWidth && value >= 1000) {
+    formatter = d3Format('.1s');
   }
   const formattedValue = formatter(value);
 
@@ -184,6 +180,14 @@ export function defaultYAxisTickFormatter(value: number): string {
   }
 
   return formattedValue;
+}
+/**
+ * Formatter for y axis ticks.
+ * @param value - The number to format.
+ * @returns The formatted string .
+ */
+export function defaultYAxisTickFormatter(value: number): string {
+  return yAxisTickFormatterInternal(value);
 }
 
 /**
@@ -1557,15 +1561,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueWithSIPrefix(value: number) {
-  let specifier: string;
-  if (value < 1000) {
-    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
-  } else {
-    specifier = '.1'; // upto 1 decimal place
-  }
-
-  return d3FormatPrefix(specifier, value)(value);
+export function formatValueLimitWidth(value: number) {
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;

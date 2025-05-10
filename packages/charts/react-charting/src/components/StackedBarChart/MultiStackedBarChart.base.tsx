@@ -16,7 +16,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartHoverCard,
-  formatValueWithSIPrefix,
+  formatValueLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
 } from '../../utilities/index';
@@ -364,7 +364,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {formatValueWithSIPrefix(barLabel)}
+            {formatValueLimitWidth(barLabel)}
           </text>,
         );
       }
