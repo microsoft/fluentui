@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 08 May 2025 07:22:41 GMT and should not be manually modified.
+This log was last generated on Fri, 09 May 2025 07:21:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.83)
+
+Fri, 09 May 2025 07:21:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.82..@fluentui/react-charting_v5.23.83)
+
+### Patches
+
+- fix(react-charting): High contrast bug fixes ([PR #34393](https://github.com/microsoft/fluentui/pull/34393) by anushgupta@microsoft.com)
 
 ## [5.23.82](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.82)
 

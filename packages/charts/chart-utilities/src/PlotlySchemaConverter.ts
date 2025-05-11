@@ -27,7 +27,16 @@ const SUPPORTED_PLOT_TYPES = [
 const UNSUPPORTED_MSG_PREFIX = 'Unsupported chart - type :';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+export const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const isDate = (value: any): boolean => {
+  // Don't consider number as date. There is no way to differentiate milliseconds from date and number
+  // without additional context.
+  if (isNumber(value)) {
+    return false;
+  }
+
   const parsedDate = new Date(Date.parse(value));
   if (isNaN(parsedDate.getTime())) {
     return false;
@@ -39,8 +48,6 @@ export const isDate = (value: any): boolean => {
   }
   return true;
 };
-
-export const isNumber = (value: any): boolean => !isNaN(parseFloat(value)) && isFinite(value);
 
 export const isArrayOfType = (
   plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,

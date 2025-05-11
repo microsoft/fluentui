@@ -111,7 +111,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -1022,7 +1022,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -1946,7 +1946,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -2858,7 +2858,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -3769,7 +3769,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              1,000
+              1000
             </text>
           </g>
           <g
@@ -3787,7 +3787,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              2,000
+              2000
             </text>
           </g>
           <g
@@ -3805,7 +3805,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              3,000
+              3000
             </text>
           </g>
           <g
@@ -3823,7 +3823,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              4,000
+              4000
             </text>
           </g>
           <g
@@ -3841,7 +3841,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
         </g>
@@ -4357,7 +4357,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
