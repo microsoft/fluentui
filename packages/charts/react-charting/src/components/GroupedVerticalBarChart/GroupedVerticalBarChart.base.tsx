@@ -457,7 +457,7 @@ export class GroupedVerticalBarChartBase
         const yBaseline = yBarScale(this.Y_ORIGIN);
         let yPositiveStart = yBaseline;
         let yNegativeStart = yBaseline;
-        let yPoint = 0;
+        let yPoint = this.Y_ORIGIN;
 
         barPoints.forEach((pointData: IGVBarChartSeriesPoint, pointIndex: number) => {
           if (!pointData.data) {
