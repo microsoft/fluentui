@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update project json",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
