@@ -273,62 +273,63 @@ function getMultiLevelDateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
-  useUTC?: boolean) {
+  useUTC?: boolean,
+) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
 
   // https://d3js.org/d3-time-format#locale_format
   const DEFAULT = '%c';
-  const ms = '.%L';
-  const ms_s = ':%S.%L';
-  const ms_s_min = '%M:%S.%L';
-  const ms_s_min_h = '%-I:%M:%S.%L %p';
-  const ms_s_min_h_d = '%a %d, %X';
-  const ms_s_min_h_d_w = '%b %d, %X';
-  const ms_s_min_h_d_w_m = ms_s_min_h_d_w;
-  const ms_s_min_h_d_w_m_y = DEFAULT;
-  const s = ':%S';
-  const s_min = '%-I:%M:%S';
-  const s_min_h = '%X'
-  const s_min_h_d = ms_s_min_h_d;
-  const s_min_h_d_w = ms_s_min_h_d_w;
-  const s_min_h_d_w_m = ms_s_min_h_d_w_m;
-  const s_min_h_d_w_m_y = DEFAULT;
-  const min = '%-I:%M %p';
-  const min_h = min;
-  const min_h_d = '%a %d, %-I:%M %p';
-  const min_h_d_w = '%b %d, %-I:%M %p';
-  const min_h_d_w_m = min_h_d_w;
-  const min_h_d_w_m_y = '%x, %-I:%M %p';
-  const h = '%-I %p';
-  const h_d = '%a %d, %-I %p';
-  const h_d_w = '%b %d, %-I %p';
-  const h_d_w_m = h_d_w;
-  const h_d_w_m_y = '%x, %-I %p';
-  const d = '%a %d';
-  const d_w = '%b %d';
-  const d_w_m = d_w;
-  const d_w_m_y = '%x';
-  const w = d_w;
-  const w_m = w;
-  const w_m_y = d_w_m_y;
-  const m = '%B';
-  const m_y = '%b %Y';
-  const y = '%Y';
+  const MS = '.%L';
+  const MS_S = ':%S.%L';
+  const MS_S_MIN = '%M:%S.%L';
+  const MS_S_MIN_H = '%-I:%M:%S.%L %p';
+  const MS_S_MIN_H_D = '%a %d, %X';
+  const MS_S_MIN_H_D_W = '%b %d, %X';
+  const MS_S_MIN_H_D_W_M = MS_S_MIN_H_D_W;
+  const MS_S_MIN_H_D_W_M_Y = DEFAULT;
+  const S = ':%S';
+  const S_MIN = '%-I:%M:%S';
+  const S_MIN_H = '%X';
+  const S_MIN_H_D = MS_S_MIN_H_D;
+  const S_MIN_H_D_W = MS_S_MIN_H_D_W;
+  const S_MIN_H_D_W_M = MS_S_MIN_H_D_W_M;
+  const S_MIN_H_D_W_M_Y = DEFAULT;
+  const MIN = '%-I:%M %p';
+  const MIN_H = MIN;
+  const MIN_H_D = '%a %d, %-I:%M %p';
+  const MIN_H_D_W = '%b %d, %-I:%M %p';
+  const MIN_H_D_W_M = MIN_H_D_W;
+  const MIN_H_D_W_M_Y = '%x, %-I:%M %p';
+  const H = '%-I %p';
+  const H_D = '%a %d, %-I %p';
+  const H_D_W = '%b %d, %-I %p';
+  const H_D_W_M = H_D_W;
+  const H_D_W_M_Y = '%x, %-I %p';
+  const D = '%a %d';
+  const D_W = '%b %d';
+  const D_W_M = D_W;
+  const D_W_M_Y = '%x';
+  const W = D_W;
+  const W_M = W;
+  const W_M_Y = D_W_M_Y;
+  const M = '%B';
+  const M_Y = '%b %Y';
+  const Y = '%Y';
 
-  const multiLevelDateTimeFormats = [
+  const MULTI_LEVEL_DATE_TIME_FORMATS = [
     // ms, s, min, h, d, w, m, y
-    [ms,      ms_s,    ms_s_min, ms_s_min_h, ms_s_min_h_d, ms_s_min_h_d_w, ms_s_min_h_d_w_m, ms_s_min_h_d_w_m_y],// ms
-    [DEFAULT, s,       s_min,    s_min_h,    s_min_h_d,    s_min_h_d_w,    s_min_h_d_w_m,    s_min_h_d_w_m_y],   // s
-    [DEFAULT, DEFAULT, min,      min_h,      min_h_d,      min_h_d_w,      min_h_d_w_m,      min_h_d_w_m_y],     // min
-    [DEFAULT, DEFAULT, DEFAULT,  h,          h_d,          h_d_w,          h_d_w_m,          h_d_w_m_y],         // h
-    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    d,            d_w,            d_w_m,            d_w_m_y],           // d
-    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      w,              w_m,              w_m_y],             // w
-    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      DEFAULT,        m,                m_y],               // m
-    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      DEFAULT,        DEFAULT,          y],                 // y
+    [MS, MS_S, MS_S_MIN, MS_S_MIN_H, MS_S_MIN_H_D, MS_S_MIN_H_D_W, MS_S_MIN_H_D_W_M, MS_S_MIN_H_D_W_M_Y], // ms
+    [DEFAULT, S, S_MIN, S_MIN_H, S_MIN_H_D, S_MIN_H_D_W, S_MIN_H_D_W_M, S_MIN_H_D_W_M_Y], // s
+    [DEFAULT, DEFAULT, MIN, MIN_H, MIN_H_D, MIN_H_D_W, MIN_H_D_W_M, MIN_H_D_W_M_Y], // min
+    [DEFAULT, DEFAULT, DEFAULT, H, H_D, H_D_W, H_D_W_M, H_D_W_M_Y], // h
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, D, D_W, D_W_M, D_W_M_Y], // d
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, W, W_M, W_M_Y], // w
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, M, M_Y], // m
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, Y], // y
   ];
 
-const formatter = timeFormat(multiLevelDateTimeFormats[startLevel][endLevel]);
-return formatter;
+  const formatter = timeFormat(MULTI_LEVEL_DATE_TIME_FORMATS[startLevel][endLevel]);
+  return formatter;
 }
 
 function getDateFormatLevel(date: Date, useUTC?: boolean) {
@@ -341,17 +342,17 @@ function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeYear = useUTC ? d3UtcYear : d3TimeYear;
 
   const formats = [
-    { formatLevel: 0, condition: (d: Date) => timeSecond(d) < d },                   // Milliseconds
-    { formatLevel: 1, condition: (d: Date) => timeMinute(d) < d },                   // Seconds
-    { formatLevel: 2, condition: (d: Date) => timeHour(d) < d },                     // Minutes
-    { formatLevel: 3, condition: (d: Date) => timeDay(d) < d },                      // Hours
+    { formatLevel: 0, condition: (d: Date) => timeSecond(d) < d }, // Milliseconds
+    { formatLevel: 1, condition: (d: Date) => timeMinute(d) < d }, // Seconds
+    { formatLevel: 2, condition: (d: Date) => timeHour(d) < d }, // Minutes
+    { formatLevel: 3, condition: (d: Date) => timeDay(d) < d }, // Hours
     { formatLevel: 4, condition: (d: Date) => timeMonth(d) < d && timeWeek(d) < d }, // Days
-    { formatLevel: 5, condition: (d: Date) => timeMonth(d) < d },                    // Weeks
-    { formatLevel: 6, condition: (d: Date) => timeYear(d) < d },                     // Months
-    { formatLevel: 7, condition: () => true },                                       // Years (default)
+    { formatLevel: 5, condition: (d: Date) => timeMonth(d) < d }, // Weeks
+    { formatLevel: 6, condition: (d: Date) => timeYear(d) < d }, // Months
+    { formatLevel: 7, condition: () => true }, // Years (default)
   ];
 
-    const matchedFormat = formats.find(({ condition }) => condition(date));
+  const matchedFormat = formats.find(({ condition }) => condition(date));
 
   return matchedFormat?.formatLevel ?? 7;
 }
@@ -382,13 +383,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const {
-    domainNRangeValues,
-    xAxisElement,
-    tickPadding = 6,
-    xAxistickSize = 6,
-    xAxisCount,
-  } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -398,12 +393,12 @@ export function createDateXAxis(
   let tickCount = xAxisCount ?? 6;
 
   let lowestFormatLevel = 100;
-  let highestFormatLevel = -1
+  let highestFormatLevel = -1;
 
-  const locale = timeFormatLocale? d3TimeFormatLocale(timeFormatLocale): undefined;
+  const locale = timeFormatLocale ? d3TimeFormatLocale(timeFormatLocale) : undefined;
 
   xAxisScale.ticks().forEach((domainValue: Date) => {
-    const formatLevel = getDateFormatLevel(domainValue, useUTC)
+    const formatLevel = getDateFormatLevel(domainValue, useUTC);
 
     if (formatLevel > highestFormatLevel) {
       highestFormatLevel = formatLevel;
@@ -411,9 +406,14 @@ export function createDateXAxis(
     if (formatLevel < lowestFormatLevel) {
       lowestFormatLevel = formatLevel;
     }
-  })
+  });
 
-  const formatFn: ((date: Date) => string) = getMultiLevelDateFormatter(lowestFormatLevel, highestFormatLevel, locale, useUTC);
+  const formatFn: (date: Date) => string = getMultiLevelDateFormatter(
+    lowestFormatLevel,
+    highestFormatLevel,
+    locale,
+    useUTC,
+  );
 
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
