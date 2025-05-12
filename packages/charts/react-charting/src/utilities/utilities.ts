@@ -168,6 +168,35 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
+
+  if (Math.abs(value) < 1) {
+    // Don't use SI notation for small numbers as it is less readable
+    formatter = d3Format('.2~g');
+  } else if (limitWidth && Math.abs(value) >= 1000) {
+    // If width is limited, use SI format prefix with 1 point precision
+    formatter = d3FormatPrefix('.1~', value);
+  }
+  const formattedValue = formatter(value);
+
+  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
+  if (Math.abs(value) >= 1e9) {
+    return formattedValue.replace('G', 'B');
+  }
+
+  return formattedValue;
+}
+/**
+ * Formatter for y axis ticks.
+ * @param value - The number to format.
+ * @returns The formatted string .
+ */
+export function defaultYAxisTickFormatter(value: number): string {
+  return yAxisTickFormatterInternal(value);
+}
+
 /**
  * Create Numeric X axis
  * @export
@@ -511,18 +540,9 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
-  // Custom tick formatting function
-  const customTickFormat = (value: number, _index: number) => {
-    // Calculate the number of digits in the maximum value
-    const numDigits = Math.max(Math.ceil(Math.log10(finalYmax)), Math.floor(Math.log10(finalYmax)) + 1);
-    // Determine the precision (x) based on the number of digits
-    const x = numDigits >= 5 ? 5 : 4;
-    // Apply the dynamically determined x in the format
-    return d3Format(`.${x}~s`)(value);
-  };
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(customTickFormat);
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
@@ -571,7 +591,7 @@ export function createNumericYAxis(
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
@@ -1450,9 +1470,15 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
   }
   culture = culture || undefined;
   if (typeof data === 'number') {
+    if (Math.abs(data) < 10000) {
+      return data.toString();
+    }
     return data.toLocaleString(culture);
   } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
     const num = Number(data);
+    if (Math.abs(num) < 10000) {
+      return num.toString();
+    }
     return num.toLocaleString(culture);
   } else if (data instanceof Date) {
     return data.toLocaleDateString(culture);
@@ -1546,15 +1572,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueWithSIPrefix(value: number) {
-  let specifier: string;
-  if (value < 1000) {
-    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
-  } else {
-    specifier = '.1'; // upto 1 decimal place
-  }
-
-  return d3FormatPrefix(specifier, value)(value);
+export function formatValueLimitWidth(value: number) {
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;

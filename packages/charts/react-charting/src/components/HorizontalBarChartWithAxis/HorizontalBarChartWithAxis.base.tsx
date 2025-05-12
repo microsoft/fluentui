@@ -507,6 +507,7 @@ export class HorizontalBarChartWithAxisBase
       const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
+        .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
         .domain([yDomainMin, yDomainMax])
