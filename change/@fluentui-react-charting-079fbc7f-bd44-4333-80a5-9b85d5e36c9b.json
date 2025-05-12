@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting): Parse date from number object",
-  "packageName": "@fluentui/react-charting",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}
