@@ -471,9 +471,13 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
+    const dashType = series.line?.dash || 'solid';
+    const legendShape: 'solidLine' | 'dottedLine' =
+      dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'solidLine';
 
     return {
       legend,
+      legendShape,
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
