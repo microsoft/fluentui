@@ -44,10 +44,10 @@ import {
   areArraysEqual,
   computeLongestBars,
   groupChartDataByYValue,
-  getClosestPairDiffAndRange,
   MIN_DOMAIN_MARGIN,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
+import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -174,12 +174,10 @@ export class HorizontalBarChartWithAxisBase
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    const yAxisTickCount = this.props.yAxisTickCount || this._getUniqueYValues().length;
     return (
       <CartesianChart
         {...this.props}
         yAxisPadding={this._yAxisPadding}
-        yAxisTickCount={yAxisTickCount}
         chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
@@ -324,6 +322,7 @@ export class HorizontalBarChartWithAxisBase
         : this._getScales(containerHeight, containerWidth, false);
     const xRange = xBarScale.range();
     let allBars: JSX.Element[] = [];
+    // when the chart mounts, the xRange[1] is sometimes seen to be < 0 (like -40) while xRange[0] > 0.
     if (xRange[0] < xRange[1]) {
       allBars = stackedChartData
         .map(singleBarData =>
@@ -504,7 +503,7 @@ export class HorizontalBarChartWithAxisBase
       const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
       // Default to yMin if yMinValue is not provided.
-      const yMinProp = this.props.yMinValue ?? yMin;
+      const yMinProp = this.props.yMinValue ?? 0;
       const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -673,21 +672,6 @@ export class HorizontalBarChartWithAxisBase
     return bars;
   }
 
-  private _calculateBarHeight = (uniqueY: number[] | Date[], totalHeight: number, innerPadding: number): number => {
-    const result = getClosestPairDiffAndRange(uniqueY);
-    if (!result || result[1] === 0) {
-      return 16;
-    }
-    const [closestPairDiff, range] = result;
-
-    // Formula for bar height
-    const barHeight = Math.floor(
-      (totalHeight * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
-    );
-
-    return Math.max(barHeight, 1);
-  };
-
   private _getUniqueYValues() {
     const mapY: Record<string, number | string> = {};
     this.props.data?.forEach((point: IHorizontalBarChartWithAxisDataPoint) => {
@@ -696,6 +680,25 @@ export class HorizontalBarChartWithAxisBase
     const uniqueY = Object.values(mapY);
     return uniqueY;
   }
+
+  private _calculateAppropriateBarHeight = (data: number[] | Date[], totalWidth: number, innerPadding: number) => {
+    const result = getClosestPairDiffAndRange(data);
+    if (!result || result[1] === 0) {
+      return 16;
+    }
+    const closestPairDiff = result[0];
+    let range = result[1];
+    const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+    // Since we are always rendering from 0 to yMax, we need to ensure that the range is at least yMax
+    // to calculate the bar height correctly.
+    range = Math.max(range, yMax);
+    // Refer to https://microsoft.github.io/fluentui-charting-contrib/docs/rfcs/fix-overlapping-bars-on-continuous-axes
+    // for the derivation of the following formula.
+    const barWidth = Math.floor(
+      (totalWidth * closestPairDiff * (1 - innerPadding)) / (range + closestPairDiff * (1 - innerPadding)),
+    );
+    return barWidth;
+  };
 
   private _getDomainMarginsForHorizontalBarChart = (containerHeight: number): IMargins => {
     this._domainMargin = MIN_DOMAIN_MARGIN;
@@ -709,7 +712,12 @@ export class HorizontalBarChartWithAxisBase
       containerHeight - (this.margins.top! + MIN_DOMAIN_MARGIN) - (this.margins.bottom! + MIN_DOMAIN_MARGIN);
     if (this._yAxisType !== YAxisType.StringAxis) {
       // Calculate bar height dynamically
-      this._barHeight = this._calculateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisPadding);
+      this._barHeight = this._calculateAppropriateBarHeight(
+        uniqueY as number[] | Date[],
+        totalHeight,
+        this._yAxisPadding,
+      );
+      this._barHeight = Math.max(this._barHeight, 1);
       this._domainMargin += this._barHeight / 2;
     } else {
       // Calculate the appropriate bar height

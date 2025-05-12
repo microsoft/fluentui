@@ -504,9 +504,10 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickCount = 4,
   } = yAxisParams;
 
+  // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.max(yMinMaxValues.startValue, Math.min(yMinValue || 0, 0));
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
