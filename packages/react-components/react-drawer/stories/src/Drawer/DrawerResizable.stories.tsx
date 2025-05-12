@@ -165,7 +165,7 @@ export const Resizable = () => {
   };
 
   function submitWidth(e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent) {
-    if (resizeInput && parseInt(resizeInput) >= MIN_SIDEBAR_WIDTH) {
+    if (resizeInput && parseInt(resizeInput, 10) >= MIN_SIDEBAR_WIDTH) {
       setSidebarWidth(Number(resizeInput));
       setShowMessage(false);
       setDialogOpen(false);
@@ -178,10 +178,10 @@ export const Resizable = () => {
   function resizeWithArrows(e: React.KeyboardEvent) {
     if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
       setSidebarWidth(prev => prev + 10);
-      setResizeInput((prev: string) => (parseInt(prev) + 10).toString());
+      setResizeInput((prev: string) => (parseInt(prev, 10) + 10).toString());
     } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
       setSidebarWidth(prev => prev - 10);
-      setResizeInput((prev: string) => (parseInt(prev) - 10).toString());
+      setResizeInput((prev: string) => (parseInt(prev, 10) - 10).toString());
     }
   }
 
