@@ -257,8 +257,8 @@ export function createNumericXAxis(
 }
 
 /**
- * This function returns the lowest common ancestor formatter for a given date range.
- * It determines the appropriate date format based on each date tick value.
+ * This function returns a multilevel formatter for a given date range.
+ * It determines the appropriate date format to accommodate each tick value.
  * The goal is to represent the date label in the smallest possible format without loss of information.
  * The challenge here is to adhere to locale specific formats while ensuring the complete label is shown.
  * There is an exhaustive map of all possible date/time units and their respective formats.
@@ -277,7 +277,7 @@ function getMultiLevelDateFormatter(
 ) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
 
-  // https://d3js.org/d3-time-format#locale_format
+  // Refer to https://d3js.org/d3-time-format#locale_format to see explanation about each format specifier
   const DEFAULT = '%c';
   const MS = '.%L';
   const MS_S = ':%S.%L';
