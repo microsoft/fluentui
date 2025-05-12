@@ -22,7 +22,7 @@ export const PresenceStagger: React.FC<{
   reverse?: boolean;
   onMotionFinish?: () => void;
   // }> = ({ children, delay = 500, visible = false, exit = false, reverse = false, mode = 'enter', onMotionFinish }) => {
-}> = ({ children, delay = 500, visible = false, reverse = false, onMotionFinish }) => {
+}> = ({ children, delay = 200, visible = false, reverse = false, onMotionFinish }) => {
   let mode = visible ? 'enter' : 'exit';
   if (reverse) {
     mode += 'Reverse';
@@ -30,7 +30,7 @@ export const PresenceStagger: React.FC<{
 
   const components = childrenOrFragmentToArray(children);
   // TODO: useStaggeredIndex instead?
-  const visibleCount = useStaggeredReveal({ count: components.length, delay, onMotionFinish });
+  const visibleCount = useStaggeredReveal({ count: components.length, delay, visible, onMotionFinish });
 
   const index = visibleCount - 1;
 
@@ -40,24 +40,24 @@ export const PresenceStagger: React.FC<{
       {components.map((component, i) => {
         let componentIsVisible = false;
 
-        // if (!reverse) {
-        //   componentIsVisible = i <= index;
-        // } else {
-        //   componentIsVisible = !(components.length - i > index + 1);
-        // }
-        // if (!visible) {
-        //   componentIsVisible = !componentIsVisible;
-        // }
-
-        if (mode === 'enter') {
+        if (!reverse) {
           componentIsVisible = i <= index;
-        } else if (mode === 'exit') {
-          componentIsVisible = !(i <= index);
-        } else if (mode === 'exitReverse') {
-          componentIsVisible = components.length - i > index + 1;
-        } else if (mode === 'enterReverse') {
+        } else {
           componentIsVisible = !(components.length - i > index + 1);
         }
+        if (!visible) {
+          componentIsVisible = !componentIsVisible;
+        }
+
+        // if (mode === 'enter') {
+        //   componentIsVisible = i <= index;
+        // } else if (mode === 'exit') {
+        //   componentIsVisible = !(i <= index);
+        // } else if (mode === 'exitReverse') {
+        //   componentIsVisible = components.length - i > index + 1;
+        // } else if (mode === 'enterReverse') {
+        //   componentIsVisible = !(components.length - i > index + 1);
+        // }
 
         return React.cloneElement(component, { key: i, visible: componentIsVisible });
       })}

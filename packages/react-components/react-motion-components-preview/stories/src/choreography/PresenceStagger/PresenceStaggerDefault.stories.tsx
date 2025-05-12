@@ -45,7 +45,7 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
       </div>
 
       <div className={classes.items}>
-        <PresenceStagger visible={visible}>
+        <PresenceStagger visible={visible} reverse delay={200}>
           <Fade>
             <div className={classes.item}>Item 1</div>
           </Fade>
