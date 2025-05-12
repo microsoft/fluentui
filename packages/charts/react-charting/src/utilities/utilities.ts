@@ -208,7 +208,7 @@ export function createNumericXAxis(
 ) {
   const {
     domainNRangeValues,
-    showRoundOffXTickValues = false,
+    showRoundOffXTickValues = true,
     xAxistickSize = 6,
     tickPadding = 10,
     xAxisCount,
@@ -269,7 +269,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-function getLowestCommonAncestorFormatter(
+function getMultiLevelDateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
@@ -315,7 +315,7 @@ function getLowestCommonAncestorFormatter(
   const m_y = '%b %Y';
   const y = '%Y';
 
-  const lowestCommonAncestorTimeFormats = [
+  const multiLevelDateTimeFormats = [
     // ms, s, min, h, d, w, m, y
     [ms,      ms_s,    ms_s_min, ms_s_min_h, ms_s_min_h_d, ms_s_min_h_d_w, ms_s_min_h_d_w_m, ms_s_min_h_d_w_m_y],// ms
     [DEFAULT, s,       s_min,    s_min_h,    s_min_h_d,    s_min_h_d_w,    s_min_h_d_w_m,    s_min_h_d_w_m_y],   // s
@@ -327,7 +327,7 @@ function getLowestCommonAncestorFormatter(
     [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      DEFAULT,        DEFAULT,          y],                 // y
   ];
 
-const formatter = timeFormat(lowestCommonAncestorTimeFormats[startLevel][endLevel]);
+const formatter = timeFormat(multiLevelDateTimeFormats[startLevel][endLevel]);
 return formatter;
 }
 
@@ -413,7 +413,7 @@ export function createDateXAxis(
     }
   })
 
-  const formatFn: ((date: Date) => string) = getLowestCommonAncestorFormatter(lowestFormatLevel, highestFormatLevel, locale, useUTC);
+  const formatFn: ((date: Date) => string) = getMultiLevelDateFormatter(lowestFormatLevel, highestFormatLevel, locale, useUTC);
 
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
