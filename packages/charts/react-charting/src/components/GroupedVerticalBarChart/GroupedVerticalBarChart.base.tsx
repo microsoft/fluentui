@@ -116,6 +116,7 @@ export class GroupedVerticalBarChartBase
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
   private _legendColorMap: Record<string, [string, string]> = {};
+  private readonly Y_ORIGIN: number = 0;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -452,18 +453,26 @@ export class GroupedVerticalBarChartBase
           );
         }
 
-        let prevYPoint = yBarScale(0);
         let barTotalValue = 0;
+        const yBaseline = yBarScale(this.Y_ORIGIN);
+        let yPositiveStart = yBaseline;
+        let yNegativeStart = yBaseline;
+        let yPoint = this.Y_ORIGIN;
 
         barPoints.forEach((pointData: IGVBarChartSeriesPoint, pointIndex: number) => {
           if (!pointData.data) {
             // Not rendering data with 0.
             return;
           }
-
-          const barGapTop = (VERTICAL_BAR_GAP / 2) * (pointIndex < barPoints.length - 1 ? 1 : 0);
-          const barGapBottom = (VERTICAL_BAR_GAP / 2) * (pointIndex > 0 ? 1 : 0);
-          const height = Math.max(yBarScale(0) - yBarScale(pointData.data) - barGapTop - barGapBottom, MIN_BAR_HEIGHT);
+          const barGap = (VERTICAL_BAR_GAP / 2) * (pointIndex > 0 ? 2 : 0);
+          const height = Math.max(yBarScale(this.Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
+          if (pointData.data >= this.Y_ORIGIN) {
+            yPositiveStart -= height + barGap;
+            yPoint = yPositiveStart;
+          } else {
+            yPoint = yNegativeStart + barGap;
+            yNegativeStart = yPoint + height;
+          }
 
           singleGroup.push(
             <rect
@@ -472,7 +481,7 @@ export class GroupedVerticalBarChartBase
               height={height}
               width={this._barWidth}
               x={xPoint}
-              y={prevYPoint - (height + barGapBottom)}
+              y={yPoint}
               data-is-focusable={!this.props.hideTooltip && isLegendActive}
               opacity={barOpacity}
               fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
@@ -488,15 +497,14 @@ export class GroupedVerticalBarChartBase
             />,
           );
 
-          prevYPoint = prevYPoint - (height + barGapTop + barGapBottom);
           barTotalValue += pointData.data;
         });
-        if (barTotalValue && !this.props.hideLabels && this._barWidth >= 16 && isLegendActive) {
+        if (barTotalValue !== null && !this.props.hideLabels && this._barWidth >= 16 && isLegendActive) {
           barLabelsForGroup.push(
             <text
               key={`${singleSet.indexNum}-${legendIndex}`}
               x={xPoint + this._barWidth / 2}
-              y={prevYPoint - 6}
+              y={barTotalValue >= this.Y_ORIGIN ? yPositiveStart - 6 : yNegativeStart + 12}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-hidden={true}
