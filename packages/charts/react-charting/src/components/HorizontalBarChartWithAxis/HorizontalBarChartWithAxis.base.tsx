@@ -713,16 +713,14 @@ export class HorizontalBarChartWithAxisBase
       containerHeight - (this.margins.top! + MIN_DOMAIN_MARGIN) - (this.margins.bottom! + MIN_DOMAIN_MARGIN);
     if (this._yAxisType !== YAxisType.StringAxis) {
       // Calculate bar height dynamically
-      this._barHeight = this._calculateAppropriateBarHeight(
-        uniqueY as number[] | Date[],
-        totalHeight,
-        this._yAxisPadding,
-      );
+      this._barHeight =
+        this.props.barHeight ??
+        this._calculateAppropriateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisPadding);
       this._barHeight = Math.max(this._barHeight, 1);
       this._domainMargin += this._barHeight / 2;
     } else {
       // Calculate the appropriate bar height
-      this._barHeight = totalHeight / numBars;
+      this._barHeight = this.props.barHeight ?? totalHeight / numBars;
       /** Total height required to render the bars. Directly proportional to bar height */
       const reqHeight = numBars * this._barHeight;
       if (totalHeight >= reqHeight) {
