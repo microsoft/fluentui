@@ -3185,7 +3185,7 @@ Object {
           },
         ],
         "legend": "a",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3236,7 +3236,7 @@ Object {
           },
         ],
         "legend": "b",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3287,7 +3287,7 @@ Object {
           },
         ],
         "legend": "c",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3338,7 +3338,7 @@ Object {
           },
         ],
         "legend": "d",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3768,7 +3768,7 @@ Object {
           },
         ],
         "legend": "Trace 0",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4179,7 +4179,7 @@ Object {
           },
         ],
         "legend": "Trace 1",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4590,7 +4590,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
-        "legendShape": "solidLine",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
