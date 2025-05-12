@@ -14,7 +14,7 @@ export class TreeItem extends BaseTreeItem {
    * @public
    */
   @attr
-  public size: TreeItemSize = TreeItemSize.small;
+  public size: TreeItemSize = TreeItemSize.medium;
 
   /**
    * Handles changes to the size attribute

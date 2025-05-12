@@ -16,7 +16,7 @@ export class Tree extends BaseTree {
    * HTML Attribute: size
    */
   @attr
-  public size: TreeItemSize = TreeItemSize.small;
+  public size: TreeItemSize = TreeItemSize.medium;
   private sizeChanged() {
     this.updateSizeAndAppearance();
   }
