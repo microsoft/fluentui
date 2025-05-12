@@ -2,6 +2,63 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 09 May 2025 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.98",
+      "version": "3.0.0-beta.98",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "97087c93d855ce4ada199767b930dc419f2556a8",
+            "comment": "fix the selected primary focus state"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 May 2025 04:06:28 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.97",
+      "version": "3.0.0-beta.97",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8d0ea6a986584df2842772de9a7fababfa8935b0",
+            "comment": "chore: bump dev deps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 May 2025 04:08:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.97",
+      "version": "3.0.0-beta.97",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "21605e79b52e86cd971e869bf14492c2a48da661",
+            "comment": "[fix]: Hitting escape once should close alert dialog"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cff30a731bab00b179f604205d62ecea09cbfdc",
+            "comment": "fix: text-input setValidity fails if control is not available"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfd2a6eee326a795cf686178e994cebbd7c4a6c8",
+            "comment": "[fix] drawer title should use h2 tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 30 Apr 2025 04:06:34 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.96",
       "version": "3.0.0-beta.96",

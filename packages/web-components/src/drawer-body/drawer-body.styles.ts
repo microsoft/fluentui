@@ -28,4 +28,10 @@ export const styles = css`
     justify-content: flex-start;
     gap: ${spacingHorizontalM};
   }
+
+  ::slotted([slot='title']) {
+    font: inherit;
+    padding: 0;
+    margin: 0;
+  }
 `;

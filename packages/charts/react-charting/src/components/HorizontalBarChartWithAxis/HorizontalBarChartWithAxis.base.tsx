@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
@@ -487,12 +487,18 @@ export class HorizontalBarChartWithAxisBase
     const xDomain = [Math.min(this.X_ORIGIN, xMin), Math.max(this.X_ORIGIN, xMax)];
     if (isNumericScale) {
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
+      const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
+      const yMinProp = this.props.yMinValue || 0;
+      const yDomainMin = yMin < yMinProp ? Math.min(0, yMin) : yMinProp;
+
+      const yDomainPadding = Math.abs((yMax - yMin) * 0.1);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
         .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, yMax])
+        .domain([yDomainMin - yDomainPadding, yDomainMax + yDomainPadding])
         .range([containerHeight - this.margins.bottom!, this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {

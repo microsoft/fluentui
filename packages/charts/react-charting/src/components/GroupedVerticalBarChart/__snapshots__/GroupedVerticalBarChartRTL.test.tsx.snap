@@ -62,17 +62,17 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -155,8 +155,8 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -165,9 +165,9 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -214,7 +214,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -250,7 +250,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -321,11 +321,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -336,11 +339,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -391,11 +397,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -406,11 +415,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -461,11 +473,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -476,11 +491,14 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -800,17 +818,17 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -893,8 +911,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -903,9 +921,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -952,7 +970,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -988,7 +1006,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1059,11 +1077,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1074,11 +1095,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1129,11 +1153,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1144,11 +1171,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1199,11 +1229,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -1214,11 +1247,14 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -1538,17 +1574,17 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -1631,8 +1667,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -1641,9 +1677,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -1690,7 +1726,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1726,7 +1762,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1797,11 +1833,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1812,11 +1851,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1867,11 +1909,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1882,11 +1927,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1937,11 +1985,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -1952,11 +2003,14 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -2276,17 +2330,17 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -2369,8 +2423,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -2379,9 +2433,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -2428,7 +2482,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -2464,7 +2518,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -2535,11 +2589,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -2550,11 +2607,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -2605,11 +2665,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -2620,11 +2683,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -2675,11 +2741,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -2690,11 +2759,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -3014,17 +3086,17 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -3107,8 +3179,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -3117,9 +3189,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -3166,7 +3238,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -3202,7 +3274,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -3273,11 +3345,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -3288,11 +3363,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -3343,11 +3421,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -3358,11 +3439,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -3413,11 +3497,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -3428,11 +3515,14 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -3758,17 +3848,17 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -3787,8 +3877,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -3797,9 +3887,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -4490,8 +4580,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-weight: 400;
                         line-height: 16px;
                       }
-                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                        color: rgb(255, 255, 255);
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        color: CanvasText;
                       }
                 />
                 <div
@@ -4506,8 +4596,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                         font-weight: bold;
                         line-height: 36px;
                       }
-                      @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                        color: rgb(255, 255, 255);
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                        color: CanvasText;
                       }
                 >
                   66
@@ -4579,17 +4669,17 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -4608,8 +4698,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -4618,9 +4708,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -5948,17 +6038,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -5977,8 +6067,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -5987,9 +6077,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -6572,17 +6662,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
@@ -6601,8 +6691,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -6611,9 +6701,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
@@ -9385,17 +9475,17 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -9478,8 +9568,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -9488,9 +9578,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -9537,7 +9627,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -9573,7 +9663,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -9644,11 +9734,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="94.57999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -9659,11 +9752,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="25.77777777777778"
                 y="42.44"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -9714,11 +9810,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="94.57999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -9729,11 +9828,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="25.77777777777778"
                 y="236.77999999999997"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -9784,11 +9886,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="8"
                 y="184.64"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -9799,11 +9904,14 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 text-anchor="middle"
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>

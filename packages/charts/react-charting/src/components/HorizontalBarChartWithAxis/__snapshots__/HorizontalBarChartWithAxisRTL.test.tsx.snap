@@ -51,17 +51,17 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -111,7 +111,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -252,8 +252,8 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -262,9 +262,9 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -281,7 +281,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,237.74999999999997)"
           >
             <line
               stroke="currentColor"
@@ -312,38 +312,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                10k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,158.75)"
           >
             <line
               stroke="currentColor"
@@ -374,38 +343,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="currentColor"
@@ -433,37 +371,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               </tspan>
             </text>
           </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
-              </tspan>
-            </text>
-          </g>
         </g>
         <g>
           <rect
@@ -482,7 +389,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="0"
             width="147.5"
             x="40"
-            y="217.3"
+            y="202.83898305084745"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -500,7 +407,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="170.70338983050848"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -518,7 +425,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="102.41525423728814"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -536,7 +443,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="295"
             x="40"
-            y="4"
+            y="22.076271186440678"
           />
         </g>
       </svg>
@@ -1055,17 +962,17 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -1115,7 +1022,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -1256,8 +1163,8 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -1266,9 +1173,9 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -1285,7 +1192,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,237.74999999999997)"
           >
             <line
               stroke="currentColor"
@@ -1316,38 +1223,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                10k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,158.75)"
           >
             <line
               stroke="currentColor"
@@ -1378,38 +1254,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="currentColor"
@@ -1437,37 +1282,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               </tspan>
             </text>
           </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
-              </tspan>
-            </text>
-          </g>
         </g>
         <g>
           <rect
@@ -1486,7 +1300,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="0"
             width="147.5"
             x="40"
-            y="217.3"
+            y="202.83898305084745"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -1504,7 +1318,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="170.70338983050848"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -1522,7 +1336,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="102.41525423728814"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -1540,7 +1354,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             tabindex="-1"
             width="295"
             x="40"
-            y="4"
+            y="22.076271186440678"
           />
         </g>
       </svg>
@@ -2072,17 +1886,17 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -2132,7 +1946,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                 fill="currentColor"
                 y="10"
               >
-                5,000
+                5000
               </text>
             </g>
             <g
@@ -2273,8 +2087,8 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -2283,9 +2097,9 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -2302,7 +2116,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,257.5)"
+              transform="translate(0,237.74999999999997)"
             >
               <line
                 stroke="currentColor"
@@ -2333,38 +2147,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,210.10000000000002)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-16"
-              >
-                <tspan
-                  data-="10k"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  10k
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,162.7)"
+              transform="translate(0,158.75)"
             >
               <line
                 stroke="currentColor"
@@ -2395,38 +2178,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,115.30000000000001)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-16"
-              >
-                <tspan
-                  data-="30k"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  30k
-                </tspan>
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,67.89999999999999)"
+              transform="translate(0,79.75)"
             >
               <line
                 stroke="currentColor"
@@ -2454,37 +2206,6 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                 </tspan>
               </text>
             </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                text-align="start"
-                x="-16"
-              >
-                <tspan
-                  data-="50k"
-                  dy="0.32em"
-                  id="BaseSpan"
-                  x="-16"
-                />
-                <tspan
-                  dx="1em"
-                  id="LessLength"
-                  x="-16"
-                >
-                  50k
-                </tspan>
-              </text>
-            </g>
           </g>
           <g>
             <rect
@@ -2503,7 +2224,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="0"
               width="147.5"
               x="40"
-              y="217.3"
+              y="202.83898305084745"
             />
             <rect
               aria-label="88%. 2020/04/30."
@@ -2521,7 +2242,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="590"
               x="40"
-              y="179.38"
+              y="170.70338983050848"
             />
             <rect
               aria-label="37%. 2020/04/30."
@@ -2539,7 +2260,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="368.75"
               x="40"
-              y="98.80000000000001"
+              y="102.41525423728814"
             />
             <rect
               aria-label="20%. 2020/04/30."
@@ -2557,7 +2278,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               tabindex="-1"
               width="295"
               x="40"
-              y="4"
+              y="22.076271186440678"
             />
           </g>
         </svg>
@@ -3077,17 +2798,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -3137,7 +2858,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -3278,8 +2999,8 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -3288,9 +3009,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -3307,7 +3028,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,237.74999999999997)"
           >
             <line
               stroke="currentColor"
@@ -3338,38 +3059,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                10k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,158.75)"
           >
             <line
               stroke="currentColor"
@@ -3400,38 +3090,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="currentColor"
@@ -3459,37 +3118,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               </tspan>
             </text>
           </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
-              </tspan>
-            </text>
-          </g>
         </g>
         <g>
           <rect
@@ -3508,7 +3136,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="0"
             width="147.5"
             x="40"
-            y="217.3"
+            y="202.83898305084745"
           />
           <rect
             aria-label="88%. 2020/04/30."
@@ -3526,7 +3154,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="170.70338983050848"
           />
           <rect
             aria-label="37%. 2020/04/30."
@@ -3544,7 +3172,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="102.41525423728814"
           />
           <rect
             aria-label="20%. 2020/04/30."
@@ -3562,7 +3190,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             tabindex="-1"
             width="295"
             x="40"
-            y="4"
+            y="22.076271186440678"
           />
         </g>
       </svg>
@@ -4081,17 +3709,17 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -4141,7 +3769,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              1,000
+              1000
             </text>
           </g>
           <g
@@ -4159,7 +3787,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              2,000
+              2000
             </text>
           </g>
           <g
@@ -4177,7 +3805,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              3,000
+              3000
             </text>
           </g>
           <g
@@ -4195,7 +3823,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              4,000
+              4000
             </text>
           </g>
           <g
@@ -4213,7 +3841,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
         </g>
@@ -4228,8 +3856,8 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4238,9 +3866,9 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -4669,17 +4297,17 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -4729,7 +4357,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               fill="currentColor"
               y="10"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -4870,8 +4498,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -4880,9 +4508,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -4899,7 +4527,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,257.5)"
+            transform="translate(0,237.74999999999997)"
           >
             <line
               stroke="currentColor"
@@ -4930,38 +4558,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,210.10000000000002)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="10k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                10k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,162.7)"
+            transform="translate(0,158.75)"
           >
             <line
               stroke="currentColor"
@@ -4992,38 +4589,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           <g
             class="tick"
             opacity="1"
-            transform="translate(0,115.30000000000001)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="30k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                30k
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,67.89999999999999)"
+            transform="translate(0,79.75)"
           >
             <line
               stroke="currentColor"
@@ -5051,37 +4617,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               </tspan>
             </text>
           </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              text-align="start"
-              x="-16"
-            >
-              <tspan
-                data-="50k"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="1em"
-                id="LessLength"
-                x="-16"
-              >
-                50k
-              </tspan>
-            </text>
-          </g>
         </g>
         <g>
           <rect
@@ -5100,7 +4635,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="0"
             width="147.5"
             x="40"
-            y="217.3"
+            y="202.83898305084745"
           />
           <rect
             aria-label="2020/04/30. 88%."
@@ -5118,7 +4653,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="590"
             x="40"
-            y="179.38"
+            y="170.70338983050848"
           />
           <rect
             aria-label="2020/04/30. 37%."
@@ -5136,7 +4671,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="368.75"
             x="40"
-            y="98.80000000000001"
+            y="102.41525423728814"
           />
           <rect
             aria-label="2020/04/30. 20%."
@@ -5154,7 +4689,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             tabindex="-1"
             width="295"
             x="40"
-            y="4"
+            y="22.076271186440678"
           />
         </g>
       </svg>

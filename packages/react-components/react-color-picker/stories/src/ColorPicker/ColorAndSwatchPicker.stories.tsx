@@ -1,7 +1,19 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { makeStyles, Button, SwatchPicker, EmptySwatch, ColorSwatch, Label, tokens } from '@fluentui/react-components';
-import { ColorPicker, ColorSlider, AlphaSlider, ColorPickerProps, ColorArea } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Button,
+  SwatchPicker,
+  EmptySwatch,
+  ColorSwatch,
+  Label,
+  tokens,
+  ColorPicker,
+  ColorSlider,
+  AlphaSlider,
+  ColorPickerProps,
+  ColorArea,
+} from '@fluentui/react-components';
 import type { SwatchPickerOnSelectEventHandler } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

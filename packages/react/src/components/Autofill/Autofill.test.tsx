@@ -5,6 +5,7 @@ import { Autofill } from './index';
 import { mockEvent } from '../../common/testUtilities';
 import type { IRefObject } from '../../Utilities';
 import type { IAutofill } from './index';
+import { act } from 'react-test-renderer';
 
 jest.useFakeTimers();
 
@@ -218,7 +219,9 @@ describe('Autofill', () => {
       isComposing: true,
     });
 
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     // type "m" while composing
     fireEvent.keyDown(input, {
@@ -239,7 +242,9 @@ describe('Autofill', () => {
       isComposing: false,
     });
 
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     expect(onInputChange.mock.calls).toEqual([
       ['hel', false],

@@ -647,8 +647,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                       font-weight: 400;
                       line-height: 16px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      color: rgb(255, 255, 255);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      color: CanvasText;
                     }
               >
                 2020/04/30
@@ -665,8 +665,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                       font-weight: bold;
                       line-height: 36px;
                     }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                      color: rgb(255, 255, 255);
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      color: CanvasText;
                     }
               >
                 40%
@@ -1918,6 +1918,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="central"
               role="img"
               textAnchor="start"
@@ -2113,6 +2116,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               dominantBaseline="central"
               role="img"

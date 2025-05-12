@@ -45,7 +45,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatValueLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -1086,7 +1086,7 @@ export class VerticalStackedBarChartBase
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatValueWithSIPrefix(barLabel)}
+              {formatValueLimitWidth(barLabel)}
             </text>
           )}
         </g>

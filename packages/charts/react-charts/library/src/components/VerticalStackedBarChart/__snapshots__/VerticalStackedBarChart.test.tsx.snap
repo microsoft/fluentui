@@ -6284,3 +6284,1636 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
   </div>
 </div>
 `;
+
+exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing Should render gradients on bars 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing Should render rounded corners on bars 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChart correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+      style={
+        Object {
+          "flexWrap": "wrap",
+          "justifyContent": "unset",
+        }
+      }
+    >
+      <div
+        className="fui-legend__resizableArea"
+        style={
+          Object {
+            "display": "flex",
+            "flexWrap": "wrap",
+            "overflow": "auto",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "flex": "0 1 auto",
+              "margin": "4px",
+            }
+          }
+        >
+          <button
+            aria-label="Metadata1"
+            aria-selected={false}
+            className="fui-Button fui-legend__legend"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="option"
+            style={
+              Object {
+                "--rect-backgroundColor": "aqua",
+                "--rect-borderColor": "aqua",
+                "--rect-content": "",
+                "--rect-height": "12px",
+              }
+            }
+            type="button"
+          >
+            <div
+              className="fui-legend__rect"
+              style={
+                Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                  "--rect-opacity-high-contrast": "",
+                  "backgroundColor": "aqua",
+                  "borderColor": "aqua",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
+            />
+            <div
+              className="fui-legend__text"
+              style={
+                Object {
+                  "opacity": "",
+                }
+              }
+            >
+              Metadata1
+            </div>
+          </button>
+        </div>
+        <div
+          style={
+            Object {
+              "flex": "0 1 auto",
+              "margin": "4px",
+            }
+          }
+        >
+          <button
+            aria-label="Metadata2"
+            aria-selected={false}
+            className="fui-Button fui-legend__legend"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="option"
+            style={
+              Object {
+                "--rect-backgroundColor": "navy",
+                "--rect-borderColor": "navy",
+                "--rect-content": "",
+                "--rect-height": "12px",
+              }
+            }
+            type="button"
+          >
+            <div
+              className="fui-legend__rect"
+              style={
+                Object {
+                  "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                  "--rect-opacity-high-contrast": "",
+                  "backgroundColor": "navy",
+                  "borderColor": "navy",
+                  "content": "",
+                  "height": "12px",
+                }
+              }
+            />
+            <div
+              className="fui-legend__text"
+              style={
+                Object {
+                  "opacity": "",
+                }
+              }
+            >
+              Metadata2
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, NaN)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={NaN}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={NaN}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={NaN}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={48.5}
+              y={NaN}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+            tabIndex={0}
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="aqua"
+              height={NaN}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={NaN}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className="fui-vsbc__opacityChangeOnHover default"
+              cursor="default"
+              data-is-focusable={true}
+              fill="navy"
+              height={NaN}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              rx={0}
+              transform="translate(-0.5, 0)"
+              width={1}
+              x={-28.5}
+              y={NaN}
+            />
+          </g>
+        </g>
+      </g>
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correctly 1`] = `
+<div
+  className="fui-cart__root"
+  id="chart_"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className="fui-cart__chartWrapper"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+  >
+    <svg
+      aria-label="Vertical bar chart with 2 stacked bars. "
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className="fui-cart__xAxis"
+        id="xAxisGElementchart_"
+        transform="translate(0, -35)"
+      />
+      <g
+        className="fui-cart__yAxis"
+        id="yAxisGElementchart_"
+        transform="translate(40, 0)"
+      />
+      <g />
+      <g />
+    </svg>
+  </div>
+  <div
+    className="fui-cart__legendContainer"
+  >
+    <div
+      aria-label="Legends"
+      aria-multiselectable={false}
+      className="fui-legend__root"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+      role="listbox"
+    >
+      <div
+        className="fui-Overflow fui-legend__resizableArea"
+        style={
+          Object {
+            "textAlign": "unset",
+          }
+        }
+      >
+        <button
+          aria-label="Metadata1"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, aqua, aqua)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "aqua",
+                "borderColor": "aqua",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata1
+          </div>
+        </button>
+        <button
+          aria-label="Metadata2"
+          aria-selected={false}
+          className="fui-Button fui-legend__legend"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          role="option"
+          style={
+            Object {
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
+              "--rect-content": "",
+              "--rect-height": "12px",
+            }
+          }
+          type="button"
+        >
+          <div
+            className="fui-legend__rect"
+            style={
+              Object {
+                "--rect-content-high-contrast": "linear-gradient(to right, navy, navy)",
+                "--rect-opacity-high-contrast": "",
+                "backgroundColor": "navy",
+                "borderColor": "navy",
+                "content": "",
+                "height": "12px",
+              }
+            }
+          />
+          <div
+            className="fui-legend__text"
+            style={
+              Object {
+                "opacity": "",
+              }
+            }
+          >
+            Metadata2
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
