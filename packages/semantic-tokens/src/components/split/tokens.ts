@@ -1,11 +1,10 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { strokewidthDefaultRaw } from '../../control/variables';
 import {
-  ctrlSplitDividerStrokewidthRaw,
-  ctrlSplitDividerStrokewidthOnoutlineRaw,
-  ctrlSplitDividerStrokewidthOnsubtleRaw,
+  ctrlSplitDividerStrokeWidthRaw,
+  ctrlSplitDividerStrokeWidthOnOutlineRaw,
+  ctrlSplitDividerStrokeWidthOnSubtleRaw,
 } from './variables';
 
-export const ctrlSplitDividerStrokewidth = `var(${ctrlSplitDividerStrokewidthRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlSplitDividerStrokewidthOnoutline = `var(${ctrlSplitDividerStrokewidthOnoutlineRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlSplitDividerStrokewidthOnsubtle = `var(${ctrlSplitDividerStrokewidthOnsubtleRaw}, unset)`;
+export const ctrlSplitDividerStrokeWidth = `var(${ctrlSplitDividerStrokeWidthRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlSplitDividerStrokeWidthOnOutline = `var(${ctrlSplitDividerStrokeWidthOnOutlineRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlSplitDividerStrokeWidthOnSubtle = `var(${ctrlSplitDividerStrokeWidthOnSubtleRaw}, unset)`;
