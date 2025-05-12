@@ -3,10 +3,12 @@ import * as React from 'react';
 export function useStaggeredReveal({
   count,
   delay,
+  visible = false,
   onMotionFinish,
 }: {
   count: number;
   delay: number;
+  visible?: boolean;
   onMotionFinish?: () => void;
 }): number {
   const [visibleCount, setVisibleCount] = React.useState(0);
@@ -56,7 +58,7 @@ export function useStaggeredReveal({
       cancelled = true;
       if (frameRef.current) cancelAnimationFrame(frameRef.current);
     };
-  }, [count, delay, visibleCount, onMotionFinish]);
+  }, [count, delay, visible, visibleCount, onMotionFinish]);
 
   return visibleCount;
 }
