@@ -3082,7 +3082,7 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with a 
       fill="currentColor"
       x="-12"
     >
-      100
+      102
     </text>
   </g>
 </g>
