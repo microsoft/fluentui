@@ -178,6 +178,7 @@ const useRootStyles = makeStyles({
 const useCircularAppearanceStyles = makeStyles({
   base: {
     borderRadius: tokens.borderRadiusCircular,
+    border: `solid ${tokens.strokeWidthThin} ${tokens.colorTransparentStroke}`,
     [`& .${tabClassNames.icon}`]: {
       color: 'inherit',
     },
@@ -190,7 +191,6 @@ const useCircularAppearanceStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForeground2,
     ':enabled:hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -201,6 +201,9 @@ const useCircularAppearanceStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       border: `solid ${tokens.strokeWidthThin} ${tokens.colorNeutralStroke1Pressed}`,
       color: tokens.colorNeutralForeground2Pressed,
+    },
+    '@media (forced-colors: active)': {
+      border: `solid ${tokens.strokeWidthThin} Canvas`,
     },
   },
   subtleSelected: {
@@ -224,7 +227,6 @@ const useCircularAppearanceStyles = makeStyles({
   subtleDisabled: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForegroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
   },
   subtleDisabledSelected: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -284,7 +286,6 @@ const useCircularAppearanceStyles = makeStyles({
   },
   filledDisabled: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    border: `solid ${tokens.strokeWidthThin} transparent`,
     color: tokens.colorNeutralForegroundDisabled,
   },
   filledDisabledSelected: {

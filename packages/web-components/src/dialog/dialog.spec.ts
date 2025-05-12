@@ -154,26 +154,6 @@ test.describe('Dialog', () => {
     await expect(content).toBeVisible();
   });
 
-  test('should NOT close after the escape key is pressed when its `type` attribute is set to "alert"', async ({
-    fastPage,
-    page,
-  }) => {
-    const { element } = fastPage;
-    const content = element.locator('#content');
-
-    await fastPage.setTemplate({ attributes: { type: 'alert' } });
-
-    await element.evaluate((node: Dialog) => {
-      node.show();
-    });
-
-    await expect(content).toBeVisible();
-
-    await page.keyboard.press('Escape');
-
-    await expect(content).toBeVisible();
-  });
-
   test('should set the `role` attribute to "dialog" on the internal dialog element when the `type` attribute is set to "dialog"', async ({
     fastPage,
   }) => {

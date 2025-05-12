@@ -192,6 +192,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
+    if (isAreaChart) {
+      throw new Error('Fallback to VerticalStackedBarChart is not allowed for Area Charts.');
+    }
     return (
       <ResponsiveVerticalStackedBarChart
         {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme, fallbackVSBC)}

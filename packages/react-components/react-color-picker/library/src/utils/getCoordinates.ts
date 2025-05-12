@@ -7,7 +7,7 @@ import { clamp } from '@fluentui/react-utilities';
  * @param event - The mouse event containing the clientX and clientY properties.
  * @returns An object containing the normalized x and y coordinates, clamped between 0 and 1.
  */
-export function getCoordinates(element: HTMLElement, event: MouseEvent) {
+export function getCoordinates(element: HTMLElement, event: PointerEvent) {
   const rect = element.getBoundingClientRect();
 
   const newX = roundTwoDecimal((event.clientX - rect.left) / rect.width);

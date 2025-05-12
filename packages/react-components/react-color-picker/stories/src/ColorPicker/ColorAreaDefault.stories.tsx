@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, makeStyles, tokens } from '@fluentui/react-components';
-import { ColorArea, ColorAreaProps } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, ColorArea } from '@fluentui/react-components';
+import type { ColorAreaProps } from '@fluentui/react-components';
 import { tinycolor } from '@ctrl/tinycolor';
 
 const useStyles = makeStyles({

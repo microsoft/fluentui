@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bug: Fix branded carousel nav button colors to be WCAG contrast compliant",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -56,8 +56,11 @@ export const styles = css`
     background-color: ${colorNeutralBackground1Pressed};
   }
 
-  :host(${pressedState}[appearance='primary']) {
+  :host(${pressedState}[appearance='primary']:not(:focus-visible)) {
     border-color: transparent;
+  }
+
+  :host(${pressedState}[appearance='primary']) {
     background-color: ${colorBrandBackgroundSelected};
     color: ${colorNeutralForegroundOnBrand};
   }

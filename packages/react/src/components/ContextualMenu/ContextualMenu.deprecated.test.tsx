@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { KeyCodes, setWarningCallback } from '../../Utilities';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
-import { render, screen } from '@testing-library/react';
 import { getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
-import type { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
+import type { IContextualMenuItem } from './ContextualMenu.types';
 import type { IMenuItemClassNames } from './ContextualMenu.classNames';
 
 let customClassNames: () => IMenuItemClassNames;
@@ -43,12 +42,8 @@ describe('ContextualMenu', () => {
   });
 
   afterEach(() => {
-    for (let i = 0; i < document.body.children.length; i++) {
-      if (document.body.children[i].tagName === 'DIV') {
-        document.body.removeChild(document.body.children[i]);
-        i--;
-      }
-    }
+    // Clean up any rendered elements
+    document.body.innerHTML = '';
   });
 
   it('includes the classNames on ContextualMenuItem(s)', () => {
@@ -68,9 +63,7 @@ describe('ContextualMenu', () => {
       };
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} getMenuClassNames={getClassNames} title="Menu!" />,
-    );
+    render(<ContextualMenu items={items} getMenuClassNames={getClassNames} title="Menu!" />);
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
     const rootEl = document.querySelector('.rootFoo') as HTMLElement;
@@ -113,9 +106,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const splitContainerEl = document.querySelector('.splitContainerFoo') as HTMLElement;
     const splitPrimaryEl = document.querySelector('.splitPrimaryFoo') as HTMLElement;
@@ -142,9 +133,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const checkmarkIconEl = document.querySelector('.checkmarkIconFoo') as HTMLElement;
 
@@ -164,9 +153,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const iconEl = document.querySelector('.iconFoo') as HTMLElement;
 
@@ -186,9 +173,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const dividerEl = document.querySelector('.dividerFoo') as HTMLElement;
 
@@ -208,9 +193,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const secondaryTextEl = document.querySelector('.secondaryTextFoo') as HTMLElement;
 
@@ -227,9 +210,7 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const itemEl = document.querySelector('.itemFoo') as HTMLElement;
     const rootEl = document.querySelector('.rootFoo') as HTMLElement;
@@ -257,14 +238,10 @@ describe('ContextualMenu', () => {
       },
     ];
 
-    ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-    });
+    render(<ContextualMenu items={items} />);
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-    ReactTestUtils.act(() => {
-      ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
-    });
+    fireEvent.keyDown(menuItem, { key: 'ArrowRight', which: KeyCodes.right, keyCode: KeyCodes.right });
 
     expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
