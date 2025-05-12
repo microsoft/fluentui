@@ -97,6 +97,7 @@ export const overridesWin: BaseConformanceTest = testInfo => {
  */
 async function render(element: React.ReactElement, container: HTMLElement) {
   const React = await import('react');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore - ReactDOMClient is not available in React 17
   const ReactDOMClient = await import('react-dom/client').catch(() => null);
 
@@ -106,11 +107,13 @@ async function render(element: React.ReactElement, container: HTMLElement) {
     // React 18 approach
 
     const root = ReactDOMClient.createRoot(container);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - act doesn't exist on react in React 17
     React.act(() => {
       root.render(element);
     });
     unmount = () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore - act doesn't exist on react in React 17
       React.act(() => {
         root.unmount();
