@@ -86,7 +86,10 @@ export const useCarouselButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
-      setCanLoop(data.canLoop ?? circular);
+      if (data.canLoop !== undefined) {
+        // Only update canLoop if it has been defined by the carousel engine
+        setCanLoop(data.canLoop);
+      }
       setTotalSlides(data.navItemsCount);
     });
   }, [subscribeForValues]);
