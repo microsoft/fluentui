@@ -229,4 +229,38 @@ test.describe('Tree', () => {
     await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
     await expect(anchor).toBeFocused();
   });
+  test('tree item and its child focusable element should be focused when navigated by keyboard', async ({
+    fastPage,
+    page,
+    browserName,
+  }) => {
+    const { element } = fastPage;
+    const anchor = page.locator('a');
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `
+          <fluent-tree-item>
+            Item1
+            <a slot='aside' tabindex='0' href='edge://settings'>Link1</a>
+          </fluent-tree-item>
+          <fluent-tree-item>Item 2</fluent-tree-item>
+      `,
+    });
+
+    const treeItems = page.locator('fluent-tree-item');
+    await element.focus();
+    await expect(treeItems.nth(0)).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    await expect(treeItems.nth(0)).toHaveAttribute('tabindex', '-1');
+    await expect(treeItems.nth(1)).toBeFocused();
+    await expect(treeItems.nth(1)).toHaveAttribute('tabindex', '0');
+    await page.keyboard.press('ArrowUp');
+    await expect(treeItems.nth(0)).toBeFocused();
+    await expect(treeItems.nth(0)).toHaveAttribute('tabindex', '0');
+    await page.keyboard.press('Tab');
+    await expect(anchor).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(treeItems.nth(0)).toBeFocused();
+    await expect(treeItems.nth(0)).toHaveAttribute('tabindex', '0');
+  });
 });

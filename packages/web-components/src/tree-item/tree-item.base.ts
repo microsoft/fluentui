@@ -154,4 +154,33 @@ export class BaseTreeItem extends FASTElement {
   get isNestedItem() {
     return isTreeItem(this.parentElement);
   }
+
+    /**
+   * Handle focus events
+   *
+   * @public
+   */
+  public focusHandler(e: FocusEvent): void {
+    if (
+      e.target === this ||
+      // In case where the tree-item contains a focusable element, we should not set the tabindex to 0 when the focus is on its child focusable element,
+      // so users can shift+tab to navigate to the tree-item from its child focusable element.
+      // e.g. we append a button to the tree-item,
+      // and we want to switch from the tree-item to the button by pressing tab/shift+tab
+      this.contains(e.target as Node)
+    ) {
+      this.setAttribute('tabindex', '0');
+    }
+  }
+
+  /**
+   * Handle blur events
+   *
+   * @public
+   */
+  public blurHandler(e: FocusEvent): void {
+    if (e.target === this) {
+      this.setAttribute('tabindex', '-1');
+    }
+  }
 }

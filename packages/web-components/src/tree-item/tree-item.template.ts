@@ -13,6 +13,8 @@ const chevronIcon = html`
 export const template = html<TreeItem>`
   <template
     tabindex="${x => (x.selected ? 0 : -1)}"
+    @focusin="${(x, c) => x.focusHandler(c.event as FocusEvent)}"
+    @focusout="${(x, c) => x.blurHandler(c.event as FocusEvent)}"
     slot="${x => (x.isNestedItem ? 'item' : void 0)}"
     ${children({
       property: 'childTreeItems',
