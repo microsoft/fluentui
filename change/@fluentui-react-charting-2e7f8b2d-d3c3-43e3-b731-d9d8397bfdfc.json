@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-charting): Negative y axis support in gvbc",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

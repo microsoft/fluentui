@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 09 May 2025 07:21:57 GMT and should not be manually modified.
+This log was last generated on Mon, 12 May 2025 07:20:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.84)
+
+Mon, 12 May 2025 07:20:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.83..@fluentui/react-charting_v5.23.84)
+
+### Patches
+
+- fix(react-charting): Parse date from number object ([PR #34410](https://github.com/microsoft/fluentui/pull/34410) by atisjai@microsoft.com)
+- feat(react-charting): Negative y axis support in gvbc ([PR #34401](https://github.com/microsoft/fluentui/pull/34401) by anushgupta@microsoft.com)
 
 ## [5.23.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.83)
 
