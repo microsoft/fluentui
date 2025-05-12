@@ -256,18 +256,82 @@ export function createNumericXAxis(
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) {
+/**
+ * This function returns the lowest common ancestor formatter for a given date range.
+ * It determines the appropriate date format based on each date tick value.
+ * The goal is to represent the date label in the smallest possible format without loss of information.
+ * The challenge here is to adhere to locale specific formats while ensuring the complete label is shown.
+ * There is an exhaustive map of all possible date/time units and their respective formats.
+ * Based on the range of formatting granularity levels, a format spanning the range is returned.
+ * @param startLevel - The starting level of the date format.
+ * @param endLevel - The ending level of the date format.
+ * @param locale - The locale object for formatting.
+ * @param useUTC
+ * @returns
+ */
+function getLowestCommonAncestorFormatter(
+  startLevel: number,
+  endLevel: number,
+  locale?: d3TimeLocaleObject,
+  useUTC?: boolean) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
 
-  const formatMillisecond = timeFormat('.%L');
-  const formatSecond = timeFormat(':%S');
-  const formatMinute = timeFormat('%I:%M');
-  const formatHour = timeFormat('%I %p');
-  const formatDay = timeFormat('%a %d');
-  const formatWeek = timeFormat('%b %d');
-  const formatMonth = timeFormat('%B');
-  const formatYear = timeFormat('%Y');
+  // https://d3js.org/d3-time-format#locale_format
+  const DEFAULT = '%c';
+  const ms = '.%L';
+  const ms_s = ':%S.%L';
+  const ms_s_min = '%M:%S.%L';
+  const ms_s_min_h = '%-I:%M:%S.%L %p';
+  const ms_s_min_h_d = '%a %d, %X';
+  const ms_s_min_h_d_w = '%b %d, %X';
+  const ms_s_min_h_d_w_m = ms_s_min_h_d_w;
+  const ms_s_min_h_d_w_m_y = DEFAULT;
+  const s = ':%S';
+  const s_min = '%-I:%M:%S';
+  const s_min_h = '%X'
+  const s_min_h_d = ms_s_min_h_d;
+  const s_min_h_d_w = ms_s_min_h_d_w;
+  const s_min_h_d_w_m = ms_s_min_h_d_w_m;
+  const s_min_h_d_w_m_y = DEFAULT;
+  const min = '%-I:%M %p';
+  const min_h = min;
+  const min_h_d = '%a %d, %-I:%M %p';
+  const min_h_d_w = '%b %d, %-I:%M %p';
+  const min_h_d_w_m = min_h_d_w;
+  const min_h_d_w_m_y = '%x, %-I:%M %p';
+  const h = '%-I %p';
+  const h_d = '%a %d, %-I %p';
+  const h_d_w = '%b %d, %-I %p';
+  const h_d_w_m = h_d_w;
+  const h_d_w_m_y = '%x, %-I %p';
+  const d = '%a %d';
+  const d_w = '%b %d';
+  const d_w_m = d_w;
+  const d_w_m_y = '%x';
+  const w = d_w;
+  const w_m = w;
+  const w_m_y = d_w_m_y;
+  const m = '%B';
+  const m_y = '%b %Y';
+  const y = '%Y';
 
+  const lowestCommonAncestorTimeFormats = [
+    // ms, s, min, h, d, w, m, y
+    [ms,      ms_s,    ms_s_min, ms_s_min_h, ms_s_min_h_d, ms_s_min_h_d_w, ms_s_min_h_d_w_m, ms_s_min_h_d_w_m_y],// ms
+    [DEFAULT, s,       s_min,    s_min_h,    s_min_h_d,    s_min_h_d_w,    s_min_h_d_w_m,    s_min_h_d_w_m_y],   // s
+    [DEFAULT, DEFAULT, min,      min_h,      min_h_d,      min_h_d_w,      min_h_d_w_m,      min_h_d_w_m_y],     // min
+    [DEFAULT, DEFAULT, DEFAULT,  h,          h_d,          h_d_w,          h_d_w_m,          h_d_w_m_y],         // h
+    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    d,            d_w,            d_w_m,            d_w_m_y],           // d
+    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      w,              w_m,              w_m_y],             // w
+    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      DEFAULT,        m,                m_y],               // m
+    [DEFAULT, DEFAULT, DEFAULT,  DEFAULT,    DEFAULT,      DEFAULT,        DEFAULT,          y],                 // y
+  ];
+
+const formatter = timeFormat(lowestCommonAncestorTimeFormats[startLevel][endLevel]);
+return formatter;
+}
+
+function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;
@@ -276,23 +340,20 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) 
   const timeWeek = useUTC ? d3UtcWeek : d3TimeWeek;
   const timeYear = useUTC ? d3UtcYear : d3TimeYear;
 
-  return (
-    timeSecond(date) < date
-      ? formatMillisecond
-      : timeMinute(date) < date
-      ? formatSecond
-      : timeHour(date) < date
-      ? formatMinute
-      : timeDay(date) < date
-      ? formatHour
-      : timeMonth(date) < date
-      ? timeWeek(date) < date
-        ? formatDay
-        : formatWeek
-      : timeYear(date) < date
-      ? formatMonth
-      : formatYear
-  )(date);
+  const formats = [
+    { formatLevel: 0, condition: (d: Date) => timeSecond(d) < d },                   // Milliseconds
+    { formatLevel: 1, condition: (d: Date) => timeMinute(d) < d },                   // Seconds
+    { formatLevel: 2, condition: (d: Date) => timeHour(d) < d },                     // Minutes
+    { formatLevel: 3, condition: (d: Date) => timeDay(d) < d },                      // Hours
+    { formatLevel: 4, condition: (d: Date) => timeMonth(d) < d && timeWeek(d) < d }, // Days
+    { formatLevel: 5, condition: (d: Date) => timeMonth(d) < d },                    // Weeks
+    { formatLevel: 6, condition: (d: Date) => timeYear(d) < d },                     // Months
+    { formatLevel: 7, condition: () => true },                                       // Years (default)
+  ];
+
+    const matchedFormat = formats.find(({ condition }) => condition(date));
+
+  return matchedFormat?.formatLevel ?? 7;
 }
 
 function isPowerOf10(num: number): boolean {
@@ -327,14 +388,33 @@ export function createDateXAxis(
     tickPadding = 6,
     xAxistickSize = 6,
     xAxisCount,
-    hideTickOverlap,
   } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
+    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
+    .nice();
 
   let tickCount = xAxisCount ?? 6;
+
+  let lowestFormatLevel = 100;
+  let highestFormatLevel = -1
+
+  const locale = timeFormatLocale? d3TimeFormatLocale(timeFormatLocale): undefined;
+
+  xAxisScale.ticks().forEach((domainValue: Date) => {
+    const formatLevel = getDateFormatLevel(domainValue, useUTC)
+
+    if (formatLevel > highestFormatLevel) {
+      highestFormatLevel = formatLevel;
+    }
+    if (formatLevel < lowestFormatLevel) {
+      lowestFormatLevel = formatLevel;
+    }
+  })
+
+  const formatFn: ((date: Date) => string) = getLowestCommonAncestorFormatter(lowestFormatLevel, highestFormatLevel, locale, useUTC);
+
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
@@ -343,8 +423,7 @@ export function createDateXAxis(
       return domainValue.toLocaleString(culture, options);
     }
     if (timeFormatLocale) {
-      const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
-      return multiFormat(domainValue, locale, useUTC);
+      return formatFn(domainValue);
     }
     if (culture === undefined && tickParams.tickFormat) {
       if (useUTC) {
@@ -353,14 +432,14 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return multiFormat(domainValue, undefined, useUTC);
+    return formatFn(domainValue);
   };
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
-    const [start, end] = xAxisScale.range();
-    tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  }
+
+  const longestLabelWidth =
+    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+  const [start, end] = xAxisScale.range();
+  tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
+  tickCount = Math.min(tickCount, xAxisCount ?? tickCount);
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
