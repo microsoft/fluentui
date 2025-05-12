@@ -212,7 +212,12 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
     const data: IHorizontalBarChartWithAxisDataPoint[] = [];
     if (yAxisType === 'string') {
       for (let i = 0; i < dataSize; i++) {
-        data.push({ x: this._randomX(), y: `Label ${i + 1}` });
+        data.push({
+          x: this._randomX(),
+          y: `Label ${i + 1}`,
+          legend: `Label ${i + 1}`,
+          color: this._colors[i % this._colors.length],
+        });
       }
     } else {
       const yPoints = new Set<number>();
@@ -220,7 +225,12 @@ export class HorizontalBarChartWithAxisDynamicExample extends React.Component<
         const y = Math.floor(Math.random() * 75) + 1;
         if (!yPoints.has(y)) {
           yPoints.add(y);
-          data.push({ x: this._randomX(), y });
+          data.push({
+            x: this._randomX(),
+            y,
+            legend: `Label ${yPoints.size}`,
+            color: this._colors[y % this._colors.length],
+          });
         }
       }
     }

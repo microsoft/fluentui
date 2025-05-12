@@ -502,8 +502,8 @@ export class HorizontalBarChartWithAxisBase
       const yMax = d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yMin = d3Min(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
       const yDomainMax = Math.max(yMax, this.props.yMaxValue || 0);
-      // Default to yMin if yMinValue is not provided.
-      const yMinProp = this.props.yMinValue ?? 0;
+      // Default to 0 if yMinValue is not provided.
+      const yMinProp = this.props.yMinValue || 0;
       const yDomainMin = Math.min(yMin, yMinProp);
       const xBarScale = d3ScaleLinear()
         .domain(xDomain)
@@ -714,13 +714,13 @@ export class HorizontalBarChartWithAxisBase
     if (this._yAxisType !== YAxisType.StringAxis) {
       // Calculate bar height dynamically
       this._barHeight =
-        this.props.barHeight ??
+        this.props.barHeight ||
         this._calculateAppropriateBarHeight(uniqueY as number[] | Date[], totalHeight, this._yAxisPadding);
       this._barHeight = Math.max(this._barHeight, 1);
       this._domainMargin += this._barHeight / 2;
     } else {
       // Calculate the appropriate bar height
-      this._barHeight = this.props.barHeight ?? totalHeight / numBars;
+      this._barHeight = this.props.barHeight || totalHeight / numBars;
       /** Total height required to render the bars. Directly proportional to bar height */
       const reqHeight = numBars * this._barHeight;
       if (totalHeight >= reqHeight) {
