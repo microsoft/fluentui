@@ -155,7 +155,7 @@ export class BaseTreeItem extends FASTElement {
     return isTreeItem(this.parentElement);
   }
 
-    /**
+  /**
    * Handle focus events
    *
    * @public
