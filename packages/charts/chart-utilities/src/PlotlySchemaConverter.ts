@@ -49,6 +49,14 @@ export const isDate = (value: any): boolean => {
   return true;
 };
 
+const isYear = (input: string | number | Date | null): boolean => {
+  if (isNumber(input)) {
+    const possibleYear = typeof input === 'string' ? parseFloat(input) : Number(input);
+    return Number.isInteger(possibleYear) && possibleYear >= 1900 && possibleYear <= 2100;
+  }
+  return false;
+};
+
 export const isArrayOfType = (
   plotCoordinates: Datum[] | Datum[][] | TypedArray | undefined,
   typeCheck: (datum: any, ...args: any[]) => boolean,
@@ -77,6 +85,10 @@ export const isDateArray = (data: Datum[] | Datum[][] | TypedArray | undefined):
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   return isArrayOfType(data, isNumber);
+};
+
+export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
+  return isArrayOfType(data, isYear);
 };
 
 export const isLineData = (data: Partial<PlotData>): boolean => {
@@ -298,7 +310,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
           });
           const isXDate = isDateArray(firstScatterData.x);
           const isXNumber = isNumberArray(firstScatterData.x);
-          if (isXDate || isXNumber) {
+          const isXYear = isYearArray(firstScatterData.x);
+          if ((isXDate || isXNumber) && !isXYear) {
             return { isValid: true, type: isAreaChart ? 'area' : 'line', validTracesInfo: validTraces };
           } else if (isAreaChart) {
             return {

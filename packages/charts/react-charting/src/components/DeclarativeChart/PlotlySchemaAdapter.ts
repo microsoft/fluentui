@@ -56,7 +56,7 @@ import {
   isDateArray,
   isNumberArray,
   isLineData,
-  isNumber,
+  isYearArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
@@ -111,20 +111,8 @@ const isMonth = (possiblyMonthValue: any): boolean => {
   return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
 };
 
-const isYear = (input: string | number | Date | null): boolean => {
-  if (isNumber(input)) {
-    const possibleYear = typeof input === 'string' ? parseFloat(input) : Number(input);
-    return Number.isInteger(possibleYear) && possibleYear >= 1900 && possibleYear <= 2100;
-  }
-  return false;
-};
-
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   return isArrayOfType(data, isMonth);
-};
-
-export const isYearArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isYear);
 };
 
 function getTitles(layout: Partial<Layout> | undefined) {

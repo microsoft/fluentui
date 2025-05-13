@@ -10,13 +10,13 @@ import {
   isArrayOrTypedArray,
   isDateArray,
   isNumberArray,
+  isYearArray,
   mapFluentChart,
   sanitizeJson,
 } from '@fluentui/chart-utilities';
 
 import {
   isMonthArray,
-  isYearArray,
   correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
