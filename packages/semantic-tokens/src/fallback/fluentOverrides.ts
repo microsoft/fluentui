@@ -12,16 +12,15 @@ export type FluentOverrides = Record<string, FluentOverrideValue | null>;
 
 export const fluentOverrides: FluentOverrides = {
   ctrlFocusOuterStroke: { f2Token: 'colorStrokeFocus2' },
+  ctrlLinkForegroundBrandRest: { f2Token: 'colorBrandForegroundLink' },
+  textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
+  textGlobalBody3FontSize: { f2Token: 'fontSizeBase300' },
+  textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
+  strokeWidthDefault: { f2Token: 'strokeWidthThin' },
   ctrlLinkForegroundBrandHover: { f2Token: 'colorBrandForegroundLinkHover' },
   ctrlLinkForegroundBrandPressed: { f2Token: 'colorBrandForegroundLinkPressed' },
-  ctrlLinkForegroundBrandRest: { f2Token: 'colorBrandForegroundLink' },
-  ctrlLinkForegroundNeutralHover: { f2Token: 'colorNeutralForeground2Hover' },
-  ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
   ctrlLinkForegroundNeutralRest: { f2Token: 'colorNeutralForeground2' },
+  ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
+  ctrlLinkForegroundNeutralHover: { f2Token: 'colorNeutralForeground2Hover' },
   foregroundCtrlNeutralPrimaryDisabled: { f2Token: 'colorNeutralForegroundDisabled' },
-  strokewidthDefault: { f2Token: 'strokeWidthThin' },
-  textGlobalBody3Fontsize: { f2Token: 'fontSizeBase300' },
-  textStyleDefaultRegularFontfamily: { f2Token: 'fontFamilyBase' },
-  // textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
-  textStyleDefaultRegularWeight: null,
 };

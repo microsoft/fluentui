@@ -1,5 +1,11 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { fontWeightRegular, colorNeutralForegroundDisabled } from '../legacy/tokens';
+import {
+  fontSizeBase300,
+  fontFamilyBase,
+  fontWeightRegular,
+  strokeWidthThin,
+  colorNeutralForegroundDisabled,
+} from '../legacy/tokens';
 import {
   textGlobalDisplay1FontSizeRaw,
   textGlobalDisplay1LineHeightRaw,
@@ -222,13 +228,13 @@ export const textGlobalBody1FontSize = `var(${textGlobalBody1FontSizeRaw})`;
 export const textGlobalBody1LineHeight = `var(${textGlobalBody1LineHeightRaw})`;
 export const textGlobalBody2FontSize = `var(${textGlobalBody2FontSizeRaw})`;
 export const textGlobalBody2LineHeight = `var(${textGlobalBody2LineHeightRaw})`;
-export const textGlobalBody3FontSize = `var(${textGlobalBody3FontSizeRaw})`;
+export const textGlobalBody3FontSize = `var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300})`;
 export const textGlobalBody3LineHeight = `var(${textGlobalBody3LineHeightRaw})`;
 export const textGlobalCaption1FontSize = `var(${textGlobalCaption1FontSizeRaw})`;
 export const textGlobalCaption1LineHeight = `var(${textGlobalCaption1LineHeightRaw})`;
 export const textGlobalCaption2FontSize = `var(${textGlobalCaption2FontSizeRaw})`;
 export const textGlobalCaption2LineHeight = `var(${textGlobalCaption2LineHeightRaw})`;
-export const textStyleDefaultRegularFontFamily = `var(${textStyleDefaultRegularFontFamilyRaw})`;
+export const textStyleDefaultRegularFontFamily = `var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase})`;
 export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
 export const textStyleDefaultRegularLetterSpacing = `var(${textStyleDefaultRegularLetterSpacingRaw})`;
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
@@ -286,7 +292,7 @@ export const gapInsideCtrlToLabel = `var(${gapInsideCtrlToLabelRaw})`;
 export const gapInsideCtrlSmToLabel = `var(${gapInsideCtrlSmToLabelRaw})`;
 export const gapInsideCtrlLgToLabel = `var(${gapInsideCtrlLgToLabelRaw})`;
 export const cornerCircular = `var(${cornerCircularRaw})`;
-export const strokeWidthDefault = `var(${strokeWidthDefaultRaw})`;
+export const strokeWidthDefault = `var(${strokeWidthDefaultRaw}, ${strokeWidthThin})`;
 export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
 export const strokeCtrlOnOutlineRest = `var(${strokeCtrlOnOutlineRestRaw})`;
 export const strokeCtrlOnOutlineHover = `var(${strokeCtrlOnOutlineHoverRaw})`;
