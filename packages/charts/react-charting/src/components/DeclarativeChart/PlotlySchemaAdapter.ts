@@ -296,8 +296,12 @@ export const transformPlotlyJsonToVSBCProps = (
       } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
+        const dashType = series.line?.dash || 'solid';
+        const legendShape =
+          dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
         mapXToDataPoints[x].lineData!.push({
           legend,
+          legendShape,
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
@@ -471,9 +475,12 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
+    const dashType = series.line?.dash || 'solid';
+    const legendShape = dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
 
     return {
       legend,
+      legendShape,
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],

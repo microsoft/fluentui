@@ -1055,6 +1055,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    legendShape?: LegendShape;
     lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
@@ -1110,6 +1111,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
