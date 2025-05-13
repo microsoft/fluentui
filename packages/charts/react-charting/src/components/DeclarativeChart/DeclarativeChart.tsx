@@ -16,6 +16,7 @@ import {
 
 import {
   isMonthArray,
+  isYearArray,
   correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
@@ -181,7 +182,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
-    if (isXDate || isXNumber) {
+    const isXYear = isYearArray(xValues); // Consider year as categorical not numeric continuous axis
+
+    if ((isXDate || isXNumber) && !isXYear) {
       return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
