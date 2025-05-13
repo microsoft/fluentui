@@ -30,6 +30,7 @@ import {
   ChartTypes,
   wrapContent,
   getSecureProps,
+  truncateString,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -222,14 +223,22 @@ export class CartesianChartBase
     points: any[],
     className: string,
   ): number => {
+    const formatTickLabel = (str: string) => {
+      if (this.props.showYAxisLablesTooltip) {
+        return truncateString(str, this.props.noOfCharsToTruncate || 4);
+      }
+
+      return str;
+    };
+
     if (chartType === ChartTypes.HeatMapChart) {
       return calculateLongestLabelWidth(
-        points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+        points[0].data.map((point: IHeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     } else {
       return calculateLongestLabelWidth(
-        points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        points.map((point: IHorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     }
@@ -311,7 +320,7 @@ export class CartesianChartBase
         yAxisTickCount: this.props.yAxisTickCount!,
         yMinValue: this.props.yMinValue || 0,
         yMaxValue: this.props.yMaxValue || 0,
-        tickPadding: 10,
+        tickPadding: this.props.showYAxisLablesTooltip ? 15 : 10,
         maxOfYVal: this.props.maxOfYVal,
         yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
@@ -643,7 +652,7 @@ export class CartesianChartBase
                     this.state._removalValueForTextTuncate!,
                   y: this._isRtl
                     ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
-                    : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
+                    : this.margins.left! / 2 - this.titleMargin,
                   textAnchor: 'middle',
                   transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,

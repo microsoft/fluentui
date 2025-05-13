@@ -1686,3 +1686,11 @@ export function getCurveFactory(
       return defaultFactory;
   }
 }
+
+export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
+  if (str.length <= maxLength) {
+    return str;
+  }
+
+  return str.slice(0, maxLength) + ellipsis;
+};

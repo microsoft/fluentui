@@ -581,6 +581,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     width: input.layout?.width,
     hideTickOverlap: true,
     hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
