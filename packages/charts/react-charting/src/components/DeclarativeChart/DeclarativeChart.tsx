@@ -10,6 +10,7 @@ import {
   isArrayOrTypedArray,
   isDateArray,
   isNumberArray,
+  isYearArray,
   mapFluentChart,
   sanitizeJson,
 } from '@fluentui/chart-utilities';
@@ -181,7 +182,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
-    if (isXDate || isXNumber) {
+
+    // Consider year as categorical variable not numeric continuous variable
+    // Also year is not considered a date variable as it is represented as a point
+    // in time and brings additional complexity of handling timezone and locale
+    // formatting given the current design of the charting library
+    const isXYear = isYearArray(xValues);
+
+    if ((isXDate || isXNumber) && !isXYear) {
       return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({

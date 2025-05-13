@@ -468,6 +468,9 @@ export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined)
 export function isTypedArray(a: any): boolean;
 
 // @public (undocumented)
+export const isYearArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
 export interface Label {
     bgcolor: string;
     bordercolor: string;

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(chart-utilities): Consider year as categorical instead of numerical continuous",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
