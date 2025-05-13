@@ -51,6 +51,15 @@ const StaggerIn: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase
 
 const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={false} />;
 
+/**
+ * Stagger is a component that manages the staggered entrance and exit of its children.
+ * The `children` can be React elements.
+ * The `visible` prop determines whether the staggered animation is entering or exiting.
+ * The `reverse` prop determines whether the staggered animation is reversed.
+ * The `delay`, `itemDuration`, and `easingFn` props control the timing and easing of the staggered animation.
+ * The `onMotionFinish` prop is called when the staggered animation finishes.
+ * The `In` and `Out` components are used to specify the entrance and exit animations respectively.
+ */
 export const Stagger = Object.assign(StaggerBase, {
   In: StaggerIn,
   Out: StaggerOut,
