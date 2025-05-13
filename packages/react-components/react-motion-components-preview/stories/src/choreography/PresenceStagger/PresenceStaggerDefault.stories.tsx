@@ -9,7 +9,7 @@ import {
   createPresenceComponentVariant,
   useId,
 } from '@fluentui/react-components';
-import { PresenceStagger, Fade, Scale } from '@fluentui/react-motion-components-preview';
+import { Stagger, PresenceStagger, Fade, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -64,8 +64,7 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
 
   const transitionSelectId = useId();
 
-  // const ItemTransition = ScaleFull;
-  // const ItemTransition = FadeUltraSlow;
+  // TODO: clean up this mapping
   const ItemTransition = transition === 'Fade' ? FadeUltraSlow : ScaleFull;
 
   return (
@@ -92,33 +91,13 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
 
       <div>
         <div className={classes.items}>
-          <PresenceStagger visible={visible} reverse={reverse}>
+          <Stagger presence visible={visible} reverse={reverse}>
             {Array.from({ length: 10 }, (_, i) => (
               <ItemTransition key={i}>
                 <div className={classes.item} />
               </ItemTransition>
             ))}
-          </PresenceStagger>
-        </div>
-
-        <div className={classes.items}>
-          <PresenceStagger.In reverse={reverse}>
-            {Array.from({ length: 10 }, (_, i) => (
-              <ItemTransition key={i}>
-                <div className={classes.item} />
-              </ItemTransition>
-            ))}
-          </PresenceStagger.In>
-        </div>
-
-        <div className={classes.items}>
-          <PresenceStagger.Out reverse={reverse}>
-            {Array.from({ length: 10 }, (_, i) => (
-              <ItemTransition key={i}>
-                <div className={classes.item} />
-              </ItemTransition>
-            ))}
-          </PresenceStagger.Out>
+          </Stagger>
         </div>
       </div>
     </div>

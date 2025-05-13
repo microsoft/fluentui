@@ -7,7 +7,9 @@ const defaultEasingFn = (t: number) => t;
 export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'direction' | 'count'> {
   children: React.ReactNode;
   visible?: boolean; // true = enter, false = exit (defaults to false)
-  reverse?: boolean;
+  // TODO: use a clearer name like `fromEnd` because `reverse` is ambiguous as 'exit' is the reverse of 'enter'
+  reverse?: boolean; // run sequence backward (defaults to false)
+  presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
 }
 
 type StaggerComponent = React.FC<StaggerProps> & {
@@ -23,6 +25,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
   easingFn = defaultEasingFn,
   reverse = false,
   onMotionFinish,
+  presence = false,
 }) => {
   const elements = toElementArray(children);
   const count = elements.length;
@@ -40,24 +43,32 @@ const StaggerBase: React.FC<StaggerProps> = ({
 
   return (
     <>
-      {elementArray.map((child, idx) =>
-        visibility[idx] ? React.cloneElement(child, { key: child.key ?? idx }) : null,
-      )}
+      {elements.map((child, idx) => {
+        // if (!React.isValidElement(child)) return null;
+        const key = child.key ?? idx;
+        if (presence) {
+          // Always render, control visibility via prop
+          return React.cloneElement(child, { key, visible: visibility[idx] });
+        } else {
+          // Only render when visible
+          return visibility[idx] ? React.cloneElement(child, { key }) : null;
+        }
+      })}
     </>
   );
 };
 
 const StaggerIn: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={true} />;
-
 const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={false} />;
 
 /**
  * Stagger is a component that manages the staggered entrance and exit of its children.
- * The `children` can be React elements.
- * The `visible` prop determines whether the staggered animation is entering or exiting.
+ * The `children` can be React elements or presence components that accept a `visible` prop to be shown or hidden.
+ * Stagger's own `visible` prop determines whether the staggered animation is entering or exiting.
  * The `reverse` prop determines whether the staggered animation is reversed.
  * The `delay`, `itemDuration`, and `easingFn` props control the timing and easing of the staggered animation.
  * The `onMotionFinish` prop is called when the staggered animation finishes.
+ * The `presence` prop determines whether the children are always rendered or unmounted when not visible.
  * The `In` and `Out` components are used to specify the entrance and exit animations respectively.
  */
 export const Stagger = Object.assign(StaggerBase, {
