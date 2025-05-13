@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { toElementArray, useStaggeredReveal } from './stagger-utils';
 
-const defaultEasingFn = (t: number) => t;
+// const defaultEasingFn = (t: number) => t;
 
 export interface StaggerProps {
   children: React.ReactNode;
   visible?: boolean; // true = enter, false = exit (defaults to false)
   delay?: number;
   itemDuration?: number;
-  easingFn?: (t: number) => number;
+  // TODO: support easing functions in CSS string format
+  // easingFn?: (t: number) => number;
   // TODO: use a clearer name like `fromEnd` because `reverse` is ambiguous as 'exit' is the reverse of 'enter'
   reversed?: boolean; // run sequence backward (defaults to false)
   onMotionFinish?: () => void;
@@ -26,7 +27,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
   visible = false,
   delay = 100,
   itemDuration = 0,
-  easingFn = defaultEasingFn,
+  // easingFn = defaultEasingFn,
   reversed: reverse = false,
   onMotionFinish,
   presence = false,
@@ -39,7 +40,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
     count,
     delay,
     itemDuration,
-    easingFn,
+    // easingFn,
     direction,
     reversed: reverse,
     onMotionFinish,
@@ -69,7 +70,7 @@ const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBas
  * The `children` can be React elements or presence components that accept a `visible` prop to be shown or hidden.
  * Stagger's own `visible` prop determines whether the staggered animation is entering or exiting.
  * The `reverse` prop determines whether the staggered animation is reversed.
- * The `delay`, `itemDuration`, and `easingFn` props control the timing and easing of the staggered animation.
+ * The `delay` and `itemDuration` props control the timing of the staggered animation.
  * The `onMotionFinish` prop is called when the staggered animation finishes.
  * The `presence` prop determines whether the children are always rendered or unmounted when not visible.
  * The `In` and `Out` components are used to specify the entrance and exit animations respectively.
