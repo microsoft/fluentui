@@ -57,7 +57,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForegroundInvertedHover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
-  colorNeutralForegroundInverted2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralForegroundInverted2: hcHighlightText, // CanvasText Global.Color.hcCanvasText
   colorNeutralForegroundOnBrand: hcButtonText, // ButtonText Global.Color.hcButtonText
   colorNeutralForegroundInvertedLink: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
@@ -91,7 +91,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground5Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground5Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground6: hcCanvas, // Canvas Global.Color.hcCanvas
-  colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundInverted: hcCanvasText, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundAlpha: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundAlpha2: hcCanvas, // Canvas Global.Color.hcCanvas
