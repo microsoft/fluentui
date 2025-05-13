@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useStaggeredReveal, UseStaggeredRevealParams } from './useStaggeredReveal';
 import { toElementArray } from './toElementArray';
 
+const defaultEasingFn = (t: number) => t;
+
 export interface PresenceStaggerProps extends Omit<UseStaggeredRevealParams, 'direction' | 'count'> {
   children: React.ReactNode; // Presence components must accept a `visible` boolean prop
   visible?: boolean; // true = enter, false = exit (defaults to false)
@@ -13,7 +15,7 @@ export const PresenceStagger: React.FC<PresenceStaggerProps> = ({
   visible = false,
   delay = 100,
   itemDuration = 0,
-  easingFn = t => t,
+  easingFn = defaultEasingFn,
   reverse = false,
   onMotionFinish,
 }) => {

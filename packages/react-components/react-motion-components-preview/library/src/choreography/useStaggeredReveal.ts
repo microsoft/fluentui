@@ -23,6 +23,7 @@ export function useStaggeredReveal({
 }: UseStaggeredRevealParams): { visibility: boolean[]; visibleCount: number } {
   // Use the provided easingFn if any, otherwise the stable default
   // const actualEasingFn = easingFn ?? defaultEasingFn;
+  // easingFn = easingFn ?? defaultEasingFn;
 
   const [visibility, setVisibility] = useState<boolean[]>(() => Array(count).fill(direction === 'exit'));
   const startTimeRef = useRef<number | null>(null);
@@ -30,15 +31,6 @@ export function useStaggeredReveal({
   const finishedRef = useRef(false);
 
   useEffect(() => {
-    console.log('### useStaggeredReveal effect:', {
-      count,
-      delay,
-      itemDuration,
-      easingFn,
-      direction,
-      reverse,
-      onMotionFinish,
-    });
     let cancelled = false;
     startTimeRef.current = null;
     finishedRef.current = false;
@@ -54,8 +46,8 @@ export function useStaggeredReveal({
         elapsed,
         delay,
         itemDuration,
-        // easingFn: actualEasingFn,
         easingFn,
+        // easingFn,
         direction,
         reverse,
       });
@@ -75,9 +67,7 @@ export function useStaggeredReveal({
       cancelled = true;
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     };
-    // now depend on the stable defaultEasingFn, not a fresh inline function
-    // }, [count, delay, itemDuration, actualEasingFn, direction, reverse, onMotionFinish]);
-  }, [count, delay, itemDuration, direction, reverse]);
+  }, [count, delay, itemDuration, direction, reverse, easingFn, onMotionFinish]);
 
   const visibleCount = visibility.filter(Boolean).length;
   return { visibility, visibleCount };

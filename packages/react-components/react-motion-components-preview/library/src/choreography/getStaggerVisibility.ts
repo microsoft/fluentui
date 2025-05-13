@@ -3,7 +3,7 @@ import { getStaggerTotalDuration } from './getStaggerTotalDuration';
 export interface GetStaggerVisibilityParams {
   count: number;
   elapsed: number;
-  delay: number;
+  delay?: number;
   itemDuration?: number;
   easingFn?: (progress: number) => number;
   direction?: 'enter' | 'exit';

@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {
   Field,
+  Select,
   makeStyles,
   tokens,
   Switch,
   motionTokens,
   createPresenceComponentVariant,
+  useId,
 } from '@fluentui/react-components';
-import { PresenceStagger, Scale } from '@fluentui/react-motion-components-preview';
+import { PresenceStagger, Fade, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -29,7 +31,8 @@ const useClasses = makeStyles({
   },
   items: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    // flexWrap: 'wrap',
   },
   item: {
     display: 'flex',
@@ -38,10 +41,14 @@ const useClasses = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
     color: 'white',
     // border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
-    width: '100px',
-    height: '100px',
+    width: '400px',
+    height: '20px',
     margin: '2px',
   },
+});
+
+const FadeUltraSlow = createPresenceComponentVariant(Fade, {
+  duration: motionTokens.durationUltraSlow,
 });
 
 const ScaleFull = createPresenceComponentVariant(Scale, {
@@ -51,9 +58,15 @@ const ScaleFull = createPresenceComponentVariant(Scale, {
 
 export const Default = (props: {} /* TODO: PresenceStagger props */) => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(!false);
-  // const ItemTransition = Fade;
-  const ItemTransition = ScaleFull;
+  const [visible, setVisible] = React.useState<boolean>(false);
+  const [reverse, setReverse] = React.useState<boolean>(false);
+  const [transition, setTransition] = React.useState<'Fade' | 'Scale'>('Fade');
+
+  const transitionSelectId = useId();
+
+  // const ItemTransition = ScaleFull;
+  // const ItemTransition = FadeUltraSlow;
+  const ItemTransition = transition === 'Fade' ? FadeUltraSlow : ScaleFull;
 
   return (
     <div className={classes.container}>
@@ -61,40 +74,29 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
         <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
+
+        <Field className={classes.field}>
+          <Switch label="Reverse" checked={reverse} onChange={() => setReverse(v => !v)} />
+        </Field>
+
+        <label htmlFor={transitionSelectId}>transition</label>
+        <Select
+          id={transitionSelectId}
+          onChange={(_, data) => setTransition(data.value as typeof transition)}
+          defaultValue={transition}
+        >
+          <option>Fade</option>
+          <option>Scale</option>
+        </Select>
       </div>
 
       <div className={classes.items}>
-        <PresenceStagger visible={visible} delay={100}>
-          <ItemTransition>
-            <div className={classes.item}>Item 1</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 2</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 3</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 4</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 5</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 6</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 7</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 8</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 9</div>
-          </ItemTransition>
-          <ItemTransition>
-            <div className={classes.item}>Item 10</div>
-          </ItemTransition>
+        <PresenceStagger visible={visible} reverse={reverse}>
+          {Array.from({ length: 10 }, (_, i) => (
+            <ItemTransition key={i}>
+              <div className={classes.item} />
+            </ItemTransition>
+          ))}
         </PresenceStagger>
       </div>
     </div>
