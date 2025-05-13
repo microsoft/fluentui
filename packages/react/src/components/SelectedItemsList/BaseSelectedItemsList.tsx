@@ -19,6 +19,7 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
   implements IBaseSelectedItemsList<T>
 {
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   protected root: HTMLElement;
   private _defaultSelection: Selection;

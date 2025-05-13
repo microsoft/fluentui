@@ -26,6 +26,7 @@ const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
  */
 export class DocumentCardTitleBase extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _titleElement = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
