@@ -3,9 +3,9 @@ PresenceStagger
 > **⚠️ Preview components are considered unstable**
 
 ```tsx
-import { PresenceStagger, Fade } from '@fluentui/react-motion-components-preview';
+import { Stagger, Fade } from '@fluentui/react-motion-components-preview';
 
-<PresenceStagger>
+<Stagger>
   <Fade>
     <div>1</div>
   </Fade>
@@ -15,5 +15,5 @@ import { PresenceStagger, Fade } from '@fluentui/react-motion-components-preview
   </Fade>
 
   {/* etc. */}
-</PresenceStagger>;
+</Stagger>;
 ```

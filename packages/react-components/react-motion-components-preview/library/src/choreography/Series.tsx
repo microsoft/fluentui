@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { childrenOrFragmentToArray } from './childrenOrFragmentToArray';
+import { childrenOrFragmentToArray } from './stagger-utils';
 
 // A Series is a component that accepts an array of motion components and plays them in sequence
 // TODO: add a delay between each component
