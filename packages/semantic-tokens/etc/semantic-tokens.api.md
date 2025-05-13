@@ -4403,7 +4403,7 @@ export const strokeWidthCtrlOutlineSelected = "var(--smtc-stroke-width-ctrl-outl
 export const strokeWidthCtrlOutlineSelectedRaw = "--smtc-stroke-width-ctrl-outline-selected";
 
 // @public (undocumented)
-export const strokeWidthDefault = "var(--smtc-stroke-width-default)";
+export const strokeWidthDefault = "var(--smtc-stroke-width-default, var(--strokeWidthThin))";
 
 // @public (undocumented)
 export const strokeWidthDefaultRaw = "--smtc-stroke-width-default";
@@ -4487,7 +4487,7 @@ export const textGlobalBody2LineHeight = "var(--smtc-text-global-body2-line-heig
 export const textGlobalBody2LineHeightRaw = "--smtc-text-global-body2-line-height";
 
 // @public (undocumented)
-export const textGlobalBody3FontSize = "var(--smtc-text-global-body3-font-size)";
+export const textGlobalBody3FontSize = "var(--smtc-text-global-body3-font-size, var(--fontSizeBase300))";
 
 // @public (undocumented)
 export const textGlobalBody3FontSizeRaw = "--smtc-text-global-body3-font-size";
@@ -5093,7 +5093,7 @@ export const textStyleDefaultHeaderWeight = "var(--smtc-text-style-default-heade
 export const textStyleDefaultHeaderWeightRaw = "--smtc-text-style-default-header-weight";
 
 // @public (undocumented)
-export const textStyleDefaultRegularFontFamily = "var(--smtc-text-style-default-regular-font-family)";
+export const textStyleDefaultRegularFontFamily = "var(--smtc-text-style-default-regular-font-family, var(--fontFamilyBase))";
 
 // @public (undocumented)
 export const textStyleDefaultRegularFontFamilyRaw = "--smtc-text-style-default-regular-font-family";
