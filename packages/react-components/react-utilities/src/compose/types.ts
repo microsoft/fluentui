@@ -2,6 +2,7 @@ import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import {
   ComponentType,
+  DistributiveOmit,
   FunctionComponent,
   NamedExoticComponent,
   PropsWithoutChildren,
@@ -49,8 +50,8 @@ type WithSlotShorthandValue<Props> =
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
  */
-export type WithSlotRenderFunction<Props> = Omit<Props, 'children'> & {
-  children?: ('children' extends keyof Props ? ReactNode : never) | SlotRenderFunction<Props>;
+export type WithSlotRenderFunction<Props> = DistributiveOmit<Props, 'children'> & {
+  children?: ('children' extends keyof Props ? Props['children'] | {} : never) | SlotRenderFunction<Props>;
 };
 
 /**
