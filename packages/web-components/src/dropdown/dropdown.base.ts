@@ -221,6 +221,7 @@ export class BaseDropdown extends FASTElement {
     if (next) {
       next.dropdown = this;
       next.popover = 'manual';
+      next.tabIndex = -1;
       this.listboxSlot.assign(next);
       const notifier = Observable.getNotifier(this);
       notifier.subscribe(next);
