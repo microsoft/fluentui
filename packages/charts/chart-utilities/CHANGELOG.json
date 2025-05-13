@@ -2,6 +2,33 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Tue, 13 May 2025 07:20:46 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.7",
+      "version": "1.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "14e63a718e92ff54eb479949074aff36a06646c7",
+            "comment": "fix(chart-utilities): Exclude number from being classified as date"
+          },
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "df50d1977f3bee3061d48aba2ef5f40ae6581f0e",
+            "comment": "chore: Change release tag to release with v8"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "94096dd09224a7ef7ab362942a895d4c80fef21c",
+            "comment": "fix(chart-utilities): Fixing area chart bugs for undefined property access"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 09:59:43 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.6",
       "version": "1.1.6",

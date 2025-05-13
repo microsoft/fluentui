@@ -1,8 +1,19 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
+This log was last generated on Tue, 13 May 2025 07:20:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.7)
+
+Tue, 13 May 2025 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.6..@fluentui/chart-utilities_v1.1.7)
+
+### Patches
+
+- fix(chart-utilities): Exclude number from being classified as date ([PR #34410](https://github.com/microsoft/fluentui/pull/34410) by 98592573+AtishayMsft@users.noreply.github.com)
+- chore: Change release tag to release with v8 ([PR #34414](https://github.com/microsoft/fluentui/pull/34414) by atisjai@microsoft.com)
+- fix(chart-utilities): Fixing area chart bugs for undefined property access ([PR #34299](https://github.com/microsoft/fluentui/pull/34299) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.6)
 

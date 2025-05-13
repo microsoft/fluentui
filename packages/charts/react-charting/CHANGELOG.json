@@ -2,6 +2,39 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 13 May 2025 07:20:47 GMT",
+      "tag": "@fluentui/react-charting_v5.23.85",
+      "version": "5.23.85",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e12e4d0770fc6d526daf198e24e32885a0f5f190",
+            "comment": "make Legends dotted"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0b69287d85f25038a38488861a23f9bf6d4a28e3",
+            "comment": "feat(react-charting): Rehaul default date label formatting"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5c55efc73f551bfdf70b5492da9e5b8a694f4653",
+            "comment": "fix(react-charting): Fixing overlapping bars in Horizontal bar chart with Axis"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.7",
+            "commit": "c885b843ef7ef362dd77bc71433815a26ad08574"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 May 2025 07:20:31 GMT",
       "tag": "@fluentui/react-charting_v5.23.84",
       "version": "5.23.84",

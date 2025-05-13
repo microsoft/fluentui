@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make Legends dotted",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
