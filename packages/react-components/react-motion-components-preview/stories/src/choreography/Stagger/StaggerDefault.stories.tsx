@@ -103,31 +103,3 @@ export const Default = (props: {} /* TODO: Stagger props */) => {
     </div>
   );
 };
-
-/*
-const createStaggerForMotion = ({
-  numItems,
-  itemSize = '25px',
-  Component = Slide.In,
-  props = {},
-}: {
-  numItems: number;
-  itemSize?: string;
-  Component?: Function;
-  props?: Record<string, any>;
-}) => {
-  return Array.from({ length: numItems }, (_, i) => {
-    const t = i / numItems;
-    const backgroundColor = `hsl(${Math.floor(180 + t * 120)}, 100%, 40%)`;
-    return (
-      // <Blur.In>
-      // <span>
-      <Component key={i} animateOpacity={animateOpacity} duration={duration} enterDuration={duration} {...props}>
-        <div style={{ backgroundColor, width: itemSize, height: itemSize, borderRadius: '0%' }} />
-      </Component>
-      // </span>
-      // </Blur.In>
-    );
-  });
-};
-*/
