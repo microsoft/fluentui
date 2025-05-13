@@ -1993,6 +1993,14 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
+"@fluentui/react-icons@^2.0.300":
+  version "2.0.300"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.300.tgz#ca4a444f87c0b9d17c86b625d231acf3b0045f8e"
+  integrity sha512-NyeeklHWwK8IOqP4joErsHMek6+adVtWwYpEEKE9XuphxCRqMqZ9ZUerNB7OyjKnJELZ3lD/uCsSoeSbzBlnjQ==
+  dependencies:
+    "@griffel/react" "^1.0.0"
+    tslib "^2.1.0"
+
 "@fluentui/react-infobutton@9.0.0-beta.102":
   version "9.0.0-beta.102"
   resolved "https://registry.yarnpkg.com/@fluentui/react-infobutton/-/react-infobutton-9.0.0-beta.102.tgz#c0473275141999455fae4388f47d4f77b98c0f89"
