@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useStaggeredReveal, UseStaggeredRevealParams } from './useStaggerHook';
+import { useStaggeredReveal, UseStaggeredRevealParams } from './useStaggeredReveal';
 import { toElementArray } from './toElementArray';
 
 export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'count'> {
