@@ -10,7 +10,15 @@ export interface PresenceStaggerProps extends Omit<UseStaggeredRevealParams, 'di
   reverse?: boolean; // run sequence backward
 }
 
-export const PresenceStagger: React.FC<PresenceStaggerProps> = ({
+// TODO: Try to automatically detect the presence component type in the children
+// and set the `visible` prop on them, otherwise show/hide non-presence children
+// by not rendering them.
+type PresenceStaggerComponent = React.FC<PresenceStaggerProps> & {
+  In: typeof PresenceStagger;
+  Out: typeof PresenceStagger;
+};
+
+const PresenceStaggerBase: React.FC<PresenceStaggerProps> = ({
   children,
   visible = false,
   delay = 100,
@@ -44,3 +52,16 @@ export const PresenceStagger: React.FC<PresenceStaggerProps> = ({
     </>
   );
 };
+
+const PresenceStaggerIn: React.FC<Omit<PresenceStaggerProps, 'visible'>> = props => (
+  <PresenceStaggerBase {...props} visible={true} />
+);
+
+const PresenceStaggerOut: React.FC<Omit<PresenceStaggerProps, 'visible'>> = props => (
+  <PresenceStaggerBase {...props} visible={false} />
+);
+
+export const PresenceStagger = Object.assign(PresenceStaggerBase, {
+  In: PresenceStaggerIn,
+  Out: PresenceStaggerOut,
+}) as PresenceStaggerComponent;
