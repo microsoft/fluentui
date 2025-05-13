@@ -33,7 +33,7 @@ import { IHorizontalBarChartWithAxisProps } from '../HorizontalBarChartWithAxis/
 import { ILineChartProps } from '../LineChart/index';
 import { IAreaChartProps } from '../AreaChart/index';
 import { IHeatMapChartProps } from '../HeatMapChart/index';
-import { convertToHex, DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
+import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities/colors';
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
@@ -59,6 +59,7 @@ import {
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { color as d3Color } from 'd3-color';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -218,19 +219,18 @@ const getSecondaryYAxisValues = (
   };
 };
 
-export const getSchemaColors = (
-  colors: Array<string | number | null | undefined> | string | number,
-): string[] | string | undefined => {
+export const getSchemaColors = (colors: Array<string | number | null | undefined>): string[] | undefined => {
   const hexColors: string[] = [];
   if (!colors) {
     return undefined;
   }
-  if (typeof colors === 'string' || typeof colors === 'number') {
-    return convertToHex(colors as string)!;
-  } else if (isArrayOrTypedArray(colors)) {
+  if (isArrayOrTypedArray(colors)) {
     colors.forEach((element: string | number | null | undefined) => {
-      if (element) {
-        hexColors.push(convertToHex(element.toString())!);
+      if (element && element.toString().trim() !== '') {
+        const parsedColor = d3Color(element.toString());
+        if (parsedColor) {
+          hexColors.push(parsedColor.formatHex());
+        }
       }
     });
   }
@@ -246,11 +246,7 @@ export const transformPlotlyJsonToDonutProps = (
   const firstData = input.data[0] as PieData;
   let colors: string[] | string | null | undefined;
   if (!useFluentColorPalette) {
-    colors = firstData.marker?.colors
-      ? getSchemaColors(firstData?.marker?.colors)
-      : firstData.marker?.color
-      ? getSchemaColors(firstData?.marker?.color)
-      : undefined;
+    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors) : undefined;
   }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};

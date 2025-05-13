@@ -355,18 +355,6 @@ describe('getSchemaColors', () => {
     const hsvColors = ['hsv(330, 100%, 89%)', 'hsv(180, 100%, 64%)'];
     expect(getSchemaColors(hsvColors)).toStrictEqual(['#E30071', '#00A3A3']);
   });
-  test('Should return the string color when input schema has color in string format', () => {
-    const stringColor = 'red';
-    expect(getSchemaColors(stringColor)).toStrictEqual('#FF0000');
-  });
-  test('Should return undefined when input schema has color in invalid format', () => {
-    const invalidColor = 'invalidColor';
-    expect(getSchemaColors(invalidColor)).toBeUndefined();
-  });
-  test('Should return undefined when input schema has color in empty format', () => {
-    const emptyColor = '';
-    expect(getSchemaColors(emptyColor)).toBeUndefined();
-  });
   test('Should return undefined when input schema has color in null format', () => {
     const nullColor = [null];
     expect(getSchemaColors(nullColor)).toStrictEqual([]);
