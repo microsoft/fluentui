@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { useStaggeredReveal, UseStaggeredRevealParams } from './useStaggeredReveal';
-import { toElementArray } from './toElementArray';
+import { toElementArray, useStaggeredReveal } from './stagger-utils';
 
 const defaultEasingFn = (t: number) => t;
 
-export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'direction' | 'count'> {
+export interface StaggerProps {
   children: React.ReactNode;
   visible?: boolean; // true = enter, false = exit (defaults to false)
+  delay?: number;
+  itemDuration?: number;
+  easingFn?: (t: number) => number;
   // TODO: use a clearer name like `fromEnd` because `reverse` is ambiguous as 'exit' is the reverse of 'enter'
   reversed?: boolean; // run sequence backward (defaults to false)
+  onMotionFinish?: () => void;
   presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
 }
 
@@ -17,6 +20,7 @@ type StaggerComponent = React.FC<StaggerProps> & {
   Out: typeof Stagger;
 };
 
+// TODO: support a render prop for custom rendering of children
 const StaggerBase: React.FC<StaggerProps> = ({
   children,
   visible = false,
@@ -44,7 +48,6 @@ const StaggerBase: React.FC<StaggerProps> = ({
   return (
     <>
       {elements.map((child, idx) => {
-        // if (!React.isValidElement(child)) return null;
         const key = child.key ?? idx;
         if (presence) {
           // Always render, control visibility via prop
