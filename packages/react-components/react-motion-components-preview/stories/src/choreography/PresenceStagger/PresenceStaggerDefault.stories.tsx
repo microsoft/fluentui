@@ -90,14 +90,36 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
         </Select>
       </div>
 
-      <div className={classes.items}>
-        <PresenceStagger visible={visible} reverse={reverse}>
-          {Array.from({ length: 10 }, (_, i) => (
-            <ItemTransition key={i}>
-              <div className={classes.item} />
-            </ItemTransition>
-          ))}
-        </PresenceStagger>
+      <div>
+        <div className={classes.items}>
+          <PresenceStagger visible={visible} reverse={reverse}>
+            {Array.from({ length: 10 }, (_, i) => (
+              <ItemTransition key={i}>
+                <div className={classes.item} />
+              </ItemTransition>
+            ))}
+          </PresenceStagger>
+        </div>
+
+        <div className={classes.items}>
+          <PresenceStagger.In reverse={reverse}>
+            {Array.from({ length: 10 }, (_, i) => (
+              <ItemTransition key={i}>
+                <div className={classes.item} />
+              </ItemTransition>
+            ))}
+          </PresenceStagger.In>
+        </div>
+
+        <div className={classes.items}>
+          <PresenceStagger.Out reverse={reverse}>
+            {Array.from({ length: 10 }, (_, i) => (
+              <ItemTransition key={i}>
+                <div className={classes.item} />
+              </ItemTransition>
+            ))}
+          </PresenceStagger.Out>
+        </div>
       </div>
     </div>
   );
