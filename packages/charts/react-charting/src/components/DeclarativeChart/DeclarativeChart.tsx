@@ -182,7 +182,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
-    const isXYear = isYearArray(xValues); // Consider year as categorical not numeric continuous axis
+
+    // Consider year as categorical variable not numeric continuous variable
+    // Also year is not considered a date variable as it is represented as a point
+    // in time and brings additional complexity of handling timezone and locale
+    // formatting given the current design of the charting library
+    const isXYear = isYearArray(xValues);
 
     if ((isXDate || isXNumber) && !isXYear) {
       return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
