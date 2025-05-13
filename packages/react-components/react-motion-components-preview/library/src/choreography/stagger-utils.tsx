@@ -76,7 +76,7 @@ export interface StaggerVisibilityResult {
 export function getStaggerVisibility({
   count,
   elapsed,
-  delay,
+  delay = 100,
   itemDuration = 0,
   // easingFn = defaultEasingFn,
   direction = 'enter',
@@ -145,7 +145,7 @@ export function useStaggeredReveal({
       if (startTimeRef.current === null) startTimeRef.current = now;
       const elapsed = now - (startTimeRef.current as number);
 
-      const result: StaggerVisibilityResult = getStaggerVisibility({
+      const result = getStaggerVisibility({
         count,
         elapsed,
         delay,
