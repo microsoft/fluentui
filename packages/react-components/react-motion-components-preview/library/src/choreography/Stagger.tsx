@@ -2,21 +2,31 @@ import * as React from 'react';
 import { useStaggeredReveal, UseStaggeredRevealParams } from './useStaggeredReveal';
 import { toElementArray } from './toElementArray';
 
-export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'count'> {
+const defaultEasingFn = (t: number) => t;
+
+export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'direction' | 'count'> {
   children: React.ReactNode;
+  visible?: boolean; // true = enter, false = exit (defaults to false)
+  reverse?: boolean;
 }
 
-export const Stagger: React.FC<StaggerProps> = ({
+type StaggerComponent = React.FC<StaggerProps> & {
+  In: typeof Stagger;
+  Out: typeof Stagger;
+};
+
+const StaggerBase: React.FC<StaggerProps> = ({
   children,
-  delay,
-  itemDuration,
-  easingFn,
-  direction,
-  reverse,
+  visible = false,
+  delay = 100,
+  itemDuration = 0,
+  easingFn = defaultEasingFn,
+  reverse = false,
   onMotionFinish,
 }) => {
-  const elementArray = toElementArray(children);
-  const count = elementArray.length;
+  const elements = toElementArray(children);
+  const count = elements.length;
+  const direction = visible ? 'enter' : 'exit';
 
   const { visibility } = useStaggeredReveal({
     count,
@@ -36,3 +46,12 @@ export const Stagger: React.FC<StaggerProps> = ({
     </>
   );
 };
+
+const StaggerIn: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={true} />;
+
+const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBase {...props} visible={false} />;
+
+export const Stagger = Object.assign(StaggerBase, {
+  In: StaggerIn,
+  Out: StaggerOut,
+}) as StaggerComponent;
