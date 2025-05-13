@@ -1,6 +1,13 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { PresenceStagger, CollapseRelaxed as Fade } from '@fluentui/react-motion-components-preview';
+import {
+  Field,
+  makeStyles,
+  tokens,
+  Switch,
+  motionTokens,
+  createPresenceComponentVariant,
+} from '@fluentui/react-components';
+import { PresenceStagger, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -25,16 +32,28 @@ const useClasses = makeStyles({
     flexWrap: 'wrap',
   },
   item: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: tokens.colorBrandBackground,
+    color: 'white',
     // border: `${tokens.strokeWidthThicker} solid ${tokens.colorTransparentStroke}`,
     width: '100px',
     height: '100px',
+    margin: '2px',
   },
+});
+
+const ScaleFull = createPresenceComponentVariant(Scale, {
+  duration: motionTokens.durationSlow,
+  fromScale: 0,
 });
 
 export const Default = (props: {} /* TODO: PresenceStagger props */) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(!false);
+  // const ItemTransition = Fade;
+  const ItemTransition = ScaleFull;
 
   return (
     <div className={classes.container}>
@@ -45,37 +64,37 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
       </div>
 
       <div className={classes.items}>
-        <PresenceStagger visible={visible} reverse delay={200}>
-          <Fade>
+        <PresenceStagger visible={visible} delay={100}>
+          <ItemTransition>
             <div className={classes.item}>Item 1</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 2</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 3</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 4</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 5</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 6</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 7</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 8</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 9</div>
-          </Fade>
-          <Fade>
+          </ItemTransition>
+          <ItemTransition>
             <div className={classes.item}>Item 10</div>
-          </Fade>
+          </ItemTransition>
         </PresenceStagger>
       </div>
     </div>
