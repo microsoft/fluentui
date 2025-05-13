@@ -1,5 +1,10 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { backgroundCtrlBrandRestRaw } from '../../control/variables';
+import {
+  backgroundCtrlBrandRestRaw,
+  foregroundCtrlOnBrandRestRaw,
+  strokeWidthDefaultRaw,
+} from '../../control/variables';
+import { strokeCtrlOnBrandRestRaw } from '../../nullable/variables';
 import {
   ctrlLiteFilterBackgroundSelectedRaw,
   ctrlLiteFilterStrokeSelectedRaw,
@@ -8,6 +13,6 @@ import {
 } from './variables';
 
 export const ctrlLiteFilterBackgroundSelected = `var(${ctrlLiteFilterBackgroundSelectedRaw}, var(${backgroundCtrlBrandRestRaw}))`;
-export const ctrlLiteFilterStrokeSelected = `var(${ctrlLiteFilterStrokeSelectedRaw}, var(${strokeCtrlOnbrandRestRaw}))`;
-export const ctrlLiteFilterForegroundSelected = `var(${ctrlLiteFilterForegroundSelectedRaw}, var(${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlLiteFilterStrokeWidthSelected = `var(${ctrlLiteFilterStrokeWidthSelectedRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlLiteFilterStrokeSelected = `var(${ctrlLiteFilterStrokeSelectedRaw}, var(${strokeCtrlOnBrandRestRaw}))`;
+export const ctrlLiteFilterForegroundSelected = `var(${ctrlLiteFilterForegroundSelectedRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const ctrlLiteFilterStrokeWidthSelected = `var(${ctrlLiteFilterStrokeWidthSelectedRaw}, var(${strokeWidthDefaultRaw}))`;

@@ -3,7 +3,10 @@ import {
   sizeCtrlDefaultRaw,
   cornerCircularRaw,
   sizeCtrlIconRaw,
+  strokeWidthDefaultRaw,
   cornerCtrlRestRaw,
+  textGlobalBody3FontSizeRaw,
+  textGlobalBody3LineHeightRaw,
   backgroundCtrlBrandRestRaw,
   backgroundLayerPrimarySolidRaw,
 } from '../../control/variables';
@@ -34,12 +37,12 @@ export const ctrlAvatarForeground = `var(${ctrlAvatarForegroundRaw})`;
 export const ctrlAvatarIconSize = `var(${ctrlAvatarIconSizeRaw}, var(${sizeCtrlIconRaw}))`;
 export const ctrlAvatarPresenceBadgeSize = `var(${ctrlAvatarPresenceBadgeSizeRaw})`;
 export const ctrlAvatarActiveRingSize = `var(${ctrlAvatarActiveRingSizeRaw})`;
-export const ctrlAvatarPresenceBadgePaddingBottomRightOffset = `var(${ctrlAvatarPresenceBadgePaddingBottomRightOffsetRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlAvatarPresenceBadgePaddingBottomRightOffset = `var(${ctrlAvatarPresenceBadgePaddingBottomRightOffsetRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlAvatarCornerGroup = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}))`;
 export const ctrlAvatarActiveRingStrokeWidth = `var(${ctrlAvatarActiveRingStrokeWidthRaw})`;
-export const ctrlAvatarPresenceBadgeStrokeWidth = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlAvatarTextFontSize = `var(${ctrlAvatarTextFontSizeRaw}, var(${textGlobalBody3FontsizeRaw}))`;
-export const ctrlAvatarTextLineHeight = `var(${ctrlAvatarTextLineHeightRaw}, var(${textGlobalBody3LineheightRaw}))`;
+export const ctrlAvatarPresenceBadgeStrokeWidth = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}))`;
+export const ctrlAvatarTextFontSize = `var(${ctrlAvatarTextFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}))`;
+export const ctrlAvatarTextLineHeight = `var(${ctrlAvatarTextLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}))`;
 export const ctrlAvatarTextPaddingTopOffset = `var(${ctrlAvatarTextPaddingTopOffsetRaw}, unset)`;
 export const ctrlAvatarActiveRingStroke = `var(${ctrlAvatarActiveRingStrokeRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlAvatarShowCutout = `var(${ctrlAvatarShowCutoutRaw})`;

@@ -1,4 +1,5 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
+import { iconThemeCtrlDefaultRestRaw } from '../../control/variables';
 import {
   ctrlBadgeTextPaddingTopRaw,
   ctrlBadgeTextPaddingBottomRaw,
@@ -29,7 +30,7 @@ export const ctrlBadgeSmTextPaddingTop = `var(${ctrlBadgeSmTextPaddingTopRaw})`;
 export const ctrlBadgeSmTextPaddingBottom = `var(${ctrlBadgeSmTextPaddingBottomRaw}, var(${ctrlBadgeSmTextPaddingTopRaw}))`;
 export const ctrlBadgeLgTextPaddingTop = `var(${ctrlBadgeLgTextPaddingTopRaw})`;
 export const ctrlBadgeLgTextPaddingBottom = `var(${ctrlBadgeLgTextPaddingBottomRaw}, var(${ctrlBadgeLgTextPaddingTopRaw}))`;
-export const ctrlBadgeIconTheme = `var(${ctrlBadgeIconThemeRaw}, var(${iconthemeCtrlDefaultRestRaw}))`;
+export const ctrlBadgeIconTheme = `var(${ctrlBadgeIconThemeRaw}, var(${iconThemeCtrlDefaultRestRaw}))`;
 export const ctrlBadgeBeaconSize = `var(${ctrlBadgeBeaconSizeRaw})`;
 export const ctrlBadgeSize = `var(${ctrlBadgeSizeRaw})`;
 export const ctrlBadgeCorner = `var(${ctrlBadgeCornerRaw})`;

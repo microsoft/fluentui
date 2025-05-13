@@ -3,8 +3,8 @@
  * Takes in a Figma token export file and generates token raw strings and CSS Var files
  */
 import tokensJSONRaw from './tokens.json';
-import { fluentOverrides as fluentFallbacksRaw } from './fluentOverrides';
-import type { FluentOverrideValue, FluentOverrides } from './fluentOverrides';
+import { fluentOverrides as fluentFallbacksRaw } from '../src/fallback/fluentOverrides';
+import type { FluentOverrideValue, FluentOverrides } from '../src/fallback/fluentOverrides';
 import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
