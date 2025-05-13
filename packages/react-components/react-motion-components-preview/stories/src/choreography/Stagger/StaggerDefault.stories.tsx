@@ -9,7 +9,7 @@ import {
   createPresenceComponentVariant,
   useId,
 } from '@fluentui/react-components';
-import { Stagger, PresenceStagger, Fade, Scale } from '@fluentui/react-motion-components-preview';
+import { Stagger, Fade, Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -56,10 +56,10 @@ const ScaleFull = createPresenceComponentVariant(Scale, {
   fromScale: 0,
 });
 
-export const Default = (props: {} /* TODO: PresenceStagger props */) => {
+export const Default = (props: {} /* TODO: Stagger props */) => {
   const classes = useClasses();
   const [visible, setVisible] = React.useState<boolean>(false);
-  const [reverse, setReverse] = React.useState<boolean>(false);
+  const [reversed, setReversed] = React.useState<boolean>(false);
   const [transition, setTransition] = React.useState<'Fade' | 'Scale'>('Fade');
 
   const transitionSelectId = useId();
@@ -75,7 +75,7 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
         </Field>
 
         <Field className={classes.field}>
-          <Switch label="Reverse" checked={reverse} onChange={() => setReverse(v => !v)} />
+          <Switch label="Reversed" checked={reversed} onChange={() => setReversed(v => !v)} />
         </Field>
 
         <label htmlFor={transitionSelectId}>transition</label>
@@ -91,7 +91,7 @@ export const Default = (props: {} /* TODO: PresenceStagger props */) => {
 
       <div>
         <div className={classes.items}>
-          <Stagger presence visible={visible} reversed={reverse}>
+          <Stagger presence visible={visible} reversed={reversed}>
             {Array.from({ length: 10 }, (_, i) => (
               <ItemTransition key={i}>
                 <div className={classes.item} />
