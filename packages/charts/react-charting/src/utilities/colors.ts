@@ -170,9 +170,9 @@ export const getColorContrast = (c1: string, c2: string): number => {
 /**
  * Converts various color formats (hex, RGB, RGBA, HSL, HSV, named colors) into a standard hex color code (#RRGGBB).
  * @param color - The input color in hex, RGB, RGBA, HSL, HSV, or named string format.
- * @returns The hex color code (#RRGGBB) or null if the input is invalid.
+ * @returns The hex color code (#RRGGBB) or undefined if the input is invalid.
  */
-export function convertToHex(color: string): string | null {
+export function convertToHex(color: string): string | undefined {
   // Check if the color is already in hex format
   if (/^#([0-9A-F]{3}){1,2}$/i.test(color)) {
     return color.length === 4
@@ -183,13 +183,28 @@ export function convertToHex(color: string): string | null {
   // Check if the color is in RGB or RGBA format
   const rgbMatch = color.match(/^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})(?:,\s*[\d.]+)?\)$/i);
   if (rgbMatch) {
-    const [_, r, g, b] = rgbMatch.map(Number);
+    const [_, r, g, b, a] = rgbMatch.map(Number);
     if (r <= 255 && g <= 255 && b <= 255) {
-      return `#${[r.toString(16).padStart(2, '0'), g.toString(16).padStart(2, '0'), b.toString(16).padStart(2, '0')]
+      const hex = `#${[r, g, b]
+        .map(x => x.toString(16).padStart(2, '0'))
         .join('')
         .toUpperCase()}`;
+
+      // Handle alpha value if present
+      if (a !== undefined && a >= 0 && a <= 1) {
+        const alphaHex = Math.round(a * 255)
+          .toString(16)
+          .padStart(2, '0')
+          .toUpperCase();
+        return `${hex}${alphaHex}`;
+      }
+
+      return hex;
     }
+    return undefined;
   }
+
+  // Check if the color is in RGBA format
 
   // Check if the color is in HSL format
   const hslMatch = color.match(/^hsl\((\d{1,3}),\s*(\d{1,3})%,\s*(\d{1,3})%\)$/i);
@@ -202,6 +217,7 @@ export function convertToHex(color: string): string | null {
         .join('')
         .toUpperCase()}`;
     }
+    return undefined;
   }
 
   // Check if the color is in HSV format
@@ -215,20 +231,33 @@ export function convertToHex(color: string): string | null {
         .join('')
         .toUpperCase()}`;
     }
+    return undefined;
   }
 
+  const excludeColorsStringsPrefix = ['rgb', 'rgba', 'hsl', 'hsv'];
+  // check if color contains any of excludeColorsStringsPrefix
+  // It may come here if any negative values are present in the color string with the above formats
+  if (excludeColorsStringsPrefix.some(prefix => color.toLowerCase().startsWith(prefix))) {
+    return undefined;
+  }
   // Check if the color is a named color
   const ctx = document.createElement('canvas').getContext('2d');
   if (ctx) {
     ctx.fillStyle = color;
     const computedColor = ctx.fillStyle;
+    // Check if the input color is invalid
+    // computedColor result to #000000 for invalid colors strings
+    if (computedColor === '#000000' && color.toLowerCase() !== 'black') {
+      return undefined;
+    }
     if (/^#([0-9A-F]{3}){1,2}$/i.test(computedColor)) {
       return computedColor.toUpperCase();
     }
+    return undefined;
   }
 
   // Invalid color format
-  return null;
+  return undefined;
 }
 
 /**
@@ -243,15 +272,22 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = l - c / 2;
   let r = 0;
-    let g = 0;
-    let b = 0;
+  let g = 0;
+  let b = 0;
 
-  if (h < 60) {[r, g, b] = [c, x, 0];}
-  else if (h < 120) {[r, g, b] = [x, c, 0];}
-  else if (h < 180) {[r, g, b] = [0, c, x];}
-  else if (h < 240) {[r, g, b] = [0, x, c];}
-  else if (h < 300) {[r, g, b] = [x, 0, c];}
-  else {[r, g, b] = [c, 0, x];}
+  if (h < 60) {
+    [r, g, b] = [c, x, 0];
+  } else if (h < 120) {
+    [r, g, b] = [x, c, 0];
+  } else if (h < 180) {
+    [r, g, b] = [0, c, x];
+  } else if (h < 240) {
+    [r, g, b] = [0, x, c];
+  } else if (h < 300) {
+    [r, g, b] = [x, 0, c];
+  } else {
+    [r, g, b] = [c, 0, x];
+  }
 
   return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
 }
@@ -268,15 +304,22 @@ function hsvToRgb(h: number, s: number, v: number): [number, number, number] {
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = v - c;
   let r = 0;
-    let g = 0;
-    let b = 0;
+  let g = 0;
+  let b = 0;
 
-  if (h < 60) {[r, g, b] = [c, x, 0];}
-  else if (h < 120) {[r, g, b] = [x, c, 0];}
-  else if (h < 180) {[r, g, b] = [0, c, x];}
-  else if (h < 240) {[r, g, b] = [0, x, c];}
-  else if (h < 300) {[r, g, b] = [x, 0, c];}
-  else {[r, g, b] = [c, 0, x];}
+  if (h < 60) {
+    [r, g, b] = [c, x, 0];
+  } else if (h < 120) {
+    [r, g, b] = [x, c, 0];
+  } else if (h < 180) {
+    [r, g, b] = [0, c, x];
+  } else if (h < 240) {
+    [r, g, b] = [0, x, c];
+  } else if (h < 300) {
+    [r, g, b] = [x, 0, c];
+  } else {
+    [r, g, b] = [c, 0, x];
+  }
 
   return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
 }

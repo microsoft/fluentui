@@ -1338,3 +1338,84 @@ describe('defaultYAxisTickFormatter tests', () => {
     expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
   });
 });
+
+describe('convertToHex tests', () => {
+  it('should handle HEX strings correctly', () => {
+    expect(colors.convertToHex('#FF0000')).toBe('#FF0000'); // Already HEX
+    expect(colors.convertToHex('#00FF00')).toBe('#00FF00'); // Already HEX
+    expect(colors.convertToHex('#0000FF')).toBe('#0000FF'); // Already HEX
+    expect(colors.convertToHex('#FFFFFF')).toBe('#FFFFFF'); // Already HEX
+    expect(colors.convertToHex('#000000')).toBe('#000000'); // Already HEX
+  });
+  it('should handle invalid HEX strings gracefully', () => {
+    expect(colors.convertToHex('#FF00')).toBe(undefined); // Invalid length
+    expect(colors.convertToHex('#ZZZZZZ')).toBe(undefined); // Invalid characters
+    expect(colors.convertToHex('#1234567')).toBe(undefined); // Extra character
+  });
+  it('should convert RGB to HEX correctly', () => {
+    expect(colors.convertToHex('rgb(255, 0, 0)')).toBe('#FF0000'); // Red
+    expect(colors.convertToHex('rgb(0, 255, 0)')).toBe('#00FF00'); // Green
+    expect(colors.convertToHex('rgb(0, 0, 255)')).toBe('#0000FF'); // Blue
+    expect(colors.convertToHex('rgb(255, 255, 255)')).toBe('#FFFFFF'); // White
+    expect(colors.convertToHex('rgb(0, 0, 0)')).toBe('#000000'); // Black
+  });
+  it('should handle invalid RGB strings gracefully', () => {
+    expect(colors.convertToHex('rgb(256, 0, 0)')).toBe(undefined); // Invalid value
+    expect(colors.convertToHex('rgb(255, -1, 0)')).toBe(undefined); // Invalid value
+    expect(colors.convertToHex('rgb(255, 0)')).toBe(undefined); // Missing values
+  });
+  it('should convert RGBA to HEX correctly', () => {
+    expect(colors.convertToHex('rgba(255, 0, 0, 1)')).toBe('#FF0000'); // Red
+    expect(colors.convertToHex('rgba(0, 255, 0, 1)')).toBe('#00FF00'); // Green
+    expect(colors.convertToHex('rgba(0, 0, 255, 1)')).toBe('#0000FF'); // Blue
+    expect(colors.convertToHex('rgba(255, 255, 255, 1)')).toBe('#FFFFFF'); // White
+    expect(colors.convertToHex('rgba(0, 0, 0, 1)')).toBe('#000000'); // Black
+  });
+  it('should handle invalid RGBA strings gracefully', () => {
+    expect(colors.convertToHex('rgba(256, 0, 0, 1)')).toBe(undefined); // Invalid value
+    expect(colors.convertToHex('rgba(255, -1, 0, 1)')).toBe(undefined); // Invalid value
+    expect(colors.convertToHex('rgba(255, 0)')).toBe(undefined); // Missing values
+    expect(colors.convertToHex('rgba(255, 0, 0, 1, 1)')).toBe(undefined); // Extra value
+  });
+  it('should convert HSL to HEX correctly', () => {
+    expect(colors.convertToHex('hsl(0, 100%, 50%)')).toBe('#FF0000'); // Red
+    expect(colors.convertToHex('hsl(120, 100%, 50%)')).toBe('#00FF00'); // Green
+    expect(colors.convertToHex('hsl(240, 100%, 50%)')).toBe('#0000FF'); // Blue
+    expect(colors.convertToHex('hsl(0, 0%, 100%)')).toBe('#FFFFFF'); // White
+    expect(colors.convertToHex('hsl(0, 0%, 0%)')).toBe('#000000'); // Black
+    expect(colors.convertToHex('hsl(360, 100%, 50%)')).toBe('#FF0000'); // Full circle
+  });
+  it('should handle invalid HSL strings gracefully', () => {
+    expect(colors.convertToHex('hsl(0, 101%, 50%)')).toBe(undefined); // Invalid saturation
+    expect(colors.convertToHex('hsl(0, 100%, -1%)')).toBe(undefined); // Invalid lightness
+    expect(colors.convertToHex('hsl(0, 100%)')).toBe(undefined); // Missing values
+    expect(colors.convertToHex('hsl(30.5, -10%, -10%)')).toBe(undefined); // Negative values
+  });
+  it('should convert HSV to HEX correctly', () => {
+    expect(colors.convertToHex('hsv(0, 100%, 100%)')).toBe('#FF0000'); // Red
+    expect(colors.convertToHex('hsv(120, 100%, 100%)')).toBe('#00FF00'); // Green
+    expect(colors.convertToHex('hsv(240, 100%, 100%)')).toBe('#0000FF'); // Blue
+    expect(colors.convertToHex('hsv(0, 0%, 100%)')).toBe('#FFFFFF'); // White
+    expect(colors.convertToHex('hsv(0, 0%, 0%)')).toBe('#000000'); // Black
+    expect(colors.convertToHex('hsv(360, 100%, 100%)')).toBe('#FF0000'); // Full circle
+  });
+  it('should handle invalid HSV strings gracefully', () => {
+    expect(colors.convertToHex('hsv(0, 101%, 100%)')).toBe(undefined); // Invalid saturation
+    expect(colors.convertToHex('hsv(0, 100%, -1%)')).toBe(undefined); // Invalid value
+    expect(colors.convertToHex('hsv(0, 100%)')).toBe(undefined); // Missing values
+  });
+  it('should convert named colors to HEX correctly', () => {
+    expect(colors.convertToHex('red')).toBe('#FF0000'); // Red
+    expect(colors.convertToHex('green')).toBe('#008000'); // Green
+    expect(colors.convertToHex('blue')).toBe('#0000FF'); // Blue
+    expect(colors.convertToHex('white')).toBe('#FFFFFF'); // White
+    expect(colors.convertToHex('black')).toBe('#000000'); // Black
+    expect(colors.convertToHex('yellow')).toBe('#FFFF00'); // Yellow
+  });
+  it('should handle invalid color formats gracefully', () => {
+    expect(colors.convertToHex('invalidColor')).toBe(undefined); // Invalid color
+    expect(colors.convertToHex('#1234567')).toBe(undefined); // Invalid HEX with extra character
+    expect(colors.convertToHex('   ')).toBe(undefined); // Whitespace string
+    expect(colors.convertToHex('')).toBe(undefined); // Empty string
+  });
+});

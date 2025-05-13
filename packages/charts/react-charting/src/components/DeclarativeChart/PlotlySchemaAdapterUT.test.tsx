@@ -13,6 +13,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  getSchemaColors,
 } from './PlotlySchemaAdapter';
 
 const date = new Date();
@@ -181,13 +182,13 @@ describe('getColor', () => {
 describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_donut_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToDonutProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -195,12 +196,12 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToDonutProps - Should return pie chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
-    expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
@@ -330,5 +331,48 @@ describe('sanitizeJson', () => {
     } catch (e) {
       expect(e).toStrictEqual(Error('Maximum json depth exceeded'));
     }
+  });
+});
+
+describe('getSchemaColors', () => {
+  test('Should return the array of colors when input schema has colors', () => {
+    const hexColors = ['#e3008c', '#2aa0a4'];
+    expect(getSchemaColors(hexColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+  });
+  test('Should return the array of colors when input schema has colors in RGB format', () => {
+    const rgbColors = ['rgb(227, 0, 140)', 'rgb(42, 160, 164)'];
+    expect(getSchemaColors(rgbColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+  });
+  test('Should return the array of colors when input schema has colors in RGBA format', () => {
+    const rgbaColors = ['rgba(227, 0, 140, 1)', 'rgba(42, 160, 164, 1)'];
+    expect(getSchemaColors(rgbaColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+  });
+  test('Should return the array of colors when input schema has colors in HSL format', () => {
+    const hslColors = ['hsl(330, 100%, 50%)', 'hsl(180, 100%, 50%)'];
+    expect(getSchemaColors(hslColors)).toStrictEqual(['#FF0080', '#00FFFF']);
+  });
+  test('Should return the array of colors when input schema has colors in HSV format', () => {
+    const hsvColors = ['hsv(330, 100%, 89%)', 'hsv(180, 100%, 64%)'];
+    expect(getSchemaColors(hsvColors)).toStrictEqual(['#E30071', '#00A3A3']);
+  });
+  test('Should return the string color when input schema has color in string format', () => {
+    const stringColor = 'red';
+    expect(getSchemaColors(stringColor)).toStrictEqual('#FF0000');
+  });
+  test('Should return undefined when input schema has color in invalid format', () => {
+    const invalidColor = 'invalidColor';
+    expect(getSchemaColors(invalidColor)).toBeUndefined();
+  });
+  test('Should return undefined when input schema has color in empty format', () => {
+    const emptyColor = '';
+    expect(getSchemaColors(emptyColor)).toBeUndefined();
+  });
+  test('Should return undefined when input schema has color in null format', () => {
+    const nullColor = [null];
+    expect(getSchemaColors(nullColor)).toStrictEqual([]);
+  });
+  test('Should return undefined when input schema has color in undefined format', () => {
+    const undefinedColor = [undefined];
+    expect(getSchemaColors(undefinedColor)).toStrictEqual([]);
   });
 });

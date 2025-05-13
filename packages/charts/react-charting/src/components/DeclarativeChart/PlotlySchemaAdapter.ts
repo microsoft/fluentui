@@ -48,7 +48,6 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
-  Color,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -219,14 +218,21 @@ const getSecondaryYAxisValues = (
   };
 };
 
-const getSchemaColors = (colors: Color | Color[] | undefined): string[] => {
+export const getSchemaColors = (
+  colors: Array<string | number | null | undefined> | string | number,
+): string[] | string | undefined => {
   const hexColors: string[] = [];
-  if (isStringArray(colors)) {
-    (colors as string[]).forEach(element => {
-      hexColors.push(convertToHex(element)!);
+  if (!colors) {
+    return undefined;
+  }
+  if (typeof colors === 'string' || typeof colors === 'number') {
+    return convertToHex(colors as string)!;
+  } else if (isArrayOrTypedArray(colors)) {
+    colors.forEach((element: string | number | null | undefined) => {
+      if (element) {
+        hexColors.push(convertToHex(element.toString())!);
+      }
     });
-  } else if (typeof colors === 'string') {
-    return [convertToHex(colors as string)!];
   }
   return hexColors;
 };
@@ -234,14 +240,18 @@ const getSchemaColors = (colors: Color | Color[] | undefined): string[] => {
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
-  const colors: string[] | string | null | undefined = firstData.marker?.colors
-    ? getSchemaColors(firstData?.marker?.color)
-    : firstData.marker?.color
-    ? convertToHex(firstData.marker?.color.toString())
-    : undefined;
+  let colors: string[] | string | null | undefined;
+  if (!useFluentColorPalette) {
+    colors = firstData.marker?.colors
+      ? getSchemaColors(firstData?.marker?.colors)
+      : firstData.marker?.color
+      ? getSchemaColors(firstData?.marker?.color)
+      : undefined;
+  }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
