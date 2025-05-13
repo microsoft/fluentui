@@ -57,7 +57,7 @@ export interface GetStaggerVisibilityParams {
   elapsed: number;
   delay?: number;
   itemDuration?: number;
-  easingFn?: (progress: number) => number;
+  // easingFn?: (progress: number) => number;
   direction?: 'enter' | 'exit';
   reversed?: boolean;
 }
@@ -68,7 +68,7 @@ export interface StaggerVisibilityResult {
   completedSteps: number;
 }
 
-const defaultEasingFn = (t: number) => t;
+// const defaultEasingFn = (t: number) => t;
 
 /**
  * Returns visibility flags plus timing metrics for a stagger sequence.
@@ -78,7 +78,7 @@ export function getStaggerVisibility({
   elapsed,
   delay,
   itemDuration = 0,
-  easingFn = defaultEasingFn,
+  // easingFn = defaultEasingFn,
   direction = 'enter',
   reversed: reverse = false,
 }: GetStaggerVisibilityParams): StaggerVisibilityResult {
@@ -90,8 +90,8 @@ export function getStaggerVisibility({
   const rawProgress = totalDuration > 0 ? elapsed / totalDuration : 1;
   const progress = Math.min(Math.max(rawProgress, 0), 1);
 
-  const eased = easingFn(progress);
-  const completedSteps = Math.floor(eased * count);
+  // const eased = easingFn(progress);
+  const completedSteps = Math.floor(progress * count);
 
   const visibility = Array.from({ length: count }, (_, idx) => {
     const fromStart = idx < completedSteps;
@@ -124,7 +124,7 @@ export function useStaggeredReveal({
   count,
   delay,
   itemDuration = 0,
-  easingFn = defaultEasingFn,
+  // easingFn = defaultEasingFn,
   direction,
   reversed: reverse = false,
   onMotionFinish,
@@ -150,7 +150,7 @@ export function useStaggeredReveal({
         elapsed,
         delay,
         itemDuration,
-        easingFn,
+        // easingFn,
         direction,
         reversed: reverse,
       });
@@ -170,7 +170,7 @@ export function useStaggeredReveal({
       cancelled = true;
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
     };
-  }, [count, delay, itemDuration, direction, reverse, easingFn, onMotionFinish]);
+  }, [count, delay, itemDuration, direction, reverse, /* easingFn, */ onMotionFinish]);
 
   const visibleCount = visibility.filter(Boolean).length;
   return { visibility, visibleCount };
