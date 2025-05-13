@@ -18,7 +18,7 @@ export function useStaggeredReveal({
   itemDuration = 0,
   easingFn = defaultEasingFn, // don't inline a default because it will be a new function on every render
   direction,
-  reverse = false,
+  reversed: reverse = false,
   onMotionFinish,
 }: UseStaggeredRevealParams): { visibility: boolean[]; visibleCount: number } {
   // Use the provided easingFn if any, otherwise the stable default
@@ -49,7 +49,7 @@ export function useStaggeredReveal({
         easingFn,
         // easingFn,
         direction,
-        reverse,
+        reversed: reverse,
       });
 
       setVisibility(result.visibility);
