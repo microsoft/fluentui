@@ -7,7 +7,7 @@ const defaultEasingFn = (t: number) => t;
 export interface PresenceStaggerProps extends Omit<UseStaggeredRevealParams, 'direction' | 'count'> {
   children: React.ReactNode; // Presence components must accept a `visible` boolean prop
   visible?: boolean; // true = enter, false = exit (defaults to false)
-  reverse?: boolean; // run sequence backward
+  reversed?: boolean; // run sequence backward
 }
 
 type PresenceStaggerComponent = React.FC<PresenceStaggerProps> & {
@@ -21,7 +21,7 @@ const PresenceStaggerBase: React.FC<PresenceStaggerProps> = ({
   delay = 100,
   itemDuration = 0,
   easingFn = defaultEasingFn,
-  reverse = false,
+  reversed: reverse = false,
   onMotionFinish,
 }) => {
   const elements = toElementArray(children);
@@ -34,7 +34,7 @@ const PresenceStaggerBase: React.FC<PresenceStaggerProps> = ({
     itemDuration,
     easingFn,
     direction,
-    reverse,
+    reversed: reverse,
     onMotionFinish,
   });
 

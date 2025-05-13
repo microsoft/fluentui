@@ -7,7 +7,7 @@ export interface GetStaggerVisibilityParams {
   itemDuration?: number;
   easingFn?: (progress: number) => number;
   direction?: 'enter' | 'exit';
-  reverse?: boolean;
+  reversed?: boolean;
 }
 
 export interface StaggerVisibilityResult {
@@ -28,7 +28,7 @@ export function getStaggerVisibility({
   itemDuration = 0,
   easingFn = defaultEasingFn,
   direction = 'enter',
-  reverse = false,
+  reversed: reverse = false,
 }: GetStaggerVisibilityParams): StaggerVisibilityResult {
   if (count <= 0) {
     return { visibility: [], totalDuration: 0, completedSteps: 0 };

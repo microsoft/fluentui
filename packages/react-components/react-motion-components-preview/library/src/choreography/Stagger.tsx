@@ -8,7 +8,7 @@ export interface StaggerProps extends Omit<UseStaggeredRevealParams, 'direction'
   children: React.ReactNode;
   visible?: boolean; // true = enter, false = exit (defaults to false)
   // TODO: use a clearer name like `fromEnd` because `reverse` is ambiguous as 'exit' is the reverse of 'enter'
-  reverse?: boolean; // run sequence backward (defaults to false)
+  reversed?: boolean; // run sequence backward (defaults to false)
   presence?: boolean; // If true, always render children and control via `visible` prop. If false, unmount when not visible.
 }
 
@@ -23,7 +23,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
   delay = 100,
   itemDuration = 0,
   easingFn = defaultEasingFn,
-  reverse = false,
+  reversed: reverse = false,
   onMotionFinish,
   presence = false,
 }) => {
@@ -37,7 +37,7 @@ const StaggerBase: React.FC<StaggerProps> = ({
     itemDuration,
     easingFn,
     direction,
-    reverse,
+    reversed: reverse,
     onMotionFinish,
   });
 
