@@ -94,7 +94,7 @@ export const Default = (props: {} /* TODO: Stagger props */) => {
           <Stagger presence visible={visible} reversed={reversed}>
             {Array.from({ length: 10 }, (_, i) => (
               <ItemTransition key={i}>
-                <div className={classes.item} />
+                <div className={classes.item}>{i}</div>
               </ItemTransition>
             ))}
           </Stagger>
