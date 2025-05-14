@@ -4,6 +4,8 @@ export { createSlideStyles } from './createSlideStyles';
 export type { CreateArrowStylesOptions } from './createArrowStyles';
 export { usePositioning } from './usePositioning';
 export { usePositioningMouseTarget } from './usePositioningMouseTarget';
+export { useSafeZoneArea } from './useSafeZoneArea';
+export type { SafeBufferAreaOptions } from './useSafeZoneArea';
 export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
 export type {
   Alignment,
