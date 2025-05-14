@@ -3,7 +3,7 @@ import path from 'node:path';
 
 // eslint-disable-next-line no-restricted-imports
 import * as tokensPackage from '@fluentui/tokens';
-import { fluentOverrides } from '../src/fallback/fluentOverrides';
+import { fluentOverrides } from '../src/fluentOverrides';
 import { format } from 'prettier';
 
 const generateLegacyTokens = () => {
