@@ -20,7 +20,7 @@
     "@fluentui/react-components": "^9.63.0",
     "@fluentui/react-context-selector": "^9.1.76",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.0.1",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.24",
     "@fluentui/react-utilities": "^9.19.0",
     "@griffel/react": "^1.5.22",
