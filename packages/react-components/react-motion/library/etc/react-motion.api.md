@@ -138,9 +138,6 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 }
 
 // @internal (undocumented)
-export const PresenceGroupChildContext: React_2.Context<PresenceGroupChildContextValue | undefined>;
-
-// @internal (undocumented)
 export type PresenceGroupChildContextValue = {
     appear: boolean;
     visible: boolean;
