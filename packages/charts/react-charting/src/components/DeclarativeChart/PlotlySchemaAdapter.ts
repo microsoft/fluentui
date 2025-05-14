@@ -55,7 +55,7 @@ import {
   isDate,
   isDateArray,
   isNumberArray,
-  isLineData,
+  isYearArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
@@ -279,9 +279,10 @@ export const transformPlotlyJsonToVSBCProps = (
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
       const legend: string = legends[index1];
       const yVal: number = (series.y?.[index2] as number) ?? 0;
@@ -293,7 +294,7 @@ export const transformPlotlyJsonToVSBCProps = (
           color,
         });
         yMaxValue = Math.max(yMaxValue, yVal);
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
