@@ -69,6 +69,19 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type PositioningBoundary = PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 // @public (undocumented)
+export type PositioningConfigurationFn = (params: {
+    container: HTMLElement;
+    arrow: HTMLElement | null;
+    options: PositioningConfigurationFnOptions;
+}) => PositioningConfigurationFnOptions;
+
+// @public (undocumented)
+export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'positionFixed'>;
+
+// @public
+export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
+
+// @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
