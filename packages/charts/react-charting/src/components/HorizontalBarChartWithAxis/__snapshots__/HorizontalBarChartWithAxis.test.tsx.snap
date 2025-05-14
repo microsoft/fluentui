@@ -29,7 +29,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -103,46 +103,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-        <defs>
-          <linearGradient
-            id="HBCWA_Gradient4_0_20000"
-          >
-            <stop
-              offset="0"
-              stopColor="#795AA6"
-            />
-            <stop
-              offset="100%"
-              stopColor="#9373C0"
-            />
-          </linearGradient>
-        </defs>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="url(#HBCWA_Gradient4_0_20000)"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={30}
-          x={10}
-          y={-0.19491525423729072}
-        />
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -191,7 +152,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -664,7 +625,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -738,32 +699,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#795AA6"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={3}
-          width={30}
-          x={10}
-          y={-0.19491525423729072}
-        />
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -812,7 +748,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1007,8 +943,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                       className=
 
                           {
-                            background-color: #795AA6;
-                            border-color: #795AA6;
+                            background-color: #002050;
+                            border-color: #002050;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1016,7 +952,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #795AA6, #795AA6);
+                            content: linear-gradient(to right, #002050, #002050);
                             opacity: ;
                           }
                     />
@@ -1285,7 +1221,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1359,32 +1295,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={30}
-          x={10}
-          y={-0.19491525423729072}
-        />
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -1433,7 +1344,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1906,7 +1817,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1980,32 +1891,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-         
-         
-         
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={30}
-          x={10}
-          y={-0.19491525423729072}
-        />
-      </g>
+      <g />
     </svg>
   </div>
 </div>
@@ -2040,7 +1926,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2114,33 +2000,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={12}
-          x={28}
-          y={14.25}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -2189,7 +2049,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2350,7 +2210,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2424,33 +2284,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={12}
-          x={28}
-          y={14.25}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -2499,7 +2333,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

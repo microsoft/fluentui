@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "fluentui react storybook addon",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
