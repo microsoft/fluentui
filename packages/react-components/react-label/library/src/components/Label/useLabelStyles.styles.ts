@@ -14,7 +14,7 @@ export const labelClassNames: SlotClassNames<LabelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: semanticTokens.textStyleDefaultRegularFontfamily,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
     color: semanticTokens.foregroundContentNeutralPrimary,
     fontWeight: semanticTokens.textStyleDefaultRegularWeight,
   },
@@ -32,18 +32,18 @@ const useStyles = makeStyles({
   },
 
   small: {
-    fontSize: semanticTokens.textGlobalCaption1Fontsize,
-    lineHeight: semanticTokens.textGlobalCaption1Lineheight,
+    fontSize: semanticTokens.textGlobalCaption1FontSize,
+    lineHeight: semanticTokens.textGlobalCaption1LineHeight,
   },
 
   medium: {
-    fontSize: semanticTokens.textGlobalBody3Fontsize,
-    lineHeight: semanticTokens.textGlobalBody3Lineheight,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
   },
 
   large: {
-    fontSize: semanticTokens.textGlobalBody2Fontsize,
-    lineHeight: semanticTokens.textGlobalBody2Lineheight,
+    fontSize: semanticTokens.textGlobalBody2FontSize,
+    lineHeight: semanticTokens.textGlobalBody2LineHeight,
     fontWeight: tokens.fontWeightSemibold,
   },
 

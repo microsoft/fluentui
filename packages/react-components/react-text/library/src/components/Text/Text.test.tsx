@@ -33,10 +33,10 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');
     expect(textElement).toHaveStyle(`
-      font-size: var(--smtc-text-global-body3-fontsize, var(--fontSizeBase300));
-      font-family: var(--smtc-text-style-default-regular-fontfamily, var(--fontFamilyBase));
+      font-size: var(--smtc-text-global-body3-font-size, var(--fontSizeBase300));
+      font-family: var(--smtc-text-style-default-regular-font-family, var(--fontFamilyBase));
       font-weight: var(--smtc-text-style-default-regular-weight, var(--fontWeightRegular));
-      line-height: var(--smtc-text-global-body3-lineheight, var(--lineHeightBase300));
+      line-height: var(--smtc-text-global-body3-line-height, var(--lineHeightBase300));
       display: inline;
       text-align: start;
       white-space: normal;
@@ -129,13 +129,13 @@ describe('Text', () => {
 
     const textElement = getByText('Test');
     expect(textElement).toHaveStyle(`
-      font-size: var(${semanticToken + '-fontsize'}, var(--fontSize${expectedPrefix}${expectedValue}));
-      line-height: var(${semanticToken + '-lineheight'}, var(--lineHeight${expectedPrefix}${expectedValue}));
+      font-size: var(${semanticToken + '-font-size'}, var(--fontSize${expectedPrefix}${expectedValue}));
+      line-height: var(${semanticToken + '-line-height'}, var(--lineHeight${expectedPrefix}${expectedValue}));
     `);
   });
 
   it.each([
-    ['base', 'Base', '--smtc-text-style-default-regular-fontfamily'],
+    ['base', 'Base', '--smtc-text-style-default-regular-font-family'],
     ['monospace', 'Monospace', null],
     ['numeric', 'Numeric', null],
   ] as const)('applies %s font', (input, expectedValue, semanticToken) => {
@@ -164,7 +164,7 @@ describe('Text', () => {
     const textElement = getByText('Test');
     if (semanticToken) {
       expect(textElement).toHaveStyle(`
-        font-weight: var(--smtc-text-style-default-regular-weight, var(--fontWeight${expectedValue}));
+        font-weight: var(${semanticToken}, var(--fontWeight${expectedValue}));
       `);
     } else {
       expect(textElement).toHaveStyle(`
