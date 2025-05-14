@@ -211,7 +211,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     }
     return (
       <ResponsiveVerticalStackedBarChart
-        {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme, fallbackVSBC)}
+        {...transformPlotlyJsonToVSBCProps(
+          plotlyInputWithValidData,
+          colorMap,
+          props.useFluentVizColorPalette!,
+          isDarkTheme,
+          fallbackVSBC,
+        )}
         {...commonProps}
       />
     );
@@ -261,21 +267,36 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'horizontalbar':
       return (
         <ResponsiveHorizontalBarChartWithAxis
-          {...transformPlotlyJsonToHorizontalBarWithAxisProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToHorizontalBarWithAxisProps(
+            plotlyInputWithValidData,
+            colorMap,
+            props.useFluentVizColorPalette!,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
     case 'groupedverticalbar':
       return (
         <ResponsiveGroupedVerticalBarChart
-          {...transformPlotlyJsonToGVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToGVBCProps(
+            plotlyInputWithValidData,
+            colorMap,
+            props.useFluentVizColorPalette!,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
     case 'verticalstackedbar':
       return (
         <ResponsiveVerticalStackedBarChart
-          {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToVSBCProps(
+            plotlyInputWithValidData,
+            colorMap,
+            props.useFluentVizColorPalette!,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
@@ -304,7 +325,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'verticalbar':
       return (
         <ResponsiveVerticalBarChart
-          {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToVBCProps(
+            plotlyInputWithValidData,
+            colorMap,
+            props.useFluentVizColorPalette!,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
