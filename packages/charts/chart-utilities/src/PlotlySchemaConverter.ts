@@ -12,18 +12,6 @@ export interface OutputChartType {
   validTracesInfo?: [number, string][];
 }
 
-const SUPPORTED_PLOT_TYPES = [
-  'pie',
-  'bar',
-  'scatter',
-  'heatmap',
-  'sankey',
-  'indicator',
-  'gauge',
-  'histogram',
-  'histogram2d',
-];
-
 const UNSUPPORTED_MSG_PREFIX = 'Unsupported chart - type :';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -89,16 +77,6 @@ export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined
 
 export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   return isArrayOfType(data, isYear);
-};
-
-export const isLineData = (data: Partial<PlotData>): boolean => {
-  return (
-    !SUPPORTED_PLOT_TYPES.includes(`${data.type}`) &&
-    Array.isArray(data.x) &&
-    isArrayOfType(data.y, (value: any) => typeof value === 'number') &&
-    data.x.length > 0 &&
-    data.x.length === data.y!.length
-  );
 };
 
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
@@ -179,7 +157,7 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (data.mode === 'markers' && !isNumberArray(data.x)) {
+  if (['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') && !isNumberArray(data.x)) {
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
   } else {
     validateSeriesData(data, true);
@@ -195,11 +173,6 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
     },
   ],
   histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
-  contour: [
-    data => {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}`);
-    },
-  ],
   bar: [data => validateBarData(data as Partial<PlotData>)],
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
   scatterpolar: [
@@ -219,10 +192,7 @@ const getValidTraces = (dataArr: Data[]) => {
   const errorMessages: string[] = [];
   const validTraces = dataArr
     .map((data, index): [number, string] => {
-      let type = data.type;
-      if (isLineData(data as Partial<PlotData>)) {
-        type = 'scatter';
-      }
+      const type = data.type;
 
       if (type && DATA_VALIDATORS_MAP[type]) {
         const validators = DATA_VALIDATORS_MAP[type];
@@ -283,11 +253,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
-        const containsLines = validTraces.some(
-          trace =>
-            validSchema.data[trace[0]].type === 'scatter' ||
-            isLineData(validSchema.data[trace[0]] as Partial<PlotData>),
-        );
+        const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');
         if (containsBars && containsLines) {
           return { isValid: true, type: 'verticalstackedbar', validTracesInfo: validTraces };
         }
@@ -322,7 +288,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           return { isValid: true, type: 'fallback', validTracesInfo: validTraces };
         }
 
-        return { isValid: false, errorMessage: `${UNSUPPORTED_MSG_PREFIX} :${firstData.type}` };
+        return { isValid: false, errorMessage: `${UNSUPPORTED_MSG_PREFIX} ${firstData.type}` };
     }
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };

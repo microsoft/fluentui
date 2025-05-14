@@ -55,7 +55,6 @@ import {
   isDate,
   isDateArray,
   isNumberArray,
-  isLineData,
   isYearArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
@@ -295,7 +294,7 @@ export const transformPlotlyJsonToVSBCProps = (
           color,
         });
         yMaxValue = Math.max(yMaxValue, yVal);
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
