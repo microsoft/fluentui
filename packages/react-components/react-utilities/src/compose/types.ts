@@ -50,7 +50,9 @@ type WithSlotShorthandValue<Props> =
  * to be a render function that takes those props.
  */
 export type WithSlotRenderFunction<Props> = PropsWithoutChildren<Props> & {
-  children?: ('children' extends keyof Props ? Props['children'] : never) | SlotRenderFunction<PropsWithoutRef<Props>>;
+  children?:
+    | ('children' extends keyof Props ? Props['children'] | {} : never)
+    | SlotRenderFunction<PropsWithoutRef<Props>>;
 };
 
 /**
