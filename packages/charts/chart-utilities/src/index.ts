@@ -103,7 +103,6 @@ export {
   isDateArray,
   isNumberArray,
   isYearArray,
-  isLineData,
   validate2Dseries,
   getValidSchema,
   sanitizeJson,
