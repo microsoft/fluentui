@@ -4463,41 +4463,25 @@ export const textCtrlWeightSelected = "var(--smtc-text-ctrl-weight-selected)";
 export const textCtrlWeightSelectedRaw = "--smtc-text-ctrl-weight-selected";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalBody1FontSize = "var(--smtc-text-global-body1-font-size)";
-=======
-export const textGlobalBody1Fontsize = "var(--smtc-text-global-body1-fontsize, var(--fontSizeBase500))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalBody1FontSize = "var(--smtc-text-global-body1-font-size, var(--fontSizeBase500))";
 
 // @public (undocumented)
 export const textGlobalBody1FontSizeRaw = "--smtc-text-global-body1-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalBody1LineHeight = "var(--smtc-text-global-body1-line-height)";
-=======
-export const textGlobalBody1Lineheight = "var(--smtc-text-global-body1-lineheight, var(--lineHeightBase500))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalBody1LineHeight = "var(--smtc-text-global-body1-line-height, var(--lineHeightBase500))";
 
 // @public (undocumented)
 export const textGlobalBody1LineHeightRaw = "--smtc-text-global-body1-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalBody2FontSize = "var(--smtc-text-global-body2-font-size)";
-=======
-export const textGlobalBody2Fontsize = "var(--smtc-text-global-body2-fontsize, var(--fontSizeBase400))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalBody2FontSize = "var(--smtc-text-global-body2-font-size, var(--fontSizeBase400))";
 
 // @public (undocumented)
 export const textGlobalBody2FontSizeRaw = "--smtc-text-global-body2-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalBody2LineHeight = "var(--smtc-text-global-body2-line-height)";
-=======
-export const textGlobalBody2Lineheight = "var(--smtc-text-global-body2-lineheight, var(--lineHeightBase400))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalBody2LineHeight = "var(--smtc-text-global-body2-line-height, var(--lineHeightBase400))";
 
 // @public (undocumented)
 export const textGlobalBody2LineHeightRaw = "--smtc-text-global-body2-line-height";
@@ -4509,51 +4493,31 @@ export const textGlobalBody3FontSize = "var(--smtc-text-global-body3-font-size, 
 export const textGlobalBody3FontSizeRaw = "--smtc-text-global-body3-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalBody3LineHeight = "var(--smtc-text-global-body3-line-height)";
-=======
-export const textGlobalBody3Lineheight = "var(--smtc-text-global-body3-lineheight, var(--lineHeightBase300))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalBody3LineHeight = "var(--smtc-text-global-body3-line-height, var(--lineHeightBase300))";
 
 // @public (undocumented)
 export const textGlobalBody3LineHeightRaw = "--smtc-text-global-body3-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalCaption1FontSize = "var(--smtc-text-global-caption1-font-size)";
-=======
-export const textGlobalCaption1Fontsize = "var(--smtc-text-global-caption1-fontsize, var(--fontSizeBase200))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalCaption1FontSize = "var(--smtc-text-global-caption1-font-size, var(--fontSizeBase200))";
 
 // @public (undocumented)
 export const textGlobalCaption1FontSizeRaw = "--smtc-text-global-caption1-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalCaption1LineHeight = "var(--smtc-text-global-caption1-line-height)";
-=======
-export const textGlobalCaption1Lineheight = "var(--smtc-text-global-caption1-lineheight, var(--lineHeightBase200))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalCaption1LineHeight = "var(--smtc-text-global-caption1-line-height, var(--lineHeightBase200))";
 
 // @public (undocumented)
 export const textGlobalCaption1LineHeightRaw = "--smtc-text-global-caption1-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalCaption2FontSize = "var(--smtc-text-global-caption2-font-size)";
-=======
-export const textGlobalCaption2Fontsize = "var(--smtc-text-global-caption2-fontsize, var(--fontSizeBase100))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalCaption2FontSize = "var(--smtc-text-global-caption2-font-size, var(--fontSizeBase100))";
 
 // @public (undocumented)
 export const textGlobalCaption2FontSizeRaw = "--smtc-text-global-caption2-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalCaption2LineHeight = "var(--smtc-text-global-caption2-line-height)";
-=======
-export const textGlobalCaption2Lineheight = "var(--smtc-text-global-caption2-lineheight, var(--lineHeightBase100))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalCaption2LineHeight = "var(--smtc-text-global-caption2-line-height, var(--lineHeightBase100))";
 
 // @public (undocumented)
 export const textGlobalCaption2LineHeightRaw = "--smtc-text-global-caption2-line-height";
@@ -4571,101 +4535,61 @@ export const textGlobalDisplay1LineHeight = "var(--smtc-text-global-display1-lin
 export const textGlobalDisplay1LineHeightRaw = "--smtc-text-global-display1-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalDisplay2FontSize = "var(--smtc-text-global-display2-font-size)";
-=======
-export const textGlobalDisplay2Fontsize = "var(--smtc-text-global-display2-fontsize, var(--fontSizeHero1000))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalDisplay2FontSize = "var(--smtc-text-global-display2-font-size, var(--fontSizeHero1000))";
 
 // @public (undocumented)
 export const textGlobalDisplay2FontSizeRaw = "--smtc-text-global-display2-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalDisplay2LineHeight = "var(--smtc-text-global-display2-line-height)";
-=======
-export const textGlobalDisplay2Lineheight = "var(--smtc-text-global-display2-lineheight, var(--lineHeightHero1000))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalDisplay2LineHeight = "var(--smtc-text-global-display2-line-height, var(--lineHeightHero1000))";
 
 // @public (undocumented)
 export const textGlobalDisplay2LineHeightRaw = "--smtc-text-global-display2-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalSubtitle1FontSize = "var(--smtc-text-global-subtitle1-font-size)";
-=======
-export const textGlobalSubtitle1Fontsize = "var(--smtc-text-global-subtitle1-fontsize, var(--fontSizeHero700))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalSubtitle1FontSize = "var(--smtc-text-global-subtitle1-font-size, var(--fontSizeHero700))";
 
 // @public (undocumented)
 export const textGlobalSubtitle1FontSizeRaw = "--smtc-text-global-subtitle1-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalSubtitle1LineHeight = "var(--smtc-text-global-subtitle1-line-height)";
-=======
-export const textGlobalSubtitle1Lineheight = "var(--smtc-text-global-subtitle1-lineheight, var(--lineHeightHero700))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalSubtitle1LineHeight = "var(--smtc-text-global-subtitle1-line-height, var(--lineHeightHero700))";
 
 // @public (undocumented)
 export const textGlobalSubtitle1LineHeightRaw = "--smtc-text-global-subtitle1-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalSubtitle2FontSize = "var(--smtc-text-global-subtitle2-font-size)";
-=======
-export const textGlobalSubtitle2Fontsize = "var(--smtc-text-global-subtitle2-fontsize, var(--fontSizeBase600))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalSubtitle2FontSize = "var(--smtc-text-global-subtitle2-font-size, var(--fontSizeBase600))";
 
 // @public (undocumented)
 export const textGlobalSubtitle2FontSizeRaw = "--smtc-text-global-subtitle2-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalSubtitle2LineHeight = "var(--smtc-text-global-subtitle2-line-height)";
-=======
-export const textGlobalSubtitle2Lineheight = "var(--smtc-text-global-subtitle2-lineheight, var(--lineHeightBase600))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalSubtitle2LineHeight = "var(--smtc-text-global-subtitle2-line-height, var(--lineHeightBase600))";
 
 // @public (undocumented)
 export const textGlobalSubtitle2LineHeightRaw = "--smtc-text-global-subtitle2-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalTitle1FontSize = "var(--smtc-text-global-title1-font-size)";
-=======
-export const textGlobalTitle1Fontsize = "var(--smtc-text-global-title1-fontsize, var(--fontSizeHero900))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalTitle1FontSize = "var(--smtc-text-global-title1-font-size, var(--fontSizeHero900))";
 
 // @public (undocumented)
 export const textGlobalTitle1FontSizeRaw = "--smtc-text-global-title1-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalTitle1LineHeight = "var(--smtc-text-global-title1-line-height)";
-=======
-export const textGlobalTitle1Lineheight = "var(--smtc-text-global-title1-lineheight, var(--lineHeightHero900))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalTitle1LineHeight = "var(--smtc-text-global-title1-line-height, var(--lineHeightHero900))";
 
 // @public (undocumented)
 export const textGlobalTitle1LineHeightRaw = "--smtc-text-global-title1-line-height";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalTitle2FontSize = "var(--smtc-text-global-title2-font-size)";
-=======
-export const textGlobalTitle2Fontsize = "var(--smtc-text-global-title2-fontsize, var(--fontSizeHero800))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalTitle2FontSize = "var(--smtc-text-global-title2-font-size, var(--fontSizeHero800))";
 
 // @public (undocumented)
 export const textGlobalTitle2FontSizeRaw = "--smtc-text-global-title2-font-size";
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const textGlobalTitle2LineHeight = "var(--smtc-text-global-title2-line-height)";
-=======
-export const textGlobalTitle2Lineheight = "var(--smtc-text-global-title2-lineheight, var(--lineHeightHero800))";
->>>>>>> b3eae84ba8 (Squish changes for rebase)
+export const textGlobalTitle2LineHeight = "var(--smtc-text-global-title2-line-height, var(--lineHeightHero800))";
 
 // @public (undocumented)
 export const textGlobalTitle2LineHeightRaw = "--smtc-text-global-title2-line-height";
