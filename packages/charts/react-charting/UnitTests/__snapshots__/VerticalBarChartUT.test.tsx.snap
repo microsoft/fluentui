@@ -29,7 +29,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -327,7 +327,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_8"
+              id="_VBC_bar_9"
               role="img"
               rx="0"
               tabindex="0"
@@ -365,7 +365,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_10"
+              id="_VBC_bar_11"
               role="img"
               rx="0"
               tabindex="-1"
@@ -403,7 +403,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_12"
+              id="_VBC_bar_13"
               role="img"
               rx="0"
               tabindex="-1"
@@ -470,7 +470,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone7"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
