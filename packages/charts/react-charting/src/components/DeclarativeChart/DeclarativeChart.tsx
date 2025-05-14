@@ -83,6 +83,12 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IDeclarativeChart>;
+
+  /**
+   * Optional prop to use Fluent UI color palette for the chart or not.
+   * @default true
+   */
+  useFluentVizColorPalette?: boolean;
 }
 
 /**
@@ -243,7 +249,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'donut':
       return (
         <ResponsiveDonutChart
-          {...transformPlotlyJsonToDonutProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToDonutProps(
+            plotlyInputWithValidData,
+            colorMap,
+            props.useFluentVizColorPalette!,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
@@ -315,3 +326,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
+DeclarativeChart.defaultProps = {
+  useFluentVizColorPalette: true,
+};

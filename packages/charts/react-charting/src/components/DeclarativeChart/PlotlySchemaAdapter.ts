@@ -59,6 +59,7 @@ import {
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { color as d3Color } from 'd3-color';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -218,16 +219,52 @@ const getSecondaryYAxisValues = (
   };
 };
 
+export const getSchemaColors = (
+  colors: Array<string | number | null | undefined>,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string[] | undefined => {
+  const hexColors: string[] = [];
+  if (!colors) {
+    return undefined;
+  }
+  if (isArrayOrTypedArray(colors)) {
+    colors.forEach((element, index) => {
+      const colorString = element?.toString().trim();
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      if (colorString) {
+        const parsedColor = d3Color(colorString);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextFluentColor);
+      } else {
+        hexColors.push(nextFluentColor);
+      }
+    });
+  }
+  return hexColors;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
+  let colors: string[] | string | null | undefined = undefined;
+  if (!useFluentVizColorPalette) {
+    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors, colorMap, isDarkTheme) : undefined;
+  }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
-    const color = getColor(label, colorMap, isDarkTheme);
+    let color: string = '';
+    if (colors && isStringArray(colors)) {
+      color = colors[index % colors.length];
+    } else if (typeof colors === 'string') {
+      color = colors;
+    } else {
+      color = getColor(label, colorMap, isDarkTheme);
+    }
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 

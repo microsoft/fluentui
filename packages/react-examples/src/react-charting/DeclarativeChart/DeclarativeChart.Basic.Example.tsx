@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { DeclarativeChart, DeclarativeChartProps, IDeclarativeChart, Schema } from '@fluentui/react-charting';
+import { Toggle } from '@fluentui/react';
 
 interface IErrorBoundaryProps {
   children: React.ReactNode;
@@ -35,6 +36,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
 interface IDeclarativeChartState {
   selectedChoice: string;
   selectedLegends: string;
+  useFluentVizColorPalette: boolean;
 }
 
 const options: IDropdownOption[] = [
@@ -88,6 +90,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.state = {
       selectedChoice: defaultselection,
       selectedLegends: JSON.stringify(selectedLegends),
+      useFluentVizColorPalette: true,
     };
 
     this._declarativeChartRef = React.createRef();
@@ -127,6 +130,10 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     return schema ? schema.schema : null;
   }
 
+  private _onToggleUseFluentVizColorPalette = (_event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ useFluentVizColorPalette: checked });
+  };
+
   private _createDeclarativeChart(): JSX.Element {
     const uniqueKey = `${this.state.selectedChoice}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
@@ -154,6 +161,13 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
             styles={dropdownStyles}
           />
           &nbsp;&nbsp;&nbsp;
+          <Toggle
+            label="Use FluentViz Color Palette"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleUseFluentVizColorPalette}
+          />
+          &nbsp;&nbsp;
         </div>
         <br />
         <button
@@ -171,6 +185,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           chartSchema={inputSchema}
           onSchemaChange={this._handleChartSchemaChanged}
           componentRef={this._declarativeChartRef}
+          useFluentVizColorPalette={this.state.useFluentVizColorPalette}
         />
         <br />
         <TextField
