@@ -231,12 +231,12 @@ export const getSchemaColors = (
   if (isArrayOrTypedArray(colors)) {
     colors.forEach((element, index) => {
       const colorString = element?.toString().trim();
-      const nextColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
       if (colorString) {
         const parsedColor = d3Color(colorString);
-        hexColors.push(parsedColor ? parsedColor.formatHex() : nextColor);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextFluentColor);
       } else {
-        hexColors.push(nextColor);
+        hexColors.push(nextFluentColor);
       }
     });
   }

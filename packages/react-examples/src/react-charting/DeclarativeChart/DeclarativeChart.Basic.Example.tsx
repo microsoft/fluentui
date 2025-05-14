@@ -185,7 +185,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           chartSchema={inputSchema}
           onSchemaChange={this._handleChartSchemaChanged}
           componentRef={this._declarativeChartRef}
-          useFluentColorPalette={this.state.useFluentVizColorPalette}
+          useFluentVizColorPalette={this.state.useFluentVizColorPalette}
         />
         <br />
         <TextField
