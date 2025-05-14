@@ -1,5 +1,3 @@
-import { PresenceGroupChildContextValue } from './contexts/PresenceGroupChildContext';
-
 type AtomCore = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
 export type AtomMotion = AtomCore & {
@@ -30,8 +28,6 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
   params: { element: HTMLElement } & MotionParams,
 ) => PresenceMotion;
-
-export declare const PresenceGroupChildProvider: React.Provider<PresenceGroupChildContextValue | undefined>;
 
 // ---
 
