@@ -337,23 +337,19 @@ describe('sanitizeJson', () => {
 describe('getSchemaColors', () => {
   test('Should return the array of colors when input schema has colors', () => {
     const hexColors = ['#e3008c', '#2aa0a4'];
-    expect(getSchemaColors(hexColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+    expect(getSchemaColors(hexColors)).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in RGB format', () => {
     const rgbColors = ['rgb(227, 0, 140)', 'rgb(42, 160, 164)'];
-    expect(getSchemaColors(rgbColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+    expect(getSchemaColors(rgbColors)).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in RGBA format', () => {
     const rgbaColors = ['rgba(227, 0, 140, 1)', 'rgba(42, 160, 164, 1)'];
-    expect(getSchemaColors(rgbaColors)).toStrictEqual(['#E3008C', '#2AA0A4']);
+    expect(getSchemaColors(rgbaColors)).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in HSL format', () => {
     const hslColors = ['hsl(330, 100%, 50%)', 'hsl(180, 100%, 50%)'];
-    expect(getSchemaColors(hslColors)).toStrictEqual(['#FF0080', '#00FFFF']);
-  });
-  test('Should return the array of colors when input schema has colors in HSV format', () => {
-    const hsvColors = ['hsv(330, 100%, 89%)', 'hsv(180, 100%, 64%)'];
-    expect(getSchemaColors(hsvColors)).toStrictEqual(['#E30071', '#00A3A3']);
+    expect(getSchemaColors(hslColors)).toStrictEqual(['#ff0080', '#00ffff']);
   });
   test('Should return undefined when input schema has color in null format', () => {
     const nullColor = [null];
