@@ -16,6 +16,19 @@ test.describe('Dialog Body', () => {
     await expect(closeButton).toBeVisible();
   });
 
+  test('should apply aria-label to default close button when defaultTitleActionLabel is set', async ({ fastPage }) => {
+    const { element } = fastPage;
+    const closeButton = element.locator('.title-action');
+
+    await fastPage.setTemplate(/* html */ `
+        <fluent-dialog-body default-title-action-label="test label">
+            <div id="content">content</div>
+        </fluent-dialog-body>
+    `);
+
+    await expect(closeButton).toHaveAttribute('aria-label', 'test label');
+  });
+
   test('should add default close button for non-modal dialogs', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const closeButton = element.locator('.title-action');

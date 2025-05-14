@@ -14,4 +14,7 @@ export class DialogBody extends FASTElement {
    */
   @attr({ mode: 'boolean', attribute: 'no-title-action' })
   public noTitleAction: boolean = false;
+
+  @attr({ attribute: 'default-title-action-label' })
+  public defaultTitleActionLabel?: string;
 }
