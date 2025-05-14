@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Feat: Progress Bar",
+  "comment": "Feat: Add semantic tokens to Progress Bar",
   "packageName": "@fluentui/react-progress",
   "email": "xuehua@microsoft.com",
   "dependentChangeType": "patch"
