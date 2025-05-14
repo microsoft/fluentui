@@ -12,6 +12,13 @@ export { PresenceGroup } from './components/PresenceGroup';
 
 export { presenceMotionSlot, type PresenceMotionSlotProps } from './slots/presenceMotionSlot';
 
+export {
+  PresenceGroupChildContext,
+  PresenceGroupChildProvider,
+  usePresenceGroupChildContext,
+  type PresenceGroupChildContextValue,
+} from './contexts/PresenceGroupChildContext';
+
 export type {
   AtomMotion,
   AtomMotionFn,

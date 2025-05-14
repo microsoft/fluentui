@@ -15,3 +15,6 @@ export type PresenceGroupChildContextValue = {
  * @internal
  */
 export const PresenceGroupChildContext = React.createContext<PresenceGroupChildContextValue | undefined>(undefined);
+
+export const { Provider: PresenceGroupChildProvider } = PresenceGroupChildContext;
+export const usePresenceGroupChildContext = () => React.useContext(PresenceGroupChildContext);
