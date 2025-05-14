@@ -6,6 +6,7 @@
 
 import type { GriffelStyle } from '@griffel/react';
 import * as React_2 from 'react';
+import { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -126,6 +127,16 @@ export type PositioningVirtualElement = {
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public (undocumented)
+export type SafeBufferAreaOptions = {
+    debug?: boolean;
+    disabled?: boolean;
+    timeout?: number;
+    onSafeZoneEnter?: (e: React_2.MouseEvent) => void;
+    onSafeZoneLeave?: (e: React_2.MouseEvent) => void;
+    onSafeZoneTimeout?: () => void;
+};
+
+// @public (undocumented)
 export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
 // @internal (undocumented)
@@ -133,6 +144,13 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 
 // @internal
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+
+// @public (undocumented)
+export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: SafeBufferAreaOptions): {
+    containerRef: RefObjectFunction<HTMLElement>;
+    targetRef: RefObjectFunction<HTMLElement>;
+    elementToRender: JSX.Element | null;
+};
 
 // (No @packageDocumentation comment for this package)
 
