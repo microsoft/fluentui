@@ -48,6 +48,8 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  PieColors,
+  Color,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -60,6 +62,7 @@ import {
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { color as d3Color } from 'd3-color';
+import { get } from 'http';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -220,16 +223,16 @@ const getSecondaryYAxisValues = (
 };
 
 export const getSchemaColors = (
-  colors: Array<string | number | null | undefined>,
+  colors: PieColors | Color | null | undefined,
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
-): string[] | undefined => {
+): string[] | string | undefined => {
   const hexColors: string[] = [];
   if (!colors) {
     return undefined;
   }
   if (isArrayOrTypedArray(colors)) {
-    colors.forEach((element, index) => {
+    (colors as any[]).forEach((element, index) => {
       const colorString = element?.toString().trim();
       const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
       if (colorString) {
@@ -239,6 +242,9 @@ export const getSchemaColors = (
         hexColors.push(nextFluentColor);
       }
     });
+  } else if (typeof colors === 'string') {
+    const parsedColor = d3Color(colors);
+    return parsedColor ? parsedColor.formatHex() : getColor('Label_0', colorMap, isDarkTheme);
   }
   return hexColors;
 };
@@ -494,6 +500,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const secondaryYAxisValues = getSecondaryYAxisValues(
@@ -510,7 +517,10 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend: string = legends[index];
-    const lineColor = getColor(legend, colorMap, isDarkTheme);
+    const lineColor =
+      !useFluentVizColorPalette && series.line?.color
+        ? getSchemaColors(series.line?.color, colorMap, isDarkTheme)
+        : getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';

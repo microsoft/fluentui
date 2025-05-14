@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charting): Use schema colors for scatter declarative charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
