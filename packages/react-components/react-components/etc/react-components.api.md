@@ -720,6 +720,9 @@ import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PositioningBoundary } from '@fluentui/react-positioning';
+import { PositioningConfigurationFn } from '@fluentui/react-positioning';
+import { PositioningConfigurationFnOptions } from '@fluentui/react-positioning';
+import { PositioningConfigurationProvider } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningRect } from '@fluentui/react-positioning';
@@ -3303,6 +3306,12 @@ export { PortalProps }
 export { PortalState }
 
 export { PositioningBoundary }
+
+export { PositioningConfigurationFn }
+
+export { PositioningConfigurationFnOptions }
+
+export { PositioningConfigurationProvider }
 
 export { PositioningImperativeRef }
 

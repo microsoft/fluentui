@@ -129,6 +129,7 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
     chartSchema: Schema;
     componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
+    useFluentVizColorPalette?: boolean;
 }
 
 // @public
