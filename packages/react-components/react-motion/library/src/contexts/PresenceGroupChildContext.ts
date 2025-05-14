@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-/**
- * @internal
- */
 export type PresenceGroupChildContextValue = {
   appear: boolean;
   visible: boolean;
