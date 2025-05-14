@@ -1,4 +1,4 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { ctrlBooleanSelectionhintRaw } from './variables';
+import { ctrlBooleanSelectionHintRaw } from './variables';
 
-export const ctrlBooleanSelectionhint = `var(${ctrlBooleanSelectionhintRaw})`;
+export const ctrlBooleanSelectionHint = `var(${ctrlBooleanSelectionHintRaw})`;

@@ -1,6 +1,13 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { cornerCircularRaw, shadowFlyoutKeyRaw } from '../../control/variables';
 import {
+  foregroundCtrlNeutralPrimaryRestRaw,
+  foregroundCtrlNeutralPrimaryDisabledRaw,
+  cornerCircularRaw,
+  shadowFlyoutKeyRaw,
+} from '../../control/variables';
+import {
+  ctrlFabForegroundRestNewRaw,
+  ctrlFabForegroundDisabledNewRaw,
   ctrlFabBackgroundRestRaw,
   ctrlFabBackgroundHoverRaw,
   ctrlFabBackgroundPressedRaw,
@@ -15,6 +22,8 @@ import {
   ctrlFabShadowDisabledKeyRaw,
 } from './variables';
 
+export const ctrlFabForegroundRestNew = `var(${ctrlFabForegroundRestNewRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
+export const ctrlFabForegroundDisabledNew = `var(${ctrlFabForegroundDisabledNewRaw}, var(${foregroundCtrlNeutralPrimaryDisabledRaw}))`;
 export const ctrlFabBackgroundRest = `var(${ctrlFabBackgroundRestRaw})`;
 export const ctrlFabBackgroundHover = `var(${ctrlFabBackgroundHoverRaw})`;
 export const ctrlFabBackgroundPressed = `var(${ctrlFabBackgroundPressedRaw})`;

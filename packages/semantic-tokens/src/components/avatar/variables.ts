@@ -4,17 +4,17 @@ export const ctrlAvatarCornerItemRaw = '--smtc-ctrl-avatar-corner-item';
 export const ctrlAvatarBackgroundRaw = '--smtc-ctrl-avatar-background';
 export const ctrlAvatarForegroundRaw = '--smtc-ctrl-avatar-foreground';
 export const ctrlAvatarIconSizeRaw = '--smtc-ctrl-avatar-icon-size';
-export const ctrlAvatarPresencebadgeSizeRaw = '--smtc-ctrl-avatar-presencebadge-size';
-export const ctrlAvatarActiveringSizeRaw = '--smtc-ctrl-avatar-activering-size';
-export const ctrlAvatarPresencebadgePaddingBottomrightoffsetRaw =
-  '--smtc-ctrl-avatar-presencebadge-padding-bottomrightoffset';
+export const ctrlAvatarPresenceBadgeSizeRaw = '--smtc-ctrl-avatar-presence-badge-size';
+export const ctrlAvatarActiveRingSizeRaw = '--smtc-ctrl-avatar-active-ring-size';
+export const ctrlAvatarPresenceBadgePaddingBottomRightOffsetRaw =
+  '--smtc-ctrl-avatar-presence-badge-padding-bottom-right-offset';
 export const ctrlAvatarCornerGroupRaw = '--smtc-ctrl-avatar-corner-group';
-export const ctrlAvatarActiveringStrokewidthRaw = '--smtc-ctrl-avatar-activering-strokewidth';
-export const ctrlAvatarPresencebadgeStrokewidthRaw = '--smtc-ctrl-avatar-presencebadge-strokewidth';
-export const ctrlAvatarTextFontsizeRaw = '--smtc-ctrl-avatar-text-fontsize';
-export const ctrlAvatarTextLineheightRaw = '--smtc-ctrl-avatar-text-lineheight';
-export const ctrlAvatarTextPaddingTopoffsetRaw = '--smtc-ctrl-avatar-text-padding-topoffset';
-export const ctrlAvatarActiveringStrokeRaw = '--smtc-ctrl-avatar-activering-stroke';
-export const ctrlAvatarShowcutoutRaw = '--smtc-ctrl-avatar-showcutout';
-export const ctrlAvatarPresencebadgeBackgroundBehindbadgeRaw =
-  '--smtc-ctrl-avatar-presencebadge-background-behindbadge';
+export const ctrlAvatarActiveRingStrokeWidthRaw = '--smtc-ctrl-avatar-active-ring-stroke-width';
+export const ctrlAvatarPresenceBadgeStrokeWidthRaw = '--smtc-ctrl-avatar-presence-badge-stroke-width';
+export const ctrlAvatarTextFontSizeRaw = '--smtc-ctrl-avatar-text-font-size';
+export const ctrlAvatarTextLineHeightRaw = '--smtc-ctrl-avatar-text-line-height';
+export const ctrlAvatarTextPaddingTopOffsetRaw = '--smtc-ctrl-avatar-text-padding-top-offset';
+export const ctrlAvatarActiveRingStrokeRaw = '--smtc-ctrl-avatar-active-ring-stroke';
+export const ctrlAvatarShowCutoutRaw = '--smtc-ctrl-avatar-show-cutout';
+export const ctrlAvatarPresenceBadgeBackgroundBehindBadgeRaw =
+  '--smtc-ctrl-avatar-presence-badge-background-behind-badge';

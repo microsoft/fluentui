@@ -1,14 +1,14 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
-import { strokewidthDefaultRaw, backgroundCtrlBrandRestRaw } from '../../control/variables';
+import { strokeWidthDefaultRaw, backgroundCtrlBrandRestRaw } from '../../control/variables';
 import { colorStrokeFocus2 } from '../../legacy/tokens';
 import {
-  ctrlFocusInnerStrokewidthRaw,
+  ctrlFocusInnerStrokeWidthRaw,
   ctrlFocusInnerStrokeRaw,
-  ctrlFocusOuterStrokewidthRaw,
+  ctrlFocusOuterStrokeWidthRaw,
   ctrlFocusOuterStrokeRaw,
 } from './variables';
 
-export const ctrlFocusInnerStrokewidth = `var(${ctrlFocusInnerStrokewidthRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlFocusInnerStrokeWidth = `var(${ctrlFocusInnerStrokeWidthRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlFocusInnerStroke = `var(${ctrlFocusInnerStrokeRaw})`;
-export const ctrlFocusOuterStrokewidth = `var(${ctrlFocusOuterStrokewidthRaw})`;
+export const ctrlFocusOuterStrokeWidth = `var(${ctrlFocusOuterStrokeWidthRaw})`;
 export const ctrlFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorStrokeFocus2}))`;

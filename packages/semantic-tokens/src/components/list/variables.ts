@@ -1,6 +1,6 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 export const ctrlListPillWidthRaw = '--smtc-ctrl-list-pill-width';
-export const ctrlListPillFullwidthRaw = '--smtc-ctrl-list-pill-fullwidth';
+export const ctrlListPillFullWidthRaw = '--smtc-ctrl-list-pill-full-width';
 export const ctrlListPillStretchPaddingDefaultRaw = '--smtc-ctrl-list-pill-stretch-padding-default';
 export const ctrlListPillStretchPaddingHintRaw = '--smtc-ctrl-list-pill-stretch-padding-hint';
 export const ctrlListPillLengthRestRaw = '--smtc-ctrl-list-pill-length-rest';
@@ -14,6 +14,10 @@ export const ctrlListIndentLevel1Raw = '--smtc-ctrl-list-indent-level1';
 export const ctrlListIndentLevel2Raw = '--smtc-ctrl-list-indent-level2';
 export const ctrlListIndentLevel3Raw = '--smtc-ctrl-list-indent-level3';
 export const ctrlListBackgroundSelectedRestRaw = '--smtc-ctrl-list-background-selected-rest';
+export const ctrlListForegroundSelectedRestRaw = '--smtc-ctrl-list-foreground-selected-rest';
+export const ctrlListForegroundSelectedHoverRaw = '--smtc-ctrl-list-foreground-selected-hover';
+export const ctrlListForegroundSelectedPressedRaw = '--smtc-ctrl-list-foreground-selected-pressed';
+export const ctrlListForegroundSelectedDisabledRaw = '--smtc-ctrl-list-foreground-selected-disabled';
 export const ctrlListBackgroundSelectedHoverRaw = '--smtc-ctrl-list-background-selected-hover';
 export const ctrlListBackgroundSelectedPressedRaw = '--smtc-ctrl-list-background-selected-pressed';
 export const ctrlListBackgroundSelectedDisabledRaw = '--smtc-ctrl-list-background-selected-disabled';
@@ -45,6 +49,6 @@ export const ctrlListLgCornerPressedRaw = '--smtc-ctrl-list-lg-corner-pressed';
 export const ctrlListLgIndentLevel1Raw = '--smtc-ctrl-list-lg-indent-level1';
 export const ctrlListLgIndentLevel2Raw = '--smtc-ctrl-list-lg-indent-level2';
 export const ctrlListLgIndentLevel3Raw = '--smtc-ctrl-list-lg-indent-level3';
-export const ctrlListSplitDividerShowdividerRaw = '--smtc-ctrl-list-split-divider-showdivider';
-export const ctrlListShadowSelectedKeyRaw = '--smtc-ctrl-list-shadow-selected-key';
+export const ctrlListSplitDividerShowDividerRaw = '--smtc-ctrl-list-split-divider-show-divider';
+export const ctrlListShadowSelectedKeyRaw = '--smtc-ctrl-list-shadow-selected-key-y';
 export const ctrlListShadowSelectedAmbientRaw = '--smtc-ctrl-list-shadow-selected-ambient';
