@@ -1062,6 +1062,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
 
   return {
     legends,
-    hideLegend: layout?.showlegend === false ? true : hideLegends,
+    hideLegend:
+      layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
   };
 };
