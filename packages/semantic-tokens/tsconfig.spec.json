@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "outDir": "dist",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]
 }
