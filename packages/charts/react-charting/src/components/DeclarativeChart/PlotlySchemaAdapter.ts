@@ -62,7 +62,6 @@ import {
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { color as d3Color } from 'd3-color';
-import { get } from 'http';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
