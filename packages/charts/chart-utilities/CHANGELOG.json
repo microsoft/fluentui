@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 07:21:03 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.8",
+      "version": "1.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "24fac775a857b02d92e1517cac47201ad18542e1",
+            "comment": "fix(chart-utilities): Consider year as categorical instead of numerical continuous"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "f71c8aa217455b6a3197f686d2b112d4f65ed3fe",
+            "comment": "fix(chart-utilities) Make unsupported type check stricter"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 May 2025 07:20:46 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.7",
       "version": "1.1.7",

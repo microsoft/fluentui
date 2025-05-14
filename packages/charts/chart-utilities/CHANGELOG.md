@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Tue, 13 May 2025 07:20:46 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 07:21:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.8)
+
+Wed, 14 May 2025 07:21:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.7..@fluentui/chart-utilities_v1.1.8)
+
+### Patches
+
+- fix(chart-utilities): Consider year as categorical instead of numerical continuous ([PR #34430](https://github.com/microsoft/fluentui/pull/34430) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities) Make unsupported type check stricter ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.7)
 

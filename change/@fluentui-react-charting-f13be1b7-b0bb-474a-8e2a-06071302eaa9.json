@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: enable interaction with line points without corresponding bars in VSBC",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
