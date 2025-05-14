@@ -623,7 +623,7 @@ export const cornerWindowDefault = "var(--smtc-corner-window-default)";
 export const cornerWindowDefaultRaw = "--smtc-corner-window-default";
 
 // @public (undocumented)
-export const cornerZero = "var(--smtc-corner-zero)";
+export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 
 // @public (undocumented)
 export const cornerZeroRaw = "--smtc-corner-zero";
@@ -2171,43 +2171,43 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public (undocumented)
-export const ctrlProgressBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty)";
+export const ctrlProgressBackgroundEmpty = "var(--smtc-ctrl-progress-background-empty, var(--colorNeutralBackground6))";
 
 // @public (undocumented)
 export const ctrlProgressBackgroundEmptyRaw = "--smtc-ctrl-progress-background-empty";
 
 // @public (undocumented)
-export const ctrlProgressBackgroundFilled = "var(--smtc-ctrl-progress-background-filled, var(--smtc-background-ctrl-brand-rest))";
+export const ctrlProgressBackgroundFilled = "var(--smtc-ctrl-progress-background-filled, var(--smtc-background-ctrl-brand-rest, var(--colorCompoundBrandBackground)))";
 
 // @public (undocumented)
 export const ctrlProgressBackgroundFilledRaw = "--smtc-ctrl-progress-background-filled";
 
 // @public (undocumented)
-export const ctrlProgressCorner = "var(--smtc-ctrl-progress-corner, var(--smtc-corner-circular))";
+export const ctrlProgressCorner = "var(--smtc-ctrl-progress-corner, var(--smtc-corner-circular, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlProgressCornerRaw = "--smtc-ctrl-progress-corner";
 
 // @public (undocumented)
-export const ctrlProgressHeightEmpty = "var(--smtc-ctrl-progress-height-empty, var(--smtc-ctrl-progress-height-filled))";
+export const ctrlProgressHeightEmpty = "var(--smtc-ctrl-progress-height-empty, var(--smtc-ctrl-progress-height-filled, 2px))";
 
 // @public (undocumented)
 export const ctrlProgressHeightEmptyRaw = "--smtc-ctrl-progress-height-empty";
 
 // @public (undocumented)
-export const ctrlProgressHeightFilled = "var(--smtc-ctrl-progress-height-filled)";
+export const ctrlProgressHeightFilled = "var(--smtc-ctrl-progress-height-filled, 100%)";
 
 // @public (undocumented)
 export const ctrlProgressHeightFilledRaw = "--smtc-ctrl-progress-height-filled";
 
 // @public (undocumented)
-export const ctrlProgressLgHeightEmpty = "var(--smtc-ctrl-progress-lg-height-empty, var(--smtc-ctrl-progress-lg-height-filled))";
+export const ctrlProgressLgHeightEmpty = "var(--smtc-ctrl-progress-lg-height-empty, var(--smtc-ctrl-progress-lg-height-filled, 4px))";
 
 // @public (undocumented)
 export const ctrlProgressLgHeightEmptyRaw = "--smtc-ctrl-progress-lg-height-empty";
 
 // @public (undocumented)
-export const ctrlProgressLgHeightFilled = "var(--smtc-ctrl-progress-lg-height-filled)";
+export const ctrlProgressLgHeightFilled = "var(--smtc-ctrl-progress-lg-height-filled, 100%)";
 
 // @public (undocumented)
 export const ctrlProgressLgHeightFilledRaw = "--smtc-ctrl-progress-lg-height-filled";
@@ -3773,7 +3773,7 @@ export const statusBrandTintStroke = "var(--smtc-status-brand-tint-stroke)";
 export const statusBrandTintStrokeRaw = "--smtc-status-brand-tint-stroke";
 
 // @public (undocumented)
-export const statusDangerBackground = "var(--smtc-status-danger-background)";
+export const statusDangerBackground = "var(--smtc-status-danger-background, var(--colorPaletteRedBackground3))";
 
 // @public (undocumented)
 export const statusDangerBackgroundRaw = "--smtc-status-danger-background";
@@ -3923,7 +3923,7 @@ export const statusOofForeground = "var(--smtc-status-oof-foreground)";
 export const statusOofForegroundRaw = "--smtc-status-oof-foreground";
 
 // @public (undocumented)
-export const statusSuccessBackground = "var(--smtc-status-success-background)";
+export const statusSuccessBackground = "var(--smtc-status-success-background, var(--colorPaletteGreenBackground3))";
 
 // @public (undocumented)
 export const statusSuccessBackgroundRaw = "--smtc-status-success-background";
@@ -3959,7 +3959,7 @@ export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke)";
 export const statusSuccessTintStrokeRaw = "--smtc-status-success-tint-stroke";
 
 // @public (undocumented)
-export const statusWarningBackground = "var(--smtc-status-warning-background)";
+export const statusWarningBackground = "var(--smtc-status-warning-background, var(--colorPaletteDarkOrangeBackground3))";
 
 // @public (undocumented)
 export const statusWarningBackgroundRaw = "--smtc-status-warning-background";

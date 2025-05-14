@@ -4,7 +4,11 @@ import {
   fontFamilyBase,
   fontWeightRegular,
   strokeWidthThin,
+  borderRadiusNone,
   colorNeutralForegroundDisabled,
+  colorPaletteRedBackground3,
+  colorPaletteDarkOrangeBackground3,
+  colorPaletteGreenBackground3,
 } from '../legacy/tokens';
 import {
   textGlobalDisplay1FontSizeRaw,
@@ -336,7 +340,7 @@ export const backgroundCtrlSubtleHover = `var(${backgroundCtrlSubtleHoverRaw})`;
 export const backgroundCtrlSubtlePressed = `var(${backgroundCtrlSubtlePressedRaw})`;
 export const backgroundFlyoutLumBlend = `var(${backgroundFlyoutLumBlendRaw})`;
 export const backgroundFlyoutColorBlend = `var(${backgroundFlyoutColorBlendRaw})`;
-export const cornerZero = `var(${cornerZeroRaw})`;
+export const cornerZero = `var(${cornerZeroRaw}, ${borderRadiusNone})`;
 export const cornerBezel = `var(${cornerBezelRaw})`;
 export const cornerWindowDefault = `var(${cornerWindowDefaultRaw})`;
 export const cornerFlyoutRest = `var(${cornerFlyoutRestRaw})`;
@@ -362,15 +366,15 @@ export const iconThemeCtrlDefaultRest = `var(${iconThemeCtrlDefaultRestRaw})`;
 export const iconThemeCtrlDefaultSelected = `var(${iconThemeCtrlDefaultSelectedRaw})`;
 export const statusBrandTintBackground = `var(${statusBrandTintBackgroundRaw})`;
 export const statusBrandTintStroke = `var(${statusBrandTintStrokeRaw})`;
-export const statusDangerBackground = `var(${statusDangerBackgroundRaw})`;
+export const statusDangerBackground = `var(${statusDangerBackgroundRaw}, ${colorPaletteRedBackground3})`;
 export const statusDangerTintBackground = `var(${statusDangerTintBackgroundRaw})`;
 export const statusDangerTintStroke = `var(${statusDangerTintStrokeRaw})`;
 export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw})`;
-export const statusWarningBackground = `var(${statusWarningBackgroundRaw})`;
+export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorPaletteDarkOrangeBackground3})`;
 export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw})`;
 export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw})`;
 export const statusWarningTintForeground = `var(${statusWarningTintForegroundRaw})`;
-export const statusSuccessBackground = `var(${statusSuccessBackgroundRaw})`;
+export const statusSuccessBackground = `var(${statusSuccessBackgroundRaw}, ${colorPaletteGreenBackground3})`;
 export const statusSuccessTintBackground = `var(${statusSuccessTintBackgroundRaw})`;
 export const statusSuccessTintStroke = `var(${statusSuccessTintStrokeRaw})`;
 export const statusSuccessTintForeground = `var(${statusSuccessTintForegroundRaw})`;
