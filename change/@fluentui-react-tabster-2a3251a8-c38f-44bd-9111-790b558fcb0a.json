@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Apply focus visible attribute on navigation state change",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

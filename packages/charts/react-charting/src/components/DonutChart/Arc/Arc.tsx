@@ -5,7 +5,7 @@ import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyleProps, IArcStyles } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix } from '../../../utilities/index';
+import { formatValueLimitWidth } from '../../../utilities/index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -160,7 +160,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
       >
         {showLabelsInPercent
           ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-          : formatValueWithSIPrefix(arcValue)}
+          : formatValueLimitWidth(arcValue)}
       </text>
     );
   };

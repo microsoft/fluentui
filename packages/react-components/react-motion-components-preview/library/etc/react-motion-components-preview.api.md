@@ -6,7 +6,6 @@
 
 import type { MotionParam } from '@fluentui/react-motion';
 import { PresenceComponent } from '@fluentui/react-motion';
-import type { PresenceMotion } from '@fluentui/react-motion';
 import type { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
@@ -34,28 +33,22 @@ export const createCollapseDelayedPresence: PresenceMotionFnCreator<CollapseDela
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantParams, CollapseRuntimeParams>;
 
 // @public
-export const createFadePresence: PresenceMotionCreator<FadeVariantParams>;
+export const Fade: PresenceComponent<FadeVariantParams>;
+
+// @public (undocumented)
+export const FadeRelaxed: PresenceComponent<FadeVariantParams>;
+
+// @public (undocumented)
+export const FadeSnappy: PresenceComponent<FadeVariantParams>;
 
 // @public
-export const createScalePresence: PresenceMotionFnCreator<ScaleVariantParams_unstable, ScaleRuntimeParams_unstable>;
-
-// @public
-export const Fade: PresenceComponent<    {}>;
+export const Scale: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
-export const FadeRelaxed: PresenceComponent<    {}>;
+export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<    {}>;
-
-// @public
-export const Scale: PresenceComponent<ScaleRuntimeParams_unstable>;
-
-// @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<ScaleRuntimeParams_unstable>;
-
-// @public (undocumented)
-export const ScaleSnappy: PresenceComponent<ScaleRuntimeParams_unstable>;
+export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
 
 // (No @packageDocumentation comment for this package)
 

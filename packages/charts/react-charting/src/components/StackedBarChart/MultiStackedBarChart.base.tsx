@@ -14,12 +14,7 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import {
-  ChartHoverCard,
-  formatValueWithSIPrefix,
-  getAccessibleDataObject,
-  getNextGradient,
-} from '../../utilities/index';
+import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -364,7 +359,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {formatValueWithSIPrefix(barLabel)}
+            {formatValueLimitWidth(barLabel)}
           </text>,
         );
       }
