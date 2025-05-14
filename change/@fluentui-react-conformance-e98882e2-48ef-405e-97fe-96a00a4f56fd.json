@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add react 18 support",
+  "packageName": "@fluentui/react-conformance",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
