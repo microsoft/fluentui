@@ -1,7 +1,7 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 import {
   foregroundCtrlNeutralPrimaryRestRaw,
-  strokewidthDefaultRaw,
+  strokeWidthDefaultRaw,
   foregroundCtrlBrandRestRaw,
   foregroundCtrlBrandHoverRaw,
   foregroundCtrlBrandPressedRaw,
@@ -16,32 +16,32 @@ import {
 } from '../../legacy/tokens';
 import {
   ctrlLinkForegroundNeutralRestRaw,
-  ctrlLinkInlineStrokewidthRestRaw,
-  ctrlLinkInlineStrokewidthHoverRaw,
+  ctrlLinkInlineStrokeWidthRestRaw,
+  ctrlLinkInlineStrokeWidthHoverRaw,
   ctrlLinkInlineUnderlineDashedRaw,
   ctrlLinkForegroundNeutralHoverRaw,
   ctrlLinkForegroundNeutralPressedRaw,
   ctrlLinkForegroundBrandRestRaw,
   ctrlLinkForegroundBrandHoverRaw,
   ctrlLinkForegroundBrandPressedRaw,
-  ctrlLinkOnpageStrokewidthRestRaw,
-  ctrlLinkOnpageStrokewidthHoverRaw,
-  ctrlLinkOnpageUnderlineDashedRaw,
-  ctrlLinkInlineShowunderlineatrestRaw,
-  ctrlLinkOnpageShowunderlineatrestRaw,
+  ctrlLinkOnPageStrokeWidthRestRaw,
+  ctrlLinkOnPageStrokeWidthHoverRaw,
+  ctrlLinkOnPageUnderlineDashedRaw,
+  ctrlLinkInlineShowUnderlineAtRestRaw,
+  ctrlLinkOnPageShowUnderlineAtRestRaw,
 } from './variables';
 
 export const ctrlLinkForegroundNeutralRest = `var(${ctrlLinkForegroundNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
-export const ctrlLinkInlineStrokewidthRest = `var(${ctrlLinkInlineStrokewidthRestRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlLinkInlineStrokewidthHover = `var(${ctrlLinkInlineStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlLinkInlineStrokeWidthRest = `var(${ctrlLinkInlineStrokeWidthRestRaw}, var(${strokeWidthDefaultRaw}))`;
+export const ctrlLinkInlineStrokeWidthHover = `var(${ctrlLinkInlineStrokeWidthHoverRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlLinkInlineUnderlineDashed = `var(${ctrlLinkInlineUnderlineDashedRaw})`;
 export const ctrlLinkForegroundNeutralHover = `var(${ctrlLinkForegroundNeutralHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Hover}))`;
 export const ctrlLinkForegroundNeutralPressed = `var(${ctrlLinkForegroundNeutralPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Pressed}))`;
 export const ctrlLinkForegroundBrandRest = `var(${ctrlLinkForegroundBrandRestRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForegroundLink}))`;
 export const ctrlLinkForegroundBrandHover = `var(${ctrlLinkForegroundBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}, ${colorBrandForegroundLinkHover}))`;
 export const ctrlLinkForegroundBrandPressed = `var(${ctrlLinkForegroundBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}, ${colorBrandForegroundLinkPressed}))`;
-export const ctrlLinkOnpageStrokewidthRest = `var(${ctrlLinkOnpageStrokewidthRestRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlLinkOnpageStrokewidthHover = `var(${ctrlLinkOnpageStrokewidthHoverRaw}, var(${strokewidthDefaultRaw}))`;
-export const ctrlLinkOnpageUnderlineDashed = `var(${ctrlLinkOnpageUnderlineDashedRaw})`;
-export const ctrlLinkInlineShowunderlineatrest = `var(${ctrlLinkInlineShowunderlineatrestRaw})`;
-export const ctrlLinkOnpageShowunderlineatrest = `var(${ctrlLinkOnpageShowunderlineatrestRaw})`;
+export const ctrlLinkOnPageStrokeWidthRest = `var(${ctrlLinkOnPageStrokeWidthRestRaw}, var(${strokeWidthDefaultRaw}))`;
+export const ctrlLinkOnPageStrokeWidthHover = `var(${ctrlLinkOnPageStrokeWidthHoverRaw}, var(${strokeWidthDefaultRaw}))`;
+export const ctrlLinkOnPageUnderlineDashed = `var(${ctrlLinkOnPageUnderlineDashedRaw})`;
+export const ctrlLinkInlineShowUnderlineAtRest = `var(${ctrlLinkInlineShowUnderlineAtRestRaw})`;
+export const ctrlLinkOnPageShowUnderlineAtRest = `var(${ctrlLinkOnPageShowUnderlineAtRestRaw})`;

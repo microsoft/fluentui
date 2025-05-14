@@ -6,9 +6,9 @@ import {
   backgroundCtrlBrandPressedRaw,
   backgroundCtrlBrandDisabledRaw,
   sizeCtrlIconRaw,
-  foregroundCtrlOnbrandRestRaw,
-  foregroundCtrlOnbrandDisabledRaw,
-  strokewidthDefaultRaw,
+  foregroundCtrlOnBrandRestRaw,
+  foregroundCtrlOnBrandDisabledRaw,
+  strokeWidthDefaultRaw,
   sizeCtrlSmIconRaw,
   sizeCtrlLgIconRaw,
 } from '../../control/variables';
@@ -37,14 +37,14 @@ import {
   ctrlSliderThumbBackgroundHoverRaw,
   ctrlSliderThumbBackgroundPressedRaw,
   ctrlSliderThumbBackgroundDisabledRaw,
-  ctrlSliderThumbInnerStrokewidthRestRaw,
-  ctrlSliderThumbInnerStrokewidthHoverRaw,
-  ctrlSliderThumbInnerStrokewidthPressedRaw,
+  ctrlSliderThumbInnerStrokeWidthRestRaw,
+  ctrlSliderThumbInnerStrokeWidthHoverRaw,
+  ctrlSliderThumbInnerStrokeWidthPressedRaw,
   ctrlSliderThumbInnerStrokeRestRaw,
   ctrlSliderThumbInnerStrokeHoverRaw,
   ctrlSliderThumbInnerStrokePressedRaw,
   ctrlSliderThumbInnerStrokeDisabledRaw,
-  ctrlSliderThumbOuterStrokewidthRaw,
+  ctrlSliderThumbOuterStrokeWidthRaw,
   ctrlSliderThumbOuterStrokeRestRaw,
   ctrlSliderThumbOuterStrokeHoverRaw,
   ctrlSliderThumbOuterStrokePressedRaw,
@@ -73,18 +73,18 @@ export const ctrlSliderThumbCorner = `var(${ctrlSliderThumbCornerRaw}, var(${cor
 export const ctrlSliderThumbSizeRest = `var(${ctrlSliderThumbSizeRestRaw}, var(${sizeCtrlIconRaw}))`;
 export const ctrlSliderThumbSizeHover = `var(${ctrlSliderThumbSizeHoverRaw}, var(${sizeCtrlIconRaw}))`;
 export const ctrlSliderThumbSizePressed = `var(${ctrlSliderThumbSizePressedRaw}, var(${sizeCtrlIconRaw}))`;
-export const ctrlSliderThumbBackgroundRest = `var(${ctrlSliderThumbBackgroundRestRaw}, var(${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlSliderThumbBackgroundHover = `var(${ctrlSliderThumbBackgroundHoverRaw}, var(${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlSliderThumbBackgroundPressed = `var(${ctrlSliderThumbBackgroundPressedRaw}, var(${foregroundCtrlOnbrandRestRaw}))`;
-export const ctrlSliderThumbBackgroundDisabled = `var(${ctrlSliderThumbBackgroundDisabledRaw}, var(${foregroundCtrlOnbrandDisabledRaw}))`;
-export const ctrlSliderThumbInnerStrokewidthRest = `var(${ctrlSliderThumbInnerStrokewidthRestRaw})`;
-export const ctrlSliderThumbInnerStrokewidthHover = `var(${ctrlSliderThumbInnerStrokewidthHoverRaw}, var(${ctrlSliderThumbInnerStrokewidthRestRaw}))`;
-export const ctrlSliderThumbInnerStrokewidthPressed = `var(${ctrlSliderThumbInnerStrokewidthPressedRaw}, var(${ctrlSliderThumbInnerStrokewidthRestRaw}))`;
+export const ctrlSliderThumbBackgroundRest = `var(${ctrlSliderThumbBackgroundRestRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const ctrlSliderThumbBackgroundHover = `var(${ctrlSliderThumbBackgroundHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const ctrlSliderThumbBackgroundPressed = `var(${ctrlSliderThumbBackgroundPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
+export const ctrlSliderThumbBackgroundDisabled = `var(${ctrlSliderThumbBackgroundDisabledRaw}, var(${foregroundCtrlOnBrandDisabledRaw}))`;
+export const ctrlSliderThumbInnerStrokeWidthRest = `var(${ctrlSliderThumbInnerStrokeWidthRestRaw})`;
+export const ctrlSliderThumbInnerStrokeWidthHover = `var(${ctrlSliderThumbInnerStrokeWidthHoverRaw}, var(${ctrlSliderThumbInnerStrokeWidthRestRaw}))`;
+export const ctrlSliderThumbInnerStrokeWidthPressed = `var(${ctrlSliderThumbInnerStrokeWidthPressedRaw}, var(${ctrlSliderThumbInnerStrokeWidthRestRaw}))`;
 export const ctrlSliderThumbInnerStrokeRest = `var(${ctrlSliderThumbInnerStrokeRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlSliderThumbInnerStrokeHover = `var(${ctrlSliderThumbInnerStrokeHoverRaw}, var(${backgroundCtrlBrandHoverRaw}))`;
 export const ctrlSliderThumbInnerStrokePressed = `var(${ctrlSliderThumbInnerStrokePressedRaw}, var(${backgroundCtrlBrandPressedRaw}))`;
 export const ctrlSliderThumbInnerStrokeDisabled = `var(${ctrlSliderThumbInnerStrokeDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
-export const ctrlSliderThumbOuterStrokewidth = `var(${ctrlSliderThumbOuterStrokewidthRaw}, var(${strokewidthDefaultRaw}))`;
+export const ctrlSliderThumbOuterStrokeWidth = `var(${ctrlSliderThumbOuterStrokeWidthRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlSliderThumbOuterStrokeRest = `var(${ctrlSliderThumbOuterStrokeRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlSliderThumbOuterStrokeHover = `var(${ctrlSliderThumbOuterStrokeHoverRaw}, var(${backgroundCtrlBrandHoverRaw}))`;
 export const ctrlSliderThumbOuterStrokePressed = `var(${ctrlSliderThumbOuterStrokePressedRaw}, var(${backgroundCtrlBrandPressedRaw}))`;

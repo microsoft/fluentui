@@ -8,5 +8,13 @@
         "patterns": ["react", "react-dom"]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["./src/fluentOverrides.ts"],
+      "rules": {
+        "sort-keys": ["error"]
+      }
+    }
+  ]
 }

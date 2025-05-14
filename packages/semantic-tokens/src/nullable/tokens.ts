@@ -4,42 +4,42 @@ import {
   textStyleAiHeaderCaseRaw,
   textStyleArticleHeaderCaseRaw,
   textStyleCodeHeaderCaseRaw,
-  textStyleDatavizHeaderCaseRaw,
+  textStyleDataVizHeaderCaseRaw,
   textStyleQuoteHeaderCaseRaw,
   strokeLayerRaw,
   strokeImageRaw,
   strokeFlyoutRaw,
-  strokeCtrlOnbrandRestRaw,
-  strokeCtrlOnbrandHoverRaw,
-  strokeCtrlOnbrandPressedRaw,
-  strokeCtrlOnbrandDisabledRaw,
-  strokeCtrlOnneutralRestRaw,
-  strokeCtrlOnneutralHoverRaw,
-  strokeCtrlOnneutralPressedRaw,
-  strokeCtrlOnneutralDisabledRaw,
-  strokeCtrlOnsubtleRestRaw,
-  strokeCtrlOnsubtleHoverRaw,
-  strokeCtrlOnsubtlePressedRaw,
-  strokeCtrlOnsubtleDisabledRaw,
-  strokeCtrlOnsubtleHoversplitRaw,
-  strokeCtrlDividerOnsubtleRaw,
-  strokeCtrlDividerOnsubtleDisabledRaw,
+  strokeCtrlOnBrandRestRaw,
+  strokeCtrlOnBrandHoverRaw,
+  strokeCtrlOnBrandPressedRaw,
+  strokeCtrlOnBrandDisabledRaw,
+  strokeCtrlOnNeutralRestRaw,
+  strokeCtrlOnNeutralHoverRaw,
+  strokeCtrlOnNeutralPressedRaw,
+  strokeCtrlOnNeutralDisabledRaw,
+  strokeCtrlOnSubtleRestRaw,
+  strokeCtrlOnSubtleHoverRaw,
+  strokeCtrlOnSubtlePressedRaw,
+  strokeCtrlOnSubtleDisabledRaw,
+  strokeCtrlOnSubtleHoverSplitRaw,
+  strokeCtrlDividerOnSubtleRaw,
+  strokeCtrlDividerOnSubtleDisabledRaw,
   strokeCardSelectedRaw,
-  strokeCardOnprimaryRestRaw,
-  strokeCardOnprimaryHoverRaw,
-  strokeCardOnprimaryPressedRaw,
-  strokeCardOnprimaryDisabledRaw,
-  strokeCardOnsecondaryRestRaw,
-  strokeCardOnsecondaryHoverRaw,
-  strokeCardOnsecondaryPressedRaw,
-  strokeCardOnsecondaryDisabledRaw,
+  strokeCardOnPrimaryRestRaw,
+  strokeCardOnPrimaryHoverRaw,
+  strokeCardOnPrimaryPressedRaw,
+  strokeCardOnPrimaryDisabledRaw,
+  strokeCardOnSecondaryRestRaw,
+  strokeCardOnSecondaryHoverRaw,
+  strokeCardOnSecondaryPressedRaw,
+  strokeCardOnSecondaryDisabledRaw,
   backgroundCtrlOutlineRestRaw,
   backgroundCtrlOutlineHoverRaw,
   backgroundCtrlOutlinePressedRaw,
   backgroundCtrlOutlineDisabledRaw,
   backgroundCtrlSubtleRestRaw,
   backgroundCtrlSubtleDisabledRaw,
-  backgroundCtrlSubtleHoversplitRaw,
+  backgroundCtrlSubtleHoverSplitRaw,
   foregroundCtrlHintDefaultRaw,
   shadowCardRestKeyRaw,
   shadowCardHoverKeyRaw,
@@ -54,42 +54,42 @@ export const textStyleDefaultHeaderCase = `var(${textStyleDefaultHeaderCaseRaw},
 export const textStyleAiHeaderCase = `var(${textStyleAiHeaderCaseRaw}, unset)`;
 export const textStyleArticleHeaderCase = `var(${textStyleArticleHeaderCaseRaw}, unset)`;
 export const textStyleCodeHeaderCase = `var(${textStyleCodeHeaderCaseRaw}, unset)`;
-export const textStyleDatavizHeaderCase = `var(${textStyleDatavizHeaderCaseRaw}, unset)`;
+export const textStyleDataVizHeaderCase = `var(${textStyleDataVizHeaderCaseRaw}, unset)`;
 export const textStyleQuoteHeaderCase = `var(${textStyleQuoteHeaderCaseRaw}, unset)`;
 export const strokeLayer = `var(${strokeLayerRaw}, unset)`;
 export const strokeImage = `var(${strokeImageRaw}, unset)`;
 export const strokeFlyout = `var(${strokeFlyoutRaw}, unset)`;
-export const strokeCtrlOnbrandRest = `var(${strokeCtrlOnbrandRestRaw}, unset)`;
-export const strokeCtrlOnbrandHover = `var(${strokeCtrlOnbrandHoverRaw}, unset)`;
-export const strokeCtrlOnbrandPressed = `var(${strokeCtrlOnbrandPressedRaw}, unset)`;
-export const strokeCtrlOnbrandDisabled = `var(${strokeCtrlOnbrandDisabledRaw}, unset)`;
-export const strokeCtrlOnneutralRest = `var(${strokeCtrlOnneutralRestRaw}, unset)`;
-export const strokeCtrlOnneutralHover = `var(${strokeCtrlOnneutralHoverRaw}, unset)`;
-export const strokeCtrlOnneutralPressed = `var(${strokeCtrlOnneutralPressedRaw}, unset)`;
-export const strokeCtrlOnneutralDisabled = `var(${strokeCtrlOnneutralDisabledRaw}, unset)`;
-export const strokeCtrlOnsubtleRest = `var(${strokeCtrlOnsubtleRestRaw}, unset)`;
-export const strokeCtrlOnsubtleHover = `var(${strokeCtrlOnsubtleHoverRaw}, unset)`;
-export const strokeCtrlOnsubtlePressed = `var(${strokeCtrlOnsubtlePressedRaw}, unset)`;
-export const strokeCtrlOnsubtleDisabled = `var(${strokeCtrlOnsubtleDisabledRaw}, unset)`;
-export const strokeCtrlOnsubtleHoversplit = `var(${strokeCtrlOnsubtleHoversplitRaw}, unset)`;
-export const strokeCtrlDividerOnsubtle = `var(${strokeCtrlDividerOnsubtleRaw}, unset)`;
-export const strokeCtrlDividerOnsubtleDisabled = `var(${strokeCtrlDividerOnsubtleDisabledRaw}, unset)`;
+export const strokeCtrlOnBrandRest = `var(${strokeCtrlOnBrandRestRaw}, unset)`;
+export const strokeCtrlOnBrandHover = `var(${strokeCtrlOnBrandHoverRaw}, unset)`;
+export const strokeCtrlOnBrandPressed = `var(${strokeCtrlOnBrandPressedRaw}, unset)`;
+export const strokeCtrlOnBrandDisabled = `var(${strokeCtrlOnBrandDisabledRaw}, unset)`;
+export const strokeCtrlOnNeutralRest = `var(${strokeCtrlOnNeutralRestRaw}, unset)`;
+export const strokeCtrlOnNeutralHover = `var(${strokeCtrlOnNeutralHoverRaw}, unset)`;
+export const strokeCtrlOnNeutralPressed = `var(${strokeCtrlOnNeutralPressedRaw}, unset)`;
+export const strokeCtrlOnNeutralDisabled = `var(${strokeCtrlOnNeutralDisabledRaw}, unset)`;
+export const strokeCtrlOnSubtleRest = `var(${strokeCtrlOnSubtleRestRaw}, unset)`;
+export const strokeCtrlOnSubtleHover = `var(${strokeCtrlOnSubtleHoverRaw}, unset)`;
+export const strokeCtrlOnSubtlePressed = `var(${strokeCtrlOnSubtlePressedRaw}, unset)`;
+export const strokeCtrlOnSubtleDisabled = `var(${strokeCtrlOnSubtleDisabledRaw}, unset)`;
+export const strokeCtrlOnSubtleHoverSplit = `var(${strokeCtrlOnSubtleHoverSplitRaw}, unset)`;
+export const strokeCtrlDividerOnSubtle = `var(${strokeCtrlDividerOnSubtleRaw}, unset)`;
+export const strokeCtrlDividerOnSubtleDisabled = `var(${strokeCtrlDividerOnSubtleDisabledRaw}, unset)`;
 export const strokeCardSelected = `var(${strokeCardSelectedRaw}, unset)`;
-export const strokeCardOnprimaryRest = `var(${strokeCardOnprimaryRestRaw}, unset)`;
-export const strokeCardOnprimaryHover = `var(${strokeCardOnprimaryHoverRaw}, unset)`;
-export const strokeCardOnprimaryPressed = `var(${strokeCardOnprimaryPressedRaw}, unset)`;
-export const strokeCardOnprimaryDisabled = `var(${strokeCardOnprimaryDisabledRaw}, unset)`;
-export const strokeCardOnsecondaryRest = `var(${strokeCardOnsecondaryRestRaw}, unset)`;
-export const strokeCardOnsecondaryHover = `var(${strokeCardOnsecondaryHoverRaw}, unset)`;
-export const strokeCardOnsecondaryPressed = `var(${strokeCardOnsecondaryPressedRaw}, unset)`;
-export const strokeCardOnsecondaryDisabled = `var(${strokeCardOnsecondaryDisabledRaw}, unset)`;
+export const strokeCardOnPrimaryRest = `var(${strokeCardOnPrimaryRestRaw}, unset)`;
+export const strokeCardOnPrimaryHover = `var(${strokeCardOnPrimaryHoverRaw}, unset)`;
+export const strokeCardOnPrimaryPressed = `var(${strokeCardOnPrimaryPressedRaw}, unset)`;
+export const strokeCardOnPrimaryDisabled = `var(${strokeCardOnPrimaryDisabledRaw}, unset)`;
+export const strokeCardOnSecondaryRest = `var(${strokeCardOnSecondaryRestRaw}, unset)`;
+export const strokeCardOnSecondaryHover = `var(${strokeCardOnSecondaryHoverRaw}, unset)`;
+export const strokeCardOnSecondaryPressed = `var(${strokeCardOnSecondaryPressedRaw}, unset)`;
+export const strokeCardOnSecondaryDisabled = `var(${strokeCardOnSecondaryDisabledRaw}, unset)`;
 export const backgroundCtrlOutlineRest = `var(${backgroundCtrlOutlineRestRaw}, unset)`;
 export const backgroundCtrlOutlineHover = `var(${backgroundCtrlOutlineHoverRaw}, unset)`;
 export const backgroundCtrlOutlinePressed = `var(${backgroundCtrlOutlinePressedRaw}, unset)`;
 export const backgroundCtrlOutlineDisabled = `var(${backgroundCtrlOutlineDisabledRaw}, unset)`;
 export const backgroundCtrlSubtleRest = `var(${backgroundCtrlSubtleRestRaw}, unset)`;
 export const backgroundCtrlSubtleDisabled = `var(${backgroundCtrlSubtleDisabledRaw}, unset)`;
-export const backgroundCtrlSubtleHoversplit = `var(${backgroundCtrlSubtleHoversplitRaw}, unset)`;
+export const backgroundCtrlSubtleHoverSplit = `var(${backgroundCtrlSubtleHoverSplitRaw}, unset)`;
 export const foregroundCtrlHintDefault = `var(${foregroundCtrlHintDefaultRaw}, unset)`;
 export const shadowCardRestKey = `var(${shadowCardRestKeyRaw}, unset)`;
 export const shadowCardHoverKey = `var(${shadowCardHoverKeyRaw}, unset)`;
