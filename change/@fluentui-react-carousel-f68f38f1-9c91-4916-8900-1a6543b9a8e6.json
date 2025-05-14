@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add CarouselCardButtons (anchor link variant)",
+  "packageName": "@fluentui/react-carousel",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
