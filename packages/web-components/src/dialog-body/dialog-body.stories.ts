@@ -35,17 +35,21 @@ const dismissCircle20Regular = html`<svg
 </svg>`;
 
 const storyTemplate = html<StoryArgs<FluentDialogBody>>`
-  <fluent-dialog-body>
-      ${x => x.titleSlottedContent?.()}
-      ${x => x.titleActionSlottedContent?.()}
-      ${x => x.slottedContent?.()}
-      ${x => x.actionSlottedContent?.()}
-</fluent-dialog>
+  <fluent-dialog-body
+    ?no-title-action="${story => story.noTitleAction}"
+    default-title-action-label="${story => story.defaultTitleActionLabel}"
+  >
+    ${x => x.titleSlottedContent?.()} ${x => x.titleActionSlottedContent?.()} ${x => x.slottedContent?.()}
+    ${x => x.actionSlottedContent?.()}
+  </fluent-dialog-body>
 `;
 
 export default {
   render: renderComponent(storyTemplate),
   title: 'Components/Dialog/Dialog Body',
+  args: {
+    defaultTitleActionLabel: 'close',
+  },
   argTypes: {
     noTitleAction: {
       control: 'boolean',
@@ -56,6 +60,11 @@ export default {
         defaultValue: { summary: 'false' },
         type: { summary: 'boolean' },
       },
+    },
+    defaultTitleActionLabel: {
+      control: 'text',
+      description: 'The accessible label assigned to the title action (close) button',
+      table: { category: 'attributes', type: { summary: 'string' } },
     },
     slottedContent: {
       control: false,

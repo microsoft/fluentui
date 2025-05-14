@@ -30,7 +30,10 @@ const closeButtonTemplate = html<StoryArgs<FluentDialog>>`
 const storyTemplate = html<StoryArgs<FluentDialog & FluentDialogBody>>`
   <fluent-button @click="${story => story.storyDialog?.show()}">Open Dialog</fluent-button>
   <fluent-dialog id="dialog-default" type="${story => story.type}" ${ref('storyDialog')}>
-    <fluent-dialog-body ?no-title-action="${story => story.noTitleAction}">
+    <fluent-dialog-body
+      ?no-title-action="${story => story.noTitleAction}"
+      default-title-action-label="${story => story.defaultTitleActionLabel}"
+    >
       ${story => story.actionSlottedContent?.()} ${story => story.slottedContent?.()}
       ${story => story.titleActionSlottedContent?.()} ${story => story.titleSlottedContent?.()}
     </fluent-dialog-body>
@@ -41,6 +44,9 @@ export default {
   title: 'Components/Dialog/Dialog',
   component: definition.name,
   render: renderComponent(storyTemplate),
+  args: {
+    defaultTitleActionLabel: 'close',
+  },
   argTypes: {
     type: {
       control: 'select',
