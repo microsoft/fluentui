@@ -30,11 +30,8 @@ export const fluentOverrides: FluentOverrides = {
   statusDangerBackground: { f2Token: 'colorPaletteRedBackground3' },
   statusSuccessBackground: { f2Token: 'colorPaletteGreenBackground3' },
   statusWarningBackground: { f2Token: 'colorPaletteDarkOrangeBackground3' },
-  strokewidthDefault: { f2Token: 'strokeWidthThin' },
   strokeWidthDefault: { f2Token: 'strokeWidthThin' },
-  textGlobalBody3Fontsize: { f2Token: 'fontSizeBase300' },
   textGlobalBody3FontSize: { f2Token: 'fontSizeBase300' },
-  textStyleDefaultRegularFontfamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
 };
