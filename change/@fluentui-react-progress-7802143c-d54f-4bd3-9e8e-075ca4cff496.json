@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Feat: Progress Bar",
+  "packageName": "@fluentui/react-progress",
+  "email": "xuehua@microsoft.com",
+  "dependentChangeType": "patch"
+}
