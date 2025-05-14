@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add tree exports to main index",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
