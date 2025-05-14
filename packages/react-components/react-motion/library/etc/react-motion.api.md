@@ -137,7 +137,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     render(): JSX.Element;
 }
 
-// @internal (undocumented)
+// @public (undocumented)
 export type PresenceGroupChildContextValue = {
     appear: boolean;
     visible: boolean;
@@ -145,8 +145,6 @@ export type PresenceGroupChildContextValue = {
     onExit: () => void;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "PresenceGroupChildProvider" is marked as @public, but its signature references "PresenceGroupChildContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const PresenceGroupChildProvider: React_2.Provider<PresenceGroupChildContextValue | undefined>;
 
@@ -172,8 +170,6 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
     }>;
 };
 
-// Warning: (ae-incompatible-release-tags) The symbol "usePresenceGroupChildContext" is marked as @public, but its signature references "PresenceGroupChildContextValue" which is marked as @internal
-//
 // @public (undocumented)
 export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;
 
