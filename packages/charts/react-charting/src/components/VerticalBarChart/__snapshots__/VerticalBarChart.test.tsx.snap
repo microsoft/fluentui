@@ -29,7 +29,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -156,7 +156,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -525,7 +525,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -652,7 +652,7 @@ exports[`VerticalBarChart snapShot testing Should render gradients on bars 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1021,7 +1021,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1148,7 +1148,7 @@ exports[`VerticalBarChart snapShot testing Should render rounded corners on bars
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1517,7 +1517,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1644,7 +1644,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2013,7 +2013,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2123,7 +2123,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2489,7 +2489,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2602,7 +2602,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2729,7 +2729,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3098,7 +3098,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3225,7 +3225,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3594,7 +3594,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3721,7 +3721,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4090,7 +4090,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           outline: none;
         }
 
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4217,7 +4217,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

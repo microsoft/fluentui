@@ -31,7 +31,7 @@ import {
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
@@ -1036,9 +1036,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       const tooltipProps = {
         tooltipCls: classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return graph;
   };

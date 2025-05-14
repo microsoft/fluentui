@@ -628,6 +628,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     width: input.layout?.width,
     hideTickOverlap: true,
     hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -740,6 +742,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -1105,6 +1109,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
 
   return {
     legends,
-    hideLegend: layout?.showlegend === false ? true : hideLegends,
+    hideLegend:
+      layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
   };
 };

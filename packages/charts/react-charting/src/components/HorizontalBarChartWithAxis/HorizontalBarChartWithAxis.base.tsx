@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, initializeComponentRef } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -82,7 +81,6 @@ export class HorizontalBarChartWithAxisBase
   private _bars: JSX.Element[];
   private _yAxisLabels: string[];
   private _xMax: number;
-  private _tooltipId: string;
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: IHorizontalBarChartWithAxisDataPoint | null;
@@ -117,7 +115,6 @@ export class HorizontalBarChartWithAxisBase
       selectedLegends: props.legendProps?.selectedLegends || [],
     };
     this._calloutId = getId('callout');
-    this._tooltipId = getId('HBCWATooltipID_');
     this._refArray = [];
     this._xAxisType =
       this.props.data! && this.props.data!.length > 0
@@ -736,41 +733,6 @@ export class HorizontalBarChartWithAxisBase
     };
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _tooltipOfYAxislabels(ytooltipProps: any) {
-    const { tooltipCls, yAxis, id } = ytooltipProps;
-    if (yAxis === null) {
-      return null;
-    }
-    const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-    const aa = yAxis!.selectAll('#BaseSpan')._groups[0];
-    const baseSpanLength = aa && Object.keys(aa)!.length;
-    const originalDataArray: string[] = [];
-    for (let i = 0; i < baseSpanLength; i++) {
-      const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
-      originalDataArray.push(originalData);
-    }
-    const tickObject = yAxis!.selectAll('.tick')._groups[0];
-    const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
-    for (let i = 0; i < tickObjectLength; i++) {
-      const d1 = tickObject[i];
-      d3Select(d1)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .on('mouseover', (event: any, d) => {
-          if (!this.state.tooltipElement) {
-            div.style('opacity', 0.9);
-            div
-              .text(originalDataArray[i])
-              .style('left', event.pageX + 'px')
-              .style('top', event.pageY - 28 + 'px');
-          }
-        })
-        .on('mouseout', d => {
-          div.style('opacity', 0);
-        });
-    }
-  }
-
   private _createStringBars(
     containerHeight: number,
     containerWidth: number,
@@ -903,31 +865,6 @@ export class HorizontalBarChartWithAxisBase
       );
     });
 
-    // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
-    // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
-    // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with this._tooltipId)
-    if (!this.props.showYAxisLablesTooltip) {
-      try {
-        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-        //eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
-    // Used to display tooltip at y axis labels.
-    if (this.props.showYAxisLablesTooltip) {
-      const yAxisElement = d3Select(yElement).call(yBarScale);
-      if (!this.state.tooltipElement) {
-        try {
-          document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
-          //eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
-      const ytooltipProps = {
-        tooltipCls: this._classNames.tooltip!,
-        id: this._tooltipId,
-        yAxis: yAxisElement,
-      };
-      yAxisElement && this._tooltipOfYAxislabels(ytooltipProps);
-    }
     return bars;
   }
 
