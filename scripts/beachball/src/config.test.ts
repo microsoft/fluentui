@@ -118,7 +118,6 @@ describe(`beachball configs`, () => {
     expect(toolsConfig.scope).toEqual(
       expect.arrayContaining([
         ...excludedPackagesFromReleaseProcess,
-        'packages/eslint-plugin',
         'packages/react-components/babel-preset-storybook-full-source',
         'packages/react-components/eslint-plugin-react-components',
         'packages/react-components/react-conformance-griffel',
