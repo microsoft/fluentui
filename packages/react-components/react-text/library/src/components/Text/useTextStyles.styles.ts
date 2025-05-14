@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TextSlots, TextState } from './Text.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const textClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Text',
@@ -12,10 +13,10 @@ export const textClassNames: SlotClassNames<TextSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontfamily,
+    fontSize: semanticTokens.textGlobalBody3Fontsize,
+    lineHeight: semanticTokens.textGlobalBody3Lineheight,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -45,40 +46,40 @@ const useStyles = makeStyles({
     textDecorationLine: 'line-through underline',
   },
   base100: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
+    fontSize: semanticTokens.textGlobalCaption2Fontsize,
+    lineHeight: semanticTokens.textGlobalCaption2Lineheight,
   },
   base200: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: semanticTokens.textGlobalCaption1Fontsize,
+    lineHeight: semanticTokens.textGlobalCaption1Lineheight,
   },
   base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: semanticTokens.textGlobalBody2Fontsize,
+    lineHeight: semanticTokens.textGlobalBody2Lineheight,
   },
   base500: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
+    fontSize: semanticTokens.textGlobalBody1Fontsize,
+    lineHeight: semanticTokens.textGlobalBody1Lineheight,
   },
   base600: {
-    fontSize: tokens.fontSizeBase600,
-    lineHeight: tokens.lineHeightBase600,
+    fontSize: semanticTokens.textGlobalSubtitle2Fontsize,
+    lineHeight: semanticTokens.textGlobalSubtitle2Lineheight,
   },
   hero700: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: tokens.lineHeightHero700,
+    fontSize: semanticTokens.textGlobalSubtitle1Fontsize,
+    lineHeight: semanticTokens.textGlobalSubtitle1Lineheight,
   },
   hero800: {
-    fontSize: tokens.fontSizeHero800,
-    lineHeight: tokens.lineHeightHero800,
+    fontSize: semanticTokens.textGlobalTitle2Fontsize,
+    lineHeight: semanticTokens.textGlobalTitle2Lineheight,
   },
   hero900: {
-    fontSize: tokens.fontSizeHero900,
-    lineHeight: tokens.lineHeightHero900,
+    fontSize: semanticTokens.textGlobalTitle1Fontsize,
+    lineHeight: semanticTokens.textGlobalTitle1Lineheight,
   },
   hero1000: {
-    fontSize: tokens.fontSizeHero1000,
-    lineHeight: tokens.lineHeightHero1000,
+    fontSize: semanticTokens.textGlobalDisplay2Fontsize,
+    lineHeight: semanticTokens.textGlobalDisplay2Lineheight,
   },
   monospace: {
     fontFamily: tokens.fontFamilyMonospace,

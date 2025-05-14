@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { LabelSlots, LabelState } from './Label.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const labelClassNames: SlotClassNames<LabelSlots> = {
   root: 'fui-Label',
@@ -13,35 +14,36 @@ export const labelClassNames: SlotClassNames<LabelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    color: tokens.colorNeutralForeground1,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontfamily,
+    color: semanticTokens.foregroundContentNeutralPrimary,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     '@media (forced-colors: active)': {
       color: 'GrayText',
     },
   },
 
   required: {
-    color: tokens.colorPaletteRedForeground3,
+    color: semanticTokens.statusDangerTintForeground,
     paddingLeft: tokens.spacingHorizontalXS,
   },
 
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: semanticTokens.textGlobalCaption1Fontsize,
+    lineHeight: semanticTokens.textGlobalCaption1Lineheight,
   },
 
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: semanticTokens.textGlobalBody3Fontsize,
+    lineHeight: semanticTokens.textGlobalBody3Lineheight,
   },
 
   large: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: semanticTokens.textGlobalBody2Fontsize,
+    lineHeight: semanticTokens.textGlobalBody2Lineheight,
     fontWeight: tokens.fontWeightSemibold,
   },
 

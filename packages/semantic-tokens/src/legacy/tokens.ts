@@ -55,6 +55,11 @@ export const colorCompoundBrandBackground = 'var(--colorCompoundBrandBackground)
  */
 export const borderRadiusMedium = 'var(--borderRadiusMedium)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground1 | `colorNeutralForeground1`} design token.
+ * @public
+ */
+export const colorNeutralForeground1 = 'var(--colorNeutralForeground1)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundDisabled | `colorNeutralForegroundDisabled`} design token.
  * @public
  */
@@ -64,6 +69,11 @@ export const colorNeutralForegroundDisabled = 'var(--colorNeutralForegroundDisab
  * @public
  */
 export const colorPaletteRedBackground3 = 'var(--colorPaletteRedBackground3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedForeground3 | `colorPaletteRedForeground3`} design token.
+ * @public
+ */
+export const colorPaletteRedForeground3 = 'var(--colorPaletteRedForeground3)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteGreenBackground3 | `colorPaletteGreenBackground3`} design token.
  * @public
@@ -80,10 +90,105 @@ export const colorPaletteDarkOrangeBackground3 = 'var(--colorPaletteDarkOrangeBa
  */
 export const strokeWidthThin = 'var(--strokeWidthThin)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase500 | `fontSizeBase500`} design token.
+ * @public
+ */
+export const fontSizeBase500 = 'var(--fontSizeBase500)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase500 | `lineHeightBase500`} design token.
+ * @public
+ */
+export const lineHeightBase500 = 'var(--lineHeightBase500)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase400 | `fontSizeBase400`} design token.
+ * @public
+ */
+export const fontSizeBase400 = 'var(--fontSizeBase400)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase400 | `lineHeightBase400`} design token.
+ * @public
+ */
+export const lineHeightBase400 = 'var(--lineHeightBase400)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase300 | `fontSizeBase300`} design token.
  * @public
  */
 export const fontSizeBase300 = 'var(--fontSizeBase300)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase300 | `lineHeightBase300`} design token.
+ * @public
+ */
+export const lineHeightBase300 = 'var(--lineHeightBase300)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase200 | `fontSizeBase200`} design token.
+ * @public
+ */
+export const fontSizeBase200 = 'var(--fontSizeBase200)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase200 | `lineHeightBase200`} design token.
+ * @public
+ */
+export const lineHeightBase200 = 'var(--lineHeightBase200)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase100 | `fontSizeBase100`} design token.
+ * @public
+ */
+export const fontSizeBase100 = 'var(--fontSizeBase100)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase100 | `lineHeightBase100`} design token.
+ * @public
+ */
+export const lineHeightBase100 = 'var(--lineHeightBase100)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeHero1000 | `fontSizeHero1000`} design token.
+ * @public
+ */
+export const fontSizeHero1000 = 'var(--fontSizeHero1000)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightHero1000 | `lineHeightHero1000`} design token.
+ * @public
+ */
+export const lineHeightHero1000 = 'var(--lineHeightHero1000)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeHero700 | `fontSizeHero700`} design token.
+ * @public
+ */
+export const fontSizeHero700 = 'var(--fontSizeHero700)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightHero700 | `lineHeightHero700`} design token.
+ * @public
+ */
+export const lineHeightHero700 = 'var(--lineHeightHero700)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase600 | `fontSizeBase600`} design token.
+ * @public
+ */
+export const fontSizeBase600 = 'var(--fontSizeBase600)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase600 | `lineHeightBase600`} design token.
+ * @public
+ */
+export const lineHeightBase600 = 'var(--lineHeightBase600)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeHero900 | `fontSizeHero900`} design token.
+ * @public
+ */
+export const fontSizeHero900 = 'var(--fontSizeHero900)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightHero900 | `lineHeightHero900`} design token.
+ * @public
+ */
+export const lineHeightHero900 = 'var(--lineHeightHero900)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeHero800 | `fontSizeHero800`} design token.
+ * @public
+ */
+export const fontSizeHero800 = 'var(--fontSizeHero800)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#lineHeightHero800 | `lineHeightHero800`} design token.
+ * @public
+ */
+export const lineHeightHero800 = 'var(--lineHeightHero800)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#fontFamilyBase | `fontFamilyBase`} design token.
  * @public
