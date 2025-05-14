@@ -34,6 +34,7 @@ function usePositioningConfigFn(
     arrowPadding,
     autoSize,
     coverTarget,
+    disableUpdateOnResize,
     flipBoundary,
     offset,
     overflowBoundary,
@@ -56,6 +57,7 @@ function usePositioningConfigFn(
         arrow,
         options: {
           autoSize,
+          disableUpdateOnResize,
           matchTargetSize,
           offset,
           strategy,
@@ -77,6 +79,7 @@ function usePositioningConfigFn(
     },
     [
       autoSize,
+      disableUpdateOnResize,
       matchTargetSize,
       offset,
       strategy,
@@ -106,7 +109,6 @@ export function usePositioningOptions(options: PositioningOptions) {
 
   const configFn = usePositioningConfigFn(usePositioningConfiguration(), options);
   const {
-    disableUpdateOnResize,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     positionFixed,
   } = options;
@@ -118,6 +120,7 @@ export function usePositioningOptions(options: PositioningOptions) {
       const optionsAfterEnhancement = configFn(container, arrow);
       const {
         autoSize,
+        disableUpdateOnResize,
         matchTargetSize,
         offset,
         coverTarget,
@@ -174,6 +177,6 @@ export function usePositioningOptions(options: PositioningOptions) {
         useTransform,
       };
     },
-    [configFn, disableUpdateOnResize, isRtl, targetDocument, positionFixed],
+    [configFn, isRtl, targetDocument, positionFixed],
   );
 }

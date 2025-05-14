@@ -268,7 +268,6 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 
 export type PositioningConfigurationFnOptions = Omit<
   PositioningOptions,
-  | 'disableUpdateOnResize'
   // Excluded as the function will never be called if disabled
   | 'enabled'
   // Callback is not subscribed from options
