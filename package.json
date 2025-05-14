@@ -326,7 +326,7 @@
     "swc-loader": "0.2.6",
     "swc-plugin-de-indent-template-literal": "1.4.0",
     "syncpack": "10.6.1",
-    "terser": "5.28.1",
+    "terser": "5.39.1",
     "terser-webpack-plugin": "5.3.10",
     "through2": "4.0.2",
     "tmp": "0.2.1",
