@@ -219,18 +219,24 @@ const getSecondaryYAxisValues = (
   };
 };
 
-export const getSchemaColors = (colors: Array<string | number | null | undefined>): string[] | undefined => {
+export const getSchemaColors = (
+  colors: Array<string | number | null | undefined>,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string[] | undefined => {
   const hexColors: string[] = [];
   if (!colors) {
     return undefined;
   }
   if (isArrayOrTypedArray(colors)) {
-    colors.forEach((element: string | number | null | undefined) => {
-      if (element && element.toString().trim() !== '') {
-        const parsedColor = d3Color(element.toString());
-        if (parsedColor) {
-          hexColors.push(parsedColor.formatHex());
-        }
+    colors.forEach((element, index) => {
+      const colorString = element?.toString().trim();
+      const nextColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      if (colorString) {
+        const parsedColor = d3Color(colorString);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextColor);
+      } else {
+        hexColors.push(nextColor);
       }
     });
   }
@@ -246,7 +252,7 @@ export const transformPlotlyJsonToDonutProps = (
   const firstData = input.data[0] as PieData;
   let colors: string[] | string | null | undefined;
   if (!useFluentColorPalette) {
-    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors) : undefined;
+    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors, colorMap, isDarkTheme) : undefined;
   }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
