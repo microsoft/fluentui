@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Ensure buttons are disabled when not enough content for circular",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

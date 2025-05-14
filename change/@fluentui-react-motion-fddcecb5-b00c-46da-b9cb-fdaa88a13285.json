@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Export child context",
-  "packageName": "@fluentui/react-motion",
-  "email": "charles.assuncao@microsoft.com",
-  "dependentChangeType": "patch"
-}

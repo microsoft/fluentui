@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 16 Apr 2025 19:42:03 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.17.0)
+
+Wed, 14 May 2025 18:49:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.16.7..@fluentui/react-positioning_v9.17.0)
+
+### Minor changes
+
+- feat: implement shared positioning config ([PR #34300](https://github.com/microsoft/fluentui/pull/34300) by olfedias@microsoft.com)
 
 ## [9.16.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.16.7)
 
