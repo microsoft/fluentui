@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: implement shared positioning config",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

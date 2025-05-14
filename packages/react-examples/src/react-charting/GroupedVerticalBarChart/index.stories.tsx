@@ -5,6 +5,7 @@ import { GroupedVerticalBarChartCustomAccessibilityExample } from './GroupedVert
 import { GroupedVerticalBarChartStyledExample } from './GroupedVerticalBarChart.Styled.Example';
 import { GroupedVerticalBarChartTruncatedExample } from './GroupedVerticalBarChart.Truncated.Example';
 import { GroupedVerticalBarChartSecondaryYAxisExample } from './GroupedVerticalBarChart.SecondaryYAxis.Example';
+import { GroupedVerticalBarChartNegativeExample } from './GroupedVerticalBarChart.Negative.Example';
 
 export const Basic = () => <GroupedVerticalBarChartBasicExample />;
 
@@ -15,6 +16,8 @@ export const Styled = () => <GroupedVerticalBarChartStyledExample />;
 export const Truncated = () => <GroupedVerticalBarChartTruncatedExample />;
 
 export const SecondaryYAxis = () => <GroupedVerticalBarChartSecondaryYAxisExample />;
+
+export const Negative = () => <GroupedVerticalBarChartNegativeExample />;
 
 export default {
   title: 'Components/GroupedVerticalBarChart',

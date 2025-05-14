@@ -129,6 +129,7 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
     chartSchema: Schema;
     componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
+    useFluentVizColorPalette?: boolean;
 }
 
 // @public
@@ -1055,6 +1056,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    legendShape?: LegendShape;
     lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
@@ -1110,6 +1112,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;

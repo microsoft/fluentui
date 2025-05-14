@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.15.20",
+  "version": "8.15.21",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -43,7 +43,7 @@
     "@fluentui/dom-utilities": "^2.3.10",
     "@fluentui/merge-styles": "^8.6.14",
     "@fluentui/set-version": "^8.2.24",
-    "@fluentui/react-window-provider": "^2.2.29",
+    "@fluentui/react-window-provider": "^2.2.30",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

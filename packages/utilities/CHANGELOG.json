@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 08 May 2025 07:22:42 GMT",
+      "tag": "@fluentui/utilities_v8.15.21",
+      "version": "8.15.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/react-window-provider to v2.2.30",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Apr 2025 07:20:23 GMT",
       "tag": "@fluentui/utilities_v8.15.20",
       "version": "8.15.20",
