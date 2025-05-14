@@ -695,6 +695,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 

@@ -803,7 +803,7 @@ describe('tooltipOfXAxislabels', () => {
       id: 'VBCTooltipId_1',
       xAxis: null,
     };
-    expect(utils.tooltipOfXAxislabels(tooltipProps)).toBeNull();
+    expect(utils.tooltipOfAxislabels(tooltipProps)).toBeNull();
   });
 
   it('should render a tooltip for x-axis labels', () => {
@@ -823,7 +823,7 @@ describe('tooltipOfXAxislabels', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       xAxis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
     };
-    utils.tooltipOfXAxislabels(tooltipProps);
+    utils.tooltipOfAxislabels(tooltipProps);
     expect(document.body).toMatchSnapshot();
   });
 });

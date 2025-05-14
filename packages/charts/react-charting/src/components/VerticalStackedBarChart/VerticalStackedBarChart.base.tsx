@@ -44,7 +44,7 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   formatValueWithSIPrefix,
   getBarWidth,
   getScalePadding,
@@ -1109,9 +1109,9 @@ export class VerticalStackedBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars.filter((bar): bar is JSX.Element => !!bar);
   };
