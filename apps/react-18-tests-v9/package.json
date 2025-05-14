@@ -8,6 +8,7 @@
     "type-check:integration": "tsc -p tsconfig.react-18.json --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
+    "test:integration": "jest --passWithNoTests -c jest-react-18.config.js",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",

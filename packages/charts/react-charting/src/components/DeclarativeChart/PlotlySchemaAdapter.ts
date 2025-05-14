@@ -55,10 +55,11 @@ import {
   isDate,
   isDateArray,
   isNumberArray,
-  isLineData,
+  isYearArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { color as d3Color } from 'd3-color';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -218,16 +219,52 @@ const getSecondaryYAxisValues = (
   };
 };
 
+export const getSchemaColors = (
+  colors: Array<string | number | null | undefined>,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string[] | undefined => {
+  const hexColors: string[] = [];
+  if (!colors) {
+    return undefined;
+  }
+  if (isArrayOrTypedArray(colors)) {
+    colors.forEach((element, index) => {
+      const colorString = element?.toString().trim();
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      if (colorString) {
+        const parsedColor = d3Color(colorString);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextFluentColor);
+      } else {
+        hexColors.push(nextFluentColor);
+      }
+    });
+  }
+  return hexColors;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
+  let colors: string[] | string | null | undefined = undefined;
+  if (!useFluentVizColorPalette) {
+    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors, colorMap, isDarkTheme) : undefined;
+  }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
-    const color = getColor(label, colorMap, isDarkTheme);
+    let color: string = '';
+    if (colors && isStringArray(colors)) {
+      color = colors[index % colors.length];
+    } else if (typeof colors === 'string') {
+      color = colors;
+    } else {
+      color = getColor(label, colorMap, isDarkTheme);
+    }
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
@@ -279,9 +316,10 @@ export const transformPlotlyJsonToVSBCProps = (
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
       const legend: string = legends[index1];
       const yVal: number = (series.y?.[index2] as number) ?? 0;
@@ -293,11 +331,15 @@ export const transformPlotlyJsonToVSBCProps = (
           color,
         });
         yMaxValue = Math.max(yMaxValue, yVal);
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
+        const dashType = series.line?.dash || 'solid';
+        const legendShape =
+          dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
         mapXToDataPoints[x].lineData!.push({
           legend,
+          legendShape,
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
@@ -471,9 +513,12 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineColor = getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
+    const dashType = series.line?.dash || 'solid';
+    const legendShape = dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
 
     return {
       legend,
+      legendShape,
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -509,6 +554,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       hideLegend,
+      useUTC: false,
     } as IAreaChartProps;
   } else {
     return {
@@ -525,6 +571,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       hideTickOverlap: true,
       enableReflow: false,
       hideLegend,
+      useUTC: false,
     } as ILineChartProps;
   }
 };

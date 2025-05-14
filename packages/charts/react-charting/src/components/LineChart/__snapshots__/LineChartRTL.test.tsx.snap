@@ -7825,7 +7825,7 @@ exports[`Line chart rendering should render the line chart with negative y value
               fill="currentColor"
               x="-10"
             >
-              130
+              129
             </text>
           </g>
         </g>

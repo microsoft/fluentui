@@ -6406,7 +6406,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               fill="currentColor"
               x="-10"
             >
-              110
+              111
             </text>
           </g>
           <g
@@ -6424,7 +6424,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
               fill="currentColor"
               x="-10"
             >
-              150
+              148
             </text>
           </g>
         </g>
@@ -10014,7 +10014,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               fill="currentColor"
               x="-10"
             >
-              110
+              111
             </text>
           </g>
           <g
@@ -10032,7 +10032,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
               fill="currentColor"
               x="-10"
             >
-              150
+              148
             </text>
           </g>
         </g>
@@ -11164,7 +11164,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                110
+                111
               </text>
             </g>
             <g
@@ -11182,7 +11182,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                150
+                148
               </text>
             </g>
           </g>
@@ -12302,7 +12302,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               x="-10"
             >
-              110
+              111
             </text>
           </g>
           <g
@@ -12320,7 +12320,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               fill="currentColor"
               x="-10"
             >
-              150
+              148
             </text>
           </g>
         </g>
@@ -13439,7 +13439,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               x="-10"
             >
-              110
+              111
             </text>
           </g>
           <g
@@ -13457,7 +13457,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               fill="currentColor"
               x="-10"
             >
-              150
+              148
             </text>
           </g>
         </g>

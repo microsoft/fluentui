@@ -45,6 +45,7 @@ export const overridesWin: BaseConformanceTest = testInfo => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.resetModules();
+
     if (testInfo.renderOptions?.container) {
       container = testInfo.renderOptions.container;
     } else {
@@ -55,8 +56,6 @@ export const overridesWin: BaseConformanceTest = testInfo => {
 
   afterEach(async () => {
     if (container) {
-      const ReactDOM = await import('react-dom');
-      ReactDOM.unmountComponentAtNode(container);
       document.body.removeChild(container);
     }
 
@@ -73,7 +72,6 @@ export const overridesWin: BaseConformanceTest = testInfo => {
     // https://github.com/facebook/jest/issues/8987#issuecomment-584898030
     /* eslint-disable @fluentui/no-global-react */
     const React = await import('react');
-    const ReactDOM = await import('react-dom');
 
     const className = 'make-styles-classname';
     const Component = await getReactComponent(testInfo.componentPath, testInfo);
@@ -81,7 +79,7 @@ export const overridesWin: BaseConformanceTest = testInfo => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const element = React.createElement(Component, { ...testInfo.requiredProps, className } as any);
 
-    ReactDOM.render(element, container);
+    const { unmount } = await render(element, container as HTMLElement);
 
     expect(mergeClasses.mock.calls.length).toBeGreaterThanOrEqual(1);
     expect(mergeClasses.mock.calls).toContainClassNameLastInCalls(className);
@@ -89,5 +87,44 @@ export const overridesWin: BaseConformanceTest = testInfo => {
       className,
       testOptions?.[OVERRIDES_WIN_TEST_NAME]?.callCount || 1,
     );
+
+    unmount();
   });
 };
+
+/**
+ * Utility to render React elements that works with both React 17 and React 18
+ */
+async function render(element: React.ReactElement, container: HTMLElement) {
+  const React = await import('react');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore - ReactDOMClient is not available in React 17
+  const ReactDOMClient = await import('react-dom/client').catch(() => null);
+
+  let unmount: () => void;
+  // Check if we have React 18's createRoot (react-dom/client)
+  if (ReactDOMClient && 'createRoot' in ReactDOMClient) {
+    // React 18 approach
+
+    const root = ReactDOMClient.createRoot(container);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore - act doesn't exist on react in React 17
+    React.act(() => {
+      root.render(element);
+    });
+    unmount = () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - act doesn't exist on react in React 17
+      React.act(() => {
+        root.unmount();
+      });
+    };
+  } else {
+    // React 17 approach
+    const ReactDOM = await import('react-dom');
+    ReactDOM.render(element, container);
+    unmount = () => ReactDOM.unmountComponentAtNode(container);
+  }
+
+  return { container, unmount };
+}

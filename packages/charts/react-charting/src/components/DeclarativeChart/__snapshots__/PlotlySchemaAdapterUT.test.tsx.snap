@@ -3189,6 +3189,7 @@ Object {
           },
         ],
         "legend": "a",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3239,6 +3240,7 @@ Object {
           },
         ],
         "legend": "b",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3289,6 +3291,7 @@ Object {
           },
         ],
         "legend": "c",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3339,6 +3342,7 @@ Object {
           },
         ],
         "legend": "d",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3351,6 +3355,7 @@ Object {
   "hideTickOverlap": true,
   "mode": "tonexty",
   "supportNegativeData": true,
+  "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -3767,6 +3772,7 @@ Object {
           },
         ],
         "legend": "Trace 0",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4177,6 +4183,7 @@ Object {
           },
         ],
         "legend": "Trace 1",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4587,6 +4594,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4599,6 +4607,7 @@ Object {
   "hideTickOverlap": true,
   "mode": "tonexty",
   "supportNegativeData": true,
+  "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
