@@ -246,12 +246,12 @@ export const getSchemaColors = (
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
-  useFluentColorPalette: boolean,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
-  let colors: string[] | string | null | undefined;
-  if (!useFluentColorPalette) {
+  let colors: string[] | string | null | undefined = undefined;
+  if (!useFluentVizColorPalette) {
     colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors, colorMap, isDarkTheme) : undefined;
   }
 
