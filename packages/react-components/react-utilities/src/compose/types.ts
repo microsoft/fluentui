@@ -9,6 +9,7 @@ import {
   ReactNode,
   RefAttributes,
   ReplaceNullWithUndefined,
+  ReactVersionDependent,
 } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
@@ -51,7 +52,7 @@ type WithSlotShorthandValue<Props> =
  */
 export type WithSlotRenderFunction<Props> = PropsWithoutChildren<Props> & {
   children?:
-    | ('children' extends keyof Props ? Props['children'] | {} : never)
+    | ('children' extends keyof Props ? ReactVersionDependent<ReactNode, Props['children']> : never)
     | SlotRenderFunction<PropsWithoutRef<Props>>;
 };
 
