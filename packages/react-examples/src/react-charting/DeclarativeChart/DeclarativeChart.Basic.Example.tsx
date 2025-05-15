@@ -135,7 +135,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   };
 
   private _createDeclarativeChart(): JSX.Element {
-    const uniqueKey = `${this.state.selectedChoice}`;
+    const uniqueKey = `${this.state.selectedChoice}_${this.state.useFluentVizColorPalette}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
     const { data, layout } = currentPlotlySchema;
     if (this.state.selectedLegends === '') {
