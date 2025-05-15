@@ -12,7 +12,8 @@ export type FluentOverrides = Record<string, FluentOverrideValue | null>;
 
 export const fluentOverrides: FluentOverrides = {
   cornerZero: { f2Token: 'borderRadiusNone' },
-  ctrlFocusOuterStroke: { f2Token: 'colorStrokeFocus2' },
+  ctrlFocusInnerStroke: { f2Token: 'colorStrokeFocus2' },
+  ctrlFocusOuterStroke: { f2Token: 'colorTransparentStroke' },
   ctrlLinkForegroundBrandHover: { f2Token: 'colorBrandForegroundLinkHover' },
   ctrlLinkForegroundBrandPressed: { f2Token: 'colorBrandForegroundLinkPressed' },
   ctrlLinkForegroundBrandRest: { f2Token: 'colorBrandForegroundLink' },
