@@ -248,6 +248,18 @@ export const getSchemaColors = (
   return hexColors;
 };
 
+export const _extractColor = (
+  useFluentVizColorPalette: boolean,
+  series: Partial<PlotData>,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  legend: string,
+  isDarkTheme?: boolean,
+): string | string[] => {
+  return !useFluentVizColorPalette && series.marker?.color
+    ? (getSchemaColors(series.marker?.color, colorMap, isDarkTheme) as string)
+    : getColor(legend, colorMap, isDarkTheme);
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -400,10 +412,7 @@ export const transformPlotlyJsonToGVBCProps = (
 
       if (series.type === 'bar') {
         const legend: string = legends[index1];
-        const color: string =
-          !useFluentVizColorPalette && series.marker?.color
-            ? (getSchemaColors(series.marker?.color, colorMap, isDarkTheme) as string)
-            : getColor(legend, colorMap, isDarkTheme);
+        const color: string = _extractColor(useFluentVizColorPalette, series, colorMap, legend, isDarkTheme) as string;
         mapXToDataPoints[x].series.push({
           key: legend,
           data: (series.y?.[xIndex] as number) ?? 0,
@@ -469,10 +478,7 @@ export const transformPlotlyJsonToVBCProps = (
 
     xBins.forEach((bin, index) => {
       const legend: string = legends[seriesIdx];
-      const color: string =
-        !useFluentVizColorPalette && series.marker?.color
-          ? (getSchemaColors(series.marker?.color, colorMap, isDarkTheme) as string)
-          : getColor(legend, colorMap, isDarkTheme);
+      const color: string = _extractColor(useFluentVizColorPalette, series, colorMap, legend, isDarkTheme) as string;
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -605,10 +611,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
       const legend = legends[index];
-      const color: string =
-        !useFluentVizColorPalette && series.marker?.color
-          ? (getSchemaColors(series.marker?.color, colorMap, isDarkTheme) as string)
-          : getColor(legend, colorMap, isDarkTheme);
+      const color: string = _extractColor(useFluentVizColorPalette, series, colorMap, legend, isDarkTheme) as string;
       return (series.y as Datum[]).map((yValue: string, i: number) => {
         return {
           x: series.x[i],

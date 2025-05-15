@@ -85,10 +85,13 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
   componentRef?: IRefObject<IDeclarativeChart>;
 
   /**
-   * Optional prop to use Fluent UI color palette for the chart or not.
-   * @default true
+   * Optional prop to specify the color palette for the chart.
+   * - 'default': Do not use Fluent UI color palette.
+   * - 'builtin': Use Fluent UI color palette.
+   * - 'override': Reserved for future use.
+   * @default 'default'
    */
-  useFluentVizColorPalette?: boolean;
+  colorPalette?: 'default' | 'builtin' | 'override';
 }
 
 /**
@@ -165,6 +168,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
+  const colorPalette = props.colorPalette ?? 'default';
+  const useFluentVizColorPalette = colorPalette === 'builtin';
+
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = ['markers', 'text+markers', 'markers+text'].includes((plotlyData[0] as PlotData)?.mode);
     const chartProps: ILineChartProps | IAreaChartProps = {
@@ -214,7 +220,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         {...transformPlotlyJsonToVSBCProps(
           plotlyInputWithValidData,
           colorMap,
-          props.useFluentVizColorPalette!,
+          useFluentVizColorPalette,
           isDarkTheme,
           fallbackVSBC,
         )}
@@ -258,7 +264,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...transformPlotlyJsonToDonutProps(
             plotlyInputWithValidData,
             colorMap,
-            props.useFluentVizColorPalette!,
+            useFluentVizColorPalette,
             isDarkTheme,
           )}
           {...commonProps}
@@ -270,7 +276,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           {...transformPlotlyJsonToHorizontalBarWithAxisProps(
             plotlyInputWithValidData,
             colorMap,
-            props.useFluentVizColorPalette!,
+            useFluentVizColorPalette,
             isDarkTheme,
           )}
           {...commonProps}
@@ -279,24 +285,14 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'groupedverticalbar':
       return (
         <ResponsiveGroupedVerticalBarChart
-          {...transformPlotlyJsonToGVBCProps(
-            plotlyInputWithValidData,
-            colorMap,
-            props.useFluentVizColorPalette!,
-            isDarkTheme,
-          )}
+          {...transformPlotlyJsonToGVBCProps(plotlyInputWithValidData, colorMap, useFluentVizColorPalette, isDarkTheme)}
           {...commonProps}
         />
       );
     case 'verticalstackedbar':
       return (
         <ResponsiveVerticalStackedBarChart
-          {...transformPlotlyJsonToVSBCProps(
-            plotlyInputWithValidData,
-            colorMap,
-            props.useFluentVizColorPalette!,
-            isDarkTheme,
-          )}
+          {...transformPlotlyJsonToVSBCProps(plotlyInputWithValidData, colorMap, useFluentVizColorPalette, isDarkTheme)}
           {...commonProps}
         />
       );
@@ -325,12 +321,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'verticalbar':
       return (
         <ResponsiveVerticalBarChart
-          {...transformPlotlyJsonToVBCProps(
-            plotlyInputWithValidData,
-            colorMap,
-            props.useFluentVizColorPalette!,
-            isDarkTheme,
-          )}
+          {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, useFluentVizColorPalette, isDarkTheme)}
           {...commonProps}
         />
       );
@@ -353,5 +344,5 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
 DeclarativeChart.defaultProps = {
-  useFluentVizColorPalette: true,
+  colorPalette: 'default',
 };
