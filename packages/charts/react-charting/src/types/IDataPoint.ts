@@ -300,7 +300,7 @@ export interface ILineDataInVerticalBarChart {
 /**
  * {@docCategory IChartData}
  */
-export interface ILineChartDataPoint {
+export interface ILineChartDataPoint extends IBaseDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
@@ -312,41 +312,6 @@ export interface ILineChartDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
-
-  /**
-   * Defines the function that is executed on clicking  line
-   */
-  onDataPointClick?: () => void;
-
-  /**
-   * Callout data for x axis
-   */
-  xAxisCalloutData?: string;
-
-  /**
-   * Callout data for y axis
-   */
-  yAxisCalloutData?: string | { [id: string]: number };
-
-  /**
-   * Whether to hide callout data for the point.
-   */
-  hideCallout?: boolean;
-
-  /**
-   * Accessibility data for callout
-   */
-  callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * X axis Accessibility data for callout
-   */
-  xAxisCalloutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Marker size of the points
-   */
-  markerSize?: number;
 }
 
 /**
@@ -502,7 +467,7 @@ export interface IChartProps {
   lineChartData?: ILineChartPoints[];
 
   /**
-   * data for the points in the line chart
+   * data for the points in the scatter chart
    */
   scatterChartData?: IScatterChartPoints[];
 
@@ -899,6 +864,11 @@ export interface IBaseDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
 }
 
 /**
@@ -915,11 +885,6 @@ export interface IScatterChartDataPoint extends IBaseDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
-
-  /**
-   * Marker size of the points
-   */
-  markerSize?: number;
 }
 
 /**

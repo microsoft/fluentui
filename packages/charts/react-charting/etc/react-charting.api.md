@@ -223,6 +223,7 @@ export interface IAreaChartStyles extends ICartesianChartStyles {
 export interface IBaseDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     hideCallout?: boolean;
+    markerSize?: number;
     onDataPointClick?: () => void;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
@@ -979,18 +980,9 @@ export interface ILegendSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface ILineChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    hideCallout?: boolean;
-    markerSize?: number;
-    onDataPointClick?: () => void;
+export interface ILineChartDataPoint extends IBaseDataPoint {
     x: number | Date;
-    xAxisCalloutAccessibilityData?: IAccessibilityProps;
-    xAxisCalloutData?: string;
     y: number;
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
 }
 
 // @public (undocumented)
@@ -1337,7 +1329,6 @@ export interface ISankeyChartStyles {
 
 // @public
 export interface IScatterChartDataPoint extends IBaseDataPoint {
-    markerSize?: number;
     x: number | Date | string;
     y: number;
 }

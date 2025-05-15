@@ -53,7 +53,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { IScatterChartDataPoint } from '../types/IDataPoint';
+import { IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -622,20 +622,16 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  */
 // changing the type to any as it is used by multiple charts with different data types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function calloutData(values: (any & { index?: number })[]) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let combinedResult: (any & {
+export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]) {
+  let combinedResult: ((ILineChartDataPoint | IScatterChartDataPoint) & {
     legend: string;
     color?: string;
     index?: number;
   })[] = [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  values.forEach((line: any & { index?: number }) => {
+  values.forEach((line: (ILineChartPoints | IScatterChartPoints) & { index?: number }) => {
     const elements = line.data
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((point: any) => !point.hideCallout)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .map((point: any) => {
+      .filter((point: ILineChartDataPoint | IScatterChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint | IScatterChartDataPoint) => {
         return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
@@ -661,7 +657,8 @@ export function calloutData(values: (any & { index?: number })[]) {
       index?: number;
     }[];
   } = {};
-  combinedResult.forEach(ele => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
     if (xValue in xValToDataPoints) {
       xValToDataPoints[xValue].push({
@@ -1704,7 +1701,7 @@ export function getCurveFactory(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfDateForScatterChart(
-  points: ILineChartPoints[],
+  points: IScatterChartPoints[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
@@ -1753,7 +1750,7 @@ export function domainRangeOfDateForScatterChart(
  * @returns {IDomainNRange}
  */
 export function domainRangeOfNumericForScatterChart(
-  points: ILineChartPoints[],
+  points: IScatterChartPoints[],
   margins: IMargins,
   width: number,
   isRTL: boolean,
@@ -1778,40 +1775,6 @@ export function domainRangeOfNumericForScatterChart(
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
-}
-
-/**
- * For creating X axis, need to calculate x axis domain and range values from given points.
- * This may vary based on chart type and type of x axis
- * So, this method will define which method need to call based on chart type and axis type.
- * @export
- * @param {*} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {ChartTypes} chartType
- * @param {boolean} isRTL
- * @param {XAxisTypes} xAxisType
- * @param {number} [barWidth]
- * @returns {IDomainNRange}
- */
-export function getDomainNRangeValuesScatterChart(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  margins: IMargins,
-  width: number,
-  _chartType: ChartTypes,
-  isRTL: boolean,
-  xAxisType: XAxisTypes,
-  _barWidth: number,
-  tickValues: number[] | Date[] | string[] | undefined,
-) {
-  if (xAxisType === XAxisTypes.NumericAxis) {
-    return domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
-  } else if (xAxisType === XAxisTypes.DateAxis) {
-    return domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
-  }
-  // String Axis type
-  return domainRangeOfXStringAxis(margins, width, isRTL);
 }
 
 export function createYAxisForScatterChart(
@@ -1863,41 +1826,4 @@ export function createYAxisForScatterChart(
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
-}
-
-/**
- * Helper to find the index of an item within an array, using a callback to
- * determine the match.
- *
- * @public
- * @param array - Array to search.
- * @param cb - Callback which returns true on matches.
- * @param fromIndex - Optional index to start from (defaults to 0)
- */
-export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean, fromIndex: number = 0): number {
-  let index = -1;
-
-  for (let i = fromIndex; array && i < array.length; i++) {
-    if (cb(array[i], i)) {
-      index = i;
-      break;
-    }
-  }
-
-  return index;
-}
-
-/**
- * Helper to find the first item within an array that satisfies the callback.
- * @param array - Array to search
- * @param cb - Callback which returns true on matches
- */
-export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
-  const index = findIndex(array, cb);
-
-  if (index < 0) {
-    return undefined;
-  }
-
-  return array[index];
 }

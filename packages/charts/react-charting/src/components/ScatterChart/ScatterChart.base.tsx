@@ -8,9 +8,10 @@ import {
   areArraysEqual,
   createStringYAxis,
   createYAxisForScatterChart,
-  find,
+  domainRangeOfDateForScatterChart,
+  domainRangeOfNumericForScatterChart,
+  domainRangeOfXStringAxis,
   findNumericMinMaxOfY,
-  getDomainNRangeValuesScatterChart,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -30,7 +31,7 @@ import {
   getColorFromToken,
   formatDate,
 } from '../../utilities/index';
-import { classNamesFunction, DirectionalHint, getId } from '@fluentui/react';
+import { classNamesFunction, DirectionalHint, find, getId } from '@fluentui/react';
 import { IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -203,6 +204,26 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     },
     [activePoint, props],
   );
+
+  function getDomainNRangeValuesScatterChart(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    points: any,
+    margins: IMargins,
+    width: number,
+    _chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    _barWidth: number,
+    tickValues: number[] | Date[] | string[] | undefined,
+  ) {
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      return domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      return domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
+    }
+    // String Axis type
+    return domainRangeOfXStringAxis(margins, width, isRTL);
+  }
 
   const _handleFocus = React.useCallback(
     (
