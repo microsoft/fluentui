@@ -137,5 +137,51 @@ describe('useSafeZoneArea', () => {
 
       expect(onSafeZoneTimeout).not.toHaveBeenCalled();
     });
+
+    it('is not called if a cursor is moved to a container', () => {
+      const onSafeZoneEnter = jest.fn();
+      const onSafeZoneTimeout = jest.fn();
+
+      const { getByTestId, container } = render(
+        <Example onSafeZoneEnter={onSafeZoneEnter} onSafeZoneTimeout={onSafeZoneTimeout} />,
+      );
+
+      const triggerEl = getByTestId('trigger');
+      const containerEl = getByTestId('popover');
+      const safeZoneEl = container.querySelector('[data-safe-zone]');
+
+      expect(safeZoneEl).not.toBeVisible();
+
+      // Hover over the trigger element
+
+      userEvent.hover(triggerEl);
+      jest.advanceTimersByTime(100);
+
+      const svgPathEl = safeZoneEl?.querySelector('svg path') as SVGPathElement;
+
+      expect(safeZoneEl).toBeVisible();
+      expect(svgPathEl).toBeInstanceOf(SVGElement);
+
+      // Hover over the SVG path element
+
+      userEvent.hover(svgPathEl);
+
+      expect(onSafeZoneEnter).toHaveBeenCalledTimes(1);
+      expect(onSafeZoneTimeout).not.toHaveBeenCalled();
+
+      // Move to a container element
+
+      jest.advanceTimersByTime(500);
+      userEvent.hover(containerEl);
+
+      expect(safeZoneEl).not.toBeVisible();
+      expect(onSafeZoneTimeout).not.toHaveBeenCalled();
+
+      // Check again
+
+      jest.advanceTimersByTime(1000);
+
+      expect(onSafeZoneTimeout).not.toHaveBeenCalled();
+    });
   });
 });

@@ -25,6 +25,8 @@ export type SafeZoneAreaProps = {
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onMouseEnter: (e: React.MouseEvent) => void;
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
+  onMouseMove: (e: React.MouseEvent) => void;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onMouseLeave: (e: React.MouseEvent) => void;
 
   stateStore: ReturnType<typeof createSafeZoneAreaStateStore>;
@@ -68,7 +70,7 @@ export function createSafeZoneAreaStateStore() {
  * @internal
  */
 export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
-  const { debug, onMouseEnter, onMouseLeave, stateStore } = props;
+  const { debug, onMouseEnter, onMouseMove, onMouseLeave, stateStore } = props;
 
   const clipPathId = useId();
   const styles = useStyles();
@@ -221,6 +223,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
             className={mergeClasses(styles.triangle, debug && styles.triangleDebug)}
             clipPath={`url(#${clipPathId})`}
             onMouseEnter={onMouseEnter}
+            onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
           />
           <clipPath id={clipPathId}>

@@ -19,9 +19,8 @@ describe('useMenuContextValues_unstable', () => {
         "hasIcons": false,
         "inline": false,
         "isSubmenu": false,
-        "menuPopoverRef": Object {
-          "current": null,
-        },
+        "menuPopoverRef": [Function],
+        "menuSafeZone": null,
         "mountNode": null,
         "onCheckedValueChange": [Function],
         "open": false,
@@ -30,9 +29,7 @@ describe('useMenuContextValues_unstable', () => {
         "persistOnItemClick": false,
         "setOpen": [Function],
         "triggerId": "menu1",
-        "triggerRef": Object {
-          "current": null,
-        },
+        "triggerRef": [Function],
       }
     `);
   });
