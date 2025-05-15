@@ -7,6 +7,7 @@
     "sourceMap": true,
     "strict": true,
     "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
     "pretty": true,
     "noEmit": true,
     "isolatedModules": true,
