@@ -19,6 +19,9 @@ export type SafeBufferAreaOptions = {
   /** Called when the mouse enters the safe zone. */
   onSafeZoneEnter?: (e: React.MouseEvent) => void;
 
+  /** Called when the mouse moves within the safe zone. */
+  onSafeZoneMove?: (e: React.MouseEvent) => void;
+
   /** Called when the mouse leaves the safe zone. */
   onSafeZoneLeave?: (e: React.MouseEvent) => void;
 
@@ -31,6 +34,7 @@ export function useSafeZoneArea({
   disabled = false,
 
   onSafeZoneEnter,
+  onSafeZoneMove,
   onSafeZoneLeave,
   onSafeZoneTimeout,
 
@@ -149,6 +153,10 @@ export function useSafeZoneArea({
     }, timeout);
   });
 
+  const onSvgMouseMove = useEventCallback((e: React.MouseEvent) => {
+    onSafeZoneMove?.(e);
+  });
+
   const onSvgMouseLeave = useEventCallback((e: React.MouseEvent) => {
     onSafeZoneLeave?.(e);
   });
@@ -157,14 +165,19 @@ export function useSafeZoneArea({
     containerRef: useMergedRefs(containerRef, containerListenerRef),
     targetRef: useMergedRefs(targetRef, targetListenerRef),
 
-    elementToRender: disabled ? null : (
-      <SafeZoneArea
-        debug={debug}
-        onMouseEnter={onSvgMouseEnter}
-        onMouseLeave={onSvgMouseLeave}
-        imperativeRef={safeZoneAreaRef}
-        stateStore={stateStore}
-      />
+    elementToRender: React.useMemo(
+      () =>
+        disabled ? null : (
+          <SafeZoneArea
+            debug={debug}
+            onMouseEnter={onSvgMouseEnter}
+            onMouseMove={onSvgMouseMove}
+            onMouseLeave={onSvgMouseLeave}
+            imperativeRef={safeZoneAreaRef}
+            stateStore={stateStore}
+          />
+        ),
+      [disabled, debug, onSvgMouseEnter, onSvgMouseMove, onSvgMouseLeave, stateStore],
     ),
   };
 }

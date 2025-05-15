@@ -11,12 +11,18 @@ export const renderMenuPopover_unstable = (state: MenuPopoverState) => {
   assertSlots<MenuPopoverSlots>(state);
 
   if (state.inline) {
-    return <state.root />;
+    return (
+      <>
+        <state.root />
+        {state.menuSafeZone}
+      </>
+    );
   }
 
   return (
     <Portal mountNode={state.mountNode}>
       <state.root />
+      {state.menuSafeZone}
     </Portal>
   );
 };
