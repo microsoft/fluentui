@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import { useIsSubmenu } from '../../utils';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
@@ -14,6 +14,12 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useARIAButtonProps } from '@fluentui/react-aria';
+
+export const HAS_MOUSE_MOVED_DATA_ATTR = 'data-has-mouse-moved';
+
+function noop() {
+  // does nothing
+}
 
 /**
  * Create the state required to render MenuTrigger.
@@ -41,7 +47,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   }, [findFirstFocusable, menuPopoverRef]);
 
   const openedWithKeyboardRef = React.useRef(false);
-  const hasMouseMoved = React.useRef(false);
 
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
@@ -91,11 +96,12 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onMouseEnter = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+  const onMouseOver = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(event)) {
       return;
     }
-    if (openOnHover && hasMouseMoved.current) {
+
+    if (openOnHover && triggerRef.current?.hasAttribute(HAS_MOUSE_MOVED_DATA_ATTR)) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
     }
   };
@@ -107,9 +113,10 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (isTargetDisabled(event)) {
       return;
     }
-    if (openOnHover && !hasMouseMoved.current) {
+
+    if (openOnHover && !triggerRef.current?.hasAttribute(HAS_MOUSE_MOVED_DATA_ATTR)) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
-      hasMouseMoved.current = true;
+      triggerRef.current?.setAttribute(HAS_MOUSE_MOVED_DATA_ATTR, '');
     }
   };
 
@@ -126,10 +133,11 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     id: triggerId,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
-    onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
+    onMouseEnter: useEventCallback(child?.props.onMouseEnter ?? noop),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
     onMouseMove: useEventCallback(mergeCallbacks(child?.props.onMouseMove, onMouseMove)),
+    onMouseOver: useEventCallback(mergeCallbacks(child?.props.onMouseOver, onMouseOver)),
   };
 
   const triggerChildProps = {
