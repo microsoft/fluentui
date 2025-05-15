@@ -106,7 +106,6 @@ export class ScatterChartDateExample extends React.Component<{}, IScatterChartDa
             },
           ],
           color: DataVizPalette.color3,
-          onLineClick: () => console.log('Website Traffic'),
         },
         {
           legend: 'Sales Performance',
