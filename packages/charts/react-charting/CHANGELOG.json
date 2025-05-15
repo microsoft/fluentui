@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 15 May 2025 07:21:16 GMT",
+      "tag": "@fluentui/react-charting_v5.23.87",
+      "version": "5.23.87",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d73703371df2371ea30b7141cb79ad0ab23caf42",
+            "comment": "fix(react-charting): Support for using provided schema colors in declarative charts "
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c1533df8275015e3f6057c765e62916827d9247e",
+            "comment": "fix(react-charting): Use schema colors for scatter declarative charts"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e",
+            "comment": "fix: adjust y-axis title position to reduce overlap with tick labels"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 07:21:03 GMT",
       "tag": "@fluentui/react-charting_v5.23.86",
       "version": "5.23.86",
