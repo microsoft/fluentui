@@ -35,7 +35,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
 interface IDeclarativeChartState {
   selectedChoice: string;
   selectedLegends: string;
-  colorPalette: string;
+  fluentDataVizColorPalette: string;
 }
 
 const options: IDropdownOption[] = [
@@ -95,7 +95,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.state = {
       selectedChoice: defaultselection,
       selectedLegends: JSON.stringify(selectedLegends),
-      colorPalette: 'default',
+      fluentDataVizColorPalette: 'builtin',
     };
 
     this._declarativeChartRef = React.createRef();
@@ -119,7 +119,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   };
 
   private _onColorPaletteChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
-    this.setState({ colorPalette: option.key as string });
+    this.setState({ fluentDataVizColorPalette: option.key as string });
   };
 
   private _onSelectedLegendsEdited = (
@@ -140,7 +140,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   }
 
   private _createDeclarativeChart(): JSX.Element {
-    const uniqueKey = `${this.state.selectedChoice}_${this.state.colorPalette}`;
+    const uniqueKey = `${this.state.selectedChoice}_${this.state.fluentDataVizColorPalette}`;
     const currentPlotlySchema = this._getSchemaByKey(this.state.selectedChoice);
     const { data, layout } = currentPlotlySchema;
     if (this.state.selectedLegends === '') {
@@ -170,7 +170,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
             label="Select a color palette"
             options={colorOptions}
             onChange={this._onColorPaletteChange}
-            selectedKey={this.state.colorPalette}
+            selectedKey={this.state.fluentDataVizColorPalette}
             styles={dropdownStyles}
           />
           &nbsp;&nbsp;
@@ -191,7 +191,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
           chartSchema={inputSchema}
           onSchemaChange={this._handleChartSchemaChanged}
           componentRef={this._declarativeChartRef}
-          colorPalette={this.state.colorPalette}
+          fluentDataVizColorPalette={this.state.fluentDataVizColorPalette}
         />
         <br />
         <TextField

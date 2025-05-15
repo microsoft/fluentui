@@ -89,9 +89,9 @@ export interface DeclarativeChartProps extends React.RefAttributes<HTMLDivElemen
    * - 'default': Do not use Fluent UI color palette.
    * - 'builtin': Use Fluent UI color palette.
    * - 'override': Reserved for future use.
-   * @default 'default'
+   * @default 'builtin'
    */
-  colorPalette?: 'default' | 'builtin' | 'override';
+  fluentDataVizColorPalette?: 'default' | 'builtin' | 'override';
 }
 
 /**
@@ -168,8 +168,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  const colorPalette = props.colorPalette ?? 'default';
-  const useFluentVizColorPalette = colorPalette === 'builtin';
+  const useFluentVizColorPalette = props.fluentDataVizColorPalette === 'builtin';
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = ['markers', 'text+markers', 'markers+text'].includes((plotlyData[0] as PlotData)?.mode);
@@ -178,7 +177,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         { data: plotlyData, layout: plotlyInput.layout },
         isAreaChart,
         colorMap,
-        props.useFluentVizColorPalette!,
+        useFluentVizColorPalette!,
         isDarkTheme,
       ),
       ...commonProps,
@@ -345,5 +344,5 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
 DeclarativeChart.defaultProps = {
-  colorPalette: 'default',
+  fluentDataVizColorPalette: 'builtin',
 };
