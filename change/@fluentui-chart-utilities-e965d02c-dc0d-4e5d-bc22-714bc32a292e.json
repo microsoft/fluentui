@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-charting): Add chart type to error logs",
+  "comment": "fix(chart-utilities): Add chart type to error logs",
   "packageName": "@fluentui/chart-utilities",
   "email": "120183316+srmukher@users.noreply.github.com",
   "dependentChangeType": "patch"
