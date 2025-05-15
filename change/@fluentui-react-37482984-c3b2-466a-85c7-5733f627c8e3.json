@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(PeoplePicker): high contrast color for tag items uses system color",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
