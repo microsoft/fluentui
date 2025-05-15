@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 14 May 2025 07:21:03 GMT and should not be manually modified.
+This log was last generated on Thu, 15 May 2025 07:21:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.87)
+
+Thu, 15 May 2025 07:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.86..@fluentui/react-charting_v5.23.87)
+
+### Patches
+
+- fix(react-charting): Support for using provided schema colors in declarative charts  ([PR #34433](https://github.com/microsoft/fluentui/pull/34433) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Use schema colors for scatter declarative charts ([PR #34441](https://github.com/microsoft/fluentui/pull/34441) by 120183316+srmukher@users.noreply.github.com)
+- fix: adjust y-axis title position to reduce overlap with tick labels ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by kumarkshitij@microsoft.com)
 
 ## [5.23.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.86)
 
