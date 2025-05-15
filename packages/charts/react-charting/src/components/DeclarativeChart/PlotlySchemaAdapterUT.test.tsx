@@ -201,13 +201,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
-    expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -215,13 +215,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGVBCProps - Should return GVBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_groupedverticalbarchart_test.json');
-    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -229,13 +229,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToVBCProps - Should return VBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalbar_histogram_test.json');
-    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true);
+      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true, true);
     }).toThrow(TypeError);
   });
 
@@ -263,14 +263,14 @@ describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     expect(
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true),
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true, true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true);
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true, true);
     }).toThrow(TypeError);
   });
 
