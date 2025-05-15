@@ -92,7 +92,7 @@
     "build": "yarn compile && yarn rollup -c && yarn generate-api && yarn analyze",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
+    "format": "prettier -w src/**/*.{ts,html} src/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
     "start": "yarn start-storybook -p 6006 --docs",

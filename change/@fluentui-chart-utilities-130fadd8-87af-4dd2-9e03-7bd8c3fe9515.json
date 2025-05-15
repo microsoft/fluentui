@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(chart-utilities): Exclude number from being classified as date",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

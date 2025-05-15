@@ -48,14 +48,7 @@ import type {
   ScatterLine,
   TypedArray,
 } from '@fluentui/chart-utilities';
-import {
-  isArrayOfType,
-  isArrayOrTypedArray,
-  isDate,
-  isDateArray,
-  isNumberArray,
-  isLineData,
-} from '@fluentui/chart-utilities';
+import { isArrayOfType, isArrayOrTypedArray, isDate, isDateArray, isNumberArray } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
@@ -272,7 +265,7 @@ export const transformPlotlyJsonToVSBCProps = (
           data: yVal,
           color,
         });
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
