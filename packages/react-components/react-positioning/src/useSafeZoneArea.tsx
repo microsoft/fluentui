@@ -4,6 +4,7 @@ import type { Placement } from '@floating-ui/dom';
 import * as React from 'react';
 
 import { createSafeZoneAreaStateStore, type SafeZoneAreaImperativeHandle, SafeZoneArea } from './SafeZoneArea';
+import { parseFloatingUIPlacement } from './utils';
 
 export type SafeBufferAreaOptions = {
   /** Enables debug mode: makes drawn shapes visible. */
@@ -54,17 +55,17 @@ export function useSafeZoneArea({
 
     let containerEl: HTMLElement | null = null;
 
-    function onMouseEnter() {
-      stateStore.update(false);
+    function onContainerMouseEnter() {
+      stateStore.toggleActive(false);
     }
 
     return (el: HTMLElement | null) => {
       if (el === null) {
-        containerEl?.removeEventListener('mouseenter', onMouseEnter);
+        containerEl?.removeEventListener('mouseenter', onContainerMouseEnter);
       }
 
       containerEl = el;
-      el?.addEventListener('mouseenter', onMouseEnter);
+      el?.addEventListener('mouseenter', onContainerMouseEnter);
     };
   }, [disabled, stateStore]);
 
@@ -77,7 +78,7 @@ export function useSafeZoneArea({
 
     let targetEl: HTMLElement | null = null;
 
-    function onMouseOver() {
+    function onTargetMouseMove(e: MouseEvent) {
       const targetWindow = targetDocument?.defaultView;
 
       if (!targetWindow) {
@@ -87,14 +88,9 @@ export function useSafeZoneArea({
       if (timeoutIdRef.current) {
         targetWindow.clearTimeout(timeoutIdRef.current);
       }
-      stateStore.update(true);
-    }
 
-    function onMouseMove(e: MouseEvent) {
-      const targetWindow = targetDocument?.defaultView;
-
-      if (!targetWindow) {
-        return;
+      if (!stateStore.isActive()) {
+        stateStore.toggleActive(true);
       }
 
       mouseMoveIdRef.current = targetWindow.requestAnimationFrame(() => {
@@ -105,9 +101,9 @@ export function useSafeZoneArea({
         }
 
         safeZoneAreaRef.current?.updateSVG({
-          mouse: { x: e.clientX, y: e.clientY },
-          containerPlacement: containerEl.dataset.popperPlacement as Placement,
+          containerPlacementSide: parseFloatingUIPlacement(containerEl.dataset.popperPlacement as Placement).side,
           containerRect: containerEl.getBoundingClientRect(),
+          mouseCoordinates: { x: e.clientX, y: e.clientY },
           targetRect: targetEl.getBoundingClientRect(),
         });
       });
@@ -123,13 +119,11 @@ export function useSafeZoneArea({
           targetDocument?.defaultView?.clearTimeout(timeoutIdRef.current);
         }
 
-        targetEl?.removeEventListener('mouseover', onMouseOver);
-        targetEl?.removeEventListener('mousemove', onMouseMove);
+        targetEl?.removeEventListener('mousemove', onTargetMouseMove);
       }
 
       targetEl = el;
-      el?.addEventListener('mouseover', onMouseOver);
-      el?.addEventListener('mousemove', onMouseMove);
+      el?.addEventListener('mousemove', onTargetMouseMove);
     };
   }, [disabled, stateStore, targetDocument]);
 
@@ -150,7 +144,7 @@ export function useSafeZoneArea({
     e.persist();
 
     timeoutIdRef.current = targetWindow.setTimeout(() => {
-      stateStore.update(false);
+      stateStore.toggleActive(false);
       onSafeZoneTimeout?.();
     }, timeout);
   });

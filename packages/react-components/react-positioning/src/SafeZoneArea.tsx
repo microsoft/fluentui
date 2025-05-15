@@ -1,6 +1,6 @@
 import { mergeClasses } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
-import type { Placement } from '@floating-ui/dom';
+import type { Side as PlacementSide } from '@floating-ui/dom';
 import * as React from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
@@ -8,10 +8,10 @@ import { useStyles } from './SafeZoneArea.styles';
 
 export type SafeZoneAreaImperativeHandle = {
   updateSVG: (options: {
-    mouse: { x: number; y: number };
+    containerPlacementSide: PlacementSide;
     containerRect: DOMRect;
     targetRect: DOMRect;
-    containerPlacement: Placement;
+    mouseCoordinates: { x: number; y: number };
   }) => void;
 };
 
@@ -35,11 +35,11 @@ export function createSafeZoneAreaStateStore() {
   const listeners: ((value: boolean) => void)[] = [];
 
   return {
-    getSnapshot() {
+    isActive() {
       return isActive;
     },
-    update(newValue: boolean) {
-      isActive = newValue;
+    toggleActive(newIsActive: boolean) {
+      isActive = newIsActive;
       listeners.forEach(listener => listener(isActive));
     },
 
@@ -73,19 +73,13 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
   const clipPathId = useId();
   const styles = useStyles();
 
-  const active = useSyncExternalStore(stateStore.subscribe, stateStore.getSnapshot);
+  const active = useSyncExternalStore(stateStore.subscribe, stateStore.isActive);
   const svgRef = React.useRef<SVGSVGElement>(null);
 
   React.useImperativeHandle(
     props.imperativeRef,
     () => ({
-      updateSVG({
-        mouse,
-
-        containerPlacement,
-        containerRect,
-        targetRect,
-      }) {
+      updateSVG({ containerPlacementSide, containerRect, mouseCoordinates, targetRect }) {
         const svgEl = svgRef.current;
 
         if (!svgEl) {
@@ -104,7 +98,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
         let tringlePoints: [number, number][] = [];
         let clipPoints: [number, number][] = [];
 
-        switch (containerPlacement.slice(0, 3)) {
+        switch (containerPlacementSide) {
           case 'top':
             svgStyle = {
               width: `${containerRect.width}px`,
@@ -114,7 +108,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
 
             tringlePoints = [
               [containerRect.width, 0],
-              [mouse.x - containerRect.left, (mouse.y - containerRect.bottom) / SIZE_MULTIPLIER],
+              [mouseCoordinates.x - containerRect.left, (mouseCoordinates.y - containerRect.bottom) / SIZE_MULTIPLIER],
               [0, 0],
             ];
             clipPoints = [
@@ -130,7 +124,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
 
             break;
 
-          case 'bot':
+          case 'bottom':
             svgStyle = {
               width: `${containerRect.width}px`,
               height: `${containerRect.top - targetRect.top}px`,
@@ -139,7 +133,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
 
             tringlePoints = [
               [containerRect.width, containerRect.top - targetRect.top],
-              [mouse.x - containerRect.left, (mouse.y - targetRect.top) * SIZE_MULTIPLIER],
+              [mouseCoordinates.x - containerRect.left, (mouseCoordinates.y - targetRect.top) * SIZE_MULTIPLIER],
               [0, containerRect.top - targetRect.top],
             ];
             clipPoints = [
@@ -155,7 +149,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
 
             break;
 
-          case 'lef':
+          case 'left':
             svgStyle = {
               width: `${targetRect.right - containerRect.right}px`,
               height: `${containerRect.height}px`,
@@ -163,7 +157,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
             };
 
             tringlePoints = [
-              [(mouse.x - containerRect.right) / SIZE_MULTIPLIER, mouse.y - containerRect.top],
+              [(mouseCoordinates.x - containerRect.right) / SIZE_MULTIPLIER, mouseCoordinates.y - containerRect.top],
               [0, containerRect.height],
               [0, 0],
             ];
@@ -188,7 +182,7 @@ export const SafeZoneArea = React.memo((props: SafeZoneAreaProps) => {
             };
 
             tringlePoints = [
-              [(mouse.x - targetRect.left) * SIZE_MULTIPLIER, mouse.y - containerRect.y],
+              [(mouseCoordinates.x - targetRect.left) * SIZE_MULTIPLIER, mouseCoordinates.y - containerRect.y],
               [containerRect.left - targetRect.left, containerRect.height],
               [containerRect.left - targetRect.left, 0],
             ];
