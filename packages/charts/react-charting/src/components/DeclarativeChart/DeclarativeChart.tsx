@@ -172,6 +172,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         { data: plotlyData, layout: plotlyInput.layout },
         isAreaChart,
         colorMap,
+        props.useFluentVizColorPalette!,
         isDarkTheme,
       ),
       ...commonProps,

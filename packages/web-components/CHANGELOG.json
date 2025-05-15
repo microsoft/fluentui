@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 15 May 2025 04:06:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.99",
+      "version": "3.0.0-beta.99",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "35deca6eafbd18aa7c34c20d55efee8f0d95215d",
+            "comment": "Add tree exports to main index"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 May 2025 04:07:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.98",
       "version": "3.0.0-beta.98",

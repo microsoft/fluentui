@@ -4035,7 +4035,7 @@ exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwi
 </g>
 `;
 
-exports[`tooltipOfXAxislabels should render a tooltip for x-axis labels 1`] = `
+exports[`tooltipOfAxislabels should render a tooltip for x-axis labels 1`] = `
 <body>
   <div
     class="tooltip-1"

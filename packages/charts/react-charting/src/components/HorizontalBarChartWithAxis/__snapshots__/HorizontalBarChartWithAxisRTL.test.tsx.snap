@@ -17,10 +17,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           overflow: hidden;
           width: 100%;
         }
-    id="chart_2"
+    id="chart_1"
   >
     <div
-      id="defaultTabbableElement_3"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -69,7 +69,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_2"
+          id="xAxisGElementchart_1"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -269,7 +269,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_2"
+          id="yAxisGElementchart_1"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1021,10 +1021,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           overflow: hidden;
           width: 100%;
         }
-    id="chart_2"
+    id="chart_1"
   >
     <div
-      id="defaultTabbableElement_3"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -1073,7 +1073,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_2"
+          id="xAxisGElementchart_1"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -1273,7 +1273,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_2"
+          id="yAxisGElementchart_1"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2038,10 +2038,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             overflow: hidden;
             width: 100%;
           }
-      id="chart_5"
+      id="chart_4"
     >
       <div
-        id="defaultTabbableElement_6"
+        id="defaultTabbableElement_5"
       />
       <div
         class=
@@ -2090,7 +2090,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_5"
+            id="xAxisGElementchart_4"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -2290,7 +2290,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_5"
+            id="yAxisGElementchart_4"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -3043,10 +3043,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           overflow: hidden;
           width: 100%;
         }
-    id="chart_2"
+    id="chart_1"
   >
     <div
-      id="defaultTabbableElement_3"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -3095,7 +3095,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_2"
+          id="xAxisGElementchart_1"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -3295,7 +3295,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_2"
+          id="yAxisGElementchart_1"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4047,10 +4047,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           overflow: hidden;
           width: 100%;
         }
-    id="chart_2"
+    id="chart_1"
   >
     <div
-      id="defaultTabbableElement_3"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -4099,7 +4099,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_2"
+          id="xAxisGElementchart_1"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4245,7 +4245,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_2"
+          id="yAxisGElementchart_1"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4635,10 +4635,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           overflow: hidden;
           width: 100%;
         }
-    id="chart_2"
+    id="chart_1"
   >
     <div
-      id="defaultTabbableElement_3"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -4687,7 +4687,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_2"
+          id="xAxisGElementchart_1"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -4887,7 +4887,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_2"
+          id="yAxisGElementchart_1"
           text-anchor="end"
           transform="translate(40, 0)"
         >
