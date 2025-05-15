@@ -38,6 +38,7 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { IScatterChartProps, ScatterChart } from '../ScatterChart/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -49,6 +50,7 @@ const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 
 /**
  * DeclarativeChart schema.
@@ -160,10 +162,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = (plotlyData[0] as PlotData)?.mode === 'markers';
-    const chartProps: ILineChartProps | IAreaChartProps = {
+    const chartType = isAreaChart ? 'Area' : isScatterMarkers ? 'Scatter' : 'Line';
+    const chartProps: ILineChartProps | IAreaChartProps | IScatterChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
-        isAreaChart,
+        chartType,
         colorMap,
         isDarkTheme,
       ),
@@ -171,6 +174,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     };
     if (isAreaChart) {
       return <ResponsiveAreaChart {...chartProps} />;
+    }
+    if (isScatterMarkers) {
+      return <ResponsiveScatterChart {...(chartProps as IScatterChartProps)} />;
     }
     return <ResponsiveLineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
   };
@@ -290,6 +296,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'line':
     case 'fallback':
     case 'scatterpolar':
+    case 'scatter':
       if (chart.type === 'scatterpolar') {
         const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
         plotlyInputWithValidData.data = cartesianProjection.data;
