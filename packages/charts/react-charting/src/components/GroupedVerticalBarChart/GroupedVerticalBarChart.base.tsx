@@ -18,7 +18,7 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
   formatValueLimitWidth,
@@ -525,9 +525,9 @@ export class GroupedVerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return (
       <g

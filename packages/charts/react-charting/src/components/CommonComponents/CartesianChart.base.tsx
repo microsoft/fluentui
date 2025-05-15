@@ -3,6 +3,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { select as d3Select } from 'd3-selection';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
@@ -30,6 +31,8 @@ import {
   ChartTypes,
   wrapContent,
   getSecureProps,
+  truncateString,
+  tooltipOfAxislabels,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -89,6 +92,7 @@ export class CartesianChartBase
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
   private isIntegralDataset: boolean = true;
+  private _tooltipId: string;
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -104,6 +108,7 @@ export class CartesianChartBase
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
     this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
+    this._tooltipId = getId('tooltip_');
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -222,14 +227,22 @@ export class CartesianChartBase
     points: any[],
     className: string,
   ): number => {
+    const formatTickLabel = (str: string) => {
+      if (this.props.showYAxisLablesTooltip) {
+        return truncateString(str, this.props.noOfCharsToTruncate || 4);
+      }
+
+      return str;
+    };
+
     if (chartType === ChartTypes.HeatMapChart) {
       return calculateLongestLabelWidth(
-        points[0].data.map((point: IHeatMapChartDataPoint) => point.y),
+        points[0].data.map((point: IHeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     } else {
       return calculateLongestLabelWidth(
-        points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
+        points.map((point: IHorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
         `.${className} text`,
       );
     }
@@ -262,6 +275,15 @@ export class CartesianChartBase
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(margin);
+
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      width: this.state._width,
+      height: this.state._height,
+      className: this.props.className,
+      isRtl: this._isRtl,
+      enableReflow: this.props.enableReflow,
+    });
 
     let callout: JSX.Element | null = null;
 
@@ -311,7 +333,7 @@ export class CartesianChartBase
         yAxisTickCount: this.props.yAxisTickCount!,
         yMinValue: this.props.yMinValue || 0,
         yMaxValue: this.props.yMaxValue || 0,
-        tickPadding: 10,
+        tickPadding: this.props.showYAxisLablesTooltip ? 15 : 10,
         maxOfYVal: this.props.maxOfYVal,
         yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
@@ -447,20 +469,42 @@ export class CartesianChartBase
         );
       }
 
-      /*
-     * To create y axis tick values by if specified
-    truncating the rest of the text and showing elipsis
-    or showing the whole string,
-     * */
-      chartTypesToCheck.includes(this.props.chartType) &&
+      if (chartTypesToCheck.includes(this.props.chartType)) {
+        // To create y axis tick values by if specified truncating the rest of the text
+        // and showing elipsis or showing the whole string,
         yScalePrimary &&
-        createYAxisLabels(
-          this.yAxisElement,
-          yScalePrimary,
-          this.props.noOfCharsToTruncate || 4,
-          this.props.showYAxisLablesTooltip || false,
-          this._isRtl,
-        );
+          createYAxisLabels(
+            this.yAxisElement,
+            yScalePrimary,
+            this.props.noOfCharsToTruncate || 4,
+            this.props.showYAxisLablesTooltip || false,
+            this._isRtl,
+          );
+
+        // Removing un wanted tooltip div from DOM, when prop not provided, for proper cleanup
+        // of unwanted DOM elements, to prevent flacky behaviour in tooltips , that might occur
+        // in creating tooltips when tooltips are enabled( as we try to recreate a tspan with this._tooltipId)
+        if (!this.props.showYAxisLablesTooltip) {
+          try {
+            document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+            //eslint-disable-next-line no-empty
+          } catch (e) {}
+        }
+        // Used to display tooltip at y axis labels.
+        if (this.props.showYAxisLablesTooltip) {
+          const yAxisElement = d3Select(this.yAxisElement).call(yScalePrimary);
+          try {
+            document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+            //eslint-disable-next-line no-empty
+          } catch (e) {}
+          const ytooltipProps = {
+            tooltipCls: this._classNames.tooltip!,
+            id: this._tooltipId,
+            axis: yAxisElement,
+          };
+          yAxisElement && tooltipOfAxislabels(ytooltipProps);
+        }
+      }
 
       this.props.getAxisData && this.props.getAxisData(axisData);
       // Callback function for chart, returns axis
@@ -477,15 +521,6 @@ export class CartesianChartBase
         callout = this._generateCallout(calloutProps, chartHoverProps);
       }
     }
-
-    this._classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-      width: this.state._width,
-      height: this.state._height,
-      className: this.props.className,
-      isRtl: this._isRtl,
-      enableReflow: this.props.enableReflow,
-    });
 
     const svgDimensions = {
       width: this.state.containerWidth,
@@ -643,7 +678,7 @@ export class CartesianChartBase
                     this.state._removalValueForTextTuncate!,
                   y: this._isRtl
                     ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
-                    : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
+                    : this.margins.left! / 2 - this.titleMargin,
                   textAnchor: 'middle',
                   transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,

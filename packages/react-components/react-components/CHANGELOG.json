@@ -2,6 +2,107 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:15 GMT",
+      "tag": "@fluentui/react-components_v9.64.0",
+      "version": "9.64.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "94aeaad448edb5b6d9e5e81671be26895bb9cf3d",
+            "comment": "fix: update fluent ariaNotify implementation to match new API"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "ec6617912e7623f2560273649e1c5bb8f5febbd6",
+            "comment": "bug: Fix branded carousel nav button colors to be WCAG contrast compliant"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "914ee93906b4fdf5ffff06e4fa47974c7be1f428",
+            "comment": "fix: Ensure buttons are disabled when not enough content for circular"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f71c8aa217455b6a3197f686d2b112d4f65ed3fe",
+            "comment": "fix(react-charts) Cleanup function removed upstream"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "09f1926e30886b56504a9ede2baacdfc77b24a0c",
+            "comment": "fix: added touch events for ColorArea"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e98da0473a22f426108a46e5509ecff8cab74de7",
+            "comment": "fix: icorrect react-infobutton export from suite"
+          },
+          {
+            "author": "charles.assuncao@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f84bb0c8f4c274a64037732643f193b15cf03ffa",
+            "comment": "Export child context"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "409dd3538c69f5d8bbacff2ac8c85f561ac0046b",
+            "comment": "fix: improve support of concurrent mode, work with React 19"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c2e473dfbcc230c393c92f1d4ad8d4631d095527",
+            "comment": "fix: improve SSR validation"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6e2dc687ffbf4b0b853735abde9f8d58fe51925b",
+            "comment": "fix: filled-circular appearance variant shows selected tab in high contrast"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "42170b77f1459a2d279074a796a14a6eb49e1ce5",
+            "comment": "fix: Tab filled (not filled-subtle) appearance has border in WHCM"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c885b843ef7ef362dd77bc71433815a26ad08574",
+            "comment": "Apply focus visible attribute on navigation state change"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e228622a6c856e69c162217cd8a1295fecdb04b4",
+            "comment": "feat: export PositioningConfigurationProvider"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0512b8dee804ac2bac27458f2f5f02224e6184b3",
+            "comment": "refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e228622a6c856e69c162217cd8a1295fecdb04b4",
+            "comment": "feat: implement shared positioning config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 09:59:43 GMT",
       "tag": "@fluentui/react-components_v9.63.0",
       "version": "9.63.0",

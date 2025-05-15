@@ -519,6 +519,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const secondaryYAxisValues = getSecondaryYAxisValues(
@@ -535,7 +536,10 @@ export const transformPlotlyJsonToScatterChartProps = (
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const legend: string = legends[index];
-    const lineColor = getColor(legend, colorMap, isDarkTheme);
+    const lineColor =
+      !useFluentVizColorPalette && series.line?.color
+        ? getSchemaColors(series.line?.color, colorMap, isDarkTheme)
+        : getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';
@@ -654,6 +658,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     width: input.layout?.width,
     hideTickOverlap: true,
     hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -766,6 +772,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -1131,6 +1139,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
 
   return {
     legends,
-    hideLegend: layout?.showlegend === false ? true : hideLegends,
+    hideLegend:
+      layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
   };
 };

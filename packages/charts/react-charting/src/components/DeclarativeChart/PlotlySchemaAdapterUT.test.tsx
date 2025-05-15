@@ -241,19 +241,23 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
-    expect(transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true);
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
-    expect(transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.5.7)
+
+Wed, 14 May 2025 18:49:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.5.6..@fluentui/react-portal_v9.5.7)
+
+### Patches
+
+- fix: improve support of concurrent mode, work with React 19 ([PR #33978](https://github.com/microsoft/fluentui/pull/33978) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
 
 ## [9.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.5.6)
 
