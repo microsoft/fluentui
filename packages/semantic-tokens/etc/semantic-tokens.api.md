@@ -1553,7 +1553,7 @@ export const ctrlFabShadowRestKey = "var(--smtc-ctrl-fab-shadow-rest-key)";
 export const ctrlFabShadowRestKeyRaw = "--smtc-ctrl-fab-shadow-rest-key";
 
 // @public (undocumented)
-export const ctrlFocusInnerStroke = "var(--smtc-ctrl-focus-inner-stroke)";
+export const ctrlFocusInnerStroke = "var(--smtc-ctrl-focus-inner-stroke, var(--colorStrokeFocus2))";
 
 // @public (undocumented)
 export const ctrlFocusInnerStrokeRaw = "--smtc-ctrl-focus-inner-stroke";
@@ -1565,7 +1565,7 @@ export const ctrlFocusInnerStrokeWidth = "var(--smtc-ctrl-focus-inner-stroke-wid
 export const ctrlFocusInnerStrokeWidthRaw = "--smtc-ctrl-focus-inner-stroke-width";
 
 // @public (undocumented)
-export const ctrlFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
+export const ctrlFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorTransparentStroke)))";
 
 // @public (undocumented)
 export const ctrlFocusOuterStrokeRaw = "--smtc-ctrl-focus-outer-stroke";

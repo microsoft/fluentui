@@ -47,7 +47,7 @@ const isInvalidToken = (token: string) => {
     return true;
   }
   // Blacklist for non-valid tokens
-  if (token.includes('Figmaonly') || token.startsWith('null')) {
+  if (token.includes('Figmaonly') || token.toLocaleLowerCase().startsWith('null')) {
     // Superfluous tokens - SKIP
     return true;
   }
@@ -140,10 +140,6 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
     return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
       tokenSemanticRef,
     )}, ${escapeMixedInlineToken(fluentFallback)}))`;
-  }
-
-  if (fluentFallback && tokenData.nullable) {
-    return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeMixedInlineToken(fluentFallback)}}, unset))`;
   }
 
   if (fluentFallback) {
