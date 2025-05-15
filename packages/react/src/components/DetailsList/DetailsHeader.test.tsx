@@ -5,7 +5,7 @@ import { SelectAllVisibility } from './DetailsHeader.types';
 import { DetailsListLayoutMode, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import * as renderer from 'react-test-renderer';
 import { getTheme } from '../../Styling';
 import type { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
@@ -287,24 +287,28 @@ describe('DetailsHeader', () => {
     const sizerElement = container.querySelector('[data-sizer-index="0"]') as HTMLElement;
     const header: any = headerRef.current!;
 
-    // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
-    EventGroup.raise(
-      sizerElement,
-      'mousedown',
-      {
-        clientX: 0,
-        button: 0,
-      },
-      true,
-    );
+    act(() => {
+      // Trigger a mousedown, which validates that the ref to focuszone is hooking up events.
+      EventGroup.raise(
+        sizerElement,
+        'mousedown',
+        {
+          clientX: 0,
+          button: 0,
+        },
+        true,
+      );
+    });
     // Validate we go into resize mode.
     expect(sizerElement.classList.contains('is-resizing')).toBe(true);
     expect(Boolean(header.state.isSizing)).toBe(false);
 
-    // Mouse move 1 pixel to the right to get into sizing mode.
-    // FIXME: This is a workaround -> fireEvent.mouseMove doesn't trigger the mousemove event on FocusZone
-    // fireEvent.mouseMove(document, { clientX: 1 });
-    header._onRootMouseMove({ clientX: 1 });
+    act(() => {
+      // Mouse move 1 pixel to the right to get into sizing mode.
+      // FIXME: This is a workaround -> fireEvent.mouseMove doesn't trigger the mousemove event on FocusZone
+      // fireEvent.mouseMove(document, { clientX: 1 });
+      header._onRootMouseMove({ clientX: 1 });
+    });
 
     expect(Boolean(header.state.isSizing)).toBe(true);
 
@@ -316,8 +320,10 @@ describe('DetailsHeader', () => {
     header._onSizerMouseMove({ clientX: 300 });
     expect(lastResize).toEqual({ index: 0, size: 500 });
 
-    // Complete sizing.
-    header._onSizerMouseUp();
+    act(() => {
+      // Complete sizing.
+      header._onSizerMouseUp();
+    });
     expect(Boolean(header.state.isSizing)).toBe(false);
   });
 

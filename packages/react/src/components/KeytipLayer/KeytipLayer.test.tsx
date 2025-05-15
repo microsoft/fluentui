@@ -101,7 +101,9 @@ describe('KeytipLayer', () => {
 
     it('correctly sets variables when entering and exiting', () => {
       // enter
-      ktpMgr.enterKeytipMode();
+      act(() => {
+        ktpMgr.enterKeytipMode();
+      });
       expect(layerRef.current!.state.inKeytipMode).toBe(true);
       expect(onEnter).toHaveBeenCalled();
 
@@ -121,7 +123,9 @@ describe('KeytipLayer', () => {
       expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
 
       // exit
-      ktpMgr.exitKeytipMode();
+      act(() => {
+        ktpMgr.exitKeytipMode();
+      });
       expect(layerRef.current!.state.inKeytipMode).toBe(false);
       expect(onExit).toHaveBeenCalled();
 
@@ -133,11 +137,15 @@ describe('KeytipLayer', () => {
 
     it('respects shouldEnterKeytipMode', () => {
       ktpMgr.shouldEnterKeytipMode = false;
-      ktpMgr.enterKeytipMode();
+      act(() => {
+        ktpMgr.enterKeytipMode();
+      });
       expect(layerRef.current!.state.inKeytipMode).toBe(false);
 
       ktpMgr.shouldEnterKeytipMode = true;
-      ktpMgr.enterKeytipMode();
+      act(() => {
+        ktpMgr.enterKeytipMode();
+      });
       expect(layerRef.current!.state.inKeytipMode).toBe(true);
       expect(onEnter).toHaveBeenCalled();
     });
@@ -170,19 +178,25 @@ describe('KeytipLayer', () => {
       });
 
       it('calls onEnter when we process alt + Meta', () => {
-        layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        });
         expect(onEnter).toHaveBeenCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
       });
 
       it('calls onExit when toggling off', () => {
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+        });
         expect(onExit).toHaveBeenCalled();
       });
 
       it('Escape at root exits', () => {
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processTransitionInput({ key: 'Escape' });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Escape' });
+        });
         expect(onExit).toHaveBeenCalled();
       });
 
@@ -191,7 +205,9 @@ describe('KeytipLayer', () => {
         const nodeC = ktpTree.getNode(keytipIdC)!;
         nodeC.onReturn = onReturn;
         ktpTree.currentKeytip = nodeC;
-        layerInstance.processTransitionInput({ key: 'Escape' });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Escape' });
+        });
         expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
         expect(onReturn).toHaveBeenCalled();
       });
@@ -201,7 +217,9 @@ describe('KeytipLayer', () => {
         const nodeD = ktpTree.getNode(keytipIdD)!;
         nodeD.onReturn = onReturn;
         ktpTree.currentKeytip = nodeD;
-        layerInstance.processTransitionInput({ key: 'Escape' });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Escape' });
+        });
         expect(ktpTree.currentKeytip).toEqual(ktpTree.getNode(keytipIdC));
       });
 
@@ -216,7 +234,9 @@ describe('KeytipLayer', () => {
           />,
         );
         layerInstance = layerRef.current!;
-        layerInstance.processTransitionInput({ key: 'Meta' });
+        act(() => {
+          layerInstance.processTransitionInput({ key: 'Meta' });
+        });
         expect(onEnter).toHaveBeenCalledWith({ key: 'Meta' });
       });
     });
@@ -248,7 +268,9 @@ describe('KeytipLayer', () => {
         const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipB, onExecute }, uniqueIdB);
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processInput('b');
+        act(() => {
+          layerInstance.processInput('b');
+        });
         expect(onExecute).toHaveBeenCalled();
         expect(onExit).toHaveBeenCalled();
         expect(layerInstance.getCurrentSequence()).toHaveLength(0);
@@ -258,9 +280,13 @@ describe('KeytipLayer', () => {
         const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipE2, onExecute }, uniqueIdE2);
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processInput('e');
+        act(() => {
+          layerInstance.processInput('e');
+        });
         expect(layerInstance.getCurrentSequence()).toHaveLength(1);
-        layerInstance.processInput('2');
+        act(() => {
+          layerInstance.processInput('2');
+        });
         expect(onExecute).toHaveBeenCalled();
         expect(onExit).toHaveBeenCalled();
         expect(layerInstance.getCurrentSequence()).toHaveLength(0);
@@ -270,7 +296,9 @@ describe('KeytipLayer', () => {
         const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipB, onExecute, hasDynamicChildren: true }, uniqueIdB);
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processInput('b');
+        act(() => {
+          layerInstance.processInput('b');
+        });
         expect(onExecute).toHaveBeenCalled();
         expect(ktpTree.currentKeytip.id).toEqual(keytipIdB);
         expect(layerInstance.getCurrentSequence()).toHaveLength(0);
@@ -281,13 +309,17 @@ describe('KeytipLayer', () => {
         nodeE2.persisted = true;
         nodeE2.onExecute = jest.fn();
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processInput('e');
+        act(() => {
+          layerInstance.processInput('e');
+        });
 
         const visible = layerRef.current!.state.visibleKeytips;
         expect(visible).toHaveLength(1);
         expect(visible[0].content).toBe('E1');
 
-        layerInstance.processInput('2');
+        act(() => {
+          layerInstance.processInput('2');
+        });
         expect(nodeE2.onExecute).toHaveBeenCalled();
       });
 
@@ -295,7 +327,9 @@ describe('KeytipLayer', () => {
         const onExecute = jest.fn();
         ktpTree.addNode({ ...keytipC, hasOverflowSubMenu: true, onExecute }, uniqueIdC2);
         ktpTree.currentKeytip = ktpTree.root;
-        layerInstance.processInput('c');
+        act(() => {
+          layerInstance.processInput('c');
+        });
         expect(onExecute).toHaveBeenCalled();
       });
     });
@@ -311,7 +345,9 @@ describe('KeytipLayer', () => {
         [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 },
       };
       render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
-      layerRef.current!.showKeytips([keytipIdB, keytipIdC]);
+      act(() => {
+        layerRef.current!.showKeytips([keytipIdB, keytipIdC]);
+      });
       const visible = layerRef.current!.state.visibleKeytips;
       expect(visible).toHaveLength(2);
       expect(getKeytip(visible, 'B')).toBeDefined();
@@ -330,7 +366,9 @@ describe('KeytipLayer', () => {
         [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 },
       };
       render(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
-      layerRef.current!.showKeytips(['ktp-x-b']);
+      act(() => {
+        layerRef.current!.showKeytips(['ktp-x-b']);
+      });
       const visible = layerRef.current!.state.visibleKeytips;
       expect(visible).toHaveLength(1);
       expect(getKeytip(visible, 'B')).toBeDefined();
@@ -362,7 +400,9 @@ describe('KeytipLayer', () => {
 
     it('keytipAdded delay-shows child when active', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
+        ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      });
       act(() => {
         jest.runAllTimers();
       });
@@ -374,7 +414,9 @@ describe('KeytipLayer', () => {
     it('does not show when delaying and not in mode', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
+        ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      });
       act(() => {
         jest.runAllTimers();
       });
@@ -386,7 +428,9 @@ describe('KeytipLayer', () => {
       ktpMgr.delayUpdatingKeytipChange = true;
       ktpMgr.inKeytipMode = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
-      ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      act(() => {
+        ktpMgr.register({ content: 'X', keySequences: ['b', 'x'] });
+      });
       act(() => {
         jest.runAllTimers();
       });

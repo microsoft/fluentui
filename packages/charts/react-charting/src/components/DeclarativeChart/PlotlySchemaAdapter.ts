@@ -48,6 +48,8 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  PieColors,
+  Color,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -55,11 +57,12 @@ import {
   isDate,
   isDateArray,
   isNumberArray,
-  isLineData,
+  isYearArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
+import { color as d3Color } from 'd3-color';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -113,10 +116,6 @@ const isMonth = (possiblyMonthValue: any): boolean => {
 
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
   return isArrayOfType(data, isMonth);
-};
-
-const getLegend = (series: Partial<PlotData>, index: number): string => {
-  return series.name || `Series ${index + 1}`;
 };
 
 function getTitles(layout: Partial<Layout> | undefined) {
@@ -223,16 +222,55 @@ const getSecondaryYAxisValues = (
   };
 };
 
+export const getSchemaColors = (
+  colors: PieColors | Color | null | undefined,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string[] | string | undefined => {
+  const hexColors: string[] = [];
+  if (!colors) {
+    return undefined;
+  }
+  if (isArrayOrTypedArray(colors)) {
+    (colors as any[]).forEach((element, index) => {
+      const colorString = element?.toString().trim();
+      const nextFluentColor = getColor(`Label_${index}`, colorMap, isDarkTheme);
+      if (colorString) {
+        const parsedColor = d3Color(colorString);
+        hexColors.push(parsedColor ? parsedColor.formatHex() : nextFluentColor);
+      } else {
+        hexColors.push(nextFluentColor);
+      }
+    });
+  } else if (typeof colors === 'string') {
+    const parsedColor = d3Color(colors);
+    return parsedColor ? parsedColor.formatHex() : getColor('Label_0', colorMap, isDarkTheme);
+  }
+  return hexColors;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
+  let colors: string[] | string | null | undefined = undefined;
+  if (!useFluentVizColorPalette) {
+    colors = firstData.marker?.colors ? getSchemaColors(firstData?.marker?.colors, colorMap, isDarkTheme) : undefined;
+  }
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
-    const color = getColor(label, colorMap, isDarkTheme);
+    let color: string = '';
+    if (colors && isStringArray(colors)) {
+      color = colors[index % colors.length];
+    } else if (typeof colors === 'string') {
+      color = colors;
+    } else {
+      color = getColor(label, colorMap, isDarkTheme);
+    }
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
@@ -282,12 +320,14 @@ export const transformPlotlyJsonToVSBCProps = (
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
-      const legend: string = getLegend(series, index1);
+      const legend: string = legends[index1];
       const yVal: number = (series.y?.[index2] as number) ?? 0;
       if (series.type === 'bar') {
         const color = getColor(legend, colorMap, isDarkTheme);
@@ -297,11 +337,15 @@ export const transformPlotlyJsonToVSBCProps = (
           color,
         });
         yMaxValue = Math.max(yMaxValue, yVal);
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
+        const dashType = series.line?.dash || 'solid';
+        const legendShape =
+          dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
         mapXToDataPoints[x].lineData!.push({
           legend,
+          legendShape,
           y: yVal,
           color,
           ...(lineOptions ? { lineOptions } : {}),
@@ -328,6 +372,7 @@ export const transformPlotlyJsonToVSBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    hideLegend,
   };
 };
 
@@ -338,6 +383,7 @@ export const transformPlotlyJsonToGVBCProps = (
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
 
   input.data.forEach((series: PlotData, index1: number) => {
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
@@ -346,7 +392,7 @@ export const transformPlotlyJsonToGVBCProps = (
       }
 
       if (series.type === 'bar') {
-        const legend: string = getLegend(series, index1);
+        const legend: string = legends[index1];
         const color = getColor(legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
@@ -374,6 +420,7 @@ export const transformPlotlyJsonToGVBCProps = (
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
+    hideLegend,
   };
 };
 
@@ -383,6 +430,7 @@ export const transformPlotlyJsonToVBCProps = (
   isDarkTheme?: boolean,
 ): IVerticalBarChartProps => {
   const vbcData: IVerticalBarChartDataPoint[] = [];
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
     if (!series.x) {
@@ -410,7 +458,7 @@ export const transformPlotlyJsonToVBCProps = (
     });
 
     xBins.forEach((bin, index) => {
-      const legend: string = getLegend(series, seriesIdx);
+      const legend: string = legends[seriesIdx];
       const color: string = getColor(legend, colorMap, isDarkTheme);
       const yVal = calculateHistNorm(
         series.histnorm,
@@ -444,6 +492,7 @@ export const transformPlotlyJsonToVBCProps = (
     mode: 'histogram',
     hideTickOverlap: true,
     maxBarWidth: 50,
+    hideLegend,
   };
 };
 
@@ -451,6 +500,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   chartType: 'Area' | 'Line' | 'Scatter',
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
   const isAreaChart = chartType === 'Area';
@@ -462,18 +512,25 @@ export const transformPlotlyJsonToScatterChartProps = (
     isAreaChart ? 0 : undefined,
   );
   let mode: string = 'tonexty';
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: ILineChartPoints[] = input.data.map((series: PlotData, index: number) => {
     const xValues = series.x as Datum[];
     const isString = typeof xValues[0] === 'string';
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
-    const legend: string = getLegend(series, index);
-    const lineColor = getColor(legend, colorMap, isDarkTheme);
+    const legend: string = legends[index];
+    const lineColor =
+      !useFluentVizColorPalette && series.line?.color
+        ? getSchemaColors(series.line?.color, colorMap, isDarkTheme)
+        : getColor(legend, colorMap, isDarkTheme);
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
+    const dashType = series.line?.dash || 'solid';
+    const legendShape = dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
 
     return {
       legend,
+      legendShape,
       data: xValues.map((x, i: number) => ({
         x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
         y: series.y[i],
@@ -513,6 +570,8 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
+      hideLegend,
+      useUTC: false,
     } as IAreaChartProps;
   } else {
     return {
@@ -528,6 +587,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       enableReflow: false,
+      useUTC: false,
     } as ILineChartProps | IScatterChartProps;
   }
 };
@@ -537,15 +597,16 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: PlotData, index: number) => {
+      const legend = legends[index];
+      const color = getColor(legend, colorMap, isDarkTheme);
       return (series.y as Datum[]).map((yValue: string, i: number) => {
-        const legendName = series.name ?? yValue;
-        const color = getColor(legendName, colorMap, isDarkTheme);
         return {
           x: series.x[i],
           y: yValue,
-          legend: legendName,
+          legend,
           color,
         } as IHorizontalBarChartWithAxisDataPoint;
       });
@@ -582,6 +643,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     height: chartHeight,
     width: input.layout?.width,
     hideTickOverlap: true,
+    hideLegend,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -694,6 +758,8 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -1043,4 +1109,23 @@ const getPrecision = (value: number) => {
 const precisionRound = (value: number, precision: number) => {
   const factor = Math.pow(10, precision);
   return Math.round(value * factor) / factor;
+};
+
+const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const legends: string[] = [];
+  if (data.length === 1) {
+    legends.push(data[0].name || '');
+  } else {
+    data.forEach((series, index) => {
+      legends.push(series.name || `Series ${index + 1}`);
+    });
+  }
+
+  const hideLegends = data.every((series: Partial<PlotData>) => series.showlegend === false);
+
+  return {
+    legends,
+    hideLegend:
+      layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
+  };
 };

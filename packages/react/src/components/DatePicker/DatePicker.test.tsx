@@ -1,21 +1,27 @@
 import '@testing-library/jest-dom';
 
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
+import { resetIds } from '@fluentui/utilities';
+import { safeCreate } from '@fluentui/test-utilities';
+
 import { DatePicker } from './DatePicker';
 import { Calendar } from '../Calendar';
 import { DatePickerBase } from './DatePicker.base';
-import { FirstWeekOfYear } from '@fluentui/date-time-utilities';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { resetIds } from '@fluentui/utilities';
 import { Callout } from '../../Callout';
-import { safeCreate } from '@fluentui/test-utilities';
 import { TextField } from '../../TextField';
-import * as renderer from 'react-test-renderer';
-import * as ReactDOM from 'react-dom';
 import { CalendarDayGridBase } from '../CalendarDayGrid/CalendarDayGrid.base';
 import { isConformant } from '../../common/isConformant';
 import { IDatePickerStrings } from './DatePicker.types';
+
+// See https://github.com/facebook/react/issues/11565
+function mockCreatePortal() {
+  return jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+}
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -129,8 +135,7 @@ describe('DatePicker', () => {
   });
 
   it('should clear error message when required input has date text and allowTextInput is true', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
       const textfield = datePicker.root.findByType(TextField);
@@ -158,8 +163,7 @@ describe('DatePicker', () => {
   });
 
   it('should not set initial error when required input is empty and validateOnLoad is false', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(
       <DatePickerBase isRequired={true} allowTextInput={true} textField={{ validateOnLoad: false }} />,
@@ -183,8 +187,7 @@ describe('DatePicker', () => {
   });
 
   it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
       const textfield = datePicker.root.findByType(TextField);
@@ -213,8 +216,7 @@ describe('DatePicker', () => {
   });
 
   it('should not clear initial error when datepicker is opened', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(
       <DatePickerBase
@@ -265,8 +267,7 @@ describe('DatePicker', () => {
   });
 
   it('should reset status message after selecting a valid date', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(<DatePickerBase allowTextInput={true} initialPickerDate={new Date('2021-04-15')} />, datePicker => {
       const input = datePicker.root.findByType('input');
@@ -297,8 +298,7 @@ describe('DatePicker', () => {
   });
 
   it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
     const onSelectDate = jest.fn();
 
     safeCreate(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />, datePicker => {
@@ -318,8 +318,7 @@ describe('DatePicker', () => {
   });
 
   it('should set "Calendar" as the Callout\'s aria-label', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(<DatePickerBase />, datePicker => {
       const input = datePicker.root.findAllByType('div')[5];
@@ -340,8 +339,7 @@ describe('DatePicker', () => {
     const initiallySelectedDate = new Date('January 10, 2020');
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(
       <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
@@ -370,8 +368,7 @@ describe('DatePicker', () => {
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
 
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(
       <DatePickerBase
@@ -409,8 +406,7 @@ describe('DatePickerBase - custom calendar properties', () => {
   };
 
   it('renders Calendar with provided props and custom formatter', () => {
-    // See https://github.com/facebook/react/issues/11565
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(node => node as any);
+    mockCreatePortal();
 
     safeCreate(
       <DatePickerBase

@@ -355,6 +355,7 @@ Object {
     },
   ],
   "height": 742,
+  "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
   "width": 850,
@@ -2821,6 +2822,7 @@ Object {
   "height": 350,
   "hideLegend": true,
   "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
   "rangeValuesForColorScale": Array [
     "rgb(158,1,66)",
     "rgb(213,62,79)",
@@ -2835,6 +2837,7 @@ Object {
     "rgb(94,79,162)",
   ],
   "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
   "xAxisTitle": "",
@@ -2987,9 +2990,12 @@ Object {
     },
   ],
   "height": 742,
+  "hideLegend": true,
   "hideTickOverlap": true,
+  "noOfCharsToTruncate": 20,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
+  "showYAxisLablesTooltip": true,
   "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
@@ -3183,6 +3189,7 @@ Object {
           },
         ],
         "legend": "a",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3233,6 +3240,7 @@ Object {
           },
         ],
         "legend": "b",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3283,13 +3291,14 @@ Object {
           },
         ],
         "legend": "c",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#a4cc6c",
+        "color": "#23330b",
         "data": Array [
           Object {
             "x": 0,
@@ -3333,6 +3342,7 @@ Object {
           },
         ],
         "legend": "d",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -3341,9 +3351,11 @@ Object {
     ],
   },
   "height": 350,
+  "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
   "supportNegativeData": true,
+  "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -3356,7 +3368,7 @@ Object {
     "chartTitle": "",
     "lineChartData": Array [
       Object {
-        "color": "#a7e3a5",
+        "color": "#0b5a08",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -3760,13 +3772,14 @@ Object {
           },
         ],
         "legend": "Trace 0",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#83bdeb",
+        "color": "#20547c",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4170,13 +4183,14 @@ Object {
           },
         ],
         "legend": "Trace 1",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#df8e64",
+        "color": "#712d09",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4580,6 +4594,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -4592,6 +4607,7 @@ Object {
   "hideTickOverlap": true,
   "roundedTicks": true,
   "supportNegativeData": true,
+  "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -4606,7 +4622,7 @@ Object {
     "chartTitle": "",
     "scatterChartData": Array [
       Object {
-        "color": "#a7e3a5",
+        "color": "#0b5a08",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5010,13 +5026,14 @@ Object {
           },
         ],
         "legend": "Trace 0",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#83bdeb",
+        "color": "#20547c",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5420,13 +5437,14 @@ Object {
           },
         ],
         "legend": "Trace 1",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#df8e64",
+        "color": "#712d09",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5830,6 +5848,7 @@ Object {
           },
         ],
         "legend": "Trace 2",
+        "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
         },
@@ -5842,6 +5861,7 @@ Object {
   "hideTickOverlap": true,
   "roundedTicks": true,
   "supportNegativeData": true,
+  "useUTC": false,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
@@ -6122,6 +6142,7 @@ Object {
     },
   ],
   "height": 350,
+  "hideLegend": false,
   "hideTickOverlap": true,
   "maxBarWidth": 50,
   "mode": "histogram",
@@ -6219,6 +6240,7 @@ Object {
     },
   ],
   "height": 350,
+  "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
   "width": undefined,

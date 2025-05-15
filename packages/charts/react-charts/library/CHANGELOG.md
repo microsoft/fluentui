@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-charts
 
-This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.5)
+
+Wed, 14 May 2025 18:49:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charts_v9.0.4..@fluentui/react-charts_v9.0.5)
+
+### Patches
+
+- fix(react-charts) Cleanup function removed upstream ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/react-button to v9.4.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-overflow to v9.3.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-popover to v9.10.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charts_v9.0.4)
 

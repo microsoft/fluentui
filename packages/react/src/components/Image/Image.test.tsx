@@ -3,8 +3,7 @@ import { create } from '@fluentui/test-utilities';
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit, ImageCoverStyle } from './Image.types';
-import { act } from 'react-dom/test-utils';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 
 /**

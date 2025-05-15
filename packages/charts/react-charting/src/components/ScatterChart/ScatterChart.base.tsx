@@ -25,7 +25,7 @@ import {
   calloutData,
   ChartTypes,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
@@ -205,25 +205,28 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     [activePoint, props],
   );
 
-  function getDomainNRangeValuesScatterChart(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    points: any,
-    margins: IMargins,
-    width: number,
-    _chartType: ChartTypes,
-    isRTL: boolean,
-    xAxisType: XAxisTypes,
-    _barWidth: number,
-    tickValues: number[] | Date[] | string[] | undefined,
-  ) {
-    if (xAxisType === XAxisTypes.NumericAxis) {
-      return domainRangeOfNumericForScatterChart(points, margins, width, isRTL);
-    } else if (xAxisType === XAxisTypes.DateAxis) {
-      return domainRangeOfDateForScatterChart(points, margins, width, isRTL, tickValues! as Date[]);
-    }
-    // String Axis type
-    return domainRangeOfXStringAxis(margins, width, isRTL);
-  }
+  const getDomainNRangeValuesScatterChart = React.useCallback(
+    (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      points: any,
+      domainMargins: IMargins,
+      width: number,
+      _chartType: ChartTypes,
+      isRTL: boolean,
+      xAxisType: XAxisTypes,
+      _barWidth: number,
+      tickValues: number[] | Date[] | string[] | undefined,
+    ) => {
+      if (xAxisType === XAxisTypes.NumericAxis) {
+        return domainRangeOfNumericForScatterChart(points, domainMargins, width, isRTL);
+      } else if (xAxisType === XAxisTypes.DateAxis) {
+        return domainRangeOfDateForScatterChart(points, domainMargins, width, isRTL, tickValues! as Date[]);
+      }
+      // String Axis type
+      return domainRangeOfXStringAxis(domainMargins, width, isRTL);
+    },
+    [],
+  );
 
   const _handleFocus = React.useCallback(
     (
@@ -494,7 +497,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           id: _tooltipId,
           xAxis: xAxisElement,
         };
-        xAxisElement && tooltipOfXAxislabels(tooltipProps);
+        xAxisElement && tooltipOfAxislabels(tooltipProps);
       }
       return series;
     },
