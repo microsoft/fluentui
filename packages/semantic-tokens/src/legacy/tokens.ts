@@ -10,6 +10,11 @@ export const borderRadiusNone = 'var(--borderRadiusNone)';
  */
 export const colorStrokeFocus2 = 'var(--colorStrokeFocus2)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentStroke | `colorTransparentStroke`} design token.
+ * @public
+ */
+export const colorTransparentStroke = 'var(--colorTransparentStroke)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandForegroundLinkHover | `colorBrandForegroundLinkHover`} design token.
  * @public
  */
