@@ -5,18 +5,10 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 
 const Example = ({
   containerHeight = 400,
-
-  popoverWidth = 150,
-  popoverHeight = 300,
-
   positioning,
   triggerStyle,
 }: {
   containerHeight?: number;
-
-  popoverHeight?: number;
-  popoverWidth?: number;
-
   positioning: Pick<PositioningProps, 'align' | 'position' | 'offset'>;
   triggerStyle?: React.CSSProperties;
 }) => {
@@ -55,8 +47,8 @@ const Example = ({
           border: '2px solid black',
           position: 'absolute',
           padding: '20px',
-          width: popoverWidth,
-          height: popoverHeight,
+          width: '150px',
+          height: '300px',
         }}
       >
         POPOVER
@@ -66,27 +58,18 @@ const Example = ({
   );
 };
 
-const BoundaryRect = () => {
-  const [popoverHeight, setPopoverHeight] = React.useState(300);
-
+const SafeZone = () => {
   return (
     <>
-      <div style={{ display: 'flex', gap: 20, background: 'lightcyan', padding: '20px' }}>
-        <button onClick={() => setPopoverHeight(200)}>height 200</button>
-        <button onClick={() => setPopoverHeight(300)}>height 300</button>
-      </div>
-
       <div style={{ display: 'grid', gap: 20, gridTemplateColumns: '1fr 1fr', placeItems: 'center' }}>
         {/* left */}
         <Example
           triggerStyle={{ left: 50, top: 150 }}
-          popoverHeight={popoverHeight}
           positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
         />
         {/* right */}
         <Example
           triggerStyle={{ right: 50, top: 150 }}
-          popoverHeight={popoverHeight}
           positioning={{ align: 'center', position: 'before', offset: { mainAxis: 20 } }}
         />
 
@@ -94,14 +77,12 @@ const BoundaryRect = () => {
         <Example
           containerHeight={500}
           triggerStyle={{ left: 50, top: 400 }}
-          popoverHeight={popoverHeight}
           positioning={{ align: 'center', position: 'above', offset: { mainAxis: 20 } }}
         />
         {/* bottom */}
         <Example
           containerHeight={500}
           triggerStyle={{ left: 50, top: 50 }}
-          popoverHeight={popoverHeight}
           positioning={{ align: 'center', position: 'below', offset: { mainAxis: 20 } }}
         />
       </div>
@@ -128,5 +109,5 @@ export default {
   ],
 } satisfies Meta<'div'>;
 
-export const _BoundaryRect = () => <BoundaryRect />;
-_BoundaryRect.storyName = 'using boundary rect';
+export const _SafeZone = () => <SafeZone />;
+_SafeZone.storyName = 'using safe zone area';

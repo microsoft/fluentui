@@ -60,6 +60,8 @@ const Example = ({
 
   onSafeZoneLeave,
   onSafeZoneEnter,
+  onSafeZoneTimeout,
+  timeout = 100000,
 
   positioning,
   triggerStyle,
@@ -71,12 +73,13 @@ const Example = ({
 
   positioning: Pick<PositioningProps, 'align' | 'position' | 'offset'>;
   triggerStyle?: React.CSSProperties;
-} & Pick<SafeBufferAreaOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave'>) => {
+} & Pick<SafeBufferAreaOptions, 'onSafeZoneEnter' | 'onSafeZoneLeave' | 'onSafeZoneTimeout' | 'timeout'>) => {
   const safeZoneArea = useSafeZoneArea({
     debug: true,
-    timeout: 100000,
+    timeout,
     onSafeZoneLeave,
     onSafeZoneEnter,
+    onSafeZoneTimeout,
   });
   const { containerRef, targetRef } = usePositioning(positioning);
 
@@ -184,6 +187,37 @@ describe('useSafeZoneArea', () => {
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
     cy.get('.popover').realHover({ position: 'center' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+  });
+
+  it('onSafeZoneTimeout is called after timeout', () => {
+    const onSafeZoneEnter = cy.stub().as('onSafeZoneEnter');
+    const onSafeZoneTimeout = cy.stub().as('onSafeZoneTimeout');
+
+    mount(
+      <Example
+        popoverHeight={300}
+        positioning={{ align: 'center', position: 'after', offset: { mainAxis: 20 } }}
+        onSafeZoneEnter={onSafeZoneEnter}
+        onSafeZoneTimeout={onSafeZoneTimeout}
+        triggerStyle={{ left: 50, top: 150 }}
+        timeout={200}
+      />,
+    );
+
+    // Activate the safe zone
+
+    cy.get('.trigger').realHover({ position: 'center' });
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    // Move over the safe zone to start the timeout
+
+    cy.get('.trigger').realMouseMove(10, 10, { position: 'topRight' });
+    cy.get('@onSafeZoneEnter').should('be.called');
+
+    // Wait for the timeout to finish
+
+    cy.get('@onSafeZoneTimeout').should('be.called');
     cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
   });
 });
