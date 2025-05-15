@@ -29,7 +29,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -111,7 +111,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               y="16"
             >
-              5,000
+              5000
             </text>
           </g>
           <g
@@ -257,7 +257,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -293,7 +293,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -327,7 +327,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_8"
+              id="_VBC_bar_9"
               role="img"
               rx="0"
               tabindex="0"
@@ -344,11 +344,14 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="56"
               y="203.6"
             >
-              10.0k
+              10k
             </text>
           </g>
           <g>
@@ -362,7 +365,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_10"
+              id="_VBC_bar_11"
               role="img"
               rx="0"
               tabindex="-1"
@@ -379,11 +382,14 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="270.61538461538464"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
           <g>
@@ -397,7 +403,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_12"
+              id="_VBC_bar_13"
               role="img"
               rx="0"
               tabindex="-1"
@@ -414,11 +420,14 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               text-anchor="middle"
               x="592.5384615384615"
               y="108.80000000000001"
             >
-              30.0k
+              30k
             </text>
           </g>
         </g>
@@ -461,7 +470,7 @@ exports[`vertical bar chart with numeric x-axis data Should render the vertical 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone7"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

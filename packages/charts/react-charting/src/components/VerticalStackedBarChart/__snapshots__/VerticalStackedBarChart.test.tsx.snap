@@ -29,7 +29,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -262,7 +262,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -527,7 +527,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -608,7 +608,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           >
             <defs>
               <linearGradient
-                id="VSBC_Gradient5_0_0"
+                id="VSBC_Gradient6_0_0"
                 x1="0%"
                 x2="0%"
                 y1="100%"
@@ -633,7 +633,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     opacity: ;
                   }
               data-is-focusable={true}
-              fill="url(#VSBC_Gradient5_0_0)"
+              fill="url(#VSBC_Gradient6_0_0)"
               height={42.30769230769231}
               onBlur={[Function]}
               onClick={[Function]}
@@ -650,7 +650,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             />
             <defs>
               <linearGradient
-                id="VSBC_Gradient6_0_1"
+                id="VSBC_Gradient7_0_1"
                 x1="0%"
                 x2="0%"
                 y1="100%"
@@ -675,7 +675,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     opacity: ;
                   }
               data-is-focusable={true}
-              fill="url(#VSBC_Gradient6_0_1)"
+              fill="url(#VSBC_Gradient7_0_1)"
               height={5.288461538461538}
               onBlur={[Function]}
               onClick={[Function]}
@@ -698,7 +698,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
           >
             <defs>
               <linearGradient
-                id="VSBC_Gradient7_1_0"
+                id="VSBC_Gradient8_1_0"
                 x1="0%"
                 x2="0%"
                 y1="100%"
@@ -723,7 +723,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     opacity: ;
                   }
               data-is-focusable={true}
-              fill="url(#VSBC_Gradient7_1_0)"
+              fill="url(#VSBC_Gradient8_1_0)"
               height={31.73076923076923}
               onBlur={[Function]}
               onClick={[Function]}
@@ -740,7 +740,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
             />
             <defs>
               <linearGradient
-                id="VSBC_Gradient8_1_1"
+                id="VSBC_Gradient9_1_1"
                 x1="0%"
                 x2="0%"
                 y1="100%"
@@ -765,7 +765,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                     opacity: ;
                   }
               data-is-focusable={true}
-              fill="url(#VSBC_Gradient8_1_1)"
+              fill="url(#VSBC_Gradient9_1_1)"
               height={21.153846153846153}
               onBlur={[Function]}
               onClick={[Function]}
@@ -832,7 +832,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render gradients on bar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1097,7 +1097,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1330,7 +1330,7 @@ exports[`VerticalStackedBarChart snapShot testing Should render rounded corners 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1595,7 +1595,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1828,7 +1828,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2093,7 +2093,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2309,7 +2309,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2571,7 +2571,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2790,7 +2790,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3023,7 +3023,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3288,7 +3288,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3503,7 +3503,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3768,7 +3768,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4001,7 +4001,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4266,7 +4266,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4499,7 +4499,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4764,7 +4764,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
           outline: none;
         }
 
-    data-focuszone-id="FocusZone9"
+    data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4997,7 +4997,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone11"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

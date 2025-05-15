@@ -1918,6 +1918,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               dominantBaseline="central"
               role="img"
               textAnchor="start"
@@ -2113,6 +2116,9 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               dominantBaseline="central"
               role="img"

@@ -36,7 +36,7 @@ import {
   ChartTypes,
   getXAxisType,
   XAxisTypes,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   Points,
   pointTypes,
   getTypeOfAxis,
@@ -1238,9 +1238,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const tooltipProps = {
         tooltipCls: classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return lines;
   }

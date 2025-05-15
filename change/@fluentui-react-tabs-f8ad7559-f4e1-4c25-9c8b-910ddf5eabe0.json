@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Tab filled (not filled-subtle) appearance has border in WHCM",
-  "packageName": "@fluentui/react-tabs",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
