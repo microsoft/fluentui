@@ -12,6 +12,8 @@ interface IErrorBoundaryState {
   error: string;
 }
 
+type FluentDataVizColorPaletteTypes = 'default' | 'builtin' | 'override';
+
 class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryState> {
   public static getDerivedStateFromError(error: Error) {
     // Update state so the next render will show the fallback UI.
@@ -35,7 +37,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
 interface IDeclarativeChartState {
   selectedChoice: string;
   selectedLegends: string;
-  fluentDataVizColorPalette: string;
+  fluentDataVizColorPalette: FluentDataVizColorPaletteTypes;
 }
 
 const options: IDropdownOption[] = [
@@ -119,7 +121,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
   };
 
   private _onColorPaletteChange = (ev: React.FormEvent<HTMLInputElement>, option: IDropdownOption): void => {
-    this.setState({ fluentDataVizColorPalette: option.key as string });
+    this.setState({ fluentDataVizColorPalette: option.key as FluentDataVizColorPaletteTypes });
   };
 
   private _onSelectedLegendsEdited = (

@@ -283,7 +283,7 @@ export const transformPlotlyJsonToDonutProps = (
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
   // extract colors for each series only once
-  let colors: string[] | string | null | undefined = _extractColor(
+  const colors: string[] | string | null | undefined = _extractColor(
     useFluentVizColorPalette,
     firstData?.marker?.colors,
     colorMap,
@@ -293,7 +293,7 @@ export const transformPlotlyJsonToDonutProps = (
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
     // resolve color for each legend from the extracted colors
-    let color: string = _resolveColor(colors, index, label, colorMap, isDarkTheme);
+    const color: string = _resolveColor(colors, index, label, colorMap, isDarkTheme);
     //ToDo how to handle string data?
     const value = typeof firstData.values?.[index] === 'number' ? (firstData.values[index] as number) : 1;
 
@@ -373,7 +373,7 @@ export const transformPlotlyJsonToVSBCProps = (
         });
         yMaxValue = Math.max(yMaxValue, yVal);
       } else if (series.type === 'scatter' || !!fallbackVSBC) {
-        const color = _resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
+        const lineColor = _resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
         const legendShape =
@@ -382,7 +382,7 @@ export const transformPlotlyJsonToVSBCProps = (
           legend,
           legendShape,
           y: yVal,
-          color,
+          color: lineColor,
           ...(lineOptions ? { lineOptions } : {}),
           useSecondaryYScale: usesSecondaryYScale(series),
         });
@@ -826,7 +826,6 @@ export const transformPlotlyJsonToSankeyProps = (
       source: link?.source![index],
       target: link?.target![index],
     }))
-    // eslint-disable-next-line @typescript-eslint/no-shadow
     // Filter out negative nodes, unequal nodes and self-references (circular links)
     .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
 
