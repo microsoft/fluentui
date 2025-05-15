@@ -200,7 +200,7 @@ const getValidTraces = (dataArr: Data[]) => {
           try {
             validator(data);
           } catch (error) {
-            errorMessages.push(`data[${index}]: ${error}`);
+            errorMessages.push(`data[${index}] - type: ${data.type}, ${error}`);
             return [-1, DEFAULT_CHART_TYPE];
           }
         }
