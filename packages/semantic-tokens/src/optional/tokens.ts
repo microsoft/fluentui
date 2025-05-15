@@ -81,6 +81,7 @@ import {
   shadowFlyoutAmbientRaw,
   shadowWindowActiveKeyRaw,
 } from '../control/variables';
+import { colorNeutralForeground1 } from '../legacy/tokens';
 import {
   strokeCardOnPrimaryRestRaw,
   strokeCtrlOnBrandRestRaw,
@@ -511,7 +512,7 @@ export const cornerCtrlSmHover = `var(${cornerCtrlSmHoverRaw}, var(${cornerCtrlS
 export const cornerCtrlSmPressed = `var(${cornerCtrlSmPressedRaw}, var(${cornerCtrlSmRestRaw}))`;
 export const cornerCtrlLgHover = `var(${cornerCtrlLgHoverRaw}, var(${cornerCtrlLgRestRaw}))`;
 export const cornerCtrlLgPressed = `var(${cornerCtrlLgPressedRaw}, var(${cornerCtrlLgRestRaw}))`;
-export const foregroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
+export const foregroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
 export const foregroundContentNeutralSecondary = `var(${foregroundContentNeutralSecondaryRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
 export const foregroundContentBrandPrimary = `var(${foregroundContentBrandPrimaryRaw}, var(${foregroundCtrlBrandRestRaw}))`;
 export const foregroundCtrlNeutralPrimaryHover = `var(${foregroundCtrlNeutralPrimaryHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;

@@ -1,12 +1,32 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
 import {
+  fontSizeHero1000,
+  lineHeightHero1000,
+  fontSizeHero900,
+  lineHeightHero900,
+  fontSizeHero800,
+  lineHeightHero800,
+  fontSizeHero700,
+  lineHeightHero700,
+  fontSizeBase600,
+  lineHeightBase600,
+  fontSizeBase500,
+  lineHeightBase500,
+  fontSizeBase400,
+  lineHeightBase400,
   fontSizeBase300,
+  lineHeightBase300,
+  fontSizeBase200,
+  lineHeightBase200,
+  fontSizeBase100,
+  lineHeightBase100,
   fontFamilyBase,
   fontWeightRegular,
   strokeWidthThin,
   borderRadiusNone,
   colorNeutralForegroundDisabled,
   colorPaletteRedBackground3,
+  colorPaletteRedForeground3,
   colorPaletteDarkOrangeBackground3,
   colorPaletteGreenBackground3,
 } from '../legacy/tokens';
@@ -218,26 +238,26 @@ import {
 
 export const textGlobalDisplay1FontSize = `var(${textGlobalDisplay1FontSizeRaw})`;
 export const textGlobalDisplay1LineHeight = `var(${textGlobalDisplay1LineHeightRaw})`;
-export const textGlobalDisplay2FontSize = `var(${textGlobalDisplay2FontSizeRaw})`;
-export const textGlobalDisplay2LineHeight = `var(${textGlobalDisplay2LineHeightRaw})`;
-export const textGlobalTitle1FontSize = `var(${textGlobalTitle1FontSizeRaw})`;
-export const textGlobalTitle1LineHeight = `var(${textGlobalTitle1LineHeightRaw})`;
-export const textGlobalTitle2FontSize = `var(${textGlobalTitle2FontSizeRaw})`;
-export const textGlobalTitle2LineHeight = `var(${textGlobalTitle2LineHeightRaw})`;
-export const textGlobalSubtitle1FontSize = `var(${textGlobalSubtitle1FontSizeRaw})`;
-export const textGlobalSubtitle1LineHeight = `var(${textGlobalSubtitle1LineHeightRaw})`;
-export const textGlobalSubtitle2FontSize = `var(${textGlobalSubtitle2FontSizeRaw})`;
-export const textGlobalSubtitle2LineHeight = `var(${textGlobalSubtitle2LineHeightRaw})`;
-export const textGlobalBody1FontSize = `var(${textGlobalBody1FontSizeRaw})`;
-export const textGlobalBody1LineHeight = `var(${textGlobalBody1LineHeightRaw})`;
-export const textGlobalBody2FontSize = `var(${textGlobalBody2FontSizeRaw})`;
-export const textGlobalBody2LineHeight = `var(${textGlobalBody2LineHeightRaw})`;
+export const textGlobalDisplay2FontSize = `var(${textGlobalDisplay2FontSizeRaw}, ${fontSizeHero1000})`;
+export const textGlobalDisplay2LineHeight = `var(${textGlobalDisplay2LineHeightRaw}, ${lineHeightHero1000})`;
+export const textGlobalTitle1FontSize = `var(${textGlobalTitle1FontSizeRaw}, ${fontSizeHero900})`;
+export const textGlobalTitle1LineHeight = `var(${textGlobalTitle1LineHeightRaw}, ${lineHeightHero900})`;
+export const textGlobalTitle2FontSize = `var(${textGlobalTitle2FontSizeRaw}, ${fontSizeHero800})`;
+export const textGlobalTitle2LineHeight = `var(${textGlobalTitle2LineHeightRaw}, ${lineHeightHero800})`;
+export const textGlobalSubtitle1FontSize = `var(${textGlobalSubtitle1FontSizeRaw}, ${fontSizeHero700})`;
+export const textGlobalSubtitle1LineHeight = `var(${textGlobalSubtitle1LineHeightRaw}, ${lineHeightHero700})`;
+export const textGlobalSubtitle2FontSize = `var(${textGlobalSubtitle2FontSizeRaw}, ${fontSizeBase600})`;
+export const textGlobalSubtitle2LineHeight = `var(${textGlobalSubtitle2LineHeightRaw}, ${lineHeightBase600})`;
+export const textGlobalBody1FontSize = `var(${textGlobalBody1FontSizeRaw}, ${fontSizeBase500})`;
+export const textGlobalBody1LineHeight = `var(${textGlobalBody1LineHeightRaw}, ${lineHeightBase500})`;
+export const textGlobalBody2FontSize = `var(${textGlobalBody2FontSizeRaw}, ${fontSizeBase400})`;
+export const textGlobalBody2LineHeight = `var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase400})`;
 export const textGlobalBody3FontSize = `var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300})`;
-export const textGlobalBody3LineHeight = `var(${textGlobalBody3LineHeightRaw})`;
-export const textGlobalCaption1FontSize = `var(${textGlobalCaption1FontSizeRaw})`;
-export const textGlobalCaption1LineHeight = `var(${textGlobalCaption1LineHeightRaw})`;
-export const textGlobalCaption2FontSize = `var(${textGlobalCaption2FontSizeRaw})`;
-export const textGlobalCaption2LineHeight = `var(${textGlobalCaption2LineHeightRaw})`;
+export const textGlobalBody3LineHeight = `var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300})`;
+export const textGlobalCaption1FontSize = `var(${textGlobalCaption1FontSizeRaw}, ${fontSizeBase200})`;
+export const textGlobalCaption1LineHeight = `var(${textGlobalCaption1LineHeightRaw}, ${lineHeightBase200})`;
+export const textGlobalCaption2FontSize = `var(${textGlobalCaption2FontSizeRaw}, ${fontSizeBase100})`;
+export const textGlobalCaption2LineHeight = `var(${textGlobalCaption2LineHeightRaw}, ${lineHeightBase100})`;
 export const textStyleDefaultRegularFontFamily = `var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase})`;
 export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
 export const textStyleDefaultRegularLetterSpacing = `var(${textStyleDefaultRegularLetterSpacingRaw})`;
@@ -369,7 +389,7 @@ export const statusBrandTintStroke = `var(${statusBrandTintStrokeRaw})`;
 export const statusDangerBackground = `var(${statusDangerBackgroundRaw}, ${colorPaletteRedBackground3})`;
 export const statusDangerTintBackground = `var(${statusDangerTintBackgroundRaw})`;
 export const statusDangerTintStroke = `var(${statusDangerTintStrokeRaw})`;
-export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw})`;
+export const statusDangerTintForeground = `var(${statusDangerTintForegroundRaw}, ${colorPaletteRedForeground3})`;
 export const statusWarningBackground = `var(${statusWarningBackgroundRaw}, ${colorPaletteDarkOrangeBackground3})`;
 export const statusWarningTintBackground = `var(${statusWarningTintBackgroundRaw})`;
 export const statusWarningTintStroke = `var(${statusWarningTintStrokeRaw})`;
