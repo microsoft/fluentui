@@ -2,6 +2,45 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 16 May 2025 07:22:04 GMT",
+      "tag": "@fluentui/react-charting_v5.23.88",
+      "version": "5.23.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f81fca983d21022c0802a24dcb010a16fe6a37d5",
+            "comment": "fix(react-charting): Use schema colors for all bar charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.9",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.25",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.207",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.18",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 May 2025 07:21:16 GMT",
       "tag": "@fluentui/react-charting_v5.23.87",
       "version": "5.23.87",

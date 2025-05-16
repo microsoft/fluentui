@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: v8 react 18 integration tests type issues",
-  "packageName": "@fluentui/utilities",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
