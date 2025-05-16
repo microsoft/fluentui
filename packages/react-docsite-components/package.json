@@ -22,7 +22,7 @@
   "devDependencies": {
     "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
-    "@types/color-check": "0.0.0",
+    "@types/color-check": "0.0.2",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
