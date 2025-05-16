@@ -134,7 +134,7 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
-  test('should close after the slotted title action close button is clicked', async ({ fastPage, page }) => {
+  test('should close after a button is slotted into the close slot and clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const closeButton = element.locator('fluent-button[slot="close"]');
     const content = element.locator('#content');
