@@ -52,10 +52,18 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   const activeDescendantId = useId();
 
   const onSelectDate = (selectedDate: Date): void => {
-    const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates } = props;
+    const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates, reverse } = props;
     const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+    let dateRange = getDateRangeArray(
+      selectedDate,
+      dateRangeType,
+      firstDayOfWeek,
+      workWeekDays,
+      daysToSelectInDayView,
+      reverse,
+    );
+
     dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 
     dateRange = dateRange.filter((d: Date) => {
@@ -100,6 +108,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
       props.firstDayOfWeek,
       props.workWeekDays,
       props.daysToSelectInDayView,
+      props.reverse,
     ).map((date: Date) => date.getTime());
 
     // gets all the day refs for the given dates

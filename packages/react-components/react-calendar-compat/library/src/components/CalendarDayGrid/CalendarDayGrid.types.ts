@@ -89,6 +89,12 @@ export interface CalendarDayGridProps extends DayGridOptions {
   daysToSelectInDayView?: number;
 
   /**
+   * The `reverse` property allows selection of days in reverse order.
+   * `daysToSelectInDayView` turnes to negative value
+   */
+  reverse?: boolean;
+
+  /**
    * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;

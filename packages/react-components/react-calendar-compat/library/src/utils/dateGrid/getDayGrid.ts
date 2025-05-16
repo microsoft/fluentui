@@ -24,6 +24,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     daysToSelectInDayView,
     restrictedDates,
     markedDays,
+    reverse,
   } = options;
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
@@ -63,6 +64,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
       firstDayOfWeek,
       workWeekDays,
       daysToSelectInDayView,
+      reverse,
     );
     selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
   }
