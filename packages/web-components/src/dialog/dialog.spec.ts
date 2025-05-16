@@ -134,10 +134,7 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
-  test('should close after the slotted title action close button is clicked', async ({
-    fastPage,
-    page,
-  }) => {
+  test('should close after the slotted title action close button is clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const closeButton = element.locator('fluent-button[slot="close"]');
     const content = element.locator('#content');
@@ -162,10 +159,7 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
-  test('should NOT close after a slotted button is clicked', async ({
-    fastPage,
-    page,
-  }) => {
+  test('should NOT close after a slotted button is clicked', async ({ fastPage, page }) => {
     const { element } = fastPage;
     const genericButton = element.locator('fluent-button');
     const content = element.locator('#content');

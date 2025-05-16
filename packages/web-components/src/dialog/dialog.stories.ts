@@ -50,23 +50,18 @@ const dismissed16Regular = html.partial(`
   </svg>`);
 
 const closeTemplate = html`
-  <fluent-button
-      tabindex="0"
-      slot="close"
-      appearance="transparent"
-      icon-only
-      aria-label="close"
-    >
-      ${dismissed16Regular}
+  <fluent-button tabindex="0" slot="close" appearance="transparent" icon-only aria-label="close">
+    ${dismissed16Regular}
   </fluent-button>
-`
+`;
 
 const storyTemplate = html<StoryArgs<FluentDialog & FluentDialogBody>>`
   <fluent-button @click="${story => story.storyDialog?.show()}">Open Dialog</fluent-button>
   <fluent-dialog id="dialog-default" type="${story => story.type}" ${ref('storyDialog')}>
     <fluent-dialog-body>
       ${story => story.actionSlottedContent?.()} ${story => story.slottedContent?.()}
-      ${story => story.titleActionSlottedContent?.()} ${story => story.closeSlottedContent?.()} ${story => story.titleSlottedContent?.()}
+      ${story => story.titleActionSlottedContent?.()} ${story => story.closeSlottedContent?.()}
+      ${story => story.titleSlottedContent?.()}
     </fluent-dialog-body>
   </fluent-dialog>
 `;
@@ -121,13 +116,9 @@ export const WithTitleAction: Story = {
   args: {
     titleSlottedContent: () => html` <div slot="title">Title Action Slot</div> `,
     titleActionSlottedContent: () => html`
-          <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
-        `,
-    slottedContent: () => html`
-      <p>
-        This example shows a button slotted into the <code>title-action</code> slot.
-      </p>
+      <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
     `,
+    slottedContent: () => html` <p>This example shows a button slotted into the <code>title-action</code> slot.</p> `,
     actionSlottedContent: () => closeButtonTemplate,
   },
 };
@@ -209,12 +200,7 @@ export const Actions: Story = {
 export const CustomClose: Story = {
   args: {
     closeSlottedContent: () => html`
-      <fluent-button
-        slot="close"
-        appearance="transparent"
-        icon-only
-        @click="${() => alert('This is a custom action')}"
-      >
+      <fluent-button slot="close" appearance="transparent" icon-only @click="${() => alert('This is a custom action')}">
         ${dismissCircle20Regular}
       </fluent-button>
     `,
@@ -223,8 +209,8 @@ export const CustomClose: Story = {
       <p>
         The
         <code>close</code>
-        slot can be customized to add a different kind of action. Custom close slots can be used in any kind of
-        dialog. Here's an example which replaces the default close icon with a
+        slot can be customized to add a different kind of action. Custom close slots can be used in any kind of dialog.
+        Here's an example which replaces the default close icon with a
         <code>&lt;fluent-button&gt;</code>
         and a custom icon. Clicking the button will trigger a JavaScript alert.
       </p>
@@ -258,9 +244,10 @@ export const ModalWithNoTitle: Story = {
   args: {
     type: DialogType.modal,
     titleActionSlottedContent: () => html`
-          <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
-        `,
-    slottedContent: () => html` <p>A dialog without a <code>title</code> but with a <code>title-action</code> slot</p> `,
+      <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
+    `,
+    slottedContent: () =>
+      html` <p>A dialog without a <code>title</code> but with a <code>title-action</code> slot</p> `,
   },
 };
 

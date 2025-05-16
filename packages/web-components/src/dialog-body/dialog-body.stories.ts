@@ -57,21 +57,15 @@ const dismissed16Regular = html.partial(`
   </svg>`);
 
 const titleActionTemplate = html`
-  <fluent-button
-      tabindex="0"
-      slot="close"
-      appearance="transparent"
-      icon-only
-      aria-label="close"
-    >
-      ${dismissed16Regular}
+  <fluent-button tabindex="0" slot="close" appearance="transparent" icon-only aria-label="close">
+    ${dismissed16Regular}
   </fluent-button>
-`
+`;
 
 const storyTemplate = html<StoryArgs<FluentDialogBody>>`
   <fluent-dialog-body>
-    ${x => x.titleSlottedContent?.()} ${x => x.titleActionSlottedContent?.()} ${x => x.closeSlottedContent?.()} ${x => x.slottedContent?.()}
-    ${x => x.actionSlottedContent?.()}
+    ${x => x.titleSlottedContent?.()} ${x => x.titleActionSlottedContent?.()} ${x => x.closeSlottedContent?.()}
+    ${x => x.slottedContent?.()} ${x => x.actionSlottedContent?.()}
   </fluent-dialog-body>
 `;
 
@@ -96,15 +90,13 @@ export default {
     },
     titleActionSlottedContent: {
       control: false,
-      description:
-        'Slot for the title action elements.',
+      description: 'Slot for the title action elements.',
       name: 'title-action',
       table: { category: 'slots', type: {} },
     },
     closeSlottedContent: {
       control: false,
-      description:
-        'Slot for the close element.',
+      description: 'Slot for the close element.',
       name: 'close',
       table: { category: 'slots', type: {} },
     },
@@ -192,12 +184,7 @@ export const CustomClose: Story = {
     titleSlottedContent: () => html` <div slot="title">Custom Title Action</div> `,
 
     closeSlottedContent: () => html`
-      <fluent-button
-        slot="close"
-        appearance="transparent"
-        icon-only
-        @click="${() => alert('This is a custom action')}"
-      >
+      <fluent-button slot="close" appearance="transparent" icon-only @click="${() => alert('This is a custom action')}">
         ${info20Regular}
       </fluent-button>
     `,
