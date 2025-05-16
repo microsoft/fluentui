@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bumping Tabster to 8.5.5",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
