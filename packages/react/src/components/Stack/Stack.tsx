@@ -99,7 +99,7 @@ function _processStackChildren(
   return childrenArray;
 }
 
-function _isStackItem(item: React.ReactNode): item is typeof StackItem {
+function _isStackItem(item: unknown): item is typeof StackItem {
   // In theory, we should be able to just check item.type === StackItem.
   // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
