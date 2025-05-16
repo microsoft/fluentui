@@ -236,10 +236,12 @@ const getValidTraces = (dataArr: Data[]) => {
 };
 
 export const mapFluentChart = (input: any): OutputChartType => {
-  try {
-    sanitizeJson(input);
-  } catch (error) {
-    return { isValid: false, errorMessage: `Invalid JSON: ${error}` };
+  if (input.data[0].type !== 'table') {
+    try {
+      sanitizeJson(input);
+    } catch (error) {
+      return { isValid: false, errorMessage: `Invalid JSON: ${error}` };
+    }
   }
 
   try {
@@ -269,6 +271,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+      case 'table':
+        return { isValid: true, type: 'table', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(

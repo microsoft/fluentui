@@ -127,6 +127,8 @@ export type {
 export { NodesComposition, TreeChart, TreeTraverse } from './TreeChart';
 export type { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from './Sparkline';
 export { Sparkline } from './Sparkline';
+export type { IChartTableProps, IChartTableStyleProps, IChartTableStyles } from './ChartTable';
+export { ChartTable } from './ChartTable';
 export type {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,

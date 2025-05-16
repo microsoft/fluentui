@@ -37,6 +37,7 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../GaugeChart/index';
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
+import { IChartTableProps } from '../ChartTable/index';
 import { findNumericMinMaxOfY } from '../../utilities/utilities';
 import type {
   Datum,
@@ -48,6 +49,7 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  PlotlyTableData,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -817,6 +819,59 @@ export const transformPlotlyJsonToGaugeProps = (
     height: input.layout?.height ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
+  };
+};
+const cleanText = (text: string): string => {
+  return text
+    .replace(/<[^>]*>/g, '')
+    .replace(/&lt;br&gt;|\\u003cbr\\u003e|<br>/gi, '')
+    .replace(/\$[^$]*\$/g, '$')
+    .trim();
+};
+
+export const transformPlotlyJsonToChartTableProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): IChartTableProps => {
+  const tableData = input.data[0] as PlotlyTableData;
+
+  const normalizeHeaders = (
+    values: (string | number | boolean | null)[] | (string | number | boolean | null)[][],
+  ): (string | number | boolean | null)[] => {
+    // Case: values is array of arrays
+    if (Array.isArray(values[0])) {
+      return (values as string[][]).map(row =>
+        row
+          .map(cell => cleanText(cell))
+          .filter(Boolean)
+          .join(''),
+      );
+    }
+
+    // Case: values is 1d array
+    return (values as string[]).map(cell => cleanText(cell));
+  };
+  const columns = tableData.cells?.values ?? [];
+  const rows = columns[0].map((_, rowIndex: number) =>
+    columns.map((col: any[]) => {
+      const cell = col[rowIndex];
+      return typeof cell === 'string' ? cleanText(cell) : cell;
+    }),
+  );
+
+  const styles: IChartTableProps['styles'] = {
+    root: {
+      ...(input.layout?.font?.size ? { fontSize: input.layout.font.size } : {}),
+    },
+  };
+
+  return {
+    headers: normalizeHeaders(tableData.header?.values ?? []),
+    rows,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 468,
+    styles,
   };
 };
 

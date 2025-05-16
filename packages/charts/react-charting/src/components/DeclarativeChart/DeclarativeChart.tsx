@@ -26,6 +26,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
+  transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
 } from './PlotlySchemaAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
@@ -38,6 +39,7 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { ChartTable } from '../ChartTable/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -49,6 +51,7 @@ const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 
 /**
  * DeclarativeChart schema.
@@ -104,7 +107,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const { plotlySchema } = sanitizeJson(props.chartSchema);
+  const { plotlySchema } =
+    props.chartSchema.plotlySchema.data[0].type !== 'table' ? sanitizeJson(props.chartSchema) : props.chartSchema;
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
     throw new Error(`Invalid chart schema: ${chart.errorMessage}`);
@@ -140,7 +144,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { plotlySchema } = sanitizeJson(props.chartSchema);
+    const { plotlySchema } =
+      props.chartSchema.plotlySchema.data[0].type !== 'table' ? sanitizeJson(props.chartSchema) : props.chartSchema;
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { selectedLegends } = plotlySchema;
     setActiveLegends(selectedLegends ?? []);
@@ -286,6 +291,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <ResponsiveVerticalBarChart
           {...transformPlotlyJsonToVBCProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
+      );
+    case 'table':
+      return (
+        <ResponsiveChartTable
+          {...transformPlotlyJsonToChartTableProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
           {...commonProps}
         />
       );
