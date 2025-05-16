@@ -290,13 +290,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToSankeyProps - Should return sankey chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
-    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToSankeyProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -304,13 +304,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGaugeProps - Should return gauge chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
-    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGaugeProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
