@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-charting): Add support for scatter polar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

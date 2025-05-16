@@ -472,6 +472,11 @@ import { imageSwatchClassNames } from '@fluentui/react-swatch-picker';
 import { ImageSwatchProps } from '@fluentui/react-swatch-picker';
 import { ImageSwatchSlots } from '@fluentui/react-swatch-picker';
 import { ImageSwatchState } from '@fluentui/react-swatch-picker';
+import { InfoButton } from '@fluentui/react-infolabel';
+import { infoButtonClassNames } from '@fluentui/react-infolabel';
+import { InfoButtonProps } from '@fluentui/react-infolabel';
+import { InfoButtonSlots } from '@fluentui/react-infolabel';
+import { InfoButtonState } from '@fluentui/react-infolabel';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoLabelClassNames } from '@fluentui/react-infolabel';
 import { InfoLabelProps } from '@fluentui/react-infolabel';
@@ -715,6 +720,9 @@ import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
 import { PositioningBoundary } from '@fluentui/react-positioning';
+import { PositioningConfigurationFn } from '@fluentui/react-positioning';
+import { PositioningConfigurationFnOptions } from '@fluentui/react-positioning';
+import { PositioningConfigurationProvider } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningRect } from '@fluentui/react-positioning';
@@ -847,6 +855,7 @@ import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderImageSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { renderInfoButton_unstable } from '@fluentui/react-infolabel';
 import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -1579,6 +1588,8 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useImageSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { useImageSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
+import { useInfoButton_unstable } from '@fluentui/react-infolabel';
+import { useInfoButtonStyles_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
@@ -2800,6 +2811,16 @@ export { ImageSwatchSlots }
 
 export { ImageSwatchState }
 
+export { InfoButton }
+
+export { infoButtonClassNames }
+
+export { InfoButtonProps }
+
+export { InfoButtonSlots }
+
+export { InfoButtonState }
+
 export { InfoLabel }
 
 export { infoLabelClassNames }
@@ -3286,6 +3307,12 @@ export { PortalState }
 
 export { PositioningBoundary }
 
+export { PositioningConfigurationFn }
+
+export { PositioningConfigurationFnOptions }
+
+export { PositioningConfigurationProvider }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
@@ -3549,6 +3576,8 @@ export { renderFluentProvider_unstable }
 export { renderImage_unstable }
 
 export { renderImageSwatch_unstable }
+
+export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
@@ -5013,6 +5042,10 @@ export { useImageStyles_unstable }
 export { useImageSwatch_unstable }
 
 export { useImageSwatchStyles_unstable }
+
+export { useInfoButton_unstable }
+
+export { useInfoButtonStyles_unstable }
 
 export { useInfoLabel_unstable }
 

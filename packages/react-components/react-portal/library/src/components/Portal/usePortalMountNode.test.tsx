@@ -8,9 +8,9 @@ describe('usePortalMountNode', () => {
   it('creates an element and attaches it to "document.body"', () => {
     const { result } = renderHook(() => usePortalMountNode({}));
 
-    expect(result.current).toBeInstanceOf(HTMLDivElement);
-    expect(result.current).toHaveAttribute('data-portal-node', 'true');
-    expect(document.body.contains(result.current)).toBeTruthy();
+    expect(result.current?.tagName).toBe('DIV');
+    expect(result.current?.dataset.portalNode).toBe('true');
+    expect(result.current?.parentElement).toBe(document.body);
   });
 
   it('creates an element and attaches it to "mountNode"', () => {
@@ -19,8 +19,9 @@ describe('usePortalMountNode', () => {
       wrapper: (props: React.PropsWithChildren<{}>) => <PortalMountNodeProvider {...props} value={mountNode} />,
     });
 
-    expect(result.current).toBeInstanceOf(HTMLDivElement);
-    expect(mountNode.contains(result.current)).toBeTruthy();
+    expect(result.current?.tagName).toBe('DIV');
+    expect(result.current?.dataset.portalNode).toBe('true');
+    expect(result.current?.parentElement).toBe(mountNode);
   });
 
   it('applies classes to an element', () => {

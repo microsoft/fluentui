@@ -1,8 +1,70 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 16 Apr 2025 19:42:02 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.0)
+
+Wed, 14 May 2025 18:49:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.63.0..@fluentui/react-components_v9.64.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: export PositioningConfigurationProvider ([PR #34300](https://github.com/microsoft/fluentui/pull/34300) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant ([PR #34042](https://github.com/microsoft/fluentui/pull/34042) by robertpenner@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: implement shared positioning config ([PR #34300](https://github.com/microsoft/fluentui/pull/34300) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - fix: update fluent ariaNotify implementation to match new API ([PR #34311](https://github.com/microsoft/fluentui/pull/34311) by sarah.higley@microsoft.com)
+- `@fluentui/react-carousel`
+  - bug: Fix branded carousel nav button colors to be WCAG contrast compliant ([PR #34397](https://github.com/microsoft/fluentui/pull/34397) by mifraser@microsoft.com)
+  - fix: Ensure buttons are disabled when not enough content for circular ([PR #34427](https://github.com/microsoft/fluentui/pull/34427) by mifraser@microsoft.com)
+- `@fluentui/react-charts`
+  - fix(react-charts) Cleanup function removed upstream ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-color-picker`
+  - fix: added touch events for ColorArea ([PR #34328](https://github.com/microsoft/fluentui/pull/34328) by v.kozlova13@gmail.com)
+- `@fluentui/react-components`
+  - fix: icorrect react-infobutton export from suite ([PR #34408](https://github.com/microsoft/fluentui/pull/34408) by vgenaev@gmail.com)
+- `@fluentui/react-motion`
+  - Export child context ([PR #34449](https://github.com/microsoft/fluentui/pull/34449) by charles.assuncao@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: improve support of concurrent mode, work with React 19 ([PR #33978](https://github.com/microsoft/fluentui/pull/33978) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: improve SSR validation ([PR #34175](https://github.com/microsoft/fluentui/pull/34175) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: filled-circular appearance variant shows selected tab in high contrast ([PR #34294](https://github.com/microsoft/fluentui/pull/34294) by sarah.higley@microsoft.com)
+  - fix: Tab filled (not filled-subtle) appearance has border in WHCM ([PR #34341](https://github.com/microsoft/fluentui/pull/34341) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabster`
+  - Apply focus visible attribute on navigation state change ([PR #34426](https://github.com/microsoft/fluentui/pull/34426) by lingfangao@hotmail.com)
+
+## [9.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.63.0)
+
+Thu, 24 Apr 2025 09:59:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.62.0..@fluentui/react-components_v9.63.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Added InfoButton component to react-components package export ([PR #34255](https://github.com/microsoft/fluentui/pull/34255) by terynkum@microsoft.com)
+  - chore: Re-exporting CellRenderFunction from @fluentui/react-components. ([PR #34267](https://github.com/microsoft/fluentui/pull/34267) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-infolabel`
+  - Feat: Exported InfoButton types and component ([PR #34255](https://github.com/microsoft/fluentui/pull/34255) by terynkum@microsoft.com)
+
+### Patches
+
+- `@fluentui/chart-utilities`
+  - feat(chart-utilities): Add support for scatter polar chart ([PR #34278](https://github.com/microsoft/fluentui/pull/34278) by atisjai@microsoft.com)
+- `@fluentui/react-charts`
+  - fix(react-charts): Stacked data not showing on callout for Vertical stacked bar chart ([PR #34288](https://github.com/microsoft/fluentui/pull/34288) by 120183316+srmukher@users.noreply.github.com)
+  - High contrast bug fixes ([PR #34284](https://github.com/microsoft/fluentui/pull/34284) by anushgupta@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix:  use useLayoutEffect() for Tabster creation ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by olfedias@microsoft.com)
 
 ## [9.62.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.62.0)
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 16 Apr 2025 19:42:04 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.7)
+
+Wed, 14 May 2025 18:49:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.20.6..@fluentui/react-provider_v9.20.7)
+
+### Patches
+
+- fix: improve SSR validation ([PR #34175](https://github.com/microsoft/fluentui/pull/34175) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+
+## [9.20.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.6)
+
+Thu, 24 Apr 2025 09:59:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.20.5..@fluentui/react-provider_v9.20.6)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.24.6 ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by beachball)
 
 ## [9.20.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.20.5)
 

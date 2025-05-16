@@ -1,7 +1,7 @@
 import { createContext } from './createContext';
 import { useContextSelector } from './useContextSelector';
-import * as ReactDOM from 'react-dom';
-import { act } from 'react-dom/test-utils';
+import { render, act } from '@testing-library/react';
+
 import * as React from 'react';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
@@ -41,11 +41,11 @@ describe('useContextSelector', () => {
 
   it('updates only on selector match', () => {
     const onUpdate = jest.fn();
-    ReactDOM.render(
+    render(
       <TestProvider>
         <TestComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
+      { container: container as HTMLElement },
     );
 
     act(() => {
@@ -83,11 +83,11 @@ describe('useContextSelector', () => {
     const MemoComponent = React.memo(TestComponent, () => true);
     const onUpdate = jest.fn();
 
-    ReactDOM.render(
+    render(
       <TestProvider>
         <MemoComponent index={1} onUpdate={onUpdate} />
       </TestProvider>,
-      container,
+      { container: container as HTMLElement },
     );
 
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');

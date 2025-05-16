@@ -3,6 +3,9 @@ import { ImageFit, ImageShape } from './image.options.js';
 
 /**
  * The base class used for constucting a fluent image custom element
+ *
+ * @tag fluent-image
+ *
  * @public
  */
 export class Image extends FASTElement {

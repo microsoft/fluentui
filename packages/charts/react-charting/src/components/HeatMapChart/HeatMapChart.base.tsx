@@ -256,7 +256,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           this._xAxisScale = props.xScale;
-          this._yAxisScale = props.yScale;
+          this._yAxisScale = props.yScalePrimary;
           return this._createRectangles();
         }}
       />
@@ -475,11 +475,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
               onMouseOut={this._onRectBlurOrMouseOut}
             >
-              <rect
-                fill={this.props.theme!.semanticColors.bodyBackground}
-                width={this._xAxisScale.bandwidth()}
-                height={this._yAxisScale.bandwidth()}
-              />
+              <rect fill="transparent" width={this._xAxisScale.bandwidth()} height={this._yAxisScale.bandwidth()} />
             </g>
           );
         }

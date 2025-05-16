@@ -40,10 +40,12 @@ const useStyles = makeStyles({
   limits: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   chartValue: {
     fontWeight: tokens.fontWeightSemibold,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
   sublabel: {
     ...typographyStyles.caption1Strong,
@@ -81,7 +83,6 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     lineHeight: '16px',
     opacity: '0.85',
-    color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
     ...typographyStyles.body1Strong,
@@ -89,6 +90,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     paddingLeft: '8px',
     display: 'block',
+    forcedColorAdjust: 'none',
   },
   shapeStyles: {
     marginRight: '8px',
@@ -97,10 +99,12 @@ const useStyles = makeStyles({
     ...typographyStyles.caption1,
     lineHeight: '16px',
     color: tokens.colorNeutralForeground2,
+    forcedColorAdjust: 'auto',
   },
   calloutContentY: {
     ...typographyStyles.body1Strong,
     lineHeight: '22px',
+    forcedColorAdjust: 'auto',
   },
   descriptionMessage: {
     ...typographyStyles.caption1,
