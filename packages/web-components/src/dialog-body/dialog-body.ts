@@ -9,6 +9,12 @@ import { isDialog } from '../dialog/dialog.options';
  * @extends FASTElement
  */
 export class DialogBody extends FASTElement {
+  /**
+   * Handles click event for the close slot
+   *
+   * @param e - the click event
+   * @internal
+   */
   public clickHandler(event: MouseEvent): boolean | void {
     if (!event.defaultPrevented) {
       const dialog = this.parentElement;
