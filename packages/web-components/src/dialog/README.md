@@ -28,6 +28,7 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
     <!-- Header -->
     <fluent-text slot="title">Dialog</fluent-text>
     <fluent-button slot="title-action"><svg></svg></fluent-button>
+    <fluent-button slot="close"><svg></svg></fluent-button>
 
     <!-- Default Content -->
     <fluent-text>Default Content</fluent-text>
