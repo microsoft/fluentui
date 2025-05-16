@@ -21,18 +21,47 @@ const dismissCircle20Regular = html`<svg
   ></path>
 </svg>`;
 
+const info20Regular = html`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path
+    fill="currentColor"
+    d="M10.492 8.91A.5.5 0 0 0 9.5 9v4.502l.008.09a.5.5 0 0 0 .992-.09V9zm.307-2.16a.75.75 0 1 0-1.5 0a.75.75 0 0 0 1.5 0M18 10a8 8 0 1 0-16 0a8 8 0 0 0 16 0M3 10a7 7 0 1 1 14 0a7 7 0 0 1-14 0"
+  />
+</svg>`;
+
 const closeButtonTemplate = html<StoryArgs<FluentDialog>>`
   <fluent-button slot="action" appearance="primary" @click="${story => story.storyDialog.hide()}">
     Close Dialog
   </fluent-button>
 `;
 
+const dismissed16Regular = html.partial(`
+  <svg
+    fill="currentColor"
+    aria-hidden="true"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+      fill="currentColor"
+    ></path>
+  </svg>`);
+
+const closeTemplate = html`
+  <fluent-button tabindex="0" slot="close" appearance="transparent" icon-only aria-label="close">
+    ${dismissed16Regular}
+  </fluent-button>
+`;
+
 const storyTemplate = html<StoryArgs<FluentDialog & FluentDialogBody>>`
   <fluent-button @click="${story => story.storyDialog?.show()}">Open Dialog</fluent-button>
   <fluent-dialog id="dialog-default" type="${story => story.type}" ${ref('storyDialog')}>
-    <fluent-dialog-body ?no-title-action="${story => story.noTitleAction}">
+    <fluent-dialog-body>
       ${story => story.actionSlottedContent?.()} ${story => story.slottedContent?.()}
-      ${story => story.titleActionSlottedContent?.()} ${story => story.titleSlottedContent?.()}
+      ${story => story.titleActionSlottedContent?.()} ${story => story.closeSlottedContent?.()}
+      ${story => story.titleSlottedContent?.()}
     </fluent-dialog-body>
   </fluent-dialog>
 `;
@@ -41,6 +70,9 @@ export default {
   title: 'Components/Dialog/Dialog',
   component: definition.name,
   render: renderComponent(storyTemplate),
+  args: {
+    closeSlottedContent: () => closeTemplate,
+  },
   argTypes: {
     type: {
       control: 'select',
@@ -76,6 +108,17 @@ export const Default: Story = {
       </p>
       <p>That is, users cannot interact with content outside an active dialog window.</p>
     `,
+    actionSlottedContent: () => closeButtonTemplate,
+  },
+};
+
+export const WithTitleAction: Story = {
+  args: {
+    titleSlottedContent: () => html` <div slot="title">Title Action Slot</div> `,
+    titleActionSlottedContent: () => html`
+      <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
+    `,
+    slottedContent: () => html` <p>This example shows a button slotted into the <code>title-action</code> slot.</p> `,
     actionSlottedContent: () => closeButtonTemplate,
   },
 };
@@ -121,12 +164,13 @@ export const NonModalType: Story = {
 export const AlertType: Story = {
   args: {
     type: DialogType.alert,
+    closeSlottedContent: () => html``,
     titleSlottedContent: () => html` <div slot="title">Non-modal</div> `,
     actionSlottedContent: () => closeButtonTemplate,
     slottedContent: () => html`
       <p>
         An alert is a type of modal-dialog that interrupts the user's workflow to communicate an important message and
-        acquire a response. By default clicking on backdrop and pressing Escape will not dismiss an alert dialog.
+        acquire a response. By default clicking on backdrop will not dismiss an alert dialog.
       </p>
       <code>type="alert"</code>
     `,
@@ -153,15 +197,10 @@ export const Actions: Story = {
   },
 };
 
-export const CustomTitleAction: Story = {
+export const CustomClose: Story = {
   args: {
-    titleActionSlottedContent: () => html`
-      <fluent-button
-        slot="title-action"
-        appearance="transparent"
-        icon-only
-        @click="${() => alert('This is a custom action')}"
-      >
+    closeSlottedContent: () => html`
+      <fluent-button slot="close" appearance="transparent" icon-only @click="${() => alert('This is a custom action')}">
         ${dismissCircle20Regular}
       </fluent-button>
     `,
@@ -169,38 +208,46 @@ export const CustomTitleAction: Story = {
       <p>By default a non-modal dialog renders a dismiss button with a close icon.</p>
       <p>
         The
-        <code>title-action</code>
-        slot can be customized to add a different kind of action. Custom title actions can be used in any kind of
-        dialog. Here's an example which replaces the default close icon with a
+        <code>close</code>
+        slot can be customized to add a different kind of action. Custom close slots can be used in any kind of dialog.
+        Here's an example which replaces the default close icon with a
         <code>&lt;fluent-button&gt;</code>
         and a custom icon. Clicking the button will trigger a JavaScript alert.
       </p>
     `,
-    noTitleAction: true,
-    titleSlottedContent: () => html` <div slot="title">Custom Title Actions</div> `,
+    titleSlottedContent: () => html` <div slot="title">Custom Close Slot</div> `,
   },
 };
 
-export const NoTitleAction: Story = {
+export const NoClose: Story = {
   args: {
-    titleSlottedContent: () => html` <div slot="title">No Title Action</div> `,
-    noTitleAction: true,
+    titleSlottedContent: () => html` <div slot="title">No Close Slot</div> `,
+    closeSlottedContent: () => html``,
     slottedContent: () => html`
       <p>
-        The
-        <code>no-title-action</code>
-        attribute can be provided to opt out of rendering any title action.
+        By not passing the
+        <code>close</code>
+        slot no close button will render.
       </p>
-      <code>no-title-action</code>
     `,
-    actionSlottedContent: () => closeButtonTemplate,
   },
 };
 
-export const ModalWithNoTitleOrActions: Story = {
+export const ModalWithNoTitleOrTitleActions: Story = {
   args: {
     type: DialogType.modal,
-    slottedContent: () => html` <p>A dialog without a title or actions will render a close button by default.</p> `,
+    slottedContent: () => html` <p>A dialog without a <code>title</code> slot or <code>title-action</code> slot</p> `,
+  },
+};
+
+export const ModalWithNoTitle: Story = {
+  args: {
+    type: DialogType.modal,
+    titleActionSlottedContent: () => html`
+      <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
+    `,
+    slottedContent: () =>
+      html` <p>A dialog without a <code>title</code> but with a <code>title-action</code> slot</p> `,
   },
 };
 
@@ -209,7 +256,7 @@ export const NonModalWithNoTitleOrActions: Story = {
   args: {
     type: DialogType.nonModal,
     slottedContent: () => html`
-      <p>A non-modal dialog without a title or actions will render a close button by default.</p>
+      <p>A non-modal dialog without a <code>title</code> slot or <code>title-action</code> slot.</p>
     `,
   },
 };
@@ -227,7 +274,6 @@ export const AlertWithNoTitleOrActions: Story = {
 export const TwoColumnLayout: Story = {
   args: {
     titleSlottedContent: () => html` <div slot="title">Two Column Layout</div> `,
-    actionSlottedContent: () => closeButtonTemplate,
     slottedContent: () => html`
       <div style="margin-bottom: 12px;">
         <fluent-text block>
@@ -270,7 +316,6 @@ export const TwoColumnLayout: Story = {
 export const ScrollingLongContent: Story = {
   args: {
     titleSlottedContent: () => html` <div slot="title">Scrolling Long Content</div> `,
-    actionSlottedContent: () => closeButtonTemplate,
     slottedContent: () => html`
       <p>
         By default content provided in the default slot should grow until it fits viewport size. Overflow content will

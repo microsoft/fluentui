@@ -2311,7 +2311,8 @@ export class Dialog extends FASTElement {
 
 // @public
 export class DialogBody extends FASTElement {
-    noTitleAction: boolean;
+    // @internal
+    clickHandler(event: MouseEvent): boolean | void;
 }
 
 // @public
@@ -2783,6 +2784,9 @@ export const ImageStyles: ElementStyles;
 
 // @public
 export const ImageTemplate: ElementViewTemplate<Image_2>;
+
+// @public
+export function isDialog(element?: Node | null, tagName?: string): element is Dialog;
 
 // @public
 export function isDropdown(element?: Node | null, tagName?: string): element is BaseDropdown;
