@@ -275,6 +275,16 @@ export const _resolveColor = (
   return color;
 };
 
+export const _getGaugeAxisColor = (
+  useFluentVizColorPalette: boolean,
+  color: Color | undefined,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  isDarkTheme?: boolean,
+): string => {
+  const extractedColors = _extractColor(useFluentVizColorPalette, color, colorMap, isDarkTheme);
+  return _resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -817,6 +827,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): ISankeyChartProps => {
   const { link, node } = input.data[0] as SankeyData;
@@ -828,10 +839,10 @@ export const transformPlotlyJsonToSankeyProps = (
     }))
     // Filter out negative nodes, unequal nodes and self-references (circular links)
     .filter(x => x.source >= 0 && x.target >= 0 && x.source !== x.target);
-
+  const extractedNodeColors = _extractColor(useFluentVizColorPalette, node?.color, colorMap, isDarkTheme);
   const sankeyChartData = {
     nodes: node.label?.map((label: string, index: number) => {
-      const color = getColor(label, colorMap, isDarkTheme);
+      const color = _resolveColor(extractedNodeColors, index, label, colorMap, isDarkTheme);
 
       return {
         nodeId: index,
@@ -869,14 +880,16 @@ export const transformPlotlyJsonToSankeyProps = (
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): IGaugeChartProps => {
   const firstData = input.data[0] as PlotData;
-
+  const stepsColors = firstData.gauge?.steps ? firstData.gauge.steps.map((step: any) => step.color) : undefined;
+  const extractedColors = _extractColor(useFluentVizColorPalette, stepsColors, colorMap, isDarkTheme);
   const segments = firstData.gauge?.steps?.length
     ? firstData.gauge.steps.map((step: any, index: number): IGaugeChartSegment => {
         const legend = step.name || `Segment ${index + 1}`;
-        const color = getColor(legend, colorMap, isDarkTheme);
+        const color = _resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
         return {
           legend,
           size: step.range?.[1] - step.range?.[0],
@@ -887,7 +900,7 @@ export const transformPlotlyJsonToGaugeProps = (
         {
           legend: 'Current',
           size: firstData.value ?? 0 - (firstData.gauge?.axis?.range?.[0] ?? 0),
-          color: getColor('Current', colorMap, isDarkTheme),
+          color: _getGaugeAxisColor(useFluentVizColorPalette, firstData.gauge?.axis?.color, colorMap, isDarkTheme),
         },
         {
           legend: 'Target',
@@ -902,11 +915,23 @@ export const transformPlotlyJsonToGaugeProps = (
     const diff = firstData.value - firstData.delta.reference;
     if (diff >= 0) {
       sublabel = `\u25B2 ${diff}`;
-      const color = getColorFromToken(DataVizPalette.success, isDarkTheme);
+      const extractedIncreasingDeltaColors = _extractColor(
+        useFluentVizColorPalette,
+        firstData.delta?.increasing?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      const color = _resolveColor(extractedIncreasingDeltaColors, 0, '', colorMap, isDarkTheme);
       sublabelColor = color;
     } else {
       sublabel = `\u25BC ${Math.abs(diff)}`;
-      const color = getColorFromToken(DataVizPalette.error, isDarkTheme);
+      const extractedDecreasingDeltaColors = _extractColor(
+        useFluentVizColorPalette,
+        firstData.delta?.decreasing?.color,
+        colorMap,
+        isDarkTheme,
+      );
+      const color = _resolveColor(extractedDecreasingDeltaColors, 0, '', colorMap, isDarkTheme);
       sublabelColor = color;
     }
   }
