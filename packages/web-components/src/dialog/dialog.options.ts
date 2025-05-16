@@ -1,5 +1,5 @@
 import type { ValuesOf } from '../utils/index.js';
-import { Dialog } from './dialog';
+import { Dialog } from './dialog.js';
 
 /**
  * Dialog modal type

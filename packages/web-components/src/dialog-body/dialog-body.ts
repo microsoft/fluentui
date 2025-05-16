@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
 import { isDialog } from '../dialog/dialog.options';
 /**
  * Dialog Body component that extends the FASTElement class.
@@ -10,11 +10,14 @@ import { isDialog } from '../dialog/dialog.options';
  */
 export class DialogBody extends FASTElement {
   public clickHandler(event: MouseEvent): boolean | void {
-    const dialog = this.parentElement;
+    if (!event.defaultPrevented) {
+      const dialog = this.parentElement;
 
-    if (isDialog(dialog)) {
-      dialog.hide();
+      if (isDialog(dialog)) {
+        dialog.hide();
+      }
     }
+
     return true;
   }
 }
