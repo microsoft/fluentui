@@ -2311,7 +2311,7 @@ export class Dialog extends FASTElement {
 
 // @public
 export class DialogBody extends FASTElement {
-    // (undocumented)
+    // @internal
     clickHandler(event: MouseEvent): boolean | void;
 }
 
