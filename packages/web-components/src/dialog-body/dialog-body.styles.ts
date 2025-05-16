@@ -75,13 +75,13 @@ export const styles = css`
     z-index: 2;
   }
 
-  ::slotted([slot="title-action"]) {
+  ::slotted([slot='title-action']) {
     margin-inline-start: auto;
   }
 
   /* align  title content to the end when there is no title*/
-  :not(:has(:is([slot='title'], [slot='title-action']))) .title  {
-   justify-content: end;
+  :not(:has(:is([slot='title'], [slot='title-action']))) .title {
+    justify-content: end;
   }
 
   @container (min-width: 480px) {

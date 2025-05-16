@@ -21,13 +21,10 @@ export type DialogType = ValuesOf<typeof DialogType>;
  * @returns true if the element is a dialog.
  * @public
  */
-export function isDialog(
-    element?: Node | null,
-    tagName: string = "-dialog",
-): element is Dialog {
-    if (element?.nodeType !== Node.ELEMENT_NODE) {
-        return false;
-    }
+export function isDialog(element?: Node | null, tagName: string = '-dialog'): element is Dialog {
+  if (element?.nodeType !== Node.ELEMENT_NODE) {
+    return false;
+  }
 
-    return (element as Element).tagName.toLowerCase().endsWith(tagName);
+  return (element as Element).tagName.toLowerCase().endsWith(tagName);
 }
