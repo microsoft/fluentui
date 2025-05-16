@@ -213,6 +213,62 @@ export function getDateRangeArray(
   return datesArray;
 }
 
+export function getNegativeDateRangeArray(
+  date: Date,
+  dateRangeType: DateRangeType,
+  firstDayOfWeek: DayOfWeek,
+  workWeekDays?: DayOfWeek[],
+  daysToSelectInDayView: number = 1,
+): Date[] {
+  const datesArray: Date[] = [];
+  let startDate: Date;
+  let endDate = null;
+
+  if (!workWeekDays) {
+    workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
+  }
+
+  daysToSelectInDayView = Math.max(daysToSelectInDayView, 1);
+  switch (dateRangeType) {
+    case DateRangeType.Day:
+      // startDate = getDatePart(date);
+      // endDate = addDays(startDate, -daysToSelectInDayView);
+
+      endDate = addDays(getDatePart(date), 1);
+      startDate = addDays(endDate, -daysToSelectInDayView);
+      break;
+
+    case DateRangeType.Week:
+    case DateRangeType.WorkWeek:
+      startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
+      endDate = addDays(startDate, TimeConstants.DaysInOneWeek);
+      break;
+    // TODO fix here
+    case DateRangeType.Month:
+      startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+      endDate = addMonths(startDate, 1);
+      break;
+
+    default:
+      throw new Error('Unexpected object: ' + dateRangeType);
+  }
+
+  // Populate the dates array with the dates in range
+  let nextDate = startDate;
+
+  do {
+    if (dateRangeType !== DateRangeType.WorkWeek) {
+      // push all days not in work week view
+      datesArray.push(nextDate);
+    } else if (workWeekDays.indexOf(nextDate.getDay()) !== -1) {
+      datesArray.push(nextDate);
+    }
+    nextDate = addDays(nextDate, 1);
+  } while (!compareDates(nextDate, endDate));
+
+  return datesArray;
+}
+
 /**
  * Checks whether the specified date is in the given date range.
  * @param date - The origin date

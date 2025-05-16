@@ -70,6 +70,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
+    reverse?: boolean;
     selectedDate: Date;
     showCloseButton?: boolean;
     showWeekNumbers?: boolean;
@@ -465,6 +466,9 @@ export function getMonthEnd(date: Date): Date;
 
 // @public
 export function getMonthStart(date: Date): Date;
+
+// @public (undocumented)
+export function getNegativeDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
 
 // @public
 export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;

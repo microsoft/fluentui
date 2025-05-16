@@ -1,4 +1,10 @@
-import { addDays, compareDates, getDateRangeArray, isInDateRangeArray } from '../dateMath/dateMath';
+import {
+  addDays,
+  compareDates,
+  getDateRangeArray,
+  isInDateRangeArray,
+  getNegativeDateRangeArray,
+} from '../dateMath/dateMath';
 import { DAYS_IN_WEEK } from '../constants';
 import { Day, DayGridOptions } from './dateGrid.types';
 import { getDateRangeTypeToUse } from './getDateRangeTypeToUse';
@@ -24,6 +30,7 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
     daysToSelectInDayView,
     restrictedDates,
     markedDays,
+    reverse,
   } = options;
   const restrictedDateOptions = { minDate, maxDate, restrictedDates };
 
@@ -57,13 +64,15 @@ export const getDayGrid = (options: DayGridOptions): Day[][] => {
   let selectedDates: Date[] = [];
 
   if (selectedDate) {
-    selectedDates = getDateRangeArray(
-      selectedDate,
-      selectedDateRangeType,
-      firstDayOfWeek,
-      workWeekDays,
-      daysToSelectInDayView,
-    );
+    selectedDates = reverse
+      ? getNegativeDateRangeArray(
+          selectedDate,
+          selectedDateRangeType,
+          firstDayOfWeek,
+          workWeekDays,
+          daysToSelectInDayView,
+        )
+      : getDateRangeArray(selectedDate, selectedDateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
     selectedDates = getBoundedDateRange(selectedDates, minDate, maxDate);
   }
 

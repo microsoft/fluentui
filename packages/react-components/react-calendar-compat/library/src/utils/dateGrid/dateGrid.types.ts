@@ -107,4 +107,6 @@ export interface DayGridOptions extends RestrictedDatesOptions {
    * month, between 4 and 6 depending
    */
   weeksToShow?: number;
+
+  reverse?: boolean;
 }
