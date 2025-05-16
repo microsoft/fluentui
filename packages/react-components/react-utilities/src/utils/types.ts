@@ -130,19 +130,3 @@ export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 're
  * types, to prevent unions from being expanded.
  */
 export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
-
-/**
- * @internal
- *
- * This type is used to determine if the current version of React is 18+ or not.
- *
- * It checks if the `children` prop is present in the `FunctionComponent` type.
- * If it is, then it means that the current version of React is lower than 18.
- * If it is not, then it means that the current version of React is 18 or higher.
- * This is useful for ensuring compatibility with different versions of React.
- *
- * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
- */
-export type ReactVersionDependent<Modern, Legacy> = 'children' extends keyof Parameters<React.FunctionComponent<{}>>[0]
-  ? Legacy
-  : Modern;

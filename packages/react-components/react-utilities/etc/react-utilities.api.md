@@ -290,7 +290,7 @@ export type SlotClassNames<Slots> = {
 
 // @public
 export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & FunctionComponent<{
-    children?: React_2.ReactNode;
+    children?: ReactNode;
 }> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);

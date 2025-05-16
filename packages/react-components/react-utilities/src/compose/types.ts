@@ -9,7 +9,6 @@ import {
   ReactNode,
   RefAttributes,
   ReplaceNullWithUndefined,
-  ReactVersionDependent,
 } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
@@ -51,9 +50,9 @@ type WithSlotShorthandValue<Props> =
  * to be a render function that takes those props.
  */
 export type WithSlotRenderFunction<Props> = PropsWithoutChildren<Props> & {
-  children?:
-    | ('children' extends keyof Props ? ReactVersionDependent<ReactNode, Props['children']> : never)
-    | SlotRenderFunction<PropsWithoutRef<Props>>;
+  children?: 'children' extends keyof Props
+    ? Props['children'] | SlotRenderFunction<PropsWithoutRef<Props>> | {}
+    : never;
 };
 
 /**
@@ -241,7 +240,7 @@ export type SlotClassNames<Slots> = {
  * but with some additional metadata that is used to determine how to render the slot.
  */
 export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
-  FunctionComponent<{ children?: React.ReactNode }> & {
+  FunctionComponent<{ children?: ReactNode }> & {
     /**
      * @internal
      */
