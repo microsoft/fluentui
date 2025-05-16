@@ -10,16 +10,11 @@ import { isDialog } from '../dialog/dialog.options';
  */
 export class DialogBody extends FASTElement {
   public clickHandler(event: MouseEvent): boolean | void {
-    const path = event.composedPath();
-
     const dialog = this.parentElement;
 
-    const closeBtn = path.find<Element>((el): el is Element => (el as Element).slot === 'close');
-
-    if (isDialog(dialog) && closeBtn) {
+    if (isDialog(dialog)) {
       dialog.hide();
     }
-
     return true;
   }
 }
