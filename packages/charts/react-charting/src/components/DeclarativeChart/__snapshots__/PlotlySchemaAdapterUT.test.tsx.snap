@@ -86,112 +86,112 @@ Object {
   "data": Object {
     "chartData": Array [
       Object {
-        "color": "#9373c0",
+        "color": "#57811b",
         "data": 1,
         "legend": "AMC",
       },
       Object {
-        "color": "#13a10e",
+        "color": "#9373c0",
         "data": 1,
         "legend": "Cadillac",
       },
       Object {
-        "color": "#3a96dd",
+        "color": "#ca5010",
         "data": 1,
         "legend": "Camaro",
       },
       Object {
-        "color": "#ca5010",
+        "color": "#3a96dd",
         "data": 1,
         "legend": "Chrysler",
       },
       Object {
-        "color": "#57811b",
+        "color": "#e3008c",
         "data": 1,
         "legend": "Datsun",
       },
       Object {
-        "color": "#b146c2",
+        "color": "#13a10e",
         "data": 1,
         "legend": "Dodge",
       },
       Object {
-        "color": "#ae8c00",
+        "color": "#b146c2",
         "data": 1,
         "legend": "Duster",
       },
       Object {
-        "color": "#93a4f4",
+        "color": "#ae8c00",
         "data": 1,
         "legend": "Ferrari",
       },
       Object {
-        "color": "#ee5fb7",
+        "color": "#93a4f4",
         "data": 2,
         "legend": "Fiat",
       },
       Object {
-        "color": "#4cb4b7",
+        "color": "#ee5fb7",
         "data": 1,
         "legend": "Ford",
       },
       Object {
-        "color": "#a083c9",
+        "color": "#4cb4b7",
         "data": 1,
         "legend": "Honda",
       },
       Object {
-        "color": "#27ac22",
+        "color": "#a083c9",
         "data": 2,
         "legend": "Hornet",
       },
       Object {
-        "color": "#4fa1e1",
+        "color": "#27ac22",
         "data": 1,
         "legend": "Lincoln",
       },
       Object {
-        "color": "#d77440",
+        "color": "#4fa1e1",
         "data": 1,
         "legend": "Lotus",
       },
       Object {
-        "color": "#73aa24",
+        "color": "#d77440",
         "data": 1,
         "legend": "Maserati",
       },
       Object {
-        "color": "#c36bd1",
+        "color": "#73aa24",
         "data": 2,
         "legend": "Mazda",
       },
       Object {
-        "color": "#d0b232",
+        "color": "#c36bd1",
         "data": 7,
         "legend": "Merc",
       },
       Object {
-        "color": "#4f6bed",
+        "color": "#d0b232",
         "data": 1,
         "legend": "Pontiac",
       },
       Object {
-        "color": "#ea38a6",
+        "color": "#4f6bed",
         "data": 1,
         "legend": "Porsche",
       },
       Object {
-        "color": "#038387",
+        "color": "#ea38a6",
         "data": 2,
         "legend": "Toyota",
       },
       Object {
-        "color": "#8764b8",
+        "color": "#038387",
         "data": 1,
         "legend": "Valiant",
       },
       Object {
-        "color": "#11910d",
+        "color": "#8764b8",
         "data": 1,
         "legend": "Volvo",
       },
@@ -212,22 +212,22 @@ Object {
   "data": Object {
     "chartData": Array [
       Object {
-        "color": "#3487c7",
+        "color": "#febfb3",
         "data": 4500,
         "legend": "Oxygen",
       },
       Object {
-        "color": "#d06228",
+        "color": "#e1396c",
         "data": 2500,
         "legend": "Hydrogen",
       },
       Object {
-        "color": "#689920",
+        "color": "#96d38c",
         "data": 1053,
         "legend": "Carbon_Dioxide",
       },
       Object {
-        "color": "#ba58c9",
+        "color": "#d0f9b1",
         "data": 500,
         "legend": "Nitrogen",
       },
@@ -252,7 +252,7 @@ Object {
       "name": "Jan",
       "series": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#ba58c9",
           "data": 2000,
           "key": "Category A",
           "legend": "Category A",
@@ -260,7 +260,7 @@ Object {
           "xAxisCalloutData": "Jan",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#c19c00",
           "data": 3000,
           "key": "Category B",
           "legend": "Category B",
@@ -273,7 +273,7 @@ Object {
       "name": "Feb",
       "series": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#ba58c9",
           "data": 2100,
           "key": "Category A",
           "legend": "Category A",
@@ -281,7 +281,7 @@ Object {
           "xAxisCalloutData": "Feb",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#c19c00",
           "data": 3100,
           "key": "Category B",
           "legend": "Category B",
@@ -294,7 +294,7 @@ Object {
       "name": "Mar",
       "series": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#ba58c9",
           "data": 2200,
           "key": "Category A",
           "legend": "Category A",
@@ -302,7 +302,7 @@ Object {
           "xAxisCalloutData": "Mar",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#c19c00",
           "data": 3200,
           "key": "Category B",
           "legend": "Category B",
@@ -315,7 +315,7 @@ Object {
       "name": "Apr",
       "series": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#ba58c9",
           "data": 2300,
           "key": "Category A",
           "legend": "Category A",
@@ -323,7 +323,7 @@ Object {
           "xAxisCalloutData": "Apr",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#c19c00",
           "data": 3300,
           "key": "Category B",
           "legend": "Category B",
@@ -336,7 +336,7 @@ Object {
       "name": "May",
       "series": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#ba58c9",
           "data": 2400,
           "key": "Category A",
           "legend": "Category A",
@@ -344,7 +344,7 @@ Object {
           "xAxisCalloutData": "May",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#c19c00",
           "data": 3400,
           "key": "Category B",
           "legend": "Category B",
@@ -374,19 +374,19 @@ Object {
   "minValue": undefined,
   "segments": Array [
     Object {
-      "color": "#57811b",
+      "color": "#00ffff",
       "legend": "Segment 1",
       "size": 250,
     },
     Object {
-      "color": "#b146c2",
+      "color": "#4169e1",
       "legend": "Segment 2",
       "size": 150,
     },
   ],
   "styles": Object {
     "sublabel": Object {
-      "fill": "#2aa0a4",
+      "fill": "#663399",
     },
   },
   "sublabel": "▲ 20",
@@ -2851,139 +2851,139 @@ Object {
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
   "data": Array [
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 10,
       "y": "Aura",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 11,
       "y": "Drupal",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 17,
       "y": "TYPO3 Flow",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 25,
       "y": "FuelPHP",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 35,
       "y": "Kohana",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 35,
       "y": "Typo 3",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 42,
       "y": "Simple MVC Framework",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 65,
       "y": "Silex",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 79,
       "y": "Slim",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 169,
       "y": "Phalcon",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 203,
       "y": "We use a CMS for everything",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 243,
       "y": "No Framework",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 255,
       "y": "CakePHP",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 274,
       "y": "Zend Framework 1",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 378,
       "y": "Company Internal Framework",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 390,
       "y": "Zend Framework 2",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 407,
       "y": "Yii 1",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 418,
       "y": "PHPixie",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 504,
       "y": "Yii 2",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 597,
       "y": "CodeIgniter",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 671,
       "y": "Nette",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 1067,
       "y": "Symfony2",
     },
     Object {
-      "color": "#cf87da",
+      "color": "#c8d1fa",
       "legend": "Votes",
       "x": 1659,
       "y": "Laravel",
@@ -3085,42 +3085,42 @@ Object {
       ],
       "nodes": Array [
         Object {
-          "color": "#dac157",
+          "color": "#f27420",
           "name": "Remain+No – 28",
           "nodeId": 0,
         },
         Object {
-          "color": "#637cef",
+          "color": "#4994ce",
           "name": "Leave+No – 16",
           "nodeId": 1,
         },
         Object {
-          "color": "#e3008c",
+          "color": "#fabc13",
           "name": "Remain+Yes – 21",
           "nodeId": 2,
         },
         Object {
-          "color": "#2aa0a4",
+          "color": "#7fc241",
           "name": "Leave+Yes – 14",
           "nodeId": 3,
         },
         Object {
-          "color": "#9373c0",
+          "color": "#d3d3d3",
           "name": "Didn’t vote in at least one referendum – 21",
           "nodeId": 4,
         },
         Object {
-          "color": "#13a10e",
+          "color": "#8a5988",
           "name": "46 – No",
           "nodeId": 5,
         },
         Object {
-          "color": "#3a96dd",
+          "color": "#449e9e",
           "name": "39 – Yes",
           "nodeId": 6,
         },
         Object {
-          "color": "#ca5010",
+          "color": "#d3d3d3",
           "name": "14 – Don’t know / would not vote",
           "nodeId": 7,
         },
@@ -3145,7 +3145,7 @@ Object {
     "chartTitle": "",
     "lineChartData": Array [
       Object {
-        "color": "#f7adda",
+        "color": "#ff9933",
         "data": Array [
           Object {
             "x": 0,
@@ -3196,7 +3196,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#9bd9db",
+        "color": "#3780bf",
         "data": Array [
           Object {
             "x": 0,
@@ -3247,7 +3247,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#b29ad4",
+        "color": "#32ab60",
         "data": Array [
           Object {
             "x": 0,
@@ -3298,7 +3298,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#a4cc6c",
+        "color": "#800080",
         "data": Array [
           Object {
             "x": 0,
@@ -3368,7 +3368,7 @@ Object {
     "chartTitle": "",
     "lineChartData": Array [
       Object {
-        "color": "#a7e3a5",
+        "color": "#ff9933",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -3779,7 +3779,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#83bdeb",
+        "color": "#3780bf",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4190,7 +4190,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#df8e64",
+        "color": "#32ab60",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4619,266 +4619,266 @@ Object {
   "chartTitle": "",
   "data": Array [
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 3,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 18,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 53,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 87,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 129,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 194,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 188,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 163,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 102,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 44,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 3.25,
       "xAxisCalloutData": "[3 - 3.5)",
       "y": 11,
     },
     Object {
-      "color": "#f7adda",
+      "color": "#ff9933",
       "legend": "a",
       "x": 3.75,
       "xAxisCalloutData": "[3.5 - 4)",
       "y": 8,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 6,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 11,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 40,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 100,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 158,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 189,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 192,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 148,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 90,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 47,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 18,
     },
     Object {
-      "color": "#9bd9db",
+      "color": "#3780bf",
       "legend": "b",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 1,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -4.25,
       "xAxisCalloutData": "[-4.5 - -4)",
       "y": 2,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -3.75,
       "xAxisCalloutData": "[-4 - -3.5)",
       "y": 4,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -3.25,
       "xAxisCalloutData": "[-3.5 - -3)",
       "y": 8,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 49,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 99,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 137,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 220,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 181,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 142,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 94,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 45,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 11,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 6,
     },
     Object {
-      "color": "#b29ad4",
+      "color": "#32ab60",
       "legend": "c",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
@@ -4905,12 +4905,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#0000ff",
           "data": 2000,
           "legend": "Category A",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#007f00",
           "data": 3000,
           "legend": "Category B",
         },
@@ -4921,12 +4921,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#0000ff",
           "data": 2100,
           "legend": "Category A",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#007f00",
           "data": 3100,
           "legend": "Category B",
         },
@@ -4937,12 +4937,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#0000ff",
           "data": 2200,
           "legend": "Category A",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#007f00",
           "data": 3200,
           "legend": "Category B",
         },
@@ -4953,12 +4953,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#0000ff",
           "data": 2300,
           "legend": "Category A",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#007f00",
           "data": 3300,
           "legend": "Category B",
         },
@@ -4969,12 +4969,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#c19c00",
+          "color": "#0000ff",
           "data": 2400,
           "legend": "Category A",
         },
         Object {
-          "color": "#c8d1fa",
+          "color": "#007f00",
           "data": 3400,
           "legend": "Category B",
         },
