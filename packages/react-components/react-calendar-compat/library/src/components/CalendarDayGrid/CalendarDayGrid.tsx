@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
-import { getBoundedDateRange, getDateRangeArray, isRestrictedDate, DateRangeType, DayOfWeek } from '../../utils';
+import {
+  getBoundedDateRange,
+  getDateRangeArray,
+  isRestrictedDate,
+  DateRangeType,
+  DayOfWeek,
+  getNegativeDateRangeArray,
+} from '../../utils';
 import { useCalendarDayGridStyles_unstable } from './useCalendarDayGridStyles.styles';
 import { CalendarMonthHeaderRow } from './CalendarMonthHeaderRow';
 import { CalendarGridRow } from './CalendarGridRow';
@@ -52,10 +59,13 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
   const activeDescendantId = useId();
 
   const onSelectDate = (selectedDate: Date): void => {
-    const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates } = props;
+    const { firstDayOfWeek, minDate, maxDate, workWeekDays, daysToSelectInDayView, restrictedDates, reverse } = props;
     const restrictedDatesOptions = { minDate, maxDate, restrictedDates };
 
-    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+    let dateRange = reverse
+      ? getNegativeDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView)
+      : getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
+
     dateRange = getBoundedDateRange(dateRange, minDate, maxDate);
 
     dateRange = dateRange.filter((d: Date) => {
@@ -94,13 +104,21 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     const dateRangeHoverType = getDateRangeTypeToUse(props.dateRangeType, props.workWeekDays);
 
     // gets all the dates for the given date range type that are in the same date range as the given day
-    const dateRange = getDateRangeArray(
-      dayToCompare.originalDate,
-      dateRangeHoverType,
-      props.firstDayOfWeek,
-      props.workWeekDays,
-      props.daysToSelectInDayView,
-    ).map((date: Date) => date.getTime());
+    const dateRange = props.reverse
+      ? getNegativeDateRangeArray(
+          dayToCompare.originalDate,
+          dateRangeHoverType,
+          props.firstDayOfWeek,
+          props.workWeekDays,
+          props.daysToSelectInDayView,
+        ).map((date: Date) => date.getTime())
+      : getDateRangeArray(
+          dayToCompare.originalDate,
+          dateRangeHoverType,
+          props.firstDayOfWeek,
+          props.workWeekDays,
+          props.daysToSelectInDayView,
+        ).map((date: Date) => date.getTime());
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks.reduce((accumulatedValue: DayInfo[], currentWeek: DayInfo[]) => {

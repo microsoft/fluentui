@@ -7,6 +7,7 @@ export {
   compareDates,
   getDatePartHashValue,
   getDateRangeArray,
+  getNegativeDateRangeArray,
   getEndDateOfWeek,
   getMonthEnd,
   getMonthStart,

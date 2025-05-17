@@ -34,6 +34,13 @@ export const CalendarMultidayDayView = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Calendar
+        highlightSelectedMonth
+        showGoToToday
+        onSelectDate={onSelectDate}
+        value={selectedDate}
+        calendarDayProps={{ daysToSelectInDayView, reverse: true }}
+      />
       <p>
         This calendar uses <code>dateRangeType = Day</code> and <code>daysToSelectInView = 4</code>.
       </p>
