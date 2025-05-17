@@ -7,6 +7,8 @@ import { DataVizPalette, getColorFromToken, getNextColor } from '../../utilities
 
 type PlotlyColorway = 'plotly' | 'others';
 
+// The color sequences in plotly express are defined here:
+// https://plotly.com/python/discrete-color/#:~:text=Join%20now.-,Color%20Sequences%20in%20Plotly%20Express,-By%20default%2C%20Plotly
 export type ColorwayType = 'default' | 'builtin' | 'others' | undefined;
 
 const DEFAULT_PLOTLY_COLORWAY = [
