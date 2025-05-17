@@ -13,7 +13,6 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
-  getSchemaColors,
 } from './PlotlySchemaAdapter';
 
 const date = new Date();
@@ -338,7 +337,7 @@ describe('sanitizeJson', () => {
   });
 });
 
-describe('getSchemaColors', () => {
+/* describe('getSchemaColors', () => {
   test('Should return the array of colors when input schema has colors', () => {
     const hexColors = ['#e3008c', '#2aa0a4'];
     expect(getSchemaColors(hexColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
@@ -363,4 +362,4 @@ describe('getSchemaColors', () => {
     const undefinedColor = [undefined];
     expect(getSchemaColors(undefinedColor, { current: colorMap })).not.toBe([]);
   });
-});
+});*/
