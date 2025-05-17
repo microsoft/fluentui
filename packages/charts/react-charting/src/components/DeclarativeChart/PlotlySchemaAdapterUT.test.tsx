@@ -241,22 +241,25 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
-    expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
-    ).toMatchSnapshot();
+    expect(transformPlotlyJsonToScatterChartProps(plotlySchema, 'Line', { current: colorMap }, true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true);
+      transformPlotlyJsonToScatterChartProps(plotlySchema, 'Line', { current: colorMap }, true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
+    expect(transformPlotlyJsonToScatterChartProps(plotlySchema, 'Area', { current: colorMap }, true)).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToScatterChartProps - Should return scatter chart props', () => {
+    const plotlySchema = require('./tests/schema/fluent_scatter_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
+      transformPlotlyJsonToScatterChartProps(plotlySchema, 'Scatter', { current: colorMap }, true),
     ).toMatchSnapshot();
   });
 

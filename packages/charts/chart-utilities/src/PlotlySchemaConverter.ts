@@ -157,11 +157,7 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') && !isNumberArray(data.x)) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
-  } else {
-    validateSeriesData(data, true);
-  }
+  validateSeriesData(data, false);
 };
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
@@ -235,7 +231,6 @@ export const mapFluentChart = (input: any): OutputChartType => {
 
     const validTraces = getValidTraces(validSchema.data);
     const firstData = validSchema.data[validTraces[0][0]];
-
     switch (firstData.type) {
       case 'pie':
         return { isValid: true, type: 'donut', validTracesInfo: validTraces };
@@ -251,6 +246,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+      case 'scatter':
+        return { isValid: true, type: 'scatter', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');

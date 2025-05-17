@@ -61,6 +61,7 @@ import {
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { IScatterChartProps } from '../ScatterChart/index';
 import { color as d3Color } from 'd3-color';
 
 interface ISecondaryYAxisValues {
@@ -555,11 +556,13 @@ export const transformPlotlyJsonToVBCProps = (
 
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
-  isAreaChart: boolean,
+  chartType: 'Area' | 'Line' | 'Scatter',
   colorMap: React.MutableRefObject<Map<string, string>>,
   useFluentVizColorPalette: boolean,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
+  const isAreaChart = chartType === 'Area';
+  const isScatterChart = chartType === 'Scatter';
   const secondaryYAxisValues = getSecondaryYAxisValues(
     input.data,
     input.layout,
@@ -612,6 +615,11 @@ export const transformPlotlyJsonToScatterChartProps = (
     lineChartData: chartData,
   };
 
+  const scatterChartProps: IChartProps = {
+    chartTitle,
+    scatterChartData: chartData,
+  };
+
   if (isAreaChart) {
     return {
       data: chartProps,
@@ -628,7 +636,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     } as IAreaChartProps;
   } else {
     return {
-      data: chartProps,
+      data: isScatterChart ? scatterChartProps : chartProps,
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
@@ -640,9 +648,8 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       enableReflow: false,
-      hideLegend,
       useUTC: false,
-    } as ILineChartProps;
+    } as ILineChartProps | IScatterChartProps;
   }
 };
 
