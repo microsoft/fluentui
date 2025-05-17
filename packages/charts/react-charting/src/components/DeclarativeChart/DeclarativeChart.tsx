@@ -107,8 +107,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   HTMLDivElement,
   DeclarativeChartProps
 >((props, forwardedRef) => {
-  const { plotlySchema } =
-    props.chartSchema.plotlySchema.data[0].type !== 'table' ? sanitizeJson(props.chartSchema) : props.chartSchema;
+  const { plotlySchema } = sanitizeJson(props.chartSchema);
   const chart: OutputChartType = mapFluentChart(plotlySchema);
   if (!chart.isValid) {
     throw new Error(`Invalid chart schema: ${chart.errorMessage}`);

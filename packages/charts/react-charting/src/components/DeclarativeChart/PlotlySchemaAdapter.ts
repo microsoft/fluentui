@@ -823,6 +823,7 @@ export const transformPlotlyJsonToGaugeProps = (
 };
 const cleanText = (text: string): string => {
   return text
+    .replace(/&lt;[^&]*?&gt;/g, '')
     .replace(/<[^>]*>/g, '')
     .replace(/&lt;br&gt;|\\u003cbr\\u003e|<br>/gi, '')
     .replace(/\$[^$]*\$/g, '$')
@@ -853,7 +854,7 @@ export const transformPlotlyJsonToChartTableProps = (
     return (values as string[]).map(cell => cleanText(cell));
   };
   const columns = tableData.cells?.values ?? [];
-  const rows = columns[0].map((_, rowIndex: number) =>
+  const rows = columns[0].map((_: any, rowIndex: number) =>
     columns.map((col: any[]) => {
       const cell = col[rowIndex];
       return typeof cell === 'string' ? cleanText(cell) : cell;
@@ -870,7 +871,7 @@ export const transformPlotlyJsonToChartTableProps = (
     headers: normalizeHeaders(tableData.header?.values ?? []),
     rows,
     width: input.layout?.width,
-    height: input.layout?.height ?? 468,
+    height: input.layout?.height,
     styles,
   };
 };

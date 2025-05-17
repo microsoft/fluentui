@@ -236,12 +236,10 @@ const getValidTraces = (dataArr: Data[]) => {
 };
 
 export const mapFluentChart = (input: any): OutputChartType => {
-  if (input.data[0].type !== 'table') {
-    try {
-      sanitizeJson(input);
-    } catch (error) {
-      return { isValid: false, errorMessage: `Invalid JSON: ${error}` };
-    }
+  try {
+    sanitizeJson(input);
+  } catch (error) {
+    return { isValid: false, errorMessage: `Invalid JSON: ${error}` };
   }
 
   try {

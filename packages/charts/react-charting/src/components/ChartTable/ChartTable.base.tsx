@@ -27,25 +27,35 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
       theme: theme!,
     });
 
-    if (!headers || headers.length === 0 || !rows || rows.length === 0) {
+    if (!headers || headers.length === 0) {
       return <div>No data available</div>;
     }
 
     return (
-      <div ref={el => (this._rootElem = el)}>
-        <svg width={width ?? '100%'} height={height ?? '650px'}>
+      <div
+        ref={el => (this._rootElem = el)}
+        className={classNames.root}
+        style={{ height: height ? `${height}px` : '650px' }}
+      >
+        <svg width={width ?? '100%'} height={height ?? 'auto'}>
           <foreignObject x="0" y="0" width="100%" height="100%">
-            <div className={classNames.root}>
-              <table className={classNames.table}>
-                <thead>
-                  <tr>
-                    {headers.map((header, idx) => (
-                      <th key={idx} className={classNames.headerCell}>
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
+            <table
+              className={classNames.table}
+              style={{
+                maxHeight: height ? `${height}px` : 'auto',
+                width: width ? `${width}px` : '100%',
+              }}
+            >
+              <thead>
+                <tr>
+                  {headers.map((header, idx) => (
+                    <th key={idx} className={classNames.headerCell}>
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              {rows && rows.length > 0 && (
                 <tbody>
                   {rows.map((row, rowIdx) => (
                     <tr key={rowIdx}>
@@ -57,8 +67,8 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                     </tr>
                   ))}
                 </tbody>
-              </table>
-            </div>
+              )}
+            </table>
           </foreignObject>
         </svg>
       </div>
