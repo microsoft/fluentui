@@ -4,6 +4,7 @@ import type {
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
+  InferredElementRefType,
 } from './types';
 import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
@@ -12,7 +13,7 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
   elementType:
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-  defaultProps?: Partial<Props>;
+  defaultProps?: Partial<Props & { ref?: React.Ref<InferredElementRefType<Props>> }>;
 };
 
 /**
@@ -86,7 +87,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
-    Array.isArray(value) ||
+    isIterable(value) ||
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
@@ -105,3 +106,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIterable = (value: unknown): value is Iterable<any> =>
+  typeof value === 'object' && value !== null && Symbol.iterator in value;

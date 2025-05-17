@@ -17,7 +17,9 @@ describe('useFluentProvider_unstable', () => {
   });
 
   it(`should warn user if no theme was set in parent or child`, () => {
-    const Wrapper: React.FC = ({ children }) => <FluentProvider>{children}</FluentProvider>;
+    const Wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+      <FluentProvider>{children}</FluentProvider>
+    );
 
     const { result } = renderHook(() => useFluentProvider_unstable({}, React.createRef()), {
       wrapper: Wrapper,
@@ -41,7 +43,9 @@ describe('useFluentProvider_unstable', () => {
       strokeWidthThin: '20px',
     };
 
-    const Wrapper: React.FC = ({ children }) => <FluentProvider theme={themeA}>{children}</FluentProvider>;
+    const Wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+      <FluentProvider theme={themeA}>{children}</FluentProvider>
+    );
 
     const { result } = renderHook(() => useFluentProvider_unstable({ theme: themeB }, React.createRef()), {
       wrapper: Wrapper,
@@ -66,7 +70,7 @@ describe('useFluentProvider_unstable', () => {
       inputDefaultAppearance: 'filled-darker',
     };
 
-    const Wrapper: React.FC = ({ children }) => (
+    const Wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
       <FluentProvider overrides_unstable={overridesA}>{children}</FluentProvider>
     );
 
@@ -131,7 +135,7 @@ describe('useFluentProvider_unstable', () => {
         // eslint-disable-next-line @typescript-eslint/naming-convention
         () => useFluentProvider_unstable({ customStyleHooks_unstable: customStylesB }, React.createRef()),
         {
-          wrapper: ({ children }) => (
+          wrapper: ({ children }: React.PropsWithChildren<{}>) => (
             <FluentProvider customStyleHooks_unstable={customStylesA}>{children}</FluentProvider>
           ),
         },

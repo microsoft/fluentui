@@ -19,7 +19,7 @@ describe('useAriaLiveAnnouncer', () => {
       },
       defaultView: global,
     } as unknown as Document;
-    const ContextWrapper: React.FC = props => {
+    const ContextWrapper: React.FC<React.PropsWithChildren<{}>> = props => {
       return <Provider value={{ dir: 'ltr', targetDocument }}>{props.children}</Provider>;
     };
 
