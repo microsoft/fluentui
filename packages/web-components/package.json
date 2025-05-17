@@ -71,6 +71,7 @@
       "types": "./dist/dts/*/define.d.ts",
       "default": "./dist/esm/*/define.js"
     },
+    "./custom-elements.json": "./custom-elements.json",
     "./package.json": "./package.json"
   },
   "sideEffects": [

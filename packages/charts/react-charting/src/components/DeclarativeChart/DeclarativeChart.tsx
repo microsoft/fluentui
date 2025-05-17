@@ -307,14 +307,24 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'sankey':
       return (
         <ResponsiveSankeyChart
-          {...transformPlotlyJsonToSankeyProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToSankeyProps(
+            plotlyInputWithValidData,
+            colorMap,
+            useFluentVizColorPalette,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );
     case 'gauge':
       return (
         <ResponsiveGaugeChart
-          {...transformPlotlyJsonToGaugeProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...transformPlotlyJsonToGaugeProps(
+            plotlyInputWithValidData,
+            colorMap,
+            useFluentVizColorPalette,
+            isDarkTheme,
+          )}
           {...commonProps}
         />
       );

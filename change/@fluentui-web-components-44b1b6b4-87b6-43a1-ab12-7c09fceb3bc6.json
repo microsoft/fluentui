@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Include Custom Elements Manifest in package exports",
+  "packageName": "@fluentui/web-components",
+  "email": "burtonsmith@microsoft.com",
+  "dependentChangeType": "patch"
+}
