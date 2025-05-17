@@ -127,8 +127,9 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    // Warning: (ae-forgotten-export) The symbol "ColorwayType" needs to be exported by the entry point index.d.ts
+    colorwayType?: ColorwayType;
     componentRef?: IRefObject<IDeclarativeChart>;
-    fluentDataVizColorPalette?: 'default' | 'builtin' | 'override';
     onSchemaChange?: (eventData: Schema) => void;
 }
 

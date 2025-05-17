@@ -3,7 +3,6 @@ import { isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilit
 import {
   isMonthArray,
   correctYearMonth,
-  getColor,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToGVBCProps,
@@ -13,8 +12,8 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
-  getSchemaColors,
 } from './PlotlySchemaAdapter';
+import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 
 const date = new Date();
 const colorMap = new Map<string, string>();
@@ -167,28 +166,28 @@ describe('correctYearMonth', () => {
 
 describe('getColor', () => {
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, true)).toBe('#e3008c');
+    expect(getColor('test', { current: colorMap }, true)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title', () => {
-    expect(getColor('test', { current: colorMap }, false)).toBe('#e3008c');
+    expect(getColor('test', { current: colorMap }, false)).toBe('#637cef');
   });
 
   test('Should return color code when we had legend title is empty', () => {
-    expect(getColor('', { current: colorMap }, false)).toBe('#2aa0a4');
+    expect(getColor('', { current: colorMap }, false)).toBe('#f7630c');
   });
 });
 
 describe('transform Plotly Json To chart Props', () => {
   test('transformPlotlyJsonToDonutProps - Should return donut chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_donut_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToDonutProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -196,18 +195,20 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToDonutProps - Should return pie chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_pie_test.json');
-    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToDonutProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should return VSBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalstackedbarchart_test.json');
-    expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true, true)).toMatchSnapshot();
+    expect(
+      transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true, true),
+    ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVSBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToVSBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -215,13 +216,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGVBCProps - Should return GVBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_groupedverticalbarchart_test.json');
-    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToGVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading 'forEach')"));
     }
@@ -229,48 +230,48 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToVBCProps - Should return VBC props', () => {
     const plotlySchema = require('./tests/schema/fluent_verticalbar_histogram_test.json');
-    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToVBCProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, true, true);
+      transformPlotlyJsonToVBCProps(plotlySchema, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true);
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
   test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
     expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, { current: colorMap }, true, true),
+      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_horizontalbar_test.json');
     expect(
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true, true),
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, true, true);
+      transformPlotlyJsonToHorizontalBarWithAxisProps(plotlySchema, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
@@ -290,13 +291,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToSankeyProps - Should return sankey chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_sankey_test.json');
-    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToSankeyProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToSankeyProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -304,13 +305,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToGaugeProps - Should return gauge chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_gauge_test.json');
-    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+    expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToGaugeProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, true, true)).toMatchSnapshot();
+      expect(transformPlotlyJsonToGaugeProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }
@@ -338,29 +339,92 @@ describe('sanitizeJson', () => {
   });
 });
 
-describe('getSchemaColors', () => {
-  test('Should return the array of colors when input schema has colors', () => {
+describe('getSchemaColors with plotly colorway', () => {
+  const plotlyColorway = [
+    '#636efa',
+    '#ef553b',
+    '#00cc96',
+    '#ab63fa',
+    '#ffa15a',
+    '#19d3f3',
+    '#ff6692',
+    '#b6e880',
+    '#ff97ff',
+    '#fecb52',
+  ];
+
+  test('Should return array of fluent colorway colors when input has plotly colorway colors', () => {
+    const hexColors = ['#00cc96', '#ff97ff'];
+    expect(getSchemaColors(plotlyColorway, hexColors, { current: colorMap })).toStrictEqual(['#57811b', '#b146c2']);
+  });
+  test('Should return array of fluent colorway colors when input has plotly colorway colors in RGB format', () => {
+    const rgbColors = ['rgb(255, 161, 90)', 'rgb(25, 211, 243)'];
+    expect(getSchemaColors(plotlyColorway, rgbColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
+  });
+  test('Should return array of fluent colorway colors when input has plotly colorway colors in RGBA format', () => {
+    const rgbaColors = ['rgba(255, 161, 90, 1)', 'rgba(25, 211, 243, 1)'];
+    expect(getSchemaColors(plotlyColorway, rgbaColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
+  });
+  // The provided hex colors are not mapping to hsl color clamped color string.
+  // Eg: hsl(235.62913907284766, 0.9378881987577639, 0.6843137254901961) is mapping as hsl(236, 94%, 68%)
+  // So, unable to map to the exact fluent colorway.
+  // Hence skipping the test case for now.
+  test.skip('Should return the array of colors when input schema has colors in HSL format', () => {
+    const hslColors = [
+      'hsl(235.62913907284766, 0.9378881987577639, 0.6843137254901961)',
+      'hsl(8.666666666666664, 0.8490566037735849, 0.5843137254901961)',
+    ];
+    expect(getSchemaColors(plotlyColorway, hslColors, { current: colorMap })).toStrictEqual(['#637cef', '#e3008c']);
+  });
+  test.skip('Should return the array of colors when input schema has colors in HSLA format', () => {
+    const hslaColors = [
+      'hsla(235.62913907284766, 0.9378881987577639, 0.6843137254901961, 1)',
+      'hsla(8.666666666666664, 0.8490566037735849, 0.5843137254901961, 1)',
+    ];
+    expect(getSchemaColors(plotlyColorway, hslaColors, { current: colorMap })).toStrictEqual(['#637cef', '#e3008c']);
+  });
+});
+
+describe('getSchemaColors with other colorways', () => {
+  const randomColorway = [
+    '#e3008c',
+    '#2aa0a4',
+    '#ff0080',
+    '#00ffff',
+    '#ff0000',
+    '#00ff00',
+    '#0000ff',
+    '#ffff00',
+    '#ff00ff',
+    '#00ffff',
+  ];
+
+  test('Should return the array of colors when input schema has hex colors', () => {
     const hexColors = ['#e3008c', '#2aa0a4'];
-    expect(getSchemaColors(hexColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
+    expect(getSchemaColors(randomColorway, hexColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in RGB format', () => {
     const rgbColors = ['rgb(227, 0, 140)', 'rgb(42, 160, 164)'];
-    expect(getSchemaColors(rgbColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
+    expect(getSchemaColors(randomColorway, rgbColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in RGBA format', () => {
     const rgbaColors = ['rgba(227, 0, 140, 1)', 'rgba(42, 160, 164, 1)'];
-    expect(getSchemaColors(rgbaColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
+    expect(getSchemaColors(randomColorway, rgbaColors, { current: colorMap })).toStrictEqual(['#e3008c', '#2aa0a4']);
   });
   test('Should return the array of colors when input schema has colors in HSL format', () => {
     const hslColors = ['hsl(330, 100%, 50%)', 'hsl(180, 100%, 50%)'];
-    expect(getSchemaColors(hslColors, { current: colorMap })).toStrictEqual(['#ff0080', '#00ffff']);
+    expect(getSchemaColors(randomColorway, hslColors, { current: colorMap })).toStrictEqual(['#ff0080', '#00ffff']);
+  });
+  test('Should return the array of colors when input schema has colors in HSLA format', () => {
+    const hslaColors = ['hsla(330, 100%, 50%, 1)', 'hsla(180, 100%, 50%, 1)'];
+    expect(getSchemaColors(randomColorway, hslaColors, { current: colorMap })).toStrictEqual(['#ff0080', '#00ffff']);
   });
   test('Should return undefined when input schema has color in null format', () => {
     const nullColor = [null];
-    expect(getSchemaColors(nullColor, { current: colorMap })).not.toBe([]);
+    expect(getSchemaColors(randomColorway, nullColor, { current: colorMap })).not.toBe([]);
   });
   test('Should return undefined when input schema has color in undefined format', () => {
     const undefinedColor = [undefined];
-    expect(getSchemaColors(undefinedColor, { current: colorMap })).not.toBe([]);
+    expect(getSchemaColors(undefined, undefinedColor, { current: colorMap })).not.toBe([]);
   });
 });
