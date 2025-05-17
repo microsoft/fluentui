@@ -353,15 +353,15 @@ describe('getSchemaColors with plotly colorway', () => {
     '#fecb52',
   ];
 
-  test('Should return the array of fluent mapped colors when input schema has plotly colorway colors', () => {
+  test('Should return array of fluent colorway colors when input has plotly colorway colors', () => {
     const hexColors = ['#00cc96', '#ff97ff'];
     expect(getSchemaColors(plotlyColorway, hexColors, { current: colorMap })).toStrictEqual(['#57811b', '#b146c2']);
   });
-  test('Should return the array of colors when input schema has colors in RGB format', () => {
+  test('Should return array of fluent colorway colors when input has plotly colorway colors in RGB format', () => {
     const rgbColors = ['rgb(255, 161, 90)', 'rgb(25, 211, 243)'];
     expect(getSchemaColors(plotlyColorway, rgbColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
   });
-  test('Should return the array of colors when input schema has colors in RGBA format', () => {
+  test('Should return array of fluent colorway colors when input has plotly colorway colors in RGBA format', () => {
     const rgbaColors = ['rgba(255, 161, 90, 1)', 'rgba(25, 211, 243, 1)'];
     expect(getSchemaColors(plotlyColorway, rgbaColors, { current: colorMap })).toStrictEqual(['#ca5010', '#3a96dd']);
   });
