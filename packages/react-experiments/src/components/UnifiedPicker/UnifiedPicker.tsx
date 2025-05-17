@@ -72,7 +72,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
   const dragDropHelper = new DragDropHelper({
-    selection: selection,
+    selection,
   });
 
   const {
@@ -559,11 +559,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderSelectedItemsList = (): JSX.Element => {
     return onRenderSelectedItems({
       ...selectedItemsListProps,
-      selectedItems: selectedItems,
-      focusedItemIndices: focusedItemIndices,
+      selectedItems,
+      focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems,
       replaceItem: _replaceItem,
-      dragDropHelper: dragDropHelper,
+      dragDropHelper,
       dragDropEvents: dragDropEvents || defaultDragDropEvents,
     });
   };
@@ -613,7 +613,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedSuggestionIndex: focusItemIndex,
       selectedFooterIndex: footerItemIndex,
       selectedHeaderIndex: headerItemIndex,
-      pickerSuggestionsProps: pickerSuggestionsProps,
+      pickerSuggestionsProps,
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
       onKeyDown: _onInputKeyDown,
