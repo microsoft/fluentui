@@ -532,11 +532,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const legendDataItems = data.map((point: LineChartDataWithIndex) => {
-      const color: string = point.color!;
+    const mapLegendToPoint: Record<string, LineChartDataWithIndex> = {};
+    data.forEach((point: LineChartDataWithIndex) => {
+      if (point.legend) {
+        mapLegendToPoint[point.legend] = point;
+      }
+    });
+    const legendDataItems: ILegend[] = Object.entries(mapLegendToPoint).map(([legendTitle, point]) => {
+      const color = point.color!;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
+        title: legendTitle,
         color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
@@ -550,7 +556,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this.setState({ activeLegend: point.legend });
+          this.setState({ activeLegend: legendTitle });
         },
         ...(point.legendShape && {
           shape: point.legendShape,
