@@ -51,6 +51,7 @@ const options: IDropdownOption[] = [
   { key: 'sankeychart', text: 'Sankey Chart' },
   { key: 'verticalbarchart', text: 'VerticalBar Chart' },
   { key: 'verticalbar_histogramchart', text: 'VerticalBar Histogram Chart' },
+  { key: 'chart_table', text: 'Chart Table' },
 ];
 
 const colorOptions: IDropdownOption[] = [
@@ -70,6 +71,7 @@ const schemas: any[] = [
   { key: 'sankeychart', schema: require('./schema/fluent_sankey.json') },
   { key: 'verticalbarchart', schema: require('./schema/fluent_verticalbar.json') },
   { key: 'verticalbar_histogramchart', schema: require('./schema/fluent_verticalbar_histogram.json') },
+  { key: 'chart_table', schema: require('./schema/fluent_table.json') },
 ];
 
 const dropdownStyles = { dropdown: { width: 200 } };

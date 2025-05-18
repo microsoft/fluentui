@@ -40,6 +40,9 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
+// @public
+export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
+
 // @public (undocumented)
 export const DataVizGradientPalette: {
     gradient1: string;
@@ -430,6 +433,38 @@ export interface IChartProps {
     pointLineOptions?: React_2.SVGProps<SVGLineElement>;
     pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
+}
+
+// @public
+export interface IChartTableProps {
+    className?: string;
+    componentRef?: IRefObject<IChart>;
+    headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+    height?: string | number;
+    rows: (string | number | boolean | null)[][];
+    styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
+    theme?: ITheme;
+    width?: string | number;
+}
+
+// @public (undocumented)
+export interface IChartTableStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public
+export interface IChartTableStyles {
+    // (undocumented)
+    bodyCell?: IStyle;
+    // (undocumented)
+    headerCell?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    table?: IStyle;
 }
 
 // @public (undocumented)
