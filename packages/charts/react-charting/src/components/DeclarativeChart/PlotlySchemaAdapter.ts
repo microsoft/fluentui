@@ -48,8 +48,8 @@ import type {
   ScatterLine,
   TypedArray,
   Data,
+  TableData,
   Color,
-  PlotlyTableData,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -953,7 +953,7 @@ export const transformPlotlyJsonToChartTableProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   isDarkTheme?: boolean,
 ): IChartTableProps => {
-  const tableData = input.data[0] as PlotlyTableData;
+  const tableData = input.data[0] as TableData;
 
   const normalizeHeaders = (
     values: (string | number | boolean | null)[] | (string | number | boolean | null)[][],

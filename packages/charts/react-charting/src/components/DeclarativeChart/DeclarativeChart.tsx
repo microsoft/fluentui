@@ -154,8 +154,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    const { plotlySchema } =
-      props.chartSchema.plotlySchema.data[0].type !== 'table' ? sanitizeJson(props.chartSchema) : props.chartSchema;
+    const { plotlySchema } = sanitizeJson(props.chartSchema);
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { selectedLegends } = plotlySchema;
     setActiveLegends(selectedLegends ?? []);

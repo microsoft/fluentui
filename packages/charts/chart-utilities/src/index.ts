@@ -92,7 +92,7 @@ export type {
   TypedArray,
   XAxisName,
   YAxisName,
-  PlotlyTableData,
+  TableData,
 } from './PlotlySchema';
 
 export type { OutputChartType } from './PlotlySchemaConverter';
