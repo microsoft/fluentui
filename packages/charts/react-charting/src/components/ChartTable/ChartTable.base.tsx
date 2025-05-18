@@ -20,7 +20,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     return toImage(this._rootElem, undefined, this._isRTL, opts);
   };
 
-  render() {
+  public render(): JSX.Element {
     const { headers, rows, width, height, styles, theme } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -35,20 +35,20 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
       <div
         ref={el => (this._rootElem = el)}
         className={classNames.root}
-        style={{ height: height ? `${height}px` : '650px' }}
+        style={{ height: height ? `${height}px` : '650px', overflow: 'hidden' }}
       >
-        <svg width={width ?? '100%'} height={height ?? 'auto'}>
+        <svg width={width ?? '100%'} height={height ?? '650px'}>
           <foreignObject x="0" y="0" width="100%" height="100%">
             <div
               style={{
-                height: '100%',
+                maxHeight: height ? `${height}px` : '650px',
                 overflowY: 'auto',
+                overflowX: 'auto',
               }}
             >
               <table
                 className={classNames.table}
                 style={{
-                  maxHeight: height ? `${height}px` : 'auto',
                   width: width ? `${width}px` : '100%',
                 }}
               >
