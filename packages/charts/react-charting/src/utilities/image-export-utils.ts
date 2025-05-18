@@ -45,8 +45,27 @@ export function toImage(
   });
 }
 
-const SVG_STYLE_PROPERTIES = ['display', 'fill', 'fill-opacity', 'opacity', 'stroke', 'stroke-width', 'transform'];
-const SVG_TEXT_STYLE_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'text-anchor'];
+const SVG_STYLE_PROPERTIES = [
+  'display',
+  'fill',
+  'fill-opacity',
+  'opacity',
+  'stroke',
+  'stroke-width',
+  'transform',
+  'border-collapse',
+];
+const SVG_TEXT_STYLE_PROPERTIES = [
+  'font-family',
+  'font-size',
+  'font-weight',
+  'text-anchor',
+  'background-color',
+  'color',
+  'padding',
+  'text-align',
+  'border',
+];
 
 function toSVG(
   chartContainer: HTMLElement,
@@ -66,8 +85,13 @@ function toSVG(
   const svgElements = svg.getElementsByTagName('*');
   const clonedSvgElements = clonedSvg.node()!.getElementsByTagName('*');
 
+  const TEXT_ELEMENTS = ['text'];
+  const TABLE_ELEMENTS = ['table', 'thead', 'tbody', 'tr', 'th', 'td'];
+
   for (let i = 0; i < svgElements.length; i++) {
-    if (svgElements[i].tagName.toLowerCase() === 'text') {
+    const tag = svgElements[i].tagName.toLowerCase();
+
+    if (TEXT_ELEMENTS.includes(tag) || TABLE_ELEMENTS.includes(tag)) {
       copyStyle([...SVG_STYLE_PROPERTIES, ...SVG_TEXT_STYLE_PROPERTIES], svgElements[i], clonedSvgElements[i]);
     } else {
       copyStyle(SVG_STYLE_PROPERTIES, svgElements[i], clonedSvgElements[i]);

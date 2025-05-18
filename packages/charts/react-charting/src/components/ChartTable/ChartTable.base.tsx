@@ -39,36 +39,43 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
       >
         <svg width={width ?? '100%'} height={height ?? 'auto'}>
           <foreignObject x="0" y="0" width="100%" height="100%">
-            <table
-              className={classNames.table}
+            <div
               style={{
-                maxHeight: height ? `${height}px` : 'auto',
-                width: width ? `${width}px` : '100%',
+                height: '100%',
+                overflowY: 'auto',
               }}
             >
-              <thead>
-                <tr>
-                  {headers.map((header, idx) => (
-                    <th key={idx} className={classNames.headerCell}>
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              {rows && rows.length > 0 && (
-                <tbody>
-                  {rows.map((row, rowIdx) => (
-                    <tr key={rowIdx}>
-                      {row.map((cell, colIdx) => (
-                        <td key={colIdx} className={classNames.bodyCell}>
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              )}
-            </table>
+              <table
+                className={classNames.table}
+                style={{
+                  maxHeight: height ? `${height}px` : 'auto',
+                  width: width ? `${width}px` : '100%',
+                }}
+              >
+                <thead>
+                  <tr>
+                    {headers.map((header, idx) => (
+                      <th key={idx} className={classNames.headerCell}>
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                {rows && rows.length > 0 && (
+                  <tbody>
+                    {rows.map((row, rowIdx) => (
+                      <tr key={rowIdx}>
+                        {row.map((cell, colIdx) => (
+                          <td key={colIdx} className={classNames.bodyCell}>
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                )}
+              </table>
+            </div>
           </foreignObject>
         </svg>
       </div>

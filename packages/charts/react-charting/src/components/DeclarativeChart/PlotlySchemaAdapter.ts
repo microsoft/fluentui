@@ -964,7 +964,7 @@ export const transformPlotlyJsonToChartTableProps = (
         row
           .map(cell => cleanText(cell))
           .filter(Boolean)
-          .join(''),
+          .join(' '),
       );
     }
 
