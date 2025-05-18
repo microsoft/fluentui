@@ -1079,7 +1079,7 @@ export type PlotType =
   // adding custom plot types as seen in AI generated plotly schema
   | 'gauge';
 
-export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData> | Partial<TableData>;
+export type Data = Partial<PlotData> | Partial<PieData> | Partial<SankeyData>;
 
 export type Color =
   | string

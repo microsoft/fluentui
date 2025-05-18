@@ -1319,38 +1319,6 @@ export interface PlotlySchema {
     layout?: Partial<Layout>;
 }
 
-// @public (undocumented)
-export interface PlotlyTableData {
-    // (undocumented)
-    cells?: {
-        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
-        fill?: {
-            color?: Color | Color[];
-        };
-        font?: {
-            family?: string | string[];
-            size?: number | number[];
-            color?: Color | Color[];
-        };
-        values: (string | number | boolean | null)[][];
-    };
-    // (undocumented)
-    header?: {
-        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
-        fill?: {
-            color?: Color | Color[];
-        };
-        font?: {
-            family?: string | string[];
-            size?: number | number[];
-            color?: Color | Color[];
-        };
-        values: (string | number | boolean | null)[];
-    };
-    // (undocumented)
-    type: 'table';
-}
-
 // @public
 export interface PlotMarker {
     // (undocumented)
@@ -1885,6 +1853,38 @@ export interface ShapeLine {
     dash: Dash;
     // (undocumented)
     width: number;
+}
+
+// @public (undocumented)
+export interface TableData {
+    // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+    };
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
+    // (undocumented)
+    type: 'table';
 }
 
 // @public (undocumented)
