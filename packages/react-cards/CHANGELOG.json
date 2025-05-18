@@ -2,6 +2,33 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 16 May 2025 07:22:03 GMT",
+      "tag": "@fluentui/react-cards_v0.205.207",
+      "version": "0.205.207",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "07769d072e16f58334760a4b3670ee32ab05ea05",
+            "comment": "fix: v8 react 18 integration tests type issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.122.18",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.28",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 May 2025 07:22:42 GMT",
       "tag": "@fluentui/react-cards_v0.205.206",
       "version": "0.205.206",

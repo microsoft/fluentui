@@ -1149,7 +1149,8 @@ export interface PlotData {
     | 'number+delta'
     | 'gauge+number'
     | 'gauge+number+delta'
-    | 'gauge+delta';
+    | 'gauge+delta'
+    | 'markers+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';

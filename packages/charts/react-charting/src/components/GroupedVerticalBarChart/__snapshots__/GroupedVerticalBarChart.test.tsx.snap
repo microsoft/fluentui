@@ -29,7 +29,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -295,7 +295,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone13"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -850,7 +850,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1116,7 +1116,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone13"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2219,7 +2219,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2474,7 +2474,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone13"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -2843,7 +2843,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}

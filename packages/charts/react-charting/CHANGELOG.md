@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 12 May 2025 07:20:31 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.88)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.87..@fluentui/react-charting_v5.23.88)
+
+### Patches
+
+- fix(react-charting): Use schema colors for all bar charts ([PR #34447](https://github.com/microsoft/fluentui/pull/34447) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.9 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-focus to v8.9.25 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/theme-samples to v8.7.207 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react to v8.122.18 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+
+## [5.23.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.87)
+
+Thu, 15 May 2025 07:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.86..@fluentui/react-charting_v5.23.87)
+
+### Patches
+
+- fix(react-charting): Support for using provided schema colors in declarative charts  ([PR #34433](https://github.com/microsoft/fluentui/pull/34433) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Use schema colors for scatter declarative charts ([PR #34441](https://github.com/microsoft/fluentui/pull/34441) by 120183316+srmukher@users.noreply.github.com)
+- fix: adjust y-axis title position to reduce overlap with tick labels ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by kumarkshitij@microsoft.com)
+
+## [5.23.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.86)
+
+Wed, 14 May 2025 07:21:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.85..@fluentui/react-charting_v5.23.86)
+
+### Patches
+
+- fix(react-charting) Cleanup function removed upstream ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix: enable interaction with line points without corresponding bars in VSBC ([PR #34398](https://github.com/microsoft/fluentui/pull/34398) by kumarkshitij@microsoft.com)
+- fix(react-charting): Consider year as categorical instead of numerical continuous  ([PR #34430](https://github.com/microsoft/fluentui/pull/34430) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.8 ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by beachball)
+
+## [5.23.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.85)
+
+Tue, 13 May 2025 07:20:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.84..@fluentui/react-charting_v5.23.85)
+
+### Patches
+
+- make Legends dotted ([PR #34419](https://github.com/microsoft/fluentui/pull/34419) by anushgupta@microsoft.com)
+- feat(react-charting): Rehaul default date label formatting ([PR #34422](https://github.com/microsoft/fluentui/pull/34422) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(react-charting): Fixing overlapping bars in Horizontal bar chart with Axis ([PR #34407](https://github.com/microsoft/fluentui/pull/34407) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.7 ([PR #34426](https://github.com/microsoft/fluentui/pull/34426) by beachball)
 
 ## [5.23.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.84)
 

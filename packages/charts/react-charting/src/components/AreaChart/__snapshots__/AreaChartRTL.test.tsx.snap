@@ -29,7 +29,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -811,7 +811,7 @@ exports[`Area chart rendering Should render the Area Chart with negative y value
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1166,7 +1166,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1948,7 +1948,7 @@ exports[`Area chart rendering Should render the Area Chart with tozeroy mode 1`]
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6160,7 +6160,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -7072,7 +7072,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -9768,7 +9768,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10550,7 +10550,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10918,7 +10918,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
 
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -11700,7 +11700,7 @@ exports[`AreaChart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone12"
+                  data-focuszone-id="FocusZone13"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -12056,7 +12056,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -12838,7 +12838,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -13193,7 +13193,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             outline: none;
           }
 
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone9"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -13975,7 +13975,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone10"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

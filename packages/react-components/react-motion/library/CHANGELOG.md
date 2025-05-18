@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Wed, 16 Apr 2025 19:42:02 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.3)
+
+Wed, 14 May 2025 18:49:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.7.2..@fluentui/react-motion_v9.7.3)
+
+### Patches
+
+- Export child context ([PR #34449](https://github.com/microsoft/fluentui/pull/34449) by charles.assuncao@microsoft.com)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.7.2)
 
