@@ -251,6 +251,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+      case 'table':
+        return { isValid: true, type: 'table', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');
