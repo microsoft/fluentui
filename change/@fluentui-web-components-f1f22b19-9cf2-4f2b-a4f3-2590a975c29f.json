@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: ensure fluent-label element has an associated label ",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
