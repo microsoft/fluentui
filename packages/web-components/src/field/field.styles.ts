@@ -19,17 +19,7 @@ import {
   borderRadiusMedium,
   colorNeutralForeground1,
   colorStrokeFocus2,
-  fontFamilyBase,
-  fontSizeBase200,
-  fontSizeBase300,
-  fontSizeBase400,
-  fontWeightRegular,
-  fontWeightSemibold,
-  lineHeightBase200,
-  lineHeightBase300,
-  lineHeightBase400,
   spacingHorizontalM,
-  spacingHorizontalS,
   spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXXS,
@@ -95,7 +85,7 @@ export const styles = css`
     grid-template-areas: 'input' 'label';
   }
 
-  ::slotted([slot='label'])::after {
+  ::slotted(label[slot='label'])::after {
     content: '';
     display: block;
     position: absolute;
@@ -121,28 +111,8 @@ export const styles = css`
   ::slotted(label),
   ::slotted([slot='label']) {
     cursor: inherit;
-    display: inline-flex;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
     grid-area: label;
-    line-height: ${lineHeightBase300};
     user-select: none;
-  }
-
-  :host([size='small']) ::slotted(label) {
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-  }
-
-  :host([size='large']) ::slotted(label) {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
-  }
-
-  :host([size='large']) ::slotted(label),
-  :host([weight='semibold']) ::slotted(label) {
-    font-weight: ${fontWeightSemibold};
   }
 
   :host(${disabledState}) {

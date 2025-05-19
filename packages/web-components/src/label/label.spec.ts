@@ -80,4 +80,111 @@ test.describe('Label', () => {
       await expect(asterisk).toBeHidden();
     });
   });
+
+  test('should insert all slotted content into a generated label element when no slotted label is provided', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `Hello <span>World</span><span>!</span>`,
+    });
+
+    const labelElement = element.locator('label');
+
+    await expect(labelElement).toHaveCount(1);
+
+    await expect(labelElement).toBeVisible();
+
+    await expect(labelElement).toHaveText('Hello World!');
+  });
+
+  test('should NOT insert slotted content into a generated label element when a slotted label is provided', async ({
+    fastPage,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `<label>Hello</label> <span>World</span><span>!</span>`,
+    });
+
+    const label = element.locator('label');
+
+    await expect(label).toHaveCount(1);
+
+    await expect(label).toBeVisible();
+
+    await expect(label).toHaveText('Hello');
+
+    await expect(element).toContainText('Hello World!');
+  });
+
+  test('should NOT create a label element when the element is the child of a label element', async ({
+    fastPage,
+    page,
+  }) => {
+    await fastPage.setTemplate(/* html */ `<label><fluent-label>Hello</fluent-label></label>`);
+
+    const label = page.locator('label');
+
+    await expect(label).toHaveCount(1);
+
+    await expect(label).toContainText('Hello');
+  });
+
+  test('should NOT move slotted content that has been added to the element when a slotted label is provided', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `<label>Hello</label> <span>World</span><span>!</span>`,
+    });
+
+    const label = page.locator('label');
+
+    await expect(label).toHaveCount(1);
+
+    await expect(label).toBeVisible();
+
+    await expect(label).toHaveText('Hello');
+
+    await expect(element).toContainText('Hello World!');
+
+    await element.evaluate(node => {
+      node.appendChild(document.createTextNode('!'));
+    });
+
+    await expect(label).toHaveText('Hello');
+
+    await expect(element).toContainText('Hello World!!');
+  });
+
+  test('should NOT move slotted content that has been added to the element after connection when no slotted label is provided', async ({
+    fastPage,
+    page,
+  }) => {
+    const { element } = fastPage;
+
+    await fastPage.setTemplate({
+      innerHTML: /* html */ `Hello <span>World</span><span>!</span>`,
+    });
+
+    const label = page.locator('label');
+
+    await expect(label).toHaveCount(1);
+
+    await expect(label).toBeVisible();
+
+    await expect(label).toHaveText('Hello World!');
+
+    await element.evaluate(node => {
+      node.appendChild(document.createTextNode('!'));
+    });
+
+    await expect(label).toHaveText('Hello World!');
+
+    await expect(element).toContainText('Hello World!!');
+  });
 });

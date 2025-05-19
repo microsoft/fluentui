@@ -27,7 +27,6 @@ export default {
   excludeStories: ['storyTemplate'],
   args: {
     label: {
-      id: uniqueId('field-'),
       text: 'Example',
     },
     message: {
@@ -35,9 +34,9 @@ export default {
       icon: () => html`${SuccessIcon}`,
     },
     labelSlottedContent: () =>
-      html`<label slot="label" for="${story => story.label.id}">${story => story.label.text}</label>`,
+      html`<fluent-label slot="label" for="${story => story.label.id}">${story => story.label.text}</fluent-label>`,
     inputSlottedContent: () =>
-      html`<fluent-text-input slot="input" id="${story => story.label.id}"></fluent-text-input>`,
+      html`<fluent-text-input slot="input" id="${story => story.label.id}" required></fluent-text-input>`,
     messageSlottedContent: () =>
       html`<fluent-text slot="message" flag="${story => story.message?.flag}" size="200"
         >${story => story.message?.icon?.()} ${story => story.message?.message}</fluent-text
@@ -97,7 +96,7 @@ export const LabelPositions: Story = {
       html`
         <div>
           <fluent-field label-position="${story => story.labelPosition}">
-            <label slot="label" for="${story => story.id}">${story => story.label}</label>
+            <fluent-label slot="label" for="${story => story.id}">${story => story.label}</fluent-label>
             <fluent-text-input slot="input" id="${story => story.id}"></fluent-text-input
           ></fluent-field>
         </div>
@@ -137,15 +136,15 @@ export const DisabledControl: Story = {
 export const Size: Story = {
   render: renderComponent(html`
     <fluent-field size="small">
-      <label slot="label" for="field-small-size">Small field</label>
+      <fluent-label slot="label" for="field-small-size">Small field</fluent-label>
       <fluent-text-input control-size="small" slot="input" id="field-small-size"></fluent-text-input>
     </fluent-field>
     <fluent-field size="medium">
-      <label slot="label" for="field-medium-size">Medium field</label>
+      <fluent-label slot="label" for="field-medium-size">Medium field</fluent-label>
       <fluent-text-input control-size="medium" slot="input" id="field-medium-size"></fluent-text-input>
     </fluent-field>
     <fluent-field size="large">
-      <label slot="label" for="field-large-size">Large field</label>
+      <fluent-label slot="label" for="field-large-size">Large field</fluent-label>
       <fluent-text-input control-size="large" slot="input" id="field-large-size"></fluent-text-input>
     </fluent-field>
   `),
@@ -155,14 +154,14 @@ export const ValidationMessage: Story = {
   render: renderComponent(html<StoryArgs<FluentField>>`
     <form id="validation-messages-form" action="#" style="display:flex;flex-flow:column;align-items:start;gap:10px;">
       <fluent-field>
-        <label slot="label" for="field-required">Required</label>
+        <fluent-label slot="label" for="field-required">Required</fluent-label>
         <fluent-text-input required slot="input" id="field-required"></fluent-text-input>
         <fluent-text slot="message" flag="value-missing" size="200" style="color: ${colorStatusDangerForeground1}">
           This field is required.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-pattern-mismatch">Unique ID</label>
+        <fluent-label slot="label" for="field-pattern-mismatch">Unique ID</fluent-label>
         <fluent-text-input
           pattern="\\w+"
           slot="input"
@@ -174,56 +173,56 @@ export const ValidationMessage: Story = {
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-too-long">Too Long</label>
+        <fluent-label slot="label" for="field-too-long">Too Long</fluent-label>
         <fluent-text-input maxlength="5" value="123456789" slot="input" id="field-too-long"></fluent-text-input>
         <fluent-text slot="message" flag="too-long" size="200" style="color: ${colorStatusDangerForeground1}">
           This value is too long.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-too-short">Too Short</label>
+        <fluent-label slot="label" for="field-too-short">Too Short</fluent-label>
         <fluent-text-input minlength="5" value="123" slot="input" id="field-too-short"></fluent-text-input>
         <fluent-text slot="message" flag="too-short" size="200" style="color: ${colorStatusDangerForeground1}">
           This value is too short.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-range-overflow">Range Overflow</label>
+        <fluent-label slot="label" for="field-range-overflow">Range Overflow</fluent-label>
         <fluent-text-input type="number" max="5" value="7" slot="input" id="field-range-overflow"></fluent-text-input>
         <fluent-text slot="message" flag="range-overflow" size="200" style="color: ${colorStatusDangerForeground1}">
           This value must be less than 5.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-range-underflow">Range Underflow</label>
+        <fluent-label slot="label" for="field-range-underflow">Range Underflow</fluent-label>
         <fluent-text-input type="number" min="5" value="3" slot="input" id="field-range-underflow"></fluent-text-input>
         <fluent-text slot="message" flag="range-underflow" size="200" style="color: ${colorStatusDangerForeground1}">
           This value must be greater than 5.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-step-mismatch">Step Mismatch</label>
+        <fluent-label slot="label" for="field-step-mismatch">Step Mismatch</fluent-label>
         <fluent-text-input type="number" step="5" value="0" slot="input" id="field-step-mismatch"></fluent-text-input>
         <fluent-text slot="message" flag="step-mismatch" size="200" style="color: ${colorStatusDangerForeground1}">
           This value must be a multiple of 5.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-type-mismatch">Type Mismatch</label>
+        <fluent-label slot="label" for="field-type-mismatch">Type Mismatch</fluent-label>
         <fluent-text-input value="not an email" type="email" slot="input" id="field-type-mismatch"></fluent-text-input>
         <fluent-text slot="message" flag="type-mismatch" size="200" style="color: ${colorStatusDangerForeground1}">
           This value is not a valid email address.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-type-tooshort2">Too short (TextArea)</label>
+        <fluent-label slot="label" for="field-type-tooshort2">Too short (TextArea)</fluent-label>
         <fluent-textarea minlength="10" slot="input" id="field-type-tooshort2"> 12345 </fluent-textarea>
         <fluent-text slot="message" flag="too-short" size="200" style="color: ${colorStatusDangerForeground1}">
           This field requires at least 10 characters.
         </fluent-text>
       </fluent-field>
       <fluent-field>
-        <label slot="label" for="field-type-toolong2">Too long (TextArea)</label>
+        <fluent-label slot="label" for="field-type-toolong2">Too long (TextArea)</fluent-label>
         <fluent-textarea maxlength="2" slot="input" id="field-type-toolong2"> 123456789 </fluent-textarea>
         <fluent-text slot="message" flag="too-long" size="200" style="color: ${colorStatusDangerForeground1}">
           This field can only have up to 2 characters
@@ -268,30 +267,49 @@ export const ComponentExamples: Story = {
   render: renderComponent(html`
     <div style="display: flex; flex-direction: column; gap: 10px;">
       <fluent-field label-position="above">
-        <label slot="label" for="field-text">Text Input</label>
+        <fluent-label slot="label" for="field-text">Text Input</fluent-label>
         <fluent-text-input slot="input" id="field-text"></fluent-text-input>
       </fluent-field>
       <fluent-field label-position="above" style="max-width: 400px">
-        <label slot="label" for="field-slider">Slider</label>
+        <fluent-label slot="label" for="field-slider">Slider</fluent-label>
         <fluent-slider size="medium" slot="input" id="field-slider"></fluent-slider>
       </fluent-field>
       <fluent-field label-position="after">
-        <label slot="label" for="field-checkbox">Checkbox</label>
+        <fluent-label slot="label" for="field-checkbox">Checkbox</fluent-label>
         <fluent-checkbox slot="input" id="field-checkbox"></fluent-checkbox>
       </fluent-field>
+
       <fluent-field label-position="above">
-        <label slot="label" for="field-radio">Radio Group</label>
-        <fluent-radio-group slot="input" name="field-radio" orientation="vertical">
-          <fluent-radio value="Apple">Apple</fluent-radio>
-          <fluent-radio value="pear">Pear</fluent-radio>
-          <fluent-radio value="banana">Banana</fluent-radio>
-          <fluent-radio value="orange">Orange</fluent-radio>
+        <fluent-label slot="label" for="field-radio">Radio Group</fluent-label>
+
+        <fluent-radio-group slot="input" name="field-radio" id="field-radio" orientation="vertical">
+          <fluent-field label-position="after">
+            <fluent-label slot="label">Apple</fluent-label>
+            <fluent-radio slot="input" value="Apple"></fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <fluent-label slot="label">Pear</fluent-label>
+            <fluent-radio slot="input" value="pear">Pear</fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <fluent-label slot="label">Banana</fluent-label>
+            <fluent-radio slot="input" value="banana">Banana</fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <fluent-label slot="label">Orange</fluent-label>
+            <fluent-radio slot="input" value="orange">Orange</fluent-radio>
+          </fluent-field>
         </fluent-radio-group>
       </fluent-field>
+
       <fluent-field>
-        <label slot="label" for="field-textarea">Text Area</label>
-        <fluent-textarea slot="input" id="field-textarea" placeholder="Placeholder text" resize="both">
-        </fluent-textarea>
+        <fluent-label slot="label" for="field-textarea">Text Area</fluent-label>
+        <fluent-textarea
+          slot="input"
+          id="field-textarea"
+          placeholder="Placeholder text"
+          resize="both"
+        ></fluent-textarea>
       </fluent-field>
     </div>
   `),
@@ -301,11 +319,11 @@ export const ThirdPartyControls: Story = {
   render: renderComponent(html`
     <form action="#" style="display:flex;flex-flow:column;align-items:start;gap:10px">
       <fluent-field label-position="above" style="max-width: 400px">
-        <label slot="label" for="native-text-input">Text Input</label>
+        <fluent-label slot="label" for="native-text-input">Text Input</fluent-label>
         <input slot="input" id="native-text-input" required />
       </fluent-field>
       <fluent-field label-position="before">
-        <label slot="label" for="native-checkbox">Checkbox</label>
+        <fluent-label slot="label" for="native-checkbox">Checkbox</fluent-label>
         <input slot="input" type="checkbox" id="native-checkbox" />
       </fluent-field>
     </form>

@@ -55,4 +55,12 @@ export const styles = css`
   :host([disabled]) .asterisk {
     color: ${colorNeutralForegroundDisabled};
   }
+
+  :host([slot='label'])::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
 `;

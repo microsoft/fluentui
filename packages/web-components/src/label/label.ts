@@ -6,6 +6,7 @@ import type { LabelSize, LabelWeight } from './label.options.js';
  * The Fluent Label Element. Implements {@link BaseLabel}.
  *
  * @tag fluent-label
+ * @slot - The default slot. Expects a `<label>` element.
  *
  * @public
  */

@@ -1,5 +1,6 @@
 import { FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
+import { isLabel } from '../label/label.options.js';
 import { toggleState } from '../utils/element-internals.js';
 import { type SlottableInput, ValidationFlags } from './field.options.js';
 
@@ -26,7 +27,6 @@ export class BaseField extends FASTElement {
   protected labelSlotChanged(prev: Node[], next: Node[]) {
     if (next && this.input) {
       this.setLabelProperties();
-      this.setStates();
     }
   }
 
@@ -76,7 +76,7 @@ export class BaseField extends FASTElement {
   public slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined) {
     if (next?.length) {
       this.input = next?.[0] as SlottableInput;
-      this.setStates();
+      this.setLabelProperties();
     }
   }
 
@@ -103,19 +103,18 @@ export class BaseField extends FASTElement {
    */
   public inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined) {
     if (next) {
-      this.setStates();
       this.setLabelProperties();
     }
   }
 
   /**
-   * Calls the `setStates` method when a `change` event is emitted from the slotted input.
+   * Updates the label properties and validation states when the slotted input changes.
    *
    * @param e - the event object
    * @internal
    */
   public changeHandler(e: Event): boolean | void {
-    this.setStates();
+    this.setLabelProperties();
     this.setValidationStates();
 
     return true;
@@ -188,28 +187,27 @@ export class BaseField extends FASTElement {
     if (this.$fastController.isConnected) {
       this.input.id = this.input.id || uniqueId('input');
 
-      this.labelSlot?.forEach(label => {
-        if (label instanceof HTMLLabelElement) {
+      for (const label of this.labelSlot) {
+        const isLabelElement = label instanceof HTMLLabelElement;
+        const isLabelComponent = isLabel(label);
+
+        if (isLabelElement || isLabelComponent) {
           label.htmlFor = label.htmlFor || this.input.id;
           label.id = label.id || `${this.input.id}--label`;
-          label.setAttribute('aria-hidden', 'true');
-          this.input.setAttribute('aria-labelledby', label.id);
         }
-      });
-    }
-  }
 
-  /**
-   * Toggles the field's states based on the slotted input.
-   *
-   * @internal
-   */
-  public setStates() {
-    if (this.elementInternals && this.input) {
-      toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
-      toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
-      toggleState(this.elementInternals, 'required', !!this.input.required);
-      toggleState(this.elementInternals, 'checked', !!this.input.checked);
+        if (isLabelComponent) {
+          label.required = !!this.input.required;
+          label.disabled = !!this.input.disabled;
+        }
+      }
+
+      if (this.elementInternals && this.input) {
+        toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
+        toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
+        toggleState(this.elementInternals, 'required', !!this.input.required);
+        toggleState(this.elementInternals, 'checked', !!this.input.checked);
+      }
     }
   }
 

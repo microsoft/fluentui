@@ -690,14 +690,24 @@ export class BaseField extends FASTElement {
     messageSlot: Element[];
     // @internal
     messageSlotChanged(prev: Element[], next: Element[]): void;
-    // @internal
-    setStates(): void;
     // (undocumented)
     setValidationStates(): void;
     // @internal
     slottedInputs: SlottableInput[];
     // @internal
     slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
+export class BaseLabel extends FASTElement {
+    clickHandler(e: MouseEvent): boolean | void;
+    defaultSlottedContent: Node[];
+    defaultSlottedContentChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    disabled: boolean;
+    htmlFor: string;
+    protected insertLabel(): void;
+    labelElement: HTMLLabelElement;
+    required: boolean;
 }
 
 // @public
@@ -2795,15 +2805,16 @@ export function isDropdown(element?: Node | null, tagName?: string): element is 
 export function isDropdownOption(value: Node | null, tagName?: string): value is DropdownOption;
 
 // @public
+export function isLabel(element?: Element | Node | null, tagName?: string): element is BaseLabel;
+
+// @public
 export function isListbox(element?: Node | null, tagName?: string): element is Listbox;
 
 // @public
 export function isTreeItem(element?: Node | null, tagName?: string): element is BaseTreeItem;
 
 // @public
-export class Label extends FASTElement {
-    disabled: boolean;
-    required: boolean;
+export class Label extends BaseLabel {
     size?: LabelSize;
     weight?: LabelWeight;
 }
