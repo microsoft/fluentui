@@ -1,5 +1,5 @@
 import { screen, fireEvent, render } from '@testing-library/react';
-import { GroupedVerticalBarChart, GVBarChartSeriesPoint } from './index';
+import { GroupedVerticalBarChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { GroupedVerticalBarChartData } from '../../index';
@@ -701,7 +701,7 @@ describe('GroupedVerticalBarChart - mouse events', () => {
   });
 
   it('Should render callout correctly on mousemove', () => {
-    const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
     fireEvent.mouseMove(bars[2]);
     const html1 = container.innerHTML;
