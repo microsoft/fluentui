@@ -81,7 +81,7 @@ export {
   CounterBadgeStyles,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
-export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
+export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles, isDialog } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
   BaseDivider,
