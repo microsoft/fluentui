@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MenuPopover tab handling should only apply to stacks of menus",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
