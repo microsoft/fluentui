@@ -16,11 +16,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -72,7 +72,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -100,7 +100,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />
@@ -612,11 +612,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -668,7 +668,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -696,7 +696,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />
@@ -1208,11 +1208,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -1264,7 +1264,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -1292,7 +1292,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />
@@ -1804,11 +1804,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -1860,7 +1860,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -1888,7 +1888,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />
@@ -1913,11 +1913,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -1969,7 +1969,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -1997,7 +1997,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />
@@ -2197,11 +2197,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -2253,7 +2253,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -2281,7 +2281,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.1;
               stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
       <g />

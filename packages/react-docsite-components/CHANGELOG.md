@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Wed, 14 May 2025 07:21:04 GMT and should not be manually modified.
+This log was last generated on Mon, 19 May 2025 07:20:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.209](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.209)
+
+Mon, 19 May 2025 07:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.208..@fluentui/react-docsite-components_v8.13.209)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.327 ([commit](https://github.com/microsoft/fluentui/commit/bad3c30d00bc16db4b77551d3f08ca3e7c9b9801) by beachball)
+
+## [8.13.208](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.208)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.207..@fluentui/react-docsite-components_v8.13.208)
+
+### Patches
+
+- Bump @fluentui/react to v8.122.18 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/theme to v2.6.67 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-hooks to v8.8.19 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.326 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+
+## [8.13.207](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.207)
+
+Thu, 15 May 2025 07:21:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.206..@fluentui/react-docsite-components_v8.13.207)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.325 ([PR #34441](https://github.com/microsoft/fluentui/pull/34441) by beachball)
 
 ## [8.13.206](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.206)
 

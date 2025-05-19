@@ -126,8 +126,11 @@ export const getValidSchema = (input: any): PlotlySchema => {
     if (!validatedSchema) {
       throw new Error('Plotly input is null or undefined');
     }
-    if (!validatedSchema.data) {
-      throw new Error('Plotly input data is null or undefined');
+    if (typeof validatedSchema !== 'object') {
+      throw new Error(`Plotly input is not an object. Input type: ${typeof validatedSchema}`);
+    }
+    if (!isArrayOrTypedArray(validatedSchema.data)) {
+      throw new Error('Plotly input data is not a valid array or typed array');
     }
     if (validatedSchema.data.length === 0) {
       throw new Error('Plotly input data is empty');
@@ -201,7 +204,7 @@ const getValidTraces = (dataArr: Data[]) => {
           try {
             validator(data);
           } catch (error) {
-            errorMessages.push(`data[${index}]: ${error}`);
+            errorMessages.push(`data[${index}] - type: ${data.type}, ${error}`);
             return [-1, DEFAULT_CHART_TYPE];
           }
         }
@@ -252,6 +255,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+      case 'table':
+        return { isValid: true, type: 'table', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: improve support of concurrent mode, work with React 19",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:18 GMT",
+      "tag": "@fluentui/react-positioning_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e228622a6c856e69c162217cd8a1295fecdb04b4",
+            "comment": "feat: implement shared positioning config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:03 GMT",
       "tag": "@fluentui/react-positioning_v9.16.7",
       "version": "9.16.7",

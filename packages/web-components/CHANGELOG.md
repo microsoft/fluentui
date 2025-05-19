@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 May 2025 04:07:03 GMT and should not be manually modified.
+This log was last generated on Mon, 19 May 2025 04:07:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.100)
+
+Mon, 19 May 2025 04:07:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.99..@fluentui/web-components_v3.0.0-beta.100)
+
+### Changes
+
+- Include Custom Elements Manifest in package exports ([PR #34460](https://github.com/microsoft/fluentui/pull/34460) by burtonsmith@microsoft.com)
+
+## [3.0.0-beta.99](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.99)
+
+Thu, 15 May 2025 04:06:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.98..@fluentui/web-components_v3.0.0-beta.99)
+
+### Changes
+
+- Add tree exports to main index ([PR #34448](https://github.com/microsoft/fluentui/pull/34448) by jes@microsoft.com)
 
 ## [3.0.0-beta.98](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.98)
 

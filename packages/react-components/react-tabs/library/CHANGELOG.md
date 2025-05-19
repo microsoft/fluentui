@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.7)
+
+Wed, 14 May 2025 18:49:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.7.6..@fluentui/react-tabs_v9.7.7)
+
+### Patches
+
+- fix: filled-circular appearance variant shows selected tab in high contrast ([PR #34294](https://github.com/microsoft/fluentui/pull/34294) by sarah.higley@microsoft.com)
+- fix: Tab filled (not filled-subtle) appearance has border in WHCM ([PR #34341](https://github.com/microsoft/fluentui/pull/34341) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
 
 ## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.7.6)
 

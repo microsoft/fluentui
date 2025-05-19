@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.7)
+
+Wed, 14 May 2025 18:49:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.6..@fluentui/react-tabster_v9.24.7)
+
+### Patches
+
+- Apply focus visible attribute on navigation state change ([PR #34426](https://github.com/microsoft/fluentui/pull/34426) by lingfangao@hotmail.com)
 
 ## [9.24.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.6)
 
