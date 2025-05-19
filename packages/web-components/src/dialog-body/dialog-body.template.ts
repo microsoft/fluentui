@@ -13,5 +13,5 @@ export const template: ElementViewTemplate = html`
   </div>
   <div class="content" part="content"><slot></slot></div>
   <div class="actions" part="actions"><slot name="action"></slot></div>
-</template
+</template>
 `;
