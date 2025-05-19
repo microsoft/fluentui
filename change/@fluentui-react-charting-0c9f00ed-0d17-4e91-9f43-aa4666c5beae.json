@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(declarative-chart): vsbc negative y axis fix",
+  "packageName": "@fluentui/react-charting",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}
