@@ -1,4 +1,4 @@
-Every presence component has two halves, the `enter` and `exit` motions, which can played in isolation using the static `.In` and `.Out` methods.
+Every presence component has two halves, the `enter` and `exit` motions, which can be played in isolation using the static `.In` and `.Out` methods.
 
 For example, a presence called `MyFade` will contain `<MyFade.In>` and `<MyFade.Out>` motion components, which play the `enter` and `exit` as one-off motions:
 
