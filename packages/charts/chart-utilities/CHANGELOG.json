@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Fri, 16 May 2025 07:22:04 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.9",
+      "version": "1.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "4631e680f01cc5ff7fb6f27bc3e599bc442ed1f1",
+            "comment": "fix(chart-utilities): Add chart type to error logs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 07:21:03 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.8",
       "version": "1.1.8",
