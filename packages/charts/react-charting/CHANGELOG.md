@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 14 May 2025 07:21:03 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.88)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.87..@fluentui/react-charting_v5.23.88)
+
+### Patches
+
+- fix(react-charting): Use schema colors for all bar charts ([PR #34447](https://github.com/microsoft/fluentui/pull/34447) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.9 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-focus to v8.9.25 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/theme-samples to v8.7.207 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react to v8.122.18 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+
+## [5.23.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.87)
+
+Thu, 15 May 2025 07:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.86..@fluentui/react-charting_v5.23.87)
+
+### Patches
+
+- fix(react-charting): Support for using provided schema colors in declarative charts  ([PR #34433](https://github.com/microsoft/fluentui/pull/34433) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Use schema colors for scatter declarative charts ([PR #34441](https://github.com/microsoft/fluentui/pull/34441) by 120183316+srmukher@users.noreply.github.com)
+- fix: adjust y-axis title position to reduce overlap with tick labels ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by kumarkshitij@microsoft.com)
 
 ## [5.23.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.86)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 14 May 2025 07:21:03 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.9)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.8..@fluentui/chart-utilities_v1.1.9)
+
+### Patches
+
+- fix(chart-utilities): Add chart type to error logs ([PR #34454](https://github.com/microsoft/fluentui/pull/34454) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.8)
 

@@ -55,7 +55,10 @@
         "showlines": true
       },
       "showlegend": true,
-      "orientation": "h"
+      "orientation": "h",
+      "marker": {
+        "color": "hsl(150, 100%, 50%)"
+      }
     }
   ],
   "layout": {
@@ -81,7 +84,7 @@
     "barmode": "group",
     "barnorm": "",
     "autosize": true,
-    "showlegend": false
+    "showlegend": true
   },
   "frames": []
 }

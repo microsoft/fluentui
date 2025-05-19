@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Fri, 16 May 2025 07:22:04 GMT",
+      "tag": "@fluentui/utilities_v8.15.22",
+      "version": "8.15.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "07769d072e16f58334760a4b3670ee32ab05ea05",
+            "comment": "fix: v8 react 18 integration tests type issues"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 May 2025 07:22:42 GMT",
       "tag": "@fluentui/utilities_v8.15.21",
       "version": "8.15.21",
