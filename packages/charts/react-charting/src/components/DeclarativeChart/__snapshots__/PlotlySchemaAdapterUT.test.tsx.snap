@@ -202,6 +202,7 @@ Object {
   "hideLabels": false,
   "hideLegend": false,
   "innerRadius": 42,
+  "roundCorners": true,
   "showLabelsInPercent": true,
   "width": undefined,
 }
@@ -238,6 +239,7 @@ Object {
   "hideLabels": false,
   "hideLegend": false,
   "innerRadius": 0,
+  "roundCorners": true,
   "showLabelsInPercent": false,
   "width": undefined,
 }
@@ -358,6 +360,7 @@ Object {
   "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "roundCorners": true,
   "width": 850,
   "xAxisTitle": "Votes",
   "yAxisTitle": "Framework",
@@ -372,6 +375,7 @@ Object {
   "height": 400,
   "maxValue": 500,
   "minValue": undefined,
+  "roundCorners": true,
   "segments": Array [
     Object {
       "color": "#00ffff",
@@ -2993,6 +2997,7 @@ Object {
   "hideLegend": true,
   "hideTickOverlap": true,
   "noOfCharsToTruncate": 20,
+  "roundCorners": true,
   "secondaryYAxistitle": "",
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
@@ -4890,6 +4895,7 @@ Object {
   "hideTickOverlap": true,
   "maxBarWidth": 50,
   "mode": "histogram",
+  "roundCorners": true,
   "supportNegativeData": true,
   "width": undefined,
   "xAxisTitle": "",
@@ -4987,6 +4993,7 @@ Object {
   "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "roundCorners": true,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",

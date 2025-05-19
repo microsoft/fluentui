@@ -279,6 +279,7 @@ export const transformPlotlyJsonToDonutProps = (
     innerRadius,
     hideLabels,
     showLabelsInPercent: firstData.textinfo ? ['percent', 'label+percent'].includes(firstData.textinfo) : true,
+    roundCorners: true,
   };
 };
 
@@ -362,6 +363,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     hideLegend,
+    roundCorners: true,
   };
 };
 
@@ -419,6 +421,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     hideLegend,
+    roundCorners: true,
   };
 };
 
@@ -500,6 +503,7 @@ export const transformPlotlyJsonToVBCProps = (
     hideTickOverlap: true,
     maxBarWidth: 50,
     hideLegend,
+    roundCorners: true,
   };
 };
 
@@ -664,6 +668,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     hideLegend,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    roundCorners: true,
   };
 };
 
@@ -937,6 +942,7 @@ export const transformPlotlyJsonToGaugeProps = (
     height: input.layout?.height ?? 220,
     styles,
     variant: firstData.gauge?.steps?.length ? GaugeChartVariant.MultipleSegments : GaugeChartVariant.SingleSegment,
+    roundCorners: true,
   };
 };
 const cleanText = (text: string): string => {
