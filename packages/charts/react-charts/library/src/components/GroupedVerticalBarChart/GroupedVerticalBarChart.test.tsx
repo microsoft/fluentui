@@ -1,9 +1,10 @@
-import { screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent, render } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
+import * as React from 'react';
 
 expect.extend(toHaveNoViolations);
 
@@ -566,4 +567,160 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(bars[11]).toHaveAttribute('opacity', '0.1');
     },
   );
+});
+
+export const emptyChartPoints = [
+  {
+    name: 'Empty chart',
+    series: [],
+  },
+];
+
+describe('GroupedVerticalBarChart snapShot testing', () => {
+  it('renders GroupedVerticalBarChart correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders hideLegend correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders hideTooltip correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders enabledLegendsWrapLines correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders showXAxisLablesTooltip correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders wrapXAxisLables correctly', async () => {
+    const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+
+    // Replace the original method with the mock implementation
+    Object.defineProperty(
+      Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+      'getComputedTextLength',
+      {
+        value: mockGetComputedTextLength,
+      },
+    );
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders yAxisTickFormat correctly', async () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe('GroupedVerticalBarChart - basic props', () => {
+  it('Should not mount legend when hideLegend true ', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
+    expect(hideLegendDOM!.length).toBe(0);
+  });
+
+  it('Should mount legend when hideLegend false ', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
+    expect(hideLegendDOM).toBeDefined();
+  });
+
+  it('Should mount callout when hideTootip false ', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
+    expect(hideTooltipDom).toBeDefined();
+  });
+
+  it('Should not mount callout when hideTootip true ', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
+    expect(hideTooltipDom.length).toBe(0);
+  });
+
+  it('Should not render onRenderCalloutPerDataPoint ', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
+    expect(renderedDOM!.length).toBe(0);
+  });
+});
+
+describe('Render calling with respective to props', () => {
+  it('No prop changes', () => {
+    const props = {
+      data: chartPoints,
+      height: 300,
+      width: 600,
+    };
+    const { rerender, container } = render(<GroupedVerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<GroupedVerticalBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).toBe(htmlBefore);
+  });
+
+  it('prop changes', () => {
+    const props = {
+      data: chartPoints,
+      height: 300,
+      width: 600,
+    };
+
+    const props1 = {
+      data: dataGVBC,
+      height: 200,
+      width: 400,
+    };
+
+    const { rerender, container } = render(<GroupedVerticalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<GroupedVerticalBarChart {...props1} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).not.toBe(htmlBefore);
+  });
+});
+
+describe('GroupedVerticalBarChart - mouse events', () => {
+  it('Should render callout correctly on mouseover', async () => {
+    const { container } = render(<GroupedVerticalBarChart data={chartPoints} calloutProps={{}} />);
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    fireEvent.mouseOver(bars[0]);
+    // Wait for any async updates (if needed)
+    await new Promise(resolve => setTimeout(resolve, 0));
+    expect(container).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    const { container } = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    fireEvent.mouseMove(bars[2]);
+    const html1 = container.innerHTML;
+    fireEvent.mouseMove(bars[3]);
+    const html2 = container.innerHTML;
+    expect(html1).not.toBe(html2);
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    let wrapper = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
+    expect(renderedDOM!.length).toBe(1);
+  });
 });

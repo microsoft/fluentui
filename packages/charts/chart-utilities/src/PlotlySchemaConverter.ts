@@ -125,8 +125,11 @@ export const getValidSchema = (input: any): PlotlySchema => {
     if (!validatedSchema) {
       throw new Error('Plotly input is null or undefined');
     }
-    if (!validatedSchema.data) {
-      throw new Error('Plotly input data is null or undefined');
+    if (typeof validatedSchema !== 'object') {
+      throw new Error(`Plotly input is not an object. Input type: ${typeof validatedSchema}`);
+    }
+    if (!isArrayOrTypedArray(validatedSchema.data)) {
+      throw new Error('Plotly input data is not a valid array or typed array');
     }
     if (validatedSchema.data.length === 0) {
       throw new Error('Plotly input data is empty');

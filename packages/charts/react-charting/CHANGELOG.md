@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Mon, 19 May 2025 07:20:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.89)
+
+Mon, 19 May 2025 07:20:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.88..@fluentui/react-charting_v5.23.89)
+
+### Patches
+
+- feat(react-charting): Create plotly aligned colorway ([PR #34471](https://github.com/microsoft/fluentui/pull/34471) by 98592573+AtishayMsft@users.noreply.github.com)
+- Add support for plotly generated tables ([PR #34461](https://github.com/microsoft/fluentui/pull/34461) by anushgupta@microsoft.com)
+- fix(react-charting): Use schema colors for other charts ([PR #34463](https://github.com/microsoft/fluentui/pull/34463) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Enable rounded corners ([PR #34473](https://github.com/microsoft/fluentui/pull/34473) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.10 ([commit](https://github.com/microsoft/fluentui/commit/bad3c30d00bc16db4b77551d3f08ca3e7c9b9801) by beachball)
 
 ## [5.23.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.88)
 
