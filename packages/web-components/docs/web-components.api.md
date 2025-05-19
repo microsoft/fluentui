@@ -2433,6 +2433,8 @@ export class Drawer extends FASTElement {
 //
 // @public
 export class DrawerBody extends FASTElement {
+    // @internal
+    clickHandler(event: MouseEvent): boolean | void;
 }
 
 // @public (undocumented)
