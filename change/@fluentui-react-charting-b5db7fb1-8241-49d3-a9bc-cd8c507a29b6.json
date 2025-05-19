@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add support for plotly generated tables",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
