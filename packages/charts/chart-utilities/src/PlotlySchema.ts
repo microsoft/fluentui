@@ -1327,6 +1327,34 @@ export interface PlotData {
   base: Datum[] | Datum[][] | TypedArray;
 }
 
+export interface TableData {
+  type: 'table';
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+  };
+}
+
 /**
  * These interfaces are based on attribute descriptions in
  * https://github.com/plotly/plotly.js/tree/9d6144304308fc3007f0facf2535d38ea3e9b26c/src/transforms

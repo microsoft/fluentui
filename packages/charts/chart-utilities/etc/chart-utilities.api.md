@@ -1856,6 +1856,38 @@ export interface ShapeLine {
 }
 
 // @public (undocumented)
+export interface TableData {
+    // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+    };
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
+    // (undocumented)
+    type: 'table';
+}
+
+// @public (undocumented)
 export interface Template {
     // (undocumented)
     data?: {

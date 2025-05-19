@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(chart-utilities): Improve schema error handling",
+  "packageName": "@fluentui/chart-utilities",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
