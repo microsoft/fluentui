@@ -88,9 +88,9 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   calloutProps?: Partial<ICalloutProps>;
 
   /**
-   * yMinValue is not supported for bar charts, so only allow "undefined"
+   * yMinValue is not supported for bar charts but it is need for bar charts that has only lines
    */
-  yMinValue?: undefined;
+  yMinValue?: number;
 
   /**
    * Allow hover actions on the legend

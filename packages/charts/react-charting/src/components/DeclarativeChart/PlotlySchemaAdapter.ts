@@ -291,6 +291,7 @@ export const transformPlotlyJsonToVSBCProps = (
 ): IVerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: IVerticalStackedChartProps } = {};
   let yMaxValue = 0;
+  let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   input.data.forEach((series: PlotData, index1: number) => {
@@ -342,6 +343,7 @@ export const transformPlotlyJsonToVSBCProps = (
         });
         if (!usesSecondaryYScale(series)) {
           yMaxValue = Math.max(yMaxValue, yVal);
+          yMinValue = Math.min(yMinValue, yVal);
         }
       }
     });
@@ -355,6 +357,7 @@ export const transformPlotlyJsonToVSBCProps = (
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
     yMaxValue,
+    yMinValue,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
@@ -362,6 +365,7 @@ export const transformPlotlyJsonToVSBCProps = (
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     hideLegend,
+    supportNegativeData: true,
   };
 };
 

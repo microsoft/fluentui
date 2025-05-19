@@ -4987,9 +4987,11 @@ Object {
   "hideLegend": true,
   "hideTickOverlap": true,
   "mode": "plotly",
+  "supportNegativeData": true,
   "width": undefined,
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,
+  "yMinValue": 0,
 }
 `;
