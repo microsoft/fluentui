@@ -648,24 +648,6 @@ describe('GroupedVerticalBarChart - basic props', () => {
     expect(hideTooltipDom.length).toBe(0);
   });
 
-  // Skipped: onRenderCalloutPerDataPoint is not a valid prop for GroupedVerticalBarChart
-  // it('Should render onRenderCalloutPerDataPoint ', () => {
-  //   let wrapper = render(
-  //       <GroupedVerticalBarChart
-  //         data={chartPoints}
-  //         onRenderCalloutPerDataPoint={(props: GVBarChartSeriesPoint) =>
-  //           props ? (
-  //             <div className="onRenderCalloutPerDataPoint">
-  //               <p>Custom Callout Content</p>
-  //             </div>
-  //           ) : null
-  //         }
-  //       />,
-  //     );
-  //   const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
-  //   expect(renderedDOM).toBeDefined();
-  // });
-
   it('Should not render onRenderCalloutPerDataPoint ', () => {
     let wrapper = render(<GroupedVerticalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
@@ -727,26 +709,6 @@ describe('GroupedVerticalBarChart - mouse events', () => {
     const html2 = container.innerHTML;
     expect(html1).not.toBe(html2);
   });
-
-  // it('Should render customized callout on mouseover', () => {
-  //   const { container } = render(
-  //     <GroupedVerticalBarChart
-  //     data={chartPoints}
-  //     calloutProps={{}}
-  //     onRenderCalloutPerDataPoint={(props: GVBarChartSeriesPoint) =>
-  //       props ? (
-  //       <div>
-  //         <pre>{JSON.stringify(props, null, 2)}</pre>
-  //       </div>
-  //       ) : null
-  //     }
-  //     />,
-  //   );
-  //   const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-  //   fireEvent.mouseOver(bars[0]);
-  //   // Wait for any async updates (if needed)
-  //   expect(container).toMatchSnapshot();
-  // });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
