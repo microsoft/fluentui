@@ -65,4 +65,12 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlSwitchStrokeOnActiveBrandHover: {
+    f2Token: 'colorTransparentStrokeInteractive',
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+  },
+  _ctrlSwitchStrokeOnActiveBrandRest: {
+    f2Token: 'colorTransparentStroke',
+    originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
 };

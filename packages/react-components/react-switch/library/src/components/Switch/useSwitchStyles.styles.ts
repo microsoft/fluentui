@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const switchClassNames: SlotClassNames<SwitchSlots> = {
   root: 'fui-Switch',
@@ -38,20 +39,20 @@ const useRootStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
-  borderRadius: tokens.borderRadiusCircular,
-  border: '1px solid',
+  borderRadius: semanticTokens.ctrlChoiceSwitchCorner,
+  border: `${semanticTokens.strokeWidthDefault} solid`,
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
   flexShrink: 0,
   fontSize: `${thumbSize}px`,
-  height: `${trackHeight}px`,
-  margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
+  height: semanticTokens.ctrlChoiceSwitchHeight,
+  margin: semanticTokens.ctrlChoicePaddingVertical + ' ' + semanticTokens.ctrlChoicePaddingHorizontal,
   pointerEvents: 'none',
   transitionDuration: tokens.durationNormal,
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
-  width: `${trackWidth}px`,
+  width: semanticTokens.ctrlChoiceSwitchWidth,
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
@@ -91,7 +92,7 @@ const useInputBaseClassName = makeResetStyles({
 
   // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
   // This is done so that clicking on that "empty space" still toggles the switch.
-  width: `calc(${trackWidth}px + 2 * ${tokens.spacingHorizontalS})`,
+  width: `calc(${semanticTokens.ctrlChoiceSwitchWidth} + 2 * ${tokens.spacingHorizontalS})`,
 
   // Checked (both enabled and disabled)
   ':checked': {
@@ -107,37 +108,37 @@ const useInputBaseClassName = makeResetStyles({
     cursor: 'default',
 
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
       cursor: 'default',
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
   // Enabled and unchecked
   ':enabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: tokens.colorNeutralStrokeAccessible,
-      borderColor: tokens.colorNeutralStrokeAccessible,
+      color: semanticTokens.ctrlChoiceBaseBackgroundRest,
+      borderColor: semanticTokens.ctrlChoiceBaseStrokeRest,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
+      color: semanticTokens.foregroundContentNeutralPrimary,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessibleHover,
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
+        color: semanticTokens.ctrlChoiceBaseBackgroundHover,
+        borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: tokens.colorNeutralStrokeAccessiblePressed,
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+        color: semanticTokens.ctrlChoiceBaseBackgroundPressed,
+        borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
       },
     },
   },
@@ -145,22 +146,22 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and checked
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
+      backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
       color: tokens.colorNeutralForegroundInverted,
-      borderColor: tokens.colorTransparentStroke,
+      borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandRest,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
+        borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        borderColor: tokens.colorTransparentStrokeInteractive,
+        backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
+        borderColor: semanticTokens.strokeCtrlOnActiveBrandPressed,
       },
     },
   },
@@ -168,15 +169,15 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
+      borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
     },
   },
 
   // Disabled and checked
   ':disabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      borderColor: tokens.colorTransparentStrokeDisabled,
+      backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
+      borderColor: semanticTokens.strokeCtrlOnActiveBrandDisabled,
     },
   },
 
@@ -229,7 +230,7 @@ const useInputStyles = makeStyles({
   },
   above: {
     bottom: 0,
-    height: `calc(${trackHeight}px + ${tokens.spacingVerticalS})`,
+    height: `calc(${semanticTokens.ctrlChoiceSwitchHeight} + ${semanticTokens.ctrlChoicePaddingVertical})`,
     width: '100%',
   },
 });
@@ -241,9 +242,9 @@ const useLabelStyles = makeStyles({
 
     // Use a (negative) margin to account for the difference between the track's height and the label's line height.
     // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
-    marginBottom: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
-    marginTop: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
-    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
+    marginBottom: `calc((${semanticTokens.ctrlChoiceSwitchHeight} - ${semanticTokens.textGlobalBody3LineHeight}) / 2)`,
+    marginTop: `calc((${semanticTokens.ctrlChoiceSwitchHeight} - ${semanticTokens.textGlobalBody3LineHeight}) / 2)`,
+    padding: `${semanticTokens.ctrlChoicePaddingVertical} ${semanticTokens.ctrlChoicePaddingHorizontal}`,
   },
   above: {
     paddingTop: tokens.spacingVerticalXS,
