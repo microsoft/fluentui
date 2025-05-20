@@ -5,6 +5,7 @@ export { QuestionnaireAboutFoodCheckboxes } from './Checkbox.stories';
 export { TicketOrderFormInputs } from './Input.stories';
 export { SiteNavigationLinks } from './Link.stories';
 export { ProfileMenu } from './Menu.stories';
+export { FilteringCombobox } from './Combobox.stories';
 export { MenuWithSplitItem } from './MenuSplitGroup.stories';
 export { AddPeoplePopover } from './Popover.stories';
 export { QuestionnaireAboutTransportationRadios } from './RadioGroup.stories';

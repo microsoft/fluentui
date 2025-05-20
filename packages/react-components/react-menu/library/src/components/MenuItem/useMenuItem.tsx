@@ -37,10 +37,12 @@ const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIAButtonElement<'div'>>): MenuItemState => {
   const isSubmenuTrigger = useMenuTriggerContext_unstable();
   const persistOnClickContext = useMenuContext_unstable(context => context.persistOnItemClick);
+  const mouseInputState = useMenuListContext_unstable(ctx => ctx.mouseInputState);
   const { as = 'div', disabled = false, hasSubmenu = isSubmenuTrigger, persistOnClick = persistOnClickContext } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   useNotifySplitItemMultiline({ multiline: !!props.subText, hasSubmenu });
+  const isSubmenuOpen = useMenuContext_unstable(context => context.open);
 
   const { dir } = useFluent();
   const innerRef = React.useRef<ARIAButtonElementIntersection<'div'>>(null);
@@ -50,6 +52,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     hasSubmenu,
     disabled,
     persistOnClick,
+    isSubmenuOpen: hasSubmenu && isSubmenuOpen,
     components: {
       root: 'div',
       icon: 'span',
@@ -75,7 +78,11 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             }
           }),
           onMouseMove: useEventCallback(event => {
-            if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget) {
+            if (!mouseInputState?.isMouseInput()) {
+              mouseInputState?.setMouseInput(true);
+            }
+
+            if (event.currentTarget.ownerDocument.activeElement !== event.currentTarget && !(hasSubmenu && isSubmenuOpen)) {
               innerRef.current?.focus();
             }
 

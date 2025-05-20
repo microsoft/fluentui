@@ -36,7 +36,11 @@ const useRootBaseStyles = makeResetStyles({
   cursor: 'pointer',
   gap: '4px',
 
-  ':hover': {
+  ':hover:focus': {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+  },
+  ':focus': {
+    outline: 'none',
     backgroundColor: tokens.colorNeutralBackground1Hover,
     color: tokens.colorNeutralForeground2Hover,
 
@@ -55,6 +59,10 @@ const useRootBaseStyles = makeResetStyles({
     },
   },
 
+  ':focus-visible': {
+    outlineStyle: 'none',
+  },
+
   ':hover:active': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
     color: tokens.colorNeutralForeground2Pressed,
@@ -62,6 +70,14 @@ const useRootBaseStyles = makeResetStyles({
     [`& .${menuItemClassNames.subText}`]: {
       color: tokens.colorNeutralForeground3Pressed,
     },
+  },
+
+  ':hover:active:focus': {
+    outlineStyle: 'none',
+  },
+
+  ':hover:active:focus-visible': {
+    outlineStyle: 'none',
   },
 
   // High contrast styles
@@ -126,6 +142,9 @@ const useSubtextBaseStyles = makeResetStyles({
 });
 
 const useStyles = makeStyles({
+  submenuOpen: {
+    backgroundColor: tokens.colorNeutralBackground2,
+  },
   checkmark: {
     marginTop: '2px',
   },
@@ -221,6 +240,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
     menuItemClassNames.root,
     rootBaseStyles,
     state.disabled && styles.disabled,
+    state.hasSubmenu && state.isSubmenuOpen && styles.submenuOpen,
     state.root.className,
   );
 

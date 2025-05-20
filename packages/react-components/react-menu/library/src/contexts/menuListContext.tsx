@@ -15,6 +15,10 @@ const menuListContextDefaultValue: MenuListContextValue = {
   selectRadio: () => null,
   hasIcons: false,
   hasCheckmarks: false,
+  mouseInputState: {
+    isMouseInput: () => false,
+    setMouseInput: () => null,
+  },
 };
 
 /**
@@ -34,6 +38,13 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
    * the signature remains just to avoid breaking changes
    */
   onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+  /**
+   * State for tracking whether interaction is via mouse or keyboard
+   */
+  mouseInputState?: {
+    isMouseInput: () => boolean;
+    setMouseInput: (isMouseInput: boolean) => void;
+  };
 };
 
 export const MenuListProvider = MenuListContext.Provider;
