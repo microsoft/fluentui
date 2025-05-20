@@ -120,7 +120,8 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host([appearance='primary']:not(:hover, :focus-visible, :disabled, [disabled-focusable])) ::slotted([slot='description']) {
+    :host([appearance='primary']:not(:hover, :focus-visible, :disabled, [disabled-focusable]))
+      ::slotted([slot='description']) {
       color: HighlightText;
     }
   `),
