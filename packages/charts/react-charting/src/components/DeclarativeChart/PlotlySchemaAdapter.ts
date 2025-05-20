@@ -240,15 +240,9 @@ export const transformPlotlyJsonToDonutProps = (
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label, index: number) => {
-    let value: number;
-    if (Array.isArray(firstData.values)) {
-      if (typeof firstData.values[index] === 'number' && (firstData.values[index] as number) >= 0) {
-        value = firstData.values[index] as number;
-      } else {
-        return;
-      }
-    } else {
-      value = 1;
+    const value = getNumberAtIndexOrDefault(firstData.values, index);
+    if (isInvalidValue(value) || (value as number) < 0) {
+      return;
     }
 
     const legend = `${label}`;
@@ -262,7 +256,7 @@ export const transformPlotlyJsonToDonutProps = (
         color,
       };
     } else {
-      mapLegendToDataPoint[legend].data! += value;
+      mapLegendToDataPoint[legend].data! += value as number;
     }
   });
 
@@ -323,7 +317,7 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
-      if (isInvalid(x) || isInvalid(series.y?.[index2])) {
+      if (isInvalidValue(x) || isInvalidValue(series.y?.[index2])) {
         return;
       }
 
@@ -333,7 +327,7 @@ export const transformPlotlyJsonToVSBCProps = (
       const legend: string = legends[index1];
       // resolve color for each legend's bars from the extracted colors
       const color = resolveColor(extractedBarColors, index1, legend, colorMap, isDarkTheme);
-      const yVal: number = series.y?.[index2] as number;
+      const yVal: number = series.y![index2] as number;
       if (series.type === 'bar') {
         mapXToDataPoints[x].chartData.push({
           legend,
@@ -401,7 +395,7 @@ export const transformPlotlyJsonToGVBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
     (series.x as Datum[])?.forEach((x: string | number, xIndex: number) => {
-      if (isInvalid(x) || isInvalid(series.y?.[xIndex])) {
+      if (isInvalidValue(x) || isInvalidValue(series.y?.[xIndex])) {
         return;
       }
 
@@ -415,7 +409,7 @@ export const transformPlotlyJsonToGVBCProps = (
         const color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
         mapXToDataPoints[x].series.push({
           key: legend,
-          data: series.y?.[xIndex] as number,
+          data: series.y![xIndex] as number,
           xAxisCalloutData: x as string,
           color,
           legend,
@@ -469,23 +463,13 @@ export const transformPlotlyJsonToVBCProps = (
     const xValues: (string | number)[] = [];
     const yValues: number[] = [];
     series.x.forEach((xVal, index) => {
-      if (isInvalid(xVal)) {
+      const yVal = getNumberAtIndexOrDefault(series.y, index);
+      if (isInvalidValue(xVal) || isInvalidValue(yVal)) {
         return;
       }
 
-      let yVal: number;
-      if (Array.isArray(series.y)) {
-        if (isInvalid(series.y[index]) || typeof series.y[index] !== 'number') {
-          return;
-        }
-
-        yVal = series.y[index] as number;
-      } else {
-        yVal = 1;
-      }
-
       xValues.push(xVal as string | number);
-      yValues.push(yVal);
+      yValues.push(yVal as number);
     });
 
     const isXString = isStringArray(xValues);
@@ -591,13 +575,13 @@ export const transformPlotlyJsonToScatterChartProps = (
       legendShape,
       data: xValues
         .map((x, i: number) => {
-          if (isInvalid(x) || isInvalid(series.y?.[i])) {
+          if (isInvalidValue(x) || isInvalidValue(series.y?.[i])) {
             return null;
           }
 
           return {
             x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
-            y: series.y?.[i],
+            y: series.y![i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: series.marker.size[i] }
               : typeof series.marker?.size === 'number'
@@ -676,12 +660,12 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
       const color = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       return (series.y as Datum[])
         .map((yValue, i: number) => {
-          if (isInvalid(series.x?.[i]) || isInvalid(yValue)) {
+          if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
             return null;
           }
 
           return {
-            x: series.x?.[i],
+            x: series.x![i],
             y: yValue,
             legend,
             color,
@@ -739,24 +723,14 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     const yValues: (string | number)[] = [];
     const zValues: number[] = [];
     firstData.x?.forEach((xVal, index) => {
-      if (isInvalid(xVal) || isInvalid(firstData.y?.[index])) {
+      const zVal = getNumberAtIndexOrDefault(firstData.z, index);
+      if (isInvalidValue(xVal) || isInvalidValue(firstData.y?.[index]) || isInvalidValue(zVal)) {
         return;
       }
 
-      let zVal: number;
-      if (Array.isArray(firstData.z)) {
-        if (isInvalid(firstData.z[index]) || typeof firstData.z[index] !== 'number') {
-          return;
-        }
-
-        zVal = firstData.z[index] as number;
-      } else {
-        zVal = 1;
-      }
-
       xValues.push(xVal as string | number);
-      yValues.push(firstData.y?.[index] as string | number);
-      zValues.push(zVal);
+      yValues.push(firstData.y![index] as string | number);
+      zValues.push(zVal as number);
     });
 
     const isXString = isStringArray(xValues);
@@ -1083,20 +1057,18 @@ export const transformPlotlyJsonToChartTableProps = (
 export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
   const projection: PlotlySchema = { ...input };
   for (let sindex = 0; sindex < input.data.length; sindex++) {
-    const series: PlotData = input.data[sindex] as PlotData;
-    series.x = [];
-    series.y = [];
-    for (let ptindex = 0; ptindex < series.r.length; ptindex++) {
-      if (isInvalid(series.theta[ptindex]) || isInvalid(series.r[ptindex])) {
-        series.x[ptindex] = null;
-        series.y[ptindex] = null;
+    const series = input.data[sindex] as Partial<PlotData>;
+    series.x = [] as Datum[];
+    series.y = [] as Datum[];
+    for (let ptindex = 0; ptindex < (series.r?.length ?? 0); ptindex++) {
+      if (isInvalidValue(series.theta?.[ptindex]) || isInvalidValue(series.r?.[ptindex])) {
         continue;
       }
 
-      const thetaRad = ((series.theta[ptindex] as number) * Math.PI) / 180;
-      const radius = series.r[ptindex] as number;
-      series.x[ptindex] = radius * Math.cos(thetaRad);
-      series.y[ptindex] = radius * Math.sin(thetaRad);
+      const thetaRad = ((series.theta![ptindex] as number) * Math.PI) / 180;
+      const radius = series.r![ptindex] as number;
+      series.x.push(radius * Math.cos(thetaRad));
+      series.y.push(radius * Math.sin(thetaRad));
     }
     projection.data[sindex] = series;
   }
@@ -1340,6 +1312,18 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
   };
 };
 
-const isInvalid = (value: any) => {
+const isInvalidValue = (value: any) => {
   return typeof value === 'undefined' || value === null || (typeof value === 'number' && isNaN(value));
+};
+
+const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
+  if (isArrayOrTypedArray(data)) {
+    if (typeof data![index] !== 'number' || isNaN(data![index] as number)) {
+      return;
+    }
+
+    return data![index] as number;
+  }
+
+  return 1;
 };
