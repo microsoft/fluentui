@@ -94,9 +94,15 @@ import {
   strokeWidthThicker,
   colorNeutralForegroundOnBrand,
   colorStrokeFocus2,
+  colorTransparentStrokeInteractive,
+  colorTransparentStrokeDisabled,
   colorNeutralStroke3,
   colorNeutralStroke1,
   colorBrandStroke1,
+  colorCompoundBrandBackground,
+  colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
+  colorNeutralBackgroundDisabled,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorBrandForeground1,
@@ -499,8 +505,8 @@ export const strokeCtrlDividerOnActiveBrandDisabled = `var(${strokeCtrlDividerOn
 export const strokeCtrlDividerOnNeutralDisabled = `var(${strokeCtrlDividerOnNeutralDisabledRaw}, var(${strokeCtrlDividerOnNeutralRaw}))`;
 export const strokeCtrlDividerOnOutlineDisabled = `var(${strokeCtrlDividerOnOutlineDisabledRaw}, var(${strokeCtrlDividerOnOutlineRaw}))`;
 export const strokeCtrlOnActiveBrandHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorStrokeFocus2}))`;
-export const strokeCtrlOnActiveBrandPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}))`;
-export const strokeCtrlOnActiveBrandDisabled = `var(${strokeCtrlOnActiveBrandDisabledRaw}, var(${strokeCtrlOnBrandDisabledRaw}))`;
+export const strokeCtrlOnActiveBrandPressed = `var(${strokeCtrlOnActiveBrandPressedRaw}, var(${strokeCtrlOnBrandPressedRaw}, ${colorTransparentStrokeInteractive}))`;
+export const strokeCtrlOnActiveBrandDisabled = `var(${strokeCtrlOnActiveBrandDisabledRaw}, var(${strokeCtrlOnBrandDisabledRaw}, ${colorTransparentStrokeDisabled}))`;
 export const strokeCtrlOnActiveBrandRestStop2 = `var(${strokeCtrlOnActiveBrandRestStop2Raw}, var(${strokeCtrlOnBrandRestRaw}))`;
 export const strokeCtrlOnActiveBrandHoverStop2 = `var(${strokeCtrlOnActiveBrandHoverStop2Raw}, var(${strokeCtrlOnBrandRestRaw}))`;
 export const strokeCtrlOnActiveBrandPressedStop2 = `var(${strokeCtrlOnActiveBrandPressedStop2Raw}, var(${strokeCtrlOnBrandPressedRaw}))`;
@@ -515,10 +521,10 @@ export const backgroundLayerPrimaryStop3 = `var(${backgroundLayerPrimaryStop3Raw
 export const backgroundLayerSecondary = `var(${backgroundLayerSecondaryRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const backgroundLayerTertiary = `var(${backgroundLayerTertiaryRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const backgroundCardOnPrimaryDefaultSelected = `var(${backgroundCardOnPrimaryDefaultSelectedRaw}, var(${backgroundCardOnPrimaryDefaultRestRaw}))`;
-export const backgroundCtrlActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
-export const backgroundCtrlActiveBrandHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}))`;
-export const backgroundCtrlActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}))`;
-export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
+export const backgroundCtrlActiveBrandRest = `var(${backgroundCtrlActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorCompoundBrandBackground}))`;
+export const backgroundCtrlActiveBrandHover = `var(${backgroundCtrlActiveBrandHoverRaw}, var(${backgroundCtrlBrandHoverRaw}, ${colorCompoundBrandBackgroundHover}))`;
+export const backgroundCtrlActiveBrandPressed = `var(${backgroundCtrlActiveBrandPressedRaw}, var(${backgroundCtrlBrandPressedRaw}, ${colorCompoundBrandBackgroundPressed}))`;
+export const backgroundCtrlActiveBrandDisabled = `var(${backgroundCtrlActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}, ${colorNeutralBackgroundDisabled}))`;
 export const backgroundCtrlShapeSafeActiveBrandRest = `var(${backgroundCtrlShapeSafeActiveBrandRestRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const backgroundCtrlShapeSafeActiveBrandDisabled = `var(${backgroundCtrlShapeSafeActiveBrandDisabledRaw}, var(${backgroundCtrlBrandDisabledRaw}))`;
 export const backgroundCtrlShapeSafeNeutralRest = `var(${backgroundCtrlShapeSafeNeutralRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
