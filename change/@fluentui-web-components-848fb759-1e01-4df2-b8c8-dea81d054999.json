@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fixed compound-button high contrast text colors.",
+  "packageName": "@fluentui/web-components",
+  "email": "601470+mlijanto@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
