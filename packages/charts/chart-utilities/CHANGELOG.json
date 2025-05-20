@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 19 May 2025 07:20:51 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.10",
+      "version": "1.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "6aecbd5ab7a90a37dfb7d13cbf5c0cebd5f7e11c",
+            "comment": "fix(chart-utilities): Improve schema error handling"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "b46461599a16936c70da9e8ae1218fc7ec6038da",
+            "comment": "Add support for plotly generated tables"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 May 2025 07:22:04 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.9",
       "version": "1.1.9",

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add support for plotly generated tables",
+  "comment": "fix(react-charting): remove duplicate legends",
   "packageName": "@fluentui/react-charting",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"

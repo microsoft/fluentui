@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting): Enable rounded corners",
-  "packageName": "@fluentui/react-charting",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
