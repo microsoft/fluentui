@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 20 May 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-charting_v5.23.90",
+      "version": "5.23.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c5c83ae3f0176456fa74ff3ef2c4318701f3cbf5",
+            "comment": "fix(react-charting): remove duplicate legends"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.208",
+            "commit": "ce3f089aaa0348897f620403506845152b4cd6e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.19",
+            "commit": "ce3f089aaa0348897f620403506845152b4cd6e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 May 2025 07:20:52 GMT",
       "tag": "@fluentui/react-charting_v5.23.89",
       "version": "5.23.89",
