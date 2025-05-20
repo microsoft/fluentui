@@ -2,10 +2,11 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
+import { buttonClassNames, useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots } from '../Button/Button.types';
 import type { ToggleButtonState } from './ToggleButton.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-ToggleButton',
@@ -16,10 +17,9 @@ const useRootCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralRest),
     color: tokens.colorNeutralForeground1Selected,
-
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    ...shorthands.borderWidth(semanticTokens.strokeWidthDefault),
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -29,15 +29,15 @@ const useRootCheckedStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
+      backgroundColor: semanticTokens.backgroundCtrlNeutralHover,
+      ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralHover),
+      color: semanticTokens.foregroundCtrlNeutralPrimaryHover,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
+      backgroundColor: semanticTokens.backgroundCtrlNeutralPressed,
+      ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralPressed),
+      color: semanticTokens.foregroundCtrlNeutralPrimaryPressed,
     },
   },
 
@@ -67,23 +67,26 @@ const useRootCheckedStyles = makeStyles({
       },
     },
   },
-
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnOutlineRest),
+    ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
     },
 
     ':hover:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
 
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralRest),
     }),
   },
   primary: {
@@ -110,6 +113,10 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
     color: tokens.colorNeutralForeground2Selected,
+
+    [`& .${buttonClassNames.icon}`]: {
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -145,20 +152,20 @@ const useRootCheckedStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: semanticTokens.backgroundCtrlNeutralDisabled,
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralDisabled),
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: semanticTokens.backgroundCtrlNeutralDisabled,
+      ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralDisabled),
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: semanticTokens.backgroundCtrlNeutralDisabled,
+      ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralDisabled),
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
@@ -181,16 +188,16 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: semanticTokens.backgroundCtrlSubtleDisabled,
       ...shorthands.borderColor('transparent'),
     },
   },

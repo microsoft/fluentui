@@ -4,6 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots> = {
   root: 'fui-MenuButton',
@@ -24,8 +25,22 @@ const useRootExpandedStyles = makeStyles({
   // Appearance variations
   outline: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
     color: tokens.colorNeutralForeground1Selected,
+
+    // Ensure state is retained over base hover
+    ':hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
+      color: tokens.colorNeutralForeground1Selected,
+    },
+
+    // Ensure state is retained over base hover active
+    ':hover:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
+      color: tokens.colorNeutralForeground1Selected,
+    },
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
@@ -81,25 +96,25 @@ const useMenuIconStyles = makeStyles({
   small: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '12px',
   },
   medium: {
     fontSize: '12px',
     height: '12px',
-    lineHeight: tokens.lineHeightBase200,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '12px',
   },
   large: {
     fontSize: '16px',
     height: '16px',
-    lineHeight: tokens.lineHeightBase400,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
     width: '16px',
   },
 
   // Not-icon only
   notIconOnly: {
-    marginLeft: tokens.spacingHorizontalXS,
+    marginLeft: semanticTokens.gapInsideCtrlSmDefault,
   },
 });
 
