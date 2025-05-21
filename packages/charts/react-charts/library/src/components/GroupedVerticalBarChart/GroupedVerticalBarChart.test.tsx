@@ -1,6 +1,5 @@
 import { screen, fireEvent, render } from '@testing-library/react';
 import { GroupedVerticalBarChart } from './index';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { GroupedVerticalBarChartData } from '../../index';
 import { toHaveNoViolations } from 'jest-axe';
@@ -53,7 +52,7 @@ const accessibilityDataPoints: GroupedVerticalBarChartData[] = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blueLight,
+        color: '#00bcf2',
         legend: 'MetaData1',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
@@ -64,7 +63,7 @@ const accessibilityDataPoints: GroupedVerticalBarChartData[] = [
       {
         key: 'series2',
         data: 44000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: 'MetaData4',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
@@ -86,7 +85,7 @@ const chartPoints = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blueLight,
+        color: '#00bcf2',
         legend: 'MetaData1',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
@@ -94,7 +93,7 @@ const chartPoints = [
       {
         key: 'series2',
         data: 44000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: 'MetaData4',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
@@ -107,7 +106,7 @@ const chartPoints = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blueLight,
+        color: '#00bcf2',
         legend: 'MetaData1',
         xAxisCalloutData: '2020/05/30',
         yAxisCalloutData: '33%',
@@ -115,7 +114,7 @@ const chartPoints = [
       {
         key: 'series2',
         data: 3000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: 'MetaData4',
         xAxisCalloutData: '2020/05/30',
         yAxisCalloutData: '3%',
@@ -129,7 +128,7 @@ const chartPoints = [
       {
         key: 'series1',
         data: 14000,
-        color: DefaultPalette.blueLight,
+        color: '#00bcf2',
         legend: 'MetaData1',
         xAxisCalloutData: '2020/06/30',
         yAxisCalloutData: '14%',
@@ -137,7 +136,7 @@ const chartPoints = [
       {
         key: 'series2',
         data: 50000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: 'MetaData4',
         xAxisCalloutData: '2020/06/30',
         yAxisCalloutData: '50%',
@@ -153,7 +152,7 @@ const dataGVBC = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: '2022',
         xAxisCalloutData: '2022/04/30',
         yAxisCalloutData: '29%',
@@ -164,7 +163,7 @@ const dataGVBC = [
       {
         key: 'series2',
         data: 44000,
-        color: DefaultPalette.green,
+        color: '#107c10',
         legend: '2023',
         xAxisCalloutData: '2023/04/30',
         yAxisCalloutData: '44%',
@@ -175,7 +174,7 @@ const dataGVBC = [
       {
         key: 'series3',
         data: 54000,
-        color: DefaultPalette.red,
+        color: '#107c10',
         legend: '2024',
         xAxisCalloutData: '2024/04/30',
         yAxisCalloutData: '44%',
@@ -186,7 +185,7 @@ const dataGVBC = [
       {
         key: 'series4',
         data: 24000,
-        color: DefaultPalette.yellow,
+        color: '#ffb900',
         legend: '2021',
         xAxisCalloutData: '2021/04/30',
         yAxisCalloutData: '44%',
@@ -202,7 +201,7 @@ const dataGVBC = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: '2022',
         xAxisCalloutData: '2022/05/30',
         yAxisCalloutData: '29%',
@@ -213,7 +212,7 @@ const dataGVBC = [
       {
         key: 'series2',
         data: 3000,
-        color: DefaultPalette.green,
+        color: '#107c10',
         legend: '2023',
         xAxisCalloutData: '2023/05/30',
         yAxisCalloutData: '3%',
@@ -224,7 +223,7 @@ const dataGVBC = [
       {
         key: 'series3',
         data: 9000,
-        color: DefaultPalette.red,
+        color: '#e81123',
         legend: '2024',
         xAxisCalloutData: '2024/05/30',
         yAxisCalloutData: '3%',
@@ -235,7 +234,7 @@ const dataGVBC = [
       {
         key: 'series4',
         data: 12000,
-        color: DefaultPalette.yellow,
+        color: 'ffb900',
         legend: '2021',
         xAxisCalloutData: '2021/05/30',
         yAxisCalloutData: '3%',
@@ -252,7 +251,7 @@ const dataGVBC = [
       {
         key: 'series1',
         data: 14000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: '2022',
         xAxisCalloutData: '2022/06/30',
         yAxisCalloutData: '13%',
@@ -263,7 +262,7 @@ const dataGVBC = [
       {
         key: 'series2',
         data: 50000,
-        color: DefaultPalette.green,
+        color: '#107c10',
         legend: '2023',
         xAxisCalloutData: '2023/06/30',
         yAxisCalloutData: '50%',
@@ -274,7 +273,7 @@ const dataGVBC = [
       {
         key: 'series3',
         data: 60000,
-        color: DefaultPalette.red,
+        color: '#107c10',
         legend: '2024',
         xAxisCalloutData: '2024/06/30',
         yAxisCalloutData: '50%',
@@ -285,7 +284,7 @@ const dataGVBC = [
       {
         key: 'series4',
         data: 10000,
-        color: DefaultPalette.yellow,
+        color: '#ffb900',
         legend: '2021',
         xAxisCalloutData: '2021/06/30',
         yAxisCalloutData: '50%',
@@ -301,7 +300,7 @@ const dataGVBC = [
       {
         key: 'series1',
         data: 33000,
-        color: DefaultPalette.blue,
+        color: '#0078d4',
         legend: '2022',
         xAxisCalloutData: '2022/07/30',
         yAxisCalloutData: '29%',
@@ -312,7 +311,7 @@ const dataGVBC = [
       {
         key: 'series2',
         data: 3000,
-        color: DefaultPalette.green,
+        color: '#107c10',
         legend: '2023',
         xAxisCalloutData: '2023/07/30',
         yAxisCalloutData: '3%',
@@ -323,7 +322,7 @@ const dataGVBC = [
       {
         key: 'series3',
         data: 6000,
-        color: DefaultPalette.red,
+        color: '#107c10',
         legend: '2024',
         xAxisCalloutData: '2024/07/30',
         yAxisCalloutData: '3%',
@@ -334,7 +333,7 @@ const dataGVBC = [
       {
         key: 'series4',
         data: 15000,
-        color: DefaultPalette.yellow,
+        color: '#ffb900',
         legend: '2021',
         xAxisCalloutData: '2021/07/30',
         yAxisCalloutData: '3%',
@@ -394,12 +393,12 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
       // colors mentioned in the data points itself
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      expect(bars[0].getAttribute('fill')).toEqual(DefaultPalette.blueLight);
-      expect(bars[1].getAttribute('fill')).toEqual(DefaultPalette.blue);
-      expect(bars[2].getAttribute('fill')).toEqual(DefaultPalette.blueLight);
-      expect(bars[3].getAttribute('fill')).toEqual(DefaultPalette.blue);
-      expect(bars[4].getAttribute('fill')).toEqual(DefaultPalette.blueLight);
-      expect(bars[5].getAttribute('fill')).toEqual(DefaultPalette.blue);
+      expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[1].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[3].getAttribute('fill')).toEqual('#0078d4');
+      expect(bars[4].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[5].getAttribute('fill')).toEqual('#0078d4');
     },
   );
 
@@ -539,9 +538,9 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     GroupedVerticalBarChart,
     { data: dataGVBC, legendProps: { canSelectMultipleLegends: true } },
     container => {
-      const firstLegend = screen.queryByText('2023')?.closest('button');
-      const secondLegend = screen.queryByText('2024')?.closest('button');
-
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      const firstLegend = legends[1];
+      const secondLegend = legends[2];
       expect(firstLegend).toBeDefined();
       expect(secondLegend).toBeDefined();
 
