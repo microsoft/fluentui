@@ -3,6 +3,14 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogSurface,
+  DialogBody,
+  DialogActions,
+  dialogSurfaceClassNames,
+} from '@fluentui/react-dialog';
 
 import {
   menuItemRadioSelector,
@@ -1099,5 +1107,46 @@ describe('Context menu', () => {
       .should('not.exist')
       .get(menuTriggerSelector)
       .should('have.focus');
+  });
+
+  it('should handle tabbing in dialog opened from a MenuItem', () => {
+    mount(
+      <Menu positioning={{ autoSize: true }}>
+        <MenuTrigger disableButtonEnhancement>
+          <button id={menuTriggerId}>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <Dialog>
+              <DialogTrigger disableButtonEnhancement>
+                <MenuItem persistOnClick>Open dialog</MenuItem>
+              </DialogTrigger>
+              <DialogSurface>
+                <DialogBody>
+                  <DialogActions>
+                    <button>First</button>
+                    <DialogTrigger disableButtonEnhancement>
+                      <button>Second</button>
+                    </DialogTrigger>
+                  </DialogActions>
+                </DialogBody>
+              </DialogSurface>
+            </Dialog>
+          </MenuList>
+        </MenuPopover>
+      </Menu>,
+    );
+
+    cy.get(menuTriggerSelector)
+      .click()
+      .get(menuItemSelector)
+      .click()
+      .get(`.${dialogSurfaceClassNames.root}`)
+      .realPress('Tab');
+
+    cy.contains('Second').should('be.focused').realPress('Tab');
+    cy.contains('First').should('be.focused').realPress(['Shift', 'Tab']);
+    cy.contains('Second').should('be.focused');
   });
 });
