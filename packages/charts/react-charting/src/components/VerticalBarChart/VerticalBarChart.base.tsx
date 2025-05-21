@@ -37,8 +37,8 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  tooltipOfAxislabels,
+  formatValueLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -858,9 +858,9 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -973,10 +973,10 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
         showTooltip: this.props.showXAxisLablesTooltip,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -1084,9 +1084,9 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -1256,7 +1256,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {formatValueWithSIPrefix(barValue)}
+        {formatValueLimitWidth(barValue)}
       </text>
     );
   }

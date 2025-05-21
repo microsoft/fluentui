@@ -92,6 +92,7 @@ export type {
   TypedArray,
   XAxisName,
   YAxisName,
+  TableData,
 } from './PlotlySchema';
 
 export type { OutputChartType } from './PlotlySchemaConverter';
@@ -102,7 +103,7 @@ export {
   isArrayOfType,
   isDateArray,
   isNumberArray,
-  isLineData,
+  isYearArray,
   validate2Dseries,
   getValidSchema,
   sanitizeJson,

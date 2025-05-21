@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:18 GMT",
+      "tag": "@fluentui/react-motion_v9.7.3",
+      "version": "9.7.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "charles.assuncao@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f84bb0c8f4c274a64037732643f193b15cf03ffa",
+            "comment": "Export child context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:02 GMT",
       "tag": "@fluentui/react-motion_v9.7.2",
       "version": "9.7.2",

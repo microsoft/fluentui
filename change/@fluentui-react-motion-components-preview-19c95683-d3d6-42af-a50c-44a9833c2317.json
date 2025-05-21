@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "robertpenner@microsoft.com",
-  "dependentChangeType": "patch"
-}

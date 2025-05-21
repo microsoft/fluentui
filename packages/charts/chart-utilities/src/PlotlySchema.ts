@@ -1149,7 +1149,8 @@ export interface PlotData {
     | 'number+delta'
     | 'gauge+number'
     | 'gauge+number+delta'
-    | 'gauge+delta';
+    | 'gauge+delta'
+    | 'markers+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';
@@ -1324,6 +1325,34 @@ export interface PlotData {
   uirevision: string | number;
   uid: string;
   base: Datum[] | Datum[][] | TypedArray;
+}
+
+export interface TableData {
+  type: 'table';
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+  };
 }
 
 /**

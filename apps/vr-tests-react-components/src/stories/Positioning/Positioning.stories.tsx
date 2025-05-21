@@ -1,11 +1,13 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import {
+  PositioningConfigurationProvider,
   usePositioning,
-  PositioningProps,
-  PositioningVirtualElement,
-  PositioningImperativeRef,
+  type PositioningProps,
+  type PositioningVirtualElement,
+  type PositioningImperativeRef,
   type PositioningRect,
+  type PositioningConfigurationFn,
 } from '@fluentui/react-positioning';
 import { useMergedRefs, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -1025,6 +1027,49 @@ const BoundaryRect = () => {
   );
 };
 
+const ConfigurationProviderExample = () => {
+  const { containerRef, targetRef } = usePositioning({ position: 'after' });
+
+  return (
+    <div>
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef}>Container</Box>
+    </div>
+  );
+};
+
+const ConfigurationProvider = () => {
+  const styles = useStyles();
+  const configurationFn: PositioningConfigurationFn = React.useCallback(({ options }) => {
+    return {
+      ...options,
+      offset: { mainAxis: 20, crossAxis: 20 },
+    };
+  }, []);
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        flexDirection: 'column',
+
+        height: 400,
+        width: 400,
+        padding: '5px 50px',
+      }}
+    >
+      <ConfigurationProviderExample />
+
+      <PositioningConfigurationProvider value={configurationFn}>
+        <ConfigurationProviderExample />
+      </PositioningConfigurationProvider>
+    </div>
+  );
+};
+
 export default {
   title: 'Positioning',
 
@@ -1112,6 +1157,9 @@ export const AutoSizeOverflowPaddingRTL = getStoryVariant(_AutoSizeOverflowPaddi
 
 export const AutoSizeOverflowPaddingShorthand = () => <AutoSize overflowBoundaryPadding={10} />;
 AutoSizeOverflowPaddingShorthand.storyName = 'auto size overflow padding shorthand';
+
+export const _ConfigurationProvider = () => <ConfigurationProvider />;
+_ConfigurationProvider.storyName = 'configuration provider';
 
 export const AutoSizeWithAsyncContent = () => (
   <StoryWright

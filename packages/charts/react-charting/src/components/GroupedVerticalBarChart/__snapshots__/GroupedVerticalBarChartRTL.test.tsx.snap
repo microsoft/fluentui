@@ -40,7 +40,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
             outline: none;
           }
 
-      data-focuszone-id="FocusZone11"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -214,7 +214,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -250,7 +250,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -328,7 +328,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -346,7 +346,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -404,7 +404,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -422,7 +422,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -480,7 +480,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -498,7 +498,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -541,7 +541,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone12"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -796,7 +796,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
             outline: none;
           }
 
-      data-focuszone-id="FocusZone11"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -970,7 +970,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1006,7 +1006,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1084,7 +1084,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1102,7 +1102,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1160,7 +1160,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1178,7 +1178,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1236,7 +1236,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -1254,7 +1254,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -1297,7 +1297,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone12"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1552,7 +1552,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
             outline: none;
           }
 
-      data-focuszone-id="FocusZone11"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1726,7 +1726,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -1762,7 +1762,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1840,7 +1840,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1858,7 +1858,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1916,7 +1916,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1934,7 +1934,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1992,7 +1992,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -2010,7 +2010,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -2053,7 +2053,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone12"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2308,7 +2308,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone11"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2482,7 +2482,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -2518,7 +2518,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -2596,7 +2596,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -2614,7 +2614,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -2672,7 +2672,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -2690,7 +2690,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -2748,7 +2748,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -2766,7 +2766,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -2809,7 +2809,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone12"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3064,7 +3064,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone11"
+      data-focuszone-id="FocusZone12"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3238,7 +3238,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -3274,7 +3274,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -3352,7 +3352,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -3370,7 +3370,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="42.44"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -3428,7 +3428,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="94.57999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -3446,7 +3446,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="236.77999999999997"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -3504,7 +3504,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="8"
               y="184.64"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -3522,7 +3522,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -3565,7 +3565,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone12"
+                data-focuszone-id="FocusZone13"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3820,7 +3820,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4086,7 +4086,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone13"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4641,7 +4641,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4907,7 +4907,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone13"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -6010,7 +6010,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -6265,7 +6265,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone13"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -6634,7 +6634,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           outline: none;
         }
 
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone12"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -9453,7 +9453,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
 
-        data-focuszone-id="FocusZone14"
+        data-focuszone-id="FocusZone15"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -9627,7 +9627,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -9663,7 +9663,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -9741,7 +9741,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="8"
                 y="94.57999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -9759,7 +9759,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="25.77777777777778"
                 y="42.44"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -9817,7 +9817,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="8"
                 y="94.57999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -9835,7 +9835,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="25.77777777777778"
                 y="236.77999999999997"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -9893,7 +9893,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="8"
                 y="184.64"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -9911,7 +9911,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -9954,7 +9954,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone15"
+                  data-focuszone-id="FocusZone16"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >

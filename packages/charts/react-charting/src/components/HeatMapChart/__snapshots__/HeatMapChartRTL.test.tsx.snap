@@ -623,7 +623,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             outline: none;
           }
 
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -966,7 +966,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone4"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1221,7 +1221,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             outline: none;
           }
 
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1572,7 +1572,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone4"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
