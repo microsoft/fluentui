@@ -557,7 +557,10 @@ export const transformPlotlyJsonToScatterChartProps = (
           : {}),
       })),
       color: seriesColor,
-      ...(lineOptions ? { lineOptions } : {}),
+      lineOptions: {
+        ...(lineOptions ?? {}),
+        mode: series.mode,
+      },
       useSecondaryYScale: usesSecondaryYScale(series),
     } as ILineChartPoints;
   });

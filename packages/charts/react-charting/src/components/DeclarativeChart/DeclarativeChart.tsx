@@ -173,7 +173,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   };
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
-    const isScatterMarkers = ['markers', 'text+markers', 'markers+text'].includes((plotlyData[0] as PlotData)?.mode);
+    const isScatterMarkers = [
+      'lines',
+      'markers',
+      'text+markers',
+      'markers+text',
+      'lines+markers',
+      'markers+line',
+      'text+lines+markers',
+      'text+lines',
+      'lines+text',
+    ].includes((plotlyData[0] as PlotData)?.mode);
     const chartProps: ILineChartProps | IAreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },

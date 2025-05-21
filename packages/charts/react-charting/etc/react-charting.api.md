@@ -1029,6 +1029,7 @@ export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> 
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
+    mode?: 'markers' | 'lines' | 'lines+markers' | 'markers+line' | 'text+lines' | 'lines+text' | 'text+lines+markers' | 'text+markers' | 'markers+text';
     strokeDasharray?: string | number;
     strokeDashoffset?: string | number;
     strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';

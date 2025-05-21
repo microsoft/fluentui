@@ -409,6 +409,20 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'markers'
+    | 'lines'
+    | 'lines+markers'
+    | 'markers+line'
+    | 'text+lines'
+    | 'lines+text'
+    | 'text+lines+markers'
+    | 'text+markers'
+    | 'markers+text';
 }
 
 /**

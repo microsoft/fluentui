@@ -901,7 +901,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
-            this.props.lineMode === 'scatter' ? (
+            this._points[i].lineOptions?.mode?.includes('markers') ? (
               <circle
                 id={circleId}
                 key={circleId}
@@ -992,7 +992,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             currentMarkerSize = this._points[i].data[j].markerSize!;
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
-                {this.props.lineMode === 'scatter' ? (
+                {this._points[i].lineOptions?.mode?.includes('markers') ? (
                   <circle
                     id={lastCircleId}
                     key={lastCircleId}
@@ -1123,7 +1123,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             );
           }
 
-          if (this.props.lineMode !== 'scatter') {
+          if (this._points[i].lineOptions?.mode?.includes('lines')) {
             if (isLegendSelected) {
               // don't draw line if it is in a gap
               if (!isInGap) {
