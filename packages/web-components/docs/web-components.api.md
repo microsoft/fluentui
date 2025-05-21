@@ -2312,7 +2312,7 @@ export class Dialog extends FASTElement {
 // @public
 export class DialogBody extends FASTElement {
     // @internal
-    clickHandler(event: MouseEvent): boolean | void;
+    clickHandler(event: PointerEvent): boolean | void;
 }
 
 // @public
@@ -2434,7 +2434,7 @@ export class Drawer extends FASTElement {
 // @public
 export class DrawerBody extends FASTElement {
     // @internal
-    clickHandler(event: MouseEvent): boolean | void;
+    clickHandler(event: PointerEvent): boolean | void;
 }
 
 // @public (undocumented)
