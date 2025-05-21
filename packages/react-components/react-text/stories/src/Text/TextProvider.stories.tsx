@@ -26,7 +26,7 @@ export const Provider = () => {
           This is a really long text that is going to be used to showcase the text component. Among those words, we have
           a few styled ones, like <Text underline>this underlined</Text>, <Text italic>this italic</Text>,{' '}
           <Text strikethrough>this strikethrough</Text>, and <Text size={100}>this small</Text>. Notice that now
-          everything is formmatted correctly.
+          everything is formatted correctly.
         </Text>
       </TextProvider>
     </div>
