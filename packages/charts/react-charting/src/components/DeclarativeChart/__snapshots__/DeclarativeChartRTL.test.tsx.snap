@@ -386,12 +386,12 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               fill="transparent"
               id="0-line-areaChart_0"
               opacity="0"
-              stroke="#ff9933"
+              stroke="#637cef"
               stroke-width="3"
             />
             <path
               d="M40,-41.807L100,-42.623L160,-37.707L220,-37.825L280,-37.706L340,-36.113L400,-39.814L460,-37.736L520,-40.029L580,-38.716L580,-43L520,-43L460,-43L400,-43L340,-43L280,-43L220,-43L160,-43L100,-43L40,-43Z"
-              fill="#ff9933"
+              fill="#637cef"
               fill-opacity="0.7"
               id="0-graph-areaChart_0"
               opacity="1"
@@ -401,12 +401,12 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               fill="transparent"
               id="1-line-areaChart_0"
               opacity="0.1"
-              stroke="#3780bf"
+              stroke="#f7630c"
               stroke-width="3"
             />
             <path
               d="M40,-34.162L100,-38.224L160,-25.944L220,-29.605L280,-25.737L340,-28.997L400,-34.072L460,-30.602L520,-36.255L580,-32.4L580,-38.716L520,-40.029L460,-37.736L400,-39.814L340,-36.113L280,-37.706L220,-37.825L160,-37.707L100,-42.623L40,-41.807Z"
-              fill="#3780bf"
+              fill="#f7630c"
               fill-opacity="0.1"
               id="1-graph-areaChart_0"
               opacity="1"
@@ -416,12 +416,12 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               fill="transparent"
               id="2-line-areaChart_0"
               opacity="0.1"
-              stroke="#32ab60"
+              stroke="#57811b"
               stroke-width="3"
             />
             <path
               d="M40,-23.602L100,-30.529L160,-8.116L220,-20.408L280,-13.635L340,-19.547L400,-24.194L460,-22.73L520,-26.407L580,-25.934L580,-32.4L520,-36.255L460,-30.602L400,-34.072L340,-28.997L280,-25.737L220,-29.605L160,-25.944L100,-38.224L40,-34.162Z"
-              fill="#32ab60"
+              fill="#57811b"
               fill-opacity="0.1"
               id="2-graph-areaChart_0"
               opacity="1"
@@ -431,12 +431,12 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
               fill="transparent"
               id="3-line-areaChart_0"
               opacity="0.1"
-              stroke="#800080"
+              stroke="#9373c0"
               stroke-width="3"
             />
             <path
               d="M40,-10.212L100,-19.014L160,16.551L220,-8.81L280,5.027L340,-3.457L400,-12.65L460,-13.714L520,-11.06L580,-14.544L580,-25.934L520,-26.407L460,-22.73L400,-24.194L340,-19.547L280,-13.635L220,-20.408L160,-8.116L100,-30.529L40,-23.602Z"
-              fill="#800080"
+              fill="#9373c0"
               fill-opacity="0.1"
               id="3-graph-areaChart_0"
               opacity="1"
@@ -451,11 +451,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="40"
                 cy="-41.80657629370952"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_0"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="0"
               />
@@ -464,11 +464,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="100"
                 cy="-42.622650809245584"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_1"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -477,11 +477,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="160"
                 cy="-37.7073775479316"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_2"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -490,11 +490,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="220"
                 cy="-37.824680748526596"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_3"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -503,11 +503,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="280"
                 cy="-37.705914389427676"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_4"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -516,11 +516,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="340"
                 cy="-36.1126432405536"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_5"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -529,11 +529,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="399.99999999999994"
                 cy="-39.81353270263555"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_6"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -542,11 +542,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="460.00000000000006"
                 cy="-37.73642424881348"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_7"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -555,11 +555,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="520"
                 cy="-40.02908133949783"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_8"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -568,11 +568,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="580"
                 cy="-38.71612583378442"
                 data-is-focusable="true"
-                fill="#ff9933"
+                fill="#637cef"
                 id="circle2_9"
                 r="0"
                 role="img"
-                stroke="#ff9933"
+                stroke="#637cef"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -587,11 +587,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="40"
                 cy="-34.16152700722826"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_10"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -600,11 +600,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="100"
                 cy="-38.223992962132016"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_11"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -613,11 +613,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="160"
                 cy="-25.944306414504386"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_12"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -626,11 +626,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="220"
                 cy="-29.605368758604584"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_13"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -639,11 +639,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="280"
                 cy="-25.736939232464096"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_14"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -652,11 +652,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="340"
                 cy="-28.996834981671103"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_15"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -665,11 +665,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="399.99999999999994"
                 cy="-34.07242776053101"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_16"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -678,11 +678,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="460.00000000000006"
                 cy="-30.602166676808537"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_17"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -691,11 +691,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="520"
                 cy="-36.254793105859854"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_18"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -704,11 +704,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="580"
                 cy="-32.3999999745966"
                 data-is-focusable="false"
-                fill="#3780bf"
+                fill="#f7630c"
                 id="circle2_19"
                 r="0"
                 role="img"
-                stroke="#3780bf"
+                stroke="#f7630c"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -723,11 +723,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="40"
                 cy="-23.602377863959674"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_20"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -736,11 +736,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="100"
                 cy="-30.528825533094793"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_21"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -749,11 +749,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="160"
                 cy="-8.116087079826098"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_22"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -762,11 +762,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="220"
                 cy="-20.407885373543984"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_23"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -775,11 +775,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="280"
                 cy="-13.634977609878746"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_24"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -788,11 +788,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="340"
                 cy="-19.54654549543326"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_25"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -801,11 +801,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="399.99999999999994"
                 cy="-24.1941858582439"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_26"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -814,11 +814,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="460.00000000000006"
                 cy="-22.730447829459955"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_27"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -827,11 +827,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="520"
                 cy="-26.40676098306311"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_28"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -840,11 +840,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="580"
                 cy="-25.934450183554876"
                 data-is-focusable="false"
-                fill="#32ab60"
+                fill="#57811b"
                 id="circle2_29"
                 r="0"
                 role="img"
-                stroke="#32ab60"
+                stroke="#57811b"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -859,11 +859,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="40"
                 cy="-10.211967501408111"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_30"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -872,11 +872,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="100"
                 cy="-19.013753166031247"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_31"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -885,11 +885,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="160"
                 cy="16.550981452865962"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_32"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -898,11 +898,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="220"
                 cy="-8.810290949096029"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_33"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -911,11 +911,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="280"
                 cy="5.027471516289296"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_34"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -924,11 +924,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="340"
                 cy="-3.456508025579488"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_35"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -937,11 +937,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="399.99999999999994"
                 cy="-12.650275401022567"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_36"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -950,11 +950,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="460.00000000000006"
                 cy="-13.713836049934985"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_37"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -963,11 +963,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="520"
                 cy="-11.060134959710552"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_38"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -976,11 +976,11 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                 cx="580"
                 cy="-14.544113451797218"
                 data-is-focusable="false"
-                fill="#800080"
+                fill="#9373c0"
                 id="circle2_39"
                 r="0"
                 role="img"
-                stroke="#800080"
+                stroke="#9373c0"
                 stroke-width="3"
                 tabindex="-1"
               />
@@ -988,7 +988,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
             <line
               id="verticalLine_1"
               opacity="0.5"
-              stroke="#800080"
+              stroke="#9373c0"
               stroke-dasharray="5.5"
               stroke-width="1"
               visibility="hidden"
@@ -1121,8 +1121,8 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                           class=
 
                               {
-                                background-color: #ff9933;
-                                border-color: #ff9933;
+                                background-color: #637cef;
+                                border-color: #637cef;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -1130,7 +1130,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                                 width: 12px;
                               }
                               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #ff9933, #ff9933);
+                                content: linear-gradient(to right, #637cef, #637cef);
                                 opacity: ;
                               }
                         />
@@ -1222,7 +1222,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
 
                               {
                                 background-color: #ffffff;
-                                border-color: #3780bf;
+                                border-color: #f7630c;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -1322,7 +1322,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
 
                               {
                                 background-color: #ffffff;
-                                border-color: #32ab60;
+                                border-color: #57811b;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -1422,7 +1422,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
 
                               {
                                 background-color: #ffffff;
-                                border-color: #800080;
+                                border-color: #9373c0;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -19261,12 +19261,12 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 role="region"
               >
                 <path
-                  d="M60.571,-15.57L65.714,-14.518L70.857,-14.477L76,-13.23L81.143,-13.415L86.286,-12.964L91.429,-15.472L96.571,-13.949L101.714,-16.429L106.857,-15.789L112,-14.185L117.143,-13.501L122.286,-14.286L127.429,-14.62L132.571,-13.214L137.714,-12.321L142.857,-12.508L148,-15.057L153.143,-12.872L158.286,-12.215L163.429,-15.292L168.571,-15.036L173.714,-15.199L178.857,-16.57L184,-15.602L189.143,-16.178L194.286,-18.02L199.429,-17.795L204.571,-19.054L209.714,-19.761L214.857,-22.471L220,-21.628L225.143,-19.744L230.286,-21.236L235.429,-23.071L240.571,-22.66L245.714,-22.202L250.857,-21.087L256,-19.913L261.143,-19.218L266.286,-18.927L271.429,-17.289L276.571,-20.751L281.714,-23.605L286.857,-25.412L292,-26.263L297.143,-28.068L302.286,-24.119L307.429,-24.977L312.571,-25.337L317.714,-25.363L322.857,-25.724L328,-26.132L333.143,-24.784L338.286,-24.956L343.429,-26.963L348.571,-26.764L353.714,-25.946L358.857,-27.863L364,-26.334L369.143,-25.43L374.286,-28.273L379.429,-29.509L384.571,-28.86L389.714,-29.072L394.857,-31.733L400,-31.503L405.143,-33.08L410.286,-33.993L415.429,-32.286L420.571,-32.675L425.714,-31.507L430.857,-31.001L436,-32.834L441.143,-30.498L446.286,-30.699L451.429,-33.238L456.571,-33.862L461.714,-34.008L466.857,-32.688L472,-32.18L477.143,-33.849L482.286,-31.42L487.429,-32.372L492.571,-32.803L497.714,-32.984L502.857,-32.344L508,-30.893L513.143,-29.169L518.286,-28.482L523.429,-25.502L528.571,-26.719L533.714,-22.382L538.857,-22.601L544,-19.33L549.143,-18.289L554.286,-16.153L559.429,-14.789L564.571,-9.641L569.714,-10.706"
+                  d="M61.75,-15.57L66.893,-14.518L72.036,-14.477L77.179,-13.23L82.321,-13.415L87.464,-12.964L92.607,-15.472L97.75,-13.949L102.893,-16.429L108.036,-15.789L113.179,-14.185L118.321,-13.501L123.464,-14.286L128.607,-14.62L133.75,-13.214L138.893,-12.321L144.036,-12.508L149.179,-15.057L154.321,-12.872L159.464,-12.215L164.607,-15.292L169.75,-15.036L174.893,-15.199L180.036,-16.57L185.179,-15.602L190.321,-16.178L195.464,-18.02L200.607,-17.795L205.75,-19.054L210.893,-19.761L216.036,-22.471L221.179,-21.628L226.321,-19.744L231.464,-21.236L236.607,-23.071L241.75,-22.66L246.893,-22.202L252.036,-21.087L257.179,-19.913L262.321,-19.218L267.464,-18.927L272.607,-17.289L277.75,-20.751L282.893,-23.605L288.036,-25.412L293.179,-26.263L298.321,-28.068L303.464,-24.119L308.607,-24.977L313.75,-25.337L318.893,-25.363L324.036,-25.724L329.179,-26.132L334.321,-24.784L339.464,-24.956L344.607,-26.963L349.75,-26.764L354.893,-25.946L360.036,-27.863L365.179,-26.334L370.321,-25.43L375.464,-28.273L380.607,-29.509L385.75,-28.86L390.893,-29.072L396.036,-31.733L401.179,-31.503L406.321,-33.08L411.464,-33.993L416.607,-32.286L421.75,-32.675L426.893,-31.507L432.036,-31.001L437.179,-32.834L442.321,-30.498L447.464,-30.699L452.607,-33.238L457.75,-33.862L462.893,-34.008L468.036,-32.688L473.179,-32.18L478.321,-33.849L483.464,-31.42L488.607,-32.372L493.75,-32.803L498.893,-32.984L504.036,-32.344L509.179,-30.893L514.321,-29.169L519.464,-28.482L524.607,-25.502L529.75,-26.719L534.893,-22.382L540.036,-22.601L545.179,-19.33L550.321,-18.289L555.464,-16.153L560.607,-14.789L565.75,-9.641L570.893,-10.706"
                   data-is-focusable="true"
                   fill="transparent"
                   id="lineID1_1"
                   opacity="1"
-                  stroke="#3780bf"
+                  stroke="#f7630c"
                   stroke-linecap="round"
                   stroke-width="4"
                   tabindex="0"
@@ -19277,7 +19277,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   fill="#ffffff"
                   id="staticHighlightCircle7_1"
                   r="5.5"
-                  stroke="#3780bf"
+                  stroke="#f7630c"
                   stroke-width="4"
                   visibility="hidden"
                 />
@@ -19287,12 +19287,12 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 role="region"
               >
                 <path
-                  d="M60.571,-10.657L65.714,-12.053L70.857,-13.614L76,-14.151L81.143,-14.683L86.286,-11.49L91.429,-10.234L96.571,-8.872L101.714,-9.502L106.857,-13.6L112,-14.439L117.143,-15.918L122.286,-18.688L127.429,-17.421L132.571,-17.034L137.714,-19.914L142.857,-16.748L148,-17.119L153.143,-17.571L158.286,-18.723L163.429,-17.984L168.571,-15.849L173.714,-15.629L178.857,-15.65L184,-14.742L189.143,-12.72L194.286,-10.082L199.429,-10.181L204.571,-10.629L209.714,-9.185L214.857,-6.482L220,-7.573L225.143,-8.434L230.286,-8.538L235.429,-6.745L240.571,-4.324L245.714,-2.812L250.857,-4.697L256,-0.718L261.143,-0.391L266.286,0.598L271.429,0.354L276.571,2.452L281.714,2.709L286.857,1.43L292,3.28L297.143,6.133L302.286,8.284L307.429,11.138L312.571,13.523L317.714,11.324L322.857,12.439L328,14.297L333.143,11.099L338.286,12.065L343.429,12.846L348.571,12.035L353.714,13.261L358.857,9.119L364,11.015L369.143,12.592L374.286,11.237L379.429,10.412L384.571,8.083L389.714,10.647L394.857,9.489L400,9.868L405.143,8.917L410.286,7.723L415.429,6.398L420.571,7.591L425.714,9.873L430.857,11.517L436,12.895L441.143,12.788L446.286,14.587L451.429,14.276L456.571,13.461L461.714,13.968L466.857,14.403L472,12.163L477.143,11.814L482.286,9.222L487.429,10.647L492.571,12.04L497.714,10.751L502.857,10.37L508,10.065L513.143,12.036L518.286,11.384L523.429,11.592L528.571,10.036L533.714,9.577L538.857,8.23L544,8.61L549.143,8.425L554.286,7.623L559.429,9.931L564.571,10.429L569.714,10.555"
+                  d="M61.75,-10.657L66.893,-12.053L72.036,-13.614L77.179,-14.151L82.321,-14.683L87.464,-11.49L92.607,-10.234L97.75,-8.872L102.893,-9.502L108.036,-13.6L113.179,-14.439L118.321,-15.918L123.464,-18.688L128.607,-17.421L133.75,-17.034L138.893,-19.914L144.036,-16.748L149.179,-17.119L154.321,-17.571L159.464,-18.723L164.607,-17.984L169.75,-15.849L174.893,-15.629L180.036,-15.65L185.179,-14.742L190.321,-12.72L195.464,-10.082L200.607,-10.181L205.75,-10.629L210.893,-9.185L216.036,-6.482L221.179,-7.573L226.321,-8.434L231.464,-8.538L236.607,-6.745L241.75,-4.324L246.893,-2.812L252.036,-4.697L257.179,-0.718L262.321,-0.391L267.464,0.598L272.607,0.354L277.75,2.452L282.893,2.709L288.036,1.43L293.179,3.28L298.321,6.133L303.464,8.284L308.607,11.138L313.75,13.523L318.893,11.324L324.036,12.439L329.179,14.297L334.321,11.099L339.464,12.065L344.607,12.846L349.75,12.035L354.893,13.261L360.036,9.119L365.179,11.015L370.321,12.592L375.464,11.237L380.607,10.412L385.75,8.083L390.893,10.647L396.036,9.489L401.179,9.868L406.321,8.917L411.464,7.723L416.607,6.398L421.75,7.591L426.893,9.873L432.036,11.517L437.179,12.895L442.321,12.788L447.464,14.587L452.607,14.276L457.75,13.461L462.893,13.968L468.036,14.403L473.179,12.163L478.321,11.814L483.464,9.222L488.607,10.647L493.75,12.04L498.893,10.751L504.036,10.37L509.179,10.065L514.321,12.036L519.464,11.384L524.607,11.592L529.75,10.036L534.893,9.577L540.036,8.23L545.179,8.61L550.321,8.425L555.464,7.623L560.607,9.931L565.75,10.429L570.893,10.555"
                   data-is-focusable="true"
                   fill="transparent"
                   id="lineID1_0"
                   opacity="1"
-                  stroke="#ff9933"
+                  stroke="#637cef"
                   stroke-linecap="round"
                   stroke-width="4"
                   tabindex="-1"
@@ -19303,7 +19303,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                   fill="#ffffff"
                   id="staticHighlightCircle7_0"
                   r="5.5"
-                  stroke="#ff9933"
+                  stroke="#637cef"
                   stroke-width="4"
                   visibility="hidden"
                 />
@@ -19433,8 +19433,8 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                           class=
 
                               {
-                                background-color: #ff9933;
-                                border-color: #ff9933;
+                                background-color: #637cef;
+                                border-color: #637cef;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -19442,7 +19442,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                 width: 12px;
                               }
                               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #ff9933, #ff9933);
+                                content: linear-gradient(to right, #637cef, #637cef);
                                 opacity: ;
                               }
                         />
@@ -19533,8 +19533,8 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                           class=
 
                               {
-                                background-color: #3780bf;
-                                border-color: #3780bf;
+                                background-color: #f7630c;
+                                border-color: #f7630c;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;
@@ -19542,7 +19542,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                                 width: 12px;
                               }
                               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #3780bf, #3780bf);
+                                content: linear-gradient(to right, #f7630c, #f7630c);
                                 opacity: ;
                               }
                         />
@@ -19634,7 +19634,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
 
                               {
                                 background-color: #ffffff;
-                                border-color: #32ab60;
+                                border-color: #57811b;
                                 border: 1px solid;
                                 content: ;
                                 height: 12px;

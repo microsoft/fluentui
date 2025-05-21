@@ -174,15 +174,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = [
-      'lines',
       'markers',
       'text+markers',
       'markers+text',
       'lines+markers',
       'markers+line',
       'text+lines+markers',
-      'text+lines',
-      'lines+text',
     ].includes((plotlyData[0] as PlotData)?.mode);
     const chartProps: ILineChartProps | IAreaChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
@@ -198,7 +195,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     if (isAreaChart) {
       return <ResponsiveAreaChart {...chartProps} />;
     }
-    return <ResponsiveLineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
+    return <ResponsiveLineChart {...chartProps} />;
   };
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
