@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fixes accesibility issues with dialog close button",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
