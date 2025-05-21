@@ -5,6 +5,8 @@
 import tokensJSONRaw from './tokens.json';
 import { fluentOverrides as fluentFallbacksRaw } from '../src/fluentOverrides';
 import type { FluentOverrideValue, FluentOverrides } from '../src/fluentOverrides';
+import { fluentExtensions as fluentExtensionsRaw } from '../src/fluentExtensions';
+import type { FluentExtensions, FluentExtensionValue } from '../src/fluentExtensions';
 import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
@@ -18,6 +20,7 @@ const project = new Project({
 
 const tokensJSON = dedupeShadowTokens(tokensJSONRaw);
 const fluentFallbacks: FluentOverrides = fluentFallbacksRaw;
+const fluentExtensions: FluentExtensions = fluentExtensionsRaw;
 // Store exports so we can add them to index.ts at the end
 const exportList: Record<string, string[]> = {};
 // Add an automated header warning to each file to prevent direct modifications
@@ -134,7 +137,9 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
   const fstReferenceName = toCamelCase(cleanFstTokenName(tokenData.fst_reference));
   const tokenSemanticRef = isInvalidToken(fstReferenceName) ? null : fstReferenceName + 'Raw';
 
-  const fluentFallback = fluentFallbacks[token];
+  // Check if extension token or fluent fallback exist
+  const fluentExtensionFallback = fluentExtensions[token];
+  const fluentFallback = fluentExtensionFallback ? fluentExtensionFallback : fluentFallbacks[token];
 
   if (tokenSemanticRef && fluentFallback) {
     return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
@@ -215,11 +220,32 @@ const generateTokenVariables = () => {
     }
   }
 
+  let extendedTokens = '';
+  const extendedVarFile = path.join(__dirname, '../src/extended/tokens.ts');
+  exportList[extendedVarFile] = [];
+  for (const extendedTokenName in fluentExtensions) {
+    const extensionData: FluentExtensionValue | null = fluentExtensions[extendedTokenName];
+    if (!extensionData) {
+      continue;
+    }
+
+    const tokenData: Token = tokensJSON[extensionData.extendToken];
+    const tokenNameRaw = extensionData.extendToken + 'Raw';
+
+    // Our default token value if no fallbacks found.
+    const resolvedTokenFallback = getResolvedToken(extendedTokenName, tokenData, tokenNameRaw);
+
+    // Add to our list of exports for later
+    exportList[extendedVarFile].push(extendedTokenName);
+    extendedTokens += tokenExport(extendedTokenName, resolvedTokenFallback);
+  }
+
   // Add all generated token files
   const tokens = {
     optional: optionalTokens,
     control: controlTokens,
     nullable: nullableTokens,
+    extended: extendedTokens,
   };
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
     const filePath = path.join(__dirname, `../src/${tokensCategory}/tokens.ts`);

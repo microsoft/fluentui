@@ -629,6 +629,9 @@ export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 export const cornerZeroRaw = "--smtc-corner-zero";
 
 // @public (undocumented)
+export const ctrlAccordionGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalS))";
+
+// @public (undocumented)
 export const ctrlAvatarActiveRingSize = "var(--smtc-ctrl-avatar-active-ring-size)";
 
 // @public (undocumented)
