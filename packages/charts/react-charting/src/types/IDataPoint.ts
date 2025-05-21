@@ -300,6 +300,46 @@ export interface ILineDataInVerticalBarChart {
 /**
  * {@docCategory IChartData}
  */
+export interface IBaseDataPoint {
+  /**
+   * Defines the function that is executed on clicking  line
+   */
+  onDataPointClick?: () => void;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string | { [id: string]: number };
+
+  /**
+   * Whether to hide callout data for the point.
+   */
+  hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineChartDataPoint extends IBaseDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -834,46 +874,6 @@ export interface IImageExportOptions {
   height?: number;
   scale?: number;
   background?: string;
-}
-
-/**
- * {@docCategory IChartData}
- */
-export interface IBaseDataPoint {
-  /**
-   * Defines the function that is executed on clicking  line
-   */
-  onDataPointClick?: () => void;
-
-  /**
-   * Callout data for x axis
-   */
-  xAxisCalloutData?: string;
-
-  /**
-   * Callout data for y axis
-   */
-  yAxisCalloutData?: string | { [id: string]: number };
-
-  /**
-   * Whether to hide callout data for the point.
-   */
-  hideCallout?: boolean;
-
-  /**
-   * Accessibility data for callout
-   */
-  callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * X axis Accessibility data for callout
-   */
-  xAxisCalloutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Marker size of the points
-   */
-  markerSize?: number;
 }
 
 /**

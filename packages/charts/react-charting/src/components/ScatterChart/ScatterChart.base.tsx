@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IChildProps, IScatterChartStyleProps, IScatterChartStyles, IScatterChartProps } from './ScatterChart.types';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import {
   areArraysEqual,
@@ -31,8 +31,9 @@ import {
   getColorFromToken,
   formatDate,
 } from '../../utilities/index';
-import { classNamesFunction, DirectionalHint, find, getId } from '@fluentui/react';
-import { IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
+import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
+import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
+import { toImage as convertToImage } from '../../utilities/image-export-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -71,6 +72,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _xAxisCalloutAccessibilityData: IAccessibilityProps = {};
   const _xBandwidth = React.useRef<number>(0);
   const cartesianChartRef = React.useRef<IChart>(null);
+  const legendsRef = React.useRef<ILegendContainer>(null);
 
   const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
   const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -99,6 +101,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     props.componentRef,
     () => ({
       chartContainer: cartesianChartRef.current?.chartContainer ?? null,
+      toImage: (opts?: IImageExportOptions): Promise<string> => {
+        return convertToImage(cartesianChartRef.current?.chartContainer, legendsRef.current?.toSVG, getRTL(), opts);
+      },
     }),
     [],
   );
@@ -622,6 +627,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   return !_isChartEmpty() ? (
     <CartesianChart
       {...props}
+      ref={cartesianChartRef}
       chartTitle={props.data.chartTitle}
       isCalloutForStack
       points={points}

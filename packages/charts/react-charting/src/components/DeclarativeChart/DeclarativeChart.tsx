@@ -104,6 +104,7 @@ const useColorMapping = () => {
   const colorMap = React.useRef(new Map<string, string>());
   return colorMap;
 };
+export type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 /**
  * DeclarativeChart component.
@@ -169,7 +170,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
     const isScatterMarkers = ['markers', 'text+markers', 'markers+text'].includes((plotlyData[0] as PlotData)?.mode);
-    const chartType = isAreaChart ? 'Area' : isScatterMarkers ? 'Scatter' : 'Line';
+    const chartType = isAreaChart ? 'area' : isScatterMarkers ? 'scatter' : 'line';
     const chartProps: ILineChartProps | IAreaChartProps | IScatterChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
@@ -186,7 +187,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     if (isScatterMarkers) {
       return <ResponsiveScatterChart {...(chartProps as IScatterChartProps)} />;
     }
-    return <ResponsiveLineChart {...chartProps} lineMode={isScatterMarkers ? 'scatter' : 'default'} />;
+    return <ResponsiveLineChart {...chartProps} lineMode={'default'} />;
   };
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
