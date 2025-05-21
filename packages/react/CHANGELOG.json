@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 20 May 2025 07:21:43 GMT",
+      "tag": "@fluentui/react_v8.122.19",
+      "version": "8.122.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6a44f96833d5b92bec086ddd9275cfe7d149cb8c",
+            "comment": "fix(PeoplePicker): high contrast color for tag items uses system color"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 May 2025 07:22:04 GMT",
       "tag": "@fluentui/react_v8.122.18",
       "version": "8.122.18",

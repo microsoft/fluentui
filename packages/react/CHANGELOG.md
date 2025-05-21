@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
+This log was last generated on Tue, 20 May 2025 07:21:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.122.19](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.19)
+
+Tue, 20 May 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.18..@fluentui/react_v8.122.19)
+
+### Patches
+
+- fix(PeoplePicker): high contrast color for tag items uses system color ([PR #34451](https://github.com/microsoft/fluentui/pull/34451) by sarah.higley@microsoft.com)
 
 ## [8.122.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.18)
 
