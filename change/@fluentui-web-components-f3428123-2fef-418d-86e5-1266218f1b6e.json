@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "manage focus only when menu is open",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

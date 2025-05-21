@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 21 May 2025 04:07:25 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.102",
+      "version": "3.0.0-beta.102",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "98c098337cfeec177531409ae36fc3d59f8ee0f7",
+            "comment": "manage focus only when menu is open"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 May 2025 04:06:48 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.101",
       "version": "3.0.0-beta.101",
