@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 19 May 2025 04:07:24 GMT and should not be manually modified.
+This log was last generated on Wed, 21 May 2025 04:07:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.102)
+
+Wed, 21 May 2025 04:07:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.101..@fluentui/web-components_v3.0.0-beta.102)
+
+### Changes
+
+- manage focus only when menu is open ([PR #34486](https://github.com/microsoft/fluentui/pull/34486) by machi@microsoft.com)
+
+## [3.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.101)
+
+Tue, 20 May 2025 04:06:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.100..@fluentui/web-components_v3.0.0-beta.101)
+
+### Changes
+
+- fixes accesibility issues with dialog close button ([PR #34469](https://github.com/microsoft/fluentui/pull/34469) by jes@microsoft.com)
 
 ## [3.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.100)
 

@@ -1,4 +1,5 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { FASTElement } from '@microsoft/fast-element';
+import { isDialog } from '../dialog/dialog.options';
 /**
  * Dialog Body component that extends the FASTElement class.
  *
@@ -9,9 +10,20 @@ import { attr, FASTElement } from '@microsoft/fast-element';
  */
 export class DialogBody extends FASTElement {
   /**
-   * @public
-   * Indicates whether the dialog has a title action
+   * Handles click event for the close slot
+   *
+   * @param e - the click event
+   * @internal
    */
-  @attr({ mode: 'boolean', attribute: 'no-title-action' })
-  public noTitleAction: boolean = false;
+  public clickHandler(event: MouseEvent): boolean | void {
+    if (!event.defaultPrevented) {
+      const dialog = this.parentElement;
+
+      if (isDialog(dialog)) {
+        dialog.hide();
+      }
+    }
+
+    return true;
+  }
 }

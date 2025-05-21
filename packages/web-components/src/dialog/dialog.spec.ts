@@ -134,6 +134,56 @@ test.describe('Dialog', () => {
     await expect(content).toBeHidden();
   });
 
+  test('should close after a button is slotted into the close slot and clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const closeButton = element.locator('fluent-button[slot="close"]');
+    const content = element.locator('#content');
+
+    await fastPage.setTemplate(/* html */ `
+      <fluent-dialog>
+        <fluent-dialog-body>
+            <fluent-button slot="close">Close</fluent-button>
+            <div id="content">content</div>
+        </fluent-dialog-body>
+      </fluent-dialog>
+    `);
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await closeButton.click();
+
+    await expect(content).toBeHidden();
+  });
+
+  test('should NOT close after a slotted button is clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const genericButton = element.locator('fluent-button');
+    const content = element.locator('#content');
+
+    await fastPage.setTemplate(/* html */ `
+      <fluent-dialog type="non-modal">
+        <fluent-dialog-body>
+            <fluent-button>Close</fluent-button>
+            <div id="content">content</div>
+        </fluent-dialog-body>
+      </fluent-dialog>
+    `);
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await genericButton.click();
+
+    await expect(content).toBeVisible();
+  });
+
   test('should NOT close after the escape key is pressed when its `type` attribute is set to "non-modal"', async ({
     fastPage,
     page,

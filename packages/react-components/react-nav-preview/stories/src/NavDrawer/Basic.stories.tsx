@@ -210,7 +210,7 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
       </NavDrawer>
       <div className={styles.content}>
         <Tooltip content="Toggle navigation pane" relationship="label">
-          <Hamburger onClick={() => setIsOpen(!isOpen)} {...restoreFocusTargetAttributes} />
+          <Hamburger onClick={() => setIsOpen(!isOpen)} {...restoreFocusTargetAttributes} aria-expanded={isOpen} />
         </Tooltip>
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
@@ -229,7 +229,7 @@ export const Basic = (props: Partial<NavDrawerProps>) => {
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />
-          <Label id={multipleLabelId}>Categories</Label>
+          <Label id={multipleLabelId}>Allow multiple expanded categories</Label>
           <Switch
             checked={isMultiple}
             onChange={(_, data) => setIsMultiple(!!data.checked)}
