@@ -15,7 +15,7 @@ export class DialogBody extends FASTElement {
    * @param e - the click event
    * @internal
    */
-  public clickHandler(event: MouseEvent): boolean | void {
+  public clickHandler(event: PointerEvent): boolean | void {
     if (!event.defaultPrevented) {
       const dialog = this.parentElement;
 
