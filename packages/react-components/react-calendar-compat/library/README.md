@@ -28,7 +28,7 @@ yarn workspace @fluentui/react-calendar-compat start
 
 ## What makes a compat component?
 
-A compat component is a component taken from v8 and partially updated with the v9 toolset while keeping its original functionality and most of the original API surface. The most noticeable change being the removal of all v8 dependencies and using only v9 dependencies. While this is a good first step, this is not the final v9 component. We are working on a fully fleshed v9 replacement that will follow all v9 patterns and conventions.
+A compat component is a component taken from v8 and partially updated with the v9 toolset while keeping its original functionality and most of the original API surface. The most noticeable change being the removal of all v8 dependencies and using only v9 dependencies.
 
 ## How publishing the package will be handled
 
