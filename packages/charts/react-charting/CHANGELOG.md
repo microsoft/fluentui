@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 20 May 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Wed, 21 May 2025 07:20:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.91)
+
+Wed, 21 May 2025 07:20:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.90..@fluentui/react-charting_v5.23.91)
+
+### Patches
+
+- fix(declarative-chart): negative VSBC only lines case fix ([PR #34481](https://github.com/microsoft/fluentui/pull/34481) by anushgupta@microsoft.com)
 
 ## [5.23.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.90)
 

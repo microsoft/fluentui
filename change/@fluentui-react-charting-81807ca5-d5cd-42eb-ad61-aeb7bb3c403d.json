@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(declarative-chart): negative VSBC only lines case fix",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
