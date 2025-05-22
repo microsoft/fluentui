@@ -40,7 +40,7 @@ const useRootStyles = makeStyles({
 
 const useIndicatorBaseClassName = makeResetStyles({
   borderRadius: semanticTokens.ctrlChoiceSwitchCorner,
-  border: `${semanticTokens.strokeWidthDefault} solid`,
+  border: `${semanticTokens.strokeWidthCtrlOutlineRest} solid`,
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
@@ -92,7 +92,7 @@ const useInputBaseClassName = makeResetStyles({
 
   // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
   // This is done so that clicking on that "empty space" still toggles the switch.
-  width: `calc(${semanticTokens.ctrlChoiceSwitchWidth} + 2 * ${tokens.spacingHorizontalS})`,
+  width: `calc(${semanticTokens.ctrlChoiceSwitchWidth} + 2 * ${semanticTokens.ctrlChoicePaddingHorizontal})`,
 
   // Checked (both enabled and disabled)
   ':checked': {
@@ -109,6 +109,8 @@ const useInputBaseClassName = makeResetStyles({
 
     [`& ~ .${switchClassNames.indicator}`]: {
       color: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
+      borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
+      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
@@ -122,6 +124,7 @@ const useInputBaseClassName = makeResetStyles({
     [`& ~ .${switchClassNames.indicator}`]: {
       color: semanticTokens.ctrlChoiceBaseBackgroundRest,
       borderColor: semanticTokens.ctrlChoiceBaseStrokeRest,
+      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
@@ -132,6 +135,7 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         color: semanticTokens.ctrlChoiceBaseBackgroundHover,
         borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
+        borderWidth: semanticTokens.strokeWidthCtrlOutlineHover,
       },
     },
 
@@ -139,6 +143,7 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         color: semanticTokens.ctrlChoiceBaseBackgroundPressed,
         borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
+        borderWidth: semanticTokens.strokeWidthCtrlOutlinePressed,
       },
     },
   },
@@ -149,12 +154,14 @@ const useInputBaseClassName = makeResetStyles({
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
       color: tokens.colorNeutralForegroundInverted,
       borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandRest,
+      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
         borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandHover,
+        borderWidth: semanticTokens.strokeWidthCtrlOutlineHover,
       },
     },
 
@@ -162,6 +169,7 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
         borderColor: semanticTokens.strokeCtrlOnActiveBrandPressed,
+        borderWidth: semanticTokens.strokeWidthCtrlOutlinePressed,
       },
     },
   },
@@ -169,7 +177,9 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
+      color: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
       borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
+      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
   },
 
@@ -178,6 +188,7 @@ const useInputBaseClassName = makeResetStyles({
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
       borderColor: semanticTokens.strokeCtrlOnActiveBrandDisabled,
+      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
   },
 
