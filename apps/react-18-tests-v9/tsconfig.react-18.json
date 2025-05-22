@@ -11,7 +11,7 @@
     "isolatedModules": true,
     "importHelpers": true,
     "jsx": "react",
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "typeRoots": ["./node_modules/@types"],
@@ -30,7 +30,8 @@
   ],
   "include": [
     "../../packages/react-components/*/stories/**/*.stories.tsx",
-    "../../packages/react-components/*/stories/**/*.stories.ts"
+    "../../packages/react-components/*/stories/**/*.stories.ts",
+    "./src/issues.tsx"
   ],
   "files": ["../../typings/static-assets/index.d.ts"]
 }
