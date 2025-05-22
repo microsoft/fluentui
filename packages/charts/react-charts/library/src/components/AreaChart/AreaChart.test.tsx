@@ -2,8 +2,6 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { AreaChart, CustomizedCalloutData, LineChartPoints } from './index';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-
 import { getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -249,7 +247,7 @@ const chartPointsWithDate = [
     opacity: 0.8,
     lineOptions: {
       strokeWidth: 5,
-      stroke: DefaultPalette.blueDark,
+      stroke: '#002050',
     },
   },
 ];
@@ -409,8 +407,8 @@ const negativeChartData = {
 const chartDataWithDates = {
   chartTitle: 'Area chart styled example',
   lineChartData: chartPointsWithDate,
-  pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueDark },
-  pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueDark },
+  pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: '#002050' },
+  pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: '#002050' },
 };
 
 const secondaryYScalePoints = [{ yMaxValue: 50000, yMinValue: 10000 }];
