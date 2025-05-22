@@ -549,7 +549,11 @@ export const transformPlotlyJsonToScatterChartProps = (
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';
-    const legendShape = dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+    const legendShape = series.mode.includes('markers')
+      ? 'circular'
+      : dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+      ? 'dottedLine'
+      : 'default';
 
     return {
       legend,
