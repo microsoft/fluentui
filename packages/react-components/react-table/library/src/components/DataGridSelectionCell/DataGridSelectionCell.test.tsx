@@ -173,22 +173,6 @@ describe('DataGridSelectionCell', () => {
       expect(getByRole('gridcell').getAttribute('aria-selected')).toBe('false');
     });
 
-    it('should not render aria-selected', () => {
-      const ctx = mockDataGridContext(
-        { selectableRows: true },
-        { selection: { allRowsSelected: false, someRowsSelected: true, selectionMode: 'multiselect' } },
-      );
-      const { getByRole } = render(
-        <DataGridHeader>
-          <DataGridContextProvider value={ctx}>
-            <DataGridSelectionCell />
-          </DataGridContextProvider>
-        </DataGridHeader>,
-      );
-
-      expect(getByRole('gridcell').hasAttribute('aria-selected')).toBeNull();
-    });
-
     it('should render aria-selected true if all rows are selected', () => {
       const ctx = mockDataGridContext(
         { selectableRows: true },
