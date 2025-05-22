@@ -134,7 +134,7 @@ const useIconBaseClassName = makeResetStyles({
   height: semanticTokens.sizeCtrlIcon,
   width: semanticTokens.sizeCtrlIcon,
 
-  [iconSpacingVar]: `calc(${semanticTokens.gapInsideCtrlDefault} + ${semanticTokens.paddingCtrlTextSide})`,
+  [iconSpacingVar]: `calc(${semanticTokens.ctrlButtonGapInsideDefault} + ${semanticTokens.paddingCtrlTextSide})`,
 });
 
 const useRootStyles = makeStyles({

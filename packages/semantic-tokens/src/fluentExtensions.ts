@@ -14,4 +14,5 @@ export type FluentExtensions = Record<string, FluentExtensionValue | null>;
 
 export const fluentExtensions: FluentExtensions = {
   ctrlAccordionGapInsideDefault: { extendToken: 'gapInsideCtrlDefault', f2Token: 'spacingHorizontalS' },
+  ctrlButtonGapInsideDefault: { extendToken: 'gapInsideCtrlDefault', f2Token: 'spacingHorizontalSNudge' },
 };
