@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adds click event to close slot of drawer",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
