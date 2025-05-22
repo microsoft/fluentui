@@ -5,6 +5,7 @@
 import tokensJSONRaw from './tokens.json';
 import { fluentOverrides as fluentFallbacksRaw } from '../src/fluentOverrides';
 import type { FluentOverrideValue, FluentOverrides } from '../src/fluentOverrides';
+import { legacyFluentVariantsValues, LegacyFluentVariantValue } from '../src/fluentLegacyVariants';
 import fs from 'node:fs';
 import { Project } from 'ts-morph';
 import { format } from 'prettier';
@@ -134,7 +135,9 @@ const getResolvedToken = (token: string, tokenData: Token, tokenNameRaw: string)
   const fstReferenceName = toCamelCase(cleanFstTokenName(tokenData.fst_reference));
   const tokenSemanticRef = isInvalidToken(fstReferenceName) ? null : fstReferenceName + 'Raw';
 
-  const fluentFallback = fluentFallbacks[token];
+  // Check if variant fluent fallback token or default fluent fallback exist
+  const fluentLegacyVariantFallback = legacyFluentVariantsValues[token];
+  const fluentFallback = fluentLegacyVariantFallback ? fluentLegacyVariantFallback : fluentFallbacks[token];
 
   if (tokenSemanticRef && fluentFallback) {
     return `var(${escapeInlineToken(tokenNameRaw)}, var(${escapeInlineToken(
@@ -215,12 +218,42 @@ const generateTokenVariables = () => {
     }
   }
 
+  let variantFallbackTokens = '';
+  const variantFallbackVarFile = path.join(__dirname, '../src/legacyVariant/tokens.ts');
+  exportList[variantFallbackVarFile] = [];
+  for (const extendedTokenName in legacyFluentVariantsValues) {
+    const variantData: LegacyFluentVariantValue | null = legacyFluentVariantsValues[extendedTokenName];
+    if (!variantData) {
+      continue;
+    }
+
+    const tokenData: Token = tokensJSON[variantData.originalToken];
+    const tokenNameRaw = variantData.originalToken + 'Raw';
+
+    // Our default token value if no fallbacks found.
+    const resolvedTokenFallback = getResolvedToken(extendedTokenName, tokenData, tokenNameRaw);
+
+    // Add to our list of exports for later
+    exportList[variantFallbackVarFile].push(extendedTokenName);
+
+    const tokenDoc = `/**
+     * This is a legacy variant for ${variantData.originalToken} to enable backwards compatibility.
+     * It's purpose is to support Fluent UI legacy fallback variants only.
+     * This token is not intended for use in new semantic theme implementations
+     * please use ${variantData.originalToken} instead.
+     */\n`;
+
+    variantFallbackTokens += tokenDoc + tokenExport(extendedTokenName, resolvedTokenFallback);
+  }
+
   // Add all generated token files
   const tokens = {
     optional: optionalTokens,
     control: controlTokens,
     nullable: nullableTokens,
+    legacyVariant: variantFallbackTokens,
   };
+
   for (const [tokensCategory, _tokens] of Object.entries(tokens)) {
     const filePath = path.join(__dirname, `../src/${tokensCategory}/tokens.ts`);
     writeDirectoryFile(filePath, _tokens);

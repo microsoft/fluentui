@@ -76,7 +76,7 @@ export const fluentOverrides: FluentOverrides = {
   foregroundCtrlOnTransparentHover: { f2Token: 'colorNeutralForeground2BrandHover' },
   foregroundCtrlOnTransparentPressed: { f2Token: 'colorNeutralForeground2BrandPressed' },
   foregroundCtrlOnTransparentRest: { f2Token: 'colorNeutralForeground2' },
-  gapInsideCtrlDefault: { f2Token: 'spacingHorizontalSNudge' },
+  gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlSmDefault: { f2Token: 'spacingHorizontalXS' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
