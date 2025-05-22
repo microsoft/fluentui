@@ -1801,4 +1801,4 @@ export {
   ctrlCardStatePressed,
   ctrlCardStateDisabled,
 } from './components/card/tokens';
-export { ctrlAccordionGapInsideDefault, ctrlButtonGapInsideDefault } from './extended/tokens';
+export { ctrlButtonGapInsideDefault } from './extended/tokens';
