@@ -299,4 +299,40 @@ test.describe('Dialog', () => {
 
     await expect(dialog).toHaveAttribute('aria-describedby', 'elementID');
   });
+
+  test('should not prevent default on clicks for dialog content', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const content = element.locator('#content');
+    const label = page.locator('label');
+    const input = page.locator('input');
+
+    await fastPage.setTemplate(/* html */ `
+      <fluent-dialog>
+        <fluent-dialog-body id="content">
+          <label for="input">Label</label>
+          <input id="input" />
+        </fluent-dialog-body>
+      </fluent-dialog>
+    `);
+
+    await element.evaluate((node: Dialog) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await label.click();
+
+    await expect(content).toBeVisible();
+
+    await expect(input).toBeFocused();
+
+    // Get point outside the element
+    const { x, y } = await getPointOutside(element);
+
+    // Dispatch a click event at the calculated point
+    await page.mouse.click(x, y);
+
+    await expect(content).toBeHidden();
+  });
 });
