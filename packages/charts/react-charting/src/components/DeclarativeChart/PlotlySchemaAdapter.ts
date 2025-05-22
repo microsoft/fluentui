@@ -144,12 +144,14 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
     number,
   ][];
   for (let i = filteredDateIndexPairs.length - 1; i > 0; i--) {
-    const currentMonth = filteredDateIndexPairs[i][0].getMonth();
-    const previousMonth = filteredDateIndexPairs[i - 1][0].getMonth();
-    const currentYear = filteredDateIndexPairs[i][0].getFullYear();
-    const previousYear = filteredDateIndexPairs[i - 1][0].getFullYear();
+    const currentDate = filteredDateIndexPairs[i][0];
+    const previousDate = filteredDateIndexPairs[i - 1][0];
+    const currentMonth = currentDate.getMonth();
+    const previousMonth = previousDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+    const previousYear = previousDate.getFullYear();
     if (previousMonth >= currentMonth) {
-      filteredDateIndexPairs[i - 1][0].setFullYear(filteredDateIndexPairs[i][0].getFullYear() - 1);
+      filteredDateIndexPairs[i - 1][0].setFullYear(currentYear - 1);
     } else if (previousYear > currentYear) {
       filteredDateIndexPairs[i - 1][0].setFullYear(currentYear);
     }
@@ -598,7 +600,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           : [];
 
         return {
-          legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
+          legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
             x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
