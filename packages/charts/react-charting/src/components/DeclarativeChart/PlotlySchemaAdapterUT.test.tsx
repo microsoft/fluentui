@@ -145,11 +145,7 @@ describe('correctYearMonth', () => {
   });
 
   test('Should return error when input array contains invalid months', () => {
-    try {
-      expect(correctYearMonth([10, 11, 16])).toStrictEqual([]);
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
-    }
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {

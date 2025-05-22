@@ -116,7 +116,8 @@ const isMonth = (possiblyMonthValue: any): boolean => {
 };
 
 export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isMonth);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(data, (value: any): boolean => isMonth(value) || value === null);
 };
 
 function getTitles(layout: Partial<Layout> | undefined) {
@@ -138,18 +139,27 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
     const parsedDate = `${possiblyMonthValue} 01, ${presentYear}`;
     return isDate(parsedDate) ? new Date(parsedDate) : null;
   });
-  for (let i = dates.length - 1; i > 0; i--) {
-    const currentMonth = dates[i]!.getMonth();
-    const previousMonth = dates[i - 1]!.getMonth();
-    const currentYear = dates[i]!.getFullYear();
-    const previousYear = dates[i - 1]!.getFullYear();
+  const filteredDateIndexPairs = dates.map((date, index) => [date, index]).filter(([date]) => date !== null) as [
+    Date,
+    number,
+  ][];
+  for (let i = filteredDateIndexPairs.length - 1; i > 0; i--) {
+    const currentMonth = filteredDateIndexPairs[i][0].getMonth();
+    const previousMonth = filteredDateIndexPairs[i - 1][0].getMonth();
+    const currentYear = filteredDateIndexPairs[i][0].getFullYear();
+    const previousYear = filteredDateIndexPairs[i - 1][0].getFullYear();
     if (previousMonth >= currentMonth) {
-      dates[i - 1]!.setFullYear(dates[i]!.getFullYear() - 1);
+      filteredDateIndexPairs[i - 1][0].setFullYear(filteredDateIndexPairs[i][0].getFullYear() - 1);
     } else if (previousYear > currentYear) {
-      dates[i - 1]!.setFullYear(currentYear);
+      filteredDateIndexPairs[i - 1][0].setFullYear(currentYear);
     }
+    dates[filteredDateIndexPairs[i - 1][1]] = filteredDateIndexPairs[i - 1][0];
   }
   xValues = (xValues as Datum[]).map((month, index) => {
+    if (dates[index] === null) {
+      return null;
+    }
+
     return `${month} 01, ${dates[index]!.getFullYear()}`;
   });
   return xValues;
@@ -345,7 +355,7 @@ export const transformPlotlyJsonToVSBCProps = (
           const legendShape =
             dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
           mapXToDataPoints[x].lineData!.push({
-            legend: legend + (validXYRanges.length > 1 ? `-${rangeIdx + 1}` : ''),
+            legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
             color: lineColor,
@@ -567,7 +577,7 @@ export const transformPlotlyJsonToScatterChartProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      const isString = typeof xValues[0] === 'string';
+      const isString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
       const legend: string = legends[index];
@@ -588,7 +598,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           : [];
 
         return {
-          legend: legend + (validXYRanges.length > 1 ? `-${rangeIdx + 1}` : ''),
+          legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
             x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
@@ -1181,7 +1191,7 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isStringArray = (arr: any) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(arr, (value: any) => typeof value === 'string');
+  return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
 };
 
 // TODO: Use binary search to find the appropriate bin for numeric value.
@@ -1329,6 +1339,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isInvalidValue = (value: any) => {
   return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
