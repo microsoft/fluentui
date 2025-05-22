@@ -25,8 +25,8 @@ import {
   spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalL,
-  spacingHorizontalSNudge,
   spacingHorizontalXS,
+  spacingHorizontalSNudge,
   borderRadiusCircular,
   strokeWidthThin,
   colorNeutralStroke1,
@@ -328,7 +328,7 @@ export const gapBetweenContentXLarge = `var(${gapBetweenContentXLargeRaw})`;
 export const gapBetweenContentXxLarge = `var(${gapBetweenContentXxLargeRaw})`;
 export const gapBetweenCtrlLgDefault = `var(${gapBetweenCtrlLgDefaultRaw})`;
 export const gapBetweenCtrlSmDefault = `var(${gapBetweenCtrlSmDefaultRaw})`;
-export const gapInsideCtrlDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+export const gapInsideCtrlDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalS})`;
 export const gapInsideCtrlSmDefault = `var(${gapInsideCtrlSmDefaultRaw}, ${spacingHorizontalXS})`;
 export const gapInsideCtrlSmToSecondaryIcon = `var(${gapInsideCtrlSmToSecondaryIconRaw})`;
 export const gapInsideCtrlLgDefault = `var(${gapInsideCtrlLgDefaultRaw}, ${spacingHorizontalSNudge})`;
