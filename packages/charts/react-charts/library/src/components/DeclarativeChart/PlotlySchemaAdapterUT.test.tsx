@@ -87,8 +87,8 @@ describe('isNumberArray', () => {
     expect(isNumberArray([20, 30, 40])).toBe(true);
   });
 
-  test('Should return false when input array contains numaric data in string formatt', () => {
-    expect(isNumberArray(['20', '30', '40'])).toBe(false);
+  test('Should return true when input array contains numaric data in string formatt', () => {
+    expect(isNumberArray(['20', '30', '40'])).toBe(true);
   });
 
   test('Should return false when input array contains string data', () => {

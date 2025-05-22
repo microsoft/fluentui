@@ -74,7 +74,11 @@ export const isDateArray = (data: Datum[] | Datum[][] | TypedArray | undefined):
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  return isArrayOfType(data, (value: any): boolean => typeof value === 'number' || value === null);
+  return isArrayOfType(
+    data,
+    (value: any): boolean =>
+      (typeof value === 'string' && isNumber(value)) || typeof value === 'number' || value === null,
+  );
 };
 
 export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
