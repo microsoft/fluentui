@@ -862,7 +862,7 @@ export const ctrlBooleanSelectionHint = "var(--smtc-ctrl-boolean-selection-hint)
 // @public (undocumented)
 export const ctrlBooleanSelectionHintRaw = "--smtc-ctrl-boolean-selection-hint";
 
-// @public (undocumented)
+// @public
 export const _ctrlButtonGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)

@@ -235,7 +235,15 @@ const generateTokenVariables = () => {
 
     // Add to our list of exports for later
     exportList[variantFallbackVarFile].push(extendedTokenName);
-    variantFallbackTokens += tokenExport(extendedTokenName, resolvedTokenFallback);
+
+    const tokenDoc = `/**
+     * This is a legacy variant for ${variantData.originalToken} to enable backwards compatibility.
+     * It's purpose is to support Fluent UI legacy fallback variants only.
+     * This token is not intended for use in new semantic theme implementations
+     * please use ${variantData.originalToken} instead.
+     */\n`;
+
+    variantFallbackTokens += tokenDoc + tokenExport(extendedTokenName, resolvedTokenFallback);
   }
 
   // Add all generated token files
