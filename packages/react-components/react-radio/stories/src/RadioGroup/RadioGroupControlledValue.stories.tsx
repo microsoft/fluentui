@@ -14,7 +14,7 @@ export const ControlledValue = () => {
           <Radio value="orange" label="Orange" />
         </RadioGroup>
       </Field>
-      <Button disabled={!value} onClick={() => setValue('')}>
+      <Button disabledFocusable={!value} onClick={() => setValue('')}>
         Clear selection
       </Button>
     </>
