@@ -82,6 +82,7 @@ import {
   shadowWindowActiveKeyRaw,
 } from '../control/variables';
 import {
+  strokeWidthThin,
   colorTransparentStroke,
   colorTransparentStrokeInteractive,
   colorTransparentStrokeDisabled,
@@ -456,9 +457,9 @@ export const gapBetweenListItem = `var(${gapBetweenListItemRaw}, var(${gapBetwee
 export const gapBetweenCard = `var(${gapBetweenCardRaw}, var(${gapBetweenContentMediumRaw}))`;
 export const strokeWidthDividerDefault = `var(${strokeWidthDividerDefaultRaw}, var(${strokeWidthDefaultRaw}))`;
 export const strokeWidthDividerStrong = `var(${strokeWidthDividerStrongRaw}, var(${strokeWidthDefaultRaw}))`;
-export const strokeWidthCtrlOutlineRest = `var(${strokeWidthCtrlOutlineRestRaw}, var(${strokeWidthDefaultRaw}))`;
-export const strokeWidthCtrlOutlineHover = `var(${strokeWidthCtrlOutlineHoverRaw}, var(${strokeWidthDefaultRaw}))`;
-export const strokeWidthCtrlOutlinePressed = `var(${strokeWidthCtrlOutlinePressedRaw}, var(${strokeWidthDefaultRaw}))`;
+export const strokeWidthCtrlOutlineRest = `var(${strokeWidthCtrlOutlineRestRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
+export const strokeWidthCtrlOutlineHover = `var(${strokeWidthCtrlOutlineHoverRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
+export const strokeWidthCtrlOutlinePressed = `var(${strokeWidthCtrlOutlinePressedRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
 export const strokeWidthCtrlOutlineSelected = `var(${strokeWidthCtrlOutlineSelectedRaw}, var(${strokeWidthDefaultRaw}))`;
 export const strokeWidthWindowDefault = `var(${strokeWidthWindowDefaultRaw}, var(${strokeWidthDefaultRaw}))`;
 export const backgroundToolbar = `var(${backgroundToolbarRaw}, var(${backgroundCardOnPrimaryDefaultRestRaw}))`;
