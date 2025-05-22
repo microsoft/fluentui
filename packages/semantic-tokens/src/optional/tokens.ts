@@ -91,6 +91,7 @@ import {
   colorCompoundBrandBackgroundPressed,
   colorNeutralBackgroundDisabled,
   colorNeutralForeground1,
+  colorNeutralForegroundInverted,
 } from '../legacy/tokens';
 import {
   strokeCardOnPrimaryRestRaw,
@@ -547,10 +548,10 @@ export const foregroundCtrlActiveBrandRest = `var(${foregroundCtrlActiveBrandRes
 export const foregroundCtrlActiveBrandHover = `var(${foregroundCtrlActiveBrandHoverRaw}, var(${foregroundCtrlBrandHoverRaw}))`;
 export const foregroundCtrlActiveBrandPressed = `var(${foregroundCtrlActiveBrandPressedRaw}, var(${foregroundCtrlBrandPressedRaw}))`;
 export const foregroundCtrlActiveBrandDisabled = `var(${foregroundCtrlActiveBrandDisabledRaw}, var(${foregroundCtrlBrandDisabledRaw}))`;
-export const foregroundCtrlOnActiveBrandRest = `var(${foregroundCtrlOnActiveBrandRestRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const foregroundCtrlOnActiveBrandHover = `var(${foregroundCtrlOnActiveBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const foregroundCtrlOnActiveBrandPressed = `var(${foregroundCtrlOnActiveBrandPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}))`;
-export const foregroundCtrlOnActiveBrandDisabled = `var(${foregroundCtrlOnActiveBrandDisabledRaw}, var(${foregroundCtrlOnBrandDisabledRaw}))`;
+export const foregroundCtrlOnActiveBrandRest = `var(${foregroundCtrlOnActiveBrandRestRaw}, var(${foregroundCtrlOnBrandRestRaw}, ${colorNeutralForegroundInverted}))`;
+export const foregroundCtrlOnActiveBrandHover = `var(${foregroundCtrlOnActiveBrandHoverRaw}, var(${foregroundCtrlOnBrandRestRaw}, #FFFFFF))`;
+export const foregroundCtrlOnActiveBrandPressed = `var(${foregroundCtrlOnActiveBrandPressedRaw}, var(${foregroundCtrlOnBrandRestRaw}, #FFFFFF))`;
+export const foregroundCtrlOnActiveBrandDisabled = `var(${foregroundCtrlOnActiveBrandDisabledRaw}, var(${foregroundCtrlOnBrandDisabledRaw}, #BDBDBD))`;
 export const foregroundCtrlOnOutlineRest = `var(${foregroundCtrlOnOutlineRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlOnOutlineHover = `var(${foregroundCtrlOnOutlineHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
 export const foregroundCtrlOnOutlinePressed = `var(${foregroundCtrlOnOutlinePressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;

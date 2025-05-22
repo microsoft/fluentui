@@ -120,6 +120,11 @@ export const borderRadiusMedium = 'var(--borderRadiusMedium)';
  */
 export const colorNeutralForeground1 = 'var(--colorNeutralForeground1)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInverted | `colorNeutralForegroundInverted`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInverted = 'var(--colorNeutralForegroundInverted)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
  */
