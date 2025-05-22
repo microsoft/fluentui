@@ -200,6 +200,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _yPaddingPrimary: number = 0;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _yPaddingSecondary: number = 0;
+  private _hasMarkersMode: boolean = false;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -442,6 +443,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this.props.legendProps?.selectedLegend === item.legend,
         )
       : lineChartData;
+    this._hasMarkersMode =
+      filteredData?.some((item: ILineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
     return filteredData
       ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
@@ -477,7 +480,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
     let yPadding = 0;
-    if (this.props.lineMode === 'scatter') {
+    if (this._hasMarkersMode) {
       yPadding = (endValue - startValue) * 0.1;
       if (useSecondaryYScale) {
         this._yPaddingSecondary = yPadding;
@@ -717,8 +720,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yScalePrimary;
       const yPadding =
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yPaddingSecondary : this._yPaddingPrimary;
-      const extraMaxPixels =
-        this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
+      const extraMaxPixels = this._hasMarkersMode ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
 
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
@@ -901,7 +903,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
-            this.props.lineMode === 'scatter' ? (
+            this._points[i].lineOptions?.mode?.includes('markers') ? (
               <circle
                 id={circleId}
                 key={circleId}
@@ -992,7 +994,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             currentMarkerSize = this._points[i].data[j].markerSize!;
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
-                {this.props.lineMode === 'scatter' ? (
+                {this._points[i].lineOptions?.mode?.includes('markers') ? (
                   <circle
                     id={lastCircleId}
                     key={lastCircleId}
@@ -1123,7 +1125,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             );
           }
 
-          if (this.props.lineMode !== 'scatter') {
+          if (!this._hasMarkersMode || this._points[i].lineOptions?.mode?.includes('lines')) {
             if (isLegendSelected) {
               // don't draw line if it is in a gap
               if (!isInGap) {

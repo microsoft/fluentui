@@ -339,7 +339,10 @@ export const transformPlotlyJsonToVSBCProps = (
           legendShape,
           y: yVal,
           color: lineColor,
-          ...(lineOptions ? { lineOptions } : {}),
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
           useSecondaryYScale: usesSecondaryYScale(series),
         });
         if (!usesSecondaryYScale(series)) {
@@ -561,7 +564,10 @@ export const transformPlotlyJsonToScatterChartProps = (
           : {}),
       })),
       color: seriesColor,
-      ...(lineOptions ? { lineOptions } : {}),
+      lineOptions: {
+        ...(lineOptions ?? {}),
+        mode: series.mode,
+      },
       useSecondaryYScale: usesSecondaryYScale(series),
     } as ILineChartPoints;
   });
