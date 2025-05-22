@@ -26,10 +26,8 @@ const withText = html`
     validation-state="${story => story.validationState}"
     aria-describedby="${story => story.messageid}"
   ></fluent-progress-bar>
-  <div id="${story => story.messageid}">
-    ${story => story.message}
-</div>
-`
+  <div id="${story => story.messageid}">${story => story.message}</div>
+`;
 
 export default {
   title: 'Components/ProgressBar',
