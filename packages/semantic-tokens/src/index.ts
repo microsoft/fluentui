@@ -1801,3 +1801,4 @@ export {
   ctrlCardStatePressed,
   ctrlCardStateDisabled,
 } from './components/card/tokens';
+export { _ctrlButtonGapInsideDefault } from './legacyVariant/tokens';

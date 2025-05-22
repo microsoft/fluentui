@@ -862,6 +862,9 @@ export const ctrlBooleanSelectionHint = "var(--smtc-ctrl-boolean-selection-hint)
 // @public (undocumented)
 export const ctrlBooleanSelectionHintRaw = "--smtc-ctrl-boolean-selection-hint";
 
+// @public
+export const _ctrlButtonGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
+
 // @public (undocumented)
 export const ctrlCardStateDisabled = "var(--smtc-ctrl-card-state-disabled)";
 
@@ -3179,7 +3182,7 @@ export const gapBetweenTextSmall = "var(--smtc-gap-between-text-small, var(--smt
 export const gapBetweenTextSmallRaw = "--smtc-gap-between-text-small";
 
 // @public (undocumented)
-export const gapInsideCtrlDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
+export const gapInsideCtrlDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalS))";
 
 // @public (undocumented)
 export const gapInsideCtrlDefaultRaw = "--smtc-gap-inside-ctrl-default";

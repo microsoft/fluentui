@@ -165,6 +165,11 @@ export const colorNeutralForeground1Pressed = 'var(--colorNeutralForeground1Pres
  */
 export const colorNeutralForegroundOnBrand = 'var(--colorNeutralForegroundOnBrand)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalS | `spacingHorizontalS`} design token.
+ * @public
+ */
+export const spacingHorizontalS = 'var(--spacingHorizontalS)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalSNudge | `spacingHorizontalSNudge`} design token.
  * @public
  */
@@ -184,11 +189,6 @@ export const spacingHorizontalM = 'var(--spacingHorizontalM)';
  * @public
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalS | `spacingHorizontalS`} design token.
- * @public
- */
-export const spacingHorizontalS = 'var(--spacingHorizontalS)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
