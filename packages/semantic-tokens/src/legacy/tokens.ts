@@ -240,6 +240,11 @@ export const spacingHorizontalM = 'var(--spacingHorizontalM)';
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInverted | `colorNeutralForegroundInverted`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInverted = 'var(--colorNeutralForegroundInverted)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
  */

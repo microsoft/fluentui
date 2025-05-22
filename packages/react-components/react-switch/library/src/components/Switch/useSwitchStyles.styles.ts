@@ -152,8 +152,8 @@ const useInputBaseClassName = makeResetStyles({
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
-      color: tokens.colorNeutralForegroundInverted,
       borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandRest,
+      color: semanticTokens.foregroundCtrlOnActiveBrandRest,
       borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
 
@@ -161,6 +161,7 @@ const useInputBaseClassName = makeResetStyles({
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
         borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandHover,
+        color: semanticTokens.foregroundCtrlOnActiveBrandHover,
         borderWidth: semanticTokens.strokeWidthCtrlOutlineHover,
       },
     },
@@ -168,6 +169,7 @@ const useInputBaseClassName = makeResetStyles({
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
+        color: semanticTokens.foregroundCtrlOnActiveBrandPressed,
         borderColor: semanticTokens.strokeCtrlOnActiveBrandPressed,
         borderWidth: semanticTokens.strokeWidthCtrlOutlinePressed,
       },
@@ -187,6 +189,7 @@ const useInputBaseClassName = makeResetStyles({
   ':disabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
+      color: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
       borderColor: semanticTokens.strokeCtrlOnActiveBrandDisabled,
       borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
     },
