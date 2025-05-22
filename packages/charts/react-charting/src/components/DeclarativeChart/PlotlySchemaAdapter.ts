@@ -332,8 +332,11 @@ export const transformPlotlyJsonToVSBCProps = (
         const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
-        const legendShape =
-          dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+        const legendShape = series.mode.includes('markers')
+          ? 'circle'
+          : dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+          ? 'dottedLine'
+          : 'default';
         mapXToDataPoints[x].lineData!.push({
           legend,
           legendShape,
@@ -550,7 +553,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';
     const legendShape = series.mode.includes('markers')
-      ? 'circular'
+      ? 'circle'
       : dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
       ? 'dottedLine'
       : 'default';
