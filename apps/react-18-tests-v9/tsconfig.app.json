@@ -9,6 +9,14 @@
     "inlineSources": true,
     "types": []
   },
-  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.cy.tsx", "**/*.cy.ts"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.cy.tsx",
+    "**/*.cy.ts",
+    "src/issues.tsx"
+  ],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }
