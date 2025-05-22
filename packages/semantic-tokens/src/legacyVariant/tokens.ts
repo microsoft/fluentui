@@ -2,4 +2,4 @@
 import { gapInsideCtrlDefaultRaw } from '../control/variables';
 import { spacingHorizontalSNudge } from '../legacy/tokens';
 
-export const ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;

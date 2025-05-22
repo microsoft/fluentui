@@ -629,9 +629,6 @@ export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 export const cornerZeroRaw = "--smtc-corner-zero";
 
 // @public (undocumented)
-export const ctrlAccordionGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalS))";
-
-// @public (undocumented)
 export const ctrlAvatarActiveRingSize = "var(--smtc-ctrl-avatar-active-ring-size)";
 
 // @public (undocumented)
@@ -864,6 +861,9 @@ export const ctrlBooleanSelectionHint = "var(--smtc-ctrl-boolean-selection-hint)
 
 // @public (undocumented)
 export const ctrlBooleanSelectionHintRaw = "--smtc-ctrl-boolean-selection-hint";
+
+// @public (undocumented)
+export const _ctrlButtonGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
 
 // @public (undocumented)
 export const ctrlCardStateDisabled = "var(--smtc-ctrl-card-state-disabled)";
@@ -3182,7 +3182,7 @@ export const gapBetweenTextSmall = "var(--smtc-gap-between-text-small, var(--smt
 export const gapBetweenTextSmallRaw = "--smtc-gap-between-text-small";
 
 // @public (undocumented)
-export const gapInsideCtrlDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalSNudge))";
+export const gapInsideCtrlDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingHorizontalS))";
 
 // @public (undocumented)
 export const gapInsideCtrlDefaultRaw = "--smtc-gap-inside-ctrl-default";
