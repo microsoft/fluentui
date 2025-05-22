@@ -29,14 +29,22 @@ const useStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: semanticTokens.foregroundCtrlNeutralPrimaryRest,
+    color: semanticTokens._ctrlAccordionForegroundRest,
     backgroundColor: 'transparent',
     margin: '0',
     borderRadius: semanticTokens.ctrlListCornerRest,
+
+    ':hover': {
+      color: semanticTokens._ctrlAccordionForegroundHover,
+    },
+
+    ':hover:active': {
+      color: semanticTokens._ctrlAccordionForegroundPressed,
+    },
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+    color: semanticTokens.foregroundCtrlOnTransparentDisabled,
   },
   rootInline: {
     display: 'inline-block',

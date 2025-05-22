@@ -1801,4 +1801,9 @@ export {
   ctrlCardStatePressed,
   ctrlCardStateDisabled,
 } from './components/card/tokens';
-export { _ctrlButtonGapInsideDefault } from './legacyVariant/tokens';
+export {
+  _ctrlButtonGapInsideDefault,
+  _ctrlAccordionForegroundRest,
+  _ctrlAccordionForegroundHover,
+  _ctrlAccordionForegroundPressed,
+} from './legacyVariant/tokens';
