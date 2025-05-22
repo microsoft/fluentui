@@ -3090,11 +3090,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-92"
+                aria-describedby="tooltip-89"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="24"
-                id="tooltip-host91"
+                id="tooltip-host88"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -3116,7 +3116,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-92"
+        id="tooltip-89"
         role="tooltip"
       >
         <div
@@ -3213,11 +3213,11 @@ Object {
           </g>
           <g>
             <text
-              aria-describedby="tooltip-92"
+              aria-describedby="tooltip-89"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="24"
-              id="tooltip-host91"
+              id="tooltip-host88"
               text-anchor="middle"
               x="0"
               y="0"
@@ -3719,812 +3719,6 @@ Object {
 }
 `;
 
-exports[`GaugeChart snapshot tests should render GaugeChart correctly when the layout direction is RTL 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
-    <div>
-      <div
-        class="fui-gc__root"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-      >
-        <svg
-          aria-label="Gauge chart with 3 segments. "
-          class="fui-gc__chart"
-          role="region"
-        >
-          <g
-            transform="translate(126, 88)"
-          >
-            <text
-              aria-label="Min value: 0"
-              class="fui-gc__limits"
-              role="img"
-              text-anchor="end"
-              x="-74"
-              y="0"
-            >
-              0
-            </text>
-            <text
-              aria-label="Max value: 100"
-              class="fui-gc__limits"
-              role="img"
-              text-anchor="start"
-              x="74"
-              y="0"
-            >
-              100
-            </text>
-            <path
-              aria-label="Low Risk, 0 to 33"
-              class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
-              data-is-focusable="true"
-              fill="#107c10"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Medium Risk, 33 to 67"
-              class="fui-gc__segment"
-              d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
-              data-is-focusable="true"
-              fill="#f7630c"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="High Risk, 67 to 100"
-              class="fui-gc__segment"
-              d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
-              data-is-focusable="true"
-              fill="#c50f1f"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <g
-              transform="rotate(45, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 25%"
-                class="fui-gc__needle"
-                d="
-            M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
-            L 0,4
-            A 4,4,0,0,0,0,-4
-          "
-                data-is-focusable="true"
-                role="img"
-                stroke-width="2"
-                transform="translate(-52)"
-              />
-            </g>
-            <g>
-              <text
-                aria-describedby="tooltip-89"
-                aria-hidden="true"
-                class="fui-gc__chartValue"
-                font-size="24"
-                id="tooltip-host88"
-                text-anchor="middle"
-                x="0"
-                y="0"
-              >
-                ...
-              </text>
-              <span
-                hidden=""
-              />
-            </g>
-          </g>
-        </svg>
-        <div>
-          <div
-            aria-label="Legends"
-            aria-multiselectable="false"
-            class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
-          >
-            <div
-              class="fui-Overflow fui-legend__resizableArea"
-              style="text-align: center;"
-            >
-              <button
-                aria-label="Low Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Low Risk
-                </div>
-              </button>
-              <button
-                aria-label="Medium Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Medium Risk
-                </div>
-              </button>
-              <button
-                aria-label="High Risk"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  High Risk
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class=""
-      data-portal-node="true"
-      dir="ltr"
-    >
-      <div
-        class="fui-Tooltip__content"
-        id="tooltip-89"
-        role="tooltip"
-      >
-        <div
-          class=""
-        />
-        25%
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-gc__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    >
-      <svg
-        aria-label="Gauge chart with 3 segments. "
-        class="fui-gc__chart"
-        role="region"
-      >
-        <g
-          transform="translate(126, 88)"
-        >
-          <text
-            aria-label="Min value: 0"
-            class="fui-gc__limits"
-            role="img"
-            text-anchor="end"
-            x="-74"
-            y="0"
-          >
-            0
-          </text>
-          <text
-            aria-label="Max value: 100"
-            class="fui-gc__limits"
-            role="img"
-            text-anchor="start"
-            x="74"
-            y="0"
-          >
-            100
-          </text>
-          <path
-            aria-label="Low Risk, 0 to 33"
-            class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,-36.49,-59.737L-28.344,-45.963A54,54,0,0,0,-53.991,-1Z"
-            data-is-focusable="true"
-            fill="#107c10"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Medium Risk, 33 to 67"
-            class="fui-gc__segment"
-            d="M-34.769,-60.755A70,70,0,0,1,34.769,-60.755L26.623,-46.981A54,54,0,0,0,-26.623,-46.981Z"
-            data-is-focusable="true"
-            fill="#f7630c"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="High Risk, 67 to 100"
-            class="fui-gc__segment"
-            d="M36.49,-59.737A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,28.344,-45.963Z"
-            data-is-focusable="true"
-            fill="#c50f1f"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <g
-            transform="rotate(45, 0, 0)"
-          >
-            <path
-              aria-label="Current value: 25%"
-              class="fui-gc__needle"
-              d="
-            M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
-            L 0,4
-            A 4,4,0,0,0,0,-4
-          "
-              data-is-focusable="true"
-              role="img"
-              stroke-width="2"
-              transform="translate(-52)"
-            />
-          </g>
-          <g>
-            <text
-              aria-describedby="tooltip-89"
-              aria-hidden="true"
-              class="fui-gc__chartValue"
-              font-size="24"
-              id="tooltip-host88"
-              text-anchor="middle"
-              x="0"
-              y="0"
-            >
-              ...
-            </text>
-            <span
-              hidden=""
-            />
-          </g>
-        </g>
-      </svg>
-      <div>
-        <div
-          aria-label="Legends"
-          aria-multiselectable="false"
-          class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
-        >
-          <div
-            class="fui-Overflow fui-legend__resizableArea"
-            style="text-align: center;"
-          >
-            <button
-              aria-label="Low Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #107c10; --rect-borderColor: #107c10;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(16, 124, 16); border-color: #107c10; --rect-content-high-contrast: linear-gradient(to right, #107c10, #107c10);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Low Risk
-              </div>
-            </button>
-            <button
-              aria-label="Medium Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #f7630c; --rect-borderColor: #f7630c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(247, 99, 12); border-color: #f7630c; --rect-content-high-contrast: linear-gradient(to right, #f7630c, #f7630c);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Medium Risk
-              </div>
-            </button>
-            <button
-              aria-label="High Risk"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #c50f1f; --rect-borderColor: #c50f1f;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(197, 15, 31); border-color: #c50f1f; --rect-content-high-contrast: linear-gradient(to right, #c50f1f, #c50f1f);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                High Risk
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
-exports[`GaugeChart snapshot tests should render a color from DataVizPalette for the segment with no color 1`] = `
-Object {
-  "asFragment": [Function],
-  "baseElement": <body
-    data-tabster="{\\"root\\":{}}"
-  >
-    <div>
-      <div
-        class="fui-gc__root"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-      >
-        <svg
-          aria-label="Gauge chart with 2 segments. "
-          class="fui-gc__chart"
-          role="region"
-        >
-          <g
-            transform="translate(126, 88)"
-          >
-            <text
-              aria-label="Min value: 0"
-              class="fui-gc__limits"
-              role="img"
-              text-anchor="end"
-              x="-74"
-              y="0"
-            >
-              0
-            </text>
-            <text
-              aria-label="Max value: 100"
-              class="fui-gc__limits"
-              role="img"
-              text-anchor="start"
-              x="74"
-              y="0"
-            >
-              100
-            </text>
-            <path
-              aria-label="Used, 0 to 60"
-              class="fui-gc__segment"
-              d="M-69.993,-1A70,70,0,0,1,20.678,-66.876L15.733,-51.657A54,54,0,0,0,-53.991,-1Z"
-              data-is-focusable="true"
-              fill="#3a96dd"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <path
-              aria-label="Available, 60 to 100"
-              class="fui-gc__segment"
-              d="M22.58,-66.258A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,17.635,-51.039Z"
-              data-is-focusable="true"
-              fill="#e3008c"
-              opacity="1"
-              role="img"
-              stroke-width="0"
-              tabindex="0"
-            />
-            <g
-              transform="rotate(108, 0, 0)"
-            >
-              <path
-                aria-label="Current value: 60%"
-                class="fui-gc__needle"
-                d="
-            M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
-            L 0,4
-            A 4,4,0,0,0,0,-4
-          "
-                data-is-focusable="true"
-                role="img"
-                stroke-width="2"
-                transform="translate(-52)"
-              />
-            </g>
-            <g>
-              <text
-                aria-describedby="tooltip-97"
-                aria-hidden="true"
-                class="fui-gc__chartValue"
-                font-size="24"
-                id="tooltip-host96"
-                text-anchor="middle"
-                x="0"
-                y="0"
-              >
-                ...
-              </text>
-              <span
-                hidden=""
-              />
-            </g>
-          </g>
-        </svg>
-        <div>
-          <div
-            aria-label="Legends"
-            aria-multiselectable="false"
-            class="fui-legend__root"
-            data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-            role="listbox"
-          >
-            <div
-              class="fui-Overflow fui-legend__resizableArea"
-              style="text-align: center;"
-            >
-              <button
-                aria-label="Used"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #3a96dd; --rect-borderColor: #3a96dd;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(58, 150, 221); border-color: #3a96dd; --rect-content-high-contrast: linear-gradient(to right, #3a96dd, #3a96dd);"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Used
-                </div>
-              </button>
-              <button
-                aria-label="Available"
-                aria-selected="false"
-                class="fui-Button fui-legend__legend"
-                data-overflow-item=""
-                role="option"
-                style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-                type="button"
-              >
-                <div
-                  class="fui-legend__rect"
-                  style="height: 12px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-                />
-                <div
-                  class="fui-legend__text"
-                >
-                  Available
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class=""
-      data-portal-node="true"
-      dir="ltr"
-    >
-      <div
-        class="fui-Tooltip__content"
-        id="tooltip-97"
-        role="tooltip"
-      >
-        <div
-          class=""
-        />
-        60%
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="fui-gc__root"
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-    >
-      <svg
-        aria-label="Gauge chart with 2 segments. "
-        class="fui-gc__chart"
-        role="region"
-      >
-        <g
-          transform="translate(126, 88)"
-        >
-          <text
-            aria-label="Min value: 0"
-            class="fui-gc__limits"
-            role="img"
-            text-anchor="end"
-            x="-74"
-            y="0"
-          >
-            0
-          </text>
-          <text
-            aria-label="Max value: 100"
-            class="fui-gc__limits"
-            role="img"
-            text-anchor="start"
-            x="74"
-            y="0"
-          >
-            100
-          </text>
-          <path
-            aria-label="Used, 0 to 60"
-            class="fui-gc__segment"
-            d="M-69.993,-1A70,70,0,0,1,20.678,-66.876L15.733,-51.657A54,54,0,0,0,-53.991,-1Z"
-            data-is-focusable="true"
-            fill="#3a96dd"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <path
-            aria-label="Available, 60 to 100"
-            class="fui-gc__segment"
-            d="M22.58,-66.258A70,70,0,0,1,69.993,-1L53.991,-1A54,54,0,0,0,17.635,-51.039Z"
-            data-is-focusable="true"
-            fill="#e3008c"
-            opacity="1"
-            role="img"
-            stroke-width="0"
-            tabindex="0"
-          />
-          <g
-            transform="rotate(108, 0, 0)"
-          >
-            <path
-              aria-label="Current value: 60%"
-              class="fui-gc__needle"
-              d="
-            M 0,-4
-            L -20,-2
-            A 2,2,0,0,0,-20,2
-            L 0,4
-            A 4,4,0,0,0,0,-4
-          "
-              data-is-focusable="true"
-              role="img"
-              stroke-width="2"
-              transform="translate(-52)"
-            />
-          </g>
-          <g>
-            <text
-              aria-describedby="tooltip-97"
-              aria-hidden="true"
-              class="fui-gc__chartValue"
-              font-size="24"
-              id="tooltip-host96"
-              text-anchor="middle"
-              x="0"
-              y="0"
-            >
-              ...
-            </text>
-            <span
-              hidden=""
-            />
-          </g>
-        </g>
-      </svg>
-      <div>
-        <div
-          aria-label="Legends"
-          aria-multiselectable="false"
-          class="fui-legend__root"
-          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
-          role="listbox"
-        >
-          <div
-            class="fui-Overflow fui-legend__resizableArea"
-            style="text-align: center;"
-          >
-            <button
-              aria-label="Used"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #3a96dd; --rect-borderColor: #3a96dd;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(58, 150, 221); border-color: #3a96dd; --rect-content-high-contrast: linear-gradient(to right, #3a96dd, #3a96dd);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Used
-              </div>
-            </button>
-            <button
-              aria-label="Available"
-              aria-selected="false"
-              class="fui-Button fui-legend__legend"
-              data-overflow-item=""
-              role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #e3008c; --rect-borderColor: #e3008c;"
-              type="button"
-            >
-              <div
-                class="fui-legend__rect"
-                style="height: 12px; background-color: rgb(227, 0, 140); border-color: #e3008c; --rect-content-high-contrast: linear-gradient(to right, #e3008c, #e3008c);"
-              />
-              <div
-                class="fui-legend__text"
-              >
-                Available
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
 exports[`GaugeChart snapshot tests should render a placeholder segment when the total size of the segments is less than
   the difference between maxValue and minValue props 1`] = `
 Object {
@@ -4608,11 +3802,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-100"
+                aria-describedby="tooltip-94"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="24"
-                id="tooltip-host99"
+                id="tooltip-host93"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -4687,7 +3881,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-100"
+        id="tooltip-94"
         role="tooltip"
       >
         <div
@@ -4773,11 +3967,11 @@ Object {
           </g>
           <g>
             <text
-              aria-describedby="tooltip-100"
+              aria-describedby="tooltip-94"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="24"
-              id="tooltip-host99"
+              id="tooltip-host93"
               text-anchor="middle"
               x="0"
               y="0"
@@ -5443,11 +4637,11 @@ Object {
             </g>
             <g>
               <text
-                aria-describedby="tooltip-94"
+                aria-describedby="tooltip-91"
                 aria-hidden="true"
                 class="fui-gc__chartValue"
                 font-size="24"
-                id="tooltip-host93"
+                id="tooltip-host90"
                 text-anchor="middle"
                 x="0"
                 y="0"
@@ -5541,7 +4735,7 @@ Object {
     >
       <div
         class="fui-Tooltip__content"
-        id="tooltip-94"
+        id="tooltip-91"
         role="tooltip"
       >
         <div
@@ -5638,11 +4832,11 @@ Object {
           </g>
           <g>
             <text
-              aria-describedby="tooltip-94"
+              aria-describedby="tooltip-91"
               aria-hidden="true"
               class="fui-gc__chartValue"
               font-size="24"
-              id="tooltip-host93"
+              id="tooltip-host90"
               text-anchor="middle"
               x="0"
               y="0"

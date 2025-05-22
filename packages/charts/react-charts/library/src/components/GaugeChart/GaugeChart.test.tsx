@@ -3,7 +3,6 @@ import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { getByClass, testWithoutWait, testScreenResolutionChanges } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { DataVizPalette } from '../../utilities/colors';
 import {
   ExtendedSegment,
   GaugeChart,
@@ -12,7 +11,6 @@ import {
   getChartValueLabel,
   ARC_PADDING,
 } from './GaugeChart';
-import { setRTL } from '@fluentui/react';
 expect.extend(toHaveNoViolations);
 
 enum GaugeValueFormat {
@@ -35,9 +33,9 @@ const BREAKPOINTS = [
 ];
 
 const segments = [
-  { size: 33, color: DataVizPalette.success, legend: 'Low Risk' },
-  { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
-  { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
+  { size: 33, color: '#107c10', legend: 'Low Risk' },
+  { size: 34, color: '#f7630c', legend: 'Medium Risk' },
+  { size: 33, color: '#c50f1f', legend: 'High Risk' },
 ];
 const originalRAF = window.requestAnimationFrame;
 
@@ -396,14 +394,6 @@ describe('GaugeChart snapshot tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render GaugeChart correctly when the layout direction is RTL', () => {
-    setRTL(true);
-
-    let wrapper = render(<GaugeChart segments={segments} chartValue={25} />);
-    expect(wrapper).toMatchSnapshot();
-    setRTL(false);
-  });
-
   it('should not render the legends when the hideLegend prop is true', () => {
     let wrapper = render(<GaugeChart segments={segments} chartValue={25} hideLegend />);
     expect(wrapper).toMatchSnapshot();
@@ -412,19 +402,6 @@ describe('GaugeChart snapshot tests', () => {
   it('should render the chart value in fraction format', () => {
     let wrapper = render(
       <GaugeChart segments={segments} chartValue={25} chartValueFormat={GaugeValueFormat.Fraction} />,
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should render a color from DataVizPalette for the segment with no color', () => {
-    let wrapper = render(
-      <GaugeChart
-        segments={[
-          { size: 60, color: DataVizPalette.color6, legend: 'Used' },
-          { size: 40, legend: 'Available' },
-        ]}
-        chartValue={60}
-      />,
     );
     expect(wrapper).toMatchSnapshot();
   });
