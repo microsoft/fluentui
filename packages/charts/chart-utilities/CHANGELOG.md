@@ -1,8 +1,27 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Wed, 14 May 2025 07:21:03 GMT and should not be manually modified.
+This log was last generated on Mon, 19 May 2025 07:20:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.10)
+
+Mon, 19 May 2025 07:20:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.9..@fluentui/chart-utilities_v1.1.10)
+
+### Patches
+
+- fix(chart-utilities): Improve schema error handling ([PR #34473](https://github.com/microsoft/fluentui/pull/34473) by 98592573+AtishayMsft@users.noreply.github.com)
+- Add support for plotly generated tables ([PR #34461](https://github.com/microsoft/fluentui/pull/34461) by anushgupta@microsoft.com)
+
+## [1.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.9)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.8..@fluentui/chart-utilities_v1.1.9)
+
+### Patches
+
+- fix(chart-utilities): Add chart type to error logs ([PR #34454](https://github.com/microsoft/fluentui/pull/34454) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.8)
 

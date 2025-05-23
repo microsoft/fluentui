@@ -75,10 +75,13 @@ export const styles = css`
     z-index: 2;
   }
 
-  /* Hide slots if nothing is slotted to remove grid gap */
-  :not(:has(:is([slot='title'], [slot='title-action']))) .title:not(:has(.title-action)),
-  :not(:has([slot='action'])) .actions {
-    display: none;
+  ::slotted([slot='title-action']) {
+    margin-inline-start: auto;
+  }
+
+  /* align  title content to the end when there is no title*/
+  :not(:has(:is([slot='title'], [slot='title-action']))) .title {
+    justify-content: end;
   }
 
   @container (min-width: 480px) {

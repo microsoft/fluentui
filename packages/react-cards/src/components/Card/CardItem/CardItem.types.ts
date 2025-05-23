@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import { IStackItemProps, IStackItemSlots, IStackItemTokens } from '@fluentui/react/lib/Stack';
 import { IBaseProps } from '@fluentui/react/lib/Utilities';
@@ -64,6 +65,8 @@ export interface ICardItemProps
    * future.
    */
   fill?: boolean;
+
+  children?: React.ReactNode;
 }
 
 /**

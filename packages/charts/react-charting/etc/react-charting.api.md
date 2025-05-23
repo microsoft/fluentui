@@ -40,6 +40,9 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
+// @public
+export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
+
 // @public (undocumented)
 export const DataVizGradientPalette: {
     gradient1: string;
@@ -127,9 +130,10 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    // Warning: (ae-forgotten-export) The symbol "ColorwayType" needs to be exported by the entry point index.d.ts
+    colorwayType?: ColorwayType;
     componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
-    useFluentVizColorPalette?: boolean;
 }
 
 // @public
@@ -443,6 +447,38 @@ export interface IChartProps {
     pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
     scatterChartData?: IScatterChartPoints[];
+}
+
+// @public
+export interface IChartTableProps {
+    className?: string;
+    componentRef?: IRefObject<IChart>;
+    headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+    height?: string | number;
+    rows: (string | number | boolean | null)[][];
+    styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
+    theme?: ITheme;
+    width?: string | number;
+}
+
+// @public (undocumented)
+export interface IChartTableStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public
+export interface IChartTableStyles {
+    // (undocumented)
+    bodyCell?: IStyle;
+    // (undocumented)
+    headerCell?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    table?: IStyle;
 }
 
 // @public (undocumented)
@@ -1619,7 +1655,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
-    yMinValue?: undefined;
+    yMinValue?: number | undefined;
 }
 
 // @public

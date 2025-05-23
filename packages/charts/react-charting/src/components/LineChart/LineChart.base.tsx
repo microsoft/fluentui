@@ -532,17 +532,26 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegends(data: LineChartDataWithIndex[]): JSX.Element {
     const { legendProps, allowMultipleShapesForPoints = false } = this.props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const legendDataItems = data.map((point: LineChartDataWithIndex) => {
-      const color: string = point.color!;
+    const mapLegendToPoints: Record<string, LineChartDataWithIndex[]> = {};
+    data.forEach((point: LineChartDataWithIndex) => {
+      if (point.legend) {
+        if (!mapLegendToPoints[point.legend]) {
+          mapLegendToPoints[point.legend] = [];
+        }
+        mapLegendToPoints[point.legend].push(point);
+      }
+    });
+    const legendDataItems: ILegend[] = Object.entries(mapLegendToPoints).map(([legendTitle, points]) => {
+      const representativePoint = points[0];
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
-        color,
+        title: legendTitle,
+        color: representativePoint.color!,
         action: () => {
           if (isLegendMultiSelectEnabled) {
-            this._handleMultipleLineLegendSelectionAction(point);
+            points.forEach(p => this._handleMultipleLineLegendSelectionAction(p));
           } else {
-            this._handleSingleLegendSelectionAction(point);
+            points.forEach(p => this._handleSingleLegendSelectionAction(p));
           }
         },
         onMouseOutAction: () => {
@@ -550,13 +559,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         },
         hoverAction: () => {
           this._handleChartMouseLeave();
-          this.setState({ activeLegend: point.legend });
+          this.setState({ activeLegend: legendTitle });
         },
-        ...(point.legendShape && {
-          shape: point.legendShape,
+        ...(representativePoint.legendShape && {
+          shape: representativePoint.legendShape,
         }),
         ...(allowMultipleShapesForPoints && {
-          shape: Points[point.index % Object.keys(pointTypes).length] as ILegend['shape'],
+          shape: Points[representativePoint.index % Object.keys(pointTypes).length] as ILegend['shape'],
         }),
       };
       return legend;
