@@ -169,8 +169,8 @@ export const AlertType: Story = {
   args: {
     type: DialogType.alert,
     closeSlottedContent: () => html``,
-    titleSlottedContent: () => html` <h2 slot="title">Non-modal</h2> `,
-    ariaLabel: "Non-modal",
+    titleSlottedContent: () => html` <h2 slot="title">Alert</h2> `,
+    ariaLabel: "Alert",
     actionSlottedContent: () => closeButtonTemplate,
     slottedContent: () => html`
       <p>
