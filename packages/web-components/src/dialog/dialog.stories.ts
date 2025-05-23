@@ -274,41 +274,43 @@ export const AlertWithNoTitleOrActions: Story = {
 export const TwoColumnLayout: Story = {
   args: {
     titleSlottedContent: () => html` <div slot="title">Two Column Layout</div> `,
-    slottedContent: () => html`
+    slottedContent: () => html<StoryArgs<FluentDialog>>`
       <div style="margin-bottom: 12px;">
         <fluent-text block>
-          <p>
-            The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.
-          </p>
+          The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.
         </fluent-text>
       </div>
-      <div
+      <form
         style="display: grid; grid-template-columns: 1fr 1.5fr; grid-column-gap: 12px; margin-bottom: 4px; overflow-x: hidden;"
+        @submit="${story => story.successMessage.toggleAttribute('hidden', false)}"
       >
         <div style="height: 248px;">
           <fluent-image fit="cover">
             <img alt="image layout story" src="${generateImage({ width: 240 })}" />
           </fluent-image>
         </div>
-        <div>
-          <fluent-text weight="semibold" block>
-            <p>Don't have an account? Sign up now!</p>
-          </fluent-text>
-          <br />
-          <fluent-text-input type="email">
-            <fluent-label>Email</fluent-label>
-          </fluent-text-input>
-          <br />
-          <fluent-text-input>
-            <fluent-label>Username</fluent-label>
-          </fluent-text-input>
-          <br />
-          <fluent-text-input type="password">
-            <fluent-label>Password</fluent-label>
-          </fluent-text-input>
-          <br />
+        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 1em">
+          <fluent-text weight="semibold" block>Here's an Example Form! </fluent-text>
+
+          <fluent-field>
+            <label slot="label">Text Input</label>
+            <fluent-text-input slot="input"></fluent-text-input>
+          </fluent-field>
+
+          <fluent-field>
+            <label slot="label">Range Slider</label>
+            <fluent-slider slot="input" min="0" max="100" value="50"></fluent-slider>
+          </fluent-field>
+
+          <fluent-field label-position="after">
+            <label slot="label">Checkbox</label>
+            <fluent-checkbox slot="input"></fluent-checkbox>
+          </fluent-field>
+
+          <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+          <span id="success-message" hidden ${ref('successMessage')}>Form submitted successfully!</span>
         </div>
-      </div>
+      </form>
     `,
   },
 };
