@@ -6,6 +6,8 @@ import { applyMixins } from '../utils/apply-mixins.js';
 import { BaseAccordionItem } from './accordion-item.base.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
+export type { StaticallyComposableHTML } from '../utils/index.js';
+
 /**
  * Accordion Item configuration options
  *
