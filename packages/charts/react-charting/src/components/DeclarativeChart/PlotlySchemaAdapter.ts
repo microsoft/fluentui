@@ -769,6 +769,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     input.layout?.colorscale ??
     input.layout?.coloraxis?.colorscale ??
     input.layout?.template?.layout?.colorscale ??
+    (firstData.type === 'histogram2d' && input.layout?.template?.data?.histogram2d?.[0]?.colorscale) ??
     input.layout?.template?.data?.heatmap?.[0]?.colorscale;
 
   // determine if the types diverging, sequential or sequentialminus are present in colorscale
