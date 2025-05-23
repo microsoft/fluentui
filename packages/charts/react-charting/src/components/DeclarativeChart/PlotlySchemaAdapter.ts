@@ -229,14 +229,16 @@ export const transformPlotlyJsonToDonutProps = (
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
   // extract colors for each series only once
-
-  const colors: string[] | string | null | undefined = extractColor(
-    input.layout?.template?.layout?.colorway,
-    colorwayType,
-    firstData?.marker?.colors,
-    colorMap,
-    isDarkTheme,
-  );
+  // if piecolorway is not defined, use the colorway from template
+  const colors: string[] | string | null | undefined =
+    input.layout?.piecolorway ??
+    extractColor(
+      input.layout?.template?.layout?.colorway,
+      colorwayType,
+      firstData?.marker?.colors,
+      colorMap,
+      isDarkTheme,
+    );
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
