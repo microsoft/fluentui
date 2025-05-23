@@ -34,6 +34,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   };
   // need to check WindowContext to get the provided document
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
@@ -106,7 +107,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    const document = this.context?.window.document || getDocument(this._inputElement.current);
+    const document = this.context?.window?.document || getDocument(this._inputElement.current);
     const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
 
     if (

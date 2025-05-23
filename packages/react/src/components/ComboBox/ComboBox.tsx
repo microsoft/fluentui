@@ -249,6 +249,8 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
   public static contextType = WindowContext;
 
+  public context: React.ContextType<typeof WindowContext>;
+
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
 

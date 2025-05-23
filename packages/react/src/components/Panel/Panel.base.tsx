@@ -51,6 +51,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _async: Async;
   private _events: EventGroup;
