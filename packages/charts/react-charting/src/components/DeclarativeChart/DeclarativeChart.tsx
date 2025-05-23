@@ -221,7 +221,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         x: correctYearMonth(dataPoint.x),
       }));
       return renderLineArea(updatedData, isAreaChart);
-    } else if (isXString && !isAreaChart) {
+    } else if ((isXString || isXYear) && !isAreaChart) {
       return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
