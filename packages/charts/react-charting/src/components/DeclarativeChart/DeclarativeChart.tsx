@@ -4,7 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
-import { decodeBase64Fields } from '@fluentui/chart-utilities';
+import { decodeBase64Fields, isArrayOfType } from '@fluentui/chart-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -196,6 +196,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const isXString = isArrayOfType(xValues, (value: any) => typeof value === 'string');
 
     // Consider year as categorical variable not numeric continuous variable
     // Also year is not considered a date variable as it is represented as a point
@@ -211,6 +213,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         x: correctYearMonth(dataPoint.x),
       }));
       return renderLineArea(updatedData, isAreaChart);
+    } else if (isXString && !isAreaChart) {
+      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
