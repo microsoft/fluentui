@@ -42,7 +42,7 @@ test.describe('Rating Display', () => {
     // Based on the `value` attribute, the 7th icon should be set as selected
     await expect(element.locator('svg:nth-child(7 of [aria-hidden="true"])')).toHaveAttribute('selected');
 
-    // The first 7 icons should have the default filled color (colorPaletteMarigoldBackground3)
+    // The first 7 icons should have the default filled color (colorPaletteMarigoldBorderActive)
     for (const icon of await element.locator('svg:nth-child(-n+7 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(234, 163, 0)');
     }
@@ -82,7 +82,7 @@ test.describe('Rating Display', () => {
     }
 
     for (const icon of await unfilledIcons.all()) {
-      await expect(icon).toHaveCSS('fill', 'rgb(180, 214, 250)');
+      await expect(icon).toHaveCSS('fill', 'rgb(235, 243, 252)');
     }
 
     await element.evaluate((node: RatingDisplay) => {
@@ -97,7 +97,7 @@ test.describe('Rating Display', () => {
     }
 
     for (const icon of await unfilledIcons.all()) {
-      await expect(icon).toHaveCSS('fill', 'rgb(224, 224, 224)');
+      await expect(icon).toHaveCSS('fill', 'rgb(230, 230, 230)');
     }
   });
 
