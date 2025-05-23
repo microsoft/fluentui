@@ -573,6 +573,8 @@ export interface Layout {
     // (undocumented)
     paper_bgcolor: Color;
     // (undocumented)
+    piecolorway: string[];
+    // (undocumented)
     plot_bgcolor: Color;
     // (undocumented)
     polar: Partial<PolarLayout>;

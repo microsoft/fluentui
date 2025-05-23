@@ -229,7 +229,8 @@ export const transformPlotlyJsonToDonutProps = (
 ): IDonutChartProps => {
   const firstData = input.data[0] as PieData;
   // extract colors for each series only once
-  // if piecolorway is not defined, use the colorway from template
+  // use piecolorway if available
+  // otherwise, default to colorway from template
   const colors: string[] | string | null | undefined =
     input.layout?.piecolorway ??
     extractColor(
