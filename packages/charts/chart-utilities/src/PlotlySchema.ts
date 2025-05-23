@@ -298,6 +298,7 @@ export interface PlotlySchema {
 // Layout
 export interface Layout {
   colorway: string[];
+  piecolorway: string[];
   title:
     | string
     | Partial<{
