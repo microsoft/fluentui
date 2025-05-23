@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: better fallback positioning for sub menu",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

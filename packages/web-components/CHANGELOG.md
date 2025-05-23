@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 22 May 2025 04:06:51 GMT and should not be manually modified.
+This log was last generated on Fri, 23 May 2025 04:06:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.104)
+
+Fri, 23 May 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.103..@fluentui/web-components_v3.0.0-beta.104)
+
+### Changes
+
+- fix: updated rating-display icon color tokens to match the React version. ([PR #34513](https://github.com/microsoft/fluentui/pull/34513) by 601470+mlijanto@users.noreply.github.com)
+- fix: better fallback positioning for sub menu ([PR #34499](https://github.com/microsoft/fluentui/pull/34499) by machi@microsoft.com)
 
 ## [3.0.0-beta.103](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.103)
 
