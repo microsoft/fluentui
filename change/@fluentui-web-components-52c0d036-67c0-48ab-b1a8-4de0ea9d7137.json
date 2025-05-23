@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: updated rating-display icon color tokens to match the React version.",
-  "packageName": "@fluentui/web-components",
-  "email": "601470+mlijanto@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

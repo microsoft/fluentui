@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 23 May 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.104",
+      "version": "3.0.0-beta.104",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9cef8e89b544a343bd68a2aa869a2bef11312ced",
+            "comment": "fix: updated rating-display icon color tokens to match the React version."
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc51468ae17a371b723777c2c2b5e381a050b7b5",
+            "comment": "fix: better fallback positioning for sub menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 May 2025 04:06:51 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.103",
       "version": "3.0.0-beta.103",
