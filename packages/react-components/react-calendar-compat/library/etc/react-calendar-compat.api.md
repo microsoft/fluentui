@@ -70,6 +70,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
+    reverse?: boolean;
     selectedDate: Date;
     showCloseButton?: boolean;
     showWeekNumbers?: boolean;
@@ -455,7 +456,7 @@ export enum FirstWeekOfYear {
 export function getDatePartHashValue(date: Date): number;
 
 // @public
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number, reverse?: boolean): Date[];
 
 // @public
 export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;

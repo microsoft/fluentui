@@ -165,6 +165,7 @@ export function getDateRangeArray(
   firstDayOfWeek: DayOfWeek,
   workWeekDays?: DayOfWeek[],
   daysToSelectInDayView: number = 1,
+  reverse?: boolean,
 ): Date[] {
   const datesArray: Date[] = [];
   let startDate: Date;
@@ -178,8 +179,13 @@ export function getDateRangeArray(
 
   switch (dateRangeType) {
     case DateRangeType.Day:
-      startDate = getDatePart(date);
-      endDate = addDays(startDate, daysToSelectInDayView);
+      if (reverse) {
+        endDate = addDays(getDatePart(date), 1);
+        startDate = addDays(endDate, -daysToSelectInDayView);
+      } else {
+        startDate = getDatePart(date);
+        endDate = addDays(startDate, daysToSelectInDayView);
+      }
       break;
 
     case DateRangeType.Week:
