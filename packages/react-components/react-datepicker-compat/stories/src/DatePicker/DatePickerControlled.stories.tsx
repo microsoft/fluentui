@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addDays } from '@fluentui/react-calendar-compat';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { Button, Field, makeStyles } from '@fluentui/react-components';
+import { AriaLiveAnnouncer, Button, Field, makeStyles, useAnnounce } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -19,36 +19,47 @@ const useStyles = makeStyles({
 
 export const Controlled = () => {
   const styles = useStyles();
+  const { announce } = useAnnounce();
 
   const [selectedDate, setSelectedDate] = React.useState<Date | null | undefined>(null);
 
   const goPrevious = React.useCallback(() => {
-    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, -1) : null));
+    setSelectedDate(prevSelectedDate => {
+      const newDate = prevSelectedDate ? addDays(prevSelectedDate, -1) : new Date();
+      announce(newDate.toDateString());
+      return newDate;
+    });
   }, []);
 
   const goNext = React.useCallback(() => {
-    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, 1) : null));
+    setSelectedDate(prevSelectedDate => {
+      const newDate = prevSelectedDate ? addDays(prevSelectedDate, 1) : new Date();
+      announce(newDate.toDateString());
+      return newDate;
+    });
   }, []);
 
   return (
-    <div className={styles.root}>
-      <Field label="Select a date">
-        <DatePicker
-          value={selectedDate}
-          onSelectDate={setSelectedDate}
-          placeholder="Select a date..."
-          className={styles.control}
-        />
-      </Field>
-      <div>
-        <Button className={styles.button} onClick={goPrevious}>
-          Previous
-        </Button>
-        <Button className={styles.button} onClick={goNext}>
-          Next
-        </Button>
+    <AriaLiveAnnouncer>
+      <div className={styles.root}>
+        <Field label="Select a date">
+          <DatePicker
+            value={selectedDate}
+            onSelectDate={setSelectedDate}
+            placeholder="Select a date..."
+            className={styles.control}
+          />
+        </Field>
+        <div>
+          <Button className={styles.button} onClick={goPrevious}>
+            Previous
+          </Button>
+          <Button className={styles.button} onClick={goNext}>
+            Next
+          </Button>
+        </div>
       </div>
-    </div>
+    </AriaLiveAnnouncer>
   );
 };
 
