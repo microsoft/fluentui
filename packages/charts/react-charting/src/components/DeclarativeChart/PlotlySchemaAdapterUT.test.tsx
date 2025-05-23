@@ -12,6 +12,7 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  getValidXYRanges,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 
@@ -144,11 +145,7 @@ describe('correctYearMonth', () => {
   });
 
   test('Should return error when input array contains invalid months', () => {
-    try {
-      expect(correctYearMonth([10, 11, 16])).toStrictEqual([]);
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
-    }
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
@@ -426,5 +423,41 @@ describe('getSchemaColors with other colorways', () => {
   test('Should return undefined when input schema has color in undefined format', () => {
     const undefinedColor = [undefined];
     expect(getSchemaColors(undefined, undefinedColor, { current: colorMap })).not.toBe([]);
+  });
+});
+
+describe('getValidXYRanges', () => {
+  it('returns a single valid range when all values are valid', () => {
+    const series = { x: [1, 2, 3], y: [4, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([[0, 3]]);
+  });
+
+  it('returns empty array when all values are invalid', () => {
+    const series = { x: [Infinity, null, NaN], y: [null, Infinity, NaN] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('returns correct ranges when there are invalid values in between', () => {
+    const series = { x: [1, null, 3, 4, Infinity, 6], y: [1, 2, 3, null, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([
+      [0, 1],
+      [2, 3],
+      [5, 6],
+    ]);
+  });
+
+  it('handles invalid values at the start and end', () => {
+    const series = { x: [Infinity, 2, 3, 4, Infinity], y: [1, 2, 3, 4, 5] };
+    expect(getValidXYRanges(series)).toEqual([[1, 4]]);
+  });
+
+  it('handles empty x and y arrays', () => {
+    const series = { x: [], y: [] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('handles x or y missing', () => {
+    expect(getValidXYRanges({ x: [1, 2, 3] })).toEqual([]);
+    expect(getValidXYRanges({ y: [1, 2, 3] })).toEqual([]);
   });
 });
