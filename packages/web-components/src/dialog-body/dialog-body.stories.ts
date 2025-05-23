@@ -123,13 +123,13 @@ export const Default: Story = {
       </p>
     `,
 
-    titleSlottedContent: () => html` <div slot="title">Dialog Body</div> `,
+    titleSlottedContent: () => html` <h2 slot="title">Dialog Body</h2> `,
   },
 };
 
 export const Basic: Story = {
   args: {
-    titleSlottedContent: () => html` <div slot="title">Basic</div> `,
+    titleSlottedContent: () => html` <h2 slot="title">Basic</h2> `,
     slottedContent: () => html`
       <p>
         A dialog should have no more than
@@ -162,14 +162,14 @@ export const Actions: Story = {
     titleActionSlottedContent: () => html`
       <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
     `,
-    titleSlottedContent: () => html` <div slot="title">Actions</div> `,
+    titleSlottedContent: () => html` <h2 slot="title">Actions</h2> `,
   },
 };
 
 export const NoClose: Story = {
   args: {
     closeSlottedContent: () => html``,
-    titleSlottedContent: () => html` <div slot="title">No Close Slot</div> `,
+    titleSlottedContent: () => html` <h2 slot="title">No Close Slot</h2> `,
     slottedContent: () => html`
       <p>Omitting the close slot will prevent the default close button from being rendered in a non-modal dialog.</p>
     `,
@@ -181,7 +181,7 @@ export const CustomClose: Story = {
     slottedContent: () => html`
       <p>This dialog has a custom <code>close</code> slot that is rendered in place of the default close button.</p>
     `,
-    titleSlottedContent: () => html` <div slot="title">Custom Title Action</div> `,
+    titleSlottedContent: () => html` <h2 slot="title">Custom Title Action</h2> `,
 
     closeSlottedContent: () => html`
       <fluent-button slot="close" appearance="transparent" icon-only @click="${() => alert('This is a custom action')}">

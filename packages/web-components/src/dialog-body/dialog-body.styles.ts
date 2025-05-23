@@ -79,6 +79,12 @@ export const styles = css`
     margin-inline-start: auto;
   }
 
+  ::slotted([slot='title']) {
+    font: inherit;
+    padding: 0;
+    margin: 0;
+  }
+
   /* align  title content to the end when there is no title*/
   :not(:has(:is([slot='title'], [slot='title-action']))) .title {
     justify-content: end;
