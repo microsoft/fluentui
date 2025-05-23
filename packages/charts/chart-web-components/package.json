@@ -25,42 +25,15 @@
     "dist/*.d.ts"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/dts/index.d.ts",
-      "default": "./dist/esm/index.js"
-    },
-    "./utilities.js": {
-      "types": "./dist/dts/utils/index.d.ts",
-      "default": "./dist/esm/utils/index.js"
-    },
-    "./*/define.js": {
-      "types": "./dist/dts/*/*.define.d.ts",
-      "default": "./dist/esm/*/*.define.js"
-    },
-    "./*/definition.js": {
-      "types": "./dist/dts/*/*.definition.d.ts",
-      "default": "./dist/esm/*/*.definition.js"
-    },
-    "./*/options.js": {
-      "types": "./dist/dts/*/*.options.d.ts",
-      "default": "./dist/esm/*/*.options.js"
-    },
-    "./*/styles.js": {
-      "types": "./dist/dts/*/*.styles.d.ts",
-      "default": "./dist/esm/*/*.styles.js"
-    },
-    "./*/template.js": {
-      "types": "./dist/dts/*/*.template.d.ts",
-      "default": "./dist/esm/*/*.template.js"
-    },
-    "./*/index.js": {
-      "types": "./dist/dts/*/index.d.ts",
-      "default": "./dist/esm/*/index.js"
-    },
-    "./*.js": {
-      "types": "./dist/dts/*/define.d.ts",
-      "default": "./dist/esm/*/define.js"
-    },
+    ".": "./dist/esm/index.js",
+    "./utilities.js": "./dist/esm/utils/index.js",
+    "./*/define.js": "./dist/esm/*/*.define.js",
+    "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/options.js": "./dist/esm/*/*.options.js",
+    "./*/styles.js": "./dist/esm/*/*.styles.js",
+    "./*/template.js": "./dist/esm/*/*.template.js",
+    "./*/index.js": "./dist/esm/*/index.js",
+    "./*.js": "./dist/esm/*/define.js",
     "./package.json": "./package.json"
   },
   "sideEffects": [
