@@ -49,7 +49,9 @@ export const CalendarMultidayDayView = () => {
       <Field label="Choose days to select">
         <Dropdown className={styles.dropdown} onOptionSelect={onOptionSelect}>
           {dayOptions.map(option => (
-            <Option key={option} text={option} value={option} />
+            <Option key={option} text={option} value={option}>
+              {option}
+            </Option>
           ))}
         </Dropdown>
       </Field>
