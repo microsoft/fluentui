@@ -11,7 +11,7 @@
   },
   "overrides": [
     {
-      "files": ["./src/fluentOverrides.ts"],
+      "files": ["./src/fluentOverrides.ts", "./src/fluentLegacyVariants.ts"],
       "rules": {
         "sort-keys": ["error"]
       }

@@ -13,6 +13,7 @@ import {
   cornerCtrlLgRestRaw,
   paddingCtrlLgHorizontalDefaultRaw,
 } from '../../control/variables';
+import { borderRadiusMedium } from '../../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
   backgroundCtrlSubtleDisabledRaw,
@@ -83,7 +84,7 @@ export const ctrlListPillLengthRest = `var(${ctrlListPillLengthRestRaw})`;
 export const ctrlListPillLengthHover = `var(${ctrlListPillLengthHoverRaw}, var(${ctrlListPillLengthRestRaw}))`;
 export const ctrlListPillLengthPressed = `var(${ctrlListPillLengthPressedRaw}, var(${ctrlListPillLengthRestRaw}))`;
 export const ctrlListPillLengthHint = `var(${ctrlListPillLengthHintRaw}, var(${ctrlListPillLengthRestRaw}))`;
-export const ctrlListCornerRest = `var(${ctrlListCornerRestRaw}, var(${cornerCtrlRestRaw}))`;
+export const ctrlListCornerRest = `var(${ctrlListCornerRestRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
 export const ctrlListCornerHover = `var(${ctrlListCornerHoverRaw}, var(${cornerCtrlRestRaw}))`;
 export const ctrlListCornerPressed = `var(${ctrlListCornerPressedRaw}, var(${cornerCtrlRestRaw}))`;
 export const ctrlListIndentLevel1 = `var(${ctrlListIndentLevel1Raw}, var(${paddingCtrlHorizontalDefaultRaw}))`;
