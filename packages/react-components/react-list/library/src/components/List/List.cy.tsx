@@ -85,9 +85,12 @@ type SelectionTestListProps = {
 const SelectionTestList = ({ selectionMode, defaultSelectedItems, controlled }: SelectionTestListProps) => {
   const [selectedItems, setSelectedItems] = React.useState(defaultSelectedItems || []);
 
-  const onChange = React.useCallback((_: React.SyntheticEvent | Event, { selectedItems: selected }) => {
-    setSelectedItems(selected);
-  }, []);
+  const onChange = React.useCallback(
+    (_: React.SyntheticEvent | Event, { selectedItems: selected }: { selectedItems: SelectionItemId[] }) => {
+      setSelectedItems(selected);
+    },
+    [],
+  );
 
   const onSelectLastClick = React.useCallback(() => {
     setSelectedItems(['list-item-3']);

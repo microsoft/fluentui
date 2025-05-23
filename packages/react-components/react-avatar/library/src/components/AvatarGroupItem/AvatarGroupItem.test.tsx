@@ -6,7 +6,7 @@ import { isConformant } from '../../testing/isConformant';
 
 const testId = 'testId';
 
-const ContextWrapper: React.FC = ({ children }) => (
+const ContextWrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
   <AvatarGroupContext.Provider value={{ isOverflow: true }}>{children}</AvatarGroupContext.Provider>
 );
 

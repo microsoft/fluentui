@@ -8,7 +8,9 @@ const TestContext = createContext<number>(1);
 describe('useHasParentContext', () => {
   it('should return true if wrapped with context', () => {
     // Arrange
-    const wrapper: React.FC = ({ children }) => <TestContext.Provider value={1}>{children}</TestContext.Provider>;
+    const wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+      <TestContext.Provider value={1}>{children}</TestContext.Provider>
+    );
     const { result } = renderHook(() => useHasParentContext(TestContext), { wrapper });
 
     // Assert
