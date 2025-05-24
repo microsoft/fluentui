@@ -200,6 +200,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _yPaddingPrimary: number = 0;
   private _yScaleSecondary: ScaleLinear<number, number> | undefined;
   private _yPaddingSecondary: number = 0;
+  private _hasMarkersMode: boolean = false;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -409,8 +410,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (this.props.lineMode === 'scatter' && xAxisType === XAxisTypes.NumericAxis) {
+    if (this._hasMarkersMode && xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = this._getDomainNRangeValuesWithPadding(points, margins, width, isRTL);
+    } else if (this._hasMarkersMode && xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = this._getDomainNRangeValuesOfDateWithPadding(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
     } else if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
@@ -442,6 +453,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             this.props.legendProps?.selectedLegend === item.legend,
         )
       : lineChartData;
+    this._hasMarkersMode =
+      filteredData?.some((item: ILineChartPoints) => item.lineOptions?.mode?.includes?.('markers')) ?? false;
     return filteredData
       ? filteredData.map((item: ILineChartPoints, index: number) => {
           let color: string;
@@ -477,7 +490,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const { startValue, endValue } = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
     let yPadding = 0;
-    if (this.props.lineMode === 'scatter') {
+    if (this._hasMarkersMode) {
       yPadding = (endValue - startValue) * 0.1;
       if (useSecondaryYScale) {
         this._yPaddingSecondary = yPadding;
@@ -717,8 +730,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yScaleSecondary : this._yScalePrimary;
       const yPadding =
         this._points[i].useSecondaryYScale && this._yScaleSecondary ? this._yPaddingSecondary : this._yPaddingPrimary;
-      const extraMaxPixels =
-        this.props.lineMode === 'scatter' ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
+      const extraMaxPixels = this._hasMarkersMode ? this._getRangeForScatterMarkerSize(yScale, yPadding) : 0;
 
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
@@ -901,7 +913,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
           let currentMarkerSize = this._points[i].data[j - 1].markerSize!;
           pointsForLine.push(
-            this.props.lineMode === 'scatter' ? (
+            this._points[i].lineOptions?.mode?.includes('markers') ? (
               <circle
                 id={circleId}
                 key={circleId}
@@ -992,7 +1004,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             currentMarkerSize = this._points[i].data[j].markerSize!;
             pointsForLine.push(
               <React.Fragment key={`${lastCircleId}_container`}>
-                {this.props.lineMode === 'scatter' ? (
+                {this._points[i].lineOptions?.mode?.includes('markers') ? (
                   <circle
                     id={lastCircleId}
                     key={lastCircleId}
@@ -1123,7 +1135,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             );
           }
 
-          if (this.props.lineMode !== 'scatter') {
+          if (!this._hasMarkersMode || this._points[i].lineOptions?.mode?.includes('lines')) {
             if (isLegendSelected) {
               // don't draw line if it is in a gap
               if (!isInGap) {
@@ -1692,6 +1704,55 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
+  private _getDomainNRangeValuesOfDateWithPadding = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    isRTL: boolean,
+    tickValues: Date[] = [],
+    chartType: ChartTypes,
+    barWidth?: number,
+  ): IDomainNRange => {
+    let sDate: Date;
+    let lDate: Date;
+
+    sDate = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as Date);
+    })!;
+
+    lDate = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as Date);
+    })!;
+
+    // Include tickValues if present
+    sDate = d3Min([...tickValues, sDate])!;
+    lDate = d3Max([...tickValues, lDate])!;
+
+    // Calculate time-based padding (e.g. 10% of the date range)
+    const dateRange = lDate.getTime() - sDate.getTime();
+    const datePadding = this._hasMarkersMode ? dateRange * 0.1 : 0;
+
+    const paddedSDate = new Date(sDate.getTime() - datePadding);
+    const paddedLDate = new Date(lDate.getTime() + datePadding);
+
+    const rStartValue = margins.left!;
+    const rEndValue = width - margins.right!;
+
+    return isRTL
+      ? {
+          dStartValue: paddedLDate,
+          dEndValue: paddedSDate,
+          rStartValue,
+          rEndValue,
+        }
+      : {
+          dStartValue: paddedSDate,
+          dEndValue: paddedLDate,
+          rStartValue,
+          rEndValue,
+        };
+  };
+
   private _getDomainNRangeValuesWithPadding = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -1708,7 +1769,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    if (this.props.lineMode === 'scatter') {
+    if (this._hasMarkersMode) {
       this._xPadding = (this._xMax - this._xMin) * 0.1;
     }
     const rStartValue = margins.left!;
