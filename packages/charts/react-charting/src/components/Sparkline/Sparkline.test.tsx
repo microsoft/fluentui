@@ -1,10 +1,9 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { render, act, screen } from '@testing-library/react';
-import { ISparklineProps, Sparkline } from './index';
+import { render, act, queryAllByAttribute } from '@testing-library/react';
+import { Sparkline } from './index';
 import { IChartProps } from '../../index';
-import { SparklineBase } from './Sparkline.base';
 import { resetIds } from '@fluentui/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
