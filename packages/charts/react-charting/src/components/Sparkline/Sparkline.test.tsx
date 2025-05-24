@@ -1,7 +1,6 @@
-jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { render, act, queryAllByAttribute } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { Sparkline } from './index';
 import { IChartProps } from '../../index';
 import { resetIds } from '@fluentui/react';
@@ -124,15 +123,20 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
 
   it('No empty chart aria label div rendered for non-empty data', () => {
-    const { container } = render(<Sparkline data={sparkline1Points} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(0);
+    const wrapper = render(<Sparkline data={sparkline1Points} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
+    expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered for empty data', () => {
-    const { container } = render(<Sparkline data={emptySparklinePoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(1);
+    const component = renderer.create(<Sparkline data={emptySparklinePoints} />);
+    const tree = component.toJSON();
+    if (tree && !Array.isArray(tree)) {
+      expect(tree.props['aria-label']).toBe('Graph has no data to display');
+    } else {
+      // This should not happen, but TypeScript needs this check
+      fail('Tree should be a single element, not an array or null');
+    }
   });
 });
 
