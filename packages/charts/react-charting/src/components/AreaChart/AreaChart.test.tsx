@@ -1,15 +1,16 @@
 jest.mock('react-dom');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import { render, fireEvent, act, screen } from '@testing-library/react';
 import { resetIds } from '../../Utilities';
-import { mount, ReactWrapper } from 'enzyme';
-import { IAreaChartProps, AreaChart } from './index';
+import { AreaChart } from './index';
 import { IAreaChartState, AreaChartBase } from './AreaChart.base';
 import { ICustomizedCalloutData, ILineChartPoints } from '../../index';
-import toJson from 'enzyme-to-json';
-import { act } from 'react-dom/test-utils';
+import { getById, getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
-// Wrapper of the AreaChart to be tested.
-let wrapper: ReactWrapper<IAreaChartProps, IAreaChartState, AreaChartBase> | undefined;
+expect.extend(toHaveNoViolations);
+
 const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
@@ -22,11 +23,6 @@ function sharedBeforeEach() {
 }
 
 function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-
   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
   // cleaned up in fake timers world
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,117 +77,59 @@ describe.skip('AreaChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
+  afterEach(sharedAfterEach);
 
-    // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-    // cleaned up in fake timers world
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((global.setTimeout as any).mock) {
-      jest.useRealTimers();
-    }
+  test('renders Areachart correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders Areachart correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-  it('renders hideLegend correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} hideLegend={true} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  test('renders hideLegend correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} hideLegend={true} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders hideTooltip correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} hideTooltip={true} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  test('renders hideTooltip correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} hideTooltip={true} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders enabledLegendsWrapLines correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} enabledLegendsWrapLines={true} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-  it('renders yAxisTickFormat correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  test('renders enabledLegendsWrapLines correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders Areachart with single point correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={singleChartPoint} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  test('renders yAxisTickFormat correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('Should render with default colors when line color is not provided', async () => {
+  test('renders Areachart with single point correctly', async () => {
+    const { container } = render(<AreaChart data={singleChartPoint} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  test('Should render with default colors when line color is not provided', async () => {
     const lineColor = points[0].color;
     delete points[0].color;
 
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<AreaChart data={chartPoints} />);
+    expect(container).toMatchSnapshot();
 
     points[0].color = lineColor;
   });
 
-  it('Should not render circles when optimizeLargeData is true', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} optimizeLargeData />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+  test('Should not render circles when optimizeLargeData is true', async () => {
+    const { container } = render(<AreaChart data={chartPoints} optimizeLargeData />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders showXAxisLablesTooltip correctly', async () => {
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} showXAxisLablesTooltip={true} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    if (wrapper) {
-      const tree = toJson(wrapper, { mode: 'deep' });
-      expect(tree).toMatchSnapshot();
-    }
+  test('renders showXAxisLablesTooltip correctly', async () => {
+    const { container } = render(<AreaChart data={chartPoints} showXAxisLablesTooltip={true} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders wrapXAxisLables correctly', async () => {
+  test('renders wrapXAxisLables correctly', async () => {
     const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
 
     // Replace the original method with the mock implementation
@@ -202,13 +140,8 @@ describe.skip('AreaChart snapShot testing', () => {
         value: mockGetComputedTextLength,
       },
     );
-    await act(async () => {
-      wrapper = mount(<AreaChart data={chartPoints} wrapXAxisLables={true} />);
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<AreaChart data={chartPoints} wrapXAxisLables={true} />);
+    expect(container).toMatchSnapshot();
   });
 });
 
@@ -216,86 +149,73 @@ describe('AreaChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should not mount legend when hideLegend true ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} hideLegend={true} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+  test('Should not mount legend when hideLegend true', () => {
+    const { container } = render(<AreaChart data={chartPoints} hideLegend={true} />);
+    const hideLegendDOM = container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
-  it('Should mount legend when hideLegend false ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+  test('Should mount legend when hideLegend false', () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const hideLegendDOM = container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
-  it('Should mount callout when hideTootip false ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+  
+  test('Should mount callout when hideTootip false', () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const hideLegendDOM = container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
-  it('Should not mount callout when hideTootip true ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} hideTooltip={true} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+  
+  test('Should not mount callout when hideTootip true', () => {
+    const { container } = render(<AreaChart data={chartPoints} hideTooltip={true} />);
+    const hideLegendDOM = container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
-  it('Should render onRenderCalloutPerStack ', () => {
-    act(() => {
-      wrapper = mount(
-        <AreaChart
-          data={chartPoints}
-          onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
-            props ? (
-              <div className="onRenderCalloutPerStack">
-                <p>Custom Callout Content</p>
-              </div>
-            ) : null
-          }
-        />,
-      );
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
+  test('Should render onRenderCalloutPerStack', () => {
+    const { container } = render(
+      <AreaChart
+        data={chartPoints}
+        onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="onRenderCalloutPerStack">
+              <p>Custom Callout Content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM).toBeDefined();
   });
-  it('Should not render onRenderCalloutPerStack ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
+  
+  test('Should not render onRenderCalloutPerStack', () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
-  it('Should render onRenderCalloutPerDataPoint ', () => {
-    act(() => {
-      wrapper = mount(
-        <AreaChart
-          data={chartPoints}
-          onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-            props ? (
-              <div className="onRenderCalloutPerDataPoint">
-                <p>Custom Callout Content</p>
-              </div>
-            ) : null
-          }
-        />,
-      );
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+  test('Should render onRenderCalloutPerDataPoint', () => {
+    const { container } = render(
+      <AreaChart
+        data={chartPoints}
+        onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="onRenderCalloutPerDataPoint">
+              <p>Custom Callout Content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM).toBeDefined();
   });
 
-  it('Should not render onRenderCalloutPerDataPoint ', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} />);
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+  test('Should not render onRenderCalloutPerDataPoint', () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
 });
@@ -304,21 +224,23 @@ describe('Render calling with respective to props', () => {
   beforeEach(() => {
     resetIds();
   });
-  it('No prop changes', () => {
+  
+  test('No prop changes', () => {
     const renderMock = jest.spyOn(AreaChartBase.prototype, 'render');
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
     };
-    act(() => {
-      const component = mount(<AreaChart {...props} />);
-      component.setProps({ ...props });
-    });
+    
+    const { rerender } = render(<AreaChart {...props} />);
+    rerender(<AreaChart {...props} />);
+    
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
-  it('prop changes', () => {
+  
+  test('prop changes', () => {
     const renderMock = jest.spyOn(AreaChartBase.prototype, 'render');
     const props = {
       data: chartPoints,
@@ -326,111 +248,108 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    act(() => {
-      const component = mount(<AreaChart {...props} />);
-      component.setProps({ ...props, hideTooltip: true });
-    });
+    
+    const { rerender } = render(<AreaChart {...props} />);
+    rerender(<AreaChart {...props} hideTooltip={true} />);
+    
     renderMock.mockRestore();
   });
 });
 
 describe('AreaChart - mouse events', () => {
-  let root: HTMLDivElement | null;
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
-  beforeEach(() => {
-    sharedBeforeEach();
+  testWithWait(
+    'Should render callout correctly on mouseover',
+    AreaChart,
+    { data: chartPoints, calloutProps: { doNotLayer: true } },
+    container => {
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
 
-    root = document.createElement('div');
-    document.body.appendChild(root);
-  });
+  testWithWait(
+    'Should render callout correctly on mousemove',
+    AreaChart,
+    { data: chartPoints, calloutProps: { doNotLayer: true } },
+    container => {
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseMove(areas[0], { clientX: 40, clientY: 0 });
+      const firstCalloutPosition = getById(container, /toolTipcallout/i)[0].style.left;
+      
+      fireEvent.mouseMove(areas[0], { clientX: -20, clientY: 0 });
+      const secondCalloutPosition = getById(container, /toolTipcallout/i)[0].style.left;
+      
+      expect(firstCalloutPosition).not.toBe(secondCalloutPosition);
+    },
+  );
 
-  afterEach(() => {
-    sharedAfterEach();
+  testWithWait(
+    'Should render customized callout on mouseover',
+    AreaChart,
+    {
+      data: chartPoints,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: (props: ICustomizedCalloutData) =>
+        props ? (
+          <div>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </div>
+        ) : null,
+    },
+    container => {
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
 
-    if (root) {
-      document.body.removeChild(root);
-      root = null;
-    }
-  });
-
-  it('Should render callout correctly on mouseover', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
-    });
-    wrapper!.find('rect').simulate('mouseover');
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('Should render callout correctly on mousemove', () => {
-    act(() => {
-      wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
-    });
-    wrapper!.find('rect').simulate('mousemove', { clientX: 40, clientY: 0 });
-    const html1 = wrapper!.html();
-    wrapper!.find('rect').simulate('mousemove', { clientX: -20, clientY: 0 });
-    const html2 = wrapper!.html();
-    expect(html1).not.toBe(html2);
-  });
-
-  it('Should render customized callout on mouseover', () => {
-    act(() => {
-      wrapper = mount(
-        <AreaChart
-          data={chartPoints}
-          calloutProps={{ doNotLayer: true }}
-          onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-            props ? (
-              <div>
-                <pre>{JSON.stringify(props, null, 2)}</pre>
-              </div>
-            ) : null
-          }
-        />,
-        { attachTo: root },
-      );
-    });
-    wrapper!.find('rect').simulate('mouseover');
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('Should render customized callout per stack on mouseover', () => {
-    act(() => {
-      wrapper = mount(
-        <AreaChart
-          data={chartPoints}
-          calloutProps={{ doNotLayer: true }}
-          onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
-            props ? (
-              <div>
-                <pre>{JSON.stringify(props, null, 2)}</pre>
-              </div>
-            ) : null
-          }
-        />,
-        { attachTo: root },
-      );
-    });
-    wrapper!.find('rect').simulate('mouseover');
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
+  testWithWait(
+    'Should render customized callout per stack on mouseover',
+    AreaChart,
+    {
+      data: chartPoints,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerStack: (props: ICustomizedCalloutData) =>
+        props ? (
+          <div>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </div>
+        ) : null,
+    },
+    container => {
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
+});
 
   describe('Render empty chart aria label div when chart is empty', () => {
-    it('No empty chart aria label div rendered', () => {
-      act(() => {
-        wrapper = mount(<AreaChart data={chartPoints} />);
-      });
-      const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    test('No empty chart aria label div rendered', () => {
+      const { container } = render(<AreaChart data={chartPoints} />);
+      const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
       expect(renderedDOM!.length).toBe(0);
     });
-    it('Empty chart aria label div rendered', () => {
-      act(() => {
-        wrapper = mount(<AreaChart data={emptyChartPoints} />);
-      });
-      const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    
+    test('Empty chart aria label div rendered', () => {
+      const { container } = render(<AreaChart data={emptyChartPoints} />);
+      const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
       expect(renderedDOM!.length).toBe(1);
     });
+  });
+});
+
+describe('AreaChart - Accessibility tests', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });
