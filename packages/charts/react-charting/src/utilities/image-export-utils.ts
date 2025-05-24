@@ -34,6 +34,8 @@ export function toImage(
       }
 
       let svgData = new XMLSerializer().serializeToString(svg.node);
+      // This node is already detached from the DOM, so there's no need to call remove() on it.
+      // Just clear the reference.
       svg.node = null;
 
       let svgDataUrl = 'data:image/svg+xml;base64,' + btoa(unescapePonyfill(encodeURIComponent(svgData)));
