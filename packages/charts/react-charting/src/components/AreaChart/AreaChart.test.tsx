@@ -160,13 +160,13 @@ describe('AreaChart - basic props', () => {
     const hideLegendDOM = container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
-  
+
   test('Should mount callout when hideTootip false', () => {
     const { container } = render(<AreaChart data={chartPoints} />);
     const hideLegendDOM = container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
-  
+
   test('Should not mount callout when hideTootip true', () => {
     const { container } = render(<AreaChart data={chartPoints} hideTooltip={true} />);
     const hideLegendDOM = container.querySelectorAll('[class^="ms-Layer"]');
@@ -189,7 +189,7 @@ describe('AreaChart - basic props', () => {
     const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM).toBeDefined();
   });
-  
+
   test('Should not render onRenderCalloutPerStack', () => {
     const { container } = render(<AreaChart data={chartPoints} />);
     const renderedDOM = container.getElementsByClassName('.onRenderCalloutPerStack');
@@ -224,7 +224,7 @@ describe('Render calling with respective to props', () => {
   beforeEach(() => {
     resetIds();
   });
-  
+
   test('No prop changes', () => {
     const renderMock = jest.spyOn(AreaChartBase.prototype, 'render');
     const props = {
@@ -232,14 +232,14 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    
+
     const { rerender } = render(<AreaChart {...props} />);
     rerender(<AreaChart {...props} />);
-    
+
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
-  
+
   test('prop changes', () => {
     const renderMock = jest.spyOn(AreaChartBase.prototype, 'render');
     const props = {
@@ -248,10 +248,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    
+
     const { rerender } = render(<AreaChart {...props} />);
     rerender(<AreaChart {...props} hideTooltip={true} />);
-    
+
     renderMock.mockRestore();
   });
 });
@@ -279,10 +279,10 @@ describe('AreaChart - mouse events', () => {
       const areas = getById(container, /graph-areaChart/i);
       fireEvent.mouseMove(areas[0], { clientX: 40, clientY: 0 });
       const firstCalloutPosition = getById(container, /toolTipcallout/i)[0].style.left;
-      
+
       fireEvent.mouseMove(areas[0], { clientX: -20, clientY: 0 });
       const secondCalloutPosition = getById(container, /toolTipcallout/i)[0].style.left;
-      
+
       expect(firstCalloutPosition).not.toBe(secondCalloutPosition);
     },
   );
@@ -328,18 +328,17 @@ describe('AreaChart - mouse events', () => {
   );
 });
 
-  describe('Render empty chart aria label div when chart is empty', () => {
-    test('No empty chart aria label div rendered', () => {
-      const { container } = render(<AreaChart data={chartPoints} />);
-      const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
-      expect(renderedDOM!.length).toBe(0);
-    });
-    
-    test('Empty chart aria label div rendered', () => {
-      const { container } = render(<AreaChart data={emptyChartPoints} />);
-      const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
-      expect(renderedDOM!.length).toBe(1);
-    });
+describe('Render empty chart aria label div when chart is empty', () => {
+  test('No empty chart aria label div rendered', () => {
+    const { container } = render(<AreaChart data={chartPoints} />);
+    const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  test('Empty chart aria label div rendered', () => {
+    const { container } = render(<AreaChart data={emptyChartPoints} />);
+    const renderedDOM = container.querySelectorAll('[aria-label="Graph has no data to display"]');
+    expect(renderedDOM!.length).toBe(1);
   });
 });
 
