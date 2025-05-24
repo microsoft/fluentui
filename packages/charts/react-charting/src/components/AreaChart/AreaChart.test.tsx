@@ -1,5 +1,4 @@
 jest.mock('react-dom');
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, fireEvent, act, screen } from '@testing-library/react';
 import { resetIds } from '../../Utilities';
