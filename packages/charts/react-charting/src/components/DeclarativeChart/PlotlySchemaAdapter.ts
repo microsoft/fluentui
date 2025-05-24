@@ -332,7 +332,7 @@ export const transformPlotlyJsonToVSBCProps = (
         const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         const dashType = series.line?.dash || 'solid';
-        const legendShape = series.mode.includes('markers')
+        const legendShape = series.mode?.includes('markers')
           ? 'circle'
           : dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
           ? 'dottedLine'
@@ -552,7 +552,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
     const lineOptions = getLineOptions(series.line);
     const dashType = series.line?.dash || 'solid';
-    const legendShape = series.mode.includes('markers')
+    const legendShape = series.mode?.includes('markers')
       ? 'circle'
       : dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
       ? 'dottedLine'

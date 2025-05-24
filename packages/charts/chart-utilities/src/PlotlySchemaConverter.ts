@@ -160,11 +160,7 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') && !isNumberArray(data.x)) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
-  } else {
-    validateSeriesData(data, true);
-  }
+  validateSeriesData(data, true);
 };
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {

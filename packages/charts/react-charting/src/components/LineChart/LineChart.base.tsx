@@ -410,8 +410,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     shiftX: number,
   ) => {
     let domainNRangeValue: IDomainNRange;
-    if (this.props.lineMode === 'scatter' && xAxisType === XAxisTypes.NumericAxis) {
+    if (this._hasMarkersMode && xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = this._getDomainNRangeValuesWithPadding(points, margins, width, isRTL);
+    } else if (this._hasMarkersMode && xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = this._getDomainNRangeValuesOfDateWithPadding(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
     } else if (xAxisType === XAxisTypes.NumericAxis) {
       domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
     } else if (xAxisType === XAxisTypes.DateAxis) {
@@ -1694,6 +1704,55 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
+  private _getDomainNRangeValuesOfDateWithPadding = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    isRTL: boolean,
+    tickValues: Date[] = [],
+    chartType: ChartTypes,
+    barWidth?: number,
+  ): IDomainNRange => {
+    let sDate: Date;
+    let lDate: Date;
+
+    sDate = d3Min(points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.x as Date);
+    })!;
+
+    lDate = d3Max(points, (point: ILineChartPoints) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.x as Date);
+    })!;
+
+    // Include tickValues if present
+    sDate = d3Min([...tickValues, sDate])!;
+    lDate = d3Max([...tickValues, lDate])!;
+
+    // Calculate time-based padding (e.g. 10% of the date range)
+    const dateRange = lDate.getTime() - sDate.getTime();
+    const datePadding = this._hasMarkersMode ? dateRange * 0.1 : 0;
+
+    const paddedSDate = new Date(sDate.getTime() - datePadding);
+    const paddedLDate = new Date(lDate.getTime() + datePadding);
+
+    const rStartValue = margins.left!;
+    const rEndValue = width - margins.right!;
+
+    return isRTL
+      ? {
+          dStartValue: paddedLDate,
+          dEndValue: paddedSDate,
+          rStartValue,
+          rEndValue,
+        }
+      : {
+          dStartValue: paddedSDate,
+          dEndValue: paddedLDate,
+          rStartValue,
+          rEndValue,
+        };
+  };
+
   private _getDomainNRangeValuesWithPadding = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -1710,7 +1769,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
-    if (this.props.lineMode === 'scatter') {
+    if (this._hasMarkersMode) {
       this._xPadding = (this._xMax - this._xMin) * 0.1;
     }
     const rStartValue = margins.left!;
