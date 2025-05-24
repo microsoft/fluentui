@@ -123,16 +123,16 @@ describe('Sparkline snapShot testing', () => {
 describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
 
-  it('No empty chart div rendered for non-empty data', () => {
-    render(<Sparkline data={sparkline1Points} />);
-    // Just verify rendering doesn't throw
-    expect(true).toBeTruthy();
+  it('No empty chart aria label div rendered for non-empty data', () => {
+    const { container } = render(<Sparkline data={sparkline1Points} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(0);
   });
 
-  it('Empty chart can be rendered', () => {
-    render(<Sparkline data={emptySparklinePoints} />);
-    // Just verify rendering doesn't throw
-    expect(true).toBeTruthy();
+  it('Empty chart aria label div rendered for empty data', () => {
+    const { container } = render(<Sparkline data={emptySparklinePoints} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(1);
   });
 });
 
