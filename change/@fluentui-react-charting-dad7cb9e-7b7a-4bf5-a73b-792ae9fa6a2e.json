@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: enable rendering optimization for large datasets + clear large variables after use during image export",
+  "packageName": "@fluentui/react-charting",
+  "email": "kumarkshitij@microsoft.com",
+  "dependentChangeType": "patch"
+}
