@@ -1061,6 +1061,8 @@ export interface ILineChartProps extends ICartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    // @deprecated
+    lineMode?: 'default' | 'scatter';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
