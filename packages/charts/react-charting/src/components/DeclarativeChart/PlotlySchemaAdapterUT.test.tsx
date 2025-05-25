@@ -469,7 +469,9 @@ describe('getNumberAtIndexOrDefault', () => {
 
   it('returns 1 if data is not an array or typed array', () => {
     expect(getNumberAtIndexOrDefault(undefined, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(getNumberAtIndexOrDefault(null as any, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(getNumberAtIndexOrDefault('not-an-array' as any, 0)).toBe(1);
   });
 
