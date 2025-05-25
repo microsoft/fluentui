@@ -635,6 +635,7 @@ export const transformPlotlyJsonToScatterChartProps = (
 
   const yMinMaxValues = findNumericMinMaxOfY(chartData);
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
     chartTitle,
@@ -654,6 +655,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       hideTickOverlap: true,
       hideLegend,
       useUTC: false,
+      optimizeLargeData: numDataPoints > 1000,
     } as IAreaChartProps;
   } else {
     return {
@@ -671,6 +673,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       enableReflow: false,
       hideLegend,
       useUTC: false,
+      optimizeLargeData: numDataPoints > 1000,
     } as ILineChartProps;
   }
 };
