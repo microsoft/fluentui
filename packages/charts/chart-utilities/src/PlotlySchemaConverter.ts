@@ -169,7 +169,6 @@ const validateScatterData = (data: Partial<PlotData>) => {
   } else {
     validateSeriesData(data, true);
   }
-  validateSeriesData(data, true);
 };
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
