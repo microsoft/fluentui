@@ -355,13 +355,20 @@ export const transformPlotlyJsonToVSBCProps = (
           const lineOptions = getLineOptions(series.line);
           const dashType = series.line?.dash || 'solid';
           const legendShape =
-            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+              ? 'dottedLine'
+              : series.mode?.includes('markers')
+              ? 'circle'
+              : 'default';
           mapXToDataPoints[x].lineData!.push({
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
             color: lineColor,
-            ...(lineOptions ? { lineOptions } : {}),
+            lineOptions: {
+              ...(lineOptions ?? {}),
+              mode: series.mode,
+            },
             useSecondaryYScale: usesSecondaryYScale(series),
           });
           if (!usesSecondaryYScale(series)) {
@@ -589,7 +596,11 @@ export const transformPlotlyJsonToScatterChartProps = (
       const lineOptions = getLineOptions(series.line);
       const dashType = series.line?.dash || 'solid';
       const legendShape =
-        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot' ? 'dottedLine' : 'default';
+        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
+          ? 'dottedLine'
+          : series.mode?.includes('markers')
+          ? 'circle'
+          : 'default';
 
       const validXYRanges = getValidXYRanges(series);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
@@ -612,7 +623,10 @@ export const transformPlotlyJsonToScatterChartProps = (
               : {}),
           })),
           color: seriesColor,
-          ...(lineOptions ? { lineOptions } : {}),
+          lineOptions: {
+            ...(lineOptions ?? {}),
+            mode: series.mode,
+          },
           useSecondaryYScale: usesSecondaryYScale(series),
         } as ILineChartPoints;
       });
