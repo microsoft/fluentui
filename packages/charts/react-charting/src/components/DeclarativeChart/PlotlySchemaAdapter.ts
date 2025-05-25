@@ -1342,11 +1342,11 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isInvalidValue = (value: any) => {
+export const isInvalidValue = (value: any) => {
   return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
 
-const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
+export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
   if (isArrayOrTypedArray(data)) {
     if (typeof data![index] !== 'number' || !isFinite(data![index] as number)) {
       return;

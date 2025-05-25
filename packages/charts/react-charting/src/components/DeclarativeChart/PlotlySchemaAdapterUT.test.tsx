@@ -12,6 +12,8 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  isInvalidValue,
+  getNumberAtIndexOrDefault,
   getValidXYRanges,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
@@ -423,6 +425,56 @@ describe('getSchemaColors with other colorways', () => {
   test('Should return undefined when input schema has color in undefined format', () => {
     const undefinedColor = [undefined];
     expect(getSchemaColors(undefined, undefinedColor, { current: colorMap })).not.toBe([]);
+  });
+});
+
+describe('isInvalidValue', () => {
+  it('returns true for undefined', () => {
+    expect(isInvalidValue(undefined)).toBe(true);
+  });
+
+  it('returns true for null', () => {
+    expect(isInvalidValue(null)).toBe(true);
+  });
+
+  it('returns true for non-finite numbers', () => {
+    expect(isInvalidValue(NaN)).toBe(true);
+    expect(isInvalidValue(Infinity)).toBe(true);
+    expect(isInvalidValue(-Infinity)).toBe(true);
+  });
+
+  it('returns false for valid numbers', () => {
+    expect(isInvalidValue(0)).toBe(false);
+    expect(isInvalidValue(123)).toBe(false);
+    expect(isInvalidValue(-456.78)).toBe(false);
+  });
+
+  it('returns false for strings', () => {
+    expect(isInvalidValue('')).toBe(false);
+    expect(isInvalidValue('test')).toBe(false);
+  });
+});
+
+describe('getNumberAtIndexOrDefault', () => {
+  it('returns the number at the given index for a valid array', () => {
+    expect(getNumberAtIndexOrDefault([10, 20, 30], 1)).toBe(20);
+  });
+
+  it('returns undefined if the value at the index is not a number or a non-finite number', () => {
+    expect(getNumberAtIndexOrDefault([10, 'a', 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, NaN, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, Infinity, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, -Infinity, 30], 1)).toBeUndefined();
+  });
+
+  it('returns 1 if data is not an array or typed array', () => {
+    expect(getNumberAtIndexOrDefault(undefined, 0)).toBe(1);
+    expect(getNumberAtIndexOrDefault(null as any, 0)).toBe(1);
+    expect(getNumberAtIndexOrDefault('not-an-array' as any, 0)).toBe(1);
+  });
+
+  it('returns undefined if index is out of bounds', () => {
+    expect(getNumberAtIndexOrDefault([10, 20], 5)).toBeUndefined();
   });
 });
 
