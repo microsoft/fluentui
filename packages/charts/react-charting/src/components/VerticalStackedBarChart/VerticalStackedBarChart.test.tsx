@@ -129,31 +129,31 @@ describe('VerticalStackedBarChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not render legend when hideLegend true ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should render legend when hideLegend false ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const hideLegendDOM = wrapper.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should render callout when hideTootip false ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const hideTooltipDom = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom).toBeDefined();
   });
 
   it('Should not render callout when hideTootip true ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
     const hideTooltipDom = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerStack ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalStackedBarChart
         data={chartPointsVSBC}
         onRenderCalloutPerStack={(props: IVerticalStackedChartProps) =>
@@ -171,13 +171,13 @@ describe('VerticalStackedBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(
+    const wrapper = render(
       <VerticalStackedBarChart
         data={chartPointsVSBC}
         onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
@@ -194,7 +194,7 @@ describe('VerticalStackedBarChart - basic props', () => {
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
@@ -235,20 +235,20 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
+    const wrapper = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let component = renderer.create(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
+    const component = renderer.create(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
     const tree = component!.toJSON();
     const node = Array.isArray(tree) ? tree[0] : tree;
     expect(node && node.props['aria-label']).toBe('Graph has no data to display');
   });
 
   test('should render empty chart div when data array is empty', () => {
-    let component = renderer.create(<VerticalStackedBarChart data={[]} roundCorners={true} />);
+    const component = renderer.create(<VerticalStackedBarChart data={[]} roundCorners={true} />);
     const tree = component!.toJSON();
     const node = Array.isArray(tree) ? tree[0] : tree;
     expect(node && node.props['aria-label']).toBe('Graph has no data to display');
