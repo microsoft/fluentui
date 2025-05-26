@@ -6,7 +6,7 @@ import { ScatterChartStringExample } from './ScatterChart.StringAxis.Example';
 
 export const Basic = () => <ScatterChartBasicExample />;
 export const Date = () => <ScatterChartDateExample />;
-export const String = () => <ScatterChartStringExample />;
+export const StringAxis = () => <ScatterChartStringExample />;
 
 export default {
   title: 'Components/ScatterChart',

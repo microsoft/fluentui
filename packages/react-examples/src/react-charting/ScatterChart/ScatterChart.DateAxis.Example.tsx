@@ -42,7 +42,7 @@ export class ScatterChartDateExample extends React.Component<{}, IScatterChartDa
   }
 
   public render(): JSX.Element {
-    return <div>{this._DateExample()}</div>;
+    return <div>{this._dateExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +62,7 @@ export class ScatterChartDateExample extends React.Component<{}, IScatterChartDa
     this.setState({ useUTC: checked });
   };
 
-  private _DateExample(): JSX.Element {
+  private _dateExample(): JSX.Element {
     const data: IChartProps = {
       chartTitle: 'Website Traffic and Sales Performance',
       scatterChartData: [

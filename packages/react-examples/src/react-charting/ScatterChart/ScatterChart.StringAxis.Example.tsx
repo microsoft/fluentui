@@ -42,7 +42,7 @@ export class ScatterChartStringExample extends React.Component<{}, IScatterChart
   }
 
   public render(): JSX.Element {
-    return <div>{this._StringExample()}</div>;
+    return <div>{this._stringExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +62,7 @@ export class ScatterChartStringExample extends React.Component<{}, IScatterChart
     this.setState({ useUTC: checked });
   };
 
-  private _StringExample(): JSX.Element {
+  private _stringExample(): JSX.Element {
     const data: IChartProps = {
       chartTitle: 'Sales Performance by Category',
       scatterChartData: [
