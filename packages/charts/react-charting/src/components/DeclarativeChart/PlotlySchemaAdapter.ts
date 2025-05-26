@@ -405,7 +405,9 @@ export const transformPlotlyJsonToVSBCProps = (
 
 const getColorFromScale = (value: number, scale: Array<[number, string]>, domain: [number, number]): string => {
   const [dMin, dMax] = domain;
-  if (dMax === dMin) {return scale[0][1];}
+  if (dMax === dMin) {
+    return scale[0][1];
+  }
   const norm = (value - dMin) / (dMax - dMin);
   // Find two colorscale stops surrounding norm
   for (let i = 1; i < scale.length; i++) {
@@ -453,7 +455,7 @@ export const transformPlotlyJsonToGVBCProps = (
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the extracted colors
         let color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
-        // Per-bar color mapping fix
+        // Per-bar color mapping from colorscale
         if (
           Array.isArray(series.marker?.color) &&
           input.layout?.coloraxis?.colorscale &&

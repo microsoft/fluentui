@@ -818,7 +818,6 @@ export class GroupedVerticalBarChartBase
           ...point,
           series:
             point.series?.map(seriesPoint => {
-              let pointGradient: [string, string] | undefined;
               let startColor = seriesPoint.color
                 ? seriesPoint.color
                 : getNextColor(colorIndex, 0, this.props.theme?.isInverted);
@@ -827,15 +826,15 @@ export class GroupedVerticalBarChartBase
               if (this.props.enableGradient) {
                 if (seriesPoint.color) {
                   // Generate gradient colors based on seriesPoint.color
-                  startColor = this._lightenColor(seriesPoint.color || startColor, 0.2); // Lighten the base color
-                  endColor = this._darkenColor(seriesPoint.color || endColor, 0.2); // Darken the base color
+                  startColor = this._darkenColor(seriesPoint.color || endColor, 0.2); // Darken the base color
+                  endColor = this._lightenColor(seriesPoint.color || startColor, 0.2); // Lighten the base color
                 } else {
                   const nextGradient = getNextGradient(colorIndex, 0, this.props.theme?.isInverted);
                   startColor = seriesPoint.gradient?.[0] || nextGradient[0];
                   endColor = seriesPoint.gradient?.[1] || nextGradient[1];
                 }
               }
-              pointGradient = [startColor, endColor];
+              const pointGradient = [startColor, endColor];
               if (!this._legendColorMap[seriesPoint.legend]) {
                 this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
               }
