@@ -47,13 +47,7 @@ const storyTemplate = html<StoryArgs<FluentDrawer>>`
   >
     <fluent-drawer-body>
       <h2 slot="title">Drawer Header</h2>
-      <fluent-button
-        slot="close"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-default')}"
-      >
+      <fluent-button slot="close" appearance="transparent" icon-only aria-label="close">
         ${dismissed20Regular}
       </fluent-button>
       <div>

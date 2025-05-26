@@ -68,15 +68,22 @@ export const isArrayOfType = (
 };
 
 export const isDateArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isDate);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(data, (value: any): boolean => isDate(value) || value === null);
 };
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isNumber);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(
+    data,
+    (value: any): boolean =>
+      (typeof value === 'string' && isNumber(value)) || typeof value === 'number' || value === null,
+  );
 };
 
 export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isYear);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(data, (value: any): boolean => isYear(value) || value === null);
 };
 
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
@@ -125,8 +132,11 @@ export const getValidSchema = (input: any): PlotlySchema => {
     if (!validatedSchema) {
       throw new Error('Plotly input is null or undefined');
     }
-    if (!validatedSchema.data) {
-      throw new Error('Plotly input data is null or undefined');
+    if (typeof validatedSchema !== 'object') {
+      throw new Error(`Plotly input is not an object. Input type: ${typeof validatedSchema}`);
+    }
+    if (!isArrayOrTypedArray(validatedSchema.data)) {
+      throw new Error('Plotly input data is not a valid array or typed array');
     }
     if (validatedSchema.data.length === 0) {
       throw new Error('Plotly input data is empty');
@@ -157,8 +167,12 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') && !isNumberArray(data.x)) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
+  if (
+    ['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') &&
+    !isNumberArray(data.x) &&
+    !isDateArray(data.x)
+  ) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String`);
   } else {
     validateSeriesData(data, true);
   }
@@ -251,6 +265,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'verticalbar', validTracesInfo: validTraces };
       case 'scatterpolar':
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
+      case 'table':
+        return { isValid: true, type: 'table', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');

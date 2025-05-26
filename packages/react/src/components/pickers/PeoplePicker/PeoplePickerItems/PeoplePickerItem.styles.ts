@@ -127,6 +127,11 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               ':focus-within': {
                 background: palette.themePrimary,
                 color: palette.white,
+
+                [HighContrastSelector]: {
+                  color: 'HighLightText',
+                  background: 'Highlight',
+                },
               },
               [HighContrastSelector]: {
                 borderColor: 'HighLight',
