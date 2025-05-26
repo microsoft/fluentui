@@ -110,7 +110,9 @@ function findNodesWithClassName(
   className: string,
 ): renderer.ReactTestRendererJSON[] {
   let result: renderer.ReactTestRendererJSON[] = [];
-  if (!node) return result;
+  if (!node) {
+    return result;
+  }
   if (Array.isArray(node)) {
     node.forEach(child => {
       result = result.concat(findNodesWithClassName(child, className));
@@ -196,7 +198,7 @@ describe('Render calling with respective to props', () => {
       height: 700,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-    let component = renderer.create(<TreeChart {...props} />);
+    const component = renderer.create(<TreeChart {...props} />);
     const htmlBefore = component!.toJSON();
     component.update(<TreeChart {...props} />);
     const htmlAfter = component!.toJSON();
@@ -209,7 +211,7 @@ describe('Render calling with respective to props', () => {
       height: 700,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-    let component = renderer.create(<TreeChart {...props} />);
+    const component = renderer.create(<TreeChart {...props} />);
     const htmlBefore = component!.toJSON();
     component.update(<TreeChart {...props} width={600} />);
     const htmlAfter = component!.toJSON();

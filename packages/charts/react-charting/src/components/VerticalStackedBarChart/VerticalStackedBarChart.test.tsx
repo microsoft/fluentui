@@ -223,7 +223,7 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    let component = renderer.create(<VerticalStackedBarChart {...props} />);
+    const component = renderer.create(<VerticalStackedBarChart {...props} />);
     const htmlBefore = component!.toJSON();
     component.update(<VerticalStackedBarChart {...props} hideLegend={false} />);
     const htmlAfter = component!.toJSON();
