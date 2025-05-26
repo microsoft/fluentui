@@ -202,13 +202,13 @@ describe('Render empty chart aria label div when chart is empty', () => {
   beforeEach(sharedBeforeEach);
 
   it('No empty chart aria label div rendered', () => {
-    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const wrapper = render(<HorizontalBarChart data={chartPoints} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper = render(<HorizontalBarChart data={[]} />);
+    const wrapper = render(<HorizontalBarChart data={[]} />);
     const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
