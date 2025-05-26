@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 23 May 2025 04:06:43 GMT and should not be manually modified.
+This log was last generated on Mon, 26 May 2025 04:07:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.105)
+
+Mon, 26 May 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.104..@fluentui/web-components_v3.0.0-beta.105)
+
+### Changes
+
+- fix: dialog click event prevents default for arbitrary content clicks ([PR #34511](https://github.com/microsoft/fluentui/pull/34511) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.104)
 
