@@ -834,7 +834,7 @@ export class GroupedVerticalBarChartBase
                   endColor = seriesPoint.gradient?.[1] || nextGradient[1];
                 }
               }
-              const pointGradient = [startColor, endColor];
+              const pointGradient: [string, string] = [startColor, endColor];
               if (!this._legendColorMap[seriesPoint.legend]) {
                 this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
               }
