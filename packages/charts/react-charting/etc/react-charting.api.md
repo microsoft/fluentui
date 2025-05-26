@@ -1029,6 +1029,7 @@ export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> 
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
+    mode?: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
     strokeDasharray?: string | number;
     strokeDashoffset?: string | number;
     strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';
@@ -1060,6 +1061,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    // @deprecated
     lineMode?: 'default' | 'scatter';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;

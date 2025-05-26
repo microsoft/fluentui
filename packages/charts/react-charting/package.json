@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.23.91",
+  "version": "5.23.92",
   "description": "React web charting controls for Microsoft fluentui system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
-    "@fluentui/chart-utilities": "^1.1.10",
+    "@fluentui/chart-utilities": "^1.1.11",
     "@fluentui/react-focus": "^8.9.25",
     "@fluentui/theme-samples": "^8.7.208",
     "@microsoft/load-themed-styles": "^1.10.26",

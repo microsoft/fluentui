@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 21 May 2025 07:20:20 GMT and should not be manually modified.
+This log was last generated on Mon, 26 May 2025 07:20:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.92)
+
+Mon, 26 May 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.91..@fluentui/react-charting_v5.23.92)
+
+### Patches
+
+- fix bar gap issue in VSBC ([PR #34525](https://github.com/microsoft/fluentui/pull/34525) by anushgupta@microsoft.com)
+- fix: enable rendering optimization for large datasets + clear large variables after use during image export ([PR #34524](https://github.com/microsoft/fluentui/pull/34524) by kumarkshitij@microsoft.com)
+- support combination of lines and markers ([PR #34505](https://github.com/microsoft/fluentui/pull/34505) by anushgupta@microsoft.com)
+- fix: filter out null values ([PR #34474](https://github.com/microsoft/fluentui/pull/34474) by kumarkshitij@microsoft.com)
+- Bump @fluentui/chart-utilities to v1.1.11 ([commit](https://github.com/microsoft/fluentui/commit/3ecfb8c6af1077247cd8d57f493d79e60eb3ef49) by beachball)
 
 ## [5.23.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.91)
 

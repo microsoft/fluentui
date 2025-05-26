@@ -89,8 +89,8 @@ export interface ILineChartProps extends ICartesianChartProps {
   enablePerfOptimization?: boolean;
 
   /**
-   * @default default
    * The prop used to define line chart mode(default or scatter)
+   * @deprecated this prop no longer used to identify scatter mode
    */
   lineMode?: 'default' | 'scatter';
 }

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 19 May 2025 07:20:51 GMT and should not be manually modified.
+This log was last generated on Mon, 26 May 2025 07:20:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.11)
+
+Mon, 26 May 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.10..@fluentui/chart-utilities_v1.1.11)
+
+### Patches
+
+- Added support for date axis in scatter chart ([PR #34505](https://github.com/microsoft/fluentui/pull/34505) by anushgupta@microsoft.com)
+- fix: update checks to allow null values ([PR #34474](https://github.com/microsoft/fluentui/pull/34474) by kumarkshitij@microsoft.com)
 
 ## [1.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.10)
 
