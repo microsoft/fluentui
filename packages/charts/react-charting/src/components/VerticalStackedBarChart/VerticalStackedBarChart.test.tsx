@@ -209,7 +209,7 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    let component = renderer.create(<VerticalStackedBarChart {...props} />);
+    const component = renderer.create(<VerticalStackedBarChart {...props} />);
     const htmlBefore = component!.toJSON();
     component.update(<VerticalStackedBarChart {...props} />);
     const htmlAfter = component!.toJSON();

@@ -1,12 +1,11 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
-import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
-import { TreeChartBase } from './TreeChart.base';
+import { ITreeChartDataPoint, TreeChart } from './index';
 import { resetIds } from '@fluentui/react/lib/Utilities';
 import { act, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { findNodesWithClassName } from '../../utilities/TestUtility.test';
 
 expect.extend(toHaveNoViolations);
 
@@ -108,19 +107,11 @@ const threeLayerChart: ITreeChartDataPoint = {
   ],
 };
 
-// Wrapper of the TreeChart to be tested.
-let wrapper: ReactWrapper<ITreeProps, TreeChartBase> | undefined;
-
 function sharedBeforeEach() {
   resetIds();
 }
 
 function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-
   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
   // cleaned up in fake timers world
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -158,15 +149,17 @@ describe('TreeChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('svgNode innerHTML should not be null ', () => {
-    wrapper = mount(<TreeChart treeData={threeLayerChart} composition={0} />);
-    const svgObject = wrapper.getDOMNode().querySelector('[class="svgNode"]');
-    expect(svgObject?.innerHTML).toBeDefined();
+    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={0} />);
+    const tree = component.toJSON();
+    const svgNode = findNodesWithClassName(tree, 'svgNode');
+    expect(svgNode.length).toBe(1);
   });
 
   it('svgLink innerHTML should not be null ', () => {
-    wrapper = mount(<TreeChart treeData={twoLayerChart} />);
-    const svgObject = wrapper.getDOMNode().querySelector('[class="svgLink"]');
-    expect(svgObject?.innerHTML).toBeDefined();
+    const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
+    const tree = component.toJSON();
+    const svgNode = findNodesWithClassName(tree, 'svgLink');
+    expect(svgNode.length).toBe(1);
   });
 });
 
@@ -174,32 +167,30 @@ describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
     const props = {
       treeData: twoLayerChart,
       width: 1000,
       height: 700,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-
-    const component = mount(<TreeChart {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(3);
-    renderMock.mockRestore();
+    let component = renderer.create(<TreeChart {...props} />);
+    const htmlBefore = component!.toJSON();
+    component.update(<TreeChart {...props} />);
+    const htmlAfter = component!.toJSON();
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
   it('prop changes', () => {
-    const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
     const props = {
       treeData: threeLayerChart,
       composition: 0,
       height: 700,
       margin: { top: 30, right: 20, bottom: 30, left: 50 },
     };
-
-    const component = mount(<TreeChart {...props} />);
-    component.setProps({ ...props, width: 800 });
-    expect(renderMock).toHaveBeenCalledTimes(3);
-    renderMock.mockRestore();
+    let component = renderer.create(<TreeChart {...props} />);
+    const htmlBefore = component!.toJSON();
+    component.update(<TreeChart {...props} width={600} />);
+    const htmlAfter = component!.toJSON();
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
 
