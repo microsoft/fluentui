@@ -2,6 +2,45 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 26 May 2025 07:20:14 GMT",
+      "tag": "@fluentui/react-charting_v5.23.92",
+      "version": "5.23.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "09ecc559495360840c36e4590aa5ee45f83f47bc",
+            "comment": "fix bar gap issue in VSBC"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5fa34f6ba016b5d953c3f7efb3c62bd6f419819d",
+            "comment": "fix: enable rendering optimization for large datasets + clear large variables after use during image export"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6393c3bcb031616e8c385461f6f4a745931e9a10",
+            "comment": "support combination of lines and markers"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5dffe23c9c0b906040240190c34d1f9cfadcecf3",
+            "comment": "fix: filter out null values"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.11",
+            "commit": "3ecfb8c6af1077247cd8d57f493d79e60eb3ef49"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 May 2025 07:20:20 GMT",
       "tag": "@fluentui/react-charting_v5.23.91",
       "version": "5.23.91",

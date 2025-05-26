@@ -3197,6 +3197,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3248,6 +3249,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3299,6 +3301,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3350,6 +3353,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -3359,6 +3363,7 @@ Object {
   "hideLegend": false,
   "hideTickOverlap": true,
   "mode": "tonexty",
+  "optimizeLargeData": false,
   "supportNegativeData": true,
   "useUTC": false,
   "width": undefined,
@@ -3780,6 +3785,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4191,6 +4197,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4602,6 +4609,7 @@ Object {
         "legendShape": "default",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "lines",
         },
         "useSecondaryYScale": false,
       },
@@ -4611,6 +4619,7 @@ Object {
   "height": 350,
   "hideLegend": false,
   "hideTickOverlap": true,
+  "optimizeLargeData": false,
   "roundedTicks": true,
   "supportNegativeData": true,
   "useUTC": false,
@@ -5032,9 +5041,10 @@ Object {
           },
         ],
         "legend": "Trace 0",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
@@ -5443,9 +5453,10 @@ Object {
           },
         ],
         "legend": "Trace 1",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
@@ -5854,9 +5865,10 @@ Object {
           },
         ],
         "legend": "Trace 2",
-        "legendShape": "default",
+        "legendShape": "circle",
         "lineOptions": Object {
           "curve": "linear",
+          "mode": "markers",
         },
         "useSecondaryYScale": false,
       },
@@ -5866,6 +5878,7 @@ Object {
   "height": 350,
   "hideLegend": false,
   "hideTickOverlap": true,
+  "optimizeLargeData": false,
   "roundedTicks": true,
   "supportNegativeData": true,
   "useUTC": false,
@@ -6163,6 +6176,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToVSBCProps - Should return VSBC props 1`] = `
 Object {
+  "barGapMax": 2,
   "barWidth": "auto",
   "chartTitle": "",
   "data": Array [
