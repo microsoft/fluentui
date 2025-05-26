@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added support for date axis in scatter chart",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
