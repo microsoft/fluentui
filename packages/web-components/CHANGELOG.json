@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 26 May 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.105",
+      "version": "3.0.0-beta.105",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c688d9a55a85dda5eb2851c1783942b174277239",
+            "comment": "fix: dialog click event prevents default for arbitrary content clicks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 May 2025 04:06:43 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.104",
       "version": "3.0.0-beta.104",
