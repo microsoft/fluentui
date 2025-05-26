@@ -402,6 +402,24 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
+const getColorFromScale = (value: number, scale: Array<[number, string]>, domain: [number, number]): string => {
+  const [dMin, dMax] = domain;
+  if (dMax === dMin) return scale[0][1];
+  const norm = (value - dMin) / (dMax - dMin);
+  // Find two colorscale stops surrounding norm
+  for (let i = 1; i < scale.length; i++) {
+    if (norm <= scale[i][0]) {
+      const [leftPos, leftColor] = scale[i - 1];
+      const [rightPos, rightColor] = scale[i];
+      // Linear interpolate between the two colors
+      const interpolationFactor = (norm - leftPos) / (rightPos - leftPos);
+      // For linear interpolation, 0.5 would yield the exact midpoint between two numbers
+      return interpolationFactor < 0.5 ? leftColor : rightColor;
+    }
+  }
+  return scale[scale.length - 1][1];
+};
+
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -433,7 +451,20 @@ export const transformPlotlyJsonToGVBCProps = (
       if (series.type === 'bar') {
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the extracted colors
-        const color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+        let color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+        // Per-bar color mapping fix
+        if (
+          Array.isArray(series.marker?.color) &&
+          input.layout?.coloraxis?.colorscale &&
+          typeof series.marker.color[xIndex] === 'number'
+        ) {
+          const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
+          const colorValues = series.marker.color as number[];
+          const dMin = (input.layout.coloraxis as any)?.cmin ?? Math.min(...colorValues);
+          const dMax = (input.layout.coloraxis as any)?.cmax ?? Math.max(...colorValues);
+          color = getColorFromScale(series.marker.color[xIndex], scale, [dMin, dMax]);
+        }
+
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y![xIndex] as number,
@@ -461,6 +492,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    enableGradient: true,
   };
 };
 
