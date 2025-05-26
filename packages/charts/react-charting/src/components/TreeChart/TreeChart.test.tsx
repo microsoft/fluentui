@@ -5,8 +5,6 @@ import { ITreeChartDataPoint, TreeChart } from './index';
 import { resetIds } from '@fluentui/react/lib/Utilities';
 import { act, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { findNodesWithClassName } from '../../utilities/TestUtility.test';
-
 expect.extend(toHaveNoViolations);
 
 const twoLayerChart: ITreeChartDataPoint = {
@@ -106,6 +104,31 @@ const threeLayerChart: ITreeChartDataPoint = {
     },
   ],
 };
+
+function findNodesWithClassName(
+  node: renderer.ReactTestRendererJSON | renderer.ReactTestRendererJSON[] | null,
+  className: string,
+): renderer.ReactTestRendererJSON[] {
+  let result: renderer.ReactTestRendererJSON[] = [];
+  if (!node) return result;
+  if (Array.isArray(node)) {
+    node.forEach(child => {
+      result = result.concat(findNodesWithClassName(child, className));
+    });
+  } else {
+    if (node.props && typeof node.props.className === 'string' && node.props.className.split(' ').includes(className)) {
+      result.push(node);
+    }
+    if (node.children) {
+      node.children.forEach(child => {
+        if (typeof child === 'object' && child !== null) {
+          result = result.concat(findNodesWithClassName(child as renderer.ReactTestRendererJSON, className));
+        }
+      });
+    }
+  }
+  return result;
+}
 
 function sharedBeforeEach() {
   resetIds();

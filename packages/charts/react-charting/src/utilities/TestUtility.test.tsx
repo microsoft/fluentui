@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
-import { ReactTestRendererJSON } from 'react-test-renderer';
 const env = require('../../config/tests');
 
 const { Timezone } = require('../../scripts/constants');
@@ -101,27 +100,3 @@ export const conditionalTest = (shouldExecute: boolean) => {
 export const isTestEnv = () => {
   return env === 'TEST' ? true : false;
 };
-export function findNodesWithClassName(
-  node: ReactTestRendererJSON | ReactTestRendererJSON[] | null,
-  className: string,
-): ReactTestRendererJSON[] {
-  let result: ReactTestRendererJSON[] = [];
-  if (!node) return result;
-  if (Array.isArray(node)) {
-    node.forEach(child => {
-      result = result.concat(findNodesWithClassName(child, className));
-    });
-  } else {
-    if (node.props && typeof node.props.className === 'string' && node.props.className.split(' ').includes(className)) {
-      result.push(node);
-    }
-    if (node.children) {
-      node.children.forEach(child => {
-        if (typeof child === 'object' && child !== null) {
-          result = result.concat(findNodesWithClassName(child as ReactTestRendererJSON, className));
-        }
-      });
-    }
-  }
-  return result;
-}
