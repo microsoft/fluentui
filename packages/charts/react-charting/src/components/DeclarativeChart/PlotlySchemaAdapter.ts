@@ -330,6 +330,8 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
+    const xValues = series.x as Datum[];
+    const isXDate = isDateArray(xValues);
     const validXYRanges = getValidXYRanges(series);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
@@ -337,7 +339,11 @@ export const transformPlotlyJsonToVSBCProps = (
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
-          mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
+          mapXToDataPoints[x] = {
+            xAxisPoint: isXYearCategory ? x.toString() : isXDate ? new Date(x as string).toLocaleDateString() : x,
+            chartData: [],
+            lineData: [],
+          };
         }
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the extracted colors
