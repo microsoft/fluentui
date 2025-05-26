@@ -50,6 +50,7 @@ import type {
   Data,
   TableData,
   Color,
+  ColorAxis,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -404,7 +405,7 @@ export const transformPlotlyJsonToVSBCProps = (
 
 const getColorFromScale = (value: number, scale: Array<[number, string]>, domain: [number, number]): string => {
   const [dMin, dMax] = domain;
-  if (dMax === dMin) return scale[0][1];
+  if (dMax === dMin) {return scale[0][1];}
   const norm = (value - dMin) / (dMax - dMin);
   // Find two colorscale stops surrounding norm
   for (let i = 1; i < scale.length; i++) {
@@ -460,9 +461,9 @@ export const transformPlotlyJsonToGVBCProps = (
         ) {
           const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
           const colorValues = series.marker.color as number[];
-          const dMin = (input.layout.coloraxis as any)?.cmin ?? Math.min(...colorValues);
-          const dMax = (input.layout.coloraxis as any)?.cmax ?? Math.max(...colorValues);
-          color = getColorFromScale(series.marker.color[xIndex], scale, [dMin, dMax]);
+          const dMin = (input.layout.coloraxis as Partial<ColorAxis>)?.cmin ?? Math.min(...colorValues);
+          const dMax = (input.layout.coloraxis as Partial<ColorAxis>)?.cmax ?? Math.max(...colorValues);
+          color = getColorFromScale(series.marker.color[xIndex] as number, scale, [dMin, dMax]);
         }
 
         mapXToDataPoints[x].series.push({
@@ -492,7 +493,6 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    enableGradient: true,
   };
 };
 

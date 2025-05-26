@@ -6,6 +6,7 @@ export type {
   AxisType,
   Calendar,
   Color,
+  ColorAxis,
   ColorBar,
   ColorScale,
   Config,
