@@ -398,6 +398,7 @@ export const transformPlotlyJsonToVSBCProps = (
     hideLegend,
     roundCorners: true,
     supportNegativeData: true,
+    barGapMax: 2,
   };
 };
 

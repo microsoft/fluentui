@@ -4914,6 +4914,7 @@ Object {
 
 exports[`transform Plotly Json To chart Props transformPlotlyJsonToVSBCProps - Should return VSBC props 1`] = `
 Object {
+  "barGapMax": 2,
   "barWidth": "auto",
   "chartTitle": "",
   "data": Array [
