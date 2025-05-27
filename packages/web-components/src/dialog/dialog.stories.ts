@@ -57,7 +57,12 @@ const closeTemplate = html`
 
 const storyTemplate = html<StoryArgs<FluentDialog & FluentDialogBody>>`
   <fluent-button @click="${story => story.storyDialog?.show()}">Open Dialog</fluent-button>
-  <fluent-dialog id="dialog-default" type="${story => story.type}" ${ref('storyDialog')} aria-label="${story => story.ariaLabel}">
+  <fluent-dialog
+    id="dialog-default"
+    type="${story => story.type}"
+    ${ref('storyDialog')}
+    aria-label="${story => story.ariaLabel}"
+  >
     <fluent-dialog-body>
       ${story => story.actionSlottedContent?.()} ${story => story.slottedContent?.()}
       ${story => story.titleActionSlottedContent?.()} ${story => story.closeSlottedContent?.()}
@@ -101,7 +106,7 @@ export default {
 export const Default: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">Default Dialog</h2> `,
-    ariaLabel: "Default Dialog",
+    ariaLabel: 'Default Dialog',
     slottedContent: () => html`
       <p>
         The dialog component is a window overlaid on either the primary window or another dialog window. Windows under a
@@ -116,7 +121,7 @@ export const Default: Story = {
 export const WithTitleAction: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">Title Action Slot</h2> `,
-    ariaLabel: "Title Action Slot",
+    ariaLabel: 'Title Action Slot',
     titleActionSlottedContent: () => html`
       <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
     `,
@@ -129,7 +134,7 @@ export const ModalType: Story = {
   args: {
     type: DialogType.modal,
     titleSlottedContent: () => html` <h2 slot="title">Modal</h2> `,
-    ariaLabel: "Model",
+    ariaLabel: 'Model',
     slottedContent: () => html`
       <p>
         A modal is a type of dialog that temporarily halts the main workflow to convey a significant message or require
@@ -148,7 +153,7 @@ export const NonModalType: Story = {
   args: {
     type: DialogType.nonModal,
     titleSlottedContent: () => html` <h2 slot="title">Non-modal</h2> `,
-    ariaLabel: "Non-modal",
+    ariaLabel: 'Non-modal',
     slottedContent: () => html`
       <p>
         A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted
@@ -170,7 +175,7 @@ export const AlertType: Story = {
     type: DialogType.alert,
     closeSlottedContent: () => html``,
     titleSlottedContent: () => html` <h2 slot="title">Alert</h2> `,
-    ariaLabel: "Alert",
+    ariaLabel: 'Alert',
     actionSlottedContent: () => closeButtonTemplate,
     slottedContent: () => html`
       <p>
@@ -185,7 +190,7 @@ export const AlertType: Story = {
 export const Actions: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">Actions</h2> `,
-    ariaLabel: "Actions",
+    ariaLabel: 'Actions',
     actionSlottedContent: () => html`
       <fluent-button size="small" slot="action">Something</fluent-button>
       <fluent-button size="small" slot="action">Something Else</fluent-button>
@@ -222,14 +227,14 @@ export const CustomClose: Story = {
       </p>
     `,
     titleSlottedContent: () => html` <h2 slot="title">Custom Close Slot</h2> `,
-    ariaLabel: "Custom Close Slot",
+    ariaLabel: 'Custom Close Slot',
   },
 };
 
 export const NoClose: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">No Close Slot</h2> `,
-    ariaLabel: "No Close Slot",
+    ariaLabel: 'No Close Slot',
     closeSlottedContent: () => html``,
     slottedContent: () => html`
       <p>
@@ -244,7 +249,7 @@ export const NoClose: Story = {
 export const ModalWithNoTitleOrTitleActions: Story = {
   args: {
     type: DialogType.modal,
-    ariaLabel: "No Title",
+    ariaLabel: 'No Title',
     slottedContent: () => html` <p>A dialog without a <code>title</code> slot or <code>title-action</code> slot</p> `,
   },
 };
@@ -252,7 +257,7 @@ export const ModalWithNoTitleOrTitleActions: Story = {
 export const ModalWithNoTitle: Story = {
   args: {
     type: DialogType.modal,
-    ariaLabel: "No Title",
+    ariaLabel: 'No Title',
     titleActionSlottedContent: () => html`
       <fluent-button appearance="transparent" icon-only slot="title-action"> ${info20Regular} </fluent-button>
     `,
@@ -284,7 +289,7 @@ export const AlertWithNoTitleOrActions: Story = {
 export const TwoColumnLayout: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">Two Column Layout</h2> `,
-    ariaLabel: "Two Column Layout",
+    ariaLabel: 'Two Column Layout',
     slottedContent: () => html<StoryArgs<FluentDialog>>`
       <div style="margin-bottom: 12px;">
         <fluent-text block>
@@ -329,7 +334,7 @@ export const TwoColumnLayout: Story = {
 export const ScrollingLongContent: Story = {
   args: {
     titleSlottedContent: () => html` <h2 slot="title">Scrolling Long Content</h2> `,
-    ariaLabel: "Scrolling Long Content",
+    ariaLabel: 'Scrolling Long Content',
     slottedContent: () => html`
       <p>
         By default content provided in the default slot should grow until it fits viewport size. Overflow content will
