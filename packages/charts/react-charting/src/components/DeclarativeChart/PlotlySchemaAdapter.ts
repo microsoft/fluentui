@@ -578,6 +578,7 @@ export const transformPlotlyJsonToScatterChartProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
+      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
@@ -615,7 +616,15 @@ export const transformPlotlyJsonToScatterChartProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
+            x: isXYearCategory
+              ? x?.toString()
+              : isString
+              ? isXDate
+                ? new Date(x as string)
+                : isXNumber
+                ? parseFloat(x as string)
+                : x
+              : x,
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
