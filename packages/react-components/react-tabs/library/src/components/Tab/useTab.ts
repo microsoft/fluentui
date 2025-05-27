@@ -78,8 +78,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
         'aria-selected': disabled ? undefined : (`${selected}` as 'true' | 'false'),
         ...focusProps,
-        // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
-        ...omit(props, ['content']),
+        ...props,
         disabled,
         onClick: onTabClick,
         onFocus: selectTabOnFocus ? onTabFocus : onFocus,

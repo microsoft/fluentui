@@ -9,7 +9,7 @@ import { mockAccordionContextValue, mockAccordionItemContextValue } from '../../
 describe('useAccordionHeader_unstable', () => {
   it('should return button props as disabled even when it is not disabled (forceDisabled)', () => {
     const ref = React.createRef<HTMLElement>();
-    const wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+    const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
       <AccordionProvider
         value={mockAccordionContextValue({
           openItems: [1],

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, omit } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TableCellLayoutProps, TableCellLayoutState } from './TableCellLayout.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -33,14 +33,17 @@ export const useTableCellLayout_unstable = (
       media: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
-        // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
-        ...omit(props, ['content']),
-      }),
+      getIntrinsicElementProps(
+        'div',
+        {
+          // FIXME:
+          // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+          // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+          ref: ref as React.Ref<HTMLDivElement>,
+          ...props,
+        },
+        ['content'],
+      ),
       { elementType: 'div' },
     ),
     appearance: props.appearance,

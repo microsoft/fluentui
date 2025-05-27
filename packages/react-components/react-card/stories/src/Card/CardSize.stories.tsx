@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Title = ({ children }: React.PropsWithChildren<{}>) => {
+const Title = ({ children }: { children?: React.ReactNode }) => {
   const styles = useStyles();
 
   return (

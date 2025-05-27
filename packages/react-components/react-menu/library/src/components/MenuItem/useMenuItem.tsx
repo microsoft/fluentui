@@ -5,7 +5,6 @@ import {
   getIntrinsicElementProps,
   slot,
   useIsomorphicLayoutEffect,
-  omit,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
@@ -43,6 +42,7 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
     disabled = false,
     hasSubmenu = isSubmenuTrigger,
     persistOnClick = persistOnClickContext,
+    content: _, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
     ...rest
   } = props;
   const { hasIcons, hasCheckmarks } = useIconAndCheckmarkAlignment({ hasSubmenu });
@@ -67,12 +67,11 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       subText: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps<MenuItemProps, 'content'>(
+      getIntrinsicElementProps(
         as,
         useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
-          // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
-          ...omit(rest, ['content']),
+          ...rest,
           disabled: false,
           disabledFocusable: disabled,
           ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
@@ -104,7 +103,6 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
             props.onClick?.(event);
           }),
         }),
-        ['content'],
       ),
       { elementType: 'div' },
     ),

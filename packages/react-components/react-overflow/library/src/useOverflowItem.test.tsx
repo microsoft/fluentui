@@ -23,7 +23,7 @@ describe('useOverflowItem', () => {
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {
-        wrapper: ({ children }: React.PropsWithChildren<{}>) => (
+        wrapper: ({ children }: { children?: React.ReactNode }) => (
           <OverflowContext.Provider value={value}>{children}</OverflowContext.Provider>
         ),
       },
@@ -52,7 +52,7 @@ describe('useOverflowItem', () => {
         (ref as React.MutableRefObject<HTMLDivElement>).current = document.createElement('div');
       },
       {
-        wrapper: ({ children }: React.PropsWithChildren<{}>) => (
+        wrapper: ({ children }: { children?: React.ReactNode }) => (
           <OverflowContext.Provider value={value}>{children}</OverflowContext.Provider>
         ),
       },

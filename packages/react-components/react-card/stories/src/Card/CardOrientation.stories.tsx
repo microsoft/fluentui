@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   text: { margin: '0' },
 });
 
-const Title = ({ children }: React.PropsWithChildren<{}>) => {
+const Title = ({ children }: { children?: React.ReactNode }) => {
   const styles = useStyles();
 
   return (

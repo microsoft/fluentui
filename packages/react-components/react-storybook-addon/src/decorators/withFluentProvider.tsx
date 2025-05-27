@@ -47,7 +47,7 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   );
 };
 
-const FluentExampleContainer: React.FC<React.PropsWithChildren<{ theme: Theme }>> = props => {
+const FluentExampleContainer: React.FC<{ children: React.ReactNode; theme: Theme }> = props => {
   const { theme } = props;
 
   const backgroundColor = theme.colorNeutralBackground2;

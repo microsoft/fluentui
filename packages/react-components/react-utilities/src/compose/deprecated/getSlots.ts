@@ -80,15 +80,17 @@ function getSlot<R extends SlotPropsRecord, K extends keyof R>(
 
   const renderFunction = isSlot(props) ? props[SLOT_RENDER_FUNCTION_SYMBOL] : undefined;
 
-  const slot = (
-    state.components?.[slotName] === undefined || // eslint-disable-line @typescript-eslint/no-deprecated
-    // eslint-disable-next-line @typescript-eslint/no-deprecated
-    typeof state.components[slotName] === 'string'
-      ? // eslint-disable-next-line @typescript-eslint/no-deprecated
-        asProp || state.components?.[slotName] || 'div'
-      : // eslint-disable-next-line @typescript-eslint/no-deprecated
-        state.components[slotName]
-  ) as React.ElementType<R[K]>;
+  const slot =
+    // eslint-disable-line @typescript-eslint/no-deprecated
+    (
+      state.components?.[slotName] === undefined ||
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      typeof state.components[slotName] === 'string'
+        ? // eslint-disable-next-line @typescript-eslint/no-deprecated
+          asProp || state.components?.[slotName] || 'div'
+        : // eslint-disable-next-line @typescript-eslint/no-deprecated
+          state.components[slotName]
+    ) as React.ElementType<R[K]>;
 
   if (renderFunction || typeof children === 'function') {
     const render = (renderFunction || children) as SlotRenderFunction<R[K]>;

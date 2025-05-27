@@ -11,7 +11,7 @@ describe('useTag_unstable', () => {
     // We don't want 'clickable' announcement when Tag is a simple span and not dismissible.
 
     const ref = React.createRef<HTMLElement>();
-    const wrapper: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+    const wrapper: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
       <TagGroupContextProvider
         value={{
           handleTagDismiss: () => ({}),

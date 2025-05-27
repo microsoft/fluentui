@@ -10,7 +10,7 @@ import { PortalCompatProvider, useProviderThemeClasses } from './PortalCompatPro
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
-const TestWrapperWithMultipleClasses: React.FC<React.PropsWithChildren<{}>> = props => {
+const TestWrapperWithMultipleClasses: React.FC<{ children?: React.ReactNode }> = props => {
   // Creates a second className with CSS variables
   const { styleTagId } = useFluentProviderThemeStyleTag({
     theme: { borderRadiusCircular: '50px' },
@@ -32,7 +32,7 @@ describe('useProviderThemeClasses', () => {
 
   it('handles classes from FluentProvider', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
@@ -61,7 +61,7 @@ describe('useProviderThemeClasses', () => {
 
   it('handles classes with custom ID prefix', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <IdPrefixProvider value="custom1-">
           <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
             <PortalCompatProvider>{props.children}</PortalCompatProvider>
@@ -79,7 +79,7 @@ describe('useProviderThemeClasses', () => {
 
   it('handles classes with a React 18 compatible ID', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <ThemeClassNameProvider value="fui-FluentProviderR1a">
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </ThemeClassNameProvider>
@@ -95,7 +95,7 @@ describe('useProviderThemeClasses', () => {
 
   it('returns only proper classes', () => {
     const { result } = renderHook(() => useProviderThemeClasses(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <ThemeClassNameProvider value="foo bar baz">
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </ThemeClassNameProvider>
@@ -133,7 +133,7 @@ describe('PortalCompatProvider', () => {
   it('during register adds a className from "ThemeClassNameContext" context', () => {
     const element = document.createElement('div');
     const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>
@@ -167,7 +167,7 @@ describe('PortalCompatProvider', () => {
     const element = document.createElement('div');
 
     const { result } = renderHook(() => usePortalCompat(), {
-      wrapper: (props: React.PropsWithChildren<{}>) => (
+      wrapper: (props: { children?: React.ReactNode }) => (
         <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
           <PortalCompatProvider>{props.children}</PortalCompatProvider>
         </FluentProvider>

@@ -116,18 +116,12 @@ export type ReactNode = any;
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
  * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
  */
 export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
 
 /**
  * Removes the 'children' prop from the given Props type, leaving unions intact (such as the discriminated union created by
  * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
  */
 export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
@@ -136,13 +130,11 @@ export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveO
  *
  * This type is used to determine if the current version of React is 18+ or not.
  *
- * It checks if the `children` prop is present in the `FunctionComponent` type.
+ * It checks if the `React.ReactNode` has `{}` it its type.
  * If it is, then it means that the current version of React is lower than 18.
  * If it is not, then it means that the current version of React is 18 or higher.
  * This is useful for ensuring compatibility with different versions of React.
  *
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
  */
-export type ReactVersionDependent<Modern, Legacy> = 'children' extends keyof Parameters<React.FunctionComponent<{}>>[0]
-  ? Legacy
-  : Modern;
+export type ReactVersionDependent<Modern, Legacy> = {} extends React.ReactNode ? Legacy : Modern;

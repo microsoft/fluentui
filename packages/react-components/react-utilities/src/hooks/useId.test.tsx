@@ -41,7 +41,7 @@ describe('useId', () => {
 
   it('consumers prefix from a context', () => {
     const { result } = renderHook(() => useId(), {
-      wrapper: ({ children }: React.PropsWithChildren<{}>) => (
+      wrapper: ({ children }: { children?: React.ReactNode }) => (
         <IdPrefixProvider value="scope-">{children}</IdPrefixProvider>
       ),
     });

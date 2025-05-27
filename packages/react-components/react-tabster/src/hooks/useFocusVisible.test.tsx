@@ -20,7 +20,7 @@ const createDocumentMock = (): Document => {
 describe('useFocusVisible', () => {
   describe('targetWindow', () => {
     it('uses a window from context by default', () => {
-      const Wrapper: React.FC<React.PropsWithChildren<{ targetDocument: Document | undefined }>> = props => (
+      const Wrapper: React.FC<{ children?: React.ReactNode; targetDocument: Document | undefined }> = props => (
         <Provider_unstable value={{ dir: 'ltr', targetDocument: props.targetDocument }}>
           {props.children}
         </Provider_unstable>
@@ -52,7 +52,7 @@ describe('useFocusVisible', () => {
         { targetDocument: Document | undefined },
         React.MutableRefObject<HTMLElement | null>
       >(props => useFocusVisible({ targetDocument: props.targetDocument }), {
-        wrapper: (props: React.PropsWithChildren<{ targetDocument: Document | undefined }>) => (
+        wrapper: (props: { children?: React.ReactNode; targetDocument: Document | undefined }) => (
           <Provider_unstable value={{ dir: 'ltr', targetDocument: undefined }}>{props.children}</Provider_unstable>
         ),
         initialProps: { targetDocument: undefined },

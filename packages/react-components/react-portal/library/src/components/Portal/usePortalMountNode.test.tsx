@@ -16,7 +16,7 @@ describe('usePortalMountNode', () => {
   it('creates an element and attaches it to "mountNode"', () => {
     const mountNode = document.createElement('div');
     const { result } = renderHook(() => usePortalMountNode({}), {
-      wrapper: (props: React.PropsWithChildren<{}>) => <PortalMountNodeProvider {...props} value={mountNode} />,
+      wrapper: (props: { children?: React.ReactNode }) => <PortalMountNodeProvider {...props} value={mountNode} />,
     });
 
     expect(result.current?.tagName).toBe('DIV');

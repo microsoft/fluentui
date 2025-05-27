@@ -7,7 +7,6 @@ import {
   useEventCallback,
   useId,
   slot,
-  omit,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
@@ -51,6 +50,7 @@ export const useToastContainer_unstable = (
     pauseOnWindowBlur,
     imperativeRef,
     tryRestoreFocus,
+    content: _, // `content` is a slot and it's type clashes with the HTMLElement `content` attribute
     ...rest
   } = props;
   const titleId = useId('toast-title');
@@ -211,8 +211,7 @@ export const useToastContainer_unstable = (
         role: 'listitem',
         'aria-labelledby': titleId,
         'aria-describedby': bodyId,
-        // The `content` type doesn't match the HTMLElement `content` attribute
-        ...omit(rest, ['content']),
+        rest,
         ...userRootSlot,
         ...focusableGroupAttribute,
         onMouseEnter,

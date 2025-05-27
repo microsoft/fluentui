@@ -11,7 +11,7 @@ export function mockNavCategoryContextValue(partialValue?: Partial<NavCategoryCo
   };
 }
 
-const Wrapper: React.FC<React.PropsWithChildren<{}>> = props => (
+const Wrapper: React.FC<{ children?: React.ReactNode }> = props => (
   <NavCategoryProvider
     value={mockNavCategoryContextValue({
       open: true,
