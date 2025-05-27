@@ -1,7 +1,6 @@
 // jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, StackedBarChart } from '../../index';
