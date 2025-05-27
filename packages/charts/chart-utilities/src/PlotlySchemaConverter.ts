@@ -1,4 +1,4 @@
-import type { Datum, TypedArray, PlotData, PlotlySchema, Data } from './PlotlySchema';
+import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -178,6 +178,16 @@ const validateScatterData = (data: Partial<PlotData>) => {
   }
 };
 
+const invalidateLogAxisType = (layout: Partial<Layout> | undefined): boolean => {
+  const isLogAxisType =
+    layout?.xaxis?.type === 'log' ||
+    layout?.yaxis?.type === 'log' ||
+    layout?.yaxis2?.type === 'log' ||
+    layout?.xaxis2?.type === 'log';
+
+  return isLogAxisType;
+};
+
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
     data => {
@@ -247,7 +257,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
     }
 
+    if (invalidateLogAxisType(validSchema.layout)) {
+      return { isValid: false, errorMessage: 'Log axis type is not supported' };
+    }
+
     const validTraces = getValidTraces(validSchema.data);
+
     const firstData = validSchema.data[validTraces[0][0]];
 
     switch (firstData.type) {

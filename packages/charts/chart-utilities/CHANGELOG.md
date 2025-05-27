@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 26 May 2025 07:20:14 GMT and should not be manually modified.
+This log was last generated on Tue, 27 May 2025 07:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.12)
+
+Tue, 27 May 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.11..@fluentui/chart-utilities_v1.1.12)
+
+### Patches
+
+- fix(chart-utilities): Mark log scale as unsupported ([PR #34526](https://github.com/microsoft/fluentui/pull/34526) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Adding properties to plotly schema ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.11)
 

@@ -723,12 +723,10 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
-    return total + (item.y?.length || 0);
-  }, 0);
+  const numberOfRows = new Set(chartData.map(d => d.y)).size || 1;
   const scalingFactor = 0.01;
-  const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
-  const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));
+  const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
+  const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
 
@@ -854,12 +852,40 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     getColorFromToken(DataVizPalette.color2),
     getColorFromToken(DataVizPalette.color3),
   ];
-  const domainValuesForColorScale: number[] = Array.isArray(firstData.colorscale)
-    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
+
+  let colorscale =
+    firstData?.colorscale ??
+    input.layout?.colorscale ??
+    input.layout?.coloraxis?.colorscale ??
+    input.layout?.template?.layout?.colorscale ??
+    (firstData.type === 'histogram2d' && input.layout?.template?.data?.histogram2d?.[0]?.colorscale) ??
+    input.layout?.template?.data?.heatmap?.[0]?.colorscale;
+
+  // determine if the types diverging, sequential or sequentialminus are present in colorscale
+  if (
+    colorscale &&
+    typeof colorscale === 'object' &&
+    ('diverging' in colorscale || 'sequential' in colorscale || 'sequentialminus' in colorscale)
+  ) {
+    const isDivergent = zMin < 0 && zMax > 0; // Data spans both positive and negative values
+    const isSequential = zMin >= 0; // Data is entirely positive
+    const isSequentialMinus = zMax <= 0; // Data is entirely negative
+
+    if (isDivergent) {
+      colorscale = colorscale?.diverging;
+    } else if (isSequential) {
+      colorscale = colorscale?.sequential;
+    } else if (isSequentialMinus) {
+      colorscale = colorscale?.sequentialminus;
+    }
+  }
+
+  const domainValuesForColorScale: number[] = Array.isArray(colorscale)
+    ? (colorscale as Array<[number, string]>).map(arr => arr[0] * (zMax - zMin) + zMin)
     : defaultDomain;
 
-  const rangeValuesForColorScale: string[] = Array.isArray(firstData.colorscale)
-    ? (firstData.colorscale as Array<[number, string]>).map(arr => arr[1])
+  const rangeValuesForColorScale: string[] = Array.isArray(colorscale)
+    ? (colorscale as Array<[number, string]>).map(arr => arr[1])
     : defaultRange;
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
