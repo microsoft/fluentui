@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, MultiStackedBarChart, MultiStackedBarChartVariant } from '../../index';
