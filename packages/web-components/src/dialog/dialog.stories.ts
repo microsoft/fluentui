@@ -100,7 +100,7 @@ export default {
 
 export const Default: Story = {
   args: {
-    titleSlottedContent: () => html` <h2 id="testid" slot="title">Default Dialog</h2> `,
+    titleSlottedContent: () => html` <h2 slot="title">Default Dialog</h2> `,
     ariaLabel: "Default Dialog",
     slottedContent: () => html`
       <p>
