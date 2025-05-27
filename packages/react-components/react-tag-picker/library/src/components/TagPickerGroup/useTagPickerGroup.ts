@@ -37,7 +37,6 @@ export const useTagPickerGroup_unstable = (
 
   const state = useTagGroup_unstable(
     {
-      role: 'listbox',
       disabled,
       ...props,
       ...arrowNavigationProps,
