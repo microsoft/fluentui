@@ -14,4 +14,12 @@ export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | nul
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlButtonGapInsideDefault: { originalToken: 'gapInsideCtrlDefault', f2Token: 'spacingHorizontalSNudge' },
+  _ctrlSwitchStrokeOnActiveBrandHover: {
+    originalToken: 'strokeCtrlOnActiveBrandHover',
+    f2Token: 'colorTransparentStrokeInteractive',
+  },
+  _ctrlSwitchStrokeOnActiveBrandRest: {
+    originalToken: 'strokeCtrlOnActiveBrandRest',
+    f2Token: 'colorTransparentStroke',
+  },
 };
