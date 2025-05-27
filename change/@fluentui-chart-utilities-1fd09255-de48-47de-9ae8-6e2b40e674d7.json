@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(chart-utilities): Mark log scale as unsupported",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
