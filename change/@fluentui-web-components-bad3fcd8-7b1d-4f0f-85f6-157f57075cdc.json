@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Accesible name and title for dialog",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
