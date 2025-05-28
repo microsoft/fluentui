@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { render, screen } from '@testing-library/react';
 import { PieChart } from './index';
 import { PieChartBase } from './PieChart.base';
