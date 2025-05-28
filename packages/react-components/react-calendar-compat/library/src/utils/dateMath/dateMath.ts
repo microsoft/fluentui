@@ -174,25 +174,17 @@ export function getDateRangeArray(
     workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
   }
 
+  daysToSelectInDayView = Math.max(daysToSelectInDayView, 1);
+
   switch (dateRangeType) {
     case DateRangeType.Day:
-      // Create a date range for the specified date
-      let [start, end] = [date, addDays(date, daysToSelectInDayView)];
-
-      // If the start date is after the end date, swap them
-      if (compareDatePart(start, end) > 0) {
-        [start, end] = [end, start];
-      }
-
-      // Get the start and end dates of the day
-      startDate = getStartDateOfDay(start);
-      // Ensure the end date is set to the end of the day
-      endDate = getEndDateOfDay(end);
+      startDate = getDatePart(date);
+      endDate = addDays(startDate, daysToSelectInDayView);
       break;
 
     case DateRangeType.Week:
     case DateRangeType.WorkWeek:
-      startDate = getStartDateOfWeek(getStartDateOfDay(date), firstDayOfWeek);
+      startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
       endDate = addDays(startDate, TimeConstants.DaysInOneWeek);
       break;
 
@@ -335,15 +327,6 @@ function getDatePart(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-/**
- * Gets a new date with the time portion end of the day, i.e., set to 23:59:59.999
- * This is useful for date range calculations where you want to include the entire day.
- * @param date - The origin date
- * @returns A new date with the time set to midnight
- */
-function getEndDateOfDay(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59, 999);
-}
 /**
  * Helper function to assist in date comparisons
  */
