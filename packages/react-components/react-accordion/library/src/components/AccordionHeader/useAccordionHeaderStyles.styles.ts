@@ -3,6 +3,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import * as semanticTokens from '@fluentui/semantic-tokens';
+import { tokens } from '@fluentui/react-theme';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
   root: {
     color: semanticTokens._ctrlAccordionForegroundRest,
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
     margin: '0',
     borderRadius: semanticTokens.ctrlListCornerRest,
 
