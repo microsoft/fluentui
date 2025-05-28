@@ -174,12 +174,18 @@ export function getDateRangeArray(
     workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
   }
 
-  daysToSelectInDayView = Math.max(daysToSelectInDayView, 1);
+  daysToSelectInDayView =
+    dateRangeType === DateRangeType.Day ? daysToSelectInDayView : Math.max(daysToSelectInDayView, 1);
 
   switch (dateRangeType) {
     case DateRangeType.Day:
-      startDate = getDatePart(date);
-      endDate = addDays(startDate, daysToSelectInDayView);
+      if (daysToSelectInDayView < 0) {
+        endDate = addDays(getDatePart(date), 1);
+        startDate = addDays(endDate, daysToSelectInDayView);
+      } else {
+        startDate = getDatePart(date);
+        endDate = addDays(startDate, daysToSelectInDayView);
+      }
       break;
 
     case DateRangeType.Week:
