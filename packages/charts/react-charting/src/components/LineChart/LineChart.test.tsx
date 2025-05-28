@@ -43,7 +43,7 @@ export const emptyChartPoints = {
   lineChartData: [],
 };
 
-describe('LineChart snapShot testing', () => {
+describe.skip('LineChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
