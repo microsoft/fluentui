@@ -12,6 +12,9 @@ import {
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
   transformPlotlyJsonToGaugeProps,
+  isInvalidValue,
+  getNumberAtIndexOrDefault,
+  getValidXYRanges,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 
@@ -144,11 +147,7 @@ describe('correctYearMonth', () => {
   });
 
   test('Should return error when input array contains invalid months', () => {
-    try {
-      expect(correctYearMonth([10, 11, 16])).toStrictEqual([]);
-    } catch (e) {
-      expect(e).toStrictEqual(TypeError("Cannot read properties of null (reading 'getMonth')"));
-    }
+    expect(correctYearMonth([10, 11, 16])).toStrictEqual(['10 01, 2025', '11 01, 2025', null]);
   });
 
   test('Should return dates array when input array contains months data in MMM format', () => {
@@ -426,5 +425,93 @@ describe('getSchemaColors with other colorways', () => {
   test('Should return undefined when input schema has color in undefined format', () => {
     const undefinedColor = [undefined];
     expect(getSchemaColors(undefined, undefinedColor, { current: colorMap })).not.toBe([]);
+  });
+});
+
+describe('isInvalidValue', () => {
+  it('returns true for undefined', () => {
+    expect(isInvalidValue(undefined)).toBe(true);
+  });
+
+  it('returns true for null', () => {
+    expect(isInvalidValue(null)).toBe(true);
+  });
+
+  it('returns true for non-finite numbers', () => {
+    expect(isInvalidValue(NaN)).toBe(true);
+    expect(isInvalidValue(Infinity)).toBe(true);
+    expect(isInvalidValue(-Infinity)).toBe(true);
+  });
+
+  it('returns false for valid numbers', () => {
+    expect(isInvalidValue(0)).toBe(false);
+    expect(isInvalidValue(123)).toBe(false);
+    expect(isInvalidValue(-456.78)).toBe(false);
+  });
+
+  it('returns false for strings', () => {
+    expect(isInvalidValue('')).toBe(false);
+    expect(isInvalidValue('test')).toBe(false);
+  });
+});
+
+describe('getNumberAtIndexOrDefault', () => {
+  it('returns the number at the given index for a valid array', () => {
+    expect(getNumberAtIndexOrDefault([10, 20, 30], 1)).toBe(20);
+  });
+
+  it('returns undefined if the value at the index is not a number or a non-finite number', () => {
+    expect(getNumberAtIndexOrDefault([10, 'a', 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, NaN, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, Infinity, 30], 1)).toBeUndefined();
+    expect(getNumberAtIndexOrDefault([10, -Infinity, 30], 1)).toBeUndefined();
+  });
+
+  it('returns 1 if data is not an array or typed array', () => {
+    expect(getNumberAtIndexOrDefault(undefined, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(getNumberAtIndexOrDefault(null as any, 0)).toBe(1);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(getNumberAtIndexOrDefault('not-an-array' as any, 0)).toBe(1);
+  });
+
+  it('returns undefined if index is out of bounds', () => {
+    expect(getNumberAtIndexOrDefault([10, 20], 5)).toBeUndefined();
+  });
+});
+
+describe('getValidXYRanges', () => {
+  it('returns a single valid range when all values are valid', () => {
+    const series = { x: [1, 2, 3], y: [4, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([[0, 3]]);
+  });
+
+  it('returns empty array when all values are invalid', () => {
+    const series = { x: [Infinity, null, NaN], y: [null, Infinity, NaN] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('returns correct ranges when there are invalid values in between', () => {
+    const series = { x: [1, null, 3, 4, Infinity, 6], y: [1, 2, 3, null, 5, 6] };
+    expect(getValidXYRanges(series)).toEqual([
+      [0, 1],
+      [2, 3],
+      [5, 6],
+    ]);
+  });
+
+  it('handles invalid values at the start and end', () => {
+    const series = { x: [Infinity, 2, 3, 4, Infinity], y: [1, 2, 3, 4, 5] };
+    expect(getValidXYRanges(series)).toEqual([[1, 4]]);
+  });
+
+  it('handles empty x and y arrays', () => {
+    const series = { x: [], y: [] };
+    expect(getValidXYRanges(series)).toEqual([]);
+  });
+
+  it('handles x or y missing', () => {
+    expect(getValidXYRanges({ x: [1, 2, 3] })).toEqual([]);
+    expect(getValidXYRanges({ y: [1, 2, 3] })).toEqual([]);
   });
 });

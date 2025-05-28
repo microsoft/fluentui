@@ -6,6 +6,7 @@ import { HorizontalBarChartWithAxisBasicExample } from './HorizontalBarChartWith
 import { HorizontalBarChartWithAxisTooltipExample } from './HorizontalBarChartWithAxis.AxisTooltip.Example';
 import { HorizontalBarChartWithAxisStringAxisTooltipExample } from './HorizontalBarChartWithAxis.StringAxisTooltip.Example';
 import { HorizontalBarChartWithAxisDynamicExample } from './HorizontalBarChartWithAxis.Dynamic.Example';
+import { HorizontalBarChartWithAxisNegativeExample } from './HorizontalBarChartWithAxis.Negative.Example';
 
 const HorizontalBarChartWithAxisBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Basic.Example.tsx') as string;
@@ -15,6 +16,8 @@ const HorizontalBarChartWithAxisStringAxisTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.StringAxisTooltip.Example.tsx') as string;
 const HorizontalBarChartWithAxisDynamicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Dynamic.Example.tsx') as string;
+const HorizontalBarChartWithAxisNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.Negative.Example.tsx') as string;
 
 export const HorizontalBarChartWithAxisPageProps: IDocPageProps = {
   title: 'HorizontalBarChartWithAxis',
@@ -41,6 +44,11 @@ export const HorizontalBarChartWithAxisPageProps: IDocPageProps = {
       title: 'HorizontalBarChartWithAxis dynamic axis',
       code: HorizontalBarChartWithAxisDynamicExampleCode,
       view: <HorizontalBarChartWithAxisDynamicExample />,
+    },
+    {
+      title: 'HorizontalBarChartWithAxis negative X axis',
+      code: HorizontalBarChartWithAxisNegativeExampleCode,
+      view: <HorizontalBarChartWithAxisNegativeExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChartWithAxis/docs/HorizontalBarChartWithAxisOverview.md'),

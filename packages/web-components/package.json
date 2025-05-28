@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.104",
+  "version": "3.0.0-beta.106",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -20,57 +20,23 @@
   "unpkg": "dist/web-components.min.js",
   "files": [
     "*.md",
-    "dist/dts/",
     "dist/esm/",
     "dist/*.js",
     "dist/*.d.ts",
     "custom-elements.json"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/dts/index.d.ts",
-      "default": "./dist/esm/index.js"
-    },
-    "./utilities.js": {
-      "types": "./dist/dts/utils/index.d.ts",
-      "default": "./dist/esm/utils/index.js"
-    },
-    "./theme/*.js": {
-      "types": "./dist/dts/theme/*.d.ts",
-      "default": "./dist/esm/theme/*.js"
-    },
-    "./*/base.js": {
-      "types": "./dist/dts/*/*.base.d.ts",
-      "default": "./dist/esm/*/*.base.js"
-    },
-    "./*/define.js": {
-      "types": "./dist/dts/*/*.define.d.ts",
-      "default": "./dist/esm/*/*.define.js"
-    },
-    "./*/definition.js": {
-      "types": "./dist/dts/*/*.definition.d.ts",
-      "default": "./dist/esm/*/*.definition.js"
-    },
-    "./*/options.js": {
-      "types": "./dist/dts/*/*.options.d.ts",
-      "default": "./dist/esm/*/*.options.js"
-    },
-    "./*/styles.js": {
-      "types": "./dist/dts/*/*.styles.d.ts",
-      "default": "./dist/esm/*/*.styles.js"
-    },
-    "./*/template.js": {
-      "types": "./dist/dts/*/*.template.d.ts",
-      "default": "./dist/esm/*/*.template.js"
-    },
-    "./*/index.js": {
-      "types": "./dist/dts/*/index.d.ts",
-      "default": "./dist/esm/*/index.js"
-    },
-    "./*.js": {
-      "types": "./dist/dts/*/define.d.ts",
-      "default": "./dist/esm/*/define.js"
-    },
+    ".": "./dist/esm/index.js",
+    "./utilities.js": "./dist/esm/utils/index.js",
+    "./theme/*.js": "./dist/esm/theme/*.js",
+    "./*/base.js": "./dist/esm/*/*.base.js",
+    "./*/define.js": "./dist/esm/*/define.js",
+    "./*/definition.js": "./dist/esm/*/*.definition.js",
+    "./*/options.js": "./dist/esm/*/*.options.js",
+    "./*/styles.js": "./dist/esm/*/*.styles.js",
+    "./*/template.js": "./dist/esm/*/*.template.js",
+    "./*/index.js": "./dist/esm/*/index.js",
+    "./*.js": "./dist/esm/*/define.js",
     "./custom-elements.json": "./custom-elements.json",
     "./package.json": "./package.json"
   },

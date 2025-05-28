@@ -1,4 +1,4 @@
-import type { Datum, TypedArray, PlotData, PlotlySchema, Data } from './PlotlySchema';
+import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -68,15 +68,22 @@ export const isArrayOfType = (
 };
 
 export const isDateArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isDate);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(data, (value: any): boolean => isDate(value) || value === null);
 };
 
 export const isNumberArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isNumber);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(
+    data,
+    (value: any): boolean =>
+      (typeof value === 'string' && isNumber(value)) || typeof value === 'number' || value === null,
+  );
 };
 
 export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined): boolean => {
-  return isArrayOfType(data, isYear);
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  return isArrayOfType(data, (value: any): boolean => isYear(value) || value === null);
 };
 
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
@@ -160,11 +167,25 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') && !isNumberArray(data.x)) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String or Date`);
+  if (
+    ['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') &&
+    !isNumberArray(data.x) &&
+    !isDateArray(data.x)
+  ) {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String`);
   } else {
     validateSeriesData(data, true);
   }
+};
+
+const invalidateLogAxisType = (layout: Partial<Layout> | undefined): boolean => {
+  const isLogAxisType =
+    layout?.xaxis?.type === 'log' ||
+    layout?.yaxis?.type === 'log' ||
+    layout?.yaxis2?.type === 'log' ||
+    layout?.xaxis2?.type === 'log';
+
+  return isLogAxisType;
 };
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
@@ -236,7 +257,12 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return { isValid: false, errorMessage: `Failed to decode plotly schema: ${error}` };
     }
 
+    if (invalidateLogAxisType(validSchema.layout)) {
+      return { isValid: false, errorMessage: 'Log axis type is not supported' };
+    }
+
     const validTraces = getValidTraces(validSchema.data);
+
     const firstData = validSchema.data[validTraces[0][0]];
 
     switch (firstData.type) {

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: dialog click event prevents default for arbitrary content clicks",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
