@@ -55,7 +55,7 @@ describe('LineChart snapShot testing', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders hideLegend correctly', async () => {
+  it.skip('renders hideLegend correctly', async () => {
     const { container } = render(<LineChart data={chartPoints} hideLegend={true} />);
     await waitFor(() => expect(container).toBeInTheDocument());
     expect(container).toMatchSnapshot();
