@@ -346,7 +346,7 @@ export const transformPlotlyJsonToVSBCProps = (
               ? x.toString()
               : isXString
               ? isXDate
-                ? new Date(x as string)
+                ? new Date(x as string).toLocaleDateString()
                 : isXNumber
                 ? parseFloat(x as string)
                 : x
