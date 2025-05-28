@@ -628,6 +628,15 @@ export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 // @public (undocumented)
 export const cornerZeroRaw = "--smtc-corner-zero";
 
+// @public
+export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlAccordionForegroundPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlAccordionForegroundRest = "var(--smtc-foreground-ctrl-on-transparent-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
 // @public (undocumented)
 export const ctrlAvatarActiveRingSize = "var(--smtc-ctrl-avatar-active-ring-size)";
 
@@ -914,7 +923,7 @@ export const ctrlChoiceBaseBackgroundRest = "var(--smtc-ctrl-choice-base-backgro
 export const ctrlChoiceBaseBackgroundRestRaw = "--smtc-ctrl-choice-base-background-rest";
 
 // @public (undocumented)
-export const ctrlChoiceBaseSize = "var(--smtc-ctrl-choice-base-size, var(--smtc-size-ctrl-icon))";
+export const ctrlChoiceBaseSize = "var(--smtc-ctrl-choice-base-size, var(--smtc-size-ctrl-icon, 20px))";
 
 // @public (undocumented)
 export const ctrlChoiceBaseSizeRaw = "--smtc-ctrl-choice-base-size";
@@ -1952,7 +1961,7 @@ export const ctrlListCornerPressed = "var(--smtc-ctrl-list-corner-pressed, var(-
 export const ctrlListCornerPressedRaw = "--smtc-ctrl-list-corner-pressed";
 
 // @public (undocumented)
-export const ctrlListCornerRest = "var(--smtc-ctrl-list-corner-rest, var(--smtc-corner-ctrl-rest))";
+export const ctrlListCornerRest = "var(--smtc-ctrl-list-corner-rest, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlListCornerRestRaw = "--smtc-ctrl-list-corner-rest";
@@ -3692,7 +3701,7 @@ export const shadowWindowInactiveKey = "var(--smtc-shadow-window-inactive-key, v
 export const shadowWindowInactiveKeyRaw = "--smtc-shadow-window-inactive-key";
 
 // @public (undocumented)
-export const sizeCtrlDefault = "var(--smtc-size-ctrl-default, 96px)";
+export const sizeCtrlDefault = "var(--smtc-size-ctrl-default, 44px)";
 
 // @public (undocumented)
 export const sizeCtrlDefaultRaw = "--smtc-size-ctrl-default";
@@ -3710,7 +3719,7 @@ export const sizeCtrlIconSecondary = "var(--smtc-size-ctrl-icon-secondary)";
 export const sizeCtrlIconSecondaryRaw = "--smtc-size-ctrl-icon-secondary";
 
 // @public (undocumented)
-export const sizeCtrlLgDefault = "var(--smtc-size-ctrl-lg-default, 96px)";
+export const sizeCtrlLgDefault = "var(--smtc-size-ctrl-lg-default, 44px)";
 
 // @public (undocumented)
 export const sizeCtrlLgDefaultRaw = "--smtc-size-ctrl-lg-default";
@@ -3722,7 +3731,7 @@ export const sizeCtrlLgIcon = "var(--smtc-size-ctrl-lg-icon, 24px)";
 export const sizeCtrlLgIconRaw = "--smtc-size-ctrl-lg-icon";
 
 // @public (undocumented)
-export const sizeCtrlSmDefault = "var(--smtc-size-ctrl-sm-default, 64px)";
+export const sizeCtrlSmDefault = "var(--smtc-size-ctrl-sm-default, 32px)";
 
 // @public (undocumented)
 export const sizeCtrlSmDefaultRaw = "--smtc-size-ctrl-sm-default";
