@@ -233,6 +233,29 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
 };
 
+const resolveXAxisPoint = (
+  x: string | number,
+  isXYearCategory: boolean,
+  isXString: boolean,
+  isXDate: boolean,
+  isXNumber: boolean,
+): string | number => {
+  if (isXYearCategory) {
+    return x.toString();
+  }
+  if (isXString) {
+    if (isXDate) {
+      const date = new Date(x as string);
+      return isNaN(date.getTime()) ? (x as string) : date.toLocaleDateString();
+    }
+    if (isXNumber) {
+      return parseFloat(x as string);
+    }
+    return x;
+  }
+  return x;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -342,15 +365,7 @@ export const transformPlotlyJsonToVSBCProps = (
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: isXYearCategory
-              ? x.toString()
-              : isXString
-              ? isXDate
-                ? new Date(x as string).toLocaleDateString()
-                : isXNumber
-                ? parseFloat(x as string)
-                : x
-              : x,
+            xAxisPoint: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
             chartData: [],
             lineData: [],
           };
