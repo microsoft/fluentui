@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-web-components
 
-This log was last generated on Mon, 26 May 2025 04:07:35 GMT and should not be manually modified.
+This log was last generated on Wed, 28 May 2025 04:06:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.30](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.30)
+
+Wed, 28 May 2025 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-web-components_v0.0.29..@fluentui/chart-web-components_v0.0.30)
+
+### Patches
+
+- Co-locate ES modules and type definitions. This should not affect users. ([PR #34487](https://github.com/microsoft/fluentui/pull/34487) by burtonsmith@microsoft.com)
+- Bump @fluentui/web-components to v3.0.0-beta.106 ([PR #34535](https://github.com/microsoft/fluentui/pull/34535) by beachball)
 
 ## [0.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/chart-web-components_v0.0.29)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Co-locate ES modules and type definitions. This should not affect users.",
-  "packageName": "@fluentui/chart-web-components",
-  "email": "burtonsmith@microsoft.com",
-  "dependentChangeType": "patch"
-}
