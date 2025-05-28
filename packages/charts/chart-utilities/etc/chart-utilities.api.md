@@ -456,9 +456,6 @@ export const isDate: (value: any) => boolean;
 export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
-export const isLineData: (data: Partial<PlotData>) => boolean;
-
-// @public (undocumented)
 export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
@@ -466,6 +463,9 @@ export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined)
 
 // @public (undocumented)
 export function isTypedArray(a: any): boolean;
+
+// @public (undocumented)
+export const isYearArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export interface Label {
@@ -520,6 +520,14 @@ export interface Layout {
     calendar: Calendar;
     // (undocumented)
     clickmode: 'event' | 'select' | 'event+select' | 'none';
+    // (undocumented)
+    coloraxis: Partial<ColorAxis>;
+    // (undocumented)
+    colorscale: Array<[number, string]> | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+    }>;
     // (undocumented)
     colorway: string[];
     // (undocumented)
@@ -1176,7 +1184,7 @@ export interface PlotData {
     // (undocumented)
     marker: Partial<PlotMarker>;
     // (undocumented)
-    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta';
+    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
     // (undocumented)
     name: string;
     // (undocumented)
@@ -1853,6 +1861,38 @@ export interface ShapeLine {
     dash: Dash;
     // (undocumented)
     width: number;
+}
+
+// @public (undocumented)
+export interface TableData {
+    // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+    };
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
+    // (undocumented)
+    type: 'table';
 }
 
 // @public (undocumented)

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "test: replace react-dom api with RTL to make tests compatible with react 18",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

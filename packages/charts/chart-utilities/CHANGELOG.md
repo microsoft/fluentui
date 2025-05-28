@@ -1,8 +1,68 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 24 Apr 2025 09:59:43 GMT and should not be manually modified.
+This log was last generated on Tue, 27 May 2025 07:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.12)
+
+Tue, 27 May 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.11..@fluentui/chart-utilities_v1.1.12)
+
+### Patches
+
+- fix(chart-utilities): Mark log scale as unsupported ([PR #34526](https://github.com/microsoft/fluentui/pull/34526) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Adding properties to plotly schema ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.11)
+
+Mon, 26 May 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.10..@fluentui/chart-utilities_v1.1.11)
+
+### Patches
+
+- Added support for date axis in scatter chart ([PR #34505](https://github.com/microsoft/fluentui/pull/34505) by anushgupta@microsoft.com)
+- fix: update checks to allow null values ([PR #34474](https://github.com/microsoft/fluentui/pull/34474) by kumarkshitij@microsoft.com)
+
+## [1.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.10)
+
+Mon, 19 May 2025 07:20:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.9..@fluentui/chart-utilities_v1.1.10)
+
+### Patches
+
+- fix(chart-utilities): Improve schema error handling ([PR #34473](https://github.com/microsoft/fluentui/pull/34473) by 98592573+AtishayMsft@users.noreply.github.com)
+- Add support for plotly generated tables ([PR #34461](https://github.com/microsoft/fluentui/pull/34461) by anushgupta@microsoft.com)
+
+## [1.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.9)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.8..@fluentui/chart-utilities_v1.1.9)
+
+### Patches
+
+- fix(chart-utilities): Add chart type to error logs ([PR #34454](https://github.com/microsoft/fluentui/pull/34454) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.8)
+
+Wed, 14 May 2025 07:21:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.7..@fluentui/chart-utilities_v1.1.8)
+
+### Patches
+
+- fix(chart-utilities): Consider year as categorical instead of numerical continuous ([PR #34430](https://github.com/microsoft/fluentui/pull/34430) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities) Make unsupported type check stricter ([PR #34440](https://github.com/microsoft/fluentui/pull/34440) by 98592573+AtishayMsft@users.noreply.github.com)
+
+## [1.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.7)
+
+Tue, 13 May 2025 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.6..@fluentui/chart-utilities_v1.1.7)
+
+### Patches
+
+- fix(chart-utilities): Exclude number from being classified as date ([PR #34410](https://github.com/microsoft/fluentui/pull/34410) by 98592573+AtishayMsft@users.noreply.github.com)
+- chore: Change release tag to release with v8 ([PR #34414](https://github.com/microsoft/fluentui/pull/34414) by atisjai@microsoft.com)
+- fix(chart-utilities): Fixing area chart bugs for undefined property access ([PR #34299](https://github.com/microsoft/fluentui/pull/34299) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.6)
 

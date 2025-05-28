@@ -2,6 +2,27 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:18 GMT",
+      "tag": "@fluentui/react-portal_v9.5.7",
+      "version": "9.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "409dd3538c69f5d8bbacff2ac8c85f561ac0046b",
+            "comment": "fix: improve support of concurrent mode, work with React 19"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.24.7",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 09:59:45 GMT",
       "tag": "@fluentui/react-portal_v9.5.6",
       "version": "9.5.6",

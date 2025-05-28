@@ -409,6 +409,27 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'lines'
+    | 'markers'
+    | 'text'
+    | 'lines+markers'
+    | 'text+markers'
+    | 'text+lines'
+    | 'text+lines+markers'
+    | 'none'
+    | 'gauge'
+    | 'number'
+    | 'delta'
+    | 'number+delta'
+    | 'gauge+number'
+    | 'gauge+number+delta'
+    | 'gauge+delta'
+    | 'markers+text';
 }
 
 /**
@@ -658,6 +679,11 @@ export interface ILineDataInVerticalStackedBarChart {
   y: number;
   color: string;
   legend: string;
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
   /**
    * Data to show in callout
    */

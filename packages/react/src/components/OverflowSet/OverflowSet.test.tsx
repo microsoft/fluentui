@@ -239,15 +239,17 @@ describe('OverflowSet', () => {
         );
 
         // Add the first overflow item to 'items'
-        overflowSet.rerender(
-          <OverflowSet
-            onRenderItem={onRenderItem}
-            onRenderOverflowButton={onRenderOverflowButton}
-            items={items.concat(overflowItems.slice(0, 1))}
-            overflowItems={overflowItems.slice(1, 2)}
-            keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
-          />,
-        );
+        act(() => {
+          overflowSet.rerender(
+            <OverflowSet
+              onRenderItem={onRenderItem}
+              onRenderOverflowButton={onRenderOverflowButton}
+              items={items.concat(overflowItems.slice(0, 1))}
+              overflowItems={overflowItems.slice(1, 2)}
+              keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
+            />,
+          );
+        });
 
         // Regular keytips
         expect(getKeytip(keytipManager, overflowKeytips.overflowItemKeytip1.keySequences)).toBeDefined();
@@ -282,7 +284,9 @@ describe('OverflowSet', () => {
         const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.current!.processInput('x');
+        act(() => {
+          layerRef.current!.processInput('x');
+        });
         runAllTimers();
 
         // Opening the submenu should register the two keytips for those items
@@ -323,7 +327,9 @@ describe('OverflowSet', () => {
         const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.current!.processInput('x');
+        act(() => {
+          layerRef.current!.processInput('x');
+        });
         runAllTimers();
 
         // item3
@@ -369,7 +375,9 @@ describe('OverflowSet', () => {
         const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.current!.processInput('c');
+        act(() => {
+          layerRef.current!.processInput('c');
+        });
         // Nothing should happen, the current keytip should still be the root
         expect(keytipTree.currentKeytip).toEqual(keytipTree.root);
         expect(overflowKeytips.overflowItemKeytip3.onExecute).not.toHaveBeenCalled();
@@ -428,7 +436,9 @@ describe('OverflowSet', () => {
           const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
           // Open d's submenu
-          layerRef.current!.processInput('d');
+          act(() => {
+            layerRef.current!.processInput('d');
+          });
 
           expect(keytipTree.currentKeytip).toBeDefined();
         });
@@ -494,7 +504,10 @@ describe('OverflowSet', () => {
           // Set current keytip at root, like we've entered keytip mode
           const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
-          layerRef.current!.processInput('d');
+
+          act(() => {
+            layerRef.current!.processInput('d');
+          });
 
           // The two submenu keytips should be registered with their modified sequence in the manager
           const modifiedKeytip5Sequence = ['d', 'e'];
@@ -575,7 +588,9 @@ describe('OverflowSet', () => {
                   onExecute: (el: HTMLElement) => {
                     setTimeout(() => {
                       // Find the overflow button and manually click it to open the overflow menu
-                      fireEvent.click(overflowSet.container.querySelector(ktpTargetFromId('ktp-x')) as HTMLElement);
+                      act(() => {
+                        fireEvent.click(overflowSet.container.querySelector(ktpTargetFromId('ktp-x')) as HTMLElement);
+                      });
                     }, 2000);
                   },
                 }}
@@ -599,7 +614,11 @@ describe('OverflowSet', () => {
           // Set current keytip at root, like we've entered keytip mode
           const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
-          layerRef.current!.processInput('d');
+
+          act(() => {
+            layerRef.current!.processInput('d');
+          });
+
           // Wait for the menu to open
           runAllTimers();
 
@@ -681,7 +700,9 @@ describe('OverflowSet', () => {
           const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
 
-          layerRef.current!.processInput('d');
+          act(() => {
+            layerRef.current!.processInput('d');
+          });
 
           // Those two keytips should now be visible in the Layer and have overflowSetSequence set
           const submenuKeytips = layerRef.current!.state.visibleKeytips;

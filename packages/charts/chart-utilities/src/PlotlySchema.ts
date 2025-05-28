@@ -295,6 +295,20 @@ export interface PlotlySchema {
   config?: Partial<Config>;
 }
 
+export interface ColorAxis {
+  colorscale?: Array<[number, string]>;
+  cmin?: number;
+  cmax?: number;
+  colorbar?: {
+    title?: string | { text: string };
+    thickness?: number;
+    len?: number;
+    outlinewidth?: number;
+  };
+  reversescale?: boolean;
+  showscale?: boolean;
+}
+
 // Layout
 export interface Layout {
   colorway: string[];
@@ -419,6 +433,14 @@ export interface Layout {
   datarevision: number | string;
   editrevision: number | string;
   selectionrevision: number | string;
+  colorscale:
+    | Array<[number, string]>
+    | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+      }>;
+  coloraxis: Partial<ColorAxis>;
 }
 
 export interface Legend extends Label {
@@ -1149,7 +1171,8 @@ export interface PlotData {
     | 'number+delta'
     | 'gauge+number'
     | 'gauge+number+delta'
-    | 'gauge+delta';
+    | 'gauge+delta'
+    | 'markers+text';
   histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
   histnorm: '' | 'percent' | 'probability' | 'density' | 'probability density';
   hoveron: 'points' | 'fills';
@@ -1324,6 +1347,34 @@ export interface PlotData {
   uirevision: string | number;
   uid: string;
   base: Datum[] | Datum[][] | TypedArray;
+}
+
+export interface TableData {
+  type: 'table';
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+  };
 }
 
 /**

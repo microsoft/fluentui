@@ -1,8 +1,103 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 30 Apr 2025 04:06:34 GMT and should not be manually modified.
+This log was last generated on Wed, 28 May 2025 04:06:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.106)
+
+Wed, 28 May 2025 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.105..@fluentui/web-components_v3.0.0-beta.106)
+
+### Changes
+
+- Co-located types with ES modules. This should not affect users. ([PR #34487](https://github.com/microsoft/fluentui/pull/34487) by burtonsmith@microsoft.com)
+- Accesible name and title for dialog ([PR #34519](https://github.com/microsoft/fluentui/pull/34519) by jes@microsoft.com)
+
+## [3.0.0-beta.105](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.105)
+
+Mon, 26 May 2025 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.104..@fluentui/web-components_v3.0.0-beta.105)
+
+### Changes
+
+- fix: dialog click event prevents default for arbitrary content clicks ([PR #34511](https://github.com/microsoft/fluentui/pull/34511) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.104](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.104)
+
+Fri, 23 May 2025 04:06:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.103..@fluentui/web-components_v3.0.0-beta.104)
+
+### Changes
+
+- fix: updated rating-display icon color tokens to match the React version. ([PR #34513](https://github.com/microsoft/fluentui/pull/34513) by 601470+mlijanto@users.noreply.github.com)
+- fix: better fallback positioning for sub menu ([PR #34499](https://github.com/microsoft/fluentui/pull/34499) by machi@microsoft.com)
+
+## [3.0.0-beta.103](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.103)
+
+Thu, 22 May 2025 04:06:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.102..@fluentui/web-components_v3.0.0-beta.103)
+
+### Changes
+
+- Fixed compound-button high contrast text colors. ([PR #34490](https://github.com/microsoft/fluentui/pull/34490) by 601470+mlijanto@users.noreply.github.com)
+- Adds click event to close slot of drawer ([PR #34479](https://github.com/microsoft/fluentui/pull/34479) by jes@microsoft.com)
+
+## [3.0.0-beta.102](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.102)
+
+Wed, 21 May 2025 04:07:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.101..@fluentui/web-components_v3.0.0-beta.102)
+
+### Changes
+
+- manage focus only when menu is open ([PR #34486](https://github.com/microsoft/fluentui/pull/34486) by machi@microsoft.com)
+
+## [3.0.0-beta.101](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.101)
+
+Tue, 20 May 2025 04:06:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.100..@fluentui/web-components_v3.0.0-beta.101)
+
+### Changes
+
+- fixes accesibility issues with dialog close button ([PR #34469](https://github.com/microsoft/fluentui/pull/34469) by jes@microsoft.com)
+
+## [3.0.0-beta.100](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.100)
+
+Mon, 19 May 2025 04:07:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.99..@fluentui/web-components_v3.0.0-beta.100)
+
+### Changes
+
+- Include Custom Elements Manifest in package exports ([PR #34460](https://github.com/microsoft/fluentui/pull/34460) by burtonsmith@microsoft.com)
+
+## [3.0.0-beta.99](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.99)
+
+Thu, 15 May 2025 04:06:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.98..@fluentui/web-components_v3.0.0-beta.99)
+
+### Changes
+
+- Add tree exports to main index ([PR #34448](https://github.com/microsoft/fluentui/pull/34448) by jes@microsoft.com)
+
+## [3.0.0-beta.98](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.98)
+
+Fri, 09 May 2025 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.97..@fluentui/web-components_v3.0.0-beta.98)
+
+### Changes
+
+- fix the selected primary focus state ([PR #34400](https://github.com/microsoft/fluentui/pull/34400) by jes@microsoft.com)
+
+## [3.0.0-beta.97](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.97)
+
+Wed, 07 May 2025 04:08:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.96..@fluentui/web-components_v3.0.0-beta.97)
+
+### Changes
+
+- [fix]: Hitting escape once should close alert dialog ([PR #34382](https://github.com/microsoft/fluentui/pull/34382) by jes@microsoft.com)
+- fix: text-input setValidity fails if control is not available ([PR #34372](https://github.com/microsoft/fluentui/pull/34372) by 863023+radium-v@users.noreply.github.com)
+- [fix] drawer title should use h2 tag ([PR #34380](https://github.com/microsoft/fluentui/pull/34380) by jes@microsoft.com)
 
 ## [3.0.0-beta.96](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.96)
 

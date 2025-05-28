@@ -165,8 +165,10 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('selects an unselected item on mousedown of surface without modifiers pressed', () => {
-    _selection.setAllSelected(true);
-    _selection.setIndexSelected(0, false, true);
+    act(() => {
+      _selection.setAllSelected(true);
+      _selection.setIndexSelected(0, false, true);
+    });
 
     // Mousedown on the only unselected item's invoke surface should deselect all and select that one.
     fireEvent.mouseDown(_surface0);
@@ -175,8 +177,10 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('does nothing with mousedown of invoke when item is selected already', () => {
-    // Mousedown on an item that's already selected should do nothing.
-    _selection.setAllSelected(true);
+    act(() => {
+      // Mousedown on an item that's already selected should do nothing.
+      _selection.setAllSelected(true);
+    });
 
     fireEvent.mouseDown(_invoke0);
     expect(_selection.isAllSelected()).toEqual(true);
@@ -194,7 +198,9 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('does not unselect a selected item on click of item surface element', () => {
-    _selection.setIndexSelected(0, true, true);
+    act(() => {
+      _selection.setIndexSelected(0, true, true);
+    });
     _simulateClick(_surface0);
     expect(_selection.isIndexSelected(0)).toEqual(true);
     expect(_onItemInvokeCalled).toEqual(0);
@@ -257,7 +263,9 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('unselects all on escape', () => {
-    _selection.setAllSelected(true);
+    act(() => {
+      _selection.setAllSelected(true);
+    });
     // Use both which and key for better compatibility
     fireEvent.keyDown(_componentElement, { which: KeyCodes.escape, key: 'Escape', keyCode: KeyCodes.escape });
     expect(_selection.getSelectedCount()).toEqual(0);
@@ -294,7 +302,9 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('can remove selection if you click on dead space', () => {
-    _selection.setAllSelected(true);
+    act(() => {
+      _selection.setAllSelected(true);
+    });
 
     // Raise real browser event.
     act(() => {
@@ -305,7 +315,9 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('can remove selection after the first click event rebinding', () => {
-    _selection.setAllSelected(true);
+    act(() => {
+      _selection.setAllSelected(true);
+    });
 
     _simulateClick(_toggle0);
     // Raise real browser event.
@@ -338,26 +350,36 @@ describe('SelectionZone - disabled touch targets', () => {
   });
 
   it('enters modal selection state when commanded', () => {
-    _selection.setModal(true);
+    act(() => {
+      _selection.setModal(true);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
-
-    _selection.setModal(false);
+    act(() => {
+      _selection.setModal(false);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toBeNull();
   });
 
   it('exits modal selection state when the last item is deselected', () => {
-    _selection.setModal(true);
+    act(() => {
+      _selection.setModal(true);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
 
-    _selection.setIndexSelected(1, true, false);
+    act(() => {
+      _selection.setIndexSelected(1, true, false);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
-
-    _selection.setIndexSelected(1, false, false);
+    act(() => {
+      _selection.setIndexSelected(1, false, false);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toBeNull();
   });
 
   it('preserves modal state when switching selection', () => {
-    _selection.setModal(true);
+    act(() => {
+      _selection.setModal(true);
+    });
     expect(_componentElement.getAttribute('data-selection-is-modal')).toEqual('true');
 
     _simulateClick(_surface0);
@@ -404,7 +426,9 @@ describe('SelectionZone - override default keyboard behavior', () => {
     });
 
     it('does not unselect all on escape when selectionClearedOnEscapePress is false', () => {
-      _selection.setAllSelected(true);
+      act(() => {
+        _selection.setAllSelected(true);
+      });
       fireEvent.keyDown(_componentElement, { which: KeyCodes.escape });
       expect(_selection.getSelectedCount()).toEqual(5);
     });

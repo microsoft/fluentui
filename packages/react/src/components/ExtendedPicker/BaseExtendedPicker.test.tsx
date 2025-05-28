@@ -156,8 +156,10 @@ describe('Pickers', () => {
       const picker = pickerRef.current!;
 
       if (picker.inputElement) {
-        picker.inputElement.value = 'bl';
-        fireEvent.input(picker.inputElement);
+        act(() => {
+          picker.inputElement!.value = 'bl';
+          fireEvent.input(picker.inputElement!);
+        });
         act(() => {
           jest.runAllTimers();
         });
@@ -180,7 +182,9 @@ describe('Pickers', () => {
       expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions[0].item.name).toBe('black');
 
       // Force resolve to the first suggestions
-      picker.floatingPicker.current && picker.floatingPicker.current.forceResolveSuggestion();
+      act(() => {
+        picker.floatingPicker.current && picker.floatingPicker.current.forceResolveSuggestion();
+      });
 
       render(
         <BaseExtendedPickerWithType
@@ -215,8 +219,10 @@ describe('Pickers', () => {
       const picker = pickerRef.current!;
 
       if (picker.inputElement) {
-        picker.inputElement.value = 'bl';
-        fireEvent.input(picker.inputElement);
+        act(() => {
+          picker.inputElement!.value = 'bl';
+          fireEvent.input(picker.inputElement!);
+        });
       }
 
       act(() => {
@@ -224,9 +230,15 @@ describe('Pickers', () => {
       });
 
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
-      picker.floatingPicker.current && picker.floatingPicker.current.hidePicker();
+
+      act(() => {
+        picker.floatingPicker.current && picker.floatingPicker.current.hidePicker();
+      });
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeFalsy();
-      picker.floatingPicker.current && picker.floatingPicker.current.showPicker();
+
+      act(() => {
+        picker.floatingPicker.current && picker.floatingPicker.current.showPicker();
+      });
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
     });
 
@@ -248,9 +260,11 @@ describe('Pickers', () => {
 
       // setup
       if (picker.inputElement) {
-        picker.inputElement.value = 'bl';
-        fireEvent.input(picker.inputElement);
-        fireEvent.keyDown(picker.inputElement, { which: KeyCodes.down });
+        act(() => {
+          picker.inputElement!.value = 'bl';
+          fireEvent.input(picker.inputElement!);
+          fireEvent.keyDown(picker.inputElement!, { which: KeyCodes.down });
+        });
         act(() => {
           jest.runAllTimers();
         });
@@ -274,7 +288,9 @@ describe('Pickers', () => {
       ]);
 
       // act
-      picker.floatingPicker.current && picker.floatingPicker.current.completeSuggestion();
+      act(() => {
+        picker.floatingPicker.current && picker.floatingPicker.current.completeSuggestion();
+      });
 
       // assert
       expect(picker.items).toEqual([
@@ -316,16 +332,18 @@ describe('Pickers', () => {
           />,
         );
 
-        pickerRef.current!.floatingPicker.current!.showPicker();
+        act(() => {
+          pickerRef.current!.floatingPicker.current!.showPicker();
+        });
+        act(() => {
+          pickerRef.current!.forceUpdate();
+        });
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).toBeTruthy();
         expect(document.querySelector('#suggestion-list')).toBeTruthy();
       });
 
       it('does not render an aria-owns when the floating picker has been opened and closed', () => {
-        const root = document.createElement('div');
-        document.body.appendChild(root);
-
         const pickerRef = React.createRef<TypedBaseExtendedPicker>();
 
         render(
@@ -338,9 +356,18 @@ describe('Pickers', () => {
           />,
         );
 
-        pickerRef.current!.floatingPicker.current!.showPicker();
-
-        pickerRef.current!.floatingPicker.current!.hidePicker();
+        act(() => {
+          pickerRef.current!.floatingPicker.current!.showPicker();
+        });
+        act(() => {
+          pickerRef.current!.forceUpdate();
+        });
+        act(() => {
+          pickerRef.current!.floatingPicker.current!.hidePicker();
+        });
+        act(() => {
+          pickerRef.current!.forceUpdate();
+        });
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
         expect(document.querySelector('#suggestion-list')).not.toBeTruthy();

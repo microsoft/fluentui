@@ -40,6 +40,9 @@ export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 // @public (undocumented)
 export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
+// @public
+export const ChartTable: React_2.FunctionComponent<IChartTableProps>;
+
 // @public (undocumented)
 export const DataVizGradientPalette: {
     gradient1: string;
@@ -127,6 +130,8 @@ export const DeclarativeChart: React_2.FunctionComponent<DeclarativeChartProps>;
 // @public
 export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElement> {
     chartSchema: Schema;
+    // Warning: (ae-forgotten-export) The symbol "ColorwayType" needs to be exported by the entry point index.d.ts
+    colorwayType?: ColorwayType;
     componentRef?: IRefObject<IDeclarativeChart>;
     onSchemaChange?: (eventData: Schema) => void;
 }
@@ -430,6 +435,38 @@ export interface IChartProps {
     SankeyChartData?: ISankeyChartData;
 }
 
+// @public
+export interface IChartTableProps {
+    className?: string;
+    componentRef?: IRefObject<IChart>;
+    headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+    height?: string | number;
+    rows: (string | number | boolean | null)[][];
+    styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
+    theme?: ITheme;
+    width?: string | number;
+}
+
+// @public (undocumented)
+export interface IChartTableStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public
+export interface IChartTableStyles {
+    // (undocumented)
+    bodyCell?: IStyle;
+    // (undocumented)
+    headerCell?: IStyle;
+    // (undocumented)
+    root?: IStyle;
+    // (undocumented)
+    table?: IStyle;
+}
+
 // @public (undocumented)
 export interface IChildProps {
     // (undocumented)
@@ -731,6 +768,7 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     legendProps?: Partial<ILegendsProps>;
     rangeValuesForColorScale: string[];
     showYAxisLables?: boolean;
+    showYAxisLablesTooltip?: boolean;
     sortOrder?: 'none' | 'alphabetical';
     styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
     xAxisDateFormatString?: string;
@@ -991,6 +1029,7 @@ export interface ILineChartLineOptions extends React_2.SVGProps<SVGPathElement> 
     curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
     lineBorderColor?: string;
     lineBorderWidth?: string | number;
+    mode?: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
     strokeDasharray?: string | number;
     strokeDashoffset?: string | number;
     strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit';
@@ -1022,6 +1061,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    // @deprecated
     lineMode?: 'default' | 'scatter';
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
@@ -1055,6 +1095,7 @@ export interface ILineDataInVerticalStackedBarChart {
     data?: number;
     // (undocumented)
     legend: string;
+    legendShape?: LegendShape;
     lineOptions?: ILineChartLineOptions;
     useSecondaryYScale?: boolean;
     // (undocumented)
@@ -1110,6 +1151,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
@@ -1575,7 +1617,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
-    yMinValue?: undefined;
+    yMinValue?: number | undefined;
 }
 
 // @public

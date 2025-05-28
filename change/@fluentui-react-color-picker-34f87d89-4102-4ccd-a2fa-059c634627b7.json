@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: added touch events for ColorArea",
-  "packageName": "@fluentui/react-color-picker",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}
