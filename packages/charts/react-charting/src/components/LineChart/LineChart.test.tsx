@@ -5,7 +5,6 @@ import userEvent from '@testing-library/user-event';
 import { ILineChartPoints, LineChart } from './index';
 import { LineChartBase } from './LineChart.base';
 import { ICustomizedCalloutData } from '../../index';
-// import '@testing-library/jest-dom';
 import { fireEvent } from '@testing-library/react';
 
 const originalRAF = window.requestAnimationFrame;
