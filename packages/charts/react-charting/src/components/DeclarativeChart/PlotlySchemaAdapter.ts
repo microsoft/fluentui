@@ -332,6 +332,8 @@ export const transformPlotlyJsonToVSBCProps = (
 
     const xValues = series.x as Datum[];
     const isXDate = isDateArray(xValues);
+    const isXString = isStringArray(xValues);
+    const isXNumber = isNumberArray(xValues);
     const validXYRanges = getValidXYRanges(series);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
@@ -340,7 +342,15 @@ export const transformPlotlyJsonToVSBCProps = (
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
           mapXToDataPoints[x] = {
-            xAxisPoint: isXYearCategory ? x.toString() : isXDate ? new Date(x as string).toLocaleDateString() : x,
+            xAxisPoint: isXYearCategory
+              ? x.toString()
+              : isXString
+              ? isXDate
+                ? new Date(x as string)
+                : isXNumber
+                ? parseFloat(x as string)
+                : x
+              : x,
             chartData: [],
             lineData: [],
           };
