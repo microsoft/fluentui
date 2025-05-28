@@ -4,7 +4,7 @@ export const toCamelCase = (str: string) => {
     .map((word: string, index: number) => {
       // If it is the first word make sure to lowercase all the chars.
       if (index === 0) {
-        if (word === 'CTRL' || word === 'STATUS') {
+        if (word === 'CTRL' || word === 'STATUS' || word === 'NULL') {
           // Special cases where we need to convert to lower case
           return word.toLowerCase();
         }
