@@ -85,12 +85,12 @@ export const fluentOverrides: FluentOverrides = {
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
   paddingCtrlLgHorizontalIconOnly: { rawValue: '7px' },
-  paddingCtrlLgTextBottom: null,
-  paddingCtrlLgTextTop: null,
+  paddingCtrlLgTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlLgTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
   paddingCtrlSmHorizontalDefault: { f2Token: 'spacingHorizontalS' },
   paddingCtrlSmHorizontalIconOnly: { rawValue: '1px' },
-  paddingCtrlSmTextBottom: null,
-  paddingCtrlSmTextTop: null,
+  paddingCtrlSmTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlSmTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
   paddingCtrlTextBottom: { rawValue: '5px' },
   paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
   paddingCtrlTextTop: { rawValue: '5px' },
