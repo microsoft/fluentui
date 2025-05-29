@@ -231,15 +231,13 @@ export const transformPlotlyJsonToDonutProps = (
   // extract colors for each series only once
   // use piecolorway if available
   // otherwise, default to colorway from template
-  const colors: string[] | string | null | undefined =
-    input.layout?.piecolorway ??
-    extractColor(
-      input.layout?.template?.layout?.colorway,
-      colorwayType,
-      firstData?.marker?.colors,
-      colorMap,
-      isDarkTheme,
-    );
+  const colors: string[] | string | null | undefined = extractColor(
+    input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+    colorwayType,
+    input.layout?.piecolorway ?? firstData?.marker?.colors,
+    colorMap,
+    isDarkTheme,
+  );
 
   const mapLegendToDataPoint: Record<string, IChartDataPoint> = {};
   firstData.labels?.forEach((label: string, index: number) => {
