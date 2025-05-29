@@ -4,7 +4,24 @@ import path from 'node:path';
 // eslint-disable-next-line no-restricted-imports
 import * as tokensPackage from '@fluentui/tokens';
 import { fluentOverrides } from '../src/fluentOverrides';
+import { legacyFluentVariantsValues } from '../src/fluentLegacyVariants';
 import { format } from 'prettier';
+
+const formatLegacyTokens = (legacyToken: string) => {
+  if (!Object.keys(tokensPackage.tokens).includes(legacyToken)) {
+    // Token does not exist in F2 tokens
+    // This should never occur, but let's flag if a mistake was made in fallback token names
+    throw new Error(`Fluent token ${legacyToken} not found in fluent tokens`);
+  }
+  const tokenValue = tokensPackage.tokens[legacyToken as keyof typeof tokensPackage.tokens];
+  const token = `/**
+     * CSS custom property value for the {@link @fluentui/tokens#${legacyToken} | \`${legacyToken}\`} design token.
+     * @public
+     */
+    export const ${legacyToken} = '${tokenValue}';\n`;
+
+  return token;
+};
 
 const generateLegacyTokens = () => {
   console.log('Importing required fluent legacy tokens as flat export');
@@ -21,17 +38,24 @@ const generateLegacyTokens = () => {
     }
     // Add it to our list of exported tokens
     exportedTokens.push(fluent2Fallback);
-    if (!Object.keys(tokensPackage.tokens).includes(fluent2Fallback)) {
-      // Token does not exist in F2 tokens
-      // This should never occur, but let's flag if a mistake was made in fallback token names
-      throw new Error(`Fluent token ${tokenOverride.f2Token} not found in fluent tokens`);
+
+    // Format exported token
+    const token = formatLegacyTokens(fluent2Fallback);
+
+    return acc + token;
+  }, '');
+
+  const legacyVariantTokens = Object.keys(legacyFluentVariantsValues).reduce((acc, t) => {
+    const tokenVariant = legacyFluentVariantsValues[t];
+    const fluent2Fallback = tokenVariant?.f2Token;
+    if (!tokenVariant || !fluent2Fallback || exportedTokens.includes(fluent2Fallback)) {
+      return acc;
     }
-    const tokenValue = tokensPackage.tokens[fluent2Fallback as keyof typeof tokensPackage.tokens];
-    const token = `/**
-     * CSS custom property value for the {@link @fluentui/tokens#${fluent2Fallback} | \`${fluent2Fallback}\`} design token.
-     * @public
-     */
-    export const ${fluent2Fallback} = '${tokenValue}';\n`;
+    // Add it to our list of exported tokens
+    exportedTokens.push(fluent2Fallback);
+
+    // Format exported token
+    const token = formatLegacyTokens(fluent2Fallback);
 
     return acc + token;
   }, '');
@@ -43,7 +67,7 @@ const generateLegacyTokens = () => {
   }
 
   // Run prettier to format the generated tokens
-  const formattedText = format(comment + generatedTokens, {
+  const formattedText = format(comment + generatedTokens + legacyVariantTokens, {
     parser: 'typescript',
     singleQuote: true,
     printWidth: 120,
