@@ -22,14 +22,19 @@ const segments = [
   { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
   { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
 ];
+const SVGElement: any = window.SVGElement;
+const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
 
 function sharedBeforeEach() {
   resetIds();
-  (window.SVGElement.prototype as any).getComputedTextLength = () => 0;
+  const mockGetComputedTextLength = jest.fn().mockReturnValue(0);
+  // Mock the getComputedTextLength method to avoid errors in tests
+  SVGElement.prototype.getComputedTextLength = mockGetComputedTextLength;
 }
 
 function sharedAfterEach() {
   // nothing needed for RTL
+  SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 }
 
 describe('GaugeChart snapshot tests', () => {
@@ -121,7 +126,6 @@ describe('GaugeChart rendering and behavior tests', () => {
   });
 
   it('should truncate the chart value with ellipsis when its length exceeds the max width', () => {
-    (window.SVGElement.prototype as any).getComputedTextLength = () => 1000;
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
     expect(container.querySelector('[class^="chartValue"]')).toHaveTextContent('...');
   });
