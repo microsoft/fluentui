@@ -521,6 +521,14 @@ export interface Layout {
     // (undocumented)
     clickmode: 'event' | 'select' | 'event+select' | 'none';
     // (undocumented)
+    coloraxis: Partial<ColorAxis>;
+    // (undocumented)
+    colorscale: Array<[number, string]> | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+    }>;
+    // (undocumented)
     colorway: string[];
     // (undocumented)
     datarevision: number | string;

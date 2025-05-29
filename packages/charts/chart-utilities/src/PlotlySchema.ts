@@ -295,6 +295,20 @@ export interface PlotlySchema {
   config?: Partial<Config>;
 }
 
+export interface ColorAxis {
+  colorscale?: Array<[number, string]>;
+  cmin?: number;
+  cmax?: number;
+  colorbar?: {
+    title?: string | { text: string };
+    thickness?: number;
+    len?: number;
+    outlinewidth?: number;
+  };
+  reversescale?: boolean;
+  showscale?: boolean;
+}
+
 // Layout
 export interface Layout {
   colorway: string[];
@@ -420,6 +434,14 @@ export interface Layout {
   datarevision: number | string;
   editrevision: number | string;
   selectionrevision: number | string;
+  colorscale:
+    | Array<[number, string]>
+    | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+      }>;
+  coloraxis: Partial<ColorAxis>;
 }
 
 export interface Legend extends Label {

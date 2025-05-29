@@ -1,8 +1,28 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 19 May 2025 07:20:51 GMT and should not be manually modified.
+This log was last generated on Tue, 27 May 2025 07:20:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.12)
+
+Tue, 27 May 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.11..@fluentui/chart-utilities_v1.1.12)
+
+### Patches
+
+- fix(chart-utilities): Mark log scale as unsupported ([PR #34526](https://github.com/microsoft/fluentui/pull/34526) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Adding properties to plotly schema ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.11)
+
+Mon, 26 May 2025 07:20:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.10..@fluentui/chart-utilities_v1.1.11)
+
+### Patches
+
+- Added support for date axis in scatter chart ([PR #34505](https://github.com/microsoft/fluentui/pull/34505) by anushgupta@microsoft.com)
+- fix: update checks to allow null values ([PR #34474](https://github.com/microsoft/fluentui/pull/34474) by kumarkshitij@microsoft.com)
 
 ## [1.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.10)
 
