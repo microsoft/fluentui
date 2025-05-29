@@ -145,10 +145,10 @@ export const Size: Story = {
 export const Hint: Story = {
   args: {
     label: {
-      text: 'Hint text',
+      text: 'Example with hint',
     },
     message: {
-      message: 'Hint text',
+      message: 'Sample hint text.',
     },
   },
 };
