@@ -63,6 +63,7 @@ import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { interpolateRgb } from 'd3-interpolate';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -413,10 +414,13 @@ const getColorFromScale = (value: number, scale: Array<[number, string]>, domain
     if (norm <= scale[i][0]) {
       const [leftPos, leftColor] = scale[i - 1];
       const [rightPos, rightColor] = scale[i];
-      // Linear interpolate between the two colors
-      const interpolationFactor = (norm - leftPos) / (rightPos - leftPos);
-      // For linear interpolation, 0.5 would yield the exact midpoint between two numbers
-      return interpolationFactor < 0.5 ? leftColor : rightColor;
+      // Linear interpolate between the two colors using d3-scale and d3-interpolate
+      const colorInterpolator = d3ScaleLinear<string>()
+        .domain([leftPos, rightPos])
+        .range([leftColor, rightColor])
+        .interpolate(interpolateRgb);
+
+      return colorInterpolator(norm);
     }
   }
   return scale[scale.length - 1][1];

@@ -54,6 +54,7 @@
     "@types/d3-time-format": "^3.0.0",
     "@types/d3-time": "^3.0.0",
     "@types/d3-color": "^3.0.0",
+    "@types/d3-interpolate": "^3.0.0",
     "@fluentui/set-version": "^8.2.24",
     "d3-array": "^3.0.0",
     "d3-axis": "^3.0.0",
@@ -66,6 +67,7 @@
     "d3-time-format": "^3.0.0",
     "d3-time": "^3.0.0",
     "d3-color": "^3.0.0",
+    "d3-interpolate": "^3.0.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
