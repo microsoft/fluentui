@@ -109,8 +109,8 @@ export const Required: Story = {
     label: {
       text: 'Required field',
     },
-    inputSlottedContent: () =>
-      html`<fluent-text-input required slot="input" id="${story => story.label.id}"></fluent-text-input>`,
+    inputSlottedContent: () => html`<fluent-text-input required slot="input"></fluent-text-input>`,
+    messageSlottedContent: undefined,
   },
 };
 
