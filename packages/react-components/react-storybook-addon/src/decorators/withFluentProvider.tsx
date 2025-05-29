@@ -9,20 +9,26 @@ import {
   webDarkTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
+import { kumoSemanticTokens } from '@fluentui/semantic-tokens';
 import { defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
 import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
-const themes: Record<ThemeIds, Theme> = {
+// TODO: Remove this when merging Semantic tokens to master
+const kumoCustomTheme = { ...webLightTheme, ...kumoSemanticTokens };
+
+const themes: Record<ThemeIds | 'semantic-kumo', Theme> = {
   'web-light': webLightTheme,
   'web-dark': webDarkTheme,
   'teams-light': teamsLightTheme,
   'teams-dark': teamsDarkTheme,
   'teams-high-contrast': teamsHighContrastTheme,
+  // TODO: Remove this when merging Semantic tokens to master
+  'semantic-kumo': kumoCustomTheme,
 } as const;
 
-const findTheme = (themeId?: ThemeIds) => {
+const findTheme = (themeId?: ThemeIds | 'semantic-kumo') => {
   return themeId ? themes[themeId] : null;
 };
 

@@ -7,7 +7,7 @@
   "implicitDependencies": [],
   "targets": {
     "build": {
-      "dependsOn": [{ "projects": ["react-aria", "react-provider"], "target": "build" }]
+      "dependsOn": [{ "projects": ["react-aria", "react-provider", "semantic-tokens"], "target": "build" }]
     }
   }
 }
