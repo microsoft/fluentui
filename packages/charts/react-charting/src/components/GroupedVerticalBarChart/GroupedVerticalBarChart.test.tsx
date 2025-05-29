@@ -3,7 +3,6 @@ import { resetIds } from '../../Utilities';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { GroupedVerticalBarChart, IGVBarChartSeriesPoint } from '../../index';
 import { GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
-import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 import { render, waitFor } from '@testing-library/react';
 
