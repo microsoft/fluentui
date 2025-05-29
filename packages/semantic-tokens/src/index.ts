@@ -1807,3 +1807,4 @@ export {
   _ctrlAccordionForegroundRest,
   _ctrlButtonGapInsideDefault,
 } from './legacyVariant/tokens';
+export { kumoSemanticTokens } from './themes/kumoTheme';
