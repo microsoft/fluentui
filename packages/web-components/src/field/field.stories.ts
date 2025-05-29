@@ -1,10 +1,9 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
-import { colorStatusDangerForeground1, colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
-import type { TextInput as FluentTextInput } from '../text-input/text-input.js';
+import { colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
 import type { Field as FluentField } from './field.js';
-import { LabelPosition, ValidationFlags } from './field.options.js';
+import { LabelPosition } from './field.options.js';
 
 type Story = StoryObj<FluentField>;
 
@@ -33,14 +32,8 @@ export default {
       message: 'This is a success message',
       icon: () => html`${SuccessIcon}`,
     },
-    labelSlottedContent: () =>
-      html`<label slot="label" for="${story => story.label.id}">${story => story.label.text}</label>`,
-    inputSlottedContent: () =>
-      html`<fluent-text-input slot="input" id="${story => story.label.id}"></fluent-text-input>`,
-    messageSlottedContent: () =>
-      html`<fluent-text slot="message" flag="${story => story.message?.flag}" size="200"
-        >${story => story.message?.icon?.()} ${story => story.message?.message}</fluent-text
-      >`,
+    labelSlottedContent: () => html`<label slot="label">${story => story.label.text}</label>`,
+    inputSlottedContent: () => html`<fluent-text-input slot="input"></fluent-text-input>`,
     labelPosition: LabelPosition.above,
   },
   argTypes: {
@@ -87,9 +80,9 @@ export const LabelPositions: Story = {
       html`
         <div>
           <fluent-field label-position="${story => story.labelPosition}">
-            <label slot="label" for="${story => story.id}">${story => story.label}</label>
-            <fluent-text-input slot="input" id="${story => story.id}"></fluent-text-input
-          ></fluent-field>
+            <label slot="label">${story => story.label}</label>
+            <fluent-text-input slot="input"></fluent-text-input>
+          </fluent-field>
         </div>
         <br />
       `,
@@ -99,7 +92,6 @@ export const LabelPositions: Story = {
     storyItems: Object.values(LabelPosition).map(labelPosition => ({
       labelPosition,
       label: `Label position: ${labelPosition}`,
-      id: uniqueId('field-'),
     })),
   },
 };
@@ -119,8 +111,7 @@ export const DisabledControl: Story = {
     label: {
       text: 'Disabled field',
     },
-    inputSlottedContent: () =>
-      html`<fluent-text-input disabled slot="input" id="${story => story.label.id}"></fluent-text-input>`,
+    inputSlottedContent: () => html`<fluent-text-input disabled slot="input"></fluent-text-input>`,
     messageSlottedContent: undefined,
   },
 };
@@ -150,6 +141,10 @@ export const Hint: Story = {
     message: {
       message: 'Sample hint text.',
     },
+    inputSlottedContent: () =>
+      html`<fluent-text-input slot="input" aria-describedby="hint-message"></fluent-text-input>`,
+    messageSlottedContent: () =>
+      html`<fluent-text slot="message" size="200" id="hint-message">${story => story.message?.message}</fluent-text>`,
   },
 };
 
