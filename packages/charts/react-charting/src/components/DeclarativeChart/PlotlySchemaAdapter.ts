@@ -50,7 +50,6 @@ import type {
   Data,
   TableData,
   Color,
-  ColorAxis,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -458,13 +457,15 @@ export const transformPlotlyJsonToGVBCProps = (
         // Per-bar color mapping from colorscale
         if (
           isArrayOrTypedArray(series.marker?.color) &&
-          input.layout?.coloraxis?.colorscale &&
+          input.layout?.coloraxis?.colorscale?.length &&
           typeof series.marker.color[xIndex] === 'number'
         ) {
           const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
           const colorValues = series.marker.color as number[];
-          const dMin = (input.layout.coloraxis as Partial<ColorAxis>)?.cmin ?? Math.min(...colorValues);
-          const dMax = (input.layout.coloraxis as Partial<ColorAxis>)?.cmax ?? Math.max(...colorValues);
+          const [dMin, dMax] = [
+            input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
+            input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
+          ];
           color = getColorFromScale(series.marker.color[xIndex] as number, scale, [dMin, dMax]);
         }
 
