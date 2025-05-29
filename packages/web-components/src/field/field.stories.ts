@@ -205,7 +205,7 @@ export const ThirdPartyControls: Story = {
         <label slot="label" for="native-text-input">Text Input</label>
         <input slot="input" id="native-text-input" required />
       </fluent-field>
-      <fluent-field label-position="before">
+      <fluent-field label-position="after">
         <label slot="label" for="native-checkbox">Checkbox</label>
         <input slot="input" type="checkbox" id="native-checkbox" />
       </fluent-field>
