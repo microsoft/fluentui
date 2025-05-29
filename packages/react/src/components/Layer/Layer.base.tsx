@@ -86,7 +86,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       theme,
     } = props;
 
-    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref, focusRectsRef);
+    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref as React.Ref<HTMLDivElement>, focusRectsRef);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
