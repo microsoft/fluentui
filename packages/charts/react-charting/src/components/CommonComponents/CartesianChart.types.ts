@@ -473,7 +473,7 @@ export interface ICartesianChartProps {
 
 export interface IYValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
