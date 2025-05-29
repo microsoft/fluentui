@@ -155,7 +155,7 @@ export const Hint: Story = {
 
 export const ComponentExamples: Story = {
   render: renderComponent(html`
-    <div style="display: flex; flex-direction: column; gap: 10px;">
+    <div style="display: flex; flex-direction: column; row-gap: 16px;">
       <fluent-field label-position="above">
         <label slot="label" for="field-text">Text Input</label>
         <fluent-text-input slot="input" id="field-text"></fluent-text-input>
@@ -171,10 +171,22 @@ export const ComponentExamples: Story = {
       <fluent-field label-position="above">
         <label slot="label" for="field-radio">Radio Group</label>
         <fluent-radio-group slot="input" name="field-radio" orientation="vertical">
-          <fluent-radio value="Apple">Apple</fluent-radio>
-          <fluent-radio value="pear">Pear</fluent-radio>
-          <fluent-radio value="banana">Banana</fluent-radio>
-          <fluent-radio value="orange">Orange</fluent-radio>
+          <fluent-field label-position="after">
+            <label slot="label">Apple</label>
+            <fluent-radio slot="input" value="apple"></fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <label slot="label">Pear</label>
+            <fluent-radio slot="input" value="pear"></fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <label slot="label">Banana</label>
+            <fluent-radio slot="input" value="banana"></fluent-radio>
+          </fluent-field>
+          <fluent-field label-position="after">
+            <label slot="label">Orange</label>
+            <fluent-radio slot="input" value="orange"></fluent-radio>
+          </fluent-field>
         </fluent-radio-group>
       </fluent-field>
       <fluent-field>
