@@ -80,15 +80,6 @@ export default {
 
 export const Default: Story = {};
 
-export const Field: Story = {
-  args: {
-    messages: {
-      message: 'This is a success message',
-      icon: () => html`${SuccessIcon}`,
-    },
-  },
-};
-
 export const LabelPositions: Story = {
   render: renderComponent(html<StoryArgs<FluentField>>`
     ${repeat(
