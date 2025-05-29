@@ -4,7 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
-import { decodeBase64Fields } from '@fluentui/chart-utilities';
+import { decodeBase64Fields, isArrayOfType } from '@fluentui/chart-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -41,6 +41,7 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { IScatterChartProps, ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
@@ -53,6 +54,7 @@ const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 
 /**
@@ -109,6 +111,7 @@ const useColorMapping = () => {
   const colorMap = React.useRef(new Map<string, string>());
   return colorMap;
 };
+export type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 /**
  * DeclarativeChart component.
@@ -181,10 +184,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       'markers+line',
       'text+lines+markers',
     ].includes((plotlyData[0] as PlotData)?.mode);
-    const chartProps: ILineChartProps | IAreaChartProps = {
+    const chartType = isAreaChart ? 'area' : isScatterMarkers ? 'scatter' : 'line';
+    const chartProps: ILineChartProps | IAreaChartProps | IScatterChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
-        isAreaChart,
+        chartType,
         isScatterMarkers,
         colorMap,
         props.colorwayType,
@@ -195,6 +199,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     if (isAreaChart) {
       return <ResponsiveAreaChart {...chartProps} />;
     }
+    if (isScatterMarkers) {
+      return <ResponsiveScatterChart {...(chartProps as IScatterChartProps)} />;
+    }
     return <ResponsiveLineChart {...chartProps} />;
   };
 
@@ -204,6 +211,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const isXString = isArrayOfType(xValues, (value: any) => typeof value === 'string');
 
     // Consider year as categorical variable not numeric continuous variable
     // Also year is not considered a date variable as it is represented as a point
@@ -219,6 +228,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
         x: correctYearMonth(dataPoint.x),
       }));
       return renderLineArea(updatedData, isAreaChart);
+    } else if ((isXString || isXYear) && !isAreaChart) {
+      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
@@ -341,6 +352,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     case 'line':
     case 'fallback':
     case 'scatterpolar':
+    case 'scatter':
       if (chart.type === 'scatterpolar') {
         const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
         plotlyInputWithValidData.data = cartesianProjection.data;
