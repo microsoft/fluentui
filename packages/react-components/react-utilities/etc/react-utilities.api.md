@@ -300,9 +300,7 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & Functi
 // @public (undocumented)
 export type SlotOptions<Props extends UnknownSlotProps> = {
     elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-    defaultProps?: Partial<Props & {
-        ref?: React_2.Ref<InferredElementRefType<Props>>;
-    }>;
+    defaultProps?: Partial<Props>;
 };
 
 // @public
