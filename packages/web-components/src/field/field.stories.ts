@@ -121,6 +121,7 @@ export const DisabledControl: Story = {
     },
     inputSlottedContent: () =>
       html`<fluent-text-input disabled slot="input" id="${story => story.label.id}"></fluent-text-input>`,
+    messageSlottedContent: undefined,
   },
 };
 
