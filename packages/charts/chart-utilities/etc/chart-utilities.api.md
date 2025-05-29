@@ -456,6 +456,9 @@ export const isDate: (value: any) => boolean;
 export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
+export const isInvalidValue: (value: any) => boolean;
+
+// @public (undocumented)
 export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)
