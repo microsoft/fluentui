@@ -49,6 +49,7 @@ const storyTemplate = html<StoryArgs<FluentTree>>`
         <span slot="start">
           <svg
             fill="currentColor"
+            tabindex="-1"
             aria-hidden="true"
             width="1em"
             height="1em"
@@ -83,8 +84,8 @@ const storyTemplate = html<StoryArgs<FluentTree>>`
       Item 2
       <svg
         slot="aside"
+        tabindex="0"
         fill="red"
-        aria-hidden="true"
         width="16"
         height="16"
         viewBox="0 0 16 16"
