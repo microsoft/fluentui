@@ -496,7 +496,6 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    enableGradient: true,
   };
 };
 
