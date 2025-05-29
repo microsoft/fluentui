@@ -650,31 +650,52 @@ export const ctrlAvatarActiveRingStroke = "var(--smtc-ctrl-avatar-active-ring-st
 export const ctrlAvatarActiveRingStrokeRaw = "--smtc-ctrl-avatar-active-ring-stroke";
 
 // @public (undocumented)
-export const ctrlAvatarActiveRingStrokeWidth = "var(--smtc-ctrl-avatar-active-ring-stroke-width)";
+export const ctrlAvatarActiveRingStrokeWidth = "var(--smtc-ctrl-avatar-active-ring-stroke-width, var(--strokeWidthThick))";
+
+// @public
+export const _ctrlAvatarActiveRingStrokeWidthLg = "var(--smtc-ctrl-avatar-active-ring-stroke-width, var(--strokeWidthThickest))";
+
+// @public
+export const _ctrlAvatarActiveRingStrokeWidthMd = "var(--smtc-ctrl-avatar-active-ring-stroke-width, var(--strokeWidthThicker))";
 
 // @public (undocumented)
 export const ctrlAvatarActiveRingStrokeWidthRaw = "--smtc-ctrl-avatar-active-ring-stroke-width";
 
+// @public
+export const _ctrlAvatarActiveRingStrokeWidthSm = "var(--smtc-ctrl-avatar-active-ring-stroke-width, var(--strokeWidthThick))";
+
 // @public (undocumented)
-export const ctrlAvatarBackground = "var(--smtc-ctrl-avatar-background)";
+export const ctrlAvatarBackground = "var(--smtc-ctrl-avatar-background, var(--colorNeutralBackground6))";
 
 // @public (undocumented)
 export const ctrlAvatarBackgroundRaw = "--smtc-ctrl-avatar-background";
 
 // @public (undocumented)
-export const ctrlAvatarCornerGroup = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest))";
+export const ctrlAvatarCornerGroup = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
+
+// @public
+export const _ctrlAvatarCornerGroupLg = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest, var(--borderRadiusLarge)))";
+
+// @public
+export const _ctrlAvatarCornerGroupMd = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium)))";
 
 // @public (undocumented)
 export const ctrlAvatarCornerGroupRaw = "--smtc-ctrl-avatar-corner-group";
 
+// @public
+export const _ctrlAvatarCornerGroupSm = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest, var(--borderRadiusSmall)))";
+
+// @public
+export const _ctrlAvatarCornerGroupXLg = "var(--smtc-ctrl-avatar-corner-group, var(--smtc-corner-ctrl-rest, var(--borderRadiusXLarge)))";
+
 // @public (undocumented)
-export const ctrlAvatarCornerItem = "var(--smtc-ctrl-avatar-corner-item, var(--smtc-corner-circular))";
+export const ctrlAvatarCornerItem = "var(--smtc-ctrl-avatar-corner-item, var(--smtc-corner-circular, var(--borderRadiusCircular)))";
 
 // @public (undocumented)
 export const ctrlAvatarCornerItemRaw = "--smtc-ctrl-avatar-corner-item";
 
 // @public (undocumented)
-export const ctrlAvatarForeground = "var(--smtc-ctrl-avatar-foreground)";
+export const ctrlAvatarForeground = "var(--smtc-ctrl-avatar-foreground, var(--colorNeutralForeground3))";
 
 // @public (undocumented)
 export const ctrlAvatarForegroundRaw = "--smtc-ctrl-avatar-foreground";
@@ -686,7 +707,7 @@ export const ctrlAvatarIconSize = "var(--smtc-ctrl-avatar-icon-size, var(--smtc-
 export const ctrlAvatarIconSizeRaw = "--smtc-ctrl-avatar-icon-size";
 
 // @public (undocumented)
-export const ctrlAvatarPresenceBadgeBackgroundBehindBadge = "var(--smtc-ctrl-avatar-presence-badge-background-behind-badge, var(--smtc-background-layer-primary-solid))";
+export const ctrlAvatarPresenceBadgeBackgroundBehindBadge = "var(--smtc-ctrl-avatar-presence-badge-background-behind-badge, var(--smtc-background-layer-primary-solid, white))";
 
 // @public (undocumented)
 export const ctrlAvatarPresenceBadgeBackgroundBehindBadgeRaw = "--smtc-ctrl-avatar-presence-badge-background-behind-badge";
@@ -706,8 +727,14 @@ export const ctrlAvatarPresenceBadgeSizeRaw = "--smtc-ctrl-avatar-presence-badge
 // @public (undocumented)
 export const ctrlAvatarPresenceBadgeStrokeWidth = "var(--smtc-ctrl-avatar-presence-badge-stroke-width, var(--smtc-stroke-width-default))";
 
+// @public
+export const _ctrlAvatarPresenceBadgeStrokeWidthLg = "var(--smtc-ctrl-avatar-presence-badge-stroke-width, var(--smtc-stroke-width-default, var(--strokeWidthThick)))";
+
 // @public (undocumented)
 export const ctrlAvatarPresenceBadgeStrokeWidthRaw = "--smtc-ctrl-avatar-presence-badge-stroke-width";
+
+// @public
+export const _ctrlAvatarPresenceBadgeStrokeWidthSm = "var(--smtc-ctrl-avatar-presence-badge-stroke-width, var(--smtc-stroke-width-default, var(--strokeWidthThin)))";
 
 // @public (undocumented)
 export const ctrlAvatarShowCutout = "var(--smtc-ctrl-avatar-show-cutout)";
@@ -716,19 +743,19 @@ export const ctrlAvatarShowCutout = "var(--smtc-ctrl-avatar-show-cutout)";
 export const ctrlAvatarShowCutoutRaw = "--smtc-ctrl-avatar-show-cutout";
 
 // @public (undocumented)
-export const ctrlAvatarSize = "var(--smtc-ctrl-avatar-size, var(--smtc-size-ctrl-default))";
+export const ctrlAvatarSize = "var(--smtc-ctrl-avatar-size, var(--smtc-size-ctrl-default, 32px))";
 
 // @public (undocumented)
 export const ctrlAvatarSizeRaw = "--smtc-ctrl-avatar-size";
 
 // @public (undocumented)
-export const ctrlAvatarTextFontSize = "var(--smtc-ctrl-avatar-text-font-size, var(--smtc-text-global-body3-font-size))";
+export const ctrlAvatarTextFontSize = "var(--smtc-ctrl-avatar-text-font-size, var(--smtc-text-global-body3-font-size, var(--fontSizeBase300)))";
 
 // @public (undocumented)
 export const ctrlAvatarTextFontSizeRaw = "--smtc-ctrl-avatar-text-font-size";
 
 // @public (undocumented)
-export const ctrlAvatarTextLineHeight = "var(--smtc-ctrl-avatar-text-line-height, var(--smtc-text-global-body3-line-height))";
+export const ctrlAvatarTextLineHeight = "var(--smtc-ctrl-avatar-text-line-height, var(--smtc-text-global-body3-line-height, 1))";
 
 // @public (undocumented)
 export const ctrlAvatarTextLineHeightRaw = "--smtc-ctrl-avatar-text-line-height";
@@ -5629,7 +5656,7 @@ export const textStyleDefaultHeaderCase = "var(--smtc-text-style-default-header-
 export const textStyleDefaultHeaderCaseRaw = "--smtc-text-style-default-header-case";
 
 // @public (undocumented)
-export const textStyleDefaultHeaderFontFamily = "var(--smtc-text-style-default-header-font-family, var(--smtc-text-style-default-regular-font-family))";
+export const textStyleDefaultHeaderFontFamily = "var(--smtc-text-style-default-header-font-family, var(--smtc-text-style-default-regular-font-family, var(--fontFamilyBase)))";
 
 // @public (undocumented)
 export const textStyleDefaultHeaderFontFamilyRaw = "--smtc-text-style-default-header-font-family";
@@ -5641,7 +5668,7 @@ export const textStyleDefaultHeaderLetterSpacing = "var(--smtc-text-style-defaul
 export const textStyleDefaultHeaderLetterSpacingRaw = "--smtc-text-style-default-header-letter-spacing";
 
 // @public (undocumented)
-export const textStyleDefaultHeaderWeight = "var(--smtc-text-style-default-header-weight)";
+export const textStyleDefaultHeaderWeight = "var(--smtc-text-style-default-header-weight, var(--fontWeightSemibold))";
 
 // @public (undocumented)
 export const textStyleDefaultHeaderWeightRaw = "--smtc-text-style-default-header-weight";
