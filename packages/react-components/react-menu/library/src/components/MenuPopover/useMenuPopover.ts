@@ -1,12 +1,20 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot, useTimeout } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  useEventCallback,
+  useMergedRefs,
+  slot,
+  useTimeout,
+  isHTMLElement,
+} from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { menuPopoverClassNames } from './useMenuPopoverStyles.styles';
 
 /**
  * Create the state required to render MenuPopover.
@@ -90,6 +98,22 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
       }
     }
     if (key === Tab) {
+      let cur = event.target as HTMLElement | null;
+      let ignore = true;
+      while (cur) {
+        if (cur.classList.contains(menuPopoverClassNames.root)) {
+          ignore = false;
+        }
+        cur = cur.parentElement;
+      }
+
+      // Tab key handling for menus is very specific to focus being in a stack of menus
+      // Use this to handle cases where other surfaces are opened from a Menu (i.e. Dialog)
+      if (!isFromMenuPopover(event)) {
+        onKeyDownOriginal?.(event);
+        return;
+      }
+
       setOpen(event, { open: false, keyboard: true, type: 'menuPopoverKeyDown', event });
       if (!isSubmenu) {
         triggerRef.current?.focus();
@@ -98,4 +122,15 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     onKeyDownOriginal?.(event);
   });
   return { inline, mountNode, components: { root: 'div' }, root: rootProps };
+};
+
+const isFromMenuPopover = (event: React.KeyboardEvent<HTMLElement>) => {
+  let cur = event.target as HTMLElement | null;
+  while (isHTMLElement(cur)) {
+    if (cur.classList.contains(menuPopoverClassNames.root)) {
+      return true;
+    }
+    cur = cur.parentElement;
+  }
+  return false;
 };
