@@ -233,20 +233,20 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
 };
 
-const resolveXAxisPoint = (
+export const resolveXAxisPoint = (
   x: string | number,
   isXYearCategory: boolean,
   isXString: boolean,
   isXDate: boolean,
   isXNumber: boolean,
-): string | number => {
+): string | Date | number => {
   if (isXYearCategory) {
     return x.toString();
   }
   if (isXString) {
     if (isXDate) {
       const date = new Date(x as string);
-      return isNaN(date.getTime()) ? (x as string) : date.toLocaleDateString();
+      return date;
     }
     if (isXNumber) {
       return parseFloat(x as string);
