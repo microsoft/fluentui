@@ -456,17 +456,17 @@ export const transformPlotlyJsonToGVBCProps = (
         let color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
         // Per-bar color mapping from colorscale
         if (
-          isArrayOrTypedArray(series.marker?.color) &&
           input.layout?.coloraxis?.colorscale?.length &&
-          typeof series.marker.color[xIndex] === 'number'
+          isArrayOrTypedArray(series.marker?.color) &&
+          typeof (series.marker?.color as Color[])?.[xIndex] === 'number'
         ) {
           const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
-          const colorValues = series.marker.color as number[];
+          const colorValues = series.marker?.color as number[];
           const [dMin, dMax] = [
             input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
             input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
           ];
-          color = getColorFromScale(series.marker.color[xIndex] as number, scale, [dMin, dMax]);
+          color = getColorFromScale((series.marker?.color as Color[])?.[xIndex] as number, scale, [dMin, dMax]);
         }
 
         mapXToDataPoints[x].series.push({
