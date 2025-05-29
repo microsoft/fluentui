@@ -4,10 +4,10 @@ import {
   customErrorState,
   disabledState,
   focusVisibleState,
-  hasMessageState,
   patternMismatchState,
   rangeOverflowState,
   rangeUnderflowState,
+  requiredState,
   stepMismatchState,
   tooLongState,
   tooShortState,
@@ -18,6 +18,7 @@ import {
 import {
   borderRadiusMedium,
   colorNeutralForeground1,
+  colorPaletteRedForeground1,
   colorStrokeFocus2,
   fontFamilyBase,
   fontSizeBase200,
@@ -29,7 +30,7 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   spacingHorizontalM,
-  spacingHorizontalS,
+  spacingHorizontalXS,
   spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXXS,
@@ -91,15 +92,10 @@ export const styles = css`
     margin-block-start: ${spacingVerticalM};
   }
 
-  :host([label-position='below']:not(${hasMessageState})) {
-    grid-template-areas: 'input' 'label';
-  }
-
-  ::slotted([slot='label'])::after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
+  :host(${requiredState}) ::slotted([slot='label'])::after {
+    content: '*' / '';
+    color: ${colorPaletteRedForeground1};
+    margin-inline-start: ${spacingHorizontalXS};
   }
 
   ::slotted([slot='input']) {
@@ -127,6 +123,7 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
     grid-area: label;
     line-height: ${lineHeightBase300};
+    justify-self: stretch;
     user-select: none;
   }
 
