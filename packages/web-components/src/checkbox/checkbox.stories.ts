@@ -123,7 +123,7 @@ export default {
 export const Default: Story = {};
 
 export const Checkbox: Story = {
-  render: renderComponent(storyTemplate).bind({}),
+  render: renderComponent(storyTemplate),
   args: {
     id: uniqueId('checkbox-'),
   },
@@ -132,7 +132,7 @@ export const Checkbox: Story = {
 export const Checked: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -159,7 +159,7 @@ export const Checked: Story = {
 export const Indeterminate: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -186,7 +186,7 @@ export const Indeterminate: Story = {
 export const Disabled: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -258,7 +258,7 @@ export const Required: Story = {
       ${fieldStoryTemplate}
       <fluent-button type="submit">Submit</fluent-button>
     </form>
-  `).bind({}),
+  `),
   args: {
     storyContent: storyTemplate,
     slot: 'input',
@@ -273,7 +273,7 @@ export const Required: Story = {
 export const Large: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
@@ -317,7 +317,7 @@ export const Large: Story = {
 };
 
 export const LabelBefore: Story = {
-  render: renderComponent(fieldStoryTemplate).bind({}),
+  render: renderComponent(fieldStoryTemplate),
   args: {
     storyContent: storyTemplate,
     id: uniqueId('checkbox-'),
@@ -328,7 +328,7 @@ export const LabelBefore: Story = {
 };
 
 export const LabelWrapping: Story = {
-  render: renderComponent(fieldStoryTemplate).bind({}),
+  render: renderComponent(fieldStoryTemplate),
   args: {
     storyContent: storyTemplate,
     id: uniqueId('checkbox-'),
@@ -348,7 +348,7 @@ export const LabelWrapping: Story = {
 export const Circular: Story = {
   render: renderComponent(html<StoryArgs<FluentCheckbox>>`
     ${repeat(story => story.storyContent, html<StoryArgs<FluentCheckbox>>`${fieldStoryTemplate}<br />`)}
-  `).bind({}),
+  `),
   args: {
     storyContent: [
       {
