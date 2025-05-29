@@ -19,6 +19,7 @@
     "@fluentui/react-aria": "^9.14.6",
     "@fluentui/react-provider": "^9.20.6",
     "@fluentui/react-theme": "^9.1.24",
+    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

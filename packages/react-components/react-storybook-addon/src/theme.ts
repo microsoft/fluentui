@@ -4,6 +4,8 @@ export const themes = [
   { id: 'teams-light', label: 'Teams Light' },
   { id: 'teams-dark', label: 'Teams Dark' },
   { id: 'teams-high-contrast', label: 'Teams High Contrast' },
+  // TODO: Remove this when merging Semantic tokens to master
+  { id: 'semantic-kumo', label: 'Semantic Kumo (Experimental)' },
 ] as const;
 
 export const defaultTheme = themes[0];

@@ -75,6 +75,9 @@ export const themes: readonly [{
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
+}, {
+    readonly id: "semantic-kumo";
+    readonly label: "Semantic Kumo (Experimental)";
 }];
 
 // (No @packageDocumentation comment for this package)
