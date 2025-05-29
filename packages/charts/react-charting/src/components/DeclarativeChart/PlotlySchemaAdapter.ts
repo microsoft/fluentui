@@ -233,6 +233,29 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
 };
 
+export const resolveXAxisPoint = (
+  x: string | number,
+  isXYearCategory: boolean,
+  isXString: boolean,
+  isXDate: boolean,
+  isXNumber: boolean,
+): string | Date | number => {
+  if (isXYearCategory) {
+    return x.toString();
+  }
+  if (isXString) {
+    if (isXDate) {
+      const date = new Date(x as string);
+      return date;
+    }
+    if (isXNumber) {
+      return parseFloat(x as string);
+    }
+    return x;
+  }
+  return x;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -331,6 +354,10 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
+    const xValues = series.x as Datum[];
+    const isXDate = isDateArray(xValues);
+    const isXString = isStringArray(xValues);
+    const isXNumber = isNumberArray(xValues);
     const validXYRanges = getValidXYRanges(series);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
@@ -338,7 +365,11 @@ export const transformPlotlyJsonToVSBCProps = (
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
-          mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
+          mapXToDataPoints[x] = {
+            xAxisPoint: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            chartData: [],
+            lineData: [],
+          };
         }
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the extracted colors
