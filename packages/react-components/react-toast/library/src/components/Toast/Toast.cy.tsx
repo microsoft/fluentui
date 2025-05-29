@@ -316,21 +316,23 @@ describe('Toast', () => {
     };
 
     mount(<Example />);
-    cy.get('#make')
-      .click()
-      .get('li')
-      .should('have.length', 4)
+    cy.get('#make').realClick();
+    cy.get('li')
+      .should('have.length', 5)
       .get('li')
       .eq(0)
       .should('have.text', 'queued')
       .get('li')
       .eq(1)
-      .should('have.text', 'visible')
+      .should('have.text', 'unmounted') // initially unmounted due to StrictMode
       .get('li')
       .eq(2)
-      .should('have.text', 'dismissed')
+      .should('have.text', 'visible')
       .get('li')
       .eq(3)
+      .should('have.text', 'dismissed')
+      .get('li')
+      .eq(4)
       .should('have.text', 'unmounted');
   });
 
