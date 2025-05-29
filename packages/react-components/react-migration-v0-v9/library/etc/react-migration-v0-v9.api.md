@@ -12,7 +12,6 @@ import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utiliti
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
-import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
@@ -113,20 +112,7 @@ export const flexItem: {
 };
 
 // @public (undocumented)
-export const FormFieldShim: React_2.ForwardRefExoticComponent<{
-    errorMessage?: WithContent | undefined;
-    required?: boolean | undefined;
-    control?: ({
-        content?: React_2.ReactNode;
-    } & ObjectOf<any> & {
-        children?: unknown;
-    } & {
-        error?: "true" | "false" | undefined;
-    }) | undefined;
-    label?: WithContent | undefined;
-} & {
-    children?: React_2.ReactNode;
-} & React_2.RefAttributes<HTMLInputElement>>;
+export const FormFieldShim: React_2.ForwardRefExoticComponent<CustomInputFieldProps & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public (undocumented)
 export const grid: {
@@ -160,9 +146,9 @@ export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots,
 } & Omit<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
 }, "children"> & {
-    children?: React_2.ReactNode | SlotRenderFunction<Omit<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
+    children?: React_2.ReactNode | SlotRenderFunction<Pick<React_2.DetailedHTMLProps<React_2.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React_2.HTMLAttributes<HTMLDivElement>> & {
     ref?: ((instance: HTMLDivElement | null) => void) | React_2.RefObject<HTMLDivElement> | null | undefined;
-    }, "ref">>;
+    }>;
 }, "ref"> & React_2.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
