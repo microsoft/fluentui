@@ -18,6 +18,7 @@ import {
 import {
   borderRadiusMedium,
   colorNeutralForeground1,
+  colorNeutralForeground3,
   colorPaletteRedForeground1,
   colorStrokeFocus2,
   fontFamilyBase,
@@ -105,8 +106,13 @@ export const styles = css`
   }
 
   ::slotted([slot='message']) {
-    margin-block-start: ${spacingVerticalXXS};
+    color: ${colorNeutralForeground3};
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase200};
+    font-weight: ${fontWeightRegular};
     grid-area: message;
+    line-height: ${lineHeightBase200};
+    margin-block-start: ${spacingVerticalXXS};
   }
 
   :host(${focusVisibleState}:focus-within) {
