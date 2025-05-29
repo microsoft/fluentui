@@ -1,36 +1,18 @@
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, type MenuProps } from '@fluentui/react-components';
 import * as React from 'react';
 
-import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+type PositioningProp = NonNullable<MenuProps['positioning']>;
 
-const EditorLayoutSubMenu = () => {
+const AppearanceSubMenu = ({ positioning }: { positioning: PositioningProp }) => {
   return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <MenuItem>Editor Layout</MenuItem>
-      </MenuTrigger>
-
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>Split Up</MenuItem>
-          <MenuItem>Split Down</MenuItem>
-          <MenuItem>Single</MenuItem>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
-  );
-};
-
-const AppearanceSubMenu = () => {
-  return (
-    <Menu>
+    <Menu open positioning={positioning}>
       <MenuTrigger disableButtonEnhancement>
         <MenuItem>Appearance</MenuItem>
       </MenuTrigger>
 
       <MenuPopover>
         <MenuList>
-          <MenuItem>Centered Layout</MenuItem>
-          <MenuItem>Zen</MenuItem>
+          <MenuItem>Centered Layout with items & tabs</MenuItem>
           <MenuItem disabled>Zoom In</MenuItem>
           <MenuItem>Zoom Out</MenuItem>
         </MenuList>
@@ -39,9 +21,15 @@ const AppearanceSubMenu = () => {
   );
 };
 
-const PreferencesSubMenu = () => {
+const PreferencesSubMenu = ({
+  positioning,
+  appearancePositioning,
+}: {
+  positioning: PositioningProp;
+  appearancePositioning: PositioningProp;
+}) => {
   return (
-    <Menu>
+    <Menu positioning={positioning}>
       <MenuTrigger disableButtonEnhancement>
         <MenuItem>Preferences</MenuItem>
       </MenuTrigger>
@@ -51,8 +39,41 @@ const PreferencesSubMenu = () => {
           <MenuItem>Settings</MenuItem>
           <MenuItem>Online Services Settings</MenuItem>
           <MenuItem>Extensions</MenuItem>
-          <AppearanceSubMenu />
-          <EditorLayoutSubMenu />
+          <AppearanceSubMenu positioning={appearancePositioning} />
+          <MenuItem>Keyboard Shortcuts</MenuItem>
+          <MenuItem>Editor</MenuItem>
+          <MenuItem>Options</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+
+const NestedSubmenu = ({
+  positioning,
+  preferencesPositioning,
+  appearancePositioning,
+}: {
+  positioning: PositioningProp;
+  preferencesPositioning: PositioningProp;
+  appearancePositioning: PositioningProp;
+}) => {
+  return (
+    <Menu positioning={positioning}>
+      <MenuTrigger disableButtonEnhancement>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New</MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+          <PreferencesSubMenu positioning={preferencesPositioning} appearancePositioning={appearancePositioning} />
+          <PreferencesSubMenu positioning={preferencesPositioning} appearancePositioning={appearancePositioning} />
+          <MenuItem>Save file</MenuItem>
+          <MenuItem>Save all files</MenuItem>
         </MenuList>
       </MenuPopover>
     </Menu>
@@ -61,21 +82,47 @@ const PreferencesSubMenu = () => {
 
 export const NestedSubmenus = () => {
   return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <Button>Toggle menu</Button>
-      </MenuTrigger>
+    <div
+      style={{
+        display: 'grid',
+        margin: '0 50px',
+        gridTemplateColumns: '1fr 1fr',
+        gridTemplateRows: '300px 300px',
+        gap: '50px',
+      }}
+    >
+      <>
+        <div>
+          <NestedSubmenu
+            positioning={{ align: 'start', position: 'below' }}
+            preferencesPositioning={{ align: 'center', position: 'after' }}
+            appearancePositioning={{ align: 'center', position: 'after' }}
+          />
+        </div>
+        <div style={{ justifySelf: 'end' }}>
+          {/*<NestedSubmenu*/}
+          {/*  positioning={{ align: 'end', position: 'below' }}*/}
+          {/*  preferencesPositioning={{ align: 'top', position: 'before' }}*/}
+          {/*  appearancePositioning={{ align: 'start', position: 'below' }}*/}
+          {/*/>*/}
+        </div>
 
-      <MenuPopover>
-        <MenuList>
-          <MenuItem>New </MenuItem>
-          <MenuItem>New Window</MenuItem>
-          <MenuItem disabled>Open File</MenuItem>
-          <MenuItem>Open Folder</MenuItem>
-          <PreferencesSubMenu />
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+        <div style={{ alignSelf: 'end' }}>
+          {/*<NestedSubmenu*/}
+          {/*  positioning={{ align: 'start', position: 'above' }}*/}
+          {/*  preferencesPositioning={{ align: 'bottom', position: 'after' }}*/}
+          {/*  appearancePositioning={{ align: 'center', position: 'above' }}*/}
+          {/*/>*/}
+        </div>
+        {/*<div style={{ alignSelf: 'end', justifySelf: 'end' }}>*/}
+        {/*  <NestedSubmenu*/}
+        {/*    positioning={{ align: 'end', position: 'above' }}*/}
+        {/*    preferencesPositioning={{ align: 'bottom', position: 'before' }}*/}
+        {/*    appearancePositioning={{ align: 'end', position: 'above' }}*/}
+        {/*  />*/}
+        {/*</div>*/}
+      </>
+    </div>
   );
 };
 
