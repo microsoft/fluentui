@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
-import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import {
   classNamesFunction,
   getId,
@@ -785,22 +785,18 @@ export class GroupedVerticalBarChartBase
     );
   };
 
-  // Lighten a color by a given percentage
+  // Lighten a color by a given percentage using d3-scale
   private _lightenColor = (color: string, percentage: number): string => {
-    const c = rgb(color);
-    const r = Math.min(255, Math.floor(c.r + (255 - c.r) * percentage));
-    const g = Math.min(255, Math.floor(c.g + (255 - c.g) * percentage));
-    const b = Math.min(255, Math.floor(c.b + (255 - c.b) * percentage));
-    return rgb(r, g, b).formatRgb();
+    // interpolate from original color to white
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#ffffff']);
+    return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
-  // Darken a color by a given percentage
+  // Darken a color by a given percentage using d3-scale
   private _darkenColor = (color: string, percentage: number): string => {
-    const c = rgb(color);
-    const r = Math.max(0, Math.floor(c.r * (1 - percentage)));
-    const g = Math.max(0, Math.floor(c.g - c.g * percentage));
-    const b = Math.max(0, Math.floor(c.b - c.b * percentage));
-    return rgb(r, g, b).formatRgb();
+    // interpolate from original color to black
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#000000']);
+    return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
   private _addDefaultColors = (data?: IGroupedVerticalBarChartData[]): IGroupedVerticalBarChartData[] => {
