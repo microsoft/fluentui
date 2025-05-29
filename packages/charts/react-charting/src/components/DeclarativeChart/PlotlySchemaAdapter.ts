@@ -457,7 +457,7 @@ export const transformPlotlyJsonToGVBCProps = (
         let color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
         // Per-bar color mapping from colorscale
         if (
-          Array.isArray(series.marker?.color) &&
+          isArrayOrTypedArray(series.marker?.color) &&
           input.layout?.coloraxis?.colorscale &&
           typeof series.marker.color[xIndex] === 'number'
         ) {
@@ -495,6 +495,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    enableGradient: true,
   };
 };
 

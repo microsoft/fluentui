@@ -51,6 +51,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
+import { rgb } from 'd3-color';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -783,29 +784,23 @@ export class GroupedVerticalBarChartBase
       `Vertical bar chart with ${this._xAxisLabels.length} groups of ${this._legends.length} bars each. `
     );
   };
-  private _extractRGBColor = (color: string): [number, number, number] => {
-    if (!/^#[0-9A-Fa-f]{6}$/.test(color)) {
-      return [0, 0, 0]; // Return black if the color is not in hex format
-    }
-    return [parseInt(color.slice(1, 3), 16), parseInt(color.slice(3, 5), 16), parseInt(color.slice(5, 7), 16)];
-  };
 
   // Lighten a color by a given percentage
   private _lightenColor = (color: string, percentage: number): string => {
-    const [red, green, blue] = this._extractRGBColor(color);
-    const r = Math.min(255, Math.floor(red + 255 * percentage));
-    const g = Math.min(255, Math.floor(green + 255 * percentage));
-    const b = Math.min(255, Math.floor(blue + 255 * percentage));
-    return `rgb(${r}, ${g}, ${b})`;
+    const c = rgb(color);
+    const r = Math.min(255, Math.floor(c.r + (255 - c.r) * percentage));
+    const g = Math.min(255, Math.floor(c.g + (255 - c.g) * percentage));
+    const b = Math.min(255, Math.floor(c.b + (255 - c.b) * percentage));
+    return rgb(r, g, b).formatRgb();
   };
 
   // Darken a color by a given percentage
   private _darkenColor = (color: string, percentage: number): string => {
-    const [red, green, blue] = this._extractRGBColor(color);
-    const r = Math.max(0, Math.floor(red - 255 * percentage));
-    const g = Math.max(0, Math.floor(green - 255 * percentage));
-    const b = Math.max(0, Math.floor(blue - 255 * percentage));
-    return `rgb(${r}, ${g}, ${b})`;
+    const c = rgb(color);
+    const r = Math.max(0, Math.floor(c.r * (1 - percentage)));
+    const g = Math.max(0, Math.floor(c.g - c.g * percentage));
+    const b = Math.max(0, Math.floor(c.b - c.b * percentage));
+    return rgb(r, g, b).formatRgb();
   };
 
   private _addDefaultColors = (data?: IGroupedVerticalBarChartData[]): IGroupedVerticalBarChartData[] => {
