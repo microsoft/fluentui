@@ -1,8 +1,9 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
+import { tokens } from '@fluentui/react-theme';
 
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
@@ -10,6 +11,8 @@ export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   expandIcon: 'fui-AccordionHeader__expandIcon',
   icon: 'fui-AccordionHeader__icon',
 };
+
+const paddingCtrlHorizontalDefaultNudge = `max(calc(${semanticTokens.paddingCtrlHorizontalDefault} - 2px), 2px)`;
 
 const useStyles = makeStyles({
   // TODO: this should be extracted to another package
@@ -27,14 +30,22 @@ const useStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens._ctrlAccordionForegroundRest,
     backgroundColor: tokens.colorTransparentBackground,
     margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: semanticTokens.ctrlListCornerRest,
+
+    ':hover': {
+      color: semanticTokens._ctrlAccordionForegroundHover,
+    },
+
+    ':hover:active': {
+      color: semanticTokens._ctrlAccordionForegroundPressed,
+    },
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlOnTransparentDisabled,
   },
   rootInline: {
     display: 'inline-block',
@@ -43,47 +54,65 @@ const useStyles = makeStyles({
     position: 'relative',
     width: '100%',
     ...shorthands.borderWidth('0'),
-    padding: `0 ${tokens.spacingHorizontalM} 0 ${tokens.spacingHorizontalMNudge}`,
-    minHeight: '44px',
+    padding: `0 ${semanticTokens.paddingCtrlHorizontalDefault} 0 ${paddingCtrlHorizontalDefaultNudge}`,
+    minHeight: semanticTokens.sizeCtrlDefault,
+    paddingTop: semanticTokens.paddingCtrlTextTop,
+    paddingBottom: semanticTokens.paddingCtrlTextBottom,
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    ...typographyStyles.body1,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontSize: semanticTokens.textGlobalBody3FontSize,
+    lineHeight: semanticTokens.textGlobalBody3LineHeight,
     boxSizing: 'border-box',
   },
   buttonSmall: {
-    minHeight: '32px',
-    fontSize: tokens.fontSizeBase200,
+    minHeight: semanticTokens.sizeCtrlSmDefault,
+    fontSize: semanticTokens.textGlobalCaption1FontSize,
+    paddingTop: semanticTokens.paddingCtrlSmTextTop,
+    paddingBottom: semanticTokens.paddingCtrlSmTextBottom,
   },
   buttonLarge: {
-    lineHeight: tokens.lineHeightBase400,
-    fontSize: tokens.fontSizeBase400,
+    minHeight: semanticTokens.sizeCtrlLgDefault,
+    lineHeight: semanticTokens.textGlobalBody2LineHeight,
+    fontSize: semanticTokens.textGlobalBody2FontSize,
+    paddingTop: semanticTokens.paddingCtrlLgTextTop,
+    paddingBottom: semanticTokens.paddingCtrlLgTextBottom,
   },
   buttonExtraLarge: {
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    minHeight: semanticTokens.sizeCtrlLgDefault,
+    lineHeight: semanticTokens.textGlobalBody1LineHeight,
+    fontSize: semanticTokens.textGlobalBody1FontSize,
+    paddingTop: semanticTokens.paddingCtrlLgTextTop,
+    paddingBottom: semanticTokens.paddingCtrlLgTextBottom,
   },
   buttonInline: {
     display: 'inline-flex',
   },
   buttonExpandIconEndNoIcon: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: semanticTokens.paddingCtrlHorizontalDefault,
   },
   buttonExpandIconEnd: {
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: paddingCtrlHorizontalDefaultNudge,
   },
   buttonDisabled: {
     cursor: 'not-allowed',
   },
   expandIcon: {
-    height: '100%',
+    height: semanticTokens.ctrlChoiceBaseSize,
+    width: semanticTokens.ctrlChoiceBaseSize,
     display: 'flex',
     alignItems: 'center',
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    lineHeight: semanticTokens.textGlobalBody1LineHeight,
+    fontSize: semanticTokens.sizeCtrlIcon,
+    '> *': {
+      height: semanticTokens.sizeCtrlIcon,
+      width: semanticTokens.sizeCtrlIcon,
+    },
   },
   expandIconStart: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: semanticTokens.gapInsideCtrlDefault,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -91,15 +120,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: tokens.spacingHorizontalS,
+    paddingLeft: semanticTokens.gapInsideCtrlDefault,
   },
   icon: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingRight: tokens.spacingHorizontalS,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    paddingRight: semanticTokens.gapInsideCtrlDefault,
+    lineHeight: semanticTokens.textGlobalBody1LineHeight,
+    fontSize: semanticTokens.textGlobalBody1FontSize,
   },
 });
 

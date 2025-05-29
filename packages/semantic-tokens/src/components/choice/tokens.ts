@@ -71,7 +71,7 @@ import {
 
 export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw})`;
 export const ctrlChoicePaddingVertical = `var(${ctrlChoicePaddingVerticalRaw})`;
-export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}))`;
+export const ctrlChoiceBaseSize = `var(${ctrlChoiceBaseSizeRaw}, var(${sizeCtrlIconRaw}, 20px))`;
 export const ctrlChoiceIconTheme = `var(${ctrlChoiceIconThemeRaw})`;
 export const ctrlChoiceBaseBackgroundRest = `var(${ctrlChoiceBaseBackgroundRestRaw}, var(${backgroundCtrlOutlineRestRaw}))`;
 export const ctrlChoiceBaseBackgroundHover = `var(${ctrlChoiceBaseBackgroundHoverRaw}, var(${backgroundCtrlOutlineHoverRaw}))`;

@@ -29,6 +29,10 @@ const paddingLgHorizontalNoIcon = `calc(${semanticTokens.paddingCtrlLgHorizontal
  */
 const boxShadowStrokeWidthThinMoz = `calc(${semanticTokens.ctrlFocusInnerStrokeWidth} + 0.25px)`;
 
+const minButtonWidth = `max(${semanticTokens.sizeCtrlDefault}, 96px)`;
+const minButtonSmWidth = `max(${semanticTokens.sizeCtrlSmDefault}, 64px)`;
+const minButtonLgWidth = `max(${semanticTokens.sizeCtrlLgDefault}, 96px)`;
+
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   boxSizing: 'border-box',
@@ -64,7 +68,7 @@ const useRootBaseClassName = makeResetStyles({
   },
 
   padding: `${semanticTokens.paddingCtrlTextTop} ${paddingHorizontalNoIcon} ${semanticTokens.paddingCtrlTextBottom} ${paddingHorizontalNoIcon}`,
-  minWidth: semanticTokens.sizeCtrlDefault,
+  minWidth: minButtonWidth,
   borderRadius: semanticTokens.cornerCtrlRest,
 
   fontSize: semanticTokens.textRampItemBodyFontSize,
@@ -300,7 +304,7 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    minWidth: semanticTokens.sizeCtrlSmDefault,
+    minWidth: minButtonSmWidth,
     padding: `${buttonSpacingSmall} ${paddingSmHorizontalNoIcon}`,
     borderRadius: semanticTokens.cornerCtrlSmRest,
 
@@ -332,7 +336,7 @@ const useRootStyles = makeStyles({
     paddingLeft: paddingHorizontalNoIcon,
   },
   large: {
-    minWidth: semanticTokens.sizeCtrlLgDefault,
+    minWidth: minButtonLgWidth,
     padding: `${buttonSpacingLarge} ${paddingLgHorizontalNoIcon}`,
     borderRadius: semanticTokens.cornerCtrlLgRest,
 

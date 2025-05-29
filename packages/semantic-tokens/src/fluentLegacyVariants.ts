@@ -13,5 +13,17 @@ export type LegacyFluentVariantValue =
 export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | null>;
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
-  _ctrlButtonGapInsideDefault: { originalToken: 'gapInsideCtrlDefault', f2Token: 'spacingHorizontalSNudge' },
+  _ctrlAccordionForegroundHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentHover',
+  },
+  _ctrlAccordionForegroundPressed: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentPressed',
+  },
+  _ctrlAccordionForegroundRest: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentRest',
+  },
+  _ctrlButtonGapInsideDefault: { f2Token: 'spacingHorizontalSNudge', originalToken: 'gapInsideCtrlDefault' },
 };

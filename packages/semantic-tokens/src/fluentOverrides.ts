@@ -30,6 +30,7 @@ export const fluentOverrides: FluentOverrides = {
   cornerCtrlRest: { f2Token: 'borderRadiusMedium' },
   cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   cornerZero: { f2Token: 'borderRadiusNone' },
+  ctrlChoiceBaseSize: { rawValue: '20px' },
   ctrlFocusInnerStroke: { f2Token: 'colorStrokeFocus2' },
   ctrlFocusInnerStrokeWidth: { f2Token: 'strokeWidthThin' },
   ctrlFocusOuterStroke: { f2Token: 'colorTransparentStroke' },
@@ -40,6 +41,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlLinkForegroundNeutralHover: { f2Token: 'colorNeutralForeground2Hover' },
   ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
   ctrlLinkForegroundNeutralRest: { f2Token: 'colorNeutralForeground2' },
+  ctrlListCornerRest: { f2Token: 'borderRadiusMedium' },
   ctrlProgressBackgroundEmpty: { f2Token: 'colorNeutralBackground6' },
   ctrlProgressBackgroundFilled: { f2Token: 'colorCompoundBrandBackground' },
   ctrlProgressCorner: { f2Token: 'borderRadiusMedium' },
@@ -83,16 +85,20 @@ export const fluentOverrides: FluentOverrides = {
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
   paddingCtrlLgHorizontalIconOnly: { rawValue: '7px' },
+  paddingCtrlLgTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlLgTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
   paddingCtrlSmHorizontalDefault: { f2Token: 'spacingHorizontalS' },
   paddingCtrlSmHorizontalIconOnly: { rawValue: '1px' },
+  paddingCtrlSmTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlSmTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
   paddingCtrlTextBottom: { rawValue: '5px' },
   paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
   paddingCtrlTextTop: { rawValue: '5px' },
-  sizeCtrlDefault: { rawValue: '96px' },
+  sizeCtrlDefault: { rawValue: '44px' },
   sizeCtrlIcon: { rawValue: '20px' },
-  sizeCtrlLgDefault: { rawValue: '96px' },
+  sizeCtrlLgDefault: { rawValue: '44px' },
   sizeCtrlLgIcon: { rawValue: '24px' },
-  sizeCtrlSmDefault: { rawValue: '64px' },
+  sizeCtrlSmDefault: { rawValue: '32px' },
   sizeCtrlSmIcon: { rawValue: '20px' },
   statusDangerBackground: { f2Token: 'colorPaletteRedBackground3' },
   statusDangerTintForeground: { f2Token: 'colorPaletteRedForeground3' },
