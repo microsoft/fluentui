@@ -312,6 +312,7 @@ export interface ColorAxis {
 // Layout
 export interface Layout {
   colorway: string[];
+  piecolorway: string[];
   title:
     | string
     | Partial<{
