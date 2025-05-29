@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: adjust focus outline offset",
+  "packageName": "@fluentui/react-slider",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "patch"
+}
