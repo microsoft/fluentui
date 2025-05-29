@@ -27,8 +27,7 @@ export default {
   excludeStories: ['storyTemplate'],
   args: {
     label: {
-      id: uniqueId('field-'),
-      text: 'Example',
+      text: 'Example field',
     },
     message: {
       message: 'This is a success message',
