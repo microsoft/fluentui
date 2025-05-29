@@ -426,6 +426,7 @@ export class CartesianChartBase
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
           this.props.barwidth,
+          this.props.chartType,
         );
       } else {
         // TODO: Since the scale domain values are now computed independently for both the primary and
