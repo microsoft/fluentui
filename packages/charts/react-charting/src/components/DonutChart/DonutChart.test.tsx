@@ -2,11 +2,9 @@
 import * as React from 'react';
 import { chartPointsDC, chartPointsDCElevateMinimums, pointsDC } from '../../utilities/test-data';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { DonutChart } from './index';
 import { IChartProps, IChartDataPoint } from '../../index';
-const rendererAct = renderer.act;
 
 export const emptyChartPoints: IChartProps = {
   chartTitle: 'Donut chart example',
