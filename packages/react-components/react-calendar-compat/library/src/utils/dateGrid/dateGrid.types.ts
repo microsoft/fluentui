@@ -107,4 +107,10 @@ export interface DayGridOptions extends RestrictedDatesOptions {
    * month, between 4 and 6 depending
    */
   weeksToShow?: number;
+
+  /**
+   * The `reverse` property allows selection of days in reverse order.
+   * `daysToSelectInDayView` turnes to negative value
+   */
+  reverse?: boolean;
 }
