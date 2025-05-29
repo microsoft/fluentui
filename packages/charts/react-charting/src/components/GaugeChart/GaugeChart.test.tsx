@@ -22,6 +22,7 @@ const segments = [
   { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
   { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
 ];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SVGElement: any = window.SVGElement;
 const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
 
