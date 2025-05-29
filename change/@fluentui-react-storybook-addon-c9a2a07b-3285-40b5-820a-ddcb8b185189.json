@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: Temporarily add kumo semantic theme (will be removed before merge)",
+  "packageName": "@fluentui/react-storybook-addon",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "none"
+}
