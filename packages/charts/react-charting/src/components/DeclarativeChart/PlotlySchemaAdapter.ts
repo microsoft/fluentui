@@ -402,24 +402,14 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-const getColorFromScale = (value: number, scale: Array<[number, string]>, domain: [number, number]): string => {
+const createColorScale = (colorscale: Array<[number, string]>, domain: [number, number]) => {
   const [dMin, dMax] = domain;
-  if (dMax === dMin) {
-    return scale[0][1];
-  }
-  const norm = (value - dMin) / (dMax - dMin);
-  // Find two colorscale stops surrounding norm
-  for (let i = 1; i < scale.length; i++) {
-    if (norm <= scale[i][0]) {
-      const [leftPos, leftColor] = scale[i - 1];
-      const [rightPos, rightColor] = scale[i];
-      // Linear interpolate between the two colors using d3-scale and d3-interpolate
-      const colorInterpolator = d3ScaleLinear<string>().domain([leftPos, rightPos]).range([leftColor, rightColor]);
 
-      return colorInterpolator(norm);
-    }
-  }
-  return scale[scale.length - 1][1];
+  // Normalize colorscale domain to actual data domain
+  const scaleDomain = colorscale.map(([pos]) => dMin + pos * (dMax - dMin));
+  const scaleColors = colorscale.map(item => item[1]);
+
+  return d3ScaleLinear<string>().domain(scaleDomain).range(scaleColors);
 };
 
 export const transformPlotlyJsonToGVBCProps = (
@@ -431,8 +421,22 @@ export const transformPlotlyJsonToGVBCProps = (
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
-
+  let colorScale: ((value: number) => string) | undefined = undefined;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
+    if (
+      input.layout?.coloraxis?.colorscale?.length &&
+      isArrayOrTypedArray(series.marker?.color) &&
+      (series.marker?.color as Color[]).length > 0 &&
+      typeof (series.marker?.color as Color[])?.[0] === 'number'
+    ) {
+      const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
+      const colorValues = series.marker?.color as number[];
+      const [dMin, dMax] = [
+        input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
+        input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
+      ];
+      colorScale = createColorScale(scale, [dMin, dMax]);
+    }
     // extract colors for each series only once
     const extractedColors = extractColor(
       input.layout?.template?.layout?.colorway,
@@ -452,22 +456,12 @@ export const transformPlotlyJsonToGVBCProps = (
 
       if (series.type === 'bar') {
         const legend: string = legends[index1];
-        // resolve color for each legend's bars from the extracted colors
-        let color = resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
-        // Per-bar color mapping from colorscale
-        if (
-          input.layout?.coloraxis?.colorscale?.length &&
-          isArrayOrTypedArray(series.marker?.color) &&
-          typeof (series.marker?.color as Color[])?.[xIndex] === 'number'
-        ) {
-          const scale = input.layout.coloraxis.colorscale as Array<[number, string]>;
-          const colorValues = series.marker?.color as number[];
-          const [dMin, dMax] = [
-            input.layout.coloraxis?.cmin ?? Math.min(...colorValues),
-            input.layout.coloraxis?.cmax ?? Math.max(...colorValues),
-          ];
-          color = getColorFromScale((series.marker?.color as Color[])?.[xIndex] as number, scale, [dMin, dMax]);
-        }
+        // resolve color for each legend's bars from the colorscale or extracted colors
+        const color = colorScale
+          ? colorScale(
+              isArrayOrTypedArray(series.marker?.color) ? ((series.marker?.color as Color[])?.[xIndex] as number) : 0,
+            )
+          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
         mapXToDataPoints[x].series.push({
           key: legend,
