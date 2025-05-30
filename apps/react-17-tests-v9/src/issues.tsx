@@ -2,8 +2,14 @@
 import * as React from 'react';
 import { Icon } from '@fluentui/react';
 import type { IContextualMenuProps } from '@fluentui/react';
-import { Caption1, ComponentProps, MenuButtonProps, Slot, slot } from '@fluentui/react-components';
-import type { FluentProviderProps } from '@fluentui/react-provider';
+import { Caption1, slot } from '@fluentui/react-components';
+import type {
+  ComponentProps,
+  MenuButtonProps,
+  Slot,
+  SplitButtonProps,
+  FluentProviderProps,
+} from '@fluentui/react-components';
 
 // LegacyRef Issue
 // using v8 in conjunction with v9 interfaces
@@ -39,10 +45,13 @@ import type { FluentProviderProps } from '@fluentui/react-provider';
     return <></>;
   });
 
-  type AppSplitButtonProps = {
+  type AppSplitButtonSlots = {
+    root: NonNullable<Slot<'div'>>;
     menuButton: NonNullable<Slot<AppMenuButtonSlot>>;
     menu: NonNullable<Slot<ContextualMenuSlotType>>;
   };
+  type AppSplitButtonProps = ComponentProps<Partial<AppSplitButtonSlots>> &
+    Omit<SplitButtonProps, 'root' | 'menuButton' | 'primaryActionButton'>;
 
   const AppSplitButtonMenuButton = React.memo(
     React.forwardRef<HTMLButtonElement, AppMenuButtonProps>((props, ref) => {
