@@ -63,7 +63,6 @@ import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
-import { interpolateRgb } from 'd3-interpolate';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -415,10 +414,7 @@ const getColorFromScale = (value: number, scale: Array<[number, string]>, domain
       const [leftPos, leftColor] = scale[i - 1];
       const [rightPos, rightColor] = scale[i];
       // Linear interpolate between the two colors using d3-scale and d3-interpolate
-      const colorInterpolator = d3ScaleLinear<string>()
-        .domain([leftPos, rightPos])
-        .range([leftColor, rightColor])
-        .interpolate(interpolateRgb);
+      const colorInterpolator = d3ScaleLinear<string>().domain([leftPos, rightPos]).range([leftColor, rightColor]);
 
       return colorInterpolator(norm);
     }

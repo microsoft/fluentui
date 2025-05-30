@@ -52,7 +52,6 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
 import { rgb } from 'd3-color';
-import { interpolateRgb } from 'd3-interpolate';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -788,19 +787,13 @@ export class GroupedVerticalBarChartBase
 
   // Lighten a color by a given percentage using d3-scale and d3-interpolate
   private _lightenColor = (color: string, percentage: number): string => {
-    const colorInterpolator = d3ScaleLinear<string>()
-      .domain([0, 1])
-      .range([color, '#ffffff'])
-      .interpolate(interpolateRgb);
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#ffffff']);
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
   // Darken a color by a given percentage using d3-scale and d3-interpolate
   private _darkenColor = (color: string, percentage: number): string => {
-    const colorInterpolator = d3ScaleLinear<string>()
-      .domain([0, 1])
-      .range([color, '#000000'])
-      .interpolate(interpolateRgb);
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#000000']);
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
