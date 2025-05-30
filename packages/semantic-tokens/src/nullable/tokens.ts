@@ -1,4 +1,5 @@
 // THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE
+import { nullColorRaw } from '../control/variables';
 import {
   colorTransparentStroke,
   colorNeutralStroke1,
@@ -65,23 +66,23 @@ export const textStyleArticleHeaderCase = `var(${textStyleArticleHeaderCaseRaw},
 export const textStyleCodeHeaderCase = `var(${textStyleCodeHeaderCaseRaw}, unset)`;
 export const textStyleDataVizHeaderCase = `var(${textStyleDataVizHeaderCaseRaw}, unset)`;
 export const textStyleQuoteHeaderCase = `var(${textStyleQuoteHeaderCaseRaw}, unset)`;
-export const strokeLayer = `var(${strokeLayerRaw}, ${colorTransparentStroke})`;
+export const strokeLayer = `var(${strokeLayerRaw}, var(${nullColorRaw}, ${colorTransparentStroke}))`;
 export const strokeImage = `var(${strokeImageRaw}, unset)`;
 export const strokeFlyout = `var(${strokeFlyoutRaw}, unset)`;
-export const strokeCtrlOnBrandRest = `var(${strokeCtrlOnBrandRestRaw}, transparent)`;
-export const strokeCtrlOnBrandHover = `var(${strokeCtrlOnBrandHoverRaw}, transparent)`;
-export const strokeCtrlOnBrandPressed = `var(${strokeCtrlOnBrandPressedRaw}, transparent)`;
-export const strokeCtrlOnBrandDisabled = `var(${strokeCtrlOnBrandDisabledRaw}, transparent)`;
-export const strokeCtrlOnNeutralRest = `var(${strokeCtrlOnNeutralRestRaw}, ${colorNeutralStroke1})`;
-export const strokeCtrlOnNeutralHover = `var(${strokeCtrlOnNeutralHoverRaw}, ${colorNeutralStroke1Hover})`;
-export const strokeCtrlOnNeutralPressed = `var(${strokeCtrlOnNeutralPressedRaw}, ${colorNeutralStroke1Pressed})`;
-export const strokeCtrlOnNeutralDisabled = `var(${strokeCtrlOnNeutralDisabledRaw}, ${colorNeutralStrokeDisabled})`;
-export const strokeCtrlOnSubtleRest = `var(${strokeCtrlOnSubtleRestRaw}, transparent)`;
-export const strokeCtrlOnSubtleHover = `var(${strokeCtrlOnSubtleHoverRaw}, transparent)`;
-export const strokeCtrlOnSubtlePressed = `var(${strokeCtrlOnSubtlePressedRaw}, transparent)`;
-export const strokeCtrlOnSubtleDisabled = `var(${strokeCtrlOnSubtleDisabledRaw}, transparent)`;
+export const strokeCtrlOnBrandRest = `var(${strokeCtrlOnBrandRestRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnBrandHover = `var(${strokeCtrlOnBrandHoverRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnBrandPressed = `var(${strokeCtrlOnBrandPressedRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnBrandDisabled = `var(${strokeCtrlOnBrandDisabledRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnNeutralRest = `var(${strokeCtrlOnNeutralRestRaw}, var(${nullColorRaw}, ${colorNeutralStroke1}))`;
+export const strokeCtrlOnNeutralHover = `var(${strokeCtrlOnNeutralHoverRaw}, var(${nullColorRaw}, ${colorNeutralStroke1Hover}))`;
+export const strokeCtrlOnNeutralPressed = `var(${strokeCtrlOnNeutralPressedRaw}, var(${nullColorRaw}, ${colorNeutralStroke1Pressed}))`;
+export const strokeCtrlOnNeutralDisabled = `var(${strokeCtrlOnNeutralDisabledRaw}, var(${nullColorRaw}, ${colorNeutralStrokeDisabled}))`;
+export const strokeCtrlOnSubtleRest = `var(${strokeCtrlOnSubtleRestRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnSubtleHover = `var(${strokeCtrlOnSubtleHoverRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnSubtlePressed = `var(${strokeCtrlOnSubtlePressedRaw}, var(${nullColorRaw}, transparent))`;
+export const strokeCtrlOnSubtleDisabled = `var(${strokeCtrlOnSubtleDisabledRaw}, var(${nullColorRaw}, transparent))`;
 export const strokeCtrlOnSubtleHoverSplit = `var(${strokeCtrlOnSubtleHoverSplitRaw}, unset)`;
-export const strokeCtrlDividerOnSubtle = `var(${strokeCtrlDividerOnSubtleRaw}, transparent)`;
+export const strokeCtrlDividerOnSubtle = `var(${strokeCtrlDividerOnSubtleRaw}, var(${nullColorRaw}, transparent))`;
 export const strokeCtrlDividerOnSubtleDisabled = `var(${strokeCtrlDividerOnSubtleDisabledRaw}, unset)`;
 export const strokeCardSelected = `var(${strokeCardSelectedRaw}, unset)`;
 export const strokeCardOnPrimaryRest = `var(${strokeCardOnPrimaryRestRaw}, unset)`;
@@ -92,12 +93,12 @@ export const strokeCardOnSecondaryRest = `var(${strokeCardOnSecondaryRestRaw}, u
 export const strokeCardOnSecondaryHover = `var(${strokeCardOnSecondaryHoverRaw}, unset)`;
 export const strokeCardOnSecondaryPressed = `var(${strokeCardOnSecondaryPressedRaw}, unset)`;
 export const strokeCardOnSecondaryDisabled = `var(${strokeCardOnSecondaryDisabledRaw}, unset)`;
-export const backgroundCtrlOutlineRest = `var(${backgroundCtrlOutlineRestRaw}, ${colorTransparentBackground})`;
-export const backgroundCtrlOutlineHover = `var(${backgroundCtrlOutlineHoverRaw}, ${colorTransparentBackground})`;
-export const backgroundCtrlOutlinePressed = `var(${backgroundCtrlOutlinePressedRaw}, ${colorTransparentBackground})`;
+export const backgroundCtrlOutlineRest = `var(${backgroundCtrlOutlineRestRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
+export const backgroundCtrlOutlineHover = `var(${backgroundCtrlOutlineHoverRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
+export const backgroundCtrlOutlinePressed = `var(${backgroundCtrlOutlinePressedRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
 export const backgroundCtrlOutlineDisabled = `var(${backgroundCtrlOutlineDisabledRaw}, unset)`;
-export const backgroundCtrlSubtleRest = `var(${backgroundCtrlSubtleRestRaw}, ${colorSubtleBackground})`;
-export const backgroundCtrlSubtleDisabled = `var(${backgroundCtrlSubtleDisabledRaw}, ${colorTransparentBackground})`;
+export const backgroundCtrlSubtleRest = `var(${backgroundCtrlSubtleRestRaw}, var(${nullColorRaw}, ${colorSubtleBackground}))`;
+export const backgroundCtrlSubtleDisabled = `var(${backgroundCtrlSubtleDisabledRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
 export const backgroundCtrlSubtleHoverSplit = `var(${backgroundCtrlSubtleHoverSplitRaw}, unset)`;
 export const foregroundCtrlHintDefault = `var(${foregroundCtrlHintDefaultRaw}, unset)`;
 export const shadowCardRestKey = `var(${shadowCardRestKeyRaw}, unset)`;
