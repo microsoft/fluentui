@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { applyTriggerPropsToChildren } from './applyTriggerPropsToChildren';
-import type { FluentTriggerComponent } from './types';
+import type { FluentTriggerComponent, TriggerProps } from './types';
 
-export const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
+export const TestTrigger: React.FC<TriggerProps & { id?: string }> & FluentTriggerComponent = props => (
+  <>{props.children}</>
+);
 TestTrigger.displayName = 'TestTrigger';
 TestTrigger.isFluentTriggerComponent = true;
 

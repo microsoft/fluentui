@@ -14,7 +14,8 @@ type WithContent = ObjectShorthandValue<React.HTMLAttributes<HTMLDivElement>> | 
 /**
  *
  */
-type CustomInputFieldProps = React.PropsWithChildren<{
+type CustomInputFieldProps = {
+  children?: React.ReactNode;
   /**
    * Message to be shown when error state is true
    */
@@ -41,7 +42,7 @@ type CustomInputFieldProps = React.PropsWithChildren<{
    * Label to be rendered
    */
   label?: WithContent;
-}>;
+};
 
 export const FormFieldShim = React.forwardRef<HTMLInputElement, CustomInputFieldProps>((props, ref) => {
   const { errorMessage, required, control, label } = props;

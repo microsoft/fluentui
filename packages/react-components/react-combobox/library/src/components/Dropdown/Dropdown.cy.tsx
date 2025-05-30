@@ -60,7 +60,7 @@ describe('Dropdown - controlling open/close state', () => {
 });
 
 describe('Dropdown - tab navigation', () => {
-  const TabsterRoot = (props: React.PropsWithChildren<{}>) => {
+  const TabsterRoot = (props: { children?: React.ReactNode }) => {
     const tabsterAttrs = useTabsterAttributes({ root: {} });
     return <div {...tabsterAttrs}>{props.children}</div>;
   };

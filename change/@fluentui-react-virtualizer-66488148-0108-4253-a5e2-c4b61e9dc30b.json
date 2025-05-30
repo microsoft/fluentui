@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: slot api react v17/18 support",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}
