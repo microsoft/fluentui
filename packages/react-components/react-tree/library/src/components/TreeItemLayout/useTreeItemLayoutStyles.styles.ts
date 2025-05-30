@@ -23,14 +23,6 @@ const useRootBaseStyles = makeResetStyles({
   minHeight: '32px',
   boxSizing: 'border-box',
   gridArea: 'layout',
-  ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
-    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
-    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
-    },
-  },
   ':hover': {
     color: tokens.colorNeutralForeground2Hover,
     backgroundColor: tokens.colorSubtleBackgroundHover,
@@ -64,17 +56,11 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
     },
-    ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
-    },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
   },
 });
