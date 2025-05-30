@@ -109,6 +109,7 @@ export {
   sanitizeJson,
   isTypedArray,
   isArrayOrTypedArray,
+  isInvalidValue,
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';

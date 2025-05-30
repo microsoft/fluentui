@@ -58,6 +58,7 @@ import {
   isDateArray,
   isNumberArray,
   isYearArray,
+  isInvalidValue,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
@@ -1384,11 +1385,6 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
     hideLegend:
       layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
   };
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isInvalidValue = (value: any) => {
-  return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
 };
 
 export const getNumberAtIndexOrDefault = (data: PlotData['z'] | undefined, index: number) => {
