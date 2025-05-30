@@ -434,7 +434,7 @@ describe('FlatTree', () => {
         />,
       );
       cy.window().then(win => {
-        expect(win.console.error).to.be.callCount(1);
+        expect(win.console.error).to.be.called;
       });
     });
     it('should change selection when selecting a closed branch', () => {

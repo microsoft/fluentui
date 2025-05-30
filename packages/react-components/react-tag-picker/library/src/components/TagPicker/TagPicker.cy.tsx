@@ -40,12 +40,8 @@ const TagPickerControlled = ({
   noPopover = false,
 }: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
-  const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
-    setSelectedOptions(data.selectedOptions);
-  };
-  const handleAllClear: React.MouseEventHandler = event => {
-    setSelectedOptions([]);
-  };
+  const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => setSelectedOptions(data.selectedOptions);
+  const handleAllClear: React.MouseEventHandler = _ => setSelectedOptions([]);
 
   return (
     <div style={{ display: 'flex', maxWidth: 400, flexDirection: 'column', gap: 20 }}>
@@ -57,6 +53,7 @@ const TagPickerControlled = ({
         selectedOptions={selectedOptions}
         open={open}
         defaultOpen={defaultOpen}
+        inline
       >
         <TagPickerControl
           data-testid="tag-picker-control"
