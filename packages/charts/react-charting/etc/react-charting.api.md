@@ -441,12 +441,12 @@ export interface IChartTableProps {
     componentRef?: IRefObject<IChart>;
     headers: {
         value: string | number | boolean | null;
-        style?: React.CSSProperties;
+        style?: React_2.CSSProperties;
     }[];
     height?: string | number;
     rows: {
         value: string | number | boolean | null;
-        style?: React.CSSProperties;
+        style?: React_2.CSSProperties;
     }[][];
     styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
     theme?: ITheme;

@@ -12,6 +12,7 @@ import {
   Bin,
 } from 'd3-array';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { format as d3Format } from 'd3-format';
 import { IDonutChartProps } from '../DonutChart/index';
 import {
   IChartDataPoint,
@@ -1086,7 +1087,9 @@ const formatValue = (
   colIndex: number,
   cells: TableData['cells'],
 ): string | number | boolean | null => {
-  if (value == null || typeof value === 'boolean') return value;
+  if (value === null || typeof value === 'boolean') {
+    return value;
+  }
 
   const formatStr = Array.isArray(cells!.format) ? cells!.format[colIndex] : cells!.format;
   const prefix = Array.isArray(cells!.prefix) ? cells!.prefix[colIndex] : cells!.prefix;
@@ -1095,7 +1098,6 @@ const formatValue = (
   if (typeof value === 'number') {
     if (typeof formatStr === 'string') {
       try {
-        const d3Format = require('d3-format').format;
         formatted = d3Format(formatStr)(value);
       } catch {
         formatted = formatValueLimitWidth(value);

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChart } from '../../types/index';
