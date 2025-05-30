@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 20 May 2025 07:21:43 GMT and should not be manually modified.
+This log was last generated on Thu, 29 May 2025 07:21:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.0)
+
+Thu, 29 May 2025 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.19..@fluentui/react_v8.123.0)
+
+### Minor changes
+
+- fix(Pivot): Added KeyboardEvent to union type on onLinkClick prop. ([PR #34273](https://github.com/microsoft/fluentui/pull/34273) by eddylynch@microsoft.com)
 
 ## [8.122.19](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.19)
 
