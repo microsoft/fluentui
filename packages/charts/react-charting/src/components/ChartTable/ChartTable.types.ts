@@ -15,12 +15,12 @@ export interface IChartTableProps {
   /**
    * 1d or 2d Array of header values.
    */
-  headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+  headers: { value: string | number | boolean | null; style?: React.CSSProperties }[];
 
   /**
    * Array of rows. Each row corresponds to one data entry under each column.
    */
-  rows: (string | number | boolean | null)[][];
+  rows: { value: string | number | boolean | null; style?: React.CSSProperties }[][];
 
   /**
    * Optional width for the table

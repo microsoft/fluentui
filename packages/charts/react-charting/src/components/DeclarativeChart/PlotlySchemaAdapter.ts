@@ -37,7 +37,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY } from '../../utilities/utilities';
+import { findNumericMinMaxOfY, formatValueLimitWidth } from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -1081,6 +1081,32 @@ const cleanText = (text: string): string => {
     .trim();
 };
 
+const formatValue = (
+  value: string | number | boolean | null,
+  colIndex: number,
+  cells: TableData['cells'],
+): string | number | boolean | null => {
+  if (value == null || typeof value === 'boolean') return value;
+
+  const formatStr = Array.isArray(cells!.format) ? cells!.format[colIndex] : cells!.format;
+  const prefix = Array.isArray(cells!.prefix) ? cells!.prefix[colIndex] : cells!.prefix;
+  const suffix = Array.isArray(cells!.suffix) ? cells!.suffix[colIndex] : cells!.suffix;
+  let formatted = value;
+  if (typeof value === 'number') {
+    if (typeof formatStr === 'string') {
+      try {
+        const d3Format = require('d3-format').format;
+        formatted = d3Format(formatStr)(value);
+      } catch {
+        formatted = formatValueLimitWidth(value);
+      }
+    } else {
+      formatted = formatValueLimitWidth(value);
+    }
+  }
+  return `${prefix ?? ''}${formatted}${suffix ?? ''}`;
+};
+
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -1090,25 +1116,115 @@ export const transformPlotlyJsonToChartTableProps = (
 
   const normalizeHeaders = (
     values: (string | number | boolean | null)[] | (string | number | boolean | null)[][],
-  ): (string | number | boolean | null)[] => {
-    // Case: values is array of arrays
-    if (Array.isArray(values[0])) {
-      return (values as string[][]).map(row =>
-        row
-          .map(cell => cleanText(cell))
-          .filter(Boolean)
-          .join(' '),
-      );
-    }
+    header: TableData['header'],
+  ): { value: string | number | boolean | null; style?: React.CSSProperties }[] => {
+    const cleanedValues: (string | number | boolean | null)[] = Array.isArray(values[0])
+      ? (values as string[][]).map(row =>
+          row
+            .map(cell => cleanText(cell))
+            .filter(Boolean)
+            .join(' '),
+        )
+      : (values as string[]).map(cell => cleanText(cell));
 
-    // Case: values is 1d array
-    return (values as string[]).map(cell => cleanText(cell));
+    return cleanedValues.map((value, colIndex) => {
+      const fontColorRaw = header?.font?.color;
+      let fontColor: React.CSSProperties['color'] | undefined;
+
+      if (Array.isArray(fontColorRaw)) {
+        const colorEntry = fontColorRaw[colIndex];
+        if (Array.isArray(colorEntry)) {
+          fontColor = typeof colorEntry[0] === 'string' ? colorEntry[0] : undefined;
+        } else if (typeof colorEntry === 'string') {
+          fontColor = colorEntry;
+        }
+      } else if (typeof fontColorRaw === 'string') {
+        fontColor = fontColorRaw;
+      }
+
+      const fontSizeRaw = header?.font?.size;
+      let fontSize: React.CSSProperties['fontSize'] | undefined;
+
+      if (Array.isArray(fontSizeRaw)) {
+        fontSize = Array.isArray(fontSizeRaw[0]) ? fontSizeRaw[0][colIndex] : fontSizeRaw[colIndex];
+      } else if (typeof fontSizeRaw === 'number') {
+        fontSize = fontSizeRaw;
+      }
+
+      const updatedColIndex = colIndex >= 1 ? 1 : 0;
+      const fillColorRaw = header?.fill?.color;
+      const backgroundColor = Array.isArray(fillColorRaw) ? fillColorRaw[updatedColIndex] : fillColorRaw;
+
+      const textAlignRaw = header?.align;
+      const textAlign = Array.isArray(textAlignRaw) ? textAlignRaw[colIndex] : textAlignRaw;
+
+      const style: React.CSSProperties = {
+        ...(typeof fontColor === 'string' ? { color: fontColor } : {}),
+        ...(typeof fontSize === 'number' ? { fontSize } : {}),
+        ...(typeof backgroundColor === 'string' ? { backgroundColor } : {}),
+        ...(textAlign ? { textAlign } : {}),
+      };
+
+      return { value, style };
+    });
   };
   const columns = tableData.cells?.values ?? [];
+  const cells = tableData.cells!.font ? tableData.cells! : input.layout?.template?.data?.table![0].cells;
   const rows = columns[0].map((_, rowIndex: number) =>
-    columns.map(col => {
-      const cell = col[rowIndex];
-      return typeof cell === 'string' ? cleanText(cell) : cell;
+    columns.map((col, colIndex) => {
+      const cellValue = col[rowIndex];
+      const cleanValue = typeof cellValue === 'string' ? cleanText(cellValue) : cellValue;
+
+      const formattedValue =
+        typeof cleanValue === 'string' || typeof cleanValue === 'number'
+          ? formatValue(cleanValue, colIndex, cells)
+          : cleanValue;
+
+      const rawFontColor = cells?.font?.color;
+      let fontColor: React.CSSProperties['color'] | undefined;
+      if (Array.isArray(rawFontColor)) {
+        const entry = rawFontColor[colIndex];
+        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
+        fontColor = typeof colorValue === 'string' ? colorValue : undefined;
+      } else if (typeof rawFontColor === 'string') {
+        fontColor = rawFontColor;
+      }
+
+      const rawFontSize = cells?.font?.size;
+      let fontSize: React.CSSProperties['fontSize'] | undefined;
+      if (Array.isArray(rawFontSize)) {
+        const entry = rawFontSize[colIndex];
+        const fontSizeValue = Array.isArray(entry) ? entry[rowIndex] : entry;
+        fontSize = typeof fontSizeValue === 'number' ? fontSizeValue : undefined;
+      } else if (typeof rawFontSize === 'number') {
+        fontSize = rawFontSize;
+      }
+
+      const updatedColIndex = colIndex >= 1 ? 1 : 0;
+      const rawBackgroundColor = cells?.fill?.color;
+      let backgroundColor: React.CSSProperties['backgroundColor'] | undefined;
+      if (Array.isArray(rawBackgroundColor)) {
+        const entry = rawBackgroundColor[updatedColIndex];
+        const colorValue = Array.isArray(entry) ? entry[rowIndex] : entry;
+        backgroundColor = typeof colorValue === 'string' ? colorValue : undefined;
+      } else if (typeof rawBackgroundColor === 'string') {
+        backgroundColor = rawBackgroundColor;
+      }
+
+      const rawTextAlign = Array.isArray(cells?.align) ? cells.align[colIndex] : cells?.align;
+      const textAlign = rawTextAlign as React.CSSProperties['textAlign'] | undefined;
+
+      const style: React.CSSProperties = {
+        ...(fontColor ? { color: fontColor } : {}),
+        ...(typeof fontSize === 'number' ? { fontSize } : {}),
+        ...(backgroundColor ? { backgroundColor } : {}),
+        ...(textAlign ? { textAlign } : {}),
+      };
+
+      return {
+        value: formattedValue,
+        style,
+      };
     }),
   );
 
@@ -1119,7 +1235,10 @@ export const transformPlotlyJsonToChartTableProps = (
   };
 
   return {
-    headers: normalizeHeaders(tableData.header?.values ?? []),
+    headers: normalizeHeaders(
+      tableData.header?.values ?? [],
+      tableData.header?.font ? tableData.header : input.layout?.template?.data?.table![0].header,
+    ),
     rows,
     width: input.layout?.width,
     height: input.layout?.height,

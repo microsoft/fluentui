@@ -439,9 +439,15 @@ export interface IChartProps {
 export interface IChartTableProps {
     className?: string;
     componentRef?: IRefObject<IChart>;
-    headers: (string | number | boolean | null)[] | (string | number | boolean | null)[][];
+    headers: {
+        value: string | number | boolean | null;
+        style?: React.CSSProperties;
+    }[];
     height?: string | number;
-    rows: (string | number | boolean | null)[][];
+    rows: {
+        value: string | number | boolean | null;
+        style?: React.CSSProperties;
+    }[][];
     styles?: IStyleFunctionOrObject<IChartTableStyleProps, IChartTableStyles>;
     theme?: ITheme;
     width?: string | number;
