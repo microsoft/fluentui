@@ -167,6 +167,29 @@ export type Calendar = 'gregorian' | 'chinese' | 'coptic' | 'discworld' | 'ethio
 export type Color = string | number | Array<string | number | undefined | null> | Array<Array<string | number | undefined | null>>;
 
 // @public (undocumented)
+export interface ColorAxis {
+    // (undocumented)
+    cmax?: number;
+    // (undocumented)
+    cmin?: number;
+    // (undocumented)
+    colorbar?: {
+        title?: string | {
+            text: string;
+        };
+        thickness?: number;
+        len?: number;
+        outlinewidth?: number;
+    };
+    // (undocumented)
+    colorscale?: Array<[number, string]>;
+    // (undocumented)
+    reversescale?: boolean;
+    // (undocumented)
+    showscale?: boolean;
+}
+
+// @public (undocumented)
 export interface ColorBar {
     // (undocumented)
     bgcolor: Color;
