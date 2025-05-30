@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(chart-utilities): Add property to plotly schema",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
