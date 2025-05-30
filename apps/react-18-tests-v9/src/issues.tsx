@@ -34,11 +34,23 @@ import type { RefAttributes } from '@fluentui/react-utilities';
 
   type AppMenuButtonProps = MenuButtonProps & Omit<AppAnchorInternalProps, 'type'> & ControlWithMenuProps;
 
+  // Problem 1:
   // If `React.RefAttributes` are directly used in user-land code, it needs to be replaced with `React.Ref` to avoid issues with React 18 and v9 components.
+  //
   // Before:
   // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
   // After:
-  type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>>;
+  // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>>;
+  //
+  // Problem 2:
+  // TS Error: "Types of property 'as' are incompatible."
+  // wrapping all types with `Partial` makes it incompatible with later slot.always() invocation and Slot definition using `NonNullable`
+  //
+  // Before:
+  // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>>;
+  // After:
+  // type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>;
+  type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>;
 
   type ContextualMenuSlotType = React.FC<
     Pick<JSX.IntrinsicElements['div'], 'children'> &

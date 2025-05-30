@@ -33,7 +33,15 @@ import type {
 
   type AppMenuButtonProps = MenuButtonProps & Omit<AppAnchorInternalProps, 'type'> & ControlWithMenuProps;
 
-  type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  // Problem 1:
+  // TS Error: "Types of property 'as' are incompatible."
+  // wrapping all types with `Partial` makes it incompatible with later slot.always() invocation and Slot definition using `NonNullable`
+  //
+  // Before:
+  // type AppMenuButtonSlot = React.FC<Partial<React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  // After:
+  // type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>;
+  type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>;
 
   type ContextualMenuSlotType = React.FC<
     Pick<JSX.IntrinsicElements['div'], 'children'> &
