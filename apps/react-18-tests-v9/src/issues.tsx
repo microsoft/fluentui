@@ -10,6 +10,7 @@ import type {
   SplitButtonProps,
   FluentProviderProps,
 } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 // LegacyRef Issue
 // using v8 in conjunction with v9 interfaces
@@ -33,7 +34,11 @@ import type {
 
   type AppMenuButtonProps = MenuButtonProps & Omit<AppAnchorInternalProps, 'type'> & ControlWithMenuProps;
 
-  type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  // If `React.RefAttributes` are directly used in user-land code, it needs to be replaced with `React.Ref` to avoid issues with React 18 and v9 components.
+  // Before:
+  // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  // After:
+  type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & RefAttributes<HTMLButtonElement>>;
 
   type ContextualMenuSlotType = React.FC<
     Pick<JSX.IntrinsicElements['div'], 'children'> &
