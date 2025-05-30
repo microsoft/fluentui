@@ -6,7 +6,6 @@ import { HorizontalBarChartWithAxis } from '../../index';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
 import { resetIds } from '@fluentui/react';
 const rendererAct = renderer.act;
-import { act as domAct } from 'react-dom/test-utils';
 import { pointsHBCWA } from '../../utilities/test-data';
 import { toHaveNoViolations } from 'jest-axe';
 import { render } from '@testing-library/react';
@@ -133,9 +132,7 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    domAct(() => {
-      render(<HorizontalBarChartWithAxis {...props} />);
-    });
+    render(<HorizontalBarChartWithAxis {...props} />);
     expect(renderMock).toHaveBeenCalledTimes(1);
     renderMock.mockRestore();
   });
@@ -149,13 +146,9 @@ describe('Render calling with respective to props', () => {
       hideLegend: true,
     };
     let rerender: any;
-    domAct(() => {
-      const result = render(<HorizontalBarChartWithAxis {...props} />);
-      rerender = result.rerender;
-    });
-    domAct(() => {
-      rerender(<HorizontalBarChartWithAxis {...props} hideTooltip={true} />);
-    });
+    const result = render(<HorizontalBarChartWithAxis {...props} />);
+    rerender = result.rerender;
+    rerender(<HorizontalBarChartWithAxis {...props} hideTooltip={true} />);
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
