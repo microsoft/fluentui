@@ -22,6 +22,7 @@ import {
   lineHeightBase100,
   fontFamilyBase,
   fontWeightRegular,
+  fontWeightSemibold,
   spacingHorizontalM,
   spacingHorizontalS,
   spacingHorizontalL,
@@ -287,7 +288,7 @@ export const textGlobalCaption2LineHeight = `var(${textGlobalCaption2LineHeightR
 export const textStyleDefaultRegularFontFamily = `var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase})`;
 export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
 export const textStyleDefaultRegularLetterSpacing = `var(${textStyleDefaultRegularLetterSpacingRaw})`;
-export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw})`;
+export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw}, ${fontWeightSemibold})`;
 export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw}, 44px)`;
 export const sizeCtrlIcon = `var(${sizeCtrlIconRaw}, 20px)`;
 export const sizeCtrlIconSecondary = `var(${sizeCtrlIconSecondaryRaw})`;

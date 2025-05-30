@@ -1812,5 +1812,14 @@ export {
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
   _ctrlButtonGapInsideDefault,
+  _ctrlAvatarActiveRingStrokeWidthSm,
+  _ctrlAvatarActiveRingStrokeWidthMd,
+  _ctrlAvatarActiveRingStrokeWidthLg,
+  _ctrlAvatarCornerGroupSm,
+  _ctrlAvatarCornerGroupMd,
+  _ctrlAvatarCornerGroupLg,
+  _ctrlAvatarCornerGroupXLg,
+  _ctrlAvatarPresenceBadgeStrokeWidthSm,
+  _ctrlAvatarPresenceBadgeStrokeWidthLg,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';

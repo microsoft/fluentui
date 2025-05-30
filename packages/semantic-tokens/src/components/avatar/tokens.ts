@@ -11,6 +11,14 @@ import {
   backgroundLayerPrimarySolidRaw,
 } from '../../control/variables';
 import {
+  borderRadiusCircular,
+  colorNeutralBackground6,
+  colorNeutralForeground3,
+  borderRadiusMedium,
+  strokeWidthThick,
+  fontSizeBase300,
+} from '../../legacy/tokens';
+import {
   ctrlAvatarSizeRaw,
   ctrlAvatarCornerItemRaw,
   ctrlAvatarBackgroundRaw,
@@ -30,20 +38,20 @@ import {
   ctrlAvatarPresenceBadgeBackgroundBehindBadgeRaw,
 } from './variables';
 
-export const ctrlAvatarSize = `var(${ctrlAvatarSizeRaw}, var(${sizeCtrlDefaultRaw}))`;
-export const ctrlAvatarCornerItem = `var(${ctrlAvatarCornerItemRaw}, var(${cornerCircularRaw}))`;
-export const ctrlAvatarBackground = `var(${ctrlAvatarBackgroundRaw})`;
-export const ctrlAvatarForeground = `var(${ctrlAvatarForegroundRaw})`;
+export const ctrlAvatarSize = `var(${ctrlAvatarSizeRaw}, var(${sizeCtrlDefaultRaw}, 32px))`;
+export const ctrlAvatarCornerItem = `var(${ctrlAvatarCornerItemRaw}, var(${cornerCircularRaw}, ${borderRadiusCircular}))`;
+export const ctrlAvatarBackground = `var(${ctrlAvatarBackgroundRaw}, ${colorNeutralBackground6})`;
+export const ctrlAvatarForeground = `var(${ctrlAvatarForegroundRaw}, ${colorNeutralForeground3})`;
 export const ctrlAvatarIconSize = `var(${ctrlAvatarIconSizeRaw}, var(${sizeCtrlIconRaw}))`;
 export const ctrlAvatarPresenceBadgeSize = `var(${ctrlAvatarPresenceBadgeSizeRaw})`;
 export const ctrlAvatarActiveRingSize = `var(${ctrlAvatarActiveRingSizeRaw})`;
 export const ctrlAvatarPresenceBadgePaddingBottomRightOffset = `var(${ctrlAvatarPresenceBadgePaddingBottomRightOffsetRaw}, var(${strokeWidthDefaultRaw}))`;
-export const ctrlAvatarCornerGroup = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}))`;
-export const ctrlAvatarActiveRingStrokeWidth = `var(${ctrlAvatarActiveRingStrokeWidthRaw})`;
+export const ctrlAvatarCornerGroup = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
+export const ctrlAvatarActiveRingStrokeWidth = `var(${ctrlAvatarActiveRingStrokeWidthRaw}, ${strokeWidthThick})`;
 export const ctrlAvatarPresenceBadgeStrokeWidth = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}))`;
-export const ctrlAvatarTextFontSize = `var(${ctrlAvatarTextFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}))`;
-export const ctrlAvatarTextLineHeight = `var(${ctrlAvatarTextLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}))`;
+export const ctrlAvatarTextFontSize = `var(${ctrlAvatarTextFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;
+export const ctrlAvatarTextLineHeight = `var(${ctrlAvatarTextLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, 1))`;
 export const ctrlAvatarTextPaddingTopOffset = `var(${ctrlAvatarTextPaddingTopOffsetRaw}, unset)`;
 export const ctrlAvatarActiveRingStroke = `var(${ctrlAvatarActiveRingStrokeRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlAvatarShowCutout = `var(${ctrlAvatarShowCutoutRaw})`;
-export const ctrlAvatarPresenceBadgeBackgroundBehindBadge = `var(${ctrlAvatarPresenceBadgeBackgroundBehindBadgeRaw}, var(${backgroundLayerPrimarySolidRaw}))`;
+export const ctrlAvatarPresenceBadgeBackgroundBehindBadge = `var(${ctrlAvatarPresenceBadgeBackgroundBehindBadgeRaw}, var(${backgroundLayerPrimarySolidRaw}, white))`;
