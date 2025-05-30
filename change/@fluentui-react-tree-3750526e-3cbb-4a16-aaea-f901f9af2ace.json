@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: re-introduce active state style to TreeItemLayout",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
