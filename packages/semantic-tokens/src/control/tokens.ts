@@ -51,6 +51,7 @@ import {
   colorPaletteRedForeground3,
   colorPaletteDarkOrangeBackground3,
   colorPaletteGreenBackground3,
+  colorTransparentBackground,
 } from '../legacy/tokens';
 import {
   textGlobalDisplay1FontSizeRaw,
@@ -233,9 +234,12 @@ import {
   aiShimmerStop2Raw,
   aiShimmerStop3Raw,
   aiShimmerStop4Raw,
+  nullColorRaw,
   statusNeutralBackgroundRaw,
   statusNeutralTintBackgroundRaw,
   statusNeutralTintStrokeRaw,
+  nullNumberRaw,
+  nullStringRaw,
   backgroundCardOnSecondaryDefaultRestRaw,
   backgroundCardOnSecondaryAltRestRaw,
   backgroundCardOnSecondaryAltHoverRaw,
@@ -438,9 +442,12 @@ export const aiShimmerStop1 = `var(${aiShimmerStop1Raw})`;
 export const aiShimmerStop2 = `var(${aiShimmerStop2Raw})`;
 export const aiShimmerStop3 = `var(${aiShimmerStop3Raw})`;
 export const aiShimmerStop4 = `var(${aiShimmerStop4Raw})`;
+export const nullColor = `var(${nullColorRaw}, ${colorTransparentBackground})`;
 export const statusNeutralBackground = `var(${statusNeutralBackgroundRaw})`;
 export const statusNeutralTintBackground = `var(${statusNeutralTintBackgroundRaw})`;
 export const statusNeutralTintStroke = `var(${statusNeutralTintStrokeRaw})`;
+export const nullNumber = `var(${nullNumberRaw})`;
+export const nullString = `var(${nullStringRaw})`;
 export const backgroundCardOnSecondaryDefaultRest = `var(${backgroundCardOnSecondaryDefaultRestRaw})`;
 export const backgroundCardOnSecondaryAltRest = `var(${backgroundCardOnSecondaryAltRestRaw})`;
 export const backgroundCardOnSecondaryAltHover = `var(${backgroundCardOnSecondaryAltHoverRaw})`;
