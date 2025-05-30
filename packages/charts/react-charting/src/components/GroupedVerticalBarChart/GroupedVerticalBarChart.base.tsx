@@ -785,15 +785,10 @@ export class GroupedVerticalBarChartBase
     );
   };
 
-  // Lighten a color by a given percentage using d3-scale and d3-interpolate
-  private _lightenColor = (color: string, percentage: number): string => {
-    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#ffffff']);
-    return rgb(colorInterpolator(percentage)).formatRgb();
-  };
-
-  // Darken a color by a given percentage using d3-scale and d3-interpolate
-  private _darkenColor = (color: string, percentage: number): string => {
-    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, '#000000']);
+  // Lighten/Darken a color by a given percentage using d3-scale
+  private _adjustColor = (color: string, percentage: number, lightenColor: boolean, isDarkTheme: boolean): string => {
+    const targetColor = lightenColor ? (isDarkTheme ? '#000000' : '#ffffff') : isDarkTheme ? '#ffffff' : '#000000';
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, targetColor]);
     return rgb(colorInterpolator(percentage)).formatRgb();
   };
 
@@ -815,8 +810,18 @@ export class GroupedVerticalBarChartBase
               if (this.props.enableGradient) {
                 if (seriesPoint.color) {
                   // Generate gradient colors based on seriesPoint.color
-                  startColor = this._darkenColor(seriesPoint.color || endColor, 0.2); // Darken the base color
-                  endColor = this._lightenColor(seriesPoint.color || startColor, 0.2); // Lighten the base color
+                  startColor = this._adjustColor(
+                    seriesPoint.color || endColor,
+                    0.2,
+                    false,
+                    this.props.theme?.isInverted!,
+                  );
+                  endColor = this._adjustColor(
+                    seriesPoint.color || startColor,
+                    0.2,
+                    true,
+                    this.props.theme?.isInverted!,
+                  );
                 } else {
                   const nextGradient = getNextGradient(colorIndex, 0, this.props.theme?.isInverted);
                   startColor = seriesPoint.gradient?.[0] || nextGradient[0];
