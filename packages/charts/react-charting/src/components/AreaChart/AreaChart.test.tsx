@@ -3,8 +3,7 @@ import { resetIds } from '../../Utilities';
 import { AreaChart } from './index';
 import { AreaChartBase } from './AreaChart.base';
 import { ICustomizedCalloutData, ILineChartPoints } from '../../index';
-import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 
 const originalRAF = window.requestAnimationFrame;
 
