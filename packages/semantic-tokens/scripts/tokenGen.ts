@@ -48,7 +48,7 @@ const isInvalidToken = (token: string) => {
     return true;
   }
   // Blacklist for non-valid tokens
-  if (token.includes('Figmaonly') || token.toLocaleLowerCase().startsWith('null')) {
+  if (token.includes('Figmaonly')) {
     // Superfluous tokens - SKIP
     return true;
   }
