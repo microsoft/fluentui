@@ -14,7 +14,7 @@
     "start": "webpack-dev-server --mode=development",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "e2e:integration": "npx --yes cypress@8 run --component --config-file cypress-react-17.config.ts"
+    "e2e:integration": "npx --yes cypress@13 run --component --config-file cypress-react-17.config.ts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
