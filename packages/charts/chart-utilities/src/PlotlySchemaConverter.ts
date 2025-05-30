@@ -199,14 +199,15 @@ const invalidateLogAxisType = (layout: Partial<Layout> | undefined): boolean => 
  * @param links Array of links with source and target as node indices.
  * @returns true if a cycle is found.
  */
-function findSankeyCycles(input: Partial<SankeyData>
-): boolean {
+function findSankeyCycles(input: Partial<SankeyData>): boolean {
   const graph: Record<number, number[]> = {};
   input.node?.label?.forEach((_, idx) => (graph[idx] = []));
   input.link?.value?.forEach((val, idx) => {
-    if (!(isInvalidValue(val) || isInvalidValue(input.link?.source?.[idx]) || isInvalidValue(input.link?.target?.[idx]))) {
-    graph[input.link!.source![idx]].push(input.link!.target![idx])
-  }
+    if (
+      !(isInvalidValue(val) || isInvalidValue(input.link?.source?.[idx]) || isInvalidValue(input.link?.target?.[idx]))
+    ) {
+      graph[input.link!.source![idx]].push(input.link!.target![idx]);
+    }
   });
 
   const visited = new Set<number>();
@@ -221,7 +222,9 @@ function findSankeyCycles(input: Partial<SankeyData>
       // Cycle detected, return
       return true;
     }
-    if (visited.has(node)) return;
+    if (visited.has(node)) {
+      return;
+    }
 
     visited.add(node);
     stack.add(node);
@@ -243,7 +246,6 @@ function findSankeyCycles(input: Partial<SankeyData>
   }
 
   return false; // No cycles found
-
 }
 
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
@@ -255,11 +257,18 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
     },
   ],
   histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
-  bar: [data => {validateBarData(data as Partial<PlotData>)}],
-  sankey: [data => {
-    if (findSankeyCycles(data as Partial<SankeyData>)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Cycles in Sankey chart not supported`);
-}}],
+  bar: [
+    data => {
+      validateBarData(data as Partial<PlotData>);
+    },
+  ],
+  sankey: [
+    data => {
+      if (findSankeyCycles(data as Partial<SankeyData>)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Cycles in Sankey chart not supported`);
+      }
+    },
+  ],
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
   scatterpolar: [
     data => {
