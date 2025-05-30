@@ -6,6 +6,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { treeItemLayoutClassNames } from '../TreeItemLayout/useTreeItemLayoutStyles.styles';
 import { treeItemPersonaLayoutClassNames } from '../TreeItemPersonaLayout/useTreeItemPersonaLayoutStyles.styles';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 export const treeItemClassNames: SlotClassNames<TreeItemSlots> = {
   root: 'fui-TreeItem',
@@ -27,6 +28,14 @@ const useBaseStyles = makeResetStyles({
   ':focus-visible': {
     outlineStyle: 'none',
   },
+  [`:active > .${treeItemLayoutClassNames.root}:first-child:active`]: {
+    color: tokens.colorNeutralForeground2Pressed,
+    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
+    [`& .${treeItemLayoutClassNames.expandIcon}`]: {
+      color: tokens.colorNeutralForeground3Pressed,
+    },
+  },
   // This adds the focus outline for the TreeItemLayout element
   ...createCustomFocusIndicatorStyle(
     {
@@ -42,6 +51,20 @@ const useBaseStyles = makeResetStyles({
         `${selector} > .${treeItemLayoutClassNames.root}, ${selector} > .${treeItemPersonaLayoutClassNames.root}`,
     },
   ),
+});
+
+const useRootAppearanceStyles = makeStyles({
+  subtle: {},
+  'subtle-alpha': {
+    [`:active > .${treeItemLayoutClassNames.root}:first-child:active`]: {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+    },
+  },
+  transparent: {
+    [`:active > .${treeItemLayoutClassNames.root}:first-child:active`]: {
+      backgroundColor: tokens.colorTransparentBackgroundPressed,
+    },
+  },
 });
 
 type StaticLevel = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
@@ -65,11 +88,16 @@ export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState 
   const baseStyles = useBaseStyles();
   const styles = useStyles();
 
+  const appearanceStyles = useRootAppearanceStyles();
+
+  const appearance = useTreeContext_unstable(ctx => ctx.appearance);
+
   const { level } = state;
 
   state.root.className = mergeClasses(
     treeItemClassNames.root,
     baseStyles,
+    appearanceStyles[appearance],
     isStaticallyDefinedLevel(level) && styles[`level${level}` as StaticLevelProperty],
     state.root.className,
   );
