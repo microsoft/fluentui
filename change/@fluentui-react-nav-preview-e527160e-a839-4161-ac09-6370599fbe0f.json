@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: SubNavItems secondary actions revealed on hover",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
