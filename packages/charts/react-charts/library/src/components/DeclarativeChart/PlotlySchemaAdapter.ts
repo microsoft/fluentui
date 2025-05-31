@@ -48,7 +48,14 @@ import type {
   ScatterLine,
   TypedArray,
 } from '@fluentui/chart-utilities';
-import { isArrayOfType, isArrayOrTypedArray, isDate, isDateArray, isNumberArray } from '@fluentui/chart-utilities';
+import {
+  isArrayOfType,
+  isArrayOrTypedArray,
+  isDate,
+  isDateArray,
+  isNumberArray,
+  isYearArray,
+} from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
@@ -252,9 +259,10 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let secondaryYAxisValues: SecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
       const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
