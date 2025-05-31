@@ -6,7 +6,7 @@ export type SkeletonSlots = {
    * The root slot of the `Skeleton` is the container that will contain the slots that make up a `Skeleton`
    * and any data that the `Skeleton` will load. The default html element is a `div`.
    */
-  root: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'div', 'span'>>;
 };
 
 /**
