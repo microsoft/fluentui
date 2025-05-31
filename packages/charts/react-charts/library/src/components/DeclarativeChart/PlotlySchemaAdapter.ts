@@ -465,6 +465,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
+      useUTC: false,
     } as AreaChartProps;
   } else {
     return {
@@ -481,6 +482,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       enableReflow: false,
+      useUTC: false,
     } as LineChartProps;
   }
 };

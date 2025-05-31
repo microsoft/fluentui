@@ -4,7 +4,7 @@ import { useArcStyles } from './useArcStyles.styles';
 import { ChartDataPoint } from '../index';
 import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix, useRtl } from '../../../utilities/index';
+import { formatValueLimitWidth, useRtl } from '../../../utilities/index';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
 /**
@@ -74,7 +74,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
         >
           {showLabelsInPercent
             ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-            : formatValueWithSIPrefix(arcValue)}
+            : formatValueLimitWidth(arcValue)}
         </text>
       );
     }
