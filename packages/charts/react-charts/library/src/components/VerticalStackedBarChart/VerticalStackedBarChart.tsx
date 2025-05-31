@@ -35,7 +35,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatValueLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -1014,7 +1014,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatValueWithSIPrefix(barLabel)}
+              {formatValueLimitWidth(barLabel)}
             </text>
           )}
         </g>

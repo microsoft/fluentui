@@ -133,7 +133,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -169,7 +169,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -230,7 +230,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -239,7 +239,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -280,7 +280,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -289,7 +289,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="244.3"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -330,7 +330,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -339,7 +339,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -537,7 +537,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -573,7 +573,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -634,7 +634,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -643,7 +643,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -684,7 +684,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -693,7 +693,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="244.3"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -734,7 +734,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -743,7 +743,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -948,7 +948,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              13k
+              12.5k
             </text>
           </g>
           <g
@@ -984,7 +984,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               fill="currentColor"
               x="-10"
             >
-              38k
+              37.5k
             </text>
           </g>
           <g
@@ -1045,7 +1045,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1054,7 +1054,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="25.77777777777778"
               y="43.400000000000006"
             >
-              44.0k
+              44k
             </text>
           </g>
           <g
@@ -1095,7 +1095,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="8"
               y="97.29999999999998"
             >
-              33.0k
+              33k
             </text>
             <text
               aria-hidden="true"
@@ -1104,7 +1104,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="25.77777777777778"
               y="244.3"
             >
-              3.0k
+              3k
             </text>
           </g>
           <g
@@ -1145,7 +1145,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="8"
               y="190.39999999999998"
             >
-              14.0k
+              14k
             </text>
             <text
               aria-hidden="true"
@@ -1154,7 +1154,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               x="25.77777777777778"
               y="14"
             >
-              50.0k
+              50k
             </text>
           </g>
         </g>
@@ -1427,7 +1427,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -1463,7 +1463,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -1524,7 +1524,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -1533,7 +1533,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -1574,7 +1574,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -1583,7 +1583,7 @@ Object {
                   x="25.77777777777778"
                   y="244.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -1624,7 +1624,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -1633,7 +1633,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -1829,7 +1829,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -1865,7 +1865,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -1926,7 +1926,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -1935,7 +1935,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -1976,7 +1976,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -1985,7 +1985,7 @@ Object {
                 x="25.77777777777778"
                 y="244.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -2026,7 +2026,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -2035,7 +2035,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -2290,7 +2290,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -2326,7 +2326,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -2387,7 +2387,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -2396,7 +2396,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -2437,7 +2437,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -2446,7 +2446,7 @@ Object {
                   x="25.77777777777778"
                   y="244.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -2487,7 +2487,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -2496,7 +2496,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -2699,7 +2699,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -2735,7 +2735,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -2796,7 +2796,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -2805,7 +2805,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -2846,7 +2846,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -2855,7 +2855,7 @@ Object {
                 x="25.77777777777778"
                 y="244.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -2896,7 +2896,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -2905,7 +2905,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -3167,7 +3167,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -3203,7 +3203,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -3264,7 +3264,7 @@ Object {
                   x="8"
                   y="12.3"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -3273,7 +3273,7 @@ Object {
                   x="25.77777777777778"
                   y="13.399999999999999"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -3314,7 +3314,7 @@ Object {
                   x="8"
                   y="12.3"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -3323,7 +3323,7 @@ Object {
                   x="25.77777777777778"
                   y="9.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -3364,7 +3364,7 @@ Object {
                   x="8"
                   y="10.399999999999999"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -3373,7 +3373,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -3514,7 +3514,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -3550,7 +3550,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -3611,7 +3611,7 @@ Object {
                 x="8"
                 y="12.3"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -3620,7 +3620,7 @@ Object {
                 x="25.77777777777778"
                 y="13.399999999999999"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -3661,7 +3661,7 @@ Object {
                 x="8"
                 y="12.3"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -3670,7 +3670,7 @@ Object {
                 x="25.77777777777778"
                 y="9.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -3711,7 +3711,7 @@ Object {
                 x="8"
                 y="10.399999999999999"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -3720,7 +3720,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -3920,7 +3920,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -3956,7 +3956,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -4017,7 +4017,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4026,7 +4026,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -4067,7 +4067,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4076,7 +4076,7 @@ Object {
                   x="25.77777777777778"
                   y="244.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -4117,7 +4117,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4126,7 +4126,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -4322,7 +4322,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -4358,7 +4358,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -4419,7 +4419,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -4428,7 +4428,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -4469,7 +4469,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -4478,7 +4478,7 @@ Object {
                 x="25.77777777777778"
                 y="244.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -4519,7 +4519,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -4528,7 +4528,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -4825,7 +4825,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -4861,7 +4861,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -4922,7 +4922,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4931,7 +4931,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -4972,7 +4972,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -4981,7 +4981,7 @@ Object {
                   x="25.77777777777778"
                   y="244.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -5022,7 +5022,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -5031,7 +5031,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -5274,7 +5274,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -5310,7 +5310,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -5371,7 +5371,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -5380,7 +5380,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -5421,7 +5421,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -5430,7 +5430,7 @@ Object {
                 x="25.77777777777778"
                 y="244.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -5471,7 +5471,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -5480,7 +5480,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -5828,7 +5828,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  13k
+                  12.5k
                 </text>
               </g>
               <g
@@ -5864,7 +5864,7 @@ Object {
                   fill="currentColor"
                   x="-10"
                 >
-                  38k
+                  37.5k
                 </text>
               </g>
               <g
@@ -5925,7 +5925,7 @@ Object {
                   x="8"
                   y="80.97999999999999"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -5934,7 +5934,7 @@ Object {
                   x="25.77777777777778"
                   y="37.639999999999986"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -5975,7 +5975,7 @@ Object {
                   x="8"
                   y="80.97999999999999"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -5984,7 +5984,7 @@ Object {
                   x="25.77777777777778"
                   y="199.18"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -6025,7 +6025,7 @@ Object {
                   x="8"
                   y="155.84"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6034,7 +6034,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -6318,7 +6318,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                13k
+                12.5k
               </text>
             </g>
             <g
@@ -6354,7 +6354,7 @@ Object {
                 fill="currentColor"
                 x="-10"
               >
-                38k
+                37.5k
               </text>
             </g>
             <g
@@ -6415,7 +6415,7 @@ Object {
                 x="8"
                 y="80.97999999999999"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -6424,7 +6424,7 @@ Object {
                 x="25.77777777777778"
                 y="37.639999999999986"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -6465,7 +6465,7 @@ Object {
                 x="8"
                 y="80.97999999999999"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -6474,7 +6474,7 @@ Object {
                 x="25.77777777777778"
                 y="199.18"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -6515,7 +6515,7 @@ Object {
                 x="8"
                 y="155.84"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -6524,7 +6524,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>
@@ -6881,7 +6881,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6890,7 +6890,7 @@ Object {
                   x="25.77777777777778"
                   y="43.400000000000006"
                 >
-                  44.0k
+                  44k
                 </text>
               </g>
               <g
@@ -6931,7 +6931,7 @@ Object {
                   x="8"
                   y="97.29999999999998"
                 >
-                  33.0k
+                  33k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6940,7 +6940,7 @@ Object {
                   x="25.77777777777778"
                   y="244.3"
                 >
-                  3.0k
+                  3k
                 </text>
               </g>
               <g
@@ -6981,7 +6981,7 @@ Object {
                   x="8"
                   y="190.39999999999998"
                 >
-                  14.0k
+                  14k
                 </text>
                 <text
                   aria-hidden="true"
@@ -6990,7 +6990,7 @@ Object {
                   x="25.77777777777778"
                   y="14"
                 >
-                  50.0k
+                  50k
                 </text>
               </g>
             </g>
@@ -7283,7 +7283,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -7292,7 +7292,7 @@ Object {
                 x="25.77777777777778"
                 y="43.400000000000006"
               >
-                44.0k
+                44k
               </text>
             </g>
             <g
@@ -7333,7 +7333,7 @@ Object {
                 x="8"
                 y="97.29999999999998"
               >
-                33.0k
+                33k
               </text>
               <text
                 aria-hidden="true"
@@ -7342,7 +7342,7 @@ Object {
                 x="25.77777777777778"
                 y="244.3"
               >
-                3.0k
+                3k
               </text>
             </g>
             <g
@@ -7383,7 +7383,7 @@ Object {
                 x="8"
                 y="190.39999999999998"
               >
-                14.0k
+                14k
               </text>
               <text
                 aria-hidden="true"
@@ -7392,7 +7392,7 @@ Object {
                 x="25.77777777777778"
                 y="14"
               >
-                50.0k
+                50k
               </text>
             </g>
           </g>

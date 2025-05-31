@@ -1408,7 +1408,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             x={35.43557344375781}
             y={-50.87553571916512}
           >
-            20.0k
+            20k
           </text>
         </g>
         <g>
@@ -1440,7 +1440,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             x={42.16983494620299}
             y={45.45002772947447}
           >
-            39.0k
+            39k
           </text>
         </g>
         <g>
@@ -1472,7 +1472,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
             x={-60.58001193073337}
             y={-13.19326170710649}
           >
-            45.0k
+            45k
           </text>
         </g>
         

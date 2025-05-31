@@ -611,10 +611,13 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 
-describe.skip('Line chart - Subcomponent Event', () => {
+describe('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   // Replace the original method with the mock implementation
   Object.defineProperty(
@@ -635,6 +638,9 @@ describe.skip('Line chart - Subcomponent Event', () => {
       expect(event).toBeDefined();
       fireEvent.click(event!);
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 

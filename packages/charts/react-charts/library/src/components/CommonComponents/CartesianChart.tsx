@@ -657,3 +657,6 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
   );
 });
 CartesianChart.displayName = 'CartesianChart';
+CartesianChart.defaultProps = {
+  hideTickOverlap: true,
+};
