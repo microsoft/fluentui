@@ -43,7 +43,6 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
 } from '../index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
 import {
   CurveFactory,
@@ -53,6 +52,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
+import { numberFormatter, convertToLocaleString } from '././locale-util';
 
 export const MIN_DOMAIN_MARGIN = 8;
 
@@ -168,33 +168,13 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
-function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
-  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
-  let formatter = d3FormatPrefix('.2~', value);
-
-  if (Math.abs(value) < 1) {
-    // Don't use SI notation for small numbers as it is less readable
-    formatter = d3Format('.2~g');
-  } else if (limitWidth && Math.abs(value) >= 1000) {
-    // If width is limited, use SI format prefix with 1 point precision
-    formatter = d3FormatPrefix('.1~', value);
-  }
-  const formattedValue = formatter(value);
-
-  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
-  if (Math.abs(value) >= 1e9) {
-    return formattedValue.replace('G', 'B');
-  }
-
-  return formattedValue;
-}
 /**
  * Formatter for y axis ticks.
  * @param value - The number to format.
  * @returns The formatted string .
  */
 export function defaultYAxisTickFormatter(value: number): string {
-  return yAxisTickFormatterInternal(value);
+  return numberFormatter(value);
 }
 
 /**
@@ -440,8 +420,8 @@ export function createDateXAxis(
   const longestLabelWidth =
     calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
   const [start, end] = xAxisScale.range();
-  tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  tickCount = Math.min(tickCount, xAxisCount ?? tickCount);
+  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
+  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -1542,29 +1522,6 @@ export const getAccessibleDataObject = (
   };
 };
 
-type LocaleStringDataProps = number | string | Date | undefined;
-export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (data === undefined || data === null || Number.isNaN(data)) {
-    return data;
-  }
-  culture = culture || undefined;
-  if (typeof data === 'number') {
-    if (Math.abs(data) < 10000) {
-      return data.toString();
-    }
-    return data.toLocaleString(culture);
-  } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
-    const num = Number(data);
-    if (Math.abs(num) < 10000) {
-      return num.toString();
-    }
-    return num.toLocaleString(culture);
-  } else if (data instanceof Date) {
-    return data.toLocaleDateString(culture);
-  }
-  return data;
-};
-
 export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   const { node, xAxis } = rotateLabelProps;
   if (node === null || xAxis === null) {
@@ -1652,7 +1609,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
 }
 
 export function formatValueLimitWidth(value: number) {
-  return yAxisTickFormatterInternal(value, true);
+  return numberFormatter(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;

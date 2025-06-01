@@ -12,6 +12,7 @@ import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
+import { convertToLocaleString } from './locale-util';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
@@ -19,48 +20,48 @@ const env = require('../../config/tests');
 
 describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
-    expect(utils.convertToLocaleString(undefined)).toBeUndefined();
+    expect(convertToLocaleString(undefined)).toBeUndefined();
   });
   test('Should return NaN when data is NaN', () => {
-    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+    expect(convertToLocaleString(NaN)).toBeNaN();
   });
   test('Should return localized 0 when data is numeric 0', () => {
-    expect(utils.convertToLocaleString(0)).toBe('0');
+    expect(convertToLocaleString(0)).toBe('0');
   });
   test('Should return localized 123 when data is string 123', () => {
-    expect(utils.convertToLocaleString('123')).toBe('123');
+    expect(convertToLocaleString('123')).toBe('123');
   });
   test('Should return localized 1234 when data is string 1234', () => {
-    expect(utils.convertToLocaleString('1234')).toBe('1234');
+    expect(convertToLocaleString('1234')).toBe('1234');
   });
   test('Should return localized Hello World when data is string Hello World', () => {
-    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+    expect(convertToLocaleString('Hello World')).toBe('Hello World');
   });
   test('Should return 0 as string when data is empty string', () => {
-    expect(utils.convertToLocaleString('')).toBe('0');
+    expect(convertToLocaleString('')).toBe('0');
   });
   test('Should return 0 as string when data is single whitespace string', () => {
-    expect(utils.convertToLocaleString(' ')).toBe('0');
+    expect(convertToLocaleString(' ')).toBe('0');
   });
   test('Should return the localised data in the given culture when input data is a string', () => {
-    expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
-    expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
+    expect(convertToLocaleString('text', 'en-GB')).toBe('text');
+    expect(convertToLocaleString('text', 'ar-SY')).toBe('text');
   });
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
-    expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
+    expect(convertToLocaleString(10, 'en-GB')).toBe('10');
+    expect(convertToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
   });
 
   test('Do not localize 4 digit numbers', () => {
-    expect(utils.convertToLocaleString(1000, 'en-GB')).toBe('1000');
-    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('2560');
-    expect(utils.convertToLocaleString('2000')).toBe('2000');
+    expect(convertToLocaleString(1000, 'en-GB')).toBe('1000');
+    expect(convertToLocaleString(2560, 'ar-SY')).toBe('2560');
+    expect(convertToLocaleString('2000')).toBe('2000');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
-    expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
+    expect(convertToLocaleString('10', 'en-GB')).toBe('10');
+    expect(convertToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
   });
 });
 
