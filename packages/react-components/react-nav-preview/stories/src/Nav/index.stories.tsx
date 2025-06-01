@@ -10,6 +10,7 @@ export { Basic } from '../NavDrawer/Basic.stories';
 export { VariableDensityItems } from '../NavDrawer/VariableDensityItems.stories';
 export { Controlled } from '../NavDrawer/Controlled.stories';
 export { SplitNavItems } from '../NavDrawer/SplitNavItems.stories';
+export { CustomMotion } from '../NavDrawer/CustomMotion.stories';
 
 export default {
   title: 'Preview Components/Nav',
