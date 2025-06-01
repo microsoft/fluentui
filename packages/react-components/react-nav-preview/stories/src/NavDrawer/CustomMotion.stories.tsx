@@ -103,6 +103,7 @@ const DrawerMotion = createPresenceComponent(() => {
     {
       opacity: 0,
       transform: 'translate3D(-100%, 0, 0)',
+      margin: 0,
       backgroundColor: tokens.colorNeutralBackground1,
       borderColor: tokens.colorNeutralBackground1,
       borderRadius: 0,
@@ -110,6 +111,7 @@ const DrawerMotion = createPresenceComponent(() => {
     {
       opacity: 1,
       transform: 'translate3D(0, 0, 0)',
+      margin: drawerMargin,
       borderColor: tokens.colorNeutralBackground4,
       borderRadius: tokens.borderRadiusXLarge,
     },
@@ -143,8 +145,8 @@ const ContentMotion = createPresenceComponent(() => {
       borderRadius: 0,
     },
     {
-      transform: `translate3D(${drawerWidth}, 0, 0)`,
-      width: `calc(100% - ${drawerWidth} - ${drawerMargin} * 2)`,
+      transform: `translate3D(calc(${drawerWidth} + ${drawerMargin}), 0, 0)`,
+      width: `calc(100% - ${drawerWidth} - ${drawerMargin} * 3)`,
       margin: drawerMargin,
       backgroundColor: tokens.colorNeutralBackground3,
       borderColor: tokens.colorNeutralBackground4,
@@ -207,6 +209,7 @@ export const CustomMotion = () => {
         open={isOpen}
         type={type}
         multiple={isMultiple}
+        onOpenChange={(_, data) => setIsOpen(data.open)}
         surfaceMotion={{ children: (_, props) => <DrawerMotion {...props} /> }}
         className={styles.nav}
       >
