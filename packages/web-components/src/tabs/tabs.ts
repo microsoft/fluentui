@@ -54,6 +54,10 @@ export class Tabs extends BaseTabs {
   @attr({ mode: 'boolean' })
   public disabled?: boolean;
 
+  public disabledChanged(): void {
+    this.updateTabDisabledState();
+  }
+
   /**
    * size
    * defaults to medium.
@@ -61,6 +65,21 @@ export class Tabs extends BaseTabs {
    */
   @attr
   public size?: TabsSize;
+
+  /**
+   * Iterates over each tab element and sets its `disabled` attribute based on the `disabled` property of the `Tabs` component.
+   * If the `disabled` property is `true`, the `disabled` attribute of the tab element will be set to `'true'`; otherwise, it will be set to `'false'`.
+   */
+  protected setTabs(): void {
+    super.setTabs();
+
+    this.tabs.forEach((tab: HTMLElement) => {
+      // Only set the 'disabled' attribute if it's not already set on the individual tab
+      if (!tab.hasAttribute('aria-disabled')) {
+        tab.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+      }
+    });
+  }
 
   /**
    * calculateAnimationProperties
@@ -201,6 +220,25 @@ export class Tabs extends BaseTabs {
 
     if (this.activetab) {
       this.animationLoop(this.activetab as Tab);
+    }
+  }
+
+  /**
+   * Updates the 'disabled' attribute of each tab based on the 'disabled' property of the Tabs component.
+   * If the 'disabled' property is true, the 'disabled' attribute is added to each tab.
+   * If the 'disabled' property is false, the 'disabled' attribute is removed from each tab.
+   * This method does nothing if the 'tabs' property is not defined or is an empty array.
+   */
+  private updateTabDisabledState(): void {
+    if (this.tabs && this.tabs.length > 0) {
+      const tabs = this.tabs as Tab[];
+      tabs.forEach((tab: HTMLElement) => {
+        if (this.disabled) {
+          tab.setAttribute('disabled', '');
+        } else {
+          tab.removeAttribute('disabled');
+        }
+      });
     }
   }
 }
