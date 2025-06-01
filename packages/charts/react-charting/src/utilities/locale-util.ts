@@ -29,16 +29,12 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
   }
   culture = culture || undefined;
   if (typeof data === 'number') {
-    if (Math.abs(data) < 10000) {
-      return numberFormatter(data);
-    }
-    return data.toLocaleString(culture);
+    const toGroup = Math.abs(data) >= 10000;
+    return data.toLocaleString(culture, { useGrouping: toGroup });
   } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
     const num = Number(data);
-    if (Math.abs(num) < 10000) {
-      return numberFormatter(num);
-    }
-    return num.toLocaleString(culture);
+    const toGroup = Math.abs(num) >= 10000;
+    return num.toLocaleString(culture, { useGrouping: toGroup });
   } else if (data instanceof Date) {
     return data.toLocaleDateString(culture);
   }
