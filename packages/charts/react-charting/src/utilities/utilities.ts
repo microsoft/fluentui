@@ -980,7 +980,7 @@ export function createYAxisLabels(
       ? `...${text.text().slice(0, noOfCharsToTruncate)}`
       : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const padding = truncateLabel ? 1.5 : 1; // ems
+    const padding = 0; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
@@ -998,17 +998,16 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', 'showDots')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
-        .attr('dy', dy)
+        .attr('dy', dy + 'em')
         .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
-        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);

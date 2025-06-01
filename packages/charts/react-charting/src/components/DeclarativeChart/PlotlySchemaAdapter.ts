@@ -399,6 +399,9 @@ export const transformPlotlyJsonToVSBCProps = (
     roundCorners: true,
     supportNegativeData: true,
     barGapMax: 2,
+    showYAxisLables: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 

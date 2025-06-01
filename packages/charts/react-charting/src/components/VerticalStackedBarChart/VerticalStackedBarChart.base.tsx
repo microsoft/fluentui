@@ -1139,6 +1139,10 @@ export class VerticalStackedBarChartBase
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
+          {/*
+            Note: No need to check hideLabels here, as showLabel is only set to true
+            when hideLabels is false earlier in the code.
+          */}
           {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
