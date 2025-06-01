@@ -3,7 +3,6 @@ import { HeatMapChartProps } from './HeatMapChart.types';
 import { AccessibilityProps, Chart, HeatMapChartData, HeatMapChartDataPoint, Margins } from '../../types/index';
 import {
   ChartTypes,
-  convertToLocaleString,
   getAccessibleDataObject,
   getColorContrast,
   getTypeOfAxis,
@@ -11,6 +10,7 @@ import {
   XAxisTypes,
   YAxisType,
 } from '../../utilities/index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
