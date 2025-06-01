@@ -20,7 +20,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   createNumericYAxis,

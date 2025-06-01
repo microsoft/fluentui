@@ -14,7 +14,7 @@ import {
   getNextGradient,
   areArraysEqual,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';

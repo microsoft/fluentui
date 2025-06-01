@@ -5,7 +5,7 @@ import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities
 import { getStyles } from './Arc.styles';
 import { wrapContent } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
-import { convertToLocaleString } from '../../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {

@@ -43,6 +43,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
 } from '../index';
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
 import {
   CurveFactory,
@@ -52,7 +53,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { numberFormatter, convertToLocaleString } from '././locale-util';
+import { convertToLocaleString, handleFloatingPointPrecisionError } from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
 
@@ -168,13 +169,34 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
+
+  if (Math.abs(value) < 1) {
+    // Don't use SI notation for small numbers as it is less readable
+    formatter = d3Format('.2~g');
+  } else if (limitWidth && Math.abs(value) >= 1000) {
+    // If width is limited, use SI format prefix with 1 point precision
+    formatter = d3FormatPrefix('.1~', value);
+  }
+  const formattedValue = formatter(value);
+
+  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
+  if (Math.abs(value) >= 1e9) {
+    return formattedValue.replace('G', 'B');
+  }
+
+  return formattedValue;
+}
+
 /**
  * Formatter for y axis ticks.
  * @param value - The number to format.
  * @returns The formatted string .
  */
 export function defaultYAxisTickFormatter(value: number): string {
-  return numberFormatter(value);
+  return yAxisTickFormatterInternal(value);
 }
 
 /**
@@ -342,12 +364,6 @@ function getDateFormatLevel(date: Date, useUTC?: boolean) {
 function isPowerOf10(num: number): boolean {
   const roundedfinalYMax = handleFloatingPointPrecisionError(num);
   return Math.log10(roundedfinalYMax) % 1 === 0;
-}
-
-//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
-function handleFloatingPointPrecisionError(num: number): number {
-  const rounded = Math.round(num);
-  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
 }
 
 /**
@@ -1609,7 +1625,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
 }
 
 export function formatValueLimitWidth(value: number) {
-  return numberFormatter(value, true);
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;

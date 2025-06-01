@@ -10,7 +10,7 @@ import {
   XAxisTypes,
   YAxisType,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';

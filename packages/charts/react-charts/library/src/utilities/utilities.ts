@@ -52,9 +52,9 @@ import {
   HorizontalBarChartWithAxisDataPoint,
   LineChartLineOptions,
 } from '../index';
-
+import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { convertToLocaleString, numberFormatter } from '././locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -169,13 +169,34 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
+
+  if (Math.abs(value) < 1) {
+    // Don't use SI notation for small numbers as it is less readable
+    formatter = d3Format('.2~g');
+  } else if (limitWidth && Math.abs(value) >= 1000) {
+    // If width is limited, use SI format prefix with 1 point precision
+    formatter = d3FormatPrefix('.1~', value);
+  }
+  const formattedValue = formatter(value);
+
+  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
+  if (Math.abs(value) >= 1e9) {
+    return formattedValue.replace('G', 'B');
+  }
+
+  return formattedValue;
+}
+
 /**
  * Formatter for y axis ticks.
  * @param value - The number to format.
  * @returns The formatted string .
  */
 export function defaultYAxisTickFormatter(value: number): string {
-  return numberFormatter(value);
+  return yAxisTickFormatterInternal(value);
 }
 
 /**
@@ -1840,7 +1861,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
 }
 
 export function formatValueLimitWidth(value: number) {
-  return numberFormatter(value, true);
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;

@@ -296,6 +296,9 @@ export interface Config {
 }
 
 // @public (undocumented)
+export const convertToLocaleString: (data: LocaleStringDataProps, culture?: string) => LocaleStringDataProps;
+
+// @public (undocumented)
 export type Dash = 'solid' | 'dot' | 'dash' | 'longdash' | 'dashdot' | 'longdashdot';
 
 // @public (undocumented)
@@ -439,6 +442,9 @@ export interface GaugeLine {
 
 // @public (undocumented)
 export const getValidSchema: (input: any) => PlotlySchema;
+
+// @public (undocumented)
+export function handleFloatingPointPrecisionError(num: number): number;
 
 // @public (undocumented)
 export interface HoverLabel extends Label {

@@ -5,7 +5,7 @@ import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './useChartPopoverStyles.styles';
 import { YValueHover } from './CartesianChart.types';

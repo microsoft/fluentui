@@ -12,7 +12,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   IHeatMapChartDataPoint,
 } from '../../index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import {
   createNumericXAxis,
   createStringXAxis,

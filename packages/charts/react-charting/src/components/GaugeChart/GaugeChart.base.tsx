@@ -10,7 +10,7 @@ import {
   GaugeChartVariant,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import {
   Points,
   areArraysEqual,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { formatValueLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';

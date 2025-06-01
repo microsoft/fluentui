@@ -13,7 +13,7 @@ import {
   pointTypes,
   useRtl,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';

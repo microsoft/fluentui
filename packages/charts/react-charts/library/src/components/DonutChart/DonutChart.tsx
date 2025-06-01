@@ -4,7 +4,7 @@ import { Pie } from './Pie/index';
 import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';

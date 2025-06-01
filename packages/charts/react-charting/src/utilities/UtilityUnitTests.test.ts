@@ -13,7 +13,7 @@ import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
 import { getGradientFromToken, getNextGradient } from './gradients';
-import { convertToLocaleString } from './locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 

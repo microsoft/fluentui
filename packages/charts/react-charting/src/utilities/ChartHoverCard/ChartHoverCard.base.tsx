@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IChartHoverCardStyles, IChartHoverCardStyleProps, IChartHoverCardProps } from './ChartHoverCard.types';
 import { classNamesFunction, IProcessedStyleSet } from '@fluentui/react';
-import { convertToLocaleString } from '../locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 
 const getClassNames = classNamesFunction<IChartHoverCardStyleProps, IChartHoverCardStyles>();
 export class ChartHoverCardBase extends React.Component<IChartHoverCardProps, {}> {

@@ -8,7 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { convertToLocaleString } from '@fluentui/chart-utilities';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
