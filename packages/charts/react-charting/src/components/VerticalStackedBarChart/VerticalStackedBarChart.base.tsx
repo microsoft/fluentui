@@ -565,7 +565,7 @@ export class VerticalStackedBarChartBase
       this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
     );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
-    this._init();
+    this._initYAxisParams();
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
@@ -1422,7 +1422,7 @@ export class VerticalStackedBarChartBase
     return { startValue: d3Min(values)!, endValue: d3Max(values)! };
   };
 
-  private _init = () => {
+  private _initYAxisParams = () => {
     if (this._points[0].chartData.length > 0) {
       this._yAxisType = getTypeOfAxis(this._points[0].chartData[0].data, false) as YAxisType;
     } else {
@@ -1435,7 +1435,6 @@ export class VerticalStackedBarChartBase
 
     if (this._yAxisType === YAxisType.StringAxis) {
       const yAxisLabels = new Set<string>();
-
       this._points.forEach(xPoint => {
         xPoint.chartData.forEach(bar => {
           yAxisLabels.add(`${bar.data}`);
@@ -1446,25 +1445,34 @@ export class VerticalStackedBarChartBase
           }
         });
       });
-
       this._yAxisLabels = Array.from(yAxisLabels);
     }
   };
 
   private _getYDomainMargins = (containerHeight: number): IMargins => {
+    /**
+     * Specifies the extra top margin to apply above the highest y-axis tick label.
+     * Useful when stacked bars extend beyond the combined height of all y-axis labels (or categories).
+     */
     let yAxisTickMarginTop = 0;
+
+    /** Total height available to render the bars */
+    const totalHeight = containerHeight - this.margins.bottom! - this.margins.top!;
+
     if (this._yAxisType === YAxisType.StringAxis) {
-      let max = 0;
+      /** Maximum height of the stacked bars, expressed in multiples of the height of a y-axis label (or category) */
+      let maxBarHeightInLabels = 0;
       this._points.forEach(xPoint => {
-        let sum = 0;
+        /** Height of the stacked bar, expressed in multiples of the height of a y-axis label (or category) */
+        let barHeightInLabels = 0;
         xPoint.chartData.forEach(bar => {
-          sum += this._yAxisLabels.indexOf(`${bar.data}`) + 1;
+          barHeightInLabels += this._yAxisLabels.indexOf(`${bar.data}`) + 1;
         });
-        max = Math.max(max, sum);
+        maxBarHeightInLabels = Math.max(maxBarHeightInLabels, barHeightInLabels);
       });
-      const totalHeight = containerHeight - this.margins.bottom! - this.margins.top!;
-      const yAxisLabelHeight = totalHeight / max;
-      yAxisTickMarginTop += yAxisLabelHeight * (max - this._yAxisLabels.length);
+      /** Height of a y-axis label (or category) */
+      const yAxisLabelHeight = totalHeight / maxBarHeightInLabels;
+      yAxisTickMarginTop += yAxisLabelHeight * (maxBarHeightInLabels - this._yAxisLabels.length);
     }
 
     return {
