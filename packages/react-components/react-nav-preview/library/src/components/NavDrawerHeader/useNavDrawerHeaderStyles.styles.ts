@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     margin: 'unset',
     paddingInlineStart: '14px',
     paddingBlock: '5px',
+    marginTop: '-2px',
   },
 });
 
