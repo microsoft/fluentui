@@ -1,6 +1,11 @@
+import { join } from 'node:path';
 import { preset, task, typeCheckWithConfigOverride } from '@fluentui/scripts-tasks';
 
+import { getNodeModulesPath } from './config/utils';
+
 preset();
+
+const usedNodeModulesPath = getNodeModulesPath();
 
 task('type-check', () =>
   typeCheckWithConfigOverride(config => {
@@ -8,10 +13,10 @@ task('type-check', () =>
       ...config,
       compilerOptions: {
         ...config.compilerOptions,
-        typeRoots: ['./node_modules/@types'],
+        typeRoots: [join(usedNodeModulesPath, './@types')],
         paths: {
-          react: ['./node_modules/@types/react/index.d.ts'],
-          'react-dom': ['./node_modules/@types/react-dom/index.d.ts'],
+          react: [join(usedNodeModulesPath, './@types/react/index.d.ts')],
+          'react-dom': [join(usedNodeModulesPath, './@types/react-dom/index.d.ts')],
         },
       },
     };
