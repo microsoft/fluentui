@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update checks to allow null values",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -6,6 +6,7 @@ export type {
   AxisType,
   Calendar,
   Color,
+  ColorAxis,
   ColorBar,
   ColorScale,
   Config,
@@ -109,6 +110,7 @@ export {
   sanitizeJson,
   isTypedArray,
   isArrayOrTypedArray,
+  isInvalidValue,
   isStringArray,
 } from './PlotlySchemaConverter';
 

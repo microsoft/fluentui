@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "support combination of lines and markers",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
