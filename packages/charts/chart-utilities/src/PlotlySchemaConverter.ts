@@ -86,6 +86,11 @@ export const isYearArray = (data: Datum[] | Datum[][] | TypedArray | undefined):
   return isArrayOfType(data, (value: any): boolean => isYear(value) || value === null);
 };
 
+export const isStringArray = (data: Datum[] | Datum[][] | TypedArray | undefined) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return isArrayOfType(data, (value: any) => typeof value === 'string' || value === null);
+};
+
 export const validate2Dseries = (series: Partial<PlotData>): boolean => {
   if (Array.isArray(series.x) && series.x.length > 0 && Array.isArray(series.x[0])) {
     return false;
@@ -161,8 +166,8 @@ const validateBarData = (data: Partial<PlotData>) => {
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} Gantt`);
   } else if (data.orientation === 'h' && isNumberArray(data.x)) {
     validateSeriesData(data, false);
-  } else {
-    validateSeriesData(data, true);
+  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+    throw new Error(`Non numeric or string Y values encountered.`);
   }
 };
 
@@ -173,8 +178,8 @@ const validateScatterData = (data: Partial<PlotData>) => {
     !isDateArray(data.x)
   ) {
     throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String`);
-  } else {
-    validateSeriesData(data, true);
+  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+    throw new Error(`Non numeric or string Y values encountered.`);
   }
 };
 
@@ -279,6 +284,9 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return { isValid: true, type: 'horizontalbar', validTracesInfo: validTraces };
           } else {
             if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
+              if (!isNumberArray(firstBarData.y)) {
+                return { isValid: false, errorMessage: 'GVBC does not support string y-axis.' };
+              }
               return { isValid: true, type: 'groupedverticalbar', validTracesInfo: validTraces };
             }
             return { isValid: true, type: 'verticalstackedbar', validTracesInfo: validTraces };
@@ -293,7 +301,8 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const isXDate = isDateArray(firstScatterData.x);
           const isXNumber = isNumberArray(firstScatterData.x);
           const isXYear = isYearArray(firstScatterData.x);
-          if ((isXDate || isXNumber) && !isXYear) {
+          const isYString = isStringArray(firstScatterData.y);
+          if ((isXDate || isXNumber) && !isXYear && !isYString) {
             return { isValid: true, type: isAreaChart ? 'area' : 'line', validTracesInfo: validTraces };
           } else if (isAreaChart) {
             return {
