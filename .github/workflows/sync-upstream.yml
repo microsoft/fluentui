@@ -1,0 +1,90 @@
+name: Sync Fork with Upstream
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ secrets.FLUENTUI_REPO_ACTION }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/microsoft/fluentui.git
+          git remote -v
+      - name: Fetch from upstream
+        run: |
+          git fetch upstream main
+          git fetch origin main
+      - name: Ensure on main branch
+        run: |
+          git checkout main
+          git branch -v
+      - name: Check for conflicts
+        id: check-conflicts
+        run: |
+          git checkout -b temp-merge-branch main
+          if git merge upstream/main --no-commit --no-ff > /dev/null 2>&1; then
+            git merge --abort
+            git checkout main
+            echo "has_conflicts=false" >> $GITHUB_OUTPUT
+            echo "No merge conflicts detected."
+          else
+            git merge --abort
+            git checkout main
+            echo "has_conflicts=true" >> $GITHUB_OUTPUT
+            echo "Merge conflicts detected. Creating PR instead of direct merge."
+          fi
+          git branch -D temp-merge-branch
+      - name: Set date
+        id: date
+        run: echo "date=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
+
+      - name: Direct merge if no conflicts
+        if: steps.check-conflicts.outputs.has_conflicts == 'false'
+        run: |
+          git merge upstream/main --no-edit
+          echo "Merged upstream/main into origin/main"
+      - name: Push directly if no conflicts
+        if: steps.check-conflicts.outputs.has_conflicts == 'false'
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_REPO_ACTION }}
+        run: |
+          git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
+      - name: Create PR if conflicts exist
+        if: steps.check-conflicts.outputs.has_conflicts == 'true'
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_REPO_ACTION }}
+        run: |
+          BRANCH=upstream-sync-${{ steps.date.outputs.date }}
+          git checkout -b $BRANCH
+          git merge upstream/main || true
+          git add .
+          git commit -m "Merge upstream/main with conflicts - needs manual resolution"
+          git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git $BRANCH
+      - name: Create Pull Request
+        if: steps.check-conflicts.outputs.has_conflicts == 'true'
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "upstream-sync-${{ steps.date.outputs.date }}"
+          destination_branch: "main"
+          pr_title: "Sync with upstream/main - Merge Conflicts"
+          pr_body: |
+            This PR was automatically created by the GitHub Actions workflow to sync with upstream.
+            ⚠️ **Merge conflicts detected** ⚠️
+            Please resolve the conflicts manually and merge this PR.
+          github_token: ${{ secrets.FLUENTUI_REPO_ACTION }}
