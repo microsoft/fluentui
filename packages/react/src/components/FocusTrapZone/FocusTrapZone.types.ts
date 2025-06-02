@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IRefObject } from '../../Utilities';
+import type { IRefObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory FocusTrapZone}
@@ -15,7 +15,7 @@ export interface IFocusTrapZone {
 /**
  * {@docCategory FocusTrapZone}
  */
-export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

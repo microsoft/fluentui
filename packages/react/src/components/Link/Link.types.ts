@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '@fluentui/utilities';
 
 /**
  * {@docCategory Link}
@@ -49,7 +49,7 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
 export interface ILinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>,
     Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>,
-    React.RefAttributes<HTMLElement> {
+    RefAttributes<HTMLElement> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

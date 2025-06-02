@@ -4,7 +4,7 @@ import type { IButtonStyles, IButtonProps } from '../../Button';
 import type { IIconProps } from '../../Icon';
 import type { ITheme, IStyle, IShadowDomStyle } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory SpinButton}
@@ -35,7 +35,7 @@ export enum KeyboardSpinDirection {
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */

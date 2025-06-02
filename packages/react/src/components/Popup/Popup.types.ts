@@ -1,9 +1,10 @@
 import * as React from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Popup}
  */
-export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Aria role for popup
    */

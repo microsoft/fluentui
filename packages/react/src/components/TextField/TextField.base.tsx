@@ -16,6 +16,7 @@ import {
   warn,
   warnControlledUsage,
   warnMutuallyExclusive,
+  RefAttributes,
 } from '../../Utilities';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { ILabelStyleProps, ILabelStyles } from '../../Label';
@@ -543,7 +544,7 @@ export class TextFieldBase
     (prefix !== undefined || onRenderPrefix) && labelIds.push(this._prefixId);
     (suffix !== undefined || onRenderSuffix) && labelIds.push(this._suffixId);
 
-    const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
+    const inputProps: React.InputHTMLAttributes<HTMLInputElement> & RefAttributes<HTMLInputElement> = {
       type: this.state.isRevealingPassword ? 'text' : type,
       id: this._id,
       ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),

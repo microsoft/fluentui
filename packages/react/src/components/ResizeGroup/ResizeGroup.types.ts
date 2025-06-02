@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory ResizeGroup}
@@ -23,7 +23,7 @@ export interface IResizeGroup {
 /**
  * {@docCategory ResizeGroup}
  */
-export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

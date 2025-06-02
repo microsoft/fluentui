@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IStyleFunctionOrObject, IRenderFunction, RefAttributes } from '../../Utilities';
 import type {
   IColorCellProps,
   IColorPickerGridCellStyleProps,
@@ -10,7 +10,7 @@ import type {
 /**
  * {@docCategory SwatchColorPicker}
  */
-export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement> {
+export interface ISwatchColorPickerProps extends RefAttributes<HTMLElement> {
   /**
    * Number of columns for the swatch color picker
    */

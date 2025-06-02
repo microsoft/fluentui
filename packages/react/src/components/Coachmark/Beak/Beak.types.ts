@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { RectangleEdge } from '../../../Positioning';
+import type { RefAttributes } from '../../../Utilities';
 
-export interface IBeakProps extends React.RefAttributes<HTMLDivElement> {
+export interface IBeakProps extends RefAttributes<HTMLDivElement> {
   /**
    * @deprecated Not used.
    */

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IStyle, ITheme } from '../../Styling';
 
 /**
@@ -10,7 +10,7 @@ export interface ISeparator {}
 /**
  * {@docCategory Separator}
  */
-export interface ISeparatorProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Theme (provided through customization.)
    */

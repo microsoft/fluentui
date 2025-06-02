@@ -4,8 +4,9 @@ import { Icon } from '@fluentui/react';
 import type { IBaseButtonProps } from '@fluentui/react';
 
 import type { ButtonProps } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
-export const shimButtonProps = (props: IBaseButtonProps & React.RefAttributes<HTMLButtonElement>): ButtonProps => {
+export const shimButtonProps = (props: IBaseButtonProps & RefAttributes<HTMLButtonElement>): ButtonProps => {
   //TODO: Icon shim. This still renders the v8 icon.
   const icon = props.onRenderIcon ? (
     props.onRenderIcon(props)

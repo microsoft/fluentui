@@ -3,7 +3,7 @@ import type { IIconProps } from '../../Icon';
 import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IButtonStyles, IButtonProps } from '../../Button';
-import type { IRefObject, IRenderFunction } from '../../Utilities';
+import type { IRefObject, IRenderFunction, RefAttributes } from '../../Utilities';
 import type { IComboBoxClassNames } from './ComboBox.classNames';
 import type { IAutofillProps } from '../../Autofill';
 
@@ -51,7 +51,7 @@ export interface IComboBoxOption extends ISelectableOption {
  */
 export interface IComboBoxProps
   extends ISelectableDroppableTextProps<IComboBox, IComboBox>,
-    React.RefAttributes<HTMLDivElement> {
+    RefAttributes<HTMLDivElement> {
   /**
    * Optional ref to access the `IComboBox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

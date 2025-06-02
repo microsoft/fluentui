@@ -1,7 +1,6 @@
-import * as React from 'react';
 import type { IKeytipProps } from '../../Keytip';
 import type { IStyle } from '../../Styling';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory OverflowSet}
@@ -29,7 +28,7 @@ export interface IOverflowSet {
 /**
  * {@docCategory OverflowSet}
  */
-export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
+export interface IOverflowSetProps extends RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */

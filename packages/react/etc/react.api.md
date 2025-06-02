@@ -311,6 +311,8 @@ import { PulsingBeaconAnimationStyles } from '@fluentui/style-utilities';
 import { raiseClick } from '@fluentui/utilities';
 import * as React_2 from 'react';
 import { Rectangle } from '@fluentui/utilities';
+import { RefAttributes } from '@fluentui/utilities';
+import type { RefAttributes as RefAttributes_2 } from '@fluentui/react-utilities';
 import { RefObject } from '@fluentui/utilities';
 import { registerDefaultFontFaces } from '@fluentui/theme';
 import { registerIconAlias } from '@fluentui/style-utilities';
@@ -2661,7 +2663,7 @@ export interface IButtonGridCellProps<T> {
 }
 
 // @public (undocumented)
-export interface IButtonGridProps extends React_2.TableHTMLAttributes<HTMLTableElement>, React_2.RefAttributes<HTMLElement> {
+export interface IButtonGridProps extends React_2.TableHTMLAttributes<HTMLTableElement>, RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     columnCount: number;
@@ -3032,7 +3034,7 @@ export interface ICalendarPickerStyles {
 }
 
 // @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar>, React_2.RefAttributes<HTMLDivElement> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     calendarDayProps?: Partial<ICalendarDayProps>;
     calendarMonthProps?: Partial<ICalendarMonthProps>;
@@ -3208,7 +3210,7 @@ export interface ICalloutPositionProps extends IPositionProps {
 }
 
 // @public (undocumented)
-export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;
     ariaLabel?: string;
@@ -3282,7 +3284,7 @@ export interface ICheckbox {
 }
 
 // @public
-export interface ICheckboxProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface ICheckboxProps extends RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -3338,7 +3340,7 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-export interface ICheckProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface ICheckProps extends RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
@@ -3445,7 +3447,7 @@ export interface IChoiceGroupOptionStyles {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupProps extends React_2.InputHTMLAttributes<HTMLElement | HTMLInputElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IChoiceGroupProps extends React_2.InputHTMLAttributes<HTMLElement | HTMLInputElement>, RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IChoiceGroup>;
     defaultSelectedKey?: string | number;
@@ -3492,7 +3494,7 @@ export interface ICoachmark {
 }
 
 // @public
-export interface ICoachmarkProps extends React_2.RefAttributes<HTMLDivElement> {
+export interface ICoachmarkProps extends RefAttributes<HTMLDivElement> {
     ariaAlertText?: string;
     ariaDescribedBy?: string;
     ariaDescribedByText?: string;
@@ -3938,7 +3940,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React_2.RefAttributes<HTMLDivElement> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     allowFreeInput?: boolean;
     allowParentArrowNavigation?: boolean;
@@ -4274,7 +4276,7 @@ export interface IContextualMenuListProps {
 }
 
 // @public (undocumented)
-export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React_2.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
+export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
     ariaLabel?: string;
     beakWidth?: number;
@@ -4394,7 +4396,7 @@ export interface IDatePicker {
 }
 
 // @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement>, RefAttributes<HTMLDivElement> {
     allFocusable?: boolean;
     allowTextInput?: boolean;
     ariaLabel?: string;
@@ -5638,7 +5640,7 @@ export interface IDropdownOption<T = any> extends ISelectableOption<T> {
 }
 
 // @public (undocumented)
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number | 'auto';
     // @deprecated (undocumented)
@@ -5841,7 +5843,7 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 }
 
 // @public (undocumented)
-export interface IFabricProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IFabricProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     applyTheme?: boolean;
     applyThemeToBody?: boolean;
     as?: React_2.ElementType;
@@ -5955,7 +5957,7 @@ export interface IFocusTrapZone {
 }
 
 // @public (undocumented)
-export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
@@ -6481,7 +6483,7 @@ export interface IImageIconProps extends React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface IImageProps extends React_2.ImgHTMLAttributes<HTMLImageElement>, React_2.RefAttributes<HTMLImageElement> {
+export interface IImageProps extends React_2.ImgHTMLAttributes<HTMLImageElement>, RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
     // @deprecated (undocumented)
@@ -6700,7 +6702,7 @@ export interface ILayerHostProps extends React_2.HTMLAttributes<HTMLElement> {
 }
 
 // @public (undocumented)
-export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface ILayerProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<ILayer>;
     eventBubblingEnabled?: boolean;
@@ -6779,7 +6781,7 @@ export interface ILinkHTMLAttributes<T> extends React_2.HTMLAttributes<T> {
 }
 
 // @public
-export interface ILinkProps extends React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, React_2.RefAttributes<HTMLElement> {
+export interface ILinkProps extends React_2.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, Omit<React_2.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, RefAttributes<HTMLElement> {
     [key: string]: any;
     as?: React_2.ElementType;
     componentRef?: IRefObject<ILink>;
@@ -6963,7 +6965,7 @@ export interface IMaskedTextField extends ITextField {
 }
 
 // @public
-export interface IMaskedTextFieldProps extends ITextFieldProps, React_2.RefAttributes<HTMLDivElement> {
+export interface IMaskedTextFieldProps extends ITextFieldProps, RefAttributes<HTMLDivElement> {
     componentRef?: IRefObject<IMaskedTextField>;
     mask?: string;
     maskChar?: string;
@@ -7020,7 +7022,7 @@ export interface IMessageBar {
 }
 
 // @public (undocumented)
-export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, RefAttributes<HTMLDivElement> {
     actions?: JSX.Element;
     // @deprecated
     ariaLabel?: string;
@@ -7079,7 +7081,7 @@ export interface IModal {
 }
 
 // @public (undocumented)
-export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+export interface IModalProps extends RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     allowTouchBodyScroll?: boolean;
     // (undocumented)
     children?: React_2.ReactNode;
@@ -7291,7 +7293,7 @@ export interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-export interface IOverflowSetProps extends React_2.RefAttributes<HTMLElement> {
+export interface IOverflowSetProps extends RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
     items?: IOverflowSetItemProps[];
@@ -7629,7 +7631,7 @@ export interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaSharedProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IPersonaSharedProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     allowPhoneInitials?: boolean;
     coinProps?: IPersonaCoinProps;
     coinSize?: number;
@@ -7759,7 +7761,7 @@ export interface IPivotItemProps extends React_2.HTMLAttributes<HTMLDivElement> 
 }
 
 // @public (undocumented)
-export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: React_2.RefObject<IPivot>;
     defaultSelectedKey?: string;
@@ -7826,7 +7828,7 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 export { IPoint }
 
 // @public (undocumented)
-export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IPopupProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes_2<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -7885,7 +7887,7 @@ export interface IPositioningContainer {
 }
 
 // @public (undocumented)
-export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, React_2.RefAttributes<HTMLDivElement> {
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -7986,7 +7988,7 @@ export interface IRating {
 }
 
 // @public
-export interface IRatingProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IRatingProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
     ariaLabel?: string;
     ariaLabelFormat?: string;
@@ -8096,7 +8098,7 @@ export interface IResizeGroup {
 }
 
 // @public (undocumented)
-export interface IResizeGroupProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IResizeGroupProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
@@ -8221,7 +8223,7 @@ export interface ISearchBox {
 }
 
 // @public (undocumented)
-export interface ISearchBoxProps extends React_2.InputHTMLAttributes<HTMLInputElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface ISearchBoxProps extends React_2.InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     className?: string;
     clearButtonProps?: IButtonProps;
@@ -8412,7 +8414,7 @@ export interface ISeparator {
 }
 
 // @public (undocumented)
-export interface ISeparatorProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface ISeparatorProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     alignContent?: 'start' | 'center' | 'end';
     styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
     theme?: ITheme;
@@ -8592,7 +8594,7 @@ export interface IShimmerLineStyles {
 }
 
 // @public
-export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLElement> {
+export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React_2.ReactNode;
@@ -8650,7 +8652,7 @@ export interface ISlider {
 }
 
 // @public (undocumented)
-export interface ISliderProps extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React_2.RefAttributes<HTMLDivElement> {
+export interface ISliderProps extends Omit<React_2.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, RefAttributes<HTMLDivElement> {
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
     buttonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
@@ -8710,7 +8712,7 @@ export interface ISpinButton {
 }
 
 // @public (undocumented)
-export interface ISpinButtonProps extends React_2.HTMLAttributes<HTMLDivElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface ISpinButtonProps extends React_2.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaPositionInSet?: number;
@@ -9148,7 +9150,7 @@ export function isValidShade(shade?: Shade): boolean;
 export { isVirtualElement }
 
 // @public (undocumented)
-export interface ISwatchColorPickerProps extends React_2.RefAttributes<HTMLElement> {
+export interface ISwatchColorPickerProps extends RefAttributes<HTMLElement> {
     ariaPosInSet?: number;
     ariaSetSize?: number;
     cellBorderWidth?: number;
@@ -9251,7 +9253,7 @@ export interface ITeachingBubble {
 }
 
 // @public
-export interface ITeachingBubbleProps extends React_2.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
     ariaDescribedBy?: string;
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
@@ -9363,7 +9365,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
-    onRenderInput?: IRenderFunction<React_2.InputHTMLAttributes<HTMLInputElement> & React_2.RefAttributes<HTMLInputElement>>;
+    onRenderInput?: IRenderFunction<React_2.InputHTMLAttributes<HTMLInputElement> & RefAttributes<HTMLInputElement>>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
     onRenderSuffix?: IRenderFunction<ITextFieldProps>;
@@ -9517,7 +9519,7 @@ export interface IToggle {
 }
 
 // @public
-export interface IToggleProps extends React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLElement> {
+export interface IToggleProps extends React_2.HTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
     ariaLabel?: string;
     as?: IComponentAs<React_2.HTMLAttributes<HTMLElement>>;
     checked?: boolean;
@@ -9662,7 +9664,7 @@ export interface IVerticalDividerClassNames {
 }
 
 // @public
-export interface IVerticalDividerProps extends React_2.HTMLAttributes<HTMLElement>, React_2.RefAttributes<HTMLDivElement> {
+export interface IVerticalDividerProps extends React_2.HTMLAttributes<HTMLElement>, RefAttributes<HTMLDivElement> {
     className?: string;
     // @deprecated
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;

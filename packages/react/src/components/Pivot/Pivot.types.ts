@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PivotItem } from './PivotItem';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IStyleFunctionOrObject, RefAttributes } from '@fluentui/utilities';
 import type { IFocusZoneProps } from '../../FocusZone';
 import type { IComponentAs } from '../../Utilities';
 import type { IButtonProps } from '../../Button';
@@ -19,7 +19,7 @@ export interface IPivot {
 /**
  * {@docCategory Pivot}
  */
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

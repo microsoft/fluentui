@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
 
 /**
@@ -122,7 +122,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * and allows manually modifying them or rendering as a different element. (Use with care,
    * since changes here could easily break the component.)
    */
-  onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement>>;
+  onRenderInput?: IRenderFunction<React.InputHTMLAttributes<HTMLInputElement> & RefAttributes<HTMLInputElement>>;
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.
@@ -418,7 +418,7 @@ export interface IMaskedTextField extends ITextField {
  * MaskedTextField component props.
  * {@docCategory TextField}
  */
-export interface IMaskedTextFieldProps extends ITextFieldProps, React.RefAttributes<HTMLDivElement> {
+export interface IMaskedTextFieldProps extends ITextFieldProps, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMaskedTextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

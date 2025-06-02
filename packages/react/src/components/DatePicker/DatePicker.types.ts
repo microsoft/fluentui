@@ -3,7 +3,7 @@ import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
 import type { ICalendarProps } from '../../Calendar';
 import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs, RefAttributes } from '@fluentui/utilities';
 import type { ICalloutProps } from '../../Callout';
 import type { ITextFieldProps } from '../../TextField';
 
@@ -27,7 +27,7 @@ export interface IDatePicker {
 export interface IDatePickerProps
   extends IBaseProps<IDatePicker>,
     React.HTMLAttributes<HTMLElement>,
-    React.RefAttributes<HTMLDivElement> {
+    RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

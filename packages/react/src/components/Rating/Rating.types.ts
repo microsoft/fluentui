@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme, IProcessedStyleSet } from '../../Styling';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory Rating}
@@ -23,7 +23,7 @@ export interface IRatingStarProps {
  * Rating component props.
  * {@docCategory Rating}
  */
-export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IRating interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

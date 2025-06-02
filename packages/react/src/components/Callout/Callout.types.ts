@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRectangle, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { ICalloutPositionedInfo } from '../../Positioning';
 import type { ILayerProps } from '../../Layer';
 import type { IPopupProps } from '../../Popup';
@@ -11,7 +11,7 @@ import type { IPopupRestoreFocusParams } from '../../Popup';
 /**
  * {@docCategory Callout}
  */
-export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * The target that the Callout should try to position itself based on.
    * It can be an element, a query selector string of a valid element,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ResponsiveMode } from '../../ResponsiveMode';
 import { RectangleEdge } from '../../Positioning';
-import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IStyle, ITheme } from '../../Styling';
 import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
@@ -32,7 +32,7 @@ export interface IDropdown {
  */
 export interface IDropdownProps
   extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {
+    RefAttributes<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    * @deprecated Use `placeholder`
