@@ -57,10 +57,17 @@ import type { RefAttributes } from '@fluentui/react-utilities';
       (typeof AppContextualMenu extends React.ComponentType<infer Props> ? Props : {})
   >;
 
-  const AppContextualMenu = React.forwardRef<HTMLDivElement, AppContextualMenuProps>((props, ref) => {
+  // Problem 3:
+  // Because Breaking Change to React.RefAttributes in React 18, which is used within return type definition of `forwardRef` ,
+  //  we need to use `React.ForwardRefExoticComponent` with our custom `RefAttributes` to ensure that proper types are used and that they match.
+  // Before:
+  // const AppContextualMenu = React.forwardRef<HTMLDivElement,AppContextualMenuProps>((props, ref) => {}
+  // After
+  // const AppContextualMenu = React.forwardRef((props, ref) => {} as React.ForwardRefExoticComponent<AppContextualMenuProps & RefAttributes<HTMLDivElement>>
+  const AppContextualMenu = React.forwardRef((props, ref) => {
     console.log(props, ref);
     return <></>;
-  });
+  }) as React.ForwardRefExoticComponent<AppContextualMenuProps & RefAttributes<HTMLDivElement>>;
 
   type AppSplitButtonSlots = {
     root: NonNullable<Slot<'div'>>;

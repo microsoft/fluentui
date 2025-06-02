@@ -26,11 +26,17 @@
   "exclude": [
     "../../packages/react-components/**/index.stories.tsx",
     "../../packages/react-components/**/index.stories.ts",
-    "../../packages/react-components/react-migration-v0-v9/**"
+    "../../packages/react-components/react-migration-v0-v9/**",
+    "../../packages/react-components/react-migration-v8-v9/library/**/*.spec.tsx",
+    "../../packages/react-components/react-migration-v8-v9/library/**/*.test.tsx",
+    "../../packages/react-components/react-migration-v8-v9/library//src/testing/**"
   ],
   "include": [
     "../../packages/react-components/*/stories/**/*.stories.tsx",
     "../../packages/react-components/*/stories/**/*.stories.ts",
+    "../../packages/react-components/react-migration-v8-v9/stories/**/index.tsx",
+    "../../packages/react-components/react-migration-v8-v9/library/**/*.tsx",
+    "../../packages/react-components/react-migration-v8-v9/library/**/*.ts",
     "./src/issues.tsx"
   ],
   "files": ["../../typings/static-assets/index.d.ts"]
