@@ -28,7 +28,7 @@ jobs:
           git remote -v
       - name: Fetch from upstream
         run: |
-          git fetch upstream main
+          git fetch upstream master
           git fetch origin main
       - name: Ensure on main branch
         run: |
@@ -72,7 +72,7 @@ jobs:
         run: |
           BRANCH=upstream-sync-${{ steps.date.outputs.date }}
           git checkout -b $BRANCH
-          git merge upstream/main || true
+          git merge upstream/master || true
           git add .
           git commit -m "Merge upstream/main with conflicts - needs manual resolution"
           git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git $BRANCH
@@ -82,7 +82,7 @@ jobs:
         with:
           source_branch: "upstream-sync-${{ steps.date.outputs.date }}"
           destination_branch: "main"
-          pr_title: "Sync with upstream/main - Merge Conflicts"
+          pr_title: "Sync with upstream/master - Merge Conflicts"
           pr_body: |
             This PR was automatically created by the GitHub Actions workflow to sync with upstream.
             ⚠️ **Merge conflicts detected** ⚠️
