@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { formatValueLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
+import { formatScientificLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -281,7 +281,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
             className={classes.barLabel}
             aria-hidden={true}
           >
-            {formatValueLimitWidth(barValue)}
+            {formatScientificLimitWidth(barValue)}
           </text>
         );
       }

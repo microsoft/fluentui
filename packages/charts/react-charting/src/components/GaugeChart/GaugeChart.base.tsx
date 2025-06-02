@@ -14,7 +14,7 @@ import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   Points,
   areArraysEqual,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
@@ -235,7 +235,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Min value: ${this._minValue}`}
                   >
-                    {formatValueLimitWidth(this._minValue)}
+                    {formatScientificLimitWidth(this._minValue)}
                   </text>
                   <text
                     x={(this._isRTL ? -1 : 1) * (this._outerRadius + LABEL_OFFSET)}
@@ -245,7 +245,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     role="img"
                     aria-label={`Max value: ${this._maxValue}`}
                   >
-                    {formatValueLimitWidth(this._maxValue)}
+                    {formatScientificLimitWidth(this._maxValue)}
                   </text>
                 </>
               )}

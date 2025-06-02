@@ -13,7 +13,12 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { formatToLocaleString } from '@fluentui/chart-utilities';
-import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import {
+  ChartHoverCard,
+  formatScientificLimitWidth,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -403,7 +408,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {formatValueLimitWidth(barValue)}
+            {formatScientificLimitWidth(barValue)}
           </text>
         );
       }

@@ -396,10 +396,10 @@ export interface Font {
     weight: number;
 }
 
-// @public (undocumented)
+// @public
 export const formatDateToLocaleString: (date: Date, culture?: string, useUtc?: boolean, showTZname?: boolean, options?: Intl.DateTimeFormatOptions) => string;
 
-// @public (undocumented)
+// @public
 export const formatToLocaleString: (data: LocaleStringDataProps, culture?: string, useUtc?: boolean | string) => LocaleStringDataProps;
 
 // @public (undocumented)
@@ -449,7 +449,7 @@ export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel
 // @public (undocumented)
 export const getValidSchema: (input: any) => PlotlySchema;
 
-// @public (undocumented)
+// @public
 export function handleFloatingPointPrecisionError(num: number): number;
 
 // @public (undocumented)

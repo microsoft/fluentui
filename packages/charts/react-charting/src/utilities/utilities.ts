@@ -1629,7 +1629,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueLimitWidth(value: number) {
+export function formatScientificLimitWidth(value: number) {
   return yAxisTickFormatterInternal(value, true);
 }
 

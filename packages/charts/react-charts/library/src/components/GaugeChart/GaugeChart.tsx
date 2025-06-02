@@ -6,7 +6,7 @@ import { YValueHover } from '../../index';
 import {
   Points,
   areArraysEqual,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
@@ -624,7 +624,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   role="img"
                   aria-label={`Min value: ${_minValue}`}
                 >
-                  {formatValueLimitWidth(_minValue)}
+                  {formatScientificLimitWidth(_minValue)}
                 </text>
                 <text
                   x={(_isRTL ? -1 : 1) * (_outerRadius + LABEL_OFFSET)}
@@ -634,7 +634,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   role="img"
                   aria-label={`Max value: ${_maxValue}`}
                 >
-                  {formatValueLimitWidth(_maxValue)}
+                  {formatScientificLimitWidth(_maxValue)}
                 </text>
               </>
             )}

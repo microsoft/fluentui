@@ -33,7 +33,7 @@ import {
   NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -967,7 +967,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatValueLimitWidth(barValue)}
+        {formatScientificLimitWidth(barValue)}
       </text>
     );
   }

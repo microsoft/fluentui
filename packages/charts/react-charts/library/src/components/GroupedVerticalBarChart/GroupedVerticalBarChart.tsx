@@ -13,7 +13,7 @@ import {
   tooltipOfXAxislabels,
   XAxisTypes,
   getTypeOfAxis,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
@@ -439,7 +439,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             className={classes.barLabel}
             aria-hidden={true}
           >
-            {formatValueLimitWidth(pointData.data)}
+            {formatScientificLimitWidth(pointData.data)}
           </text>,
         );
       }

@@ -1186,11 +1186,11 @@ test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWi
   SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 });
 
-test('formatValueLimitWidth should format a numeric value with appropriate SI prefix', () => {
-  expect(utils.formatValueLimitWidth(19.53)).toBe('19.53');
-  expect(utils.formatValueLimitWidth(983)).toBe('983');
-  expect(utils.formatValueLimitWidth(9801)).toBe('9.8k');
-  expect(utils.formatValueLimitWidth(100990000)).toBe('101M');
+test('formatScientificLimitWidth should format a numeric value with appropriate SI prefix', () => {
+  expect(utils.formatScientificLimitWidth(19.53)).toBe('19.53');
+  expect(utils.formatScientificLimitWidth(983)).toBe('983');
+  expect(utils.formatScientificLimitWidth(9801)).toBe('9.8k');
+  expect(utils.formatScientificLimitWidth(100990000)).toBe('101M');
 });
 
 describe('getClosestPairDiffAndRange', () => {
