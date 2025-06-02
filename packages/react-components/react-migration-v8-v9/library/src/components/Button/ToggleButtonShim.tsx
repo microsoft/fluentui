@@ -4,13 +4,14 @@ import type { IButtonProps } from '@fluentui/react';
 
 import { ToggleButton } from '@fluentui/react-components';
 import type { ToggleButtonProps } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 import { shimButtonProps } from './shimButtonProps';
 
 /**
  * Shims v8 ToggleButton to render a v9 ToggleButton
  */
-export const ToggleButtonShim: React.ForwardRefExoticComponent<IButtonProps & React.RefAttributes<HTMLButtonElement>> =
+export const ToggleButtonShim: React.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>> =
   React.forwardRef((props, _ref) => {
     const variantProps = {
       ...props,
@@ -23,5 +24,5 @@ export const ToggleButtonShim: React.ForwardRefExoticComponent<IButtonProps & Re
       defaultChecked: props.defaultChecked,
     };
 
-    return <ToggleButton {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
-  });
+    return <ToggleButton {...(props as RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+  }) as React.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;

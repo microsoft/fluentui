@@ -18,11 +18,12 @@ import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
 import type { MenuProps } from '@fluentui/react-components';
 import * as React_2 from 'react';
+import type { RefAttributes } from '@fluentui/react-utilities';
 import { Theme } from '@fluentui/react-components';
 import { Theme as Theme_2 } from '@fluentui/react';
 
 // @public
-const ActionButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+const ActionButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 export { ActionButtonShim }
 export { ActionButtonShim as CommandButtonShim }
 
@@ -39,7 +40,7 @@ export const blackAlpha: Record<AlphaColors, string>;
 export const brandWeb: BrandVariants;
 
 // @public (undocumented)
-export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export const CheckboxShim: React_2.ForwardRefExoticComponent<Pick<ICheckboxProps, "label" | "title" | "className" | "key" | "disabled" | "name" | "defaultChecked" | "id" | "onChange" | "componentRef" | "styles" | "theme" | "checked" | "ariaLabel" | "required" | "ariaDescribedBy" | "ariaLabelledBy" | "ariaPositionInSet" | "ariaSetSize" | "boxSide" | "checkmarkIconProps" | "defaultIndeterminate" | "indeterminate" | "inputProps" | "onRenderLabel"> & React_2.RefAttributes<HTMLInputElement>>;
@@ -61,7 +62,7 @@ export type ColorVariants = {
 };
 
 // @public
-export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public
 export const createBrandVariants: (palette: IPalette, interpolation?: Interpolation) => BrandVariants;
@@ -73,7 +74,7 @@ export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkT
 export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme) => Theme;
 
 // @public
-export const DefaultButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const DefaultButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public
 export type GlobalSharedColors = {
@@ -162,19 +163,19 @@ export const hcHighlightText = "#000000";
 export const hcHyperlink = "#ffff00";
 
 // @public (undocumented)
-export const MenuButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const MenuButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export const MenuItemShim: (props: IContextualMenuItem) => JSX.Element;
 
 // @public
-export const PrimaryButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const PrimaryButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export const sharedColors: GlobalSharedColors;
 
 // @public (undocumented)
-export const shimButtonProps: (props: IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>) => ButtonProps;
+export const shimButtonProps: (props: IBaseButtonProps & RefAttributes<HTMLButtonElement>) => ButtonProps;
 
 // @public (undocumented)
 export const shimMenuProps: (props: IContextualMenuProps) => Partial<MenuProps>;
@@ -197,7 +198,7 @@ export type TextAlignments = {
 };
 
 // @public
-export const ToggleButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+export const ToggleButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
 export const white = "#ffffff";

@@ -3,13 +3,14 @@ import * as React from 'react';
 import type { IButtonProps } from '@fluentui/react';
 
 import { Button } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 import { shimButtonProps } from './shimButtonProps';
 
 /**
  * Shims a v8 ActionButton to render a v9 Button
  */
-export const ActionButtonShim: React.ForwardRefExoticComponent<IButtonProps & React.RefAttributes<HTMLButtonElement>> =
+export const ActionButtonShim: React.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>> =
   React.forwardRef((props, _ref) => {
     const variantProps = {
       ...props,
@@ -18,5 +19,5 @@ export const ActionButtonShim: React.ForwardRefExoticComponent<IButtonProps & Re
 
     const shimProps = shimButtonProps(variantProps);
 
-    return <Button {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} appearance="transparent" />;
-  });
+    return <Button {...(props as RefAttributes<HTMLButtonElement>)} {...shimProps} appearance="transparent" />;
+  }) as React.ForwardRefExoticComponent<IButtonProps & RefAttributes<HTMLButtonElement>>;
