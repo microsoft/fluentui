@@ -3387,60 +3387,6 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           <g
             class="tick"
             opacity="1"
-            transform="translate(52.54081632653061,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 01
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(76.62244897959184,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 03
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(100.70408163265307,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 05
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(124.78571428571429,0)"
           >
             <line
@@ -3459,7 +3405,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           <g
             class="tick"
             opacity="1"
-            transform="translate(148.8673469387755,0)"
+            transform="translate(209.07142857142858,0)"
           >
             <line
               stroke="currentColor"
@@ -3471,97 +3417,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 09
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(172.94897959183672,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 11
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(197.03061224489798,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 13
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(221.1122448979592,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 15
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(245.1938775510204,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 17
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.2755102040816,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 19
+              Jan 14
             </text>
           </g>
           <g
@@ -3585,7 +3441,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           <g
             class="tick"
             opacity="1"
-            transform="translate(317.4387755102041,0)"
+            transform="translate(377.64285714285717,0)"
           >
             <line
               stroke="currentColor"
@@ -3597,13 +3453,13 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 23
+              Jan 28
             </text>
           </g>
           <g
             class="tick"
             opacity="1"
-            transform="translate(341.5204081632653,0)"
+            transform="translate(461.92857142857144,0)"
           >
             <line
               stroke="currentColor"
@@ -3615,151 +3471,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 25
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(365.6020408163265,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 27
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(389.6836734693877,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 29
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(413.76530612244903,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Jan 31
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(425.8061224489796,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 01
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(449.8877551020408,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 03
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(473.96938775510205,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 05
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(498.05102040816325,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 07
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(522.1326530612246,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 09
+              Feb 04
             </text>
           </g>
           <g
@@ -3783,7 +3495,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           <g
             class="tick"
             opacity="1"
-            transform="translate(570.2959183673469,0)"
+            transform="translate(630.5,0)"
           >
             <line
               stroke="currentColor"
@@ -3795,43 +3507,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Feb 13
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(594.3775510204082,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 15
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(618.4591836734694,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              Feb 17
+              Feb 18
             </text>
           </g>
         </g>

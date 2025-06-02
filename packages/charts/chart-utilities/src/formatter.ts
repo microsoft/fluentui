@@ -52,6 +52,17 @@ export const formatToLocaleString = (
   return data;
 };
 
+const DEFAULT_DATE_TIME_FORMAT_OPTION: Intl.DateTimeFormatOptions = {
+  // Locale date and time
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: true,
+};
+
 /**
  * Formats a Date object to a locale-specific string representation.
  * If the date is invalid, it returns an empty string.
@@ -74,7 +85,7 @@ export const formatDateToLocaleString = (
   options?: Intl.DateTimeFormatOptions,
 ): string => {
   culture = culture || undefined;
-  options = options || {};
+  options = options || DEFAULT_DATE_TIME_FORMAT_OPTION;
   if (useUtc) {
     options = { ...options, timeZone: 'UTC' };
   }
@@ -99,17 +110,7 @@ export const formatDateToLocaleString = (
  * @returns - An Intl.DateTimeFormatOptions object that can be used to format date/time values.
  */
 export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions {
-  const DEFAULT: Intl.DateTimeFormatOptions = {
-    // Locale date and time
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  };
-
+  const DEFAULT = DEFAULT_DATE_TIME_FORMAT_OPTION;
   const MS: Intl.DateTimeFormatOptions = {
     // Milliseconds only (Intl does not support ms directly)
     second: '2-digit',
