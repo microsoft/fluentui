@@ -1,3 +1,4 @@
+import * as React from 'react';
 /**
  * Helper type that works similar to Omit,
  * but when modifying an union type it will distribute the omission to all the union members.
@@ -31,3 +32,24 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  * If type T includes `null`, remove it and add `undefined` instead.
  */
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
+
+/**
+ * This type should be used in place of `React.RefAttributes<T>` in all components that specify `ref` prop.
+ *
+ * If user is using React 18 types `>=18.2.61`, they will run into type issues of incompatible refs, using this type mitigates this issues across react type versions.
+ *
+ * @remarks
+ *
+ * React 18 types introduced Breaking Changes to the `RefAttributes` interface as patch release.
+ * These changes were release in `@types/react@18.2.61` (replacing ref with `LegacyRef`):
+ *  - {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | PR }
+ *  - {@link https://app.unpkg.com/@types/react@18.2.61/files/index.d.ts | shipped definitions }
+ *
+ *
+ * In React 19 types this was "reverted" back to the original `Ref<T>` type.
+ * In order to maintain compatibility with React 17,18,19, we are forced to use our own version of `RefAttributes`.
+ *
+ */
+export interface RefAttributes<T> extends React.Attributes {
+  ref?: React.Ref<T> | undefined;
+}

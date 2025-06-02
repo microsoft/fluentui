@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
-import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
+import { DistributiveOmit, RefAttributes, ReplaceNullWithUndefined } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -216,9 +216,15 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
 
 /**
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ *
+ * @remarks
+ * {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into `forwardRef` components
+ *  after introducing {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | Breaking Change as Patch}, which shipped in `@types/react@18.2.61`
+ * - `forwardRef` component do not support string refs.
+ * - this uses custom `RefAttributes` which is compatible with all React versions.
  */
 export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
-  Props & React.RefAttributes<InferredElementRefType<Props>>
+  Props & RefAttributes<InferredElementRefType<Props>>
 >;
 // A definition like this would also work, but typescript is more likely to unnecessarily expand
 // the props type with this version (and it's likely much more expensive to evaluate)
