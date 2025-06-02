@@ -191,6 +191,12 @@ export interface PriorityQueue<T> {
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
+export interface RefAttributes<T> extends React_2.Attributes {
+    // (undocumented)
+    ref?: React_2.Ref<T> | undefined;
+}
+
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
 
 // @public

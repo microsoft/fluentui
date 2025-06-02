@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 /**
  * Helper type that works similar to Omit,
  * but when modifying an union type it will distribute the omission to all the union members.
@@ -31,3 +33,12 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  * If type T includes `null`, remove it and add `undefined` instead.
  */
 export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
+
+/**
+ * In React 18, the built-in `RefAttributes` type uses `LegacyRef<T>`, which allows string refs.
+ * Since string refs are deprecated and not supported in our API, we define our own `RefAttributes`
+ * type that only accepts function and object refs for stricter type safety and compatibility.
+ */
+export interface RefAttributes<T> extends React.Attributes {
+  ref?: React.Ref<T> | undefined;
+}
