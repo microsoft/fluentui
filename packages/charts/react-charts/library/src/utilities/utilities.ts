@@ -54,7 +54,11 @@ import {
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { formatToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
+import {
+  formatDateToLocaleString,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+} from '@fluentui/chart-utilities';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -426,7 +430,7 @@ export function createDateXAxis(
       }
     }
 
-    return domainValue.toLocaleString(culture, formatOptions);
+    return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
   const longestLabelWidth =
