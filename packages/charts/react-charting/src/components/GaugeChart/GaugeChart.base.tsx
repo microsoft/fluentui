@@ -10,7 +10,7 @@ import {
   GaugeChartVariant,
 } from './GaugeChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { convertToLocaleString } from '@fluentui/chart-utilities';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   Points,
   areArraysEqual,
@@ -659,7 +659,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
           </div>
         </div>
         <div
@@ -732,7 +732,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     });
 
     const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const yValue = formatToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -754,7 +754,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
+                {formatToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
                   culture,
                 )}
@@ -773,9 +773,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture)}
                 </div>
               </div>
             );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useHorizontalBarChartStyles } from './useHorizontalBarChartStyles.styles';
 import { ChartProps, HorizontalBarChartProps, ChartDataPoint, RefArrayData, HorizontalBarChartVariant } from './index';
-import { convertToLocaleString } from '@fluentui/chart-utilities';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { formatValueLimitWidth, getAccessibleDataObject, useRtl } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -138,7 +138,7 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       );
       return (
         <div className={classes.chartTitleRight} {...accessibilityData}>
-          {convertToLocaleString(total, culture)}
+          {formatToLocaleString(total, culture)}
         </div>
       );
     }
@@ -151,18 +151,18 @@ export const HorizontalBarChart: React.FunctionComponent<HorizontalBarChartProps
       case 'default':
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
-            {convertToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={classes.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
-            <span className={classes.chartDataTextDenominator}>{' / ' + convertToLocaleString(y, culture)}</span>
+            <span className={classes.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
+            <span className={classes.chartDataTextDenominator}>{' / ' + formatToLocaleString(y, culture)}</span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${formatToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={classes.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}

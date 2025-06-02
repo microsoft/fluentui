@@ -12,7 +12,7 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { convertToLocaleString } from '@fluentui/chart-utilities';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
@@ -274,20 +274,20 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       case 'default':
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
-            {convertToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
             <span className={this._classNames.chartDataTextDenominator}>
-              {' / ' + convertToLocaleString(y, culture)}
+              {' / ' + formatToLocaleString(y, culture)}
             </span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${formatToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}

@@ -115,4 +115,9 @@ export {
 
 export { decodeBase64Fields } from './DecodeBase64Data';
 
-export { convertToLocaleString, handleFloatingPointPrecisionError } from './formatter';
+export {
+  formatToLocaleString,
+  formatDateToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from './formatter';

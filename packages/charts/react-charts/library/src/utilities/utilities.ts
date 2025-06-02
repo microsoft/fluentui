@@ -54,7 +54,7 @@ import {
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { convertToLocaleString } from '@fluentui/chart-utilities';
+import { formatToLocaleString, getMultiLevelDateTimeFormatOptions } from '@fluentui/chart-utilities';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -230,7 +230,7 @@ export function createNumericXAxis(
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return convertToLocaleString(xAxisValue, culture) as string;
+    return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
@@ -273,7 +273,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-function getMultiLevelDateFormatter(
+function getMultiLevelD3DateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
@@ -402,7 +402,9 @@ export function createDateXAxis(
     }
   });
 
-  const formatFn: (date: Date) => string = getMultiLevelDateFormatter(
+  const formatOptions = options ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+
+  const formatFn: (date: Date) => string = getMultiLevelD3DateFormatter(
     lowestFormatLevel,
     highestFormatLevel,
     locale,
@@ -412,9 +414,6 @@ export function createDateXAxis(
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
-    }
-    if (culture && options) {
-      return domainValue.toLocaleString(culture, options);
     }
     if (timeFormatLocale) {
       return formatFn(domainValue);
@@ -426,7 +425,8 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return formatFn(domainValue);
+
+    return domainValue.toLocaleString(culture, formatOptions);
   };
 
   const longestLabelWidth =
@@ -484,7 +484,7 @@ export function createStringXAxis(
 
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   const tickFormat = (domainValue: string, _index: number) => {
-    return convertToLocaleString(domainValue, culture) as string;
+    return formatToLocaleString(domainValue, culture) as string;
   };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];

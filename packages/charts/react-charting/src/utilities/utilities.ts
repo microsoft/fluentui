@@ -53,7 +53,12 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
-import { convertToLocaleString, handleFloatingPointPrecisionError } from '@fluentui/chart-utilities';
+import {
+  formatDateToLocaleString,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
 
@@ -230,7 +235,7 @@ export function createNumericXAxis(
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return convertToLocaleString(xAxisValue, culture) as string;
+    return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
@@ -273,7 +278,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-function getMultiLevelDateFormatter(
+function getMultiLevelD3DateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
@@ -406,7 +411,9 @@ export function createDateXAxis(
     }
   });
 
-  const formatFn: (date: Date) => string = getMultiLevelDateFormatter(
+  const formatOptions = options ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+
+  const formatFn: (date: Date) => string = getMultiLevelD3DateFormatter(
     lowestFormatLevel,
     highestFormatLevel,
     locale,
@@ -416,9 +423,6 @@ export function createDateXAxis(
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
-    }
-    if (culture && options) {
-      return domainValue.toLocaleString(culture, options);
     }
     if (timeFormatLocale) {
       return formatFn(domainValue);
@@ -430,7 +434,8 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return formatFn(domainValue);
+
+    return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
   const longestLabelWidth =
@@ -1660,11 +1665,6 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
-};
-
-export const formatDate = (date: Date, useUTC?: boolean) => {
-  const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
-  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
