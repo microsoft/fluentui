@@ -1,11 +1,12 @@
 import { join } from 'node:path';
 import { preset, task, typeCheckWithConfigOverride } from '@fluentui/scripts-tasks';
 
-import { getNodeModulesPath } from './config/utils';
+// use commonjs for interop and to silence tsc
+const { getNodeModulesPath } = require('./config/utils');
 
 preset();
 
-const usedNodeModulesPath = getNodeModulesPath();
+const usedNodeModulesPath: string = getNodeModulesPath();
 
 task('type-check', () =>
   typeCheckWithConfigOverride(config => {
