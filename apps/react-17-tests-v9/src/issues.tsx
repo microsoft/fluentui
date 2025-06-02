@@ -33,16 +33,6 @@ import type {
 
   type AppMenuButtonProps = MenuButtonProps & Omit<AppAnchorInternalProps, 'type'> & ControlWithMenuProps;
 
-  // Problem 1:
-  // TS Error: "Types of property 'as' are incompatible."
-  // wrapping all types with `Partial` makes it incompatible with later slot.always() invocation and Slot definition using `NonNullable`
-  //
-  // Before:
-  // type AppMenuButtonSlot = React.FC<Partial<React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
-  // After:
-  // type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>;
-  type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>;
-
   type ContextualMenuSlotType = React.FC<
     Pick<JSX.IntrinsicElements['div'], 'children'> &
       (typeof AppContextualMenu extends React.ComponentType<infer Props> ? Props : {})
@@ -53,9 +43,30 @@ import type {
     return <></>;
   });
 
+  // Problem 1:
+  // ==========
+  // TS Error: "Types of property 'as' are incompatible."
+  // wrapping all types with `Partial` makes it incompatible with later slot.always() invocation and Slot definition using `NonNullable`
+  //
+  // Before:
+  // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  // After:
+  // type AppMenuButtonSlot = React.FC<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>;
+
+  // Problem 1 - Proper solution:
+  // =============
+  // Don't: Manually glueing various types to create `Slot` type.
+  // Do: Use `Slot<T>` utility type to create a proper slot type.
+  //
+  // Before:
+  // type AppMenuButtonSlot = React.FC<Partial<AppMenuButtonProps> & React.RefAttributes<HTMLButtonElement>>;
+  //
+  // After:
+  //
+  // { menuButton: NonNullable<Slot<AppMenuButtonProps>>;}
   type AppSplitButtonSlots = {
     root: NonNullable<Slot<'div'>>;
-    menuButton: NonNullable<Slot<AppMenuButtonSlot>>;
+    menuButton: NonNullable<Slot<AppMenuButtonProps>>;
     menu: NonNullable<Slot<ContextualMenuSlotType>>;
   };
   type AppSplitButtonProps = ComponentProps<Partial<AppSplitButtonSlots>> &
