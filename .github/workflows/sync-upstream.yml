@@ -65,8 +65,8 @@ jobs:
       - name: Direct merge if no conflicts
         if: steps.check-conflicts.outputs.has_conflicts == 'false'
         run: |
-          git merge upstream/main --no-edit
-          echo "Merged upstream/main into origin/main"
+          git merge upstream/master --no-edit
+          echo "Merged upstream/master into origin/main"
 
       - name: Push directly if no conflicts
         if: steps.check-conflicts.outputs.has_conflicts == 'false'
@@ -84,7 +84,7 @@ jobs:
           git checkout -b $BRANCH
           git merge upstream/master || true
           git add .
-          git commit -m "Merge upstream/main with conflicts - needs manual resolution"
+          git commit -m "Merge upstream/master with conflicts - needs manual resolution"
           git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git $BRANCH
 
       - name: Create Pull Request
