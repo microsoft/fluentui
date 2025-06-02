@@ -90,6 +90,7 @@ export const fluentOverrides: FluentOverrides = {
   gapInsideCtrlDefault: { f2Token: 'spacingHorizontalS' },
   gapInsideCtrlLgDefault: { f2Token: 'spacingHorizontalSNudge' },
   gapInsideCtrlSmDefault: { f2Token: 'spacingHorizontalXS' },
+  nullColor: { f2Token: 'colorTransparentBackground' },
   paddingCtrlHorizontalDefault: { f2Token: 'spacingHorizontalM' },
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },

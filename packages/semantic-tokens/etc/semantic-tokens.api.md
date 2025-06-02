@@ -263,19 +263,19 @@ export const backgroundCtrlOutlineDisabled = "var(--smtc-background-ctrl-outline
 export const backgroundCtrlOutlineDisabledRaw = "--smtc-background-ctrl-outline-disabled";
 
 // @public (undocumented)
-export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--colorTransparentBackground))";
+export const backgroundCtrlOutlineHover = "var(--smtc-background-ctrl-outline-hover, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlineHoverRaw = "--smtc-background-ctrl-outline-hover";
 
 // @public (undocumented)
-export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--colorTransparentBackground))";
+export const backgroundCtrlOutlinePressed = "var(--smtc-background-ctrl-outline-pressed, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlinePressedRaw = "--smtc-background-ctrl-outline-pressed";
 
 // @public (undocumented)
-export const backgroundCtrlOutlineRest = "var(--smtc-background-ctrl-outline-rest, var(--colorTransparentBackground))";
+export const backgroundCtrlOutlineRest = "var(--smtc-background-ctrl-outline-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const backgroundCtrlOutlineRestRaw = "--smtc-background-ctrl-outline-rest";
@@ -317,7 +317,7 @@ export const backgroundCtrlShapeSafeNeutralRest = "var(--smtc-background-ctrl-sh
 export const backgroundCtrlShapeSafeNeutralRestRaw = "--smtc-background-ctrl-shape-safe-neutral-rest";
 
 // @public (undocumented)
-export const backgroundCtrlSubtleDisabled = "var(--smtc-background-ctrl-subtle-disabled, var(--colorTransparentBackground))";
+export const backgroundCtrlSubtleDisabled = "var(--smtc-background-ctrl-subtle-disabled, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public (undocumented)
 export const backgroundCtrlSubtleDisabledRaw = "--smtc-background-ctrl-subtle-disabled";
@@ -341,7 +341,7 @@ export const backgroundCtrlSubtlePressed = "var(--smtc-background-ctrl-subtle-pr
 export const backgroundCtrlSubtlePressedRaw = "--smtc-background-ctrl-subtle-pressed";
 
 // @public (undocumented)
-export const backgroundCtrlSubtleRest = "var(--smtc-background-ctrl-subtle-rest, var(--colorSubtleBackground))";
+export const backgroundCtrlSubtleRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorSubtleBackground)))";
 
 // @public (undocumented)
 export const backgroundCtrlSubtleRestRaw = "--smtc-background-ctrl-subtle-rest";
@@ -3976,6 +3976,24 @@ export const materialMicaThinSolid = "var(--smtc-material-mica-thin-solid, var(-
 export const materialMicaThinSolidRaw = "--smtc-material-mica-thin-solid";
 
 // @public (undocumented)
+export const nullColor = "var(--smtc-null-color, var(--colorTransparentBackground))";
+
+// @public (undocumented)
+export const nullColorRaw = "--smtc-null-color";
+
+// @public (undocumented)
+export const nullNumber = "var(--smtc-null-number)";
+
+// @public (undocumented)
+export const nullNumberRaw = "--smtc-null-number";
+
+// @public (undocumented)
+export const nullString = "var(--smtc-null-string)";
+
+// @public (undocumented)
+export const nullStringRaw = "--smtc-null-string";
+
+// @public (undocumented)
 export const paddingCardNestedImage = "var(--smtc-padding-card-nested-image, var(--smtc-padding-content-align-default))";
 
 // @public (undocumented)
@@ -4678,7 +4696,7 @@ export const strokeCtrlDividerOnOutlineDisabledRaw = "--smtc-stroke-ctrl-divider
 export const strokeCtrlDividerOnOutlineRaw = "--smtc-stroke-ctrl-divider-on-outline";
 
 // @public (undocumented)
-export const strokeCtrlDividerOnSubtle = "var(--smtc-stroke-ctrl-divider-on-subtle, transparent)";
+export const strokeCtrlDividerOnSubtle = "var(--smtc-stroke-ctrl-divider-on-subtle, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlDividerOnSubtleDisabled = "var(--smtc-stroke-ctrl-divider-on-subtle-disabled, unset)";
@@ -4738,7 +4756,7 @@ export const strokeCtrlOnActiveBrandRestStop2 = "var(--smtc-stroke-ctrl-on-activ
 export const strokeCtrlOnActiveBrandRestStop2Raw = "--smtc-stroke-ctrl-on-active-brand-rest-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnBrandDisabled = "var(--smtc-stroke-ctrl-on-brand-disabled, transparent)";
+export const strokeCtrlOnBrandDisabled = "var(--smtc-stroke-ctrl-on-brand-disabled, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnBrandDisabledRaw = "--smtc-stroke-ctrl-on-brand-disabled";
@@ -4750,7 +4768,7 @@ export const strokeCtrlOnBrandDisabledStop2 = "var(--smtc-stroke-ctrl-on-brand-d
 export const strokeCtrlOnBrandDisabledStop2Raw = "--smtc-stroke-ctrl-on-brand-disabled-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnBrandHover = "var(--smtc-stroke-ctrl-on-brand-hover, transparent)";
+export const strokeCtrlOnBrandHover = "var(--smtc-stroke-ctrl-on-brand-hover, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnBrandHoverRaw = "--smtc-stroke-ctrl-on-brand-hover";
@@ -4762,7 +4780,7 @@ export const strokeCtrlOnBrandHoverStop2 = "var(--smtc-stroke-ctrl-on-brand-hove
 export const strokeCtrlOnBrandHoverStop2Raw = "--smtc-stroke-ctrl-on-brand-hover-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnBrandPressed = "var(--smtc-stroke-ctrl-on-brand-pressed, transparent)";
+export const strokeCtrlOnBrandPressed = "var(--smtc-stroke-ctrl-on-brand-pressed, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnBrandPressedRaw = "--smtc-stroke-ctrl-on-brand-pressed";
@@ -4774,7 +4792,7 @@ export const strokeCtrlOnBrandPressedStop2 = "var(--smtc-stroke-ctrl-on-brand-pr
 export const strokeCtrlOnBrandPressedStop2Raw = "--smtc-stroke-ctrl-on-brand-pressed-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnBrandRest = "var(--smtc-stroke-ctrl-on-brand-rest, transparent)";
+export const strokeCtrlOnBrandRest = "var(--smtc-stroke-ctrl-on-brand-rest, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnBrandRestRaw = "--smtc-stroke-ctrl-on-brand-rest";
@@ -4786,7 +4804,7 @@ export const strokeCtrlOnBrandRestStop2 = "var(--smtc-stroke-ctrl-on-brand-rest-
 export const strokeCtrlOnBrandRestStop2Raw = "--smtc-stroke-ctrl-on-brand-rest-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnNeutralDisabled = "var(--smtc-stroke-ctrl-on-neutral-disabled, var(--colorNeutralStrokeDisabled))";
+export const strokeCtrlOnNeutralDisabled = "var(--smtc-stroke-ctrl-on-neutral-disabled, var(--smtc-null-color, var(--colorNeutralStrokeDisabled)))";
 
 // @public (undocumented)
 export const strokeCtrlOnNeutralDisabledRaw = "--smtc-stroke-ctrl-on-neutral-disabled";
@@ -4798,7 +4816,7 @@ export const strokeCtrlOnNeutralDisabledStop2 = "var(--smtc-stroke-ctrl-on-neutr
 export const strokeCtrlOnNeutralDisabledStop2Raw = "--smtc-stroke-ctrl-on-neutral-disabled-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnNeutralHover = "var(--smtc-stroke-ctrl-on-neutral-hover, var(--colorNeutralStroke1Hover))";
+export const strokeCtrlOnNeutralHover = "var(--smtc-stroke-ctrl-on-neutral-hover, var(--smtc-null-color, var(--colorNeutralStroke1Hover)))";
 
 // @public (undocumented)
 export const strokeCtrlOnNeutralHoverRaw = "--smtc-stroke-ctrl-on-neutral-hover";
@@ -4810,7 +4828,7 @@ export const strokeCtrlOnNeutralHoverStop2 = "var(--smtc-stroke-ctrl-on-neutral-
 export const strokeCtrlOnNeutralHoverStop2Raw = "--smtc-stroke-ctrl-on-neutral-hover-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnNeutralPressed = "var(--smtc-stroke-ctrl-on-neutral-pressed, var(--colorNeutralStroke1Pressed))";
+export const strokeCtrlOnNeutralPressed = "var(--smtc-stroke-ctrl-on-neutral-pressed, var(--smtc-null-color, var(--colorNeutralStroke1Pressed)))";
 
 // @public (undocumented)
 export const strokeCtrlOnNeutralPressedRaw = "--smtc-stroke-ctrl-on-neutral-pressed";
@@ -4822,7 +4840,7 @@ export const strokeCtrlOnNeutralPressedStop2 = "var(--smtc-stroke-ctrl-on-neutra
 export const strokeCtrlOnNeutralPressedStop2Raw = "--smtc-stroke-ctrl-on-neutral-pressed-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnNeutralRest = "var(--smtc-stroke-ctrl-on-neutral-rest, var(--colorNeutralStroke1))";
+export const strokeCtrlOnNeutralRest = "var(--smtc-stroke-ctrl-on-neutral-rest, var(--smtc-null-color, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const strokeCtrlOnNeutralRestRaw = "--smtc-stroke-ctrl-on-neutral-rest";
@@ -4882,13 +4900,13 @@ export const strokeCtrlOnOutlineRestStop2 = "var(--smtc-stroke-ctrl-on-outline-r
 export const strokeCtrlOnOutlineRestStop2Raw = "--smtc-stroke-ctrl-on-outline-rest-stop2";
 
 // @public (undocumented)
-export const strokeCtrlOnSubtleDisabled = "var(--smtc-stroke-ctrl-on-subtle-disabled, transparent)";
+export const strokeCtrlOnSubtleDisabled = "var(--smtc-stroke-ctrl-on-subtle-disabled, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnSubtleDisabledRaw = "--smtc-stroke-ctrl-on-subtle-disabled";
 
 // @public (undocumented)
-export const strokeCtrlOnSubtleHover = "var(--smtc-stroke-ctrl-on-subtle-hover, transparent)";
+export const strokeCtrlOnSubtleHover = "var(--smtc-stroke-ctrl-on-subtle-hover, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnSubtleHoverRaw = "--smtc-stroke-ctrl-on-subtle-hover";
@@ -4900,13 +4918,13 @@ export const strokeCtrlOnSubtleHoverSplit = "var(--smtc-stroke-ctrl-on-subtle-ho
 export const strokeCtrlOnSubtleHoverSplitRaw = "--smtc-stroke-ctrl-on-subtle-hover-split";
 
 // @public (undocumented)
-export const strokeCtrlOnSubtlePressed = "var(--smtc-stroke-ctrl-on-subtle-pressed, transparent)";
+export const strokeCtrlOnSubtlePressed = "var(--smtc-stroke-ctrl-on-subtle-pressed, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnSubtlePressedRaw = "--smtc-stroke-ctrl-on-subtle-pressed";
 
 // @public (undocumented)
-export const strokeCtrlOnSubtleRest = "var(--smtc-stroke-ctrl-on-subtle-rest, transparent)";
+export const strokeCtrlOnSubtleRest = "var(--smtc-stroke-ctrl-on-subtle-rest, var(--smtc-null-color, transparent))";
 
 // @public (undocumented)
 export const strokeCtrlOnSubtleRestRaw = "--smtc-stroke-ctrl-on-subtle-rest";
@@ -4948,7 +4966,7 @@ export const strokeImage = "var(--smtc-stroke-image, unset)";
 export const strokeImageRaw = "--smtc-stroke-image";
 
 // @public (undocumented)
-export const strokeLayer = "var(--smtc-stroke-layer, var(--colorTransparentStroke))";
+export const strokeLayer = "var(--smtc-stroke-layer, var(--smtc-null-color, var(--colorTransparentStroke)))";
 
 // @public (undocumented)
 export const strokeLayerRaw = "--smtc-stroke-layer";
