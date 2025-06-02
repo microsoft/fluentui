@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add styling to tables",
-  "packageName": "@fluentui/react-charting",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}
