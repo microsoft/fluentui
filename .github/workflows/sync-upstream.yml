@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-          token: ${{ secrets.FLUENTUI_REPO_ACTION }}
+          token: ${{ secrets.FLUENTUI_ACTION }}
 
       - name: Configure Git
         run: |
@@ -62,13 +62,13 @@ jobs:
       - name: Push directly if no conflicts
         if: steps.check-conflicts.outputs.has_conflicts == 'false'
         env:
-          GH_PAT: ${{ secrets.FLUENTUI_REPO_ACTION }}
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
         run: |
           git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
       - name: Create PR if conflicts exist
         if: steps.check-conflicts.outputs.has_conflicts == 'true'
         env:
-          GH_PAT: ${{ secrets.FLUENTUI_REPO_ACTION }}
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
         run: |
           BRANCH=upstream-sync-${{ steps.date.outputs.date }}
           git checkout -b $BRANCH
@@ -87,4 +87,4 @@ jobs:
             This PR was automatically created by the GitHub Actions workflow to sync with upstream.
             ⚠️ **Merge conflicts detected** ⚠️
             Please resolve the conflicts manually and merge this PR.
-          github_token: ${{ secrets.FLUENTUI_REPO_ACTION }}
+          github_token: ${{ secrets.FLUENTUI_ACTION }}
