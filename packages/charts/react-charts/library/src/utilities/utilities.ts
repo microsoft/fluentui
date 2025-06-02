@@ -430,7 +430,7 @@ export function createDateXAxis(
       }
     }
 
-    return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
+    return formatDateToLocaleString(domainValue, culture, useUTC ? true : false, false, formatOptions);
   };
 
   const longestLabelWidth =
