@@ -174,18 +174,19 @@ export function getDateRangeArray(
     workWeekDays = [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday];
   }
 
-  daysToSelectInDayView =
-    dateRangeType === DateRangeType.Day ? daysToSelectInDayView : Math.max(daysToSelectInDayView, 1);
-
   switch (dateRangeType) {
     case DateRangeType.Day:
-      if (daysToSelectInDayView < 0) {
-        endDate = addDays(getDatePart(date), 1);
-        startDate = addDays(endDate, daysToSelectInDayView);
-      } else {
-        startDate = getDatePart(date);
-        endDate = addDays(startDate, daysToSelectInDayView);
+      // Create a date range for the specified date
+
+      [startDate, endDate] = [date, addDays(date, daysToSelectInDayView)];
+
+      // If the start date is after the end date, swap them
+      if (compareDatePart(startDate, endDate) > 0) {
+        // For reverse dates we need to add one day to both dates
+        // to ensure correct start date
+        [startDate, endDate] = [addDays(endDate, 1), addDays(startDate, 1)];
       }
+
       break;
 
     case DateRangeType.Week:
