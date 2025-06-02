@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IRefObject, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
+import type { IRefObject, IStyleFunctionOrObject, IComponentAs, RefAttributes } from '@fluentui/utilities';
 
 /**
  * {@docCategory Toggle}
@@ -13,7 +13,7 @@ export interface IToggle {
  * Toggle component props.
  * {@docCategory Toggle}
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */

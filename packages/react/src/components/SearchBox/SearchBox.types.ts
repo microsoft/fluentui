@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IButtonProps } from '../../Button';
 import type { ITheme, IStyle } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
 
 /**
@@ -27,9 +27,7 @@ export interface ISearchBox {
 /**
  * {@docCategory SearchBox}
  */
-export interface ISearchBoxProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -12,6 +12,7 @@ import type {
   IRenderFunction,
   IStyleFunctionOrObject,
   IComponentAs,
+  RefAttributes,
 } from '../../Utilities';
 import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
@@ -49,7 +50,7 @@ export interface IContextualMenu {}
  */
 export interface IContextualMenuProps
   extends IBaseProps<IContextualMenu>,
-    React.RefAttributes<HTMLDivElement>,
+    RefAttributes<HTMLDivElement>,
     // eslint-disable-next-line @typescript-eslint/no-deprecated
     IWithResponsiveModeState {
   /**

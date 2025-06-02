@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseButton, Button, IButtonProps } from '../../Button';
 import type { ITheme, IStyle } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
 
 /**
@@ -12,7 +12,7 @@ export interface IMessageBar {}
 /**
  * {@docCategory MessageBar}
  */
-export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { ITheme, IStyle } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory VerticalDivider}
  * Props for the Vertical Divider
  */
-export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
+export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional function to generate the class names for the divider for custom styling
    * @deprecated Use `styles` instead.

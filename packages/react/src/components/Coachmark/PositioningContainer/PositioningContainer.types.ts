@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import type { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
+import type { IRefObject, IBaseProps, Point, IRectangle, RefAttributes } from '../../../Utilities';
 import type { IPositionedData } from '../../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
 import type { ILayerProps } from '../../../Layer';
@@ -13,9 +13,7 @@ export interface IPositioningContainer {}
 /**
  * {@docCategory Coachmark}
  */
-export interface IPositioningContainerProps
-  extends IBaseProps<IPositioningContainer>,
-    React.RefAttributes<HTMLDivElement> {
+export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer>, RefAttributes<HTMLDivElement> {
   /**
    * All props for your component are to be defined here.
    */

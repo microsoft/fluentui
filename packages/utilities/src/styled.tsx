@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
+import type { IStyleSetBase, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 import { useMergeStylesHooks } from './shadowDom/index';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
-import type { IStyleSetBase, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
+import type { RefAttributes } from './React.types';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSetBase> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -68,7 +69,7 @@ export function styled<
   pure?: boolean,
 ): React.FunctionComponent<TComponentProps>;
 export function styled<
-  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
+  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSetBase,
   TRef = unknown,
@@ -78,9 +79,9 @@ export function styled<
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps,
   pure?: boolean,
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & React.RefAttributes<TRef>>;
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<TComponentProps> & RefAttributes<TRef>>;
 export function styled<
-  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
+  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSetBase,
   TRef = unknown,

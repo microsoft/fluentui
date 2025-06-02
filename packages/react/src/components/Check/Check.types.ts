@@ -1,11 +1,10 @@
-import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory Check}
  */
-export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
+export interface ICheckProps extends RefAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.
    */

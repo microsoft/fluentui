@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IFabricProps } from '../../Fabric';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory Layer}
@@ -11,7 +11,7 @@ export interface ILayer {}
 /**
  * {@docCategory Layer}
  */
-export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

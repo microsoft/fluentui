@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
+import type { IStyleFunctionOrObject, IRefObject, RefAttributes } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}
@@ -18,7 +18,7 @@ export interface ISlider {
  */
 export interface ISliderProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
-    React.RefAttributes<HTMLDivElement> {
+    RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

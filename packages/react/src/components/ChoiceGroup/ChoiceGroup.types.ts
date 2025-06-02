@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IIconProps } from '../../Icon';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles,
@@ -28,7 +28,7 @@ export interface IChoiceGroup {
  */
 export interface IChoiceGroupProps
   extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+    RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the `IChoiceGroup` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

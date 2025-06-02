@@ -7,7 +7,7 @@ import type { IIconProps } from '../../Icon';
 import type { ILayerProps } from '../../Layer';
 import type { IOverlayProps } from '../../Overlay';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import { IPopupProps } from '../Popup/Popup.types';
 
 export interface IDragOptions {
@@ -56,7 +56,7 @@ export interface IModal {
 /**
  * {@docCategory Modal}
  */
-export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+export interface IModalProps extends RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
   children?: React.ReactNode;
 
   /**

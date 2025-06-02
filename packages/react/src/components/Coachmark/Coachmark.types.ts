@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { ITeachingBubble } from '../../TeachingBubble';
 import type { Target } from '@fluentui/react-hooks';
 
@@ -19,7 +19,7 @@ export interface ICoachmark {
  * Coachmark component props
  * {@docCategory Coachmark}
  */
-export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
+export interface ICoachmarkProps extends RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the `ICoachmark` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

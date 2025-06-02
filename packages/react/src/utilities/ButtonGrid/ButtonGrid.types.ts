@@ -1,12 +1,10 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 export interface IButtonGrid {}
 
-export interface IButtonGridProps
-  extends React.TableHTMLAttributes<HTMLTableElement>,
-    React.RefAttributes<HTMLElement> {
+export interface IButtonGridProps extends React.TableHTMLAttributes<HTMLTableElement>, RefAttributes<HTMLElement> {
   /**
    * Gets the component ref.
    */

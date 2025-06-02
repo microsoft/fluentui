@@ -1149,6 +1149,12 @@ export class Rectangle {
     get width(): number;
 }
 
+// @public
+export interface RefAttributes<T> extends React_2.Attributes {
+    // (undocumented)
+    ref?: React_2.Ref<T> | undefined;
+}
+
 // @public (undocumented)
 export type RefObject<T> = {
     (component: T | null): void;
@@ -1316,7 +1322,7 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSetBase>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
 
 // @public (undocumented)
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React_2.RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & React_2.RefAttributes<TRef>>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & RefAttributes<TRef>, TStyleProps, TStyleSet extends IStyleSetBase, TRef = unknown>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TComponentProps> & RefAttributes<TRef>>;
 
 // @public (undocumented)
 export type StyleFunction<TStyleProps, TStyleSet extends IStyleSetBase> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {

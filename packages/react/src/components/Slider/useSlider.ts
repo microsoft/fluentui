@@ -10,6 +10,7 @@ import {
   getNativeProps,
   divProperties,
 } from '@fluentui/utilities';
+import type { RefAttributes } from '@fluentui/utilities';
 import type { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import type { ILabelProps } from '../Label/index';
 import { useWindowEx } from '../../utilities/dom';
@@ -357,7 +358,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
   const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
   const bottomSectionWidth = ranged ? lowerValuePercent : Math.min(valuePercent, originPercentOfLine);
 
-  const rootProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+  const rootProps: React.HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement> = {
     className: classNames.root,
     ref,
   };
@@ -416,7 +417,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
     ...({ 'data-is-focusable': !disabled } as any),
   };
 
-  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLDivElement> = {
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> & RefAttributes<HTMLDivElement> = {
     id,
     className: css(classNames.slideBox, buttonProps.className),
     ref: sliderBoxRef,
@@ -440,7 +441,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
 
   const onFocusProp = disabled ? {} : { onFocus: onThumbFocus };
 
-  const thumbProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement> = {
+  const thumbProps: React.HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement> = {
     ref: thumbRef,
     className: classNames.thumb,
     style: getPositionStyles(valuePercent),
@@ -456,28 +457,27 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
     }),
   };
 
-  const lowerValueThumbProps: (React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>) | undefined =
-    ranged
-      ? {
-          ref: lowerValueThumbRef,
-          className: classNames.thumb,
-          style: getPositionStyles(lowerValuePercent),
-          ...sliderProps,
-          ...onFocusProp,
-          id: `min-${id}`,
-          'aria-valuemin': min,
-          'aria-valuemax': value,
-          'aria-valuenow': lowerValue,
-          'aria-valuetext': getAriaValueText(lowerValue),
-          'aria-label': `min ${ariaLabel || label}`,
-        }
-      : undefined;
+  const lowerValueThumbProps: (React.HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement>) | undefined = ranged
+    ? {
+        ref: lowerValueThumbRef,
+        className: classNames.thumb,
+        style: getPositionStyles(lowerValuePercent),
+        ...sliderProps,
+        ...onFocusProp,
+        id: `min-${id}`,
+        'aria-valuemin': min,
+        'aria-valuemax': value,
+        'aria-valuenow': lowerValue,
+        'aria-valuetext': getAriaValueText(lowerValue),
+        'aria-label': `min ${ariaLabel || label}`,
+      }
+    : undefined;
 
   const containerProps: React.HTMLAttributes<HTMLElement> = {
     className: classNames.container,
   };
 
-  const sliderLineProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
+  const sliderLineProps: React.HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement> = {
     ref: sliderLine,
     className: classNames.line,
   };

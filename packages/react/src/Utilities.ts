@@ -224,6 +224,7 @@ export type {
   IRefObject,
   IRenderComponent,
   IRenderFunction,
+  RefAttributes,
   ISelection,
   ISelectionOptions,
   ISelectionOptionsWithRequiredGetKey,

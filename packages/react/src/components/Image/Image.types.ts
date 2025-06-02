@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 
 /**
  * {@docCategory Image}
@@ -10,7 +10,7 @@ export interface IImage {}
 /**
  * {@docCategory Image}
  */
-export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
+export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, RefAttributes<HTMLImageElement> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules
    */

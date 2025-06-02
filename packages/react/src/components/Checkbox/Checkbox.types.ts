@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
-import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, RefAttributes } from '@fluentui/utilities';
 import type { IIconProps } from '../Icon/Icon.types';
 
 /**
@@ -22,7 +22,7 @@ export interface ICheckbox {
  * Checkbox properties.
  * {@docCategory Checkbox}
  */
-export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
+export interface ICheckboxProps extends RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the `ICheckbox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.

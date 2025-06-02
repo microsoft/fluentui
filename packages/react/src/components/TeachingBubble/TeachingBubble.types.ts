@@ -4,7 +4,7 @@ import type { IButtonProps } from '../../Button';
 import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import type { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IStyleFunctionOrObject, RefAttributes } from '../../Utilities';
 import type { IFocusTrapZoneProps } from '../FocusTrapZone/index';
 import type { Target } from '@fluentui/react-hooks';
 
@@ -20,7 +20,7 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  * {@docCategory TeachingBubble}
  */
-export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends RefAttributes<HTMLDivElement>, IAccessiblePopupProps {
   children?: React.ReactNode;
 
   /**
