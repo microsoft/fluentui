@@ -8,7 +8,7 @@ import { toastContainerClassNames } from '../ToastContainer/useToastContainerSty
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
-    strict: false
+    strict: false // TODO: Disable strict mode for toast tests until it gets fixed
   });
 };
 
