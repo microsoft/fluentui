@@ -4,6 +4,7 @@ import type { IButtonProps } from '@fluentui/react';
 
 import { CompoundButton } from '@fluentui/react-components';
 import type { CompoundButtonProps } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 import { shimButtonProps } from './shimButtonProps';
 
@@ -23,5 +24,5 @@ export const CompoundButtonShim: React.ForwardRefExoticComponent<
     secondaryContent: props.secondaryText || props.onRenderDescription?.(props),
   };
 
-  return <CompoundButton {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+  return <CompoundButton {...(props as RefAttributes<HTMLButtonElement>)} {...shimProps} />;
 });

@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { IBaseButtonProps } from '@fluentui/react';
 
 import { Button } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 import { shimButtonProps } from './shimButtonProps';
 import { ToggleButtonShim } from './ToggleButtonShim';
@@ -19,5 +20,5 @@ export const ButtonShim: React.ForwardRefExoticComponent<IBaseButtonProps & Reac
       return <CompoundButtonShim {...props} />;
     }
 
-    return <Button {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+    return <Button {...(props as RefAttributes<HTMLButtonElement>)} {...shimProps} />;
   });
