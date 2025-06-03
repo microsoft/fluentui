@@ -1,6 +1,7 @@
 name: "NPDS Patch After Sync"
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   apply-npds:
@@ -35,8 +36,8 @@ jobs:
 
           // ── NPDS OVERRIDE LAYER ──
           export const styles = css`
-          \${originalButtonStyles}
-          \${npdsButtonStyles}
+            \${originalButtonStyles}
+            \${npdsButtonStyles}
           `;
           // ────────────────────────
           EOF
@@ -54,3 +55,4 @@ jobs:
             git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
           else
             echo "No NPDS changes needed."
+          fi
