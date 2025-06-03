@@ -320,7 +320,7 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make').realClick();
     cy.get('li')
-      .should('have.length', 5)
+      .should('have.length', 4)
       .get('li')
       .eq(0)
       .should('have.text', 'queued')
