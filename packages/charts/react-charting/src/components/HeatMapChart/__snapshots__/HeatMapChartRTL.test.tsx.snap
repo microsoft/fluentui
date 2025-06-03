@@ -758,7 +758,6 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
               <tspan
@@ -768,7 +767,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 x="-10"
               />
               <tspan
-                dx="1em"
+                dx="0em"
                 id="LessLength"
                 x="-10"
               >
@@ -788,7 +787,6 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
               <tspan
@@ -798,7 +796,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 x="-10"
               />
               <tspan
-                dx="1em"
+                dx="0em"
                 id="LessLength"
                 x="-10"
               >
@@ -1356,7 +1354,6 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
               <tspan
@@ -1366,7 +1363,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 x="-10"
               />
               <tspan
-                dx="1em"
+                dx="0em"
                 id="LessLength"
                 x="-10"
               >
@@ -1386,7 +1383,6 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             <text
               dy="0.32em"
               fill="currentColor"
-              text-align="start"
               x="-10"
             >
               <tspan
@@ -1396,7 +1392,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 x="-10"
               />
               <tspan
-                dx="1em"
+                dx="0em"
                 id="LessLength"
                 x="-10"
               >

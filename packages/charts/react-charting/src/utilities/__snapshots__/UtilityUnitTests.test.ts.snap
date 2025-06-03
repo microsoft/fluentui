@@ -3427,7 +3427,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3437,7 +3436,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
         x="-18"
       />
       <tspan
-        dx="1em"
+        dx="0em"
         id="LessLength"
         x="-18"
       >
@@ -3457,7 +3456,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3467,7 +3465,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
         x="-18"
       />
       <tspan
-        dx="1em"
+        dx="0em"
         id="LessLength"
         x="-18"
       >
@@ -3487,7 +3485,6 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
     <text
       dy="0.32em"
       fill="currentColor"
-      text-align="start"
       x="-18"
     >
       <tspan
@@ -3497,7 +3494,7 @@ exports[`createYAxisLabels should retain full y-axis labels when truncateLabel i
         x="-18"
       />
       <tspan
-        dx="1em"
+        dx="0em"
         id="LessLength"
         x="-18"
       >
@@ -3542,8 +3539,8 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
         x="-18"
       />
       <tspan
-        dx="1.5em"
-        dy="0.32"
+        dx="0em"
+        dy="0.32em"
         id="showDots"
         x="-18"
       >
@@ -3572,8 +3569,8 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
         x="-18"
       />
       <tspan
-        dx="1.5em"
-        dy="0.32"
+        dx="0em"
+        dy="0.32em"
         id="showDots"
         x="-18"
       >
@@ -3602,8 +3599,8 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
         x="-18"
       />
       <tspan
-        dx="1.5em"
-        dy="0.32"
+        dx="0em"
+        dy="0.32em"
         id="showDots"
         x="-18"
       >
