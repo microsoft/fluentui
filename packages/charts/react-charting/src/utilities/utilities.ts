@@ -61,6 +61,7 @@ import {
 } from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
+export const MIN_DONUT_RADIUS = 1;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
