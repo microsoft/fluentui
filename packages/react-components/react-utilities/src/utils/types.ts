@@ -40,8 +40,8 @@ export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | un
  *
  * @remarks
  *
- * React 18 types introduced Breaking Changes to the `RefAttributes` interface as patch release.
- * These changes were release in `@types/react@18.2.61` (replacing ref with `LegacyRef`):
+ * React 18 types introduced Type Expansion Change to the `RefAttributes` interface as patch release.
+ * These changes were released in `@types/react@18.2.61` (replacing ref with `LegacyRef`, which leaks `string` into the union type, causing breaking changes between v8/v9 libraries):
  *  - {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | PR }
  *  - {@link https://app.unpkg.com/@types/react@18.2.61/files/index.d.ts | shipped definitions }
  *

@@ -219,9 +219,9 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
  *
  * @remarks
  * {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into `forwardRef` components
- *  after introducing {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | Breaking Change as Patch}, which shipped in `@types/react@18.2.61`
+ *  after introducing {@link https://github.com/DefinitelyTyped/DefinitelyTyped/pull/68720 | RefAttributes Type Extension}, which shipped in `@types/react@18.2.61`
  * - `forwardRef` component do not support string refs.
- * - this uses custom `RefAttributes` which is compatible with all React versions.
+ * - uses custom `RefAttributes` which is compatible with all React versions enforcing no `string` allowance.
  */
 export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
   Props & RefAttributes<InferredElementRefType<Props>>
