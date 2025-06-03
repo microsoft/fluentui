@@ -352,7 +352,9 @@ export const transformPlotlyJsonToVSBCProps = (
             data: yVal,
             color,
           });
-          yMaxValue = Math.max(yMaxValue, yVal);
+          if (typeof yVal === 'number') {
+            yMaxValue = Math.max(yMaxValue, yVal);
+          }
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
           const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
           const lineOptions = getLineOptions(series.line);
@@ -374,7 +376,7 @@ export const transformPlotlyJsonToVSBCProps = (
             },
             useSecondaryYScale: usesSecondaryYScale(series),
           });
-          if (!usesSecondaryYScale(series)) {
+          if (!usesSecondaryYScale(series) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
@@ -1390,7 +1392,7 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isStringArray = (arr: any) => {
+export const isStringArray = (arr: any) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
 };

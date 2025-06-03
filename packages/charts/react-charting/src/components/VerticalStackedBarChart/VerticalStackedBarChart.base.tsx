@@ -1440,12 +1440,25 @@ export class VerticalStackedBarChartBase
     }
 
     if (this._yAxisType === YAxisType.StringAxis) {
-      const yAxisLabels = new Set<string>();
+      const legendToYValues: Record<string, string[]> = {};
       this._points.forEach(xPoint => {
         xPoint.chartData.forEach(bar => {
-          yAxisLabels.add(`${bar.data}`);
+          if (!legendToYValues[bar.legend]) {
+            legendToYValues[bar.legend] = [`${bar.data}`];
+          } else {
+            legendToYValues[bar.legend].push(`${bar.data}`);
+          }
         });
-        xPoint.lineData?.forEach(linePoint => {
+      });
+
+      const yAxisLabels = new Set<string>();
+      Object.values(legendToYValues).forEach(yValues => {
+        yValues.forEach(yVal => {
+          yAxisLabels.add(yVal);
+        });
+      });
+      Object.values(this._lineObject).forEach(linePoints => {
+        linePoints.forEach(linePoint => {
           if (!linePoint.useSecondaryYScale) {
             yAxisLabels.add(`${linePoint.y}`);
           }
@@ -1477,7 +1490,7 @@ export class VerticalStackedBarChartBase
         maxBarHeightInLabels = Math.max(maxBarHeightInLabels, barHeightInLabels);
       });
       /** Height of a y-axis label (or category) */
-      const yAxisLabelHeight = totalHeight / maxBarHeightInLabels;
+      const yAxisLabelHeight = maxBarHeightInLabels === 0 ? 0 : totalHeight / maxBarHeightInLabels;
       yAxisTickMarginTop += yAxisLabelHeight * (maxBarHeightInLabels - this._yAxisLabels.length);
     }
 
