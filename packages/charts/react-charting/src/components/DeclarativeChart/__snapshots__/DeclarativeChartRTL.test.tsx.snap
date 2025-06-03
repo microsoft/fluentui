@@ -18810,7 +18810,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(40.5,0)"
+              transform="translate(61.07142857142857,0)"
             >
               <line
                 stroke="currentColor"
@@ -18822,79 +18822,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                Dec 28
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(76.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 04
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(112.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 11
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(148.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 18
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(184.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 25
+                Jan 01
               </text>
             </g>
             <g
@@ -18918,60 +18846,6 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(256.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 08
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(292.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(328.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 22
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(364.5,0)"
             >
               <line
@@ -18990,7 +18864,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(400.49999999999994,0)"
+              transform="translate(523.9285714285714,0)"
             >
               <line
                 stroke="currentColor"
@@ -19002,97 +18876,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                Mar 08
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(436.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(472.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 22
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(508.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 29
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(544.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Apr 05
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(580.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Apr 12
+                Apr 01
               </text>
             </g>
           </g>

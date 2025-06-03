@@ -10,7 +10,7 @@ import {
   IModifiedCartesianChartProps,
   IYValueHover,
 } from '../../index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -750,7 +750,7 @@ export class CartesianChartBase
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture, this.props.useUTC)}
           </div>
         </div>
         <div
@@ -826,8 +826,8 @@ export class CartesianChartBase
       toDrawShape,
     });
 
-    const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const { culture, useUTC } = this.props;
+    const yValue = formatToLocaleString(xValue.y, culture, useUTC);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -849,9 +849,10 @@ export class CartesianChartBase
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
+                {formatToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
+                  useUTC,
                 )}
               </div>
             </div>
@@ -868,9 +869,11 @@ export class CartesianChartBase
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {formatToLocaleString(subcountName, culture, useUTC)}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture, useUTC)}
                 </div>
               </div>
             );

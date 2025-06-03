@@ -38,6 +38,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -45,7 +46,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfAxislabels,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -57,7 +58,6 @@ import {
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  formatDate,
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -829,7 +829,9 @@ export class VerticalStackedBarChartBase
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
       hoverXValue:
-        stack.xAxisPoint instanceof Date ? formatDate(stack.xAxisPoint, this.props.useUTC) : stack.xAxisPoint,
+        stack.xAxisPoint instanceof Date
+          ? formatDateToLocaleString(stack.xAxisPoint, this.props.culture, this.props.useUTC)
+          : stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
       callOutAccessibilityData: stack.stackCallOutAccessibilityData,
@@ -1154,7 +1156,7 @@ export class VerticalStackedBarChartBase
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatValueLimitWidth(barLabel)}
+              {formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>
@@ -1287,7 +1289,7 @@ export class VerticalStackedBarChartBase
       const xValue =
         singleChartData.xAxisCalloutData ||
         (singleChartData.xAxisPoint instanceof Date
-          ? formatDate(singleChartData.xAxisPoint)
+          ? formatDateToLocaleString(singleChartData.xAxisPoint, this.props.culture, this.props.useUTC)
           : singleChartData.xAxisPoint);
       const pointValues = singleChartData.chartData
         .map(pt => {
@@ -1315,7 +1317,7 @@ export class VerticalStackedBarChartBase
       singleChartData.xAxisCalloutData ||
       (!isLinePoint && (point as IVSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
-        ? formatDate(singleChartData.xAxisPoint)
+        ? formatDateToLocaleString(singleChartData.xAxisPoint, this.props.culture, this.props.useUTC)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
     const yValue =

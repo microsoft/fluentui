@@ -115,3 +115,10 @@ export {
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';
+
+export {
+  formatToLocaleString,
+  formatDateToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from './formatter';
