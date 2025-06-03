@@ -1,10 +1,8 @@
-//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
-
 /**
- *
  * This function checks if the number is very close to an integer (within a small epsilon value).
  * If it is, it rounds the number to the nearest integer; otherwise, it returns the original number.
  * This is useful to avoid issues with floating point precision errors in calculations.
+ * Refer 'https://docs.python.org/release/2.5.1/tut/node16.html' for more details.
  * @param num - The number to check for floating point precision error.
  * @returns The number after resolving floating point precision errors.
  */

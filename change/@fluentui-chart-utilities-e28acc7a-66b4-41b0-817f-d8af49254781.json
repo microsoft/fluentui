@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat(chart-utilities): Add locale aware date and number formatter",
+  "type": "patch",
+  "comment": "feat(charts): Add locale aware date and number formatter",
   "packageName": "@fluentui/chart-utilities",
   "email": "98592573+AtishayMsft@users.noreply.github.com",
   "dependentChangeType": "patch"
