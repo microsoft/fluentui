@@ -19524,7 +19524,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0.4,0L-1,0A1,1,0,0,1,-0.99,-0.142L0.396,0.057L6.061,-39.538Z"
+                  d="M0,0Z"
                   data-is-focusable="true"
                   id="_Pie_1Oxygen4500"
                   role="img"
@@ -19544,8 +19544,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="hanging"
                   text-anchor="start"
-                  x="-2.992431396957591"
-                  y="-0.21296557116688497"
+                  x="-1.9949542646383942"
+                  y="-0.14197704744458997"
                 >
                   4.5k
                 </text>
@@ -19565,7 +19565,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M-0.329,-0.527A0.219,0.219,0,1,1,-0.46,-0.76L36.613,16.108Z"
+                  d="M0,0Z"
                   data-is-focusable="true"
                   id="_Pie_1Hydrogen2500"
                   role="img"
@@ -19585,8 +19585,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="hanging"
                   text-anchor="end"
-                  x="2.615123681135871"
-                  y="-1.4700775939937216"
+                  x="1.743415787423914"
+                  y="-0.9800517293291477"
                 >
                   2.5k
                 </text>
@@ -19606,7 +19606,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M-0.699,-0.715L14.563,37.255Z"
+                  d="M0,0Z"
                   data-is-focusable="true"
                   id="_Pie_1Carbon_Dioxide1053"
                   role="img"
@@ -19626,8 +19626,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="auto"
                   text-anchor="end"
-                  x="2.0980415379491326"
-                  y="2.1443464517283672"
+                  x="1.3986943586327552"
+                  y="1.4295643011522448"
                 >
                   1.1k
                 </text>
@@ -19647,7 +19647,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M-0.19,-0.982L-0.4,39.998Z"
+                  d="M0,0Z"
                   data-is-focusable="true"
                   id="_Pie_1Nitrogen500"
                   role="img"
@@ -19667,8 +19667,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="auto"
                   text-anchor="end"
-                  x="0.5704533452268108"
-                  y="2.9452645010116734"
+                  x="0.3803022301512072"
+                  y="1.9635096673411154"
                 >
                   500
                 </text>
