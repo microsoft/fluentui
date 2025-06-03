@@ -7,7 +7,9 @@ import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from 
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
 
 const mount = (element: JSX.Element) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
+    strict: false
+  });
 };
 
 describe('Toast', () => {
