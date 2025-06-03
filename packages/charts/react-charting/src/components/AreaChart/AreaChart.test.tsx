@@ -18,10 +18,8 @@ function sharedBeforeEach() {
 
 function sharedAfterEach() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if ((global.setTimeout as any).mock) {
-    jest.useRealTimers();
-  }
   jest.useRealTimers();
+
   window.requestAnimationFrame = originalRAF;
 }
 
@@ -72,43 +70,40 @@ describe('AreaChart snapShot testing', () => {
   afterEach(() => {
     // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
     // cleaned up in fake timers world
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((global.setTimeout as any).mock) {
-      jest.useRealTimers();
-    }
+    jest.useRealTimers();
   });
 
-  it('renders Areachart correctly', async () => {
+  it('renders Areachart correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders hideLegend correctly', async () => {
+  it('renders hideLegend correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} hideLegend={true} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders hideTooltip correctly', async () => {
+  it('renders hideTooltip correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} hideTooltip={true} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders enabledLegendsWrapLines correctly', async () => {
+  it('renders enabledLegendsWrapLines correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} enabledLegendsWrapLines={true} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders yAxisTickFormat correctly', async () => {
+  it('renders yAxisTickFormat correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} yAxisTickFormat={'/%d'} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders Areachart with single point correctly', async () => {
+  it('renders Areachart with single point correctly', () => {
     const { container } = render(<AreaChart data={singleChartPoint} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('Should render with default colors when line color is not provided', async () => {
+  it('Should render with default colors when line color is not provided', () => {
     const lineColor = points[0].color;
     delete points[0].color;
     const { container } = render(<AreaChart data={chartPoints} />);
@@ -117,17 +112,17 @@ describe('AreaChart snapShot testing', () => {
     points[0].color = lineColor;
   });
 
-  it('Should not render circles when optimizeLargeData is true', async () => {
+  it('Should not render circles when optimizeLargeData is true', () => {
     const { container } = render(<AreaChart data={chartPoints} optimizeLargeData />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders showXAxisLablesTooltip correctly', async () => {
+  it('renders showXAxisLablesTooltip correctly', () => {
     const { container } = render(<AreaChart data={chartPoints} showXAxisLablesTooltip={true} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders wrapXAxisLables correctly', async () => {
+  it('renders wrapXAxisLables correctly', () => {
     const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
 
     Object.defineProperty(
@@ -146,40 +141,38 @@ describe('AreaChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should not mount legend when hideLegend true', async () => {
-    await act(async () => {
+  it('Should not mount legend when hideLegend true', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} hideLegend={true} />);
     });
     const legend = document.body.querySelectorAll('[class^="legendContainer"]');
     expect(legend.length).toBe(0);
   });
 
-  it('Should mount legend when hideLegend false', async () => {
-    await act(async () => {
-      render(<AreaChart data={chartPoints} />);
-    });
+  it('Should mount legend when hideLegend false', () => {
+    render(<AreaChart data={chartPoints} />);
     const legend = document.body.querySelectorAll('[class^="legendContainer"]');
     expect(legend.length).toBeDefined();
   });
 
-  it('Should mount callout when hideTooltip false', async () => {
-    await act(async () => {
+  it('Should mount callout when hideTooltip false', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} />);
     });
     const callout = document.body.querySelectorAll('[class^="ms-Layer"]');
     expect(callout.length).toBeDefined();
   });
 
-  it('Should not mount callout when hideTooltip true', async () => {
-    await act(async () => {
+  it('Should not mount callout when hideTooltip true', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} hideTooltip={true} />);
     });
     const callout = document.body.querySelectorAll('[class^="ms-Layer"]');
     expect(callout.length).toBe(0);
   });
 
-  it('Should render onRenderCalloutPerStack', async () => {
-    await act(async () => {
+  it('Should render onRenderCalloutPerStack', () => {
+    act(() => {
       render(
         <AreaChart
           data={chartPoints}
@@ -197,16 +190,16 @@ describe('AreaChart - basic props', () => {
     expect(customCallout.length).toBeDefined();
   });
 
-  it('Should not render onRenderCalloutPerStack', async () => {
-    await act(async () => {
+  it('Should not render onRenderCalloutPerStack', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} />);
     });
     const customCallout = document.body.getElementsByClassName('onRenderCalloutPerStack');
     expect(customCallout.length).toBe(0);
   });
 
-  it('Should render onRenderCalloutPerDataPoint', async () => {
-    await act(async () => {
+  it('Should render onRenderCalloutPerDataPoint', () => {
+    act(() => {
       render(
         <AreaChart
           data={chartPoints}
@@ -224,8 +217,8 @@ describe('AreaChart - basic props', () => {
     expect(customCallout.length).toBeDefined();
   });
 
-  it('Should not render onRenderCalloutPerDataPoint', async () => {
-    await act(async () => {
+  it('Should not render onRenderCalloutPerDataPoint', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} />);
     });
     const customCallout = document.body.getElementsByClassName('onRenderCalloutPerDataPoint');
@@ -290,8 +283,8 @@ describe('AreaChart - mouse events', () => {
     }
   });
 
-  it('Should render callout correctly on mouseover', async () => {
-    await act(async () => {
+  it('Should render callout correctly on mouseover', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { container: root! });
     });
     const rect = document.body.querySelector('rect');
@@ -302,8 +295,8 @@ describe('AreaChart - mouse events', () => {
     expect(document.body).toMatchSnapshot();
   });
 
-  it('Should render callout correctly on mousemove', async () => {
-    await act(async () => {
+  it('Should render callout correctly on mousemove', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { container: root! });
     });
     const rect = document.body.querySelector('rect');
@@ -319,8 +312,8 @@ describe('AreaChart - mouse events', () => {
     expect(html1).not.toBe(html2);
   });
 
-  it('Should render customized callout on mouseover', async () => {
-    await act(async () => {
+  it('Should render customized callout on mouseover', () => {
+    act(() => {
       render(
         <AreaChart
           data={chartPoints}
@@ -344,8 +337,8 @@ describe('AreaChart - mouse events', () => {
     expect(document.body).toMatchSnapshot();
   });
 
-  it('Should render customized callout per stack on mouseover', async () => {
-    await act(async () => {
+  it('Should render customized callout per stack on mouseover', () => {
+    act(() => {
       render(
         <AreaChart
           data={chartPoints}
@@ -371,15 +364,15 @@ describe('AreaChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  it('No empty chart aria label div rendered', async () => {
-    await act(async () => {
+  it('No empty chart aria label div rendered', () => {
+    act(() => {
       render(<AreaChart data={chartPoints} />);
     });
     const renderedDOM = document.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM.length).toBe(0);
   });
-  it('Empty chart aria label div rendered', async () => {
-    await act(async () => {
+  it('Empty chart aria label div rendered', () => {
+    act(() => {
       render(<AreaChart data={emptyChartPoints} />);
     });
     const renderedDOM = document.querySelectorAll('[aria-label="Graph has no data to display"]');
