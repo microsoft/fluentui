@@ -4,7 +4,7 @@ import { Pie } from './Pie/index';
 import { DonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles } from './useDonutChartStyles.styles';
 import { ChartDataPoint } from '../../DonutChart';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { Legend, Legends } from '../../index';
 import { useId } from '@fluentui/react-utilities';
@@ -172,7 +172,7 @@ export const DonutChart: React.FunctionComponent<DonutChartProps> = React.forwar
     }
 
     function _toLocaleString(data: string | number | undefined) {
-      const localeString = convertToLocaleString(data, props.culture);
+      const localeString = formatToLocaleString(data, props.culture);
       if (!localeString) {
         return data;
       }
