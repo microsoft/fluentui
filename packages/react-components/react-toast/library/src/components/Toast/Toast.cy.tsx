@@ -326,15 +326,12 @@ describe('Toast', () => {
       .should('have.text', 'queued')
       .get('li')
       .eq(1)
-      .should('have.text', 'unmounted') // initially unmounted due to StrictMode
-      .get('li')
-      .eq(2)
       .should('have.text', 'visible')
       .get('li')
-      .eq(3)
+      .eq(2)
       .should('have.text', 'dismissed')
       .get('li')
-      .eq(4)
+      .eq(3)
       .should('have.text', 'unmounted');
   });
 
