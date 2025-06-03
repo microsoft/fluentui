@@ -519,6 +519,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'slider';
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }

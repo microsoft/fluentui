@@ -59,6 +59,7 @@ export class Checkbox extends BaseCheckbox {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'checkbox';
   }
 

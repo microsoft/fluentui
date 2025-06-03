@@ -130,6 +130,7 @@ export class BaseField extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'presentation';
   }
 

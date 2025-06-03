@@ -7,6 +7,9 @@ import { DialogType } from './dialog.options.js';
  * @tag fluent-dialog
  *
  * @public
+ *
+ * @fires beforetoggle - Fires before the dialog's open state changes
+ * @fires toggle - Fires after the dialog's open state changes
  */
 export class Dialog extends FASTElement {
   /**

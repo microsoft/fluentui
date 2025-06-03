@@ -384,6 +384,7 @@ export class RadioGroup extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'radiogroup';
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }

@@ -2,6 +2,14 @@ import { attr, css, ElementStyles, FASTElement, observable } from '@microsoft/fa
 import { toggleState } from '../utils/element-internals.js';
 import { isTreeItem } from './tree-item.options.js';
 
+/**
+ * A base class for tree item elements.
+ *
+ * @public
+ *
+ * @fires toggle - Fires when the expanded state changes
+ * @fires change - Fires when the selected state changes
+ */
 export class BaseTreeItem extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
@@ -12,6 +20,7 @@ export class BaseTreeItem extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'treeitem';
   }
 

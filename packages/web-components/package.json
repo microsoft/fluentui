@@ -23,12 +23,14 @@
     "dist/esm/",
     "dist/*.js",
     "dist/*.d.ts",
+    "types",
     "custom-elements.json"
   ],
   "exports": {
     ".": "./dist/esm/index.js",
     "./utilities.js": "./dist/esm/utils/index.js",
     "./theme/*.js": "./dist/esm/theme/*.js",
+    "./types/*": "./types/*",
     "./*/base.js": "./dist/esm/*/*.base.js",
     "./*/define.js": "./dist/esm/*/define.js",
     "./*/definition.js": "./dist/esm/*/*.definition.js",
@@ -77,6 +79,7 @@
     "@storybook/html-webpack5": "7.6.20",
     "@wc-toolkit/cem-validator": "1.0.3",
     "@wc-toolkit/cem-inheritance": "1.0.4",
+    "@wc-toolkit/jsx-types": "1.1.0",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0"

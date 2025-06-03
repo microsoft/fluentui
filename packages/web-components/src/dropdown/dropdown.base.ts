@@ -22,6 +22,8 @@ import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.templa
  * @slot indicator - The indicator slot.
  * @slot control - The control slot. This slot is automatically populated and should not be manually manipulated.
  *
+ * @fires change - Fires a custom 'change' event when the dropdown value changes.
+ *
  * @public
  */
 export class BaseDropdown extends FASTElement {
@@ -660,6 +662,7 @@ export class BaseDropdown extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'presentation';
 
     this.addEventListener('connected', this.listboxConnectedHandler);

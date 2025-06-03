@@ -79,6 +79,7 @@ export class Tooltip extends FASTElement {
 
   public constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'tooltip';
   }
 

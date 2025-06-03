@@ -37,6 +37,7 @@ export class BaseTree extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'tree';
   }
 

@@ -39,6 +39,7 @@ export class BaseDivider extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
+    /** @internal */
     this.elementInternals.role = this.role ?? DividerRole.separator;
 
     if (this.role !== DividerRole.presentation) {

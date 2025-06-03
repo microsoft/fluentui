@@ -2,6 +2,7 @@ import { modulePathResolverPlugin } from '@wc-toolkit/module-path-resolver';
 import { cemValidatorPlugin } from '@wc-toolkit/cem-validator';
 import { getTsProgram, typeParserPlugin } from '@wc-toolkit/type-parser';
 import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
+import { jsxTypesPlugin } from '@wc-toolkit/jsx-types';
 
 export default {
   /** Globs to analyze */
@@ -24,7 +25,20 @@ export default {
   /** Provide custom plugins */
   plugins: [
     modulePathResolverPlugin({
-      modulePathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/${getFileName(name)}`,
+      modulePathTemplate: (modulePath, name, tagName) => {
+        switch (name) {
+          case 'BaseAnchor':
+            return `./dist/esm/anchor-button/anchor-button.base.js`;
+          case 'BaseTextArea':
+            return `./dist/esm/textarea/textarea.base.js`;
+          case 'TextArea':
+            return `./dist/esm/textarea/textarea.js`;
+          case 'DropdownOption':
+            return `./dist/esm/option/option.js`;
+          default:
+            return `./dist/esm/${getFolderName(name)}/${getFileName(name)}`;
+        }
+      },
       definitionPathTemplate: (modulePath, name, tagName) => `./dist/esm/${getFolderName(name)}/define.js`,
     }),
     typeParserPlugin(),
@@ -40,6 +54,12 @@ export default {
           schemaVersion: 'off',
         },
       },
+    }),
+    jsxTypesPlugin({
+      componentTypePath: (name, tagName, modulePath) => modulePath?.replace('./', '../'),
+      outdir: './types',
+      fileName: 'jsx-types.d.ts',
+      allowUnknownProps: true,
     }),
   ],
 

@@ -8,24 +8,12 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  *
  * @extends FASTElement
  *
- * @attr {DrawerType} type - Determines whether the drawer should be displayed as modal, non-modal, or alert.
- * @attr {DrawerPosition} position - Sets the position of the drawer (start/end).
- * @attr {DrawerSize} size - Sets the size of the drawer (small/medium/large).
- * @attr {string} ariaDescribedby - The ID of the element that describes the drawer.
- * @attr {string} ariaLabelledby - The ID of the element that labels the drawer.
- *
  * @csspart dialog - The dialog element of the drawer.
  *
  * @slot - Default slot for the content of the drawer.
  *
  * @fires toggle - Event emitted after the dialog's open state changes.
  * @fires beforetoggle - Event emitted before the dialog's open state changes.
- *
- * @method show - Method to show the drawer.
- * @method hide - Method to hide the drawer.
- * @method clickHandler - Handles click events on the drawer.
- * @method emitToggle - Emits an event after the dialog's open state changes.
- * @method emitBeforeToggle - Emits an event before the dialog's open state changes.
  *
  * @summary A component that provides a drawer for displaying content in a side panel.
  *

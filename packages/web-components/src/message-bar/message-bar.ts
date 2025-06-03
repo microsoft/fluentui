@@ -9,6 +9,9 @@ import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-b
  * @slot actions - Content that can be provided for the actions
  * @slot dismiss - Content that can be provided for the dismiss button
  * @slot - The default slot for the content
+ *
+ * @event dismiss - Fires when the message bar is dismissed
+ *
  * @public
  */
 export class MessageBar extends FASTElement {
@@ -21,6 +24,7 @@ export class MessageBar extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'status';
   }
 

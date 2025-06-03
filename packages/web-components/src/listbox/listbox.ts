@@ -162,6 +162,7 @@ export class Listbox extends FASTElement {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'listbox';
   }
 

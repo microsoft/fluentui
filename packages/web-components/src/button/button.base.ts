@@ -261,6 +261,7 @@ export class BaseButton extends FASTElement {
 
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'button';
   }
 

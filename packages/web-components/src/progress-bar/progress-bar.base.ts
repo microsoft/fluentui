@@ -107,6 +107,7 @@ export class BaseProgressBar extends FASTElement {
   public constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'progressbar';
   }
 }

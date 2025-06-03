@@ -15,6 +15,7 @@ export type SwitchOptions = {
 export class Switch extends BaseCheckbox {
   constructor() {
     super();
+    /** @internal */
     this.elementInternals.role = 'switch';
   }
 }

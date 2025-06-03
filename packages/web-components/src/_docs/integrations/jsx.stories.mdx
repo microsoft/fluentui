@@ -1,0 +1,171 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Integrations/JSX Integration" />
+
+# JSX Integration
+
+This guide explains how to use Fluent UI Web Components in TypeScript projects using JSX/TSX.
+
+If you are using React (19+), Preact, or another JSX-based framework, you can leverage the type definitions provided by `@fluentui/web-components` to enable type checking and IntelliSense for Fluent UI components.
+
+## Overview
+
+The `@fluentui/web-components` package includes TypeScript JSX type definitions that enable IntelliSense, type checking, and autocompletion when using Fluent UI Web Components in JSX applications.
+
+## Installation
+
+First, install the web components package:
+
+```bash
+npm install @fluentui/web-components
+```
+
+## TypeScript Configuration
+
+### Option 1: Using tsconfig.json (Recommended)
+
+Add the JSX types directly to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@fluentui/web-components/types/jsx-types"]
+  }
+}
+```
+
+### Option 2: Manual Interface Extension
+
+Create a type declaration file (e.g., `types/jsx.d.ts`) to extend the JSX IntrinsicElements interface:
+
+```typescript
+// types/jsx.d.ts
+import { CustomElements } from '@fluentui/web-components/types/jsx-types';
+
+declare namespace JSX {
+  interface IntrinsicElements extends CustomElements {}
+}
+```
+
+Make sure to include this file in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "include": ["types/**/*", "src/**/*"]
+}
+```
+
+## Usage Examples
+
+### Basic Component Usage
+
+```tsx
+import React from 'react';
+import '@fluentui/web-components/button.js';
+import '@fluentui/web-components/card.js';
+import '@fluentui/web-components/text-input.js';
+
+export const MyComponent: React.FC = () => {
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
+
+  return (
+    <fluent-card>
+      <fluent-text-input placeholder="Enter your name" required></fluent-text-input>
+      <fluent-button appearance="accent" onClick={handleClick}>
+        Submit
+      </fluent-button>
+    </fluent-card>
+  );
+};
+```
+
+### Form Handling
+
+```tsx
+import React, { useState } from 'react';
+
+export const FormExample: React.FC = () => {
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
+  const handleInputChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    setFormData(prev => ({
+      ...prev,
+      [target.name]: target.value,
+    }));
+  };
+
+  return (
+    <form>
+      <fluent-text-input
+        name="name"
+        placeholder="Name"
+        value={formData.name}
+        oninput={handleInputChange}
+      ></fluent-text-input>
+      <fluent-text-input
+        name="email"
+        type="email"
+        placeholder="Email"
+        value={formData.email}
+        oninput={handleInputChange}
+      ></fluent-text-input>
+      <fluent-button type="submit">Submit</fluent-button>
+    </form>
+  );
+};
+```
+
+### Event Handling with Type Safety
+
+```tsx
+import React from 'react';
+
+export const EventHandlingExample: React.FC = () => {
+  const handleSelectionChange = (e: Event) => {
+    const select = e.target as HTMLSelectElement;
+    console.log('Selected value:', select.value);
+  };
+
+  const handleToggleChange = (e: Event) => {
+    const toggle = e.target as any; // Fluent UI toggle element
+    console.log('Toggle state:', toggle.checked);
+  };
+
+  return (
+    <div>
+      <fluent-select onchange={handleSelectionChange}>
+        <fluent-option value="option1">Option 1</fluent-option>
+        <fluent-option value="option2">Option 2</fluent-option>
+      </fluent-select>
+
+      <fluent-switch checked={false} onchange={handleToggleChange}>
+        Enable notifications
+      </fluent-switch>
+    </div>
+  );
+};
+```
+
+## Troubleshooting
+
+### Type Errors
+
+If you encounter type errors:
+
+1. Ensure `@fluentui/web-components` is installed and up to date
+2. Verify your `tsconfig.json` includes the JSX types
+3. Restart your TypeScript language server
+
+### Missing IntelliSense
+
+If autocomplete isn't working:
+
+1. Verify the types are included in your TypeScript configuration
+2. Check that your IDE recognizes the `jsx-types.d.ts` file
+3. Try restarting your IDE or TypeScript service

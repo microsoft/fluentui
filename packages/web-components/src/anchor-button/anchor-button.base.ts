@@ -125,7 +125,7 @@ export class BaseAnchor extends FASTElement {
 
   constructor() {
     super();
-
+    /** @internal */
     this.elementInternals.role = 'link';
   }
 
