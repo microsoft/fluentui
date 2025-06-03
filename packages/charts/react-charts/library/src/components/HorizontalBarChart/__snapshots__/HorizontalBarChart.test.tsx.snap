@@ -32,7 +32,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             data-is-focusable="false"
             role="text"
           >
-            1,543
+            1543
           </div>
         </div>
         <svg
@@ -164,7 +164,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             data-is-focusable="false"
             role="text"
           >
-            8,888
+            8888
           </div>
         </div>
         <svg
@@ -243,7 +243,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             data-is-focusable="false"
             role="text"
           >
-            1,543
+            1543
           </div>
         </div>
         <svg
@@ -375,7 +375,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             data-is-focusable="false"
             role="text"
           >
-            8,888
+            8888
           </div>
         </div>
         <svg
@@ -458,7 +458,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              1,543
+              1543
             </div>
           </div>
           <svg
@@ -590,7 +590,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               data-is-focusable="false"
               role="text"
             >
-              8,888
+              8888
             </div>
           </div>
           <svg
@@ -682,7 +682,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             data-is-focusable="false"
             role="text"
           >
-            1,543
+            1543
           </div>
         </div>
         <svg
@@ -814,7 +814,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             data-is-focusable="false"
             role="text"
           >
-            8,888
+            8888
           </div>
         </div>
         <svg
@@ -893,7 +893,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             data-is-focusable="false"
             role="text"
           >
-            1,543
+            1543
           </div>
         </div>
         <svg
@@ -1025,7 +1025,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             data-is-focusable="false"
             role="text"
           >
-            8,888
+            8888
           </div>
         </div>
         <svg

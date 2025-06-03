@@ -30,6 +30,7 @@ import {
   ILineChartDataPoint,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import {
   calloutData,
@@ -48,7 +49,6 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfNumericForAreaChart,
   createStringYAxis,
-  formatDate,
   areArraysEqual,
   getCurveFactory,
   YAxisType,
@@ -1401,7 +1401,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
     const formattedDate =
-      xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, this.props.useUTC) : xPointToHighlight;
+      xPointToHighlight instanceof Date
+        ? formatDateToLocaleString(xPointToHighlight, this.props.culture, this.props.useUTC)
+        : xPointToHighlight;
     const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -1461,7 +1463,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     xAxisCalloutAccessibilityData?: IAccessibilityProps,
   ) => {
     this._uniqueCallOutID = circleId;
-    const formattedData = x instanceof Date ? formatDate(x, this.props.useUTC) : x;
+    const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
     // if no points need to be called out then don't show vertical line and callout card
@@ -1503,7 +1505,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
-    const formattedData = x instanceof Date ? formatDate(x, this.props.useUTC) : x;
+    const formattedData = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const xVal = x instanceof Date ? x.getTime() : x;
     const _this = this;
     const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
@@ -1697,7 +1699,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _getAriaLabel = (lineIndex: number, pointIndex: number): string => {
     const line = this._points[lineIndex];
     const point = line.data[pointIndex];
-    const formattedDate = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x;
+    const formattedDate =
+      point.x instanceof Date ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC) : point.x;
     const xValue = point.xAxisCalloutData || formattedDate;
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
