@@ -130,6 +130,7 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
+apps/react-17-tests-v9 @microsoft/fluentui-react-build
 apps/react-18-tests-v8 @microsoft/fluentui-react-build
 apps/react-18-tests-v9 @microsoft/fluentui-react-build
 apps/react-19-tests-v9 @microsoft/fluentui-react-build
