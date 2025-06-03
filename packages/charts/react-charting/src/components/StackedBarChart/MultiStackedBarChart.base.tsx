@@ -13,8 +13,13 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueLimitWidth, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
+import {
+  ChartHoverCard,
+  formatScientificLimitWidth,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -359,7 +364,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {formatValueLimitWidth(barLabel)}
+            {formatScientificLimitWidth(barLabel)}
           </text>,
         );
       }
@@ -406,7 +411,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber =
       this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 1;
 
-    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+    const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -423,7 +428,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!hideDenominator && (
                   <span className={this._classNames.ratioDenominator}>
-                    {' / ' + convertToLocaleString(barTotalValue, culture)}
+                    {' / ' + formatToLocaleString(barTotalValue, culture)}
                   </span>
                 )}
               </div>

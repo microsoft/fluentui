@@ -81,7 +81,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -524,7 +524,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -1390,7 +1390,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -1736,7 +1736,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
