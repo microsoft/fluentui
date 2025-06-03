@@ -13,7 +13,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: d3Arc(),
+    arc: d3Arc().padAngle(0),
   };
 
   public state: {} = {};
