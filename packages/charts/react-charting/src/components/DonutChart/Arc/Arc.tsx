@@ -13,7 +13,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: d3Arc().padAngle(0),
+    arc: d3Arc(),
   };
 
   public state: {} = {};
@@ -31,7 +31,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   }
 
   public render(): JSX.Element {
-    const { arc, href, focusedArcId, activeArc } = this.props;
+    const { arc, href, focusedArcId, activeArc, padAngle } = this.props;
+    if (padAngle !== undefined && typeof arc?.padAngle === 'function') {
+      arc.padAngle(padAngle);
+    }
     const getClassNames = classNamesFunction<IArcStyleProps, IArcStyles>();
     const id =
       this.props.uniqText! +

@@ -67,6 +67,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         showLabelsInPercent={this.props.showLabelsInPercent}
         totalValue={this._totalValue}
         hideLabels={this.props.hideLabels}
+        padAngle={this.props.padAngle}
       />
     );
   };

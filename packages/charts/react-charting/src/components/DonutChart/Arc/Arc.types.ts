@@ -117,6 +117,12 @@ export interface IArcProps {
    * [Only used when enableGradient is True].
    */
   nextColor: string;
+
+  /**
+   * Prop used to set padAngle
+   * @default undefined
+   */
+  padAngle?: number;
 }
 
 export interface IArcData {

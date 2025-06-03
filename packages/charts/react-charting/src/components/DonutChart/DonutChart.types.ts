@@ -75,6 +75,12 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IChart>;
+
+  /**
+   * Prop used to set padAngle
+   * @default 0
+   */
+  padAngle?: number;
 }
 
 /**

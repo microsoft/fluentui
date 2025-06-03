@@ -169,6 +169,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 theme={this.props.theme!}
                 showLabelsInPercent={this.props.showLabelsInPercent}
                 hideLabels={this.props.hideLabels}
+                padAngle={this.props.padAngle}
               />
             </svg>
           </div>

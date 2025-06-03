@@ -97,6 +97,12 @@ export interface IPieProps {
    * @default false
    */
   roundCorners?: boolean;
+
+  /**
+   * Prop used to set padAngle
+   * @default undefined
+   */
+  padAngle?: number;
 }
 
 export interface IPieStyles {
