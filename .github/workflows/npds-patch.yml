@@ -1,0 +1,56 @@
+name: "NPDS Patch After Sync"
+on:
+  workflow_call:
+
+jobs:
+  apply-npds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Authenticate to private npm feed
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install NPDS package
+        run: |
+          npm install @nbs/npds-components
+
+      - name: Patch Fluent’s button.styles.ts
+        run: |
+          FILE="packages/web-components/src/button/button.styles.ts"
+          grep -q "npdsButtonStyles" $FILE || \
+            sed -i '1iimport { buttonStyles as npdsButtonStyles } from "@nbs/npds-components/button";' $FILE
+          sed -i 's/export const styles = css/export const originalButtonStyles = css/' $FILE
+          cat << 'EOF' >> $FILE
+
+          // ── NPDS OVERRIDE LAYER ──
+          export const styles = css`
+          \${originalButtonStyles}
+          \${npdsButtonStyles}
+          `;
+          // ────────────────────────
+          EOF
+
+      - name: Commit and push NPDS patch
+        env:
+          GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if ! git diff --quiet -- packages/web-components/src/button/button.styles.ts; then
+            git add packages/web-components/src/button/button.styles.ts
+            git commit -m "chore: layer NPDS button styles"
+            git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
+          else
+            echo "No NPDS changes needed."
