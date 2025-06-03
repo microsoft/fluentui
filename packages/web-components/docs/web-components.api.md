@@ -673,6 +673,10 @@ export class BaseField extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal

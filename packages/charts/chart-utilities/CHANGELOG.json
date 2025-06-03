@@ -2,6 +2,48 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Mon, 02 Jun 2025 07:20:40 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.14",
+      "version": "1.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "69378d8f06f462504866e59ecd3e360ff0b0871c",
+            "comment": "Add styling to tables"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "19a140fd14d467d133acd7527e97484eae78aaf9",
+            "comment": "fix(chart-utilities): Mark sankey chart with cycles as unsupported"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "14cd5d59f87aa416c579af2fb4bf8fbe4006faf5",
+            "comment": "fix(chart-utilities): Exporting ColorAxis type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 May 2025 07:20:28 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.13",
+      "version": "1.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9449bf78f8c3e7492198db6817f6f7b128a8ad57",
+            "comment": "fix(chart-utilities): Add property to plotly schema"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 May 2025 07:20:25 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.12",
       "version": "1.1.12",
