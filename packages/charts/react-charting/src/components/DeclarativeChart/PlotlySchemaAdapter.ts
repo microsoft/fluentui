@@ -38,7 +38,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatValueLimitWidth } from '../../utilities/utilities';
+import { findNumericMinMaxOfY, formatScientificLimitWidth } from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -1131,10 +1131,10 @@ const formatValue = (
       try {
         formatted = d3Format(formatStr)(value);
       } catch {
-        formatted = formatValueLimitWidth(value);
+        formatted = formatScientificLimitWidth(value);
       }
     } else {
-      formatted = formatValueLimitWidth(value);
+      formatted = formatScientificLimitWidth(value);
     }
   }
   return `${prefix ?? ''}${formatted}${suffix ?? ''}`;

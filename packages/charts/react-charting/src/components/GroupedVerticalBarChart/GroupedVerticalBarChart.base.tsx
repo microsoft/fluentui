@@ -21,7 +21,7 @@ import {
   tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
@@ -512,7 +512,7 @@ export class GroupedVerticalBarChartBase
               className={this._classNames.barLabel}
               aria-hidden={true}
             >
-              {formatValueLimitWidth(barTotalValue)}
+              {formatScientificLimitWidth(barTotalValue)}
             </text>,
           );
         }
