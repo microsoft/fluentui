@@ -59,15 +59,19 @@ extends:
                 displayName: yarn
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:tools --exclude 'apps/**' --nxBail
+                  echo "Following packages will be published(if they contain changes):"
+                  yarn nx show projects -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**'
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
                 displayName: build
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:tools --exclude 'apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
                 displayName: test
 
               - script: |
-                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:tools --exclude 'apps/**' --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p 'tag:tools,!tag:npm:private,!tag:v8' --exclude 'apps/**' --nxBail
                 displayName: lint
 
               - script: |

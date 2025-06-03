@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: bump minimal ts peer dep",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

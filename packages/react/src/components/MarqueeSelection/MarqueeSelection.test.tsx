@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { MarqueeSelection } from './MarqueeSelection';
 import { Selection } from '../../utilities/selection/index';
 import { isConformant } from '../../common/isConformant';
@@ -36,7 +36,9 @@ describe('MarqueeSelection', () => {
     const { container } = render(<MarqueeSelection selection={new Selection()} />);
 
     // Simulate clicking and dragging in order to add styling to the snapshot
-    simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
+    act(() => {
+      simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
+    });
 
     // Run snapshot test
     expect(container.firstChild).toMatchSnapshot();
@@ -80,7 +82,9 @@ describe('MarqueeSelection', () => {
     });
 
     // Simulate clicking and dragging to select the div
-    simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
+    act(() => {
+      simulateMarqueeSelectionDrag({ x: 0, y: 0 }, { x: 100, y: 100 });
+    });
 
     expect(selection.numSetIndexSelectedCalls).toEqual(1);
   });

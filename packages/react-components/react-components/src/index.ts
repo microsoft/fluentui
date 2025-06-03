@@ -821,7 +821,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export { resolvePositioningShorthand } from '@fluentui/react-positioning';
+export { resolvePositioningShorthand, PositioningConfigurationProvider } from '@fluentui/react-positioning';
 export type {
   PositioningBoundary,
   PositioningProps,
@@ -830,6 +830,8 @@ export type {
   PositioningShorthandValue,
   PositioningImperativeRef,
   PositioningVirtualElement,
+  PositioningConfigurationFn,
+  PositioningConfigurationFnOptions,
 } from '@fluentui/react-positioning';
 
 export {
@@ -1477,8 +1479,8 @@ export {
   renderInfoButton_unstable,
   useInfoButtonStyles_unstable,
   useInfoButton_unstable,
-} from '@fluentui/react-infobutton';
-export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infobutton';
+} from '@fluentui/react-infolabel';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infolabel';
 
 export {
   Drawer,

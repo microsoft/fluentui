@@ -28,6 +28,7 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
     <!-- Header -->
     <fluent-text slot="title">Dialog</fluent-text>
     <fluent-button slot="title-action"><svg></svg></fluent-button>
+    <fluent-button slot="close"><svg></svg></fluent-button>
 
     <!-- Default Content -->
     <fluent-text>Default Content</fluent-text>
@@ -41,13 +42,12 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ### **Attributes**
 
-| Name               | Privacy | Type         | Default            | Description                                               |
-| ------------------ | ------- | ------------ | ------------------ | --------------------------------------------------------- |
-| `type`             | public  | `DialogType` | `DialogType.modal` | Indicates that the type of modal to render.               |
-| `no-title-action`  | public  | `boolean`    | `false`            | Used to set whether the default title action is rendered. |
-| `aria-labelledby`  | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
-| `aria-describedby` | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
-| `aria-label `      | public  | `string`     | `undefined`        | optional based on implementation\*\*                      |
+| Name               | Privacy | Type         | Default            | Description                                 |
+| ------------------ | ------- | ------------ | ------------------ | ------------------------------------------- |
+| `type`             | public  | `DialogType` | `DialogType.modal` | Indicates that the type of modal to render. |
+| `aria-labelledby`  | public  | `string`     | `undefined`        | optional based on implementation\*\*        |
+| `aria-describedby` | public  | `string`     | `undefined`        | optional based on implementation\*\*        |
+| `aria-label `      | public  | `string`     | `undefined`        | optional based on implementation\*\*        |
 
 \*\* See the [W3C Specification](https://w3c.github.io/aria-practices/#dialog_roles_states_props) for requirements and details.
 

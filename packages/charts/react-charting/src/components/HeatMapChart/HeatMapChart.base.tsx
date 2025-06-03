@@ -20,7 +20,7 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   createNumericYAxis,
@@ -447,7 +447,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
+                {formatToLocaleString(dataPointObject.rectText, this.props.culture, this.props.useUTC)}
               </text>
             </g>
           );
@@ -475,11 +475,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
               onMouseOut={this._onRectBlurOrMouseOut}
             >
-              <rect
-                fill={this.props.theme!.semanticColors.bodyBackground}
-                width={this._xAxisScale.bandwidth()}
-                height={this._yAxisScale.bandwidth()}
-              />
+              <rect fill="transparent" width={this._xAxisScale.bandwidth()} height={this._yAxisScale.bandwidth()} />
             </g>
           );
         }

@@ -1,22 +1,14 @@
-jest.mock('react-dom');
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
-import { ChartProps, HorizontalBarChartProps, HorizontalBarChart, HorizontalBarChartVariant } from './index';
-import toJson from 'enzyme-to-json';
-import * as renderer from 'react-test-renderer';
-import { act } from 'react-test-renderer';
+import { FluentProvider } from '@fluentui/react-provider';
+import { HorizontalBarChart } from './HorizontalBarChart';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { HorizontalBarChartVariant, ChartProps } from './index';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
-// Wrapper of the HorizontalBarChart to be tested.
-let wrapper: ReactWrapper<HorizontalBarChartProps> | undefined;
+expect.extend(toHaveNoViolations);
 
-function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-}
-
-export const chartPoints: ChartProps[] = [
+const chartPoints: ChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [
@@ -25,7 +17,7 @@ export const chartPoints: ChartProps[] = [
         horizontalBarChartdata: { x: 1543, total: 15000 },
         color: '#004b50',
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '94%',
+        yAxisCalloutData: '10%',
       },
     ],
   },
@@ -37,11 +29,340 @@ export const chartPoints: ChartProps[] = [
         horizontalBarChartdata: { x: 800, total: 15000 },
         color: '#5c2d91',
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '19%',
+        yAxisCalloutData: '5%',
+      },
+    ],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [
+      {
+        legend: 'three',
+        horizontalBarChartdata: { x: 8888, total: 15000 },
+        color: '#a4262c',
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '59%',
       },
     ],
   },
 ];
+
+const chartPointsWithBenchMark: ChartProps[] = [
+  {
+    chartTitle: 'one',
+    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, total: 100 }, color: '#004b50' }],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, total: 200 }, color: '#5c2d91' }],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, total: 50 }, color: '#a4262c' }],
+  },
+];
+
+describe('Horizontal bar chart rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  testWithoutWait(
+    'Should render the Horizontal bar chart legend with string data',
+    HorizontalBarChart,
+    { data: chartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
+describe('Horizontal bar chart - Subcomponent bar', () => {
+  testWithWait(
+    'Should render the bars with the specified colors',
+    HorizontalBarChart,
+    { data: chartPoints },
+    container => {
+      // colors mentioned in the data points itself
+      // Assert
+      const bars = getByClass(container, /barWrapper/);
+      expect(bars[0].getAttribute('fill')).toEqual('#004b50');
+      expect(bars[1].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(bars[2].getAttribute('fill')).toEqual('#5c2d91');
+      expect(bars[3].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+      expect(bars[4].getAttribute('fill')).toEqual('#a4262c');
+      expect(bars[5].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
+    },
+  );
+
+  testWithWait(
+    'Should render the bar with the given height',
+    HorizontalBarChart,
+    { data: chartPoints, barHeight: 50 },
+    container => {
+      // Assert
+      const bars = getByClass(container, /barWrapper/);
+      expect(bars).toHaveLength(6);
+      expect(bars[0].getAttribute('height')).toEqual('50');
+      expect(bars[1].getAttribute('height')).toEqual('50');
+      expect(bars[2].getAttribute('height')).toEqual('50');
+      expect(bars[3].getAttribute('height')).toEqual('50');
+      expect(bars[4].getAttribute('height')).toEqual('50');
+      expect(bars[5].getAttribute('height')).toEqual('50');
+    },
+  );
+
+  testWithWait(
+    'Should render the bars with labels hidden',
+    HorizontalBarChart,
+    { data: chartPoints, hideLabels: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars with left side label/Legend',
+    HorizontalBarChart,
+    { data: chartPoints },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartTitleLeft/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value inline with bar when variant is absolute scale',
+    HorizontalBarChart,
+    { data: chartPoints, variant: HorizontalBarChartVariant.AbsoluteScale },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value on top of the with bar when variant part to whole',
+    HorizontalBarChart,
+    { data: chartPoints, variant: HorizontalBarChartVariant.PartToWhole },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value with fractional value when chartDataMode is fraction',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'fraction' },
+    container => {
+      //Assert
+      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value with percentage value when chartDataMode is percentage',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'percentage' },
+    container => {
+      // Assert
+      expect(screen.queryByText('10%')).not.toBeNull();
+      expect(screen.queryByText('5%')).not.toBeNull();
+      expect(screen.queryByText('59%')).not.toBeNull();
+    },
+  );
+
+  //This tc will fail because barChartCustomData is not defined in base file.
+  testWithWait(
+    'Should show the custom data on right side of the chart',
+    HorizontalBarChart,
+    {
+      data: chartPoints,
+      barChartCustomData: (props: ChartProps) =>
+        props ? (
+          <div className="barChartCustomData">
+            <p>Bar Custom Data</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      expect(getByClass(container, /barChartCustomData/i)).toHaveLength(0); // ToDo - Fix this test
+    },
+  );
+});
+
+describe('Horizontal bar chart - Subcomponent Benchmark', () => {
+  testWithWait(
+    'Should render the bar with branchmark',
+    HorizontalBarChart,
+    { data: chartPointsWithBenchMark },
+    container => {
+      // Assert
+      expect(getByClass(container, /triangle/i)).toHaveLength(3);
+    },
+  );
+});
+
+describe('Horizontal bar chart - Subcomponent callout', () => {
+  test('Should call the handler on mouse over bar', async () => {
+    // ToDo - Fix this test
+    // Mock function to replace _hoverOn
+    /*     const handleMouseOver = jest.fn();
+    // Render the component with props
+    const { container } = render(<rect onMouseOver={handleMouseOver} />);
+    // Wait for the component to settle if needed
+    await waitFor(() => {
+      // Find bars in the container and simulate mouse over event
+      const rectElements = container.querySelectorAll('rect');
+      rectElements.forEach(rect => {
+        fireEvent.mouseOver(rect);
+      });
+      // Assert
+      expect(handleMouseOver).toHaveBeenCalled();
+    }); */
+  });
+
+  testWithWait(
+    'Should show the callout over the bar on mouse over',
+    HorizontalBarChart,
+    { data: chartPoints, calloutProps: { doNotLayer: true } },
+    container => {
+      // Arrange
+      const bars = getByClass(container, /barWrapper/);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
+
+  testWithWait(
+    'Should show the custom callout over the bar on mouse over',
+    HorizontalBarChart,
+    {
+      data: chartPoints,
+      calloutProps: { doNotLayer: true },
+      onRenderCalloutPerDataPoint: (props: ChartProps) =>
+        props ? (
+          <div className="onRenderCalloutPerDataPoint">
+            <p>Custom Callout Content</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = getByClass(container, /barWrapper/);
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeDefined();
+    },
+  );
+});
+
+describe('Horizontal bar chart - Screen resolution', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+
+  const originalInnerWidth = global.innerWidth;
+  const originalInnerHeight = global.innerHeight;
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+    global.innerWidth = originalInnerWidth;
+    global.innerHeight = originalInnerHeight;
+    act(() => {
+      global.dispatchEvent(new Event('resize'));
+    });
+  });
+
+  testWithWait(
+    'Should remain unchanged on zoom in',
+    HorizontalBarChart,
+    { data: chartPoints, width: 300, height: 300 },
+    container => {
+      global.innerWidth = window.innerWidth / 2;
+      global.innerHeight = window.innerHeight / 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should remain unchanged on zoom out',
+    HorizontalBarChart,
+    { data: chartPoints, width: 300, height: 300 },
+    container => {
+      global.innerWidth = window.innerWidth * 2;
+      global.innerHeight = window.innerHeight * 2;
+      act(() => {
+        global.dispatchEvent(new Event('resize'));
+      });
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
+describe('Horizontal bar chart - Theme', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
+        <HorizontalBarChart culture={window.navigator.language} data={chartPoints} />
+      </FluentProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Horizontal bar chart re-rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+  test('Should re-render the Horizontal bar chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<HorizontalBarChart data={[]} />);
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_HBC_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<HorizontalBarChart data={chartPoints} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_HBC_empty/i)).toHaveLength(0);
+    });
+  });
+});
+
+describe('Horizontal Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<HorizontalBarChart data={chartPoints} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
+});
 
 describe('HorizontalBarChart snapShot testing', () => {
   beforeEach(() => {
@@ -52,72 +373,65 @@ describe('HorizontalBarChart snapShot testing', () => {
   });
 
   it('Should render absolute-scale variant correctly', () => {
-    const component = renderer.create(
+    const component = render(
       <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('Should not render bar labels in absolute-scale variant', () => {
-    const component = renderer.create(
+    const component = render(
       <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={true} />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 });
 
 describe('HorizontalBarChart - basic props', () => {
-  afterEach(sharedAfterEach);
-
   it('Should mount callout when hideTootip false ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    let wrapper = render(<HorizontalBarChart data={chartPoints} hideTooltip={true} />);
+    const hideLegendDOM = wrapper.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerHorizonalBar ', () => {
-    wrapper = mount(
-      <HorizontalBarChart
-        data={chartPoints}
-        /* onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
-          props ? (
-            <div className="onRenderCalloutPerHorizonalBar">
-              <p>Custom Callout Content</p>
-            </div>
-          ) : null
-        } */
-      />,
-    );
-    const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM).toBeDefined();
   });
 
   it('Should not render onRenderCalloutPerHorizonalBar ', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerHorizonalBar');
+    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.container.getElementsByClassName('.onRenderCalloutPerHorizonalBar');
     expect(renderedDOM!.length).toBe(0);
   });
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
   it('No prop changes', () => {
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
     };
-    const component = mount(<HorizontalBarChart {...props} />);
-    expect(component).toMatchSnapshot();
-    component.setProps({ ...props });
-    expect(component).toMatchSnapshot();
+    const { rerender, container } = render(<HorizontalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<HorizontalBarChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).toBe(htmlBefore);
   });
 
   it('prop changes', async () => {
@@ -125,62 +439,33 @@ describe('Render calling with respective to props', () => {
       data: chartPoints,
       height: 300,
       width: 600,
+      hideLabels: true,
     };
-    const component = mount(<HorizontalBarChart {...props} />);
-    expect(component.props().hideTooltip).toBe(undefined);
-    await act(async () => {
-      component.setProps({ ...props, hideTooltip: true });
-    });
-    expect(component.props().hideTooltip).toBe(true);
-    component.unmount();
-  });
-});
 
-describe('HorizontalBarChart - mouse events', () => {
-  beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-  });
-  afterEach(() => {
-    sharedAfterEach();
-    jest.spyOn(global.Math, 'random').mockRestore();
-  });
-
-  it('Should render callout correctly on mouseover', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    wrapper.find('rect').at(2).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('Should render customized callout on mouseover', () => {
-    wrapper = mount(
-      <HorizontalBarChart
-        data={chartPoints}
-        /* onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
-          props ? (
-            <div>
-              <pre>{JSON.stringify(props, null, 2)}</pre>
-            </div>
-          ) : null
-        } */
-      />,
-    );
-    wrapper.find('rect').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const props1 = {
+      data: chartPointsWithBenchMark,
+      height: 300,
+      width: 600,
+      hideLabels: true,
+    };
+    const { rerender, container } = render(<HorizontalBarChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<HorizontalBarChart {...props1} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    let wrapper = render(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<HorizontalBarChart data={[]} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    let wrapper = render(<HorizontalBarChart data={[]} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
 });

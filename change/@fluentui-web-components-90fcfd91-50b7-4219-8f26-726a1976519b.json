@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add endpoint for f2 design token exports",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}
