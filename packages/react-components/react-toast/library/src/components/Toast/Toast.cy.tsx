@@ -7,9 +7,12 @@ import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from 
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
 
 const mount = (element: JSX.Element) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
-    strict: false // TODO: Disable strict mode for toast tests until it gets fixed
-  });
+  mountBase(
+    <FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, 
+    { 
+      strict: false // TODO: Disable strict mode for toast tests until it gets fixed
+    }
+  );
 };
 
 describe('Toast', () => {
