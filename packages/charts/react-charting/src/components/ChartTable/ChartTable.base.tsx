@@ -55,8 +55,8 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                 <thead>
                   <tr>
                     {headers.map((header, idx) => (
-                      <th key={idx} className={classNames.headerCell}>
-                        {header}
+                      <th key={idx} className={classNames.headerCell} style={header?.style}>
+                        {header.value}
                       </th>
                     ))}
                   </tr>
@@ -66,8 +66,8 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
                     {rows.map((row, rowIdx) => (
                       <tr key={rowIdx}>
                         {row.map((cell, colIdx) => (
-                          <td key={colIdx} className={classNames.bodyCell}>
-                            {cell}
+                          <td key={colIdx} className={classNames.bodyCell} style={cell?.style}>
+                            {cell.value}
                           </td>
                         ))}
                       </tr>

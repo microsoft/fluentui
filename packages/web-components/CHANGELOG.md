@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 28 May 2025 04:06:58 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jun 2025 04:07:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.107](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.107)
+
+Mon, 02 Jun 2025 04:07:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.106..@fluentui/web-components_v3.0.0-beta.107)
+
+### Changes
+
+- fix: various field interaction bugs ([PR #34555](https://github.com/microsoft/fluentui/pull/34555) by 863023+radium-v@users.noreply.github.com)
+- occasionally focusing off of combobox would open and focus listbox ([PR #34404](https://github.com/microsoft/fluentui/pull/34404) by jes@microsoft.com)
 
 ## [3.0.0-beta.106](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.106)
 

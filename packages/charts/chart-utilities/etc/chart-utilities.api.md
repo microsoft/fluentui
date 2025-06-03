@@ -1118,6 +1118,22 @@ export interface PlotData {
     // (undocumented)
     branchvalues: 'total' | 'remainder';
     // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
+    };
+    // (undocumented)
     cliponaxis: boolean;
     // (undocumented)
     colorbar: Partial<ColorBar>;
@@ -1168,6 +1184,19 @@ export interface PlotData {
     gauge: Partial<Gauge>;
     // (undocumented)
     groupnorm: '' | 'fraction' | 'percent';
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
     // (undocumented)
     histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
     // (undocumented)
@@ -1917,6 +1946,9 @@ export interface TableData {
             color?: Color | Color[];
         };
         values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
     };
     // (undocumented)
     header?: {

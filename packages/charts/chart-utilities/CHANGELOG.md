@@ -1,8 +1,19 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 30 May 2025 07:20:28 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jun 2025 07:20:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.14)
+
+Mon, 02 Jun 2025 07:20:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.13..@fluentui/chart-utilities_v1.1.14)
+
+### Patches
+
+- Add styling to tables ([PR #34560](https://github.com/microsoft/fluentui/pull/34560) by anushgupta@microsoft.com)
+- fix(chart-utilities): Mark sankey chart with cycles as unsupported ([PR #34556](https://github.com/microsoft/fluentui/pull/34556) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Exporting ColorAxis type ([PR #34530](https://github.com/microsoft/fluentui/pull/34530) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.13)
 
