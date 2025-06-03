@@ -1,4 +1,4 @@
-import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout } from './PlotlySchema';
+import type { Datum, TypedArray, PlotData, PlotlySchema, Data, Layout, SankeyData } from './PlotlySchema';
 import { decodeBase64Fields } from './DecodeBase64Data';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -97,6 +97,11 @@ export const validate2Dseries = (series: Partial<PlotData>): boolean => {
   return true;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isInvalidValue = (value: any) => {
+  return typeof value === 'undefined' || value === null || (typeof value === 'number' && !isFinite(value));
+};
+
 const MAX_DEPTH = 15;
 export const sanitizeJson = (jsonObject: any, depth: number = 0): any => {
   if (depth > MAX_DEPTH) {
@@ -188,6 +193,61 @@ const invalidateLogAxisType = (layout: Partial<Layout> | undefined): boolean => 
   return isLogAxisType;
 };
 
+/**
+ * Detects cycles in Sankey chart data.
+ * @param nodes Array of node labels.
+ * @param links Array of links with source and target as node indices.
+ * @returns true if a cycle is found.
+ */
+function findSankeyCycles(input: Partial<SankeyData>): boolean {
+  const graph: Record<number, number[]> = {};
+  input.node?.label?.forEach((_, idx) => (graph[idx] = []));
+  input.link?.value?.forEach((val, idx) => {
+    if (
+      !(isInvalidValue(val) || isInvalidValue(input.link?.source?.[idx]) || isInvalidValue(input.link?.target?.[idx]))
+    ) {
+      graph[input.link!.source![idx]].push(input.link!.target![idx]);
+    }
+  });
+
+  const visited = new Set<number>();
+  const stack = new Set<number>();
+
+  function dfs(node: number, path: number[]) {
+    if (isInvalidValue(node) || !graph[node]) {
+      // Invalid node or no edges, return
+      return false;
+    }
+    if (stack.has(node)) {
+      // Cycle detected, return
+      return true;
+    }
+    if (visited.has(node)) {
+      return;
+    }
+
+    visited.add(node);
+    stack.add(node);
+    for (const neighbor of graph[node]) {
+      const cycleDetected = dfs(neighbor, [...path, neighbor]);
+      if (cycleDetected) {
+        return true; // Cycle found in the path
+      }
+    }
+    stack.delete(node);
+    return false; // No cycle found in this path
+  }
+
+  for (let i = 0; i < Object.keys(graph).length; i++) {
+    const cycleFound = dfs(i, [i]);
+    if (cycleFound) {
+      return true; // Cycle found
+    }
+  }
+
+  return false; // No cycles found
+}
+
 const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
   indicator: [
     data => {
@@ -197,7 +257,18 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
     },
   ],
   histogram: [data => validateSeriesData(data as Partial<PlotData>, false)],
-  bar: [data => validateBarData(data as Partial<PlotData>)],
+  bar: [
+    data => {
+      validateBarData(data as Partial<PlotData>);
+    },
+  ],
+  sankey: [
+    data => {
+      if (findSankeyCycles(data as Partial<SankeyData>)) {
+        throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, Cycles in Sankey chart not supported`);
+      }
+    },
+  ],
   scatter: [data => validateScatterData(data as Partial<PlotData>)],
   scatterpolar: [
     data => {

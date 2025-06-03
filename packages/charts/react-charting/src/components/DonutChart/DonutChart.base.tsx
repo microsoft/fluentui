@@ -14,7 +14,7 @@ import {
   getNextGradient,
   areArraysEqual,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
@@ -390,7 +390,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _toLocaleString(data: string | number | undefined) {
-    const localeString = convertToLocaleString(data, this.props.culture);
+    const localeString = formatToLocaleString(data, this.props.culture, this.props.useUTC);
     if (!localeString) {
       return data;
     }
