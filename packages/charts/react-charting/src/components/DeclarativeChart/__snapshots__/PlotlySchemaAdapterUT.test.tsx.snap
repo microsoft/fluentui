@@ -238,7 +238,7 @@ Object {
   "height": 220,
   "hideLabels": false,
   "hideLegend": false,
-  "innerRadius": 0,
+  "innerRadius": 1,
   "roundCorners": true,
   "showLabelsInPercent": false,
   "width": undefined,
