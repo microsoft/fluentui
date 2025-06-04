@@ -687,9 +687,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * Handle mouse moves during a thumb drag operation.
+   * If the event handler is null, it removes the events.
    * @internal
-   *  Handle mouse moves during a thumb drag operation
-   *  If the event handler is null it removes the events
    */
   public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
