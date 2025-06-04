@@ -1,4 +1,3 @@
-jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { ITreeChartDataPoint, TreeChart } from './index';
@@ -6,6 +5,9 @@ import { resetIds } from '@fluentui/react/lib/Utilities';
 import { act, render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -221,7 +223,16 @@ describe('Render calling with respective to props', () => {
 
 describe('Tree Chart - axe-core', () => {
   beforeEach(sharedBeforeEach);
+  const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
 
+  // Replace the original method with the mock implementation
+  Object.defineProperty(
+    Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+    'getComputedTextLength',
+    {
+      value: mockGetComputedTextLength,
+    },
+  );
   test('Should pass accessibility tests', async () => {
     const { container } = render(<TreeChart treeData={threeLayerChart} />);
     let axeResults;
