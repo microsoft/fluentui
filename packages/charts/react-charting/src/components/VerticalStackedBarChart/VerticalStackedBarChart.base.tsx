@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import {
   scaleLinear as d3ScaleLinear,
@@ -8,6 +7,7 @@ import {
   scaleBand as d3ScaleBand,
   scaleUtc as d3ScaleUtc,
   scaleTime as d3ScaleTime,
+  ScaleBand,
 } from 'd3-scale';
 import {
   classNamesFunction,
@@ -38,6 +38,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -45,7 +46,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfAxislabels,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -57,7 +58,6 @@ import {
   domainRangeOfVSBCNumeric,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  formatDate,
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -67,8 +67,8 @@ import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
-type NumericAxis = D3Axis<number | { valueOf(): number }>;
 type NumericScale = D3ScaleLinear<number, number>;
+type StringScale = ScaleBand<string>;
 const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 
 // When displaying gaps between bars, the max height of the gap is given in the
@@ -136,6 +136,8 @@ export class VerticalStackedBarChartBase
   private _cartesianChartRef: React.RefObject<IChart>;
   private _legendsRef: React.RefObject<ILegendContainer>;
   private readonly Y_ORIGIN: number = 0;
+  private _yAxisType: YAxisType;
+  private _yAxisLabels: string[] = [];
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -264,6 +266,9 @@ export class VerticalStackedBarChartBase
           })}
           ref={this._cartesianChartRef}
           showRoundOffXTickValues={!isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding)}
+          yAxisType={this._yAxisType}
+          stringDatasetForYAxisDomain={['', ...this._yAxisLabels]}
+          getYDomainMargins={this._getYDomainMargins}
           /* eslint-disable react/jsx-no-bind */
           children={(props: IChildProps) => {
             return (
@@ -398,7 +403,7 @@ export class VerticalStackedBarChartBase
   private _createLines = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
-    yScalePrimary: NumericScale,
+    yScalePrimary: NumericScale | StringScale,
     containerHeight: number,
     containerWidth: number,
     yScaleSecondary?: NumericScale,
@@ -420,10 +425,18 @@ export class VerticalStackedBarChartBase
         const useSecondaryYScale =
           lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && yScaleSecondary;
         const y1 = useSecondaryYScale
-          ? yScaleSecondary!(lineObject[item][i - 1].y)
-          : yScalePrimary(lineObject[item][i - 1].y);
+          ? yScaleSecondary!(lineObject[item][i - 1].y as number)
+          : //eslint-disable-next-line @typescript-eslint/no-explicit-any
+            yScalePrimary(lineObject[item][i - 1].y as any);
         const x2 = xScale(lineObject[item][i].xItem.xAxisPoint);
-        const y2 = useSecondaryYScale ? yScaleSecondary!(lineObject[item][i].y) : yScalePrimary(lineObject[item][i].y);
+        const y2 = useSecondaryYScale
+          ? yScaleSecondary!(lineObject[item][i].y as number)
+          : //eslint-disable-next-line @typescript-eslint/no-explicit-any
+            yScalePrimary(lineObject[item][i].y as any);
+        const yScaleBandwidthTranslate =
+          !useSecondaryYScale && this._yAxisType === YAxisType.StringAxis
+            ? (yScalePrimary as StringScale).bandwidth() / 2
+            : 0;
 
         if (lineBorderWidth > 0) {
           borderForLines.push(
@@ -438,7 +451,7 @@ export class VerticalStackedBarChartBase
               fill="transparent"
               strokeLinecap="round"
               stroke={theme!.semanticColors.bodyBackground}
-              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+              transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             />,
           );
         }
@@ -454,7 +467,7 @@ export class VerticalStackedBarChartBase
             strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
             stroke={lineObject[item][i].color}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             onMouseOver={this._lineHover.bind(this, lineObject[item][i - 1])}
             onMouseLeave={this._handleMouseOut}
           />,
@@ -469,14 +482,19 @@ export class VerticalStackedBarChartBase
           circlePoint.xItem.chartData.filter(
             dataPoint => this._noLegendHighlighted() || this._isLegendHighlighted(dataPoint.legend),
           ).length === 0;
+        const yScaleBandwidthTranslate =
+          !circlePoint.useSecondaryYScale && this._yAxisType === YAxisType.StringAxis
+            ? (yScalePrimary as StringScale).bandwidth() / 2
+            : 0;
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
             cx={xScale(circlePoint.xItem.xAxisPoint)}
             cy={
               circlePoint.useSecondaryYScale && yScaleSecondary
-                ? yScaleSecondary(circlePoint.y)
-                : yScalePrimary(circlePoint.y)
+                ? yScaleSecondary(circlePoint.y as number)
+                : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  yScalePrimary(circlePoint.y as any)
             }
             onMouseOver={this._lineHover.bind(this, circlePoint)}
             onMouseLeave={this._handleMouseOut}
@@ -487,7 +505,7 @@ export class VerticalStackedBarChartBase
             // Elements with visibility: hidden cannot receive focus, so use opacity: 0 instead to hide them.
             // For more information, see https://fuzzbomb.github.io/accessibility-demos/visually-hidden-focus-test.html
             opacity={this._getCircleOpacityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).opacity}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            transform={`translate(${xScaleBandwidthTranslate}, ${yScaleBandwidthTranslate})`}
             ref={e => (circleRef.refElement = e)}
             {...(noBarsActive && (this._noLegendHighlighted() || this._isLegendHighlighted(item))
               ? {
@@ -547,16 +565,24 @@ export class VerticalStackedBarChartBase
       this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
     );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
+    this._initYAxisParams();
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
     const tempArr: string[] = [];
     const dataset: IVerticalStackedBarDataPoint[] = this._points.map(singlePointData => {
+      tempArr.push(singlePointData.xAxisPoint as string);
+
+      if (this._yAxisType === YAxisType.StringAxis) {
+        return {
+          x: singlePointData.xAxisPoint,
+          y: 0,
+        };
+      }
       let total: number = 0;
       singlePointData.chartData!.forEach((point: IVSChartDataPoint) => {
-        total = total + point.data;
+        total = total + (point.data as number);
       });
-      tempArr.push(singlePointData.xAxisPoint as string);
       return {
         x: singlePointData.xAxisPoint,
         y: total,
@@ -803,7 +829,9 @@ export class VerticalStackedBarChartBase
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
       hoverXValue:
-        stack.xAxisPoint instanceof Date ? formatDate(stack.xAxisPoint, this.props.useUTC) : stack.xAxisPoint,
+        stack.xAxisPoint instanceof Date
+          ? formatDateToLocaleString(stack.xAxisPoint, this.props.culture, this.props.useUTC)
+          : stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
       callOutAccessibilityData: stack.stackCallOutAccessibilityData,
@@ -844,7 +872,7 @@ export class VerticalStackedBarChartBase
 
   private _getBarGapAndScale(
     bars: IVSChartDataPoint[],
-    yBarScale: NumericScale,
+    yBarScale: NumericScale | StringScale,
     defaultTotalHeight?: number,
   ): {
     readonly gapHeight: number;
@@ -853,22 +881,33 @@ export class VerticalStackedBarChartBase
   } {
     const { barGapMax = 0 } = this.props;
 
-    // When displaying gaps between the bars, the height of each bar is
-    // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + Math.abs(value.data), 0);
-    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(this.Y_ORIGIN));
+    let totalData = 0;
+    let totalHeight: number;
     let sumOfPercent = 0;
-    bars.forEach(point => {
-      let value = (Math.abs(point.data) / totalData) * 100;
-      if (value < 1 && value !== 0) {
-        value = 1;
-      }
-      sumOfPercent += value;
-    });
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    let scalingRatio: number;
+    if (this._yAxisType === YAxisType.StringAxis) {
+      totalHeight =
+        defaultTotalHeight ?? bars.reduce((total, bar) => total + (yBarScale as StringScale)(bar.data as string)!, 0);
+    } else {
+      // When displaying gaps between the bars, the height of each bar is
+      // adjusted so that the total of all bars is not changed by the gaps
+      totalData = bars.reduce((iter, value) => iter + Math.abs(value.data as number), 0);
+      totalHeight =
+        defaultTotalHeight ??
+        Math.abs((yBarScale as NumericScale)(totalData) - (yBarScale as NumericScale)(this.Y_ORIGIN));
+      bars.forEach(point => {
+        let value = (Math.abs(point.data as number) / totalData) * 100;
+        if (value < 1 && value !== 0) {
+          value = 1;
+        }
+        sumOfPercent += value;
+      });
+      scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    }
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
-    const heightValueScale = (totalHeight - gapHeight * gaps) / (totalData * scalingRatio);
+    const heightValueScale =
+      this._yAxisType === YAxisType.StringAxis ? 0 : (totalHeight - gapHeight * gaps) / (totalData * scalingRatio!);
     return {
       gapHeight,
       heightValueScale,
@@ -879,7 +918,7 @@ export class VerticalStackedBarChartBase
   private _createBar = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xBarScale: any,
-    yBarScale: NumericScale,
+    yBarScale: NumericScale | StringScale,
     containerHeight: number,
     xElement: SVGElement,
   ): JSX.Element[] => {
@@ -909,7 +948,15 @@ export class VerticalStackedBarChartBase
       let barTotalValue = 0;
 
       // Removing datapoints with zero data
-      const barsToDisplay = singleChartData.chartData.filter(point => point.data !== 0);
+      const barsToDisplay = singleChartData.chartData.filter(
+        point =>
+          point.data !== 0 &&
+          point.data !== '' &&
+          !(
+            this._yAxisType === YAxisType.StringAxis &&
+            typeof (yBarScale as StringScale)(point.data as string) === 'undefined'
+          ),
+      );
 
       if (!barsToDisplay.length) {
         return undefined;
@@ -920,7 +967,11 @@ export class VerticalStackedBarChartBase
       if (heightValueScale < 0) {
         return undefined;
       }
-      const yBaseline = containerHeight - this.margins.bottom! - yBarScale(this.Y_ORIGIN);
+
+      const yBaseline =
+        containerHeight -
+        this.margins.bottom! -
+        (this._yAxisType === YAxisType.StringAxis ? 0 : (yBarScale as NumericScale)(this.Y_ORIGIN));
       let yPositiveStart = yBaseline;
       let yNegativeStart = yBaseline;
       let yPoint = 0;
@@ -958,22 +1009,36 @@ export class VerticalStackedBarChartBase
             role: 'img',
           };
 
-        let barHeight = Math.abs(heightValueScale * point.data);
-        const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
-        if (barHeight < minHeight) {
-          barHeight = minHeight;
-        }
+        let barHeight: number;
         const gapOffset = index ? gapHeight : 0;
-        if (point.data >= this.Y_ORIGIN) {
+        if (this._yAxisType === YAxisType.StringAxis) {
+          barHeight = Math.max(
+            containerHeight -
+              this.margins.bottom! -
+              ((yBarScale as StringScale)(point.data as string)! + (yBarScale as StringScale).bandwidth() / 2) -
+              gapOffset,
+            barMinimumHeight,
+            1,
+          );
           yPositiveStart -= barHeight + gapOffset;
           yPoint = yPositiveStart;
         } else {
-          yPoint = yNegativeStart + gapOffset;
-          yNegativeStart = yPoint + barHeight;
-        }
+          barHeight = Math.abs(heightValueScale * (point.data as number));
+          const minHeight = Math.max((heightValueScale * adjustedTotalHeight) / 100.0, barMinimumHeight);
+          if (barHeight < minHeight) {
+            barHeight = minHeight;
+          }
+          if ((point.data as number) >= this.Y_ORIGIN) {
+            yPositiveStart -= barHeight + gapOffset;
+            yPoint = yPositiveStart;
+          } else {
+            yPoint = yNegativeStart + gapOffset;
+            yNegativeStart = yPoint + barHeight;
+          }
 
-        barTotalValue += point.data;
-        heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
+          barTotalValue += point.data as number;
+          heightOfLastBar = index === barsToDisplay.length - 1 ? barHeight : 0;
+        }
 
         const gradientId = getId('VSBC_Gradient') + `_${indexNumber}_${index}`;
 
@@ -1059,7 +1124,7 @@ export class VerticalStackedBarChartBase
         };
       let showLabel = false;
       let barLabel = 0;
-      if (!this.props.hideLabels) {
+      if (!this.props.hideLabels && this._yAxisType !== YAxisType.StringAxis) {
         if (this._noLegendHighlighted()) {
           showLabel = true;
           barLabel = barTotalValue;
@@ -1067,7 +1132,7 @@ export class VerticalStackedBarChartBase
           barsToDisplay.forEach(point => {
             if (this._isLegendHighlighted(point.legend)) {
               showLabel = true;
-              barLabel += point.data;
+              barLabel += point.data as number;
             }
           });
         }
@@ -1077,6 +1142,10 @@ export class VerticalStackedBarChartBase
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
+          {/*
+            Note: No need to check hideLabels here, as showLabel is only set to true
+            when hideLabels is false earlier in the code.
+          */}
           {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
@@ -1088,7 +1157,7 @@ export class VerticalStackedBarChartBase
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatValueLimitWidth(barLabel)}
+              {formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>
@@ -1166,13 +1235,18 @@ export class VerticalStackedBarChartBase
   private _getGraphData = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
-    yScale: NumericAxis,
+    yScale: NumericScale | StringScale,
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
   ) => {
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
-    return (this._bars = this._createBar(xBarScale, yBarScale, containerHeight, xElement!));
+    return (this._bars = this._createBar(
+      xBarScale,
+      this._yAxisType === YAxisType.StringAxis ? yScale : yBarScale,
+      containerHeight,
+      xElement!,
+    ));
   };
 
   private _closeCallout = () => {
@@ -1216,7 +1290,7 @@ export class VerticalStackedBarChartBase
       const xValue =
         singleChartData.xAxisCalloutData ||
         (singleChartData.xAxisPoint instanceof Date
-          ? formatDate(singleChartData.xAxisPoint)
+          ? formatDateToLocaleString(singleChartData.xAxisPoint, this.props.culture, this.props.useUTC)
           : singleChartData.xAxisPoint);
       const pointValues = singleChartData.chartData
         .map(pt => {
@@ -1244,7 +1318,7 @@ export class VerticalStackedBarChartBase
       singleChartData.xAxisCalloutData ||
       (!isLinePoint && (point as IVSChartDataPoint).xAxisCalloutData) ||
       (singleChartData.xAxisPoint instanceof Date
-        ? formatDate(singleChartData.xAxisPoint)
+        ? formatDateToLocaleString(singleChartData.xAxisPoint, this.props.culture, this.props.useUTC)
         : singleChartData.xAxisPoint);
     const legend = point.legend;
     const yValue =
@@ -1347,11 +1421,83 @@ export class VerticalStackedBarChartBase
     this.props.data.forEach(xPoint => {
       xPoint.lineData?.forEach(point => {
         if (point.useSecondaryYScale) {
-          values.push(point.y);
+          values.push(point.y as number);
         }
       });
     });
 
     return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+  };
+
+  private _initYAxisParams = () => {
+    if (this._points[0].chartData.length > 0) {
+      this._yAxisType = getTypeOfAxis(this._points[0].chartData[0].data, false) as YAxisType;
+    } else {
+      Object.keys(this._lineObject).forEach(lineLegend => {
+        if (!this._lineObject[lineLegend][0].useSecondaryYScale) {
+          this._yAxisType = getTypeOfAxis(this._lineObject[lineLegend][0].y, false) as YAxisType;
+        }
+      });
+    }
+
+    if (this._yAxisType === YAxisType.StringAxis) {
+      const legendToYValues: Record<string, string[]> = {};
+      this._points.forEach(xPoint => {
+        xPoint.chartData.forEach(bar => {
+          if (!legendToYValues[bar.legend]) {
+            legendToYValues[bar.legend] = [`${bar.data}`];
+          } else {
+            legendToYValues[bar.legend].push(`${bar.data}`);
+          }
+        });
+      });
+
+      const yAxisLabels = new Set<string>();
+      Object.values(legendToYValues).forEach(yValues => {
+        yValues.forEach(yVal => {
+          yAxisLabels.add(yVal);
+        });
+      });
+      Object.values(this._lineObject).forEach(linePoints => {
+        linePoints.forEach(linePoint => {
+          if (!linePoint.useSecondaryYScale) {
+            yAxisLabels.add(`${linePoint.y}`);
+          }
+        });
+      });
+      this._yAxisLabels = Array.from(yAxisLabels);
+    }
+  };
+
+  private _getYDomainMargins = (containerHeight: number): IMargins => {
+    /**
+     * Specifies the extra top margin to apply above the highest y-axis tick label.
+     * Useful when stacked bars extend beyond the combined height of all y-axis labels (or categories).
+     */
+    let yAxisTickMarginTop = 0;
+
+    /** Total height available to render the bars */
+    const totalHeight = containerHeight - this.margins.bottom! - this.margins.top!;
+
+    if (this._yAxisType === YAxisType.StringAxis) {
+      /** Maximum height of the stacked bars, expressed in multiples of the height of a y-axis label (or category) */
+      let maxBarHeightInLabels = 0;
+      this._points.forEach(xPoint => {
+        /** Height of the stacked bar, expressed in multiples of the height of a y-axis label (or category) */
+        let barHeightInLabels = 0;
+        xPoint.chartData.forEach(bar => {
+          barHeightInLabels += this._yAxisLabels.indexOf(`${bar.data}`) + 1;
+        });
+        maxBarHeightInLabels = Math.max(maxBarHeightInLabels, barHeightInLabels);
+      });
+      /** Height of a y-axis label (or category) */
+      const yAxisLabelHeight = maxBarHeightInLabels === 0 ? 0 : totalHeight / maxBarHeightInLabels;
+      yAxisTickMarginTop += yAxisLabelHeight * (maxBarHeightInLabels - this._yAxisLabels.length);
+    }
+
+    return {
+      ...this.margins,
+      top: this.margins.top! + yAxisTickMarginTop,
+    };
   };
 }

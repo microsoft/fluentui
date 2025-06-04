@@ -478,7 +478,7 @@ export interface ICartesianChartProps {
 
 export interface IYValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -723,6 +723,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     dataPoints: string[],
     isRtl: boolean,
     barWidth: number | undefined,
+    chartType?: ChartTypes,
   ) => ScaleBand<string>;
 
   /**
