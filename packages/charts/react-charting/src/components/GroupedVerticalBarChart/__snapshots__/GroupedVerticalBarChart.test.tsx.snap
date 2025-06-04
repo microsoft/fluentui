@@ -107,6 +107,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#0078d4"
@@ -125,6 +126,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00188f"
@@ -143,6 +145,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
@@ -165,6 +168,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#0078d4"
@@ -183,6 +187,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00188f"
@@ -201,6 +206,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
@@ -676,6 +682,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#0078d4"
@@ -694,6 +701,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00188f"
@@ -712,6 +720,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
@@ -734,6 +743,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#0078d4"
@@ -752,6 +762,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00188f"
@@ -770,6 +781,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: ;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
