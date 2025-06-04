@@ -1,4 +1,3 @@
-// jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { mount } from 'enzyme';

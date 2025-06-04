@@ -1,4 +1,3 @@
-jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { ITreeChartDataPoint, TreeChart } from './index';
