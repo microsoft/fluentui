@@ -642,6 +642,7 @@ export const transformPlotlyJsonToScatterChartProps = (
         const markerSizes = isArrayOrTypedArray(series.marker?.size)
           ? (series.marker!.size as number[]).slice(rangeStart, rangeEnd)
           : [];
+        const textValues = Array.isArray(series.text) ? series.text.slice(rangeStart, rangeEnd) : undefined;
 
         return {
           legend,
@@ -654,6 +655,7 @@ export const transformPlotlyJsonToScatterChartProps = (
               : typeof series.marker?.size === 'number'
               ? { markerSize: series.marker.size }
               : {}),
+            ...(textValues ? { text: textValues[i] } : {}),
           })),
           color: seriesColor,
           lineOptions: {

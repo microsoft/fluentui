@@ -1015,6 +1015,7 @@ export interface ILineChartDataPoint {
     hideCallout?: boolean;
     markerSize?: number;
     onDataPointClick?: () => void;
+    text?: string;
     x: number | Date;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
