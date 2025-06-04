@@ -78,9 +78,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
   private stepStyles?: ElementStyles;
 
   /**
-   * @internal
    * Handles changes to step styling based on the step value
-   * NOTE: This function is not a changed callback, stepStyles is not observable
+   * @internal
+   * @privateRemarks
+   * This function is not a changed callback, stepStyles is not observable
    */
   private handleStepStyles(): void {
     if (this.step) {
