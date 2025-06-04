@@ -702,7 +702,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   *  @internal Handle mouse moves during a thumb drag operation
+   * Handle mouse moves during a thumb drag operation
+   * @internal
    */
   private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
     if (this.disabled || event.defaultPrevented) {
