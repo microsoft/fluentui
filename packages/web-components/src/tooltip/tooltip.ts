@@ -154,19 +154,19 @@ export class Tooltip extends FASTElement {
   }
 
   /**
-   * Show the tooltip on mouse enter
+   * @internal Show the tooltip on mouse enter
    */
   public mouseenterAnchorHandler = () => this.showTooltip(this.delay);
   /**
-   * Hide the tooltip on mouse leave
+   * @internal Hide the tooltip on mouse leave
    */
   public mouseleaveAnchorHandler = () => this.hideTooltip(this.delay);
   /**
-   * Show the tooltip on focus
+   * @internal Show the tooltip on focus
    */
   public focusAnchorHandler = () => this.showTooltip(0);
   /**
-   * Hide the tooltip on blur
+   * @internal Hide the tooltip on blur
    */
   public blurAnchorHandler = () => this.hideTooltip(0);
 

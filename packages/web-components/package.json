@@ -79,7 +79,7 @@
     "@storybook/html-webpack5": "7.6.20",
     "@wc-toolkit/cem-validator": "1.0.3",
     "@wc-toolkit/cem-inheritance": "1.0.4",
-    "@wc-toolkit/jsx-types": "1.1.0",
+    "@wc-toolkit/jsx-types": "1.2.1",
     "@wc-toolkit/module-path-resolver": "1.0.0",
     "@wc-toolkit/type-parser": "1.0.3",
     "chromedriver": "^125.0.0"

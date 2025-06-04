@@ -6365,10 +6365,10 @@
   resolved "https://registry.yarnpkg.com/@wc-toolkit/jsdoc-tags/-/jsdoc-tags-1.1.0.tgz#b2ff6ea7208057eaa8f451a27ec83764e446741d"
   integrity sha512-7MHpQ3FtRNJBJONMChkfIWxOWy1rvDtwOJJ4ubeGJBUEj2hp8Xy/9G8GqqNvPGzp38haAfdMcmwx6rySu4AAqg==
 
-"@wc-toolkit/jsx-types@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@wc-toolkit/jsx-types/-/jsx-types-1.1.0.tgz#5cefcdb6108adceef0113af2c5b5061809dc48ef"
-  integrity sha512-y4oGKq6eNT9e3nKeGU5filEF1jhoEp6bW5PKFHOamDzXpI7Tn3yGP9/latDOVzao65xAQV/1TGynVDOfv6SXQw==
+"@wc-toolkit/jsx-types@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@wc-toolkit/jsx-types/-/jsx-types-1.2.1.tgz#7ddbf4defdef8a41bbfa3f9ea37bd573719a2dc3"
+  integrity sha512-Lej3yJz/LEzC9Uuu7gv/WEBhR6GVVYbcs7Uk0eZIULoeIKDHLlZJ5kRcTNFkBhJLdTtag4wfcJcwpHAmc1pBpA==
 
 "@wc-toolkit/module-path-resolver@1.0.0":
   version "1.0.0"

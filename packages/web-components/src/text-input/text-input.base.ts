@@ -450,6 +450,7 @@ export class BaseTextInput extends FASTElement {
   /**
    * Clicks the inner control when the component is clicked.
    *
+   * @internal
    * @param e - the event object
    */
   public clickHandler(e: MouseEvent): boolean | void {
@@ -470,6 +471,7 @@ export class BaseTextInput extends FASTElement {
   /**
    * Focuses the inner control when the component is focused.
    *
+   * @internal
    * @param e - the event object
    * @public
    */

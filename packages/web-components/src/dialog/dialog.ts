@@ -13,6 +13,7 @@ import { DialogType } from './dialog.options.js';
  */
 export class Dialog extends FASTElement {
   /**
+   * @internal
    * @public
    * The dialog element
    */
@@ -20,30 +21,30 @@ export class Dialog extends FASTElement {
   public dialog!: HTMLDialogElement;
 
   /**
-   * @public
    * The ID of the element that describes the dialog
+   * @public
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
   /**
-   * @public
    * The ID of the element that labels the dialog
+   * @public
    */
   @attr({ attribute: 'aria-labelledby' })
   public ariaLabelledby?: string;
 
   /**
-   * @public
    * The type of the dialog modal
+   * @public
    */
   @attr
   public type: DialogType = DialogType.modal;
 
   /**
-   * @public
    * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   * @public
    */
   public emitBeforeToggle = (): void => {
     this.$emit('beforetoggle', {
@@ -53,6 +54,7 @@ export class Dialog extends FASTElement {
   };
 
   /**
+   * @internal
    * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
@@ -65,8 +67,8 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @public
    * Method to show the dialog
+   * @public
    */
   public show(): void {
     Updates.enqueue(() => {
@@ -81,8 +83,8 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @public
    * Method to hide the dialog
+   * @public
    */
   public hide(): void {
     this.emitBeforeToggle();
@@ -91,6 +93,7 @@ export class Dialog extends FASTElement {
   }
 
   /**
+   * @internal
    * @public
    * Handles click events on the dialog overlay for light-dismiss
    * @param event - The click event

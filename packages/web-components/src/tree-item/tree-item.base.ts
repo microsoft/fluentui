@@ -104,6 +104,7 @@ export class BaseTreeItem extends FASTElement {
     this.$fastController.addStyles(this.styles);
   }
 
+  /** @internal */
   @observable
   public childTreeItems: BaseTreeItem[] | undefined = [];
 

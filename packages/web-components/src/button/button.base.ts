@@ -335,6 +335,7 @@ export class BaseButton extends FASTElement {
   /**
    * Handles keypress events for the button.
    *
+   * @internal
    * @param e - the keyboard event
    * @returns - the return value of the click handler
    * @public

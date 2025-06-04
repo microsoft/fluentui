@@ -201,6 +201,7 @@ export class Menu extends FASTElement {
 
   /**
    * Handles the 'toggle' event on the popover.
+   * @internal
    * @public
    * @param e - the event
    * @returns void
@@ -335,6 +336,7 @@ export class Menu extends FASTElement {
    * Handles keyboard interaction for the menu. Closes the menu and focuses on the trigger when the Escape key is
    * pressed. Closes the menu when the Tab key is pressed.
    *
+   * @internal
    * @param e - the keyboard event
    * @public
    */
@@ -372,6 +374,7 @@ export class Menu extends FASTElement {
    * Handles keyboard interaction for the trigger. Toggles the menu when the Space or Enter key is pressed. If the menu
    * is open, focuses on the menu list.
    *
+   * @internal
    * @param e - the keyboard event
    * @public
    */

@@ -584,6 +584,7 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the change events for the dropdown.
    *
+   * @internal
    * @param e - the event object
    *
    * @public
@@ -616,6 +617,7 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the click events for the dropdown.
    *
+   * @internal
    * @param e - the event object
    *
    * @public
@@ -739,6 +741,7 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the input events for the dropdown from the control element.
    *
+   * @internal
    * @param e - the input event
    * @public
    */
@@ -778,6 +781,7 @@ export class BaseDropdown extends FASTElement {
   /**
    * Handles the keydown events for the dropdown.
    *
+   * @internal
    * @param e - the keyboard event
    * @public
    */

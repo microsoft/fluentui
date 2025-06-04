@@ -42,8 +42,12 @@ Create a type declaration file (e.g., `types/jsx.d.ts`) to extend the JSX Intrin
 // types/jsx.d.ts
 import { CustomElements } from '@fluentui/web-components/types/jsx-types';
 
-declare namespace JSX {
-  interface IntrinsicElements extends CustomElements {}
+// the module name is typically something like 'react', 'preact'
+// or whatever the package name is that provides JSX support
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends CustomElements {}
+  }
 }
 ```
 

@@ -41,6 +41,7 @@ export class BaseTree extends FASTElement {
     this.elementInternals.role = 'tree';
   }
 
+  /** @internal */
   @observable
   childTreeItems: BaseTreeItem[] = [];
   public childTreeItemsChanged() {

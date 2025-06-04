@@ -142,6 +142,7 @@ export class Listbox extends FASTElement {
   /**
    * Sets the `selected` state on a target option when clicked.
    *
+   * @internal
    * @param e - The pointer event
    * @public
    */

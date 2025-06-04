@@ -21,44 +21,45 @@ import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
  */
 export class Drawer extends FASTElement {
   /**
-   * @public
    * Determines whether the drawer should be displayed as modal or non-modal
    * When rendered as a modal, an overlay is applied over the rest of the view.
+   * @public
    */
   @attr
   public type: DrawerType = DrawerType.modal;
 
   /**
-   * @public
    * The ID of the element that labels the drawer.
+   * @public
    */
   @attr({ attribute: 'aria-labelledby' })
   public ariaLabelledby?: string;
 
   /**
-   * @public
    * The ID of the element that describes the drawer.
+   * @public
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
   /**""
+   * Sets the position of the drawer (start/end).
    * @public
    * @defaultValue start
-   * Sets the position of the drawer (start/end).
    */
   @attr
   public position: DrawerPosition = DrawerPosition.start;
 
   /**
+   * Sets the size of the drawer (small/medium/large).
    * @public
    * @defaultValue medium
-   * Sets the size of the drawer (small/medium/large).
    */
   @attr({ attribute: 'size' })
   public size: DrawerSize = DrawerSize.medium;
 
   /**
+   * @internal
    * @public
    * The dialog element.
    */
@@ -66,6 +67,7 @@ export class Drawer extends FASTElement {
   public dialog!: HTMLDialogElement;
 
   /**
+   * @internal
    * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
@@ -78,6 +80,7 @@ export class Drawer extends FASTElement {
   };
 
   /**
+   * @internal
    * @public
    * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
@@ -116,6 +119,7 @@ export class Drawer extends FASTElement {
   }
 
   /**
+   * @internal
    * @public
    * @param event - The click event
    * @returns boolean - Always returns true

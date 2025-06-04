@@ -59,6 +59,7 @@ export class MessageBar extends FASTElement {
   public intent?: MessageBarIntent;
 
   /**
+   * @internal
    * @public
    * Method to emit a `dismiss` event when the message bar is dismissed
    */

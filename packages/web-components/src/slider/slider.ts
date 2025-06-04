@@ -63,6 +63,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   @attr
   public size?: SliderSize;
 
+  /** @internal */
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
@@ -77,6 +78,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   private stepStyles?: ElementStyles;
 
   /**
+   * @internal
    * Handles changes to step styling based on the step value
    * NOTE: This function is not a changed callback, stepStyles is not observable
    */
@@ -521,6 +523,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
     /** @internal */
     this.elementInternals.role = 'slider';
+    /** @internal */
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }
 
@@ -588,6 +591,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
+  /** @internal */
   public handleKeydown(event: KeyboardEvent): boolean {
     if (this.disabled) {
       return true;
@@ -683,6 +687,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * @internal
    *  Handle mouse moves during a thumb drag operation
    *  If the event handler is null it removes the events
    */
@@ -697,7 +702,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   *  Handle mouse moves during a thumb drag operation
+   *  @internal Handle mouse moves during a thumb drag operation
    */
   private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
     if (this.disabled || event.defaultPrevented) {
@@ -740,7 +745,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   * Handle a window mouse up during a drag operation
+   *  @internal Handle a window mouse up during a drag operation
    */
   private handleWindowPointerUp = (): void => {
     this.stopDragging();
@@ -753,7 +758,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   *
+   * @internal
    * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
   public handlePointerDown = (event: PointerEvent | null) => {
