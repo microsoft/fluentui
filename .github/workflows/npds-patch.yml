@@ -24,7 +24,7 @@ jobs:
 
       - name: Install NPDS package
         run: |
-          npm install @nbs/npds-components
+          npm install @nbs/npds-components --legacy-peer-deps
 
       - name: Patch Fluent’s button.styles.ts
         run: |
