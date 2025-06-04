@@ -9,10 +9,8 @@ import {
   ICartesianChartStyleProps,
   IModifiedCartesianChartProps,
   IYValueHover,
-  IHorizontalBarChartWithAxisDataPoint,
-  IHeatMapChartDataPoint,
 } from '../../index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   createNumericXAxis,
   createStringXAxis,
@@ -42,7 +40,11 @@ const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianCh
 const ChartHoverCard = React.lazy(() =>
   import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
 );
-const chartTypesToCheck = [ChartTypes.HorizontalBarChartWithAxis, ChartTypes.HeatMapChart];
+const chartTypesWithStringYAxis = [
+  ChartTypes.HorizontalBarChartWithAxis,
+  ChartTypes.HeatMapChart,
+  ChartTypes.VerticalStackedBarChart,
+];
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -148,12 +150,13 @@ export class CartesianChartBase
 
   public componentDidMount(): void {
     this._fitParentContainer();
-    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
-      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
-        this.props.chartType,
-        this.props.points,
-        this._classNames.yAxis!,
-      );
+    if (
+      chartTypesWithStringYAxis.includes(this.props.chartType) &&
+      this.props.showYAxisLables &&
+      this.yAxisElement &&
+      this.props.yAxisType === YAxisType.StringAxis
+    ) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -198,12 +201,13 @@ export class CartesianChartBase
         });
       }
     }
-    if (chartTypesToCheck.includes(this.props.chartType) && this.props.showYAxisLables && this.yAxisElement) {
-      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(
-        this.props.chartType,
-        this.props.points,
-        this._classNames.yAxis!,
-      );
+    if (
+      chartTypesWithStringYAxis.includes(this.props.chartType) &&
+      this.props.showYAxisLables &&
+      this.yAxisElement &&
+      this.props.yAxisType === YAxisType.StringAxis
+    ) {
+      const maxYAxisLabelLength = this.calculateMaxYAxisLabelLength(this._classNames.yAxis!);
       if (this.state.startFromX !== maxYAxisLabelLength) {
         this.setState({
           startFromX: maxYAxisLabelLength,
@@ -221,12 +225,7 @@ export class CartesianChartBase
     }
   }
 
-  public calculateMaxYAxisLabelLength = (
-    chartType: ChartTypes,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    points: any[],
-    className: string,
-  ): number => {
+  public calculateMaxYAxisLabelLength = (className: string): number => {
     const formatTickLabel = (str: string) => {
       if (this.props.showYAxisLablesTooltip) {
         return truncateString(str, this.props.noOfCharsToTruncate || 4);
@@ -235,17 +234,10 @@ export class CartesianChartBase
       return str;
     };
 
-    if (chartType === ChartTypes.HeatMapChart) {
-      return calculateLongestLabelWidth(
-        points[0].data.map((point: IHeatMapChartDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    } else {
-      return calculateLongestLabelWidth(
-        points.map((point: IHorizontalBarChartWithAxisDataPoint) => formatTickLabel(`${point.y}`)),
-        `.${className} text`,
-      );
-    }
+    return calculateLongestLabelWidth(
+      this.props.stringDatasetForYAxisDomain!.map(label => formatTickLabel(label)),
+      `.${className} text`,
+    );
   };
 
   public render(): JSX.Element {
@@ -266,7 +258,8 @@ export class CartesianChartBase
     }
 
     const margin = { ...this.margins };
-    if (chartTypesToCheck.includes(this.props.chartType)) {
+    // Note: This check is unnecessary since startFromX is only set for charts with string y-axis.
+    if (chartTypesWithStringYAxis.includes(this.props.chartType)) {
       if (!this._isRtl) {
         margin.left! += this.state.startFromX;
       } else {
@@ -333,7 +326,7 @@ export class CartesianChartBase
         yAxisTickCount: this.props.yAxisTickCount!,
         yMinValue: this.props.yMinValue || 0,
         yMaxValue: this.props.yMaxValue || 0,
-        tickPadding: this.props.showYAxisLablesTooltip ? 15 : 10,
+        tickPadding: 10,
         maxOfYVal: this.props.maxOfYVal,
         yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
@@ -426,6 +419,7 @@ export class CartesianChartBase
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
           this.props.barwidth,
+          this.props.chartType,
         );
       } else {
         // TODO: Since the scale domain values are now computed independently for both the primary and
@@ -469,10 +463,12 @@ export class CartesianChartBase
         );
       }
 
-      if (chartTypesToCheck.includes(this.props.chartType)) {
+      if (chartTypesWithStringYAxis.includes(this.props.chartType) && this.props.yAxisType === YAxisType.StringAxis) {
         // To create y axis tick values by if specified truncating the rest of the text
         // and showing elipsis or showing the whole string,
         yScalePrimary &&
+          // Note: This function should be invoked within the showYAxisLablesTooltip check,
+          // as its sole purpose is to truncate labels that exceed the noOfCharsToTruncate limit.
           createYAxisLabels(
             this.yAxisElement,
             yScalePrimary,
@@ -754,7 +750,7 @@ export class CartesianChartBase
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture, this.props.useUTC)}
           </div>
         </div>
         <div
@@ -830,8 +826,8 @@ export class CartesianChartBase
       toDrawShape,
     });
 
-    const { culture } = this.props;
-    const yValue = convertToLocaleString(xValue.y, culture);
+    const { culture, useUTC } = this.props;
+    const yValue = formatToLocaleString(xValue.y, culture, useUTC);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -853,9 +849,10 @@ export class CartesianChartBase
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {convertToLocaleString(
+                {formatToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
+                  useUTC,
                 )}
               </div>
             </div>
@@ -872,9 +869,11 @@ export class CartesianChartBase
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutlegendText}>
+                  {formatToLocaleString(subcountName, culture, useUTC)}
+                </div>
                 <div className={_classNames.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  {formatToLocaleString(subcounts[subcountName], culture, useUTC)}
                 </div>
               </div>
             );

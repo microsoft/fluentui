@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(react-charting): Use colorscale for heatmap charts",
+  "comment": "fix(react-charting): Fixing line color mismatch",
   "packageName": "@fluentui/react-charting",
   "email": "120183316+srmukher@users.noreply.github.com",
   "dependentChangeType": "patch"

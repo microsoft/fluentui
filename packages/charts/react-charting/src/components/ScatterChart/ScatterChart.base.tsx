@@ -29,11 +29,11 @@ import {
   getTypeOfAxis,
   getNextColor,
   getColorFromToken,
-  formatDate,
 } from '../../utilities/index';
 import { classNamesFunction, DirectionalHint, find, getId, getRTL } from '@fluentui/react';
 import { IImageExportOptions, IScatterChartDataPoint, IScatterChartPoints } from '../../types/index';
 import { toImage as convertToImage } from '../../utilities/image-export-utils';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
@@ -237,13 +237,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     (
       seriesId: string,
       x: number | Date | string,
-
       xAxisCalloutData: string | undefined,
       circleId: string,
       xAxisCalloutAccessibilityData?: IAccessibilityProps,
     ) => {
       _uniqueCallOutID.current = circleId;
-      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal) as
         | { x: string | number; values: [] }
@@ -280,7 +279,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       mouseEvent: React.MouseEvent<SVGElement>,
     ) => {
       mouseEvent?.persist();
-      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
+      const formattedData = x instanceof Date ? formatDateToLocaleString(x, props.culture, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal) as
         | { x: string | number; values: [] }
@@ -351,7 +350,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     (seriesIndex: number, pointIndex: number): string => {
       const series = _points.current?.[seriesIndex];
       const point = series.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
+      const formattedDate =
+        point.x instanceof Date ? formatDateToLocaleString(point.x, props.culture, props.useUTC) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = series.legend;
       const yValue = point.yAxisCalloutData || point.y;

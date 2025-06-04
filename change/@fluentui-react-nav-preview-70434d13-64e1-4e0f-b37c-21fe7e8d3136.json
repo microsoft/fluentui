@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: focus borders being cut-off",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -29,6 +29,7 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
+  isStringArray,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
@@ -213,6 +214,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXMonth = isMonthArray(xValues);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const isXString = isArrayOfType(xValues, (value: any) => typeof value === 'string');
+    const isYString = isStringArray((plotlyInputWithValidData.data[0] as Partial<PlotData>).y);
 
     // Consider year as categorical variable not numeric continuous variable
     // Also year is not considered a date variable as it is represented as a point
@@ -220,7 +222,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     // formatting given the current design of the charting library
     const isXYear = isYearArray(xValues);
 
-    if ((isXDate || isXNumber) && !isXYear) {
+    if ((isXDate || isXNumber) && !isXYear && !isYString) {
       return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({

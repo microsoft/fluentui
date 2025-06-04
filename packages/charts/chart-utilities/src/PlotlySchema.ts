@@ -312,6 +312,7 @@ export interface ColorAxis {
 // Layout
 export interface Layout {
   colorway: string[];
+  piecolorway: string[];
   title:
     | string
     | Partial<{
@@ -1347,6 +1348,33 @@ export interface PlotData {
   uirevision: string | number;
   uid: string;
   base: Datum[] | Datum[][] | TypedArray;
+  header?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[];
+  };
+  cells?: {
+    align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+    fill?: {
+      color?: Color | Color[];
+    };
+    font?: {
+      family?: string | string[];
+      size?: number | number[];
+      color?: Color | Color[];
+    };
+    values: (string | number | boolean | null)[][];
+    format: string | string[];
+    prefix: string | string[];
+    suffix: string | string[];
+  };
 }
 
 export interface TableData {
@@ -1374,6 +1402,9 @@ export interface TableData {
       color?: Color | Color[];
     };
     values: (string | number | boolean | null)[][];
+    format: string | string[];
+    prefix: string | string[];
+    suffix: string | string[];
   };
 }
 

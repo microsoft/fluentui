@@ -54,8 +54,15 @@ import {
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
 import { IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
+import {
+  formatDateToLocaleString,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from '@fluentui/chart-utilities';
 
 export const MIN_DOMAIN_MARGIN = 8;
+export const MIN_DONUT_RADIUS = 1;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -190,6 +197,7 @@ function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false):
 
   return formattedValue;
 }
+
 /**
  * Formatter for y axis ticks.
  * @param value - The number to format.
@@ -230,7 +238,7 @@ export function createNumericXAxis(
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return convertToLocaleString(xAxisValue, culture) as string;
+    return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
@@ -273,7 +281,7 @@ export function createNumericXAxis(
  * @param useUTC
  * @returns
  */
-function getMultiLevelDateFormatter(
+function getMultiLevelD3DateFormatter(
   startLevel: number,
   endLevel: number,
   locale?: d3TimeLocaleObject,
@@ -366,12 +374,6 @@ function isPowerOf10(num: number): boolean {
   return Math.log10(roundedfinalYMax) % 1 === 0;
 }
 
-//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
-function handleFloatingPointPrecisionError(num: number): number {
-  const rounded = Math.round(num);
-  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
-}
-
 /**
  * Creating Date x axis of the Chart
  * @export
@@ -412,7 +414,9 @@ export function createDateXAxis(
     }
   });
 
-  const formatFn: (date: Date) => string = getMultiLevelDateFormatter(
+  const formatOptions = options ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+
+  const formatFn: (date: Date) => string = getMultiLevelD3DateFormatter(
     lowestFormatLevel,
     highestFormatLevel,
     locale,
@@ -422,9 +426,6 @@ export function createDateXAxis(
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
-    }
-    if (culture && options) {
-      return domainValue.toLocaleString(culture, options);
     }
     if (timeFormatLocale) {
       return formatFn(domainValue);
@@ -436,14 +437,15 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return formatFn(domainValue);
+
+    return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
   const longestLabelWidth =
     calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
   const [start, end] = xAxisScale.range();
-  tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  tickCount = Math.min(tickCount, xAxisCount ?? tickCount);
+  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
+  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -713,14 +715,34 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
+export const createStringYAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  barWidth?: number,
+  chartType?: ChartTypes,
+) => {
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding = 0,
+    containerWidth,
+  } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    yAxisScale.paddingInner(1).paddingOuter(0);
+  }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  }
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
@@ -964,7 +986,7 @@ export function createYAxisLabels(
       ? `...${text.text().slice(0, noOfCharsToTruncate)}`
       : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const padding = truncateLabel ? 1.5 : 1; // ems
+    const padding = 0; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
@@ -982,17 +1004,16 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', 'showDots')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
-        .attr('dy', dy)
+        .attr('dy', dy + 'em')
         .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
-        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);
@@ -1546,29 +1567,6 @@ export const getAccessibleDataObject = (
   };
 };
 
-type LocaleStringDataProps = number | string | Date | undefined;
-export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (data === undefined || data === null || Number.isNaN(data)) {
-    return data;
-  }
-  culture = culture || undefined;
-  if (typeof data === 'number') {
-    if (Math.abs(data) < 10000) {
-      return data.toString();
-    }
-    return data.toLocaleString(culture);
-  } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
-    const num = Number(data);
-    if (Math.abs(num) < 10000) {
-      return num.toString();
-    }
-    return num.toLocaleString(culture);
-  } else if (data instanceof Date) {
-    return data.toLocaleDateString(culture);
-  }
-  return data;
-};
-
 export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   const { node, xAxis } = rotateLabelProps;
   if (node === null || xAxis === null) {
@@ -1655,7 +1653,7 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueLimitWidth(value: number) {
+export function formatScientificLimitWidth(value: number) {
   return yAxisTickFormatterInternal(value, true);
 }
 
@@ -1691,11 +1689,6 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
-};
-
-export const formatDate = (date: Date, useUTC?: boolean) => {
-  const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
-  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
