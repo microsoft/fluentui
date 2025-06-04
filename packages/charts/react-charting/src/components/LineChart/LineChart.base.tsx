@@ -957,13 +957,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 />
                 {this._points[i].data[j - 1].text && (
                   <text
-                    key={`${circleId}-label`}
+                    key={circleId}
                     x={this._xAxisScale(x1)}
                     y={yScale(y1) + 35}
                     fontSize={12}
                     fill={theme?.semanticColors.bodyText}
                     textAnchor="middle"
-                    aria-hidden="true"
                   >
                     {this._points[i].data[j - 1].text}
                   </text>
@@ -1071,13 +1070,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     />
                     {this._points[i].data[j].text && (
                       <text
-                        key={`${circleId}-label`}
+                        key={lastCircleId}
                         x={this._xAxisScale(x2)}
                         y={yScale(y2) + 35}
                         fontSize={12}
                         fill={theme?.semanticColors.bodyText}
                         textAnchor="middle"
-                        aria-hidden="true"
                       >
                         {this._points[i].data[j].text}
                       </text>
