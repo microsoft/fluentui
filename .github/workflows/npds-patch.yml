@@ -18,15 +18,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Authenticate to private npm feed
+      - name: Authenticate to Azure DevOps npm feed
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "registry=https://pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/" > ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
+          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_authToken=${{ secrets.AZURE_DEVOPS_NPM_TOKEN }}" >> ~/.npmrc
 
       - name: Install NPDS package
         run: |
           npm install @nbs/npds-components --legacy-peer-deps
 
-      - name: Patch Fluent’s button.styles.ts
+      - name: Patch Fluent's button.styles.ts
         run: |
           FILE="packages/web-components/src/button/button.styles.ts"
           grep -q "npdsButtonStyles" $FILE || \
