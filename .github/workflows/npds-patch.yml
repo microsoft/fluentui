@@ -2,32 +2,28 @@ name: "NPDS Patch After Sync"
 on:
   workflow_call:
   workflow_dispatch:
-
 jobs:
   apply-npds:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-
-      - name: Authenticate to Azure DevOps npm feed
+      - name: Create .npmrc for Azure DevOps feed
         run: |
-          echo "registry=https://pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/" > ~/.npmrc
-          echo "always-auth=true" >> ~/.npmrc
-          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_authToken=${{ secrets.AZURE_DEVOPS_NPM_TOKEN }}" >> ~/.npmrc
-
+          cat << 'EOF' > .npmrc
+          registry=https://pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/
+          always-auth=true
+          EOF
+          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_authToken=${{ secrets.AZURE_DEVOPS_NPM_TOKEN }}" >> .npmrc
       - name: Install NPDS package
         run: |
           npm install @nbs/npds-components --legacy-peer-deps
-
       - name: Patch Fluent's button.styles.ts
         run: |
           FILE="packages/web-components/src/button/button.styles.ts"
@@ -35,7 +31,6 @@ jobs:
             sed -i '1iimport { buttonStyles as npdsButtonStyles } from "@nbs/npds-components/button";' $FILE
           sed -i 's/export const styles = css/export const originalButtonStyles = css/' $FILE
           cat << 'EOF' >> $FILE
-
           // ── NPDS OVERRIDE LAYER ──
           export const styles = css`
             \${originalButtonStyles}
@@ -43,14 +38,12 @@ jobs:
           `;
           // ────────────────────────
           EOF
-
       - name: Commit and push NPDS patch
         env:
           GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           if ! git diff --quiet -- packages/web-components/src/button/button.styles.ts; then
             git add packages/web-components/src/button/button.styles.ts
             git commit -m "chore: layer NPDS button styles"
