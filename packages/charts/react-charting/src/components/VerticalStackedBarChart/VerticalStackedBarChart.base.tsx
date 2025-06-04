@@ -749,7 +749,10 @@ export class VerticalStackedBarChartBase
     if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       this._calloutAnchorPoint = {
         chartDataPoint: point,
-        xAxisDataPoint: xAxisPoint instanceof Date ? xAxisPoint.toLocaleDateString() : xAxisPoint.toString(),
+        xAxisDataPoint:
+          xAxisPoint instanceof Date
+            ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+            : xAxisPoint.toString(),
       };
       const xCalloutValue =
         point.xAxisCalloutData ||

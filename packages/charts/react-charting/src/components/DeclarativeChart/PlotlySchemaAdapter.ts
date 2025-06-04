@@ -236,12 +236,15 @@ export const _getGaugeAxisColor = (
 };
 
 export const resolveXAxisPoint = (
-  x: string | number,
+  x: Datum,
   isXYearCategory: boolean,
   isXString: boolean,
   isXDate: boolean,
   isXNumber: boolean,
 ): string | Date | number => {
+  if (!x) {
+    return '';
+  }
   if (isXYearCategory) {
     return x.toString();
   }
@@ -655,9 +658,10 @@ export const transformPlotlyJsonToScatterChartProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      const isString = isStringArray(xValues);
+      const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
+      const isXYearCategory = isYearArray(series.x);
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
@@ -683,7 +687,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
+            x: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
