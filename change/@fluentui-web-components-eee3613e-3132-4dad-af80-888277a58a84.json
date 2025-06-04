@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added JSX types and documentation for web components",
+  "packageName": "@fluentui/web-components",
+  "email": "burtonsmith@microsoft.com",
+  "dependentChangeType": "patch"
+}
