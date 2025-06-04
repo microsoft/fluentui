@@ -73,7 +73,9 @@ export class BaseProgressBar extends FASTElement {
 
   /**
    * The maximum value
+   *
    * @internal
+   * @remarks
    * HTML Attribute: `max`
    */
   @attr({ converter: nullableNumberConverter })

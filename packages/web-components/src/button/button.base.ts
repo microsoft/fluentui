@@ -338,7 +338,6 @@ export class BaseButton extends FASTElement {
    * @internal
    * @param e - the keyboard event
    * @returns - the return value of the click handler
-   * @public
    */
   public keypressHandler(e: KeyboardEvent): boolean | void {
     if (e && this.disabledFocusable) {

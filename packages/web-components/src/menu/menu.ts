@@ -202,7 +202,6 @@ export class Menu extends FASTElement {
   /**
    * Handles the 'toggle' event on the popover.
    * @internal
-   * @public
    * @param e - the event
    * @returns void
    */
@@ -223,9 +222,9 @@ export class Menu extends FASTElement {
    * Called whenever the 'openOnHover' property changes.
    * Adds or removes a 'mouseover' event listener to the trigger based on the new value.
    *
+   * @internal
    * @param oldValue - The previous value of 'openOnHover'.
    * @param newValue - The new value of 'openOnHover'.
-   * @public
    */
   public openOnHoverChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue) {
@@ -238,7 +237,7 @@ export class Menu extends FASTElement {
   /**
    * Called whenever the 'persistOnItemClick' property changes.
    * Adds or removes a 'click' event listener to the menu list based on the new value.
-   * @public
+   * @internal
    * @param oldValue - The previous value of 'persistOnItemClick'.
    * @param newValue - The new value of 'persistOnItemClick'.
    */
@@ -253,7 +252,7 @@ export class Menu extends FASTElement {
   /**
    * Called whenever the 'openOnContext' property changes.
    * Adds or removes a 'contextmenu' event listener to the trigger based on the new value.
-   * @public
+   * @internal
    * @param oldValue - The previous value of 'openOnContext'.
    * @param newValue - The new value of 'openOnContext'.
    */
@@ -268,7 +267,7 @@ export class Menu extends FASTElement {
   /**
    * Called whenever the 'closeOnScroll' property changes.
    * Adds or removes a 'closeOnScroll' event listener to the trigger based on the new value.
-   * @public
+   * @internal
    * @param oldValue - The previous value of 'closeOnScroll'.
    * @param newValue - The new value of 'closeOnScroll'.
    */
@@ -338,7 +337,6 @@ export class Menu extends FASTElement {
    *
    * @internal
    * @param e - the keyboard event
-   * @public
    */
   public menuKeydownHandler(e: KeyboardEvent): boolean | void {
     if (e.defaultPrevented) {
@@ -376,7 +374,6 @@ export class Menu extends FASTElement {
    *
    * @internal
    * @param e - the keyboard event
-   * @public
    */
   public triggerKeydownHandler = (e: KeyboardEvent): boolean | void => {
     if (e.defaultPrevented) {

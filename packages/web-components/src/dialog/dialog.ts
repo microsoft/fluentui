@@ -13,9 +13,8 @@ import { DialogType } from './dialog.options.js';
  */
 export class Dialog extends FASTElement {
   /**
-   * @internal
-   * @public
    * The dialog element
+   * @internal
    */
   @observable
   public dialog!: HTMLDialogElement;
@@ -54,10 +53,9 @@ export class Dialog extends FASTElement {
   };
 
   /**
-   * @internal
-   * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   * @internal
    */
   public emitToggle = (): void => {
     this.$emit('toggle', {
@@ -93,9 +91,8 @@ export class Dialog extends FASTElement {
   }
 
   /**
-   * @internal
-   * @public
    * Handles click events on the dialog overlay for light-dismiss
+   * @internal
    * @param event - The click event
    * @returns boolean
    */

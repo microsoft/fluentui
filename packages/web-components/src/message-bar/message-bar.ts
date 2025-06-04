@@ -60,7 +60,6 @@ export class MessageBar extends FASTElement {
 
   /**
    * @internal
-   * @public
    * Method to emit a `dismiss` event when the message bar is dismissed
    */
   public dismissMessageBar = () => {

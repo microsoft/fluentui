@@ -42,10 +42,9 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**""
+  /**
    * Sets the position of the drawer (start/end).
    * @public
-   * @defaultValue start
    */
   @attr
   public position: DrawerPosition = DrawerPosition.start;
@@ -53,24 +52,21 @@ export class Drawer extends FASTElement {
   /**
    * Sets the size of the drawer (small/medium/large).
    * @public
-   * @defaultValue medium
    */
   @attr({ attribute: 'size' })
   public size: DrawerSize = DrawerSize.medium;
 
   /**
-   * @internal
-   * @public
    * The dialog element.
+   * @internal
    */
   @observable
   public dialog!: HTMLDialogElement;
 
   /**
-   * @internal
-   * @public
    * Method to emit an event after the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   * @internal
    */
   public emitToggle = (): void => {
     this.$emit('toggle', {
@@ -80,10 +76,9 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * @internal
-   * @public
    * Method to emit an event before the dialog's open state changes
    * HTML spec proposal: https://github.com/whatwg/html/issues/9733
+   * @internal
    */
   public emitBeforeToggle = (): void => {
     this.$emit('beforetoggle', {
@@ -93,8 +88,8 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * @public
    * Method to show the drawer
+   * @public
    */
   public show(): void {
     Updates.enqueue(() => {
@@ -109,8 +104,8 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
    * Method to hide the drawer
+   * @public
    */
   public hide(): void {
     this.emitBeforeToggle();
@@ -119,11 +114,10 @@ export class Drawer extends FASTElement {
   }
 
   /**
+   * Handles click events on the drawer.
    * @internal
-   * @public
    * @param event - The click event
    * @returns boolean - Always returns true
-   * Handles click events on the drawer.
    */
   public clickHandler(event: Event): boolean {
     event.preventDefault();

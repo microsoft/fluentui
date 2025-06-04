@@ -335,7 +335,6 @@ export class RadioGroup extends FASTElement {
    * Checks the radio at the specified index.
    * @internal
    * @param index - the index of the radio to check
-   * @internal
    */
   public checkRadio(index: number = this.checkedIndex, shouldEmit: boolean = false): void {
     let checkedIndex = this.checkedIndex;
@@ -371,7 +370,6 @@ export class RadioGroup extends FASTElement {
    * Handles click events for the radio group.
    * @internal
    * @param e - the click event
-   * @internal
    */
   public clickHandler(e: MouseEvent): boolean | void {
     if (this === e.target) {

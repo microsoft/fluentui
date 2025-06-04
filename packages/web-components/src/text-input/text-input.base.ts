@@ -473,7 +473,6 @@ export class BaseTextInput extends FASTElement {
    *
    * @internal
    * @param e - the event object
-   * @public
    */
   public focusinHandler(e: FocusEvent): boolean | void {
     if (e.target === this) {

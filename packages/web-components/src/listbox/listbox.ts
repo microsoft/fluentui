@@ -144,7 +144,6 @@ export class Listbox extends FASTElement {
    *
    * @internal
    * @param e - The pointer event
-   * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
     if (this.dropdown) {

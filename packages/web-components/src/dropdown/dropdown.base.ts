@@ -586,8 +586,6 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    * @param e - the event object
-   *
-   * @public
    */
   public changeHandler(e: Event): boolean | void {
     if (this === e.target) {
@@ -619,8 +617,6 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    * @param e - the event object
-   *
-   * @public
    */
   public clickHandler(e: PointerEvent): boolean | void {
     if (this.disabled) {
@@ -743,7 +739,6 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    * @param e - the input event
-   * @public
    */
   public inputHandler(e: InputEvent): boolean | void {
     if (!this.open) {
@@ -783,7 +778,6 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    * @param e - the keyboard event
-   * @public
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     let increment = 0;
