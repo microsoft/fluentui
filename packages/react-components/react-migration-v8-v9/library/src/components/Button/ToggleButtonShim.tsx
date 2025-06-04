@@ -4,6 +4,7 @@ import type { IButtonProps } from '@fluentui/react';
 
 import { ToggleButton } from '@fluentui/react-components';
 import type { ToggleButtonProps } from '@fluentui/react-components';
+import type { RefAttributes } from '@fluentui/react-utilities';
 
 import { shimButtonProps } from './shimButtonProps';
 
@@ -23,5 +24,5 @@ export const ToggleButtonShim: React.ForwardRefExoticComponent<IButtonProps & Re
       defaultChecked: props.defaultChecked,
     };
 
-    return <ToggleButton {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+    return <ToggleButton {...(props as RefAttributes<HTMLButtonElement>)} {...shimProps} />;
   });

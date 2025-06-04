@@ -74,6 +74,7 @@ import type {
 
   slot.always(props.menuButton, {
     defaultProps: menuButtonDefaultProps,
+    // @ts-expect-error - Slot type mismatch
     elementType: AppSplitButtonMenuButton,
   });
 

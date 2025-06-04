@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: adjust types to support react 18",
+  "packageName": "@fluentui/react-menu",
+  "email": "dmytrokirpa@microsoft.com",
+  "dependentChangeType": "none"
+}
