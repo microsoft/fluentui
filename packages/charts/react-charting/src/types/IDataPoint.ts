@@ -222,6 +222,11 @@ export interface IVerticalBarChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * opacity for bars
+   */
+  opacity?: number;
 }
 
 /**
@@ -277,6 +282,11 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * opacity for bars
+   */
+  opacity?: number;
 }
 
 /**
@@ -641,6 +651,11 @@ export interface IVSChartDataPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Opacity for bars
+   */
+  opacity?: number;
 }
 
 /**
@@ -698,6 +713,11 @@ export interface ILineDataInVerticalStackedBarChart {
    * options for the line drawn
    */
   lineOptions?: ILineChartLineOptions;
+
+  /**
+   * opacity for the line
+   */
+  opacity?: number;
 }
 
 /**
@@ -757,6 +777,11 @@ export interface IGVBarChartSeriesPoint {
    * False by default.
    */
   useSecondaryYScale?: boolean;
+
+  /**
+   * Opacity for bars
+   */
+  opacity?: number;
 }
 
 /**

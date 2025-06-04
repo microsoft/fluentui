@@ -346,11 +346,18 @@ export const transformPlotlyJsonToVSBCProps = (
         // resolve color for each legend's bars from the extracted colors
         const color = resolveColor(extractedBarColors, index1, legend, colorMap, isDarkTheme);
         const yVal: number = rangeYValues[index2] as number;
+        const opacity: number = series.marker?.opacity
+          ? isArrayOrTypedArray(series.marker?.opacity)
+            ? (series.marker?.opacity as number[])[index2 % (series.marker?.opacity as number[]).length]
+            : (series.marker?.opacity as number)
+          : series.opacity ?? 1;
+
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color,
+            opacity,
           });
           yMaxValue = Math.max(yMaxValue, yVal);
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
@@ -373,6 +380,7 @@ export const transformPlotlyJsonToVSBCProps = (
               mode: series.mode,
             },
             useSecondaryYScale: usesSecondaryYScale(series),
+            opacity,
           });
           if (!usesSecondaryYScale(series)) {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -466,6 +474,11 @@ export const transformPlotlyJsonToGVBCProps = (
             )
           : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
+        const opacity: number = series.marker?.opacity
+          ? isArrayOrTypedArray(series.marker?.opacity)
+            ? (series.marker?.opacity as number[])[xIndex % (series.marker?.opacity as number[]).length]
+            : (series.marker?.opacity as number)
+          : series.opacity ?? 1;
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y![xIndex] as number,
@@ -473,6 +486,7 @@ export const transformPlotlyJsonToGVBCProps = (
           color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series),
+          opacity,
         });
       }
     });
@@ -562,6 +576,12 @@ export const transformPlotlyJsonToVBCProps = (
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
 
+      const opacity: number = series.marker?.opacity
+        ? isArrayOrTypedArray(series.marker?.opacity)
+          ? (series.marker?.opacity as number[])[seriesIdx % (series.marker?.opacity as number[]).length]
+          : (series.marker?.opacity as number)
+        : series.opacity ?? 1;
+
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
@@ -570,6 +590,7 @@ export const transformPlotlyJsonToVBCProps = (
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
+        opacity,
       });
     });
   });
@@ -736,12 +757,18 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
           if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
             return null;
           }
+          const opacity: number = series.marker?.opacity
+            ? isArrayOrTypedArray(series.marker?.opacity)
+              ? (series.marker?.opacity as number[])[i % (series.marker?.opacity as number[]).length]
+              : (series.marker?.opacity as number)
+            : series.opacity ?? 1;
 
           return {
             x: series.x![i],
             y: yValue,
             legend,
             color,
+            opacity,
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];

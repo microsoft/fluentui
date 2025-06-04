@@ -767,6 +767,7 @@ export class VerticalBarChartBase
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
+        opacity: point.opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
@@ -875,6 +876,7 @@ export class VerticalBarChartBase
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         shouldHighlight,
+        opacity: point.opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
@@ -993,6 +995,7 @@ export class VerticalBarChartBase
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
+        opacity: point.opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);

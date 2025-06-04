@@ -564,6 +564,7 @@ export class HorizontalBarChartWithAxisBase
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
+        opacity: point.opacity,
       });
       if (point.x >= this.X_ORIGIN) {
         ++currPositiveCounter;
@@ -763,6 +764,7 @@ export class HorizontalBarChartWithAxisBase
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
+        opacity: point.opacity,
       });
       if (point.x >= this.X_ORIGIN) {
         ++currPositiveCounter;

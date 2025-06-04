@@ -449,7 +449,7 @@ export class VerticalStackedBarChartBase
             y1={y1}
             x2={x2}
             y2={y2}
-            opacity={shouldHighlight ? 1 : 0.1}
+            opacity={shouldHighlight ? lineObject[item][i].opacity ?? 1 : 0.1}
             strokeWidth={lineObject[item][0].lineOptions?.strokeWidth ?? 3}
             strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
@@ -943,6 +943,7 @@ export class VerticalStackedBarChartBase
           theme: this.props.theme!,
           shouldHighlight,
           href: this.props.href,
+          opacity: point.opacity,
         });
         const rectFocusProps = !shouldFocusWholeStack &&
           shouldHighlight && {

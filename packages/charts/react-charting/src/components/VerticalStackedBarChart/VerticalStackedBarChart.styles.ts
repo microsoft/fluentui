@@ -2,10 +2,10 @@ import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/li
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
-  const { shouldHighlight, href, theme } = props;
+  const { shouldHighlight, href, theme, opacity } = props;
   return {
     opacityChangeOnHover: {
-      opacity: shouldHighlight ? '' : '0.1',
+      opacity: shouldHighlight ? opacity ?? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
     },
 

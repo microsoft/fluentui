@@ -450,6 +450,11 @@ export class GroupedVerticalBarChartBase
             // Not rendering data with 0.
             return;
           }
+          this._classNames = getClassNames(this.props.styles!, {
+            theme: this.props.theme!,
+            href: this.props.href!,
+            opacity: pointData.opacity,
+          });
           const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${legendIndex}_${pointIndex}`;
           if (this.props.enableGradient) {
             const startColor = pointData.gradient?.[0] || pointData.color;
