@@ -1,8 +1,38 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 26 May 2025 07:20:14 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Jun 2025 07:20:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.14)
+
+Mon, 02 Jun 2025 07:20:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.13..@fluentui/chart-utilities_v1.1.14)
+
+### Patches
+
+- Add styling to tables ([PR #34560](https://github.com/microsoft/fluentui/pull/34560) by anushgupta@microsoft.com)
+- fix(chart-utilities): Mark sankey chart with cycles as unsupported ([PR #34556](https://github.com/microsoft/fluentui/pull/34556) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Exporting ColorAxis type ([PR #34530](https://github.com/microsoft/fluentui/pull/34530) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.13)
+
+Fri, 30 May 2025 07:20:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.12..@fluentui/chart-utilities_v1.1.13)
+
+### Patches
+
+- fix(chart-utilities): Add property to plotly schema ([PR #34516](https://github.com/microsoft/fluentui/pull/34516) by 120183316+srmukher@users.noreply.github.com)
+
+## [1.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.12)
+
+Tue, 27 May 2025 07:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.11..@fluentui/chart-utilities_v1.1.12)
+
+### Patches
+
+- fix(chart-utilities): Mark log scale as unsupported ([PR #34526](https://github.com/microsoft/fluentui/pull/34526) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Adding properties to plotly schema ([PR #34518](https://github.com/microsoft/fluentui/pull/34518) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.11)
 

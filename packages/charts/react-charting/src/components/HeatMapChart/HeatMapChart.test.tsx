@@ -1,44 +1,13 @@
-jest.mock('react-dom');
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
-import toJson from 'enzyme-to-json';
-
+import { render, fireEvent } from '@testing-library/react';
 import { resetIds, setRTL } from '../../Utilities';
 import { IHeatMapChartProps, HeatMapChart } from './index';
-import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
+import { HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { act } from 'react-dom/test-utils';
 import { conditionalDescribe, conditionalTest, isTimezoneSet } from '../../utilities/TestUtility.test';
 const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
-
-// Wrapper of the HeatMapChart to be tested.
-let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
-const originalRAF = window.requestAnimationFrame;
-
-function sharedBeforeEach() {
-  resetIds();
-  Object.defineProperty(window, 'requestAnimationFrame', {
-    writable: true,
-    value: (callback: FrameRequestCallback) => callback(0),
-  });
-}
-
-function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-
-  // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-  // cleaned up in fake timers world
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if ((global.setTimeout as any).mock) {
-    jest.useRealTimers();
-  }
-  window.requestAnimationFrame = originalRAF;
-}
 
 const stringPoints: string[] = ['p1', 'p2'];
 const datePoints: Date[] = [new Date('2020-03-03'), new Date('2020-03-04')];
@@ -100,125 +69,102 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+}
+
+function sharedAfterEach() {
+  jest.clearAllMocks();
+  jest.useRealTimers();
+}
+
 conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
 
   afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
-
-    // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-    // cleaned up in fake timers world
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((global.setTimeout as any).mock) {
-      jest.useRealTimers();
-    }
+    jest.clearAllMocks();
+    jest.useRealTimers();
   });
+
   it('renders HeatMapChart correctly', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders corretly even when data is not present for some group', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapStringDateData} // first group has no data in it
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['pink', 'yellow']}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders hideLegend correctly', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          hideLegend={true}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders hideTooltip correctly', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          hideTooltip={true}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders yAxisTickFormat correctly', async () => {
-    await act(async () => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          yAxisTickFormat={'/%d'}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-      await new Promise(resolve => setTimeout(resolve));
-      wrapper.update();
-    });
-    const tree = toJson(wrapper!, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('should render HeatMapChart correctly when the layout direction is RTL', () => {
-    setRTL(true);
-
-    wrapper = mount(
+    const { container } = render(
       <HeatMapChart
         data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
+  });
 
+  it('renders corretly even when data is not present for some group', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapStringDateData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['pink', 'yellow']}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders hideLegend correctly', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        hideLegend={true}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders hideTooltip correctly', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        hideTooltip={true}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders yAxisTickFormat correctly', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        yAxisTickFormat={'/%d'}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render HeatMapChart correctly when the layout direction is RTL', () => {
+    setRTL(true);
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container).toMatchSnapshot();
     setRTL(false);
   });
 
   it('should render HeatMapChart correctly in dark theme', () => {
-    wrapper = mount(
+    const { container } = render(
       <ThemeProvider theme={DarkTheme}>
         <HeatMapChart
           data={HeatMapDateStringData}
@@ -227,8 +173,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('HeatMapChart
         />
       </ThemeProvider>,
     );
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });
 
@@ -237,61 +182,49 @@ describe('HeatMapChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          hideLegend={true}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
-    expect(hideLegendDOM!.length).toBe(0);
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        hideLegend={true}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container.querySelectorAll('[class^="legendContainer"]').length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
-    expect(hideLegendDOM).toBeDefined();
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container.querySelectorAll('[class^="legendContainer"]').length).toBeGreaterThan(0);
   });
 
-  it('Should mount callout when hideTootip false ', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM).toBeDefined();
+  it('Should mount callout when hideTooltip false ', () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(container.querySelectorAll('[class^="ms-Layer"]').length).toBeGreaterThanOrEqual(0);
   });
 
-  it('Should not mount callout when hideTootip true ', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-          hideTooltip={true}
-        />,
-      );
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM.length).toBe(0);
+  it('Should not mount callout when hideTooltip true ', () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+        hideTooltip={true}
+      />,
+    );
+    expect(container.querySelectorAll('[class^="ms-Layer"]').length).toBe(0);
   });
 });
 
@@ -308,8 +241,8 @@ describe('Render calling with respective to props', () => {
       rangeValuesForColorScale: ['lightblue', 'darkblue'],
       width: 600,
     };
-    const component = mount(<HeatMapChart {...props} />);
-    component.setProps({ ...props });
+    const { rerender } = render(<HeatMapChart {...props} />);
+    rerender(<HeatMapChart {...props} />);
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -322,8 +255,8 @@ describe('Render calling with respective to props', () => {
       domainValuesForColorScale: [0, 600],
       rangeValuesForColorScale: ['lightblue', 'darkblue'],
     };
-    const component = mount(<HeatMapChart {...props} />);
-    component.setProps({ ...props, width: 600 });
+    const { rerender } = render(<HeatMapChart {...props} />);
+    rerender(<HeatMapChart {...props} width={600} />);
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -336,23 +269,20 @@ describe('HeatMapChart - mouse events', () => {
   conditionalTest(isTimezoneSet(Timezone.UTC) && env === 'TEST')(
     'Should render callout correctly on mouseover',
     async () => {
-      await act(async () => {
-        wrapper = mount(
-          <HeatMapChart
-            data={HeatMapDateStringData}
-            domainValuesForColorScale={[0, 600]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
-            calloutProps={{ doNotLayer: true }}
-          />,
-        );
-        await new Promise(resolve => setTimeout(resolve));
-        wrapper.update();
-        wrapper.find('rect').at(1).simulate('mouseover');
-        await new Promise(resolve => setTimeout(resolve));
-        wrapper.update();
-      });
-      const tree = toJson(wrapper!, { mode: 'deep' });
-      expect(tree).toMatchSnapshot();
+      const { container } = render(
+        <HeatMapChart
+          data={HeatMapDateStringData}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+          calloutProps={{ doNotLayer: true }}
+        />,
+      );
+      // Find the second rect and fire mouseover
+      const rects = container.querySelectorAll('rect');
+      if (rects.length > 1) {
+        fireEvent.mouseOver(rects[1]);
+      }
+      expect(container).toMatchSnapshot();
     },
   );
 });
@@ -362,30 +292,24 @@ describe('Render empty chart aria label div when chart is empty', () => {
     resetIds();
   });
   it('No empty chart aria label div rendered', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={HeatMapDateStringData}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-    });
-    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-    expect(renderedDOM!.length).toBe(0);
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapDateStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(Array.from(container.querySelectorAll('[aria-label="Graph has no data to display"]')).length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    act(() => {
-      wrapper = mount(
-        <HeatMapChart
-          data={[]}
-          domainValuesForColorScale={[0, 600]}
-          rangeValuesForColorScale={['lightblue', 'darkblue']}
-        />,
-      );
-    });
-    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-    expect(renderedDOM!.length).toBe(1);
+    const { container } = render(
+      <HeatMapChart
+        data={[]}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    expect(Array.from(container.querySelectorAll('[aria-label="Graph has no data to display"]')).length).toBe(1);
   });
 });

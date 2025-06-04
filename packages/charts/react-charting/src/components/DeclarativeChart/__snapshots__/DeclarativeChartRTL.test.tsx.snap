@@ -5350,19 +5350,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_0"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_0
                 </tspan>
@@ -5380,19 +5379,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_1"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_1
                 </tspan>
@@ -5410,19 +5408,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_2"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_2
                 </tspan>
@@ -5440,19 +5437,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_3"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_3
                 </tspan>
@@ -5470,19 +5466,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_4"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_4
                 </tspan>
@@ -5500,19 +5495,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_5"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_5
                 </tspan>
@@ -5530,19 +5524,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_6"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_6
                 </tspan>
@@ -5560,19 +5553,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_7"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_7
                 </tspan>
@@ -5590,19 +5582,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_8"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_8
                 </tspan>
@@ -5620,19 +5611,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_9"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_9
                 </tspan>
@@ -5650,19 +5640,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_10"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_10
                 </tspan>
@@ -5680,19 +5669,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_11"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_11
                 </tspan>
@@ -5710,19 +5698,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_12"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_12
                 </tspan>
@@ -5740,19 +5727,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_13"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_13
                 </tspan>
@@ -5770,19 +5756,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_14"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_14
                 </tspan>
@@ -5800,19 +5785,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_15"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_15
                 </tspan>
@@ -5830,19 +5814,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_16"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_16
                 </tspan>
@@ -5860,19 +5843,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_17"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_17
                 </tspan>
@@ -5890,19 +5872,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_18"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_18
                 </tspan>
@@ -5920,19 +5901,18 @@ exports[`DeclarativeChart Should render heatmapchart in DeclarativeChart 1`] = `
               <text
                 dy="0.32em"
                 fill="currentColor"
-                text-align="start"
-                x="-15"
+                x="-10"
               >
                 <tspan
                   data-="y_19"
                   dy="0.32em"
                   id="BaseSpan"
-                  x="-15"
+                  x="-10"
                 />
                 <tspan
-                  dx="1.5em"
+                  dx="0em"
                   id="LessLength"
-                  x="-15"
+                  x="-10"
                 >
                   y_19
                 </tspan>
@@ -18830,7 +18810,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(40.5,0)"
+              transform="translate(61.07142857142857,0)"
             >
               <line
                 stroke="currentColor"
@@ -18842,79 +18822,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                Dec 28
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(76.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 04
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(112.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 11
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(148.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 18
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(184.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Jan 25
+                Jan 01
               </text>
             </g>
             <g
@@ -18938,60 +18846,6 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(256.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 08
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(292.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(328.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Feb 22
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(364.5,0)"
             >
               <line
@@ -19010,7 +18864,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(400.49999999999994,0)"
+              transform="translate(523.9285714285714,0)"
             >
               <line
                 stroke="currentColor"
@@ -19022,97 +18876,7 @@ exports[`DeclarativeChart Should render linechart in DeclarativeChart 1`] = `
                 fill="currentColor"
                 y="16"
               >
-                Mar 08
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(436.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 15
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(472.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 22
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(508.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Mar 29
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(544.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Apr 05
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(580.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                Apr 12
+                Apr 01
               </text>
             </g>
           </g>
@@ -19740,7 +19504,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0,0Z"
+                  d="M0.4,0L-1,0A1,1,0,0,1,-0.99,-0.142L0.396,0.057L6.061,-39.538Z"
                   data-is-focusable="true"
                   id="_Pie_1Oxygen4500"
                   role="img"
@@ -19760,8 +19524,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="hanging"
                   text-anchor="start"
-                  x="-1.9949542646383942"
-                  y="-0.14197704744458997"
+                  x="-2.992431396957591"
+                  y="-0.21296557116688497"
                 >
                   4.5k
                 </text>
@@ -19781,7 +19545,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0,0Z"
+                  d="M-0.329,-0.527A0.219,0.219,0,1,1,-0.46,-0.76L36.613,16.108Z"
                   data-is-focusable="true"
                   id="_Pie_1Hydrogen2500"
                   role="img"
@@ -19801,8 +19565,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="hanging"
                   text-anchor="end"
-                  x="1.743415787423914"
-                  y="-0.9800517293291477"
+                  x="2.615123681135871"
+                  y="-1.4700775939937216"
                 >
                   2.5k
                 </text>
@@ -19822,7 +19586,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0,0Z"
+                  d="M-0.699,-0.715L14.563,37.255Z"
                   data-is-focusable="true"
                   id="_Pie_1Carbon_Dioxide1053"
                   role="img"
@@ -19842,8 +19606,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="auto"
                   text-anchor="end"
-                  x="1.3986943586327552"
-                  y="1.4295643011522448"
+                  x="2.0980415379491326"
+                  y="2.1443464517283672"
                 >
                   1.1k
                 </text>
@@ -19863,7 +19627,7 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       &::-moz-focus-inner {
                         border: 0;
                       }
-                  d="M0,0Z"
+                  d="M-0.19,-0.982L-0.4,39.998Z"
                   data-is-focusable="true"
                   id="_Pie_1Nitrogen500"
                   role="img"
@@ -19883,8 +19647,8 @@ exports[`DeclarativeChart Should render piechart in DeclarativeChart 1`] = `
                       }
                   dominant-baseline="auto"
                   text-anchor="end"
-                  x="0.3803022301512072"
-                  y="1.9635096673411154"
+                  x="0.5704533452268108"
+                  y="2.9452645010116734"
                 >
                   500
                 </text>
