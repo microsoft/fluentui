@@ -57,7 +57,11 @@ export const useRootDefaultClassName = makeResetStyles({
     backgroundColor: navItemTokens.backgroundColorHover,
   },
   ':active': {
+    zIndex: 1,
     backgroundColor: navItemTokens.backgroundColorPressed,
+  },
+  ':focus': {
+    zIndex: 1,
   },
 });
 
