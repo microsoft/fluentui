@@ -745,7 +745,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   *  @internal Handle a window mouse up during a drag operation
+   * Handle a window mouse up during a drag operation
+   * @internal
    */
   private handleWindowPointerUp = (): void => {
     this.stopDragging();
