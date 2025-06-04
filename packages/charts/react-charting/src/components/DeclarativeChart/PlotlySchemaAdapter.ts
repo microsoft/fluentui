@@ -242,7 +242,7 @@ export const resolveXAxisPoint = (
   isXDate: boolean,
   isXNumber: boolean,
 ): string | Date | number => {
-  if (!x) {
+  if (x === null || x === undefined) {
     return '';
   }
   if (isXYearCategory) {
