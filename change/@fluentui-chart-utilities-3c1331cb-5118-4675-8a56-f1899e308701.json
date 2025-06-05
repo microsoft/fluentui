@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: allow string y values in bar and scatter traces for VSBC rendering",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

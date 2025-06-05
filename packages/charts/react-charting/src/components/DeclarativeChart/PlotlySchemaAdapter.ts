@@ -646,11 +646,16 @@ export const transformPlotlyJsonToScatterChartProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
+      const colors = isScatterMarkers
+        ? series?.mode?.includes('line')
+          ? series.line?.color
+          : series.marker?.color
+        : series.line?.color;
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
         colorwayType,
-        isScatterMarkers ? series.marker?.color : series.line?.color,
+        colors,
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
