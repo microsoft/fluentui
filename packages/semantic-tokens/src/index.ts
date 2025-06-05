@@ -1822,6 +1822,8 @@ export {
   _ctrlAvatarPresenceBadgeStrokeWidthSm,
   _ctrlButtonGapInsideDefault,
   _ctrlDividerForegroundSubtle,
+  _ctrlSwitchPaddingTextBottom,
+  _ctrlSwitchPaddingTextTop,
   _ctrlSwitchStrokeOnActiveBrandHover,
   _ctrlSwitchStrokeOnActiveBrandRest,
 } from './legacyVariant/tokens';

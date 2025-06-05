@@ -55,6 +55,26 @@ export const colorNeutralBackground1 = 'var(--colorNeutralBackground1)';
  */
 export const colorTransparentBackground = 'var(--colorTransparentBackground)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundDisabled | `colorNeutralForegroundDisabled`} design token.
+ * @public
+ */
+export const colorNeutralForegroundDisabled = 'var(--colorNeutralForegroundDisabled)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessibleHover | `colorNeutralStrokeAccessibleHover`} design token.
+ * @public
+ */
+export const colorNeutralStrokeAccessibleHover = 'var(--colorNeutralStrokeAccessibleHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessiblePressed | `colorNeutralStrokeAccessiblePressed`} design token.
+ * @public
+ */
+export const colorNeutralStrokeAccessiblePressed = 'var(--colorNeutralStrokeAccessiblePressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessible | `colorNeutralStrokeAccessible`} design token.
+ * @public
+ */
+export const colorNeutralStrokeAccessible = 'var(--colorNeutralStrokeAccessible)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorSubtleBackgroundHover | `colorSubtleBackgroundHover`} design token.
  * @public
  */
@@ -105,25 +125,10 @@ export const colorNeutralForeground3 = 'var(--colorNeutralForeground3)';
  */
 export const fontSizeBase300 = 'var(--fontSizeBase300)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundDisabled | `colorNeutralForegroundDisabled`} design token.
+ * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
  * @public
  */
-export const colorNeutralForegroundDisabled = 'var(--colorNeutralForegroundDisabled)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessibleHover | `colorNeutralStrokeAccessibleHover`} design token.
- * @public
- */
-export const colorNeutralStrokeAccessibleHover = 'var(--colorNeutralStrokeAccessibleHover)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessiblePressed | `colorNeutralStrokeAccessiblePressed`} design token.
- * @public
- */
-export const colorNeutralStrokeAccessiblePressed = 'var(--colorNeutralStrokeAccessiblePressed)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeAccessible | `colorNeutralStrokeAccessible`} design token.
- * @public
- */
-export const colorNeutralStrokeAccessible = 'var(--colorNeutralStrokeAccessible)';
+export const colorTransparentBackgroundHover = 'var(--colorTransparentBackgroundHover)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeDisabled | `colorNeutralStrokeDisabled`} design token.
  * @public
@@ -215,6 +220,21 @@ export const colorNeutralForeground1Hover = 'var(--colorNeutralForeground1Hover)
  */
 export const colorNeutralForeground1Pressed = 'var(--colorNeutralForeground1Pressed)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInvertedHover | `colorNeutralForegroundInvertedHover`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInvertedHover = 'var(--colorNeutralForegroundInvertedHover)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInvertedPressed | `colorNeutralForegroundInvertedPressed`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInvertedPressed = 'var(--colorNeutralForegroundInvertedPressed)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInverted | `colorNeutralForegroundInverted`} design token.
+ * @public
+ */
+export const colorNeutralForegroundInverted = 'var(--colorNeutralForegroundInverted)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundOnBrand | `colorNeutralForegroundOnBrand`} design token.
  * @public
  */
@@ -239,11 +259,6 @@ export const spacingHorizontalM = 'var(--spacingHorizontalM)';
  * @public
  */
 export const spacingHorizontalL = 'var(--spacingHorizontalL)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForegroundInverted | `colorNeutralForegroundInverted`} design token.
- * @public
- */
-export const colorNeutralForegroundInverted = 'var(--colorNeutralForegroundInverted)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground3 | `colorPaletteRedBackground3`} design token.
  * @public
@@ -444,3 +459,8 @@ export const borderRadiusSmall = 'var(--borderRadiusSmall)';
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXS | `spacingVerticalXS`} design token.
+ * @public
+ */
+export const spacingVerticalXS = 'var(--spacingVerticalXS)';

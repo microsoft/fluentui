@@ -10,6 +10,7 @@ import {
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
   nullColorRaw,
+  paddingCtrlTextTopRaw,
 } from '../control/variables';
 import {
   colorNeutralForeground2,
@@ -23,6 +24,7 @@ import {
   strokeWidthThin,
   spacingHorizontalSNudge,
   colorNeutralForeground3,
+  spacingVerticalXS,
   colorTransparentStrokeInteractive,
   colorTransparentStroke,
 } from '../legacy/tokens';
@@ -35,6 +37,7 @@ import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
+  paddingCtrlTextBottomRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   strokeCtrlOnActiveBrandRestRaw,
 } from '../optional/variables';
@@ -137,6 +140,20 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * please use foregroundCtrlHintDefault instead.
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlSwitchPaddingTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, ${spacingVerticalXS}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlSwitchPaddingTextTop = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalXS})`;
 /**
  * This is a legacy variant for strokeCtrlOnActiveBrandHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
