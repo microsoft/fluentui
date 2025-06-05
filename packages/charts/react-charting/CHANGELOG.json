@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 05 Jun 2025 07:20:36 GMT",
+      "tag": "@fluentui/react-charting_v5.24.1",
+      "version": "5.24.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3c4faa17c7314e3a72b239eeb6740a4b3203c5d6",
+            "comment": "fix(react-charting): Fixing line color mismatch"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Jun 2025 07:20:27 GMT",
       "tag": "@fluentui/react-charting_v5.24.0",
       "version": "5.24.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 04 Jun 2025 07:20:27 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jun 2025 07:20:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.1)
+
+Thu, 05 Jun 2025 07:20:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.0..@fluentui/react-charting_v5.24.1)
+
+### Patches
+
+- fix(react-charting): Fixing line color mismatch ([PR #34589](https://github.com/microsoft/fluentui/pull/34589) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.0)
 
