@@ -88,7 +88,6 @@ import type {
       TaskPaneInternalProps,
       'useBorderLessStyles' | 'addVerticalScrollSpace' | 'styles' | 'stretchBodyToContainer' | 'headerIconUrl' | 'width'
     > &
-    // this is causing issue
     AppDrawerProps & {
       open?: boolean;
       resizeMode?: boolean;
@@ -96,7 +95,8 @@ import type {
 
   type TaskPaneState = ComponentState<TaskPaneSlots> &
     AppDrawerState &
-    // TaskPaneProps -  is causing issue -> because `AppDrawerProps intersection` //
+    // DON'T: TaskPaneProps -  is causing issue -> because `AppDrawerProps intersection` //
+    // DO: Pick<TaskPaneProps, 'prop1' | 'prop2'> -> Don't include all props, pick only what's needed to be in state
     TaskPaneProps & {
       shiftTabButton: React.MutableRefObject<TaskPaneButtonType>;
       renderHeaderIconId?: boolean;
@@ -104,8 +104,9 @@ import type {
 
   function Problem(state: TaskPaneState, props: TaskPaneProps) {
     const { titleTag } = props;
-    // missing assertSlots - which will incorrectly type state as "never"
-    // assertSlots<TaskPaneSlots>(state);
+    // DON'T: - assertion assert won't help with root issue,
+    // DO: assertSlots<TaskPaneSlots>(state);
+    assertSlots<TaskPaneSlots>(state as TaskPaneSlots);
 
     return (
       <state.rootWrapper {...getNativeProps(props, ['data-is-visible'])}>
