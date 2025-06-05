@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "feat: add support for string y-axis in VSBC",
+  "comment": "add labels for text+markers",
   "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
+  "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
 }

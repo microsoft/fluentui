@@ -14,6 +14,7 @@ import {
   transformPlotlyJsonToGaugeProps,
   getNumberAtIndexOrDefault,
   getValidXYRanges,
+  resolveXAxisPoint,
 } from './PlotlySchemaAdapter';
 import { getColor, getSchemaColors } from './PlotlyColorAdapter';
 
@@ -512,5 +513,38 @@ describe('getValidXYRanges', () => {
   it('handles x or y missing', () => {
     expect(getValidXYRanges({ x: [1, 2, 3] })).toEqual([]);
     expect(getValidXYRanges({ y: [1, 2, 3] })).toEqual([]);
+  });
+});
+
+describe('resolveXAxisPoint', () => {
+  it('should return the input as a string if isXYearCategory is true', () => {
+    const result = resolveXAxisPoint(2023, true, false, false, false);
+    expect(result).toStrictEqual('2023');
+  });
+
+  it('should return a Date object if isXString and isXDate are true', () => {
+    const result = resolveXAxisPoint('2023-01-01', false, true, true, false);
+    expect(result).toBeInstanceOf(Date);
+    expect(result).toStrictEqual(new Date('2023-01-01'));
+  });
+
+  it('should return a number if isXString and isXNumber are true', () => {
+    const result = resolveXAxisPoint('123.45', false, true, false, true);
+    expect(result).toStrictEqual(123.45);
+  });
+
+  it('should return the input as-is if isXString is true but neither isXDate nor isXNumber are true', () => {
+    const result = resolveXAxisPoint('test', false, true, false, false);
+    expect(result).toStrictEqual('test');
+  });
+
+  it('should return the input as-is if none of the conditions are met', () => {
+    const result = resolveXAxisPoint(42, false, false, false, false);
+    expect(result).toStrictEqual(42);
+  });
+  it('should return empty string for null, empty string and 0', () => {
+    expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
   });
 });

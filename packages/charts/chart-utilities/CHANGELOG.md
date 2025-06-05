@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Mon, 02 Jun 2025 07:20:40 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jun 2025 07:20:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.15)
+
+Wed, 04 Jun 2025 07:20:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.14..@fluentui/chart-utilities_v1.1.15)
+
+### Patches
+
+- feat: allow string y values in bar and scatter traces for VSBC rendering ([PR #34552](https://github.com/microsoft/fluentui/pull/34552) by kumarkshitij@microsoft.com)
+- feat(charts): Add locale aware date and number formatter ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [1.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.14)
 
