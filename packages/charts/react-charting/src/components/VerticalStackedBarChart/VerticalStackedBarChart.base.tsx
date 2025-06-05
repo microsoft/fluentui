@@ -741,7 +741,7 @@ export class VerticalStackedBarChartBase
   }
 
   private _onRectFocusHover(
-    xAxisPoint: string,
+    xAxisPoint: string | Date | number,
     point: IVSChartDataPoint,
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
@@ -749,8 +749,17 @@ export class VerticalStackedBarChartBase
     if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       this._calloutAnchorPoint = {
         chartDataPoint: point,
-        xAxisDataPoint: xAxisPoint,
+        xAxisDataPoint:
+          xAxisPoint instanceof Date
+            ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+            : xAxisPoint.toString(),
       };
+      const xCalloutValue =
+        point.xAxisCalloutData ||
+        (xAxisPoint instanceof Date
+          ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+          : xAxisPoint.toString());
+
       this.setState({
         refSelected,
         /**
@@ -761,7 +770,7 @@ export class VerticalStackedBarChartBase
         calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
-        xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
+        xCalloutValue,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
         callOutAccessibilityData: point.callOutAccessibilityData,

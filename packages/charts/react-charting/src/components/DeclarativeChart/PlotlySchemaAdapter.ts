@@ -235,6 +235,32 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
 };
 
+export const resolveXAxisPoint = (
+  x: Datum,
+  isXYearCategory: boolean,
+  isXString: boolean,
+  isXDate: boolean,
+  isXNumber: boolean,
+): string | Date | number => {
+  if (x === null || x === undefined) {
+    return '';
+  }
+  if (isXYearCategory) {
+    return x.toString();
+  }
+  if (isXString) {
+    if (isXDate) {
+      const date = new Date(x as string);
+      return date;
+    }
+    if (isXNumber) {
+      return parseFloat(x as string);
+    }
+    return x;
+  }
+  return x;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -333,6 +359,10 @@ export const transformPlotlyJsonToVSBCProps = (
       isDarkTheme,
     ) as string[] | string | undefined;
 
+    const xValues = series.x as Datum[];
+    const isXDate = isDateArray(xValues);
+    const isXString = isStringArray(xValues);
+    const isXNumber = isNumberArray(xValues);
     const validXYRanges = getValidXYRanges(series);
     validXYRanges.forEach(([rangeStart, rangeEnd], rangeIdx) => {
       const rangeXValues = series.x!.slice(rangeStart, rangeEnd);
@@ -340,7 +370,11 @@ export const transformPlotlyJsonToVSBCProps = (
 
       (rangeXValues as Datum[]).forEach((x: string | number, index2: number) => {
         if (!mapXToDataPoints[x]) {
-          mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
+          mapXToDataPoints[x] = {
+            xAxisPoint: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
+            chartData: [],
+            lineData: [],
+          };
         }
         const legend: string = legends[index1];
         // resolve color for each legend's bars from the extracted colors
@@ -629,9 +663,11 @@ export const transformPlotlyJsonToScatterChartProps = (
         isDarkTheme,
       ) as string[] | string | undefined;
       const xValues = series.x as Datum[];
-      const isString = isStringArray(xValues);
+      const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
+      // string case is not possible for scatter chart as it is already filtered out in declarative chart
+      const isXYearCategory = false;
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
@@ -657,7 +693,7 @@ export const transformPlotlyJsonToScatterChartProps = (
           legend,
           legendShape,
           data: rangeXValues.map((x, i: number) => ({
-            x: isString ? (isXDate ? new Date(x as string) : isXNumber ? parseFloat(x as string) : x) : x,
+            x: resolveXAxisPoint(x, isXYearCategory, isXString, isXDate, isXNumber),
             y: rangeYValues[i],
             ...(Array.isArray(series.marker?.size)
               ? { markerSize: markerSizes[i] }
