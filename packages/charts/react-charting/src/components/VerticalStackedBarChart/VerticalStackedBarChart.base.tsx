@@ -455,6 +455,10 @@ export class VerticalStackedBarChartBase
             />,
           );
         }
+        const opacity =
+          lineObject[item][i].color && lineObject[item][i].color.indexOf('rgba') > -1
+            ? parseFloat(lineObject[item][i].color.split(',')[3].replace(')', ''))
+            : 1;
         lines.push(
           <line
             key={`${index}-${i}-line`}
@@ -462,7 +466,7 @@ export class VerticalStackedBarChartBase
             y1={y1}
             x2={x2}
             y2={y2}
-            opacity={shouldHighlight ? lineObject[item][i].opacity ?? 1 : 0.1}
+            opacity={shouldHighlight ? opacity ?? 1 : 0.1}
             strokeWidth={lineObject[item][0].lineOptions?.strokeWidth ?? 3}
             strokeLinecap={lineObject[item][0].lineOptions?.strokeLinecap ?? 'round'}
             strokeDasharray={lineObject[item][0].lineOptions?.strokeDasharray}
@@ -990,11 +994,15 @@ export class VerticalStackedBarChartBase
         const ref: IRefArrayData = {};
 
         const shouldHighlight = this._isLegendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
+        const opacity =
+          point.color && point.color.indexOf('rgba') !== -1
+            ? parseFloat(point.color.split('rgba(')[1].split(',')[3])
+            : undefined;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight,
           href: this.props.href,
-          opacity: point.opacity,
+          opacity,
         });
         const rectFocusProps = !shouldFocusWholeStack &&
           shouldHighlight && {

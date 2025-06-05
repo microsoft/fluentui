@@ -83,7 +83,8 @@ export interface ICartesianChartStyleProps {
   enableReflow?: boolean;
 
   /**
-   * opacity
+   * Prop to set the opacity of the chart color.
+   * This prop should only be used if absolutely necessary as it can impact the accessibility of the output chart color
    */
   opacity?: number;
 }

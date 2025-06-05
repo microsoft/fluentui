@@ -437,7 +437,6 @@ export class GroupedVerticalBarChartBase
         // use the following addend.
         const xPoint = xScale1(legendTitle) + (xScale1.bandwidth() - this._barWidth) / 2;
         const isLegendActive = this._legendHighlighted(legendTitle) || this._noLegendHighlighted();
-        const barOpacity = isLegendActive ? '' : '0.1';
 
         let barTotalValue = 0;
         const yBaseline = yBarScale(this.Y_ORIGIN);
@@ -450,11 +449,14 @@ export class GroupedVerticalBarChartBase
             // Not rendering data with 0.
             return;
           }
+          const opacity =
+            pointData.color && rgb(pointData.color).opacity !== undefined ? rgb(pointData.color).opacity : undefined;
           this._classNames = getClassNames(this.props.styles!, {
             theme: this.props.theme!,
             href: this.props.href!,
-            opacity: pointData.opacity,
+            opacity: isLegendActive ? opacity : 0.1,
           });
+          const barOpacity = isLegendActive ? opacity ?? '' : '0.1';
           const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${legendIndex}_${pointIndex}`;
           if (this.props.enableGradient) {
             const startColor = pointData.gradient?.[0] || pointData.color;

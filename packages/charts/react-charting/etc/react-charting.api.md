@@ -723,7 +723,6 @@ export interface IGVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
-    opacity?: number;
     useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
@@ -860,7 +859,6 @@ export interface IHorizontalBarChartWithAxisDataPoint {
     gradient?: [string, string];
     legend?: string;
     onClick?: VoidFunction;
-    opacity?: number;
     x: number;
     xAxisCalloutData?: string;
     y: number | string;
@@ -1106,7 +1104,6 @@ export interface ILineDataInVerticalStackedBarChart {
     legend: string;
     legendShape?: LegendShape;
     lineOptions?: ILineChartLineOptions;
-    opacity?: number;
     useSecondaryYScale?: boolean;
     // (undocumented)
     y: number | string;
@@ -1546,7 +1543,6 @@ export interface IVerticalBarChartDataPoint {
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
-    opacity?: number;
     x: number | string | Date;
     xAxisCalloutData?: string;
     y: number;
@@ -1678,7 +1674,6 @@ export interface IVSChartDataPoint {
     data: number | string;
     gradient?: [string, string];
     legend: string;
-    opacity?: number;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }

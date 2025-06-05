@@ -65,6 +65,7 @@ import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { rgb } from 'd3-color';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -356,8 +357,7 @@ export const transformPlotlyJsonToVSBCProps = (
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
-            color,
-            opacity,
+            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -376,13 +376,12 @@ export const transformPlotlyJsonToVSBCProps = (
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
-            color: lineColor,
+            color: rgb(lineColor).copy({ opacity }).formatRgb() ?? color,
             lineOptions: {
               ...(lineOptions ?? {}),
               mode: series.mode,
             },
             useSecondaryYScale: usesSecondaryYScale(series),
-            opacity,
           });
           if (!usesSecondaryYScale(series) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -488,10 +487,9 @@ export const transformPlotlyJsonToGVBCProps = (
           key: legend,
           data: series.y![xIndex] as number,
           xAxisCalloutData: x as string,
-          color,
+          color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series),
-          opacity,
         });
       }
     });
@@ -591,11 +589,10 @@ export const transformPlotlyJsonToVBCProps = (
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
         legend,
-        color,
+        color: rgb(color).copy({ opacity }).formatRgb() ?? color,
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
-        opacity,
       });
     });
   });
@@ -772,8 +769,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             x: series.x![i],
             y: yValue,
             legend,
-            color,
-            opacity,
+            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];

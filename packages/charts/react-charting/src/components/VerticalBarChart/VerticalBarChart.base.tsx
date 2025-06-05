@@ -772,11 +772,15 @@ export class VerticalBarChartBase
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      const opacity =
+        point.color && point.color.indexOf('rgba') !== -1
+          ? parseFloat(point.color.split('rgba(')[1].split(',')[3])
+          : undefined;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
-        opacity: point.opacity,
+        opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
@@ -882,10 +886,14 @@ export class VerticalBarChartBase
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted();
+      const opacity =
+        point.color && point.color.indexOf('rgba') !== -1
+          ? parseFloat(point.color.split('rgba(')[1].split(',')[3])
+          : undefined;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         shouldHighlight,
-        opacity: point.opacity,
+        opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);
@@ -1000,11 +1008,15 @@ export class VerticalBarChartBase
     const yReferencePoint = this._yMax < 0 ? this._yMax : 0;
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      const opacity =
+        point.color && point.color.indexOf('rgba') !== -1
+          ? parseFloat(point.color.split('rgba(')[1].split(',')[3])
+          : undefined;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
-        opacity: point.opacity,
+        opacity,
       });
 
       let barHeight: number = yBarScale(point.y) - yBarScale(yReferencePoint);

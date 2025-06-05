@@ -560,11 +560,15 @@ export class HorizontalBarChartWithAxisBase
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this._isLegendHighlighted(point.legend);
       }
+      const opacity =
+        point.color && point.color.indexOf('rgba') !== -1
+          ? parseFloat(point.color.split(',')[3].replace(')', ''))
+          : undefined;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
-        opacity: point.opacity,
+        opacity,
       });
       if (point.x >= this.X_ORIGIN) {
         ++currPositiveCounter;
@@ -760,11 +764,15 @@ export class HorizontalBarChartWithAxisBase
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
         shouldHighlight = this._isLegendHighlighted(point.legend);
       }
+      const opacity =
+        point.color && point.color.indexOf('rgba') !== -1
+          ? parseFloat(point.color.split(',')[3].replace(')', ''))
+          : undefined;
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
         shouldHighlight,
-        opacity: point.opacity,
+        opacity,
       });
       if (point.x >= this.X_ORIGIN) {
         ++currPositiveCounter;
