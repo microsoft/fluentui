@@ -25,5 +25,44 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentRest',
   },
-  _ctrlButtonGapInsideDefault: { f2Token: 'spacingHorizontalSNudge', originalToken: 'gapInsideCtrlDefault' },
+  _ctrlAvatarActiveRingStrokeWidthLg: {
+    f2Token: 'strokeWidthThickest',
+    originalToken: 'ctrlAvatarActiveRingStrokeWidth',
+  },
+  _ctrlAvatarActiveRingStrokeWidthMd: {
+    f2Token: 'strokeWidthThicker',
+    originalToken: 'ctrlAvatarActiveRingStrokeWidth',
+  },
+  _ctrlAvatarActiveRingStrokeWidthSm: {
+    f2Token: 'strokeWidthThick',
+    originalToken: 'ctrlAvatarActiveRingStrokeWidth',
+  },
+  _ctrlAvatarCornerGroupLg: {
+    f2Token: 'borderRadiusLarge',
+    originalToken: 'ctrlAvatarCornerGroup',
+  },
+  _ctrlAvatarCornerGroupMd: {
+    f2Token: 'borderRadiusMedium',
+    originalToken: 'ctrlAvatarCornerGroup',
+  },
+  _ctrlAvatarCornerGroupSm: {
+    f2Token: 'borderRadiusSmall',
+    originalToken: 'ctrlAvatarCornerGroup',
+  },
+  _ctrlAvatarCornerGroupXLg: {
+    f2Token: 'borderRadiusXLarge',
+    originalToken: 'ctrlAvatarCornerGroup',
+  },
+  _ctrlAvatarPresenceBadgeStrokeWidthLg: {
+    f2Token: 'strokeWidthThick',
+    originalToken: 'ctrlAvatarPresenceBadgeStrokeWidth',
+  },
+  _ctrlAvatarPresenceBadgeStrokeWidthSm: {
+    f2Token: 'strokeWidthThin',
+    originalToken: 'ctrlAvatarPresenceBadgeStrokeWidth',
+  },
+  _ctrlButtonGapInsideDefault: {
+    f2Token: 'spacingHorizontalSNudge',
+    originalToken: 'gapInsideCtrlDefault',
+  },
 };

@@ -82,6 +82,7 @@ import {
   shadowWindowActiveKeyRaw,
 } from '../control/variables';
 import {
+  fontFamilyBase,
   fontSizeBase300,
   lineHeightBase300,
   fontSizeBase200,
@@ -369,7 +370,7 @@ import {
   shadowWindowInactiveKeyRaw,
 } from './variables';
 
-export const textStyleDefaultHeaderFontFamily = `var(${textStyleDefaultHeaderFontFamilyRaw}, var(${textStyleDefaultRegularFontFamilyRaw}))`;
+export const textStyleDefaultHeaderFontFamily = `var(${textStyleDefaultHeaderFontFamilyRaw}, var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase}))`;
 export const textStyleDefaultHeaderLetterSpacing = `var(${textStyleDefaultHeaderLetterSpacingRaw}, var(${textStyleDefaultRegularLetterSpacingRaw}))`;
 export const textStyleAiRegularFontFamily = `var(${textStyleAiRegularFontFamilyRaw}, var(${textStyleDefaultRegularFontFamilyRaw}))`;
 export const textStyleAiRegularWeight = `var(${textStyleAiRegularWeightRaw}, var(${textStyleDefaultRegularWeightRaw}))`;
