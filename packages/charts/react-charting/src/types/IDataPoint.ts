@@ -8,13 +8,13 @@ export interface IBasestate {
   _height?: number;
   activeLegend?: string;
   color?: string;
-  dataForHoverCard?: number;
+  dataForHoverCard?: number | string;
   isCalloutVisible: boolean;
   isLegendSelected?: boolean;
   isLegendHovered?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  YValueHover?: { legend?: string; y?: number | string; color?: string }[];
   hoverYValue?: string | number | null;
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
@@ -607,7 +607,7 @@ export interface IVSChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  data: number;
+  data: number | string;
 
   /**
    * Legend text for the datapoint in the chart
@@ -676,7 +676,7 @@ export interface IVerticalStackedChartProps {
  * {@docCategory IChartData}
  */
 export interface ILineDataInVerticalStackedBarChart {
-  y: number;
+  y: number | string;
   color: string;
   legend: string;
   /**
@@ -687,7 +687,7 @@ export interface ILineDataInVerticalStackedBarChart {
   /**
    * Data to show in callout
    */
-  data?: number;
+  data?: number | string;
   yAxisCalloutData?: string;
   /**
    * Whether to use the secondary y scale or not
