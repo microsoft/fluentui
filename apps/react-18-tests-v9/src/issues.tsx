@@ -1,15 +1,114 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
-import { Icon } from '@fluentui/react';
-import type { IContextualMenuProps } from '@fluentui/react';
-import { Caption1, slot } from '@fluentui/react-components';
+import { Icon, getNativeProps } from '@fluentui/react';
+// import type { IStyle } from '@fluentui/react/lib/Styling';
+import type { IContextualMenuProps, IStyle } from '@fluentui/react';
+import { Caption1, Subtitle2, assertSlots, slot } from '@fluentui/react-components';
 import type {
   ComponentProps,
   MenuButtonProps,
   Slot,
   SplitButtonProps,
   FluentProviderProps,
+  ComponentState,
+  DrawerProps,
+  DrawerState,
 } from '@fluentui/react-components';
+
+// TS2786: 'state.rootWrapper' cannot be used as a JSX component.
+// TS2339: Property 'headerWrapper' does not exist on type '({ components: { rootWrapper: ElementType<any, keyof IntrinsicElements>; titleTagWrapper: ElementType<any, keyof IntrinsicElements>; titleTagContent: ElementType<...>; }; } & ... 15 more ... & { ...; }) | ... 14 more ... | ({ ...; } & ... 15 more ... & { ...; })'.
+// Property 'headerWrapper' does not exist on type '{ components: { rootWrapper: ElementType<any, keyof IntrinsicElements>; titleTagWrapper: ElementType<any, keyof IntrinsicElements>; titleTagContent: ElementType<...>; }; } & ... 15 more ... & { ...; }'.
+{
+  type TaskPaneInternalProps = {
+    id: string;
+    title: string;
+    width: number;
+    styles?: TaskPaneStyles;
+    addVerticalScrollSpace?: boolean;
+    useBorderLessStyles?: boolean;
+    stretchBodyToContainer?: boolean;
+    headerIconUrl?: string;
+    titleTag?: string;
+  };
+
+  interface TaskPaneStyles {
+    root?: IStyle;
+    container?: IStyle;
+    header?: IStyle;
+    headerIcon?: IStyle;
+    title?: IStyle;
+    contentWrapper?: IStyle;
+    contentWrapperGap?: IStyle;
+    titleTagOuterContainer?: IStyle;
+    titleTagContainer?: IStyle;
+    titleTag?: IStyle;
+  }
+
+  ///
+
+  enum TaskPaneButtonType {
+    Action,
+    Resize,
+    Close,
+    RightAction,
+    ResizeChat,
+    AnchorOption,
+  }
+  ///
+  type AppDrawerProps = DrawerProps;
+  type AppDrawerState = DrawerState;
+  ///
+
+  type TaskPaneSlots = {
+    rootWrapper: NonNullable<Slot<'div'>>;
+    titleTagWrapper?: Slot<'div'>;
+    titleTagContent?: Slot<'span'>;
+  };
+  type TaskPaneProps = ComponentProps<Partial<TaskPaneSlots>> &
+    Omit<
+      TaskPaneInternalProps,
+      'useBorderLessStyles' | 'addVerticalScrollSpace' | 'styles' | 'stretchBodyToContainer' | 'headerIconUrl' | 'width'
+    > &
+    // this is causing issue
+    AppDrawerProps & {
+      open?: boolean;
+      resizeMode?: boolean;
+    };
+
+  type TaskPaneState = ComponentState<TaskPaneSlots> &
+    AppDrawerState &
+    // TaskPaneProps -  is causing issue -> because `AppDrawerProps intersection` //
+    TaskPaneProps & {
+      shiftTabButton: React.MutableRefObject<TaskPaneButtonType>;
+      renderHeaderIconId?: boolean;
+    };
+
+  function Problem(state: TaskPaneState, props: TaskPaneProps) {
+    const { titleTag } = props;
+    // missing assertSlots - which will incorrectly type state as "never"
+    // assertSlots<TaskPaneSlots>(state);
+
+    return (
+      <state.rootWrapper {...getNativeProps(props, ['data-is-visible'])}>
+        <state.containerWrapper>
+          <state.headerWrapper>
+            <Subtitle2 className={'test'}>{/* <state.titleWrapper>{props.title}</state.titleWrapper> */}</Subtitle2>
+            {titleTag && state.titleTagWrapper && (
+              <state.titleTagWrapper>
+                {state.titleTagContent && (
+                  <state.titleTagContent>
+                    <Subtitle2>{titleTag}</Subtitle2>
+                  </state.titleTagContent>
+                )}
+              </state.titleTagWrapper>
+            )}
+            <div>hello</div>
+          </state.headerWrapper>
+        </state.containerWrapper>
+      </state.rootWrapper>
+    );
+  }
+}
 
 // LegacyRef Issue
 // using v8 in conjunction with v9 interfaces
