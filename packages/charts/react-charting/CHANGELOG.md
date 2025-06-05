@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 02 Jun 2025 07:20:41 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jun 2025 07:20:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.1)
+
+Thu, 05 Jun 2025 07:20:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.0..@fluentui/react-charting_v5.24.1)
+
+### Patches
+
+- fix(react-charting): Fixing line color mismatch ([PR #34589](https://github.com/microsoft/fluentui/pull/34589) by 120183316+srmukher@users.noreply.github.com)
+
+## [5.24.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.0)
+
+Wed, 04 Jun 2025 07:20:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.23.97..@fluentui/react-charting_v5.24.0)
+
+### Minor changes
+
+- feat(react-charting): Improve locale aware date and number label formatting ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.15 ([PR #34552](https://github.com/microsoft/fluentui/pull/34552) by beachball)
+
+### Patches
+
+- pie chart fix ([PR #34582](https://github.com/microsoft/fluentui/pull/34582) by anushgupta@microsoft.com)
+- feat: add support for string y-axis in VSBC ([PR #34552](https://github.com/microsoft/fluentui/pull/34552) by kumarkshitij@microsoft.com)
 
 ## [5.23.97](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.97)
 

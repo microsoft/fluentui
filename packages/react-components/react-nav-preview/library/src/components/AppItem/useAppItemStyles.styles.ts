@@ -20,6 +20,7 @@ export const useAppItemStyles = makeStyles({
     gap: '10px',
     marginInlineStart: '-6px',
     marginInlineEnd: '0px',
+    marginTop: '2px',
     padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
     ...typographyStyles.subtitle2,
   },
