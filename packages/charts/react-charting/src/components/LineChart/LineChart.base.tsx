@@ -965,6 +965,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     fontSize={12}
                     fill={theme?.semanticColors.bodyText}
                     textAnchor="middle"
+                    style={{ forcedColorAdjust: 'auto' }}
                   >
                     {this._points[i].data[j - 1].text}
                   </text>
@@ -1080,6 +1081,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         fontSize={12}
                         fill={theme?.semanticColors.bodyText}
                         textAnchor="middle"
+                        style={{ forcedColorAdjust: 'auto' }}
                       >
                         {this._points[i].data[j].text}
                       </text>
