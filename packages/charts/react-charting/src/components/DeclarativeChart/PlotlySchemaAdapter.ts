@@ -661,7 +661,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
-      const isXYearCategory = isYearArray(series.x);
+      const isXYearCategory = false;
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);

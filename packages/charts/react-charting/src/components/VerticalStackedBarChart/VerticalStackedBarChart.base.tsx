@@ -756,7 +756,9 @@ export class VerticalStackedBarChartBase
       };
       const xCalloutValue =
         point.xAxisCalloutData ||
-        (xAxisPoint instanceof Date ? xAxisPoint.toLocaleDateString() : xAxisPoint.toString());
+        (xAxisPoint instanceof Date
+          ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+          : xAxisPoint.toString());
 
       this.setState({
         refSelected,

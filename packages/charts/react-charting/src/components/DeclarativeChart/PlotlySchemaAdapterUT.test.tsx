@@ -542,4 +542,9 @@ describe('resolveXAxisPoint', () => {
     const result = resolveXAxisPoint(42, false, false, false, false);
     expect(result).toStrictEqual(42);
   });
+  it('should return empty string for null, empty string and 0', () => {
+    expect(resolveXAxisPoint(null, false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint('', false, false, false, false)).toBe('');
+    expect(resolveXAxisPoint(0, false, false, false, false)).toBe(0);
+  });
 });
