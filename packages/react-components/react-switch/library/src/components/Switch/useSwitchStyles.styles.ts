@@ -17,12 +17,6 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
-// Thumb and track sizes used by the component.
-const spaceBetweenThumbAndTrack = 2;
-const trackHeight = 20;
-const trackWidth = 40;
-const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
-
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'flex-start',
   boxSizing: 'border-box',
@@ -40,12 +34,12 @@ const useRootStyles = makeStyles({
 
 const useIndicatorBaseClassName = makeResetStyles({
   borderRadius: semanticTokens.ctrlChoiceSwitchCorner,
-  border: `${semanticTokens.strokeWidthCtrlOutlineRest} solid`,
+  borderStyle: 'solid',
   lineHeight: 0,
   boxSizing: 'border-box',
   fill: 'currentColor',
   flexShrink: 0,
-  fontSize: `${thumbSize}px`,
+  fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthRest,
   height: semanticTokens.ctrlChoiceSwitchHeight,
   margin: semanticTokens.ctrlChoicePaddingVertical + ' ' + semanticTokens.ctrlChoicePaddingHorizontal,
   pointerEvents: 'none',
@@ -53,6 +47,14 @@ const useIndicatorBaseClassName = makeResetStyles({
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
   width: semanticTokens.ctrlChoiceSwitchWidth,
+
+  ':hover': {
+    fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthHover,
+  },
+
+  ':hover:active': {
+    fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthPressed,
+  },
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
@@ -98,7 +100,21 @@ const useInputBaseClassName = makeResetStyles({
   ':checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       '> *': {
-        transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
+        transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest}))`,
+      },
+    },
+    ':hover': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        '> *': {
+          transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthHover} - ${semanticTokens.ctrlChoiceSwitchPaddingHover}))`,
+        },
+      },
+    },
+    ':hover:active': {
+      [`& ~ .${switchClassNames.indicator}`]: {
+        '> *': {
+          transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthPressed} - ${semanticTokens.ctrlChoiceSwitchPaddingPressed}))`,
+        },
       },
     },
   },
@@ -106,12 +122,6 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled (both checked and unchecked)
   ':disabled': {
     cursor: 'default',
-
-    [`& ~ .${switchClassNames.indicator}`]: {
-      color: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
-      borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
-      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
-    },
 
     [`& ~ .${switchClassNames.label}`]: {
       cursor: 'default',
@@ -122,9 +132,10 @@ const useInputBaseClassName = makeResetStyles({
   // Enabled and unchecked
   ':enabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: semanticTokens.ctrlChoiceBaseBackgroundRest,
+      backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundRest,
       borderColor: semanticTokens.ctrlChoiceBaseStrokeRest,
       borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
+      color: semanticTokens.backgroundCtrlShapeSafeNeutralRest,
     },
 
     [`& ~ .${switchClassNames.label}`]: {
@@ -133,17 +144,19 @@ const useInputBaseClassName = makeResetStyles({
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: semanticTokens.ctrlChoiceBaseBackgroundHover,
+        backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundHover,
         borderColor: semanticTokens.ctrlChoiceBaseStrokeHover,
         borderWidth: semanticTokens.strokeWidthCtrlOutlineHover,
+        color: semanticTokens.backgroundCtrlShapeSafeNeutralHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        color: semanticTokens.ctrlChoiceBaseBackgroundPressed,
+        backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundPressed,
         borderColor: semanticTokens.ctrlChoiceBaseStrokePressed,
         borderWidth: semanticTokens.strokeWidthCtrlOutlinePressed,
+        color: semanticTokens.backgroundCtrlShapeSafeNeutralPressed,
       },
     },
   },
@@ -152,26 +165,26 @@ const useInputBaseClassName = makeResetStyles({
   ':enabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandRest,
-      borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandRest,
-      color: semanticTokens.foregroundCtrlOnActiveBrandRest,
+      borderColor: semanticTokens.strokeCtrlOnBrandRest,
       borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
+      color: semanticTokens.foregroundCtrlOnActiveBrandRest,
     },
 
     ':hover': {
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandHover,
         borderColor: semanticTokens._ctrlSwitchStrokeOnActiveBrandHover,
-        color: semanticTokens.foregroundCtrlOnActiveBrandHover,
         borderWidth: semanticTokens.strokeWidthCtrlOutlineHover,
+        color: semanticTokens.foregroundCtrlOnActiveBrandHover,
       },
     },
 
     ':hover:active': {
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: semanticTokens.backgroundCtrlActiveBrandPressed,
-        color: semanticTokens.foregroundCtrlOnActiveBrandPressed,
         borderColor: semanticTokens.strokeCtrlOnActiveBrandPressed,
         borderWidth: semanticTokens.strokeWidthCtrlOutlinePressed,
+        color: semanticTokens.foregroundCtrlOnActiveBrandPressed,
       },
     },
   },
@@ -179,9 +192,10 @@ const useInputBaseClassName = makeResetStyles({
   // Disabled and unchecked
   ':disabled:not(:checked)': {
     [`& ~ .${switchClassNames.indicator}`]: {
-      color: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
+      backgroundColor: semanticTokens.ctrlChoiceBaseBackgroundDisabled,
       borderColor: semanticTokens.ctrlChoiceBaseStrokeDisabled,
       borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
+      color: semanticTokens.backgroundCtrlShapeSafeNeutralDisabled,
     },
   },
 
@@ -189,9 +203,9 @@ const useInputBaseClassName = makeResetStyles({
   ':disabled:checked': {
     [`& ~ .${switchClassNames.indicator}`]: {
       backgroundColor: semanticTokens.backgroundCtrlActiveBrandDisabled,
-      color: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
       borderColor: semanticTokens.strokeCtrlOnActiveBrandDisabled,
-      borderWidth: semanticTokens.strokeWidthCtrlOutlineRest,
+      borderWidth: semanticTokens.strokeWidthDefault,
+      color: semanticTokens.foregroundCtrlOnActiveBrandDisabled,
     },
   },
 
@@ -261,15 +275,15 @@ const useLabelStyles = makeStyles({
     padding: `${semanticTokens.ctrlChoicePaddingVertical} ${semanticTokens.ctrlChoicePaddingHorizontal}`,
   },
   above: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
+    paddingTop: semanticTokens._ctrlSwitchPaddingTextTop,
+    paddingBottom: semanticTokens._ctrlSwitchPaddingTextBottom,
     width: '100%',
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: semanticTokens.gapInsideCtrlSmDefault,
   },
   before: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: semanticTokens.gapInsideCtrlSmDefault,
   },
 });
 
