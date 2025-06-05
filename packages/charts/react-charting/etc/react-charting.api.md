@@ -1083,6 +1083,8 @@ export interface ILineChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface ILineChartStyles extends ICartesianChartStyles {
+    // (undocumented)
+    markerLabel?: IStyle;
 }
 
 // @public (undocumented)

@@ -716,6 +716,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       });
     })!;
 
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+
     for (let i = this._points.length - 1; i >= 0; i--) {
       const linesForLine: JSX.Element[] = [];
       const bordersForLine: JSX.Element[] = [];
@@ -953,9 +957,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   stroke={lineColor}
                   strokeWidth={strokeWidth}
                   role="img"
-                  aria-label={
-                    this._points[i].data[j - 1].text ? this._points[i].data[j - 1].text : this._getAriaLabel(i, j - 1)
-                  }
+                  aria-label={this._points[i].data[j - 1].text ?? this._getAriaLabel(i, j - 1)}
                 />
                 {this._points[i].data[j - 1].text && (
                   <text
@@ -965,7 +967,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     fontSize={12}
                     fill={theme?.semanticColors.bodyText}
                     textAnchor="middle"
-                    style={{ forcedColorAdjust: 'auto' }}
+                    className={classNames.markerLabel}
                   >
                     {this._points[i].data[j - 1].text}
                   </text>
@@ -1069,9 +1071,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       stroke={lineColor}
                       strokeWidth={strokeWidth}
                       role="img"
-                      aria-label={
-                        this._points[i].data[j].text ? this._points[i].data[j].text : this._getAriaLabel(i, j)
-                      }
+                      aria-label={this._points[i].data[j].text ?? this._getAriaLabel(i, j)}
                     />
                     {this._points[i].data[j].text && (
                       <text
@@ -1081,7 +1081,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                         fontSize={12}
                         fill={theme?.semanticColors.bodyText}
                         textAnchor="middle"
-                        style={{ forcedColorAdjust: 'auto' }}
+                        className={classNames.markerLabel}
                       >
                         {this._points[i].data[j].text}
                       </text>
@@ -1275,9 +1275,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         </g>,
       );
     }
-    const classNames = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
-    });
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!this.props.showXAxisLablesTooltip) {
       try {

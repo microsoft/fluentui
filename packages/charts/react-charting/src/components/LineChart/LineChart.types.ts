@@ -14,6 +14,7 @@ import {
   ICartesianChartStyles,
   IChildProps,
 } from '../CommonComponents/index';
+import { IStyle } from '@fluentui/react/lib/Styling';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 
@@ -111,7 +112,9 @@ export interface IEventsAnnotationProps {
  * Line Chart styles
  * {@docCategory LineChart}
  */
-export interface ILineChartStyles extends ICartesianChartStyles {}
+export interface ILineChartStyles extends ICartesianChartStyles {
+  markerLabel?: IStyle;
+}
 
 /**
  * Line Chart style properties
