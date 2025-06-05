@@ -2,6 +2,27 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Wed, 04 Jun 2025 07:20:27 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.15",
+      "version": "1.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "9bb677885774dba335492101f97f3d6e0a34ebf9",
+            "comment": "feat: allow string y values in bar and scatter traces for VSBC rendering"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "0ac3d6be1e465b781c601b22b6a20358bbbcb4a9",
+            "comment": "feat(charts): Add locale aware date and number formatter"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Jun 2025 07:20:40 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.14",
       "version": "1.1.14",

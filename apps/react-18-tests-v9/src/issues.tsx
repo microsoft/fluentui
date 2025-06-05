@@ -50,6 +50,17 @@ import type {
     menuButton: NonNullable<Slot<AppMenuButtonSlot>>;
     menu: NonNullable<Slot<ContextualMenuSlotType>>;
   };
+
+  type ValidAppSplitButtonSlots = {
+    root: NonNullable<Slot<'div'>>;
+    menuButton: NonNullable<Slot<AppMenuButtonProps>>;
+    menu: NonNullable<
+      Slot<
+        Pick<JSX.IntrinsicElements['div'], 'children'> &
+          (typeof AppContextualMenu extends React.ComponentType<infer Props> ? Props : {})
+      >
+    >;
+  };
   type AppSplitButtonProps = ComponentProps<Partial<AppSplitButtonSlots>> &
     Omit<SplitButtonProps, 'root' | 'menuButton' | 'primaryActionButton'>;
 
@@ -61,6 +72,7 @@ import type {
   );
 
   const props = { menuButton: {}, menu: {} } as AppSplitButtonProps;
+  const propsOk = { menuButton: {}, menu: {} } as ValidAppSplitButtonSlots;
 
   const defaultMenuProps = useGetMenuProps();
 
@@ -72,7 +84,13 @@ import type {
     ...defaultMenuProps,
   };
 
+  // @ts-expect-error - Type 'string' is not assignable to type '((instance: HTMLButtonElement | null) => void) | RefObject<HTMLButtonElement> | null | undefined'. caused by React.RefAttribute and Slot ref mismatch
   slot.always(props.menuButton, {
+    defaultProps: menuButtonDefaultProps,
+    elementType: AppSplitButtonMenuButton,
+  });
+
+  slot.always(propsOk.menuButton, {
     defaultProps: menuButtonDefaultProps,
     elementType: AppSplitButtonMenuButton,
   });
