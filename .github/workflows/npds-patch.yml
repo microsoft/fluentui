@@ -19,8 +19,13 @@ jobs:
           cat << 'EOF' > .npmrc
           registry=https://pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/
           always-auth=true
+          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:username=nbsdev
+          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:email=npm requires email to be set but doesn't use the value
+          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:username=nbsdev
+          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:email=npm requires email to be set but doesn't use the value
           EOF
-          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_authToken=${{ secrets.AZURE_DEVOPS_NPM_TOKEN }}" >> .npmrc
+          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_password=${{ secrets.AZURE_DEVOPS_NPM_TOKEN_BASE64 }}" >> .npmrc
+          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:_password=${{ secrets.AZURE_DEVOPS_NPM_TOKEN_BASE64 }}" >> .npmrc
       - name: Install NPDS package
         run: |
           npm install @nbs/npds-components --legacy-peer-deps
