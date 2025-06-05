@@ -8,7 +8,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerProps,
   NavItem,
   NavSectionHeader,
   NavSubItem,
@@ -64,7 +63,7 @@ const useStyles = makeStyles({
     height: '600px',
   },
   nav: {
-    minWidth: '200px',
+    minWidth: '260px',
   },
   content: {
     flex: '1',
@@ -98,7 +97,7 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const Basic = (props: Partial<NavDrawerProps>) => {
+export const Basic = () => {
   const styles = useStyles();
 
   const typeLableId = useId('type-label');

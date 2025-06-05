@@ -38,7 +38,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatValueLimitWidth } from '../../utilities/utilities';
+import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -284,7 +284,7 @@ export const transformPlotlyJsonToDonutProps = (
   const donutMarginVertical: number = 40 + (hideLabels ? 0 : 40);
   const innerRadius: number = firstData.hole
     ? firstData.hole * (Math.min(width - donutMarginHorizontal, height - donutMarginVertical) / 2)
-    : 0;
+    : MIN_DONUT_RADIUS;
   const { chartTitle } = getTitles(input.layout);
 
   return {
@@ -352,7 +352,9 @@ export const transformPlotlyJsonToVSBCProps = (
             data: yVal,
             color,
           });
-          yMaxValue = Math.max(yMaxValue, yVal);
+          if (typeof yVal === 'number') {
+            yMaxValue = Math.max(yMaxValue, yVal);
+          }
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
           const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
           const lineOptions = getLineOptions(series.line);
@@ -374,7 +376,7 @@ export const transformPlotlyJsonToVSBCProps = (
             },
             useSecondaryYScale: usesSecondaryYScale(series),
           });
-          if (!usesSecondaryYScale(series)) {
+          if (!usesSecondaryYScale(series) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
@@ -402,6 +404,9 @@ export const transformPlotlyJsonToVSBCProps = (
     roundCorners: true,
     supportNegativeData: true,
     barGapMax: 2,
+    showYAxisLables: true,
+    noOfCharsToTruncate: 20,
+    showYAxisLablesTooltip: true,
   };
 };
 
@@ -610,11 +615,16 @@ export const transformPlotlyJsonToScatterChartProps = (
   const { legends, hideLegend } = getLegendProps(input.data, input.layout);
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
+      const colors = isScatterMarkers
+        ? series?.mode?.includes('line')
+          ? series.line?.color
+          : series.marker?.color
+        : series.line?.color;
       // extract colors for each series only once
       const extractedColors = extractColor(
         input.layout?.template?.layout?.colorway,
         colorwayType,
-        isScatterMarkers ? series.marker?.color : series.line?.color,
+        colors,
         colorMap,
         isDarkTheme,
       ) as string[] | string | undefined;
@@ -1133,10 +1143,10 @@ const formatValue = (
       try {
         formatted = d3Format(formatStr)(value);
       } catch {
-        formatted = formatValueLimitWidth(value);
+        formatted = formatScientificLimitWidth(value);
       }
     } else {
-      formatted = formatValueLimitWidth(value);
+      formatted = formatScientificLimitWidth(value);
     }
   }
   return `${prefix ?? ''}${formatted}${suffix ?? ''}`;
@@ -1389,7 +1399,7 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isStringArray = (arr: any) => {
+export const isStringArray = (arr: any) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
 };

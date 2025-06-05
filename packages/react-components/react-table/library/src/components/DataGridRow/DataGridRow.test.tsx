@@ -9,7 +9,7 @@ import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { DataGridHeader } from '../DataGridHeader/DataGridHeader';
 
 describe('DataGridRow', () => {
-  const Wrapper: React.FC = props => {
+  const Wrapper: React.FC<{ children?: React.ReactNode }> = props => {
     const ctx = mockDataGridContext({ selectableRows: true });
     return <DataGridContextProvider value={ctx}>{props.children}</DataGridContextProvider>;
   };
@@ -181,6 +181,20 @@ describe('DataGridRow', () => {
       fireEvent.keyDown(getByRole('row'), { key: ' ' });
 
       expect(toggleRow).toHaveBeenCalledTimes(0);
+    });
+
+    it('should disable selection cell input if the row is in a header and the selection mode is singe', () => {
+      const toggleRow = jest.fn();
+      const ctx = mockDataGridContext({ selectableRows: true }, { selection: { toggleRow, selectionMode: 'single' } });
+      const { container } = render(
+        <DataGridHeader>
+          <DataGridContextProvider value={ctx}>
+            <DataGridRow>{() => <div />}</DataGridRow>
+          </DataGridContextProvider>
+        </DataGridHeader>,
+      );
+
+      expect(container.querySelector("input[type='radio']")?.hasAttribute('disabled')).toBe(true);
     });
 
     it('should render aria-selected=true if row is selected', () => {

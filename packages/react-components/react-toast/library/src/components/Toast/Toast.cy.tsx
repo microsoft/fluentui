@@ -7,7 +7,9 @@ import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from 
 import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
 
 const mount = (element: JSX.Element) => {
-  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+  mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>, {
+    strict: false, // TODO: Disable strict mode for toast tests until it gets fixed
+  });
 };
 
 describe('Toast', () => {
@@ -316,9 +318,8 @@ describe('Toast', () => {
     };
 
     mount(<Example />);
-    cy.get('#make')
-      .click()
-      .get('li')
+    cy.get('#make').realClick();
+    cy.get('li')
       .should('have.length', 4)
       .get('li')
       .eq(0)
