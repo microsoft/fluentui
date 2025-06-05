@@ -953,11 +953,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   stroke={lineColor}
                   strokeWidth={strokeWidth}
                   role="img"
-                  aria-label={this._getAriaLabel(i, j - 1)}
+                  aria-label={
+                    this._points[i].data[j - 1].text ? this._points[i].data[j - 1].text : this._getAriaLabel(i, j - 1)
+                  }
                 />
                 {this._points[i].data[j - 1].text && (
                   <text
-                    key={circleId}
+                    key={`${circleId}-label`}
                     x={this._xAxisScale(x1)}
                     y={yScale(y1) + 35}
                     fontSize={12}
@@ -1066,11 +1068,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                       stroke={lineColor}
                       strokeWidth={strokeWidth}
                       role="img"
-                      aria-label={this._getAriaLabel(i, j)}
+                      aria-label={
+                        this._points[i].data[j].text ? this._points[i].data[j].text : this._getAriaLabel(i, j)
+                      }
                     />
                     {this._points[i].data[j].text && (
                       <text
-                        key={lastCircleId}
+                        key={`${lastCircleId}-label`}
                         x={this._xAxisScale(x2)}
                         y={yScale(y2) + 35}
                         fontSize={12}
