@@ -176,23 +176,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
-    const allModes = plotlyData.map((data: PlotData) => data.mode);
-    const isScatterMarkers = [
-      'markers',
-      'text+markers',
-      'markers+text',
-      'lines+markers',
-      'markers+line',
-      'text+lines+markers',
-    ].includes((plotlyData[0] as PlotData)?.mode);
-    const isScatterChart = isScatterMarkers && !allModes.some((mode: string) => mode.includes('line'));
+  const renderLineArea = (plotlyData: Data[], isAreaChart: boolean, isScatterChart: boolean): JSX.Element => {
     const chartType = isAreaChart ? 'area' : isScatterChart ? 'scatter' : 'line';
     const chartProps: ILineChartProps | IAreaChartProps | IScatterChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
         chartType,
-        isScatterMarkers && !allModes.some((mode: string) => mode.includes('line')),
+        isScatterChart,
         colorMap,
         props.colorwayType,
         isDarkTheme,
@@ -223,17 +213,30 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     // in time and brings additional complexity of handling timezone and locale
     // formatting given the current design of the charting library
     const isXYear = isYearArray(xValues);
-
-    if ((isXDate || isXNumber) && !isXYear && !isYString) {
-      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
+    const allModes = plotlyInputWithValidData.data.map((data: PlotData) => data.mode);
+    const isScatterMarkers = [
+      'markers',
+      'text+markers',
+      'markers+text',
+      'lines+markers',
+      'markers+line',
+      'text+lines+markers',
+    ].includes((plotlyInputWithValidData.data[0] as PlotData)?.mode);
+    const isScatterChart = isScatterMarkers && !allModes.some((mode: string) => mode.includes('line'));
+    // If x is date or number and y is not string, render as Line/Area Chart
+    // If chart is to be rendered as Scatter chart and x is string or year, render as Scatter Chart
+    // If x is month, correct the year and render as Line/Area Chart
+    if (
+      ((isXDate || isXNumber) && !isXYear && !isYString) ||
+      (isScatterChart && (isXString || isXYear) && !isAreaChart)
+    ) {
+      return renderLineArea(plotlyInputWithValidData.data, isAreaChart, isScatterChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
         x: correctYearMonth(dataPoint.x),
       }));
-      return renderLineArea(updatedData, isAreaChart);
-    } else if ((isXString || isXYear) && !isAreaChart) {
-      return renderLineArea(plotlyInputWithValidData.data, isAreaChart);
+      return renderLineArea(updatedData, isAreaChart, isScatterChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;

@@ -230,6 +230,7 @@ export interface IBaseDataPoint {
     hideCallout?: boolean;
     markerSize?: number;
     onDataPointClick?: () => void;
+    text?: string;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string | {
@@ -1025,11 +1026,6 @@ export interface ILegendSubComponentStyles {
 
 // @public (undocumented)
 export interface ILineChartDataPoint extends IBaseDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    hideCallout?: boolean;
-    markerSize?: number;
-    onDataPointClick?: () => void;
-    text?: string;
     x: number | Date;
     y: number;
 }

@@ -670,8 +670,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
-      // string case is not possible for scatter chart as it is already filtered out in declarative chart
-      const isXYearCategory = false;
+      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
