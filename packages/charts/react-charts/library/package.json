@@ -34,7 +34,8 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
     "@fluentui/chart-utilities": "^1.1.15",
