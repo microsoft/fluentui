@@ -1,11 +1,12 @@
-// jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import { mount } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, StackedBarChart } from '../../index';
 import { StackedBarChartBase } from './StackedBarChart.base';
 import { fireEvent, render } from '@testing-library/react';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 function sharedBeforeEach() {
   resetIds();
@@ -159,8 +160,8 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    const component = mount(<StackedBarChart {...props} />);
-    component.setProps({ ...props });
+    const { rerender } = render(<StackedBarChart {...props} />);
+    rerender(<StackedBarChart {...props} />);
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -173,8 +174,8 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    const component = mount(<StackedBarChart {...props} />);
-    component.setProps({ ...props, hideTooltip: true });
+    const { rerender } = render(<StackedBarChart {...props} />);
+    rerender(<StackedBarChart {...props} hideTooltip={true} />);
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
