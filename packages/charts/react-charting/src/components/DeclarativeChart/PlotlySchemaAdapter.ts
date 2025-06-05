@@ -322,7 +322,7 @@ export const transformPlotlyJsonToVSBCProps = (
       (series.marker?.color as Color[]).length > 0 &&
       typeof (series.marker?.color as Color[])?.[0] === 'number'
     ) {
-      colorScale = createColorScale(input, series);
+      colorScale = createColorScale(input.layout, series);
     }
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     // extract bar colors for each series only once
@@ -425,12 +425,12 @@ export const transformPlotlyJsonToVSBCProps = (
   };
 };
 
-const createColorScale = (input: PlotlySchema, series: Partial<PlotData>) => {
-  const scale = input.layout?.coloraxis?.colorscale as Array<[number, string]>;
+const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) => {
+  const scale = layout?.coloraxis?.colorscale as Array<[number, string]>;
   const colorValues = series.marker?.color as number[];
   const [dMin, dMax] = [
-    input.layout?.coloraxis?.cmin ?? Math.min(...colorValues),
-    input.layout?.coloraxis?.cmax ?? Math.max(...colorValues),
+    layout?.coloraxis?.cmin ?? Math.min(...colorValues),
+    layout?.coloraxis?.cmax ?? Math.max(...colorValues),
   ];
 
   // Normalize colorscale domain to actual data domain
@@ -457,7 +457,7 @@ export const transformPlotlyJsonToGVBCProps = (
       (series.marker?.color as Color[]).length > 0 &&
       typeof (series.marker?.color as Color[])?.[0] === 'number'
     ) {
-      colorScale = createColorScale(input, series);
+      colorScale = createColorScale(input.layout, series);
     }
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -538,7 +538,7 @@ export const transformPlotlyJsonToVBCProps = (
       (series.marker?.color as Color[]).length > 0 &&
       typeof (series.marker?.color as Color[])?.[0] === 'number'
     ) {
-      colorScale = createColorScale(input, series);
+      colorScale = createColorScale(input.layout, series);
     }
     // extract colors for each series only once
     const extractedColors = extractColor(
@@ -768,7 +768,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         (series.marker?.color as Color[]).length > 0 &&
         typeof (series.marker?.color as Color[])?.[0] === 'number'
       ) {
-        colorScale = createColorScale(input, series);
+        colorScale = createColorScale(input.layout, series);
       }
       // extract colors for each series only once
       const extractedColors = extractColor(
