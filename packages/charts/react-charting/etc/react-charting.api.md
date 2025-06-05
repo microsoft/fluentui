@@ -1025,6 +1025,11 @@ export interface ILegendSubComponentStyles {
 
 // @public (undocumented)
 export interface ILineChartDataPoint extends IBaseDataPoint {
+    callOutAccessibilityData?: IAccessibilityProps;
+    hideCallout?: boolean;
+    markerSize?: number;
+    onDataPointClick?: () => void;
+    text?: string;
     x: number | Date;
     y: number;
 }
@@ -1087,6 +1092,8 @@ export interface ILineChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface ILineChartStyles extends ICartesianChartStyles {
+    // (undocumented)
+    markerLabel?: IStyle;
 }
 
 // @public (undocumented)

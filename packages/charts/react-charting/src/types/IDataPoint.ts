@@ -335,6 +335,11 @@ export interface IBaseDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
