@@ -13,6 +13,8 @@ import type {
   ComponentState,
   DrawerProps,
   DrawerState,
+  InlineDrawerProps,
+  DrawerHeaderProps,
 } from '@fluentui/react-components';
 
 // TS2786: 'state.rootWrapper' cannot be used as a JSX component.
@@ -59,10 +61,27 @@ import type {
   type AppDrawerState = DrawerState;
   ///
 
+  type AppInlineDrawerProps = InlineDrawerProps;
+  const AppInlineDrawer = React.memo(
+    React.forwardRef<HTMLDivElement, AppInlineDrawerProps>((props, ref) => {
+      return <div />;
+    }),
+  );
+
+  type AppDrawerHeaderProps = DrawerHeaderProps;
+  const AppDrawerHeader = React.memo(
+    React.forwardRef<HTMLElement, AppDrawerHeaderProps>((props, ref) => {
+      return <div />;
+    }),
+  );
+  ///
+
   type TaskPaneSlots = {
     rootWrapper: NonNullable<Slot<'div'>>;
     titleTagWrapper?: Slot<'div'>;
     titleTagContent?: Slot<'span'>;
+    containerWrapper: NonNullable<Slot<typeof AppInlineDrawer>>;
+    headerWrapper: NonNullable<Slot<typeof AppDrawerHeader>>;
   };
   type TaskPaneProps = ComponentProps<Partial<TaskPaneSlots>> &
     Omit<
