@@ -2,6 +2,45 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:20 GMT",
+      "tag": "@fluentui/react-combobox_v9.14.7",
+      "version": "9.14.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-aria to v9.14.7",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.2.7",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.5.7",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.17.0",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-tabster to v9.24.7",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 09:59:45 GMT",
       "tag": "@fluentui/react-combobox_v9.14.6",
       "version": "9.14.6",

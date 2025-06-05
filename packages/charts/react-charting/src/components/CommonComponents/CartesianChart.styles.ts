@@ -199,5 +199,17 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
       },
     ],
+    tooltip: {
+      ...theme.fonts.medium,
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '8px',
+      position: 'absolute',
+      textAlign: 'center',
+      top: '0px',
+      background: theme.semanticColors.bodyBackground,
+      borderRadius: '2px',
+      pointerEvents: 'none',
+    },
   };
 };

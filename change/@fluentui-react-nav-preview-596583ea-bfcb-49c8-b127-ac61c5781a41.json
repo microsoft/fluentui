@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Change Nav icon display animations to opacity animations",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

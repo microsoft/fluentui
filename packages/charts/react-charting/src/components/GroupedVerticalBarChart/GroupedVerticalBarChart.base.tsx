@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { select as d3Select } from 'd3-selection';
 import { Axis as D3Axis } from 'd3-axis';
-import { ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import {
   classNamesFunction,
   getId,
@@ -18,10 +18,10 @@ import {
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   XAxisTypes,
   getTypeOfAxis,
-  formatValueLimitWidth,
+  formatScientificLimitWidth,
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
@@ -51,6 +51,7 @@ import {
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
+import { rgb } from 'd3-color';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -437,21 +438,6 @@ export class GroupedVerticalBarChartBase
         const xPoint = xScale1(legendTitle) + (xScale1.bandwidth() - this._barWidth) / 2;
         const isLegendActive = this._legendHighlighted(legendTitle) || this._noLegendHighlighted();
         const barOpacity = isLegendActive ? '' : '0.1';
-        const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${legendIndex}`;
-        let startColor = barPoints[0].color;
-        let endColor = startColor;
-
-        if (this.props.enableGradient) {
-          startColor = barPoints[0].gradient![0];
-          endColor = barPoints[0].gradient![1];
-
-          singleGroup.push(
-            <linearGradient key={gradientId} id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0" stopColor={startColor} />
-              <stop offset="100%" stopColor={endColor} />
-            </linearGradient>,
-          );
-        }
 
         let barTotalValue = 0;
         const yBaseline = yBarScale(this.Y_ORIGIN);
@@ -464,8 +450,25 @@ export class GroupedVerticalBarChartBase
             // Not rendering data with 0.
             return;
           }
+          const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${legendIndex}_${pointIndex}`;
+          if (this.props.enableGradient) {
+            const startColor = pointData.gradient?.[0] || pointData.color;
+            const endColor = pointData.gradient?.[1] || pointData.color;
+
+            singleGroup.push(
+              <defs key={`defs_${gradientId}`}>
+                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stopColor={startColor} />
+                  <stop offset="100%" stopColor={endColor} />
+                </linearGradient>
+              </defs>,
+            );
+          }
+
           const barGap = (VERTICAL_BAR_GAP / 2) * (pointIndex > 0 ? 2 : 0);
           const height = Math.max(yBarScale(this.Y_ORIGIN) - yBarScale(Math.abs(pointData.data)), MIN_BAR_HEIGHT);
+          const pointColor = pointData.color; // Use the color of the current point
+
           if (pointData.data >= this.Y_ORIGIN) {
             yPositiveStart -= height + barGap;
             yPoint = yPositiveStart;
@@ -484,7 +487,7 @@ export class GroupedVerticalBarChartBase
               y={yPoint}
               data-is-focusable={!this.props.hideTooltip && isLegendActive}
               opacity={barOpacity}
-              fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
+              fill={this.props.enableGradient ? `url(#${gradientId})` : pointColor}
               rx={this.props.roundCorners ? 3 : 0}
               onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
               onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
@@ -509,7 +512,7 @@ export class GroupedVerticalBarChartBase
               className={this._classNames.barLabel}
               aria-hidden={true}
             >
-              {formatValueLimitWidth(barTotalValue)}
+              {formatScientificLimitWidth(barTotalValue)}
             </text>,
           );
         }
@@ -525,9 +528,9 @@ export class GroupedVerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return (
       <g
@@ -782,6 +785,13 @@ export class GroupedVerticalBarChartBase
     );
   };
 
+  // Lighten/Darken a color by a given percentage using d3-scale
+  private _adjustColor = (color: string, percentage: number, lightenColor: boolean, isDarkTheme: boolean): string => {
+    const targetColor = lightenColor ? (isDarkTheme ? '#000000' : '#ffffff') : isDarkTheme ? '#ffffff' : '#000000';
+    const colorInterpolator = d3ScaleLinear<string>().domain([0, 1]).range([color, targetColor]);
+    return rgb(colorInterpolator(percentage)).formatRgb();
+  };
+
   private _addDefaultColors = (data?: IGroupedVerticalBarChartData[]): IGroupedVerticalBarChartData[] => {
     this._legendColorMap = {};
     let colorIndex = 0;
@@ -792,26 +802,42 @@ export class GroupedVerticalBarChartBase
           ...point,
           series:
             point.series?.map(seriesPoint => {
-              if (!this._legendColorMap[seriesPoint.legend]) {
-                let startColor = seriesPoint.color
-                  ? seriesPoint.color
-                  : getNextColor(colorIndex, 0, this.props.theme?.isInverted);
-                let endColor = startColor;
+              let startColor = seriesPoint.color
+                ? seriesPoint.color
+                : getNextColor(colorIndex, 0, this.props.theme?.isInverted);
+              let endColor = startColor;
 
-                if (this.props.enableGradient) {
+              if (this.props.enableGradient) {
+                if (seriesPoint.color) {
+                  // Generate gradient colors based on seriesPoint.color
+                  startColor = this._adjustColor(
+                    seriesPoint.color || endColor,
+                    0.2,
+                    false,
+                    this.props.theme?.isInverted!,
+                  );
+                  endColor = this._adjustColor(
+                    seriesPoint.color || startColor,
+                    0.2,
+                    true,
+                    this.props.theme?.isInverted!,
+                  );
+                } else {
                   const nextGradient = getNextGradient(colorIndex, 0, this.props.theme?.isInverted);
                   startColor = seriesPoint.gradient?.[0] || nextGradient[0];
                   endColor = seriesPoint.gradient?.[1] || nextGradient[1];
                 }
-
-                this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
-                colorIndex += 1;
               }
+              const pointGradient: [string, string] = [startColor, endColor];
+              if (!this._legendColorMap[seriesPoint.legend]) {
+                this._legendColorMap[seriesPoint.legend] = [startColor, endColor];
+              }
+              colorIndex += 1;
 
               return {
                 ...seriesPoint,
-                color: this._legendColorMap[seriesPoint.legend][0],
-                ...(this.props.enableGradient ? { gradient: this._legendColorMap[seriesPoint.legend] } : {}),
+                color: seriesPoint.color ?? this._legendColorMap[seriesPoint.legend][0],
+                ...(this.props.enableGradient ? { gradient: pointGradient } : {}),
               };
             }) ?? [],
         };

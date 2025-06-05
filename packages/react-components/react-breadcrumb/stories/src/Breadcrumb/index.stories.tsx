@@ -7,7 +7,7 @@ export { BreadcrumbWithTooltip } from './BreadcrumbWithTooltip.stories';
 
 import type { Meta } from '@storybook/react';
 
-const metadata: Meta<typeof Breadcrumb> = {
+const metadata = {
   title: 'Components/Breadcrumb',
   component: Breadcrumb,
   subcomponents: {
@@ -22,6 +22,6 @@ const metadata: Meta<typeof Breadcrumb> = {
       },
     },
   },
-};
+} as Meta<typeof Breadcrumb>;
 
 export default metadata;

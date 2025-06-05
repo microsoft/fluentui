@@ -138,6 +138,17 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 }
 
 // @public (undocumented)
+export type PresenceGroupChildContextValue = {
+    appear: boolean;
+    visible: boolean;
+    unmountOnExit: boolean;
+    onExit: () => void;
+};
+
+// @public (undocumented)
+export const PresenceGroupChildProvider: React_2.Provider<PresenceGroupChildContextValue | undefined>;
+
+// @public (undocumented)
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 // @public (undocumented)
@@ -158,6 +169,9 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: React_2.ReactElement;
     }>;
 };
+
+// @public (undocumented)
+export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;
 
 // (No @packageDocumentation comment for this package)
 

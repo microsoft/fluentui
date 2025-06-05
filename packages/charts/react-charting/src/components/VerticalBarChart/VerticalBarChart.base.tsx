@@ -30,6 +30,7 @@ import {
   IDataPoint,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartTypes,
   IAxisData,
@@ -37,8 +38,8 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
-  formatValueLimitWidth,
+  tooltipOfAxislabels,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -50,7 +51,6 @@ import {
   domainRangeOfDateForAreaLineVerticalBarChart,
   domainRangeOfXStringAxis,
   createStringYAxis,
-  formatDate,
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
@@ -587,7 +587,10 @@ export class VerticalBarChartBase
         yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
       });
     }
-    const hoverXValue = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString();
+    const hoverXValue =
+      point.x instanceof Date
+        ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+        : point.x.toString();
     return {
       YValueHover,
       hoverXValue: point.xAxisCalloutData || hoverXValue,
@@ -614,7 +617,9 @@ export class VerticalBarChartBase
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue:
           point.xAxisCalloutData ||
-          (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
+          (point.x instanceof Date
+            ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+            : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         // Hovering over a bar should highlight corresponding line points only when no legend is selected
@@ -653,7 +658,9 @@ export class VerticalBarChartBase
           color: point.color || color,
           xCalloutValue:
             point.xAxisCalloutData ||
-            (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
+            (point.x instanceof Date
+              ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+              : point.x.toString()),
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
           activeXdataPoint: point.x,
@@ -690,7 +697,9 @@ export class VerticalBarChartBase
       color: lineLegendColor,
       xCalloutValue:
         point.xAxisCalloutData ||
-        (point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x.toString()),
+        (point.x instanceof Date
+          ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
+          : point.x.toString()),
       yCalloutValue: point.lineData!.yAxisCalloutData,
       dataPointCalloutProps: point,
       activeXdataPoint: point.x,
@@ -858,9 +867,9 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -973,10 +982,10 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
         showTooltip: this.props.showXAxisLablesTooltip,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -1084,9 +1093,9 @@ export class VerticalBarChartBase
       const tooltipProps = {
         tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return bars;
   }
@@ -1224,7 +1233,7 @@ export class VerticalBarChartBase
     const xValue = point.xAxisCalloutData
       ? point.xAxisCalloutData
       : point.x instanceof Date
-      ? formatDate(point.x, this.props.useUTC)
+      ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC)
       : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
@@ -1256,7 +1265,7 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {formatValueLimitWidth(barValue)}
+        {formatScientificLimitWidth(barValue)}
       </text>
     );
   }

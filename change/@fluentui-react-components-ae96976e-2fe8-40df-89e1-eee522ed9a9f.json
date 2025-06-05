@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: icorrect react-infobutton export from suite",
-  "packageName": "@fluentui/react-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}

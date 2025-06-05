@@ -13,56 +13,57 @@ import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
 import { getGradientFromToken, getNextGradient } from './gradients';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 const X_ORIGIN = 0;
 
-describe('Unit test to convert data to localized string', () => {
+describe('Unit test to format data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
-    expect(utils.convertToLocaleString(undefined)).toBeUndefined();
+    expect(formatToLocaleString(undefined)).toBeUndefined();
   });
   test('Should return NaN when data is NaN', () => {
-    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+    expect(formatToLocaleString(NaN)).toBeNaN();
   });
   test('Should return localized 0 when data is numeric 0', () => {
-    expect(utils.convertToLocaleString(0)).toBe('0');
+    expect(formatToLocaleString(0)).toBe('0');
   });
   test('Should return localized 123 when data is string 123', () => {
-    expect(utils.convertToLocaleString('123')).toBe('123');
+    expect(formatToLocaleString('123')).toBe('123');
   });
   test('Should return localized 1234 when data is string 1234', () => {
-    expect(utils.convertToLocaleString('1234')).toBe('1234');
+    expect(formatToLocaleString('1234')).toBe('1234');
   });
   test('Should return localized Hello World when data is string Hello World', () => {
-    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+    expect(formatToLocaleString('Hello World')).toBe('Hello World');
   });
   test('Should return 0 as string when data is empty string', () => {
-    expect(utils.convertToLocaleString('')).toBe('0');
+    expect(formatToLocaleString('')).toBe('');
   });
   test('Should return 0 as string when data is single whitespace string', () => {
-    expect(utils.convertToLocaleString(' ')).toBe('0');
+    expect(formatToLocaleString(' ')).toBe('0');
   });
   test('Should return the localised data in the given culture when input data is a string', () => {
-    expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
-    expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
+    expect(formatToLocaleString('text', 'en-GB')).toBe('text');
+    expect(formatToLocaleString('text', 'ar-SY')).toBe('text');
   });
 
   test('Should return the localised data in the given culture when the input data is a number', () => {
-    expect(utils.convertToLocaleString(10, 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
+    expect(formatToLocaleString(10, 'en-GB')).toBe('10');
+    expect(formatToLocaleString(25600, 'ar-SY')).toBe('٢٥٬٦٠٠');
   });
 
-  test('Do not localize 4 digit numbers', () => {
-    expect(utils.convertToLocaleString(1000, 'en-GB')).toBe('1000');
-    expect(utils.convertToLocaleString(2560, 'ar-SY')).toBe('2560');
-    expect(utils.convertToLocaleString('2000')).toBe('2000');
+  test('Do not apply comma grouping to 4 digit numbers', () => {
+    expect(formatToLocaleString(1000, 'en-GB')).toBe('1000');
+    expect(formatToLocaleString(2560, 'ar-SY')).toBe('٢٥٦٠');
+    expect(formatToLocaleString('2000')).toBe('2000');
   });
 
   test('Should return the localised data when the input data is a string containing a number', () => {
-    expect(utils.convertToLocaleString('10', 'en-GB')).toBe('10');
-    expect(utils.convertToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
+    expect(formatToLocaleString('10', 'en-GB')).toBe('10');
+    expect(formatToLocaleString('12345', 'ar-SY')).toBe('١٢٬٣٤٥');
   });
 });
 
@@ -802,14 +803,14 @@ describe('wrapContent', () => {
   });
 });
 
-describe('tooltipOfXAxislabels', () => {
+describe('tooltipOfAxislabels', () => {
   it('should terminate when no x-axis node is provided', () => {
     const tooltipProps = {
       tooltipCls: 'tooltip-1',
       id: 'VBCTooltipId_1',
-      xAxis: null,
+      axis: null,
     };
-    expect(utils.tooltipOfXAxislabels(tooltipProps)).toBeNull();
+    expect(utils.tooltipOfAxislabels(tooltipProps)).toBeNull();
   });
 
   it('should render a tooltip for x-axis labels', () => {
@@ -827,9 +828,9 @@ describe('tooltipOfXAxislabels', () => {
       tooltipCls: 'tooltip-1',
       id: 'VBCTooltipId_1',
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      xAxis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
+      axis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
     };
-    utils.tooltipOfXAxislabels(tooltipProps);
+    utils.tooltipOfAxislabels(tooltipProps);
     expect(document.body).toMatchSnapshot();
   });
 });
@@ -1185,11 +1186,11 @@ test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWi
   SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
 });
 
-test('formatValueLimitWidth should format a numeric value with appropriate SI prefix', () => {
-  expect(utils.formatValueLimitWidth(19.53)).toBe('19.53');
-  expect(utils.formatValueLimitWidth(983)).toBe('983');
-  expect(utils.formatValueLimitWidth(9801)).toBe('9.8k');
-  expect(utils.formatValueLimitWidth(100990000)).toBe('101M');
+test('formatScientificLimitWidth should format a numeric value with appropriate SI prefix', () => {
+  expect(utils.formatScientificLimitWidth(19.53)).toBe('19.53');
+  expect(utils.formatScientificLimitWidth(983)).toBe('983');
+  expect(utils.formatScientificLimitWidth(9801)).toBe('9.8k');
+  expect(utils.formatScientificLimitWidth(100990000)).toBe('101M');
 });
 
 describe('getClosestPairDiffAndRange', () => {
@@ -1336,5 +1337,62 @@ describe('defaultYAxisTickFormatter tests', () => {
 
   it('should format very small numbers in scientific notation', () => {
     expect(utils.defaultYAxisTickFormatter(0.0000001)).toBe('1e-7'); // Scientific notation
+  });
+});
+
+// To move this test to chart-utilities once test config is enabled there
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
+
+describe('formatDateToLocaleString', () => {
+  const date = new Date(Date.UTC(2023, 4, 15, 12, 30, 45)); // May 15, 2023, 12:30:45 UTC
+
+  it('formats date in default locale', () => {
+    const result = formatDateToLocaleString(date);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it('formats date in en-US locale', () => {
+    const result = formatDateToLocaleString(date, 'en-US', false);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it('formats date in fr-FR locale', () => {
+    const result = formatDateToLocaleString(date, 'fr-FR', false);
+    expect(result).toBe('15/05/2023 00:30:45 PM UTC');
+  });
+
+  it('formats date in ar-SY locale', () => {
+    const result = formatDateToLocaleString(date, 'ar-SY', false);
+    expect(result).toBe('١٥‏/٠٥‏/٢٠٢٣، ١٢:٣٠:٤٥ م UTC');
+  });
+
+  it('formats date in en-IN locale', () => {
+    const result = formatDateToLocaleString(date, 'en-IN', false);
+    expect(result).toBe('15/05/2023, 12:30:45 pm UTC');
+  });
+
+  it('formats date in zh-Hans-CN-u-nu-hanidec locale', () => {
+    const result = formatDateToLocaleString(date, 'zh-Hans-CN-u-nu-hanidec', false);
+    expect(result).toBe('二〇二三/〇五/一五 UTC 下午〇〇:三〇:四五');
+  });
+
+  it('formats date in UTC', () => {
+    const result = formatDateToLocaleString(date, 'en-US', true);
+    expect(result).toBe('05/15/2023, 12:30:45 PM UTC');
+  });
+
+  it('formats date with time zone name hidden', () => {
+    const result = formatDateToLocaleString(date, 'en-US', true, false);
+    expect(result).toBe('05/15/2023, 12:30:45 PM');
+  });
+
+  it('formats date with custom Intl.DateTimeFormatOptions', () => {
+    const result = formatDateToLocaleString(date, 'en-US', false, true, { year: '2-digit', month: 'short' });
+    expect(result).toBe('May 23, UTC');
+  });
+
+  it('returns empty string for invalid date', () => {
+    const result = formatDateToLocaleString(new Date('invalid date'));
+    expect(result).toBe('Invalid Date');
   });
 });

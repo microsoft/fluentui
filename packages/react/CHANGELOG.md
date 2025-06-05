@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 May 2025 07:22:42 GMT and should not be manually modified.
+This log was last generated on Thu, 29 May 2025 07:21:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.123.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.123.0)
+
+Thu, 29 May 2025 07:21:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.19..@fluentui/react_v8.123.0)
+
+### Minor changes
+
+- fix(Pivot): Added KeyboardEvent to union type on onLinkClick prop. ([PR #34273](https://github.com/microsoft/fluentui/pull/34273) by eddylynch@microsoft.com)
+
+## [8.122.19](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.19)
+
+Tue, 20 May 2025 07:21:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.18..@fluentui/react_v8.122.19)
+
+### Patches
+
+- fix(PeoplePicker): high contrast color for tag items uses system color ([PR #34451](https://github.com/microsoft/fluentui/pull/34451) by sarah.higley@microsoft.com)
+
+## [8.122.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.18)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.122.17..@fluentui/react_v8.122.18)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.4.28 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.62 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-focus to v8.9.25 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/react-hooks to v8.8.19 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/style-utilities to v8.12.2 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/theme to v2.6.67 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/utilities to v8.15.22 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
 
 ## [8.122.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.122.17)
 

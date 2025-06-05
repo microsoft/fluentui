@@ -2,6 +2,165 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 02 Jun 2025 04:07:10 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.107",
+      "version": "3.0.0-beta.107",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e729e4ea591ad577768fa1bc9eb3df19693e4574",
+            "comment": "fix: various field interaction bugs"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f35e9acba80b4c9fd602111ad9c3284e80da7ce3",
+            "comment": "occasionally focusing off of combobox would open and focus listbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 May 2025 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.106",
+      "version": "3.0.0-beta.106",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "f90b2181a0b5b46d53f0c1abbd2107c1ba85eb92",
+            "comment": "Co-located types with ES modules. This should not affect users."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "32bd0b11b7e4f5ab94663efc81cb5f828a02b6f1",
+            "comment": "Accesible name and title for dialog"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 May 2025 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.105",
+      "version": "3.0.0-beta.105",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c688d9a55a85dda5eb2851c1783942b174277239",
+            "comment": "fix: dialog click event prevents default for arbitrary content clicks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 May 2025 04:06:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.104",
+      "version": "3.0.0-beta.104",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "9cef8e89b544a343bd68a2aa869a2bef11312ced",
+            "comment": "fix: updated rating-display icon color tokens to match the React version."
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc51468ae17a371b723777c2c2b5e381a050b7b5",
+            "comment": "fix: better fallback positioning for sub menu"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 May 2025 04:06:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.103",
+      "version": "3.0.0-beta.103",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "601470+mlijanto@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "60d604640cf64bdfe1bb9ff1a73cd49e129cb822",
+            "comment": "Fixed compound-button high contrast text colors."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "df3b89c816d24eb74d899da694d028aa90f6b35f",
+            "comment": "Adds click event to close slot of drawer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 May 2025 04:07:25 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.102",
+      "version": "3.0.0-beta.102",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "98c098337cfeec177531409ae36fc3d59f8ee0f7",
+            "comment": "manage focus only when menu is open"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 May 2025 04:06:48 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.101",
+      "version": "3.0.0-beta.101",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e378d9aec7bb49d20dd76a6361b9b496d26609d2",
+            "comment": "fixes accesibility issues with dialog close button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 May 2025 04:07:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.100",
+      "version": "3.0.0-beta.100",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "burtonsmith@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "203f88372721b380191bd93e667e15502821cb0e",
+            "comment": "Include Custom Elements Manifest in package exports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 May 2025 04:06:34 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.99",
+      "version": "3.0.0-beta.99",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "35deca6eafbd18aa7c34c20d55efee8f0d95215d",
+            "comment": "Add tree exports to main index"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 May 2025 04:07:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.98",
       "version": "3.0.0-beta.98",

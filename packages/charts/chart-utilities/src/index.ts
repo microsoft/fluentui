@@ -6,6 +6,7 @@ export type {
   AxisType,
   Calendar,
   Color,
+  ColorAxis,
   ColorBar,
   ColorScale,
   Config,
@@ -92,6 +93,7 @@ export type {
   TypedArray,
   XAxisName,
   YAxisName,
+  TableData,
 } from './PlotlySchema';
 
 export type { OutputChartType } from './PlotlySchemaConverter';
@@ -108,6 +110,15 @@ export {
   sanitizeJson,
   isTypedArray,
   isArrayOrTypedArray,
+  isInvalidValue,
+  isStringArray,
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';
+
+export {
+  formatToLocaleString,
+  formatDateToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from './formatter';
