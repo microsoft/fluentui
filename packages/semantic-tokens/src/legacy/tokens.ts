@@ -70,6 +70,26 @@ export const borderRadiusMedium = 'var(--borderRadiusMedium)';
  */
 export const borderRadiusNone = 'var(--borderRadiusNone)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThick | `strokeWidthThick`} design token.
+ * @public
+ */
+export const strokeWidthThick = 'var(--strokeWidthThick)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground6 | `colorNeutralBackground6`} design token.
+ * @public
+ */
+export const colorNeutralBackground6 = 'var(--colorNeutralBackground6)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3 | `colorNeutralForeground3`} design token.
+ * @public
+ */
+export const colorNeutralForeground3 = 'var(--colorNeutralForeground3)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase300 | `fontSizeBase300`} design token.
+ * @public
+ */
+export const fontSizeBase300 = 'var(--fontSizeBase300)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorStrokeFocus2 | `colorStrokeFocus2`} design token.
  * @public
  */
@@ -84,11 +104,6 @@ export const strokeWidthThin = 'var(--strokeWidthThin)';
  * @public
  */
 export const colorTransparentStroke = 'var(--colorTransparentStroke)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThick | `strokeWidthThick`} design token.
- * @public
- */
-export const strokeWidthThick = 'var(--strokeWidthThick)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorBrandForegroundLinkHover | `colorBrandForegroundLinkHover`} design token.
  * @public
@@ -119,11 +134,6 @@ export const colorNeutralForeground2Pressed = 'var(--colorNeutralForeground2Pres
  * @public
  */
 export const colorNeutralForeground2 = 'var(--colorNeutralForeground2)';
-/**
- * CSS custom property value for the {@link @fluentui/tokens#colorNeutralBackground6 | `colorNeutralBackground6`} design token.
- * @public
- */
-export const colorNeutralBackground6 = 'var(--colorNeutralBackground6)';
 /**
  * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandBackground | `colorCompoundBrandBackground`} design token.
  * @public
@@ -265,11 +275,6 @@ export const fontSizeBase400 = 'var(--fontSizeBase400)';
  */
 export const lineHeightBase400 = 'var(--lineHeightBase400)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#fontSizeBase300 | `fontSizeBase300`} design token.
- * @public
- */
-export const fontSizeBase300 = 'var(--fontSizeBase300)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#lineHeightBase300 | `lineHeightBase300`} design token.
  * @public
  */
@@ -354,3 +359,23 @@ export const fontFamilyBase = 'var(--fontFamilyBase)';
  * @public
  */
 export const fontWeightRegular = 'var(--fontWeightRegular)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#strokeWidthThickest | `strokeWidthThickest`} design token.
+ * @public
+ */
+export const strokeWidthThickest = 'var(--strokeWidthThickest)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
+ * @public
+ */
+export const borderRadiusSmall = 'var(--borderRadiusSmall)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusLarge | `borderRadiusLarge`} design token.
+ * @public
+ */
+export const borderRadiusLarge = 'var(--borderRadiusLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusXLarge | `borderRadiusXLarge`} design token.
+ * @public
+ */
+export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
