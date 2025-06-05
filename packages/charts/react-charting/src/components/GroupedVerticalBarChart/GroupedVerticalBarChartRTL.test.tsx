@@ -468,11 +468,11 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       fireEvent.mouseOver(legends[0]);
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
-      expect(bars[0]).toHaveAttribute('opacity', '');
+      expect(bars[0]).toHaveAttribute('opacity', '1');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
-      expect(bars[2]).toHaveAttribute('opacity', '');
+      expect(bars[2]).toHaveAttribute('opacity', '1');
       expect(bars[3]).toHaveAttribute('opacity', '0.1');
-      expect(bars[4]).toHaveAttribute('opacity', '');
+      expect(bars[4]).toHaveAttribute('opacity', '1');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
     },
   );
@@ -486,21 +486,21 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       fireEvent.mouseOver(legends[0]);
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
-      expect(bars[0]).toHaveAttribute('opacity', '');
+      expect(bars[0]).toHaveAttribute('opacity', '1');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
-      expect(bars[2]).toHaveAttribute('opacity', '');
+      expect(bars[2]).toHaveAttribute('opacity', '1');
       expect(bars[3]).toHaveAttribute('opacity', '0.1');
-      expect(bars[4]).toHaveAttribute('opacity', '');
+      expect(bars[4]).toHaveAttribute('opacity', '1');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
       fireEvent.mouseOver(legends[1]);
       const updatedBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
       expect(updatedBars[0]).toHaveAttribute('opacity', '0.1');
-      expect(updatedBars[1]).toHaveAttribute('opacity', '');
+      expect(updatedBars[1]).toHaveAttribute('opacity', '1');
       expect(updatedBars[2]).toHaveAttribute('opacity', '0.1');
-      expect(updatedBars[3]).toHaveAttribute('opacity', '');
+      expect(updatedBars[3]).toHaveAttribute('opacity', '1');
       expect(updatedBars[4]).toHaveAttribute('opacity', '0.1');
-      expect(updatedBars[5]).toHaveAttribute('opacity', '');
+      expect(updatedBars[5]).toHaveAttribute('opacity', '1');
     },
   );
 
@@ -518,11 +518,11 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
-      expect(bars[0]).toHaveAttribute('opacity', '');
+      expect(bars[0]).toHaveAttribute('opacity', '1');
       expect(bars[1]).toHaveAttribute('opacity', '0.1');
-      expect(bars[2]).toHaveAttribute('opacity', '');
+      expect(bars[2]).toHaveAttribute('opacity', '1');
       expect(bars[3]).toHaveAttribute('opacity', '0.1');
-      expect(bars[4]).toHaveAttribute('opacity', '');
+      expect(bars[4]).toHaveAttribute('opacity', '1');
       expect(bars[5]).toHaveAttribute('opacity', '0.1');
     },
   );
@@ -542,12 +542,12 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       // Assert
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
-      expect(bars[0]).toHaveAttribute('opacity', '');
-      expect(bars[1]).toHaveAttribute('opacity', '');
-      expect(bars[2]).toHaveAttribute('opacity', '');
-      expect(bars[3]).toHaveAttribute('opacity', '');
-      expect(bars[4]).toHaveAttribute('opacity', '');
-      expect(bars[5]).toHaveAttribute('opacity', '');
+      expect(bars[0]).toHaveAttribute('opacity', '1');
+      expect(bars[1]).toHaveAttribute('opacity', '1');
+      expect(bars[2]).toHaveAttribute('opacity', '1');
+      expect(bars[3]).toHaveAttribute('opacity', '1');
+      expect(bars[4]).toHaveAttribute('opacity', '1');
+      expect(bars[5]).toHaveAttribute('opacity', '1');
     },
   );
 
@@ -571,16 +571,16 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
 
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars[0]).toHaveAttribute('opacity', '0.1');
-      expect(bars[1]).toHaveAttribute('opacity', '');
-      expect(bars[2]).toHaveAttribute('opacity', '');
+      expect(bars[1]).toHaveAttribute('opacity', '1');
+      expect(bars[2]).toHaveAttribute('opacity', '1');
       expect(bars[3]).toHaveAttribute('opacity', '0.1');
       expect(bars[4]).toHaveAttribute('opacity', '0.1');
-      expect(bars[5]).toHaveAttribute('opacity', '');
-      expect(bars[6]).toHaveAttribute('opacity', '');
+      expect(bars[5]).toHaveAttribute('opacity', '1');
+      expect(bars[6]).toHaveAttribute('opacity', '1');
       expect(bars[7]).toHaveAttribute('opacity', '0.1');
       expect(bars[8]).toHaveAttribute('opacity', '0.1');
-      expect(bars[9]).toHaveAttribute('opacity', '');
-      expect(bars[10]).toHaveAttribute('opacity', '');
+      expect(bars[9]).toHaveAttribute('opacity', '1');
+      expect(bars[10]).toHaveAttribute('opacity', '1');
       expect(bars[11]).toHaveAttribute('opacity', '0.1');
     },
   );
