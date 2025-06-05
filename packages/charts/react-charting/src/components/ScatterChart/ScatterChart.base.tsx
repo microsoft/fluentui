@@ -265,7 +265,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         setActivePoint(circleId);
       }
     },
-    [_verticalLine, _xAxisScale, _xBandwidth, _calloutPoints, _refArray, props.useUTC],
+    [_verticalLine, _xAxisScale, _xBandwidth, _calloutPoints, _refArray, props.culture, props.useUTC],
   );
 
   const _handleHover = React.useCallback(
@@ -307,7 +307,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         setActivePoint(circleId);
       }
     },
-    [_verticalLine, _xAxisScale, _xBandwidth, _calloutPoints, props.useUTC],
+    [_verticalLine, _xAxisScale, _xBandwidth, _calloutPoints, props.culture, props.useUTC],
   );
 
   const _handleMouseOut = React.useCallback(() => {
@@ -357,7 +357,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       const yValue = point.yAxisCalloutData || point.y;
       return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
     },
-    [_points, props.useUTC],
+    [_points, props.culture, props.useUTC],
   );
 
   const _createPlot = React.useCallback(
