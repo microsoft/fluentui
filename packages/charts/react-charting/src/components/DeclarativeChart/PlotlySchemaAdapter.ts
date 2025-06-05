@@ -236,6 +236,13 @@ export const _getGaugeAxisColor = (
   return resolveColor(extractedColors, 0, '', colorMap, isDarkTheme);
 };
 
+const _getOpacity = (series: Partial<PlotData>, index: number): number => {
+  return series.marker?.opacity
+    ? isArrayOrTypedArray(series.marker?.opacity)
+      ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
+      : (series.marker?.opacity as number)
+    : series.opacity ?? 1;
+};
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -347,12 +354,7 @@ export const transformPlotlyJsonToVSBCProps = (
         // resolve color for each legend's bars from the extracted colors
         const color = resolveColor(extractedBarColors, index1, legend, colorMap, isDarkTheme);
         const yVal: number = rangeYValues[index2] as number;
-        const opacity: number = series.marker?.opacity
-          ? isArrayOrTypedArray(series.marker?.opacity)
-            ? (series.marker?.opacity as number[])[index2 % (series.marker?.opacity as number[]).length]
-            : (series.marker?.opacity as number)
-          : series.opacity ?? 1;
-
+        const opacity = _getOpacity(series, index2);
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
@@ -478,11 +480,7 @@ export const transformPlotlyJsonToGVBCProps = (
             )
           : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
 
-        const opacity: number = series.marker?.opacity
-          ? isArrayOrTypedArray(series.marker?.opacity)
-            ? (series.marker?.opacity as number[])[xIndex % (series.marker?.opacity as number[]).length]
-            : (series.marker?.opacity as number)
-          : series.opacity ?? 1;
+        const opacity = _getOpacity(series, xIndex);
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y![xIndex] as number,
@@ -579,11 +577,7 @@ export const transformPlotlyJsonToVBCProps = (
         isXString ? bin.length : getBinSize(bin as Bin<number, number>),
       );
 
-      const opacity: number = series.marker?.opacity
-        ? isArrayOrTypedArray(series.marker?.opacity)
-          ? (series.marker?.opacity as number[])[seriesIdx % (series.marker?.opacity as number[]).length]
-          : (series.marker?.opacity as number)
-        : series.opacity ?? 1;
+      const opacity = _getOpacity(series, seriesIdx);
 
       vbcData.push({
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
@@ -759,11 +753,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
           if (isInvalidValue(series.x?.[i]) || isInvalidValue(yValue)) {
             return null;
           }
-          const opacity: number = series.marker?.opacity
-            ? isArrayOrTypedArray(series.marker?.opacity)
-              ? (series.marker?.opacity as number[])[i % (series.marker?.opacity as number[]).length]
-              : (series.marker?.opacity as number)
-            : series.opacity ?? 1;
+          const opacity = _getOpacity(series, i);
 
           return {
             x: series.x![i],
