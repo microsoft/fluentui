@@ -6,26 +6,34 @@ import {
 } from '../components/avatar/variables';
 import {
   foregroundCtrlNeutralPrimaryRestRaw,
-  gapInsideCtrlDefaultRaw,
   cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
+  gapInsideCtrlDefaultRaw,
+  paddingCtrlTextTopRaw,
 } from '../control/variables';
 import {
   colorNeutralForeground2,
-  spacingHorizontalSNudge,
-  strokeWidthThick,
-  strokeWidthThicker,
   strokeWidthThickest,
-  borderRadiusSmall,
-  borderRadiusMedium,
+  strokeWidthThicker,
+  strokeWidthThick,
   borderRadiusLarge,
+  borderRadiusMedium,
+  borderRadiusSmall,
   borderRadiusXLarge,
   strokeWidthThin,
+  spacingHorizontalSNudge,
+  spacingVerticalXS,
+  colorTransparentStrokeInteractive,
+  colorTransparentStroke,
 } from '../legacy/tokens';
+import { strokeCtrlOnBrandHoverRaw, strokeCtrlOnBrandRestRaw } from '../nullable/variables';
 import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
+  paddingCtrlTextBottomRaw,
+  strokeCtrlOnActiveBrandHoverRaw,
+  strokeCtrlOnActiveBrandRestRaw,
 } from '../optional/variables';
 
 /**
@@ -50,19 +58,12 @@ export const _ctrlAccordionForegroundPressed = `var(${foregroundCtrlOnTransparen
  */
 export const _ctrlAccordionForegroundRest = `var(${foregroundCtrlOnTransparentRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
 /**
- * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use gapInsideCtrlDefault instead.
- */
-export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
-/**
  * This is a legacy variant for ctrlAvatarActiveRingStrokeWidth to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
  * please use ctrlAvatarActiveRingStrokeWidth instead.
  */
-export const _ctrlAvatarActiveRingStrokeWidthSm = `var(${ctrlAvatarActiveRingStrokeWidthRaw}, ${strokeWidthThick})`;
+export const _ctrlAvatarActiveRingStrokeWidthLg = `var(${ctrlAvatarActiveRingStrokeWidthRaw}, ${strokeWidthThickest})`;
 /**
  * This is a legacy variant for ctrlAvatarActiveRingStrokeWidth to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -76,21 +77,7 @@ export const _ctrlAvatarActiveRingStrokeWidthMd = `var(${ctrlAvatarActiveRingStr
  * This token is not intended for use in new semantic theme implementations
  * please use ctrlAvatarActiveRingStrokeWidth instead.
  */
-export const _ctrlAvatarActiveRingStrokeWidthLg = `var(${ctrlAvatarActiveRingStrokeWidthRaw}, ${strokeWidthThickest})`;
-/**
- * This is a legacy variant for ctrlAvatarCornerGroup to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use ctrlAvatarCornerGroup instead.
- */
-export const _ctrlAvatarCornerGroupSm = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusSmall}))`;
-/**
- * This is a legacy variant for ctrlAvatarCornerGroup to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use ctrlAvatarCornerGroup instead.
- */
-export const _ctrlAvatarCornerGroupMd = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
+export const _ctrlAvatarActiveRingStrokeWidthSm = `var(${ctrlAvatarActiveRingStrokeWidthRaw}, ${strokeWidthThick})`;
 /**
  * This is a legacy variant for ctrlAvatarCornerGroup to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -104,7 +91,28 @@ export const _ctrlAvatarCornerGroupLg = `var(${ctrlAvatarCornerGroupRaw}, var(${
  * This token is not intended for use in new semantic theme implementations
  * please use ctrlAvatarCornerGroup instead.
  */
+export const _ctrlAvatarCornerGroupMd = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusMedium}))`;
+/**
+ * This is a legacy variant for ctrlAvatarCornerGroup to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlAvatarCornerGroup instead.
+ */
+export const _ctrlAvatarCornerGroupSm = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusSmall}))`;
+/**
+ * This is a legacy variant for ctrlAvatarCornerGroup to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlAvatarCornerGroup instead.
+ */
 export const _ctrlAvatarCornerGroupXLg = `var(${ctrlAvatarCornerGroupRaw}, var(${cornerCtrlRestRaw}, ${borderRadiusXLarge}))`;
+/**
+ * This is a legacy variant for ctrlAvatarPresenceBadgeStrokeWidth to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlAvatarPresenceBadgeStrokeWidth instead.
+ */
+export const _ctrlAvatarPresenceBadgeStrokeWidthLg = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThick}))`;
 /**
  * This is a legacy variant for ctrlAvatarPresenceBadgeStrokeWidth to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -113,9 +121,37 @@ export const _ctrlAvatarCornerGroupXLg = `var(${ctrlAvatarCornerGroupRaw}, var($
  */
 export const _ctrlAvatarPresenceBadgeStrokeWidthSm = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
 /**
- * This is a legacy variant for ctrlAvatarPresenceBadgeStrokeWidth to enable backwards compatibility.
+ * This is a legacy variant for gapInsideCtrlDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
- * please use ctrlAvatarPresenceBadgeStrokeWidth instead.
+ * please use gapInsideCtrlDefault instead.
  */
-export const _ctrlAvatarPresenceBadgeStrokeWidthLg = `var(${ctrlAvatarPresenceBadgeStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThick}))`;
+export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlSwitchPaddingTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, ${spacingVerticalXS}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlSwitchPaddingTextTop = `var(${paddingCtrlTextTopRaw}, ${spacingVerticalXS})`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandHover to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandHover instead.
+ */
+export const _ctrlSwitchStrokeOnActiveBrandHover = `var(${strokeCtrlOnActiveBrandHoverRaw}, var(${strokeCtrlOnBrandHoverRaw}, ${colorTransparentStrokeInteractive}))`;
+/**
+ * This is a legacy variant for strokeCtrlOnActiveBrandRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use strokeCtrlOnActiveBrandRest instead.
+ */
+export const _ctrlSwitchStrokeOnActiveBrandRest = `var(${strokeCtrlOnActiveBrandRestRaw}, var(${strokeCtrlOnBrandRestRaw}, ${colorTransparentStroke}))`;
