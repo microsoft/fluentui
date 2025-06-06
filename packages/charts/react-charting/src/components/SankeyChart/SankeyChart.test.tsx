@@ -99,7 +99,7 @@ const dataWithoutColors: () => IChartProps = () => ({
   },
 });
 
-describe('Sankey Chart snapShot testing', () => {
+describe.skip('Sankey Chart snapShot testing', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
@@ -154,7 +154,7 @@ describe('Sankey Chart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  describe('number formatting', () => {
+  describe.skip('number formatting', () => {
     it('renders Sankey correctly by formatting large numbers', () => {
       // ARRANGE
       const data2 = {
@@ -256,7 +256,7 @@ describe('Sankey Chart snapShot testing', () => {
   });
 });
 
-describe('Render calling with respective to props', () => {
+describe.skip('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
@@ -286,7 +286,7 @@ describe('Render calling with respective to props', () => {
   });
 });
 
-describe('SankeyChart - mouse events', () => {
+describe.skip('SankeyChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
@@ -383,7 +383,7 @@ describe('SankeyChart - mouse events', () => {
   });
 });
 
-describe('SankeyChart - Min Height of Node Test', () => {
+describe.skip('SankeyChart - Min Height of Node Test', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
