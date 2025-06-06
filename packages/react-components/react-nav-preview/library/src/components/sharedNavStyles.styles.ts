@@ -56,13 +56,6 @@ export const useRootDefaultClassName = makeResetStyles({
   ':hover': {
     backgroundColor: navItemTokens.backgroundColorHover,
   },
-  ':active': {
-    zIndex: 1,
-    backgroundColor: navItemTokens.backgroundColorPressed,
-  },
-  ':focus': {
-    zIndex: 1,
-  },
 });
 
 export const useSmallStyles = makeStyles({
