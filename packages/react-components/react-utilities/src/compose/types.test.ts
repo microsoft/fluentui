@@ -1,3 +1,4 @@
+/*  eslint-disable @typescript-eslint/naming-convention */
 import * as React from 'react';
 import type * as Types from './types';
 
@@ -59,17 +60,12 @@ describe(`types`, () => {
       // v9 ForwardRefComponent + RefAttributes with React 18.2.61 types issue
       //
 
-      /**
-       * @types/react@18.2.61 introduced a change in the `RefAttributes` type to include `LegacyRef<T>`
-       */
+      // @types/react@18.2.61 introduced a change in the `RefAttributes` type to include `LegacyRef<T>`
       interface RefAttributesAfterTypesReact18_2_61<T> extends React.Attributes {
         ref?: React.LegacyRef<T>;
       }
 
-      /**
-       *
-       * previous change affects forwardRef api
-       */
+      // previous change affects forwardRef api
       function forwardRefAfterTypesReact18_2_61<T, P = {}>(
         render: React.ForwardRefRenderFunction<T, P>,
       ): React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & RefAttributesAfterTypesReact18_2_61<T>> {
