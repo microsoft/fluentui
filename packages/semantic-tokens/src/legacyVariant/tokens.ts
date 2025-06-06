@@ -4,12 +4,14 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import {
   nullColorRaw,
   foregroundCtrlNeutralPrimaryRestRaw,
   cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
+  backgroundCtrlBrandRestRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -26,6 +28,7 @@ import {
   spacingVerticalXXS,
   colorNeutralForeground3,
   colorNeutralForeground3Hover,
+  colorStrokeFocus2,
 } from '../legacy/tokens';
 import { backgroundCtrlSubtleRestRaw } from '../nullable/variables';
 import {
@@ -165,3 +168,17 @@ export const _ctrlTreeIconOnSubtleHover = `var(${foregroundCtrlOnSubtleHoverRaw}
  * please use foregroundCtrlOnSubtlePressed instead.
  */
 export const _ctrlTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for ctrlFocusInnerStrokeWidth to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusInnerStrokeWidth instead.
+ */
+export const _ctrlAccordionFocusInnerStrokeWidth = `var(${ctrlFocusInnerStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, 0px))`;
+/**
+ * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusOuterStroke instead.
+ */
+export const _ctrlAccordionFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorStrokeFocus2}))`;

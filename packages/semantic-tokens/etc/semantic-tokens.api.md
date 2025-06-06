@@ -632,6 +632,12 @@ export const cornerZeroRaw = "--smtc-corner-zero";
 export const _ctrlAccordionBackgroundRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public
+export const _ctrlAccordionFocusInnerStrokeWidth = "var(--smtc-ctrl-focus-inner-stroke-width, var(--smtc-stroke-width-default, 0px))";
+
+// @public
+export const _ctrlAccordionFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
+
+// @public
 export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
 
 // @public
