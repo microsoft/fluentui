@@ -54,6 +54,52 @@ describe(`types`, () => {
       componentEl = { greeting: 123, who: false };
 
       expect(componentEl).toBeDefined();
+
+      //
+      // v9 ForwardRefComponent + RefAttributes with React 18.2.61 types issue
+      //
+
+      /**
+       * @types/react@18.2.61 introduced a change in the `RefAttributes` type to include `LegacyRef<T>`
+       */
+      interface RefAttributesAfterTypesReact18_2_61<T> extends React.Attributes {
+        ref?: React.LegacyRef<T>;
+      }
+
+      /**
+       *
+       * previous change affects forwardRef api
+       */
+      function forwardRefAfterTypesReact18_2_61<T, P = {}>(
+        render: React.ForwardRefRenderFunction<T, P>,
+      ): React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & RefAttributesAfterTypesReact18_2_61<T>> {
+        return null as unknown as React.ForwardRefExoticComponent<
+          React.PropsWithoutRef<P> & RefAttributesAfterTypesReact18_2_61<T>
+        >;
+      }
+
+      type ButtonProps = Types.ComponentProps<{
+        root: NonNullable<Types.Slot<'button'>>;
+
+        icon?: Types.Slot<'span'>;
+      }>;
+      const Button = (_props => {
+        return null;
+      }) as Types.ForwardRefComponent<ButtonProps>;
+
+      const Example = forwardRefAfterTypesReact18_2_61((props: { hello?: string }, _ref) => {
+        const wrong = React.createElement(
+          Button,
+          // @ts-expect-error - Type 'LegacyRef<HTMLButtonElement> | undefined' is not assignable to type 'Ref<HTMLButtonElement> | undefined'. -> Type 'string' is not assignable to type 'Ref<HTMLButtonElement> | undefined'.
+          {
+            ...(props as RefAttributesAfterTypesReact18_2_61<HTMLButtonElement>),
+          },
+        );
+        const correct = React.createElement(Button, { ...(props as Types.RefAttributes<HTMLButtonElement>) });
+
+        return React.createElement(React.Fragment, null, wrong, correct);
+      });
+      console.log(Example);
     });
   });
 });
