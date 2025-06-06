@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: use custom RefAttributes instead of React.RefAttributes",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

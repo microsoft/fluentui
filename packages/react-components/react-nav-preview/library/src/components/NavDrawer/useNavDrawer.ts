@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Drawer, DrawerProps } from '@fluentui/react-drawer';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { slot } from '@fluentui/react-utilities';
+import { RefAttributes, slot } from '@fluentui/react-utilities';
 
 import { useNav_unstable } from '../Nav/useNav';
 import type { NavDrawerProps, NavDrawerState } from './NavDrawer.types';
@@ -49,7 +49,7 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
         // this is a problem with the lack of support for union types on React v18
         // ComponentState is using React.ComponentType which will try to infer propType
         // propTypes WeakValidator signature will break distributive unions making this type invalid
-        elementType: Drawer as React.FC<DrawerProps & React.RefAttributes<HTMLDivElement>>,
+        elementType: Drawer as React.FC<DrawerProps & RefAttributes<HTMLDivElement>>,
       },
     ),
   };
