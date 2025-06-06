@@ -336,6 +336,12 @@ export const originalButtonStyles = css`
   `),
 );
 // ── NPDS OVERRIDE LAYER ──
+export const originalButtonStyles = css`
+  ${originalButtonStyles}
+  ${npdsButtonStyles}
+`;
+// ────────────────────────
+// ── NPDS OVERRIDE LAYER ──
 export const styles = css`
   ${originalButtonStyles}
   ${npdsButtonStyles}
