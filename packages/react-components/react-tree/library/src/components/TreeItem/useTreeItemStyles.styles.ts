@@ -31,11 +31,11 @@ const useBaseStyles = makeResetStyles({
   // This adds the focus outline for the TreeItemLayout element
   ...createCustomFocusIndicatorStyle(
     {
-      borderRadius: semanticTokens.ctrlListCornerRest,
-      outlineColor: semanticTokens.ctrlFocusInnerStroke,
       outlineRadius: semanticTokens.ctrlListCornerRest,
-      outlineWidth: semanticTokens.ctrlFocusOuterStrokeWidth,
-      outlineStyle: 'solid',
+      borderRadius: semanticTokens.ctrlListCornerRest,
+      boxShadow: `0 0 0 ${semanticTokens._ctrlAccordionFocusInnerStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}`,
+      outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens._ctrlAccordionFocusOuterStroke}`,
+      outlineOffset: semanticTokens._ctrlAccordionFocusInnerStrokeWidth,
     },
     {
       customizeSelector: selector =>

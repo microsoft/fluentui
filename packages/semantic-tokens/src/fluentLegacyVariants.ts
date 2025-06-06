@@ -17,6 +17,14 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorTransparentBackground',
     originalToken: 'backgroundCtrlSubtleRest',
   },
+  _ctrlAccordionFocusInnerStrokeWidth: {
+    originalToken: 'ctrlFocusInnerStrokeWidth',
+    rawValue: '0px',
+  },
+  _ctrlAccordionFocusOuterStroke: {
+    f2Token: 'colorStrokeFocus2',
+    originalToken: 'ctrlFocusOuterStroke',
+  },
   _ctrlAccordionForegroundHover: {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentHover',

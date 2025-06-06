@@ -4,6 +4,7 @@ import {
   ctrlAvatarCornerGroupRaw,
   ctrlAvatarPresenceBadgeStrokeWidthRaw,
 } from '../components/avatar/variables';
+import { ctrlFocusInnerStrokeWidthRaw, ctrlFocusOuterStrokeRaw } from '../components/focus/variables';
 import {
   ctrlProgressBackgroundEmptyRaw,
   ctrlProgressBackgroundFilledRaw,
@@ -12,11 +13,11 @@ import {
 import { ctrlSpinnerStrokeWidthRaw } from '../components/spinner/variables';
 import {
   nullColorRaw,
+  strokeWidthDefaultRaw,
+  backgroundCtrlBrandRestRaw,
   foregroundCtrlNeutralPrimaryRestRaw,
   cornerCtrlRestRaw,
-  strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
-  backgroundCtrlBrandRestRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
@@ -24,6 +25,7 @@ import {
 } from '../control/variables';
 import {
   colorTransparentBackground,
+  colorStrokeFocus2,
   colorNeutralForeground2,
   strokeWidthThickest,
   strokeWidthThicker,
@@ -75,6 +77,20 @@ import {
  * please use backgroundCtrlSubtleRest instead.
  */
 export const _ctrlAccordionBackgroundRest = `var(${backgroundCtrlSubtleRestRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
+/**
+ * This is a legacy variant for ctrlFocusInnerStrokeWidth to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusInnerStrokeWidth instead.
+ */
+export const _ctrlAccordionFocusInnerStrokeWidth = `var(${ctrlFocusInnerStrokeWidthRaw}, var(${strokeWidthDefaultRaw}, 0px))`;
+/**
+ * This is a legacy variant for ctrlFocusOuterStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use ctrlFocusOuterStroke instead.
+ */
+export const _ctrlAccordionFocusOuterStroke = `var(${ctrlFocusOuterStrokeRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorStrokeFocus2}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnTransparentHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

@@ -1783,6 +1783,8 @@ export {
 } from './components/card/tokens';
 export {
   _ctrlAccordionBackgroundRest,
+  _ctrlAccordionFocusInnerStrokeWidth,
+  _ctrlAccordionFocusOuterStroke,
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
