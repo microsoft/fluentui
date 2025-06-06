@@ -81,6 +81,7 @@ export const fluentOverrides: FluentOverrides = {
   ctrlLinkForegroundNeutralPressed: { f2Token: 'colorNeutralForeground2Pressed' },
   ctrlLinkForegroundNeutralRest: { f2Token: 'colorNeutralForeground2' },
   ctrlListCornerRest: { f2Token: 'borderRadiusMedium' },
+  ctrlListIndentLevel1: { f2Token: 'spacingHorizontalXXL' },
   ctrlProgressBackgroundEmpty: { f2Token: 'colorNeutralBackground6' },
   ctrlProgressBackgroundFilled: { f2Token: 'colorCompoundBrandBackground' },
   ctrlProgressCorner: { f2Token: 'borderRadiusMedium' },

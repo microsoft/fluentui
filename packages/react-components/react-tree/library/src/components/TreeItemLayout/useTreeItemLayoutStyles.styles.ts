@@ -1,10 +1,11 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   root: 'fui-TreeItemLayout',
@@ -24,19 +25,19 @@ const useRootBaseStyles = makeResetStyles({
   boxSizing: 'border-box',
   gridArea: 'layout',
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: semanticTokens.foregroundCtrlOnSubtlePressed,
+    backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
     // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: semanticTokens._ctrlTreeIconOnSubtlePressed,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: semanticTokens.foregroundCtrlOnSubtleHover,
+    backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
     // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: semanticTokens._ctrlTreeIconOnSubtleHover,
     },
   },
 });
@@ -46,17 +47,23 @@ const useRootBaseStyles = makeResetStyles({
  */
 const useRootStyles = makeStyles({
   leaf: {
-    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc(var(${treeItemLevelToken}, 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   branch: {
-    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${tokens.spacingHorizontalXXL})`,
+    paddingLeft: `calc((var(${treeItemLevelToken}, 1) - 1) * ${semanticTokens.ctrlListIndentLevel1})`,
   },
   medium: {
-    ...typographyStyles.body1,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampItemBodyFontSize,
+    lineHeight: semanticTokens.textRampItemBodyLineHeight,
   },
   small: {
     minHeight: '24px',
-    ...typographyStyles.caption1,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textRampSmItemBodyFontSize,
+    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
   },
   // Appearance variations
   subtle: {},
@@ -69,12 +76,15 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.nullColor,
+    color: semanticTokens._ctrlAccordionForegroundRest,
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
+      color: semanticTokens._ctrlAccordionForegroundHover,
     },
     ':active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
+      color: semanticTokens._ctrlAccordionForegroundPressed,
     },
   },
 });
@@ -112,7 +122,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: semanticTokens._ctrlTreeIconOnSubtle,
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
 });
@@ -130,9 +140,9 @@ const useMainBaseStyles = makeResetStyles({
 const useIconBaseStyles = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground2,
-  lineHeight: tokens.lineHeightBase500,
-  fontSize: tokens.fontSizeBase500,
+  color: semanticTokens.foregroundCtrlOnSubtleRest,
+  lineHeight: semanticTokens.textGlobalBody1LineHeight,
+  fontSize: semanticTokens.textGlobalBody1FontSize,
 });
 
 const useIconBeforeStyles = makeStyles({

@@ -629,6 +629,9 @@ export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 export const cornerZeroRaw = "--smtc-corner-zero";
 
 // @public
+export const _ctrlAccordionBackgroundRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
+
+// @public
 export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
 
 // @public
@@ -1997,7 +2000,7 @@ export const ctrlListForegroundSelectedRest = "var(--smtc-ctrl-list-foreground-s
 export const ctrlListForegroundSelectedRestRaw = "--smtc-ctrl-list-foreground-selected-rest";
 
 // @public (undocumented)
-export const ctrlListIndentLevel1 = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default))";
+export const ctrlListIndentLevel1 = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalXXL)))";
 
 // @public (undocumented)
 export const ctrlListIndentLevel1Raw = "--smtc-ctrl-list-indent-level1";
@@ -2798,7 +2801,29 @@ export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctr
 export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
 
 // @public (undocumented)
+<<<<<<< HEAD
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
+=======
+export const ctrlTooltipShadowKey = "var(--smtc-ctrl-tooltip-shadow-key, var(--smtc-ctrl-fab-shadow-rest-key))";
+
+// @public (undocumented)
+export const ctrlTooltipShadowKeyRaw = "--smtc-ctrl-tooltip-shadow-key";
+
+// @public
+export const _ctrlTreeGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingVerticalXXS))";
+
+// @public
+export const _ctrlTreeIconOnSubtle = "var(--smtc-foreground-ctrl-on-subtle-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlTreeIconOnSubtleHover = "var(--smtc-foreground-ctrl-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-hover, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3)))";
+
+// @public (undocumented)
+export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";
+>>>>>>> bab7aa8536 (Squish for rebase)
 
 // @public (undocumented)
 export const foregroundContentBrandPrimaryRaw = "--smtc-foreground-content-brand-primary";

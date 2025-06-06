@@ -13,6 +13,10 @@ export type LegacyFluentVariantValue =
 export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | null>;
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
+  _ctrlAccordionBackgroundRest: {
+    f2Token: 'colorTransparentBackground',
+    originalToken: 'backgroundCtrlSubtleRest',
+  },
   _ctrlAccordionForegroundHover: {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentHover',
@@ -112,5 +116,21 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlSwitchStrokeOnActiveBrandRest: {
     f2Token: 'colorTransparentStroke',
     originalToken: 'strokeCtrlOnActiveBrandRest',
+  },
+  _ctrlTreeGapInsideDefault: {
+    f2Token: 'spacingVerticalXXS',
+    originalToken: 'gapInsideCtrlDefault',
+  },
+  _ctrlTreeIconOnSubtle: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlOnSubtleRest',
+  },
+  _ctrlTreeIconOnSubtleHover: {
+    f2Token: 'colorNeutralForeground3Hover',
+    originalToken: 'foregroundCtrlOnSubtleHover',
+  },
+  _ctrlTreeIconOnSubtlePressed: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlOnSubtlePressed',
   },
 };

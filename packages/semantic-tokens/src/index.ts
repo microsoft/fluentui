@@ -1782,6 +1782,7 @@ export {
   ctrlCardStateDisabled,
 } from './components/card/tokens';
 export {
+  _ctrlAccordionBackgroundRest,
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
@@ -1807,5 +1808,9 @@ export {
   _ctrlSwitchPaddingTextTop,
   _ctrlSwitchStrokeOnActiveBrandHover,
   _ctrlSwitchStrokeOnActiveBrandRest,
+  _ctrlTreeGapInsideDefault,
+  _ctrlTreeIconOnSubtle,
+  _ctrlTreeIconOnSubtleHover,
+  _ctrlTreeIconOnSubtlePressed,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
