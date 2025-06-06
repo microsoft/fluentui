@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
