@@ -125,7 +125,7 @@ export class BaseAnchor extends FASTElement {
 
   constructor() {
     super();
-
+    /** @internal */
     this.elementInternals.role = 'link';
   }
 
@@ -179,6 +179,7 @@ export class BaseAnchor extends FASTElement {
   /**
    * Handles keydown events for the anchor.
    *
+   * @internal
    * @param e - the keyboard event
    * @returns - the return value of the click handler
    * @public

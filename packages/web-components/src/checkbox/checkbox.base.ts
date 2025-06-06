@@ -5,6 +5,9 @@ import { toggleState } from '../utils/element-internals.js';
  * The base class for a component with a toggleable checked state.
  *
  * @public
+ *
+ * @fires change - Emitted when the checked state changes.
+ * @fires input - Emitted when the value changes.
  */
 export class BaseCheckbox extends FASTElement {
   /**
