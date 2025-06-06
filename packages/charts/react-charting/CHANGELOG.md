@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 05 Jun 2025 07:20:36 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jun 2025 07:20:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.2)
+
+Fri, 06 Jun 2025 07:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.1..@fluentui/react-charting_v5.24.2)
+
+### Patches
+
+- add labels for text+markers ([PR #34587](https://github.com/microsoft/fluentui/pull/34587) by anushgupta@microsoft.com)
+- fix(react-charting): Colorscale support for bar charts ([PR #34578](https://github.com/microsoft/fluentui/pull/34578) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting):Date Axis Support for Vertical Stacked Bar Chart ([PR #34532](https://github.com/microsoft/fluentui/pull/34532) by 120183316+srmukher@users.noreply.github.com)
 
 ## [5.24.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.1)
 
