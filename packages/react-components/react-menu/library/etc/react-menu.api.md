@@ -230,6 +230,7 @@ export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'hasIco
     toggleCheckbox?: SelectableHandler;
     selectRadio?: SelectableHandler;
     onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+    mouseInputState?: MouseInputState;
 };
 
 // @public (undocumented)
@@ -260,6 +261,7 @@ export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuLi
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
     hasMenuContext?: boolean;
+    mouseInputState?: MenuListContextValue['mouseInputState'];
 };
 
 // @public

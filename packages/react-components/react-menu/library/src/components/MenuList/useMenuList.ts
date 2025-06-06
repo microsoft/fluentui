@@ -11,12 +11,15 @@ import {
   useFocusFinders,
   TabsterMoveFocusEventName,
   type TabsterMoveFocusEvent,
+  useOnKeyboardNavigationChange,
+  useSetKeyboardNavigation,
 } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MenuContext } from '../../contexts/menuContext';
 import type { MenuListProps, MenuListState } from './MenuList.types';
+import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 
 /**
  * Returns the props and state required to render the component
@@ -133,6 +136,8 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     handleCheckedValueChange?.(e, { name, checkedItems: newCheckedItems });
   });
 
+  const mouseInputState = useMouseInputState();
+
   return {
     components: {
       root: 'div',
@@ -157,6 +162,7 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     setFocusByFirstCharacter,
     selectRadio,
     toggleCheckbox,
+    mouseInputState,
   };
 };
 
@@ -195,4 +201,24 @@ const usingPropsAndMenuContext = (
   }
 
   return hasMenuContext && isUsingPropsAndContext;
+};
+
+const useMouseInputState = () => {
+  const parentContext = useMenuListContext_unstable(ctx => ctx.mouseInputState);
+  const setKeyboardNavigationState = useSetKeyboardNavigation();
+  const isMouseInputRef = React.useRef(!!parentContext?.isMouseInput());
+  const setMouseInput = React.useCallback(
+    (isMouseInput: boolean) => {
+      setKeyboardNavigationState(!isMouseInput);
+      parentContext?.setMouseInput(isMouseInput);
+      isMouseInputRef.current = isMouseInput;
+    },
+    [parentContext, setKeyboardNavigationState],
+  );
+
+  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+    setMouseInput(!isNavigatingWithKeyboard);
+  });
+
+  return { isMouseInput: () => isMouseInputRef.current, setMouseInput };
 };
