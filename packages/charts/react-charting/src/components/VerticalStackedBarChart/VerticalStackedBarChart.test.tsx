@@ -1,5 +1,3 @@
-jest.mock('react-dom');
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
@@ -7,6 +5,9 @@ import * as renderer from 'react-test-renderer';
 import { IVSChartDataPoint, VerticalStackedBarChart, IVerticalStackedChartProps } from '../../index';
 import { chartPointsVSBC, emptychartPointsVSBC } from '../../utilities/test-data';
 import { render } from '@testing-library/react';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
 
 function sharedBeforeEach() {
   resetIds();
