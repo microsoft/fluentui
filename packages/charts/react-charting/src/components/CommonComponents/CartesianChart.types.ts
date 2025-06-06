@@ -81,6 +81,12 @@ export interface ICartesianChartStyleProps {
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
    */
   enableReflow?: boolean;
+
+  /**
+   * Prop to set the opacity of the chart color.
+   * This prop should only be used if absolutely necessary as it can impact the accessibility of the output chart color
+   */
+  opacity?: number;
 }
 
 /**

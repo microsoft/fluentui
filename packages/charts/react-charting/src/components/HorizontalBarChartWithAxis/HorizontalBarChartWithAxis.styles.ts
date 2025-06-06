@@ -1,10 +1,10 @@
 import { IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles } from '../../index';
 
 export const getStyles = (props: IHorizontalBarChartWithAxisStyleProps): IHorizontalBarChartWithAxisStyles => {
-  const { shouldHighlight } = props;
+  const { shouldHighlight, opacity } = props;
   return {
     opacityChangeOnHover: {
-      opacity: shouldHighlight ? '' : '0.1',
+      opacity: shouldHighlight ? opacity ?? '' : '0.1',
     },
 
     xAxisTicks: [],

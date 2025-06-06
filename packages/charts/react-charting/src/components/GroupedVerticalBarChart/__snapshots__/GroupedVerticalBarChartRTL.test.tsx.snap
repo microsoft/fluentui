@@ -282,11 +282,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -300,11 +301,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="208.56"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -358,11 +360,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -376,11 +379,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="14.220000000000027"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -434,11 +438,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="66.36000000000001"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -452,11 +457,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="237"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1038,11 +1044,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -1056,11 +1063,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="208.56"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1114,11 +1122,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1132,11 +1141,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="14.220000000000027"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1190,11 +1200,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="66.36000000000001"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1208,11 +1219,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="237"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1794,11 +1806,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -1812,11 +1825,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="208.56"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1870,11 +1884,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1888,11 +1903,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="14.220000000000027"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1946,11 +1962,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="66.36000000000001"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -1964,11 +1981,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="237"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2550,11 +2568,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -2568,11 +2587,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="208.56"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2626,11 +2646,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2644,11 +2665,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="14.220000000000027"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2702,11 +2724,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="66.36000000000001"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -2720,11 +2743,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="237"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -3306,11 +3330,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -3324,11 +3349,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="208.56"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -3382,11 +3408,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="156.42000000000002"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -3400,11 +3427,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="14.220000000000027"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -3458,11 +3486,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="66.36000000000001"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -3476,11 +3505,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="237"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -4535,11 +4565,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -4553,11 +4584,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00188f"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -4571,11 +4603,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -4593,11 +4626,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -4611,11 +4645,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00188f"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -4629,11 +4664,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -5104,11 +5140,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="0"
@@ -5122,11 +5159,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00188f"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -5140,11 +5178,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -5162,11 +5201,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#0078d4"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -5180,11 +5220,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00188f"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -5198,11 +5239,12 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
 
                   {
                     cursor: default;
+                    opacity: 1;
                   }
               data-is-focusable="true"
               fill="#00bcf2"
               height="1"
-              opacity=""
+              opacity="1"
               role="img"
               rx="0"
               tabindex="-1"
@@ -8050,11 +8092,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="156.42000000000002"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="0"
@@ -8068,11 +8111,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="208.56"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -8126,11 +8170,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="156.42000000000002"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -8144,11 +8189,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="14.220000000000027"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -8202,11 +8248,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#00bcf2"
                 height="66.36000000000001"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="-1"
@@ -8220,11 +8267,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
 
                     {
                       cursor: default;
+                      opacity: 1;
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="237"
-                opacity=""
+                opacity="1"
                 role="img"
                 rx="0"
                 tabindex="-1"

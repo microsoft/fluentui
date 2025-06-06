@@ -336,6 +336,7 @@ export interface ICartesianChartStyleProps {
     href?: string;
     isRtl?: boolean;
     lineColor?: string;
+    opacity?: number;
     shouldHighlight?: boolean;
     theme: ITheme;
     toDrawShape?: boolean;

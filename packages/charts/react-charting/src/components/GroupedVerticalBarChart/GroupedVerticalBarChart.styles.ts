@@ -2,10 +2,11 @@ import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/li
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
-  const { theme, href } = props;
+  const { theme, href, opacity } = props;
   return {
     opacityChangeOnHover: {
       cursor: href ? 'pointer' : 'default',
+      opacity: opacity ?? '',
     },
 
     tooltip: {

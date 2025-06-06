@@ -2,10 +2,10 @@ import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/li
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
-  const { shouldHighlight, theme } = props;
+  const { shouldHighlight, theme, opacity } = props;
   return {
     opacityChangeOnHover: {
-      opacity: shouldHighlight ? '' : '0.1',
+      opacity: shouldHighlight ? opacity ?? '' : '0.1',
     },
 
     xAxisTicks: [],
