@@ -6,43 +6,62 @@ jobs:
   apply-npds:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout FluentUI code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
-      - name: Create .npmrc for Azure DevOps feed
+
+      - name: Clone NPDS repo from Azure DevOps
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
         run: |
-          cat << 'EOF' > .npmrc
-          registry=https://pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/
-          always-auth=true
-          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:username=nbsdev
-          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:email=npm requires email to be set but doesn't use the value
-          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:username=nbsdev
-          //pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:email=npm requires email to be set but doesn't use the value
-          EOF
-          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/registry/:_password=${{ secrets.AZURE_DEVOPS_NPM_TOKEN_BASE64 }}" >> .npmrc
-          echo "//pkgs.dev.azure.com/nbsdev/_packaging/NbsDevPackages/npm/:_password=${{ secrets.AZURE_DEVOPS_NPM_TOKEN_BASE64 }}" >> .npmrc
-      - name: Install NPDS package
+          git clone https://:$AZURE_DEVOPS_PAT@dev.azure.com/nbsdev/NBS%20Product%20Design/_git/DesignSystem npds-repo
+
+      - name: Verify files exist before copying
         run: |
-          npm install @nbs/npds-components --legacy-peer-deps
-      - name: Patch Fluent's button.styles.ts
+          echo "Checking NPDS file exists..."
+          if [ ! -f "npds-repo/packages/npds-components/src/components/button/button.styles.ts" ]; then
+            echo "NPDS button styles not found!"
+            echo "Available files in npds-repo:"
+            find npds-repo -name "*.styles.ts" | head -10
+            exit 1
+          fi
+
+          echo "Checking FluentUI target file exists..."
+          if [ ! -f "packages/web-components/src/button/button.styles.ts" ]; then
+            echo "FluentUI button styles not found!"
+            exit 1
+          fi
+
+          echo "Both files found, proceeding with copy..."
+
+      - name: Copy NPDS styles and patch Fluent button
         run: |
+          # Copy the NPDS button styles
+          cp npds-repo/packages/npds-components/src/components/button/button.styles.ts ./npds-button-styles.ts
+
+          # Patch Fluent's button.styles.ts
           FILE="packages/web-components/src/button/button.styles.ts"
           grep -q "npdsButtonStyles" $FILE || \
-            sed -i '1iimport { buttonStyles as npdsButtonStyles } from "@nbs/npds-components/button";' $FILE
+            sed -i '1iimport { buttonStyles as npdsButtonStyles } from "./npds-button-styles";' $FILE
           sed -i 's/export const styles = css/export const originalButtonStyles = css/' $FILE
           cat << 'EOF' >> $FILE
           // ── NPDS OVERRIDE LAYER ──
           export const styles = css`
-            \${originalButtonStyles}
-            \${npdsButtonStyles}
+            ${originalButtonStyles}
+            ${npdsButtonStyles}
           `;
           // ────────────────────────
           EOF
+
+          # Clean up
+          rm -rf npds-repo
+
       - name: Commit and push NPDS patch
         env:
           GH_PAT: ${{ secrets.FLUENTUI_ACTION }}
@@ -50,7 +69,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if ! git diff --quiet -- packages/web-components/src/button/button.styles.ts; then
-            git add packages/web-components/src/button/button.styles.ts
+            git add packages/web-components/src/button/button.styles.ts npds-button-styles.ts
             git commit -m "chore: layer NPDS button styles"
             git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
           else
