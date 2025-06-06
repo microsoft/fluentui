@@ -16,7 +16,7 @@ module.exports = {
     ],
   },
   coverageDirectory: './coverage',
-  setupFilesAfterEnv: ['./config/tests.js', 'jest-canvas-mock'],
+  setupFilesAfterEnv: ['./config/tests.js'],
   snapshotSerializers: ['@griffel/jest-serializer'],
   moduleNameMapper: {
     '^d3-scale$': '<rootDir>/../../../../node_modules/d3-scale/dist/d3-scale.js',
