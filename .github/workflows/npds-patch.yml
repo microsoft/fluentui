@@ -42,8 +42,8 @@ jobs:
 
       - name: Copy NPDS styles and patch Fluent button
         run: |
-          # Copy the NPDS button styles
-          cp npds-repo/packages/npds-components/src/components/button/button.styles.ts ./npds-button-styles.ts
+          # Copy the NPDS button styles to the button folder
+          cp npds-repo/packages/npds-components/src/components/button/button.styles.ts packages/web-components/src/button/npds-button-styles.ts
 
           # Patch Fluent's button.styles.ts
           FILE="packages/web-components/src/button/button.styles.ts"
@@ -69,7 +69,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if ! git diff --quiet -- packages/web-components/src/button/button.styles.ts; then
-            git add packages/web-components/src/button/button.styles.ts npds-button-styles.ts
+            git add packages/web-components/src/button/button.styles.ts packages/web-components/src/button/npds-button-styles.ts
             git commit -m "chore: layer NPDS button styles"
             git push https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git main
           else
