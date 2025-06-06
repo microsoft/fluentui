@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: aria-label for year selection",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "v.kozlova13@gmail.com",
-  "dependentChangeType": "patch"
-}

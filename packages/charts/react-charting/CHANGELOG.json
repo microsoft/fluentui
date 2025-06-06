@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 06 Jun 2025 07:20:30 GMT",
+      "tag": "@fluentui/react-charting_v5.24.2",
+      "version": "5.24.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "53d7bf53544a0ebba8eca3207ced15013d06b088",
+            "comment": "add labels for text+markers"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a3c3f0a6c5a72080ab3b7f31a6d1373f9967a9d0",
+            "comment": "fix(react-charting): Colorscale support for bar charts"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bb2c83c0740c445d308ae2bb14100bf37a1ad8a8",
+            "comment": "fix(react-charting):Date Axis Support for Vertical Stacked Bar Chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Jun 2025 07:20:36 GMT",
       "tag": "@fluentui/react-charting_v5.24.1",
       "version": "5.24.1",
