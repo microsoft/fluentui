@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix GaugeChart so it can merge customer provided styles to the chart",
+  "packageName": "@fluentui/react-charts",
+  "email": "emhkimm@gmail.com",
+  "dependentChangeType": "patch"
+}
