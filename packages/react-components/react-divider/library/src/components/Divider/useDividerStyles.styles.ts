@@ -1,17 +1,12 @@
 import { mergeClasses, shorthands, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import { DividerSlots, DividerState } from './Divider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const dividerClassNames: SlotClassNames<DividerSlots> = {
   root: 'fui-Divider',
   wrapper: 'fui-Divider__wrapper',
 };
-
-const contentSpacing = '12px';
-const insetSpacing = '12px';
-const maxStartEndLength = '8px';
-const minStartEndLength = '8px;';
 
 const useBaseStyles = makeStyles({
   // Base styles
@@ -23,10 +18,11 @@ const useBaseStyles = makeStyles({
     flexGrow: 1,
     position: 'relative',
 
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
-    lineHeight: tokens.lineHeightBase200,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
+    fontSize: semanticTokens.textGlobalCaption1FontSize,
+    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
+    lineHeight: semanticTokens.textGlobalCaption1LineHeight,
+    letterSpacing: semanticTokens.textStyleDefaultRegularLetterSpacing,
     textAlign: 'center',
 
     '::before': {
@@ -77,47 +73,47 @@ const useBaseStyles = makeStyles({
 
   // Appearance variations
   brand: {
-    color: tokens.colorBrandForeground1,
+    color: semanticTokens.foregroundContentBrandPrimary,
 
     '::before': {
-      ...shorthands.borderColor(tokens.colorBrandStroke1),
+      ...shorthands.borderColor(semanticTokens.strokeDividerBrand),
     },
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorBrandStroke1),
+      ...shorthands.borderColor(semanticTokens.strokeDividerBrand),
     },
   },
   default: {
-    color: tokens.colorNeutralForeground2,
+    color: semanticTokens.foregroundContentNeutralSecondary,
 
     '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
+      ...shorthands.borderColor(semanticTokens.strokeDividerDefault),
     },
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
+      ...shorthands.borderColor(semanticTokens.strokeDividerDefault),
     },
   },
   subtle: {
-    color: tokens.colorNeutralForeground3,
+    color: semanticTokens._ctrlDividerForegroundSubtle,
 
     '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke3),
+      ...shorthands.borderColor(semanticTokens.strokeDividerSubtle),
     },
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke3),
+      ...shorthands.borderColor(semanticTokens.strokeDividerSubtle),
     },
   },
   strong: {
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens.foregroundContentNeutralPrimary,
 
     '::before': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(semanticTokens.strokeDividerStrong),
     },
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(semanticTokens.strokeDividerStrong),
     },
   },
 });
@@ -129,51 +125,51 @@ const useHorizontalStyles = makeStyles({
 
     '::before': {
       borderTopStyle: 'solid',
-      borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minStartEndLength,
+      borderTopWidth: semanticTokens.strokeWidthDividerDefault,
+      minWidth: semanticTokens.ctrlDividerFixedLineLength,
     },
 
     '::after': {
       borderTopStyle: 'solid',
-      borderTopWidth: tokens.strokeWidthThin,
-      minWidth: minStartEndLength,
+      borderTopWidth: semanticTokens.strokeWidthDividerDefault,
+      minWidth: semanticTokens.ctrlDividerFixedLineLength,
     },
   },
 
   // Inset styles
   inset: {
-    paddingLeft: insetSpacing,
-    paddingRight: insetSpacing,
+    paddingLeft: semanticTokens.paddingCtrlHorizontalDefault,
+    paddingRight: semanticTokens.paddingCtrlHorizontalDefault,
   },
 
   // Alignment variations
   start: {
     '::before': {
       content: '""',
-      marginRight: contentSpacing,
-      maxWidth: maxStartEndLength,
+      marginRight: semanticTokens.paddingCtrlHorizontalDefault,
+      maxWidth: semanticTokens.ctrlDividerFixedLineLength,
     },
 
     '::after': {
-      marginLeft: contentSpacing,
+      marginLeft: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   center: {
     '::before': {
-      marginRight: contentSpacing,
+      marginRight: semanticTokens.paddingCtrlHorizontalDefault,
     },
     '::after': {
-      marginLeft: contentSpacing,
+      marginLeft: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   end: {
     '::before': {
-      marginRight: contentSpacing,
+      marginRight: semanticTokens.paddingCtrlHorizontalDefault,
     },
     '::after': {
       content: '""',
-      marginLeft: contentSpacing,
-      maxWidth: maxStartEndLength,
+      marginLeft: semanticTokens.paddingCtrlHorizontalDefault,
+      maxWidth: semanticTokens.ctrlDividerFixedLineLength,
     },
   },
 });
@@ -186,21 +182,21 @@ const useVerticalStyles = makeStyles({
 
     '::before': {
       borderRightStyle: 'solid',
-      borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minStartEndLength,
+      borderRightWidth: semanticTokens.strokeWidthDividerDefault,
+      minHeight: semanticTokens.ctrlDividerFixedLineLength,
     },
 
     '::after': {
       borderRightStyle: 'solid',
-      borderRightWidth: tokens.strokeWidthThin,
-      minHeight: minStartEndLength,
+      borderRightWidth: semanticTokens.strokeWidthDividerDefault,
+      minHeight: semanticTokens.ctrlDividerFixedLineLength,
     },
   },
 
   // Inset styles
   inset: {
-    marginTop: insetSpacing,
-    marginBottom: insetSpacing,
+    marginTop: semanticTokens.paddingCtrlHorizontalDefault,
+    marginBottom: semanticTokens.paddingCtrlHorizontalDefault,
   },
 
   // With children styles
@@ -212,30 +208,30 @@ const useVerticalStyles = makeStyles({
   start: {
     '::before': {
       content: '""',
-      marginBottom: contentSpacing,
-      maxHeight: maxStartEndLength,
+      marginBottom: semanticTokens.paddingCtrlHorizontalDefault,
+      maxHeight: semanticTokens.ctrlDividerFixedLineLength,
     },
 
     '::after': {
-      marginTop: contentSpacing,
+      marginTop: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   center: {
     '::before': {
-      marginBottom: contentSpacing,
+      marginBottom: semanticTokens.paddingCtrlHorizontalDefault,
     },
     '::after': {
-      marginTop: contentSpacing,
+      marginTop: semanticTokens.paddingCtrlHorizontalDefault,
     },
   },
   end: {
     '::before': {
-      marginBottom: contentSpacing,
+      marginBottom: semanticTokens.paddingCtrlHorizontalDefault,
     },
     '::after': {
       content: '""',
-      marginTop: contentSpacing,
-      maxHeight: maxStartEndLength,
+      marginTop: semanticTokens.paddingCtrlHorizontalDefault,
+      maxHeight: semanticTokens.ctrlDividerFixedLineLength,
     },
   },
 });

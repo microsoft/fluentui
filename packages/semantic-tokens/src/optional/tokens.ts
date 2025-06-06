@@ -94,13 +94,17 @@ import {
   strokeWidthThicker,
   colorNeutralForegroundOnBrand,
   colorStrokeFocus2,
+  colorNeutralStroke3,
+  colorNeutralStroke1,
+  colorBrandStroke1,
   colorNeutralForeground1,
+  colorNeutralForeground2,
+  colorBrandForeground1,
   colorNeutralForeground1Hover,
   colorNeutralForeground1Pressed,
   colorNeutralForeground2Hover,
   colorNeutralForeground2Pressed,
   colorNeutralForegroundDisabled,
-  colorNeutralForeground2,
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
 } from '../legacy/tokens';
@@ -467,7 +471,7 @@ export const gapBetweenTextLarge = `var(${gapBetweenTextLargeRaw}, var(${gapBetw
 export const gapBetweenCtrlSmNested = `var(${gapBetweenCtrlSmNestedRaw}, var(${paddingCtrlSmToNestedControlRaw}))`;
 export const gapBetweenListItem = `var(${gapBetweenListItemRaw}, var(${gapBetweenContentXxSmallRaw}))`;
 export const gapBetweenCard = `var(${gapBetweenCardRaw}, var(${gapBetweenContentMediumRaw}))`;
-export const strokeWidthDividerDefault = `var(${strokeWidthDividerDefaultRaw}, var(${strokeWidthDefaultRaw}))`;
+export const strokeWidthDividerDefault = `var(${strokeWidthDividerDefaultRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
 export const strokeWidthDividerStrong = `var(${strokeWidthDividerStrongRaw}, var(${strokeWidthDefaultRaw}))`;
 export const strokeWidthCtrlOutlineRest = `var(${strokeWidthCtrlOutlineRestRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
 export const strokeWidthCtrlOutlineHover = `var(${strokeWidthCtrlOutlineHoverRaw}, var(${strokeWidthDefaultRaw}, ${strokeWidthThin}))`;
@@ -501,9 +505,9 @@ export const strokeCtrlOnActiveBrandRestStop2 = `var(${strokeCtrlOnActiveBrandRe
 export const strokeCtrlOnActiveBrandHoverStop2 = `var(${strokeCtrlOnActiveBrandHoverStop2Raw}, var(${strokeCtrlOnBrandRestRaw}))`;
 export const strokeCtrlOnActiveBrandPressedStop2 = `var(${strokeCtrlOnActiveBrandPressedStop2Raw}, var(${strokeCtrlOnBrandPressedRaw}))`;
 export const strokeCtrlOnActiveBrandDisabledStop2 = `var(${strokeCtrlOnActiveBrandDisabledStop2Raw}, var(${strokeCtrlOnBrandDisabledRaw}))`;
-export const strokeDividerSubtle = `var(${strokeDividerSubtleRaw}, var(${strokeDividerDefaultRaw}))`;
-export const strokeDividerStrong = `var(${strokeDividerStrongRaw}, var(${strokeDividerDefaultRaw}))`;
-export const strokeDividerBrand = `var(${strokeDividerBrandRaw}, var(${backgroundCtrlBrandRestRaw}))`;
+export const strokeDividerSubtle = `var(${strokeDividerSubtleRaw}, var(${strokeDividerDefaultRaw}, ${colorNeutralStroke3}))`;
+export const strokeDividerStrong = `var(${strokeDividerStrongRaw}, var(${strokeDividerDefaultRaw}, ${colorNeutralStroke1}))`;
+export const strokeDividerBrand = `var(${strokeDividerBrandRaw}, var(${backgroundCtrlBrandRestRaw}, ${colorBrandStroke1}))`;
 export const strokeWindowInactive = `var(${strokeWindowInactiveRaw}, var(${strokeWindowActiveRaw}))`;
 export const backgroundLayerPrimaryStop1 = `var(${backgroundLayerPrimaryStop1Raw}, var(${backgroundLayerPrimarySolidRaw}))`;
 export const backgroundLayerPrimaryStop2 = `var(${backgroundLayerPrimaryStop2Raw}, var(${backgroundLayerPrimarySolidRaw}))`;
@@ -535,8 +539,8 @@ export const cornerCtrlSmPressed = `var(${cornerCtrlSmPressedRaw}, var(${cornerC
 export const cornerCtrlLgHover = `var(${cornerCtrlLgHoverRaw}, var(${cornerCtrlLgRestRaw}))`;
 export const cornerCtrlLgPressed = `var(${cornerCtrlLgPressedRaw}, var(${cornerCtrlLgRestRaw}))`;
 export const foregroundContentNeutralPrimary = `var(${foregroundContentNeutralPrimaryRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
-export const foregroundContentNeutralSecondary = `var(${foregroundContentNeutralSecondaryRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const foregroundContentBrandPrimary = `var(${foregroundContentBrandPrimaryRaw}, var(${foregroundCtrlBrandRestRaw}))`;
+export const foregroundContentNeutralSecondary = `var(${foregroundContentNeutralSecondaryRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2}))`;
+export const foregroundContentBrandPrimary = `var(${foregroundContentBrandPrimaryRaw}, var(${foregroundCtrlBrandRestRaw}, ${colorBrandForeground1}))`;
 export const foregroundCtrlNeutralPrimaryHover = `var(${foregroundCtrlNeutralPrimaryHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1Hover}))`;
 export const foregroundCtrlNeutralPrimaryPressed = `var(${foregroundCtrlNeutralPrimaryPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1Pressed}))`;
 export const foregroundCtrlNeutralSecondaryHover = `var(${foregroundCtrlNeutralSecondaryHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground2Hover}))`;
