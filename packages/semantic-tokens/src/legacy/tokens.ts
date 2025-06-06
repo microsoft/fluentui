@@ -135,6 +135,11 @@ export const colorNeutralForeground2Pressed = 'var(--colorNeutralForeground2Pres
  */
 export const colorNeutralForeground2 = 'var(--colorNeutralForeground2)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingHorizontalXXL | `spacingHorizontalXXL`} design token.
+ * @public
+ */
+export const spacingHorizontalXXL = 'var(--spacingHorizontalXXL)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorCompoundBrandBackground | `colorCompoundBrandBackground`} design token.
  * @public
  */
@@ -365,17 +370,27 @@ export const fontWeightRegular = 'var(--fontWeightRegular)';
  */
 export const strokeWidthThickest = 'var(--strokeWidthThickest)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
- * @public
- */
-export const borderRadiusSmall = 'var(--borderRadiusSmall)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusLarge | `borderRadiusLarge`} design token.
  * @public
  */
 export const borderRadiusLarge = 'var(--borderRadiusLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
+ * @public
+ */
+export const borderRadiusSmall = 'var(--borderRadiusSmall)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusXLarge | `borderRadiusXLarge`} design token.
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#spacingVerticalXXS | `spacingVerticalXXS`} design token.
+ * @public
+ */
+export const spacingVerticalXXS = 'var(--spacingVerticalXXS)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorNeutralForeground3Hover | `colorNeutralForeground3Hover`} design token.
+ * @public
+ */
+export const colorNeutralForeground3Hover = 'var(--colorNeutralForeground3Hover)';
