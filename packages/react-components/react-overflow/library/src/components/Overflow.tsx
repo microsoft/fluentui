@@ -6,6 +6,7 @@ import { applyTriggerPropsToChildren, getTriggerChild, useMergedRefs } from '@fl
 import { OverflowContext } from '../overflowContext';
 import { updateVisibilityAttribute, useOverflowContainer } from '../useOverflowContainer';
 import { useOverflowStyles } from './useOverflowStyles.styles';
+import { OverflowImperativeRef } from '../types';
 
 interface OverflowState {
   hasOverflow: boolean;
@@ -19,13 +20,15 @@ export interface OnOverflowChangeData extends OverflowState {}
  * Overflow Props
  */
 export type OverflowProps = Partial<
-  Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible'>
+  Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'boxModel' | 'measureGap'>
 > & {
   children: React.ReactElement;
 
   // overflow is not caused by DOM event
   // eslint-disable-next-line @nx/workspace-consistent-callback-type
   onOverflowChange?: (ev: null, data: OverflowState) => void;
+
+  imperativeRef?: React.Ref<OverflowImperativeRef | null | undefined>;
 };
 
 /**
@@ -34,7 +37,17 @@ export type OverflowProps = Partial<
 export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
   const styles = useOverflowStyles();
 
-  const { children, minimumVisible, overflowAxis = 'horizontal', overflowDirection, padding, onOverflowChange } = props;
+  const {
+    children,
+    minimumVisible,
+    overflowAxis = 'horizontal',
+    overflowDirection,
+    padding,
+    onOverflowChange,
+    boxModel,
+    measureGap,
+    imperativeRef,
+  } = props;
 
   const [overflowState, setOverflowState] = React.useState<OverflowState>({
     hasOverflow: false,
@@ -67,6 +80,8 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       overflowDirection,
       overflowAxis,
       padding,
+      boxModel,
+      measureGap,
       minimumVisible,
       onUpdateItemVisibility: updateVisibilityAttribute,
     },
@@ -77,6 +92,10 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     ref: useMergedRefs(containerRef, ref, child?.ref),
     className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, children.props.className),
   });
+
+  React.useImperativeHandle(imperativeRef, () => ({
+    updateOverflow,
+  }));
 
   return (
     <OverflowContext.Provider
