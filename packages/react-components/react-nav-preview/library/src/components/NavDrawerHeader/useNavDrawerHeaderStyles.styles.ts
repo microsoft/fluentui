@@ -4,8 +4,6 @@ import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { NavDrawerHeaderSlots, NavDrawerHeaderState } from './NavDrawerHeader.types';
 
-import { navDrawerBodyClassNames } from '../NavDrawerBody/useNavDrawerBodyStyles.styles';
-
 export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots> = {
   root: 'fui-NavDrawerHeader',
 };
@@ -18,10 +16,6 @@ const useStyles = makeStyles({
     margin: 'unset',
     paddingInlineStart: '14px',
     paddingBlock: '5px',
-  },
-
-  [`${navDrawerBodyClassNames.root} + ${navDrawerHeaderClassNames.root}`]: {
-    marginTop: '-2px',
   },
 });
 
