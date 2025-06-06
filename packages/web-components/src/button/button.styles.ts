@@ -1,3 +1,4 @@
+import { buttonStyles as npdsButtonStyles } from "./npds-button-styles";
 import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
@@ -277,7 +278,7 @@ export const baseButtonStyles = css`
  *
  * @public
  */
-export const styles = css`
+export const originalButtonStyles = css`
   ${baseButtonStyles}
 
   :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])),
@@ -334,3 +335,9 @@ export const styles = css`
     }
   `),
 );
+// ── NPDS OVERRIDE LAYER ──
+export const styles = css`
+  ${originalButtonStyles}
+  ${npdsButtonStyles}
+`;
+// ────────────────────────
