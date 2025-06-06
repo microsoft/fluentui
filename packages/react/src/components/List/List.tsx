@@ -111,6 +111,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   };
 
   public static contextType = WindowContext;
+  public context: React.ContextType<typeof WindowContext>;
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
