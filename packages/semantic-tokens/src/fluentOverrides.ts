@@ -139,14 +139,14 @@ export const fluentOverrides: FluentOverrides = {
   paddingCtrlHorizontalIconOnly: { rawValue: '5px' },
   paddingCtrlLgHorizontalDefault: { f2Token: 'spacingHorizontalL' },
   paddingCtrlLgHorizontalIconOnly: { rawValue: '7px' },
-  paddingCtrlLgTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
-  paddingCtrlLgTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlLgTextBottom: null, // Enable for semantic, but legacy should fallback to undefined
+  paddingCtrlLgTextTop: null, // Enable for semantic, but legacy should fallback to undefined
   paddingCtrlSmHorizontalDefault: { f2Token: 'spacingHorizontalS' },
   paddingCtrlSmHorizontalIconOnly: { rawValue: '1px' },
-  paddingCtrlSmTextBottom: null, // We can add a value here if needed, but for now it's a noop in Accordion
-  paddingCtrlSmTextTop: null, // We can add a value here if needed, but for now it's a noop in Accordion
+  paddingCtrlSmTextBottom: null, // Enable for semantic, but legacy should fallback to undefined
+  paddingCtrlSmTextTop: null, // Enable for semantic, but legacy should fallback to undefined
   paddingCtrlTextBottom: { rawValue: '5px' },
-  paddingCtrlTextSide: { rawValue: '0px' }, // For now, text padding is not applied (use default);
+  paddingCtrlTextSide: { rawValue: '0px' }, // Enable for semantic, but legacy should fallback to 0px
   paddingCtrlTextTop: { rawValue: '5px' },
   shadowFlyout: { f2Token: 'shadow64' },
   sizeCtrlDefault: { rawValue: '44px' },

@@ -21,6 +21,8 @@ const useBaseStyles = makeResetStyles({
   backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
   color: semanticTokens.foregroundCtrlOnSubtleRest,
   paddingRight: tokens.spacingHorizontalNone,
+  paddingTop: semanticTokens._ctrlAccordionPaddingTextTop,
+  paddingBottom: semanticTokens._ctrlAccordionPaddingTextBottom,
   // if using createCustomFocusIndicatorStyle then we need to remove default outline styles provided by the browser
   ':focus': {
     outlineStyle: 'none',

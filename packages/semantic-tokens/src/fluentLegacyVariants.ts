@@ -26,15 +26,15 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'ctrlFocusOuterStroke',
   },
   _ctrlAccordionForegroundHover: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentHover',
   },
   _ctrlAccordionForegroundPressed: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentPressed',
   },
   _ctrlAccordionForegroundRest: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentRest',
   },
   _ctrlAvatarActiveRingStrokeWidthLg: {
@@ -140,5 +140,21 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlTreeIconOnSubtlePressed: {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlOnSubtlePressed',
+  },
+  _ctrlAccordionPaddingTextTop: {
+    rawValue: '0px',
+    originalToken: 'paddingCtrlTextTop',
+  },
+  _ctrlAccordionPaddingTextBottom: {
+    rawValue: '0px',
+    originalToken: 'paddingCtrlTextBottom',
+  },
+  _ctrlTreeOnTransparentPressed: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentPressed',
+  },
+  _ctrlTreeOnTransparentHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentHover',
   },
 };

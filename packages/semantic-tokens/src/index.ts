@@ -1814,5 +1814,9 @@ export {
   _ctrlTreeIconOnSubtle,
   _ctrlTreeIconOnSubtleHover,
   _ctrlTreeIconOnSubtlePressed,
+  _ctrlAccordionPaddingTextTop,
+  _ctrlAccordionPaddingTextBottom,
+  _ctrlTreeOnTransparentPressed,
+  _ctrlTreeOnTransparentHover,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
