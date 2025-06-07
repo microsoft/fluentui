@@ -180,11 +180,14 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       // eslint-disable-next-line @typescript-eslint/no-deprecated
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
-        updateSelectedItem(itemKey);
+        updateSelectedItem(itemKey, ev);
       }
     };
 
-    const updateSelectedItem = (itemKey: string, ev?: React.MouseEvent<HTMLElement>): void => {
+    const updateSelectedItem = (
+      itemKey: string,
+      ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    ): void => {
       setSelectedKey(itemKey);
       linkCollection = getLinkItems(props, pivotId);
       if (props.onLinkClick && linkCollection.keyToIndexMapping[itemKey] >= 0) {

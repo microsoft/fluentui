@@ -81,7 +81,7 @@ export {
   CounterBadgeStyles,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
-export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
+export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles, isDialog } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
   BaseDivider,
@@ -339,6 +339,7 @@ export {
   TooltipStyles,
   TooltipTemplate,
 } from './tooltip/index.js';
+export { BaseTree, Tree, TreeDefinition, TreeTemplate, TreeStyles } from './tree/index.js';
 export { TreeItem, TreeItemDefinition, TreeItemTemplate, TreeItemStyles } from './tree-item/index.js';
 export type { isTreeItem, TreeItemAppearance, TreeItemSize } from './tree-item/index.js';
 export {

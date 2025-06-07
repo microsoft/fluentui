@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: filled-circular appearance variant shows selected tab in high contrast",
-  "packageName": "@fluentui/react-tabs",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

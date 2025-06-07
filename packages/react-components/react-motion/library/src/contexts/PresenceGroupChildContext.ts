@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-/**
- * @internal
- */
 export type PresenceGroupChildContextValue = {
   appear: boolean;
   visible: boolean;
@@ -15,3 +12,6 @@ export type PresenceGroupChildContextValue = {
  * @internal
  */
 export const PresenceGroupChildContext = React.createContext<PresenceGroupChildContextValue | undefined>(undefined);
+
+export const PresenceGroupChildProvider = PresenceGroupChildContext.Provider;
+export const usePresenceGroupChildContext = () => React.useContext(PresenceGroupChildContext);

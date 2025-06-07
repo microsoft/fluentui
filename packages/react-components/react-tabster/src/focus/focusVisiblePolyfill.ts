@@ -56,6 +56,8 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   keyborg.subscribe(isNavigatingWithKeyboard => {
     if (!isNavigatingWithKeyboard) {
       disposeCurrentElement();
+    } else {
+      registerElementIfNavigating(targetWindow.document.activeElement);
     }
   });
 

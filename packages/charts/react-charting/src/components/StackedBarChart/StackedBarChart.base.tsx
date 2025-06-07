@@ -8,7 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -119,8 +119,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         targetRatio,
         showTriangle: !!(benchmarkData || targetData),
       });
-      const getChartData = () =>
-        convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
 
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
@@ -138,7 +137,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                   {!this.props.hideDenominator && (
                     <span className={this._classNames.ratioDenominator}>
-                      {' / ' + convertToLocaleString(total, culture)}
+                      {' / ' + formatToLocaleString(total, culture)}
                     </span>
                   )}
                 </div>

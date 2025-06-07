@@ -150,7 +150,7 @@ export const styles = css`
       position: absolute;
       position-anchor: --menu-trigger;
       position-area: inline-end span-block-end;
-      position-try-fallbacks: flip-inline;
+      position-try-fallbacks: flip-inline, block-start, block-end;
       z-index: 1;
     }
 

@@ -6,7 +6,7 @@ import { AccordionItemProvider } from '../../contexts/accordionItem';
 import { mockAccordionItemContextValue } from '../../testing/mockContextValue';
 
 describe('AccordionPanel', () => {
-  const Wrapper: React.FC = props => (
+  const Wrapper: React.FC<{ children?: React.ReactNode }> = props => (
     <AccordionItemProvider
       value={mockAccordionItemContextValue({
         open: true,
