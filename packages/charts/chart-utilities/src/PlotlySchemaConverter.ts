@@ -39,11 +39,15 @@ export const isDate = (value: any): boolean => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const isMonth = (possiblyMonthValue: any): boolean => {
-  if (typeof possiblyMonthValue !== 'string') {return false;}
+  if (typeof possiblyMonthValue !== 'string') {
+    return false;
+  }
 
   // Try to parse as a month name using system locale and then 'en-US'
   const testDate = new Date(`${possiblyMonthValue} 1, 2000`);
-  if (isNaN(testDate.getTime())) {return false;}
+  if (isNaN(testDate.getTime())) {
+    return false;
+  }
 
   // Get month names for both locales
   const locales = [undefined, 'en-US'];
@@ -369,76 +373,70 @@ export const mapFluentChart = (input: any): OutputChartType => {
     }
 
     const validTraces = getValidTraces(validSchema.data);
-    const mappedTraces = validTraces.map(trace => {
-      const traceData = validSchema.data[trace[0]];
+    let mappedTraces = validTraces.map(trace => {
+      const traceIndex = trace[0];
+      const traceData = validSchema.data[traceIndex];
 
       switch (traceData.type) {
         case 'pie':
-          return { isValid: true, type: 'donut' };
+          return { isValid: true, traceIndex, type: 'donut' };
         case 'histogram2d':
         case 'heatmap':
-          return { isValid: true, type: 'heatmap' };
+          return { isValid: true, traceIndex, type: 'heatmap' };
         case 'sankey':
-          return { isValid: true, type: 'sankey' };
+          return { isValid: true, traceIndex, type: 'sankey' };
         case 'indicator':
         case 'gauge':
-          return { isValid: true, type: 'gauge' };
+          return { isValid: true, traceIndex, type: 'gauge' };
         case 'histogram':
-          return { isValid: true, type: 'verticalbar' };
+          return { isValid: true, traceIndex, type: 'verticalbar' };
         case 'scatterpolar':
-          return { isValid: true, type: 'scatterpolar' };
+          return { isValid: true, traceIndex, type: 'scatterpolar' };
         case 'table':
-          return { isValid: true, type: 'table' };
-        default:
-          const containsBars = validTraces.some(traceInner => validSchema.data[traceInner[0]].type === 'bar');
-          const containsLines = validTraces.some(traceInner => validSchema.data[traceInner[0]].type === 'scatter');
-          if (containsBars && containsLines) {
-            return { isValid: true, type: 'verticalstackedbar' };
-          }
-          if (containsBars) {
-            const barData = traceData as Partial<PlotData>;
-            if (barData.orientation === 'h' && isNumberArray(barData.x)) {
-              return { isValid: true, type: 'horizontalbar' };
-            } else {
-              if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
-                if (!isNumberArray(barData.y)) {
-                  return { isValid: false, errorMessage: 'GVBC does not support string y-axis.' };
-                }
-                return { isValid: true, type: 'groupedverticalbar' };
+          return { isValid: true, traceIndex, type: 'table' };
+        case 'bar':
+          const barData = traceData as Partial<PlotData>;
+          if (barData.orientation === 'h' && isNumberArray(barData.x)) {
+            return { isValid: true, traceIndex, type: 'horizontalbar' };
+          } else {
+            if (['group', 'overlay'].includes(validSchema?.layout?.barmode!)) {
+              if (!isNumberArray(barData.y)) {
+                return { isValid: false, errorMessage: 'GVBC does not support string y-axis.' };
               }
-              return { isValid: true, type: 'verticalstackedbar' };
+              return { isValid: true, traceIndex, type: 'groupedverticalbar' };
             }
+            return { isValid: true, traceIndex, type: 'verticalstackedbar' };
           }
-          if (containsLines) {
-            const firstScatterData = traceData as Partial<PlotData>;
-            const isAreaChart = validTraces.some(traceInner => {
-              const scatterData = validSchema.data[traceInner[0]] as Partial<PlotData>;
-              return scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
-            });
-            const isXDate = isDateArray(firstScatterData.x);
-            const isXNumber = isNumberArray(firstScatterData.x);
+        case 'scatter':
+          const firstScatterData = traceData as Partial<PlotData>;
+          const isAreaChart = validTraces.some(traceInner => {
+            const scatterData = validSchema.data[traceInner[0]] as Partial<PlotData>;
+            return scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
+          });
+          const isXDate = isDateArray(firstScatterData.x);
+          const isXNumber = isNumberArray(firstScatterData.x);
 
-            // Consider year as categorical variable not numeric continuous variable
-            // Also year is not considered a date variable as it is represented as a point
-            // in time and brings additional complexity of handling timezone and locale
-            // formatting given the current design of the charting library
-            const isXYear = isYearArray(firstScatterData.x);
-            const isXMonth = isMonthArray(firstScatterData.x);
-            const isYString = isStringArray(firstScatterData.y);
-            if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
-              return { isValid: true, type: isAreaChart ? 'area' : 'line' };
-            } else if (isAreaChart) {
-              return {
-                isValid: false,
-                errorMessage: 'Fallback to VerticalStackedBarChart is not allowed for Area Charts.',
-              };
-            }
-            return { isValid: true, type: 'fallback' };
+          // Consider year as categorical variable not numeric continuous variable
+          // Also year is not considered a date variable as it is represented as a point
+          // in time and brings additional complexity of handling timezone and locale
+          // formatting given the current design of the charting library
+          const isXYear = isYearArray(firstScatterData.x);
+          const isXMonth = isMonthArray(firstScatterData.x);
+          const isYString = isStringArray(firstScatterData.y);
+          if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
+            return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
+          } else if (isAreaChart) {
+            return {
+              isValid: false,
+              errorMessage: 'Fallback to VerticalStackedBarChart is not allowed for Area Charts.',
+            };
           }
-
+          return { isValid: true, traceIndex, type: 'fallback' };
+        default:
           return { isValid: false, errorMessage: `${UNSUPPORTED_MSG_PREFIX} ${traceData.type}` };
       }
     });
+
     const noValidTrace = mappedTraces.every(trace => !trace.isValid);
     if (noValidTrace) {
       return {
@@ -446,7 +444,23 @@ export const mapFluentChart = (input: any): OutputChartType => {
         errorMessage: mappedTraces
           .filter(trace => !trace.isValid)
           .map(trace => trace.errorMessage)
+          .filter((msg, idx, arr) => msg && arr.indexOf(msg) === idx)
           .join('; '),
+      };
+    }
+
+    // Filter invalid traces and render successfully even if 1 valid trace is present
+    mappedTraces = mappedTraces.filter(trace => trace.isValid);
+
+    const containsBars = mappedTraces.some(
+      trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
+    );
+    const containsLines = mappedTraces.some(trace => trace.type === 'line');
+    if (containsBars && containsLines) {
+      return {
+        isValid: true,
+        type: 'verticalstackedbar',
+        validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
       };
     }
 
@@ -456,14 +470,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
       return {
         isValid: true,
         type: `composite`,
-        validTracesInfo: mappedTraces.map((trace, index) => [index, trace.type!]),
+        validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
       };
     }
     const chartType = Array.from(uniqueTypes)[0];
     return {
       isValid: true,
       type: chartType,
-      validTracesInfo: mappedTraces.map((trace, index) => [index, trace.type!]),
+      validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
     };
   } catch (error) {
     return { isValid: false, errorMessage: `Invalid plotly schema: ${error}` };

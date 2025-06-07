@@ -390,14 +390,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     [exportAsImage],
   );
 
-  type ChartType = keyof ChartTypeMap;
-
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
     chart.type = 'line'; // Treat scatterpolar as line chart for rendering
   }
 
+  type ChartType = keyof ChartTypeMap;
   const chartEntry = chartMap[chart.type as ChartType];
   if (chartEntry) {
     const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
