@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(motion): give Presence `In` and `Out` references to enter & exit motions",
+  "packageName": "@fluentui/react-motion",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
