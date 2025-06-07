@@ -37,6 +37,14 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground1',
     originalToken: 'foregroundCtrlOnTransparentRest',
   },
+  _ctrlAccordionPaddingTextBottom: {
+    originalToken: 'paddingCtrlTextBottom',
+    rawValue: '0px',
+  },
+  _ctrlAccordionPaddingTextTop: {
+    originalToken: 'paddingCtrlTextTop',
+    rawValue: '0px',
+  },
   _ctrlAvatarActiveRingStrokeWidthLg: {
     f2Token: 'strokeWidthThickest',
     originalToken: 'ctrlAvatarActiveRingStrokeWidth',
@@ -141,20 +149,12 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlOnSubtlePressed',
   },
-  _ctrlAccordionPaddingTextTop: {
-    rawValue: '0px',
-    originalToken: 'paddingCtrlTextTop',
-  },
-  _ctrlAccordionPaddingTextBottom: {
-    rawValue: '0px',
-    originalToken: 'paddingCtrlTextBottom',
+  _ctrlTreeOnTransparentHover: {
+    f2Token: 'colorNeutralForeground2',
+    originalToken: 'foregroundCtrlOnTransparentHover',
   },
   _ctrlTreeOnTransparentPressed: {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentPressed',
-  },
-  _ctrlTreeOnTransparentHover: {
-    f2Token: 'colorNeutralForeground2',
-    originalToken: 'foregroundCtrlOnTransparentHover',
   },
 };

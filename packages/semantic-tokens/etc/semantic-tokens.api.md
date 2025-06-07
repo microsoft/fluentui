@@ -638,13 +638,19 @@ export const _ctrlAccordionFocusInnerStrokeWidth = "var(--smtc-ctrl-focus-inner-
 export const _ctrlAccordionFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
 
 // @public
-export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
 
 // @public
-export const _ctrlAccordionForegroundPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionForegroundPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
 
 // @public
-export const _ctrlAccordionForegroundRest = "var(--smtc-foreground-ctrl-on-transparent-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionForegroundRest = "var(--smtc-foreground-ctrl-on-transparent-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlAccordionPaddingTextBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, 0px))";
+
+// @public
+export const _ctrlAccordionPaddingTextTop = "var(--smtc-padding-ctrl-text-top, 0px)";
 
 // @public (undocumented)
 export const ctrlAvatarActiveRingSize = "var(--smtc-ctrl-avatar-active-ring-size)";
@@ -2826,6 +2832,12 @@ export const _ctrlTreeIconOnSubtleHover = "var(--smtc-foreground-ctrl-on-subtle-
 
 // @public
 export const _ctrlTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlTreeOnTransparentHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+
+// @public
+export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";

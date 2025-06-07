@@ -16,12 +16,12 @@ import {
   strokeWidthDefaultRaw,
   backgroundCtrlBrandRestRaw,
   foregroundCtrlNeutralPrimaryRestRaw,
+  paddingCtrlTextTopRaw,
   cornerCtrlRestRaw,
   gapInsideCtrlDefaultRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
-  paddingCtrlTextTopRaw,
 } from '../control/variables';
 import {
   colorTransparentBackground,
@@ -59,9 +59,9 @@ import {
   foregroundCtrlOnTransparentHoverRaw,
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
+  paddingCtrlTextBottomRaw,
   textRampItemBodyFontSizeRaw,
   textRampItemBodyLineHeightRaw,
-  paddingCtrlTextBottomRaw,
   strokeCtrlOnActiveBrandHoverRaw,
   strokeCtrlOnActiveBrandRestRaw,
   foregroundCtrlOnSubtleRestRaw,
@@ -113,6 +113,20 @@ export const _ctrlAccordionForegroundPressed = `var(${foregroundCtrlOnTransparen
  * please use foregroundCtrlOnTransparentRest instead.
  */
 export const _ctrlAccordionForegroundRest = `var(${foregroundCtrlOnTransparentRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground1}))`;
+/**
+ * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextBottom instead.
+ */
+export const _ctrlAccordionPaddingTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, 0px))`;
+/**
+ * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingCtrlTextTop instead.
+ */
+export const _ctrlAccordionPaddingTextTop = `var(${paddingCtrlTextTopRaw}, 0px)`;
 /**
  * This is a legacy variant for ctrlAvatarActiveRingStrokeWidth to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -296,19 +310,12 @@ export const _ctrlTreeIconOnSubtleHover = `var(${foregroundCtrlOnSubtleHoverRaw}
  */
 export const _ctrlTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressedRaw}, var(${foregroundCtrlNeutralPrimaryPressedRaw}, ${colorNeutralForeground3}))`;
 /**
- * This is a legacy variant for paddingCtrlTextTop to enable backwards compatibility.
+ * This is a legacy variant for foregroundCtrlOnTransparentHover to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
- * please use paddingCtrlTextTop instead.
+ * please use foregroundCtrlOnTransparentHover instead.
  */
-export const _ctrlAccordionPaddingTextTop = `var(${paddingCtrlTextTopRaw}, 0px)`;
-/**
- * This is a legacy variant for paddingCtrlTextBottom to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use paddingCtrlTextBottom instead.
- */
-export const _ctrlAccordionPaddingTextBottom = `var(${paddingCtrlTextBottomRaw}, var(${paddingCtrlTextTopRaw}, 0px))`;
+export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnTransparentPressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
@@ -316,10 +323,3 @@ export const _ctrlAccordionPaddingTextBottom = `var(${paddingCtrlTextBottomRaw},
  * please use foregroundCtrlOnTransparentPressed instead.
  */
 export const _ctrlTreeOnTransparentPressed = `var(${foregroundCtrlOnTransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
-/**
- * This is a legacy variant for foregroundCtrlOnTransparentHover to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use foregroundCtrlOnTransparentHover instead.
- */
-export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
