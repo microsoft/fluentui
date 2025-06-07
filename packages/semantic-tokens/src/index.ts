@@ -1814,6 +1814,8 @@ export {
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
+  _ctrlAccordionPaddingTextBottom,
+  _ctrlAccordionPaddingTextTop,
   _ctrlAvatarActiveRingStrokeWidthLg,
   _ctrlAvatarActiveRingStrokeWidthMd,
   _ctrlAvatarActiveRingStrokeWidthSm,
@@ -1828,9 +1830,7 @@ export {
   _ctrlTreeIconOnSubtle,
   _ctrlTreeIconOnSubtleHover,
   _ctrlTreeIconOnSubtlePressed,
-  _ctrlAccordionPaddingTextTop,
-  _ctrlAccordionPaddingTextBottom,
-  _ctrlTreeOnTransparentPressed,
   _ctrlTreeOnTransparentHover,
+  _ctrlTreeOnTransparentPressed,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
