@@ -77,14 +77,14 @@ const useRootStyles = makeStyles({
   },
   transparent: {
     backgroundColor: semanticTokens.nullColor,
-    color: semanticTokens._ctrlAccordionForegroundRest,
+    color: semanticTokens.foregroundCtrlOnTransparentRest,
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      color: semanticTokens._ctrlAccordionForegroundHover,
+      color: semanticTokens._ctrlTreeOnTransparentHover,
     },
     ':active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      color: semanticTokens._ctrlAccordionForegroundPressed,
+      color: semanticTokens._ctrlTreeOnTransparentPressed,
     },
   },
 });

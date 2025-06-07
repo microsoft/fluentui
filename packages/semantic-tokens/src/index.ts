@@ -1809,6 +1809,8 @@ export {
 } from './components/card/tokens';
 export {
   _ctrlAccordionBackgroundRest,
+  _ctrlAccordionFocusInnerStrokeWidth,
+  _ctrlAccordionFocusOuterStroke,
   _ctrlAccordionForegroundHover,
   _ctrlAccordionForegroundPressed,
   _ctrlAccordionForegroundRest,
@@ -1826,7 +1828,9 @@ export {
   _ctrlTreeIconOnSubtle,
   _ctrlTreeIconOnSubtleHover,
   _ctrlTreeIconOnSubtlePressed,
-  _ctrlAccordionFocusInnerStrokeWidth,
-  _ctrlAccordionFocusOuterStroke,
+  _ctrlAccordionPaddingTextTop,
+  _ctrlAccordionPaddingTextBottom,
+  _ctrlTreeOnTransparentPressed,
+  _ctrlTreeOnTransparentHover,
 } from './legacyVariant/tokens';
 export { kumoSemanticTokens } from './themes/kumoTheme';
