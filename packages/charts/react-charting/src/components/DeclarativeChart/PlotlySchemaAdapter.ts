@@ -51,6 +51,7 @@ import type {
   Data,
   TableData,
   Color,
+  LayoutAxis,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -1676,4 +1677,78 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   }
 
   return ranges;
+};
+
+export type GridTemplate = {
+  templateRows: string;
+  templateColumns: string;
+};
+
+const getIndexFromKey = (key: string, pattern: string): number => {
+  const normalizedKey = key.replace(pattern, '') === '' ? '1' : key.replace(pattern, '');
+  return parseInt(normalizedKey, 10) - 1;
+};
+
+export const createGridTemplate = (layout: Partial<Layout> | undefined): GridTemplate => {
+  const gridX: number[][] = [];
+  const gridY: number[][] = [];
+  let templateRows = '1fr';
+  let templateColumns = '1fr';
+  if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
+    return { templateRows, templateColumns };
+  }
+  if (!layout.xaxis || !layout.yaxis) {
+    return { templateRows, templateColumns };
+  }
+
+  Object.keys(layout).forEach(key => {
+    if (key.startsWith('xaxis')) {
+      const index = getIndexFromKey(key, 'xaxis');
+      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
+      const anchorIndex = getIndexFromKey(anchor, 'y');
+      if (index !== anchorIndex) {
+        throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
+      }
+      gridX[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+    } else if (key.startsWith('yaxis')) {
+      const index = getIndexFromKey(key, 'yaxis');
+      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
+      const anchorIndex = getIndexFromKey(anchor, 'x');
+      if (index !== anchorIndex) {
+        throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
+      }
+      gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+    }
+  });
+  if (gridX.length > 0) {
+    const uniqueXIntervals = new Map<string, number[]>();
+    gridX.forEach(interval => {
+      const key = `${interval[0]}-${interval[1]}`;
+      if (!uniqueXIntervals.has(key)) {
+        uniqueXIntervals.set(key, interval);
+      }
+    });
+    const minXInterval = Math.min(...Array.from(uniqueXIntervals.values()).map(interval => interval[1] - interval[0]));
+    templateColumns = Array.from(uniqueXIntervals.values())
+      .map(interval => `${(interval[1] - interval[0]) / minXInterval}fr`)
+      .join(' ');
+  }
+  if (gridY.length > 0) {
+    const uniqueYIntervals = new Map<string, number[]>();
+    gridY.forEach(interval => {
+      const key = `${interval[0]}-${interval[1]}`;
+      if (!uniqueYIntervals.has(key)) {
+        uniqueYIntervals.set(key, interval);
+      }
+    });
+    const minYInterval = Math.min(...Array.from(uniqueYIntervals.values()).map(interval => interval[1] - interval[0]));
+    templateRows = Array.from(uniqueYIntervals.values())
+      .map(interval => `${(interval[1] - interval[0]) / minYInterval}fr`)
+      .join(' ');
+  }
+
+  return {
+    templateRows,
+    templateColumns,
+  };
 };

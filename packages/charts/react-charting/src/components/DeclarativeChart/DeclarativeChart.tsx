@@ -8,8 +8,10 @@ import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray, isMonthArray, mapFluentChart, sanitizeJson } from '@fluentui/chart-utilities';
 
+import type { GridTemplate } from './PlotlySchemaAdapter';
 import {
   correctYearMonth,
+  createGridTemplate,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToAreaChartProps,
@@ -110,7 +112,7 @@ function renderChart<TProps>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transformerArgs: any[],
   commonProps: Partial<TProps>,
-) {
+): JSX.Element {
   const chartProps = transformer(...transformerArgs);
   return <Renderer {...chartProps} {...commonProps} />;
 }
@@ -396,24 +398,61 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     chart.type = 'line'; // Treat scatterpolar as line chart for rendering
   }
 
-  type ChartType = keyof ChartTypeMap;
-  const chartEntry = chartMap[chart.type as ChartType];
-  if (chartEntry) {
-    const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
-    if (preTransformCondition === undefined || preTransformCondition(plotlyInputWithValidData)) {
-      const transformedInput = preTransformOperation
-        ? preTransformOperation(plotlyInputWithValidData)
-        : plotlyInputWithValidData;
-      return renderChart<ReturnType<typeof transformer>>(
-        renderer,
-        transformer,
-        [transformedInput, colorMap, props.colorwayType, isDarkTheme],
-        commonProps,
-      );
+  const groupedTraces: Record<string, number[]> = {};
+  plotlyInputWithValidData.data.forEach((trace: Partial<PlotData>, index) => {
+    const xAxisKey = trace.xaxis ?? 'default'; //Handle when xaxis is not defined like PieData or SankeyData
+    if (!groupedTraces[xAxisKey]) {
+      groupedTraces[xAxisKey] = [];
     }
-  }
+    groupedTraces[xAxisKey].push(index);
+  });
 
-  throw new Error(`Unsupported chart type :${plotlyInputWithValidData.data[0]?.type}`);
+  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout);
+
+  type ChartType = keyof ChartTypeMap;
+  // map through the grouped traces and render the appropriate chart
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateRows: gridTemplate.templateRows,
+        gridTemplateColumns: gridTemplate.templateColumns,
+      }}
+    >
+      {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
+        const plotlyInputForGroup: PlotlySchema = {
+          ...plotlyInputWithValidData,
+          data: index.map(idx => plotlyInputWithValidData.data[idx]),
+        };
+
+        // Use the first valid trace to determine the chart type
+        //const chartType = chart.validTracesInfo!.find(trace => trace[0] === index[0])?.[1] as ChartType;
+        const filteredTracesInfo = chart.validTracesInfo!.filter(trace => index.includes(trace[0]));
+        const chartType = filteredTracesInfo.some(trace => trace[1] === 'fallback')
+          ? 'fallback'
+          : filteredTracesInfo[0][1];
+
+        const chartEntry = chartMap[chartType as ChartType];
+        if (chartEntry) {
+          const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
+          if (preTransformCondition === undefined || preTransformCondition(plotlyInputForGroup)) {
+            const transformedInput = preTransformOperation
+              ? preTransformOperation(plotlyInputForGroup)
+              : plotlyInputForGroup;
+            return renderChart<ReturnType<typeof transformer>>(
+              renderer,
+              transformer,
+              [transformedInput, colorMap, props.colorwayType, isDarkTheme],
+              commonProps,
+            );
+          }
+          return <></>;
+        } else {
+          throw new Error(`Unsupported chart type :${plotlyInputForGroup.data[0]?.type}`);
+        }
+      })}
+    </div>
+  );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
 DeclarativeChart.defaultProps = {

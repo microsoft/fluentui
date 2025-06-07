@@ -455,7 +455,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     const containsBars = mappedTraces.some(
       trace => trace.type === 'groupedverticalbar' || trace.type === 'verticalstackedbar',
     );
-    const containsLines = mappedTraces.some(trace => trace.type === 'line');
+    const containsLines = mappedTraces.some(trace => trace.type === 'line' || trace.type === 'fallback');
     if (containsBars && containsLines) {
       return {
         isValid: true,
