@@ -401,7 +401,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const chartEntry = chartMap[chart.type as ChartType];
   if (chartEntry) {
     const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
-    if (preTransformCondition && preTransformCondition(plotlyInputWithValidData)) {
+    if (preTransformCondition === undefined || preTransformCondition(plotlyInputWithValidData)) {
       const transformedInput = preTransformOperation
         ? preTransformOperation(plotlyInputWithValidData)
         : plotlyInputWithValidData;
