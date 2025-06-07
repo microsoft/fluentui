@@ -494,6 +494,12 @@ export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) =
 export const isInvalidValue: (value: any) => boolean;
 
 // @public (undocumented)
+export const isMonth: (possiblyMonthValue: any) => boolean;
+
+// @public (undocumented)
+export const isMonthArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
 export const isNumber: (value: any) => boolean;
 
 // @public (undocumented)

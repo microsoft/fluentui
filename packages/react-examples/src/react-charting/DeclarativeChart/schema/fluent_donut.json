@@ -1,76 +1,1184 @@
 {
-  "visualizer": "plotly",
   "data": [
     {
-      "hole": 0.6,
-      "type": "pie",
-      "frame": null,
-      "marker": {
-        "line": {
-          "color": "transparent"
-        },
-        "colors": [
-          "rgba(31,119,180,1)",
-          "rgba(255,127,14,1)",
-          "rgba(44,160,44,1)",
-          "rgba(214,39,40,1)",
-          "rgba(148,103,189,1)",
-          "rgba(140,86,75,1)",
-          "rgba(227,119,194,1)",
-          "rgba(127,127,127,1)",
-          "rgba(188,189,34,1)",
-          "rgba(23,190,207,1)"
-        ],
-        "fillcolor": "rgba(31,119,180,1)"
+      "customdata": [["Medium"], ["Medium"], ["Medium"], ["Medium"]],
+      "hovertemplate": "threat type=DDoS<br>complexity=Medium<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "DDoS, Medium",
+      "line": {
+        "color": "#2E91E5",
+        "dash": "solid",
+        "width": 3
       },
-      "labels": [
-        "AMC",
-        "Cadillac",
-        "Camaro",
-        "Chrysler",
-        "Datsun",
-        "Dodge",
-        "Duster",
-        "Ferrari",
-        "Fiat",
-        "Ford",
-        "Honda",
-        "Hornet",
-        "Lincoln",
-        "Lotus",
-        "Maserati",
-        "Mazda",
-        "Merc",
-        "Pontiac",
-        "Porsche",
-        "Toyota",
-        "Valiant",
-        "Volvo"
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "DDoS, Medium",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000"
       ],
-      "values": [1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 7, 1, 1, 2, 1, 1]
+      "xaxis": "x",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQIDAQ=="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["High"], ["High"], ["High"], ["High"], ["High"]],
+      "hovertemplate": "threat type=DDoS<br>complexity=High<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "DDoS, High",
+      "line": {
+        "color": "#2E91E5",
+        "dash": "dot",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "DDoS, High",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-29T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x2",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQIBAQE="
+      },
+      "yaxis": "y2",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"]],
+      "hovertemplate": "threat type=DDoS<br>complexity=Low<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "DDoS, Low",
+      "line": {
+        "color": "#2E91E5",
+        "dash": "dash",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "DDoS, Low",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x3",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQIBAgECAg=="
+      },
+      "yaxis": "y3",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"]],
+      "hovertemplate": "threat type=Insider Threat<br>complexity=Medium<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Insider Threat, Medium",
+      "line": {
+        "color": "#E15F99",
+        "dash": "solid",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Insider Threat, Medium",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000"
+      ],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQIBAQE="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["High"], ["High"], ["High"], ["High"], ["High"]],
+      "hovertemplate": "threat type=Insider Threat<br>complexity=High<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Insider Threat, High",
+      "line": {
+        "color": "#E15F99",
+        "dash": "dot",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Insider Threat, High",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-15T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x2",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQEBAgI="
+      },
+      "yaxis": "y2",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"]],
+      "hovertemplate": "threat type=Insider Threat<br>complexity=Low<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Insider Threat, Low",
+      "line": {
+        "color": "#E15F99",
+        "dash": "dash",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Insider Threat, Low",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-15T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x3",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQEBAgEBAQI="
+      },
+      "yaxis": "y3",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"]],
+      "hovertemplate": "threat type=Malware<br>complexity=Medium<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Malware, Medium",
+      "line": {
+        "color": "#1CA71C",
+        "dash": "solid",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Malware, Medium",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-04T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQEBAQEBAQE="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["High"], ["High"], ["High"], ["High"], ["High"], ["High"]],
+      "hovertemplate": "threat type=Malware<br>complexity=High<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Malware, High",
+      "line": {
+        "color": "#1CA71C",
+        "dash": "dot",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Malware, High",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-06-04T00:00:00.000000000"
+      ],
+      "xaxis": "x2",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AgEBAQIB"
+      },
+      "yaxis": "y2",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"]],
+      "hovertemplate": "threat type=Malware<br>complexity=Low<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Malware, Low",
+      "line": {
+        "color": "#1CA71C",
+        "dash": "dash",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Malware, Low",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000"
+      ],
+      "xaxis": "x3",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AwECAQICAQ=="
+      },
+      "yaxis": "y3",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"], ["Medium"]],
+      "hovertemplate": "threat type=Phishing<br>complexity=Medium<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Phishing, Medium",
+      "line": {
+        "color": "#FB0D0D",
+        "dash": "solid",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Phishing, Medium",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-04T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AgECAwEB"
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "customdata": [
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"],
+        ["High"]
+      ],
+      "hovertemplate": "threat type=Phishing<br>complexity=High<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Phishing, High",
+      "line": {
+        "color": "#FB0D0D",
+        "dash": "dot",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Phishing, High",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000",
+        "2023-07-02T00:00:00.000000000"
+      ],
+      "xaxis": "x2",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQEBAQIBAQICAQE="
+      },
+      "yaxis": "y2",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"]],
+      "hovertemplate": "threat type=Phishing<br>complexity=Low<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Phishing, Low",
+      "line": {
+        "color": "#FB0D0D",
+        "dash": "dash",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Phishing, Low",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-07-02T00:00:00.000000000"
+      ],
+      "xaxis": "x3",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AgEBAQECAgEB"
+      },
+      "yaxis": "y3",
+      "type": "scatter"
+    },
+    {
+      "customdata": [
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"],
+        ["Medium"]
+      ],
+      "hovertemplate": "threat type=Zero-Day<br>complexity=Medium<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Zero-Day, Medium",
+      "line": {
+        "color": "#DA16FF",
+        "dash": "solid",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Zero-Day, Medium",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-03-26T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000",
+        "2023-07-02T00:00:00.000000000"
+      ],
+      "xaxis": "x",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQMBAQECAgEBAQ=="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["High"], ["High"], ["High"], ["High"], ["High"], ["High"], ["High"]],
+      "hovertemplate": "threat type=Zero-Day<br>complexity=High<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Zero-Day, High",
+      "line": {
+        "color": "#DA16FF",
+        "dash": "dot",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Zero-Day, High",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-04-23T00:00:00.000000000",
+        "2023-05-21T00:00:00.000000000",
+        "2023-07-02T00:00:00.000000000"
+      ],
+      "xaxis": "x2",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQECAQEBAg=="
+      },
+      "yaxis": "y2",
+      "type": "scatter"
+    },
+    {
+      "customdata": [["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"], ["Low"]],
+      "hovertemplate": "threat type=Zero-Day<br>complexity=Low<br>occurrence date=%{x}<br>incident count=%{y}<extra></extra>",
+      "legendgroup": "Zero-Day, Low",
+      "line": {
+        "color": "#DA16FF",
+        "dash": "dash",
+        "width": 3
+      },
+      "marker": {
+        "symbol": "circle",
+        "size": 10
+      },
+      "mode": "lines+markers",
+      "name": "Zero-Day, Low",
+      "orientation": "v",
+      "showlegend": true,
+      "x": [
+        "2023-01-01T00:00:00.000000000",
+        "2023-01-15T00:00:00.000000000",
+        "2023-01-29T00:00:00.000000000",
+        "2023-02-12T00:00:00.000000000",
+        "2023-02-26T00:00:00.000000000",
+        "2023-03-12T00:00:00.000000000",
+        "2023-04-09T00:00:00.000000000",
+        "2023-05-07T00:00:00.000000000",
+        "2023-06-04T00:00:00.000000000",
+        "2023-06-18T00:00:00.000000000"
+      ],
+      "xaxis": "x3",
+      "y": {
+        "dtype": "i1",
+        "bdata": "AQIBAQEDAQEEAQ=="
+      },
+      "yaxis": "y3",
+      "type": "scatter"
     }
   ],
   "layout": {
-    "title": "Donut charts using Plotly",
+    "template": {
+      "data": {
+        "histogram2dcontour": [
+          {
+            "type": "histogram2dcontour",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "choropleth": [
+          {
+            "type": "choropleth",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "histogram2d": [
+          {
+            "type": "histogram2d",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "heatmap": [
+          {
+            "type": "heatmap",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "contourcarpet": [
+          {
+            "type": "contourcarpet",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "contour": [
+          {
+            "type": "contour",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "surface": [
+          {
+            "type": "surface",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "mesh3d": [
+          {
+            "type": "mesh3d",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "scatter": [
+          {
+            "fillpattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+            },
+            "type": "scatter"
+          }
+        ],
+        "parcoords": [
+          {
+            "type": "parcoords",
+            "line": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterpolargl": [
+          {
+            "type": "scatterpolargl",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "bar": [
+          {
+            "error_x": {
+              "color": "#2a3f5f"
+            },
+            "error_y": {
+              "color": "#2a3f5f"
+            },
+            "marker": {
+              "line": {
+                "color": "#E5ECF6",
+                "width": 0.5
+              },
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "bar"
+          }
+        ],
+        "scattergeo": [
+          {
+            "type": "scattergeo",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterpolar": [
+          {
+            "type": "scatterpolar",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "histogram": [
+          {
+            "marker": {
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "histogram"
+          }
+        ],
+        "scattergl": [
+          {
+            "type": "scattergl",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatter3d": [
+          {
+            "type": "scatter3d",
+            "line": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            },
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattermap": [
+          {
+            "type": "scattermap",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattermapbox": [
+          {
+            "type": "scattermapbox",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterternary": [
+          {
+            "type": "scatterternary",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattercarpet": [
+          {
+            "type": "scattercarpet",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "carpet": [
+          {
+            "aaxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+          }
+        ],
+        "table": [
+          {
+            "cells": {
+              "fill": {
+                "color": "#EBF0F8"
+              },
+              "line": {
+                "color": "white"
+              }
+            },
+            "header": {
+              "fill": {
+                "color": "#C8D4E3"
+              },
+              "line": {
+                "color": "white"
+              }
+            },
+            "type": "table"
+          }
+        ],
+        "barpolar": [
+          {
+            "marker": {
+              "line": {
+                "color": "#E5ECF6",
+                "width": 0.5
+              },
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "barpolar"
+          }
+        ],
+        "pie": [
+          {
+            "automargin": true,
+            "type": "pie"
+          }
+        ]
+      },
+      "layout": {
+        "autotypenumbers": "strict",
+        "colorway": [
+          "#636efa",
+          "#EF553B",
+          "#00cc96",
+          "#ab63fa",
+          "#FFA15A",
+          "#19d3f3",
+          "#FF6692",
+          "#B6E880",
+          "#FF97FF",
+          "#FECB52"
+        ],
+        "font": {
+          "color": "#2a3f5f"
+        },
+        "hovermode": "closest",
+        "hoverlabel": {
+          "align": "left"
+        },
+        "paper_bgcolor": "white",
+        "plot_bgcolor": "#E5ECF6",
+        "polar": {
+          "bgcolor": "#E5ECF6",
+          "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "ternary": {
+          "bgcolor": "#E5ECF6",
+          "aaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "baxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "caxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "coloraxis": {
+          "colorbar": {
+            "outlinewidth": 0,
+            "ticks": ""
+          }
+        },
+        "colorscale": {
+          "sequential": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "sequentialminus": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "diverging": [
+            [0, "#8e0152"],
+            [0.1, "#c51b7d"],
+            [0.2, "#de77ae"],
+            [0.3, "#f1b6da"],
+            [0.4, "#fde0ef"],
+            [0.5, "#f7f7f7"],
+            [0.6, "#e6f5d0"],
+            [0.7, "#b8e186"],
+            [0.8, "#7fbc41"],
+            [0.9, "#4d9221"],
+            [1, "#276419"]
+          ]
+        },
+        "xaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": {
+            "standoff": 15
+          },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "yaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": {
+            "standoff": 15
+          },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "scene": {
+          "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          }
+        },
+        "shapedefaults": {
+          "line": {
+            "color": "#2a3f5f"
+          }
+        },
+        "annotationdefaults": {
+          "arrowcolor": "#2a3f5f",
+          "arrowhead": 0,
+          "arrowwidth": 1
+        },
+        "geo": {
+          "bgcolor": "white",
+          "landcolor": "#E5ECF6",
+          "subunitcolor": "white",
+          "showland": true,
+          "showlakes": true,
+          "lakecolor": "white"
+        },
+        "title": {
+          "x": 0.05
+        },
+        "mapbox": {
+          "style": "light"
+        }
+      }
+    },
     "xaxis": {
-      "showgrid": false,
-      "zeroline": false,
-      "showticklabels": false
+      "anchor": "y",
+      "domain": [0.0, 0.30666666666666664],
+      "title": {
+        "text": "occurrence date"
+      }
     },
     "yaxis": {
-      "showgrid": false,
-      "zeroline": false,
+      "anchor": "x",
+      "domain": [0.0, 1.0],
+      "title": {
+        "text": "incident count"
+      }
+    },
+    "xaxis2": {
+      "anchor": "y2",
+      "domain": [0.3466666666666666, 0.6533333333333333],
+      "matches": "x",
+      "title": {
+        "text": "occurrence date"
+      }
+    },
+    "yaxis2": {
+      "anchor": "x2",
+      "domain": [0.0, 1.0],
+      "matches": "y",
       "showticklabels": false
     },
-    "margin": {
-      "b": 40,
-      "l": 60,
-      "r": 10,
-      "t": 25
+    "xaxis3": {
+      "anchor": "y3",
+      "domain": [0.6933333333333332, 0.9999999999999999],
+      "matches": "x",
+      "title": {
+        "text": "occurrence date"
+      }
     },
-    "hovermode": "closest",
-    "showlegend": true
+    "yaxis3": {
+      "anchor": "x3",
+      "domain": [0.0, 1.0],
+      "matches": "y",
+      "showticklabels": false
+    },
+    "annotations": [
+      {
+        "font": {
+          "size": 13
+        },
+        "showarrow": false,
+        "text": "complexity=Medium",
+        "x": 0.15333333333333332,
+        "xanchor": "center",
+        "xref": "paper",
+        "y": 1.0,
+        "yanchor": "bottom",
+        "yref": "paper"
+      },
+      {
+        "font": {
+          "size": 13
+        },
+        "showarrow": false,
+        "text": "complexity=High",
+        "x": 0.5,
+        "xanchor": "center",
+        "xref": "paper",
+        "y": 1.0,
+        "yanchor": "bottom",
+        "yref": "paper"
+      },
+      {
+        "font": {
+          "size": 13
+        },
+        "showarrow": false,
+        "text": "complexity=Low",
+        "x": 0.8466666666666666,
+        "xanchor": "center",
+        "xref": "paper",
+        "y": 1.0,
+        "yanchor": "bottom",
+        "yref": "paper"
+      }
+    ],
+    "legend": {
+      "title": {
+        "text": "Threat Type"
+      },
+      "tracegroupgap": 0
+    },
+    "title": {
+      "text": "Incident Trends by Threat Type and Complexity",
+      "font": {
+        "size": 22
+      }
+    },
+    "font": {
+      "family": "Courier New, monospace",
+      "size": 14,
+      "color": "#F5F6FA"
+    },
+    "margin": {
+      "l": 40,
+      "r": 40,
+      "t": 70,
+      "b": 40
+    },
+    "plot_bgcolor": "rgba(40,40,50,0.98)",
+    "paper_bgcolor": "rgba(15,23,35,1)"
   },
-  "frames": [],
-  "selectedLegends": ["Cadillac"]
+  "id": 792
 }

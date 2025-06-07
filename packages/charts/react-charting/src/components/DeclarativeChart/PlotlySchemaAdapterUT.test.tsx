@@ -1,13 +1,13 @@
-import { isDateArray, isInvalidValue, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import { isDateArray, isMonthArray, isInvalidValue, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
 
 import {
-  isMonthArray,
   correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
-  transformPlotlyJsonToScatterChartProps,
+  transformPlotlyJsonToAreaChartProps,
+  transformPlotlyJsonToLineChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
@@ -239,25 +239,21 @@ describe('transform Plotly Json To chart Props', () => {
     }).toThrow(TypeError);
   });
 
-  test('transformPlotlyJsonToScatterChartProps - Should return line chart props', () => {
+  test('transformPlotlyJsonToLineChartProps - Should return line chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_line_test.json');
-    expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
-    ).toMatchSnapshot();
+    expect(transformPlotlyJsonToLineChartProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
-  test('transformPlotlyJsonToScatterChartProps - Should throw an error when we pass invalid data', () => {
+  test('transformPlotlyJsonToLineChartProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     expect(() => {
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true);
+      transformPlotlyJsonToLineChartProps(plotlySchema, { current: colorMap }, 'default', true);
     }).toThrow(TypeError);
   });
 
-  test('transformPlotlyJsonToScatterChartProps - Should return area chart props', () => {
+  test('transformPlotlyJsonToAreaChartProps - Should return area chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
-    expect(
-      transformPlotlyJsonToScatterChartProps(plotlySchema, true, false, { current: colorMap }, 'default', true),
-    ).toMatchSnapshot();
+    expect(transformPlotlyJsonToAreaChartProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHorizontalBarWithAxisProps - Should return HBC with axis chart props', () => {
@@ -276,13 +272,13 @@ describe('transform Plotly Json To chart Props', () => {
 
   test('transformPlotlyJsonToHeatmapProps - Should return heatmap chart props', () => {
     const plotlySchema = require('./tests/schema/fluent_heatmap_test.json');
-    expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+    expect(transformPlotlyJsonToHeatmapProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
   });
 
   test('transformPlotlyJsonToHeatmapProps - Should throw an error when we pass invalid data', () => {
     const plotlySchema = require('./tests/schema/fluent_nesteddata_test.json');
     try {
-      expect(transformPlotlyJsonToHeatmapProps(plotlySchema)).toMatchSnapshot();
+      expect(transformPlotlyJsonToHeatmapProps(plotlySchema, { current: colorMap }, 'default', true)).toMatchSnapshot();
     } catch (e) {
       expect(e).toStrictEqual(TypeError("Cannot read properties of undefined (reading '0')"));
     }

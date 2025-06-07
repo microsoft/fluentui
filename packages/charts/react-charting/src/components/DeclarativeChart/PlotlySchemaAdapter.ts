@@ -53,15 +53,14 @@ import type {
   Color,
 } from '@fluentui/chart-utilities';
 import {
-  isArrayOfType,
   isArrayOrTypedArray,
   isDate,
   isDateArray,
   isNumberArray,
+  isStringArray,
   isYearArray,
   isInvalidValue,
 } from '@fluentui/chart-utilities';
-import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
@@ -109,18 +108,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const isMonth = (possiblyMonthValue: any): boolean => {
-  const parseFullMonth = timeParse('%B');
-  const parseShortMonth = timeParse('%b');
-  return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
-};
-
-export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  return isArrayOfType(data, (value: any): boolean => isMonth(value) || value === null);
-};
 
 function getTitles(layout: Partial<Layout> | undefined) {
   const titles = {
@@ -662,14 +649,39 @@ export const transformPlotlyJsonToVBCProps = (
   };
 };
 
-export const transformPlotlyJsonToScatterChartProps = (
+export const transformPlotlyJsonToAreaChartProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IAreaChartProps => {
+  return transformPlotlyJsonToScatterChartProps(input, true, colorMap, colorwayType, isDarkTheme) as IAreaChartProps;
+};
+
+export const transformPlotlyJsonToLineChartProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): ILineChartProps => {
+  return transformPlotlyJsonToScatterChartProps(input, false, colorMap, colorwayType, isDarkTheme) as ILineChartProps;
+};
+
+const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isAreaChart: boolean,
-  isScatterMarkers: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
+  const isScatterMarkers = [
+    'markers',
+    'text+markers',
+    'markers+text',
+    'lines+markers',
+    'markers+line',
+    'text+lines+markers',
+  ].includes((input.data[0] as PlotData)?.mode);
   const secondaryYAxisValues = getSecondaryYAxisValues(
     input.data,
     input.layout,
@@ -877,7 +889,12 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   };
 };
 
-export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMapChartProps => {
+export const transformPlotlyJsonToHeatmapProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): IHeatMapChartProps => {
   const firstData = input.data[0] as Partial<PlotData>;
   const heatmapDataPoints: IHeatMapChartDataPoint[] = [];
   let zMin = Number.POSITIVE_INFINITY;
@@ -1237,6 +1254,7 @@ const formatValue = (
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IChartTableProps => {
   const tableData = input.data[0] as TableData;
@@ -1479,12 +1497,6 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
 
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isStringArray = (arr: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
-};
 
 // TODO: Use binary search to find the appropriate bin for numeric value.
 const findBinIndex = (
