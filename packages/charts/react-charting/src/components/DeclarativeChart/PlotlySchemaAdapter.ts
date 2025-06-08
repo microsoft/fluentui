@@ -65,6 +65,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { ILegend, ILegendsProps } from '../Legends/index';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -1623,6 +1624,39 @@ const getPrecision = (value: number) => {
 const precisionRound = (value: number, precision: number) => {
   const factor = Math.pow(10, precision);
   return Math.round(value * factor) / factor;
+};
+
+export const getAllupLegendsProps = (
+  input: PlotlySchema,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): ILegendsProps => {
+  const allupLegends: ILegend[] = [];
+  input.data.forEach((series, index) => {
+    const name = (series as Partial<PlotData>).legendgroup;
+    const color = (series as Partial<PlotData>).line?.color || (series as Partial<PlotData>).marker?.color;
+    const resolvedColor = extractColor(
+      input.layout?.template?.layout?.colorway,
+      colorwayType,
+      color,
+      colorMap,
+      isDarkTheme,
+    );
+    if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+      allupLegends.push({
+        title: name,
+        color: resolvedColor as string,
+      });
+    }
+  });
+
+  return {
+    legends: allupLegends,
+    centerLegends: true,
+    enabledWrapLines: true,
+    canSelectMultipleLegends: true,
+  };
 };
 
 const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {

@@ -24,6 +24,7 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
+  getAllupLegendsProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -37,6 +38,7 @@ import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
+import { ILegendsProps, Legends } from '../Legends/index';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -311,6 +313,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
+  function createLegends(legendProps: ILegendsProps): JSX.Element {
+    // eslint-disable-next-line react/jsx-no-bind
+    return <Legends {...legendProps} selectedLegends={activeLegends} onChange={onActiveLegendsChange} />;
+  }
+
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -360,49 +367,54 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
   const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout);
 
+  const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
+
   type ChartType = keyof ChartTypeMap;
   // map through the grouped traces and render the appropriate chart
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateRows: gridTemplate.templateRows,
-        gridTemplateColumns: gridTemplate.templateColumns,
-      }}
-    >
-      {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
-        const plotlyInputForGroup: PlotlySchema = {
-          ...plotlyInputWithValidData,
-          data: index.map(idx => plotlyInputWithValidData.data[idx]),
-        };
+    <>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: gridTemplate.templateRows,
+          gridTemplateColumns: gridTemplate.templateColumns,
+        }}
+      >
+        {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
+          const plotlyInputForGroup: PlotlySchema = {
+            ...plotlyInputWithValidData,
+            data: index.map(idx => plotlyInputWithValidData.data[idx]),
+          };
 
-        // Use the first valid trace to determine the chart type
-        //const chartType = chart.validTracesInfo!.find(trace => trace[0] === index[0])?.[1] as ChartType;
-        const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
-        const chartType = validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE)
-          ? FALLBACK_TYPE
-          : filteredTracesInfo[0][1];
+          // Use the first valid trace to determine the chart type
+          //const chartType = chart.validTracesInfo!.find(trace => trace[0] === index[0])?.[1] as ChartType;
+          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
+          const chartType = validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE)
+            ? FALLBACK_TYPE
+            : filteredTracesInfo[0][1];
 
-        const chartEntry = chartMap[chartType as ChartType];
-        if (chartEntry) {
-          const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
-          if (preTransformCondition === undefined || preTransformCondition(plotlyInputForGroup)) {
-            const transformedInput = preTransformOperation
-              ? preTransformOperation(plotlyInputForGroup)
-              : plotlyInputForGroup;
-            return renderChart<ReturnType<typeof transformer>>(
-              renderer,
-              transformer,
-              [transformedInput, colorMap, props.colorwayType, isDarkTheme],
-              commonProps,
-            );
+          const chartEntry = chartMap[chartType as ChartType];
+          if (chartEntry) {
+            const { transformer, renderer, preTransformCondition, preTransformOperation } = chartEntry;
+            if (preTransformCondition === undefined || preTransformCondition(plotlyInputForGroup)) {
+              const transformedInput = preTransformOperation
+                ? preTransformOperation(plotlyInputForGroup)
+                : plotlyInputForGroup;
+              return renderChart<ReturnType<typeof transformer>>(
+                renderer,
+                transformer,
+                [transformedInput, colorMap, props.colorwayType, isDarkTheme],
+                commonProps,
+              );
+            }
+            return <></>;
+          } else {
+            throw new Error(`Unsupported chart type :${plotlyInputForGroup.data[0]?.type}`);
           }
-          return <></>;
-        } else {
-          throw new Error(`Unsupported chart type :${plotlyInputForGroup.data[0]?.type}`);
-        }
-      })}
-    </div>
+        })}
+      </div>
+      {Object.entries(groupedTraces).length > 1 && createLegends(allupLegendsProps)}
+    </>
   );
 });
 DeclarativeChart.displayName = 'DeclarativeChart';
