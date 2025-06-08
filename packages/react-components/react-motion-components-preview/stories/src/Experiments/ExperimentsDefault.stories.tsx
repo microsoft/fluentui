@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Field, makeStyles, tokens, Switch } from '@fluentui/react-components';
-import { Scale } from '@fluentui/react-motion-components-preview';
+import { Field, makeStyles, tokens, Switch, createPresenceComponent } from '@fluentui/react-components';
+import { Fade } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -35,23 +35,24 @@ const LoremIpsum = () => (
   </>
 );
 
-export const Default = (props: React.ComponentProps<typeof Scale>) => {
+export const Default = () => {
   const classes = useClasses();
-  const [visible, setVisible] = React.useState<boolean>(true);
+  // const [visible, setVisible] = React.useState<boolean>(false);
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
+      [Card Flip or whatever]
+      {/* <div className={classes.controls}>
         <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
         </Field>
       </div>
 
-      <Scale visible={visible}>
+      <Fade visible={visible}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </Scale>
+      </Fade> */}
     </div>
   );
 };
