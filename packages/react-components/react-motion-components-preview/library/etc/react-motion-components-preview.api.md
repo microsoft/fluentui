@@ -54,11 +54,10 @@ export const Hold: React_2.FC<{
     onMotionFinish?: () => void;
 }>;
 
-// @public (undocumented)
+// @public
 export const PresenceStagger: React_2.FC<{
     children: React_2.ReactNode;
     delay?: number;
-    autoloop?: boolean;
     mode?: 'enter' | 'exit' | 'enterReverse' | 'exitReverse';
     exit?: boolean;
     reverse?: boolean;
@@ -69,34 +68,13 @@ export const PresenceStagger: React_2.FC<{
 export const Rotate: PresenceComponent<RotateRuntimeParams>;
 
 // @public
-export const Scale: PresenceComponent<    {
-duration?: number | undefined;
-easing?: string | undefined;
-exitDuration?: number | undefined;
-exitEasing?: string | undefined;
-fromScale?: number | undefined;
-animateOpacity?: boolean | undefined;
-}>;
+export const Scale: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
-export const ScaleRelaxed: PresenceComponent<    {
-duration?: number | undefined;
-easing?: string | undefined;
-exitDuration?: number | undefined;
-exitEasing?: string | undefined;
-fromScale?: number | undefined;
-animateOpacity?: boolean | undefined;
-}>;
+export const ScaleRelaxed: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
-export const ScaleSnappy: PresenceComponent<    {
-duration?: number | undefined;
-easing?: string | undefined;
-exitDuration?: number | undefined;
-exitEasing?: string | undefined;
-fromScale?: number | undefined;
-animateOpacity?: boolean | undefined;
-}>;
+export const ScaleSnappy: PresenceComponent<ScaleVariantParams>;
 
 // @public (undocumented)
 export const Scene: React_2.FC<{
