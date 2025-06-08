@@ -159,7 +159,7 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
 };
 
 const usesSecondaryYScale = (layout: Partial<Layout> | undefined): boolean => {
-  return layout?.yaxis2?.anchor === 'x';
+  return layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right';
 };
 
 const getSecondaryYAxisValues = (
@@ -396,13 +396,8 @@ export const transformPlotlyJsonToVSBCProps = (
         } else if (series.type === 'scatter' || !!fallbackVSBC) {
           const lineColor = resolveColor(extractedLineColors, index1, legend, colorMap, isDarkTheme);
           const lineOptions = getLineOptions(series.line);
-          const dashType = series.line?.dash || 'solid';
-          const legendShape =
-            dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
-              ? 'dottedLine'
-              : series.mode?.includes('markers')
-              ? 'circle'
-              : 'default';
+          const legendShape = getLegendShape(series);
+
           mapXToDataPoints[x].lineData!.push({
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
@@ -718,13 +713,7 @@ const transformPlotlyJsonToScatterChartProps = (
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       const lineOptions = getLineOptions(series.line);
-      const dashType = series.line?.dash || 'solid';
-      const legendShape =
-        dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot'
-          ? 'dottedLine'
-          : series.mode?.includes('markers')
-          ? 'circle'
-          : 'default';
+      const legendShape = getLegendShape(series);
 
       const validXYRanges = getValidXYRanges(series);
       return validXYRanges.map(([rangeStart, rangeEnd], rangeIdx) => {
@@ -1626,6 +1615,16 @@ const precisionRound = (value: number, precision: number) => {
   return Math.round(value * factor) / factor;
 };
 
+const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
+  const dashType = series.line?.dash || 'solid';
+  if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
+    return 'dottedLine';
+  } else if (series.mode?.includes('markers')) {
+    return 'circle';
+  }
+  return 'default';
+};
+
 export const getAllupLegendsProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
@@ -1633,23 +1632,32 @@ export const getAllupLegendsProps = (
   isDarkTheme?: boolean,
 ): ILegendsProps => {
   const allupLegends: ILegend[] = [];
-  input.data.forEach((series, index) => {
-    const name = (series as Partial<PlotData>).legendgroup;
-    const color = (series as Partial<PlotData>).line?.color || (series as Partial<PlotData>).marker?.color;
-    const resolvedColor = extractColor(
-      input.layout?.template?.layout?.colorway,
-      colorwayType,
-      color,
-      colorMap,
-      isDarkTheme,
-    );
-    if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
-      allupLegends.push({
-        title: name,
-        color: resolvedColor as string,
-      });
-    }
-  });
+  // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
+  const toShowLegend = input.data.reduce((acc, series) => {
+    return acc || (series as Partial<PlotData>).showlegend === true;
+  }, false);
+
+  if (toShowLegend) {
+    input.data.forEach((series: Partial<PlotData>, index) => {
+      const name = series.legendgroup;
+      const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
+      const legendShape = getLegendShape(series);
+      const resolvedColor = extractColor(
+        input.layout?.template?.layout?.colorway,
+        colorwayType,
+        color,
+        colorMap,
+        isDarkTheme,
+      );
+      if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+        allupLegends.push({
+          title: name,
+          color: resolvedColor as string,
+          shape: legendShape,
+        });
+      }
+    });
+  }
 
   return {
     legends: allupLegends,
@@ -1661,6 +1669,11 @@ export const getAllupLegendsProps = (
 
 const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
   const legends: string[] = [];
+  // If legendgroup is defined, legends are shown all up. Don't show individual legends.
+  if (data.some((series: Partial<PlotData>) => series.legendgroup !== undefined && series.legendgroup !== '')) {
+    return { legends, hideLegend: true };
+  }
+
   if (data.length === 1) {
     legends.push(data[0].name || '');
   } else {
