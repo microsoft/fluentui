@@ -157,8 +157,8 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
   return xValues;
 };
 
-const usesSecondaryYScale = (series: Partial<PlotData>): boolean => {
-  return series.yaxis === 'y2';
+const usesSecondaryYScale = (layout: Partial<Layout> | undefined): boolean => {
+  return layout?.yaxis2?.anchor === 'x';
 };
 
 const getSecondaryYAxisValues = (
@@ -172,7 +172,7 @@ const getSecondaryYAxisValues = (
   let yMaxValue: number | undefined;
 
   data.forEach((series: Partial<PlotData>) => {
-    if (usesSecondaryYScale(series)) {
+    if (usesSecondaryYScale(layout)) {
       containsSecondaryYAxis = true;
 
       const yValues = series.y as number[];
@@ -411,9 +411,9 @@ export const transformPlotlyJsonToVSBCProps = (
               ...(lineOptions ?? {}),
               mode: series.mode,
             },
-            useSecondaryYScale: usesSecondaryYScale(series),
+            useSecondaryYScale: usesSecondaryYScale(input.layout),
           });
-          if (!usesSecondaryYScale(series) && typeof yVal === 'number') {
+          if (!usesSecondaryYScale(input.layout) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
@@ -515,7 +515,7 @@ export const transformPlotlyJsonToGVBCProps = (
           xAxisCalloutData: x as string,
           color,
           legend,
-          useSecondaryYScale: usesSecondaryYScale(series),
+          useSecondaryYScale: usesSecondaryYScale(input.layout),
         });
       }
     });
@@ -752,7 +752,7 @@ const transformPlotlyJsonToScatterChartProps = (
             ...(lineOptions ?? {}),
             mode: series.mode,
           },
-          useSecondaryYScale: usesSecondaryYScale(series),
+          useSecondaryYScale: usesSecondaryYScale(input.layout),
         } as ILineChartPoints;
       });
     })
@@ -1715,6 +1715,10 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined): GridTem
       const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
       const anchorIndex = getIndexFromKey(anchor, 'x');
       if (index !== anchorIndex) {
+        if (index === 1 && anchorIndex === 0) {
+          // Special case for secondary y axis where yaxis2 can anchor to x1
+          return { templateRows, templateColumns };
+        }
         throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
       }
       gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];

@@ -50,6 +50,10 @@ const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVertica
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 
+// Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
+const DEFAULT_XAXIS = 'x';
+const FALLBACK_TYPE = 'fallback';
+
 /**
  * DeclarativeChart schema.
  * {@docCategory DeclarativeChart}
@@ -267,6 +271,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
   };
 
+  const validTracesFilteredIndex: [number, string][] = chart.validTracesInfo!.map((trace, index) => [index, trace[1]]);
+
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
   const theme = useTheme();
@@ -305,65 +311,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  // const renderLineArea = (plotlyData: Data[], isAreaChart: boolean): JSX.Element => {
-  //   // Dont consider yaxis2 as secondary axis if grid view is present
-  //   // const hasGridView = plotlyData.some((dataSeries: PlotData) => dataSeries.xaxis !== 'x');
-  //   const data1 = plotlyData.filter((dataSeries: PlotData) => dataSeries.xaxis === 'x');
-  //   const data2 = plotlyData.filter((dataSeries: PlotData) => dataSeries.xaxis === 'x2');
-  //   const data3 = plotlyData.filter((dataSeries: PlotData) => dataSeries.xaxis === 'x3');
-  //   const chartProps: ILineChartProps | IAreaChartProps = {
-  //     ...transformPlotlyJsonToScatterChartProps(
-  //       { data: data1, layout: plotlyInput.layout },
-  //       isAreaChart,
-  //       colorMap,
-  //       props.colorwayType,
-  //       isDarkTheme,
-  //     ),
-  //     ...commonProps,
-  //   };
-  //   const chartProps2: ILineChartProps | IAreaChartProps = {
-  //     ...transformPlotlyJsonToScatterChartProps(
-  //       { data: data2, layout: plotlyInput.layout },
-  //       isAreaChart,
-  //       colorMap,
-  //       props.colorwayType,
-  //       isDarkTheme,
-  //     ),
-  //     ...commonProps,
-  //   };
-  //   const chartProps3: ILineChartProps | IAreaChartProps = {
-  //     ...transformPlotlyJsonToScatterChartProps(
-  //       { data: data3, layout: plotlyInput.layout },
-  //       isAreaChart,
-  //       isScatterMarkers,
-  //       colorMap,
-  //       props.colorwayType,
-  //       isDarkTheme,
-  //     ),
-  //     ...commonProps,
-  //   };
-  //   if (isAreaChart) {
-  //     return <ResponsiveAreaChart {...chartProps} />;
-  //   }
-  //   return (
-  //     <div
-  //       style={{
-  //         display: 'grid',
-  //         gridTemplateColumns: '1fr 1fr 1fr',
-  //         gridTemplateRows: '1fr',
-  //         gap: '0px',
-  //         width: '100%',
-  //         height: '100%',
-  //       }}
-  //     >
-  //       {/* ResponsiveLineChart is wrapped in a div to ensure it takes full width and height */}
-  //       <ResponsiveLineChart {...chartProps} />
-  //       <ResponsiveLineChart {...chartProps2} />
-  //       <ResponsiveLineChart {...chartProps3} />
-  //     </div>
-  //   );
-  // };
-
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -395,12 +342,16 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   if (chart.type === 'scatterpolar') {
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
-    chart.type = 'line'; // Treat scatterpolar as line chart for rendering
+    validTracesFilteredIndex.forEach((trace, index) => {
+      if (trace[1] === 'scatterpolar') {
+        validTracesFilteredIndex[index][1] = 'line'; // Change type to line for rendering
+      }
+    });
   }
 
   const groupedTraces: Record<string, number[]> = {};
   plotlyInputWithValidData.data.forEach((trace: Partial<PlotData>, index) => {
-    const xAxisKey = trace.xaxis ?? 'default'; //Handle when xaxis is not defined like PieData or SankeyData
+    const xAxisKey = trace.xaxis ?? DEFAULT_XAXIS;
     if (!groupedTraces[xAxisKey]) {
       groupedTraces[xAxisKey] = [];
     }
@@ -427,9 +378,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
 
         // Use the first valid trace to determine the chart type
         //const chartType = chart.validTracesInfo!.find(trace => trace[0] === index[0])?.[1] as ChartType;
-        const filteredTracesInfo = chart.validTracesInfo!.filter(trace => index.includes(trace[0]));
-        const chartType = filteredTracesInfo.some(trace => trace[1] === 'fallback')
-          ? 'fallback'
+        const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
+        const chartType = validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE)
+          ? FALLBACK_TYPE
           : filteredTracesInfo[0][1];
 
         const chartEntry = chartMap[chartType as ChartType];
