@@ -8,10 +8,10 @@ import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray, isMonthArray, mapFluentChart, sanitizeJson } from '@fluentui/chart-utilities';
 
-import type { GridTemplate } from './PlotlySchemaAdapter';
+import type { GridProperties } from './PlotlySchemaAdapter';
 import {
   correctYearMonth,
-  createGridTemplate,
+  getGridProperties,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToAreaChartProps,
@@ -118,9 +118,22 @@ function renderChart<TProps>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transformerArgs: any[],
   commonProps: Partial<TProps>,
+  cellRow: number,
+  cellColumn: number,
 ): JSX.Element {
   const chartProps = transformer(...transformerArgs);
-  return <Renderer {...chartProps} {...commonProps} />;
+  return (
+    <Renderer
+      {...chartProps}
+      {...commonProps}
+      style={{
+        gridRowStart: cellRow,
+        gridRowEnd: cellRow + 1,
+        gridColumnStart: cellColumn,
+        gridColumnEnd: cellColumn + 1,
+      }}
+    />
+  );
 }
 
 type PreTransformHooks = {
@@ -370,7 +383,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   });
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
-  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout, isMultiPlot.current);
+  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData.layout, isMultiPlot.current);
 
   const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
 
@@ -381,8 +394,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       <div
         style={{
           display: 'grid',
-          gridTemplateRows: gridTemplate.templateRows,
-          gridTemplateColumns: gridTemplate.templateColumns,
+          gridTemplateRows: gridProperties.templateRows,
+          gridTemplateColumns: gridProperties.templateColumns,
         }}
       >
         {Object.entries(groupedTraces).map(([xAxisKey, index]) => {
@@ -405,11 +418,19 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               const transformedInput = preTransformOperation
                 ? preTransformOperation(plotlyInputForGroup)
                 : plotlyInputForGroup;
+              const cellProperties = gridProperties.layout[xAxisKey];
+
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
                 [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
-                commonProps,
+                {
+                  ...commonProps,
+                  xAxisAnnotation: cellProperties.xAnnotation,
+                  yAxisAnnotation: cellProperties.yAnnotation,
+                },
+                cellProperties.row,
+                cellProperties.column,
               );
             }
             return <></>;

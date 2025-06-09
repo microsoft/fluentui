@@ -52,6 +52,7 @@ import type {
   TableData,
   Color,
   LayoutAxis,
+  XAxisName,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -66,6 +67,20 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
+
+export type AxisProperties = {
+  xAnnotation?: string;
+  yAnnotation?: string;
+  row: number;
+  column: number;
+};
+export type GridAxisProperties = Record<string, AxisProperties>;
+
+export type GridProperties = {
+  templateRows: string;
+  templateColumns: string;
+  layout: GridAxisProperties;
+};
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -1747,29 +1762,30 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   return ranges;
 };
 
-export type GridTemplate = {
-  templateRows: string;
-  templateColumns: string;
-};
-
 const getIndexFromKey = (key: string, pattern: string): number => {
   const normalizedKey = key.replace(pattern, '') === '' ? '1' : key.replace(pattern, '');
   return parseInt(normalizedKey, 10) - 1;
 };
 
-export const createGridTemplate = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridTemplate => {
+export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridProperties => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
+  type AnnotationProps = {
+    xAnnotation?: string;
+    yAnnotation?: string;
+  };
+  const annotations: Record<number, AnnotationProps> = {};
   let templateRows = '1fr';
   let templateColumns = '1fr';
+  let gridLayout: GridAxisProperties = {};
   if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
-    return { templateRows, templateColumns };
+    return { templateRows, templateColumns, layout: gridLayout };
   }
   if (!layout.xaxis || !layout.yaxis) {
-    return { templateRows, templateColumns };
+    return { templateRows, templateColumns, layout: gridLayout };
   }
   if (!isMultiPlot) {
-    return { templateRows, templateColumns };
+    return { templateRows, templateColumns, layout: gridLayout };
   }
 
   Object.keys(layout).forEach(key => {
@@ -1795,6 +1811,32 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined, isMultiP
       gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
     }
   });
+
+  layout.annotations?.forEach(annotation => {
+    const xMatches: number[] = gridX
+      .map((interval, idx) =>
+        (annotation?.x as number) >= interval[0] && (annotation?.x as number) <= interval[1] ? idx : -1,
+      )
+      .filter(idx => idx !== -1);
+    const yMatch = gridY.findIndex(
+      (interval, yIndex) =>
+        xMatches.includes(yIndex) &&
+        (annotation?.y as number) >= interval[0] &&
+        (annotation?.y as number) <= interval[1],
+    );
+
+    if (yMatch !== -1) {
+      if (annotations[yMatch] === undefined) {
+        annotations[yMatch] = {} as AnnotationProps;
+      }
+      if ((annotation?.textangle as number) === 90) {
+        annotations[yMatch].yAnnotation = annotation.text;
+      } else {
+        annotations[yMatch].xAnnotation = annotation.text;
+      }
+    }
+  });
+
   if (gridX.length > 0) {
     const uniqueXIntervals = new Map<string, number[]>();
     gridX.forEach(interval => {
@@ -1807,6 +1849,26 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined, isMultiP
     templateColumns = Array.from(uniqueXIntervals.values())
       .map(interval => `${(interval[1] - interval[0]) / minXInterval}fr`)
       .join(' ');
+
+    let columnNumber = 1;
+    gridX.forEach((interval, index) => {
+      if (interval.length === 0) {
+        return;
+      }
+
+      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+
+      const annotationProps = annotations[index] as AnnotationProps;
+      const xAnnotation = annotationProps?.xAnnotation;
+
+      const row: AxisProperties = {
+        row: -1,
+        column: columnNumber,
+        xAnnotation,
+      };
+      gridLayout[cellName] = row;
+      columnNumber = interval[1] + minXInterval > 1 ? 1 : columnNumber + 1;
+    });
   }
   if (gridY.length > 0) {
     const uniqueYIntervals = new Map<string, number[]>();
@@ -1820,10 +1882,45 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined, isMultiP
     templateRows = Array.from(uniqueYIntervals.values())
       .map(interval => `${(interval[1] - interval[0]) / minYInterval}fr`)
       .join(' ');
+
+    let rowNumber = 0;
+    gridY.forEach((interval, index) => {
+      if (interval.length === 0) {
+        return;
+      }
+
+      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+
+      const annotationProps = annotations[index] as AnnotationProps;
+      const yAnnotation = annotationProps?.yAnnotation;
+
+      const cell = gridLayout[cellName];
+      if (cell !== undefined) {
+        // update the row number in the existing cell
+        cell.row = rowNumber;
+        cell.yAnnotation = yAnnotation;
+      }
+      rowNumber = interval[1] + minYInterval > 1 ? 0 : rowNumber + 1;
+    });
   }
+
+  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
+  const reversedGridLayout: GridAxisProperties = {};
+  // find the maximum row number
+  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
+  // iterate over the gridLayout and reverse the row numbers
+  Object.keys(gridLayout).forEach(key => {
+    const cell = gridLayout[key];
+    if (cell.row !== undefined) {
+      // reverse the row number
+      cell.row = maxRowNumber - cell.row + 1;
+    }
+    reversedGridLayout[key] = cell;
+  });
 
   return {
     templateRows,
     templateColumns,
+    layout: reversedGridLayout,
   };
 };

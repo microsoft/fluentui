@@ -99,7 +99,7 @@ export class DeclarativeChartBasicExample extends React.Component<{}, IDeclarati
     this.state = {
       selectedChoice: defaultselection,
       selectedLegends: JSON.stringify(selectedLegends),
-      fluentDataVizColorPalette: 'builtin',
+      fluentDataVizColorPalette: 'default',
     };
 
     this._declarativeChartRef = React.createRef();

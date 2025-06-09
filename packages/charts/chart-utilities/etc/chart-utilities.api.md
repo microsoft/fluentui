@@ -31,7 +31,7 @@ export interface Annotations extends Label {
     startarrowsize: number;
     startstandoff: number;
     text: string;
-    textangle: string;
+    textangle: string | number;
     valign: 'top' | 'middle' | 'bottom';
     visible: boolean;
     width: number;
