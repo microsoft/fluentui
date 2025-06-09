@@ -932,7 +932,7 @@ export const ctrlChoiceBaseBackgroundDisabled = "var(--smtc-ctrl-choice-base-bac
 export const ctrlChoiceBaseBackgroundDisabledRaw = "--smtc-ctrl-choice-base-background-disabled";
 
 // @public (undocumented)
-export const ctrlChoiceBaseBackgroundHover = "var(--smtc-ctrl-choice-base-background-hover, var(--smtc-background-ctrl-outline-hover, var(--colorTransparentBackgroundHover)))";
+export const ctrlChoiceBaseBackgroundHover = "var(--smtc-ctrl-choice-base-background-hover, var(--smtc-background-ctrl-outline-hover, unset))";
 
 // @public (undocumented)
 export const ctrlChoiceBaseBackgroundHoverRaw = "--smtc-ctrl-choice-base-background-hover";
@@ -1184,19 +1184,19 @@ export const ctrlChoiceSwitchHeight = "var(--smtc-ctrl-choice-switch-height, var
 export const ctrlChoiceSwitchHeightRaw = "--smtc-ctrl-choice-switch-height";
 
 // @public (undocumented)
-export const ctrlChoiceSwitchPaddingHover = "var(--smtc-ctrl-choice-switch-padding-hover, var(--smtc-ctrl-choice-switch-padding-rest, 2px))";
+export const ctrlChoiceSwitchPaddingHover = "var(--smtc-ctrl-choice-switch-padding-hover, var(--smtc-ctrl-choice-switch-padding-rest, 1px))";
 
 // @public (undocumented)
 export const ctrlChoiceSwitchPaddingHoverRaw = "--smtc-ctrl-choice-switch-padding-hover";
 
 // @public (undocumented)
-export const ctrlChoiceSwitchPaddingPressed = "var(--smtc-ctrl-choice-switch-padding-pressed, var(--smtc-ctrl-choice-switch-padding-rest, 2px))";
+export const ctrlChoiceSwitchPaddingPressed = "var(--smtc-ctrl-choice-switch-padding-pressed, var(--smtc-ctrl-choice-switch-padding-rest, 1px))";
 
 // @public (undocumented)
 export const ctrlChoiceSwitchPaddingPressedRaw = "--smtc-ctrl-choice-switch-padding-pressed";
 
 // @public (undocumented)
-export const ctrlChoiceSwitchPaddingRest = "var(--smtc-ctrl-choice-switch-padding-rest, 2px)";
+export const ctrlChoiceSwitchPaddingRest = "var(--smtc-ctrl-choice-switch-padding-rest, 1px)";
 
 // @public (undocumented)
 export const ctrlChoiceSwitchPaddingRestRaw = "--smtc-ctrl-choice-switch-padding-rest";

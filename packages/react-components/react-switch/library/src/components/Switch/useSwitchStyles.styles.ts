@@ -99,6 +99,10 @@ const useInputBaseClassName = makeResetStyles({
     [`& ~ .${switchClassNames.indicator}`]: {
       '> *': {
         transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest}))`,
+        ':dir(rtl)': {
+          // Inverse animation for RTL (Griffel doesn't support flipping CSSVars)
+          transform: `translateX(calc(-1 * (${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest})))`,
+        },
       },
     },
   },
