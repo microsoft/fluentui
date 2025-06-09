@@ -201,7 +201,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     if (isScatterChart) {
       return <ResponsiveScatterChart {...(chartProps as IScatterChartProps)} />;
     }
-    return <ResponsiveLineChart {...chartProps} lineMode={'default'} />;
+    return <ResponsiveLineChart {...chartProps} />;
   };
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
