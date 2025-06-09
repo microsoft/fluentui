@@ -40,7 +40,7 @@ jobs:
         run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Install dependencies & build
-        run: npm install --legacy-peer-deps
+        run: npm install -force
 
       - name: Publish to GitHub Packages
         run: npm publish
