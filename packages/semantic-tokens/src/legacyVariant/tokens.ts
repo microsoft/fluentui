@@ -48,7 +48,7 @@ import {
   spacingVerticalXXS,
   colorNeutralForeground3Hover,
   colorNeutralForeground2Hover,
-  colorNeutralForeground2,
+  colorNeutralForeground2Pressed,
 } from '../legacy/tokens';
 import {
   backgroundCtrlSubtleRestRaw,
@@ -323,4 +323,4 @@ export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHov
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlOnTransparentPressed instead.
  */
-export const _ctrlTreeOnTransparentPressed = `var(${foregroundCtrlOnTransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
+export const _ctrlTreeOnTransparentPressed = `var(${foregroundCtrlOnTransparentPressedRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Pressed}))`;

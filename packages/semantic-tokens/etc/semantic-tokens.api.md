@@ -2837,7 +2837,7 @@ export const _ctrlTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtl
 export const _ctrlTreeOnTransparentHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
 
 // @public
-export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";

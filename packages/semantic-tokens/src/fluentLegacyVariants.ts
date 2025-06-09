@@ -154,7 +154,7 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     originalToken: 'foregroundCtrlOnTransparentHover',
   },
   _ctrlTreeOnTransparentPressed: {
-    f2Token: 'colorNeutralForeground2',
+    f2Token: 'colorNeutralForeground2Pressed',
     originalToken: 'foregroundCtrlOnTransparentPressed',
   },
 };
