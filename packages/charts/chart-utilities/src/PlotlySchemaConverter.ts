@@ -180,12 +180,14 @@ const validateScatterData = (data: Partial<PlotData>) => {
   const mode = data.mode ?? '';
 
   if (['markers'].includes(mode)) {
+    const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
+    const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
     // Any series having only markers -> Supported number x/string x/date x + number y
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: Invalid`);
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
     }
     if (!isNumberArray(data.y)) {
-      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: Invalid`);
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
     }
   } else if (['lines+markers', 'markers+lines', 'text+lines+markers'].includes(mode)) {
     // Any series having lines and markers -> Supported number x/date x + number y

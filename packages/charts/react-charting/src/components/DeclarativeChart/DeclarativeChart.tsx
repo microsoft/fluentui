@@ -218,10 +218,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     // formatting given the current design of the charting library
     const isXYear = isYearArray(xValues);
     const allModes = plotlyInputWithValidData.data.map((data: PlotData) => data.mode);
-    const isScatterChart = !allModes.some((mode: string) => mode !== 'markers');
+    const isScatterChart = allModes.every((mode: string) => mode === 'markers');
     // If x is date or number and y is not string, render as Line/Area Chart
     // If x is month, correct the year and render as Line/Area Chart
-    if (((isXDate || isXNumber) && !isXYear && !isYString) || (isScatterChart && !isAreaChart)) {
+    if (((isXDate || isXNumber) && !isXYear && !isYString) || (isScatterChart && !isYString)) {
       return renderLineAreaScatter(plotlyInputWithValidData.data, isAreaChart, isScatterChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
