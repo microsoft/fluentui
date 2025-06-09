@@ -29,7 +29,7 @@ export const Controlled = () => {
       announce(newDate.toDateString());
       return newDate;
     });
-  }, []);
+  }, [announce]);
 
   const goNext = React.useCallback(() => {
     setSelectedDate(prevSelectedDate => {
@@ -37,7 +37,7 @@ export const Controlled = () => {
       announce(newDate.toDateString());
       return newDate;
     });
-  }, []);
+  }, [announce]);
 
   return (
     <AriaLiveAnnouncer>
