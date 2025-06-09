@@ -64,9 +64,10 @@ import {
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
-import { ScatterChartTypes } from './DeclarativeChart';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+
+type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;

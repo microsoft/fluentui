@@ -4,7 +4,7 @@ import { useTheme } from '@fluentui/react';
 import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
-import { decodeBase64Fields, isArrayOfType } from '@fluentui/chart-utilities';
+import { decodeBase64Fields } from '@fluentui/chart-utilities';
 import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -112,7 +112,6 @@ const useColorMapping = () => {
   const colorMap = React.useRef(new Map<string, string>());
   return colorMap;
 };
-export type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 /**
  * DeclarativeChart component.
@@ -176,13 +175,20 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     calloutProps: { layerProps: { eventBubblingEnabled: true } },
   };
 
-  const renderLineArea = (plotlyData: Data[], isAreaChart: boolean, isScatterChart: boolean): JSX.Element => {
+  const renderLineAreaScatter = (plotlyData: Data[], isAreaChart: boolean, isScatterChart: boolean): JSX.Element => {
+    const isScatterMarkers = [
+      'text+markers',
+      'markers+text',
+      'lines+markers',
+      'markers+line',
+      'text+lines+markers',
+    ].includes((plotlyData[0] as PlotData)?.mode);
     const chartType = isAreaChart ? 'area' : isScatterChart ? 'scatter' : 'line';
     const chartProps: ILineChartProps | IAreaChartProps | IScatterChartProps = {
       ...transformPlotlyJsonToScatterChartProps(
         { data: plotlyData, layout: plotlyInput.layout },
         chartType,
-        isScatterChart,
+        isScatterMarkers,
         colorMap,
         props.colorwayType,
         isDarkTheme,
@@ -195,7 +201,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     if (isScatterChart) {
       return <ResponsiveScatterChart {...(chartProps as IScatterChartProps)} />;
     }
-    return <ResponsiveLineChart {...chartProps} />;
+    return <ResponsiveLineChart {...chartProps} lineMode={'default'} />;
   };
 
   const checkAndRenderChart = (isAreaChart: boolean = false) => {
@@ -204,8 +210,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const isXDate = isDateArray(xValues);
     const isXNumber = isNumberArray(xValues);
     const isXMonth = isMonthArray(xValues);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const isXString = isArrayOfType(xValues, (value: any) => typeof value === 'string');
     const isYString = isStringArray((plotlyInputWithValidData.data[0] as Partial<PlotData>).y);
 
     // Consider year as categorical variable not numeric continuous variable
@@ -214,29 +218,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     // formatting given the current design of the charting library
     const isXYear = isYearArray(xValues);
     const allModes = plotlyInputWithValidData.data.map((data: PlotData) => data.mode);
-    const isScatterMarkers = [
-      'markers',
-      'text+markers',
-      'markers+text',
-      'lines+markers',
-      'markers+line',
-      'text+lines+markers',
-    ].includes((plotlyInputWithValidData.data[0] as PlotData)?.mode);
-    const isScatterChart = isScatterMarkers && !allModes.some((mode: string) => mode.includes('line'));
+    const isScatterChart = !allModes.some((mode: string) => mode !== 'markers');
     // If x is date or number and y is not string, render as Line/Area Chart
-    // If chart is to be rendered as Scatter chart and x is string or year, render as Scatter Chart
     // If x is month, correct the year and render as Line/Area Chart
-    if (
-      ((isXDate || isXNumber) && !isXYear && !isYString) ||
-      (isScatterChart && (isXString || isXYear) && !isAreaChart)
-    ) {
-      return renderLineArea(plotlyInputWithValidData.data, isAreaChart, isScatterChart);
+    if (((isXDate || isXNumber) && !isXYear && !isYString) || (isScatterChart && !isAreaChart)) {
+      return renderLineAreaScatter(plotlyInputWithValidData.data, isAreaChart, isScatterChart);
     } else if (isXMonth) {
       const updatedData = plotlyInputWithValidData.data.map((dataPoint: PlotData) => ({
         ...dataPoint,
         x: correctYearMonth(dataPoint.x),
       }));
-      return renderLineArea(updatedData, isAreaChart, isScatterChart);
+      return renderLineAreaScatter(updatedData, isAreaChart, isScatterChart);
     }
     // Unsupported schema, render as VerticalStackedBarChart
     fallbackVSBC = true;
