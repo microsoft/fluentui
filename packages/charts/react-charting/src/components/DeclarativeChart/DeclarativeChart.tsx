@@ -280,6 +280,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const theme = useTheme();
   const isDarkTheme = theme?.isInverted ?? false;
   const chartRef = React.useRef<IChart>(null);
+  const isMultiPlot = React.useRef(false);
 
   if (!isArrayOrTypedArray(selectedLegends)) {
     selectedLegends = [];
@@ -321,6 +322,9 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const exportAsImage = React.useCallback(
     (opts?: IImageExportOptions): Promise<string> => {
       return new Promise((resolve, reject) => {
+        if (isMultiPlot.current) {
+          return reject(Error('Exporting multi plot charts as image is not supported'));
+        }
         if (!chartRef.current || typeof chartRef.current.toImage !== 'function') {
           return reject(Error('Chart cannot be exported as image'));
         }
@@ -365,8 +369,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     groupedTraces[xAxisKey].push(index);
   });
 
-  const isMultiPlot = Object.keys(groupedTraces).length > 1;
-  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout, isMultiPlot);
+  isMultiPlot.current = Object.keys(groupedTraces).length > 1;
+  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout, isMultiPlot.current);
 
   const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
 
@@ -404,7 +408,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, isMultiPlot, colorMap, props.colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
                 commonProps,
               );
             }

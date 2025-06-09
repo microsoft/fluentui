@@ -1708,7 +1708,7 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined, isMul
 
   return {
     legends,
-    hideLegend: (hideLegendsInferred || hideLegendsData) && !isMultiPlot,
+    hideLegend: isMultiPlot || hideLegendsInferred || hideLegendsData,
   };
 };
 
