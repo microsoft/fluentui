@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Wed, 14 May 2025 18:49:17 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0512b8dee804ac2bac27458f2f5f02224e6184b3",
+            "comment": "refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 22 Jan 2025 14:00:19 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.4.3",
       "version": "0.4.3",

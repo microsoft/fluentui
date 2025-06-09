@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { isConformant } from '../../common/isConformant';
 
 import { Spinner, SpinnerBase, SpinnerSize } from './index';
@@ -46,7 +46,9 @@ describe('Spinner', () => {
       />,
     );
 
-    jest.advanceTimersByTime(100);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
 
     // Verify the label is rendered
     expect(getByText('Spinner label')).toBeTruthy();

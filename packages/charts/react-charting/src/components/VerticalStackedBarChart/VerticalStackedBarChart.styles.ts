@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles } from './VerticalStackedBarChart.types';
 
 export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalStackedBarChartStyles => {
@@ -27,6 +27,11 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
+      },
     },
   };
 };

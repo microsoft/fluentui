@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+
 import * as renderer from 'react-test-renderer';
 import { FocusRects } from './useFocusRects';
 import { FocusRectsProvider } from './FocusRectsProvider';
@@ -412,7 +412,7 @@ describe('useFocusRects', () => {
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -421,7 +421,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       classNames = [];
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -429,7 +429,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.left });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -437,7 +437,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.right });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -445,7 +445,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.tab });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -453,7 +453,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageUp });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -461,7 +461,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageDown });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -469,7 +469,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.home });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -477,7 +477,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.end });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -507,7 +507,7 @@ describe('useFocusRects', () => {
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: 127 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -537,7 +537,7 @@ describe('useFocusRects', () => {
       expect(eventListeners.keyup).toBeDefined();
       expect(eventListeners.mousedown).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -545,7 +545,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.mousedown!({ target: mockTarget });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
@@ -575,7 +575,7 @@ describe('useFocusRects', () => {
       const { eventListeners } = providerElem;
       expect(eventListeners.keyup).toBeDefined();
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -584,7 +584,7 @@ describe('useFocusRects', () => {
 
       addDirectionalKeyCode(KeyCodes.f6);
 
-      ReactTestUtils.act(() => {
+      act(() => {
         eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();

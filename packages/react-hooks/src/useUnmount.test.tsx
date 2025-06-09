@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { useUnmount } from './useUnmount';
 
 describe('useUnmount', () => {
@@ -22,7 +21,7 @@ describe('useUnmount', () => {
     const { unmount } = render(<TestComponent />, { container });
     expect(onUnmount).toHaveBeenCalledTimes(0);
 
-    ReactTestUtils.act(() => {
+    act(() => {
       unmount();
     });
 

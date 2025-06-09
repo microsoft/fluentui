@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as path from 'path';
-import { act } from 'react-dom/test-utils';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { getBySelector } from '../../common/testUtilities';
 import { SelectionMode, Selection } from '../../Selection';
 import { GroupedListV2_unstable as GroupedListV2 } from './GroupedListV2';
@@ -473,27 +472,26 @@ describe('GroupedListV2', () => {
       );
     }
 
+    const { unmount } = render(
+      <div data-is-scrollable style={{ overflow: 'scroll' }}>
+        <GroupedListV2
+          componentRef={ref}
+          items={_items}
+          groups={_groups}
+          onRenderCell={_onRenderCell}
+          selection={_selection}
+        />
+      </div>,
+    );
+
+    expect(typeof ref.current?.scrollToIndex).toBe('function');
     act(() => {
-      const { unmount } = render(
-        <div data-is-scrollable style={{ overflow: 'scroll' }}>
-          <GroupedListV2
-            componentRef={ref}
-            items={_items}
-            groups={_groups}
-            onRenderCell={_onRenderCell}
-            selection={_selection}
-          />
-        </div>,
-      );
-
-      expect(typeof ref.current?.scrollToIndex).toBe('function');
-
       ref.current?.scrollToIndex(4, measureItem);
-
-      expect(measureItem).toHaveBeenCalled();
-      expect(measureItem).toHaveBeenLastCalledWith(4);
-
-      unmount();
     });
+
+    expect(measureItem).toHaveBeenCalled();
+    expect(measureItem).toHaveBeenLastCalledWith(4);
+
+    unmount();
   });
 });

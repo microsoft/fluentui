@@ -708,6 +708,9 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 
@@ -741,6 +744,9 @@ describe('Line chart - Subcomponent Event', () => {
       expect(screen.queryByText('event 3 message')).not.toBeNull();
       expect(screen.queryByText('event 4 message')).toBeNull();
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 

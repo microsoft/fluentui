@@ -23,6 +23,13 @@
         "!{workspaceRoot}/packages/react-components/react-migration-v[80]-v9/**",
         "!{workspaceRoot}/packages/react-components/react-[a-z]+-compat/**"
       ]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "{projectRoot}/jest-react-18.config.js",
+        "{workspaceRoot}/packages/react-components/**/*.(test|spec).tsx?"
+      ]
     }
   }
 }

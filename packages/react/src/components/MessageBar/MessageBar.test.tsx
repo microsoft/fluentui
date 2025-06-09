@@ -1,15 +1,13 @@
 import '@testing-library/jest-dom';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { render, screen, act } from '@testing-library/react';
 import { resetIds } from '@fluentui/utilities';
+
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
 import { isConformant } from '../../common/isConformant';
-import { render, screen } from '@testing-library/react';
-
-function getBySelector(container: HTMLElement, selector: string) {
-  return container.querySelector(selector);
-}
+import { getBySelector } from '../../common/testUtilities';
 
 describe('MessageBar', () => {
   beforeEach(() => {
@@ -34,49 +32,63 @@ describe('MessageBar', () => {
     it('renders MessageBar correctly', () => {
       const component = renderer.create(<MessageBar>Message</MessageBar>);
       // The message is delay-rendered. Run timers to show it.
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a info MessageBar correctly', () => {
       const component = renderer.create(<MessageBar messageBarType={MessageBarType.info}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a warning MessageBar correctly', () => {
       const component = renderer.create(<MessageBar messageBarType={MessageBarType.warning}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a error MessageBar correctly', () => {
       const component = renderer.create(<MessageBar messageBarType={MessageBarType.error}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a severeWarning MessageBar correctly', () => {
       const component = renderer.create(<MessageBar messageBarType={MessageBarType.severeWarning}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a success MessageBar correctly', () => {
       const component = renderer.create(<MessageBar messageBarType={MessageBarType.success}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('renders a multiline MessageBar correctly', () => {
       const component = renderer.create(<MessageBar isMultiline={true}>Message</MessageBar>);
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -87,7 +99,9 @@ describe('MessageBar', () => {
           Message
         </MessageBar>,
       );
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -98,7 +112,9 @@ describe('MessageBar', () => {
           Message
         </MessageBar>,
       );
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -109,7 +125,9 @@ describe('MessageBar', () => {
           Message
         </MessageBar>,
       );
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -120,7 +138,9 @@ describe('MessageBar', () => {
           Message
         </MessageBar>,
       );
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -131,7 +151,9 @@ describe('MessageBar', () => {
           Message
         </MessageBar>,
       );
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -172,7 +194,9 @@ describe('MessageBar', () => {
     expect(screen.queryByText('content')).not.toBeInTheDocument();
 
     // run timers to render
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     // message is rendered
     expect(screen.getByText('content')).toBeInTheDocument();
@@ -197,7 +221,9 @@ describe('MessageBar', () => {
       </MessageBar>,
     );
     // run timers to render
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
 
     // check for first message
     expect(screen.getByText('content 1')).toBeInTheDocument();

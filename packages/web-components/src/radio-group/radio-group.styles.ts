@@ -5,7 +5,9 @@ import {
   colorNeutralForeground2,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
+  spacingHorizontalS,
   spacingVerticalL,
+  spacingVerticalS,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/index.js';
 
@@ -48,5 +50,9 @@ export const styles = css`
 
   ::slotted(${checkedState}) {
     color: ${colorNeutralForeground1};
+  }
+
+  :host([slot='input']) {
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
 `;

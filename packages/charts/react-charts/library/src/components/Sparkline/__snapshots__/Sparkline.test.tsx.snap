@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Sparkline chart rendering Should re-render the Sparkline chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_SparklineChart_empty"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Sparkline chart rendering Should re-render the Sparkline chart with data 2`] = `
+<div>
+  <div
+    class="fui-sprk__inlineBlock"
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+    style=""
+  >
+    <svg
+      aria-label="Sparkline with label 19.64"
+      height="20"
+      tabindex="0"
+      width="80"
+    >
+      <path
+        class="line"
+        fill="transparent"
+        opacity="1"
+        stroke="#00AA00"
+        stroke-width="2"
+      />
+      <path
+        aria-hidden="true"
+        class="area"
+        fill="#00AA00"
+        fill-opacity="0.2"
+        opacity="1"
+        role="img"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
 <div
   className="fui-sprk__inlineBlock"

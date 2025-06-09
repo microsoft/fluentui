@@ -2,4 +2,4 @@ Area charts are graphical representations of data that display quantitative data
 
 Stacked area charts are great at communicating how multiple data series relate to the total value. It illustrates how each series compares to the other in their contributions to the total. The baseline is moving in stacked area charts, rather than sharing a common baseline in overlapping areas.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

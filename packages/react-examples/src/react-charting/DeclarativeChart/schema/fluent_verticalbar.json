@@ -17,7 +17,8 @@
         "color": "#0000FF"
       },
       "opacity": 1,
-      "orientation": "v"
+      "orientation": "v",
+      "name": "Votes1"
     },
     {
       "type": "bar",
@@ -35,7 +36,8 @@
         "color": "#007F00"
       },
       "opacity": 1,
-      "orientation": "v"
+      "orientation": "v",
+      "name": "Votes2"
     }
   ],
   "layout": {
@@ -73,7 +75,7 @@
       "zeroline": false
     },
     "hovermode": "closest",
-    "showlegend": false
+    "showlegend": true
   },
   "frames": []
 }

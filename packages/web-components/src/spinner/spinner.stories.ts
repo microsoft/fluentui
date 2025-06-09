@@ -40,11 +40,7 @@ export const Default: Story = {};
 
 export const InvertedAppearance: Story = {
   render: renderComponent(html<StoryArgs<FluentSpinner>>`
-    <div
-      style="padding: 40px; background-color: var(--colorNeutralBackgroundInverted); color: var(--colorNeutralForegroundInverted);"
-    >
-      ${storyTemplate}
-    </div>
+    <div style="padding: 40px; background-color: #0F6CBD; color: white;">${storyTemplate}</div>
   `),
   parameters: {
     layout: 'fullscreen',

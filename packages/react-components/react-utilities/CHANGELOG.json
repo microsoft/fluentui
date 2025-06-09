@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 06 Jun 2025 13:15:17 GMT",
+      "tag": "@fluentui/react-utilities_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "82db061493527440f473c6c6480305f8afe293be",
+            "comment": "feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:06 GMT",
       "tag": "@fluentui/react-utilities_v9.19.0",
       "version": "9.19.0",

@@ -4,7 +4,7 @@ Looking to build a Fluent experience on Windows? There are a few technologies yo
 
 WinUI is a user interface layer that contains native controls and styles for building Windows apps. It embodies Fluent Design, giving each Windows app the polished feel that customers expect.
 
-To build Fluent experiences on Windows using native frameworks, see [WinUI documentation](https://microsoft.github.io/microsoft-ui-xaml/).
+To build Fluent experiences on Windows using native frameworks, see [WinUI documentation](https://github.com/microsoft/microsoft-ui-xaml).
 
 ### Fluent UI React Native
 

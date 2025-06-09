@@ -2,4 +2,4 @@ A line chart is a visual representation of data that shows the relationship betw
 
 Time intervals are traditionally mapped to the horizontal axis. Data values are mapped to the vertical axis.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

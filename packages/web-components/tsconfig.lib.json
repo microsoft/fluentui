@@ -3,7 +3,6 @@
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "declaration": true,
-    "declarationDir": "dist/dts",
     "outDir": "dist/esm",
     "importHelpers": true
   },

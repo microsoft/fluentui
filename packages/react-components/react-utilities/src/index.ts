@@ -20,6 +20,7 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  RefAttributes,
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // eslint-disable-next-line @typescript-eslint/no-deprecated

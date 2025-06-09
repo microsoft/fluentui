@@ -86,9 +86,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        react: [18, 19]
+        react: [17, 18, 19]
         fluentui: [8, 9]
         exclude:
+          - react: 17
+            fluentui: 8
           - react: 19
             fluentui: 8
       fail-fast: false

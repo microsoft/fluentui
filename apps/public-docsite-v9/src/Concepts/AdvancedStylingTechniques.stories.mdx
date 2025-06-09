@@ -49,10 +49,12 @@ export function App() {
 }
 ```
 
-A little scaffodling is required to get here first. Define a `useFancyButtonStyles.ts`, and calculate the style similar to how you would for any other Fluent component:
+A little scaffolding is required to get here first. Define a `useFancyButtonStyles.ts`, and calculate the style similar to how you would for any other Fluent component.
+
+> ⚠️ Custom style hooks must also append the slot's original className prop as returned by `getSlotClassNameProp_unstable`, after the custom styles. This ensures that the className prop added by the user will take precedence over custom styles. See [microsoft/fluentui#34166](https://github.com/microsoft/fluentui/pull/34166) for a detailed explanation.
 
 ```ts
-import { makeStyles, type ButtonState } from '@fluentui/react-components';
+import { getSlotClassNameProp_unstable, makeStyles, type ButtonState } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -70,10 +72,18 @@ const useStyles = makeStyles({
 export const useFancyButtonStyles = (state: unknown) => {
   const buttonState = state as ButtonState;
   const styles = useStyles();
-  buttonState.root.className = mergeClasses(buttonState.root.className, styles.root);
+  buttonState.root.className = mergeClasses(
+    buttonState.root.className,
+    styles.root,
+    getSlotClassNameProp_unstable(buttonState.root),
+  );
 
   if (buttonState.icon) {
-    buttonState.icon.className = mergeClasses(buttonState.icon.className, styles.icon);
+    buttonState.icon.className = mergeClasses(
+      buttonState.icon.className,
+      styles.icon,
+      getSlotClassNameProp_unstable(buttonState.icon),
+    );
   }
 };
 ```

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 import { ResponsiveMode } from '../decorators/withResponsiveMode';
 import { useResponsiveMode } from './useResponsiveMode';
 
 const resizeTo = (width: number, height: number = 100) => {
-  ReactTestUtils.act(() => {
+  act(() => {
     const win = window as any;
     Object.defineProperty(win.HTMLHtmlElement.prototype, 'clientWidth', { configurable: true, value: width });
     win.innerHeight = height;

@@ -27,6 +27,7 @@ interface IVerticalStackedBarState {
   height: number;
   enableGradient: boolean;
   roundCorners: boolean;
+  barGapMax: number;
 }
 
 export class VerticalStackedBarChartTooltipExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -45,6 +46,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
       height: 350,
       enableGradient: false,
       roundCorners: false,
+      barGapMax: 2,
     };
   }
   public render(): JSX.Element {
@@ -239,6 +241,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
             enableGradient={this.state.enableGradient}
             roundCorners={this.state.roundCorners}
+            barGapMax={this.state.barGapMax}
           />
         </div>
       </div>

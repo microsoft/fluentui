@@ -11,19 +11,19 @@ describe('getCoordinates', () => {
   } as unknown as HTMLElement;
 
   it('should calculate normalized coordinates within bounds', () => {
-    const event = { clientX: 50, clientY: 50 } as MouseEvent;
+    const event = { clientX: 50, clientY: 50 } as PointerEvent;
     const result = getCoordinates(mockElement, event);
     expect(result).toEqual({ x: 0.5, y: 0.5 });
   });
 
   it('should clamp coordinates to 0 if they are negative', () => {
-    const event = { clientX: -10, clientY: -10 } as MouseEvent;
+    const event = { clientX: -10, clientY: -10 } as PointerEvent;
     const result = getCoordinates(mockElement, event);
     expect(result).toEqual({ x: 0, y: 1 });
   });
 
   it('should clamp coordinates to 1 if they exceed the element bounds', () => {
-    const event = { clientX: 110, clientY: 110 } as MouseEvent;
+    const event = { clientX: 110, clientY: 110 } as PointerEvent;
     const result = getCoordinates(mockElement, event);
     expect(result).toEqual({ x: 1, y: 0 });
   });

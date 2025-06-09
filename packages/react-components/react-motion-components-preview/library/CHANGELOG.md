@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-components-preview
 
-This log was last generated on Wed, 22 Jan 2025 14:00:19 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 18:49:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.5.0)
+
+Wed, 14 May 2025 18:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-components-preview_v0.4.3..@fluentui/react-motion-components-preview_v0.5.0)
+
+### Minor changes
+
+- refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant ([PR #34042](https://github.com/microsoft/fluentui/pull/34042) by robertpenner@microsoft.com)
 
 ## [0.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-components-preview_v0.4.3)
 

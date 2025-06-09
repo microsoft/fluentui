@@ -263,3 +263,20 @@ export type PositioningShorthandValue =
   | 'after-bottom';
 
 export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
+
+// ---
+
+export type PositioningConfigurationFnOptions = Omit<
+  PositioningOptions,
+  // Excluded as the function will never be called if disabled
+  | 'enabled'
+  // Callback is not subscribed from options
+  | 'onPositioningEnd'
+  // Is deprecated, no need to bloat the interface
+  | 'positionFixed'
+>;
+export type PositioningConfigurationFn = (params: {
+  container: HTMLElement;
+  arrow: HTMLElement | null;
+  options: PositioningConfigurationFnOptions;
+}) => PositioningConfigurationFnOptions;

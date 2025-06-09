@@ -1,98 +1,83 @@
-import * as React from 'react';
-import { mount } from 'enzyme';
-import { useKeytipData } from './useKeytipData';
+import { renderHook, cleanup } from '@testing-library/react-hooks';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { useKeytipData } from './useKeytipData';
 import type { KeytipDataOptions } from './KeytipData.types';
 
-describe('usePrevious', () => {
-  let keytipManagerRegisterSpy: jest.SpyInstance;
-  let keytipManagerUpdateSpy: jest.SpyInstance;
+describe('useKeytipData', () => {
+  let registerSpy: jest.SpyInstance;
+  let updateSpy: jest.SpyInstance;
+  const ktpMgr = KeytipManager.getInstance();
+
   beforeEach(() => {
-    keytipManagerRegisterSpy = jest.spyOn(KeytipManager.getInstance(), 'register');
-    keytipManagerUpdateSpy = jest.spyOn(KeytipManager.getInstance(), 'update');
+    registerSpy = jest.spyOn(ktpMgr, 'register');
+    updateSpy = jest.spyOn(ktpMgr, 'update');
   });
 
   afterEach(() => {
-    keytipManagerRegisterSpy.mockRestore();
-    keytipManagerUpdateSpy.mockRestore();
+    registerSpy.mockRestore();
+    updateSpy.mockRestore();
+    cleanup();
   });
 
-  it('no keytipProps', () => {
-    let keytipData;
-    const TestComponent: React.FunctionComponent = () => {
-      keytipData = useKeytipData({});
-      return null;
-    };
+  it('returns empty data when no keytipProps are provided', () => {
+    const { result } = renderHook(() => useKeytipData({}));
 
-    mount(<TestComponent />);
-    expect(keytipData).toEqual({
+    expect(result.current).toEqual({
       ariaDescribedBy: undefined,
       keytipId: undefined,
     });
-
-    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(0);
-    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
+    expect(registerSpy).toHaveBeenCalledTimes(0);
+    expect(updateSpy).toHaveBeenCalledTimes(0);
   });
 
-  it('return data when keytipProps is passed', () => {
-    let keytipData;
-    const TestComponent: React.FunctionComponent = () => {
-      keytipData = useKeytipData({
-        keytipProps: {
-          content: '1',
-          keySequences: ['a', '1'],
-        },
-      });
-      return null;
-    };
-
-    mount(<TestComponent />);
-    expect(keytipData).toEqual({
-      ariaDescribedBy: 'ktp-layer-id ktp-a-1',
-      keytipId: 'ktp-a-1',
-    });
-
-    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
-  });
-
-  it('update when keytipProps has changed', () => {
-    let keytipData;
-    const TestComponent: React.FunctionComponent<KeytipDataOptions> = props => {
-      keytipData = useKeytipData(props);
-      return null;
-    };
-
-    const initialProps = {
+  it('registers once and returns data when keytipProps is passed initially', () => {
+    const options: KeytipDataOptions = {
       keytipProps: {
         content: '1',
         keySequences: ['a', '1'],
       },
     };
-    const wrapper = mount(<TestComponent {...initialProps} />);
+    const { result } = renderHook(() => useKeytipData(options));
 
-    expect(keytipData).toEqual({
+    expect(result.current).toEqual({
       ariaDescribedBy: 'ktp-layer-id ktp-a-1',
       keytipId: 'ktp-a-1',
     });
+    expect(registerSpy).toHaveBeenCalledTimes(1);
+    expect(updateSpy).toHaveBeenCalledTimes(0);
+  });
 
-    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
+  it('calls update when keytipProps change', () => {
+    const initialProps: KeytipDataOptions = {
+      keytipProps: {
+        content: '1',
+        keySequences: ['a', '1'],
+      },
+    };
+    const { result, rerender } = renderHook((props: KeytipDataOptions) => useKeytipData(props), { initialProps });
 
-    wrapper.setProps({
+    // initial registration
+    expect(result.current).toEqual({
+      ariaDescribedBy: 'ktp-layer-id ktp-a-1',
+      keytipId: 'ktp-a-1',
+    });
+    expect(registerSpy).toHaveBeenCalledTimes(1);
+    expect(updateSpy).toHaveBeenCalledTimes(0);
+
+    // change the keySequences
+    const newProps: KeytipDataOptions = {
       keytipProps: {
         content: '1',
         keySequences: ['b', '1'],
       },
-    });
-    wrapper.update();
+    };
+    rerender(newProps);
 
-    expect(keytipData).toEqual({
+    expect(result.current).toEqual({
       ariaDescribedBy: 'ktp-layer-id ktp-b-1',
       keytipId: 'ktp-b-1',
     });
-
-    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(1);
+    expect(registerSpy).toHaveBeenCalledTimes(1);
+    expect(updateSpy).toHaveBeenCalledTimes(1);
   });
 });

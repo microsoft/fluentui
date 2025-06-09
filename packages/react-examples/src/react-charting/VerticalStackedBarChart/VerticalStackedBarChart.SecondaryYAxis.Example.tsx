@@ -175,6 +175,7 @@ const data: IVerticalStackedChartProps[] = [
 interface IVerticalStackedBarState {
   width: number;
   height: number;
+  barGapMax: number;
 }
 
 export class VerticalStackedBarChartSecondaryYAxisExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -187,6 +188,7 @@ export class VerticalStackedBarChartSecondaryYAxisExample extends React.Componen
     this.state = {
       width: 650,
       height: 350,
+      barGapMax: 2,
     };
   }
 
@@ -222,6 +224,7 @@ export class VerticalStackedBarChartSecondaryYAxisExample extends React.Componen
             data={data}
             height={this.state.height}
             width={this.state.width}
+            barGapMax={this.state.barGapMax}
             lineOptions={lineOptions}
             hideTickOverlap={true}
             yAxisTitle="Variation of number of sales"

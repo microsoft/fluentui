@@ -473,7 +473,7 @@ export interface ICartesianChartProps {
 
 export interface IYValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -641,6 +641,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => IMargins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => IMargins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
@@ -715,6 +718,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     dataPoints: string[],
     isRtl: boolean,
     barWidth: number | undefined,
+    chartType?: ChartTypes,
   ) => ScaleBand<string>;
 
   /**

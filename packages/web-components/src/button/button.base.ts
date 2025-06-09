@@ -395,7 +395,7 @@ export class BaseButton extends FASTElement {
       !this.name &&
       !this.formAction &&
       !this.formEnctype &&
-      !this.form &&
+      !this.formAttribute &&
       !this.formMethod &&
       !this.formNoValidate &&
       !this.formTarget

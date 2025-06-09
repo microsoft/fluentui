@@ -2,16 +2,22 @@ import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
 import {
   Input,
-  type InputProps,
   Label,
   makeStyles,
   SpinButton,
-  type SpinButtonChangeEvent,
-  type SpinButtonOnChangeData,
-  type SpinButtonProps,
   useId,
+  AlphaSlider,
+  ColorArea,
+  ColorPicker,
+  ColorSlider,
 } from '@fluentui/react-components';
-import { AlphaSlider, ColorArea, ColorPicker, ColorPickerProps, ColorSlider } from '@fluentui/react-components';
+import type {
+  ColorPickerProps,
+  InputProps,
+  SpinButtonChangeEvent,
+  SpinButtonOnChangeData,
+  SpinButtonProps,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {
@@ -41,14 +47,14 @@ const useStyles = makeStyles({
     gap: '6px',
   },
   input: {
-    width: '80px',
+    width: '96px',
   },
   spinButton: {
     minWidth: '60px',
   },
 });
 
-const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,6})$/;
+const HEX_COLOR_REGEX = /^#?([0-9A-Fa-f]{0,8})$/;
 const NUMBER_REGEX = /^\d+$/;
 const DEFAULT_COLOR_HSV = { h: 109, s: 1, v: 0.9, a: 1 };
 
@@ -130,6 +136,7 @@ export const Default = () => {
             if (newColor.isValid) {
               setColor(newColor.toHsv());
               setRgb(newColor.toRgb());
+              setAlpha(newColor.a);
             }
             setHex(oldValue => (HEX_COLOR_REGEX.test(value) ? value : oldValue));
           }}

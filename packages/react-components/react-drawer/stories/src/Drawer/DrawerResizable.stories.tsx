@@ -19,9 +19,11 @@ import {
   DialogBody,
   DialogActions,
   DialogContent,
+  shorthands,
 } from '@fluentui/react-components';
 import { Dismiss20Regular } from '@fluentui/react-icons';
 
+const MIN_SIDEBAR_WIDTH = 240;
 const useStyles = makeStyles({
   root: {
     border: '2px solid #ccc',
@@ -49,12 +51,15 @@ const useStyles = makeStyles({
 
   resizer: {
     width: '24px',
+    height: '100%',
     position: 'absolute',
     top: 0,
     right: 0,
     bottom: 0,
     cursor: 'col-resize',
-    resize: 'horizontal',
+    border: 'none',
+    minWidth: 'unset',
+    borderRadius: tokens.borderRadiusNone,
 
     '&:before': {
       content: '""',
@@ -65,9 +70,14 @@ const useStyles = makeStyles({
       transform: 'translateX(-50%)',
       left: '50%',
     },
-
     ':hover': {
       borderRightWidth: '4px',
+      cursor: 'col-resize',
+      backgroundColor: 'transparent',
+    },
+    ':hover:active': {
+      backgroundColor: 'transparent',
+      cursor: 'col-resize',
     },
   },
 
@@ -85,15 +95,25 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
   },
+  errorMessage: {
+    color: tokens.colorPaletteRedForeground1,
+  },
+  invalidInput: {
+    ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+  },
 });
 
 export const Resizable = () => {
   const styles = useStyles();
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [isDialogOpen, setDialogOpen] = React.useState(false);
 
   const animationFrame = React.useRef<number>(0);
   const sidebarRef = React.useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState(320);
+  const [showMessage, setShowMessage] = React.useState(false);
+  const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
   const inputId = useId('input');
 
   const startResizing = React.useCallback(() => setIsResizing(true), []);
@@ -103,7 +123,9 @@ export const Resizable = () => {
     ({ clientX }: { clientX: number }) => {
       animationFrame.current = requestAnimationFrame(() => {
         if (isResizing && sidebarRef.current) {
-          setSidebarWidth(clientX - sidebarRef.current.getBoundingClientRect().left);
+          const newSidebarWidth = clientX - sidebarRef.current.getBoundingClientRect().left;
+          setSidebarWidth(newSidebarWidth);
+          setResizeInput(Math.round(newSidebarWidth).toString());
         }
       });
     },
@@ -121,13 +143,47 @@ export const Resizable = () => {
     };
   }, [resize, stopResizing]);
 
-  const [resizeInput, setResizeInput] = React.useState<string>(sidebarWidth.toString());
+  React.useEffect(() => {
+    if (isDialogOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isDialogOpen]);
 
   const onResizeInputChange: InputProps['onChange'] = (ev, data) => {
     if (data.value) {
       setResizeInput(data.value);
     }
   };
+
+  const handleKeyDown = (ev: React.KeyboardEvent) => {
+    if (ev.key === 'Enter') {
+      submitWidth(ev);
+    }
+    if (ev.key === 'Escape') {
+      setDialogOpen(false);
+    }
+  };
+
+  function submitWidth(e: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent) {
+    if (resizeInput && parseInt(resizeInput, 10) >= MIN_SIDEBAR_WIDTH) {
+      setSidebarWidth(Number(resizeInput));
+      setShowMessage(false);
+      setDialogOpen(false);
+    } else {
+      setShowMessage(true);
+      e.preventDefault();
+    }
+  }
+
+  function resizeWithArrows(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+      setSidebarWidth(prev => prev + 10);
+      setResizeInput((prev: string) => (parseInt(prev, 10) + 10).toString());
+    } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+      setSidebarWidth(prev => prev - 10);
+      setResizeInput((prev: string) => (parseInt(prev, 10) - 10).toString());
+    }
+  }
 
   return (
     <>
@@ -147,11 +203,18 @@ export const Resizable = () => {
               <p>Resizable content</p>
             </DrawerBody>
           </InlineDrawer>
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={(event, data) => setDialogOpen(data.open)}>
             <DialogTrigger disableButtonEnhancement>
-              <div
+              <Button
                 className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)}
                 onMouseDown={startResizing}
+                aria-label="Resize drawer"
+                role="separator"
+                aria-orientation="vertical"
+                onKeyDown={resizeWithArrows}
+                aria-valuenow={sidebarWidth * 0.01}
+                aria-valuemin={MIN_SIDEBAR_WIDTH * 0.01}
+                aria-valuemax={100}
               />
             </DialogTrigger>
             <DialogSurface>
@@ -168,17 +231,25 @@ export const Resizable = () => {
                 <DialogContent>
                   <div className={styles.dialogContent}>
                     <Label htmlFor={inputId}>Enter desired drawer width pixels:</Label>
-                    <Input id={inputId} onChange={onResizeInputChange} defaultValue={resizeInput} type="number" />
+                    <Input
+                      id={inputId}
+                      ref={inputRef}
+                      onChange={onResizeInputChange}
+                      value={resizeInput}
+                      type="number"
+                      className={showMessage ? styles.invalidInput : ''}
+                      onKeyDown={handleKeyDown}
+                    />
+                    {showMessage ? (
+                      <Label className={styles.errorMessage}>
+                        Recommended minimum width of the drawer should be greater than or equal to `240px`.
+                      </Label>
+                    ) : null}
                   </div>
                 </DialogContent>
                 <DialogActions>
                   <DialogTrigger disableButtonEnhancement>
-                    <Button
-                      appearance="primary"
-                      onClick={() => {
-                        setSidebarWidth(Number(resizeInput));
-                      }}
-                    >
+                    <Button appearance="primary" onClick={e => submitWidth(e)}>
                       Resize
                     </Button>
                   </DialogTrigger>

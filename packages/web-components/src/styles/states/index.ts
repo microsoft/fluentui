@@ -108,6 +108,12 @@ export const rangeOverflowState = stateSelector('range-overflow');
 export const rangeUnderflowState = stateSelector('range-underflow');
 
 /**
+ * Selector for the `required` state.
+ * @public
+ */
+export const requiredState = stateSelector('required');
+
+/**
  * Selector for the `selected` state.
  * @public
  */

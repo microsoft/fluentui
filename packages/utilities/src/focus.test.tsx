@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import { createTestContainer } from '@fluentui/test-utilities';
 
 import {
@@ -13,8 +13,8 @@ import {
 } from './focus';
 
 function renderIntoDocument(element: React.ReactElement<{}>, container: HTMLElement): HTMLElement {
-  const component = ReactDOM.render(element, container) as React.ReactInstance;
-  const renderedDOM = ReactDOM.findDOMNode(component) as HTMLElement;
+  const component = render(element, { container });
+  const renderedDOM = component.container.firstChild as HTMLElement;
 
   return renderedDOM;
 }
@@ -53,7 +53,6 @@ describe('isElementVisible', () => {
 
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
@@ -207,7 +206,6 @@ describe('focusAsync', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
@@ -355,7 +353,6 @@ describe('getFirstTabbable', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }
@@ -447,7 +444,6 @@ describe('getLastTabbable', () => {
   let testContainer: HTMLElement | undefined;
   afterEach(() => {
     if (testContainer) {
-      ReactDOM.unmountComponentAtNode(testContainer);
       testContainer.remove();
       testContainer = undefined;
     }

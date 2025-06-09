@@ -157,7 +157,7 @@ describe('DataGridSelectionCell', () => {
       expect(toggleAllRows).toHaveBeenCalledTimes(1);
     });
 
-    it('should render aria-checked false if no rows are selected', () => {
+    it('should render aria-selected false if no rows are selected', () => {
       const ctx = mockDataGridContext(
         { selectableRows: true },
         { selection: { allRowsSelected: false, someRowsSelected: false, selectionMode: 'multiselect' } },
@@ -170,26 +170,10 @@ describe('DataGridSelectionCell', () => {
         </DataGridHeader>,
       );
 
-      expect(getByRole('gridcell').getAttribute('aria-checked')).toBe('false');
+      expect(getByRole('gridcell').getAttribute('aria-selected')).toBe('false');
     });
 
-    it('should render aria-checked mixed if some rows are selected', () => {
-      const ctx = mockDataGridContext(
-        { selectableRows: true },
-        { selection: { allRowsSelected: false, someRowsSelected: true, selectionMode: 'multiselect' } },
-      );
-      const { getByRole } = render(
-        <DataGridHeader>
-          <DataGridContextProvider value={ctx}>
-            <DataGridSelectionCell />
-          </DataGridContextProvider>
-        </DataGridHeader>,
-      );
-
-      expect(getByRole('gridcell').getAttribute('aria-checked')).toBe('mixed');
-    });
-
-    it('should render aria-checked true if all rows are selected', () => {
+    it('should render aria-selected true if all rows are selected', () => {
       const ctx = mockDataGridContext(
         { selectableRows: true },
         { selection: { allRowsSelected: true, someRowsSelected: true, selectionMode: 'multiselect' } },
@@ -202,7 +186,7 @@ describe('DataGridSelectionCell', () => {
         </DataGridHeader>,
       );
 
-      expect(getByRole('gridcell').getAttribute('aria-checked')).toBe('true');
+      expect(getByRole('gridcell').getAttribute('aria-selected')).toBe('true');
     });
   });
 });

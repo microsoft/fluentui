@@ -57,7 +57,11 @@ export const useRootDefaultClassName = makeResetStyles({
     backgroundColor: navItemTokens.backgroundColorHover,
   },
   ':active': {
+    zIndex: 1,
     backgroundColor: navItemTokens.backgroundColorPressed,
+  },
+  ':focus': {
+    zIndex: 1,
   },
 });
 
@@ -135,11 +139,11 @@ export const useIconStyles = makeStyles({
       display: 'inline',
       animationName: {
         '0%': {
-          display: 'none',
+          opacity: 0,
           color: 'transparent',
         },
         '100%': {
-          display: 'inline',
+          opacity: 1,
           color: tokens.colorNeutralForeground2BrandSelected,
         },
       },
@@ -148,11 +152,11 @@ export const useIconStyles = makeStyles({
       ...navItemTokens.animationTokens,
       animationName: {
         '0%': {
-          display: 'inline',
+          opacity: 1,
           color: tokens.colorNeutralForeground2,
         },
         '100%': {
-          display: 'none',
+          opacity: 0,
           color: 'transparent',
         },
       },

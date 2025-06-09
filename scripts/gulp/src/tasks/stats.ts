@@ -5,7 +5,6 @@ import _ from 'lodash';
 import webpack, { Configuration } from 'webpack';
 import stableStringify from 'json-stable-stringify-without-jsonify';
 import { argv } from 'yargs';
-import requestHttp from 'request-promise-native';
 
 import config from '../config';
 
@@ -224,13 +223,23 @@ task('stats:save', async () => {
     },
   );
 
-  const options = {
-    method: 'POST',
-    uri: process.env.STATS_URI,
-    body: statsPayload,
-    json: true,
-  };
+  try {
+    const response = await fetch(process.env.STATS_URI, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(statsPayload),
+    });
 
-  const response = await requestHttp(options);
-  console.log(response);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error posting stats:', error);
+    throw error;
+  }
 });

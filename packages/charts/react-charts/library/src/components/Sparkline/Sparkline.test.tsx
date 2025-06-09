@@ -1,15 +1,12 @@
-jest.mock('react-dom');
 import * as React from 'react';
+import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
+import { ChartProps, Sparkline } from './index';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import * as renderer from 'react-test-renderer';
-import { SparklineProps, Sparkline } from './index';
-import { ChartProps } from '../../index';
-import { mount, ReactWrapper } from 'enzyme';
-//import { ISparklineState, SparklineBase } from './Sparkline.base';
 
-// Wrapper of the SparklineChart to be tested.
-let wrapper: ReactWrapper<SparklineProps> | undefined;
+expect.extend(toHaveNoViolations);
 
-export const sparkline1Points: ChartProps = {
+const sparkline1Points: ChartProps = {
   chartTitle: '10.21',
   lineChartData: [
     {
@@ -100,6 +97,35 @@ export const emptySparklinePoints: ChartProps = {
   ],
 };
 
+describe('Sparkline chart rendering', () => {
+  test('Should re-render the Sparkline chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<Sparkline data={emptySparklinePoints} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<Sparkline data={sparkline1Points} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_SparklineChart_empty/i)).toHaveLength(0);
+    });
+  });
+});
+
+describe('Sparkline Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<Sparkline data={sparkline1Points} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
+});
+
 describe('Sparkline snapShot testing', () => {
   it('renders Sparkline correctly', () => {
     const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
@@ -116,14 +142,14 @@ describe('Sparkline snapShot testing', () => {
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    wrapper = mount(<Sparkline data={sparkline1Points} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    let wrapper = render(<Sparkline data={sparkline1Points} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<Sparkline data={emptySparklinePoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    let wrapper = render(<Sparkline data={emptySparklinePoints} />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(1);
   });
 });

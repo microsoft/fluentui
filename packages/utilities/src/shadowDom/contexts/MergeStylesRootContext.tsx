@@ -50,6 +50,7 @@ export type MergeStylesRootContextValue = {
 export const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>(getNewContext());
 
 export type MergeStylesRootProviderProps = {
+  children?: React.ReactNode;
   /**
    * Map of stylesheets available in the context.
    */

@@ -121,4 +121,8 @@ export interface CarouselUpdateData {
    * An array of the card DOM elements after render
    */
   slideNodes: HTMLElement[];
+  /**
+   * Whether the carousel has enough cards present to enable looping without issues.
+   */
+  canLoop?: boolean;
 }

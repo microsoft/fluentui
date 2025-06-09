@@ -3,7 +3,6 @@ import { HeatMapChartProps } from './HeatMapChart.types';
 import { AccessibilityProps, Chart, HeatMapChartData, HeatMapChartDataPoint, Margins } from '../../types/index';
 import {
   ChartTypes,
-  convertToLocaleString,
   getAccessibleDataObject,
   getColorContrast,
   getTypeOfAxis,
@@ -11,6 +10,7 @@ import {
   XAxisTypes,
   YAxisType,
 } from '../../utilities/index';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { CartesianChart, ChartPopoverProps, ChildProps } from '../CommonComponents/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -199,7 +199,7 @@ export const HeatMapChart: React.FunctionComponent<HeatMapChartProps> = React.fo
                 transform={`translate(${_xAxisScale.current.bandwidth() / 2}, ${_yAxisScale.current.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {convertToLocaleString(dataPointObject.rectText, props.culture)}
+                {formatToLocaleString(dataPointObject.rectText, props.culture, props.useUTC)}
               </text>
             </g>
           );

@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontSizes, FontWeights, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import {
   HorizontalBarChartVariant,
   IHorizontalBarChartStyleProps,
@@ -70,6 +70,11 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       ...theme.fonts.small,
       fontWeight: FontWeights.semibold,
       fill: theme.palette.neutralPrimary,
+      selectors: {
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
+      },
     },
     chartWrapper: {
       paddingRight: variant === HorizontalBarChartVariant.AbsoluteScale && !hideLabels ? 40 : 0,

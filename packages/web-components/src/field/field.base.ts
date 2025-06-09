@@ -47,13 +47,6 @@ export class BaseField extends FASTElement {
    */
   public messageSlotChanged(prev: Element[], next: Element[]) {
     toggleState(this.elementInternals, 'has-message', !!next.length);
-
-    if (!next.length) {
-      this.removeEventListener('invalid', this.invalidHandler, { capture: true });
-      return;
-    }
-
-    this.addEventListener('invalid', this.invalidHandler, { capture: true });
   }
 
   /**
@@ -138,6 +131,16 @@ export class BaseField extends FASTElement {
   constructor() {
     super();
     this.elementInternals.role = 'presentation';
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.addEventListener('invalid', this.invalidHandler, { capture: true });
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListener('invalid', this.invalidHandler, { capture: true });
+    super.disconnectedCallback();
   }
 
   /**

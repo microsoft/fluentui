@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { useBoolean } from './useBoolean';
 import { validateHookValueNotChanged } from './testUtilities';
 import type { IUseBooleanCallbacks } from './useBoolean';

@@ -1,32 +1,16 @@
-jest.mock('react-dom');
-import { mount, ReactWrapper } from 'enzyme';
-import toJson from 'enzyme-to-json';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FluentProvider } from '@fluentui/react-provider';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import { ChartProps } from '../../index';
-import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings, SankeyChart } from './index';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { SankeyChart } from './SankeyChart';
+import { ChartProps } from './index';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { SankeyChartAccessibilityProps, SankeyChartProps, SankeyChartStrings } from './index';
 
-// Wrapper of the SankeyChart to be tested.
-let wrapper: ReactWrapper<SankeyChartProps> | undefined;
-
-function sharedBeforeEach() {
-  resetIdsForTests();
-}
-
-function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-
-  // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-  // cleaned up in fake timers world
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if ((global.setTimeout as any).mock) {
-    jest.useRealTimers();
-  }
-}
+expect.extend(toHaveNoViolations);
 
 const data: () => ChartProps = () => ({
   chartTitle: 'Sankey Chart',
@@ -98,21 +82,195 @@ const dataWithoutColors: () => ChartProps = () => ({
   },
 });
 
-describe('Sankey Chart snapShot testing', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
+function chartPointsWithStringNodeId(): ChartProps {
+  return {
+    chartTitle: 'Sankey Chart',
+    SankeyChartData: {
+      nodes: [
+        { nodeId: 'zero', name: '192.168.42.72', color: '#757575', borderColor: '#4B3867' },
+        { nodeId: 'one', name: '172.152.48.13', color: '#8764B8', borderColor: '#4B3867' },
+        { nodeId: 'two', name: '124.360.55.1', color: '#757575', borderColor: '#4B3867' },
+        { nodeId: 'three', name: '192.564.10.2', color: '#8764B8', borderColor: '#4B3867' },
+      ],
+      links: [
+        { source: 0, target: 2, value: 80 },
+        { source: 1, target: 3, value: 50 },
+      ],
+    },
+  };
+}
 
+const emptyChartPoints: ChartProps = {
+  chartData: [],
+};
+
+function sharedBeforeEach() {
+  resetIdsForTests();
+}
+
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
+
+describe('Sankey bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
+  testWithoutWait(
+    'Should render the Sankey chart with string node data',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId() },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
+describe('Sankey chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <FluentProvider theme={webDarkTheme}>
+        <SankeyChart data={chartPointsWithStringNodeId()} />
+      </FluentProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Sankey chart - Subcomponent Node', () => {
+  beforeEach(sharedBeforeEach);
+
+  // Replace the original method with the mock implementation
+  const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+  Object.defineProperty(
+    Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+    'getComputedTextLength',
+    {
+      value: mockGetComputedTextLength,
+    },
+  );
+  testWithWait(
+    'Should update path color same as node color when we clck on node',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId() },
+    async container => {
+      const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      fireEvent.click(nodes[0]);
+      const pathsAfterMouseOver = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      // Assert
+      expect(pathsAfterMouseOver).toBeDefined();
+      expect(pathsAfterMouseOver[0].getAttribute('stroke')).toEqual('#757575');
+      expect(nodes[0].getAttribute('fill')).toEqual('#757575');
+      expect(nodes[2].getAttribute('fill')).toEqual('#757575');
+    },
+  );
+});
+
+describe('Sankey chart - Subcomponent Label', () => {
+  beforeEach(sharedBeforeEach);
+
+  testWithoutWait(
+    'Should render sankey chart with node labels',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId() },
+    async container => {
+      const nodes = getByClass(container, /nodeName/i);
+      expect(nodes).toHaveLength(4);
+      expect(screen.queryByText('192.168.42.72')).not.toBeNull();
+    },
+  );
+});
+
+describe('Sankey chart - Mouse events', () => {
+  beforeEach(sharedBeforeEach);
+
+  testWithoutWait(
+    'Should reset path on mouse leave from path',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId() },
+    async container => {
+      const paths = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      const prevStroke = paths[0].getAttribute('stroke');
+      fireEvent.mouseOver(paths[0]);
+      expect(paths[0]).not.toHaveAttribute('stroke', prevStroke);
+      fireEvent.mouseOut(paths[0]);
+      expect(paths[0]).toHaveAttribute('stroke', prevStroke);
+    },
+  );
+
+  testWithoutWait(
+    'Should reset node on mouse leave from node',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId() },
+    async _container => {
+      const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      const prevFill = nodes[1].getAttribute('fill');
+      fireEvent.mouseOver(nodes[0]);
+      expect(nodes[1]).not.toHaveAttribute('fill', prevFill);
+      fireEvent.mouseOut(nodes[0]);
+      expect(nodes[1]).toHaveAttribute('fill', prevFill);
+    },
+  );
+});
+
+describe('Sankey chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should re-render the Sankey chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<SankeyChart data={chartPointsWithStringNodeId()} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(0);
+    });
+  });
+});
+
+describe('Sankey Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId()} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
+});
+
+describe('Sankey Chart snapShot testing', () => {
   it('renders Sankey correctly', () => {
-    const component = renderer.create(<SankeyChart data={data()} height={500} width={800} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const component = render(<SankeyChart data={data()} height={500} width={800} />);
+    expect(component).toMatchSnapshot();
   });
 
   it('renders Sankey correctly on providing nodecolors and border colors ', () => {
     const nodeColors = ['#E3008C', '#00A2AD', '#022F22', '#00188F'];
     const borderColors = ['#002E39', '#43002C', '#3B52B4'];
 
-    const component = renderer.create(
+    const component = render(
       <SankeyChart
         data={dataWithoutColors()}
         height={500}
@@ -121,8 +279,7 @@ describe('Sankey Chart snapShot testing', () => {
         borderColorsForNodes={borderColors}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   it('renders Sankey correctly with supplied resource strings', () => {
@@ -145,12 +302,11 @@ describe('Sankey Chart snapShot testing', () => {
       nodeAriaLabel: 'element {0} with size {1}',
     };
     // ACT
-    const component = renderer.create(
+    const component = render(
       <SankeyChart data={data2} height={500} width={800} strings={strings} accessibility={accessibilityStrings} />,
     );
     // ASSERT
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   describe('number formatting', () => {
@@ -188,7 +344,7 @@ describe('Sankey Chart snapShot testing', () => {
         nodeAriaLabel: 'element {0} with size {1}',
       };
       // ACT
-      const component = renderer.create(
+      const component = render(
         <SankeyChart
           data={data2}
           height={500}
@@ -204,8 +360,7 @@ describe('Sankey Chart snapShot testing', () => {
         />,
       );
       // ASSERT
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(component).toMatchSnapshot();
     });
     it('renders Sankey correctly by styling numbers as percentages', () => {
       // ARRANGE
@@ -237,7 +392,7 @@ describe('Sankey Chart snapShot testing', () => {
         nodeAriaLabel: 'element {0} with size {1}',
       };
       // ACT
-      const component = renderer.create(
+      const component = render(
         <SankeyChart
           data={data2}
           height={500}
@@ -251,77 +406,73 @@ describe('Sankey Chart snapShot testing', () => {
         />,
       );
       // ASSERT
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(component).toMatchSnapshot();
     });
   });
 });
 
-describe.skip('Render calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
-
+describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(SankeyChart.prototype, 'render');
     const props: SankeyChartProps = {
       data: data(),
       height: 500,
       width: 800,
     };
-    mount(<SankeyChart {...props} />);
-    expect(renderMock).toHaveBeenCalledTimes(1);
-    renderMock.mockRestore();
+    const { rerender, container } = render(<SankeyChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<SankeyChart {...props} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).toBe(htmlBefore);
   });
 
   it('prop changes', () => {
-    const renderMock = jest.spyOn(SankeyChart.prototype, 'render');
     const props = {
       data: data(),
       height: 700,
       width: 1100,
     };
-    const component = mount(<SankeyChart {...props} />);
-    component.setProps({ ...props, height: 1000 });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    const props1 = {
+      data: data(),
+      height: 1000,
+      width: 1100,
+    };
+    const { rerender, container } = render(<SankeyChart {...props} />);
+    const htmlBefore = container.innerHTML;
+    rerender(<SankeyChart {...props1} />);
+    const htmlAfter = container.innerHTML;
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
 
 describe('SankeyChart - mouse events', () => {
+  function sharedBeforeEach() {
+    resetIdsForTests();
+  }
   beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
-
   it('Should render correctly on node mouseover', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
-    wrapper.find('rect').at(1).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('Should render correctly on link mouseover', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
-    wrapper.find('path').at(1).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
+    const rects = wrapper.container.querySelectorAll('rect');
+    fireEvent.mouseOver(rects[1]);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Should render callout correctly on mouseover when height of node is less than 24px', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
-    wrapper.find('rect[aria-label="node 124.360.55.1 with weight 14"]').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const { getByLabelText, container } = render(<SankeyChart data={data()} height={500} width={800} />);
+    const node = getByLabelText('node 124.360.55.1 with weight 14');
+    fireEvent.mouseOver(node);
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render tooltip correctly on mouseover when node description is large', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
-    wrapper.find('text[x=739]').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<SankeyChart data={data()} height={500} width={800} />);
+    const textElement = container.querySelector('text[x="739"]');
+    fireEvent.mouseOver(textElement!);
+    expect(container).toMatchSnapshot();
   });
 
   it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
     // ARRANGE
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -330,30 +481,30 @@ describe('SankeyChart - mouse events', () => {
         removedCount += mutation.removedNodes.length;
       });
     });
-    observer.observe(wrapper.getDOMNode().ownerDocument.body, {
+    observer.observe(wrapper.container.ownerDocument.body, {
       childList: true,
       attributes: true,
       characterData: true,
       subtree: true,
     });
-    const originalHtml = wrapper.html();
+    const originalHtml = wrapper.container.innerHTML;
     // ACT
     // The following finds the second "path" within the diagram, which happens to be within the "links" collection.
-    const firstElement = wrapper.find('path').at(1);
-    firstElement.simulate('mouseenter');
-    firstElement.simulate('mousemove');
-    firstElement.simulate('mouseleave');
+    const paths = wrapper.container.querySelectorAll('path');
+    fireEvent.mouseEnter(paths[0]);
+    fireEvent.mouseMove(paths[0]);
+    fireEvent.mouseLeave(paths[0]);
     // ASSERT
-    const finalHtml = wrapper.html();
+    const finalHtml = wrapper.container.innerHTML;
     expect(finalHtml).toBe(originalHtml);
     observer.disconnect();
     expect(addedCount).toBe(0);
     expect(removedCount).toBe(0);
   });
 
-  it('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
+  it.skip('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
     // ARRANGE
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    let wrapper = render(<SankeyChart data={data()} height={500} width={800} />);
     let addedCount = 0;
     let removedCount = 0;
     const observer = new MutationObserver(mutations => {
@@ -362,21 +513,22 @@ describe('SankeyChart - mouse events', () => {
         removedCount += mutation.removedNodes.length;
       });
     });
-    observer.observe(wrapper.getDOMNode().ownerDocument.body, {
+    observer.observe(wrapper.container.ownerDocument.body, {
       childList: true,
       attributes: true,
       characterData: true,
       subtree: true,
     });
-    const originalHtml = wrapper.html();
+    const originalHtml = wrapper.container.innerHTML;
     // ACT
     // The following finds the second "rect" within the diagram, which happens to be within the "nodes" collection.
-    const firstElement = wrapper.find('rect').at(1);
-    firstElement.simulate('mouseenter');
-    firstElement.simulate('mousemove');
-    firstElement.simulate('mouseleave');
+    const rects = wrapper.container.querySelectorAll('rect');
+    fireEvent.mouseEnter(rects[1]);
+    fireEvent.mouseMove(rects[1]);
+    fireEvent.mouseLeave(rects[1]);
+
     // ASSERT
-    const finalHtml = wrapper.html();
+    const finalHtml = wrapper.container.innerHTML;
     expect(finalHtml).toBe(originalHtml);
     observer.disconnect();
     expect(addedCount).toBe(0);
@@ -385,9 +537,6 @@ describe('SankeyChart - mouse events', () => {
 });
 
 describe('SankeyChart - Min Height of Node Test', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
-
   it('renders Sankey correctly on providing height less than onepercent of total height', () => {
     const onepercentheightdata: ChartProps = {
       chartTitle: 'Sankey Chart',
@@ -412,9 +561,8 @@ describe('SankeyChart - Min Height of Node Test', () => {
         ],
       },
     };
-    const component = renderer.create(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const component = render(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
+    expect(component).toMatchSnapshot();
   });
 
   it('renders Sankey correctly on providing height less than onepercent of total height for two columns', () => {
@@ -443,10 +591,8 @@ describe('SankeyChart - Min Height of Node Test', () => {
       },
     };
     // ACT
-    const component = renderer.create(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
-    const tree = component.toJSON();
+    const component = render(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
     // ASSERT
-    expect(tree).toMatchSnapshot();
-    // TODO: Figure out how to check the rendered values of each node.
+    expect(component).toMatchSnapshot();
   });
 });

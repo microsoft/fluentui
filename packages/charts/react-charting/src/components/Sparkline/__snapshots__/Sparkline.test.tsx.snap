@@ -63,6 +63,9 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
               font-size: 12px;
               font-weight: 400;
             }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: CanvasText;
+            }
         dx={8}
         dy={-5}
         textAnchor="start"

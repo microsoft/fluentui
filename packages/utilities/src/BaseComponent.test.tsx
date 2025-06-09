@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 import { BaseComponent } from './BaseComponent';
 
 describe('BaseComponent', () => {
@@ -15,11 +14,9 @@ describe('BaseComponent', () => {
       }
     }
 
-    let component = ReactTestUtils.renderIntoDocument(
-      <Foo />,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ) as any;
+    const { container } = render(<Foo />);
+    const component = container.firstChild as HTMLElement;
 
-    expect(component.root).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 });

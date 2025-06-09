@@ -172,11 +172,14 @@ export function useEmblaCarousel(
     const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
     const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
     const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+    const canLoop = emblaApi.current?.internalEngine().slideLooper.canLoop();
+
     const data: CarouselUpdateData = {
       navItemsCount,
       activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
       groupIndexList,
       slideNodes: nodes,
+      canLoop,
     };
 
     updateIndex();

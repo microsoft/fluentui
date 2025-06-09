@@ -327,7 +327,7 @@ function getYearStrings({
       rangeAriaLabel: yearRangeToString,
       prevRangeAriaLabel: yearRangeToPrevDecadeLabel,
       nextRangeAriaLabel: yearRangeToNextDecadeLabel,
-      headerAriaLabelFormatString: strings.yearPickerHeaderAriaLabel,
+      headerAriaLabelFormatString: strings.monthPickerHeaderAriaLabel,
     } as const,
   ] as const;
 }

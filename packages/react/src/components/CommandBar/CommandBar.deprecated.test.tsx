@@ -1,37 +1,34 @@
+import '@testing-library/jest-dom';
 import * as React from 'react';
+import { render, cleanup, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import * as renderer from 'react-test-renderer';
-
 import { CommandBar } from './CommandBar';
-import { mount } from 'enzyme';
 
-describe('CommandBar', () => {
-  afterEach(() => {
-    for (let i = 0; i < document.body.children.length; i++) {
-      if (document.body.children[i].tagName === 'DIV') {
-        document.body.removeChild(document.body.children[i]);
-        i--;
-      }
-    }
+afterEach(() => {
+  cleanup();
+  // Remove any leftover callouts appended to document.body
+  document.body.innerHTML = '';
+});
+
+describe('CommandBar deprecated', () => {
+  it('renders commands correctly (snapshot)', () => {
+    const tree = renderer
+      .create(
+        <CommandBar
+          items={[
+            { key: '1', name: 'asdf' },
+            { key: '2', name: 'asdf' },
+          ]}
+          className="TestClassName"
+        />,
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
-  it('renders commands correctly', () => {
-    expect(
-      renderer
-        .create(
-          <CommandBar
-            items={[
-              { key: '1', name: 'asdf' },
-              { key: '2', name: 'asdf' },
-            ]}
-            className={'TestClassName'}
-          />,
-        )
-        .toJSON(),
-    ).toMatchSnapshot();
-  });
-
-  it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
-    const commandBar = mount(
+  it('opens a menu with subMenuProps.items', () => {
+    render(
       <CommandBar
         items={[
           {
@@ -51,127 +48,78 @@ describe('CommandBar', () => {
         ]}
       />,
     );
+    // The top-level button should be in the document
+    const menuButton = screen.getByText('TestText 1');
+    expect(menuButton).toBeInTheDocument();
 
-    const menuItem = commandBar.find('.MenuItem button');
+    // Click to open submenu
+    userEvent.click(menuButton);
 
-    expect(menuItem.length).toEqual(1);
-
-    menuItem.simulate('click');
-
+    // Submenu item should appear
+    expect(screen.getByText('SubmenuText 1')).toBeInTheDocument();
     expect(document.querySelector('.SubMenuClass')).toBeTruthy();
   });
 
   it('keeps menu open after update if item is still present', () => {
-    const commandBar = mount(
-      <CommandBar
-        items={[
-          {
-            name: 'TestText 1',
-            key: 'TestKey1',
-            subMenuProps: {
-              items: [
-                {
-                  name: 'SubmenuText 1',
-                  key: 'SubmenuKey1',
-                  className: 'SubMenuClass',
-                },
-              ],
-            },
-          },
-        ]}
-      />,
-    );
-
-    const menuItem = commandBar.find('button');
-
-    menuItem.simulate('click');
-
-    // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
-
-    // Update the props, and re-render
-    commandBar.setProps({
-      items: commandBar.props().items.concat([
-        {
-          name: 'Test Key 2',
-          key: 'TestKey2',
-        },
-      ]),
-    });
-
-    // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
-  });
-
-  it('closes menu after update if item is not longer present', () => {
-    const commandBar = mount(
-      <CommandBar
-        items={[
-          {
-            name: 'TestText 1',
-            key: 'TestKey1',
-            subMenuProps: {
-              items: [
-                {
-                  name: 'SubmenuText 1',
-                  key: 'SubmenuKey1',
-                  className: 'SubMenuClass',
-                },
-              ],
-            },
-          },
-        ]}
-      />,
-    );
-
-    const menuItem = commandBar.find('button');
-
-    menuItem.simulate('click');
-
-    // Make sure the menu is open before the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeTruthy();
-
-    // Update the props, and re-render
-    commandBar.setProps({
-      items: [],
-    });
-
-    // Make sure the menu is still open after the re-render
-    expect(document.querySelector('.SubMenuClass')).toBeFalsy();
-  });
-
-  it('updates menu after update if item is still present', () => {
-    const items = (subMenuItemClassName: string) => [
+    const initialItems = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        subMenuProps: {
-          items: [
-            {
-              name: 'SubmenuText 1',
-              key: 'SubmenuKey1',
-              className: subMenuItemClassName,
-            },
-          ],
-        },
+        subMenuProps: { items: [{ name: 'SubmenuText 1', key: 'SubmenuKey1', className: 'SubMenuClass' }] },
       },
     ];
+    const { rerender } = render(<CommandBar items={initialItems} />);
 
-    const commandBar = mount(<CommandBar items={items('SubMenuClass')} />);
+    const menuButton = screen.getByText('TestText 1');
+    userEvent.click(menuButton);
+    expect(screen.getByText('SubmenuText 1')).toBeInTheDocument();
 
-    const menuItem = commandBar.find('button');
+    // Update props: add a second item
+    rerender(<CommandBar items={[...initialItems, { name: 'Test Key 2', key: 'TestKey2' }]} />);
 
-    menuItem.simulate('click');
+    // Submenu remains open
+    expect(screen.getByText('SubmenuText 1')).toBeInTheDocument();
+  });
 
-    // Make sure the menu is open before the re-render
+  it('closes menu after update if item is no longer present', () => {
+    const initialItems = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: { items: [{ name: 'SubmenuText 1', key: 'SubmenuKey1', className: 'SubMenuClass' }] },
+      },
+    ];
+    const { rerender } = render(<CommandBar items={initialItems} />);
+
+    const menuButton = screen.getByText('TestText 1');
+    userEvent.click(menuButton);
+    expect(screen.getByText('SubmenuText 1')).toBeInTheDocument();
+
+    // Update props: remove all items
+    rerender(<CommandBar items={[]} />);
+
+    // Submenu should be closed
+    expect(screen.queryByText('SubmenuText 1')).not.toBeInTheDocument();
+  });
+
+  it('updates menu after update if subMenuProps change', () => {
+    const makeItems = (subClass: string) => [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: { items: [{ name: 'SubmenuText 1', key: 'SubmenuKey1', className: subClass }] },
+      },
+    ];
+    const { rerender } = render(<CommandBar items={makeItems('SubMenuClass')} />);
+
+    const menuButton = screen.getByText('TestText 1');
+    userEvent.click(menuButton);
     expect(document.querySelector('.SubMenuClass')).toBeTruthy();
 
-    // Re-render
-    commandBar.setProps({
-      items: items('SubMenuClassUpdate'),
-    });
+    // Re-render with updated submenu item class
+    rerender(<CommandBar items={makeItems('SubMenuClassUpdate')} />);
 
-    // Make sure the menu is still open after the re-render
+    // Submenu stays open with updated class
     expect(document.querySelector('.SubMenuClassUpdate')).toBeTruthy();
   });
 });

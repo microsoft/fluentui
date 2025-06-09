@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  createPresenceComponent,
+  createPresenceComponentVariant,
   Field,
   makeStyles,
   mergeClasses,
@@ -10,9 +10,9 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { createScalePresence } from '@fluentui/react-motion-components-preview';
 
 import description from './ScaleCustomization.stories.md';
+import { Scale } from '@fluentui/react-motion-components-preview';
 
 const useClasses = makeStyles({
   container: {
@@ -54,14 +54,11 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomScaleVariant = createPresenceComponent(
-  createScalePresence({
-    enterDuration: motionTokens.durationSlow,
-    enterEasing: motionTokens.curveEasyEaseMax,
-    exitDuration: motionTokens.durationNormal,
-    exitEasing: motionTokens.curveEasyEaseMax,
-  }),
-);
+const CustomScaleVariant = createPresenceComponentVariant(Scale, {
+  exitDuration: motionTokens.durationSlow,
+  // easing: curveSpringOut,
+  easing: motionTokens.curveEasyEaseMax,
+});
 
 const LoremIpsum = () => (
   <>

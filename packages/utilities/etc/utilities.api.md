@@ -321,6 +321,7 @@ export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
 export type FocusRectsProviderProps = {
     providerRef: React_2.RefObject<HTMLElement>;
     layerRoot?: boolean;
+    children?: React_2.ReactNode;
 };
 
 // @public
@@ -1055,6 +1056,7 @@ export const MergeStylesRootProvider: React_2.FC<MergeStylesRootProviderProps>;
 
 // @public (undocumented)
 export type MergeStylesRootProviderProps = {
+    children?: React_2.ReactNode;
     stylesheets?: Map<string, ExtendedCSSStyleSheet>;
     window?: Window;
     useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
@@ -1087,6 +1089,7 @@ export const MergeStylesShadowRootProvider: React_2.FC<MergeStylesShadowRootProv
 
 // @public (undocumented)
 export type MergeStylesShadowRootProviderProps = {
+    children?: React_2.ReactNode;
     shadowRoot?: ShadowRoot | null;
 };
 

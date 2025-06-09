@@ -23,6 +23,8 @@ module.exports = {
     'jsdoc/check-tag-names': [
       'error',
       {
+        // Allow TSDoc tags
+        definedTags: ['remarks'],
         jsxTags: true,
       },
     ],

@@ -46,6 +46,8 @@ export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICa
 
 // @public @deprecated (undocumented)
 export interface ICardItemProps extends ICardItemSlots, Pick<IStackItemProps, 'grow' | 'shrink' | 'disableShrink' | 'align' | 'verticalFill' | 'order'>, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles>, IBaseProps<ICardItem> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     // @deprecated
     fill?: boolean;
 }
@@ -93,6 +95,8 @@ export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTo
 
 // @public @deprecated (undocumented)
 export interface ICardSectionProps extends ICardSectionSlots, Pick<IStackProps, 'as' | 'horizontal' | 'reversed' | 'horizontalAlign' | 'verticalAlign' | 'verticalFill' | 'disableShrink' | 'grow' | 'wrap'>, IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>, IBaseProps<ICardSection> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     // @deprecated
     fill?: boolean;
 }

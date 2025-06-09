@@ -81,7 +81,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -353,7 +353,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               role="text"
               tabindex="-1"
             >
-              8,888
+              8888
             </div>
           </div>
         </div>
@@ -507,7 +507,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -779,7 +779,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               role="text"
               tabindex="-1"
             >
-              8,888
+              8888
             </div>
           </div>
         </div>
@@ -946,7 +946,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 role="text"
                 tabindex="-1"
               >
-                1,543
+                1543
               </div>
             </div>
           </div>
@@ -1218,7 +1218,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                 role="text"
                 tabindex="-1"
               >
-                8,888
+                8888
               </div>
             </div>
           </div>
@@ -1385,7 +1385,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -1657,7 +1657,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
               role="text"
               tabindex="-1"
             >
-              8,888
+              8888
             </div>
           </div>
         </div>
@@ -1811,7 +1811,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               role="text"
               tabindex="-1"
             >
-              1,543
+              1543
             </div>
           </div>
         </div>
@@ -2083,7 +2083,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
               role="text"
               tabindex="-1"
             >
-              8,888
+              8888
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 
@@ -18,7 +18,9 @@ describe('Announced', () => {
   it('renders message after delay', () => {
     jest.useFakeTimers();
     const { container } = render(<Announced message="hello" />);
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(container).toMatchSnapshot();
   });
 
@@ -45,7 +47,9 @@ describe('Announced', () => {
     const component = getByRole('status');
     expect(component.textContent).toBeFalsy();
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component.textContent).toBe('hello');
   });
 
@@ -56,7 +60,9 @@ describe('Announced', () => {
 
     expect(component.tagName).toBe('SPAN');
 
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
     expect(component.textContent).toBe('hello'); // still renders children
   });
 
@@ -79,7 +85,9 @@ describe('Announced', () => {
         }}
       />,
     );
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
     const component = getByRole('status');
     expect(component.className).toContain('rootclass1');

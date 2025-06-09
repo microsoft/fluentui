@@ -1,5 +1,5 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
-import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
   const { className, theme, pathColor, enableReflow } = props;
@@ -21,16 +21,16 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       fill: theme ? theme.semanticColors.bodyBackground : '#F5F5F5',
       strokeWidth: 3,
       selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: '#000000',
+        [HighContrastSelector]: {
+          fill: 'Canvas',
         },
       },
     },
     nodes: {
       fill: '#F5F5F5',
       selectors: {
-        [HighContrastSelectorBlack]: {
-          fill: '#000000',
+        [HighContrastSelector]: {
+          fill: 'Canvas',
         },
       },
     },
@@ -50,8 +50,8 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
       selectors: {
         text: {
           selectors: {
-            [HighContrastSelectorBlack]: {
-              fill: 'rgb(179, 179, 179)',
+            [HighContrastSelector]: {
+              fill: 'CanvasText',
             },
           },
         },

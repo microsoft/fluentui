@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 08 Jan 2025 18:33:33 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 13:28:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.20.0)
+
+Wed, 14 May 2025 13:28:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.19.3..@fluentui/react-conformance_v0.20.0)
+
+### Patches
+
+- feat: add react 18 support ([PR #34421](https://github.com/microsoft/fluentui/pull/34421) by martinhochel@microsoft.com)
 
 ## [0.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.19.3)
 

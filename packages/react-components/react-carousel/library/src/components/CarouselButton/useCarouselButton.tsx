@@ -37,13 +37,14 @@ export const useCarouselButton_unstable = (
   const { dir } = useFluent();
   const buttonRef = React.useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
+  const [canLoop, setCanLoop] = React.useState(circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
   const resetAutoplay = useCarouselContext(ctx => ctx.resetAutoplay);
 
   const isTrailing = useCarouselContext(ctx => {
-    if (circular) {
+    if (circular && canLoop) {
       return false;
     }
 
@@ -85,6 +86,10 @@ export const useCarouselButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
+      if (data.canLoop !== undefined) {
+        // Only update canLoop if it has been defined by the carousel engine
+        setCanLoop(data.canLoop);
+      }
       setTotalSlides(data.navItemsCount);
     });
   }, [subscribeForValues]);

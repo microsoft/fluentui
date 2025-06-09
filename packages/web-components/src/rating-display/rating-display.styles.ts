@@ -1,12 +1,12 @@
 import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
-  colorBrandBackground,
-  colorBrandStroke2,
-  colorNeutralBackground1Pressed,
+  colorBrandBackground2,
+  colorBrandForeground1,
+  colorNeutralBackground6,
   colorNeutralForeground1,
   colorPaletteMarigoldBackground2,
-  colorPaletteMarigoldBackground3,
+  colorPaletteMarigoldBorderActive,
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
@@ -28,7 +28,7 @@ export const styles = css`
 
   :host {
     --icon-size: 16px;
-    --icon-color-filled: ${colorPaletteMarigoldBackground3};
+    --icon-color-filled: ${colorPaletteMarigoldBorderActive};
     --icon-color-empty: ${colorPaletteMarigoldBackground2};
     align-items: center;
     color: ${colorNeutralForeground1};
@@ -70,7 +70,7 @@ export const styles = css`
   }
 
   :host([color='brand']) svg {
-    --icon-color-filled: ${colorBrandBackground};
+    --icon-color-filled: ${colorBrandForeground1};
   }
 
   :host(:is([value^='-'], [value='0'])) svg,
@@ -81,12 +81,12 @@ export const styles = css`
 
   :host([color='neutral']:is([value^='-'], [value='0'], :not([value]))) svg,
   :host([color='neutral']) svg[selected] ~ svg {
-    --icon-color-empty: ${colorNeutralBackground1Pressed};
+    --icon-color-empty: ${colorNeutralBackground6};
   }
 
   :host([color='brand']:is([value^='-'], [value='0'], :not([value]))) svg,
   :host([color='brand']) svg[selected] ~ svg {
-    --icon-color-empty: ${colorBrandStroke2};
+    --icon-color-empty: ${colorBrandBackground2};
   }
 
   .value-label,

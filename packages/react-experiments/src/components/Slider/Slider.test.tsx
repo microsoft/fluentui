@@ -1,9 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
-import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import { render, fireEvent, act } from '@testing-library/react';
 
 import { Slider } from './Slider';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
@@ -124,30 +122,26 @@ describe('Slider', () => {
     jest.useFakeTimers();
     const onChanged = jest.fn();
 
-    const container = document.createElement('div');
-    document.body.appendChild(container);
-
-    ReactDOM.render(<Slider label="slider" defaultValue={12} min={0} max={100} onChanged={onChanged} />, container);
+    const { container } = render(<Slider label="slider" defaultValue={12} min={0} max={100} onChanged={onChanged} />);
     const sliderSlideBox = container.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
-    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
-    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.up });
-    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    // Need to use keyCode for React Testing Library instead of which
+    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
+    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.up });
+    fireEvent.keyDown(sliderSlideBox, { keyCode: KeyCodes.down });
 
-    expect(sliderSlideBox.getAttribute('aria-valuenow')).toEqual('9');
+    expect(sliderSlideBox).toHaveAttribute('aria-valuenow', '9');
 
     // onChanged should only be called after a delay
     expect(onChanged).toHaveBeenCalledTimes(0);
 
-    setTimeout(() => {
-      expect(onChanged).toHaveBeenCalledTimes(1);
-    }, ONKEYDOWN_TIMEOUT_DURATION);
+    act(() => {
+      jest.advanceTimersByTime(ONKEYDOWN_TIMEOUT_DURATION);
+    });
 
-    jest.runOnlyPendingTimers();
-
-    ReactDOM.unmountComponentAtNode(container);
+    expect(onChanged).toHaveBeenCalledTimes(1);
   });
 
   it('should be able to display the correct custom labels & tickmarks at the correct positions', () => {

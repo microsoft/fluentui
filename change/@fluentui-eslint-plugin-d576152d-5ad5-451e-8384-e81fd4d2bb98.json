@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update tsconfig after migration to 5.2",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "viktorgenaev@microsoft.com",
-  "dependentChangeType": "none"
-}

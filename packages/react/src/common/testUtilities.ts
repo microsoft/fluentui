@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import type * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 
 // v2 - avoiding usage of enzyme
 
@@ -32,8 +32,8 @@ export function delay(millisecond: number): Promise<void> {
 }
 
 export function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-  const component = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+  const component = render(element);
+  const renderedDOM = component.container.firstChild;
   return renderedDOM as HTMLElement;
 }
 

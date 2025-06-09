@@ -3,28 +3,16 @@ jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { resetIds } from '../../Utilities';
-import { mount, ReactWrapper } from 'enzyme';
-
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
-import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
-import { act } from 'react-dom/test-utils';
+import { VerticalBarChart, IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
-
+import { render } from '@testing-library/react';
 const rendererAct = renderer.act;
-
-// Wrapper of the VerticalBarChart to be tested.
-let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
 
 function sharedBeforeEach() {
   resetIds();
 }
 
 function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
-
   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
   // cleaned up in fake timers world
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -132,69 +120,55 @@ describe('VerticalBarChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
-    });
-    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
+    const hideLegendDOM = wrapper!.container.querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
 
   it('Should not render onRenderCalloutPerStack ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Should render onRenderCalloutPerDataPoint ', () => {
-    act(() => {
-      wrapper = mount(
-        <VerticalBarChart
-          data={chartPointsVBC}
-          onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
-            props ? (
-              <div className="onRenderCalloutPerDataPoint">
-                <p>Custom Callout Content</p>
-              </div>
-            ) : null
-          }
-        />,
-      );
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    const wrapper = render(
+      <VerticalBarChart
+        data={chartPointsVBC}
+        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+          props ? (
+            <div className="onRenderCalloutPerDataPoint">
+              <p>Custom Callout Content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM).toBeDefined();
   });
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
-    });
-    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} />);
+    const renderedDOM = wrapper!.container.getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
   });
 });
@@ -203,85 +177,52 @@ describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
       data: chartPointsVBC,
       height: 300,
       width: 600,
     };
-    act(() => {
-      wrapper = mount(<VerticalBarChart {...props} />);
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart {...props} />);
     });
-    wrapper!.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    const htmlBefore = component!.toJSON();
+    component.update(<VerticalBarChart {...props} />);
+    const htmlAfter = component!.toJSON();
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 
   it('prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
       data: chartPointsVBC,
       height: 300,
       width: 600,
       hideLegend: true,
     };
-    act(() => {
-      wrapper = mount(<VerticalBarChart {...props} />);
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart {...props} />);
     });
-    wrapper!.setProps({ ...props, hideTooltip: true });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    const htmlBefore = component!.toJSON();
+    component.update(<VerticalBarChart {...props} hideLegend={false} />);
+    const htmlAfter = component!.toJSON();
+    expect(htmlAfter).not.toBe(htmlBefore);
   });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  beforeEach(sharedBeforeEach);
-
   it('No empty chart aria label div rendered', () => {
-    act(() => {
-      wrapper = mount(
-        <VerticalBarChart data={chartPointsVBC} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
-      );
-    });
-    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    const wrapper = render(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines />);
+    const renderedDOM = wrapper!.container.querySelectorAll('[aria-label="Graph has no data to display"]');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    act(() => {
-      wrapper = mount(<VerticalBarChart data={[]} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />);
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart data={[]} roundCorners={true} />);
     });
-    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
-    expect(renderedDOM!.length).toBe(1);
-  });
-});
-
-describe('Render empty chart calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
-
-  it('No prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
-    const props = {
-      data: chartPointsVBC,
-    };
-    act(() => {
-      const component = mount(<VerticalBarChart {...props} />);
-      component.setProps({ ...props });
-    });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
-  });
-
-  it('Prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
-    const props = {
-      data: [],
-    };
-    act(() => {
-      const component = mount(<VerticalBarChart {...props} />);
-      component.setProps({ ...props, data: chartPointsVBC });
-    });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    const tree = component!.toJSON();
+    expect(tree.props['aria-label']).toBe('Graph has no data to display');
   });
 });

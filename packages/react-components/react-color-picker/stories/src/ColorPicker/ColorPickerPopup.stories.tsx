@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import { ColorPicker, ColorSlider, AlphaSlider, ColorPickerProps, ColorArea } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  ColorPicker,
+  ColorSlider,
+  AlphaSlider,
+  ColorArea,
+} from '@fluentui/react-components';
+import type { ColorPickerProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

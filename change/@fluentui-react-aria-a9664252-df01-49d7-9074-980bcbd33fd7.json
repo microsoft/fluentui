@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update fluent ariaNotify implementation to match new API",
-  "packageName": "@fluentui/react-aria",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

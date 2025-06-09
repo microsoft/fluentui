@@ -13,8 +13,9 @@ import {
   getNextColor,
   getNextGradient,
   areArraysEqual,
+  MIN_DONUT_RADIUS,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { ILegendContainer } from '../Legends/index';
@@ -134,7 +135,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut =
-      this.props.innerRadius !== 0 ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!) : '';
+      this.props.innerRadius! > MIN_DONUT_RADIUS
+        ? this._valueInsideDonut(this.props.valueInsideDonut!, chartData!)
+        : '';
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
@@ -390,7 +393,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   }
 
   private _toLocaleString(data: string | number | undefined) {
-    const localeString = convertToLocaleString(data, this.props.culture);
+    const localeString = formatToLocaleString(data, this.props.culture, this.props.useUTC);
     if (!localeString) {
       return data;
     }

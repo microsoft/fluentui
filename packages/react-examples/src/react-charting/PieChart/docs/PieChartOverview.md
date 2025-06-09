@@ -2,4 +2,4 @@ A pie chart is a circular visual representation used to illustrate the compositi
 
 Pie chart does not have the benefits of donut chart and, therefore, it is rarely chosen. Pie chart has an advantage in certain reading scenarios only, where users want to compare the ratio of angles or areas of the slices.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

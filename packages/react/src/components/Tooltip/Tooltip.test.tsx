@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
@@ -15,13 +14,15 @@ const defaultCalloutProps: ICalloutProps = {
   doNotLayer: false,
 };
 
-describe('Tooltip', () => {
-  beforeEach(() => {
+jest.mock('react-dom', () => {
+  return {
+    ...jest.requireActual('react-dom'),
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    jest.spyOn(ReactDOM, 'createPortal').mockImplementation(element => {
-      return element as React.ReactPortal;
-    });
-  });
+    createPortal: jest.fn((node: any) => node),
+  };
+});
+
+describe('Tooltip', () => {
   it('renders default Tooltip correctly', () => {
     const component = renderer.create(<TooltipBase />);
     const tree = component.toJSON();
@@ -48,7 +49,11 @@ describe('Tooltip', () => {
 
     const directionalHint = DirectionalHint.bottomLeftEdge;
     const directionalHintForRTL = DirectionalHint.topRightEdge;
-    const targetElement = ReactTestUtils.renderIntoDocument(<div />) as unknown as HTMLElement;
+
+    // Create a target element with React Testing Library instead of ReactTestUtils
+    const { container } = render(<div data-testid="tooltip-target" />);
+    const targetElement = container.firstElementChild as HTMLElement;
+
     let onRenderCalled = false;
 
     const component = renderer.create(

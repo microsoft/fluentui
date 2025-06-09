@@ -8,6 +8,7 @@ export type {
   EventHandler,
   ExtractSlotProps,
   ForwardRefComponent,
+  RefAttributes,
   InferredElementRefType,
   IsSingleton,
   PropsWithoutChildren,

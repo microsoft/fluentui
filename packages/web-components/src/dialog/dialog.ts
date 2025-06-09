@@ -94,10 +94,10 @@ export class Dialog extends FASTElement {
    * @returns boolean
    */
   public clickHandler(event: Event): boolean {
-    event.preventDefault();
     if (this.dialog.open && this.type !== DialogType.alert && event.target === this.dialog) {
       this.hide();
     }
+
     return true;
   }
 }

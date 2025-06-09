@@ -197,8 +197,11 @@ export const baseButtonStyles = css`
     background-color: ${colorBrandBackgroundHover};
   }
 
-  :host([appearance='primary']:is(:hover, :hover:active)) {
+  :host([appearance='primary']:is(:hover, :hover:active):not(:focus-visible)) {
     border-color: transparent;
+  }
+
+  :host([appearance='primary']:is(:hover, :hover:active)) {
     color: ${colorNeutralForegroundOnBrand};
   }
 

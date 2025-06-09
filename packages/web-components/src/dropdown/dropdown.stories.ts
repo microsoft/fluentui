@@ -36,7 +36,7 @@ const dropdownTemplate = html<StoryArgs<FluentDropdown>>`
 
 const storyTemplate = html<StoryArgs<FluentDropdown>>`
   <fluent-field ?disabled="${story => story.disabled}">
-    <label slot="label"> <fluent-label required>${story => story.placeholder}</fluent-label></label>
+    <label slot="label">${story => story.placeholder}</label>
     <fluent-dropdown
       slot="input"
       appearance="${story => story.appearance}"

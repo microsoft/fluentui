@@ -132,6 +132,15 @@ export class BaseCheckbox extends FASTElement {
   }
 
   /**
+   * Tracks whether the space key was pressed down while the checkbox was focused.
+   * This is used to prevent inadvertently checking a required, unchecked checkbox when the space key is pressed on a
+   * submit button and field validation is triggered.
+   *
+   * @internal
+   */
+  private _keydownPressed: boolean = false;
+
+  /**
    * The name of the element. This element's value will be surfaced during form submission under the provided name.
    *
    * @public
@@ -352,7 +361,8 @@ export class BaseCheckbox extends FASTElement {
   }
 
   /**
-   * Prevents scrolling when the user presses the space key.
+   * Prevents scrolling when the user presses the space key, and sets a flag to indicate that the space key was pressed
+   * down while the checkbox was focused.
    *
    * @param e - the event object
    * @internal
@@ -361,6 +371,8 @@ export class BaseCheckbox extends FASTElement {
     if (e.key !== ' ') {
       return true;
     }
+
+    this._keydownPressed = true;
   }
 
   /**
@@ -370,10 +382,11 @@ export class BaseCheckbox extends FASTElement {
    * @internal
    */
   public keyupHandler(e: KeyboardEvent): boolean | void {
-    if (e.key !== ' ') {
+    if (!this._keydownPressed || e.key !== ' ') {
       return true;
     }
 
+    this._keydownPressed = false;
     this.click();
   }
 
