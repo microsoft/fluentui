@@ -69,7 +69,7 @@ const useStyles = makeStyles({
     fontWeight: semanticTokens.textStyleDefaultRegularWeight,
     fontSize: semanticTokens.textGlobalBody3FontSize,
     lineHeight: semanticTokens.textGlobalBody3LineHeight,
-    boxSizing: 'content-box',
+    boxSizing: 'border-box',
   },
   buttonSmall: {
     minHeight: semanticTokens.sizeCtrlSmDefault,
