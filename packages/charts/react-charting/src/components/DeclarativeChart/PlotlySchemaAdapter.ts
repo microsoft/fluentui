@@ -158,8 +158,8 @@ export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any
   return xValues;
 };
 
-const usesSecondaryYScale = (layout: Partial<Layout> | undefined): boolean => {
-  return layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right';
+const usesSecondaryYScale = (series: Partial<PlotData>, layout: Partial<Layout> | undefined): boolean => {
+  return series.yaxis === 'y2' && (layout?.yaxis2?.anchor === 'x' || layout?.yaxis2?.side === 'right');
 };
 
 const getSecondaryYAxisValues = (
@@ -173,7 +173,7 @@ const getSecondaryYAxisValues = (
   let yMaxValue: number | undefined;
 
   data.forEach((series: Partial<PlotData>) => {
-    if (usesSecondaryYScale(layout)) {
+    if (usesSecondaryYScale(series, layout)) {
       containsSecondaryYAxis = true;
 
       const yValues = series.y as number[];
@@ -252,6 +252,7 @@ export const resolveXAxisPoint = (
 
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -319,6 +320,7 @@ export const transformPlotlyJsonToDonutProps = (
 
 export const transformPlotlyJsonToVSBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -328,7 +330,7 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let yMinValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
@@ -407,9 +409,9 @@ export const transformPlotlyJsonToVSBCProps = (
               ...(lineOptions ?? {}),
               mode: series.mode,
             },
-            useSecondaryYScale: usesSecondaryYScale(input.layout),
+            useSecondaryYScale: usesSecondaryYScale(series, input.layout),
           });
-          if (!usesSecondaryYScale(input.layout) && typeof yVal === 'number') {
+          if (!usesSecondaryYScale(series, input.layout) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
             yMinValue = Math.min(yMinValue, yVal);
           }
@@ -460,13 +462,14 @@ const createColorScale = (layout: Partial<Layout>, series: Partial<PlotData>) =>
 
 export const transformPlotlyJsonToGVBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IGroupedVerticalBarChartProps => {
   const mapXToDataPoints: Record<string, IGroupedVerticalBarChartData> = {};
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
@@ -511,7 +514,7 @@ export const transformPlotlyJsonToGVBCProps = (
           xAxisCalloutData: x as string,
           color,
           legend,
-          useSecondaryYScale: usesSecondaryYScale(input.layout),
+          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         });
       }
     });
@@ -537,12 +540,13 @@ export const transformPlotlyJsonToGVBCProps = (
 
 export const transformPlotlyJsonToVBCProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IVerticalBarChartProps => {
   const vbcData: IVerticalBarChartDataPoint[] = [];
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
 
   input.data.forEach((series: Partial<PlotData>, seriesIdx: number) => {
@@ -648,24 +652,41 @@ export const transformPlotlyJsonToVBCProps = (
 
 export const transformPlotlyJsonToAreaChartProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IAreaChartProps => {
-  return transformPlotlyJsonToScatterChartProps(input, true, colorMap, colorwayType, isDarkTheme) as IAreaChartProps;
+  return transformPlotlyJsonToScatterChartProps(
+    input,
+    isMultiPlot,
+    true,
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as IAreaChartProps;
 };
 
 export const transformPlotlyJsonToLineChartProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ILineChartProps => {
-  return transformPlotlyJsonToScatterChartProps(input, false, colorMap, colorwayType, isDarkTheme) as ILineChartProps;
+  return transformPlotlyJsonToScatterChartProps(
+    input,
+    isMultiPlot,
+    false,
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as ILineChartProps;
 };
 
 const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
@@ -686,7 +707,7 @@ const transformPlotlyJsonToScatterChartProps = (
     isAreaChart ? 0 : undefined,
   );
   let mode: string = 'tonexty';
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -742,7 +763,7 @@ const transformPlotlyJsonToScatterChartProps = (
             ...(lineOptions ?? {}),
             mode: series.mode,
           },
-          useSecondaryYScale: usesSecondaryYScale(input.layout),
+          useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         } as ILineChartPoints;
       });
     })
@@ -795,11 +816,12 @@ const transformPlotlyJsonToScatterChartProps = (
 
 export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IHorizontalBarChartWithAxisProps => {
-  const { legends, hideLegend } = getLegendProps(input.data, input.layout);
+  const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
   const chartData: IHorizontalBarChartWithAxisDataPoint[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
@@ -882,6 +904,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
 
 export const transformPlotlyJsonToHeatmapProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1044,6 +1067,7 @@ export const transformPlotlyJsonToHeatmapProps = (
 
 export const transformPlotlyJsonToSankeyProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1110,6 +1134,7 @@ export const transformPlotlyJsonToSankeyProps = (
 
 export const transformPlotlyJsonToGaugeProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1244,6 +1269,7 @@ const formatValue = (
 
 export const transformPlotlyJsonToChartTableProps = (
   input: PlotlySchema,
+  isMultiPlot: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
@@ -1667,13 +1693,8 @@ export const getAllupLegendsProps = (
   };
 };
 
-const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined, isMultiPlot: boolean) => {
   const legends: string[] = [];
-  // If legendgroup is defined, legends are shown all up. Don't show individual legends.
-  if (data.some((series: Partial<PlotData>) => series.legendgroup !== undefined && series.legendgroup !== '')) {
-    return { legends, hideLegend: true };
-  }
-
   if (data.length === 1) {
     legends.push(data[0].name || '');
   } else {
@@ -1682,12 +1703,12 @@ const getLegendProps = (data: Data[], layout: Partial<Layout> | undefined) => {
     });
   }
 
-  const hideLegends = data.every((series: Partial<PlotData>) => series.showlegend === false);
+  const hideLegendsData = data.every((series: Partial<PlotData>) => series.showlegend === false);
+  const hideLegendsInferred = layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2);
 
   return {
     legends,
-    hideLegend:
-      layout?.showlegend === false || (layout?.showlegend !== true && legends.length < 2) ? true : hideLegends,
+    hideLegend: (hideLegendsInferred || hideLegendsData) && !isMultiPlot,
   };
 };
 
@@ -1736,7 +1757,7 @@ const getIndexFromKey = (key: string, pattern: string): number => {
   return parseInt(normalizedKey, 10) - 1;
 };
 
-export const createGridTemplate = (layout: Partial<Layout> | undefined): GridTemplate => {
+export const createGridTemplate = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridTemplate => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
   let templateRows = '1fr';
@@ -1745,6 +1766,9 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined): GridTem
     return { templateRows, templateColumns };
   }
   if (!layout.xaxis || !layout.yaxis) {
+    return { templateRows, templateColumns };
+  }
+  if (!isMultiPlot) {
     return { templateRows, templateColumns };
   }
 
@@ -1762,7 +1786,7 @@ export const createGridTemplate = (layout: Partial<Layout> | undefined): GridTem
       const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
       const anchorIndex = getIndexFromKey(anchor, 'x');
       if (index !== anchorIndex) {
-        if (index === 1 && anchorIndex === 0) {
+        if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
           // Special case for secondary y axis where yaxis2 can anchor to x1
           return { templateRows, templateColumns };
         }

@@ -365,7 +365,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     groupedTraces[xAxisKey].push(index);
   });
 
-  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout);
+  const isMultiPlot = Object.keys(groupedTraces).length > 1;
+  const gridTemplate: GridTemplate = createGridTemplate(plotlyInputWithValidData.layout, isMultiPlot);
 
   const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
 
@@ -403,7 +404,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
               return renderChart<ReturnType<typeof transformer>>(
                 renderer,
                 transformer,
-                [transformedInput, colorMap, props.colorwayType, isDarkTheme],
+                [transformedInput, isMultiPlot, colorMap, props.colorwayType, isDarkTheme],
                 commonProps,
               );
             }
@@ -413,7 +414,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           }
         })}
       </div>
-      {Object.entries(groupedTraces).length > 1 && createLegends(allupLegendsProps)}
+      {isMultiPlot && createLegends(allupLegendsProps)}
     </>
   );
 });
