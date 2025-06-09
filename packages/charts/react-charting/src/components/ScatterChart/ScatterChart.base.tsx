@@ -193,9 +193,26 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
         overflowText={props.legendsOverflowText}
         {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
+        onChange={_onLegendSelectionChange}
         {...props.legendProps}
       />
     );
+  }
+
+  function _onLegendSelectionChange(
+    legendsSelected: string[],
+    event: React.MouseEvent<HTMLButtonElement>,
+    currentLegend?: ILegend,
+  ): void {
+    if (props.legendProps?.canSelectMultipleLegends) {
+      setSelectedLegends(legendsSelected);
+    } else {
+      setSelectedLegends(legendsSelected.slice(-1));
+    }
+
+    if (props.legendProps?.onChange) {
+      props.legendProps.onChange(legendsSelected, event, currentLegend);
+    }
   }
 
   const _getPointFill = React.useCallback(
