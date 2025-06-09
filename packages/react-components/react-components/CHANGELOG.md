@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 14 May 2025 18:49:15 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jun 2025 13:15:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.1)
+
+Fri, 06 Jun 2025 13:15:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.0..@fluentui/react-components_v9.64.1)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by martinhochel@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: aria-label for year selection ([PR #34536](https://github.com/microsoft/fluentui/pull/34536) by v.kozlova13@gmail.com)
+- `@fluentui/react-charts`
+  - feat(react-charts): Improve formatting and numeric and date labels ([PR #34562](https://github.com/microsoft/fluentui/pull/34562) by 98592573+AtishayMsft@users.noreply.github.com)
+- `@fluentui/react-nav-preview`
+  - fix: Change Nav icon display animations to opacity animations ([PR #34452](https://github.com/microsoft/fluentui/pull/34452) by jiangemma@microsoft.com)
+  - fix: focus borders being cut-off ([PR #34565](https://github.com/microsoft/fluentui/pull/34565) by marcosvmmoura@gmail.com)
+- `@fluentui/react-slider`
+  - fix: adjust focus outline offset ([PR #34538](https://github.com/microsoft/fluentui/pull/34538) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-table`
+  - fix(DataGridSelectionCell): should not use `aria-checked` on gridcell ([PR #34503](https://github.com/microsoft/fluentui/pull/34503) by lingfangao@hotmail.com)
+  - fix: Single select should not render header selection indicator ([PR #33752](https://github.com/microsoft/fluentui/pull/33752) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - Bumping Tabster to 8.5.5 ([PR #34395](https://github.com/microsoft/fluentui/pull/34395) by marata@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: re-introduce active state style to TreeItemLayout ([PR #34558](https://github.com/microsoft/fluentui/pull/34558) by bernardo.sunderhus@gmail.com)
 
 ## [9.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.0)
 
