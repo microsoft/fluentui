@@ -107,6 +107,7 @@ export {
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  getSlotClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
   // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
@@ -820,7 +821,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export { resolvePositioningShorthand } from '@fluentui/react-positioning';
+export { resolvePositioningShorthand, PositioningConfigurationProvider } from '@fluentui/react-positioning';
 export type {
   PositioningBoundary,
   PositioningProps,
@@ -829,6 +830,8 @@ export type {
   PositioningShorthandValue,
   PositioningImperativeRef,
   PositioningVirtualElement,
+  PositioningConfigurationFn,
+  PositioningConfigurationFnOptions,
 } from '@fluentui/react-positioning';
 
 export {
@@ -1151,6 +1154,7 @@ export type {
   DataGridSelectionCellProps,
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
+  CellRenderFunction,
 } from '@fluentui/react-table';
 
 export {
@@ -1468,6 +1472,15 @@ export {
   useInfoLabel_unstable,
 } from '@fluentui/react-infolabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  InfoButton,
+  infoButtonClassNames,
+  renderInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  useInfoButton_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infolabel';
 
 export {
   Drawer,

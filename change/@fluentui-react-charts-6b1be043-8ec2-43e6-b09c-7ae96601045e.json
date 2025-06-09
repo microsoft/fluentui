@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charts): Replace plotly schema interface and conversion logic with chart utilities",
-  "packageName": "@fluentui/react-charts",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

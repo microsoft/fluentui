@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 27 Mar 2025 21:12:51 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jun 2025 13:15:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.55)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.54..@fluentui/react-badge_v9.2.55)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.2.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.54)
+
+Wed, 16 Apr 2025 19:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.53..@fluentui/react-badge_v9.2.54)
+
+### Patches
+
+- fix: revert min-width: max-content for Badge ([PR #34215](https://github.com/microsoft/fluentui/pull/34215) by vgenaev@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.54 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.2.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.53)
 

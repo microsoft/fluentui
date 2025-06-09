@@ -7,6 +7,9 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
  * A BaseTablist component with extra logic for handling the styled active tab indicator.
+ *
+ * @tag fluent-tablist
+ *
  * @public
  */
 export class Tablist extends BaseTablist {

@@ -53,6 +53,15 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
+import {
+  formatDateToLocaleString,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+  handleFloatingPointPrecisionError,
+} from '@fluentui/chart-utilities';
+
+export const MIN_DOMAIN_MARGIN = 8;
+export const MIN_DONUT_RADIUS = 1;
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -166,6 +175,36 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
+
+  if (Math.abs(value) < 1) {
+    // Don't use SI notation for small numbers as it is less readable
+    formatter = d3Format('.2~g');
+  } else if (limitWidth && Math.abs(value) >= 1000) {
+    // If width is limited, use SI format prefix with 1 point precision
+    formatter = d3FormatPrefix('.1~', value);
+  }
+  const formattedValue = formatter(value);
+
+  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
+  if (Math.abs(value) >= 1e9) {
+    return formattedValue.replace('G', 'B');
+  }
+
+  return formattedValue;
+}
+
+/**
+ * Formatter for y axis ticks.
+ * @param value - The number to format.
+ * @returns The formatted string .
+ */
+export function defaultYAxisTickFormatter(value: number): string {
+  return yAxisTickFormatterInternal(value);
+}
+
 /**
  * Create Numeric X axis
  * @export
@@ -179,7 +218,7 @@ export function createNumericXAxis(
 ) {
   const {
     domainNRangeValues,
-    showRoundOffXTickValues = false,
+    showRoundOffXTickValues = true,
     xAxistickSize = 6,
     tickPadding = 10,
     xAxisCount,
@@ -197,7 +236,7 @@ export function createNumericXAxis(
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return convertToLocaleString(xAxisValue, culture) as string;
+    return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
@@ -227,18 +266,83 @@ export function createNumericXAxis(
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) {
+/**
+ * This function returns a multilevel formatter for a given date range.
+ * It determines the appropriate date format to accommodate each tick value.
+ * The goal is to represent the date label in the smallest possible format without loss of information.
+ * The challenge here is to adhere to locale specific formats while ensuring the complete label is shown.
+ * There is an exhaustive map of all possible date/time units and their respective formats.
+ * Based on the range of formatting granularity levels, a format spanning the range is returned.
+ * @param startLevel - The starting level of the date format.
+ * @param endLevel - The ending level of the date format.
+ * @param locale - The locale object for formatting.
+ * @param useUTC
+ * @returns
+ */
+function getMultiLevelD3DateFormatter(
+  startLevel: number,
+  endLevel: number,
+  locale?: d3TimeLocaleObject,
+  useUTC?: boolean,
+) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
 
-  const formatMillisecond = timeFormat('.%L');
-  const formatSecond = timeFormat(':%S');
-  const formatMinute = timeFormat('%I:%M');
-  const formatHour = timeFormat('%I %p');
-  const formatDay = timeFormat('%a %d');
-  const formatWeek = timeFormat('%b %d');
-  const formatMonth = timeFormat('%B');
-  const formatYear = timeFormat('%Y');
+  // Refer to https://d3js.org/d3-time-format#locale_format to see explanation about each format specifier
+  const DEFAULT = '%c';
+  const MS = '.%L';
+  const MS_S = ':%S.%L';
+  const MS_S_MIN = '%M:%S.%L';
+  const MS_S_MIN_H = '%-I:%M:%S.%L %p';
+  const MS_S_MIN_H_D = '%a %d, %X';
+  const MS_S_MIN_H_D_W = '%b %d, %X';
+  const MS_S_MIN_H_D_W_M = MS_S_MIN_H_D_W;
+  const MS_S_MIN_H_D_W_M_Y = DEFAULT;
+  const S = ':%S';
+  const S_MIN = '%-I:%M:%S';
+  const S_MIN_H = '%X';
+  const S_MIN_H_D = MS_S_MIN_H_D;
+  const S_MIN_H_D_W = MS_S_MIN_H_D_W;
+  const S_MIN_H_D_W_M = MS_S_MIN_H_D_W_M;
+  const S_MIN_H_D_W_M_Y = DEFAULT;
+  const MIN = '%-I:%M %p';
+  const MIN_H = MIN;
+  const MIN_H_D = '%a %d, %-I:%M %p';
+  const MIN_H_D_W = '%b %d, %-I:%M %p';
+  const MIN_H_D_W_M = MIN_H_D_W;
+  const MIN_H_D_W_M_Y = '%x, %-I:%M %p';
+  const H = '%-I %p';
+  const H_D = '%a %d, %-I %p';
+  const H_D_W = '%b %d, %-I %p';
+  const H_D_W_M = H_D_W;
+  const H_D_W_M_Y = '%x, %-I %p';
+  const D = '%a %d';
+  const D_W = '%b %d';
+  const D_W_M = D_W;
+  const D_W_M_Y = '%x';
+  const W = D_W;
+  const W_M = W;
+  const W_M_Y = D_W_M_Y;
+  const M = '%B';
+  const M_Y = '%b %Y';
+  const Y = '%Y';
 
+  const MULTI_LEVEL_DATE_TIME_FORMATS = [
+    // ms, s, min, h, d, w, m, y
+    [MS, MS_S, MS_S_MIN, MS_S_MIN_H, MS_S_MIN_H_D, MS_S_MIN_H_D_W, MS_S_MIN_H_D_W_M, MS_S_MIN_H_D_W_M_Y], // ms
+    [DEFAULT, S, S_MIN, S_MIN_H, S_MIN_H_D, S_MIN_H_D_W, S_MIN_H_D_W_M, S_MIN_H_D_W_M_Y], // s
+    [DEFAULT, DEFAULT, MIN, MIN_H, MIN_H_D, MIN_H_D_W, MIN_H_D_W_M, MIN_H_D_W_M_Y], // min
+    [DEFAULT, DEFAULT, DEFAULT, H, H_D, H_D_W, H_D_W_M, H_D_W_M_Y], // h
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, D, D_W, D_W_M, D_W_M_Y], // d
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, W, W_M, W_M_Y], // w
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, M, M_Y], // m
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, Y], // y
+  ];
+
+  const formatter = timeFormat(MULTI_LEVEL_DATE_TIME_FORMATS[startLevel][endLevel]);
+  return formatter;
+}
+
+function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;
@@ -247,34 +351,25 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) 
   const timeWeek = useUTC ? d3UtcWeek : d3TimeWeek;
   const timeYear = useUTC ? d3UtcYear : d3TimeYear;
 
-  return (
-    timeSecond(date) < date
-      ? formatMillisecond
-      : timeMinute(date) < date
-      ? formatSecond
-      : timeHour(date) < date
-      ? formatMinute
-      : timeDay(date) < date
-      ? formatHour
-      : timeMonth(date) < date
-      ? timeWeek(date) < date
-        ? formatDay
-        : formatWeek
-      : timeYear(date) < date
-      ? formatMonth
-      : formatYear
-  )(date);
+  const formats = [
+    { formatLevel: 0, condition: (d: Date) => timeSecond(d) < d }, // Milliseconds
+    { formatLevel: 1, condition: (d: Date) => timeMinute(d) < d }, // Seconds
+    { formatLevel: 2, condition: (d: Date) => timeHour(d) < d }, // Minutes
+    { formatLevel: 3, condition: (d: Date) => timeDay(d) < d }, // Hours
+    { formatLevel: 4, condition: (d: Date) => timeMonth(d) < d && timeWeek(d) < d }, // Days
+    { formatLevel: 5, condition: (d: Date) => timeMonth(d) < d }, // Weeks
+    { formatLevel: 6, condition: (d: Date) => timeYear(d) < d }, // Months
+    { formatLevel: 7, condition: () => true }, // Years (default)
+  ];
+
+  const matchedFormat = formats.find(({ condition }) => condition(date));
+
+  return matchedFormat?.formatLevel ?? 7;
 }
 
 function isPowerOf10(num: number): boolean {
   const roundedfinalYMax = handleFloatingPointPrecisionError(num);
   return Math.log10(roundedfinalYMax) % 1 === 0;
-}
-
-//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
-function handleFloatingPointPrecisionError(num: number): number {
-  const rounded = Math.round(num);
-  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
 }
 
 /**
@@ -292,30 +387,46 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const {
-    domainNRangeValues,
-    xAxisElement,
-    tickPadding = 6,
-    xAxistickSize = 6,
-    xAxisCount,
-    hideTickOverlap,
-  } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
+    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
+    .nice();
 
   let tickCount = xAxisCount ?? 6;
+
+  let lowestFormatLevel = 100;
+  let highestFormatLevel = -1;
+
+  const locale = timeFormatLocale ? d3TimeFormatLocale(timeFormatLocale) : undefined;
+
+  xAxisScale.ticks().forEach((domainValue: Date) => {
+    const formatLevel = getDateFormatLevel(domainValue, useUTC);
+
+    if (formatLevel > highestFormatLevel) {
+      highestFormatLevel = formatLevel;
+    }
+    if (formatLevel < lowestFormatLevel) {
+      lowestFormatLevel = formatLevel;
+    }
+  });
+
+  const formatOptions = options ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+
+  const formatFn: (date: Date) => string = getMultiLevelD3DateFormatter(
+    lowestFormatLevel,
+    highestFormatLevel,
+    locale,
+    useUTC,
+  );
+
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
-    if (culture && options) {
-      return domainValue.toLocaleString(culture, options);
-    }
     if (timeFormatLocale) {
-      const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
-      return multiFormat(domainValue, locale, useUTC);
+      return formatFn(domainValue);
     }
     if (culture === undefined && tickParams.tickFormat) {
       if (useUTC) {
@@ -324,14 +435,15 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return multiFormat(domainValue, undefined, useUTC);
+
+    return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
-    const [start, end] = xAxisScale.range();
-    tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
-  }
+
+  const longestLabelWidth =
+    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+  const [start, end] = xAxisScale.range();
+  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
+  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -502,16 +614,16 @@ export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisPara
     yAxisTickCount = 4,
   } = yAxisParams;
 
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
+  // maxOfYVal coming from horizontal bar chart with axis (Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinMaxValues.startValue < yMinValue ? Math.min(0, yMinMaxValues.startValue) : yMinValue!;
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
@@ -560,7 +672,7 @@ export function createNumericYAxis(
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
@@ -578,11 +690,14 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   isRtl: boolean,
   barWidth: number,
 ) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
+  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding } = yAxisParams;
 
+  let yAxisPaddingValue = yAxisPadding ?? 0.5;
+  yAxisPaddingValue = yAxisPaddingValue === 1 ? 0.99 : yAxisPaddingValue;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
-    .range([containerHeight - margins.bottom! - barWidth / 2, margins.top! + barWidth / 2]);
+    .range([containerHeight - margins.bottom!, margins.top!])
+    .padding(yAxisPaddingValue);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(dataPoints);
   if (yAxisTickFormat) {
@@ -598,14 +713,34 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
-  const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
+export const createStringYAxis = (
+  yAxisParams: IYAxisParams,
+  dataPoints: string[],
+  isRtl: boolean,
+  barWidth?: number,
+  chartType?: ChartTypes,
+) => {
+  const {
+    containerHeight,
+    tickPadding = 12,
+    margins,
+    yAxisTickFormat,
+    yAxisElement,
+    yAxisPadding = 0,
+    containerWidth,
+  } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    yAxisScale.paddingInner(1).paddingOuter(0);
+  }
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  if (chartType === ChartTypes.VerticalStackedBarChart) {
+    axis.tickSizeInner(-(containerWidth - margins.left! - margins.right!));
+  }
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
@@ -847,7 +982,7 @@ export function createYAxisLabels(
       ? `...${text.text().slice(0, noOfCharsToTruncate)}`
       : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const padding = truncateLabel ? 1.5 : 1; // ems
+    const padding = 0; // ems
     const y = text.attr('y');
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
@@ -865,17 +1000,16 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', 'showDots')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
-        .attr('dy', dy)
+        .attr('dy', dy + 'em')
         .attr('dx', padding + dx + 'em')
         .text(truncatedWord);
     } else {
       text
-        .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', isRtl ? 0 : x)
+        .attr('x', x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);
@@ -935,20 +1069,20 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
  * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfXAxislabels(xAxistooltipProps: any) {
-  const { tooltipCls, xAxis, id } = xAxistooltipProps;
-  if (xAxis === null) {
+export function tooltipOfAxislabels(axistooltipProps: any) {
+  const { tooltipCls, axis, id } = axistooltipProps;
+  if (axis === null) {
     return null;
   }
   const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
+  const aa = axis!.selectAll('#BaseSpan')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
   for (let i = 0; i < baseSpanLength; i++) {
     const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
     originalDataArray.push(originalData);
   }
-  const tickObject = xAxis!.selectAll('.tick')._groups[0];
+  const tickObject = axis!.selectAll('.tick')._groups[0];
   const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
@@ -1019,6 +1153,61 @@ export function domainRangeOfNumericForAreaChart(
 }
 
 /**
+ * Groups HorizontalBarChart With Axis data based on YValue
+ * Used for stacked case
+ * @param {IHorizontalBarChartWithAxisDataPoint[]} chartData
+ * @returns {IHorizontalBarChartWithAxisDataPoint[][]}
+ */
+export function groupChartDataByYValue(
+  chartData: IHorizontalBarChartWithAxisDataPoint[],
+): IHorizontalBarChartWithAxisDataPoint[][] {
+  const map: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  chartData.forEach(dataPoint => {
+    const key = dataPoint.y;
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(dataPoint);
+  });
+
+  return Object.values(map);
+}
+
+/**
+ * Calculates maximum domain values for Numeric x axis for both positive and negative values
+ * works for Horizontal Bar Chart With axis
+ * @param {IHorizontalBarChartWithAxisDataPoint[][]} stackedChartData
+ * @returns {number}
+ */
+export function computeLongestBars(
+  stackedChartData: IHorizontalBarChartWithAxisDataPoint[][],
+  X_ORIGIN: number,
+): {
+  longestPositiveBar: number;
+  longestNegativeBar: number;
+} {
+  let longestPositiveBar = 0;
+  let longestNegativeBar = 0;
+
+  stackedChartData.forEach((group: IHorizontalBarChartWithAxisDataPoint[]) => {
+    const positiveBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x > 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    const negativeBarTotal = group.reduce(
+      (acc: number, point: IHorizontalBarChartWithAxisDataPoint) => acc + (point.x < 0 ? point.x : 0),
+      X_ORIGIN,
+    );
+
+    longestPositiveBar = Math.max(longestPositiveBar, positiveBarTotal);
+    longestNegativeBar = Math.min(longestNegativeBar, negativeBarTotal);
+  });
+
+  return { longestPositiveBar, longestNegativeBar };
+}
+
+/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Horizontal Chart with Axis
  * @export
@@ -1034,14 +1223,17 @@ export function domainRangeOfNumericForHorizontalBarChartWithAxis(
   containerWidth: number,
   isRTL: boolean,
   shiftX: number,
+  X_ORIGIN: number,
 ): IDomainNRange {
-  const xMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x as number)!;
+  const longestBars = computeLongestBars(groupChartDataByYValue(points), X_ORIGIN);
+  const xMax = longestBars.longestPositiveBar;
+  const xMin = longestBars.longestNegativeBar;
   const rMin = isRTL ? margins.left! : margins.left! + shiftX;
   const rMax = isRTL ? containerWidth - margins.right! - shiftX : containerWidth - margins.right!;
 
   return isRTL
-    ? { dStartValue: xMax, dEndValue: 0, rStartValue: rMin, rEndValue: rMax }
-    : { dStartValue: 0, dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
+    ? { dStartValue: xMax, dEndValue: Math.min(xMin, X_ORIGIN), rStartValue: rMin, rEndValue: rMax }
+    : { dStartValue: Math.min(xMin, X_ORIGIN), dEndValue: xMax, rStartValue: rMin, rEndValue: rMax };
 }
 
 /**
@@ -1177,17 +1369,23 @@ export function domainRageOfVerticalNumeric(
  * @param {ILineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findNumericMinMaxOfY(points: ILineChartPoints[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => item.y)!;
-  })!;
-  const yMin = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => item.y)!;
-  })!;
+export function findNumericMinMaxOfY(
+  points: ILineChartPoints[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): { startValue: number; endValue: number } {
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale === !point.useSecondaryYScale) {
+      point.data.forEach(data => {
+        values.push(data.y);
+      });
+    }
+  });
 
   return {
-    startValue: yMin,
-    endValue: yMax,
+    startValue: d3Min(values)!,
+    endValue: d3Max(values)!,
   };
 }
 
@@ -1210,34 +1408,27 @@ export function findVSBCNumericMinMaxOfY(dataset: IDataPoint[]): { startValue: n
  * @param {IVerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(
+  points: IVerticalBarChartDataPoint[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): {
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y > point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
-      }
-    } else {
-      return point.y;
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale) {
+      values.push(point.y);
     }
-  })!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y < point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
+    if (typeof point.lineData !== 'undefined') {
+      if (!useSecondaryYScale === !point.lineData.useSecondaryYScale) {
+        values.push(point.lineData.y);
       }
-    } else {
-      return point.y;
     }
-  })!;
+  });
 
-  return { startValue: yMin, endValue: yMax };
+  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
@@ -1252,7 +1443,6 @@ export function findHBCWANumericMinMaxOfY(
   if (yAxisType !== undefined && yAxisType === YAxisType.NumericAxis) {
     const yMax = d3Max(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
     const yMin = d3Min(points, (point: IHorizontalBarChartWithAxisDataPoint) => point.y as number)!;
-
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
@@ -1373,23 +1563,6 @@ export const getAccessibleDataObject = (
   };
 };
 
-type LocaleStringDataProps = number | string | Date | undefined;
-export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (data === undefined || data === null || Number.isNaN(data)) {
-    return data;
-  }
-  culture = culture || undefined;
-  if (typeof data === 'number') {
-    return data.toLocaleString(culture);
-  } else if (typeof data === 'string' && !window.isNaN(Number(data))) {
-    const num = Number(data);
-    return num.toLocaleString(culture);
-  } else if (data instanceof Date) {
-    return data.toLocaleDateString(culture);
-  }
-  return data;
-};
-
 export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   const { node, xAxis } = rotateLabelProps;
   if (node === null || xAxis === null) {
@@ -1476,15 +1649,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueWithSIPrefix(value: number) {
-  let specifier: string;
-  if (value < 1000) {
-    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
-  } else {
-    specifier = '.1'; // upto 1 decimal place
-  }
-
-  return d3FormatPrefix(specifier, value)(value);
+export function formatScientificLimitWidth(value: number) {
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;
@@ -1494,14 +1660,15 @@ export const getBarWidth = (
   barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
   adjustedValue = DEFAULT_BAR_WIDTH,
+  modeProp?: string,
 ): number => {
   let barWidth: number;
-  if (typeof barWidthProp === 'number') {
-    barWidth = barWidthProp;
-  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
-    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
-  } else {
+  if (barWidthProp === 'auto' || modeProp === 'histogram') {
     barWidth = adjustedValue;
+  } else if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else {
+    barWidth = Math.min(adjustedValue, DEFAULT_BAR_WIDTH);
   }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);
@@ -1518,11 +1685,6 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
-};
-
-export const formatDate = (date: Date, useUTC?: boolean) => {
-  const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
-  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1627,3 +1789,11 @@ export function getCurveFactory(
       return defaultFactory;
   }
 }
+
+export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
+  if (str.length <= maxLength) {
+    return str;
+  }
+
+  return str.slice(0, maxLength) + ellipsis;
+};

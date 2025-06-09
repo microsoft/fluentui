@@ -11,8 +11,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/mocha": "7.0.2",
-    "mocha": "7.2.0",
+    "@types/mocha": "10.0.10",
+    "mocha": "11.2.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*",

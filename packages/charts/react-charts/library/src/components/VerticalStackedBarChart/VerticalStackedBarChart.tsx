@@ -35,7 +35,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -1014,7 +1014,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatValueWithSIPrefix(barLabel)}
+              {formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>
@@ -1061,7 +1061,8 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       ...getAccessibleDataObject(callOutAccessibilityData),
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
-      isCalloutForStack: props.isCalloutForStack || (_isHavingLines && _noLegendHighlighted()),
+      isCalloutForStack:
+        props.isCalloutForStack || (_isHavingLines && (_noLegendHighlighted() || _getHighlightedLegend().length > 1)),
       isCartesian: true,
       customCallout: {
         customizedCallout: _getCustomizedCallout() !== null ? _getCustomizedCallout()! : undefined,

@@ -104,32 +104,21 @@ export function decodeBase64Fields(plotlySchema: PlotlySchema): PlotlySchema {
 
   // Check if the data has changed
   if (JSON.stringify(plotlySchema.data) !== JSON.stringify(originalData)) {
-    let isNan = false;
-
     // Overwrite the 'y', 'x', or 'z' value with the decoded 'bdata'
     for (const item of plotlySchema.data || []) {
-      ['y', 'x', 'z'].forEach(key => {
+      ['y', 'x', 'z', 'r', 'theta'].forEach(key => {
         if (
           item[key as keyof typeof item] &&
           typeof item[key as keyof typeof item] === 'object' &&
           'bdata' in (item[key as keyof typeof item] as Record<string, number[]>)
         ) {
           const bdata = (item[key as keyof typeof item] as { bdata: number[] }).bdata;
-          if (Array.isArray(bdata) && bdata.some(x => typeof x === 'number' && isNaN(x))) {
-            isNan = true;
-          } else {
-            (item[key as keyof typeof item] as number[]) = bdata as number[];
-          }
+          (item[key as keyof typeof item] as number[]) = bdata as number[];
         }
       });
-      if (isNan) {
-        break;
-      }
     }
 
-    if (!isNan) {
-      return plotlySchema; // Return the decoded data
-    }
+    return plotlySchema; // Return the decoded data
   }
 
   plotlySchema.data = originalData; // Restore the original data if no changes were made

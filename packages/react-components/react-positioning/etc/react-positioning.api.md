@@ -6,6 +6,7 @@
 
 import type { GriffelStyle } from '@griffel/react';
 import * as React_2 from 'react';
+import { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -69,6 +70,19 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type PositioningBoundary = PositioningRect | HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
 // @public (undocumented)
+export type PositioningConfigurationFn = (params: {
+    container: HTMLElement;
+    arrow: HTMLElement | null;
+    options: PositioningConfigurationFnOptions;
+}) => PositioningConfigurationFnOptions;
+
+// @public (undocumented)
+export type PositioningConfigurationFnOptions = Omit<PositioningOptions, 'enabled' | 'onPositioningEnd' | 'positionFixed'>;
+
+// @public
+export const PositioningConfigurationProvider: React_2.Provider<PositioningConfigurationFn | undefined>;
+
+// @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
     setTarget: (target: TargetElement | null) => void;
@@ -113,6 +127,17 @@ export type PositioningVirtualElement = {
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public (undocumented)
+export type SafeBufferAreaOptions = {
+    debug?: boolean;
+    disabled?: boolean;
+    timeout?: number;
+    onSafeZoneEnter?: (e: React_2.MouseEvent) => void;
+    onSafeZoneMove?: (e: React_2.MouseEvent) => void;
+    onSafeZoneLeave?: (e: React_2.MouseEvent) => void;
+    onSafeZoneTimeout?: () => void;
+};
+
+// @public (undocumented)
 export type SetVirtualMouseTarget = (event: React_2.MouseEvent | MouseEvent | undefined | null) => void;
 
 // @internal (undocumented)
@@ -120,6 +145,13 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 
 // @internal
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
+
+// @public (undocumented)
+export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: SafeBufferAreaOptions): {
+    containerRef: RefObjectFunction<HTMLElement>;
+    targetRef: RefObjectFunction<HTMLElement>;
+    elementToRender: JSX.Element | null;
+};
 
 // (No @packageDocumentation comment for this package)
 

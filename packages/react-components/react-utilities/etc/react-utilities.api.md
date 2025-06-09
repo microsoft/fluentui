@@ -63,7 +63,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
+export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
@@ -95,6 +95,9 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 
 // @internal
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
+
+// @public
+export const getSlotClassNameProp_unstable: (slot: UnknownSlotProps) => string | undefined;
 
 // @public @deprecated
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
@@ -188,6 +191,12 @@ export interface PriorityQueue<T> {
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
+export interface RefAttributes<T> extends React_2.Attributes {
+    // (undocumented)
+    ref?: React_2.Ref<T> | undefined;
+}
+
+// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
 
 // @public
@@ -268,6 +277,9 @@ declare namespace slot {
 export { slot }
 
 // @internal
+export const SLOT_CLASS_NAME_PROP_SYMBOL: unique symbol;
+
+// @internal
 export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
 
 // @internal
@@ -283,6 +295,7 @@ export type SlotComponentType<Props> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    [SLOT_CLASS_NAME_PROP_SYMBOL]?: string;
 };
 
 // @public (undocumented)

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Stop and reinitialize autoplay on carousel when autoplay interval changes",
-  "packageName": "@fluentui/react-carousel",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -772,7 +772,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)
@@ -7768,7 +7768,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     overflowButtonAs?: IComponentAs<IButtonProps>;

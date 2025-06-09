@@ -167,6 +167,29 @@ export type Calendar = 'gregorian' | 'chinese' | 'coptic' | 'discworld' | 'ethio
 export type Color = string | number | Array<string | number | undefined | null> | Array<Array<string | number | undefined | null>>;
 
 // @public (undocumented)
+export interface ColorAxis {
+    // (undocumented)
+    cmax?: number;
+    // (undocumented)
+    cmin?: number;
+    // (undocumented)
+    colorbar?: {
+        title?: string | {
+            text: string;
+        };
+        thickness?: number;
+        len?: number;
+        outlinewidth?: number;
+    };
+    // (undocumented)
+    colorscale?: Array<[number, string]>;
+    // (undocumented)
+    reversescale?: boolean;
+    // (undocumented)
+    showscale?: boolean;
+}
+
+// @public (undocumented)
 export interface ColorBar {
     // (undocumented)
     bgcolor: Color;
@@ -373,6 +396,12 @@ export interface Font {
     weight: number;
 }
 
+// @public
+export const formatDateToLocaleString: (date: Date, culture?: string, useUtc?: boolean, showTZname?: boolean, options?: Intl.DateTimeFormatOptions) => string;
+
+// @public
+export const formatToLocaleString: (data: LocaleStringDataProps, culture?: string, useUtc?: boolean | string) => LocaleStringDataProps;
+
 // @public (undocumented)
 export interface Gauge {
     // (undocumented)
@@ -414,8 +443,14 @@ export interface GaugeLine {
     width: number;
 }
 
+// @public
+export function getMultiLevelDateTimeFormatOptions(startLevel?: number, endLevel?: number): Intl.DateTimeFormatOptions;
+
 // @public (undocumented)
 export const getValidSchema: (input: any) => PlotlySchema;
+
+// @public
+export function handleFloatingPointPrecisionError(num: number): number;
 
 // @public (undocumented)
 export interface HoverLabel extends Label {
@@ -456,7 +491,7 @@ export const isDate: (value: any) => boolean;
 export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
-export const isLineData: (data: Partial<PlotData>) => boolean;
+export const isInvalidValue: (value: any) => boolean;
 
 // @public (undocumented)
 export const isNumber: (value: any) => boolean;
@@ -465,7 +500,13 @@ export const isNumber: (value: any) => boolean;
 export const isNumberArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
+export const isStringArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
+
+// @public (undocumented)
 export function isTypedArray(a: any): boolean;
+
+// @public (undocumented)
+export const isYearArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export interface Label {
@@ -521,6 +562,14 @@ export interface Layout {
     // (undocumented)
     clickmode: 'event' | 'select' | 'event+select' | 'none';
     // (undocumented)
+    coloraxis: Partial<ColorAxis>;
+    // (undocumented)
+    colorscale: Array<[number, string]> | Partial<{
+        diverging: Array<[number, string]>;
+        sequential: Array<[number, string]>;
+        sequentialminus: Array<[number, string]>;
+    }>;
+    // (undocumented)
     colorway: string[];
     // (undocumented)
     datarevision: number | string;
@@ -572,6 +621,8 @@ export interface Layout {
     orientation: number;
     // (undocumented)
     paper_bgcolor: Color;
+    // (undocumented)
+    piecolorway: string[];
     // (undocumented)
     plot_bgcolor: Color;
     // (undocumented)
@@ -1070,6 +1121,22 @@ export interface PlotData {
     // (undocumented)
     branchvalues: 'total' | 'remainder';
     // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
+    };
+    // (undocumented)
     cliponaxis: boolean;
     // (undocumented)
     colorbar: Partial<ColorBar>;
@@ -1120,6 +1187,19 @@ export interface PlotData {
     gauge: Partial<Gauge>;
     // (undocumented)
     groupnorm: '' | 'fraction' | 'percent';
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
     // (undocumented)
     histfunc: 'count' | 'sum' | 'avg' | 'min' | 'max';
     // (undocumented)
@@ -1176,7 +1256,7 @@ export interface PlotData {
     // (undocumented)
     marker: Partial<PlotMarker>;
     // (undocumented)
-    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta';
+    mode: 'lines' | 'markers' | 'text' | 'lines+markers' | 'text+markers' | 'text+lines' | 'text+lines+markers' | 'none' | 'gauge' | 'number' | 'delta' | 'number+delta' | 'gauge+number' | 'gauge+number+delta' | 'gauge+delta' | 'markers+text';
     // (undocumented)
     name: string;
     // (undocumented)
@@ -1263,6 +1343,12 @@ export interface PlotData {
     y: Datum[] | Datum[][] | TypedArray;
     // (undocumented)
     yaxis: string;
+    // (undocumented)
+    ybins: {
+        start: number | string;
+        end: number | string;
+        size: number | string;
+    };
     // (undocumented)
     ygap: number;
     // (undocumented)
@@ -1847,6 +1933,41 @@ export interface ShapeLine {
     dash: Dash;
     // (undocumented)
     width: number;
+}
+
+// @public (undocumented)
+export interface TableData {
+    // (undocumented)
+    cells?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[][];
+        format: string | string[];
+        prefix: string | string[];
+        suffix: string | string[];
+    };
+    // (undocumented)
+    header?: {
+        align?: 'left' | 'center' | 'right' | ('left' | 'center' | 'right')[];
+        fill?: {
+            color?: Color | Color[];
+        };
+        font?: {
+            family?: string | string[];
+            size?: number | number[];
+            color?: Color | Color[];
+        };
+        values: (string | number | boolean | null)[];
+    };
+    // (undocumented)
+    type: 'table';
 }
 
 // @public (undocumented)

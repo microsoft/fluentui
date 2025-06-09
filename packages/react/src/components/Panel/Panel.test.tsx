@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 
 import { Panel } from './Panel';
 import { PanelBase } from './Panel.base';
@@ -44,7 +43,6 @@ describe('Panel', () => {
   describe('open', () => {
     afterEach(() => {
       if (div) {
-        ReactDOM.unmountComponentAtNode(div);
         div = undefined;
       }
     });
@@ -69,25 +67,33 @@ describe('Panel', () => {
       );
 
       expect(panel.current).toBeDefined();
-      panel.current!.open();
+      act(() => {
+        panel.current!.open();
+      });
 
       expect(onOpen).toHaveBeenCalledTimes(1);
       expect(onOpened).toHaveBeenCalledTimes(0);
 
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
 
       expect(onOpened).toHaveBeenCalledTimes(1);
 
       expect(onDismiss).toHaveBeenCalledTimes(0);
       expect(onDimissed).toHaveBeenCalledTimes(0);
 
-      panel.current!.dismiss();
+      act(() => {
+        panel.current!.dismiss();
+      });
 
       // Dismiss should only be called once per dismiss.
       expect(onDismiss).toHaveBeenCalledTimes(1);
       expect(onDimissed).toHaveBeenCalledTimes(0);
 
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
 
       expect(onDimissed).toHaveBeenCalledTimes(1);
     });
@@ -111,7 +117,9 @@ describe('Panel', () => {
       expect(onOpen).toHaveBeenCalledTimes(1);
       expect(onOpened).toHaveBeenCalledTimes(0);
 
-      jest.runOnlyPendingTimers();
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
 
       expect(onOpened).toHaveBeenCalledTimes(1);
       expect(onDismiss).toHaveBeenCalledTimes(0);
@@ -120,8 +128,9 @@ describe('Panel', () => {
 
       expect(onDismissed).toHaveBeenCalledTimes(0);
 
-      jest.runOnlyPendingTimers();
-
+      act(() => {
+        jest.runOnlyPendingTimers();
+      });
       expect(onDismissed).toHaveBeenCalledTimes(1);
     });
   });

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 01 Apr 2025 15:08:01 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Jun 2025 13:15:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.24.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.8)
+
+Fri, 06 Jun 2025 13:15:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.7..@fluentui/react-tabster_v9.24.8)
+
+### Patches
+
+- Bumping Tabster to 8.5.5 ([PR #34395](https://github.com/microsoft/fluentui/pull/34395) by marata@microsoft.com)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.24.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.7)
+
+Wed, 14 May 2025 18:49:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.6..@fluentui/react-tabster_v9.24.7)
+
+### Patches
+
+- Apply focus visible attribute on navigation state change ([PR #34426](https://github.com/microsoft/fluentui/pull/34426) by lingfangao@hotmail.com)
+
+## [9.24.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.6)
+
+Thu, 24 Apr 2025 09:59:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.5..@fluentui/react-tabster_v9.24.6)
+
+### Patches
+
+- fix:  use useLayoutEffect() for Tabster creation ([PR #34315](https://github.com/microsoft/fluentui/pull/34315) by olfedias@microsoft.com)
+
+## [9.24.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.5)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.24.4..@fluentui/react-tabster_v9.24.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
 
 ## [9.24.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.24.4)
 

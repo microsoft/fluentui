@@ -1,8 +1,26 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 21 Feb 2025 07:22:41 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.22)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.21..@fluentui/utilities_v8.15.22)
+
+### Patches
+
+- fix: v8 react 18 integration tests type issues ([PR #34319](https://github.com/microsoft/fluentui/pull/34319) by dmytrokirpa@microsoft.com)
+
+## [8.15.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.21)
+
+Thu, 08 May 2025 07:22:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.20..@fluentui/utilities_v8.15.21)
+
+### Patches
+
+- Bump @fluentui/react-window-provider to v2.2.30 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
 
 ## [8.15.20](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.20)
 

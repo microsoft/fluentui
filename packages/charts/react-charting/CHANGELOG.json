@@ -2,6 +2,731 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 06 Jun 2025 07:20:30 GMT",
+      "tag": "@fluentui/react-charting_v5.24.2",
+      "version": "5.24.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "53d7bf53544a0ebba8eca3207ced15013d06b088",
+            "comment": "add labels for text+markers"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a3c3f0a6c5a72080ab3b7f31a6d1373f9967a9d0",
+            "comment": "fix(react-charting): Colorscale support for bar charts"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bb2c83c0740c445d308ae2bb14100bf37a1ad8a8",
+            "comment": "fix(react-charting):Date Axis Support for Vertical Stacked Bar Chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Jun 2025 07:20:36 GMT",
+      "tag": "@fluentui/react-charting_v5.24.1",
+      "version": "5.24.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3c4faa17c7314e3a72b239eeb6740a4b3203c5d6",
+            "comment": "fix(react-charting): Fixing line color mismatch"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jun 2025 07:20:27 GMT",
+      "tag": "@fluentui/react-charting_v5.24.0",
+      "version": "5.24.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "16896ab41762aa5b0d8c0d50f2037d7ae57e0adc",
+            "comment": "pie chart fix"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9bb677885774dba335492101f97f3d6e0a34ebf9",
+            "comment": "feat: add support for string y-axis in VSBC"
+          }
+        ],
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ac3d6be1e465b781c601b22b6a20358bbbcb4a9",
+            "comment": "feat(react-charting): Improve locale aware date and number label formatting"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.15",
+            "commit": "9bb677885774dba335492101f97f3d6e0a34ebf9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jun 2025 07:20:41 GMT",
+      "tag": "@fluentui/react-charting_v5.23.97",
+      "version": "5.23.97",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "14cd5d59f87aa416c579af2fb4bf8fbe4006faf5",
+            "comment": "fix(react-charting): Use colorscale for Grouped Vertical Bar chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "69378d8f06f462504866e59ecd3e360ff0b0871c",
+            "comment": "Add styling to tables"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "19a140fd14d467d133acd7527e97484eae78aaf9",
+            "comment": "fix(react-charting): Move isInvalid function to chart-utilities"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.14",
+            "commit": "228c9e24a8dc443fd756d841b52c231f9e697e92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 May 2025 07:20:28 GMT",
+      "tag": "@fluentui/react-charting_v5.23.96",
+      "version": "5.23.96",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9449bf78f8c3e7492198db6817f6f7b128a8ad57",
+            "comment": "fix(react-charting): use piecolorway for donut/pie charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.13",
+            "commit": "e729e4ea591ad577768fa1bc9eb3df19693e4574"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 May 2025 07:21:46 GMT",
+      "tag": "@fluentui/react-charting_v5.23.95",
+      "version": "5.23.95",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.209",
+            "commit": "4d7465d131910b95fba826b123d8d965f3360727"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.123.0",
+            "commit": "4d7465d131910b95fba826b123d8d965f3360727"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 May 2025 07:21:48 GMT",
+      "tag": "@fluentui/react-charting_v5.23.94",
+      "version": "5.23.94",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5311067472d31cf9077f0ae7a6a49e2e49e556cc",
+            "comment": "fix(declarative-charts): thin bars fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 May 2025 07:20:26 GMT",
+      "tag": "@fluentui/react-charting_v5.23.93",
+      "version": "5.23.93",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5e8d6af41f45b7dd42ef5b34604a5b4d4f47e820",
+            "comment": "fix(react-charting): Use colorscale for heatmap charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.12",
+            "commit": "5e8d6af41f45b7dd42ef5b34604a5b4d4f47e820"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 May 2025 07:20:14 GMT",
+      "tag": "@fluentui/react-charting_v5.23.92",
+      "version": "5.23.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "09ecc559495360840c36e4590aa5ee45f83f47bc",
+            "comment": "fix bar gap issue in VSBC"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5fa34f6ba016b5d953c3f7efb3c62bd6f419819d",
+            "comment": "fix: enable rendering optimization for large datasets + clear large variables after use during image export"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6393c3bcb031616e8c385461f6f4a745931e9a10",
+            "comment": "support combination of lines and markers"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5dffe23c9c0b906040240190c34d1f9cfadcecf3",
+            "comment": "fix: filter out null values"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.11",
+            "commit": "3ecfb8c6af1077247cd8d57f493d79e60eb3ef49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 May 2025 07:20:20 GMT",
+      "tag": "@fluentui/react-charting_v5.23.91",
+      "version": "5.23.91",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5a784167c6f927314f4b3d042a36be35fe8b4bee",
+            "comment": "fix(declarative-chart): negative VSBC only lines case fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 May 2025 07:21:43 GMT",
+      "tag": "@fluentui/react-charting_v5.23.90",
+      "version": "5.23.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c5c83ae3f0176456fa74ff3ef2c4318701f3cbf5",
+            "comment": "fix(react-charting): remove duplicate legends"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.208",
+            "commit": "ce3f089aaa0348897f620403506845152b4cd6e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.19",
+            "commit": "ce3f089aaa0348897f620403506845152b4cd6e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 May 2025 07:20:52 GMT",
+      "tag": "@fluentui/react-charting_v5.23.89",
+      "version": "5.23.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "476da26ac7f9e707402a6cdda47d234051847881",
+            "comment": "feat(react-charting): Create plotly aligned colorway"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b46461599a16936c70da9e8ae1218fc7ec6038da",
+            "comment": "Add support for plotly generated tables"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ceca154d348925383de372f80dc55605828b75bd",
+            "comment": "fix(react-charting): Use schema colors for other charts"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6aecbd5ab7a90a37dfb7d13cbf5c0cebd5f7e11c",
+            "comment": "fix(react-charting): Enable rounded corners"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.10",
+            "commit": "bad3c30d00bc16db4b77551d3f08ca3e7c9b9801"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 May 2025 07:22:04 GMT",
+      "tag": "@fluentui/react-charting_v5.23.88",
+      "version": "5.23.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f81fca983d21022c0802a24dcb010a16fe6a37d5",
+            "comment": "fix(react-charting): Use schema colors for all bar charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.9",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.25",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.207",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.18",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 May 2025 07:21:16 GMT",
+      "tag": "@fluentui/react-charting_v5.23.87",
+      "version": "5.23.87",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d73703371df2371ea30b7141cb79ad0ab23caf42",
+            "comment": "fix(react-charting): Support for using provided schema colors in declarative charts "
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c1533df8275015e3f6057c765e62916827d9247e",
+            "comment": "fix(react-charting): Use schema colors for scatter declarative charts"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a35b945befa2e48b186243462b623ffca6043d0e",
+            "comment": "fix: adjust y-axis title position to reduce overlap with tick labels"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 May 2025 07:21:03 GMT",
+      "tag": "@fluentui/react-charting_v5.23.86",
+      "version": "5.23.86",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f71c8aa217455b6a3197f686d2b112d4f65ed3fe",
+            "comment": "fix(react-charting) Cleanup function removed upstream"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f1297ebee8766578b5718870c031ed6cc58fc266",
+            "comment": "fix: enable interaction with line points without corresponding bars in VSBC"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "24fac775a857b02d92e1517cac47201ad18542e1",
+            "comment": "fix(react-charting): Consider year as categorical instead of numerical continuous "
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.8",
+            "commit": "f71c8aa217455b6a3197f686d2b112d4f65ed3fe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 May 2025 07:20:47 GMT",
+      "tag": "@fluentui/react-charting_v5.23.85",
+      "version": "5.23.85",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e12e4d0770fc6d526daf198e24e32885a0f5f190",
+            "comment": "make Legends dotted"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0b69287d85f25038a38488861a23f9bf6d4a28e3",
+            "comment": "feat(react-charting): Rehaul default date label formatting"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5c55efc73f551bfdf70b5492da9e5b8a694f4653",
+            "comment": "fix(react-charting): Fixing overlapping bars in Horizontal bar chart with Axis"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.7",
+            "commit": "c885b843ef7ef362dd77bc71433815a26ad08574"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 May 2025 07:20:31 GMT",
+      "tag": "@fluentui/react-charting_v5.23.84",
+      "version": "5.23.84",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "14e63a718e92ff54eb479949074aff36a06646c7",
+            "comment": "fix(react-charting): Parse date from number object"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0b1e43c7304bde071a3ed014fd914e6e0f2d155f",
+            "comment": "feat(react-charting): Negative y axis support in gvbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 May 2025 07:21:57 GMT",
+      "tag": "@fluentui/react-charting_v5.23.83",
+      "version": "5.23.83",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8df021f6234e2934de235dc9b2c602c1242f099d",
+            "comment": "fix(react-charting): High contrast bug fixes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 May 2025 07:22:41 GMT",
+      "tag": "@fluentui/react-charting_v5.23.82",
+      "version": "5.23.82",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c",
+            "comment": "fix(react-charting): Handling missing and duplicate values in Area chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.24",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.206",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.17",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 May 2025 07:20:51 GMT",
+      "tag": "@fluentui/react-charting_v5.23.81",
+      "version": "5.23.81",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5dd9a6d47375ef647a5d143d315681275608904d",
+            "comment": "fix: use system colors with HighContrastSelector instead of color scheme selectors"
+          },
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "94096dd09224a7ef7ab362942a895d4c80fef21c",
+            "comment": "fix(react-charting): Fixing area chart bugs for undefined property access"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "121d2bf316e244264c250bc51de5244c355684d9",
+            "comment": "fix: handle empty Plotly trace names and respect showlegend property to hide legends"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 May 2025 07:20:26 GMT",
+      "tag": "@fluentui/react-charting_v5.23.80",
+      "version": "5.23.80",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f4294bea66d3de91319d82f3e47790a350b42239",
+            "comment": "fix(react-charting): Enable support for negative Y for horizontal bar chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 May 2025 07:20:19 GMT",
+      "tag": "@fluentui/react-charting_v5.23.79",
+      "version": "5.23.79",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b1750279f120656090a0d22f5b7e9a2cb50f7d75",
+            "comment": "feat: add support for stacked bars in GVBC"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Apr 2025 07:20:25 GMT",
+      "tag": "@fluentui/react-charting_v5.23.78",
+      "version": "5.23.78",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f5d76970187c11353c3387e2074949f376cea9f8",
+            "comment": "feat(react-charting): Adding support for negative x-axis values for Horizontal bar chart with Axis"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "efcf833b1d4f27534499db252d9501079fd8530e",
+            "comment": "fix: set button role for event labels in line chart"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "849b8f2ac52bfa6cfa694b925801f5d3f7152a63",
+            "comment": "Negative y value support in VSBC"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Apr 2025 07:22:20 GMT",
+      "tag": "@fluentui/react-charting_v5.23.77",
+      "version": "5.23.77",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d5a68900c2069d2e1c9dfe2f65278af9e381c40c",
+            "comment": "feat: add support for secondary y-axis in cartesian charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.205",
+            "commit": "27891bf50d50f5c2c76cd4c43b2851b5098275db"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.16",
+            "commit": "27891bf50d50f5c2c76cd4c43b2851b5098275db"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Apr 2025 07:20:43 GMT",
+      "tag": "@fluentui/react-charting_v5.23.76",
+      "version": "5.23.76",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "cff1cb248555dda6c735de3b83e009ff9fb0cbac",
+            "comment": "fix(react-charting): Fixing legends disappear when hovering over the scrollbar in more legends"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Apr 2025 07:20:42 GMT",
+      "tag": "@fluentui/react-charting_v5.23.75",
+      "version": "5.23.75",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c58269abf0e5b52715ac617fa80828ae6b26a80b",
+            "comment": "feat(react-charting): Add support for scatter polar chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Apr 2025 07:21:12 GMT",
+      "tag": "@fluentui/react-charting_v5.23.74",
+      "version": "5.23.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8ef09323ee9e2b9460b9389a245d84f02b49ede3",
+            "comment": "fix(react-charting):Fixing duplicate key values in series for Grouped Vertical Bar Chart"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "03df65ab40acbb9238d925a21ef6bdeb2d87074b",
+            "comment": "feat: add histogram mode to vertical bar chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Apr 2025 07:22:26 GMT",
+      "tag": "@fluentui/react-charting_v5.23.73",
+      "version": "5.23.73",
+      "comments": {
+        "patch": [
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "96fd9a0429eb73f2baa17897602c6e8226260d04",
+            "comment": "Legends order fix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Apr 2025 07:22:06 GMT",
+      "tag": "@fluentui/react-charting_v5.23.72",
+      "version": "5.23.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0612fecdfb4d558ae1cd991b6fb84ba8220321d",
+            "comment": "feat: transform plotly histogram2d trace to heatmap props"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5c401aa875ddb230d073a0091a16481d0ae58ad4",
+            "comment": "Implement stacked HBC with axis"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.23",
+            "commit": "1e27b5f3579acf0392460ae6188e8c912fcd9e30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.204",
+            "commit": "1e27b5f3579acf0392460ae6188e8c912fcd9e30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.122.15",
+            "commit": "1e27b5f3579acf0392460ae6188e8c912fcd9e30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Apr 2025 07:20:22 GMT",
       "tag": "@fluentui/react-charting_v5.23.71",
       "version": "5.23.71",

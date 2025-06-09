@@ -8,13 +8,13 @@ export interface IBasestate {
   _height?: number;
   activeLegend?: string;
   color?: string;
-  dataForHoverCard?: number;
+  dataForHoverCard?: number | string;
   isCalloutVisible: boolean;
   isLegendSelected?: boolean;
   isLegendHovered?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  YValueHover?: { legend?: string; y?: number | string; color?: string }[];
   hoverYValue?: string | number | null;
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
@@ -347,6 +347,11 @@ export interface ILineChartDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
 }
 
 /**
@@ -409,6 +414,27 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'lines'
+    | 'markers'
+    | 'text'
+    | 'lines+markers'
+    | 'text+markers'
+    | 'text+lines'
+    | 'text+lines+markers'
+    | 'none'
+    | 'gauge'
+    | 'number'
+    | 'delta'
+    | 'number+delta'
+    | 'gauge+number'
+    | 'gauge+number+delta'
+    | 'gauge+delta'
+    | 'markers+text';
 }
 
 /**
@@ -465,6 +491,12 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking  line
    */
   onLineClick?: () => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**
@@ -580,7 +612,7 @@ export interface IVSChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  data: number;
+  data: number | string;
 
   /**
    * Legend text for the datapoint in the chart
@@ -649,13 +681,18 @@ export interface IVerticalStackedChartProps {
  * {@docCategory IChartData}
  */
 export interface ILineDataInVerticalStackedBarChart {
-  y: number;
+  y: number | string;
   color: string;
   legend: string;
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+  /**
    * Data to show in callout
    */
-  data?: number;
+  data?: number | string;
   yAxisCalloutData?: string;
   /**
    * Whether to use the secondary y scale or not
@@ -719,6 +756,12 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**

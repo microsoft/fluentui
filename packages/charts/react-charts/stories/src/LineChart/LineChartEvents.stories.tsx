@@ -115,31 +115,35 @@ export const LineChartEvents = (props: LineChartProps) => {
 
   return (
     <>
-      <label htmlFor="changeWidth_Events">Change Width:</label>
-      <input
-        type="range"
-        value={width}
-        min={200}
-        max={1000}
-        onChange={_onWidthChange}
-        id="changeWidth_Events"
-        aria-valuetext={`ChangeWidthSlider${width}`}
-      />
-      <label htmlFor="changeHeight_Events">Change Height:</label>
-      <input
-        type="range"
-        value={height}
-        min={200}
-        max={1000}
-        id="changeHeight_Events"
-        onChange={_onHeightChange}
-        aria-valuetext={`ChangeHeightslider${height}`}
-      />
-      <Switch
-        label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
-        onChange={_onShapeChange}
-        checked={allowMultipleShapes}
-      />
+      <div style={{ display: 'flex' }}>
+        <label htmlFor="changeWidth_Events">Change Width:</label>
+        <input
+          type="range"
+          value={width}
+          min={200}
+          max={1000}
+          onChange={_onWidthChange}
+          id="changeWidth_Events"
+          aria-valuetext={`ChangeWidthSlider${width}`}
+        />
+        <label htmlFor="changeHeight_Events">Change Height:</label>
+        <input
+          type="range"
+          value={height}
+          min={200}
+          max={1000}
+          id="changeHeight_Events"
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightslider${height}`}
+        />
+        <Switch
+          label={
+            allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'
+          }
+          onChange={_onShapeChange}
+          checked={allowMultipleShapes}
+        />
+      </div>
       <div style={{ marginTop: '10px' }}>
         <Label htmlFor="color-select">Use Custom Color for Event Annotation</Label>
         <input

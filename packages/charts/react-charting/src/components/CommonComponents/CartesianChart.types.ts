@@ -473,7 +473,7 @@ export interface ICartesianChartProps {
 
 export interface IYValueHover {
   legend?: string;
-  y?: number;
+  y?: number | string;
   color?: string;
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
@@ -486,7 +486,7 @@ export interface IChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;
@@ -641,6 +641,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /** Callback method to get extra margins for domain */
   getDomainMargins?: (containerWidth: number) => IMargins;
 
+  /** Callback method to get extra margins for Y-axis domain */
+  getYDomainMargins?: (containerHeight: number) => IMargins;
+
   /** Padding between each bar/line-point */
   xAxisInnerPadding?: number;
 
@@ -670,6 +673,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   getMinMaxOfYAxis: (
     points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
     yAxisType: YAxisType | undefined,
+    useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };
 
   /**
@@ -714,10 +718,17 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     dataPoints: string[],
     isRtl: boolean,
     barWidth: number | undefined,
+    chartType?: ChartTypes,
   ) => ScaleBand<string>;
 
   /**
    * Callback to access the public methods and properties of the component.
    */
   ref?: IRefObject<IChart>;
+
+  /**
+   * Controls whether the numeric x-axis domain should be extended to start and end at nice rounded values.
+   * @default true
+   */
+  showRoundOffXTickValues?: boolean;
 }

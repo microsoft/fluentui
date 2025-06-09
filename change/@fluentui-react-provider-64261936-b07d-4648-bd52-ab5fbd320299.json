@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: fix infite loop caused by hydration errors in React 18",
-  "packageName": "@fluentui/react-provider",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}
