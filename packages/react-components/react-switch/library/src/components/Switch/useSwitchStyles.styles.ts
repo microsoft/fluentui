@@ -17,6 +17,8 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
+const thumbHeight = `calc(${semanticTokens.ctrlChoiceSwitchHeight} - (${semanticTokens.ctrlChoiceSwitchPaddingRest} * 2))`;
+
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'flex-start',
   boxSizing: 'border-box',
@@ -33,13 +35,12 @@ const useRootStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
+  boxSizing: 'border-box',
   borderRadius: semanticTokens.ctrlChoiceSwitchCorner,
   borderStyle: 'solid',
   lineHeight: 0,
-  boxSizing: 'border-box',
   fill: 'currentColor',
   flexShrink: 0,
-  fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthRest,
   height: semanticTokens.ctrlChoiceSwitchHeight,
   margin: semanticTokens.ctrlChoicePaddingVertical + ' ' + semanticTokens.ctrlChoicePaddingHorizontal,
   pointerEvents: 'none',
@@ -47,14 +48,6 @@ const useIndicatorBaseClassName = makeResetStyles({
   transitionTimingFunction: tokens.curveEasyEase,
   transitionProperty: 'background, border, color',
   width: semanticTokens.ctrlChoiceSwitchWidth,
-
-  ':hover': {
-    fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthHover,
-  },
-
-  ':hover:active': {
-    fontSize: semanticTokens.ctrlChoiceSwitchThumbWidthPressed,
-  },
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
@@ -68,6 +61,11 @@ const useIndicatorBaseClassName = makeResetStyles({
   },
 
   '> *': {
+    position: 'relative',
+    height: thumbHeight,
+    width: semanticTokens.ctrlChoiceSwitchThumbWidthRest,
+    fontSize: thumbHeight,
+    top: `calc(50% - ${thumbHeight} / 2)`,
     transitionDuration: tokens.durationNormal,
     transitionTimingFunction: tokens.curveEasyEase,
     transitionProperty: 'transform',
@@ -94,7 +92,7 @@ const useInputBaseClassName = makeResetStyles({
 
   // Calculate the width of the hidden input by taking into account the size of the indicator + the padding around it.
   // This is done so that clicking on that "empty space" still toggles the switch.
-  width: `calc(${semanticTokens.ctrlChoiceSwitchWidth} + 2 * ${semanticTokens.ctrlChoicePaddingHorizontal})`,
+  width: `calc(${semanticTokens.ctrlChoiceSwitchWidth} + (2 * ${semanticTokens.ctrlChoicePaddingHorizontal}))`,
 
   // Checked (both enabled and disabled)
   ':checked': {
@@ -103,25 +101,15 @@ const useInputBaseClassName = makeResetStyles({
         transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthRest} - ${semanticTokens.ctrlChoiceSwitchPaddingRest}))`,
       },
     },
-    ':hover': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        '> *': {
-          transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthHover} - ${semanticTokens.ctrlChoiceSwitchPaddingHover}))`,
-        },
-      },
-    },
-    ':hover:active': {
-      [`& ~ .${switchClassNames.indicator}`]: {
-        '> *': {
-          transform: `translateX(calc(${semanticTokens.ctrlChoiceSwitchWidth} - ${semanticTokens.ctrlChoiceSwitchThumbWidthPressed} - ${semanticTokens.ctrlChoiceSwitchPaddingPressed}))`,
-        },
-      },
-    },
   },
 
   // Disabled (both checked and unchecked)
   ':disabled': {
     cursor: 'default',
+
+    [`& ~ .${switchClassNames.indicator}`]: {
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
+    },
 
     [`& ~ .${switchClassNames.label}`]: {
       cursor: 'default',

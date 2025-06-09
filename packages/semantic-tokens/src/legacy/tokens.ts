@@ -125,11 +125,6 @@ export const colorNeutralForeground3 = 'var(--colorNeutralForeground3)';
  */
 export const fontSizeBase300 = 'var(--fontSizeBase300)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#colorTransparentBackgroundHover | `colorTransparentBackgroundHover`} design token.
- * @public
- */
-export const colorTransparentBackgroundHover = 'var(--colorTransparentBackgroundHover)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStrokeDisabled | `colorNeutralStrokeDisabled`} design token.
  * @public
  */
