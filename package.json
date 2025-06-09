@@ -1,11 +1,13 @@
 {
-  "name": "@fluentui/fluentui-repo",
+  "name": "@NBS-Sandbox/fluentui",
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Microsoft 365.",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": "^20.0.0 || ^22.0.0"
