@@ -2,6 +2,81 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Fri, 06 Jun 2025 13:15:14 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.13.9",
+      "version": "0.13.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3c10831c5273837162504c1f887b031c1039472a",
+            "comment": "fix: Change Nav icon display animations to opacity animations"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "44cad034475803533a2b659ae02adab213c8d4e7",
+            "comment": "fix: focus borders being cut-off"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-aria to v9.14.8",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-button to v9.4.8",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-tooltip to v9.6.8",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.77",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-divider to v9.2.87",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.7.10",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.55",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.24.8",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.20.0",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 May 2025 18:49:20 GMT",
       "tag": "@fluentui/react-nav-preview_v0.13.8",
       "version": "0.13.8",
