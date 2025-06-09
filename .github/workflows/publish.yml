@@ -3,8 +3,12 @@ name: Publish Fluent UI Custom
 on:
   push:
     tags:
-      - 'v*.*.*'      # Triggers on version tag pushes
+      - 'v*.*.*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.1)'
+        required: true
 
 permissions:
   contents: read
@@ -24,6 +28,16 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@NBS-Sandbox'
+
+      - name: Set version from tag (if tag push)
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          npm version $VERSION --no-git-tag-version
+
+      - name: Set version from input (if manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Install dependencies & build
         run: npm install --legacy-peer-deps
