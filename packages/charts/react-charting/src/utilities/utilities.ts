@@ -187,7 +187,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
-  return { xScale: xAxisScale, tickValues };
+  return { xScale: xAxisScale, tickValues, xAxis };
 }
 
 function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) {
@@ -280,7 +280,7 @@ export function createDateXAxis(
     // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
     return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date, undefined, useUTC);
   });
-  return { xScale: xAxisScale, tickValues };
+  return { xScale: xAxisScale, tickValues, xAxis };
 }
 
 /**
@@ -317,7 +317,7 @@ export function createStringXAxis(
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  return { xScale: xAxisScale, tickValues: dataset };
+  return { xScale: xAxisScale, tickValues: dataset, xAxis };
 }
 
 /**

@@ -26,6 +26,9 @@ import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { ChartPopover } from './ChartPopover';
 import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ResponsiveContainer } from './ResponsiveContainer';
+import { useAxis } from './hooks/useAxis';
+import { Axis } from './Axis';
+import AxisProvider from './AxisProvider';
 
 /**
  * Cartesian Chart component
@@ -38,9 +41,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
   const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElement = React.useRef<SVGSVGElement>();
-  const yAxisElementSecondary = React.useRef<SVGSVGElement>();
+  const { xAxisElement, yAxisElement, yAxisElementSecondary } = useAxis();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   let _reqID: number;
@@ -50,6 +51,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
   const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
+  let xAxis: any;
   let isIntegralDataset: boolean = true;
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
@@ -136,7 +138,12 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
   }, [props, prevProps]);
 
   React.useEffect(() => {
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+    if (
+      !props.wrapXAxisLables &&
+      props.rotateXAxisLables &&
+      props.xAxisType! === XAxisTypes.StringAxis &&
+      xAxisElement.current
+    ) {
       const rotateLabelProps = {
         node: xAxisElement.current!,
         xAxis: _xScale,
@@ -251,10 +258,10 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
     let tickValues: (string | number)[];
     switch (props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
+        ({ xScale, tickValues, xAxis } = createNumericXAxis(XAxisParams, props.tickParams!, props.chartType, culture));
         break;
       case XAxisTypes.DateAxis:
-        ({ xScale, tickValues } = createDateXAxis(
+        ({ xScale, tickValues, xAxis } = createDateXAxis(
           XAxisParams,
           props.tickParams!,
           culture,
@@ -265,7 +272,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
         ));
         break;
       case XAxisTypes.StringAxis:
-        ({ xScale, tickValues } = createStringXAxis(
+        ({ xScale, tickValues, xAxis } = createStringXAxis(
           XAxisParams,
           props.tickParams!,
           props.datasetForXAxisDomain!,
@@ -277,6 +284,7 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
     }
     _xScale = xScale;
     _tickValues = tickValues;
+    xAxis = xAxis;
 
     /*
      * To enable wrapping of x axis tick values or to display complete x axis tick values,
@@ -512,112 +520,63 @@ const CartesianChartBase: React.FunctionComponent<ModifiedCartesianChartProps> =
    */
 
   return (
-    <div
-      id={idForGraph}
-      className={classes.root}
-      role={'presentation'}
-      ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
-      onMouseLeave={_onChartLeave}
-    >
-      <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
-        {_isFirstRender.current}
-        <svg
-          width={svgDimensions.width}
-          height={svgDimensions.height}
-          aria-label={props.chartTitle}
-          style={{ display: 'block' }}
-          {...svgProps}
-        >
-          <g
-            ref={(e: SVGSVGElement | null) => {
-              xAxisElement.current = e!;
-            }}
-            id={`xAxisGElement${idForGraph}`}
-            // To add wrap of x axis lables feature, need to remove word height from svg height.
-            transform={`translate(0, ${svgDimensions.height - margins.bottom! - removalValueForTextTuncate!})`}
-            className={classes.xAxis}
-          />
-          {props.xAxisTitle !== undefined && props.xAxisTitle !== '' && (
-            <SVGTooltipText
-              content={props.xAxisTitle}
-              textProps={{
-                x: margins.left! + startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                y: svgDimensions.height - titleMargin,
-                className: classes.axisTitle!,
-                textAnchor: 'middle',
-              }}
-              maxWidth={xAxisTitleMaximumAllowedWidth}
-              wrapContent={wrapContent}
-            />
-          )}
-          <g
-            ref={(e: SVGSVGElement | null) => {
-              yAxisElement.current = e!;
-            }}
-            id={`yAxisGElement${idForGraph}`}
-            transform={`translate(${
-              _useRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
-            }, 0)`}
-            className={classes.yAxis}
-          />
-          {props.secondaryYScaleOptions && (
-            <g>
-              <g
-                ref={(e: SVGSVGElement | null) => {
-                  yAxisElementSecondary.current = e!;
-                }}
-                id={`yAxisGElementSecondary${idForGraph}`}
-                transform={`translate(${_useRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
-                className={classes.yAxis}
-              />
-              {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
-                <SVGTooltipText
-                  content={props.secondaryYAxistitle}
-                  textProps={{
-                    x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + removalValueForTextTuncate!,
-                    y: _useRtl ? startFromX - titleMargin : svgDimensions.width - margins.right!,
-                    textAnchor: 'middle',
-                    transform: `translate(${
-                      _useRtl ? margins.right! / 2 - titleMargin : margins.right! / 2 + titleMargin
-                    },
-                 ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
-                    className: classes.axisTitle!,
-                  }}
-                  maxWidth={yAxisTitleMaximumAllowedHeight}
+    <AxisProvider>
+      {({ xAxisElement, yAxisElement, yAxisElementSecondary }) => {
+        xAxisElement.current = xAxisElement;
+        yAxisElement.current = yAxisElement;
+        yAxisElementSecondary.current = yAxisElementSecondary;
+        return (
+          <div
+            id={idForGraph}
+            className={classes.root}
+            role={'presentation'}
+            ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
+            onMouseLeave={_onChartLeave}
+          >
+            <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
+              {_isFirstRender.current}
+              <svg
+                width={svgDimensions.width}
+                height={svgDimensions.height}
+                aria-label={props.chartTitle}
+                style={{ display: 'block' }}
+                {...svgProps}
+              >
+                <Axis
+                  xAxisTitle={props.xAxisTitle}
+                  yAxisTitle={props.yAxisTitle}
+                  secondaryYAxistitle={props.secondaryYAxistitle}
+                  margins={margins}
+                  svgDimensions={svgDimensions}
+                  isRtl={false}
+                  classNames={classes}
+                  theme={props.theme!}
                   wrapContent={wrapContent}
+                  titleMargin={titleMargin}
+                  startFromX={startFromX}
+                  yAxisTitleMaximumAllowedHeight={yAxisTitleMaximumAllowedHeight}
+                  xAxisTitleMaximumAllowedWidth={xAxisTitleMaximumAllowedWidth}
+                  xScale={_xScale}
+                  xAxis={xAxis}
+                  xAxisElement={(element: SVGSVGElement) => (xAxisElement.current = element)}
+                  yAxisElement={(element: SVGSVGElement) => (yAxisElement.current = element)}
+                  yAxisElementSecondary={(element: SVGSVGElement) => (yAxisElementSecondary.current = element)}
                 />
-              )}
-            </g>
-          )}
-          {children}
-          {props.yAxisTitle !== undefined && props.yAxisTitle !== '' && (
-            <SVGTooltipText
-              content={props.yAxisTitle}
-              textProps={{
-                x: (yAxisTitleMaximumAllowedHeight - margins.bottom!) / 2 + removalValueForTextTuncate!,
-                y: _useRtl
-                  ? svgDimensions.width - margins.right! / 2 + titleMargin
-                  : margins.left! / 2 + startFromX - titleMargin,
-                textAnchor: 'middle',
-                transform: `translate(0,
-                 ${svgDimensions.height - margins.bottom! - margins.top! - titleMargin})rotate(-90)`,
-                className: classes.axisTitle!,
-              }}
-              maxWidth={yAxisTitleMaximumAllowedHeight}
-              wrapContent={wrapContent}
-            />
-          )}
-        </svg>
-      </div>
+                {children}
+              </svg>
+            </div>
 
-      {!props.hideLegend && (
-        <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
-          {props.legendBars}
-        </div>
-      )}
-      {/** The callout is used for narration, so keep it mounted on the DOM */}
-      {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
-    </div>
+            {!props.hideLegend && (
+              <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
+                {props.legendBars}
+              </div>
+            )}
+            {/** The callout is used for narration, so keep it mounted on the DOM */}
+            {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
+          </div>
+        );
+      }}
+    </AxisProvider>
   );
 });
 
