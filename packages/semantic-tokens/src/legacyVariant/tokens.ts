@@ -47,6 +47,7 @@ import {
   colorTransparentStroke,
   spacingVerticalXXS,
   colorNeutralForeground3Hover,
+  colorNeutralForeground2Hover,
   colorNeutralForeground2,
 } from '../legacy/tokens';
 import {
@@ -315,7 +316,7 @@ export const _ctrlTreeIconOnSubtlePressed = `var(${foregroundCtrlOnSubtlePressed
  * This token is not intended for use in new semantic theme implementations
  * please use foregroundCtrlOnTransparentHover instead.
  */
-export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2}))`;
+export const _ctrlTreeOnTransparentHover = `var(${foregroundCtrlOnTransparentHoverRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground2Hover}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnTransparentPressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
