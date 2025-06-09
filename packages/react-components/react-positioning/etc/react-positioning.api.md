@@ -132,6 +132,7 @@ export type SafeBufferAreaOptions = {
     disabled?: boolean;
     timeout?: number;
     onSafeZoneEnter?: (e: React_2.MouseEvent) => void;
+    onSafeZoneMove?: (e: React_2.MouseEvent) => void;
     onSafeZoneLeave?: (e: React_2.MouseEvent) => void;
     onSafeZoneTimeout?: () => void;
 };
@@ -146,7 +147,7 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement)) => readonly [PositioningVirtualElement | undefined, SetVirtualMouseTarget];
 
 // @public (undocumented)
-export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: SafeBufferAreaOptions): {
+export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: SafeBufferAreaOptions): {
     containerRef: RefObjectFunction<HTMLElement>;
     targetRef: RefObjectFunction<HTMLElement>;
     elementToRender: JSX.Element | null;

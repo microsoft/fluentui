@@ -19,6 +19,9 @@ export type SafeBufferAreaOptions = {
   /** Called when the mouse enters the safe zone. */
   onSafeZoneEnter?: (e: React.MouseEvent) => void;
 
+  /** Called when the mouse moves within the safe zone. */
+  onSafeZoneMove?: (e: React.MouseEvent) => void;
+
   /** Called when the mouse leaves the safe zone. */
   onSafeZoneLeave?: (e: React.MouseEvent) => void;
 
@@ -31,6 +34,7 @@ export function useSafeZoneArea({
   disabled = false,
 
   onSafeZoneEnter,
+  onSafeZoneMove,
   onSafeZoneLeave,
   onSafeZoneTimeout,
 
@@ -56,6 +60,17 @@ export function useSafeZoneArea({
     let containerEl: HTMLElement | null = null;
 
     function onContainerMouseEnter() {
+      const targetWindow = targetDocument?.defaultView;
+
+      if (!targetWindow) {
+        return;
+      }
+
+      if (timeoutIdRef.current) {
+        targetWindow.clearTimeout(timeoutIdRef.current);
+        timeoutIdRef.current = null;
+      }
+
       stateStore.toggleActive(false);
     }
 
@@ -67,7 +82,7 @@ export function useSafeZoneArea({
       containerEl = el;
       el?.addEventListener('mouseenter', onContainerMouseEnter);
     };
-  }, [disabled, stateStore]);
+  }, [disabled, stateStore, targetDocument]);
 
   const targetListenerRef = React.useMemo(() => {
     if (disabled) {
@@ -87,6 +102,7 @@ export function useSafeZoneArea({
 
       if (timeoutIdRef.current) {
         targetWindow.clearTimeout(timeoutIdRef.current);
+        timeoutIdRef.current = null;
       }
 
       if (!stateStore.isActive()) {
@@ -111,12 +127,18 @@ export function useSafeZoneArea({
 
     return (el: HTMLElement | null) => {
       if (el === null) {
-        if (mouseMoveIdRef.current) {
-          targetDocument?.defaultView?.cancelAnimationFrame(mouseMoveIdRef.current);
-        }
+        const targetWindow = targetDocument?.defaultView;
 
-        if (timeoutIdRef.current) {
-          targetDocument?.defaultView?.clearTimeout(timeoutIdRef.current);
+        if (targetWindow) {
+          if (mouseMoveIdRef.current) {
+            targetWindow.cancelAnimationFrame(mouseMoveIdRef.current);
+            mouseMoveIdRef.current = null;
+          }
+
+          if (timeoutIdRef.current) {
+            targetWindow.clearTimeout(timeoutIdRef.current);
+            timeoutIdRef.current = null;
+          }
         }
 
         targetEl?.removeEventListener('mousemove', onTargetMouseMove);
@@ -138,6 +160,7 @@ export function useSafeZoneArea({
 
     if (timeoutIdRef.current) {
       targetWindow.clearTimeout(timeoutIdRef.current);
+      timeoutIdRef.current = null;
     }
 
     // React 17 still uses pooled synthetic events
@@ -149,6 +172,10 @@ export function useSafeZoneArea({
     }, timeout);
   });
 
+  const onSvgMouseMove = useEventCallback((e: React.MouseEvent) => {
+    onSafeZoneMove?.(e);
+  });
+
   const onSvgMouseLeave = useEventCallback((e: React.MouseEvent) => {
     onSafeZoneLeave?.(e);
   });
@@ -157,14 +184,19 @@ export function useSafeZoneArea({
     containerRef: useMergedRefs(containerRef, containerListenerRef),
     targetRef: useMergedRefs(targetRef, targetListenerRef),
 
-    elementToRender: disabled ? null : (
-      <SafeZoneArea
-        debug={debug}
-        onMouseEnter={onSvgMouseEnter}
-        onMouseLeave={onSvgMouseLeave}
-        imperativeRef={safeZoneAreaRef}
-        stateStore={stateStore}
-      />
+    elementToRender: React.useMemo(
+      () =>
+        disabled ? null : (
+          <SafeZoneArea
+            debug={debug}
+            onMouseEnter={onSvgMouseEnter}
+            onMouseMove={onSvgMouseMove}
+            onMouseLeave={onSvgMouseLeave}
+            imperativeRef={safeZoneAreaRef}
+            stateStore={stateStore}
+          />
+        ),
+      [disabled, debug, onSvgMouseEnter, onSvgMouseMove, onSvgMouseLeave, stateStore],
     ),
   };
 }

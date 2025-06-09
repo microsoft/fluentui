@@ -66,6 +66,7 @@ describe('SafeZoneArea', () => {
           debug
           imperativeRef={imperativeRef}
           onMouseEnter={noop}
+          onMouseMove={noop}
           onMouseLeave={noop}
           stateStore={createStoreMock()}
         />,
