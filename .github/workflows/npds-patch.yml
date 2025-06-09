@@ -42,15 +42,24 @@ jobs:
 
       - name: Copy NPDS styles and patch Fluent button
         run: |
+          TARGET_DIR="packages/web-components/src/button"
+          NPDS_SRC="npds-repo/packages/npds-components/src/components/button/button.styles.ts"
+          FLUENT_FILE="$TARGET_DIR/button.styles.ts"
+          NPDS_TARGET="$TARGET_DIR/npds-button-styles.ts"
+
+          # Skip if override already exists
+          if grep -q "NPDS OVERRIDE LAYER" "$FLUENT_FILE"; then
+            echo "NPDS override already present. Skipping patch step."
+            exit 0
+          fi
+
           # Copy the NPDS button styles to the button folder
-          cp npds-repo/packages/npds-components/src/components/button/button.styles.ts packages/web-components/src/button/npds-button-styles.ts
+          cp "$NPDS_SRC" "$NPDS_TARGET"
 
           # Patch Fluent's button.styles.ts
-          FILE="packages/web-components/src/button/button.styles.ts"
-          grep -q "npdsButtonStyles" $FILE || \
-            sed -i '1iimport { buttonStyles as npdsButtonStyles } from "./npds-button-styles";' $FILE
-          sed -i 's/export const styles = css/export const originalButtonStyles = css/' $FILE
-          cat << 'EOF' >> $FILE
+          sed -i '1iimport { buttonStyles as npdsButtonStyles } from "./npds-button-styles";' "$FLUENT_FILE"
+          sed -i 's/export const styles = css/export const originalButtonStyles = css/' "$FLUENT_FILE"
+          cat << 'EOF' >> "$FLUENT_FILE"
           // ── NPDS OVERRIDE LAYER ──
           export const styles = css`
             ${originalButtonStyles}
