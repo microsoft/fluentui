@@ -629,13 +629,28 @@ export const cornerZero = "var(--smtc-corner-zero, var(--borderRadiusNone))";
 export const cornerZeroRaw = "--smtc-corner-zero";
 
 // @public
-export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionBackgroundRest = "var(--smtc-background-ctrl-subtle-rest, var(--smtc-null-color, var(--colorTransparentBackground)))";
 
 // @public
-export const _ctrlAccordionForegroundPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionFocusInnerStrokeWidth = "var(--smtc-ctrl-focus-inner-stroke-width, var(--smtc-stroke-width-default, 0px))";
 
 // @public
-export const _ctrlAccordionForegroundRest = "var(--smtc-foreground-ctrl-on-transparent-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2)))";
+export const _ctrlAccordionFocusOuterStroke = "var(--smtc-ctrl-focus-outer-stroke, var(--smtc-background-ctrl-brand-rest, var(--colorStrokeFocus2)))";
+
+// @public
+export const _ctrlAccordionForegroundHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlAccordionForegroundPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlAccordionForegroundRest = "var(--smtc-foreground-ctrl-on-transparent-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground1)))";
+
+// @public
+export const _ctrlAccordionPaddingTextBottom = "var(--smtc-padding-ctrl-text-bottom, var(--smtc-padding-ctrl-text-top, 0px))";
+
+// @public
+export const _ctrlAccordionPaddingTextTop = "var(--smtc-padding-ctrl-text-top, 0px)";
 
 // @public (undocumented)
 export const ctrlAvatarActiveRingSize = "var(--smtc-ctrl-avatar-active-ring-size)";
@@ -2018,7 +2033,7 @@ export const ctrlListForegroundSelectedRest = "var(--smtc-ctrl-list-foreground-s
 export const ctrlListForegroundSelectedRestRaw = "--smtc-ctrl-list-foreground-selected-rest";
 
 // @public (undocumented)
-export const ctrlListIndentLevel1 = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default))";
+export const ctrlListIndentLevel1 = "var(--smtc-ctrl-list-indent-level1, var(--smtc-padding-ctrl-horizontal-default, var(--spacingHorizontalXXL)))";
 
 // @public (undocumented)
 export const ctrlListIndentLevel1Raw = "--smtc-ctrl-list-indent-level1";
@@ -2796,6 +2811,24 @@ export const ctrlTooltipShadowKey = "var(--smtc-ctrl-tooltip-shadow-key, var(--s
 
 // @public (undocumented)
 export const ctrlTooltipShadowKeyRaw = "--smtc-ctrl-tooltip-shadow-key";
+
+// @public
+export const _ctrlTreeGapInsideDefault = "var(--smtc-gap-inside-ctrl-default, var(--spacingVerticalXXS))";
+
+// @public
+export const _ctrlTreeIconOnSubtle = "var(--smtc-foreground-ctrl-on-subtle-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlTreeIconOnSubtleHover = "var(--smtc-foreground-ctrl-on-subtle-hover, var(--smtc-foreground-ctrl-neutral-primary-hover, var(--colorNeutralForeground3Hover)))";
+
+// @public
+export const _ctrlTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlTreeOnTransparentHover = "var(--smtc-foreground-ctrl-on-transparent-hover, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Hover)))";
+
+// @public
+export const _ctrlTreeOnTransparentPressed = "var(--smtc-foreground-ctrl-on-transparent-pressed, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground2Pressed)))";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";
