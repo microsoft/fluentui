@@ -662,7 +662,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                     onMouseLeave={e => _handleCalloutDismiss()}
                     onMouseMove={e => _handleMouseOver(e, segment.legend)}
                     data-is-focusable={_legendHighlighted(segment.legend) || _noLegendHighlighted()}
-                    tabIndex={segment.legend !== '' ? 0 : undefined}
+                    tabIndex={_legendHighlighted(segment.legend) || _noLegendHighlighted() ? 0 : undefined}
                   />
                 </React.Fragment>
               );

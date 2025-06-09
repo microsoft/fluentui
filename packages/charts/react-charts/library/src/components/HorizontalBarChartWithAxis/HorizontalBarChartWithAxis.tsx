@@ -342,7 +342,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             onBlur={_onBarLeave}
             fill={startColor}
             opacity={shouldHighlight ? 1 : 0.1}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />
         </React.Fragment>
       );
@@ -440,7 +440,7 @@ export const HorizontalBarChartWithAxis: React.FunctionComponent<HorizontalBarCh
             opacity={shouldHighlight ? 1 : 0.1}
             onFocus={() => _onBarFocus(point, index, startColor)}
             fill={startColor}
-            tabIndex={point.legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />
         </React.Fragment>
       );
