@@ -1856,7 +1856,6 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       .join(' ');
 
     let columnNumber = 1;
-    let lastIntervalStart = 0;
     let lastIntervalEnd = 0;
     gridX.forEach((interval, index) => {
       if (interval.length === 0) {
@@ -1871,7 +1870,6 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       if (interval[0] < lastIntervalEnd) {
         columnNumber = 1;
       }
-      lastIntervalStart = interval[0];
       lastIntervalEnd = interval[1];
 
       const row: AxisProperties = {
