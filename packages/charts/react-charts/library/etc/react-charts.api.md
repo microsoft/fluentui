@@ -205,6 +205,7 @@ export interface CartesianChartStyles {
     opacityChangeOnHover?: string;
     root?: string;
     shapeStyles?: string;
+    svgTooltip?: string;
     tooltip?: string;
     xAxis?: string;
     yAxis?: string;

@@ -15,6 +15,7 @@ export const cartesianchartClassNames: SlotClassNames<CartesianChartStyles> = {
   yAxis: 'fui-cart__yAxis',
   opacityChangeOnHover: 'fui-cart__opacityChangeOnHover',
   legendContainer: 'fui-cart__legendContainer',
+  svgTooltip: 'fui-cart_svgTooltip',
   shapeStyles: 'fui-cart__shapeStyles',
   descriptionMessage: 'fui-cart__descriptionMessage',
   hover: 'fui-cart__hover',
@@ -92,6 +93,12 @@ const useStyles = makeStyles({
     marginTop: tokens.spacingVerticalS,
     marginLeft: tokens.spacingHorizontalXL,
   },
+  svgTooltip: {
+    fill: tokens.colorNeutralBackground1,
+    [HighContrastSelector]: {
+      fill: 'Canvas',
+    },
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -120,5 +127,6 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
       cartesianchartClassNames.legendContainer,
       baseStyles.legendContainer /*props.styles?.legendContainer*/,
     ),
+    svgTooltip: mergeClasses(cartesianchartClassNames.svgTooltip, baseStyles.svgTooltip /*props.styles?.svgTooltip*/),
   };
 };

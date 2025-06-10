@@ -17,6 +17,7 @@ export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBa
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
 };
 
 const useStyles = makeStyles({
@@ -34,6 +35,7 @@ const useStyles = makeStyles({
     fill: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
+    color: 'white',
   },
   barLabel: {
     ...typographyStyles.caption1Strong,

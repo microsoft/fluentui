@@ -21,6 +21,7 @@ export const linechartClassNames: SlotClassNames<LineChartStyles> = {
   opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
   shapeStyles: 'fui-line__shapeStyles',
   chartWrapper: 'fui-line__chartWrapper',
+  svgTooltip: '',
 };
 
 /**
