@@ -56,13 +56,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps extends {}>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-<<<<<<< HEAD
     asyncPlaceholder?: React_2.ElementType | undefined;
-||||||| parent of 54b71c8488 (chore: update generated api files)
-    asyncPlaceholder?: React_2.ElementType<any> | undefined;
-=======
-    asyncPlaceholder?: React_2.ElementType;
->>>>>>> 54b71c8488 (chore: update generated api files)
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
