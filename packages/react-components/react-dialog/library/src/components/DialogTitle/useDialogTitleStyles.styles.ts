@@ -1,8 +1,8 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { typographyStyles } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
   root: 'fui-DialogTitle',
@@ -13,7 +13,10 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
  * Styles for the root slot
  */
 const useRootResetStyles = makeResetStyles({
-  ...typographyStyles.subtitle1,
+  fontFamily: semanticTokens.textStyleDefaultHeaderFontFamily,
+  fontSize: semanticTokens.textRampSectionHeaderFontSize,
+  fontWeight: semanticTokens.textStyleDefaultHeaderWeight,
+  lineHeight: semanticTokens.textRampSectionHeaderLineHeight,
   margin: 0,
   gridRowStart: 1,
   gridRowEnd: 1,

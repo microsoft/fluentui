@@ -20,6 +20,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/semantic-tokens": "0.0.0-alpha.1",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*"
   },
