@@ -56,7 +56,7 @@ const useRootStyles = makeStyles({
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      borderBottom: `${semanticTokens._cornerCtrlRestTextAreaThick} solid ${semanticTokens.ctrlInputBottomlineStrokeRest}`,
+      borderBottom: `${semanticTokens._cornerCtrlRestTextAreaThick} solid ${semanticTokens.ctrlInputBottomLineStrokeRest}`,
       clipPath: `inset(calc(100% - ${semanticTokens._cornerCtrlRestTextAreaThick}) 0 0 0)`,
 
       // Animation for focus OUT
@@ -84,7 +84,7 @@ const useRootStyles = makeStyles({
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
-      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokePressed,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokePressed,
     },
     ':focus-within': {
       outlineWidth: semanticTokens._cornerCtrlRestTextAreaThick,
@@ -101,6 +101,7 @@ const useRootStyles = makeStyles({
   },
   'filled-darker': {
     backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
+  },
   'filled-lighter': {
     backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
   },
@@ -118,12 +119,12 @@ const useRootStyles = makeStyles({
   outline: {
     backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
     border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeRest}`,
-    borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeSelected,
+    borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
   },
   outlineInteractive: {
     ':hover': {
       border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeHover}`,
-      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeHover,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeHover,
     },
 
     ':active': {
@@ -133,7 +134,7 @@ const useRootStyles = makeStyles({
 
     ':focus-within': {
       border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokePressed}`,
-      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeSelected,
+      borderBottomColor: semanticTokens.ctrlInputBottomLineStrokeSelected,
     },
   },
 

@@ -13,7 +13,12 @@ import {
   strokeCtrlOnOutlinePressedRaw,
   strokeCtrlOnOutlineDisabledRaw,
 } from '../../control/variables';
-import { colorPaletteRedBorder2, colorNeutralStroke1Pressed } from '../../legacy/tokens';
+import {
+  colorPaletteRedBorder2,
+  colorCompoundBrandStroke,
+  colorCompoundBrandStrokePressed,
+  colorNeutralStroke1Pressed,
+} from '../../legacy/tokens';
 import { statusDangerStrokeRaw } from '../../optional/variables';
 import {
   ctrlInputBackgroundRestRaw,
@@ -63,9 +68,9 @@ export const ctrlInputTextSelectionForeground = `var(${ctrlInputTextSelectionFor
 export const ctrlInputBottomLineStrokeWidthHover = `var(${ctrlInputBottomLineStrokeWidthHoverRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlInputBottomLineStrokeWidthPressed = `var(${ctrlInputBottomLineStrokeWidthPressedRaw}, var(${ctrlInputBottomLineStrokeWidthSelectedRaw}))`;
 export const ctrlInputBottomLineStrokeWidthSelected = `var(${ctrlInputBottomLineStrokeWidthSelectedRaw})`;
-export const ctrlInputBottomLineStrokeRest = `var(${ctrlInputBottomLineStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
+export const ctrlInputBottomLineStrokeRest = `var(${ctrlInputBottomLineStrokeRestRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorCompoundBrandStroke}))`;
 export const ctrlInputBottomLineStrokeHover = `var(${ctrlInputBottomLineStrokeHoverRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
-export const ctrlInputBottomLineStrokePressed = `var(${ctrlInputBottomLineStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}))`;
+export const ctrlInputBottomLineStrokePressed = `var(${ctrlInputBottomLineStrokePressedRaw}, var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorCompoundBrandStrokePressed}))`;
 export const ctrlInputBottomLineStrokeDisabled = `var(${ctrlInputBottomLineStrokeDisabledRaw}, unset)`;
 export const ctrlInputBottomLineStrokeSelected = `var(${ctrlInputBottomLineStrokeSelectedRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlInputBottomLineStrokeError = `var(${ctrlInputBottomLineStrokeErrorRaw}, unset)`;

@@ -539,10 +539,19 @@ export const cornerCtrlPressed = "var(--smtc-corner-ctrl-pressed, var(--smtc-cor
 export const cornerCtrlPressedRaw = "--smtc-corner-ctrl-pressed";
 
 // @public (undocumented)
-export const cornerCtrlRest = "var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium))";
+export const cornerCtrlRest = "var(--smtc-corner-ctrl-rest)";
+
+// @public
+export const _cornerCtrlRestButton = "var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium))";
 
 // @public (undocumented)
 export const cornerCtrlRestRaw = "--smtc-corner-ctrl-rest";
+
+// @public
+export const _cornerCtrlRestTextAreaMedium = "var(--smtc-corner-ctrl-rest, var(--borderRadiusMedium))";
+
+// @public
+export const _cornerCtrlRestTextAreaThick = "var(--smtc-corner-ctrl-rest, var(--strokeWidthThick))";
 
 // @public (undocumented)
 export const cornerCtrlSmHover = "var(--smtc-corner-ctrl-sm-hover, var(--smtc-corner-ctrl-sm-rest))";
@@ -1601,7 +1610,7 @@ export const ctrlInputBackgroundDisabled = "var(--smtc-ctrl-input-background-dis
 export const ctrlInputBackgroundDisabledRaw = "--smtc-ctrl-input-background-disabled";
 
 // @public (undocumented)
-export const ctrlInputBackgroundError = "var(--smtc-ctrl-input-background-error, var(--smtc-background-ctrl-neutral-rest))";
+export const ctrlInputBackgroundError = "var(--smtc-ctrl-input-background-error, var(--smtc-background-ctrl-neutral-rest, var(--colorPaletteRedBorder2)))";
 
 // @public (undocumented)
 export const ctrlInputBackgroundErrorRaw = "--smtc-ctrl-input-background-error";
@@ -1620,6 +1629,12 @@ export const ctrlInputBackgroundPressedRaw = "--smtc-ctrl-input-background-press
 
 // @public (undocumented)
 export const ctrlInputBackgroundRest = "var(--smtc-ctrl-input-background-rest, var(--smtc-background-ctrl-neutral-rest))";
+
+// @public
+export const _ctrlInputBackgroundRestDarker = "var(--smtc-ctrl-input-background-rest, var(--smtc-background-ctrl-neutral-rest, var(--colorNeutralBackground3)))";
+
+// @public
+export const _ctrlInputBackgroundRestLighter = "var(--smtc-ctrl-input-background-rest, var(--smtc-background-ctrl-neutral-rest, var(--colorNeutralBackground1)))";
 
 // @public (undocumented)
 export const ctrlInputBackgroundRestRaw = "--smtc-ctrl-input-background-rest";
@@ -1649,13 +1664,13 @@ export const ctrlInputBottomLineStrokeHover = "var(--smtc-ctrl-input-bottom-line
 export const ctrlInputBottomLineStrokeHoverRaw = "--smtc-ctrl-input-bottom-line-stroke-hover";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest))";
+export const ctrlInputBottomLineStrokePressed = "var(--smtc-ctrl-input-bottom-line-stroke-pressed, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStrokePressed)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokePressedRaw = "--smtc-ctrl-input-bottom-line-stroke-pressed";
 
 // @public (undocumented)
-export const ctrlInputBottomLineStrokeRest = "var(--smtc-ctrl-input-bottom-line-stroke-rest, var(--smtc-foreground-ctrl-neutral-secondary-rest))";
+export const ctrlInputBottomLineStrokeRest = "var(--smtc-ctrl-input-bottom-line-stroke-rest, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorCompoundBrandStroke)))";
 
 // @public (undocumented)
 export const ctrlInputBottomLineStrokeRestRaw = "--smtc-ctrl-input-bottom-line-stroke-rest";
@@ -1709,7 +1724,7 @@ export const ctrlInputStrokeHover = "var(--smtc-ctrl-input-stroke-hover, var(--s
 export const ctrlInputStrokeHoverRaw = "--smtc-ctrl-input-stroke-hover";
 
 // @public (undocumented)
-export const ctrlInputStrokePressed = "var(--smtc-ctrl-input-stroke-pressed, var(--smtc-stroke-ctrl-on-outline-pressed))";
+export const ctrlInputStrokePressed = "var(--smtc-ctrl-input-stroke-pressed, var(--smtc-stroke-ctrl-on-outline-pressed, var(--colorNeutralStroke1Pressed)))";
 
 // @public (undocumented)
 export const ctrlInputStrokePressedRaw = "--smtc-ctrl-input-stroke-pressed";
