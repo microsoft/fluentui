@@ -13,6 +13,7 @@ import {
   isYearArray,
   mapFluentChart,
   sanitizeJson,
+  isStringArray,
 } from '@fluentui/chart-utilities';
 
 import {
@@ -29,7 +30,6 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
-  isStringArray,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';

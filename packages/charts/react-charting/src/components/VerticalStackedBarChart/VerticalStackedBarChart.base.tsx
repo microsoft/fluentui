@@ -62,6 +62,7 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   YAxisType,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -569,10 +570,7 @@ export class VerticalStackedBarChartBase
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
-    const tempArr: string[] = [];
     const dataset: IVerticalStackedBarDataPoint[] = this._points.map(singlePointData => {
-      tempArr.push(singlePointData.xAxisPoint as string);
-
       if (this._yAxisType === YAxisType.StringAxis) {
         return {
           x: singlePointData.xAxisPoint,
@@ -588,7 +586,7 @@ export class VerticalStackedBarChartBase
         y: total,
       };
     });
-    this._xAxisLabels = tempArr;
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     return dataset;
   }
 
@@ -1440,31 +1438,31 @@ export class VerticalStackedBarChartBase
     }
 
     if (this._yAxisType === YAxisType.StringAxis) {
-      const legendToYValues: Record<string, string[]> = {};
-      this._points.forEach(xPoint => {
-        xPoint.chartData.forEach(bar => {
-          if (!legendToYValues[bar.legend]) {
-            legendToYValues[bar.legend] = [`${bar.data}`];
-          } else {
-            legendToYValues[bar.legend].push(`${bar.data}`);
-          }
-        });
-      });
+      // const legendToYValues: Record<string, string[]> = {};
+      // this._points.forEach(xPoint => {
+      //   xPoint.chartData.forEach(bar => {
+      //     if (!legendToYValues[bar.legend]) {
+      //       legendToYValues[bar.legend] = [`${bar.data}`];
+      //     } else {
+      //       legendToYValues[bar.legend].push(`${bar.data}`);
+      //     }
+      //   });
+      // });
 
-      const yAxisLabels = new Set<string>();
-      Object.values(legendToYValues).forEach(yValues => {
-        yValues.forEach(yVal => {
-          yAxisLabels.add(yVal);
-        });
-      });
-      Object.values(this._lineObject).forEach(linePoints => {
-        linePoints.forEach(linePoint => {
-          if (!linePoint.useSecondaryYScale) {
-            yAxisLabels.add(`${linePoint.y}`);
-          }
-        });
-      });
-      this._yAxisLabels = Array.from(yAxisLabels);
+      // const yAxisLabels = new Set<string>();
+      // Object.values(legendToYValues).forEach(yValues => {
+      //   yValues.forEach(yVal => {
+      //     yAxisLabels.add(yVal);
+      //   });
+      // });
+      // Object.values(this._lineObject).forEach(linePoints => {
+      //   linePoints.forEach(linePoint => {
+      //     if (!linePoint.useSecondaryYScale) {
+      //       yAxisLabels.add(`${linePoint.y}`);
+      //     }
+      //   });
+      // });
+      this._yAxisLabels = this._getOrderedYAxisLabels();
     }
   };
 
@@ -1498,5 +1496,65 @@ export class VerticalStackedBarChartBase
       ...this.margins,
       top: this.margins.top! + yAxisTickMarginTop,
     };
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this._points.forEach(point => {
+      const xValue = point.xAxisPoint as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
+      }
+      if (this._yAxisType === YAxisType.StringAxis) {
+        return;
+      }
+      point.chartData.forEach(bar => {
+        categoryToValues[xValue].push(bar.data as number);
+      });
+      point.lineData?.forEach(line => {
+        categoryToValues[xValue].push(line.y as number);
+      });
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this._points.forEach(point => {
+      point.chartData.forEach(bar => {
+        if (!categoryToValues[bar.data]) {
+          categoryToValues[bar.data] = [];
+        }
+        if (this._xAxisType !== XAxisTypes.NumericAxis) {
+          return;
+        }
+        categoryToValues[bar.data].push(point.xAxisPoint as number);
+      });
+      point.lineData?.forEach(line => {
+        if (line.useSecondaryYScale) {
+          return;
+        }
+        if (!categoryToValues[line.y]) {
+          categoryToValues[line.y] = [];
+        }
+        if (this._xAxisType !== XAxisTypes.NumericAxis) {
+          return;
+        }
+        categoryToValues[line.y].push(point.xAxisPoint as number);
+      });
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
   };
 }

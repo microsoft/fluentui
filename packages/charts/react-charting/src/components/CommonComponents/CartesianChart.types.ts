@@ -6,6 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
+  CategoryOrder,
   IAccessibilityProps,
   IChart,
   IDataPoint,
@@ -469,6 +470,16 @@ export interface ICartesianChartProps {
    * @default false
    */
   hideTickOverlap?: boolean;
+
+  /**
+   *
+   */
+  xAxisCategoryOrder?: CategoryOrder;
+
+  /**
+   *
+   */
+  yAxisCategoryOrder?: CategoryOrder;
 }
 
 export interface IYValueHover {

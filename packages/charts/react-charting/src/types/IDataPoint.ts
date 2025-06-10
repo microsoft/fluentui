@@ -886,3 +886,23 @@ export interface IImageExportOptions {
   scale?: number;
   background?: string;
 }
+
+/**
+ * {@docCategory CartesianChart}
+ */
+export type CategoryOrder =
+  | string[]
+  | 'category ascending'
+  | 'category descending'
+  | 'total ascending'
+  | 'total descending'
+  | 'min ascending'
+  | 'min descending'
+  | 'max ascending'
+  | 'max descending'
+  | 'sum ascending'
+  | 'sum descending'
+  | 'mean ascending'
+  | 'mean descending'
+  | 'median ascending'
+  | 'median descending';

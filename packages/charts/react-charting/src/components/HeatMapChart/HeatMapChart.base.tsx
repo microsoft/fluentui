@@ -33,6 +33,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
   resolveCSSVariables,
+  sortAxisCategories,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -642,42 +643,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * rectangles and then format the x and y datapoints respectively
      */
     Object.keys(yPoints).forEach((item: string) => {
-      yPoints[item]
-        .sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.StringAxis) {
-            return this.props.sortOrder === 'none'
-              ? 0
-              : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
-              ? 1
-              : -1;
-          } else if (this._xAxisType === XAxisTypes.DateAxis) {
-            return (a.x as Date).getTime() - (b.x as Date).getTime();
-          } else if (this._xAxisType === XAxisTypes.NumericAxis) {
-            return +(a.x as string) > +(b.x as string) ? 1 : -1;
-          } else {
-            return a.x > b.x ? 1 : -1;
-          }
-        })
-        .forEach((datapoint: IHeatMapChartDataPoint) => {
-          if (this._xAxisType === XAxisTypes.DateAxis) {
-            datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
-          }
-          if (this._xAxisType === XAxisTypes.NumericAxis) {
-            datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
-          }
-          if (this._xAxisType === XAxisTypes.StringAxis) {
-            datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
-          }
-          if (this._yAxisType === YAxisType.DateAxis) {
-            datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
-          }
-          if (this._yAxisType === YAxisType.NumericAxis) {
-            datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
-          }
-          if (this._yAxisType === YAxisType.StringAxis) {
-            datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
-          }
-        });
+      yPoints[item] = this._getOrderedXPoints(yPoints[item]);
+
+      yPoints[item].forEach((datapoint: IHeatMapChartDataPoint) => {
+        if (this._xAxisType === XAxisTypes.DateAxis) {
+          datapoint.x = this._getStringFormattedDate(datapoint.x as string, xAxisDateFormatString);
+        }
+        if (this._xAxisType === XAxisTypes.NumericAxis) {
+          datapoint.x = this._getStringFormattedNumber(datapoint.x as string, xAxisNumberFormatString);
+        }
+        if (this._xAxisType === XAxisTypes.StringAxis) {
+          datapoint.x = this._getFormattedLabelForXAxisDataPoint(datapoint.x as string);
+        }
+        if (this._yAxisType === YAxisType.DateAxis) {
+          datapoint.y = this._getStringFormattedDate(datapoint.y as string, yAxisDateFormatString);
+        }
+        if (this._yAxisType === YAxisType.NumericAxis) {
+          datapoint.y = this._getStringFormattedNumber(datapoint.y as string, yAxisNumberFormatString);
+        }
+        if (this._yAxisType === YAxisType.StringAxis) {
+          datapoint.y = this._getFormattedLabelForYAxisDataPoint(datapoint.y as string);
+        }
+      });
     });
     /**
      * if  y-axis data points are of type date or number or if we have string formatter,
@@ -728,13 +715,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let xAxisPoints: string[] = [];
-    const unFormattedXAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
-        return +a - +b;
-      } else {
-        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
+    const unFormattedXAxisDataPoints =
+      this._xAxisType === XAxisTypes.StringAxis
+        ? this._getOrderedXAxisLabels()
+        : Object.keys(points).sort((a: string, b: string) => {
+            return +a - +b;
+          });
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
       if (this._xAxisType === XAxisTypes.DateAxis) {
         return this._getStringFormattedDate(xPoint, this.props.xAxisDateFormatString);
@@ -755,13 +741,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let yAxisPoints: string[] = [];
-    const unFormattedYAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
-      if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
-        return +a - +b;
-      } else {
-        return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-      }
-    });
+    const unFormattedYAxisDataPoints =
+      this._yAxisType === YAxisType.StringAxis
+        ? this._getOrderedYAxisLabels()
+        : Object.keys(points).sort((a: string, b: string) => {
+            return +a - +b;
+          });
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
       if (this._yAxisType === YAxisType.DateAxis) {
         return this._getStringFormattedDate(yPoint, this.props.yAxisDateFormatString);
@@ -841,5 +826,82 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { chartTitle } = this.props;
     const numDataPoints = this.props.data.reduce((acc, curr) => acc + curr.data.length, 0);
     return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this.props.data.forEach(item => {
+      item.data.forEach(point => {
+        const xValue = point.x as string;
+        if (!categoryToValues[xValue]) {
+          categoryToValues[xValue] = [point.value];
+        } else {
+          categoryToValues[xValue].push(point.value);
+        }
+      });
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this.props.data.forEach(item => {
+      item.data.forEach(point => {
+        const yValue = point.y as string;
+        if (!categoryToValues[yValue]) {
+          categoryToValues[yValue] = [point.value];
+        } else {
+          categoryToValues[yValue].push(point.value);
+        }
+      });
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+  };
+
+  private _getOrderedXPoints = (xPoints: FlattenData[]) => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return xPoints.sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
+        if (this._xAxisType === XAxisTypes.DateAxis) {
+          return (a.x as Date).getTime() - (b.x as Date).getTime();
+        } else if (this._xAxisType === XAxisTypes.NumericAxis) {
+          return +(a.x as string) > +(b.x as string) ? 1 : -1;
+        } else {
+          return a.x > b.x ? 1 : -1;
+        }
+      });
+    }
+
+    const result: FlattenData[] = [];
+
+    const xValueToPoints: Record<string, FlattenData[]> = {};
+    xPoints.forEach(point => {
+      const xValue = point.x as string;
+      if (!xValueToPoints[xValue]) {
+        xValueToPoints[xValue] = [point];
+      } else {
+        xValueToPoints[xValue].push(point);
+      }
+    });
+
+    const xAxisLabels = this._getOrderedXAxisLabels();
+    xAxisLabels.forEach(xValue => {
+      if (xValueToPoints[xValue]) {
+        result.push(...xValueToPoints[xValue]);
+      }
+    });
+
+    return result;
   };
 }

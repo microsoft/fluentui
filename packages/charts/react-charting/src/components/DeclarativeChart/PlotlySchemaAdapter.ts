@@ -51,6 +51,7 @@ import type {
   Data,
   TableData,
   Color,
+  LayoutAxis,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOfType,
@@ -60,11 +61,13 @@ import {
   isNumberArray,
   isYearArray,
   isInvalidValue,
+  isStringArray,
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { ICartesianChartProps } from '../CommonComponents/index';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -407,6 +410,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getCategoryOrderProps(input.layout),
   };
 };
 
@@ -498,6 +502,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    ...getCategoryOrderProps(input.layout),
   };
 };
 
@@ -594,6 +599,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    ...getCategoryOrderProps(input.layout),
   };
 };
 
@@ -756,10 +762,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
     })
-    .reverse()
-    .flat()
-    //reversing the order to invert the Y bars order as required by plotly.
-    .reverse();
+    .flat();
 
   const chartHeight: number = input.layout?.height ?? 450;
   const margin: number = input.layout?.margin?.l ?? 0;
@@ -790,6 +793,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getCategoryOrderProps(input.layout),
   };
 };
 
@@ -947,6 +951,7 @@ export const transformPlotlyJsonToHeatmapProps = (input: PlotlySchema): IHeatMap
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getCategoryOrderProps(input.layout),
   };
 };
 
@@ -1396,12 +1401,6 @@ function getLineOptions(line: Partial<ScatterLine> | undefined): ILineChartLineO
   return Object.keys(lineOptions).length > 0 ? lineOptions : undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isStringArray = (arr: any) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return isArrayOfType(arr, (value: any) => typeof value === 'string' || value === null);
-};
-
 // TODO: Use binary search to find the appropriate bin for numeric value.
 const findBinIndex = (
   bins: string[][] | Bin<number, number>[],
@@ -1580,4 +1579,37 @@ export const getValidXYRanges = (series: Partial<PlotData>) => {
   }
 
   return ranges;
+};
+
+type GetCategoryOrderPropsResult = Pick<ICartesianChartProps, 'xAxisCategoryOrder' | 'yAxisCategoryOrder'>;
+const getCategoryOrderProps = (layout: Partial<Layout> | undefined): GetCategoryOrderPropsResult => {
+  const result: GetCategoryOrderPropsResult = {};
+
+  const axesById: Record<string, Partial<LayoutAxis> | undefined> = {
+    x: layout?.xaxis,
+    y: layout?.yaxis,
+  };
+  Object.keys(axesById).forEach(axId => {
+    const ax = axesById[axId];
+    const axLetter = axId[0];
+    const propName = `${axLetter}AxisCategoryOrder` as keyof GetCategoryOrderPropsResult;
+
+    if (!ax || ax.type !== 'category') {
+      return;
+    }
+
+    const isValidArray = isArrayOrTypedArray(ax.categoryarray) && ax.categoryarray!.length > 0;
+    if (isValidArray && (!ax.categoryorder || ax.categoryorder === 'array')) {
+      result[propName] = ax.categoryarray;
+      return;
+    }
+
+    if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+      return;
+    }
+
+    result[propName] = ax.categoryorder;
+  });
+
+  return result;
 };

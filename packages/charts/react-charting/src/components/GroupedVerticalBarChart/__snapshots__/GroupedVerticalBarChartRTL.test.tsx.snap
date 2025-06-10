@@ -800,7 +800,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -842,63 +842,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         >
           <path
             class="domain"
-            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            d="M351.5,6V0.5H319.5V6"
             stroke="currentColor"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.22222222222223,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Metadata info multi lines text Completed
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Meta Data2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(400.7777777777778,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Single line text 
-            </text>
-          </g>
         </g>
         <g
           class=
@@ -1030,7 +976,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         </g>
         <g>
           <g
-            transform="translate(252.33333333333331, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1046,8 +992,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -1064,49 +1010,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="48.44"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="42.44"
-            >
-              44k
-            </text>
           </g>
           <g
-            transform="translate(318.1111111111111, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1122,8 +1032,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -1140,49 +1050,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="242.77999999999997"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="236.77999999999997"
-            >
-              3k
-            </text>
           </g>
           <g
-            transform="translate(383.8888888888889, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1198,8 +1072,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="190.64"
             />
             <rect
@@ -1216,46 +1090,10 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="20"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="184.64"
-            >
-              14k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="14"
-            >
-              50k
-            </text>
           </g>
         </g>
       </svg>
@@ -1556,7 +1394,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -1598,63 +1436,9 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
         >
           <path
             class="domain"
-            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            d="M351.5,6V0.5H319.5V6"
             stroke="currentColor"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.22222222222223,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Metadata info multi lines text Completed
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Meta Data2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(400.7777777777778,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Single line text 
-            </text>
-          </g>
         </g>
         <g
           class=
@@ -1786,7 +1570,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
         </g>
         <g>
           <g
-            transform="translate(252.33333333333331, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1802,8 +1586,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -1820,49 +1604,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="48.44"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="42.44"
-            >
-              44k
-            </text>
           </g>
           <g
-            transform="translate(318.1111111111111, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1878,8 +1626,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -1896,49 +1644,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="242.77999999999997"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="236.77999999999997"
-            >
-              3k
-            </text>
           </g>
           <g
-            transform="translate(383.8888888888889, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1954,8 +1666,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="190.64"
             />
             <rect
@@ -1972,46 +1684,10 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="20"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="184.64"
-            >
-              14k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="14"
-            >
-              50k
-            </text>
           </g>
         </g>
       </svg>
@@ -2312,7 +1988,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -2354,63 +2030,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            d="M351.5,6V0.5H319.5V6"
             stroke="currentColor"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.22222222222223,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Metadata info multi lines text Completed
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Meta Data2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(400.7777777777778,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Single line text 
-            </text>
-          </g>
         </g>
         <g
           class=
@@ -2542,7 +2164,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         </g>
         <g>
           <g
-            transform="translate(252.33333333333331, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -2558,8 +2180,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -2576,49 +2198,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="48.44"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="42.44"
-            >
-              44k
-            </text>
           </g>
           <g
-            transform="translate(318.1111111111111, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -2634,8 +2220,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -2652,49 +2238,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="242.77999999999997"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="236.77999999999997"
-            >
-              3k
-            </text>
           </g>
           <g
-            transform="translate(383.8888888888889, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -2710,8 +2260,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="190.64"
             />
             <rect
@@ -2728,46 +2278,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="20"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="184.64"
-            >
-              14k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="14"
-            >
-              50k
-            </text>
           </g>
         </g>
       </svg>
@@ -3068,7 +2582,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="292"
         role="region"
@@ -3110,63 +2624,9 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         >
           <path
             class="domain"
-            d="M252.83333333333331,6V0.5H418.1666666666667V6"
+            d="M351.5,6V0.5H319.5V6"
             stroke="currentColor"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(269.22222222222223,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Metadata info multi lines text Completed
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(335,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Meta Data2
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(400.7777777777778,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="11"
-            >
-              Single line text 
-            </text>
-          </g>
         </g>
         <g
           class=
@@ -3298,7 +2758,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         </g>
         <g>
           <g
-            transform="translate(252.33333333333331, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -3314,8 +2774,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="0"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -3332,49 +2792,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="48.44"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="42.44"
-            >
-              44k
-            </text>
           </g>
           <g
-            transform="translate(318.1111111111111, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -3390,8 +2814,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="100.57999999999998"
             />
             <rect
@@ -3408,49 +2832,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="242.77999999999997"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="94.57999999999998"
-            >
-              33k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="236.77999999999997"
-            >
-              3k
-            </text>
           </g>
           <g
-            transform="translate(383.8888888888889, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -3466,8 +2854,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="0"
+              width="7.783783783783783"
+              x="4.440892098500626e-16"
               y="190.64"
             />
             <rect
@@ -3484,46 +2872,10 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               rx="0"
               tabindex="-1"
-              width="16"
-              x="17.77777777777778"
+              width="7.783783783783783"
+              x="8.64864864864865"
               y="20"
             />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="8"
-              y="184.64"
-            >
-              14k
-            </text>
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    fill: CanvasText;
-                  }
-              text-anchor="middle"
-              x="25.77777777777778"
-              y="14"
-            >
-              50k
-            </text>
           </g>
         </g>
       </svg>
@@ -4461,7 +3813,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -4527,7 +3879,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         />
         <g>
           <g
-            transform="translate(19, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2000. MetaData1, 66."
@@ -4543,8 +3895,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="0"
-              width="9"
-              x="0"
+              width="14.553191489361701"
+              x="8.881784197001252e-16"
               y="-36"
             />
             <rect
@@ -4561,8 +3913,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="10"
+              width="14.553191489361701"
+              x="16.170212765957448"
               y="-36"
             />
             <rect
@@ -4579,13 +3931,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="20"
+              width="14.553191489361701"
+              x="32.340425531914896"
               y="-36"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2010. MetaData1, 14."
@@ -4601,8 +3953,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="0"
+              width="14.553191489361701"
+              x="8.881784197001252e-16"
               y="-36"
             />
             <rect
@@ -4619,8 +3971,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="10"
+              width="14.553191489361701"
+              x="16.170212765957448"
               y="-36"
             />
             <rect
@@ -4637,8 +3989,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="20"
+              width="14.553191489361701"
+              x="32.340425531914896"
               y="-36"
             />
           </g>
@@ -5030,7 +4382,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
-        aria-label="Vertical bar chart with 2 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
+        aria-label="Vertical bar chart with 0 groups of 3 bars each. The X axis displays categories. The Y axis displays values. "
         focusable="false"
         height="0"
         role="region"
@@ -5096,7 +4448,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         />
         <g>
           <g
-            transform="translate(19, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2000. MetaData1, 66."
@@ -5112,8 +4464,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="0"
-              width="9"
-              x="0"
+              width="14.553191489361701"
+              x="8.881784197001252e-16"
               y="-36"
             />
             <rect
@@ -5130,8 +4482,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="10"
+              width="14.553191489361701"
+              x="16.170212765957448"
               y="-36"
             />
             <rect
@@ -5148,13 +4500,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="20"
+              width="14.553191489361701"
+              x="32.340425531914896"
               y="-36"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(NaN, 0)"
           >
             <rect
               aria-label="2010. MetaData1, 14."
@@ -5170,8 +4522,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="0"
+              width="14.553191489361701"
+              x="8.881784197001252e-16"
               y="-36"
             />
             <rect
@@ -5188,8 +4540,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="10"
+              width="14.553191489361701"
+              x="16.170212765957448"
               y="-36"
             />
             <rect
@@ -5206,8 +4558,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               role="img"
               rx="0"
               tabindex="-1"
-              width="9"
-              x="20"
+              width="14.553191489361701"
+              x="32.340425531914896"
               y="-36"
             />
           </g>
@@ -7812,7 +7164,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
-          aria-label="Vertical bar chart with 3 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
+          aria-label="Vertical bar chart with 0 groups of 2 bars each. The X axis displays categories. The Y axis displays values. "
           focusable="false"
           height="292"
           role="region"
@@ -7854,63 +7206,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
           >
             <path
               class="domain"
-              d="M252.83333333333331,6V0.5H418.1666666666667V6"
+              d="M351.5,6V0.5H319.5V6"
               stroke="currentColor"
             />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(269.22222222222223,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Metadata info multi lines text Completed
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(335,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Meta Data2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(400.7777777777778,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="11"
-              >
-                Single line text 
-              </text>
-            </g>
           </g>
           <g
             class=
@@ -8042,7 +7340,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
           </g>
           <g>
             <g
-              transform="translate(252.33333333333331, 0)"
+              transform="translate(NaN, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
@@ -8058,8 +7356,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="0"
-                width="16"
-                x="0"
+                width="7.783783783783783"
+                x="4.440892098500626e-16"
                 y="100.57999999999998"
               />
               <rect
@@ -8076,49 +7374,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="-1"
-                width="16"
-                x="17.77777777777778"
+                width="7.783783783783783"
+                x="8.64864864864865"
                 y="48.44"
               />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="8"
-                y="94.57999999999998"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="42.44"
-              >
-                44k
-              </text>
             </g>
             <g
-              transform="translate(318.1111111111111, 0)"
+              transform="translate(NaN, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
@@ -8134,8 +7396,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="-1"
-                width="16"
-                x="0"
+                width="7.783783783783783"
+                x="4.440892098500626e-16"
                 y="100.57999999999998"
               />
               <rect
@@ -8152,49 +7414,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="-1"
-                width="16"
-                x="17.77777777777778"
+                width="7.783783783783783"
+                x="8.64864864864865"
                 y="242.77999999999997"
               />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="8"
-                y="94.57999999999998"
-              >
-                33k
-              </text>
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="236.77999999999997"
-              >
-                3k
-              </text>
             </g>
             <g
-              transform="translate(383.8888888888889, 0)"
+              transform="translate(NaN, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
@@ -8210,8 +7436,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="-1"
-                width="16"
-                x="0"
+                width="7.783783783783783"
+                x="4.440892098500626e-16"
                 y="190.64"
               />
               <rect
@@ -8228,46 +7454,10 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 rx="0"
                 tabindex="-1"
-                width="16"
-                x="17.77777777777778"
+                width="7.783783783783783"
+                x="8.64864864864865"
                 y="20"
               />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="8"
-                y="184.64"
-              >
-                14k
-              </text>
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                      fill: CanvasText;
-                    }
-                text-anchor="middle"
-                x="25.77777777777778"
-                y="14"
-              >
-                50k
-              </text>
             </g>
           </g>
         </svg>

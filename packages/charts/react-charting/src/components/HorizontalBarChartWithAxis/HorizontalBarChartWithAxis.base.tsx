@@ -44,6 +44,7 @@ import {
   computeLongestBars,
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
@@ -140,8 +141,7 @@ export class HorizontalBarChartWithAxisBase
 
   public render(): JSX.Element {
     this._adjustProps();
-    const reversedBars = [...this._points].reverse();
-    this._yAxisLabels = reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    this._yAxisLabels = this._getOrderedYAxisLabels();
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
@@ -1005,5 +1005,23 @@ export class HorizontalBarChartWithAxisBase
   private _getChartTitle = (): string => {
     const { chartTitle, data } = this.props;
     return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this._points.forEach(point => {
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [point.x];
+      } else {
+        categoryToValues[point.y].push(point.x);
+      }
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
   };
 }

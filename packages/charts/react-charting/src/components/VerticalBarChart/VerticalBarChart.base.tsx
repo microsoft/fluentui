@@ -54,6 +54,7 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
@@ -157,7 +158,7 @@ export class VerticalBarChartBase
 
   public render(): JSX.Element {
     this._adjustProps();
-    this._xAxisLabels = this._points.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     this._yMax = Math.max(
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
@@ -1373,5 +1374,24 @@ export class VerticalBarChartBase
       (this._isHavingLine ? ' and 1 line' : '') +
       '. '
     );
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    const categoryToValues: Record<string, number[]> = {};
+
+    this._points.forEach(point => {
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [point.y];
+      } else {
+        categoryToValues[xValue].push(point.y);
+      }
+    });
+
+    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
   };
 }

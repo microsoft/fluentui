@@ -99,6 +99,7 @@ export type {
   SNode,
   IChart,
   IImageExportOptions,
+  CategoryOrder,
 } from './types/index';
 export type {
   IChartHoverCardProps,
