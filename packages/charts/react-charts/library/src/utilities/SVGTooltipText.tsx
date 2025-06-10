@@ -165,7 +165,6 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const backgroundColor = tokens.colorNeutralBackground1;
   const rectX = (typeof props.textProps?.x === 'number' ? props.textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
   const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - PADDING;
-  const isHighContrast = window.matchMedia('(forced-colors: active)').matches;
 
   return (
     <>
@@ -175,7 +174,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
           y={rectY}
           width={(textWidth ?? 0) + 2 * PADDING}
           height={(textHeight ?? 0) + 2 * PADDING}
-          fill={isHighContrast ? 'Canvas' : backgroundColor}
+          fill={backgroundColor}
           transform={props.textProps?.transform}
         />
       )}
