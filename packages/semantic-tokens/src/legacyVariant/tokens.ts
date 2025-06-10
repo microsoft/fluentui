@@ -20,6 +20,7 @@ import {
   paddingCtrlTextTopRaw,
   cornerCtrlRestRaw,
   gapInsideCtrlDefaultRaw,
+  gapBetweenContentMediumRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
   backgroundCtrlSubtleHoverRaw,
@@ -211,6 +212,13 @@ export const _ctrlAvatarPresenceBadgeStrokeWidthSm = `var(${ctrlAvatarPresenceBa
  * please use gapInsideCtrlDefault instead.
  */
 export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
+/**
+ * This is a legacy variant for gapBetweenContentMedium to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenContentMedium instead.
+ */
+export const _ctrlDialogGapBetweenContentMedium = `var(${gapBetweenContentMediumRaw}, 8px)`;
 /**
  * This is a legacy variant for foregroundCtrlHintDefault to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

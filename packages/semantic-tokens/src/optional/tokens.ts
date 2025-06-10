@@ -82,6 +82,8 @@ import {
 } from '../control/variables';
 import {
   fontFamilyBase,
+  fontSizeBase500,
+  lineHeightBase500,
   fontSizeBase300,
   lineHeightBase300,
   fontSizeBase200,
@@ -420,12 +422,12 @@ export const textStyleQuoteHeaderWeight = `var(${textStyleQuoteHeaderWeightRaw},
 export const textStyleQuoteHeaderLetterSpacing = `var(${textStyleQuoteHeaderLetterSpacingRaw}, var(${textStyleDefaultRegularLetterSpacingRaw}))`;
 export const textRampPageHeaderFontSize = `var(${textRampPageHeaderFontSizeRaw}, var(${textGlobalTitle2FontSizeRaw}))`;
 export const textRampPageHeaderLineHeight = `var(${textRampPageHeaderLineHeightRaw}, var(${textGlobalTitle2LineHeightRaw}))`;
-export const textRampSectionHeaderFontSize = `var(${textRampSectionHeaderFontSizeRaw}, var(${textGlobalSubtitle1FontSizeRaw}))`;
-export const textRampSectionHeaderLineHeight = `var(${textRampSectionHeaderLineHeightRaw}, var(${textGlobalSubtitle1LineHeightRaw}))`;
+export const textRampSectionHeaderFontSize = `var(${textRampSectionHeaderFontSizeRaw}, var(${textGlobalSubtitle1FontSizeRaw}, ${fontSizeBase500}))`;
+export const textRampSectionHeaderLineHeight = `var(${textRampSectionHeaderLineHeightRaw}, var(${textGlobalSubtitle1LineHeightRaw}, ${lineHeightBase500}))`;
 export const textRampSubsectionHeaderFontSize = `var(${textRampSubsectionHeaderFontSizeRaw}, var(${textGlobalSubtitle2FontSizeRaw}))`;
 export const textRampSubsectionHeaderLineHeight = `var(${textRampSubsectionHeaderLineHeightRaw}, var(${textGlobalSubtitle2LineHeightRaw}))`;
-export const textRampReadingBodyFontSize = `var(${textRampReadingBodyFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}))`;
-export const textRampReadingBodyLineHeight = `var(${textRampReadingBodyLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
+export const textRampReadingBodyFontSize = `var(${textRampReadingBodyFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}, ${fontSizeBase300}))`;
+export const textRampReadingBodyLineHeight = `var(${textRampReadingBodyLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase300}))`;
 export const textRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}))`;
 export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
 export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;

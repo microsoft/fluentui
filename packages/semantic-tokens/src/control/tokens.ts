@@ -32,6 +32,7 @@ import {
   spacingHorizontalSNudge,
   borderRadiusCircular,
   strokeWidthThin,
+  colorBackgroundOverlay,
   colorNeutralStroke1,
   colorNeutralStrokeDisabled,
   colorNeutralStrokeOnBrand,
@@ -325,8 +326,8 @@ export const paddingCtrlLgToNestedControl = `var(${paddingCtrlLgToNestedControlR
 export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxSmall = `var(${gapBetweenContentXxSmallRaw})`;
 export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw})`;
-export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw})`;
-export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw})`;
+export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw}, 8px)`;
+export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, 8px)`;
 export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenContentLarge = `var(${gapBetweenContentLargeRaw})`;
 export const gapBetweenContentXLarge = `var(${gapBetweenContentXLargeRaw})`;
@@ -344,7 +345,7 @@ export const gapInsideCtrlSmToLabel = `var(${gapInsideCtrlSmToLabelRaw}, ${spaci
 export const gapInsideCtrlLgToLabel = `var(${gapInsideCtrlLgToLabelRaw}, ${spacingHorizontalS})`;
 export const cornerCircular = `var(${cornerCircularRaw}, ${borderRadiusCircular})`;
 export const strokeWidthDefault = `var(${strokeWidthDefaultRaw}, ${strokeWidthThin})`;
-export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
+export const backgroundSmoke = `var(${backgroundSmokeRaw}, ${colorBackgroundOverlay})`;
 export const strokeCtrlOnOutlineRest = `var(${strokeCtrlOnOutlineRestRaw}, ${colorNeutralStroke1})`;
 export const strokeCtrlOnOutlineHover = `var(${strokeCtrlOnOutlineHoverRaw}, ${colorNeutralStroke1})`;
 export const strokeCtrlOnOutlinePressed = `var(${strokeCtrlOnOutlinePressedRaw}, ${colorNeutralStroke1})`;

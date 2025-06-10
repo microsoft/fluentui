@@ -1,15 +1,13 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import {
   FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
   MEDIA_QUERY_SHORT_SCREEN,
-  SURFACE_BORDER_WIDTH,
-  SURFACE_PADDING,
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>> = {
   root: 'fui-DialogSurface',
@@ -22,12 +20,12 @@ export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'b
 const useRootBaseStyle = makeResetStyles({
   ...createFocusOutlineStyle(),
   inset: 0,
-  padding: SURFACE_PADDING,
+  padding: semanticTokens.paddingContentLarge,
   margin: 'auto',
   borderStyle: 'none',
   overflow: 'unset',
-  border: `${SURFACE_BORDER_WIDTH} solid ${tokens.colorTransparentStroke}`,
-  borderRadius: tokens.borderRadiusXLarge,
+  border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlDialogStroke}`,
+  borderRadius: semanticTokens.ctrlDialogBaseCorner,
 
   display: 'block',
   userSelect: 'unset',
@@ -37,11 +35,11 @@ const useRootBaseStyle = makeResetStyles({
   maxWidth: '600px',
   maxHeight: '100vh',
   boxSizing: 'border-box',
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: semanticTokens.ctrlDialogLayerBackground,
+  color: semanticTokens.foregroundContentNeutralPrimary,
   // Same styles as DialogSurfaceMotion last keyframe,
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
-  boxShadow: tokens.shadow64,
+  boxShadow: `${semanticTokens.ctrlDialogBaseShadowKey} ${semanticTokens.ctrlDialogBaseShadowAmbient}`,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
@@ -51,7 +49,7 @@ const useRootBaseStyle = makeResetStyles({
     overflowY: 'auto',
     // We need to offset the scrollbar by adding transparent borders otherwise
     // it conflicts with the border radius.
-    paddingRight: `calc(${SURFACE_PADDING} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
+    paddingRight: `calc(${semanticTokens.paddingContentLarge} - ${FULLSCREEN_DIALOG_SCROLLBAR_OFFSET})`,
     borderRightWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
     borderTopWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
     borderBottomWidth: FULLSCREEN_DIALOG_SCROLLBAR_OFFSET,
@@ -60,13 +58,13 @@ const useRootBaseStyle = makeResetStyles({
 
 const useBackdropBaseStyle = makeResetStyles({
   inset: '0px',
-  backgroundColor: tokens.colorBackgroundOverlay,
+  backgroundColor: semanticTokens.backgroundSmoke,
   position: 'fixed',
 });
 
 const useBackdropStyles = makeStyles({
   nestedDialogBackdrop: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.nullColor,
   },
 });
 
