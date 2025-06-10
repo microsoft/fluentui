@@ -13,6 +13,18 @@ export type LegacyFluentVariantValue =
 export type LegacyFluentVariants = Record<string, LegacyFluentVariantValue | null>;
 
 export const legacyFluentVariantsValues: LegacyFluentVariants = {
+  _cornerCtrlRestButton: {
+    f2Token: 'borderRadiusMedium',
+    originalToken: 'cornerCtrlRest',
+  },
+  _cornerCtrlRestTextAreaMedium: {
+    f2Token: 'borderRadiusMedium',
+    originalToken: 'cornerCtrlRest',
+  },
+  _cornerCtrlRestTextAreaThick: {
+    f2Token: 'strokeWidthThick',
+    originalToken: 'cornerCtrlRest',
+  },
   _ctrlAccordionForegroundHover: {
     f2Token: 'colorNeutralForeground2',
     originalToken: 'foregroundCtrlOnTransparentHover',
@@ -69,4 +81,13 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlInputBackgroundRestDarker: {
+    f2Token: 'colorNeutralBackground3',
+    originalToken: 'ctrlInputBackgroundRest',
+  },
+  _ctrlInputBackgroundRestLighter: {
+    f2Token: 'colorNeutralBackground1',
+    originalToken: 'ctrlInputBackgroundRest',
+  },
+
 };

@@ -13,6 +13,7 @@ import {
   strokeCtrlOnOutlinePressedRaw,
   strokeCtrlOnOutlineDisabledRaw,
 } from '../../control/variables';
+import { colorPaletteRedBorder2, colorNeutralStroke1Pressed } from '../../legacy/tokens';
 import { statusDangerStrokeRaw } from '../../optional/variables';
 import {
   ctrlInputBackgroundRestRaw,
@@ -50,7 +51,7 @@ export const ctrlInputBackgroundHover = `var(${ctrlInputBackgroundHoverRaw}, var
 export const ctrlInputBackgroundPressed = `var(${ctrlInputBackgroundPressedRaw}, var(${backgroundCtrlNeutralPressedRaw}))`;
 export const ctrlInputBackgroundDisabled = `var(${ctrlInputBackgroundDisabledRaw}, var(${backgroundCtrlNeutralDisabledRaw}))`;
 export const ctrlInputBackgroundSelected = `var(${ctrlInputBackgroundSelectedRaw}, var(${backgroundCtrlNeutralRestRaw}))`;
-export const ctrlInputBackgroundError = `var(${ctrlInputBackgroundErrorRaw}, var(${backgroundCtrlNeutralRestRaw}))`;
+export const ctrlInputBackgroundError = `var(${ctrlInputBackgroundErrorRaw}, var(${backgroundCtrlNeutralRestRaw}, ${colorPaletteRedBorder2}))`;
 export const ctrlInputStrokeRest = `var(${ctrlInputStrokeRestRaw}, var(${strokeCtrlOnOutlineRestRaw}))`;
 export const ctrlInputStrokeWidthRest = `var(${ctrlInputStrokeWidthRestRaw}, var(${strokeWidthDefaultRaw}))`;
 export const ctrlInputStrokeWidthHover = `var(${ctrlInputStrokeWidthHoverRaw}, var(${strokeWidthDefaultRaw}))`;
@@ -69,7 +70,7 @@ export const ctrlInputBottomLineStrokeDisabled = `var(${ctrlInputBottomLineStrok
 export const ctrlInputBottomLineStrokeSelected = `var(${ctrlInputBottomLineStrokeSelectedRaw}, var(${backgroundCtrlBrandRestRaw}))`;
 export const ctrlInputBottomLineStrokeError = `var(${ctrlInputBottomLineStrokeErrorRaw}, unset)`;
 export const ctrlInputStrokeHover = `var(${ctrlInputStrokeHoverRaw}, var(${strokeCtrlOnOutlineHoverRaw}))`;
-export const ctrlInputStrokePressed = `var(${ctrlInputStrokePressedRaw}, var(${strokeCtrlOnOutlinePressedRaw}))`;
+export const ctrlInputStrokePressed = `var(${ctrlInputStrokePressedRaw}, var(${strokeCtrlOnOutlinePressedRaw}, ${colorNeutralStroke1Pressed}))`;
 export const ctrlInputStrokeDisabled = `var(${ctrlInputStrokeDisabledRaw}, var(${strokeCtrlOnOutlineDisabledRaw}))`;
 export const ctrlInputStrokeSelected = `var(${ctrlInputStrokeSelectedRaw}, var(${strokeCtrlOnOutlineRestRaw}))`;
 export const ctrlInputStrokeError = `var(${ctrlInputStrokeErrorRaw}, var(${statusDangerStrokeRaw}))`;

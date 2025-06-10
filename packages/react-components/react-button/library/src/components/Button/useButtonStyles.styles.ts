@@ -69,7 +69,7 @@ const useRootBaseClassName = makeResetStyles({
 
   padding: `${semanticTokens.paddingCtrlTextTop} ${paddingHorizontalNoIcon} ${semanticTokens.paddingCtrlTextBottom} ${paddingHorizontalNoIcon}`,
   minWidth: minButtonWidth,
-  borderRadius: semanticTokens.cornerCtrlRest,
+  borderRadius: semanticTokens._cornerCtrlRestButton,
 
   fontSize: semanticTokens.textRampItemBodyFontSize,
   fontWeight: semanticTokens.textCtrlButtonWeightDefault,
@@ -110,7 +110,7 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
   ...createCustomFocusIndicatorStyle({
     borderColor: semanticTokens.ctrlFocusInnerStroke,
-    borderRadius: semanticTokens.cornerCtrlRest,
+    borderRadius: semanticTokens._cornerCtrlRestButton,
     borderWidth: '1px',
     outline: `${semanticTokens.ctrlFocusOuterStrokeWidth} solid ${semanticTokens.ctrlFocusOuterStroke}`,
     boxShadow: `0 0 0 ${semanticTokens.ctrlFocusInnerStrokeWidth} ${semanticTokens.ctrlFocusInnerStroke}

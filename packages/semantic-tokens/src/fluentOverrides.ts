@@ -27,7 +27,6 @@ export const fluentOverrides: FluentOverrides = {
   backgroundCtrlSubtleRest: { f2Token: 'colorSubtleBackground' },
   cornerCircular: { f2Token: 'borderRadiusCircular' },
   cornerCtrlLgRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
-  cornerCtrlRest: { f2Token: 'borderRadiusMedium' },
   cornerCtrlSmRest: { f2Token: 'borderRadiusMedium' }, // Button uses borderRadiusMedium in all sizes
   cornerZero: { f2Token: 'borderRadiusNone' },
   ctrlAvatarActiveRingStrokeWidth: { f2Token: 'strokeWidthThick' },
@@ -45,6 +44,10 @@ export const fluentOverrides: FluentOverrides = {
   ctrlFocusInnerStrokeWidth: { f2Token: 'strokeWidthThin' },
   ctrlFocusOuterStroke: { f2Token: 'colorTransparentStroke' },
   ctrlFocusOuterStrokeWidth: { f2Token: 'strokeWidthThick' },
+  ctrlInputBackgroundError: { f2Token: 'colorPaletteRedBorder2' },
+  ctrlInputBottomlineStrokePressed: { f2Token: 'colorCompoundBrandStrokePressed' },
+  ctrlInputBottomlineStrokeRest: { f2Token: 'colorCompoundBrandStroke' },
+  ctrlInputStrokePressed: { f2Token: 'colorNeutralStroke1Pressed' },
   ctrlLinkForegroundBrandHover: { f2Token: 'colorBrandForegroundLinkHover' },
   ctrlLinkForegroundBrandPressed: { f2Token: 'colorBrandForegroundLinkPressed' },
   ctrlLinkForegroundBrandRest: { f2Token: 'colorBrandForegroundLink' },

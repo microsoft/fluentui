@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { TextareaSlots, TextareaState } from './Textarea.types';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   root: 'fui-Textarea',
@@ -17,15 +18,15 @@ const useRootStyles = makeStyles({
     boxSizing: 'border-box',
     position: 'relative',
     // Padding needed so the focus indicator does not overlap the resize handle, this should match focus indicator size.
-    padding: `0 0 ${tokens.strokeWidthThick} 0`,
+    padding: `0 0 ${semanticTokens._cornerCtrlRestTextAreaThick} 0`,
     margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: semanticTokens._cornerCtrlRestTextAreaMedium,
     verticalAlign: 'top',
   },
 
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeDisabled}`,
+    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeCtrlOnNeutralDisabled}`,
 
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -47,16 +48,16 @@ const useRootStyles = makeStyles({
       // Use the whole border-radius as the height and only put radii on the bottom corners.
       // (Otherwise the radius would be automatically reduced to fit available space.)
       // max() ensures the focus border still shows up even if someone sets tokens.borderRadiusMedium to 0.
-      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      height: `max(${semanticTokens._cornerCtrlRestTextAreaThick}, ${semanticTokens._cornerCtrlRestTextAreaMedium})`,
+      borderBottomLeftRadius: semanticTokens._cornerCtrlRestTextAreaMedium,
+      borderBottomRightRadius: semanticTokens._cornerCtrlRestTextAreaMedium,
 
       // Flat 2px border:
       // By default borderBottom will cause little "horns" on the ends. The clipPath trims them off.
       // (This could be done without trimming using `background: linear-gradient(...)`, but using
       // borderBottom makes it easier for people to override the color if needed.)
-      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
-      clipPath: `inset(calc(100% - ${tokens.strokeWidthThick}) 0 0 0)`,
+      borderBottom: `${semanticTokens._cornerCtrlRestTextAreaThick} solid ${semanticTokens.ctrlInputBottomlineStrokeRest}`,
+      clipPath: `inset(calc(100% - ${semanticTokens._cornerCtrlRestTextAreaThick}) 0 0 0)`,
 
       // Animation for focus OUT
       transform: 'scaleX(0)',
@@ -83,63 +84,62 @@ const useRootStyles = makeStyles({
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokePressed,
     },
     ':focus-within': {
-      outlineWidth: tokens.strokeWidthThick,
+      outlineWidth: semanticTokens._cornerCtrlRestTextAreaThick,
       outlineStyle: 'solid',
       outlineColor: 'transparent',
     },
   },
 
   filled: {
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    border: `${semanticTokens.strokeWidthDefault} solid ${tokens.colorTransparentStroke}`,
     ':hover,:focus-within': {
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
   },
   'filled-darker-shadow': {
-    backgroundColor: tokens.colorNeutralBackground3,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestDarker,
+    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlFocusInnerStroke}`,
     boxShadow: tokens.shadow2,
   },
   'filled-lighter-shadow': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStrokeInteractive}`,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
+    border: `${semanticTokens.strokeWidthDefault} solid ${tokens.colorTransparentStrokeInteractive}`,
     boxShadow: tokens.shadow2,
   },
 
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    backgroundColor: semanticTokens._ctrlInputBackgroundRestLighter,
+    border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeRest}`,
+    borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeSelected,
   },
   outlineInteractive: {
     ':hover': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Hover}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessibleHover,
+      border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokeHover}`,
+      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeHover,
     },
 
     ':active': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
-      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
+      border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokePressed}`,
+      borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed, // TODO
     },
 
     ':focus-within': {
-      border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1Pressed}`,
-      borderBottomColor: tokens.colorCompoundBrandStroke,
+      border: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.ctrlInputStrokePressed}`,
+      borderBottomColor: semanticTokens.ctrlInputBottomlineStrokeSelected,
     },
   },
 
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+      ...shorthands.borderColor(semanticTokens.ctrlInputBackgroundError),
     },
   },
 });
@@ -153,29 +153,29 @@ const useTextareaStyles = makeStyles({
     margin: '0',
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
+    color: semanticTokens.foregroundContentNeutralPrimary,
     flexGrow: 1,
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: semanticTokens.textStyleDefaultRegularFontFamily,
     height: '100%',
 
     '::placeholder': {
-      color: tokens.colorNeutralForeground4,
+      color: tokens.colorNeutralForeground4, // TODO
       opacity: 1,
     },
 
     '::selection': {
       color: tokens.colorNeutralForegroundInverted,
-      backgroundColor: tokens.colorNeutralBackgroundInverted,
+      backgroundColor: tokens.colorNeutralBackgroundInverted, // TODO
     },
 
     outlineStyle: 'none', // disable default browser outline
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: semanticTokens.foregroundCtrlNeutralPrimaryDisabled,
     },
   },
 
@@ -183,19 +183,19 @@ const useTextareaStyles = makeStyles({
   // affected by changing the padding of the root.
   small: {
     minHeight: '40px',
-    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+    padding: `${tokens.spacingVerticalXS} calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`, // TODO
     maxHeight: '200px',
     ...typographyStyles.caption1,
   },
   medium: {
     minHeight: '52px',
-    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    padding: `${tokens.spacingVerticalSNudge} calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`, // TODO
     maxHeight: '260px',
     ...typographyStyles.body1,
   },
   large: {
     minHeight: '64px',
-    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
+    padding: `${tokens.spacingVerticalS} calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`, // TODO
     maxHeight: '320px',
     ...typographyStyles.body2,
   },
