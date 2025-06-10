@@ -34,6 +34,9 @@ export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 // @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
+// @public (undocumented)
+export type CategoryOrder = string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
+
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
@@ -315,11 +318,15 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    // (undocumented)
+    xAxisCategoryOrder?: CategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    // (undocumented)
+    yAxisCategoryOrder?: CategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
     yAxisTitle?: string;
