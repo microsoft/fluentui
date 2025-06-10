@@ -439,7 +439,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           }
         })}
       </div>
-      {isMultiPlot && createLegends(allupLegendsProps)}
+      {isMultiPlot.current && createLegends(allupLegendsProps)}
     </>
   );
 });
