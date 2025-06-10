@@ -10,6 +10,7 @@ import {
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
   nullColorRaw,
+  gapBetweenContentMediumRaw,
 } from '../control/variables';
 import {
   colorNeutralForeground2,
@@ -129,3 +130,10 @@ export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${sp
  * please use foregroundCtrlHintDefault instead.
  */
 export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for gapBetweenContentMedium to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenContentMedium instead.
+ */
+export const _ctrlDialogGapBetweenContentMedium = `var(${gapBetweenContentMediumRaw}, 8px)`;
