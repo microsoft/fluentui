@@ -198,14 +198,13 @@ describe('Build Executor', () => {
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
       "import { useStyles } from './greeter.styles';
       export function greeter(greeting, user) {
-          var _user_hometown;
           const styles = useStyles();
-          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;
       }
       "
     `);
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8')).toMatchInlineSnapshot(
-      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"rangeMappings\\":\\";;;;;\\",\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+      `"{\\"version\\":3,\\"sources\\":[\\"../src/greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"rangeMappings\\":\\";;;;\\",\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;IAClD,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,EAAEF,KAAKG,QAAQ,EAAED,KAAK,KAAK,CAAC;AAC1F\\"}"`,
     );
 
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
@@ -221,9 +220,8 @@ describe('Build Executor', () => {
       });
       const _greeterstyles = require(\\"./greeter.styles\\");
       function greeter(greeting, user) {
-          var _user_hometown;
           const styles = (0, _greeterstyles.useStyles)();
-          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;
       }
       "
     `);

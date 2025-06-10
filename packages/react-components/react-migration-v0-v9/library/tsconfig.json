@@ -2,7 +2,7 @@
   "extends": "../../../../tsconfig.base.all.json",
   "compilerOptions": {
     "strict": true,
-    "target": "ES2019",
+    "target": "ES2020",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
