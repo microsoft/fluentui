@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { CartesianChartProps, CartesianChartStyles } from './CartesianChart.types';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useRtl } from '../../utilities/utilities';
+import { HighContrastSelector, useRtl } from '../../utilities/utilities';
 
 /**
  * @internal
@@ -43,6 +43,9 @@ const useStyles = makeStyles({
     textAlign: 'center',
     color: tokens.colorNeutralForeground2,
     fill: tokens.colorNeutralForeground1,
+    [HighContrastSelector]: {
+      fill: 'CanvasText',
+    },
   },
   xAxis: {
     '& text': {
