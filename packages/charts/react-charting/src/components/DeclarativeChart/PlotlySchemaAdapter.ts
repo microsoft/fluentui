@@ -1767,6 +1767,11 @@ const getIndexFromKey = (key: string, pattern: string): number => {
   return parseInt(normalizedKey, 10) - 1;
 };
 
+type FillInfo = {
+  row: number;
+  fillDomain: number;
+};
+
 export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridProperties => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
@@ -1777,7 +1782,7 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
   const annotations: Record<number, AnnotationProps> = {};
   let templateRows = '1fr';
   let templateColumns = '1fr';
-  let gridLayout: GridAxisProperties = {};
+  const gridLayout: GridAxisProperties = {};
   if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
     return { templateRows, templateColumns, layout: gridLayout };
   }
@@ -1851,6 +1856,8 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       .join(' ');
 
     let columnNumber = 1;
+    let lastIntervalStart = 0;
+    let lastIntervalEnd = 0;
     gridX.forEach((interval, index) => {
       if (interval.length === 0) {
         return;
@@ -1861,15 +1868,28 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       const annotationProps = annotations[index] as AnnotationProps;
       const xAnnotation = annotationProps?.xAnnotation;
 
+      if (interval[0] < lastIntervalEnd) {
+        columnNumber = 1;
+      }
+      lastIntervalStart = interval[0];
+      lastIntervalEnd = interval[1];
+
       const row: AxisProperties = {
         row: -1,
         column: columnNumber,
         xAnnotation,
       };
       gridLayout[cellName] = row;
-      columnNumber = interval[1] + minXInterval > 1 ? 1 : columnNumber + 1;
+      columnNumber += 1;
     });
   }
+  const numColumns = Math.max(...Object.values(gridLayout).map(cell => cell.column ?? 0));
+
+  const columnFill: Record<number, FillInfo> = {};
+  for (let i = 1; i <= numColumns; i++) {
+    columnFill[i] = { row: 1, fillDomain: 0 };
+  }
+
   if (gridY.length > 0) {
     const uniqueYIntervals = new Map<string, number[]>();
     gridY.forEach(interval => {
@@ -1883,7 +1903,6 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       .map(interval => `${(interval[1] - interval[0]) / minYInterval}fr`)
       .join(' ');
 
-    let rowNumber = 0;
     gridY.forEach((interval, index) => {
       if (interval.length === 0) {
         return;
@@ -1895,32 +1914,19 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
       const yAnnotation = annotationProps?.yAnnotation;
 
       const cell = gridLayout[cellName];
+
       if (cell !== undefined) {
-        // update the row number in the existing cell
-        cell.row = rowNumber;
+        cell.row = columnFill[cell.column].row;
         cell.yAnnotation = yAnnotation;
       }
-      rowNumber = interval[1] + minYInterval > 1 ? 0 : rowNumber + 1;
+      columnFill[cell.column].fillDomain = interval[1];
+      columnFill[cell.column].row += 1;
     });
   }
-
-  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
-  const reversedGridLayout: GridAxisProperties = {};
-  // find the maximum row number
-  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
-  // iterate over the gridLayout and reverse the row numbers
-  Object.keys(gridLayout).forEach(key => {
-    const cell = gridLayout[key];
-    if (cell.row !== undefined) {
-      // reverse the row number
-      cell.row = maxRowNumber - cell.row + 1;
-    }
-    reversedGridLayout[key] = cell;
-  });
 
   return {
     templateRows,
     templateColumns,
-    layout: reversedGridLayout,
+    layout: gridLayout,
   };
 };

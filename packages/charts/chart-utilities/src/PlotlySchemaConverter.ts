@@ -459,7 +459,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
     if (containsBars && containsLines) {
       return {
         isValid: true,
-        type: 'verticalstackedbar',
+        type: 'fallback',
         validTracesInfo: mappedTraces.map(trace => [trace.traceIndex!, trace.type!]),
       };
     }
