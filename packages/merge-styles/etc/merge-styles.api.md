@@ -46,11 +46,9 @@ export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-// @public (undocumented)
-export type DeepPartialObject<T> = {
-    [Key in keyof T]?: DeepPartialV2<T[Key]>;
-};
-
+// Warning: (ae-forgotten-export) The symbol "IDeepPartialArray" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "DeepPartialObject" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 export type DeepPartialV2<T> = T extends Function ? T : T extends Array<infer U> ? IDeepPartialArray<U> : T extends object ? DeepPartialObject<T> : T;
 
@@ -90,10 +88,6 @@ export type ICSSPixelUnitRule = string | number;
 
 // @public (undocumented)
 export type ICSSRule = 'initial' | 'inherit' | 'unset';
-
-// @public (undocumented)
-export interface IDeepPartialArray<T> extends Array<DeepPartialV2<T>> {
-}
 
 // @public
 export interface IFontFace extends IRawFontStyle {

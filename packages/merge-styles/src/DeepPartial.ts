@@ -7,9 +7,9 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Array<infer U> ? Array<DeepPartial<U>> : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-export interface IDeepPartialArray<T> extends Array<DeepPartialV2<T>> {}
+interface IDeepPartialArray<T> extends Array<DeepPartialV2<T>> {}
 
-export type DeepPartialObject<T> = {
+type DeepPartialObject<T> = {
   [Key in keyof T]?: DeepPartialV2<T[Key]>;
 };
 
