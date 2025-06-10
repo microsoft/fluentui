@@ -426,11 +426,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
                 [transformedInput, isMultiPlot.current, colorMap, props.colorwayType, isDarkTheme],
                 {
                   ...commonProps,
-                  xAxisAnnotation: cellProperties.xAnnotation,
-                  yAxisAnnotation: cellProperties.yAnnotation,
+                  xAxisAnnotation: cellProperties?.xAnnotation,
+                  yAxisAnnotation: cellProperties?.yAnnotation,
                 },
-                cellProperties.row,
-                cellProperties.column,
+                cellProperties?.row ?? 1,
+                cellProperties?.column ?? 1,
               );
             }
             return <></>;
