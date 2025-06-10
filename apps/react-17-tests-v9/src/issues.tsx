@@ -84,7 +84,6 @@ import type {
     ...defaultMenuProps,
   };
 
-  // @ts-expect-error - Slot type mismatch
   slot.always(props.menuButton, {
     defaultProps: menuButtonDefaultProps,
     // @ts-expect-error - Slot type mismatch

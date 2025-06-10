@@ -737,7 +737,9 @@ exports[`Nav renders Nav correctly 1`] = `
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
-                  />
+                  >
+                    
+                  </div>
                 </span>
               </button>
             </div>

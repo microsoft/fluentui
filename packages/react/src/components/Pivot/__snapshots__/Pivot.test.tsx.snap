@@ -2568,6 +2568,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 }
           >
              
+            
           </span>
         </span>
       </span>
@@ -3099,6 +3100,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 }
           >
              
+            
           </span>
         </span>
       </span>
@@ -3528,6 +3530,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 }
           >
              
+            
           </span>
         </span>
       </span>
@@ -4058,6 +4061,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 }
           >
              
+            
           </span>
         </span>
       </span>

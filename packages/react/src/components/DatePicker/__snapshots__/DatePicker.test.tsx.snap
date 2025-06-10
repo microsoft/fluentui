@@ -224,6 +224,7 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                 margin-top: 5px;
               }
         />
+        
       </span>
     </div>
   </div>
@@ -455,6 +456,7 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                 margin-top: 5px;
               }
         />
+        
       </span>
     </div>
   </div>
@@ -695,6 +697,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 margin-top: 5px;
               }
         />
+        
       </span>
     </div>
   </div>
