@@ -8,7 +8,7 @@ import type {
   PropsWithoutRef,
   ReactNode,
   ReactVersionDependent,
-  ReplaceNullWithUndefined
+  ReplaceNullWithUndefined,
 } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (Component: React.ElementType<Props>, props: Omit<Props, 'as'>) => ReactNode;
