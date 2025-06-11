@@ -177,14 +177,36 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (
-    ['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') &&
-    !isNumberArray(data.x) &&
-    !isDateArray(data.x)
+  const mode = data.mode ?? '';
+  const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
+  const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
+  if (mode === 'markers') {
+    // Any series having only markers -> Supported number x/string x/date x + number y
+    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+    }
+    if (!isNumberArray(data.y)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
+    }
+  } else if (
+    [
+      'lines+markers',
+      'markers+lines',
+      'text+lines+markers',
+      'lines',
+      'text+lines',
+      'text+markers',
+      'markers+text',
+    ].includes(mode)
   ) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String`);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered.`);
+    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+    }
+    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
+    }
+  } else {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
   }
 };
 
@@ -340,7 +362,6 @@ export const mapFluentChart = (input: any): OutputChartType => {
     const validTraces = getValidTraces(validSchema.data);
 
     const firstData = validSchema.data[validTraces[0][0]];
-
     switch (firstData.type) {
       case 'pie':
         return { isValid: true, type: 'donut', validTracesInfo: validTraces };
@@ -359,6 +380,14 @@ export const mapFluentChart = (input: any): OutputChartType => {
       case 'table':
         return { isValid: true, type: 'table', validTracesInfo: validTraces };
       default:
+        const isScatterChart = validTraces.every(trace => {
+          const data = validSchema.data[trace[0]] as Partial<PlotData>;
+          return data.type === 'scatter' && (data.mode ?? '') === 'markers';
+        });
+        if (isScatterChart) {
+          return { isValid: true, type: 'scatter', validTracesInfo: validTraces };
+        }
+
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');
         if (containsBars && containsLines) {
