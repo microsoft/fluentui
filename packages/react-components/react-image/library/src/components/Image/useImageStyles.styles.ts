@@ -2,6 +2,7 @@ import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ImageSlots, ImageState } from './Image.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 export const imageClassNames: SlotClassNames<ImageSlots> = {
   root: 'fui-Image',
@@ -10,8 +11,8 @@ export const imageClassNames: SlotClassNames<ImageSlots> = {
 const useStyles = makeStyles({
   // Base styles
   base: {
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    borderRadius: tokens.borderRadiusNone,
+    ...shorthands.borderColor(semanticTokens.strokeCtrlOnNeutralRest),
+    borderRadius: semanticTokens.cornerZero,
 
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -20,12 +21,12 @@ const useStyles = makeStyles({
   // Bordered styles
   bordered: {
     ...shorthands.borderStyle('solid'),
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    ...shorthands.borderWidth(semanticTokens.strokeWidthDefault),
   },
 
   // Shape variations
-  circular: { borderRadius: tokens.borderRadiusCircular },
-  rounded: { borderRadius: tokens.borderRadiusMedium },
+  circular: { borderRadius: semanticTokens.cornerCircular },
+  rounded: { borderRadius: semanticTokens.cornerCtrlRest },
   square: {
     /* The square styles are exactly the same as the base styles. */
   },
