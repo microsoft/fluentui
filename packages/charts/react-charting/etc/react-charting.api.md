@@ -1022,6 +1022,7 @@ export interface ILineChartDataPoint {
     hideCallout?: boolean;
     markerSize?: number;
     onDataPointClick?: () => void;
+    text?: string;
     x: number | Date;
     xAxisCalloutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
@@ -1089,6 +1090,8 @@ export interface ILineChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface ILineChartStyles extends ICartesianChartStyles {
+    // (undocumented)
+    markerLabel?: IStyle;
 }
 
 // @public (undocumented)

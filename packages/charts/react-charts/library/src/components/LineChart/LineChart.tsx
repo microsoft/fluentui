@@ -456,7 +456,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               cy={_yAxisScale(y1)}
               fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
               opacity={isLegendSelected ? 1 : 0.1}
-              tabIndex={_points[i].legend !== '' ? 0 : undefined}
+              tabIndex={isLegendSelected ? 0 : undefined}
               onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                 _handleHover(
                   x1,
@@ -558,7 +558,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
-                tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                tabIndex={isLegendSelected ? 0 : undefined}
               />,
             );
           } else {
@@ -654,7 +654,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 strokeWidth={strokeWidth}
                 role="img"
                 aria-label={_getAriaLabel(i, j - 1)}
-                tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                tabIndex={isLegendSelected ? 0 : undefined}
               />,
             );
             if (j + 1 === _points[i].data.length) {
@@ -708,7 +708,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     strokeWidth={strokeWidth}
                     role="img"
                     aria-label={_getAriaLabel(i, j)}
-                    tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                    tabIndex={isLegendSelected ? 0 : undefined}
                   />
                   {/* Dummy circle acting as magnetic latch for last callout point */}
                   <circle

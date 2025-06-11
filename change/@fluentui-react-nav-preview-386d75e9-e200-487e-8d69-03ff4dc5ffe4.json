@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Change Nav icon display animations to opacity animations",
+  "comment": "fix(react-nav): Inset focus outlines to fix focus borders being cut off",
   "packageName": "@fluentui/react-nav-preview",
   "email": "jiangemma@microsoft.com",
   "dependentChangeType": "patch"
