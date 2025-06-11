@@ -8,46 +8,53 @@ This document explains the different maturity levels of Fluent UI v9 packages to
 
 ## Overview
 
-Fluent UI v9 packages are categorized into three main maturity levels that indicate their stability and readiness for production use:
+Fluent UI v9 packages are categorized into four main maturity levels that indicate their stability and readiness for production use:
 
-- **🟢 Stable**: Production-ready packages/components with stable APIs
-- **🟡 Preview**: Initial stage of package/component development with intention to be propagated to Stable (part of Fluent core suite)
-- **🔵 Compat**: Fluent UI v8 packages/components using solely v9 dependencies and APIs
-- **🔴 Deprecated**: Unsupported packages
+- **🟢 Stable**: Production-ready packages with stable APIs
+- **🟡 Preview**: Early access packages in development with the intention to become stable
+- **🔵 Compat**: Fluent UI v8 packages adapted to use v9 dependencies and APIs
+- **🔴 Deprecated**: Unsupported packages with available alternatives
 
-## Package Stages
+## Package Categories
 
 ### 🟢 Stable Packages
 
 **Characteristics:**
 
-- Production-ready
-- API is stable
+- Production-ready with stable APIs
+- Full support and maintenance
 - Version format: `9.x.x`
 - Available from `@fluentui/react-components` suite
 - Naming convention: `@fluentui/react-<name>`
 
-**Examples:** react-button, react-text
+**Examples:** `@fluentui/react-button`, `@fluentui/react-text`
 
 **Import path:** `@fluentui/react-components`
+
+**When to use:** For all production applications where stability and long-term support are important.
+
+---
 
 ### 🟡 Preview Packages
 
 **Characteristics:**
 
-- Components that are not yet part of the stable suite (Early Access)
-- Can introduced Breaking Changes
-- Version format: `0.x.x`
+- Early access components not yet part of the stable suite
+- May introduce breaking changes
+- Active development with intention to become stable
+- Version format: `0.x.x` (Note: translates to `0.major.(minor|patch)`)
 - Not available from `@fluentui/react-components` suite
-- Naming convention: `@fluentui/react-<name>-preview` (`-preview` suffix indicates it's a preview package)
+- Naming convention: `@fluentui/react-<name>-preview` (with `-preview` suffix)
 
-**Examples:** react-nav-preview, react-virtualizer
+**Examples:** `@fluentui/react-nav-preview`
 
 **Import path:** `@fluentui/react-<name>-preview`
 
-**💡 Exemptions:**
+**When to use:** When you need early access to new functionality and can tolerate potential breaking changes during updates.
 
-There are some packages that don't following "preview" conventions, although are considered as PREVIEW, because they were created before the preview phase was introduced:
+**💡 Legacy Exemptions:**
+
+Some packages don't follow the preview naming convention but are still considered preview status, as they were created before the preview phase was introduced:
 
 - `@fluentui/theme`
 - `@fluentui/react-virtualizer`
@@ -58,22 +65,19 @@ There are some packages that don't following "preview" conventions, although are
 
 **Characteristics:**
 
-- Fluent UI v8 components using solely v9 dependencies and APIs
+- Fluent UI v8 components adapted to use v9 dependencies and APIs
 - Maintain familiar v8 APIs for easier migration
-- Bridge components during transition period from v8 to v9
-- Gradually being replaced by stable v9 equivalents
-- Can introduced breaking changes
-- Version format: `0.x.x`
+- Serve as bridge components during v8 to v9 transition
+- May introduce breaking changes
+- Version format: `0.x.x` (Note: translates to `0.major.(minor|patch)`)
 - Not available from `@fluentui/react-components` suite
-- Naming convention: `@fluentui/react-<name>-compat` (`-compat` suffix indicates it's a compat package)
+- Naming convention: `@fluentui/react-<name>-compat` (with `-compat` suffix)
 
-**Examples:** react-datepicker-compat, react-calendar-compat
+**Examples:** `@fluentui/react-datepicker-compat`, `@fluentui/react-calendar-compat`
 
-**Import path:** `@fluentui/react-zzz-compat`
+**Import path:** `@fluentui/react-<name>-compat`
 
-**When to use:**
-
-Use during migration from v8 to v9 when native v9 equivalents aren't available or when you need time to gradually migrate complex implementations.
+**When to use:** During migration from v8 to v9 when native v9 equivalents aren't available, or when you need time to gradually migrate complex implementations.
 
 **Migration strategy:** Plan to migrate to native v9 components as they become available and stable.
 
@@ -83,19 +87,33 @@ Use during migration from v8 to v9 when native v9 equivalents aren't available o
 
 **Characteristics:**
 
-- Packages that are no longer supported or maintained
-- Most of the time they have stable alternatives
-- Version format: can vary, but typically `9.0.0-alpha.x` or `9.0.0-beta.x`
-- Available from `@fluentui/react-components/unstable` suite (NOTE: suite `/unstable` api is DEPRECATED)
+- No longer supported or maintained
+- Stable alternatives are typically available
+- May not receive security updates or bug fixes
+- Version format: varies (typically `9.0.0-alpha.x` or `9.0.0-beta.x`)
+- Available from deprecated suite api `@fluentui/react-components/unstable`
 - Naming convention: `@fluentui/react-<name>`
 
-**Examples:** react-alert, react-infobutton
+**Examples:** `@fluentui/react-alert`, `@fluentui/react-infobutton`
 
-**Migration strategy:**
+**Import path:** `@fluentui/react-components/unstable` (⚠️ **Note:** The `/unstable` API is deprecated)
 
-| Deprecated Package | Stable Alternative                                  |
-| ------------------ | --------------------------------------------------- |
-| react-alert        | react-components / (react-toast, react-message-bar) |
-| react-infobutton   | react-components / (react-infolabel)                |
+**When to use:** Not recommended for new development. Migrate to stable alternatives immediately.
 
-Migrate to stable alternatives as soon as possible. Deprecated packages may not receive updates or fixes.
+**Migration Guide:**
+
+| Deprecated Package           | Stable Alternative                                   |
+| ---------------------------- | ---------------------------------------------------- |
+| `@fluentui/react-alert`      | `@fluentui/react-components` (`Toast`, `MessageBar`) |
+| `@fluentui/react-infobutton` | `@fluentui/react-components` (`InfoLabel`)           |
+
+**Migration strategy:** Migrate to stable alternatives as soon as possible. Deprecated packages may not receive updates or security fixes.
+
+## Quick Reference
+
+| Maturity Level | Version Format | Production Ready    | Breaking Changes | Import Source                         |
+| -------------- | -------------- | ------------------- | ---------------- | ------------------------------------- |
+| 🟢 Stable      | `9.x.x`        | ✅ Yes              | ❌ No            | `@fluentui/react-components`          |
+| 🟡 Preview     | `0.x.x`        | ⚠️ Use with caution | ✅ Possible      | `@fluentui/react-<name>-preview`      |
+| 🔵 Compat      | `0.x.x`        | ⚠️ Migration only   | ✅ Possible      | `@fluentui/react-<name>-compat`       |
+| 🔴 Deprecated  | various        | ❌ No               | N/A              | `@fluentui/react-components/unstable` |
