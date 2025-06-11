@@ -298,8 +298,8 @@ packages/react-components/react-toast/stories @microsoft/teams-prg
 packages/react-components/react-search/library @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-search/stories @microsoft/cxe-prg @ValentinaKozlova
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
-packages/react-components/react-nav/library @microsoft/cxe-red @microsoft/xc-uxe @mltejera
-packages/react-components/react-nav/stories @microsoft/cxe-red @microsoft/xc-uxe @mltejera
+packages/react-components/react-nav/library @microsoft/cxe-prg @marcosmoura
+packages/react-components/react-nav/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar/library @microsoft/teams-prg
 packages/react-components/react-message-bar/stories @microsoft/teams-prg
 packages/react-components/react-rating/library @microsoft/cxe-prg @marcosmoura
