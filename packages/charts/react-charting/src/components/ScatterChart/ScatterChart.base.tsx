@@ -171,21 +171,30 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
-    const legendDataItems = data.map((point: ScatterChartDataWithIndex) => {
-      const color: string = point.color!;
+    const mapLegendToPoints: Record<string, ScatterChartDataWithIndex[]> = {};
+    data.forEach((point: ScatterChartDataWithIndex) => {
+      if (point.legend) {
+        if (!mapLegendToPoints[point.legend]) {
+          mapLegendToPoints[point.legend] = [];
+        }
+        mapLegendToPoints[point.legend].push(point);
+      }
+    });
+    const legendDataItems: ILegend[] = Object.entries(mapLegendToPoints).map(([legendTitle, points]) => {
+      const representativePoint = points[0];
       // mapping data to the format Legends component needs
       const legend: ILegend = {
-        title: point.legend!,
-        color,
+        title: legendTitle,
+        color: representativePoint.color!,
         onMouseOutAction: () => {
           setActiveLegend('');
         },
         hoverAction: () => {
           _handleChartMouseLeave();
-          setActiveLegend(point.legend);
+          setActiveLegend(legendTitle);
         },
-        ...(point.legendShape && {
-          shape: point.legendShape,
+        ...(representativePoint.legendShape && {
+          shape: representativePoint.legendShape,
         }),
       };
       return legend;
