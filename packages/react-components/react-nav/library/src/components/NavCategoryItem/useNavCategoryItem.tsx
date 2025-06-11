@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronRight20Regular } from '@fluentui/react-icons';
+import { ChevronDown20Regular } from '@fluentui/react-icons';
 import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
@@ -13,7 +13,7 @@ const ExpandIconMotion = createPresenceComponent(() => {
       transform: 'rotate(0deg) translate3D(0, 0, 0)',
     },
     {
-      transform: 'rotate(90deg) translate3D(0, 0, 0)',
+      transform: 'rotate(180deg) translate3D(0, 0, 0)',
     },
   ];
   const duration = motionTokens.durationFast;
@@ -85,7 +85,7 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronRight20Regular />,
+        children: <ChevronDown20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
