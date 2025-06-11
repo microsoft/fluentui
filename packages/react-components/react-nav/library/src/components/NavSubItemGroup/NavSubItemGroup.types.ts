@@ -8,7 +8,14 @@ export type NavSubItemGroupCollapseMotionParams = {
 };
 
 export type NavSubItemGroupSlots = {
+  /**
+   * The root element
+   */
   root: NonNullable<Slot<'div'>>;
+
+  /**
+   * Collapse motion slot
+   */
   collapseMotion?: Slot<PresenceMotionSlotProps<NavSubItemGroupCollapseMotionParams>>;
 };
 

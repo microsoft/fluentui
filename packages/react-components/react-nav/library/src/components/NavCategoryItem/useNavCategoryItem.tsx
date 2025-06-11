@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import { ChevronRight20Regular } from '@fluentui/react-icons';
-import {
-  PresenceMotionSlotProps,
-  createPresenceComponent,
-  motionTokens,
-  presenceMotionSlot,
-} from '@fluentui/react-motion';
-import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
+import { createPresenceComponent, motionTokens, presenceMotionSlot } from '@fluentui/react-motion';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
 
