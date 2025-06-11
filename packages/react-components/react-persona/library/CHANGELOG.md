@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Fri, 06 Jun 2025 13:15:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jun 2025 22:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.3.9)
+
+Wed, 11 Jun 2025 22:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.3.8..@fluentui/react-persona_v9.3.9)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.7.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
 
 ## [9.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.3.8)
 

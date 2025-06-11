@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Fri, 06 Jun 2025 13:15:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jun 2025 22:31:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.7)
+
+Wed, 11 Jun 2025 22:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.5.6..@fluentui/react-tags_v9.5.7)
+
+### Patches
+
+- fix: selected Tag and InteractionTag styles are visible in high contrast mode ([PR #34620](https://github.com/microsoft/fluentui/pull/34620) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-avatar to v9.7.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
 
 ## [9.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.5.6)
 
