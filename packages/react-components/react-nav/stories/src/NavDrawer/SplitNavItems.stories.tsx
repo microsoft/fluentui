@@ -6,7 +6,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerProps,
   NavDensity,
   AppItem,
   AppItemStatic,
@@ -184,7 +183,7 @@ const DemoMenuPopover = () => {
   );
 };
 
-export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
+export const SplitNavItems = () => {
   const styles = useStyles();
 
   const labelId = useId('type-label');

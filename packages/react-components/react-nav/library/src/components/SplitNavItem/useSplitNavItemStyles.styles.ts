@@ -3,6 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
 import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
 import { tokens } from '@fluentui/react-theme';
+import { motionTokens } from '@fluentui/react-motion/src/index';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
@@ -36,7 +37,15 @@ const useSplitNaveItemStyles = makeStyles({
 
     ':hover': {
       backgroundColor: navItemTokens.backgroundColorHover,
+
+      [`& .${splitNavItemClassNames.actionButton}, & .${splitNavItemClassNames.toggleButton}, & .${splitNavItemClassNames.menuButton}`]:
+        {
+          opacity: 1,
+          pointerEvents: 'auto',
+          transform: 'translate3D(0, 0, 0)',
+        },
     },
+
     ':active': {
       backgroundColor: navItemTokens.backgroundColorPressed,
     },
@@ -61,6 +70,18 @@ const useSplitNaveItemStyles = makeStyles({
   },
   baseMedium: {
     paddingBlockStart: '9px',
+  },
+
+  baseLarge: {
+    paddingBlockStart: '12px',
+  },
+
+  hoverAction: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transform: 'translate3D(100%, 0, 0)',
+    transition: `opacity ${motionTokens.durationNormal}ms ${motionTokens.curveEasyEase}`,
+    willChange: 'transform, opacity',
   },
 });
 
