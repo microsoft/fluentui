@@ -82,6 +82,6 @@
     "@fluentui/react-carousel": "*",
     "@fluentui/react-list": "*",
     "@fluentui/react-color-picker": "*",
-    "@fluentui/react-nav": ">=9.0.0-alpha"
+    "@fluentui/react-nav": "*"
   }
 }

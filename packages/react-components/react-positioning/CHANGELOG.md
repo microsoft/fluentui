@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 06 Jun 2025 13:15:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jun 2025 22:31:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.17.2)
+
+Wed, 11 Jun 2025 22:31:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.17.1..@fluentui/react-positioning_v9.17.2)
+
+### Patches
+
+- feat: implement useSafeZoneArea() hook ([PR #34445](https://github.com/microsoft/fluentui/pull/34445) by olfedias@microsoft.com)
 
 ## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.17.1)
 

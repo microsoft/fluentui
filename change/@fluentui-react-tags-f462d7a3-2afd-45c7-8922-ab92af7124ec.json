@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: selected Tag and InteractionTag styles are visible in high contrast mode",
-  "packageName": "@fluentui/react-tags",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
