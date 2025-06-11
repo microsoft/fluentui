@@ -194,11 +194,21 @@ const useRootStyles = makeStyles({
     background: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorBrandStroke1),
+    '@media (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundColor: 'Highlight',
+      color: 'HighlightText',
+    },
+
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
       color: tokens.colorNeutralForegroundOnBrand,
       [`& .${iconFilledClassName}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
       },
     },
     ':active': {
@@ -206,6 +216,10 @@ const useRootStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
       [`& .${iconFilledClassName}`]: {
         color: tokens.colorNeutralForegroundOnBrand,
+      },
+      '@media (forced-colors: active)': {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText',
       },
     },
   },
