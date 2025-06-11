@@ -1,4 +1,4 @@
-import { HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { FontSizes, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart.types';
 
 export const getStyles = (props: IScatterChartStyleProps): IScatterChartStyles => {
@@ -17,7 +17,7 @@ export const getStyles = (props: IScatterChartStyleProps): IScatterChartStyles =
       color: props.theme!.semanticColors.bodyText,
     },
     markerLabel: {
-      fontSize: '12px',
+      fontSize: FontSizes.medium,
       fill: props.theme!.semanticColors.bodyText,
       textAnchor: 'middle',
       selectors: {
