@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
-import { ChevronDown20Regular } from '@fluentui/react-icons';
+import { ChevronRight20Regular } from '@fluentui/react-icons';
 import type { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 import { useNavContext_unstable } from '../NavContext';
@@ -56,7 +56,7 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronDown20Regular />,
+        children: <ChevronRight20Regular />,
         'aria-hidden': true,
       },
       elementType: 'span',
