@@ -42,6 +42,17 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         fill: theme.semanticColors.bodyText,
       },
     ],
+    axisAnnotation: [
+      theme.fonts.small,
+      {
+        textAlign: 'center',
+        fontWeight: FontWeights.semibold,
+        fontStyle: 'normal',
+        lineHeight: FontSizes.medium,
+        color: NeutralColors.gray160,
+        fill: theme.semanticColors.bodyText,
+      },
+    ],
     xAxis: {
       selectors: {
         text: [

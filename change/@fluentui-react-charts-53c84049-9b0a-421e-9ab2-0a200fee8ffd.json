@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-charts): Move isMonth function to chart-utilities",
+  "packageName": "@fluentui/react-charts",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
