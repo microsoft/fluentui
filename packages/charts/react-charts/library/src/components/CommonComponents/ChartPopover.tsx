@@ -166,7 +166,7 @@ export const ChartPopover: React.FunctionComponent<ChartPopoverProps> = React.fo
     yValueHoverSubCountsExists: boolean,
     isLast: boolean,
   ): React.ReactNode {
-    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
+    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '15px' };
     const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
     const { culture } = props;
     const yValue = formatToLocaleString(xValue.y, culture);
