@@ -465,7 +465,10 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           const circleId = `${_circleId}_${i}_${j}`;
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
           const pointMarkerSize = (_points.current?.[i]?.data[j] as IScatterChartDataPoint).markerSize;
-          const extraMaxPixels = _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding);
+          const extraMaxPixels =
+            _xAxisType !== XAxisTypes.StringAxis
+              ? _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding)
+              : 0;
           const circleRadius = pointMarkerSize
             ? (pointMarkerSize! * extraMaxPixels) / maxMarkerSize
             : activePoint === circleId
@@ -481,7 +484,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               <circle
                 id={circleId}
                 key={circleId}
-                r={circleRadius}
+                r={Math.max(circleRadius, 4)}
                 cx={_xAxisScale.current?.(x) + _xBandwidth.current}
                 cy={_yAxisScale.current?.(y)}
                 data-is-focusable={isLegendSelected}
