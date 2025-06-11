@@ -1,9 +1,8 @@
 {
-  "name": "@fluentui/react-nav-preview-stories",
+  "name": "@fluentui/react-nav-stories",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@fluentui/react-nav-preview": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-storybook-addon": "*",
