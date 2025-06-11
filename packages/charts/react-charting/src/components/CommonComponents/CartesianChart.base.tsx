@@ -608,6 +608,7 @@ export class CartesianChartBase
                 wrapContent={wrapContent}
                 theme={this.props.theme}
                 showBackground={true}
+                className={this._classNames.svgTooltip}
               />
             )}
             <g
@@ -660,6 +661,7 @@ export class CartesianChartBase
                     wrapContent={wrapContent}
                     theme={this.props.theme}
                     showBackground={true}
+                    className={this._classNames.svgTooltip}
                   />
                 )}
               </g>
@@ -685,6 +687,7 @@ export class CartesianChartBase
                 wrapContent={wrapContent}
                 theme={this.props.theme}
                 showBackground={true}
+                className={this._classNames.svgTooltip}
               />
             )}
           </svg>

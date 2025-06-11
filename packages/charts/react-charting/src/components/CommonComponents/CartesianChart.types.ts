@@ -182,6 +182,11 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
 }
 
 /**

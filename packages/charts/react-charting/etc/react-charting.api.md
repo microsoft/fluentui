@@ -360,6 +360,7 @@ export interface ICartesianChartStyles {
     opacityChangeOnHover?: IStyle;
     root?: IStyle;
     shapeStyles?: IStyle;
+    svgTooltip?: IStyle;
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;
