@@ -1,4 +1,4 @@
-import { Nav } from '@fluentui/react-nav-preview';
+import { Nav } from '@fluentui/react-components';
 
 // Todo: add best practices
 // import bestPracticesMd from './NavBestPractices.md';
@@ -13,7 +13,7 @@ export { SplitNavItems } from '../NavDrawer/SplitNavItems.stories';
 export { CustomMotion } from '../NavDrawer/CustomMotion.stories';
 
 export default {
-  title: 'Preview Components/Nav',
+  title: 'Components/Nav',
   component: Nav,
   parameters: {
     docs: {
