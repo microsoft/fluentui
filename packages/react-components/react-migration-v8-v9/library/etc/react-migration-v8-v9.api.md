@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import { BrandVariants } from '@fluentui/react-components';
 import type { ButtonProps } from '@fluentui/react-components';
 import type { IBaseButtonProps } from '@fluentui/react';
