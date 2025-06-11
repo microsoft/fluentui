@@ -63,8 +63,11 @@ import {
 } from '@fluentui/chart-utilities';
 import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
+
+type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -664,12 +667,14 @@ export const transformPlotlyJsonToVBCProps = (
 
 export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
-  isAreaChart: boolean,
+  chartType: ScatterChartTypes,
   isScatterMarkers: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps => {
+  const isAreaChart = chartType === 'area';
+  const isScatterChart = chartType === 'scatter';
   const secondaryYAxisValues = getSecondaryYAxisValues(
     input.data,
     input.layout,
@@ -697,8 +702,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
-      // string case is not possible for scatter chart as it is already filtered out in declarative chart
-      const isXYearCategory = false;
+      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
@@ -754,6 +758,11 @@ export const transformPlotlyJsonToScatterChartProps = (
     lineChartData: chartData,
   };
 
+  const scatterChartProps: IChartProps = {
+    chartTitle,
+    scatterChartData: chartData,
+  };
+
   if (isAreaChart) {
     return {
       data: chartProps,
@@ -771,7 +780,7 @@ export const transformPlotlyJsonToScatterChartProps = (
     } as IAreaChartProps;
   } else {
     return {
-      data: chartProps,
+      data: isScatterChart ? scatterChartProps : chartProps,
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
@@ -786,7 +795,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       hideLegend,
       useUTC: false,
       optimizeLargeData: numDataPoints > 1000,
-    } as ILineChartProps;
+    } as ILineChartProps | IScatterChartProps;
   }
 };
 
