@@ -35,7 +35,6 @@ const useStyles = makeStyles({
     fill: tokens.colorNeutralBackground1,
     borderRadius: tokens.borderRadiusSmall,
     pointerEvents: 'none',
-    color: 'white',
   },
   barLabel: {
     ...typographyStyles.caption1Strong,
