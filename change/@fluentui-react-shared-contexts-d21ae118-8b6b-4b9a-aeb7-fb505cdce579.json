@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "feat: add support for custom style hooks",
+  "type": "minor",
+  "comment": "feat: add support for custom style hooks for nav components",
   "packageName": "@fluentui/react-shared-contexts",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
