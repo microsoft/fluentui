@@ -332,12 +332,14 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxisAnnotation?: string;
     xAxisCategoryOrder?: CategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    yAxisAnnotation?: string;
     yAxisCategoryOrder?: CategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
@@ -363,6 +365,7 @@ export interface ICartesianChartStyleProps {
 
 // @public
 export interface ICartesianChartStyles {
+    axisAnnotation?: IStyle;
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
