@@ -533,8 +533,8 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
               {text && (
                 <text
                   key={`${circleId}-label`}
-                  x={_xAxisScale.current?.(x)}
-                  y={_yAxisScale.current?.(y) + circleRadius + 10}
+                  x={_xAxisScale.current?.(x) + _xBandwidth.current}
+                  y={_yAxisScale.current?.(y) + Math.max(circleRadius + 8, 16)}
                   className={classNames.markerLabel}
                 >
                   {text}
