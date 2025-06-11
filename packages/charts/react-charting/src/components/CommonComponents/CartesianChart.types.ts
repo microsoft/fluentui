@@ -6,7 +6,7 @@ import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import {
-  CategoryOrder,
+  AxisCategoryOrder,
   IAccessibilityProps,
   IChart,
   IDataPoint,
@@ -491,14 +491,16 @@ export interface ICartesianChartProps {
   yAxisAnnotation?: string;
 
   /**
+   * Specifies the ordering logic for categories (or string tick labels) on the x-axis.
    * @default 'default'
    */
-  xAxisCategoryOrder?: CategoryOrder;
+  xAxisCategoryOrder?: AxisCategoryOrder;
 
   /**
+   * Specifies the ordering logic for categories (or string tick labels) on the y-axis.
    * @default 'default'
    */
-  yAxisCategoryOrder?: CategoryOrder;
+  yAxisCategoryOrder?: AxisCategoryOrder;
 }
 
 export interface IYValueHover {

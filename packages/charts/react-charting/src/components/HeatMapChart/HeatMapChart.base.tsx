@@ -34,6 +34,7 @@ import {
   createStringYAxis,
   resolveCSSVariables,
   sortAxisCategories,
+  mapCategoryToValues,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -834,19 +835,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
 
-    const categoryToValues: Record<string, number[]> = {};
-
-    this.props.data.forEach(item => {
-      item.data.forEach(point => {
-        const xValue = point.x as string;
-        if (!categoryToValues[xValue]) {
-          categoryToValues[xValue] = [point.value];
-        } else {
-          categoryToValues[xValue].push(point.value);
-        }
-      });
-    });
-
+    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'x', 'value');
     return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
   };
 
@@ -861,19 +850,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
 
-    const categoryToValues: Record<string, number[]> = {};
-
-    this.props.data.forEach(item => {
-      item.data.forEach(point => {
-        const yValue = point.y as string;
-        if (!categoryToValues[yValue]) {
-          categoryToValues[yValue] = [point.value];
-        } else {
-          categoryToValues[yValue].push(point.value);
-        }
-      });
-    });
-
+    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'y', 'value', true);
     return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
   };
 
@@ -902,10 +879,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     xPoints.forEach(point => {
       const xValue = point.x as string;
       if (!xValueToPoints[xValue]) {
-        xValueToPoints[xValue] = [point];
-      } else {
-        xValueToPoints[xValue].push(point);
+        xValueToPoints[xValue] = [];
       }
+      xValueToPoints[xValue].push(point);
     });
 
     const xAxisLabels = this._getOrderedXAxisLabels({});
@@ -924,5 +900,18 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _shouldOrderYAxisLabelsByCategoryOrder = () => {
     return this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
+  };
+
+  private _groupDataPointsByLegend = () => {
+    const legendToDataPoints: Record<string, IHeatMapChartDataPoint[]> = {};
+    this.props.data.forEach(item => {
+      item.data.forEach(point => {
+        if (!legendToDataPoints[item.legend]) {
+          legendToDataPoints[item.legend] = [];
+        }
+        legendToDataPoints[item.legend].push(point);
+      });
+    });
+    return legendToDataPoints;
   };
 }

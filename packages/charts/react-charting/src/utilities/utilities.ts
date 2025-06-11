@@ -50,7 +50,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
-  CategoryOrder,
+  AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -1949,17 +1949,17 @@ export const truncateString = (str: string, maxLength: number, ellipsis = '...')
   return str.slice(0, maxLength) + ellipsis;
 };
 
-const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+const axisCategoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
 export const sortAxisCategories = (
   categoryToValues: Record<string, number[]>,
-  categoryOrder: CategoryOrder | undefined,
+  axisCategoryOrder: AxisCategoryOrder | undefined,
 ): string[] => {
-  if (Array.isArray(categoryOrder)) {
+  if (Array.isArray(axisCategoryOrder)) {
     const result: string[] = [];
     const seen = new Set<string>();
 
     // Add elements from categoryOrder array that are in categoryToValues, in the array's order
-    categoryOrder.forEach(category => {
+    axisCategoryOrder.forEach(category => {
       if (categoryToValues[category] && !seen.has(category)) {
         result.push(category);
         seen.add(category);
@@ -1976,7 +1976,7 @@ export const sortAxisCategories = (
     return result;
   }
 
-  const match = categoryOrder?.match(categoryOrderRegex);
+  const match = axisCategoryOrder?.match(axisCategoryOrderRegex);
   if (match) {
     const aggregator = match[1];
     const order = match[2];
@@ -2012,4 +2012,30 @@ export const sortAxisCategories = (
   }
 
   return Object.keys(categoryToValues);
+};
+
+export const mapCategoryToValues = (
+  //eslint-disable-next-line @typescript-eslint/no-explicit-any
+  legendToDataPoints: Record<string, any[]>,
+  categoryAccessKey: string,
+  valueAccessKey: string,
+  isYAxis = false,
+) => {
+  const categoryToValues: Record<string, number[]> = {};
+  Object.values(legendToDataPoints).forEach(points => {
+    points.forEach(point => {
+      if (isYAxis && point.useSecondaryYScale) {
+        return;
+      }
+      const category = `${point[categoryAccessKey]}`;
+      const value = point[valueAccessKey];
+      if (!categoryToValues[category]) {
+        categoryToValues[category] = [];
+      }
+      if (typeof value === 'number') {
+        categoryToValues[category].push(value);
+      }
+    });
+  });
+  return categoryToValues;
 };

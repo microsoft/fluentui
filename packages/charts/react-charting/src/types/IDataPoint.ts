@@ -968,7 +968,7 @@ export interface IScatterChartPoints {
 /**
  * {@docCategory CartesianChart}
  */
-export type CategoryOrder =
+export type AxisCategoryOrder =
   | 'default'
   | 'data'
   | string[]

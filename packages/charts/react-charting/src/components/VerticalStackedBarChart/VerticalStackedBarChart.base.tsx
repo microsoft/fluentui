@@ -63,6 +63,7 @@ import {
   calculateLongestLabelWidth,
   YAxisType,
   sortAxisCategories,
+  mapCategoryToValues,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -1448,33 +1449,7 @@ export class VerticalStackedBarChartBase
       });
     }
 
-    if (this._yAxisType === YAxisType.StringAxis) {
-      // const legendToYValues: Record<string, string[]> = {};
-      // this._points.forEach(xPoint => {
-      //   xPoint.chartData.forEach(bar => {
-      //     if (!legendToYValues[bar.legend]) {
-      //       legendToYValues[bar.legend] = [`${bar.data}`];
-      //     } else {
-      //       legendToYValues[bar.legend].push(`${bar.data}`);
-      //     }
-      //   });
-      // });
-
-      // const yAxisLabels = new Set<string>();
-      // Object.values(legendToYValues).forEach(yValues => {
-      //   yValues.forEach(yVal => {
-      //     yAxisLabels.add(yVal);
-      //   });
-      // });
-      // Object.values(this._lineObject).forEach(linePoints => {
-      //   linePoints.forEach(linePoint => {
-      //     if (!linePoint.useSecondaryYScale) {
-      //       yAxisLabels.add(`${linePoint.y}`);
-      //     }
-      //   });
-      // });
-      this._yAxisLabels = this._getOrderedYAxisLabels();
-    }
+    this._yAxisLabels = this._getOrderedYAxisLabels();
   };
 
   private _getYDomainMargins = (containerHeight: number): IMargins => {
@@ -1514,24 +1489,7 @@ export class VerticalStackedBarChartBase
       return [];
     }
 
-    const categoryToValues: Record<string, number[]> = {};
-
-    this._points.forEach(point => {
-      const xValue = point.xAxisPoint as string;
-      if (!categoryToValues[xValue]) {
-        categoryToValues[xValue] = [];
-      }
-      if (this._yAxisType === YAxisType.StringAxis) {
-        return;
-      }
-      point.chartData.forEach(bar => {
-        categoryToValues[xValue].push(bar.data as number);
-      });
-      point.lineData?.forEach(line => {
-        categoryToValues[xValue].push(line.y as number);
-      });
-    });
-
+    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'xAxisPoint', 'data');
     return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
   };
 
@@ -1540,32 +1498,36 @@ export class VerticalStackedBarChartBase
       return [];
     }
 
-    const categoryToValues: Record<string, number[]> = {};
+    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'data', 'xAxisPoint', true);
+    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+  };
 
+  private _groupDataPointsByLegend = () => {
+    const legendToDataPoints: Record<
+      string,
+      ((IVSChartDataPoint | ILineDataInVerticalStackedBarChart) & Pick<IVerticalStackedChartProps, 'xAxisPoint'>)[]
+    > = {};
     this._points.forEach(point => {
       point.chartData.forEach(bar => {
-        if (!categoryToValues[bar.data]) {
-          categoryToValues[bar.data] = [];
+        if (!legendToDataPoints[bar.legend]) {
+          legendToDataPoints[bar.legend] = [];
         }
-        if (this._xAxisType !== XAxisTypes.NumericAxis) {
-          return;
-        }
-        categoryToValues[bar.data].push(point.xAxisPoint as number);
+        legendToDataPoints[bar.legend].push({
+          ...bar,
+          xAxisPoint: point.xAxisPoint,
+        });
       });
       point.lineData?.forEach(line => {
-        if (line.useSecondaryYScale) {
-          return;
+        if (!legendToDataPoints[line.legend]) {
+          legendToDataPoints[line.legend] = [];
         }
-        if (!categoryToValues[line.y]) {
-          categoryToValues[line.y] = [];
-        }
-        if (this._xAxisType !== XAxisTypes.NumericAxis) {
-          return;
-        }
-        categoryToValues[line.y].push(point.xAxisPoint as number);
+        legendToDataPoints[line.legend].push({
+          ...line,
+          data: line.y,
+          xAxisPoint: point.xAxisPoint,
+        });
       });
     });
-
-    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+    return legendToDataPoints;
   };
 }

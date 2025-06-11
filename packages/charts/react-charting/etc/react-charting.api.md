@@ -31,11 +31,11 @@ import { TimeLocaleDefinition } from 'd3-time-format';
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
+// @public (undocumented)
+export type AxisCategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
+
 // @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
-
-// @public (undocumented)
-export type CategoryOrder = 'default' | 'data' | string[] | 'category ascending' | 'category descending' | 'total ascending' | 'total descending' | 'min ascending' | 'min descending' | 'max ascending' | 'max descending' | 'sum ascending' | 'sum descending' | 'mean ascending' | 'mean descending' | 'median ascending' | 'median descending';
 
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
@@ -333,14 +333,14 @@ export interface ICartesianChartProps {
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisAnnotation?: string;
-    xAxisCategoryOrder?: CategoryOrder;
+    xAxisCategoryOrder?: AxisCategoryOrder;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
     yAxisAnnotation?: string;
-    yAxisCategoryOrder?: CategoryOrder;
+    yAxisCategoryOrder?: AxisCategoryOrder;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
     yAxisTitle?: string;
