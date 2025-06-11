@@ -418,10 +418,17 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
           };
 
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
-          const chartType =
+          let chartType =
             validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
               : filteredTracesInfo[0][1];
+
+          if (
+            validTracesFilteredIndex.some(trace => trace[1] === 'line') &&
+            validTracesFilteredIndex.some(trace => trace[1] === 'scatter')
+          ) {
+            chartType = 'line';
+          }
 
           const chartEntry = chartMap[chartType as ChartType];
           if (chartEntry) {
