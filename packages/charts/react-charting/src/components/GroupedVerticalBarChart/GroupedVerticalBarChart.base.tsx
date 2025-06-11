@@ -90,6 +90,7 @@ export class GroupedVerticalBarChartBase
 {
   public static defaultProps: Partial<IGroupedVerticalBarChartProps> = {
     maxBarWidth: 24,
+    xAxisCategoryOrder: 'default',
   };
 
   private _createSet: (

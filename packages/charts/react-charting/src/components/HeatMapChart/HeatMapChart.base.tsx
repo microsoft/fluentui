@@ -104,6 +104,11 @@ export interface IHeatMapChartState {
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> implements IChart {
+  public static defaultProps: Partial<IHeatMapChartProps> = {
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
+  };
+
   private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
   private _stringXAxisDataPoints: string[];
   private _stringYAxisDataPoints: string[];
@@ -715,12 +720,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let xAxisPoints: string[] = [];
-    const unFormattedXAxisDataPoints =
-      this._xAxisType === XAxisTypes.StringAxis
-        ? this._getOrderedXAxisLabels()
-        : Object.keys(points).sort((a: string, b: string) => {
-            return +a - +b;
-          });
+    const unFormattedXAxisDataPoints = this._getOrderedXAxisLabels(points);
     xAxisPoints = unFormattedXAxisDataPoints.map((xPoint: string) => {
       if (this._xAxisType === XAxisTypes.DateAxis) {
         return this._getStringFormattedDate(xPoint, this.props.xAxisDateFormatString);
@@ -741,12 +741,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    */
   private _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let yAxisPoints: string[] = [];
-    const unFormattedYAxisDataPoints =
-      this._yAxisType === YAxisType.StringAxis
-        ? this._getOrderedYAxisLabels()
-        : Object.keys(points).sort((a: string, b: string) => {
-            return +a - +b;
-          });
+    const unFormattedYAxisDataPoints = this._getOrderedYAxisLabels(points);
     yAxisPoints = unFormattedYAxisDataPoints.map((yPoint: string) => {
       if (this._yAxisType === YAxisType.DateAxis) {
         return this._getStringFormattedDate(yPoint, this.props.yAxisDateFormatString);
@@ -828,9 +823,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
   };
 
-  private _getOrderedXAxisLabels = () => {
-    if (this._xAxisType !== XAxisTypes.StringAxis) {
-      return [];
+  private _getOrderedXAxisLabels = (points: { [key: string]: '1' }) => {
+    if (!this._shouldOrderXAxisLabelsByCategoryOrder()) {
+      return Object.keys(points).sort((a: string, b: string) => {
+        if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
+          return +a - +b;
+        } else {
+          return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
     }
 
     const categoryToValues: Record<string, number[]> = {};
@@ -849,9 +850,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
   };
 
-  private _getOrderedYAxisLabels = () => {
-    if (this._yAxisType !== YAxisType.StringAxis) {
-      return [];
+  private _getOrderedYAxisLabels = (points: { [key: string]: '1' }) => {
+    if (!this._shouldOrderYAxisLabelsByCategoryOrder()) {
+      return Object.keys(points).sort((a: string, b: string) => {
+        if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
+          return +a - +b;
+        } else {
+          return this.props.sortOrder === 'none' ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1;
+        }
+      });
     }
 
     const categoryToValues: Record<string, number[]> = {};
@@ -871,9 +878,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _getOrderedXPoints = (xPoints: FlattenData[]) => {
-    if (this._xAxisType !== XAxisTypes.StringAxis) {
+    if (!this._shouldOrderXAxisLabelsByCategoryOrder()) {
       return xPoints.sort((a: IHeatMapChartDataPoint, b: IHeatMapChartDataPoint) => {
-        if (this._xAxisType === XAxisTypes.DateAxis) {
+        if (this._xAxisType === XAxisTypes.StringAxis) {
+          return this.props.sortOrder === 'none'
+            ? 0
+            : (a.x as string).toLowerCase() > (b.x as string).toLowerCase()
+            ? 1
+            : -1;
+        } else if (this._xAxisType === XAxisTypes.DateAxis) {
           return (a.x as Date).getTime() - (b.x as Date).getTime();
         } else if (this._xAxisType === XAxisTypes.NumericAxis) {
           return +(a.x as string) > +(b.x as string) ? 1 : -1;
@@ -895,7 +908,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }
     });
 
-    const xAxisLabels = this._getOrderedXAxisLabels();
+    const xAxisLabels = this._getOrderedXAxisLabels({});
     xAxisLabels.forEach(xValue => {
       if (xValueToPoints[xValue]) {
         result.push(...xValueToPoints[xValue]);
@@ -903,5 +916,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
 
     return result;
+  };
+
+  private _shouldOrderXAxisLabelsByCategoryOrder = () => {
+    return this._xAxisType === XAxisTypes.StringAxis && this.props.xAxisCategoryOrder !== 'default';
+  };
+
+  private _shouldOrderYAxisLabelsByCategoryOrder = () => {
+    return this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
   };
 }

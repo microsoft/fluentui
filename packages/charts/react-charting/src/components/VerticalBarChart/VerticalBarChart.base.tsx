@@ -90,6 +90,7 @@ export class VerticalBarChartBase
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalBarChartDataPoint[];

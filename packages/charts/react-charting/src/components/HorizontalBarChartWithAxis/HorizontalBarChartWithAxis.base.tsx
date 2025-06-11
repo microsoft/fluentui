@@ -71,6 +71,10 @@ export class HorizontalBarChartWithAxisBase
   extends React.Component<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState>
   implements IChart
 {
+  public static defaultProps: Partial<IHorizontalBarChartWithAxisProps> = {
+    yAxisCategoryOrder: 'default',
+  };
+
   private _points: IHorizontalBarChartWithAxisDataPoint[];
   private _barHeight: number;
   private _colors: string[];
@@ -1008,8 +1012,11 @@ export class HorizontalBarChartWithAxisBase
   };
 
   private _getOrderedYAxisLabels = () => {
-    if (this._yAxisType !== YAxisType.StringAxis) {
-      return [];
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      const reversedBars = [...this._points].reverse();
+      return reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
     }
 
     const categoryToValues: Record<string, number[]> = {};

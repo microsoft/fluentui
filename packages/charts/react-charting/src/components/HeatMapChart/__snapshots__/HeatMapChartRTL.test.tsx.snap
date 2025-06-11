@@ -1283,7 +1283,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               y="10"
             >
-              xPoint p4
+              xPoint p3
             </text>
           </g>
           <g
@@ -1301,7 +1301,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               fill="currentColor"
               y="10"
             >
-              xPoint p3
+              xPoint p4
             </text>
           </g>
         </g>
@@ -1357,7 +1357,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               x="-10"
             >
               <tspan
-                data-="yPoint p2"
+                data-="yPoint p1"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-10"
@@ -1367,7 +1367,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 id="LessLength"
                 x="-10"
               >
-                yPoint p2
+                yPoint p1
               </tspan>
             </text>
           </g>
@@ -1386,7 +1386,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               x="-10"
             >
               <tspan
-                data-="yPoint p1"
+                data-="yPoint p2"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-10"
@@ -1396,13 +1396,13 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 id="LessLength"
                 x="-10"
               >
-                yPoint p1
+                yPoint p2
               </tspan>
             </text>
           </g>
         </g>
         <g
-          aria-label="xPoint p4, yPoint p1. Nasty, 50."
+          aria-label="xPoint p3, yPoint p2. Nasty, 25."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
@@ -1410,7 +1410,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           transform="translate(45.8415841584158, 22.34653465346534)"
         >
           <rect
-            fill="rgb(159, 198, 222)"
+            fill="rgb(166, 207, 226)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
@@ -1430,39 +1430,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            50
-          </text>
-        </g>
-        <g
-          aria-label="xPoint p3, yPoint p1. Excellent, 75."
-          data-is-focusable="true"
-          fill-opacity="1"
-          role="img"
-          tabindex="-1"
-          transform="translate(337.9207920792079, 22.34653465346534)"
-        >
-          <rect
-            fill="rgb(151, 189, 219)"
-            height="114.98019801980197"
-            width="286.23762376237624"
-          />
-          <text
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 600;
-                  pointer-events: none;
-                }
-            dominant-baseline="middle"
-            fill="#323130"
-            text-anchor="middle"
-            transform="translate(143.11881188118812, 57.49009900990099)"
-          >
-            75
+            25
           </text>
         </g>
         <g
@@ -1471,7 +1439,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(45.8415841584158, 139.67326732673268)"
+          transform="translate(337.9207920792079, 22.34653465346534)"
         >
           <rect
             fill="rgb(144, 180, 215)"
@@ -1498,15 +1466,15 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           </text>
         </g>
         <g
-          aria-label="xPoint p3, yPoint p2. Nasty, 25."
+          aria-label="xPoint p3, yPoint p1. Excellent, 75."
           data-is-focusable="true"
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(337.9207920792079, 139.67326732673268)"
+          transform="translate(45.8415841584158, 139.67326732673268)"
         >
           <rect
-            fill="rgb(166, 207, 226)"
+            fill="rgb(151, 189, 219)"
             height="114.98019801980197"
             width="286.23762376237624"
           />
@@ -1526,7 +1494,39 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
             text-anchor="middle"
             transform="translate(143.11881188118812, 57.49009900990099)"
           >
-            25
+            75
+          </text>
+        </g>
+        <g
+          aria-label="xPoint p4, yPoint p1. Nasty, 50."
+          data-is-focusable="true"
+          fill-opacity="1"
+          role="img"
+          tabindex="-1"
+          transform="translate(337.9207920792079, 139.67326732673268)"
+        >
+          <rect
+            fill="rgb(159, 198, 222)"
+            height="114.98019801980197"
+            width="286.23762376237624"
+          />
+          <text
+            class=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  pointer-events: none;
+                }
+            dominant-baseline="middle"
+            fill="#323130"
+            text-anchor="middle"
+            transform="translate(143.11881188118812, 57.49009900990099)"
+          >
+            50
           </text>
         </g>
       </svg>

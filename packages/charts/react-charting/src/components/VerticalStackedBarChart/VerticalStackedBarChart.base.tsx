@@ -111,6 +111,8 @@ export class VerticalStackedBarChartBase
   public static defaultProps: Partial<IVerticalStackedBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalStackedChartProps[];

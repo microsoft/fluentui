@@ -1675,10 +1675,11 @@ const getCategoryOrderProps = (layout: Partial<Layout> | undefined): GetCategory
   };
   Object.keys(axesById).forEach(axId => {
     const ax = axesById[axId];
-    const axLetter = axId[0];
+    const axLetter = axId[0] as 'x' | 'y';
     const propName = `${axLetter}AxisCategoryOrder` as keyof GetCategoryOrderPropsResult;
 
     if (!ax || ax.type !== 'category') {
+      result[propName] = 'data';
       return;
     }
 
@@ -1689,6 +1690,16 @@ const getCategoryOrderProps = (layout: Partial<Layout> | undefined): GetCategory
     }
 
     if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+      // const categoriesInTraceOrder = new Set<string>();
+      // data.forEach((series: Partial<PlotData>) => {
+      //   series[axLetter]?.forEach(val => {
+      //     if (!isInvalidValue(val)) {
+      //       categoriesInTraceOrder.add(val as string);
+      //     }
+      //   });
+      // });
+      // result[propName] = Array.from(categoriesInTraceOrder);
+      result[propName] = 'data';
       return;
     }
 

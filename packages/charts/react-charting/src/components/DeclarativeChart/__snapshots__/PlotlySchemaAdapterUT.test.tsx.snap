@@ -362,7 +362,9 @@ Object {
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "Framework",
 }
 `;
@@ -2844,7 +2846,9 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -3002,7 +3006,9 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "Framework",
 }
 `;
@@ -4907,7 +4913,9 @@ Object {
   "roundCorners": true,
   "supportNegativeData": true,
   "width": undefined,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -5009,7 +5017,9 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 3400,
   "yMinValue": 0,

@@ -896,6 +896,8 @@ export interface IImageExportOptions {
  * {@docCategory CartesianChart}
  */
 export type CategoryOrder =
+  | 'default'
+  | 'data'
   | string[]
   | 'category ascending'
   | 'category descending'

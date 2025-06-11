@@ -3957,7 +3957,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x="-16"
             >
               <tspan
-                data-="String One"
+                data-="String Four"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -3967,7 +3967,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                String One
+                String Four
               </tspan>
             </text>
           </g>
@@ -3975,35 +3975,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             class="tick"
             opacity="1"
             transform="translate(0,163.05555555555554)"
-          >
-            <line
-              stroke="currentColor"
-              x2="-6"
-            />
-            <text
-              dy="0.32em"
-              fill="currentColor"
-              x="-16"
-            >
-              <tspan
-                data-="String Two"
-                dy="0.32em"
-                id="BaseSpan"
-                x="-16"
-              />
-              <tspan
-                dx="0em"
-                id="LessLength"
-                x="-16"
-              >
-                String Two
-              </tspan>
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,113.94444444444443)"
           >
             <line
               stroke="currentColor"
@@ -4032,6 +4003,35 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           <g
             class="tick"
             opacity="1"
+            transform="translate(0,113.94444444444443)"
+          >
+            <line
+              stroke="currentColor"
+              x2="-6"
+            />
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              x="-16"
+            >
+              <tspan
+                data-="String Two"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="0em"
+                id="LessLength"
+                x="-16"
+              >
+                String Two
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
             transform="translate(0,64.83333333333331)"
           >
             <line
@@ -4044,7 +4044,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               x="-16"
             >
               <tspan
-                data-="String Four"
+                data-="String One"
                 dy="0.32em"
                 id="BaseSpan"
                 x="-16"
@@ -4054,7 +4054,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 id="LessLength"
                 x="-16"
               >
-                String Four
+                String One
               </tspan>
             </text>
           </g>
@@ -4077,7 +4077,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.507936507936508)"
             width="118"
             x="40"
-            y="199.88888888888889"
+            y="52.55555555555554"
           />
           <rect
             aria-label="5000. String Two."
@@ -4096,7 +4096,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.507936507936508)"
             width="590"
             x="40"
-            y="150.77777777777777"
+            y="101.66666666666666"
           />
           <rect
             aria-label="3000. String Three."
@@ -4115,7 +4115,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.507936507936508)"
             width="354"
             x="40"
-            y="101.66666666666666"
+            y="150.77777777777777"
           />
           <rect
             aria-label="2000. String Four."
@@ -4134,7 +4134,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             transform="translate(0,-3.507936507936508)"
             width="236"
             x="40"
-            y="52.55555555555554"
+            y="199.88888888888889"
           />
         </g>
       </svg>

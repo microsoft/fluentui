@@ -472,12 +472,12 @@ export interface ICartesianChartProps {
   hideTickOverlap?: boolean;
 
   /**
-   *
+   * @default 'default'
    */
   xAxisCategoryOrder?: CategoryOrder;
 
   /**
-   *
+   * @default 'default'
    */
   yAxisCategoryOrder?: CategoryOrder;
 }
