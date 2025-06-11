@@ -1922,9 +1922,23 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
     });
   }
 
+  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
+  const reversedGridLayout: GridAxisProperties = {};
+  // find the maximum row number
+  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
+  // iterate over the gridLayout and reverse the row numbers
+  Object.keys(gridLayout).forEach(key => {
+    const cell = gridLayout[key];
+    if (cell.row !== undefined) {
+      // reverse the row number
+      cell.row = maxRowNumber - cell.row + 1;
+    }
+    reversedGridLayout[key] = cell;
+  });
+
   return {
     templateRows,
     templateColumns,
-    layout: gridLayout,
+    layout: reversedGridLayout,
   };
 };

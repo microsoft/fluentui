@@ -124,6 +124,7 @@ function renderChart<TProps>(
   const chartProps = transformer(...transformerArgs);
   return (
     <div
+      key={`${cellRow}_${cellColumn}`}
       style={{
         gridRowStart: cellRow,
         gridRowEnd: cellRow + 1,
