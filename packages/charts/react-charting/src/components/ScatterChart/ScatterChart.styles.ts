@@ -17,6 +17,9 @@ export const getStyles = (props: IScatterChartStyleProps): IScatterChartStyles =
       color: props.theme!.semanticColors.bodyText,
     },
     markerLabel: {
+      fontSize: '12px',
+      fill: props.theme!.semanticColors.bodyText,
+      textAnchor: 'middle',
       selectors: {
         [HighContrastSelector]: {
           fill: 'CanvasText',

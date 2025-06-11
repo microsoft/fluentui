@@ -475,7 +475,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
           const currentPointHidden = _points.current?.[i]?.hideNonActiveDots && activePoint !== circleId;
-          const text = _points.current?.[i].data[j - 1]?.text;
+          const text = _points.current?.[i].data[j]?.text;
           pointsForSeries.push(
             <>
               <circle
@@ -523,9 +523,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                   key={`${circleId}-label`}
                   x={_xAxisScale.current?.(x)}
                   y={_yAxisScale.current?.(y) + circleRadius + 10}
-                  fontSize={12}
-                  fill={props.theme?.semanticColors.bodyText}
-                  textAnchor="middle"
                   className={classNames.markerLabel}
                 >
                   {text}
@@ -575,7 +572,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       _xAxisScale,
       _yAxisScale,
       props.data.scatterChartData,
-      props.theme,
       props.showXAxisLablesTooltip,
       props.wrapXAxisLables,
       _circleId,
