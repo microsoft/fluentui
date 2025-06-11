@@ -43,7 +43,6 @@ const useSplitNaveItemStyles = makeStyles({
         {
           opacity: 1,
           pointerEvents: 'auto',
-          transform: 'translate3D(0, 0, 0)',
         },
     },
 
@@ -80,9 +79,8 @@ const useSplitNaveItemStyles = makeStyles({
   hoverAction: {
     opacity: 0,
     pointerEvents: 'none',
-    transform: 'translate3D(100%, 0, 0)',
-    transition: `opacity ${motionTokens.durationNormal}ms ${motionTokens.curveEasyEase}`,
-    willChange: 'transform, opacity',
+    transition: `opacity ${motionTokens.durationFast}ms ${motionTokens.curveEasyEase}`,
+    willChange: 'opacity',
   },
 });
 
@@ -114,6 +112,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.actionButton.className = mergeClasses(
       splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.actionButton.className,
     );
@@ -123,6 +122,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.toggleButton.className = mergeClasses(
       splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.toggleButton.className,
     );
@@ -132,6 +132,7 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.menuButton.className = mergeClasses(
       splitNavItemClassNames.menuButton,
       splitNavItemStyles.baseSecondary,
+      splitNavItemStyles.hoverAction,
       state.density === 'medium' && splitNavItemStyles.baseMedium,
       state.menuButton.className,
     );
