@@ -8,7 +8,6 @@ import {
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
-  NavDrawerProps,
   NavItem,
   NavItemValue,
   NavSectionHeader,
@@ -131,7 +130,7 @@ const getRandomPage = (): SelectedPage => {
   }
 };
 
-export const Controlled = (props: Partial<NavDrawerProps>) => {
+export const Controlled = () => {
   const styles = useStyles();
 
   const multipleLabelId = useId('multiple-label');
@@ -141,7 +140,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
   const [selectedValue, setSelectedValue] = React.useState<string>('7');
   const [isMultiple, setIsMultiple] = React.useState(true);
 
-  const handleCategoryToggle = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
+  const handleCategoryToggle = (_: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
     if (data.value === undefined && data.categoryValue) {
       // we're just opening it,
       setOpenCategories([data.categoryValue as string]);
@@ -150,7 +149,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
     if (isMultiple) {
       // if it's already open, remove it from the list
       if (openCategories.includes(data.categoryValue as string)) {
-        setOpenCategories([...openCategories.filter(category => category !== data.categoryValue)]);
+        setOpenCategories(openCategories.filter(category => category !== data.categoryValue));
       } else {
         // otherwise add it
         setOpenCategories([...openCategories, data.categoryValue as string]);
@@ -166,7 +165,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
     }
   };
 
-  const handleItemSelect = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
+  const handleItemSelect = (event: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
     setSelectedCategoryValue(data.categoryValue as string);
     setSelectedValue(data.value as string);
   };
@@ -186,7 +185,7 @@ export const Controlled = (props: Partial<NavDrawerProps>) => {
     setSelectedValue(newSelectedValue);
   };
 
-  const handleMultipleChange = (ev: Event | React.SyntheticEvent<Element, Event>, data: { checked: boolean }) => {
+  const handleMultipleChange = (_: Event | React.SyntheticEvent<Element, Event>, data: { checked: boolean }) => {
     setIsMultiple(data.checked);
 
     if (data.checked) {

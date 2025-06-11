@@ -1,3 +1,4 @@
+import { PresenceMotionSlotProps } from '@fluentui/react-motion/src/index';
 import { NavDensity } from '../Nav/Nav.types';
 import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -22,6 +23,11 @@ export type NavCategoryItemSlots = {
    * Expand icon slot rendered after the content to indicate an open and closed state.
    */
   expandIcon: NonNullable<Slot<'span'>>;
+
+  /**
+   * Expand icon motion slot.
+   */
+  expandIconMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 /**
