@@ -8,6 +8,7 @@ import {
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToAreaChartProps,
   transformPlotlyJsonToLineChartProps,
+  transformPlotlyJsonToScatterChartProps,
   transformPlotlyJsonToHorizontalBarWithAxisProps,
   transformPlotlyJsonToHeatmapProps,
   transformPlotlyJsonToSankeyProps,
@@ -271,6 +272,13 @@ describe('transform Plotly Json To chart Props', () => {
     const plotlySchema = require('./tests/schema/fluent_area_test.json');
     expect(
       transformPlotlyJsonToAreaChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
+    ).toMatchSnapshot();
+  });
+
+  test('transformPlotlyJsonToScatterChartProps - Should return scatter chart props', () => {
+    const plotlySchema = require('./tests/schema/fluent_scatter_test.json');
+    expect(
+      transformPlotlyJsonToScatterChartProps(plotlySchema, false, { current: colorMap }, 'default', true),
     ).toMatchSnapshot();
   });
 

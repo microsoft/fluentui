@@ -225,6 +225,20 @@ export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
+export interface IBaseDataPoint {
+    callOutAccessibilityData?: IAccessibilityProps;
+    hideCallout?: boolean;
+    markerSize?: number;
+    onDataPointClick?: () => void;
+    text?: string;
+    xAxisCalloutAccessibilityData?: IAccessibilityProps;
+    xAxisCalloutData?: string;
+    yAxisCalloutData?: string | {
+        [id: string]: number;
+    };
+}
+
+// @public (undocumented)
 export interface IBasestate {
     // (undocumented)
     activeLegend?: string;
@@ -436,6 +450,7 @@ export interface IChartProps {
     pointLineOptions?: React_2.SVGProps<SVGLineElement>;
     pointOptions?: React_2.SVGProps<SVGCircleElement>;
     SankeyChartData?: ISankeyChartData;
+    scatterChartData?: IScatterChartPoints[];
 }
 
 // @public
@@ -1013,19 +1028,9 @@ export interface ILegendSubComponentStyles {
 }
 
 // @public (undocumented)
-export interface ILineChartDataPoint {
-    callOutAccessibilityData?: IAccessibilityProps;
-    hideCallout?: boolean;
-    markerSize?: number;
-    onDataPointClick?: () => void;
-    text?: string;
+export interface ILineChartDataPoint extends IBaseDataPoint {
     x: number | Date;
-    xAxisCalloutAccessibilityData?: IAccessibilityProps;
-    xAxisCalloutData?: string;
     y: number;
-    yAxisCalloutData?: string | {
-        [id: string]: number;
-    };
 }
 
 // @public (undocumented)
@@ -1374,6 +1379,41 @@ export interface ISankeyChartStyles {
     nodeTextContainer?: IStyle;
     root?: IStyle;
     toolTip?: IStyle;
+}
+
+// @public
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+    x: number | Date | string;
+    y: number;
+}
+
+// @public (undocumented)
+export interface IScatterChartPoints {
+    color?: string;
+    data: IScatterChartDataPoint[];
+    hideNonActiveDots?: boolean;
+    legend: string;
+    legendShape?: LegendShape;
+    onLegendClick?: (selectedLegend: string | null | string[]) => void;
+    opacity?: number;
+    useSecondaryYScale?: boolean;
+}
+
+// @public
+export interface IScatterChartProps extends ICartesianChartProps {
+    culture?: string;
+    data: IChartProps;
+    getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
+    onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
+    styles?: IScatterChartStyles;
+}
+
+// @public
+export interface IScatterChartStyleProps extends ICartesianChartStyleProps {
+}
+
+// @public
+export interface IScatterChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
@@ -1742,6 +1782,9 @@ export const ResponsiveContainer: React_2.FC<IResponsiveContainerProps>;
 
 // @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
+
+// @public
+export const ScatterChart: React_2.FunctionComponent<IScatterChartProps>;
 
 // @public
 export interface Schema {

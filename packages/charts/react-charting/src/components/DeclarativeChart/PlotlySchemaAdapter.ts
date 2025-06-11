@@ -64,6 +64,7 @@ import {
   isInvalidValue,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
+import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
@@ -81,6 +82,8 @@ export type GridProperties = {
   templateColumns: string;
   layout: GridAxisProperties;
 };
+
+type ScatterChartTypes = 'area' | 'line' | 'scatter';
 
 interface ISecondaryYAxisValues {
   secondaryYAxistitle?: string;
@@ -672,10 +675,10 @@ export const transformPlotlyJsonToAreaChartProps = (
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): IAreaChartProps => {
-  return transformPlotlyJsonToScatterChartProps(
+  return transformPlotlyJsonToScatterTraceProps(
     input,
     isMultiPlot,
-    true,
+    'area',
     colorMap,
     colorwayType,
     isDarkTheme,
@@ -689,32 +692,50 @@ export const transformPlotlyJsonToLineChartProps = (
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
 ): ILineChartProps => {
-  return transformPlotlyJsonToScatterChartProps(
+  return transformPlotlyJsonToScatterTraceProps(
     input,
     isMultiPlot,
-    false,
+    'line',
     colorMap,
     colorwayType,
     isDarkTheme,
   ) as ILineChartProps;
 };
 
-const transformPlotlyJsonToScatterChartProps = (
+export const transformPlotlyJsonToScatterChartProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
-  isAreaChart: boolean,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
-): ILineChartProps | IAreaChartProps => {
+): ILineChartProps => {
+  return transformPlotlyJsonToScatterTraceProps(
+    input,
+    isMultiPlot,
+    'scatter',
+    colorMap,
+    colorwayType,
+    isDarkTheme,
+  ) as IScatterChartProps;
+};
+
+const transformPlotlyJsonToScatterTraceProps = (
+  input: PlotlySchema,
+  isMultiPlot: boolean,
+  chartType: ScatterChartTypes,
+  colorMap: React.MutableRefObject<Map<string, string>>,
+  colorwayType: ColorwayType,
+  isDarkTheme?: boolean,
+): ILineChartProps | IAreaChartProps | IScatterChartProps => {
   const isScatterMarkers = [
-    'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
     'markers+line',
     'text+lines+markers',
   ].includes((input.data[0] as PlotData)?.mode);
+  const isAreaChart = chartType === 'area';
+  const isScatterChart = chartType === 'scatter';
   const secondaryYAxisValues = getSecondaryYAxisValues(
     input.data,
     input.layout,
@@ -742,8 +763,7 @@ const transformPlotlyJsonToScatterChartProps = (
       const isXString = isStringArray(xValues);
       const isXDate = isDateArray(xValues);
       const isXNumber = isNumberArray(xValues);
-      // string case is not possible for scatter chart as it is already filtered out in declarative chart
-      const isXYearCategory = false;
+      const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
@@ -793,6 +813,11 @@ const transformPlotlyJsonToScatterChartProps = (
     lineChartData: chartData,
   };
 
+  const scatterChartProps: IChartProps = {
+    chartTitle,
+    scatterChartData: chartData,
+  };
+
   if (isAreaChart) {
     return {
       data: chartProps,
@@ -810,7 +835,7 @@ const transformPlotlyJsonToScatterChartProps = (
     } as IAreaChartProps;
   } else {
     return {
-      data: chartProps,
+      data: isScatterChart ? scatterChartProps : chartProps,
       supportNegativeData: true,
       xAxisTitle,
       yAxisTitle,
@@ -825,7 +850,7 @@ const transformPlotlyJsonToScatterChartProps = (
       hideLegend,
       useUTC: false,
       optimizeLargeData: numDataPoints > 1000,
-    } as ILineChartProps;
+    } as ILineChartProps | IScatterChartProps;
   }
 };
 

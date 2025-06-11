@@ -56,12 +56,11 @@ export const useRootDefaultClassName = makeResetStyles({
   ':hover': {
     backgroundColor: navItemTokens.backgroundColorHover,
   },
-  ':active': {
-    zIndex: 1,
-    backgroundColor: navItemTokens.backgroundColorPressed,
-  },
-  ':focus': {
-    zIndex: 1,
+
+  // Use custom insert focus indicator
+  '&:focus-visible': {
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+    outlineOffset: `calc(${tokens.strokeWidthThick} * -1)`,
   },
 });
 

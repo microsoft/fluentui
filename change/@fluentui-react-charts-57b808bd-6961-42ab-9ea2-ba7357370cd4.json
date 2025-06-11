@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "add labels for text+markers",
-  "packageName": "@fluentui/react-charting",
+  "comment": "fix accessibility bugs",
+  "packageName": "@fluentui/react-charts",
   "email": "anushgupta@microsoft.com",
   "dependentChangeType": "patch"
 }

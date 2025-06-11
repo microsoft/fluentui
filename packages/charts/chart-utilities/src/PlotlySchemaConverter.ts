@@ -212,14 +212,36 @@ const validateBarData = (data: Partial<PlotData>) => {
 };
 
 const validateScatterData = (data: Partial<PlotData>) => {
-  if (
-    ['markers', 'text+markers', 'markers+text'].includes(data.mode ?? '') &&
-    !isNumberArray(data.x) &&
-    !isDateArray(data.x)
+  const mode = data.mode ?? '';
+  const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
+  const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
+  if (mode === 'markers') {
+    // Any series having only markers -> Supported number x/string x/date x + number y
+    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+    }
+    if (!isNumberArray(data.y)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
+    }
+  } else if (
+    [
+      'lines+markers',
+      'markers+lines',
+      'text+lines+markers',
+      'lines',
+      'text+lines',
+      'text+markers',
+      'markers+text',
+    ].includes(mode)
   ) {
-    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${data.mode}, xAxisType: String`);
-  } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered.`);
+    if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
+    }
+    if (!isNumberArray(data.y) && !isStringArray(data.y)) {
+      throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
+    }
+  } else {
+    throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, Unsupported mode`);
   }
 };
 
@@ -408,21 +430,24 @@ export const mapFluentChart = (input: any): OutputChartType => {
             return { isValid: true, traceIndex, type: 'verticalstackedbar' };
           }
         case 'scatter':
-          const firstScatterData = traceData as Partial<PlotData>;
-          const isAreaChart = validTraces.some(traceInner => {
-            const scatterData = validSchema.data[traceInner[0]] as Partial<PlotData>;
-            return scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
-          });
-          const isXDate = isDateArray(firstScatterData.x);
-          const isXNumber = isNumberArray(firstScatterData.x);
+          const scatterData = traceData as Partial<PlotData>;
+          const isAreaChart =
+            scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
+          const isScatterChart = (scatterData.mode ?? '') === 'markers';
+          if (isScatterChart) {
+            return { isValid: true, traceIndex, type: 'scatter' };
+          }
+
+          const isXDate = isDateArray(scatterData.x);
+          const isXNumber = isNumberArray(scatterData.x);
 
           // Consider year as categorical variable not numeric continuous variable
           // Also year is not considered a date variable as it is represented as a point
           // in time and brings additional complexity of handling timezone and locale
           // formatting given the current design of the charting library
-          const isXYear = isYearArray(firstScatterData.x);
-          const isXMonth = isMonthArray(firstScatterData.x);
-          const isYString = isStringArray(firstScatterData.y);
+          const isXYear = isYearArray(scatterData.x);
+          const isXMonth = isMonthArray(scatterData.x);
+          const isYString = isStringArray(scatterData.y);
           if ((isXDate || isXNumber || isXMonth) && !isXYear && !isYString) {
             return { isValid: true, traceIndex, type: isAreaChart ? 'area' : 'line' };
           } else if (isAreaChart) {

@@ -23,6 +23,7 @@ import {
   transformPlotlyJsonToGVBCProps,
   transformPlotlyJsonToVBCProps,
   transformPlotlyJsonToChartTableProps,
+  transformPlotlyJsonToScatterChartProps,
   projectPolarToCartesian,
   getAllupLegendsProps,
 } from './PlotlySchemaAdapter';
@@ -37,6 +38,7 @@ import { GroupedVerticalBarChart } from '../GroupedVerticalBarChart/index';
 import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
+import { ScatterChart } from '../ScatterChart/index';
 import { ChartTable } from '../ChartTable/index';
 import { ILegendsProps, Legends } from '../Legends/index';
 
@@ -50,6 +52,7 @@ const ResponsiveSankeyChart = withResponsiveContainer(SankeyChart);
 const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
+const ResponsiveScatterChart = withResponsiveContainer(ScatterChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
 
 // Default x-axis key for grouping traces. Also applicable for PieData and SankeyData where x-axis is not defined.
@@ -200,6 +203,10 @@ type ChartTypeMap = {
     transformer: typeof transformPlotlyJsonToLineChartProps;
     renderer: typeof ResponsiveLineChart;
   } & PreTransformHooks;
+  scatter: {
+    transformer: typeof transformPlotlyJsonToScatterChartProps;
+    renderer: typeof ResponsiveScatterChart;
+  } & PreTransformHooks;
   fallback: {
     transformer: typeof transformPlotlyJsonToVSBCProps;
     renderer: typeof ResponsiveVerticalStackedBarChart;
@@ -255,6 +262,11 @@ const chartMap: ChartTypeMap = {
   line: {
     transformer: transformPlotlyJsonToLineChartProps,
     renderer: ResponsiveLineChart,
+    preTransformOperation: LineAreaPreTransformOp,
+  },
+  scatter: {
+    transformer: transformPlotlyJsonToScatterChartProps,
+    renderer: ResponsiveScatterChart,
     preTransformOperation: LineAreaPreTransformOp,
   },
   fallback: {
