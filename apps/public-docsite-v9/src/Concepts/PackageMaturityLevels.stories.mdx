@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Package Maturity Levels" />
+
+# Package Maturity Levels
+
+This document explains the different maturity levels of Fluent UI v9 packages to help you make informed decisions about which components to use in your applications.
+
+## Overview
+
+Fluent UI v9 packages are categorized into three main maturity levels that indicate their stability and readiness for production use:
+
+- **🟢 Stable**: Production-ready packages/components with stable APIs
+- **🟡 Preview**: Initial stage of package/component development with intention to be propagated to Stable (part of Fluent core suite)
+- **🔵 Compat**: Fluent UI v8 packages/components using solely v9 dependencies and APIs
+- **🔴 Deprecated**: Unsupported packages
+
+## Package Stages
+
+### 🟢 Stable Packages
+
+**Characteristics:**
+
+- Production-ready
+- API is stable
+- Version format: `9.x.x`
+- Available from `@fluentui/react-components` suite
+- Naming convention: `@fluentui/react-<name>`
+
+**Examples:** react-button, react-text
+
+**Import path:** `@fluentui/react-components`
+
+### 🟡 Preview Packages
+
+**Characteristics:**
+
+- Components that are not yet part of the stable suite (Early Access)
+- Can introduced Breaking Changes
+- Version format: `0.x.x`
+- Not available from `@fluentui/react-components` suite
+- Naming convention: `@fluentui/react-<name>-preview` (`-preview` suffix indicates it's a preview package)
+
+**Examples:** react-nav-preview, react-virtualizer
+
+**Import path:** `@fluentui/react-<name>-preview`
+
+**💡 Exemptions:**
+
+There are some packages that don't following "preview" conventions, although are considered as PREVIEW, because they were created before the preview phase was introduced:
+
+- `@fluentui/theme`
+- `@fluentui/react-virtualizer`
+
+---
+
+### 🔵 Compat Packages
+
+**Characteristics:**
+
+- Fluent UI v8 components using solely v9 dependencies and APIs
+- Maintain familiar v8 APIs for easier migration
+- Bridge components during transition period from v8 to v9
+- Gradually being replaced by stable v9 equivalents
+- Can introduced breaking changes
+- Version format: `0.x.x`
+- Not available from `@fluentui/react-components` suite
+- Naming convention: `@fluentui/react-<name>-compat` (`-compat` suffix indicates it's a compat package)
+
+**Examples:** react-datepicker-compat, react-calendar-compat
+
+**Import path:** `@fluentui/react-zzz-compat`
+
+**When to use:**
+
+Use during migration from v8 to v9 when native v9 equivalents aren't available or when you need time to gradually migrate complex implementations.
+
+**Migration strategy:** Plan to migrate to native v9 components as they become available and stable.
+
+---
+
+### 🔴 Deprecated Packages
+
+**Characteristics:**
+
+- Packages that are no longer supported or maintained
+- Most of the time they have stable alternatives
+- Version format: can vary, but typically `9.0.0-alpha.x` or `9.0.0-beta.x`
+- Available from `@fluentui/react-components/unstable` suite (NOTE: suite `/unstable` api is DEPRECATED)
+- Naming convention: `@fluentui/react-<name>`
+
+**Examples:** react-alert, react-infobutton
+
+**Migration strategy:**
+
+| Deprecated Package | Stable Alternative                                  |
+| ------------------ | --------------------------------------------------- |
+| react-alert        | react-components / (react-toast, react-message-bar) |
+| react-infobutton   | react-components / (react-infolabel)                |
+
+Migrate to stable alternatives as soon as possible. Deprecated packages may not receive updates or fixes.
