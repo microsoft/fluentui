@@ -138,10 +138,6 @@ export class VerticalBarChartBase
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType =
-      this.props.data! && this.props.data!.length > 0
-        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
-        : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -446,6 +442,10 @@ export class VerticalBarChartBase
   };
 
   private _adjustProps(): void {
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
     this._points = this.props.data || [];
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, undefined, this.props.mode);
     const { palette } = this.props.theme!;

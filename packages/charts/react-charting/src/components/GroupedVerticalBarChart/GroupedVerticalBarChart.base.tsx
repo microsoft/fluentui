@@ -164,11 +164,11 @@ export class GroupedVerticalBarChartBase
 
   public render(): React.ReactNode {
     const points = this._addDefaultColors(this.props.data);
+    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const { legends, xAxisLabels, datasetForBars } = this._createSet(points);
     this._legends = legends;
     this._xAxisLabels = xAxisLabels;
     this._datasetForBars = datasetForBars;
-    this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legendBars: JSX.Element = this._getLegendData();
     this._adjustProps();
 
