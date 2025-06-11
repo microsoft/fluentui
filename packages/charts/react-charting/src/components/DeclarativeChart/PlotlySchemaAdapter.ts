@@ -1843,11 +1843,9 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
   });
 
   layout.annotations?.forEach(annotation => {
-    const xMatches: number[] = gridX
-      .map((interval, idx) =>
-        (annotation?.x as number) >= interval[0] && (annotation?.x as number) <= interval[1] ? idx : -1,
-      )
-      .filter(idx => idx !== -1);
+    const xMatches = gridX.flatMap((interval, idx) =>
+      (annotation?.x as number) >= interval[0] && (annotation?.x as number) <= interval[1] ? [idx] : [],
+    );
     const yMatch = gridY.findIndex(
       (interval, yIndex) =>
         xMatches.includes(yIndex) &&

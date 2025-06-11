@@ -417,8 +417,6 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             data: index.map(idx => plotlyInputWithValidData.data[idx]),
           };
 
-          // Use the first valid trace to determine the chart type
-          //const chartType = chart.validTracesInfo!.find(trace => trace[0] === index[0])?.[1] as ChartType;
           const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
           const chartType =
             validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
