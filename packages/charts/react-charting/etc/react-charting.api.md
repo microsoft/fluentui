@@ -1161,7 +1161,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainNRangeValues: (points: ILineChartPoints[] | IVerticalBarChartDataPoint[] | IVerticalStackedBarDataPoint[] | IHorizontalBarChartWithAxisDataPoint[] | IGroupedVerticalBarChartData[] | IHeatMapChartDataPoint[], margins: IMargins, width: number, chartType: ChartTypes, isRTL: boolean, xAxisType: XAxisTypes, barWidth: number, tickValues: Date[] | number[] | string[] | undefined, shiftX: number) => IDomainNRange;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
-    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
+    getMinMaxOfYAxis: (points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[] | IScatterChartDataPoint[], yAxisType: YAxisType | undefined, useSecondaryYScale?: boolean) => {
         startValue: number;
         endValue: number;
     };
@@ -1411,6 +1411,7 @@ export interface IScatterChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface IScatterChartStyles extends ICartesianChartStyles {
+    markerLabel?: IStyle_2;
 }
 
 // @public (undocumented)
