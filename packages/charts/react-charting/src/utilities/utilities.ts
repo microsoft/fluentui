@@ -1898,17 +1898,21 @@ export const truncateString = (str: string, maxLength: number, ellipsis = '...')
   return str.slice(0, maxLength) + ellipsis;
 };
 
-const axisCategoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
+ */
 export const sortAxisCategories = (
   categoryToValues: Record<string, number[]>,
-  axisCategoryOrder: AxisCategoryOrder | undefined,
+  categoryOrder: AxisCategoryOrder | undefined,
 ): string[] => {
-  if (Array.isArray(axisCategoryOrder)) {
+  if (Array.isArray(categoryOrder)) {
     const result: string[] = [];
     const seen = new Set<string>();
 
     // Add elements from categoryOrder array that are in categoryToValues, in the array's order
-    axisCategoryOrder.forEach(category => {
+    categoryOrder.forEach(category => {
       if (categoryToValues[category] && !seen.has(category)) {
         result.push(category);
         seen.add(category);
@@ -1925,7 +1929,7 @@ export const sortAxisCategories = (
     return result;
   }
 
-  const match = axisCategoryOrder?.match(axisCategoryOrderRegex);
+  const match = categoryOrder?.match(categoryOrderRegex);
   if (match) {
     const aggregator = match[1];
     const order = match[2];
@@ -1961,30 +1965,4 @@ export const sortAxisCategories = (
   }
 
   return Object.keys(categoryToValues);
-};
-
-export const mapCategoryToValues = (
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  legendToDataPoints: Record<string, any[]>,
-  categoryAccessKey: string,
-  valueAccessKey: string,
-  isYAxis = false,
-) => {
-  const categoryToValues: Record<string, number[]> = {};
-  Object.values(legendToDataPoints).forEach(points => {
-    points.forEach(point => {
-      if (isYAxis && point.useSecondaryYScale) {
-        return;
-      }
-      const category = `${point[categoryAccessKey]}`;
-      const value = point[valueAccessKey];
-      if (!categoryToValues[category]) {
-        categoryToValues[category] = [];
-      }
-      if (typeof value === 'number') {
-        categoryToValues[category].push(value);
-      }
-    });
-  });
-  return categoryToValues;
 };

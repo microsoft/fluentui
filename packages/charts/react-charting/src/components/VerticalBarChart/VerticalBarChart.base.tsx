@@ -55,9 +55,8 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   sortAxisCategories,
-  mapCategoryToValues,
 } from '../../utilities/index';
-import { IChart, IImageExportOptions, ILineDataInVerticalBarChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
 import { toImage } from '../../utilities/image-export-utils';
 
@@ -1383,29 +1382,21 @@ export class VerticalBarChartBase
       return [];
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'x', 'y');
-    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
   };
 
-  private _groupDataPointsByLegend = () => {
-    const legendToDataPoints: Record<
-      string,
-      (IVerticalBarChartDataPoint | (ILineDataInVerticalBarChart & Pick<IVerticalBarChartDataPoint, 'x'>))[]
-    > = {};
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
     this._points.forEach(point => {
-      const legend = `${point.legend}`;
-      if (!legendToDataPoints[legend]) {
-        legendToDataPoints[legend] = [];
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
       }
-      legendToDataPoints[legend].push(point);
+      categoryToValues[xValue].push(point.y);
       if (point.lineData) {
-        const lineLegend = `${this.props.lineLegendText}`;
-        if (!legendToDataPoints[lineLegend]) {
-          legendToDataPoints[lineLegend] = [];
-        }
-        legendToDataPoints[lineLegend].push({ ...point.lineData, x: point.x });
+        categoryToValues[xValue].push(point.lineData.y);
       }
     });
-    return legendToDataPoints;
+    return categoryToValues;
   };
 }

@@ -1977,6 +1977,10 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
 };
 
 type GetAxisCategoryOrderPropsResult = Pick<ICartesianChartProps, 'xAxisCategoryOrder' | 'yAxisCategoryOrder'>;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/category_order_defaults.js#L50}
+ */
 const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undefined) => {
   const result: GetAxisCategoryOrderPropsResult = {};
 
@@ -1997,20 +2001,20 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
         }
       });
     });
+
     const isAxisTypeCategory =
       ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
-
-    if (!ax || !isAxisTypeCategory) {
+    if (!isAxisTypeCategory) {
       return;
     }
 
-    const isValidArray = isArrayOrTypedArray(ax.categoryarray) && ax.categoryarray!.length > 0;
-    if (isValidArray && (!ax.categoryorder || ax.categoryorder === 'array')) {
-      result[propName] = ax.categoryarray;
+    const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
+    if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
+      result[propName] = ax!.categoryarray;
       return;
     }
 
-    if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+    if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
       const categoriesInTraceOrder = Array.from(new Set(values as string[]));
       result[propName] = categoriesInTraceOrder;
       return;

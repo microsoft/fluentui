@@ -63,7 +63,6 @@ import {
   calculateLongestLabelWidth,
   YAxisType,
   sortAxisCategories,
-  mapCategoryToValues,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -1489,8 +1488,7 @@ export class VerticalStackedBarChartBase
       return [];
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'xAxisPoint', 'data');
-    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
   };
 
   private _getOrderedYAxisLabels = () => {
@@ -1498,36 +1496,36 @@ export class VerticalStackedBarChartBase
       return [];
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'data', 'xAxisPoint', true);
-    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(true), this.props.yAxisCategoryOrder);
   };
 
-  private _groupDataPointsByLegend = () => {
-    const legendToDataPoints: Record<
-      string,
-      ((IVSChartDataPoint | ILineDataInVerticalStackedBarChart) & Pick<IVerticalStackedChartProps, 'xAxisPoint'>)[]
-    > = {};
+  private _mapCategoryToValues = (isYAxis = false) => {
+    const categoryToValues: Record<string, number[]> = {};
     this._points.forEach(point => {
       point.chartData.forEach(bar => {
-        if (!legendToDataPoints[bar.legend]) {
-          legendToDataPoints[bar.legend] = [];
+        const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : bar.data;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
         }
-        legendToDataPoints[bar.legend].push({
-          ...bar,
-          xAxisPoint: point.xAxisPoint,
-        });
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
       });
-      point.lineData?.forEach(line => {
-        if (!legendToDataPoints[line.legend]) {
-          legendToDataPoints[line.legend] = [];
+      point.lineData?.forEach(linePoint => {
+        if (isYAxis && linePoint.useSecondaryYScale) {
+          return;
         }
-        legendToDataPoints[line.legend].push({
-          ...line,
-          data: line.y,
-          xAxisPoint: point.xAxisPoint,
-        });
+        const category = (isYAxis ? linePoint.y : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : linePoint.y;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
       });
     });
-    return legendToDataPoints;
+    return categoryToValues;
   };
 }

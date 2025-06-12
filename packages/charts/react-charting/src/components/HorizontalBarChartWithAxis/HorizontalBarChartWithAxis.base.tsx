@@ -45,7 +45,6 @@ import {
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
   sortAxisCategories,
-  mapCategoryToValues,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
@@ -1021,19 +1020,17 @@ export class HorizontalBarChartWithAxisBase
       return reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'y', 'x', true);
-    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.yAxisCategoryOrder);
   };
 
-  private _groupDataPointsByLegend = () => {
-    const legendToDataPoints: Record<string, IHorizontalBarChartWithAxisDataPoint[]> = {};
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
     this._points.forEach(point => {
-      const legend = `${point.legend}`;
-      if (!legendToDataPoints[legend]) {
-        legendToDataPoints[legend] = [];
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [];
       }
-      legendToDataPoints[legend].push(point);
+      categoryToValues[point.y].push(point.x);
     });
-    return legendToDataPoints;
+    return categoryToValues;
   };
 }

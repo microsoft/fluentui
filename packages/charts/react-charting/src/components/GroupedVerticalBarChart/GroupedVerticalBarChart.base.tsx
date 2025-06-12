@@ -35,7 +35,6 @@ import {
   calculateLongestLabelWidth,
   YAxisType,
   sortAxisCategories,
-  mapCategoryToValues,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -853,20 +852,19 @@ export class GroupedVerticalBarChartBase
       return [];
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(points), 'xAxisPoint', 'data');
-    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(points), this.props.xAxisCategoryOrder);
   };
 
-  private _groupDataPointsByLegend = (points: IGroupedVerticalBarChartData[]) => {
-    const legendToDataPoints: Record<string, (IGVBarChartSeriesPoint & { xAxisPoint: string })[]> = {};
+  private _mapCategoryToValues = (points: IGroupedVerticalBarChartData[]) => {
+    const categoryToValues: Record<string, number[]> = {};
     points.forEach(point => {
+      if (!categoryToValues[point.name]) {
+        categoryToValues[point.name] = [];
+      }
       point.series.forEach(seriesPoint => {
-        if (!legendToDataPoints[seriesPoint.legend]) {
-          legendToDataPoints[seriesPoint.legend] = [];
-        }
-        legendToDataPoints[seriesPoint.legend].push({ ...seriesPoint, xAxisPoint: point.name });
+        categoryToValues[point.name].push(seriesPoint.data);
       });
     });
-    return legendToDataPoints;
+    return categoryToValues;
   };
 }

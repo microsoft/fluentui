@@ -34,7 +34,6 @@ import {
   createStringYAxis,
   resolveCSSVariables,
   sortAxisCategories,
-  mapCategoryToValues,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
@@ -836,8 +835,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'x', 'value');
-    return sortAxisCategories(categoryToValues, this.props.xAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
   };
 
   private _getOrderedYAxisLabels = (points: { [key: string]: '1' }) => {
@@ -852,8 +850,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
 
-    const categoryToValues = mapCategoryToValues(this._groupDataPointsByLegend(), 'y', 'value', true);
-    return sortAxisCategories(categoryToValues, this.props.yAxisCategoryOrder);
+    return sortAxisCategories(this._mapCategoryToValues(true), this.props.yAxisCategoryOrder);
   };
 
   private _getOrderedXPoints = (xPoints: FlattenData[]) => {
@@ -904,16 +901,17 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
   };
 
-  private _groupDataPointsByLegend = () => {
-    const legendToDataPoints: Record<string, IHeatMapChartDataPoint[]> = {};
+  private _mapCategoryToValues = (isYAxis = false) => {
+    const categoryToValues: Record<string, number[]> = {};
     this.props.data.forEach(item => {
       item.data.forEach(point => {
-        if (!legendToDataPoints[item.legend]) {
-          legendToDataPoints[item.legend] = [];
+        const category = (isYAxis ? point.y : point.x) as string;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
         }
-        legendToDataPoints[item.legend].push(point);
+        categoryToValues[category].push(point.value);
       });
     });
-    return legendToDataPoints;
+    return categoryToValues;
   };
 }
