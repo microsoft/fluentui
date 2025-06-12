@@ -623,6 +623,7 @@ export class CartesianChartBase
                 wrapContent={wrapContent}
                 theme={this.props.theme}
                 showBackground={true}
+                className={this._classNames.svgTooltip}
               />
             )}
             {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
@@ -691,6 +692,7 @@ export class CartesianChartBase
                     wrapContent={wrapContent}
                     theme={this.props.theme}
                     showBackground={true}
+                    className={this._classNames.svgTooltip}
                   />
                 )}
               </g>
@@ -716,6 +718,7 @@ export class CartesianChartBase
                 wrapContent={wrapContent}
                 theme={this.props.theme}
                 showBackground={true}
+                className={this._classNames.svgTooltip}
               />
             )}
             {this.props.yAxisAnnotation !== undefined &&
