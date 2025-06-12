@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: adjust types to support react 18",
-  "packageName": "@fluentui/react-dialog",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "none"
-}

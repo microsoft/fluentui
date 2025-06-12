@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adjust types to support react 18",
-  "packageName": "@fluentui/react-aria",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "patch"
-}

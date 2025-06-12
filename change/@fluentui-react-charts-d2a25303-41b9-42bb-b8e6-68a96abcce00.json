@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "line border and axis title background fix",
-  "packageName": "@fluentui/react-charts",
-  "email": "anushgupta@microsoft.com",
-  "dependentChangeType": "patch"
-}

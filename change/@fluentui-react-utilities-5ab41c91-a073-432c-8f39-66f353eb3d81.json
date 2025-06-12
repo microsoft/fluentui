@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: react 18 support for slots api",
-  "packageName": "@fluentui/react-utilities",
-  "email": "dmytrokirpa@microsoft.com",
-  "dependentChangeType": "minor"
-}
