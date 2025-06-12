@@ -52,7 +52,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & line {
@@ -60,7 +60,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -181,7 +181,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -191,7 +191,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -465,7 +465,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #605e5c;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -479,7 +479,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #605e5c;
                             }
                         data-is-focusable="true"
@@ -498,7 +498,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, red, red);
                                 opacity: ;
                               }
@@ -552,7 +552,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                 position: absolute;
                 z-index: 1000000;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border-color: WindowText;
                 border-style: solid;
                 border-width: 1px;
@@ -640,7 +640,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                             margin-top: 13px;
                             padding-left: 8px;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          @media screen and (forced-colors: active){& {
                             forced-color-adjust: none;
                           }
                       id="0_80"
@@ -658,7 +658,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                                 font-weight: 400;
                                 line-height: 16px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 color: CanvasText;
                               }
                         >
@@ -676,7 +676,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                                 font-weight: bold;
                                 line-height: 22px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 color: CanvasText;
                               }
                         >
@@ -748,7 +748,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & line {
@@ -756,7 +756,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -877,7 +877,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -887,7 +887,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -1161,7 +1161,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #605e5c;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1175,7 +1175,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #605e5c;
                             }
                         data-is-focusable="true"
@@ -1194,7 +1194,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, red, red);
                                 opacity: ;
                               }
@@ -1248,7 +1248,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                 position: absolute;
                 z-index: 1000000;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border-color: WindowText;
                 border-style: solid;
                 border-width: 1px;
@@ -1348,7 +1348,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & line {
@@ -1356,7 +1356,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   stroke: #323130;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -1477,7 +1477,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                @media screen and (forced-colors: active){& text {
                   fill: CanvasText;
                 }
                 & path {
@@ -1487,7 +1487,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   opacity: 0.2;
                   stroke: #323130;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                @media screen and (forced-colors: active){& line {
                   opacity: 0.1;
                   stroke: CanvasText;
                 }
@@ -1761,7 +1761,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #605e5c;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1775,7 +1775,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #605e5c;
                             }
                         data-is-focusable="true"
@@ -1794,7 +1794,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, red, red);
                                 opacity: ;
                               }
@@ -1848,7 +1848,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                 position: absolute;
                 z-index: 1000000;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 border-color: WindowText;
                 border-style: solid;
                 border-width: 1px;
@@ -1947,7 +1947,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -1955,7 +1955,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -1976,7 +1976,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -1986,7 +1986,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2131,7 +2131,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2145,7 +2145,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2164,7 +2164,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -2249,7 +2249,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -2257,7 +2257,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2278,7 +2278,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -2288,7 +2288,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2462,7 +2462,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2476,7 +2476,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2495,7 +2495,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #637cef, #637cef);
                               opacity: ;
                             }
@@ -2580,7 +2580,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -2588,7 +2588,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2609,7 +2609,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -2619,7 +2619,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2793,7 +2793,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2807,7 +2807,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2826,7 +2826,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -2911,7 +2911,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -2919,7 +2919,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -2940,7 +2940,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -2950,7 +2950,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3115,7 +3115,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3129,7 +3129,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3148,7 +3148,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -3233,7 +3233,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -3241,7 +3241,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3262,7 +3262,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -3272,7 +3272,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3438,7 +3438,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       outline-color: #605e5c;
                     }
                     :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3452,7 +3452,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       outline-color: #605e5c;
                     }
                 data-is-focusable="true"
@@ -3471,7 +3471,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                         margin-right: 8px;
                         width: 12px;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         content: linear-gradient(to right, red, red);
                         opacity: ;
                       }
@@ -3553,7 +3553,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -3561,7 +3561,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3582,7 +3582,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -3592,7 +3592,7 @@ exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3725,7 +3725,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -3733,7 +3733,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3754,7 +3754,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -3764,7 +3764,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -3938,7 +3938,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3952,7 +3952,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3971,7 +3971,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -4056,7 +4056,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -4064,7 +4064,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4085,7 +4085,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4095,7 +4095,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4269,7 +4269,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4283,7 +4283,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4302,7 +4302,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -4387,7 +4387,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -4395,7 +4395,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4416,7 +4416,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4426,7 +4426,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4600,7 +4600,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4614,7 +4614,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4633,7 +4633,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
@@ -4718,7 +4718,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & line {
@@ -4726,7 +4726,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4747,7 +4747,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              @media screen and (forced-colors: active){& text {
                 fill: CanvasText;
               }
               & path {
@@ -4757,7 +4757,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+              @media screen and (forced-colors: active){& line {
                 opacity: 0.1;
                 stroke: CanvasText;
               }
@@ -4931,7 +4931,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4945,7 +4945,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4964,7 +4964,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, red, red);
                               opacity: ;
                             }
