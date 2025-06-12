@@ -131,20 +131,35 @@ export class CartesianChartBase
           : 20
         : this.props.margins?.left ?? 40,
     };
+    const TITLE_MARGIN = 20;
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! = this.props.margins?.bottom ?? 55;
+      this.margins.bottom! = this.props.margins?.bottom ?? this.margins.bottom! + TITLE_MARGIN;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 80
-          : 40
-        : this.props.margins?.left ?? 60;
+          ? this.margins.right! + 2 * TITLE_MARGIN
+          : this.margins.right! + TITLE_MARGIN
+        : this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN;
       this.margins.right! = this._isRtl
-        ? this.props.margins?.left ?? 60
+        ? this.props.margins?.left ?? this.margins.left! + TITLE_MARGIN
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 80
-        : 40;
+        ? this.margins.right! + 2 * TITLE_MARGIN
+        : this.margins.right! + TITLE_MARGIN;
+    }
+    if (this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '') {
+      this.margins.top! = this.props.margins?.top ?? this.margins.top! + TITLE_MARGIN;
+    }
+    if (
+      this.props.yAxisAnnotation !== undefined &&
+      this.props.yAxisAnnotation !== '' &&
+      (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '')
+    ) {
+      if (this._isRtl) {
+        this.margins.left! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN;
+      } else {
+        this.margins.right! = this.props.margins?.right ?? this.margins.right! + TITLE_MARGIN;
+      }
     }
   }
 
@@ -611,6 +626,22 @@ export class CartesianChartBase
                 className={this._classNames.svgTooltip}
               />
             )}
+            {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisAnnotation}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: this.titleMargin + 3,
+                  className: this._classNames.axisAnnotation!,
+                  textAnchor: 'middle',
+                  'aria-hidden': true,
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                wrapContent={wrapContent}
+                theme={this.props.theme}
+                showBackground={true}
+              />
+            )}
             <g
               ref={(e: SVGSVGElement | null) => {
                 this.yAxisElement = e;
@@ -690,6 +721,34 @@ export class CartesianChartBase
                 className={this._classNames.svgTooltip}
               />
             )}
+            {this.props.yAxisAnnotation !== undefined &&
+              this.props.yAxisAnnotation !== '' &&
+              (this.props.secondaryYAxistitle === undefined || this.props.secondaryYAxistitle === '') && (
+                <SVGTooltipText
+                  content={this.props.yAxisAnnotation}
+                  textProps={{
+                    x:
+                      (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                      this.state._removalValueForTextTuncate!,
+                    y: this._isRtl
+                      ? this.state.startFromX - this.titleMargin
+                      : svgDimensions.width - this.margins.right!,
+                    textAnchor: 'middle',
+                    transform: `translate(${
+                      this._isRtl
+                        ? this.margins.right! / 2 - this.titleMargin
+                        : this.margins.right! / 2 + this.titleMargin
+                    },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                    className: this._classNames.axisAnnotation!,
+                    'aria-hidden': true,
+                  }}
+                  maxWidth={yAxisTitleMaximumAllowedHeight}
+                  wrapContent={wrapContent}
+                  theme={this.props.theme}
+                  showBackground={true}
+                />
+              )}
           </svg>
         </FocusZone>
 

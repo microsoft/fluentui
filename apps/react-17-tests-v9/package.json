@@ -26,7 +26,6 @@
     "@fluentui/react-components": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
-    "@fluentui/react-nav-preview": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@cypress/react": "8.0.0",
     "@testing-library/dom": "8.11.3",
