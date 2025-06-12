@@ -92,5 +92,5 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
   _ctrlSpinnerTextStyleRegularWeight: {
     f2Token: 'fontWeightSemibold',
     originalToken: 'textStyleDefaultRegularWeight',
-  },,
+  },
 };
