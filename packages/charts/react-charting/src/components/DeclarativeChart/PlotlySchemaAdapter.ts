@@ -68,6 +68,7 @@ import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
+import { rgb } from 'd3-color';
 
 export type AxisProperties = {
   xAnnotation?: string;
@@ -268,6 +269,14 @@ export const resolveXAxisPoint = (
   return x;
 };
 
+export const _getOpacity = (series: Partial<PlotData>, index: number): number => {
+  return series.marker?.opacity
+    ? isArrayOrTypedArray(series.marker?.opacity)
+      ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
+      : (series.marker?.opacity as number)
+    : series.opacity ?? 1;
+};
+
 export const transformPlotlyJsonToDonutProps = (
   input: PlotlySchema,
   isMultiPlot: boolean,
@@ -403,12 +412,13 @@ export const transformPlotlyJsonToVSBCProps = (
                 : 0,
             )
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
+        const opacity = _getOpacity(series, index2);
         const yVal: number = rangeYValues[index2] as number;
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
-            color,
+            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -422,7 +432,7 @@ export const transformPlotlyJsonToVSBCProps = (
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
-            color: lineColor,
+            color: rgb(lineColor).copy({ opacity }).formatRgb() ?? color,
             lineOptions: {
               ...(lineOptions ?? {}),
               mode: series.mode,
@@ -525,12 +535,13 @@ export const transformPlotlyJsonToGVBCProps = (
                 : 0,
             )
           : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+        const opacity = _getOpacity(series, xIndex);
 
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y![xIndex] as number,
           xAxisCalloutData: x as string,
-          color,
+          color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         });
@@ -631,6 +642,7 @@ export const transformPlotlyJsonToVBCProps = (
               : 0,
           )
         : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const opacity = _getOpacity(series, index);
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -642,7 +654,7 @@ export const transformPlotlyJsonToVBCProps = (
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
         legend,
-        color,
+        color: rgb(color).copy({ opacity }).formatRgb() ?? color,
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
@@ -767,6 +779,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const seriesOpacity = _getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       const lineOptions = getLineOptions(series.line);
       const legendShape = getLegendShape(series);
@@ -793,7 +806,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
           })),
-          color: seriesColor,
+          color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatRgb() ?? seriesColor,
           lineOptions: {
             ...(lineOptions ?? {}),
             mode: series.mode,
@@ -895,12 +908,13 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
                   : 0,
               )
             : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = _getOpacity(series, i);
 
           return {
             x: series.x![i],
             y: yValue,
             legend,
-            color,
+            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
