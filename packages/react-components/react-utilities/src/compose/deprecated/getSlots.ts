@@ -17,7 +17,7 @@ export type Slots<S extends SlotPropsRecord> = {
  */
 export type ObjectSlotProps<S extends SlotPropsRecord> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [K in keyof S]-?: any; // Slot<ButtonProps>
+  [K in keyof S]-?: any;
 };
 
 /**

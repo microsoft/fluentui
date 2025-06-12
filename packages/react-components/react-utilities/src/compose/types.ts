@@ -51,7 +51,7 @@ type WithSlotShorthandValue<Props> =
  *
  * Notes: For React 17 and earlier, `children` can be a render function that returns a ReactNode.
  * For React 18 and later, `children` can be any value, as React.ReactNode is a more strict type and does not allow functions anymore.
- * This means that the render functions should be manually typed as `SlotRenderFunction<Props>` for React 18 and later.
+ * This means that the render functions need to be asserted as `SlotRenderFunction<Props>` for React 18 and later.
  *
  * @example
  * ```tsx
