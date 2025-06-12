@@ -15,6 +15,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartPoints,
   IMargins,
+  IScatterChartDataPoint,
   IVerticalBarChartDataPoint,
   IVerticalStackedBarDataPoint,
 } from '../../types/index';
@@ -188,6 +189,11 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
 }
 
 /**
@@ -703,7 +709,12 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Get the min and max values of the y-axis
    */
   getMinMaxOfYAxis: (
-    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    points:
+      | ILineChartPoints[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IVerticalBarChartDataPoint[]
+      | IDataPoint[]
+      | IScatterChartDataPoint[],
     yAxisType: YAxisType | undefined,
     useSecondaryYScale?: boolean,
   ) => { startValue: number; endValue: number };

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Fri, 06 Jun 2025 13:15:15 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.17.0)
+
+Thu, 12 Jun 2025 09:43:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.16.9..@fluentui/react-table_v9.17.0)
+
+### Minor changes
+
+- Bump @fluentui/react-aria to v9.15.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-avatar to v9.8.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-checkbox to v9.4.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-radio to v9.4.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tabster to v9.25.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.16.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.16.9)
+
+Wed, 11 Jun 2025 22:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.16.8..@fluentui/react-table_v9.16.9)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.7.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+- Bump @fluentui/react-checkbox to v9.3.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+- Bump @fluentui/react-radio to v9.3.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
 
 ## [9.16.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.16.8)
 

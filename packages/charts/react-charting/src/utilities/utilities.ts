@@ -1383,7 +1383,7 @@ export function domainRageOfVerticalNumeric(
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findNumericMinMaxOfY(
-  points: ILineChartPoints[],
+  points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
@@ -1888,57 +1888,6 @@ export function domainRangeOfNumericForScatterChart(
   return isRTL
     ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
-}
-
-export function createYAxisForScatterChart(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-  _supportNegativeData: boolean = false,
-  roundedTicks: boolean = false,
-) {
-  const {
-    yMinMaxValues = { startValue: 0, endValue: 0 },
-    yAxisElement = null,
-    yMaxValue = 0,
-    yMinValue = 0,
-    containerHeight,
-    containerWidth,
-    margins,
-    tickPadding = 12,
-    maxOfYVal = 0,
-    yAxisTickFormat,
-    yAxisTickCount = 4,
-    eventAnnotationProps,
-    eventLabelHeight,
-  } = yAxisParams;
-
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  let yMin = finalYmin;
-  let yMax = domainValues[domainValues.length - 1];
-  const yPadding = (yMax - yMin) * 0.1;
-  yMin = yMin - yPadding;
-  yMax = yMax + yPadding;
-  const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], yMax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis =
-    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
-  return yAxisScale;
 }
 
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
