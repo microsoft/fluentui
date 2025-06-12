@@ -41,6 +41,10 @@ export function createSafeZoneAreaStateStore() {
       return isActive;
     },
     toggleActive(newIsActive: boolean) {
+      if (isActive === newIsActive) {
+        return;
+      }
+
       isActive = newIsActive;
       listeners.forEach(listener => listener(isActive));
     },
