@@ -10,8 +10,8 @@ import { useNavCategoryContextValues_unstable } from '../useNavCategoryContextVa
 /**
  * NavCategory component - TODO: add more docs
  */
-export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardRef((props, ref) => {
-  const state = useNavCategory_unstable(props, ref);
+export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardRef(props => {
+  const state = useNavCategory_unstable(props);
   const contextValues = useNavCategoryContextValues_unstable(state);
 
   return renderNavCategory_unstable(state, contextValues);

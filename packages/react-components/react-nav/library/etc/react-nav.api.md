@@ -32,6 +32,8 @@ import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import { MenuButtonProps } from '@fluentui/react-button';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { PresenceMotionSlotProps as PresenceMotionSlotProps_2 } from '@fluentui/react-motion/src/index';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -125,6 +127,7 @@ export type NavCategoryItemSlots = {
     root: NonNullable<Slot<'button'>>;
     icon?: Slot<'span'>;
     expandIcon: NonNullable<Slot<'span'>>;
+    expandIconMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public
@@ -341,6 +344,7 @@ export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
 // @public (undocumented)
 export type NavSubItemGroupSlots = {
     root: NonNullable<Slot<'div'>>;
+    collapseMotion?: Slot<PresenceMotionSlotProps_2<NavSubItemGroupCollapseMotionParams>>;
 };
 
 // @public
@@ -402,7 +406,7 @@ export const renderNavSectionHeader_unstable: (state: NavSectionHeaderState) => 
 export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
-export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element;
 
 // @public
 export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSX.Element;
@@ -456,7 +460,7 @@ export const useHamburgerStyles_unstable: (state: HamburgerState) => HamburgerSt
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
 // @public
-export const useNavCategory_unstable: (props: NavCategoryProps, ref: React_2.Ref<HTMLDivElement>) => NavCategoryState;
+export const useNavCategory_unstable: (props: NavCategoryProps) => NavCategoryState;
 
 // @public (undocumented)
 export const useNavCategoryContext_unstable: () => NavCategoryContextValue;
