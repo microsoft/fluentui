@@ -826,6 +826,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _getOrderedXAxisLabels = (points: { [key: string]: '1' }) => {
     if (!this._shouldOrderXAxisLabelsByCategoryOrder()) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
       return Object.keys(points).sort((a: string, b: string) => {
         if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
           return +a - +b;
@@ -841,6 +842,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _getOrderedYAxisLabels = (points: { [key: string]: '1' }) => {
     if (!this._shouldOrderYAxisLabelsByCategoryOrder()) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
       return Object.keys(points).sort((a: string, b: string) => {
         if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
           return +a - +b;

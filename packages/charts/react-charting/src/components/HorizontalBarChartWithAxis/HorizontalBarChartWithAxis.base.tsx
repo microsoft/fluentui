@@ -1016,6 +1016,7 @@ export class HorizontalBarChartWithAxisBase
     const shouldOrderYAxisLabelsByCategoryOrder =
       this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
     if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
       const reversedBars = [...this._points].reverse();
       return reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
     }
