@@ -11,7 +11,7 @@
     "node": "^20.0.0 || ^22.0.0"
   },
   "scripts": {
-    "dedupe": "npx yarn-deduplicate@latest --strategy fewer --exclude @types/react",
+    "dedupe": "npx yarn-deduplicate@latest --strategy fewer",
     "change": "beachball change --no-commit",
     "check:change": "beachball check",
     "check:modified-files": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-modified-files",
@@ -375,7 +375,6 @@
     "prettier": "2.8.8",
     "puppeteer": "19.6.3",
     "ws": "8.17.1",
-    "**/@mdx-js/react/@types/react": "^17",
     "**/prismjs": "^1.30.0",
     "**/@tensile-perf/runner/express": "^4.21.2",
     "**/tar-fs": "^2.1.2",
