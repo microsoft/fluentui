@@ -70,7 +70,7 @@ exports[`Persona renders Persona children correctly 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -231,7 +231,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -581,7 +581,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -739,7 +739,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -862,7 +862,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               height: 100px;
               line-height: 100px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -900,7 +900,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: auto;
               width: 28px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               background-color: WindowText;
               border-color: Window;
             }
@@ -914,7 +914,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               transform: translateY(-50%) rotate(-45deg);
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+            @media screen and (forced-colors: active){&:after {
               background-color: Window;
               left: 2px;
               width: calc(100% - 4px);
@@ -930,7 +930,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 0px;
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
@@ -953,7 +953,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
                 vertical-align: top;
                 width: 1em;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 color: Window;
               }
           data-icon-name=""
@@ -1563,7 +1563,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: auto;
               width: 28px;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               background-color: WindowText;
               border-color: Window;
             }
@@ -1577,7 +1577,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               transform: translateY(-50%) rotate(-45deg);
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:after {
+            @media screen and (forced-colors: active){&:after {
               background-color: Window;
               left: 2px;
               width: calc(100% - 4px);
@@ -1593,7 +1593,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 0px;
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
+            @media screen and (forced-colors: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
@@ -1616,7 +1616,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
                 vertical-align: top;
                 width: 1em;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 color: Window;
               }
           data-icon-name=""
