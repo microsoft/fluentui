@@ -1,12 +1,23 @@
-# Change Log - @fluentui/react-nav-preview
+# Change Log - @fluentui/react-nav
 
-This log was last generated on Fri, 06 Jun 2025 13:15:14 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jun 2025 22:31:57 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav_v9.0.0)
+
+Wed, 11 Jun 2025 22:31:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.9..@fluentui/react-nav_v9.0.0)
+
+### Minor changes
+
+- feat: release stable ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tooltip to v9.6.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+- Bump @fluentui/react-drawer to v9.7.11 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+
 ## [0.13.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.9)
 
-Fri, 06 Jun 2025 13:15:14 GMT 
+Fri, 06 Jun 2025 13:15:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.8..@fluentui/react-nav-preview_v0.13.9)
 
 ### Patches
@@ -25,7 +36,7 @@ Fri, 06 Jun 2025 13:15:14 GMT
 
 ## [0.13.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.8)
 
-Wed, 14 May 2025 18:49:20 GMT 
+Wed, 14 May 2025 18:49:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.7..@fluentui/react-nav-preview_v0.13.8)
 
 ### Patches
@@ -38,7 +49,7 @@ Wed, 14 May 2025 18:49:20 GMT
 
 ## [0.13.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.7)
 
-Thu, 24 Apr 2025 09:59:45 GMT 
+Thu, 24 Apr 2025 09:59:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.6..@fluentui/react-nav-preview_v0.13.7)
 
 ### Patches
@@ -51,7 +62,7 @@ Thu, 24 Apr 2025 09:59:45 GMT
 
 ## [0.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.6)
 
-Wed, 16 Apr 2025 19:42:18 GMT 
+Wed, 16 Apr 2025 19:42:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.5..@fluentui/react-nav-preview_v0.13.6)
 
 ### Patches
@@ -68,7 +79,7 @@ Wed, 16 Apr 2025 19:42:18 GMT
 
 ## [0.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.5)
 
-Tue, 01 Apr 2025 15:08:02 GMT 
+Tue, 01 Apr 2025 15:08:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.4..@fluentui/react-nav-preview_v0.13.5)
 
 ### Patches
@@ -81,7 +92,7 @@ Tue, 01 Apr 2025 15:08:02 GMT
 
 ## [0.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.4)
 
-Thu, 27 Mar 2025 21:12:51 GMT 
+Thu, 27 Mar 2025 21:12:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.3..@fluentui/react-nav-preview_v0.13.4)
 
 ### Patches
@@ -99,7 +110,7 @@ Thu, 27 Mar 2025 21:12:51 GMT
 
 ## [0.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.3)
 
-Wed, 26 Mar 2025 21:47:47 GMT 
+Wed, 26 Mar 2025 21:47:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.2..@fluentui/react-nav-preview_v0.13.3)
 
 ### Patches
@@ -108,7 +119,7 @@ Wed, 26 Mar 2025 21:47:47 GMT
 
 ## [0.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.2)
 
-Thu, 20 Mar 2025 09:34:59 GMT 
+Thu, 20 Mar 2025 09:34:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.1..@fluentui/react-nav-preview_v0.13.2)
 
 ### Patches
@@ -117,7 +128,7 @@ Thu, 20 Mar 2025 09:34:59 GMT
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.1)
 
-Wed, 19 Mar 2025 15:40:41 GMT 
+Wed, 19 Mar 2025 15:40:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.13.0..@fluentui/react-nav-preview_v0.13.1)
 
 ### Patches
@@ -136,7 +147,7 @@ Wed, 19 Mar 2025 15:40:41 GMT
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.13.0)
 
-Tue, 11 Mar 2025 18:58:52 GMT 
+Tue, 11 Mar 2025 18:58:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.12.0..@fluentui/react-nav-preview_v0.13.0)
 
 ### Minor changes
@@ -155,7 +166,7 @@ Tue, 11 Mar 2025 18:58:52 GMT
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.12.0)
 
-Fri, 21 Feb 2025 14:34:05 GMT 
+Fri, 21 Feb 2025 14:34:05 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.11.3..@fluentui/react-nav-preview_v0.12.0)
 
 ### Minor changes
@@ -168,7 +179,7 @@ Fri, 21 Feb 2025 14:34:05 GMT
 
 ## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.11.3)
 
-Fri, 07 Feb 2025 10:42:12 GMT 
+Fri, 07 Feb 2025 10:42:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.11.2..@fluentui/react-nav-preview_v0.11.3)
 
 ### Patches
@@ -178,7 +189,7 @@ Fri, 07 Feb 2025 10:42:12 GMT
 
 ## [0.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.11.2)
 
-Tue, 28 Jan 2025 21:26:35 GMT 
+Tue, 28 Jan 2025 21:26:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.11.1..@fluentui/react-nav-preview_v0.11.2)
 
 ### Patches
@@ -188,7 +199,7 @@ Tue, 28 Jan 2025 21:26:35 GMT
 
 ## [0.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.11.1)
 
-Mon, 27 Jan 2025 20:27:35 GMT 
+Mon, 27 Jan 2025 20:27:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.11.0..@fluentui/react-nav-preview_v0.11.1)
 
 ### Patches
@@ -198,12 +209,12 @@ Mon, 27 Jan 2025 20:27:35 GMT
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.11.0)
 
-Wed, 22 Jan 2025 14:00:20 GMT 
+Wed, 22 Jan 2025 14:00:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.7..@fluentui/react-nav-preview_v0.11.0)
 
 ### Minor changes
 
-- [BREAKING CHANGE] Replacing NavSize type and size prop with NavDensity type and density prop to avoid collisions with size on base Drawer component.  ([PR #33559](https://github.com/microsoft/fluentui/pull/33559) by matejera@microsoft.com)
+- [BREAKING CHANGE] Replacing NavSize type and size prop with NavDensity type and density prop to avoid collisions with size on base Drawer component. ([PR #33559](https://github.com/microsoft/fluentui/pull/33559) by matejera@microsoft.com)
 - Bump @fluentui/react-aria to v9.13.14 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 - Bump @fluentui/react-button to v9.3.100 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 - Bump @fluentui/react-tooltip to v9.5.4 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
@@ -221,7 +232,7 @@ Wed, 22 Jan 2025 14:00:20 GMT
 
 ## [0.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.7)
 
-Wed, 08 Jan 2025 18:33:36 GMT 
+Wed, 08 Jan 2025 18:33:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.6..@fluentui/react-nav-preview_v0.10.7)
 
 ### Patches
@@ -235,7 +246,7 @@ Wed, 08 Jan 2025 18:33:36 GMT
 
 ## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.6)
 
-Wed, 18 Dec 2024 10:59:37 GMT 
+Wed, 18 Dec 2024 10:59:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.5..@fluentui/react-nav-preview_v0.10.6)
 
 ### Patches
@@ -244,12 +255,12 @@ Wed, 18 Dec 2024 10:59:37 GMT
 
 ## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.5)
 
-Mon, 16 Dec 2024 16:26:49 GMT 
+Mon, 16 Dec 2024 16:26:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.4..@fluentui/react-nav-preview_v0.10.5)
 
 ### Patches
 
-- chore: remove usage of "export *" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
+- chore: remove usage of "export \*" ([PR #33457](https://github.com/microsoft/fluentui/pull/33457) by olfedias@microsoft.com)
 - Bump @fluentui/react-aria to v9.13.12 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 - Bump @fluentui/react-button to v9.3.98 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
 - Bump @fluentui/react-tooltip to v9.5.2 ([PR #33468](https://github.com/microsoft/fluentui/pull/33468) by beachball)
@@ -264,7 +275,7 @@ Mon, 16 Dec 2024 16:26:49 GMT
 
 ## [0.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.4)
 
-Mon, 09 Dec 2024 17:38:16 GMT 
+Mon, 09 Dec 2024 17:38:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.3..@fluentui/react-nav-preview_v0.10.4)
 
 ### Patches
@@ -277,7 +288,7 @@ Mon, 09 Dec 2024 17:38:16 GMT
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.3)
 
-Fri, 06 Dec 2024 12:53:46 GMT 
+Fri, 06 Dec 2024 12:53:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.2..@fluentui/react-nav-preview_v0.10.3)
 
 ### Patches
@@ -296,7 +307,7 @@ Fri, 06 Dec 2024 12:53:46 GMT
 
 ## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.2)
 
-Thu, 28 Nov 2024 09:30:54 GMT 
+Thu, 28 Nov 2024 09:30:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.1..@fluentui/react-nav-preview_v0.10.2)
 
 ### Patches
@@ -305,7 +316,7 @@ Thu, 28 Nov 2024 09:30:54 GMT
 
 ## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.1)
 
-Mon, 18 Nov 2024 09:44:40 GMT 
+Mon, 18 Nov 2024 09:44:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.10.0..@fluentui/react-nav-preview_v0.10.1)
 
 ### Patches
@@ -315,7 +326,7 @@ Mon, 18 Nov 2024 09:44:40 GMT
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.10.0)
 
-Tue, 12 Nov 2024 09:31:26 GMT 
+Tue, 12 Nov 2024 09:31:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.9.2..@fluentui/react-nav-preview_v0.10.0)
 
 ### Minor changes
@@ -325,7 +336,7 @@ Tue, 12 Nov 2024 09:31:26 GMT
 
 ## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.2)
 
-Mon, 11 Nov 2024 10:00:48 GMT 
+Mon, 11 Nov 2024 10:00:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.9.1..@fluentui/react-nav-preview_v0.9.2)
 
 ### Patches
@@ -346,7 +357,7 @@ Mon, 11 Nov 2024 10:00:48 GMT
 
 ## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.1)
 
-Tue, 15 Oct 2024 17:17:53 GMT 
+Tue, 15 Oct 2024 17:17:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.9.0..@fluentui/react-nav-preview_v0.9.1)
 
 ### Patches
@@ -365,7 +376,7 @@ Tue, 15 Oct 2024 17:17:53 GMT
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.9.0)
 
-Tue, 08 Oct 2024 22:05:58 GMT 
+Tue, 08 Oct 2024 22:05:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.1..@fluentui/react-nav-preview_v0.9.0)
 
 ### Minor changes
@@ -380,7 +391,7 @@ Tue, 08 Oct 2024 22:05:58 GMT
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.1)
 
-Thu, 26 Sep 2024 14:15:28 GMT 
+Thu, 26 Sep 2024 14:15:28 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.0..@fluentui/react-nav-preview_v0.8.1)
 
 ### Patches
@@ -390,13 +401,13 @@ Thu, 26 Sep 2024 14:15:28 GMT
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.0)
 
-Mon, 23 Sep 2024 12:40:14 GMT 
+Mon, 23 Sep 2024 12:40:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.6..@fluentui/react-nav-preview_v0.8.0)
 
 ### Minor changes
 
 - Scaffolds SplitNavItem ([PR #32870](https://github.com/microsoft/fluentui/pull/32870) by matejera@microsoft.com)
--  [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData. ([PR #32489](https://github.com/microsoft/fluentui/pull/32489) by matejera@microsoft.com)
+- [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData. ([PR #32489](https://github.com/microsoft/fluentui/pull/32489) by matejera@microsoft.com)
 - Bump @fluentui/react-aria to v9.13.6 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 - Bump @fluentui/react-button to v9.3.91 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 - Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
@@ -410,7 +421,7 @@ Mon, 23 Sep 2024 12:40:14 GMT
 
 ## [0.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.6)
 
-Fri, 13 Sep 2024 00:49:25 GMT 
+Fri, 13 Sep 2024 00:49:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.5..@fluentui/react-nav-preview_v0.7.6)
 
 ### Patches
@@ -419,7 +430,7 @@ Fri, 13 Sep 2024 00:49:25 GMT
 
 ## [0.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.5)
 
-Tue, 10 Sep 2024 10:19:12 GMT 
+Tue, 10 Sep 2024 10:19:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.4..@fluentui/react-nav-preview_v0.7.5)
 
 ### Patches
@@ -435,7 +446,7 @@ Tue, 10 Sep 2024 10:19:12 GMT
 
 ## [0.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.4)
 
-Fri, 16 Aug 2024 10:24:17 GMT 
+Fri, 16 Aug 2024 10:24:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.3..@fluentui/react-nav-preview_v0.7.4)
 
 ### Patches
@@ -444,7 +455,7 @@ Fri, 16 Aug 2024 10:24:17 GMT
 
 ## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.3)
 
-Thu, 15 Aug 2024 13:49:46 GMT 
+Thu, 15 Aug 2024 13:49:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.2..@fluentui/react-nav-preview_v0.7.3)
 
 ### Patches
@@ -456,7 +467,7 @@ Thu, 15 Aug 2024 13:49:46 GMT
 
 ## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.2)
 
-Thu, 15 Aug 2024 08:22:17 GMT 
+Thu, 15 Aug 2024 08:22:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.1..@fluentui/react-nav-preview_v0.7.2)
 
 ### Patches
@@ -468,7 +479,7 @@ Thu, 15 Aug 2024 08:22:17 GMT
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.1)
 
-Tue, 06 Aug 2024 21:40:45 GMT 
+Tue, 06 Aug 2024 21:40:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.0..@fluentui/react-nav-preview_v0.7.1)
 
 ### Patches
@@ -477,7 +488,7 @@ Tue, 06 Aug 2024 21:40:45 GMT
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.0)
 
-Mon, 05 Aug 2024 22:33:03 GMT 
+Mon, 05 Aug 2024 22:33:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.6.0..@fluentui/react-nav-preview_v0.7.0)
 
 ### Minor changes
@@ -487,7 +498,7 @@ Mon, 05 Aug 2024 22:33:03 GMT
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.6.0)
 
-Tue, 30 Jul 2024 18:47:33 GMT 
+Tue, 30 Jul 2024 18:47:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.3..@fluentui/react-nav-preview_v0.6.0)
 
 ### Minor changes
@@ -502,7 +513,7 @@ Tue, 30 Jul 2024 18:47:33 GMT
 
 ## [0.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.3)
 
-Tue, 23 Jul 2024 20:13:14 GMT 
+Tue, 23 Jul 2024 20:13:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.2..@fluentui/react-nav-preview_v0.5.3)
 
 ### Patches
@@ -519,7 +530,7 @@ Tue, 23 Jul 2024 20:13:14 GMT
 
 ## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.2)
 
-Mon, 15 Jul 2024 17:25:37 GMT 
+Mon, 15 Jul 2024 17:25:37 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.1..@fluentui/react-nav-preview_v0.5.2)
 
 ### Patches
@@ -537,7 +548,7 @@ Mon, 15 Jul 2024 17:25:37 GMT
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.1)
 
-Thu, 04 Jul 2024 15:14:36 GMT 
+Thu, 04 Jul 2024 15:14:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.0..@fluentui/react-nav-preview_v0.5.1)
 
 ### Patches
@@ -546,7 +557,7 @@ Thu, 04 Jul 2024 15:14:36 GMT
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.0)
 
-Mon, 01 Jul 2024 20:30:24 GMT 
+Mon, 01 Jul 2024 20:30:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.4.1..@fluentui/react-nav-preview_v0.5.0)
 
 ### Minor changes
@@ -572,7 +583,7 @@ Mon, 01 Jul 2024 20:30:24 GMT
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.4.1)
 
-Mon, 17 Jun 2024 07:34:17 GMT 
+Mon, 17 Jun 2024 07:34:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.4.0..@fluentui/react-nav-preview_v0.4.1)
 
 ### Patches
@@ -585,7 +596,7 @@ Mon, 17 Jun 2024 07:34:17 GMT
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.4.0)
 
-Wed, 12 Jun 2024 13:17:20 GMT 
+Wed, 12 Jun 2024 13:17:20 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.3.0..@fluentui/react-nav-preview_v0.4.0)
 
 ### Minor changes

@@ -580,6 +580,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
           <g
@@ -620,6 +621,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
                   showBackground={true}
+                  className={classes.svgTooltip}
                 />
               )}
             </g>
@@ -639,6 +641,7 @@ export const CartesianChart: React.FunctionComponent<ModifiedCartesianChartProps
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}
               showBackground={true}
+              className={classes.svgTooltip}
             />
           )}
         </svg>

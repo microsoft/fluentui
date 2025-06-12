@@ -329,11 +329,13 @@ export interface ICartesianChartProps {
     useUTC?: boolean;
     width?: number;
     wrapXAxisLables?: boolean;
+    xAxisAnnotation?: string;
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
     xAxisTitle?: string;
     xMaxValue?: number;
+    yAxisAnnotation?: string;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
     yAxisTitle?: string;
@@ -358,6 +360,7 @@ export interface ICartesianChartStyleProps {
 
 // @public
 export interface ICartesianChartStyles {
+    axisAnnotation?: IStyle;
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
@@ -374,6 +377,7 @@ export interface ICartesianChartStyles {
     opacityChangeOnHover?: IStyle;
     root?: IStyle;
     shapeStyles?: IStyle;
+    svgTooltip?: IStyle;
     tooltip?: IStyle;
     xAxis?: IStyle;
     yAxis?: IStyle;

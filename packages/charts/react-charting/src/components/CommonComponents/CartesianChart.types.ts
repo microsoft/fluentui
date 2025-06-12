@@ -160,9 +160,14 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
-   * styles for tooltip
+   * styles for axis title
    */
   axisTitle?: IStyle;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: IStyle;
 
   /**
    * Style for the chart Title.
@@ -183,6 +188,11 @@ export interface ICartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: IStyle;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: IStyle;
 }
 
 /**
@@ -470,6 +480,20 @@ export interface ICartesianChartProps {
    * @default false
    */
   hideTickOverlap?: boolean;
+
+  /**
+   * Prop to set the x axis annotation. Used to display additional information on the x-axis.
+   * This is shown on the top of the chart.
+   * @default undefined
+   */
+  xAxisAnnotation?: string;
+
+  /**
+   * Prop to set the y axis annotation. Used to display additional information on the y-axis.
+   * This is shown on the right side of the chart. Not shown if secondary y-axis is enabled.
+   * @default undefined
+   */
+  yAxisAnnotation?: string;
 }
 
 export interface IYValueHover {

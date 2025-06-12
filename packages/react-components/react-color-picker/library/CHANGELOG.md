@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-color-picker
 
-This log was last generated on Fri, 06 Jun 2025 13:15:17 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jun 2025 22:31:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.7)
+
+Wed, 11 Jun 2025 22:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.0.6..@fluentui/react-color-picker_v9.0.7)
+
+### Patches
+
+- docs: removed text from preview stage ([PR #34612](https://github.com/microsoft/fluentui/pull/34612) by vkozlova@microsoft.com)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.6)
 
