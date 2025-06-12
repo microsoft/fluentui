@@ -141,7 +141,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
               position: absolute;
               z-index: 1000000;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -227,7 +227,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                       margin-top: unset;
                       padding-left: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -243,7 +243,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                         font-weight: 400;
                         line-height: 16px;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         color: CanvasText;
                       }
                 >
@@ -261,7 +261,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                         font-weight: bold;
                         line-height: 36px;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         color: CanvasText;
                       }
                 >
@@ -369,7 +369,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -383,7 +383,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -402,7 +402,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -469,7 +469,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -483,7 +483,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -502,7 +502,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -569,7 +569,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -583,7 +583,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -602,7 +602,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -864,7 +864,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -878,7 +878,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -897,7 +897,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                                 opacity: ;
                               }
@@ -964,7 +964,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -978,7 +978,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -997,7 +997,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #0078D4, #0078D4);
                                 opacity: ;
                               }
@@ -1064,7 +1064,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1078,7 +1078,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -1097,7 +1097,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #DADADA, #DADADA);
                                 opacity: ;
                               }

@@ -72,7 +72,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -114,7 +114,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -156,7 +156,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -237,7 +237,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -279,7 +279,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -321,7 +321,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -402,7 +402,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -444,7 +444,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
@@ -486,7 +486,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                     fill: #323130;
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  @media screen and (forced-colors: active){& {
                     fill: CanvasText;
                   }
               data-is-focusable="false"
