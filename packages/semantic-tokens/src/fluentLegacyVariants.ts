@@ -73,14 +73,6 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorBrandStroke1',
     originalToken: 'ctrlProgressBackgroundFilled',
   },
-  _ctrlSpinnerStrokeSmWidth: {
-    f2Token: 'strokeWidthThick',
-    originalToken: 'ctrlSpinnerStrokeWidth',
-  },
-  _ctrlSpinnerStrokeLgWidth: {
-    f2Token: 'strokeWidthThickest',
-    originalToken: 'ctrlSpinnerStrokeWidth',
-  },
   _ctrlSpinnerItemBodyFontSize: {
     f2Token: 'fontSizeBase400',
     originalToken: 'textRampItemBodyFontSize',
@@ -89,8 +81,16 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'lineHeightBase400',
     originalToken: 'textRampItemBodyLineHeight',
   },
+  _ctrlSpinnerStrokeLgWidth: {
+    f2Token: 'strokeWidthThickest',
+    originalToken: 'ctrlSpinnerStrokeWidth',
+  },
+  _ctrlSpinnerStrokeSmWidth: {
+    f2Token: 'strokeWidthThick',
+    originalToken: 'ctrlSpinnerStrokeWidth',
+  },
   _ctrlSpinnerTextStyleRegularWeight: {
     f2Token: 'fontWeightSemibold',
     originalToken: 'textStyleDefaultRegularWeight',
-  },
+  },,
 };
