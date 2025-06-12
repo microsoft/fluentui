@@ -33,7 +33,7 @@ import {
   NumericAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getBarWidth,
   getScalePadding,
   isScalePaddingDefined,
@@ -171,7 +171,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={tokens.colorNeutralBackground1}
+          className={classes.lineBorder}
         />,
       );
     }
@@ -967,7 +967,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatValueWithSIPrefix(barValue)}
+        {formatScientificLimitWidth(barValue)}
       </text>
     );
   }

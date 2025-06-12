@@ -119,6 +119,11 @@ export interface CartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: string;
 }
 
 /**
@@ -376,7 +381,7 @@ export interface CartesianChartProps {
 
   /**
    * Determines whether overlapping x-axis tick labels should be hidden.
-   * @default false
+   * @default true
    */
   hideTickOverlap?: boolean;
 

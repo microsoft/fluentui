@@ -1,8 +1,61 @@
 # Change Log - @fluentui/react-carousel
 
-This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.7.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.6.9..@fluentui/react-carousel_v9.7.0)
+
+### Minor changes
+
+- Bump @fluentui/react-aria to v9.15.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-button to v9.5.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-context-selector to v9.2.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tooltip to v9.7.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tabster to v9.25.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.6.9)
+
+Wed, 11 Jun 2025 22:31:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.6.8..@fluentui/react-carousel_v9.6.9)
+
+### Patches
+
+- Bump @fluentui/react-tooltip to v9.6.9 ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by beachball)
+
+## [9.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.6.8)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.6.7..@fluentui/react-carousel_v9.6.8)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.14.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-button to v9.4.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.77 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-tabster to v9.24.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.6.7)
+
+Wed, 14 May 2025 18:49:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel_v9.6.6..@fluentui/react-carousel_v9.6.7)
+
+### Patches
+
+- bug: Fix branded carousel nav button colors to be WCAG contrast compliant ([PR #34397](https://github.com/microsoft/fluentui/pull/34397) by mifraser@microsoft.com)
+- fix: Ensure buttons are disabled when not enough content for circular ([PR #34427](https://github.com/microsoft/fluentui/pull/34427) by mifraser@microsoft.com)
+- Bump @fluentui/react-aria to v9.14.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-button to v9.4.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-tooltip to v9.6.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
 
 ## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel_v9.6.6)
 

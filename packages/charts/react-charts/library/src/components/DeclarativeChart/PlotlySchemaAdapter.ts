@@ -54,9 +54,8 @@ import {
   isDate,
   isDateArray,
   isNumberArray,
-  isLineData,
+  isYearArray,
 } from '@fluentui/chart-utilities';
-import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface SecondaryYAxisValues {
@@ -102,16 +101,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-
-const isMonth = (possiblyMonthValue: any): boolean => {
-  const parseFullMonth = timeParse('%B');
-  const parseShortMonth = timeParse('%b');
-  return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
-};
-
-export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isMonth);
-};
 
 const getLegend = (series: Partial<PlotData>, index: number): string => {
   return series.name || `Series ${index + 1}`;
@@ -259,9 +248,10 @@ export const transformPlotlyJsonToVSBCProps = (
   let yMaxValue = 0;
   let secondaryYAxisValues: SecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
+    const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
       if (!mapXToDataPoints[x]) {
-        mapXToDataPoints[x] = { xAxisPoint: x, chartData: [], lineData: [] };
+        mapXToDataPoints[x] = { xAxisPoint: isXYearCategory ? x.toString() : x, chartData: [], lineData: [] };
       }
       const legend: string = getLegend(series, index1);
       const yVal: number = (series.y?.[index2] as number) ?? 0;
@@ -272,7 +262,7 @@ export const transformPlotlyJsonToVSBCProps = (
           data: yVal,
           color,
         });
-      } else if (series.type === 'scatter' || isLineData(series) || !!fallbackVSBC) {
+      } else if (series.type === 'scatter' || !!fallbackVSBC) {
         const color = getColor(legend, colorMap, isDarkTheme);
         const lineOptions = getLineOptions(series.line);
         mapXToDataPoints[x].lineData!.push({
@@ -472,6 +462,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       width: input.layout?.width,
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
+      useUTC: false,
     } as AreaChartProps;
   } else {
     return {
@@ -488,6 +479,7 @@ export const transformPlotlyJsonToScatterChartProps = (
       height: input.layout?.height ?? 350,
       hideTickOverlap: true,
       enableReflow: false,
+      useUTC: false,
     } as LineChartProps;
   }
 };

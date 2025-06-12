@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

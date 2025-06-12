@@ -3,4 +3,4 @@ A horizontal bar chart is a chart that presents categorical data with rectangula
 Horizontal bar chart with axis is a version of horizontal bar chart that has the x and y axis present.
 This chart is same as the vertical bar chart except that the bars are aligned horizontally.
 
-Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/charts/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

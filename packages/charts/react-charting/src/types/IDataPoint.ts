@@ -8,13 +8,13 @@ export interface IBasestate {
   _height?: number;
   activeLegend?: string;
   color?: string;
-  dataForHoverCard?: number;
+  dataForHoverCard?: number | string;
   isCalloutVisible: boolean;
   isLegendSelected?: boolean;
   isLegendHovered?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  YValueHover?: { legend?: string; y?: number | string; color?: string }[];
   hoverYValue?: string | number | null;
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
@@ -300,19 +300,7 @@ export interface ILineDataInVerticalBarChart {
 /**
  * {@docCategory IChartData}
  */
-export interface ILineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+export interface IBaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -347,6 +335,28 @@ export interface ILineChartDataPoint {
    * Marker size of the points
    */
   markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface ILineChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
 }
 
 /**
@@ -409,6 +419,27 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * @default 'linear'
    */
   curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'lines'
+    | 'markers'
+    | 'text'
+    | 'lines+markers'
+    | 'text+markers'
+    | 'text+lines'
+    | 'text+lines+markers'
+    | 'none'
+    | 'gauge'
+    | 'number'
+    | 'delta'
+    | 'number+delta'
+    | 'gauge+number'
+    | 'gauge+number+delta'
+    | 'gauge+delta'
+    | 'markers+text';
 }
 
 /**
@@ -502,6 +533,11 @@ export interface IChartProps {
   lineChartData?: ILineChartPoints[];
 
   /**
+   * data for the points in the scatter chart
+   */
+  scatterChartData?: IScatterChartPoints[];
+
+  /**
    * data for the points in the line chart
    */
   SankeyChartData?: ISankeyChartData;
@@ -586,7 +622,7 @@ export interface IVSChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  data: number;
+  data: number | string;
 
   /**
    * Legend text for the datapoint in the chart
@@ -655,13 +691,18 @@ export interface IVerticalStackedChartProps {
  * {@docCategory IChartData}
  */
 export interface ILineDataInVerticalStackedBarChart {
-  y: number;
+  y: number | string;
   color: string;
   legend: string;
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+  /**
    * Data to show in callout
    */
-  data?: number;
+  data?: number | string;
   yAxisCalloutData?: string;
   /**
    * Whether to use the secondary y scale or not
@@ -859,4 +900,67 @@ export interface IImageExportOptions {
   height?: number;
   scale?: number;
   background?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: IScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }

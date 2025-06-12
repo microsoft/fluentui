@@ -2,6 +2,374 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 12 Jun 2025 09:43:29 GMT",
+      "tag": "@fluentui/react-components_v9.66.0",
+      "version": "9.66.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          }
+        ],
+        "patch": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "96ebe14eefb14c65b03856f17ffc03e8120cdea7",
+            "comment": "line border and axis title background fix"
+          }
+        ],
+        "minor": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "feat: react 18 support for slots api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jun 2025 22:31:55 GMT",
+      "tag": "@fluentui/react-components_v9.65.0",
+      "version": "9.65.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "emhkimm@gmail.com",
+            "package": "@fluentui/react-charts",
+            "commit": "9e67df3b44cb10c2833d1921a00417140ad78da8",
+            "comment": "Fix GaugeChart so it can merge customer provided styles to the chart"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "4524a28299ce317d53ca354f7c0e202e5a491d04",
+            "comment": "fix(react-charts): Move isMonth function to chart-utilities"
+          },
+          {
+            "author": "anushgupta@microsoft.com",
+            "package": "@fluentui/react-charts",
+            "commit": "711fcf8ccf6626c026ca610048842b5a0f270cb0",
+            "comment": "fix accessibility bugs"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "aba3aae2ca7ebcd53f1cc84893e440a6acf00fcc",
+            "comment": "docs: removed text from preview stage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "da0eefbc899cb2fa59b77a82ec390c9522a8bc7b",
+            "comment": "feat: implement useSafeZoneArea() hook"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "9e102f3a40605603472c4055acc53511c851868d",
+            "comment": "fix: selected Tag and InteractionTag styles are visible in high contrast mode"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9d5f9de4e1811302df0c15c31412856329fe9333",
+            "comment": "feat: add @fluentui/react-nav to suite"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav",
+            "commit": "9d5f9de4e1811302df0c15c31412856329fe9333",
+            "comment": "feat: release stable"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "fix: use custom RefAttributes instead of React.RefAttributes"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "005e4f11aafd06c797b84b03b427424e740018d9",
+            "comment": "chore: disable lint error on React.RefAttibute within getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:13 GMT",
+      "tag": "@fluentui/react-components_v9.64.1",
+      "version": "9.64.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "26b88c5905e75041d030617754f372873e086b20",
+            "comment": "fix: aria-label for year selection"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "0ac3d6be1e465b781c601b22b6a20358bbbcb4a9",
+            "comment": "feat(react-charts): Improve formatting and numeric and date labels"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "3c10831c5273837162504c1f887b031c1039472a",
+            "comment": "fix: Change Nav icon display animations to opacity animations"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "44cad034475803533a2b659ae02adab213c8d4e7",
+            "comment": "fix: focus borders being cut-off"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "6cd4bc4d68e89744e5ff3561fad61c6ad27b191b",
+            "comment": "fix: adjust focus outline offset"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e315242df9e1bde691323a65edcf3e8eb38bf57b",
+            "comment": "fix(DataGridSelectionCell): should not use `aria-checked` on gridcell"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "bf416eb40d5a9f1cba50cb4edb77a263d4378af7",
+            "comment": "fix: Single select should not render header selection indicator"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "09c3aaf09b750218f3a6958184483377813d0af7",
+            "comment": "Bumping Tabster to 8.5.5"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d9448b4bb08be3aafc786bb44edf86d93168756",
+            "comment": "chore: re-introduce active state style to TreeItemLayout"
+          }
+        ],
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-storybook-addon",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          },
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "dd9736c6a590dbbf4cae2619e0dd396e019036a5",
+            "comment": "fix: react 18 type issues"
+          }
+        ],
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "82db061493527440f473c6c6480305f8afe293be",
+            "comment": "feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 May 2025 18:49:15 GMT",
+      "tag": "@fluentui/react-components_v9.64.0",
+      "version": "9.64.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "94aeaad448edb5b6d9e5e81671be26895bb9cf3d",
+            "comment": "fix: update fluent ariaNotify implementation to match new API"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "ec6617912e7623f2560273649e1c5bb8f5febbd6",
+            "comment": "bug: Fix branded carousel nav button colors to be WCAG contrast compliant"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel",
+            "commit": "914ee93906b4fdf5ffff06e4fa47974c7be1f428",
+            "comment": "fix: Ensure buttons are disabled when not enough content for circular"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charts",
+            "commit": "f71c8aa217455b6a3197f686d2b112d4f65ed3fe",
+            "comment": "fix(react-charts) Cleanup function removed upstream"
+          },
+          {
+            "author": "v.kozlova13@gmail.com",
+            "package": "@fluentui/react-color-picker",
+            "commit": "09f1926e30886b56504a9ede2baacdfc77b24a0c",
+            "comment": "fix: added touch events for ColorArea"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "e98da0473a22f426108a46e5509ecff8cab74de7",
+            "comment": "fix: icorrect react-infobutton export from suite"
+          },
+          {
+            "author": "charles.assuncao@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "f84bb0c8f4c274a64037732643f193b15cf03ffa",
+            "comment": "Export child context"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "409dd3538c69f5d8bbacff2ac8c85f561ac0046b",
+            "comment": "fix: improve support of concurrent mode, work with React 19"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c2e473dfbcc230c393c92f1d4ad8d4631d095527",
+            "comment": "fix: improve SSR validation"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6e2dc687ffbf4b0b853735abde9f8d58fe51925b",
+            "comment": "fix: filled-circular appearance variant shows selected tab in high contrast"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "42170b77f1459a2d279074a796a14a6eb49e1ce5",
+            "comment": "fix: Tab filled (not filled-subtle) appearance has border in WHCM"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c885b843ef7ef362dd77bc71433815a26ad08574",
+            "comment": "Apply focus visible attribute on navigation state change"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e228622a6c856e69c162217cd8a1295fecdb04b4",
+            "comment": "feat: export PositioningConfigurationProvider"
+          },
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "0512b8dee804ac2bac27458f2f5f02224e6184b3",
+            "comment": "refactor(motion): simplify Fade & Scale variant creation with createPresenceComponentVariant"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e228622a6c856e69c162217cd8a1295fecdb04b4",
+            "comment": "feat: implement shared positioning config"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Apr 2025 09:59:43 GMT",
       "tag": "@fluentui/react-components_v9.63.0",
       "version": "9.63.0",

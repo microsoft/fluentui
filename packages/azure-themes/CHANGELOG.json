@@ -2,6 +2,81 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 29 May 2025 07:21:46 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.133",
+      "version": "8.6.133",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.123.0",
+            "commit": "4d7465d131910b95fba826b123d8d965f3360727"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 May 2025 07:21:44 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.132",
+      "version": "8.6.132",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.122.19",
+            "commit": "ce3f089aaa0348897f620403506845152b4cd6e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 May 2025 07:22:04 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.131",
+      "version": "8.6.131",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.122.18",
+            "commit": "8d9faeb128c66042497f54ba87602747e1171773"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 May 2025 07:22:42 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.130",
+      "version": "8.6.130",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.122.17",
+            "commit": "dcda99a224ad22b2feb3f64b2366bbcb83552b3c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Apr 2025 07:22:20 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.129",
+      "version": "8.6.129",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.122.16",
+            "commit": "27891bf50d50f5c2c76cd4c43b2851b5098275db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Apr 2025 07:22:07 GMT",
       "tag": "@fluentui/azure-themes_v8.6.128",
       "version": "8.6.128",

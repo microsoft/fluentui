@@ -18,6 +18,14 @@
     "e2e:integration": {
       "dependsOn": [],
       "inputs": ["{projectRoot}/cypress-react-18.config.ts", "{workspaceRoot}/packages/react-examples/**/*.e2e.tsx?"]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "inputs": ["{projectRoot}/jest-react-18.config.js", "{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
+    },
+    "build:integration": {
+      "dependsOn": ["^build"],
+      "inputs": ["{workspaceRoot}/packages/react/**/*.(test|spec).tsx?"]
     }
   }
 }

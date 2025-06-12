@@ -2,6 +2,56 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 12 Jun 2025 09:43:33 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.98",
+      "version": "9.0.0-alpha.98",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.1.0",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.21.0",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Jun 2025 13:15:17 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.97",
+      "version": "9.0.0-alpha.97",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.55",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.20.0",
+            "commit": "82db061493527440f473c6c6480305f8afe293be"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Apr 2025 19:42:06 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.96",
       "version": "9.0.0-alpha.96",

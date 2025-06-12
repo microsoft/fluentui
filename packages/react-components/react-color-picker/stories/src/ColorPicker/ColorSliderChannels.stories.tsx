@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { tinycolor } from '@ctrl/tinycolor';
-import { ColorSlider, type ColorSliderProps } from '@fluentui/react-components';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { ColorSlider, type ColorSliderProps, Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

@@ -27,6 +27,7 @@ export type {
   ILineChartStyles,
 } from './LineChart';
 export { LineChart, Textbox } from './LineChart';
+export { ScatterChart } from './ScatterChart';
 export type { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from './AreaChart';
 export { AreaChart } from './AreaChart';
 export type { IPieChart, IPieChartProps, IPieChartStyleProps, IPieChartStyles } from './PieChart';
@@ -99,6 +100,9 @@ export type {
   SNode,
   IChart,
   IImageExportOptions,
+  IScatterChartPoints,
+  IScatterChartDataPoint,
+  IBaseDataPoint,
 } from './types/index';
 export type {
   IChartHoverCardProps,
@@ -127,6 +131,8 @@ export type {
 export { NodesComposition, TreeChart, TreeTraverse } from './TreeChart';
 export type { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from './Sparkline';
 export { Sparkline } from './Sparkline';
+export type { IChartTableProps, IChartTableStyleProps, IChartTableStyles } from './ChartTable';
+export { ChartTable } from './ChartTable';
 export type {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
@@ -141,5 +147,6 @@ export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './Declara
 export { DeclarativeChart } from './DeclarativeChart';
 export type { IResponsiveContainerProps, IResponsiveChildProps } from './ResponsiveContainer';
 export { ResponsiveContainer, withResponsiveContainer } from './ResponsiveContainer';
+export type { IScatterChartProps, IScatterChartStyleProps, IScatterChartStyles } from './ScatterChart';
 
 import './version';

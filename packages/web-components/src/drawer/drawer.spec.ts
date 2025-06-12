@@ -148,4 +148,29 @@ test.describe('Drawer', () => {
 
     await expect(wasDismissed).resolves.toBe(true);
   });
+
+  test('should close after a button is slotted into the close slot and clicked', async ({ fastPage, page }) => {
+    const { element } = fastPage;
+    const closeButton = element.locator('fluent-button[slot="close"]');
+    const content = element.locator('#content');
+
+    await fastPage.setTemplate(/* html */ `
+        <fluent-drawer>
+          <fluent-drawer-body>
+              <fluent-button slot="close">Close</fluent-button>
+              <div id="content">content</div>
+          </fluent-drawer-body>
+        </fluent-drawer>
+      `);
+
+    await element.evaluate((node: Drawer) => {
+      node.show();
+    });
+
+    await expect(content).toBeVisible();
+
+    await closeButton.click();
+
+    await expect(content).toBeHidden();
+  });
 });

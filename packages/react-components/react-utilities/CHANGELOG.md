@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 16 Apr 2025 19:42:06 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.21.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.20.0..@fluentui/react-utilities_v9.21.0)
+
+### Minor changes
+
+- feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.20.0)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.19.0..@fluentui/react-utilities_v9.20.0)
+
+### Minor changes
+
+- feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by martinhochel@microsoft.com)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.19.0)
 

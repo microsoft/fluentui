@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-color-picker
 
-This log was last generated on Thu, 24 Apr 2025 09:59:45 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.1.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.0.7..@fluentui/react-color-picker_v9.1.0)
+
+### Minor changes
+
+- Bump @fluentui/react-context-selector to v9.2.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.1.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-tabster to v9.25.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.7)
+
+Wed, 11 Jun 2025 22:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.0.6..@fluentui/react-color-picker_v9.0.7)
+
+### Patches
+
+- docs: removed text from preview stage ([PR #34612](https://github.com/microsoft/fluentui/pull/34612) by vkozlova@microsoft.com)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.6)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.0.5..@fluentui/react-color-picker_v9.0.6)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.77 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.55 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-tabster to v9.24.8 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.5)
+
+Wed, 14 May 2025 18:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-color-picker_v9.0.4..@fluentui/react-color-picker_v9.0.5)
+
+### Patches
+
+- fix: added touch events for ColorArea ([PR #34328](https://github.com/microsoft/fluentui/pull/34328) by v.kozlova13@gmail.com)
+- Bump @fluentui/react-tabster to v9.24.7 ([PR #34438](https://github.com/microsoft/fluentui/pull/34438) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-color-picker_v9.0.4)
 
