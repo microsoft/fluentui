@@ -251,7 +251,7 @@ exports[`DetailsHeader can render 1`] = `
                   vertical-align: middle;
                   width: 18px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
@@ -298,7 +298,7 @@ exports[`DetailsHeader can render 1`] = `
                 &:hover {
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   forced-color-adjust: none;
                 }
@@ -2161,7 +2161,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   vertical-align: middle;
                   width: 18px;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
@@ -2208,7 +2208,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 &:hover {
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   forced-color-adjust: none;
                 }
