@@ -131,7 +131,7 @@ export const resolveColor = (
   isDarkTheme?: boolean,
 ): string => {
   let color = '';
-  if (extractedColors && isArrayOrTypedArray(extractedColors) && extractedColors[index]) {
+  if (extractedColors && isArrayOrTypedArray(extractedColors)) {
     color = extractedColors[index % extractedColors.length];
   } else if (typeof extractedColors === 'string') {
     color = extractedColors;
