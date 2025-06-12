@@ -365,17 +365,27 @@ export const fontWeightRegular = 'var(--fontWeightRegular)';
  */
 export const strokeWidthThickest = 'var(--strokeWidthThickest)';
 /**
- * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
- * @public
- */
-export const borderRadiusSmall = 'var(--borderRadiusSmall)';
-/**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusLarge | `borderRadiusLarge`} design token.
  * @public
  */
 export const borderRadiusLarge = 'var(--borderRadiusLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#borderRadiusSmall | `borderRadiusSmall`} design token.
+ * @public
+ */
+export const borderRadiusSmall = 'var(--borderRadiusSmall)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#borderRadiusXLarge | `borderRadiusXLarge`} design token.
  * @public
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke2Contrast | `colorBrandStroke2Contrast`} design token.
+ * @public
+ */
+export const colorBrandStroke2Contrast = 'var(--colorBrandStroke2Contrast)';
+/**
+ * CSS custom property value for the {@link @fluentui/tokens#colorBrandStroke1 | `colorBrandStroke1`} design token.
+ * @public
+ */
+export const colorBrandStroke1 = 'var(--colorBrandStroke1)';

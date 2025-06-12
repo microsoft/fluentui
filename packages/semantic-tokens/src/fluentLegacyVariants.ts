@@ -65,4 +65,32 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlSpinnerBackgroundEmpty: {
+    f2Token: 'colorBrandStroke2Contrast',
+    originalToken: 'ctrlProgressBackgroundEmpty',
+  },
+  _ctrlSpinnerBackgroundFilled: {
+    f2Token: 'colorBrandStroke1',
+    originalToken: 'ctrlProgressBackgroundFilled',
+  },
+  _ctrlSpinnerItemBodyFontSize: {
+    f2Token: 'fontSizeBase400',
+    originalToken: 'textRampItemBodyFontSize',
+  },
+  _ctrlSpinnerItemBodyLineHeight: {
+    f2Token: 'lineHeightBase400',
+    originalToken: 'textRampItemBodyLineHeight',
+  },
+  _ctrlSpinnerStrokeLgWidth: {
+    f2Token: 'strokeWidthThickest',
+    originalToken: 'ctrlSpinnerStrokeWidth',
+  },
+  _ctrlSpinnerStrokeSmWidth: {
+    f2Token: 'strokeWidthThick',
+    originalToken: 'ctrlSpinnerStrokeWidth',
+  },
+  _ctrlSpinnerTextStyleRegularWeight: {
+    f2Token: 'fontWeightSemibold',
+    originalToken: 'textStyleDefaultRegularWeight',
+  },
 };
