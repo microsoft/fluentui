@@ -172,4 +172,6 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultHeaderWeight: { f2Token: 'fontWeightSemibold' },
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
+  ctrlSpinnerStrokeWidth: { f2Token: 'strokeWidthThicker' },
+  gapInsideCtrlToLabel: { rawValue: '8px' },
 };
