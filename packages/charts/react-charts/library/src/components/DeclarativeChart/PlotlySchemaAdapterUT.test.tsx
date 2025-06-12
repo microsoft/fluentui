@@ -1,7 +1,6 @@
-import { isDateArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
+import { isDateArray, isMonthArray, isNumberArray, sanitizeJson } from '@fluentui/chart-utilities';
 
 import {
-  isMonthArray,
   correctYearMonth,
   getColor,
   transformPlotlyJsonToDonutProps,
