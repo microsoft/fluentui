@@ -103,8 +103,57 @@ const config = {
       dependencies: ['stylis'],
     },
     {
-      packages: ['@fluentui/react-conformance'],
-      dependencies: ['chalk'],
+      packages: ['@fluentui/react-conformance', '@fluentui/react-conformance-griffel'],
+      dependencies: [
+        'chalk',
+        // TODO: remove once modern yarn is used as v1 contains a bug that forces linking @types/react v17 within react-conformance node_modules which causes build issues
+        '@types/react',
+      ],
+    },
+    {
+      packages: ['@fluentui/test-utilities'],
+      dependencies: [
+        // test utilities uses enzyme and thus needs to be forcer to use react types v17
+        '@types/react',
+      ],
+    },
+    {
+      packages: [
+        // hybrid package use for v0 and react-button test in v9
+        '@fluentui/a11y-testing',
+        // v8 - TODO make this package private, then bump to r18
+        '@fluentui/codemods',
+        // v0
+        '@fluentui/react-northstar',
+        '@fluentui/accessibility',
+        '@fluentui/code-sandbox',
+        '@fluentui/digest',
+        '@fluentui/react-bindings',
+        '@fluentui/react-builder',
+        '@fluentui/react-component-event-listener',
+        '@fluentui/react-component-nesting-registry',
+        '@fluentui/react-component-ref',
+        '@fluentui/react-icons-northstar',
+        '@fluentui/react-northstar',
+        '@fluentui/react-northstar-emotion-renderer',
+        '@fluentui/react-northstar-fela-renderer',
+        '@fluentui/react-northstar-prototypes',
+        '@fluentui/react-northstar-prototypes',
+        '@fluentui/react-northstar-styles-renderer',
+        '@fluentui/react-proptypes',
+        '@fluentui/react-telemetry',
+        '@fluentui/state',
+        '@fluentui/styles',
+      ],
+      dependencies: [
+        'react',
+        'react-dom',
+        '@testing-library/dom',
+        '@testing-library/react',
+        '@types/react',
+        '@types/react-dom',
+        '@types/react-is',
+      ],
     },
   ],
 };
