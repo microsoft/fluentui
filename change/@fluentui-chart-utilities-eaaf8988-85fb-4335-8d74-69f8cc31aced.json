@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(charts): Enable support for rendering different traces individually or as a group",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
