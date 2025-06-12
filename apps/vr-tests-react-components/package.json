@@ -81,6 +81,7 @@
     "@fluentui/react-tag-picker": "*",
     "@fluentui/react-carousel": "*",
     "@fluentui/react-list": "*",
-    "@fluentui/react-color-picker": "*"
+    "@fluentui/react-color-picker": "*",
+    "@fluentui/react-nav": "*"
   }
 }
