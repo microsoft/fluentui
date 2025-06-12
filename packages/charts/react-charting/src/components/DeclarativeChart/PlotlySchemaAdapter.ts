@@ -410,7 +410,7 @@ export const transformPlotlyJsonToVSBCProps = (
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
-            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -424,7 +424,7 @@ export const transformPlotlyJsonToVSBCProps = (
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
-            color: rgb(lineColor).copy({ opacity }).formatRgb() ?? color,
+            color: rgb(lineColor).copy({ opacity }).formatHex8() ?? color,
             lineOptions: {
               ...(lineOptions ?? {}),
               mode: series.mode,
@@ -533,7 +533,7 @@ export const transformPlotlyJsonToGVBCProps = (
           key: legend,
           data: series.y![xIndex] as number,
           xAxisCalloutData: x as string,
-          color: rgb(color).copy({ opacity }).formatRgb() ?? color,
+          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         });
@@ -646,7 +646,7 @@ export const transformPlotlyJsonToVBCProps = (
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
         legend,
-        color: rgb(color).copy({ opacity }).formatRgb() ?? color,
+        color: rgb(color).copy({ opacity }).formatHex8() ?? color,
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
@@ -798,7 +798,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
           })),
-          color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatRgb() ?? seriesColor,
+          color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
             ...(lineOptions ?? {}),
             mode: series.mode,
@@ -906,7 +906,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
             x: series.x![i],
             y: yValue,
             legend,
-            color: rgb(color).copy({ opacity }).formatRgb() ?? color,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
