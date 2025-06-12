@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 11 Jun 2025 22:31:55 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.0)
+
+Thu, 12 Jun 2025 09:43:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.65.0..@fluentui/react-components_v9.66.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adjust types to support react 18 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - line border and axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
 
 ## [9.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.65.0)
 

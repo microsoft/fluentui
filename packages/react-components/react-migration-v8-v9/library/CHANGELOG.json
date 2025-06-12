@@ -2,6 +2,29 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Thu, 12 Jun 2025 09:43:31 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "none": [
+          {
+            "author": "dmytrokirpa@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18",
+            "comment": "chore: adjust types to support react 18"
+          }
+        ],
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.66.0",
+            "commit": "77aced49c930c034ac6491ed6d93435dc0c91d18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Jun 2025 22:31:57 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.7.13",
       "version": "9.7.13",

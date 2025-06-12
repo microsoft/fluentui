@@ -40,6 +40,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         lineHeight: FontSizes.medium,
         color: NeutralColors.gray160,
         fill: theme.semanticColors.bodyText,
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
       },
     ],
     axisAnnotation: [
@@ -221,6 +224,12 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       background: theme.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
+    },
+    svgTooltip: {
+      fill: theme.semanticColors.bodyBackground,
+      [HighContrastSelector]: {
+        fill: 'Canvas',
+      },
     },
   };
 };

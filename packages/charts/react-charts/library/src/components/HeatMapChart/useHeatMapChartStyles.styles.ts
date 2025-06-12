@@ -17,6 +17,7 @@ export const heatmapChartClassNames: SlotClassNames<HeatMapChartStyles> = {
   opacityChangeOnHover: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
 };
 const useStyles = makeStyles({
   root: {},
