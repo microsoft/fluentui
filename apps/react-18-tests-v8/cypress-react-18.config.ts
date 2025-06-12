@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { baseConfig, baseWebpackConfig } from '@fluentui/scripts-cypress';
+import { baseWebpackConfig } from '@fluentui/scripts-cypress';
+import baseConfig from './cypress.config';
 import { createStorybookWebpackConfig } from '@fluentui/scripts-webpack';
 
 // Include all tests from this app and the components package
@@ -12,12 +13,6 @@ config.component.devServer.webpackConfig = createStorybookWebpackConfig(baseWebp
 config.component.devServer.webpackConfig.resolve ??= {};
 config.component.devServer.webpackConfig.resolve.alias = {
   ...config.component.devServer.webpackConfig.resolve.alias,
-  '@cypress/react': path.resolve(__dirname, './node_modules/@cypress/react'),
-  '@types/react': path.resolve(__dirname, './node_modules/@types/react'),
-  '@types/react-dom': path.resolve(__dirname, './node_modules/@types/react-dom'),
-  react: path.resolve(__dirname, './node_modules/react'),
-  'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-  'cypress-real-events': path.resolve(__dirname, './node_modules/cypress-real-events'),
 };
 
 export default config;

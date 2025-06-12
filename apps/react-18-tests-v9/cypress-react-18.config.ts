@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { baseConfig } from '@fluentui/scripts-cypress';
+import baseConfig from './cypress.config';
 
 const excludedSpecs = [
   '!' + path.resolve('../../packages/react-components/*-compat/src/**/*.cy.{tsx,ts}'),
@@ -20,11 +20,6 @@ config.component.devServer.webpackConfig.resolve ??= {};
 config.component.devServer.webpackConfig.resolve.alias = {
   ...config.component.devServer.webpackConfig.resolve.alias,
   '@cypress/react': path.resolve(__dirname, './config/cypressWithStrictMode.ts'),
-  '@types/react': path.resolve(__dirname, './node_modules/@types/react'),
-  '@types/react-dom': path.resolve(__dirname, './node_modules/@types/react-dom'),
-  react: path.resolve(__dirname, './node_modules/react'),
-  'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
-  'cypress-real-events': path.resolve(__dirname, './node_modules/cypress-real-events'),
 };
 
 export default config;
