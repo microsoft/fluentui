@@ -35,6 +35,7 @@
     "@fluentui/scripts-gulp": "*",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
+    "@types/react": "17.0.44",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
