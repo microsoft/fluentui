@@ -463,7 +463,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    ...getAxisCategoryOrderProps(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -558,7 +558,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    ...getAxisCategoryOrderProps(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -672,7 +672,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
-    ...getAxisCategoryOrderProps(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -947,7 +947,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
-    ...getAxisCategoryOrderProps(input.layout),
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -1111,7 +1111,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    ...getAxisCategoryOrderProps(input.layout),
+    ...getAxisCategoryOrderProps([firstData], input.layout),
   };
 };
 
@@ -1977,7 +1977,7 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
 };
 
 type GetAxisCategoryOrderPropsResult = Pick<ICartesianChartProps, 'xAxisCategoryOrder' | 'yAxisCategoryOrder'>;
-const getAxisCategoryOrderProps = (layout: Partial<Layout> | undefined) => {
+const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undefined) => {
   const result: GetAxisCategoryOrderPropsResult = {};
 
   const axesById: Record<string, Partial<LayoutAxis> | undefined> = {
@@ -1986,11 +1986,21 @@ const getAxisCategoryOrderProps = (layout: Partial<Layout> | undefined) => {
   };
   Object.keys(axesById).forEach(axId => {
     const ax = axesById[axId];
-    const axLetter = axId[0];
+    const axLetter = axId[0] as 'x' | 'y';
     const propName = `${axLetter}AxisCategoryOrder` as keyof GetAxisCategoryOrderPropsResult;
 
-    if (!ax || ax.type !== 'category') {
-      result[propName] = 'data';
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      series[axLetter]?.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    });
+    const isAxisTypeCategory =
+      ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
+
+    if (!ax || !isAxisTypeCategory) {
       return;
     }
 
@@ -2001,7 +2011,8 @@ const getAxisCategoryOrderProps = (layout: Partial<Layout> | undefined) => {
     }
 
     if (!ax.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
-      result[propName] = 'data';
+      const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+      result[propName] = categoriesInTraceOrder;
       return;
     }
 
