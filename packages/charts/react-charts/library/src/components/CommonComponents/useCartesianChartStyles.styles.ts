@@ -29,8 +29,8 @@ const useStyles = makeStyles({
   root: {
     ...typographyStyles.body1,
     display: 'flex',
-    width: '100%',
-    height: '100%',
+    width: 'var(--root-width, 100%)',
+    height: 'var(--root-height, 100%)',
     flexDirection: 'column',
     overflow: 'hidden',
   },
