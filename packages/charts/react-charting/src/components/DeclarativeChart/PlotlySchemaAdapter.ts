@@ -66,7 +66,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { _getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 
@@ -267,14 +267,6 @@ export const resolveXAxisPoint = (
     return x;
   }
   return x;
-};
-
-export const _getOpacity = (series: Partial<PlotData>, index: number): number => {
-  return series.marker?.opacity
-    ? isArrayOrTypedArray(series.marker?.opacity)
-      ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]
-      : (series.marker?.opacity as number)
-    : series.opacity ?? 1;
 };
 
 export const transformPlotlyJsonToDonutProps = (
