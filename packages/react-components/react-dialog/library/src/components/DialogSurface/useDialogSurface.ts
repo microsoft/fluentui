@@ -1,5 +1,5 @@
 import { Escape } from '@fluentui/keyboard-keys';
-import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import {
   useEventCallback,
   useMergedRefs,
@@ -97,11 +97,7 @@ export const useDialogSurface_unstable = (
     components: {
       backdrop: 'div',
       root: 'div',
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      backdropMotion: DialogBackdropMotion as React.FC<PresenceMotionSlotProps>,
+      backdropMotion: DialogBackdropMotion,
     },
     open,
     backdrop,
