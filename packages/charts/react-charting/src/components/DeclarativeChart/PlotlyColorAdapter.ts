@@ -141,7 +141,7 @@ export const resolveColor = (
   return color;
 };
 
-export const _getOpacity = (series: Partial<PlotData>, index: number): number => {
+export const getOpacity = (series: Partial<PlotData>, index: number): number => {
   return series.marker?.opacity
     ? isArrayOrTypedArray(series.marker?.opacity)
       ? (series.marker?.opacity as number[])[index % (series.marker?.opacity as number[]).length]

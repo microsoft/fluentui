@@ -66,7 +66,7 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { _getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 
@@ -404,7 +404,7 @@ export const transformPlotlyJsonToVSBCProps = (
                 : 0,
             )
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
-        const opacity = _getOpacity(series, index2);
+        const opacity = getOpacity(series, index2);
         const yVal: number = rangeYValues[index2] as number;
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
@@ -527,7 +527,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 : 0,
             )
           : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
-        const opacity = _getOpacity(series, xIndex);
+        const opacity = getOpacity(series, xIndex);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -634,7 +634,7 @@ export const transformPlotlyJsonToVBCProps = (
               : 0,
           )
         : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
-      const opacity = _getOpacity(series, index);
+      const opacity = getOpacity(series, index);
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -771,7 +771,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
-      const seriesOpacity = _getOpacity(series, index);
+      const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       const lineOptions = getLineOptions(series.line);
       const legendShape = getLegendShape(series);
@@ -900,7 +900,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
                   : 0,
               )
             : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
-          const opacity = _getOpacity(series, i);
+          const opacity = getOpacity(series, i);
 
           return {
             x: series.x![i],
