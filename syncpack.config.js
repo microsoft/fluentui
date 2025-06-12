@@ -106,6 +106,32 @@ const config = {
       packages: ['@fluentui/react-conformance'],
       dependencies: ['chalk'],
     },
+    {
+      packages: [
+        // v8 - TODO make this package private, then bump to r18
+        '@fluentui/codemods',
+        // v0
+        '@fluentui/react-northstar',
+        '@fluentui/code-sandbox',
+        '@fluentui/react-bindings',
+        '@fluentui/react-builder',
+        '@fluentui/react-component-event-listener',
+        '@fluentui/react-component-nesting-registry',
+        '@fluentui/react-component-ref',
+        '@fluentui/react-icons-northstar',
+        '@fluentui/react-northstar',
+        '@fluentui/react-northstar-emotion-renderer',
+        '@fluentui/react-northstar-fela-renderer',
+        '@fluentui/react-northstar-prototypes',
+        '@fluentui/react-northstar-prototypes',
+        '@fluentui/react-northstar-styles-renderer',
+        '@fluentui/react-proptypes',
+        '@fluentui/react-telemetry',
+        '@fluentui/state',
+        '@fluentui/styles',
+      ],
+      dependencies: ['react', 'react-dom', '@testing-library/dom', '@testing-library/react'],
+    },
   ],
 };
 
