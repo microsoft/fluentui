@@ -5082,14 +5082,7 @@
     "@types/node" "*"
     "@types/responselike" "*"
 
-"@types/cheerio@*", "@types/cheerio@^0.22.22":
-  version "0.22.31"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.31.tgz#b8538100653d6bb1b08a1e46dec75b4f2a5d5eb6"
-  integrity sha512-Kt7Cdjjdi2XWSfrZ53v4Of0wG3ZcmaegFXjMmz9tfNrZSkzzo36G0AL1YqSdcIA78Etjt6E609pt5h1xnQkPUw==
-  dependencies:
-    "@types/node" "*"
-
-"@types/cheerio@<1":
+"@types/cheerio@<1", "@types/cheerio@^0.22.22":
   version "0.22.35"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.35.tgz#0d16dc1f24d426231c181b9c31847f673867595f"
   integrity sha512-yD57BchKRvTV+JD53UZ6PD8KWY5g5rvvMLRnZR3EQBCZXiDT/HR+pKpMzFGlWNhFrXlo7VPZXtKvIEwZkAWOIA==
@@ -5815,6 +5808,13 @@
   integrity sha512-7soxaTJ030rtC2lFlaFzzJyCY4rsPwOLxfw/eGnbEq/wq80e71outSL6dUXM9bOh2qMhM1xnp+EMEhjdVvIlkA==
   dependencies:
     "@types/react" "*"
+
+"@types/react-is@17.0.7":
+  version "17.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-17.0.7.tgz#1402c8f14e8533eaeeac128c0bfa11478202ae37"
+  integrity sha512-WrTEiT+c6rgq36QApoy0063uAOdltCrhF0QMXLIgYPaTvIdQhAB8hPb5oGGqX18xToElNILS9UprwU6GyINcJg==
+  dependencies:
+    "@types/react" "^17"
 
 "@types/react-is@18.3.1":
   version "18.3.1"
