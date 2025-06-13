@@ -103,10 +103,17 @@ const config = {
       dependencies: ['stylis'],
     },
     {
-      packages: ['@fluentui/react-conformance'],
+      packages: ['@fluentui/react-conformance', '@fluentui/react-conformance-griffel'],
       dependencies: [
         'chalk',
         // TODO: remove once modern yarn is used as v1 contains a bug that forces linking @types/react v17 within react-conformance node_modules which causes build issues
+        '@types/react',
+      ],
+    },
+    {
+      packages: ['@fluentui/test-utilities'],
+      dependencies: [
+        // test utilities uses enzyme and thus needs to be forcer to use react types v17
         '@types/react',
       ],
     },
