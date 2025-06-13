@@ -429,7 +429,7 @@ describe('Area chart rendering', () => {
   testWithoutWait(
     `Should render the area chart with date x-axis data`,
     AreaChart,
-    { data: chartDataWithDates, locale: 'en-Us' },
+    { data: chartDataWithDates, locale: 'en-us' },
     container => {
       expect(container).toMatchSnapshot();
     },
