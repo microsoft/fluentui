@@ -1484,10 +1484,13 @@ export const ctrlDialogStroke = "var(--smtc-ctrl-dialog-stroke, unset)";
 export const ctrlDialogStrokeRaw = "--smtc-ctrl-dialog-stroke";
 
 // @public (undocumented)
-export const ctrlDividerFixedLineLength = "var(--smtc-ctrl-divider-fixed-line-length, var(--smtc-padding-content-align-default))";
+export const ctrlDividerFixedLineLength = "var(--smtc-ctrl-divider-fixed-line-length, var(--smtc-padding-content-align-default, 8px))";
 
 // @public (undocumented)
 export const ctrlDividerFixedLineLengthRaw = "--smtc-ctrl-divider-fixed-line-length";
+
+// @public
+export const _ctrlDividerForegroundSubtle = "var(--smtc-foreground-ctrl-hint-default, var(--smtc-null-color, var(--colorNeutralForeground3)))";
 
 // @public (undocumented)
 export const ctrlDragBackgroundColorBlend = "var(--smtc-ctrl-drag-background-color-blend)";
@@ -2798,7 +2801,7 @@ export const ctrlTooltipShadowKey = "var(--smtc-ctrl-tooltip-shadow-key, var(--s
 export const ctrlTooltipShadowKeyRaw = "--smtc-ctrl-tooltip-shadow-key";
 
 // @public (undocumented)
-export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest))";
+export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimaryRaw = "--smtc-foreground-content-brand-primary";
@@ -2810,7 +2813,7 @@ export const foregroundContentNeutralPrimary = "var(--smtc-foreground-content-ne
 export const foregroundContentNeutralPrimaryRaw = "--smtc-foreground-content-neutral-primary";
 
 // @public (undocumented)
-export const foregroundContentNeutralSecondary = "var(--smtc-foreground-content-neutral-secondary, var(--smtc-foreground-ctrl-neutral-secondary-rest))";
+export const foregroundContentNeutralSecondary = "var(--smtc-foreground-content-neutral-secondary, var(--smtc-foreground-ctrl-neutral-secondary-rest, var(--colorNeutralForeground2)))";
 
 // @public (undocumented)
 export const foregroundContentNeutralSecondaryRaw = "--smtc-foreground-content-neutral-secondary";
@@ -4930,25 +4933,25 @@ export const strokeCtrlOnSubtleRest = "var(--smtc-stroke-ctrl-on-subtle-rest, va
 export const strokeCtrlOnSubtleRestRaw = "--smtc-stroke-ctrl-on-subtle-rest";
 
 // @public (undocumented)
-export const strokeDividerBrand = "var(--smtc-stroke-divider-brand, var(--smtc-background-ctrl-brand-rest))";
+export const strokeDividerBrand = "var(--smtc-stroke-divider-brand, var(--smtc-background-ctrl-brand-rest, var(--colorBrandStroke1)))";
 
 // @public (undocumented)
 export const strokeDividerBrandRaw = "--smtc-stroke-divider-brand";
 
 // @public (undocumented)
-export const strokeDividerDefault = "var(--smtc-stroke-divider-default)";
+export const strokeDividerDefault = "var(--smtc-stroke-divider-default, var(--colorNeutralStroke2))";
 
 // @public (undocumented)
 export const strokeDividerDefaultRaw = "--smtc-stroke-divider-default";
 
 // @public (undocumented)
-export const strokeDividerStrong = "var(--smtc-stroke-divider-strong, var(--smtc-stroke-divider-default))";
+export const strokeDividerStrong = "var(--smtc-stroke-divider-strong, var(--smtc-stroke-divider-default, var(--colorNeutralStroke1)))";
 
 // @public (undocumented)
 export const strokeDividerStrongRaw = "--smtc-stroke-divider-strong";
 
 // @public (undocumented)
-export const strokeDividerSubtle = "var(--smtc-stroke-divider-subtle, var(--smtc-stroke-divider-default))";
+export const strokeDividerSubtle = "var(--smtc-stroke-divider-subtle, var(--smtc-stroke-divider-default, var(--colorNeutralStroke3)))";
 
 // @public (undocumented)
 export const strokeDividerSubtleRaw = "--smtc-stroke-divider-subtle";
@@ -5008,7 +5011,7 @@ export const strokeWidthDefault = "var(--smtc-stroke-width-default, var(--stroke
 export const strokeWidthDefaultRaw = "--smtc-stroke-width-default";
 
 // @public (undocumented)
-export const strokeWidthDividerDefault = "var(--smtc-stroke-width-divider-default, var(--smtc-stroke-width-default))";
+export const strokeWidthDividerDefault = "var(--smtc-stroke-width-divider-default, var(--smtc-stroke-width-default, var(--strokeWidthThin)))";
 
 // @public (undocumented)
 export const strokeWidthDividerDefaultRaw = "--smtc-stroke-width-divider-default";
@@ -5698,7 +5701,7 @@ export const textStyleDefaultRegularFontFamily = "var(--smtc-text-style-default-
 export const textStyleDefaultRegularFontFamilyRaw = "--smtc-text-style-default-regular-font-family";
 
 // @public (undocumented)
-export const textStyleDefaultRegularLetterSpacing = "var(--smtc-text-style-default-regular-letter-spacing)";
+export const textStyleDefaultRegularLetterSpacing = "var(--smtc-text-style-default-regular-letter-spacing, 0)";
 
 // @public (undocumented)
 export const textStyleDefaultRegularLetterSpacingRaw = "--smtc-text-style-default-regular-letter-spacing";

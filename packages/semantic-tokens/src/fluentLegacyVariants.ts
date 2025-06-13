@@ -65,4 +65,8 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'spacingHorizontalSNudge',
     originalToken: 'gapInsideCtrlDefault',
   },
+  _ctrlDividerForegroundSubtle: {
+    f2Token: 'colorNeutralForeground3',
+    originalToken: 'foregroundCtrlHintDefault',
+  },
 };

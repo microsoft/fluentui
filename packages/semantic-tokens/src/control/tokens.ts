@@ -33,6 +33,7 @@ import {
   colorNeutralStroke1,
   colorNeutralStrokeDisabled,
   colorNeutralStrokeOnBrand,
+  colorNeutralStroke2,
   colorBrandBackground,
   colorBrandBackgroundHover,
   colorBrandBackgroundPressed,
@@ -287,7 +288,7 @@ export const textGlobalCaption2FontSize = `var(${textGlobalCaption2FontSizeRaw},
 export const textGlobalCaption2LineHeight = `var(${textGlobalCaption2LineHeightRaw}, ${lineHeightBase100})`;
 export const textStyleDefaultRegularFontFamily = `var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase})`;
 export const textStyleDefaultRegularWeight = `var(${textStyleDefaultRegularWeightRaw}, ${fontWeightRegular})`;
-export const textStyleDefaultRegularLetterSpacing = `var(${textStyleDefaultRegularLetterSpacingRaw})`;
+export const textStyleDefaultRegularLetterSpacing = `var(${textStyleDefaultRegularLetterSpacingRaw}, 0)`;
 export const textStyleDefaultHeaderWeight = `var(${textStyleDefaultHeaderWeightRaw}, ${fontWeightSemibold})`;
 export const sizeCtrlDefault = `var(${sizeCtrlDefaultRaw}, 44px)`;
 export const sizeCtrlIcon = `var(${sizeCtrlIconRaw}, 20px)`;
@@ -352,7 +353,7 @@ export const strokeCtrlOnOutlineDisabled = `var(${strokeCtrlOnOutlineDisabledRaw
 export const strokeCtrlDividerOnBrand = `var(${strokeCtrlDividerOnBrandRaw}, ${colorNeutralStrokeOnBrand})`;
 export const strokeCtrlDividerOnNeutral = `var(${strokeCtrlDividerOnNeutralRaw})`;
 export const strokeCtrlDividerOnOutline = `var(${strokeCtrlDividerOnOutlineRaw}, ${colorNeutralStroke1})`;
-export const strokeDividerDefault = `var(${strokeDividerDefaultRaw})`;
+export const strokeDividerDefault = `var(${strokeDividerDefaultRaw}, ${colorNeutralStroke2})`;
 export const strokeWindowActive = `var(${strokeWindowActiveRaw})`;
 export const backgroundWindowPrimarySolid = `var(${backgroundWindowPrimarySolidRaw})`;
 export const backgroundWindowPrimaryColorBlend = `var(${backgroundWindowPrimaryColorBlendRaw})`;
