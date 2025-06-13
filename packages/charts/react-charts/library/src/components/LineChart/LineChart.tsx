@@ -179,6 +179,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
+    const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -456,7 +457,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
               cy={_yAxisScale(y1)}
               fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
               opacity={isLegendSelected ? 1 : 0.1}
-              tabIndex={_points[i].legend !== '' ? 0 : undefined}
+              tabIndex={isLegendSelected ? 0 : undefined}
               onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                 _handleHover(
                   x1,
@@ -558,7 +559,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
-                tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                tabIndex={isLegendSelected ? 0 : undefined}
               />,
             );
           } else {
@@ -654,7 +655,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                 strokeWidth={strokeWidth}
                 role="img"
                 aria-label={_getAriaLabel(i, j - 1)}
-                tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                tabIndex={isLegendSelected ? 0 : undefined}
               />,
             );
             if (j + 1 === _points[i].data.length) {
@@ -708,7 +709,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                     strokeWidth={strokeWidth}
                     role="img"
                     aria-label={_getAriaLabel(i, j)}
-                    tabIndex={_points[i].legend !== '' ? 0 : undefined}
+                    tabIndex={isLegendSelected ? 0 : undefined}
                   />
                   {/* Dummy circle acting as magnetic latch for last callout point */}
                   <circle
@@ -768,7 +769,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       y2={_yAxisScale(y2)}
                       strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                       strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                      stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
+                      {...(_points[i].lineOptions?.lineBorderColor && {
+                        stroke: _points[i].lineOptions?.lineBorderColor,
+                      })}
+                      className={classes.lineBorder}
                       opacity={1}
                     />,
                   );
@@ -853,7 +857,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           </g>,
         );
       }
-      const classes = useLineChartStyles(props);
       // Removing un wanted tooltip div from DOM, when prop not provided.
       if (!props.showXAxisLablesTooltip) {
         try {

@@ -31,7 +31,7 @@ export interface Annotations extends Label {
     startarrowsize: number;
     startstandoff: number;
     text: string;
-    textangle: string;
+    textangle: string | number;
     valign: 'top' | 'middle' | 'bottom';
     visible: boolean;
     width: number;
@@ -492,6 +492,12 @@ export const isDateArray: (data: Datum[] | Datum[][] | TypedArray | undefined) =
 
 // @public (undocumented)
 export const isInvalidValue: (value: any) => boolean;
+
+// @public (undocumented)
+export const isMonth: (possiblyMonthValue: any) => boolean;
+
+// @public (undocumented)
+export const isMonthArray: (data: Datum[] | Datum[][] | TypedArray | undefined) => boolean;
 
 // @public (undocumented)
 export const isNumber: (value: any) => boolean;

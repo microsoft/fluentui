@@ -1,5 +1,13 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
+import {
+  max as d3Max,
+  min as d3Min,
+  ticks as d3Ticks,
+  nice as d3nice,
+  sum as d3Sum,
+  mean as d3Mean,
+  median as d3Median,
+} from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -42,6 +50,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
+  AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -53,6 +62,7 @@ import {
   curveStepAfter as d3CurveStepAfter,
   curveStepBefore as d3CurveStepBefore,
 } from 'd3-shape';
+import { IScatterChartDataPoint, IScatterChartPoints } from '../types/IDataPoint';
 import {
   formatDateToLocaleString,
   formatToLocaleString,
@@ -74,6 +84,7 @@ export enum ChartTypes {
   GroupedVerticalBarChart,
   HeatMapChart,
   HorizontalBarChartWithAxis,
+  ScatterChart,
 }
 
 export enum XAxisTypes {
@@ -753,18 +764,18 @@ export const createStringYAxis = (
  * This methos creates an object for those 2 charts.
  * @param values
  */
-
-export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: (ILineChartDataPoint & {
+// changing the type to any as it is used by multiple charts with different data types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function calloutData(values: ((ILineChartPoints | IScatterChartPoints) & { index?: number })[]) {
+  let combinedResult: ((ILineChartDataPoint | IScatterChartDataPoint) & {
     legend: string;
     color?: string;
     index?: number;
   })[] = [];
-
-  values.forEach((line: ILineChartPoints & { index?: number }) => {
+  values.forEach((line: (ILineChartPoints | IScatterChartPoints) & { index?: number }) => {
     const elements = line.data
-      .filter((point: ILineChartDataPoint) => !point.hideCallout)
-      .map((point: ILineChartDataPoint) => {
+      .filter((point: ILineChartDataPoint | IScatterChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint | IScatterChartDataPoint) => {
         return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
@@ -790,7 +801,8 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       index?: number;
     }[];
   } = {};
-  combinedResult.forEach(ele => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  combinedResult.forEach((ele: any) => {
     const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
     if (xValue in xValToDataPoints) {
       xValToDataPoints[xValue].push({
@@ -818,7 +830,8 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   });
 
   const result = Object.keys(xValToDataPoints).map(xValue => {
-    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+    const originalXValue = isNaN(Number(xValue)) ? xValue : Number(xValue);
+    return { x: originalXValue, values: xValToDataPoints[xValue] };
   });
   return result;
 }
@@ -1370,7 +1383,7 @@ export function domainRageOfVerticalNumeric(
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findNumericMinMaxOfY(
-  points: ILineChartPoints[],
+  points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
@@ -1790,10 +1803,166 @@ export function getCurveFactory(
   }
 }
 
+/**
+ * Calculates Domain and range values for Date X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @param {Date[] | number[]} tickValues
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfDateForScatterChart(
+  points: IScatterChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+  tickValues: Date[] = [],
+): IDomainNRange {
+  let sDate: Date;
+  let lDate: Date;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sDate = d3Min(points, (point: any) => {
+    return d3Min(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  lDate = d3Max(points, (point: any) => {
+    return d3Max(point.data, (item: ILineChartDataPoint) => {
+      return item.x as Date;
+    });
+  })!;
+
+  const xPadding = (lDate.getTime() - sDate.getTime()) * 0.1;
+  sDate = new Date(sDate.getTime() - xPadding);
+  lDate = new Date(lDate.getTime() + xPadding);
+  // Need to draw graph with given small and large date
+  // (Which Involves customization of date axis tick values)
+  // That may be Either from given graph data or from prop 'tickValues' date values.
+  // So, Finding smallest and largest dates
+  sDate = d3Min([...tickValues, sDate])!;
+  lDate = d3Max([...tickValues, lDate])!;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: lDate, dEndValue: sDate, rStartValue, rEndValue }
+    : { dStartValue: sDate, dEndValue: lDate, rStartValue, rEndValue };
+}
+
+/**
+ * Calculates Domain and range values for Numeric X axis for scatter chart.
+ * @export
+ * @param {LineChartPoints[]} points
+ * @param {IMargins} margins
+ * @param {number} width
+ * @param {boolean} isRTL
+ * @returns {IDomainNRange}
+ */
+export function domainRangeOfNumericForScatterChart(
+  points: IScatterChartPoints[],
+  margins: IMargins,
+  width: number,
+  isRTL: boolean,
+): IDomainNRange {
+  let xMin = d3Min(points, (point: ILineChartPoints) => {
+    return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
+  })!;
+
+  let xMax = d3Max(points, (point: ILineChartPoints) => {
+    return d3Max(point.data as IScatterChartDataPoint[], (item: ILineChartDataPoint) => {
+      return item.x as number;
+    });
+  })!;
+
+  const xPadding = (xMax - xMin) * 0.1;
+  xMin = xMin - xPadding;
+  xMax = xMax + xPadding;
+
+  const rStartValue = margins.left!;
+  const rEndValue = width - margins.right!;
+
+  return isRTL
+    ? { dStartValue: xMax, dEndValue: xMin, rStartValue, rEndValue }
+    : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
+}
+
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
   if (str.length <= maxLength) {
     return str;
   }
 
   return str.slice(0, maxLength) + ellipsis;
+};
+
+const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
+ */
+export const sortAxisCategories = (
+  categoryToValues: Record<string, number[]>,
+  categoryOrder: AxisCategoryOrder | undefined,
+): string[] => {
+  if (Array.isArray(categoryOrder)) {
+    const result: string[] = [];
+    const seen = new Set<string>();
+
+    // Add elements from categoryOrder array that are in categoryToValues, in the array's order
+    categoryOrder.forEach(category => {
+      if (categoryToValues[category] && !seen.has(category)) {
+        result.push(category);
+        seen.add(category);
+      }
+    });
+
+    // Append any keys from categoryToValues not already in result
+    Object.keys(categoryToValues).forEach(category => {
+      if (!seen.has(category)) {
+        result.push(category);
+      }
+    });
+
+    return result;
+  }
+
+  const match = categoryOrder?.match(categoryOrderRegex);
+  if (match) {
+    const aggregator = match[1];
+    const order = match[2];
+
+    if (aggregator === 'category') {
+      const result = Object.keys(categoryToValues).sort();
+      return order === 'descending' ? result.reverse() : result;
+    }
+
+    const aggFn: Record<string, (values: number[]) => number | undefined> = {
+      min: d3Min,
+      max: d3Max,
+      sum: d3Sum,
+      total: d3Sum,
+      mean: d3Mean,
+      median: d3Median,
+    };
+    const sortAscending = (a: [string, number], b: [string, number]) => {
+      return a[1] - b[1];
+    };
+    const sortDescending = (a: [string, number], b: [string, number]) => {
+      return b[1] - a[1];
+    };
+
+    const categoriesAggregatedValue: [string, number][] = [];
+    Object.keys(categoryToValues).forEach(category => {
+      categoriesAggregatedValue.push([category, aggFn[aggregator](categoryToValues[category]) || 0]);
+    });
+
+    categoriesAggregatedValue.sort(order === 'descending' ? sortDescending : sortAscending);
+
+    return categoriesAggregatedValue.map(([category]) => category);
+  }
+
+  return Object.keys(categoryToValues);
 };

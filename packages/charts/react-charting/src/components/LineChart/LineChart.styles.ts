@@ -1,3 +1,4 @@
+import { HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
@@ -14,6 +15,13 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
       borderRadius: '2px',
       pointerEvents: 'none',
       color: props.theme!.semanticColors.bodyText,
+    },
+    markerLabel: {
+      selectors: {
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
+      },
     },
   };
 };

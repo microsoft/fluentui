@@ -62,6 +62,7 @@ import {
   areArraysEqual,
   calculateLongestLabelWidth,
   YAxisType,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { toImage } from '../../utilities/image-export-utils';
@@ -110,6 +111,8 @@ export class VerticalStackedBarChartBase
   public static defaultProps: Partial<IVerticalStackedBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
+    yAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalStackedChartProps[];
@@ -569,10 +572,7 @@ export class VerticalStackedBarChartBase
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
-    const tempArr: string[] = [];
     const dataset: IVerticalStackedBarDataPoint[] = this._points.map(singlePointData => {
-      tempArr.push(singlePointData.xAxisPoint as string);
-
       if (this._yAxisType === YAxisType.StringAxis) {
         return {
           x: singlePointData.xAxisPoint,
@@ -588,7 +588,7 @@ export class VerticalStackedBarChartBase
         y: total,
       };
     });
-    this._xAxisLabels = tempArr;
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     return dataset;
   }
 
@@ -741,7 +741,7 @@ export class VerticalStackedBarChartBase
   }
 
   private _onRectFocusHover(
-    xAxisPoint: string,
+    xAxisPoint: string | Date | number,
     point: IVSChartDataPoint,
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
@@ -749,8 +749,17 @@ export class VerticalStackedBarChartBase
     if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
       this._calloutAnchorPoint = {
         chartDataPoint: point,
-        xAxisDataPoint: xAxisPoint,
+        xAxisDataPoint:
+          xAxisPoint instanceof Date
+            ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+            : xAxisPoint.toString(),
       };
+      const xCalloutValue =
+        point.xAxisCalloutData ||
+        (xAxisPoint instanceof Date
+          ? formatDateToLocaleString(xAxisPoint, this.props.culture, this.props.useUTC)
+          : xAxisPoint.toString());
+
       this.setState({
         refSelected,
         /**
@@ -761,7 +770,7 @@ export class VerticalStackedBarChartBase
         calloutLegend: point.legend,
         dataForHoverCard: point.data,
         color,
-        xCalloutValue: point.xAxisCalloutData ? point.xAxisCalloutData : xAxisPoint,
+        xCalloutValue,
         yCalloutValue: point.yAxisCalloutData,
         dataPointCalloutProps: point,
         callOutAccessibilityData: point.callOutAccessibilityData,
@@ -1439,33 +1448,7 @@ export class VerticalStackedBarChartBase
       });
     }
 
-    if (this._yAxisType === YAxisType.StringAxis) {
-      const legendToYValues: Record<string, string[]> = {};
-      this._points.forEach(xPoint => {
-        xPoint.chartData.forEach(bar => {
-          if (!legendToYValues[bar.legend]) {
-            legendToYValues[bar.legend] = [`${bar.data}`];
-          } else {
-            legendToYValues[bar.legend].push(`${bar.data}`);
-          }
-        });
-      });
-
-      const yAxisLabels = new Set<string>();
-      Object.values(legendToYValues).forEach(yValues => {
-        yValues.forEach(yVal => {
-          yAxisLabels.add(yVal);
-        });
-      });
-      Object.values(this._lineObject).forEach(linePoints => {
-        linePoints.forEach(linePoint => {
-          if (!linePoint.useSecondaryYScale) {
-            yAxisLabels.add(`${linePoint.y}`);
-          }
-        });
-      });
-      this._yAxisLabels = Array.from(yAxisLabels);
-    }
+    this._yAxisLabels = this._getOrderedYAxisLabels();
   };
 
   private _getYDomainMargins = (containerHeight: number): IMargins => {
@@ -1498,5 +1481,51 @@ export class VerticalStackedBarChartBase
       ...this.margins,
       top: this.margins.top! + yAxisTickMarginTop,
     };
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    if (this._yAxisType !== YAxisType.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(true), this.props.yAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = (isYAxis = false) => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      point.chartData.forEach(bar => {
+        const category = (isYAxis ? bar.data : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : bar.data;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+      point.lineData?.forEach(linePoint => {
+        if (isYAxis && linePoint.useSecondaryYScale) {
+          return;
+        }
+        const category = (isYAxis ? linePoint.y : point.xAxisPoint) as string;
+        const value = isYAxis ? point.xAxisPoint : linePoint.y;
+        if (!categoryToValues[category]) {
+          categoryToValues[category] = [];
+        }
+        if (typeof value === 'number') {
+          categoryToValues[category].push(value);
+        }
+      });
+    });
+    return categoryToValues;
   };
 }

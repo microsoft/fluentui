@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /** Jest test setup file. */
 require('@testing-library/jest-dom');
 HTMLCanvasElement.prototype.getContext = () => {
