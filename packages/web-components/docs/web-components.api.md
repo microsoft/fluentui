@@ -590,8 +590,6 @@ export class BaseDropdown extends FASTElement {
     changeHandler(e: Event): boolean | void;
     checkValidity(): boolean;
     clickHandler(e: PointerEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     // @internal
     control: HTMLInputElement;
     // @internal
