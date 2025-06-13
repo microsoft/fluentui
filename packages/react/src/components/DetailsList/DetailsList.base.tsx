@@ -782,6 +782,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   // References
   private _async: Async;

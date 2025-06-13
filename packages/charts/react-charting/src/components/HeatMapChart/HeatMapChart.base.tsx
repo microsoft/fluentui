@@ -438,7 +438,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
                 transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
                 fill={foregroundColor}
               >
-                {formatToLocaleString(dataPointObject.rectText, this.props.culture, this.props.useUTC)}
+                {
+                  formatToLocaleString(
+                    dataPointObject.rectText,
+                    this.props.culture,
+                    this.props.useUTC,
+                  ) as React.ReactNode
+                }
               </text>
             </g>
           );

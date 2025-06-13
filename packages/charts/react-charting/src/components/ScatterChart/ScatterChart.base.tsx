@@ -666,7 +666,12 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }
 
   const _getMinMaxofXAxis = React.useCallback(
-    (points, yAxisType) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
+    (
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      points: any,
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      yAxisType: any,
+    ) => _getNumericMinMaxOfY(points as IScatterChartPoints[], yAxisType),
     [],
   );
 

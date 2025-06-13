@@ -279,13 +279,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       case 'default':
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
-            {formatToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture) as React.ReactNode}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartTitleRight}>
+              {formatToLocaleString(x, culture) as React.ReactNode}
+            </span>
             <span className={this._classNames.chartDataTextDenominator}>
               {' / ' + formatToLocaleString(y, culture)}
             </span>

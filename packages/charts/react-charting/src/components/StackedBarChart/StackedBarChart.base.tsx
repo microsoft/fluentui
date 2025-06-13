@@ -119,7 +119,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         targetRatio,
         showTriangle: !!(benchmarkData || targetData),
       });
-      const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      const getChartData = () =>
+        formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture) as React.ReactNode;
 
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>

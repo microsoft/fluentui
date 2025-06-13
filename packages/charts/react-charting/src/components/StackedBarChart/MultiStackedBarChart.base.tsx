@@ -411,7 +411,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const showNumber =
       this.props.variant !== MultiStackedBarChartVariant.AbsoluteScale && !hideNumber && data!.chartData!.length === 1;
 
-    const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+    const getChartData = () =>
+      formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture) as React.ReactNode;
     return (
       <div className={this._classNames.singleChartRoot}>
         <FocusZone direction={FocusZoneDirection.horizontal}>

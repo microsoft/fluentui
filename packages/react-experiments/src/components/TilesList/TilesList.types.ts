@@ -133,9 +133,14 @@ export interface ITilesGridSegment<TItem> {
   isPlaceholder?: boolean;
 }
 
+type RemovedReactProps<T> = {
+  children?: React.ReactNode;
+  ref?: React.LegacyRef<T>;
+};
+
 export interface ITilesListProps<TItem>
   extends IBaseProps,
-    React.Props<TilesList<TItem>>, // eslint-disable-line @typescript-eslint/no-deprecated
+    RemovedReactProps<TilesList<TItem>>, // eslint-disable-line @typescript-eslint/no-deprecated
     React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.

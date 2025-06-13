@@ -190,6 +190,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _host = React.createRef<HTMLDivElement>();
   private _focusZone = React.createRef<FocusZone>();
