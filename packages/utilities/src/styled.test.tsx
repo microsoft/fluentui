@@ -45,7 +45,7 @@ class TestBase extends React.Component<ITestProps> {
   }
 }
 
-class ShortCircuit extends React.PureComponent {
+class ShortCircuit extends React.PureComponent<{ children?: React.ReactNode }> {
   public render(): JSX.Element {
     return <div>{this.props.children}</div>;
   }

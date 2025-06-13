@@ -67,7 +67,9 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     const props = {
       item,
       index,
-      key: item.key ? item.key : index,
+      // eslint-disable-next-line  @fluentui/max-len
+      // react 18 types added `bigint` to React.Key union, which is not compatible with components which consume our defined props
+      key: (item.key ? item.key : index) as string | number,
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,

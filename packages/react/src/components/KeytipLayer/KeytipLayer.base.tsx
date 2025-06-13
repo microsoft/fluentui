@@ -66,6 +66,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _events: EventGroup;
   private _async: Async;

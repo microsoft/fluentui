@@ -34,6 +34,7 @@ export class ScrollablePaneBase
   implements IScrollablePane
 {
   public static contextType = WindowContext;
+  public context: any;
 
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
