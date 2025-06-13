@@ -69,6 +69,7 @@ import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
+import { ICartesianChartProps } from '../CommonComponents/index';
 
 export type AxisProperties = {
   xAnnotation?: string;
@@ -462,6 +463,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -526,7 +528,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, xIndex);
 
         mapXToDataPoints[x].series.push({
@@ -556,6 +558,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -669,6 +672,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -912,10 +916,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
     })
-    .reverse()
-    .flat()
-    //reversing the order to invert the Y bars order as required by plotly.
-    .reverse();
+    .flat();
 
   const chartHeight: number = input.layout?.height ?? 450;
   const margin: number = input.layout?.margin?.l ?? 0;
@@ -946,6 +947,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -1109,6 +1111,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getAxisCategoryOrderProps([firstData], input.layout),
   };
 };
 
@@ -1971,4 +1974,54 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
     templateColumns,
     layout: reversedGridLayout,
   };
+};
+
+type GetAxisCategoryOrderPropsResult = Pick<ICartesianChartProps, 'xAxisCategoryOrder' | 'yAxisCategoryOrder'>;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/category_order_defaults.js#L50}
+ */
+const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const result: GetAxisCategoryOrderPropsResult = {};
+
+  const axesById: Record<string, Partial<LayoutAxis> | undefined> = {
+    x: layout?.xaxis,
+    y: layout?.yaxis,
+  };
+  Object.keys(axesById).forEach(axId => {
+    const ax = axesById[axId];
+    const axLetter = axId[0] as 'x' | 'y';
+    const propName = `${axLetter}AxisCategoryOrder` as keyof GetAxisCategoryOrderPropsResult;
+
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      series[axLetter]?.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    });
+
+    const isAxisTypeCategory =
+      ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
+    if (!isAxisTypeCategory) {
+      return;
+    }
+
+    const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
+    if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
+      result[propName] = ax!.categoryarray;
+      return;
+    }
+
+    if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+      const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+      result[propName] = categoriesInTraceOrder;
+      return;
+    }
+
+    result[propName] = ax.categoryorder;
+  });
+
+  return result;
 };

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-charting): Fixing color, marker size, yaxis issues for Scatter chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

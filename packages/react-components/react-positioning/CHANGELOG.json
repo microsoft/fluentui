@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 13 Jun 2025 12:32:51 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.1",
+      "version": "9.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179",
+            "comment": "fix: update logic for triggering updates"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:33 GMT",
       "tag": "@fluentui/react-positioning_v9.18.0",
       "version": "9.18.0",

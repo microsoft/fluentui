@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 12 Jun 2025 09:43:29 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jun 2025 12:32:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.1)
+
+Fri, 13 Jun 2025 12:32:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.0..@fluentui/react-components_v9.66.1)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: update logic for triggering updates ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Allow the skeleton root to be a span in addition to a div ([PR #34563](https://github.com/microsoft/fluentui/pull/34563) by nathansokol@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data ([PR #33344](https://github.com/microsoft/fluentui/pull/33344) by bernardo.sunderhus@gmail.com)
 
 ## [9.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.0)
 

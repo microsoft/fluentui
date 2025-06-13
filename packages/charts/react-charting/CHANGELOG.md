@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 12 Jun 2025 07:20:13 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jun 2025 07:21:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.24.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.4)
+
+Fri, 13 Jun 2025 07:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.24.3..@fluentui/react-charting_v5.24.4)
+
+### Patches
+
+- fix(react-charting): Support for using opacity provided in schema for decalarative charts ([PR #34635](https://github.com/microsoft/fluentui/pull/34635) by 120183316+srmukher@users.noreply.github.com)
+- feat: add support for ordering string tick labels on x and y axes ([PR #34623](https://github.com/microsoft/fluentui/pull/34623) by kumarkshitij@microsoft.com)
+- fix(react-charting): Fixing color, marker size, yaxis issues for Scatter chart ([PR #34628](https://github.com/microsoft/fluentui/pull/34628) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fixing resolve color issue ([PR #34636](https://github.com/microsoft/fluentui/pull/34636) by 120183316+srmukher@users.noreply.github.com)
+- fix(react-charting): Fixing color issue for GVBC ([PR #34637](https://github.com/microsoft/fluentui/pull/34637) by 120183316+srmukher@users.noreply.github.com)
+- Bump @fluentui/chart-utilities to v1.1.17 ([PR #34623](https://github.com/microsoft/fluentui/pull/34623) by beachball)
 
 ## [5.24.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.24.3)
 

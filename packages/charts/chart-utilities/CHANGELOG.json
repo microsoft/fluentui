@@ -2,6 +2,21 @@
   "name": "@fluentui/chart-utilities",
   "entries": [
     {
+      "date": "Fri, 13 Jun 2025 07:21:01 GMT",
+      "tag": "@fluentui/chart-utilities_v1.1.17",
+      "version": "1.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "120183316+srmukher@users.noreply.github.com",
+            "package": "@fluentui/chart-utilities",
+            "commit": "a73394f7914fc6051e0e6567caa89b6ff6c9799d",
+            "comment": "fix(chart-utilities): Updating plotly converter for scatter chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 07:20:13 GMT",
       "tag": "@fluentui/chart-utilities_v1.1.16",
       "version": "1.1.16",
