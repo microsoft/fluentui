@@ -6,7 +6,6 @@
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-utils": "*",
-    "@types/enzyme": "3.10.7",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.7"
