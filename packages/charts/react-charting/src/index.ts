@@ -103,6 +103,7 @@ export type {
   IScatterChartPoints,
   IScatterChartDataPoint,
   IBaseDataPoint,
+  AxisCategoryOrder,
 } from './types/index';
 export type {
   IChartHoverCardProps,

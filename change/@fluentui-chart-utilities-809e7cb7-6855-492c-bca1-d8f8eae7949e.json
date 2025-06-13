@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat(react-charting): Adding Scatter Chart component",
-  "packageName": "@fluentui/chart-utilities",
-  "email": "120183316+srmukher@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

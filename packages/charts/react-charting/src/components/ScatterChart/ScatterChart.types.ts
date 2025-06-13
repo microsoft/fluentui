@@ -14,6 +14,7 @@ import {
   ICartesianChartStyles,
   IChildProps,
 } from '../CommonComponents/index';
+import { IStyle } from '@fluentui/react';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
 
@@ -52,7 +53,12 @@ export interface IScatterChartProps extends ICartesianChartProps {
  * Scatter Chart styles
  * {@docCategory ScatterChart}
  */
-export interface IScatterChartStyles extends ICartesianChartStyles {}
+export interface IScatterChartStyles extends ICartesianChartStyles {
+  /**
+   * Style for the marker label
+   */
+  markerLabel?: IStyle;
+}
 
 /**
  * Scatter Chart style properties

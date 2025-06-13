@@ -101,6 +101,7 @@ export {
   mapFluentChart,
   isDate,
   isNumber,
+  isMonth,
   isArrayOfType,
   isDateArray,
   isNumberArray,
@@ -112,6 +113,7 @@ export {
   isArrayOrTypedArray,
   isInvalidValue,
   isStringArray,
+  isMonthArray,
 } from './PlotlySchemaConverter';
 
 export { decodeBase64Fields } from './DecodeBase64Data';

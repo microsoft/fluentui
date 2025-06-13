@@ -1,4 +1,4 @@
-# @fluentui/react-nav-preview
+# @fluentui/react-nav
 
 **React Nav components for [Fluent UI React](https://react.fluentui.dev/)**
 

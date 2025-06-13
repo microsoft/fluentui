@@ -179,6 +179,7 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
+    const classes = useLineChartStyles(props);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -768,7 +769,10 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
                       y2={_yAxisScale(y2)}
                       strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                       strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                      stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
+                      {...(_points[i].lineOptions?.lineBorderColor && {
+                        stroke: _points[i].lineOptions?.lineBorderColor,
+                      })}
+                      className={classes.lineBorder}
                       opacity={1}
                     />,
                   );
@@ -853,7 +857,6 @@ export const LineChart: React.FunctionComponent<LineChartProps> = React.forwardR
           </g>,
         );
       }
-      const classes = useLineChartStyles(props);
       // Removing un wanted tooltip div from DOM, when prop not provided.
       if (!props.showXAxisLablesTooltip) {
         try {

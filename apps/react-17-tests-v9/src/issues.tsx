@@ -48,7 +48,6 @@ import type {
   type AppSplitButtonSlots = {
     root: NonNullable<Slot<'div'>>;
     menuButton: NonNullable<Slot<AppMenuButtonSlot>>;
-    // @ts-expect-error - Slot type mismatch
     menu: NonNullable<Slot<ContextualMenuSlotType>>;
   };
   type ValidAppSplitButtonSlots = {

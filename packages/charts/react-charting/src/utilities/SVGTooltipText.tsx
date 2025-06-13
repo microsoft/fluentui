@@ -74,6 +74,11 @@ interface ISVGTooltipTextProps {
    * Prop to selectively display the tooltip background
    */
   showBackground?: boolean;
+
+  /**
+   * Prop to set classname
+   */
+  className?: string;
 }
 
 interface ISVGTooltipTextState {
@@ -139,7 +144,6 @@ export class SVGTooltipText
 
     const showTooltip =
       (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
-    const backgroundColor = this.props.theme ? this.props.theme.semanticColors.bodyBackground : undefined;
     const rectX = (typeof textProps?.x === 'number' ? textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
     const rectY = (typeof textProps?.y === 'number' ? textProps.y : 0) - (textHeight ?? 0) / 2 - PADDING;
     return (
@@ -150,8 +154,8 @@ export class SVGTooltipText
             y={rectY}
             width={(textWidth ?? 0) + 2 * PADDING}
             height={(textHeight ?? 0) + 2 * PADDING}
-            fill={backgroundColor}
             transform={textProps?.transform}
+            className={this.props.className}
           />
         )}
         <text

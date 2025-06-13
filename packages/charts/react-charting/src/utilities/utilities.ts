@@ -1,5 +1,13 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
+import {
+  max as d3Max,
+  min as d3Min,
+  ticks as d3Ticks,
+  nice as d3nice,
+  sum as d3Sum,
+  mean as d3Mean,
+  median as d3Median,
+} from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -42,6 +50,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
+  AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -1374,7 +1383,7 @@ export function domainRageOfVerticalNumeric(
  * @returns {{ startValue: number; endValue: number }}
  */
 export function findNumericMinMaxOfY(
-  points: ILineChartPoints[],
+  points: ILineChartPoints[] | IScatterChartPoints[],
   yAxisType?: YAxisType,
   useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
@@ -1881,61 +1890,79 @@ export function domainRangeOfNumericForScatterChart(
     : { dStartValue: xMin, dEndValue: xMax, rStartValue, rEndValue };
 }
 
-export function createYAxisForScatterChart(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-  _supportNegativeData: boolean = false,
-  roundedTicks: boolean = false,
-) {
-  const {
-    yMinMaxValues = { startValue: 0, endValue: 0 },
-    yAxisElement = null,
-    yMaxValue = 0,
-    yMinValue = 0,
-    containerHeight,
-    containerWidth,
-    margins,
-    tickPadding = 12,
-    maxOfYVal = 0,
-    yAxisTickFormat,
-    yAxisTickCount = 4,
-    eventAnnotationProps,
-    eventLabelHeight,
-  } = yAxisParams;
-
-  // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
-  const tempVal = maxOfYVal || yMinMaxValues.endValue;
-  const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
-  let yMin = finalYmin;
-  let yMax = domainValues[domainValues.length - 1];
-  const yPadding = (yMax - yMin) * 0.1;
-  yMin = yMin - yPadding;
-  yMax = yMax + yPadding;
-  const yAxisScale = d3ScaleLinear()
-    .domain([domainValues[0], yMax])
-    .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
-  const axis =
-    (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis
-    .tickPadding(tickPadding)
-    .tickValues(domainValues)
-    .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
-
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
-  axisData.yAxisDomainValues = domainValues;
-  return yAxisScale;
-}
-
 export const truncateString = (str: string, maxLength: number, ellipsis = '...'): string => {
   if (str.length <= maxLength) {
     return str;
   }
 
   return str.slice(0, maxLength) + ellipsis;
+};
+
+const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
+ */
+export const sortAxisCategories = (
+  categoryToValues: Record<string, number[]>,
+  categoryOrder: AxisCategoryOrder | undefined,
+): string[] => {
+  if (Array.isArray(categoryOrder)) {
+    const result: string[] = [];
+    const seen = new Set<string>();
+
+    // Add elements from categoryOrder array that are in categoryToValues, in the array's order
+    categoryOrder.forEach(category => {
+      if (categoryToValues[category] && !seen.has(category)) {
+        result.push(category);
+        seen.add(category);
+      }
+    });
+
+    // Append any keys from categoryToValues not already in result
+    Object.keys(categoryToValues).forEach(category => {
+      if (!seen.has(category)) {
+        result.push(category);
+      }
+    });
+
+    return result;
+  }
+
+  const match = categoryOrder?.match(categoryOrderRegex);
+  if (match) {
+    const aggregator = match[1];
+    const order = match[2];
+
+    if (aggregator === 'category') {
+      const result = Object.keys(categoryToValues).sort();
+      return order === 'descending' ? result.reverse() : result;
+    }
+
+    const aggFn: Record<string, (values: number[]) => number | undefined> = {
+      min: d3Min,
+      max: d3Max,
+      sum: d3Sum,
+      total: d3Sum,
+      mean: d3Mean,
+      median: d3Median,
+    };
+    const sortAscending = (a: [string, number], b: [string, number]) => {
+      return a[1] - b[1];
+    };
+    const sortDescending = (a: [string, number], b: [string, number]) => {
+      return b[1] - a[1];
+    };
+
+    const categoriesAggregatedValue: [string, number][] = [];
+    Object.keys(categoryToValues).forEach(category => {
+      categoriesAggregatedValue.push([category, aggFn[aggregator](categoryToValues[category]) || 0]);
+    });
+
+    categoriesAggregatedValue.sort(order === 'descending' ? sortDescending : sortAscending);
+
+    return categoriesAggregatedValue.map(([category]) => category);
+  }
+
+  return Object.keys(categoryToValues);
 };

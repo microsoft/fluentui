@@ -86,7 +86,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
-    Array.isArray(value) ||
+    isIterable(value) ||
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
@@ -105,3 +105,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIterable = (value: unknown): value is Iterable<any> =>
+  typeof value === 'object' && value !== null && Symbol.iterator in value;

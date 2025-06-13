@@ -23,15 +23,15 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
         '@fluentui/react-northstar',
         '@fluentui/react-icons-northstar',
         // Exclude the package as we are including only the `Nav` component stories from the package below.
-        '@fluentui/react-nav-preview',
+        '@fluentui/react-nav',
       ],
     }),
-    // This is a workaround to include only the Nav component stories from react-nav-preview package
+    // This is a workaround to include only the Nav component stories from react-nav package
     // as the package has a lot of broken stories that are causing the build to fail.
     //
     // TODO: Remove this workaround once the stories are fixed or we have a better way to
     // decide which stories to include/exclude in docs mode.
-    '../../../packages/react-components/react-nav-preview/stories/src/Nav/index.stories.@(ts|tsx)',
+    '../../../packages/react-components/react-nav/stories/src/Nav/index.stories.@(ts|tsx)',
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

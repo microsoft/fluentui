@@ -44,6 +44,7 @@ import {
   getSecureProps,
   areArraysEqual,
   getCurveFactory,
+  YAxisType,
 } from '../../utilities/index';
 import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -253,7 +254,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
-          getMinMaxOfYAxis={findNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -302,6 +303,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   public toImage = (opts?: IImageExportOptions): Promise<string> => {
     return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
   };
+
+  private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
+    findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
 
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],

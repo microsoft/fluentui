@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: disable lint error on React.RefAttibute within getIntrinsicElementProps",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

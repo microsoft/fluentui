@@ -17,6 +17,7 @@ export const groupedVerticalBarChartClassNames: SlotClassNames<GroupedVerticalBa
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
 };
 
 const useStyles = makeStyles({

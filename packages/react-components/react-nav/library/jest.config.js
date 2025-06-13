@@ -23,7 +23,7 @@ if (swcJestConfig.swcrc === undefined) {
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-nav-preview',
+  displayName: 'react-nav',
   preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],

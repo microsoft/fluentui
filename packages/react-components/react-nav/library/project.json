@@ -1,8 +1,8 @@
 {
-  "name": "react-nav-preview",
+  "name": "react-nav",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/react-components/react-nav-preview/library/src",
+  "sourceRoot": "packages/react-components/react-nav/library/src",
   "tags": ["platform:web", "vNext"],
   "implicitDependencies": []
 }

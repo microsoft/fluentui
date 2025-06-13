@@ -15,7 +15,7 @@ import {
   NavDivider,
   AppItem,
   AppItemStatic,
-} from '@fluentui/react-nav-preview';
+} from '@fluentui/react-components';
 import { Label, Switch, Tooltip, makeStyles, tokens, useId, Radio, RadioGroup } from '@fluentui/react-components';
 import {
   Board20Filled,

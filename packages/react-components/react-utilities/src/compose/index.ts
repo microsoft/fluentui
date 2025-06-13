@@ -11,8 +11,6 @@ export type {
   RefAttributes,
   InferredElementRefType,
   IsSingleton,
-  PropsWithoutChildren,
-  PropsWithoutRef,
   Slot,
   SlotClassNames,
   SlotComponentType,
@@ -21,6 +19,7 @@ export type {
   SlotShorthandValue,
   UnknownSlotProps,
 } from './types';
+
 export { isResolvedShorthand } from './isResolvedShorthand';
 export { SLOT_CLASS_NAME_PROP_SYMBOL, SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 export { isSlot } from './isSlot';
@@ -41,3 +40,4 @@ export { getSlotsNext } from './deprecated/getSlotsNext';
 
 export { slot };
 export type { SlotOptions } from './slot';
+export type { PropsWithoutChildren, PropsWithoutRef } from '../utils/types';

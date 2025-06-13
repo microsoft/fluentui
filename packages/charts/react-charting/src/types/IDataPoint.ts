@@ -964,3 +964,39 @@ export interface IScatterChartPoints {
    */
   useSecondaryYScale?: boolean;
 }
+
+/**
+ * Specifies the ordering options for axis categories in Cartesian charts.
+ *
+ * - `'default'`: Uses the original order before custom ordering was supported.
+ *   In some charts, this behaves the same as `'data'`.
+ * - `'data'`: Preserves the order of categories as provided in the input data.
+ * - `string[]`: Explicitly defines the custom order of categories as an array of category names.
+ * - `'category ascending' | 'category descending'`: Orders categories alphanumerically.
+ * - `'total ascending' | 'total descending'`: Orders categories by the total of their associated values.
+ * - `'min ascending' | 'min descending'`: Orders by the minimum value within each category.
+ * - `'max ascending' | 'max descending'`: Orders by the maximum value within each category.
+ * - `'sum ascending' | 'sum descending'`: Orders by the sum of values for each category (same as 'total').
+ * - `'mean ascending' | 'mean descending'`: Orders by the average of values in each category.
+ * - `'median ascending' | 'median descending'`: Orders by the median value of each category.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisCategoryOrder =
+  | 'default'
+  | 'data'
+  | string[]
+  | 'category ascending'
+  | 'category descending'
+  | 'total ascending'
+  | 'total descending'
+  | 'min ascending'
+  | 'min descending'
+  | 'max ascending'
+  | 'max descending'
+  | 'sum ascending'
+  | 'sum descending'
+  | 'mean ascending'
+  | 'mean descending'
+  | 'median ascending'
+  | 'median descending';

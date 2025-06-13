@@ -16,6 +16,7 @@ export const areaChartClassNames: SlotClassNames<AreaChartStyles> = {
   opacityChangeOnHover: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
 };
 
 const useStyles = makeStyles({

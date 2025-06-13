@@ -17,7 +17,7 @@ import {
   NavCategoryProps,
   NavSubItemGroup,
   NavDivider,
-} from '@fluentui/react-nav-preview';
+} from '@fluentui/react-components';
 import {
   Label,
   Menu,

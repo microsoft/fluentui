@@ -44,6 +44,7 @@ import {
   computeLongestBars,
   groupChartDataByYValue,
   MIN_DOMAIN_MARGIN,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { toImage } from '../../utilities/image-export-utils';
 import { getClosestPairDiffAndRange } from '../../utilities/vbc-utils';
@@ -70,6 +71,10 @@ export class HorizontalBarChartWithAxisBase
   extends React.Component<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState>
   implements IChart
 {
+  public static defaultProps: Partial<IHorizontalBarChartWithAxisProps> = {
+    yAxisCategoryOrder: 'default',
+  };
+
   private _points: IHorizontalBarChartWithAxisDataPoint[];
   private _barHeight: number;
   private _colors: string[];
@@ -140,8 +145,7 @@ export class HorizontalBarChartWithAxisBase
 
   public render(): JSX.Element {
     this._adjustProps();
-    const reversedBars = [...this._points].reverse();
-    this._yAxisLabels = reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    this._yAxisLabels = this._getOrderedYAxisLabels();
     this._xMax = Math.max(
       d3Max(this._points, (point: IHorizontalBarChartWithAxisDataPoint) => point.x)!,
       this.props.xMaxValue || 0,
@@ -1005,5 +1009,28 @@ export class HorizontalBarChartWithAxisBase
   private _getChartTitle = (): string => {
     const { chartTitle, data } = this.props;
     return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
+  };
+
+  private _getOrderedYAxisLabels = () => {
+    const shouldOrderYAxisLabelsByCategoryOrder =
+      this._yAxisType === YAxisType.StringAxis && this.props.yAxisCategoryOrder !== 'default';
+    if (!shouldOrderYAxisLabelsByCategoryOrder) {
+      // Keep the original ordering logic as the default behavior to ensure backward compatibility
+      const reversedBars = [...this._points].reverse();
+      return reversedBars.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y as string);
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.yAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      if (!categoryToValues[point.y]) {
+        categoryToValues[point.y] = [];
+      }
+      categoryToValues[point.y].push(point.x);
+    });
+    return categoryToValues;
   };
 }
