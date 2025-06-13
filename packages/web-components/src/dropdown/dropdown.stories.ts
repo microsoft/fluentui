@@ -480,3 +480,14 @@ export const Required: Story = {
     `,
   },
 };
+
+export const OverflowScroll: Story = {
+  render: renderComponent(html<StoryArgs<FluentDropdown>>`
+    <div style="height: 300px; width: 50vw; overflow: scroll; outline: 1px solid black;">
+      <div style="height: 400px;">Scroll down to see the dropdown ↓</div>
+      ${storyTemplate}
+      <div style="height: 400px;"></div>
+    </div>
+  `),
+  args: { ...Default.args },
+};

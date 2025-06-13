@@ -3,8 +3,10 @@ import type { Listbox } from '../listbox/listbox.js';
 import { isListbox } from '../listbox/listbox.options.js';
 import type { DropdownOption } from '../option/option.js';
 import { isDropdownOption } from '../option/option.options.js';
+import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { getLanguage } from '../utils/language.js';
+import { AnchorPositioningCSSSupported } from '../utils/support.js';
 import { uniqueId } from '../utils/unique-id.js';
 import { DropdownType } from './dropdown.options.js';
 import { dropdownButtonTemplate, dropdownInputTemplate } from './dropdown.template.js';
@@ -239,6 +241,14 @@ export class BaseDropdown extends FASTElement {
 
         this.setValidity();
       });
+
+      if (AnchorPositioningCSSSupported) {
+        // The `anchor-name` property seems to not be isolated between instances in Safari Technology Preview 220 (18.4).
+        // It's unclear if the spec requires the `anchor-name` to be unique when styled on the `:host`.
+        const anchorName = uniqueId('--dropdown-anchor-');
+        this.style.setProperty('anchor-name', anchorName);
+        this.listbox.style.setProperty('position-anchor', anchorName);
+      }
     }
   }
 
@@ -320,12 +330,9 @@ export class BaseDropdown extends FASTElement {
     this.elementInternals.ariaExpanded = next ? 'true' : 'false';
     this.activeIndex = this.selectedIndex ?? -1;
 
-    if (next) {
-      BaseDropdown.AnchorPositionFallbackObserver?.observe(this.listbox);
-      return;
+    if (!AnchorPositioningCSSSupported) {
+      this.anchorPositionFallback(next);
     }
-
-    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
   }
 
   /**
@@ -387,6 +394,18 @@ export class BaseDropdown extends FASTElement {
   public controlSlot!: HTMLSlotElement;
 
   /**
+   * Event handler for scroll and resize events. Used when the browser does not support CSS anchor positioning.
+   *
+   * @internal
+   */
+  private debouncedReposition = () => {
+    if (this.frameId) {
+      cancelAnimationFrame(this.frameId);
+    }
+    this.frameId = requestAnimationFrame(this.repositionListbox);
+  };
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
@@ -410,27 +429,11 @@ export class BaseDropdown extends FASTElement {
   public static formAssociated = true;
 
   /**
-   * Resets the form value to its initial value when the form is reset.
+   * The ID of the frame used for repositioning the listbox when the browser does not support CSS anchor positioning.
    *
    * @internal
    */
-  formResetCallback(): void {
-    this.enabledOptions.forEach((x, i) => {
-      if (this.multiple) {
-        x.selected = !!x.defaultSelected;
-        return;
-      }
-
-      if (!x.defaultSelected) {
-        x.selected = false;
-        return;
-      }
-
-      this.selectOption(i);
-    });
-
-    this.setValidity();
-  }
+  private frameId?: number;
 
   /**
    * A reference to the first freeform option, if present.
@@ -481,6 +484,31 @@ export class BaseDropdown extends FASTElement {
   public get options(): DropdownOption[] {
     return this.listbox?.options ?? [];
   }
+
+  /**
+   * Repositions the listbox to align with the control element. Used when the browser does not support CSS anchor positioning.
+   *
+   * @internal
+   */
+  private repositionListbox = () => {
+    const controlRect = this.getBoundingClientRect();
+    const right = window.innerWidth - controlRect.right;
+    const left = controlRect.left;
+
+    this.listbox.style.minWidth = `${controlRect.width}px`;
+    this.listbox.style.top = `${controlRect.top}px`;
+
+    if (
+      left + controlRect.width > window.innerWidth ||
+      (getDirection(this) === 'rtl' && right - controlRect.width > 0)
+    ) {
+      this.listbox.style.right = `${right}px`;
+      this.listbox.style.left = 'unset';
+    } else {
+      this.listbox.style.left = `${left}px`;
+      this.listbox.style.right = 'unset';
+    }
+  };
 
   /**
    * The index of the first selected option, scoped to the enabled options.
@@ -717,6 +745,29 @@ export class BaseDropdown extends FASTElement {
   }
 
   /**
+   * Resets the form value to its initial value when the form is reset.
+   *
+   * @internal
+   */
+  formResetCallback(): void {
+    this.enabledOptions.forEach((x, i) => {
+      if (this.multiple) {
+        x.selected = !!x.defaultSelected;
+        return;
+      }
+
+      if (!x.defaultSelected) {
+        x.selected = false;
+        return;
+      }
+
+      this.selectOption(i);
+    });
+
+    this.setValidity();
+  }
+
+  /**
    * Ensures the active index is within bounds of the enabled options. Out-of-bounds indices are wrapped to the opposite
    * end of the range.
    *
@@ -948,13 +999,11 @@ export class BaseDropdown extends FASTElement {
     this.freeformOption.hidden = false;
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.anchorPositionFallback();
-  }
-
   disconnectedCallback(): void {
-    BaseDropdown.AnchorPositionFallbackObserver?.unobserve(this.listbox);
+    BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
+
+    window.removeEventListener('scroll', this.debouncedReposition, { capture: true });
+    window.removeEventListener('resize', this.debouncedReposition);
 
     super.disconnectedCallback();
   }
@@ -979,25 +1028,43 @@ export class BaseDropdown extends FASTElement {
    *
    * @internal
    */
-  private anchorPositionFallback(): void {
-    BaseDropdown.AnchorPositionFallbackObserver =
-      BaseDropdown.AnchorPositionFallbackObserver ??
-      new IntersectionObserver(
+  private anchorPositionFallback(shouldObserve?: boolean): void {
+    if (!BaseDropdown.AnchorPositionFallbackObserver) {
+      BaseDropdown.AnchorPositionFallbackObserver = new IntersectionObserver(
         (entries: IntersectionObserverEntry[]): void => {
           entries.forEach(({ boundingClientRect, isIntersecting, target }) => {
-            if (isListbox(target) && !isIntersecting) {
+            if (isListbox(target)) {
               if (boundingClientRect.bottom > window.innerHeight) {
-                toggleState(target.dropdown!.elementInternals, 'flip-block', true);
+                toggleState(target.elementInternals, 'flip-block', true);
                 return;
               }
 
               if (boundingClientRect.top < 0) {
-                toggleState(target.dropdown!.elementInternals, 'flip-block', false);
+                toggleState(target.elementInternals, 'flip-block', false);
               }
             }
           });
         },
         { threshold: 1 },
       );
+    }
+
+    if (shouldObserve) {
+      BaseDropdown.AnchorPositionFallbackObserver.observe(this.listbox);
+
+      window.addEventListener('scroll', this.debouncedReposition, { passive: true, capture: true });
+      window.addEventListener('resize', this.debouncedReposition, { passive: true });
+      this.debouncedReposition();
+      return;
+    }
+
+    BaseDropdown.AnchorPositionFallbackObserver.unobserve(this.listbox);
+
+    window.removeEventListener('scroll', this.debouncedReposition, { capture: true });
+    window.removeEventListener('resize', this.debouncedReposition);
+    if (this.frameId) {
+      cancelAnimationFrame(this.frameId);
+      this.frameId = undefined;
+    }
   }
 }
