@@ -1,5 +1,13 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
+import {
+  max as d3Max,
+  min as d3Min,
+  ticks as d3Ticks,
+  nice as d3nice,
+  sum as d3Sum,
+  mean as d3Mean,
+  median as d3Median,
+} from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -42,6 +50,7 @@ import {
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
+  AxisCategoryOrder,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -1887,4 +1896,73 @@ export const truncateString = (str: string, maxLength: number, ellipsis = '...')
   }
 
   return str.slice(0, maxLength) + ellipsis;
+};
+
+const categoryOrderRegex = /(category|total|sum|min|max|mean|median) (ascending|descending)/;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/plots.js#L3041}
+ */
+export const sortAxisCategories = (
+  categoryToValues: Record<string, number[]>,
+  categoryOrder: AxisCategoryOrder | undefined,
+): string[] => {
+  if (Array.isArray(categoryOrder)) {
+    const result: string[] = [];
+    const seen = new Set<string>();
+
+    // Add elements from categoryOrder array that are in categoryToValues, in the array's order
+    categoryOrder.forEach(category => {
+      if (categoryToValues[category] && !seen.has(category)) {
+        result.push(category);
+        seen.add(category);
+      }
+    });
+
+    // Append any keys from categoryToValues not already in result
+    Object.keys(categoryToValues).forEach(category => {
+      if (!seen.has(category)) {
+        result.push(category);
+      }
+    });
+
+    return result;
+  }
+
+  const match = categoryOrder?.match(categoryOrderRegex);
+  if (match) {
+    const aggregator = match[1];
+    const order = match[2];
+
+    if (aggregator === 'category') {
+      const result = Object.keys(categoryToValues).sort();
+      return order === 'descending' ? result.reverse() : result;
+    }
+
+    const aggFn: Record<string, (values: number[]) => number | undefined> = {
+      min: d3Min,
+      max: d3Max,
+      sum: d3Sum,
+      total: d3Sum,
+      mean: d3Mean,
+      median: d3Median,
+    };
+    const sortAscending = (a: [string, number], b: [string, number]) => {
+      return a[1] - b[1];
+    };
+    const sortDescending = (a: [string, number], b: [string, number]) => {
+      return b[1] - a[1];
+    };
+
+    const categoriesAggregatedValue: [string, number][] = [];
+    Object.keys(categoryToValues).forEach(category => {
+      categoriesAggregatedValue.push([category, aggFn[aggregator](categoryToValues[category]) || 0]);
+    });
+
+    categoriesAggregatedValue.sort(order === 'descending' ? sortDescending : sortAscending);
+
+    return categoriesAggregatedValue.map(([category]) => category);
+  }
+
+  return Object.keys(categoryToValues);
 };

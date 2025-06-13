@@ -17,6 +17,7 @@ import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChar
 import { VerticalStackedBarChartReflowExample } from './VerticalStackedBarChart.Reflow.Example';
 import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
 import { VerticalStackedBarChartNegativeExample } from './VerticalStackedBarChart.Negative.Example';
+import { VSBCAxisCategoryOrderExample } from './VerticalStackedBarChart.AxisCategoryOrder.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -36,6 +37,8 @@ const VerticalBarChartSecondaryYAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.SecondaryYAxis.Example.tsx') as string;
 const VerticalBarChartNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Negative.Example.tsx') as string;
+const VSBCAxisCategoryOrderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.AxisCategoryOrder.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -77,6 +80,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ExampleCard>
             <ExampleCard title="VerticalStackedBarChart Negative" code={VerticalBarChartNegativeExampleCode}>
               <VerticalStackedBarChartNegativeExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalStackedBarChart Axis Category Order" code={VSBCAxisCategoryOrderExampleCode}>
+              <VSBCAxisCategoryOrderExample />
             </ExampleCard>
           </div>
         }
