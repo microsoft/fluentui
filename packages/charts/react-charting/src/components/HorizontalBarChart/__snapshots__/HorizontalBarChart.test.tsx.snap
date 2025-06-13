@@ -308,7 +308,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               position: absolute;
               z-index: 1000000;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -393,7 +393,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                       margin-top: unset;
                       padding-left: 8px;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       forced-color-adjust: none;
                     }
               >
@@ -409,7 +409,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                         font-weight: 400;
                         line-height: 16px;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         color: CanvasText;
                       }
                 >
@@ -427,7 +427,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                         font-weight: bold;
                         line-height: 36px;
                       }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      @media screen and (forced-colors: active){& {
                         color: CanvasText;
                       }
                 >
@@ -751,7 +751,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               position: absolute;
               z-index: 1000000;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            @media screen and (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -1158,7 +1158,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="central"
@@ -1287,7 +1287,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="central"

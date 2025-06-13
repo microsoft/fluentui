@@ -216,7 +216,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -230,7 +230,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -249,7 +249,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -316,7 +316,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -330,7 +330,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -349,7 +349,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -416,7 +416,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -430,7 +430,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -449,7 +449,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -559,7 +559,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="auto"
@@ -600,7 +600,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="hanging"
@@ -641,7 +641,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="auto"
@@ -756,7 +756,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -770,7 +770,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -789,7 +789,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -856,7 +856,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -870,7 +870,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -889,7 +889,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -956,7 +956,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -970,7 +970,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -989,7 +989,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -1099,7 +1099,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="auto"
@@ -1140,7 +1140,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="hanging"
@@ -1181,7 +1181,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                       font-size: 12px;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    @media screen and (forced-colors: active){& {
                       fill: CanvasText;
                     }
                 dominant-baseline="auto"
@@ -1296,7 +1296,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1310,7 +1310,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1329,7 +1329,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -1396,7 +1396,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1410,7 +1410,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1429,7 +1429,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -1496,7 +1496,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1510,7 +1510,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1529,7 +1529,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -1866,7 +1866,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1880,7 +1880,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1899,7 +1899,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #4760D5, #4760D5);
                               opacity: ;
                             }
@@ -1966,7 +1966,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1980,7 +1980,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1999,7 +1999,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #795AA6, #795AA6);
                               opacity: ;
                             }
@@ -2066,7 +2066,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2080,7 +2080,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2099,7 +2099,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #159195, #159195);
                               opacity: ;
                             }
@@ -2349,7 +2349,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2363,7 +2363,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2382,7 +2382,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -2449,7 +2449,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2463,7 +2463,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2482,7 +2482,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -2549,7 +2549,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2563,7 +2563,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2582,7 +2582,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -2831,7 +2831,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2845,7 +2845,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2864,7 +2864,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -2931,7 +2931,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2945,7 +2945,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2964,7 +2964,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -3031,7 +3031,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3045,7 +3045,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3064,7 +3064,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -3314,7 +3314,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3328,7 +3328,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3347,7 +3347,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #637cef, #637cef);
                               opacity: ;
                             }
@@ -3414,7 +3414,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3428,7 +3428,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3447,7 +3447,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #e3008c, #e3008c);
                               opacity: ;
                             }
@@ -3514,7 +3514,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3528,7 +3528,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3547,7 +3547,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #2aa0a4, #2aa0a4);
                               opacity: ;
                             }
@@ -3797,7 +3797,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3811,7 +3811,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3830,7 +3830,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -3897,7 +3897,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3911,7 +3911,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3930,7 +3930,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -3997,7 +3997,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4011,7 +4011,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4030,7 +4030,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -4404,7 +4404,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4418,7 +4418,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4437,7 +4437,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -4504,7 +4504,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4518,7 +4518,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4537,7 +4537,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -4604,7 +4604,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4618,7 +4618,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4637,7 +4637,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }
@@ -4887,7 +4887,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4901,7 +4901,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4920,7 +4920,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                               opacity: ;
                             }
@@ -4987,7 +4987,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5001,7 +5001,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5020,7 +5020,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #0078D4, #0078D4);
                               opacity: ;
                             }
@@ -5087,7 +5087,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -5101,7 +5101,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -5120,7 +5120,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #DADADA, #DADADA);
                               opacity: ;
                             }

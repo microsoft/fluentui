@@ -760,7 +760,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -774,7 +774,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -793,7 +793,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #e81123, #e81123);
                                 opacity: ;
                               }
@@ -860,7 +860,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -874,7 +874,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -893,7 +893,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #107c10, #107c10);
                                 opacity: ;
                               }
@@ -960,7 +960,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -974,7 +974,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -993,7 +993,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #ffb900, #ffb900);
                                 opacity: ;
                               }
@@ -1060,7 +1060,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1074,7 +1074,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -1093,7 +1093,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #00bcf2, #00bcf2);
                                 opacity: ;
                               }
@@ -1160,7 +1160,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
                             :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1174,7 +1174,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -1193,7 +1193,7 @@ exports[`Multi Stacked bar chart - Theme Should reflect theme change 1`] = `
                                 margin-right: 8px;
                                 width: 12px;
                               }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              @media screen and (forced-colors: active){& {
                                 content: linear-gradient(to right, #000000, #000000);
                                 opacity: ;
                               }
@@ -1978,7 +1978,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -1992,7 +1992,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2011,7 +2011,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #e81123, #e81123);
                               opacity: ;
                             }
@@ -2078,7 +2078,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2092,7 +2092,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2111,7 +2111,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #107c10, #107c10);
                               opacity: ;
                             }
@@ -2178,7 +2178,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2192,7 +2192,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2211,7 +2211,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #ffb900, #ffb900);
                               opacity: ;
                             }
@@ -2278,7 +2278,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2292,7 +2292,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2311,7 +2311,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -2378,7 +2378,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -2392,7 +2392,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2411,7 +2411,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #000000, #000000);
                               opacity: ;
                             }
@@ -3195,7 +3195,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3209,7 +3209,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3228,7 +3228,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #e81123, #e81123);
                               opacity: ;
                             }
@@ -3295,7 +3295,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3309,7 +3309,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3328,7 +3328,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #107c10, #107c10);
                               opacity: ;
                             }
@@ -3395,7 +3395,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3409,7 +3409,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3428,7 +3428,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #ffb900, #ffb900);
                               opacity: ;
                             }
@@ -3495,7 +3495,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3509,7 +3509,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3528,7 +3528,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -3595,7 +3595,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -3609,7 +3609,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -3628,7 +3628,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #000000, #000000);
                               opacity: ;
                             }
@@ -4412,7 +4412,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4426,7 +4426,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4445,7 +4445,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #e81123, #e81123);
                               opacity: ;
                             }
@@ -4512,7 +4512,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4526,7 +4526,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4545,7 +4545,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #107c10, #107c10);
                               opacity: ;
                             }
@@ -4612,7 +4612,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4626,7 +4626,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4645,7 +4645,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #ffb900, #ffb900);
                               opacity: ;
                             }
@@ -4712,7 +4712,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4726,7 +4726,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4745,7 +4745,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #00bcf2, #00bcf2);
                               opacity: ;
                             }
@@ -4812,7 +4812,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
                           :host(.ms-Fabric--isFocusVisible) &:focus:after {
@@ -4826,7 +4826,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          @media screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -4845,7 +4845,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                               margin-right: 8px;
                               width: 12px;
                             }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            @media screen and (forced-colors: active){& {
                               content: linear-gradient(to right, #000000, #000000);
                               opacity: ;
                             }
