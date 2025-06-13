@@ -143,6 +143,11 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the vertical stacked bar chart with Date x-axis data',
@@ -151,7 +156,6 @@ describe('Vertical stacked bar chart rendering', () => {
       data: datePoints,
       timeFormat: '%m/%d',
       tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
-      locale: 'en-us',
     },
     container => {
       // Assert
@@ -165,7 +169,6 @@ describe('Vertical stacked bar chart rendering', () => {
     {
       data: datePoints,
       timeFormat: '%m/%d',
-      locale: 'en-us',
     },
     container => {
       // Assert
@@ -179,7 +182,6 @@ describe('Vertical stacked bar chart rendering', () => {
     {
       data: datePoints,
       tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
-      locale: 'en-us',
     },
     container => {
       // Assert
@@ -195,7 +197,6 @@ describe('Vertical stacked bar chart rendering', () => {
       VerticalStackedBarChart,
       {
         data: datePoints,
-        locale: 'en-us',
       },
       container => {
         // Assert

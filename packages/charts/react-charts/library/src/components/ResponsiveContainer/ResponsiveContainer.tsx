@@ -79,6 +79,8 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
             minWidth: props.minWidth,
             minHeight: props.minHeight,
             maxHeight: props.maxHeight,
+            // Ensure the child element fills the parent container
+            // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
             '--root-width': calculatedWidth + 'px',
             '--root-height': calculatedHeight + 'px',
           } as React.CSSProperties
@@ -93,7 +95,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
         })}
       </div>
     );
-  }, [size, props.aspect, props.maxHeight, props.children]);
+  }, [size, props.aspect, props.maxHeight, props.children, props.width, props.height, props.minHeight, props.minWidth]);
 
   return chartContent;
 };

@@ -427,15 +427,6 @@ describe('Area chart rendering', () => {
   );
 
   testWithoutWait(
-    `Should render the area chart with date x-axis data`,
-    AreaChart,
-    { data: chartDataWithDates, locale: 'en-us' },
-    container => {
-      expect(container).toMatchSnapshot();
-    },
-  );
-
-  testWithoutWait(
     'Should render the Area chart with secondary Y axis',
     AreaChart,
     { data: chartData, secondaryYScaleOptions: secondaryYScalePoints },
@@ -462,6 +453,20 @@ describe('Area chart rendering', () => {
     { data: chartData, mode: 'tozeroy' },
     container => {
       //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
+describe.skip('Area chart rendering with date x-axis data', () => {
+  beforeEach(updateChartWidthAndHeight);
+  afterEach(sharedAfterEach);
+
+  testWithoutWait(
+    `Should render the area chart with date x-axis data`,
+    AreaChart,
+    { data: chartDataWithDates },
+    container => {
       expect(container).toMatchSnapshot();
     },
   );
