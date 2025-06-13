@@ -1306,6 +1306,7 @@ export interface PlotData {
   value: number;
   values: Datum[];
   labels: Datum[];
+  stage: string;
   direction: 'clockwise' | 'counterclockwise';
   hole: number;
   rotation: number;

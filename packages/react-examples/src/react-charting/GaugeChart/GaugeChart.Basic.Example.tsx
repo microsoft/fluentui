@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  DataVizPalette,
-  getColorFromToken,
-  FunnelChart
-} from '@fluentui/react-charting';
+import { DataVizPalette, getColorFromToken, FunnelChart } from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -51,6 +47,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
   }
 
   public render(): React.ReactNode {
+    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <div className="containerDiv">
         <Stack horizontal wrap tokens={{ childrenGap: 20 }}>
@@ -126,16 +123,19 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             onChange={this._onToggleLegendMultiSelect}
           />
         </div>
-
-        <FunnelChart
-          data={[
-            { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
-            { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
-            { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
-            { stage: 'Customers', value: 150, color: getColorFromToken(DataVizPalette.color10) },
-          ]}
-          chartTitle="Funnel Chart Example"
-        />
+        <div style={rootStyle}>
+          <FunnelChart
+            data={[
+              { stage: 'Visitors', value: 1000, color: getColorFromToken(DataVizPalette.color5) },
+              { stage: 'Signups', value: 600, color: getColorFromToken(DataVizPalette.color6) },
+              { stage: 'Trials', value: 300, color: getColorFromToken(DataVizPalette.color7) },
+              { stage: 'Customers', value: 150, color: getColorFromToken(DataVizPalette.color10) },
+            ]}
+            chartTitle="Funnel Chart Example"
+            width={this.state.width}
+            height={this.state.height}
+          />
+        </div>
       </div>
     );
   }

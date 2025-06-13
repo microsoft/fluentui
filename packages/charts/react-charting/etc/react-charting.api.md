@@ -140,6 +140,9 @@ export interface DeclarativeChartProps extends React_2.RefAttributes<HTMLDivElem
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
+export const FunnelChart: React_2.FunctionComponent<IFunnelChartProps>;
+
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
@@ -593,6 +596,42 @@ export interface IEventsAnnotationProps {
     mergedLabel: (count: number) => string;
     // (undocumented)
     strokeColor?: string;
+}
+
+// @public (undocumented)
+export interface IFunnelChartProps {
+    calloutProps?: Partial<ICalloutProps>;
+    // (undocumented)
+    chartTitle?: string;
+    culture?: string;
+    // Warning: (ae-forgotten-export) The symbol "IFunnelChartDataPoint" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    data: IFunnelChartDataPoint[];
+    height?: number;
+    hideLegend?: boolean;
+    // (undocumented)
+    legendProps?: Partial<ILegendsProps>;
+    styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public
+export interface IFunnelChartStyleProps {
+    theme: ITheme;
+}
+
+// @public
+export interface IFunnelChartStyles {
+    chart?: IStyle;
+    root?: IStyle;
+    // (undocumented)
+    subComponentStyles: {
+        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+    };
+    // (undocumented)
+    text?: IStyle;
 }
 
 // @public

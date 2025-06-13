@@ -30,6 +30,7 @@ import {
   transformPlotlyJsonToChartTableProps,
   projectPolarToCartesian,
   isStringArray,
+  transformPlotlyJsonToFunnelProps,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart, ILineChartProps } from '../LineChart/index';
@@ -43,6 +44,7 @@ import { VerticalBarChart } from '../VerticalBarChart/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { withResponsiveContainer } from '../ResponsiveContainer/withResponsiveContainer';
 import { ChartTable } from '../ChartTable/index';
+import { FunnelChart } from '../FunnelChart/FunnelChart';
 
 const ResponsiveDonutChart = withResponsiveContainer(DonutChart);
 const ResponsiveVerticalStackedBarChart = withResponsiveContainer(VerticalStackedBarChart);
@@ -55,6 +57,7 @@ const ResponsiveGaugeChart = withResponsiveContainer(GaugeChart);
 const ResponsiveGroupedVerticalBarChart = withResponsiveContainer(GroupedVerticalBarChart);
 const ResponsiveVerticalBarChart = withResponsiveContainer(VerticalBarChart);
 const ResponsiveChartTable = withResponsiveContainer(ChartTable);
+const ResponsiveFunnelChart = withResponsiveContainer(FunnelChart);
 
 /**
  * DeclarativeChart schema.
@@ -336,6 +339,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
       return (
         <ResponsiveChartTable
           {...transformPlotlyJsonToChartTableProps(plotlyInputWithValidData, colorMap, isDarkTheme)}
+          {...commonProps}
+        />
+      );
+    case 'funnel':
+      return (
+        <ResponsiveFunnelChart
+          {...transformPlotlyJsonToFunnelProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme)}
           {...commonProps}
         />
       );

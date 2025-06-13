@@ -5,54 +5,64 @@ import { ILegendsProps } from '../Legends/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 export interface IFunnelChartDataPoint {
-  stage: string;
-  value: number;
-  color: string;
+  stage: string | number;
+  subValues?: Array<{ category: string; value: number; color: string }>;
+  value?: number;
+  color?: string;
 }
 
 export interface IFunnelChartProps {
   data: IFunnelChartDataPoint[];
   chartTitle?: string;
-    /**
+  /**
    * Width of the chart
    */
-    width?: number;
+  width?: number;
 
-    /**
-     * Height of the chart
-     */
-    height?: number;
+  /**
+   * Height of the chart
+   */
+  height?: number;
 
-    /**
+  /**
    * Decides whether to show/hide legends
    * @defaultvalue false
    */
-    hideLegend?: boolean;
+  hideLegend?: boolean;
 
-    /*
-     * Props for the legends in the chart
-     */
-    legendProps?: Partial<ILegendsProps>;
+  /*
+   * Props for the legends in the chart
+   */
+  legendProps?: Partial<ILegendsProps>;
 
-    /**
-     * Props for the callout in the chart
-     */
-    calloutProps?: Partial<ICalloutProps>;
+  /**
+   * Props for the callout in the chart
+   */
+  calloutProps?: Partial<ICalloutProps>;
 
   /**
    * Theme (provided through customization)
    */
-    theme?: ITheme;
+  theme?: ITheme;
 
-   /**
-     * Call to provide customized styling that will layer on top of the variant rules
-     */
-    styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  styles?: IStyleFunctionOrObject<IFunnelChartStyleProps, IFunnelChartStyles>;
 
-   /**
+  /**
    * Defines the culture to localize the numbers and dates
    */
-    culture?: string;
+  culture?: string;
+
+  componentRef?: React.RefObject<any>;
+
+  /**
+   * Additional CSS class(es) to apply to the chart
+   */
+  className?: string;
+
+  orientation?: 'horizontal' | 'vertical';
 }
 
 /**
@@ -64,6 +74,18 @@ export interface IFunnelChartStyleProps {
    * Theme (provided through customization)
    */
   theme: ITheme;
+  /**
+   * Additional CSS class(es) to apply to the chart
+   */
+  className?: string;
+  /**
+   * Width of the chart
+   */
+  chartWidth: number;
+  /**
+   * Height of the chart
+   */
+  chartHeight: number;
 }
 
 /**
@@ -82,7 +104,7 @@ export interface IFunnelChartStyles {
   chart?: IStyle;
 
   text?: IStyle;
-    subComponentStyles: {
-      calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    };
+  subComponentStyles: {
+    calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
+  };
 }

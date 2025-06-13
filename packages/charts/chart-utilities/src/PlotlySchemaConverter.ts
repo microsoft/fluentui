@@ -285,6 +285,7 @@ const DATA_VALIDATORS_MAP: Record<string, ((data: Data) => void)[]> = {
       }
     },
   ],
+  funnel: [data => validateSeriesData(data as Partial<PlotData>, false)],
 };
 
 const DEFAULT_CHART_TYPE = '';
@@ -358,6 +359,9 @@ export const mapFluentChart = (input: any): OutputChartType => {
         return { isValid: true, type: 'scatterpolar', validTracesInfo: validTraces };
       case 'table':
         return { isValid: true, type: 'table', validTracesInfo: validTraces };
+      case 'funnel':
+      case 'funnelarea':
+        return { isValid: true, type: 'funnel', validTracesInfo: validTraces };
       default:
         const containsBars = validTraces.some(trace => validSchema.data[trace[0]].type === 'bar');
         const containsLines = validTraces.some(trace => validSchema.data[trace[0]].type === 'scatter');
