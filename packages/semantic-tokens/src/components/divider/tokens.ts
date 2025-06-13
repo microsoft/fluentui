@@ -2,4 +2,4 @@
 import { paddingContentAlignDefaultRaw } from '../../control/variables';
 import { ctrlDividerFixedLineLengthRaw } from './variables';
 
-export const ctrlDividerFixedLineLength = `var(${ctrlDividerFixedLineLengthRaw}, var(${paddingContentAlignDefaultRaw}))`;
+export const ctrlDividerFixedLineLength = `var(${ctrlDividerFixedLineLengthRaw}, var(${paddingContentAlignDefaultRaw}, 8px))`;
