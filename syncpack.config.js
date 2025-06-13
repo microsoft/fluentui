@@ -104,7 +104,11 @@ const config = {
     },
     {
       packages: ['@fluentui/react-conformance'],
-      dependencies: ['chalk'],
+      dependencies: [
+        'chalk',
+        // TODO: remove once modern yarn is used as v1 contains a bug that forces linking @types/react v17 within react-conformance node_modules which causes build issues
+        '@types/react',
+      ],
     },
     {
       packages: [
@@ -130,7 +134,15 @@ const config = {
         '@fluentui/state',
         '@fluentui/styles',
       ],
-      dependencies: ['react', 'react-dom', '@testing-library/dom', '@testing-library/react'],
+      dependencies: [
+        'react',
+        'react-dom',
+        '@testing-library/dom',
+        '@testing-library/react',
+        '@types/react',
+        '@types/react-dom',
+        '@types/react-is',
+      ],
     },
   ],
 };
