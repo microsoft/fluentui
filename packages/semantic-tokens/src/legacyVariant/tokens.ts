@@ -9,8 +9,8 @@ import {
   cornerCtrlRestRaw,
   strokeWidthDefaultRaw,
   gapInsideCtrlDefaultRaw,
-  nullColorRaw,
   gapBetweenContentMediumRaw,
+  nullColorRaw,
 } from '../control/variables';
 import {
   colorNeutralForeground2,
@@ -124,16 +124,16 @@ export const _ctrlAvatarPresenceBadgeStrokeWidthSm = `var(${ctrlAvatarPresenceBa
  */
 export const _ctrlButtonGapInsideDefault = `var(${gapInsideCtrlDefaultRaw}, ${spacingHorizontalSNudge})`;
 /**
- * This is a legacy variant for foregroundCtrlHintDefault to enable backwards compatibility.
- * It's purpose is to support Fluent UI legacy fallback variants only.
- * This token is not intended for use in new semantic theme implementations
- * please use foregroundCtrlHintDefault instead.
- */
-export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
-/**
  * This is a legacy variant for gapBetweenContentMedium to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.
  * This token is not intended for use in new semantic theme implementations
  * please use gapBetweenContentMedium instead.
  */
 export const _ctrlDialogGapBetweenContentMedium = `var(${gapBetweenContentMediumRaw}, 8px)`;
+/**
+ * This is a legacy variant for foregroundCtrlHintDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlHintDefault instead.
+ */
+export const _ctrlDividerForegroundSubtle = `var(${foregroundCtrlHintDefaultRaw}, var(${nullColorRaw}, ${colorNeutralForeground3}))`;
