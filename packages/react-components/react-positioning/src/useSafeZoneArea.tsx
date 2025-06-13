@@ -169,7 +169,6 @@ export function useSafeZoneArea({
         function updateSVGs() {
           const containerEl = containerRef.current;
           const targetEl = targetRef.current;
-          const targetWindow = targetDocument?.defaultView;
 
           if (containerEl && targetEl) {
             safeZoneAreaRef.current?.updateSVG({
@@ -180,9 +179,7 @@ export function useSafeZoneArea({
             });
           }
 
-          if (targetWindow) {
-            mouseMoveIdRef.current = targetWindow.requestAnimationFrame(updateSVGs);
-          }
+          targetDocument?.defaultView?.requestAnimationFrame(updateSVGs);
         }
 
         updateSVGs();
@@ -194,7 +191,7 @@ export function useSafeZoneArea({
         mouseMoveIdRef.current = null;
       }
     });
-  });
+  }, [stateStore, targetDocument]);
 
   return {
     containerRef: useMergedRefs(containerRef, containerListenerRef),
