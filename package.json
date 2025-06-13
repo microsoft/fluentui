@@ -134,6 +134,7 @@
     "@types/d3-time-format": "3.0.4",
     "@types/doctrine": "0.0.5",
     "@types/ejs": "3.1.5",
+    "@types/enzyme": "3.10.19",
     "@types/eslint": "9.6.1",
     "@types/express": "4.17.21",
     "@types/fs-extra": "8.0.1",
@@ -369,6 +370,7 @@
   },
   "resolutions": {
     "@types/jest-axe/axe-core": "4.7.2",
+    "@types/enzyme/@types/react": "^17",
     "esbuild": "0.25.0",
     "@microsoft/api-extractor/typescript": "5.3.3",
     "swc-loader": "^0.2.6",
