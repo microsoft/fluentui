@@ -478,11 +478,16 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
             _xAxisType !== XAxisTypes.StringAxis
               ? _getRangeForScatterMarkerSize(_yAxisScale.current, yPadding, xMin, xMax, xPadding)
               : 0;
-          const circleRadius = pointMarkerSize
-            ? (pointMarkerSize! * extraMaxPixels) / maxMarkerSize
-            : activePoint === circleId
-            ? 6
-            : 4;
+          const minPixel = 4;
+          const maxPixel = 16;
+          const circleRadius =
+            pointMarkerSize && maxMarkerSize !== 0
+              ? _xAxisType !== XAxisTypes.StringAxis
+                ? (pointMarkerSize * extraMaxPixels) / maxMarkerSize
+                : minPixel + ((pointMarkerSize - minPixel) / (maxMarkerSize - minPixel)) * (maxPixel - minPixel)
+              : activePoint === circleId
+              ? 6
+              : 4;
 
           const isLegendSelected: boolean = _legendHighlighted(legendVal) || _noLegendHighlighted() || isSelectedLegend;
 
@@ -534,7 +539,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
                 <text
                   key={`${circleId}-label`}
                   x={_xAxisScale.current?.(x) + _xBandwidth.current}
-                  y={_yAxisScale.current?.(y) + Math.max(circleRadius + 8, 16)}
+                  y={_yAxisScale.current?.(y) + Math.max(circleRadius + 12, 16)}
                   className={classNames.markerLabel}
                 >
                   {text}

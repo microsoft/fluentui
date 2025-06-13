@@ -526,7 +526,7 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, xIndex);
 
         mapXToDataPoints[x].series.push({
