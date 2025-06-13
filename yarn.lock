@@ -5296,14 +5296,6 @@
   resolved "https://registry.yarnpkg.com/@types/emscripten/-/emscripten-1.39.13.tgz#afeb1648648dc096efe57983e20387627306e2aa"
   integrity sha512-cFq+fO/isvhvmuP/+Sl4K4jtU6E23DoivtbO4r50e3odaxAiVdbfSYRDdJ4gCdxx+3aRjhphS5ZMwIH4hFy/Cw==
 
-"@types/enzyme@3.10.19":
-  version "3.10.19"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.19.tgz#a4ae751c13e0428171d53cdc0d3d9f9aca7f7689"
-  integrity sha512-kIfCo6/DdpgCHgmrLgPTugjzbZ46BUK8S2IP0kYo8+62LD2l1k8mSVsc+zQYNTdjDRoh2E9Spxu6F1NnEiW38Q==
-  dependencies:
-    "@types/cheerio" "<1"
-    "@types/react" "^16"
-
 "@types/escodegen@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@types/escodegen/-/escodegen-0.0.6.tgz#5230a9ce796e042cda6f086dbf19f22ea330659c"
@@ -5905,7 +5897,7 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
-"@types/react@17.0.44", "@types/react@^16", "@types/react@^17":
+"@types/react@17.0.44", "@types/react@^17":
   version "17.0.44"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.44.tgz#c3714bd34dd551ab20b8015d9d0dbec812a51ec7"
   integrity sha512-Ye0nlw09GeMp2Suh8qoOv0odfgCoowfM/9MG6WeRD60Gq9wS90bdkdRtYbRkNhXOpG4H+YXGvj4wOWhAC0LJ1g==
