@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getWindow } from '../../utilities/getWindow';
 import { ResponsiveChildProps, ResponsiveContainerProps } from './ResponsiveContainer.types';
 
 /**
@@ -14,8 +15,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
   onResizeRef.current = props.onResize;
 
   React.useEffect(() => {
-    const container = containerRef.current;
-    const _window = container?.ownerDocument?.defaultView ?? undefined;
+    const _window = getWindow(containerRef.current) as (Window & typeof globalThis) | undefined;
     let animationFrameId: number | undefined;
     let resizeObserver: ResizeObserver | undefined;
 
