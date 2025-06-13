@@ -30,6 +30,7 @@ import {
   spacingHorizontalSNudge,
   borderRadiusCircular,
   strokeWidthThin,
+  colorBackgroundOverlay,
   colorNeutralStroke1,
   colorNeutralStrokeDisabled,
   colorNeutralStrokeOnBrand,
@@ -306,7 +307,7 @@ export const paddingContentXxSmall = `var(${paddingContentXxSmallRaw})`;
 export const paddingContentXSmall = `var(${paddingContentXSmallRaw})`;
 export const paddingContentSmall = `var(${paddingContentSmallRaw})`;
 export const paddingContentMedium = `var(${paddingContentMediumRaw})`;
-export const paddingContentLarge = `var(${paddingContentLargeRaw})`;
+export const paddingContentLarge = `var(${paddingContentLargeRaw}, 24px)`;
 export const paddingContentXLarge = `var(${paddingContentXLargeRaw})`;
 export const paddingContentXxLarge = `var(${paddingContentXxLargeRaw})`;
 export const paddingContentXxxLarge = `var(${paddingContentXxxLargeRaw})`;
@@ -326,8 +327,8 @@ export const paddingCtrlLgToNestedControl = `var(${paddingCtrlLgToNestedControlR
 export const gapBetweenContentNone = `var(${gapBetweenContentNoneRaw})`;
 export const gapBetweenContentXxSmall = `var(${gapBetweenContentXxSmallRaw})`;
 export const gapBetweenContentXSmall = `var(${gapBetweenContentXSmallRaw})`;
-export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw})`;
-export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw})`;
+export const gapBetweenContentSmall = `var(${gapBetweenContentSmallRaw}, 8px)`;
+export const gapBetweenCtrlDefault = `var(${gapBetweenCtrlDefaultRaw}, 8px)`;
 export const gapBetweenContentMedium = `var(${gapBetweenContentMediumRaw})`;
 export const gapBetweenContentLarge = `var(${gapBetweenContentLargeRaw})`;
 export const gapBetweenContentXLarge = `var(${gapBetweenContentXLargeRaw})`;
@@ -345,7 +346,7 @@ export const gapInsideCtrlSmToLabel = `var(${gapInsideCtrlSmToLabelRaw})`;
 export const gapInsideCtrlLgToLabel = `var(${gapInsideCtrlLgToLabelRaw})`;
 export const cornerCircular = `var(${cornerCircularRaw}, ${borderRadiusCircular})`;
 export const strokeWidthDefault = `var(${strokeWidthDefaultRaw}, ${strokeWidthThin})`;
-export const backgroundSmoke = `var(${backgroundSmokeRaw})`;
+export const backgroundSmoke = `var(${backgroundSmokeRaw}, ${colorBackgroundOverlay})`;
 export const strokeCtrlOnOutlineRest = `var(${strokeCtrlOnOutlineRestRaw}, ${colorNeutralStroke1})`;
 export const strokeCtrlOnOutlineHover = `var(${strokeCtrlOnOutlineHoverRaw}, ${colorNeutralStroke1})`;
 export const strokeCtrlOnOutlinePressed = `var(${strokeCtrlOnOutlinePressedRaw}, ${colorNeutralStroke1})`;
