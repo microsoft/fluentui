@@ -48,7 +48,6 @@
     "fela-tools": "^10.6.1",
     "qs": "^6.8.0",
     "simulant": "^0.2.2",
-    "@types/enzyme": "3.10.7",
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2"
   },
