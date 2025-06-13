@@ -151,6 +151,7 @@ describe('Vertical stacked bar chart rendering', () => {
       data: datePoints,
       timeFormat: '%m/%d',
       tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+      locale: 'en-Us',
     },
     container => {
       // Assert
@@ -164,6 +165,7 @@ describe('Vertical stacked bar chart rendering', () => {
     {
       data: datePoints,
       timeFormat: '%m/%d',
+      locale: 'en-Us',
     },
     container => {
       // Assert
@@ -177,6 +179,7 @@ describe('Vertical stacked bar chart rendering', () => {
     {
       data: datePoints,
       tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+      locale: 'en-Us',
     },
     container => {
       // Assert
@@ -192,6 +195,7 @@ describe('Vertical stacked bar chart rendering', () => {
       VerticalStackedBarChart,
       {
         data: datePoints,
+        locale: 'en-Us',
       },
       container => {
         // Assert

@@ -8,7 +8,6 @@ export interface ResponsiveChildProps {
   width?: number;
   height?: number;
   shouldResize?: number;
-  styles?: string;
 }
 
 /**

@@ -1108,8 +1108,6 @@ export interface ResponsiveChildProps {
     // (undocumented)
     shouldResize?: number;
     // (undocumented)
-    styles?: string;
-    // (undocumented)
     width?: number;
 }
 
