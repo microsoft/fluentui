@@ -2,7 +2,7 @@ import { concatStyleSets } from './concatStyleSets';
 import { extractStyleParts } from './extractStyleParts';
 import { IStyle } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
-import { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSet';
+import { IProcessedStyleSet, IStyleSet } from './IStyleSet';
 import { getStyleOptions } from './StyleOptionsState';
 import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
