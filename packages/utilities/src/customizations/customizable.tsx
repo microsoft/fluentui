@@ -33,6 +33,8 @@ export function customizable(
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
       public static contextType = WindowContext;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      public context!: any;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
