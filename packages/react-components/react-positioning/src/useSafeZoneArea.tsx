@@ -169,6 +169,7 @@ export function useSafeZoneArea({
         function updateSVGs() {
           const containerEl = containerRef.current;
           const targetEl = targetRef.current;
+          const targetWindow = targetDocument?.defaultView;
 
           if (containerEl && targetEl) {
             safeZoneAreaRef.current?.updateSVG({
@@ -179,7 +180,9 @@ export function useSafeZoneArea({
             });
           }
 
-          targetDocument?.defaultView?.requestAnimationFrame(updateSVGs);
+          if (targetWindow) {
+            mouseMoveIdRef.current = targetWindow.requestAnimationFrame(updateSVGs);
+          }
         }
 
         updateSVGs();
