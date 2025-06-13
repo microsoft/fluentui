@@ -807,7 +807,7 @@ export class CartesianChartBase
             className={this._classNames.calloutContentX}
             {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture, this.props.useUTC)}
+            {formatToLocaleString(calloutProps!.hoverXValue, this.props.culture, this.props.useUTC) as React.ReactNode}
           </div>
         </div>
         <div
@@ -884,7 +884,7 @@ export class CartesianChartBase
     });
 
     const { culture, useUTC } = this.props;
-    const yValue = formatToLocaleString(xValue.y, culture, useUTC);
+    const yValue = formatToLocaleString(xValue.y, culture, useUTC) as React.ReactNode;
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -906,11 +906,13 @@ export class CartesianChartBase
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {formatToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
-                  culture,
-                  useUTC,
-                )}
+                {
+                  formatToLocaleString(
+                    xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
+                    culture,
+                    useUTC,
+                  ) as React.ReactNode
+                }
               </div>
             </div>
           </div>
@@ -927,10 +929,10 @@ export class CartesianChartBase
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
                 <div className={_classNames.calloutlegendText}>
-                  {formatToLocaleString(subcountName, culture, useUTC)}
+                  {formatToLocaleString(subcountName, culture, useUTC) as React.ReactNode}
                 </div>
                 <div className={_classNames.calloutContentY}>
-                  {formatToLocaleString(subcounts[subcountName], culture, useUTC)}
+                  {formatToLocaleString(subcounts[subcountName], culture, useUTC) as React.ReactNode}
                 </div>
               </div>
             );

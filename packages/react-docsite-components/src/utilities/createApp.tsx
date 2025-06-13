@@ -81,7 +81,12 @@ export function createApp(
   window.onunload = _onUnload;
 }
 
-function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
+type ReactProps<T> = {
+  children?: React.ReactNode;
+  ref?: React.LegacyRef<T>;
+};
+
+function _getComponent<TProps extends ReactProps<{}>>(props: TProps): JSX.Element {
   return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
 }
 
