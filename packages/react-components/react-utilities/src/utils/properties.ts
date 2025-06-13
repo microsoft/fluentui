@@ -248,6 +248,7 @@ export const buttonProperties = toObjectMap(htmlElementProperties, [
 export const inputProperties = toObjectMap(buttonProperties, [
   'accept', // input
   'alt', // area, img, input
+  'autoCorrect', // input, textarea
   'autoCapitalize', // input, textarea
   'autoComplete', // form, input
   'checked', // input
@@ -259,6 +260,7 @@ export const inputProperties = toObjectMap(buttonProperties, [
   'max', // input, meter
   'maxLength', // input, textarea
   'min', // input, meter
+  'minLength', // input, textarea
   'multiple', // input, select
   'pattern', // input
   'placeholder', // input, textarea

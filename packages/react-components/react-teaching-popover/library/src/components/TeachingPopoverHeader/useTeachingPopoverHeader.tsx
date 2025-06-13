@@ -33,16 +33,16 @@ export const useTeachingPopoverHeader_unstable = (
   return {
     appearance,
     components: {
-      root: 'h3',
+      root: 'div',
       dismissButton: 'button',
       icon: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('h3', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),
-      { elementType: 'h3' },
+      { elementType: 'div' },
     ),
     icon: slot.optional(icon, {
       renderByDefault: true,

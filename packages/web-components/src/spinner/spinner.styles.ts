@@ -9,15 +9,6 @@ import {
   strokeWidthThicker,
   strokeWidthThickest,
 } from '../theme/design-tokens.js';
-import {
-  extraLargeState,
-  extraSmallState,
-  hugeState,
-  invertedState,
-  largeState,
-  smallState,
-  tinyState,
-} from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -32,27 +23,27 @@ export const styles = css`
     content-visibility: auto;
   }
 
-  :host(${tinyState}) {
+  :host([size='tiny']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 20px;
   }
-  :host(${extraSmallState}) {
+  :host([size='extra-small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 24px;
   }
-  :host(${smallState}) {
+  :host([size='small']) {
     --indicatorSize: ${strokeWidthThick};
     --size: 28px;
   }
-  :host(${largeState}) {
+  :host([size='large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 36px;
   }
-  :host(${extraLargeState}) {
+  :host([size='extra-large']) {
     --indicatorSize: ${strokeWidthThicker};
     --size: 40px;
   }
-  :host(${hugeState}) {
+  :host([size='huge']) {
     --indicatorSize: ${strokeWidthThickest};
     --size: 44px;
   }
@@ -83,7 +74,7 @@ export const styles = css`
     border-radius: 50%;
   }
 
-  :host(${invertedState}) .background {
+  :host([appearance='inverted']) .background {
     border-color: rgba(255, 255, 255, 0.2);
   }
 
@@ -93,12 +84,12 @@ export const styles = css`
 
   .start {
     overflow: hidden;
-    inset-inline-end: 50%;
+    right: 50%;
   }
 
   .end {
     overflow: hidden;
-    inset-inline-start: 50%;
+    left: 50%;
   }
 
   .indicator {
@@ -107,10 +98,10 @@ export const styles = css`
     border-radius: 50%;
     border: var(--indicatorSize) solid transparent;
     border-block-start-color: currentcolor;
-    border-inline-end-color: currentcolor;
+    border-right-color: currentcolor;
   }
 
-  :host(${invertedState}) .indicator {
+  :host([appearance='inverted']) .indicator {
     color: ${colorNeutralStrokeOnBrand2};
   }
 
@@ -171,7 +162,7 @@ export const styles = css`
     .indicator {
       border-color: Canvas;
       border-block-start-color: Highlight;
-      border-inline-end-color: Highlight;
+      border-right-color: Highlight;
     }
   `),
 );

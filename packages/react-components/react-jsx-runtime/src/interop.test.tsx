@@ -19,7 +19,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { someSlot: 'div' },
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           someSlot: resolveShorthand(props.someSlot, {
             required: true,
             defaultProps: { children: 'Default Children', id: 'slot' },
@@ -64,9 +64,9 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { outer: 'div', inner: 'div' },
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           inner: resolveShorthand(props.inner, { defaultProps: { id: 'inner' }, required: true }),
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           outer: resolveShorthand(props.outer, { defaultProps: { id: 'outer' }, required: true }),
         };
         assertSlots<TestComponentSlots>(state);
@@ -125,7 +125,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { slot: 'div' },
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           slot: resolveShorthand(props.slot, { required: true }),
         };
         assertSlots<TestComponentSlots>(state);
@@ -171,6 +171,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const higherOrderState = useHigherOrderStateHook(props);
         const state: TestComponentState = {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           components: { ...higherOrderState.components, slot: 'span' },
           slot: {
             ...higherOrderState.slot,

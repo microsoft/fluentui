@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.1.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.55..@fluentui/react-jsx-runtime_v9.1.0)
+
+### Minor changes
+
+- Bump @fluentui/react-utilities to v9.21.0 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by beachball)
+
+## [9.0.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.55)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.54..@fluentui/react-jsx-runtime_v9.0.55)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.20.0 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by beachball)
+
+## [9.0.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.54)
+
+Wed, 16 Apr 2025 19:42:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.53..@fluentui/react-jsx-runtime_v9.0.54)
+
+### Patches
+
+- Support internal slot metadata change for SLOT_CLASS_NAME_PROP_SYMBOL ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+- Bump @fluentui/react-utilities to v9.19.0 ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by beachball)
+
+## [9.0.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.53)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.52..@fluentui/react-jsx-runtime_v9.0.53)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.23 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.0.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.52)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.51..@fluentui/react-jsx-runtime_v9.0.52)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.22 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.0.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.51)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.50..@fluentui/react-jsx-runtime_v9.0.51)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.21 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [9.0.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.50)
+
+Wed, 22 Jan 2025 14:00:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.48..@fluentui/react-jsx-runtime_v9.0.50)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.18.20 ([PR #33631](https://github.com/microsoft/fluentui/pull/33631) by beachball)
 
 ## [9.0.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.48)
 

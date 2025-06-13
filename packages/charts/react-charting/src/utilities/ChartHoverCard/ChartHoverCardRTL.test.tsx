@@ -51,7 +51,7 @@ describe('ChartHoverCard', () => {
     const { container } = render(<ChartHoverCard YValue={YValue} />);
     const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
     expect(YValueElement).toBeDefined();
-    expect(YValueElement.textContent?.trim()).toBe(YValue.toLocaleDateString());
+    expect(YValueElement.textContent?.trim()).toBe('01/01/2021, 12:00:00 AM UTC');
   });
 
   test('displays the correct Legend', () => {
@@ -75,7 +75,7 @@ describe('ChartHoverCard', () => {
     const { container } = render(<ChartHoverCard Legend={Legend} />);
     const LegendElement = getByClass(container, /calloutlegendText/);
     expect(LegendElement).toBeDefined();
-    expect(LegendElement[0].textContent?.trim()).toBe(Legend.toLocaleDateString());
+    expect(LegendElement[0].textContent?.trim()).toBe('01/01/2021, 12:00:00 AM UTC');
   });
 
   test('displays the chart hover card correctly when Legend is undefined', () => {

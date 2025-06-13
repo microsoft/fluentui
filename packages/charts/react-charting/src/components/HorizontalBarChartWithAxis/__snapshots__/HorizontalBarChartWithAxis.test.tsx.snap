@@ -16,11 +16,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -28,10 +28,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -59,22 +57,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -88,8 +86,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -98,53 +96,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <defs>
-          <linearGradient
-            id="HBCWA_Gradient4_0_20000"
-          >
-            <stop
-              offset="0"
-              stopColor="#795AA6"
-            />
-            <stop
-              offset="100%"
-              stopColor="#9373C0"
-            />
-          </linearGradient>
-        </defs>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="url(#HBCWA_Gradient4_0_20000)"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -193,7 +152,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -653,11 +612,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -665,10 +624,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -696,22 +653,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -725,8 +682,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -735,39 +692,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#795AA6"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={3}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -816,7 +748,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1011,8 +943,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                       className=
 
                           {
-                            background-color: #795AA6;
-                            border-color: #795AA6;
+                            background-color: #002050;
+                            border-color: #002050;
                             border: 1px solid;
                             content: ;
                             height: 12px;
@@ -1020,7 +952,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render rounded corne
                             width: 12px;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #795AA6, #795AA6);
+                            content: linear-gradient(to right, #002050, #002050);
                             opacity: ;
                           }
                     />
@@ -1276,11 +1208,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -1288,10 +1220,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1319,22 +1249,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -1348,8 +1278,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1358,39 +1288,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -1439,7 +1344,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1899,11 +1804,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -1911,10 +1816,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1942,22 +1845,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -1971,8 +1874,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -1981,39 +1884,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#002050"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          width={-30}
-          x={40}
-          y={4}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
 </div>
@@ -2035,11 +1913,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -2047,10 +1925,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2078,22 +1954,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -2107,8 +1983,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2117,40 +1993,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -2199,7 +2049,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2230,7 +2080,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                     aria-label="undefined"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={4}
+                    aria-setsize={1}
                     className=
 
                         {
@@ -2316,313 +2166,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                             line-height: 16px;
                             opacity: ;
                           }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #002050;
-                            border-color: #002050;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #002050, #002050);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #00188f;
-                            border-color: #00188f;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00188f, #00188f);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #0078d4;
-                            border-color: #0078d4;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #0078d4, #0078d4);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
+                    >
+                      undefined
+                    </div>
                   </button>
                 </div>
               </div>
@@ -2651,11 +2197,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_1"
   onMouseLeave={[Function]}
 >
   <div
-    id="defaultTabbableElement_3"
+    id="defaultTabbableElement_2"
   />
   <div
     className=
@@ -2663,10 +2209,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         &:focus {
           outline: none;
         }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone5"
+
+    data-focuszone-id="FocusZone4"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2694,22 +2238,22 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & line {
               opacity: 0.2;
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
+        id="xAxisGElementchart_1"
         transform="translate(0, -35)"
       />
       <g
@@ -2723,8 +2267,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+              fill: CanvasText;
             }
             & path {
               display: none;
@@ -2733,40 +2277,14 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
               opacity: 0.1;
-              stroke: rgb(179, 179, 179);
+              stroke: CanvasText;
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_1"
         transform="translate(40, 0)"
       />
-      <g>
-        <rect
-          aria-label="1000. String One."
-          aria-labelledby="toolTipcallout0"
-          className=
-
-              {
-                opacity: ;
-              }
-          data-is-focusable={true}
-          fill="#0078d4"
-          height={32}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-          role="img"
-          rx={0}
-          transform="translate(0,-5.125)"
-          width={-12}
-          x={40}
-          y={14.25}
-        />
-         
-         
-         
-      </g>
+      <g />
     </svg>
   </div>
   <div
@@ -2815,7 +2333,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2846,7 +2364,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                     aria-label="undefined"
                     aria-posinset={1}
                     aria-selected={false}
-                    aria-setsize={4}
+                    aria-setsize={1}
                     className=
 
                         {
@@ -2932,313 +2450,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                             line-height: 16px;
                             opacity: ;
                           }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={2}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #002050;
-                            border-color: #002050;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #002050, #002050);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={3}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #00188f;
-                            border-color: #00188f;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #00188f, #00188f);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
-                  </button>
-                </div>
-                <div
-                  className=
-                      ms-OverflowSet-item
-                      {
-                        display: inherit;
-                        flex-shrink: 0;
-                      }
-                  role="none"
-                >
-                  <button
-                    aria-label="undefined"
-                    aria-posinset={4}
-                    aria-selected={false}
-                    aria-setsize={4}
-                    className=
-
-                        {
-                          align-items: center;
-                          background: none;
-                          border: none;
-                          cursor: pointer;
-                          display: flex;
-                          outline: transparent;
-                          padding-bottom: 8px;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 8px;
-                          position: relative;
-                          text-transform: capitalize;
-                        }
-                        &::-moz-focus-inner {
-                          border: 0;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          border: 1px solid transparent;
-                          bottom: 1px;
-                          content: "";
-                          left: 1px;
-                          outline: 1px solid #605e5c;
-                          position: absolute;
-                          right: 1px;
-                          top: 1px;
-                          z-index: 1;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                          outline-color: #605e5c;
-                        }
-                    data-is-focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onMouseOut={[Function]}
-                    onMouseOver={[Function]}
-                    role="option"
-                  >
-                    <div
-                      className=
-
-                          {
-                            background-color: #0078d4;
-                            border-color: #0078d4;
-                            border: 1px solid;
-                            content: ;
-                            height: 12px;
-                            margin-right: 8px;
-                            width: 12px;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                            content: linear-gradient(to right, #0078d4, #0078d4);
-                            opacity: ;
-                          }
-                    />
-                    <div
-                      className=
-
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #323130;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                            opacity: ;
-                          }
-                    />
+                    >
+                      undefined
+                    </div>
                   </button>
                 </div>
               </div>

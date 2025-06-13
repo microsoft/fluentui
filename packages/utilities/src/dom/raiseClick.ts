@@ -6,7 +6,7 @@ import { getDocument } from './getDocument';
 export function raiseClick(target: Element, doc?: Document): void {
   const theDoc = doc ?? getDocument()!;
   const event = createNewEvent('MouseEvents', theDoc);
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   event.initEvent('click', true, true);
   target.dispatchEvent(event);
 }
@@ -19,7 +19,7 @@ function createNewEvent(eventName: string, doc: Document): Event {
   } else {
     // IE
     event = doc.createEvent('Event');
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     event.initEvent(eventName, true, true);
   }
   return event;

@@ -4,10 +4,16 @@ import { Tooltip } from '@fluentui/react-tooltip';
 
 import { useStyles } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
+import { Steps, type StoryParameters } from 'storywright';
 
 export default {
   title: 'Tooltip Converged',
   decorators: [TestWrapperDecorator],
+  parameters: {
+    storyWright: {
+      steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+    },
+  } satisfies StoryParameters,
 } satisfies Meta<typeof Tooltip>;
 
 export const Basic = () => (

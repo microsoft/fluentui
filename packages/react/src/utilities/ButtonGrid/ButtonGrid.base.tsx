@@ -17,9 +17,9 @@ export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.f
     columnCount,
     onRenderItem,
     isSemanticRadio,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ariaPosInSet = props.positionInSet,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     ariaSetSize = props.setSize,
     styles,
     doNotContainWithinFocusZone,
@@ -68,6 +68,7 @@ export const ButtonGridBase: React.FunctionComponent<IButtonGridProps> = React.f
     content
   ) : (
     <FocusZone
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       elementRef={forwardedRef}
       isCircularNavigation={props.shouldFocusCircularNavigate}
       className={classNames.focusedContainer}

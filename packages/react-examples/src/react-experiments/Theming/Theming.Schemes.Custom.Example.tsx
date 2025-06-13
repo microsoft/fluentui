@@ -26,7 +26,7 @@ import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib
 import { ThemeProvider as DeprecatedThemeProvider } from '@fluentui/foundation-legacy';
 
 // Workaround to prevent errors on usage of ThemeProvider, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const ThemeProvider = DeprecatedThemeProvider;
 
 const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
@@ -186,7 +186,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
   };
 
   public render(): JSX.Element {
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return <Customizer settings={{ theme: schemeThemeCustom }}>{this._renderSchemedComponents()}</Customizer>;
   }
 
@@ -209,7 +209,12 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
       <Stack horizontal tokens={stackTokens}>
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+            <Stack
+              styles={regionStyles}
+              tokens={stackTokens}
+              // eslint-disable-next-line @typescript-eslint/no-deprecated
+              padding={5}
+            >
               <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this._toggleSide} />
               <CollapsibleSectionRecursiveExample />
@@ -219,7 +224,12 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
           <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+              <Stack
+                styles={regionStyles}
+                tokens={stackTokens}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this._toggleTop} />
@@ -228,7 +238,12 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
               </Stack>
             </ThemeProvider>
             <ThemeProvider scheme={bodyScheme}>
-              <Stack styles={regionStyles} verticalFill={true} padding={5}>
+              <Stack
+                styles={regionStyles}
+                verticalFill={true}
+                // eslint-disable-next-line @typescript-eslint/no-deprecated
+                padding={5}
+              >
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{bodyCaption}</Text>
                   <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this._toggleBody} />
@@ -270,7 +285,7 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
   };
 }
 
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && (item.text || item.name));
 const items: ICommandBarItemProps[] = [
   {

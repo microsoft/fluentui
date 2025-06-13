@@ -1,11 +1,12 @@
-/* eslint-disable deprecation/deprecation */
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { create } from '@fluentui/test-utilities';
 //import { Customizer } from '@fluentui/utilities';
 import { Fabric } from './Fabric';
 //import { Checkbox } from '@fluentui/react/lib/Checkbox';
 //import { createTheme } from '../../Styling';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { getBySelector } from '../../common/testUtilities';
 
 //const rtlTheme = createTheme({ rtl: true });
 //const ltrTheme = createTheme({ rtl: false });
@@ -73,7 +74,9 @@ describe('Fabric', () => {
   });
 
   it('renders a Fabric component with applyThemeToBody correctly', () => {
-    const wrapper = mount(<Fabric applyThemeToBody>test</Fabric>);
-    expect(wrapper.getDOMNode().getElementsByClassName('bodyThemed')).toBeTruthy();
+    const { container } = render(<Fabric applyThemeToBody>test</Fabric>);
+    const fabricRoot = getBySelector(container, '.ms-Fabric');
+    expect(fabricRoot).toBeTruthy();
+    expect(document.body.classList.toString()).toContain('bodyThemed');
   });
 });

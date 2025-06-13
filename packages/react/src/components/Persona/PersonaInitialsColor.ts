@@ -77,7 +77,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#5C2E91';
     case PersonaInitialsColor.orange:
       return '#CA5010';
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     case PersonaInitialsColor.red:
       return '#EE1111';
     case PersonaInitialsColor.lightRed:
@@ -100,7 +100,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#8E562E';
     case PersonaInitialsColor.coolGray:
       return '#69797E';
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     case PersonaInitialsColor.black:
       return '#1D1D1D';
     case PersonaInitialsColor.gray:
@@ -120,7 +120,7 @@ export function initialsColorPropToColorCode(props: IPersonaProps): string {
  * @returns Hex color string prefixed with #
  */
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const { primaryText, text } = props;
   let { initialsColor } = props;
   let initialsColorCode: string;

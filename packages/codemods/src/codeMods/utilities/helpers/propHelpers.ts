@@ -255,7 +255,7 @@ function tryInsertExistingDecomposedProp(oldProp: string, statement: VariableSta
   const decompObject = statement.getFirstDescendantByKind(SyntaxKind.ObjectBindingPattern);
   if (decompObject) {
     let objectText = decompObject.getText();
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     objectText = objectText.substr(0, 1) + ` ${oldProp},` + objectText.substr(1);
     decompObject.replaceWithText(objectText);
     return true;

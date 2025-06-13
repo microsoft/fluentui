@@ -772,7 +772,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)
@@ -3243,11 +3243,8 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     popupProps?: IPopupProps;
     preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
-    // @deprecated
     preventDismissOnLostFocus?: boolean;
-    // @deprecated
     preventDismissOnResize?: boolean;
-    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
@@ -7771,7 +7768,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     overflowButtonAs?: IComponentAs<IButtonProps>;
@@ -9208,9 +9205,15 @@ export interface ITag {
 export interface ITagItemProps extends IPickerItemProps<ITag> {
     className?: string;
     enableTagFocusInDisabledPicker?: boolean;
+    removeButtonProps?: ITagItemRemoveButtonProps;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
     title?: string;
+}
+
+// @public
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+    'data-id'?: string;
 }
 
 // @public

@@ -103,19 +103,20 @@ export {
 export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  getSlotClassNameProp_unstable,
   // getSlots is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
   // resolveShorthand is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   resolveShorthand,
   SSRProvider,
   useAnimationFrame,
@@ -128,16 +129,17 @@ export {
   useScrollbarWidth,
   useSelection,
   useTimeout,
+  isHTMLElement,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
   // ResolveShorthandOptions is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -241,7 +243,7 @@ export type {
   AvatarNamedColor,
   AvatarProps,
   // AvatarSizes is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   AvatarSizes,
   AvatarSize,
   AvatarSlots,
@@ -374,7 +376,7 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,
@@ -562,7 +564,7 @@ export type {
   MenuOpenChangeData,
   MenuOpenEvent,
   // MenuOpenEvents is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   MenuOpenEvents,
   MenuPopoverProps,
   MenuPopoverSlots,
@@ -578,7 +580,7 @@ export type {
   MenuTriggerState,
   SelectableHandler,
   // UninitializedMenuListState is deprecated but removing it would be a breaking change
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   UninitializedMenuListState,
 } from '@fluentui/react-menu';
 export {
@@ -630,7 +632,7 @@ export {
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
-  useRadioGroupContext_unstable, // eslint-disable-line deprecation/deprecation
+  useRadioGroupContext_unstable, // eslint-disable-line @typescript-eslint/no-deprecated
   useRadioGroupContextValue_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
@@ -819,13 +821,17 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export { resolvePositioningShorthand } from '@fluentui/react-positioning';
+export { resolvePositioningShorthand, PositioningConfigurationProvider } from '@fluentui/react-positioning';
 export type {
+  PositioningBoundary,
   PositioningProps,
+  PositioningRect,
   PositioningShorthand,
   PositioningShorthandValue,
   PositioningImperativeRef,
   PositioningVirtualElement,
+  PositioningConfigurationFn,
+  PositioningConfigurationFnOptions,
 } from '@fluentui/react-positioning';
 
 export {
@@ -1148,6 +1154,7 @@ export type {
   DataGridSelectionCellProps,
   DataGridSelectionCellState,
   DataGridSelectionCellSlots,
+  CellRenderFunction,
 } from '@fluentui/react-table';
 
 export {
@@ -1306,6 +1313,7 @@ export {
   useTreeItem_unstable,
   useTreeStyles_unstable,
   useTree_unstable,
+  TreeRootReset,
 } from '@fluentui/react-tree';
 
 export type {
@@ -1464,6 +1472,15 @@ export {
   useInfoLabel_unstable,
 } from '@fluentui/react-infolabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  InfoButton,
+  infoButtonClassNames,
+  renderInfoButton_unstable,
+  useInfoButtonStyles_unstable,
+  useInfoButton_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from '@fluentui/react-infolabel';
 
 export {
   Drawer,
@@ -1781,6 +1798,7 @@ export {
   useTagPickerOptionGroupStyles,
   useTagPickerOptionGroup,
   useTagPickerFilter,
+  useTagPickerContext_unstable,
 } from '@fluentui/react-tag-picker';
 export type {
   TagPickerContextValues,
@@ -1811,6 +1829,7 @@ export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
+  TagPickerContextValue,
 } from '@fluentui/react-tag-picker';
 
 export {
@@ -1979,3 +1998,202 @@ export type {
   CarouselViewportSlots,
   CarouselViewportState,
 } from '@fluentui/react-carousel';
+
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListItem,
+  listItemClassNames,
+  renderListItem_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+} from '@fluentui/react-list';
+export type {
+  ListProps,
+  ListSlots,
+  ListState,
+  ListItemProps,
+  ListItemSlots,
+  ListItemState,
+} from '@fluentui/react-list';
+
+export {
+  ColorSlider,
+  colorSliderClassNames,
+  renderColorSlider_unstable,
+  useColorSliderStyles_unstable,
+  useColorSlider_unstable,
+  ColorPicker,
+  colorPickerClassNames,
+  renderColorPicker_unstable,
+  useColorPickerStyles_unstable,
+  useColorPicker_unstable,
+  ColorArea,
+  colorAreaClassNames,
+  renderColorArea_unstable,
+  useColorAreaStyles_unstable,
+  useColorArea_unstable,
+  AlphaSlider,
+  alphaSliderClassNames,
+  renderAlphaSlider_unstable,
+  useAlphaSliderStyles_unstable,
+  useAlphaSlider_unstable,
+} from '@fluentui/react-color-picker';
+export type {
+  ColorSliderProps,
+  ColorSliderSlots,
+  ColorSliderState,
+  ColorPickerProps,
+  ColorPickerSlots,
+  ColorPickerState,
+  ColorAreaProps,
+  ColorAreaSlots,
+  ColorAreaState,
+  AlphaSliderProps,
+  AlphaSliderSlots,
+  AlphaSliderState,
+} from '@fluentui/react-color-picker';
+
+export {
+  Nav,
+  renderNav_unstable,
+  useNav_unstable,
+  useNavStyles_unstable,
+  navClassNames,
+  NavCategory,
+  renderNavCategory_unstable,
+  useNavCategory_unstable,
+  NavCategoryItem,
+  navCategoryItemClassNames,
+  renderNavCategoryItem_unstable,
+  useNavCategoryItem_unstable,
+  useNavCategoryItemStyles_unstable,
+  NavItem,
+  renderNavItem_unstable,
+  useNavItem_unstable,
+  useNavItemStyles_unstable,
+  navItemClassNames,
+  NavProvider,
+  useNavContext_unstable,
+  NavSubItem,
+  renderNavSubItem_unstable,
+  useNavSubItem_unstable,
+  useNavSubItemStyles_unstable,
+  navSubItemClassNames,
+  NavSubItemGroup,
+  renderNavSubItemGroup_unstable,
+  useNavSubItemGroup_unstable,
+  useNavSubItemGroupStyles_unstable,
+  navSubItemGroupClassNames,
+  NavDrawer,
+  navDrawerClassNames,
+  renderNavDrawer_unstable,
+  useNavDrawerStyles_unstable,
+  useNavDrawer_unstable,
+  NavDrawerFooter,
+  navDrawerFooterClassNames,
+  useNavDrawerFooterStyles_unstable,
+  useNavDrawerFooter_unstable,
+  NavDrawerHeader,
+  navDrawerHeaderClassNames,
+  useNavDrawerHeaderStyles_unstable,
+  useNavDrawerHeader_unstable,
+  NavDrawerBody,
+  navDrawerBodyClassNames,
+  useNavDrawerBodyStyles_unstable,
+  useNavDrawerBody_unstable,
+  Hamburger,
+  hamburgerClassNames,
+  useHamburgerStyles_unstable,
+  useHamburger_unstable,
+  NavSectionHeader,
+  navSectionHeaderClassNames,
+  renderNavSectionHeader_unstable,
+  useNavSectionHeaderStyles_unstable,
+  useNavSectionHeader_unstable,
+  NavDivider,
+  navDividerClassNames,
+  useNavDividerStyles_unstable,
+  useNavDivider_unstable,
+  AppItem,
+  appItemClassNames,
+  renderAppItem_unstable,
+  useAppItemStyles_unstable,
+  useAppItem_unstable,
+  AppItemStatic,
+  appItemStaticClassNames,
+  renderAppItemStatic_unstable,
+  useAppItemStaticStyles_unstable,
+  useAppItemStatic_unstable,
+  SplitNavItem,
+  renderSplitNavItem_unstable,
+  splitNavItemClassNames,
+  useSplitNavItemStyles_unstable,
+  useSplitNavItem_unstable,
+  NavCategoryProvider,
+  useNavCategoryContext_unstable,
+  useNavCategoryContextValues_unstable,
+  NavCategoryItemProvider,
+  useNavCategoryItemContext_unstable,
+  useNavCategoryItemContextValues_unstable,
+  useNavContextValues_unstable,
+} from '@fluentui/react-nav';
+export type {
+  NavProps,
+  NavSlots,
+  NavState,
+  NavDensity,
+  OnNavItemSelectData,
+  NavCategoryProps,
+  NavCategoryState,
+  NavCategoryItemProps,
+  NavCategoryItemSlots,
+  NavCategoryItemState,
+  NavItemSlots,
+  NavItemProps,
+  NavItemState,
+  NavItemValue,
+  NavContextValue,
+  NavContextValues,
+  NavItemRegisterData,
+  RegisterNavItemEventHandler,
+  NavSubItemSlots,
+  NavSubItemProps,
+  NavSubItemState,
+  NavSubItemGroupSlots,
+  NavSubItemGroupProps,
+  NavSubItemGroupState,
+  NavDrawerProps,
+  NavDrawerSlots,
+  NavDrawerState,
+  NavDrawerFooterProps,
+  NavDrawerFooterSlots,
+  NavDrawerFooterState,
+  NavDrawerHeaderProps,
+  NavDrawerHeaderSlots,
+  NavDrawerHeaderState,
+  NavDrawerBodyProps,
+  NavDrawerBodySlots,
+  NavDrawerBodyState,
+  HamburgerProps,
+  HamburgerState,
+  NavSectionHeaderProps,
+  NavSectionHeaderSlots,
+  NavSectionHeaderState,
+  NavDividerProps,
+  NavDividerState,
+  AppItemProps,
+  AppItemSlots,
+  AppItemState,
+  AppItemStaticProps,
+  AppItemStaticSlots,
+  AppItemStaticState,
+  SplitNavItemProps,
+  SplitNavItemSlots,
+  SplitNavItemState,
+  NavCategoryContextValues,
+  NavCategoryItemContextValues,
+} from '@fluentui/react-nav';

@@ -7,6 +7,7 @@ import {
   classNamesFunction,
   find,
   getId,
+  getRTL,
   initializeComponentRef,
   memoizeFunction,
 } from '@fluentui/react/lib/Utilities';
@@ -24,13 +25,14 @@ import {
   IAreaChartStyles,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
+import { formatDateToLocaleString } from '@fluentui/chart-utilities';
 import {
   calloutData,
   getXAxisType,
   ChartTypes,
   XAxisTypes,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
+  tooltipOfAxislabels,
   getNextColor,
   getColorFromToken,
   findNumericMinMaxOfY,
@@ -39,13 +41,16 @@ import {
   domainRangeOfNumericForAreaChart,
   domainRangeOfDateForAreaLineVerticalBarChart,
   createStringYAxis,
-  formatDate,
   getSecureProps,
   areArraysEqual,
+  getCurveFactory,
+  YAxisType,
 } from '../../utilities/index';
-import { ILegend, Legends } from '../Legends/index';
+import { ILegend, ILegendContainer, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import { IChart } from '../../types/index';
+import { IChart, IImageExportOptions } from '../../types/index';
+import { toImage } from '../../utilities/image-export-utils';
+import { ScaleLinear } from 'd3-scale';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -64,7 +69,7 @@ export interface IAreaChartAreaPoint {
   values: IAreaChartDataSetPoint;
 }
 export interface IAreaChartDataSetPoint {
-  [key: string]: number | string;
+  [key: string]: number | string | number[];
 }
 export interface IDPointType {
   values: { 0: number; 1: number; data: {} };
@@ -91,6 +96,18 @@ export interface IAreaChartState extends IBasestate {
   selectedLegends: string[];
 }
 
+interface ILineChartDataPointWithLegend extends ILineChartDataPoint {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+}
+
+type ILineChartPointsWithoutData = Omit<ILineChartPoints, 'data'>;
+interface ILineChartPointsWithLegend extends ILineChartPointsWithoutData {
+  data: ILineChartDataPointWithLegend[];
+}
+
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> implements IChart {
   public static defaultProps: Partial<IAreaChartProps> = {
     useUTC: true,
@@ -102,7 +119,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     colors: string[];
     opacity: number[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedInfo: any;
+    data: any;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     calloutPoints: any;
   };
@@ -113,7 +130,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _circleId: string;
   private _uniqueCallOutID: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _stackedData: any;
+  private _data: any;
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
@@ -129,6 +146,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
   private _cartesianChartRef: React.RefObject<IChart>;
+  private _legendsRef: React.RefObject<ILegendContainer>;
+  private _containsSecondaryYAxis = false;
+  private _hasDuplicateXValues = false;
+  private _hasMissingXValues = false;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -153,6 +174,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
     });
+    this._hasMissingXValues = this._containsMissingXValues();
     this._uniqueIdForGraph = getId('areaChart_');
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
@@ -162,6 +184,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._firstRenderOptimization = true;
     this._emptyChartId = getId('_AreaChart_empty');
     this._cartesianChartRef = React.createRef();
+    this._legendsRef = React.createRef();
   }
 
   public componentDidUpdate(prevProps: IAreaChartProps): void {
@@ -184,12 +207,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!this._isChartEmpty()) {
       const { lineChartData } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
-      const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
+      this._hasDuplicateXValues = this._xCoordinateContainsMultipleY();
+      this._containsSecondaryYAxis =
+        !!this.props.secondaryYScaleOptions && points.some(point => point.useSecondaryYScale);
+      const { colors, opacity, data, calloutPoints } = this._createSet(points);
       this._calloutPoints = calloutPoints;
       const isXAxisDateType = getXAxisType(points);
       this._colors = colors;
       this._opacity = opacity;
-      this._stackedData = stackedInfo.stackedData;
+      this._data = data.renderData;
       const legends: JSX.Element = this._getLegendData(points);
 
       const tickParams = {
@@ -199,7 +225,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const calloutProps = {
         target: this.state.refSelected,
-        isCalloutVisible: this.state.isCalloutVisible,
+        isCalloutVisible: this.state.isCalloutVisible && !this._hasDuplicateXValues && !this._hasMissingXValues,
         directionalHint: DirectionalHint.topAutoEdge,
         YValueHover: this.state.YValueHover,
         hoverXValue: this.state.hoverXValue,
@@ -223,12 +249,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
-          maxOfYVal={stackedInfo.maxOfYVal}
+          maxOfYVal={data.maxOfYVal}
           getGraphData={this._getGraphData}
           getDomainNRangeValues={this._getDomainNRangeValues}
           createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
-          getMinMaxOfYAxis={findNumericMinMaxOfY}
+          getMinMaxOfYAxis={this._getMinMaxOfYAxis}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -274,6 +300,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return this._cartesianChartRef.current?.chartContainer || null;
   }
 
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this._cartesianChartRef.current?.chartContainer, this._legendsRef.current?.toSVG, getRTL(), opts);
+  };
+
+  private _getMinMaxOfYAxis = (points: ILineChartPoints[], yAxisType: YAxisType, useSecondaryYScale: boolean) =>
+    findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
+
   private _getDomainNRangeValues = (
     points: ILineChartPoints[],
     margins: IMargins,
@@ -312,7 +345,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const { selectedLegends } = this.state;
     const xOffset = this._xAxisRectScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
@@ -353,7 +385,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate =
-      pointToHighlight instanceof Date ? formatDate(pointToHighlight, this.props.useUTC) : pointToHighlight;
+      pointToHighlight instanceof Date
+        ? formatDateToLocaleString(pointToHighlight, this.props.culture, this.props.useUTC)
+        : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -364,10 +398,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
-      const filteredValues =
-        selectedLegends.length > 0
-          ? found.values.filter((value: { legend: string }) => selectedLegends.includes(value.legend))
-          : found.values;
+      const filteredValues = this._getFilteredLegendValues(found.values);
       this.setState({
         nearestCircleToHighlight,
         isCalloutVisible: false,
@@ -434,31 +465,58 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getStackedData = (keys: string[], dataSet: any) => {
-    const stackedValues = d3Stack().keys(keys)(dataSet);
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
-    const stackedData: Array<IAreaChartDataSetPoint[]> = [];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    stackedValues.forEach((layer: any) => {
-      const currentStack: IAreaChartDataSetPoint[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      layer.forEach((d: any) => {
-        currentStack.push({
-          values: d,
-          xVal: d.data.xVal,
+  private _getDataPoints = (keys: string[], dataSet: any) => {
+    const renderPoints: Array<IAreaChartDataSetPoint[]> = [];
+    let maxOfYVal = 0;
+
+    if (this._shouldFillToZeroY()) {
+      keys.forEach((key, index) => {
+        const currentLayer: IAreaChartDataSetPoint[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        dataSet.forEach((d: any) => {
+          currentLayer.push({
+            values: [0, d[key]], // Start from zero for "tozeroy" mode
+            xVal: d.xVal,
+          });
+          if (d[key] > maxOfYVal) {
+            maxOfYVal = d[key];
+          }
         });
+        renderPoints.push(currentLayer);
       });
-      stackedData.push(currentStack);
-    });
-    this._isMultiStackChart = stackedData && stackedData.length > 1 ? true : false;
+    } else {
+      const dataValues = d3Stack().keys(keys)(dataSet);
+      maxOfYVal = d3Max(dataValues[dataValues.length - 1], dp => dp[1])!;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      dataValues.forEach((layer: any) => {
+        const currentLayer: IAreaChartDataSetPoint[] = [];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        layer.forEach((d: any) => {
+          currentLayer.push({
+            values: d,
+            xVal: d.data.xVal,
+          });
+        });
+        renderPoints.push(currentLayer);
+      });
+    }
+
+    this._isMultiStackChart = !!(this.props.legendProps?.selectedLegends
+      ? renderPoints?.length >= 1
+      : renderPoints?.length > 1);
     return {
-      stackedData,
-      maxOfYVal,
+      renderData: renderPoints,
+      // The maxOfYVal prop is only required for the primary y-axis. When the data includes
+      // a secondary y-axis, the mode defaults to tozeroy, so maxOfYVal should be calculated using
+      // only the data points associated with the primary y-axis.
+      maxOfYVal: this._containsSecondaryYAxis
+        ? findNumericMinMaxOfY(this.props.data.lineChartData!).endValue
+        : maxOfYVal,
     };
   };
 
   private _createDataSet = (points: ILineChartPoints[]) => {
-    if (this.props.enablePerfOptimization && this._enableComputationOptimization) {
+    if (this.props.enablePerfOptimization && this._enableComputationOptimization && !this._hasDuplicateXValues) {
       const allChartPoints: ILineChartDataPoint[] = [];
       const dataSet: IAreaChartDataSetPoint[] = [];
       const colors: string[] = [];
@@ -496,7 +554,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         dataSet.push(singleDataset);
       });
 
-      // get keys from dataset, used to create stacked data
+      // get keys from dataset, used to render data
       const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
       const keys: string[] = [];
       for (let i = 0; i < keysLength - 1; i++) {
@@ -504,14 +562,14 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         keys.push(keyVal);
       }
 
-      // Stacked Info used to draw graph
-      const stackedInfo = this._getStackedData(keys, dataSet);
+      // Data used to draw graph
+      const data = this._getDataPoints(keys, dataSet);
 
       return {
         colors,
         opacity,
         keys,
-        stackedInfo,
+        data,
         calloutPoints,
       };
     } else {
@@ -520,54 +578,126 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       const colors: string[] = [];
       const opacity: number[] = [];
       const calloutPoints = calloutData(points!);
-
+      let data = {};
+      const keys: string[] = [];
+      let index = 0;
       points &&
         points.length &&
         points.forEach((singleChartPoint: ILineChartPoints) => {
+          // if legend is not populated, then assign a legend
+          if (this._hasDuplicateXValues && !singleChartPoint.legend) {
+            singleChartPoint.legend = `chart${index}`;
+            ++index;
+          }
+          singleChartPoint.data.forEach((point: ILineChartDataPointWithLegend) => {
+            point.legend = singleChartPoint.legend;
+          });
           colors.push(singleChartPoint.color!);
           opacity.push(singleChartPoint.opacity || 1);
           allChartPoints.push(...singleChartPoint.data);
         });
 
-      let tempArr = allChartPoints;
-      while (tempArr.length) {
-        const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-        const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
-        );
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const singleDataset: any = {};
-        filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
-          singleDataset.xVal = singleDataPoint.x;
-          singleDataset[`chart${index}`] = singleDataPoint.y;
-        });
-        dataSet.push(singleDataset);
-        // removing compared objects from array
-        const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-        tempArr = tempArr.filter(
-          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
-        );
-      }
+      if (!this._hasDuplicateXValues) {
+        let tempArr = allChartPoints;
+        while (tempArr.length) {
+          const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
+            (point: ILineChartDataPoint) =>
+              (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+          );
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const singleDataset: any = {};
+          filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, id: number) => {
+            singleDataset.xVal = singleDataPoint.x;
+            singleDataset[`chart${id}`] = singleDataPoint.y;
+          });
+          dataSet.push(singleDataset);
+          // removing compared objects from array
+          const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+          tempArr = tempArr.filter(
+            (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
+          );
+        }
 
-      // get keys from dataset, used to create stacked data
-      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-      const keys: string[] = [];
-      for (let i = 0; i < keysLength - 1; i++) {
-        const keyVal = `chart${i}`;
-        keys.push(keyVal);
-      }
+        // get keys from dataset, used to create stacked data
+        const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+        for (let i = 0; i < keysLength - 1; i++) {
+          const keyVal = `chart${i}`;
+          keys.push(keyVal);
+        }
 
-      // Stacked Info used to draw graph
-      const stackedInfo = this._getStackedData(keys, dataSet);
+        // Data used to draw graph
+        data = this._getDataPoints(keys, dataSet);
+      } else {
+        const datasetForDuplicateValues = this._createDatasetForXCoordinateWithMultipleYValues(allChartPoints);
+        data = this._getDataPoints(datasetForDuplicateValues.keys, datasetForDuplicateValues.filteredDataSet);
+      }
 
       return {
         colors,
         opacity,
         keys,
-        stackedInfo,
+        data,
         calloutPoints,
       };
     }
+  };
+
+  private _createDatasetForXCoordinateWithMultipleYValues = (allChartPoints: ILineChartDataPoint[]) => {
+    const dataSet: IAreaChartDataSetPoint[] = [];
+
+    // Group data points by x-axis value
+    const groupedData: Record<string | number, ILineChartDataPointWithLegend[]> = {};
+    allChartPoints.forEach((dataPoint: ILineChartDataPointWithLegend) => {
+      const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
+      if (!groupedData[xValue]) {
+        groupedData[xValue] = [];
+      }
+      groupedData[xValue].push(dataPoint);
+    });
+
+    // Aggregate data points for each x-axis value
+    Object.keys(groupedData).forEach(xValue => {
+      const dataPoints = groupedData[xValue];
+      dataPoints.forEach((dataPoint, id) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = { xVal: dataPoints[0].x };
+
+        const key = dataPoint.legend ? dataPoint.legend : `chart${id}`;
+        singleDataset[key] = dataPoint.y;
+        dataSet.push(singleDataset);
+      });
+    });
+
+    // get all unique keys from each array within the dataSet
+    const allLegends: string[] = [];
+    dataSet.forEach(item => {
+      Object.keys(item).forEach(key => {
+        if (key !== 'xVal' && !allLegends.includes(key)) {
+          allLegends.push(key);
+        }
+      });
+    });
+
+    dataSet.forEach(item => {
+      allLegends.forEach(legend => {
+        if (!item[legend]) {
+          item[legend] = 0; // Fill with 0 if the legend is missing
+        }
+      });
+    });
+
+    // exclude all items within dataset having all legend values 0
+    const filteredDataSet = dataSet.filter(item => {
+      return allLegends.some(legend => item[legend] !== 0);
+    });
+
+    const keys = Array.from(new Set(filteredDataSet.flatMap(item => Object.keys(item).filter(key => key !== 'xVal'))));
+
+    return {
+      keys,
+      filteredDataSet,
+    };
   };
 
   private _getCustomizedCallout = () => {
@@ -586,8 +716,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement | null,
+    yAxisElement?: SVGElement | null,
+    yScaleSecondary?: ScaleLinear<number, number>,
   ) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, yScaleSecondary, xElement!);
   };
 
   private _onLegendHover(legend: string): void {
@@ -637,6 +769,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
         {...this.props.legendProps}
         onChange={this._onLegendSelectionChange.bind(this)}
+        ref={this._legendsRef}
       />
     );
   };
@@ -699,29 +832,38 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     return fillColor;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
+  private _drawGraph = (
+    containerHeight: number,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
+    yScalePrimary: ScaleLinear<number, number>,
+    yScaleSecondary: ScaleLinear<number, number> | undefined,
+    xElement: SVGElement,
+  ): JSX.Element[] => {
     const points = this._addDefaultColors(this.props.data.lineChartData);
     const { pointOptions, pointLineOptions } = this.props.data;
-    const area = d3Area()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y0((d: any) => yScale(d.values[0]))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y1((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
-    const line = d3Line()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => xScale(d.xVal))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .y((d: any) => yScale(d.values[1]))
-      .curve(d3CurveBasis);
 
     const graph: JSX.Element[] = [];
     let lineColor: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+    this._data.forEach((singleStackedData: Array<any>, index: number) => {
+      const yScale = points[index]?.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
+      const curveFactory = getCurveFactory(points[index]?.lineOptions?.curve, d3CurveBasis);
+      const area = d3Area()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y0((d: any) => yScale(d.values[0]))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y1((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const line = d3Line()
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .x((d: any) => xScale(d.xVal))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .y((d: any) => yScale(d.values[1]))
+        .curve(curveFactory);
+      const layerOpacity = this._shouldFillToZeroY() ? 0.8 : this._opacity[index];
       graph.push(
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           {this.props.enableGradient && (
@@ -736,15 +878,15 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             id={`${index}-line-${this._uniqueIdForGraph}`}
             d={line(singleStackedData)!}
             fill={'transparent'}
-            strokeWidth={points[index].lineOptions?.strokeWidth ?? 3}
+            strokeWidth={points[index]?.lineOptions?.strokeWidth ?? 3}
             stroke={this._colors[index]}
             opacity={this._getLineOpacity(points[index]!.legend)}
             onMouseMove={this._onRectMouseMove}
             onMouseOut={this._onRectMouseOut}
             onMouseOver={this._onRectMouseMove}
-            strokeDasharray={points[index].lineOptions?.strokeDasharray}
-            strokeDashoffset={points[index].lineOptions?.strokeDashoffset}
-            strokeLinecap={points[index].lineOptions?.strokeLinecap}
+            strokeDasharray={points[index]?.lineOptions?.strokeDasharray}
+            strokeDashoffset={points[index]?.lineOptions?.strokeDashoffset}
+            strokeLinecap={points[index]?.lineOptions?.strokeLinecap}
           />
           {singleStackedData.length === 1 ? (
             <circle
@@ -755,7 +897,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               stroke={this._colors[index]}
               strokeWidth={3}
               fill={this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={layerOpacity}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
@@ -766,7 +908,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               id={`${index}-graph-${this._uniqueIdForGraph}`}
               d={area(singleStackedData)!}
               fill={this.props.enableGradient ? `url(#gradient_${index})` : this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={layerOpacity}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
@@ -786,17 +928,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
     const circleRadius = pointOptions && pointOptions.r ? Number(pointOptions.r) : 8;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+    this._data.forEach((singleStackedData: Array<any>, index: number) => {
       if (points.length === index) {
         return;
       }
+
+      const yScale = points[index]?.useSecondaryYScale && yScaleSecondary ? yScaleSecondary : yScalePrimary;
 
       if (!this.props.optimizeLargeData || singleStackedData.length === 1) {
         // Render circles for all data points
         graph.push(
           <g
             key={`${index}-dots-${this._uniqueIdForGraph}`}
-            d={area(singleStackedData)!}
             clipPath="url(#clip)"
             role="region"
             aria-label={`${points[index].legend}, series ${index + 1} of ${points.length} with ${
@@ -804,7 +947,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             } data points.`}
           >
             {singleStackedData.map((singlePoint: IDPointType, pointIndex: number) => {
-              const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+              const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
               const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
               lineColor = points[index]!.color!;
               const legend = points[index]!.legend;
@@ -820,13 +963,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
-                  onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                  {...this._getOnClickHandler(points, index, pointIndex)}
                   onFocus={() => this._handleFocus(index, pointIndex, circleId)}
                   onBlur={this._handleBlur}
                   {...getSecureProps(pointOptions)}
                   r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
                   role="img"
-                  aria-label={this._getAriaLabel(index, pointIndex)}
+                  aria-label={
+                    (!this._hasDuplicateXValues && !this._hasMissingXValues && this._getAriaLabel(index, pointIndex)) ||
+                    undefined
+                  }
                 />
               );
             })}
@@ -837,7 +983,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
           const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
           if (this.state.nearestCircleToHighlight === xDataPoint) {
-            const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+            const circleId = `${this._circleId}_${index * this._data[0].length + pointIndex}`;
             lineColor = points[index]!.color!;
             const legend = points[index]!.legend;
             graph.push(
@@ -851,7 +997,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
-                onClick={this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!)}
+                {...this._getOnClickHandler(points, index, pointIndex)}
                 {...getSecureProps(pointOptions)}
                 r={this._getCircleRadius(xDataPoint, circleRadius, circleId, legend)}
               />,
@@ -896,18 +1042,27 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       const tooltipProps = {
         tooltipCls: classNames.tooltip!,
         id: this._tooltipId,
-        xAxis: xAxisElement,
+        axis: xAxisElement,
       };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      xAxisElement && tooltipOfAxislabels(tooltipProps);
     }
     return graph;
+  };
+
+  private _getOnClickHandler = (points: ILineChartPoints[], index: number, pointIndex: number) => {
+    return (
+      !this._hasDuplicateXValues &&
+      !this._hasMissingXValues && {
+        onClick: this._onDataPointClick.bind(this, points[index]!.data[pointIndex].onDataPointClick!),
+      }
+    );
   };
 
   private _getCircleRadius = (xDataPoint: number, circleRadius: number, circleId: string, legend: string): number => {
     const { isCircleClicked, nearestCircleToHighlight, activePoint } = this.state;
 
     // Show the circle if no legends are selected or if the point's legend is in the selected legends
-    if (!this._legendHighlighted(legend)) {
+    if (!this._noLegendHighlighted() && !this._legendHighlighted(legend)) {
       return 0;
     }
 
@@ -952,6 +1107,38 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   private _addDefaultColors = (lineChartData?: ILineChartPoints[]): ILineChartPoints[] => {
+    if (this._hasMissingXValues) {
+      // get union of all x values
+      const allXValues: Set<string | number> = new Set();
+      lineChartData &&
+        lineChartData.forEach((line: ILineChartPoints) => {
+          line.data.forEach((point: ILineChartDataPoint) => {
+            const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+            allXValues.add(xValue);
+          });
+        });
+      lineChartData &&
+        lineChartData.forEach((line: ILineChartPointsWithLegend) => {
+          allXValues.forEach((xValue: string | number) => {
+            const point = line.data.find((item: ILineChartDataPointWithLegend) => {
+              return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
+            });
+            if (!point) {
+              line.data.push({
+                x: typeof xValue === 'string' ? new Date(xValue) : xValue,
+                y: 0,
+                legend: line.legend,
+              });
+            }
+          });
+          // sort the data points by x value
+          line.data.sort((a: ILineChartDataPoint, b: ILineChartDataPoint) => {
+            const xA = a.x instanceof Date ? a.x.getTime() : a.x;
+            const xB = b.x instanceof Date ? b.x.getTime() : b.x;
+            return xA < xB ? -1 : xA > xB ? 1 : 0;
+          });
+        });
+    }
     return lineChartData
       ? lineChartData.map((item, index) => {
           let color: string;
@@ -969,7 +1156,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
     const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
-    const formattedDate = x instanceof Date ? formatDate(x, this.props.useUTC) : x;
+    const formattedDate = x instanceof Date ? formatDateToLocaleString(x, this.props.culture, this.props.useUTC) : x;
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
@@ -990,7 +1177,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getFilteredLegendValues = (values: any) => {
-    !this._noLegendHighlighted()
+    return !this._noLegendHighlighted()
       ? values.filter((value: { legend: string }) => this._legendHighlighted(value.legend))
       : values;
   };
@@ -1010,7 +1197,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
     const point = line.data[pointIndex];
-    const formattedDate = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x;
+    const formattedDate =
+      point.x instanceof Date ? formatDateToLocaleString(point.x, this.props.culture, this.props.useUTC) : point.x;
     const xValue = point.xAxisCalloutData || formattedDate;
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
@@ -1035,4 +1223,56 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { chartTitle, lineChartData } = this.props.data;
     return (chartTitle ? `${chartTitle}. ` : '') + `Area chart with ${lineChartData?.length || 0} data series. `;
   };
+
+  private _xCoordinateContainsMultipleY(): boolean {
+    const { lineChartData } = this.props.data;
+    if (!lineChartData) {
+      return false;
+    }
+    for (const item of lineChartData) {
+      const xValueMap: Record<string, number[]> = {};
+      for (const point of item.data) {
+        const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+        if (!xValueMap[xValue]) {
+          xValueMap[xValue] = [];
+        }
+        xValueMap[xValue].push(point.y);
+        if (xValueMap[xValue].length > 1) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private _containsMissingXValues(): boolean {
+    const { lineChartData } = this.props.data;
+    if (!lineChartData) {
+      return false;
+    }
+    const allXValues: Set<string | number> = new Set();
+    lineChartData.forEach((line: ILineChartPoints) => {
+      line.data.forEach((point: ILineChartDataPoint) => {
+        const xValue = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+        allXValues.add(xValue);
+      });
+    });
+    // for all x values, check if the x value is present in all series
+    let hasMissingValues = false;
+    lineChartData.forEach((line: ILineChartPoints) => {
+      allXValues.forEach((xValue: string | number) => {
+        const point = line.data.find((item: ILineChartDataPoint) => {
+          return item.x instanceof Date ? item.x.toLocaleString() === xValue : item.x === xValue;
+        });
+        if (!point) {
+          hasMissingValues = true;
+        }
+      });
+    });
+    return hasMissingValues;
+  }
+
+  private _shouldFillToZeroY() {
+    return this.props.mode === 'tozeroy' || this._containsSecondaryYAxis;
+  }
 }

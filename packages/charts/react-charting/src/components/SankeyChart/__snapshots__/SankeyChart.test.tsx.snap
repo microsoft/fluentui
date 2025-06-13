@@ -45,8 +45,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -78,8 +78,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -126,8 +126,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -175,8 +175,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -224,8 +224,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -273,8 +273,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -320,8 +320,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -353,8 +353,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -399,8 +399,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -432,8 +432,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -480,8 +480,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -529,8 +529,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -578,8 +578,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -627,8 +627,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -674,8 +674,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -707,8 +707,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -753,8 +753,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -786,8 +786,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -832,8 +832,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -864,8 +864,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -940,8 +940,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -973,8 +973,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1021,8 +1021,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1070,8 +1070,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1117,8 +1117,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1150,8 +1150,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1196,8 +1196,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1229,8 +1229,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1277,8 +1277,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1326,8 +1326,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1375,8 +1375,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1424,8 +1424,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -1471,8 +1471,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1504,8 +1504,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1550,8 +1550,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1583,8 +1583,8 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1673,8 +1673,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1706,8 +1706,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1752,8 +1752,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1785,8 +1785,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1831,8 +1831,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1863,8 +1863,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1895,8 +1895,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -1928,8 +1928,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -1974,8 +1974,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2008,8 +2008,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2057,8 +2057,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2106,8 +2106,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2155,8 +2155,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2204,8 +2204,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2253,8 +2253,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2302,8 +2302,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2351,8 +2351,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2398,8 +2398,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2431,8 +2431,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -2477,8 +2477,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2510,8 +2510,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -2556,8 +2556,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2589,8 +2589,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -2637,8 +2637,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2686,8 +2686,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2735,8 +2735,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2784,8 +2784,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -2831,8 +2831,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2864,8 +2864,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -2910,8 +2910,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -2943,8 +2943,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -2989,8 +2989,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3022,8 +3022,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3112,8 +3112,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3145,8 +3145,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3191,8 +3191,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3224,8 +3224,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3270,8 +3270,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3302,8 +3302,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3334,8 +3334,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3366,8 +3366,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3412,8 +3412,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3446,8 +3446,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3495,8 +3495,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3544,8 +3544,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3593,8 +3593,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3642,8 +3642,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3691,8 +3691,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3740,8 +3740,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3789,8 +3789,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -3836,8 +3836,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3869,8 +3869,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3915,8 +3915,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -3947,8 +3947,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -3993,8 +3993,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4026,8 +4026,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4074,8 +4074,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -4123,8 +4123,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -4172,8 +4172,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -4221,8 +4221,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -4268,8 +4268,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4301,8 +4301,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4347,8 +4347,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4380,8 +4380,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4426,8 +4426,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4458,8 +4458,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4548,8 +4548,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4581,8 +4581,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4629,8 +4629,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -4676,8 +4676,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4709,8 +4709,8 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -4799,8 +4799,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4831,8 +4831,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4863,8 +4863,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4895,8 +4895,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4927,8 +4927,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -4960,8 +4960,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -5006,8 +5006,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5039,8 +5039,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -5087,8 +5087,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5136,8 +5136,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5185,8 +5185,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5234,8 +5234,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5283,8 +5283,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5332,8 +5332,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5379,8 +5379,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5411,8 +5411,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5444,8 +5444,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -5534,8 +5534,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5567,8 +5567,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -5613,8 +5613,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5647,8 +5647,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5696,8 +5696,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5745,8 +5745,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5794,8 +5794,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         strokeOpacity={1}
       >
@@ -5841,8 +5841,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5874,8 +5874,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -5920,8 +5920,8 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
       >
         <g
@@ -5996,8 +5996,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0"
       >
@@ -6030,8 +6030,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6076,8 +6076,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1"
       >
@@ -6110,8 +6110,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6156,8 +6156,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2"
       >
@@ -6190,8 +6190,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4"
       >
@@ -6223,8 +6223,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3"
       >
@@ -6257,8 +6257,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6303,8 +6303,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5"
       >
@@ -6338,8 +6338,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0-6"
         strokeOpacity={1}
@@ -6390,8 +6390,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-6"
         strokeOpacity={1}
@@ -6442,8 +6442,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-7"
         strokeOpacity={1}
@@ -6494,8 +6494,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2-7"
         strokeOpacity={1}
@@ -6547,8 +6547,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4-7"
         strokeOpacity={1}
@@ -6599,8 +6599,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-7"
         strokeOpacity={1}
@@ -6651,8 +6651,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-8"
         strokeOpacity={1}
@@ -6703,8 +6703,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5-7"
         strokeOpacity={1}
@@ -6753,8 +6753,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6"
       >
@@ -6787,8 +6787,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6833,8 +6833,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7"
       >
@@ -6868,8 +6868,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6914,8 +6914,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8"
       >
@@ -6948,8 +6948,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -6996,8 +6996,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-9"
         strokeOpacity={1}
@@ -7048,8 +7048,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-10"
         strokeOpacity={1}
@@ -7100,8 +7100,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7-11"
         strokeOpacity={1}
@@ -7153,8 +7153,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8-11"
         strokeOpacity={1}
@@ -7203,8 +7203,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="9"
       >
@@ -7237,8 +7237,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7283,8 +7283,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="10"
       >
@@ -7317,8 +7317,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7363,8 +7363,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="11"
       >
@@ -7398,8 +7398,8 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7491,8 +7491,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0"
       >
@@ -7526,8 +7526,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7572,8 +7572,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1"
       >
@@ -7607,8 +7607,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7653,8 +7653,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2"
       >
@@ -7687,8 +7687,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4"
       >
@@ -7721,8 +7721,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3"
       >
@@ -7756,8 +7756,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -7802,8 +7802,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5"
       >
@@ -7838,8 +7838,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0-6"
         strokeOpacity={1}
@@ -7890,8 +7890,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-6"
         strokeOpacity={1}
@@ -7943,8 +7943,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-7"
         strokeOpacity={1}
@@ -7995,8 +7995,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2-7"
         strokeOpacity={1}
@@ -8047,8 +8047,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4-7"
         strokeOpacity={1}
@@ -8099,8 +8099,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-7"
         strokeOpacity={1}
@@ -8151,8 +8151,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-8"
         strokeOpacity={1}
@@ -8203,8 +8203,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5-7"
         strokeOpacity={1}
@@ -8253,8 +8253,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6"
       >
@@ -8288,8 +8288,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8334,8 +8334,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7"
       >
@@ -8369,8 +8369,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8415,8 +8415,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8"
       >
@@ -8450,8 +8450,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8498,8 +8498,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-9"
         strokeOpacity={1}
@@ -8551,8 +8551,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-10"
         strokeOpacity={1}
@@ -8604,8 +8604,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7-11"
         strokeOpacity={1}
@@ -8656,8 +8656,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8-11"
         strokeOpacity={1}
@@ -8706,8 +8706,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="9"
       >
@@ -8741,8 +8741,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8787,8 +8787,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="10"
       >
@@ -8822,8 +8822,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8868,8 +8868,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="11"
       >
@@ -8903,8 +8903,8 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -8996,8 +8996,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0"
       >
@@ -9030,8 +9030,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9076,8 +9076,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1"
       >
@@ -9111,8 +9111,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9157,8 +9157,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2"
       >
@@ -9190,8 +9190,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4"
       >
@@ -9223,8 +9223,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3"
       >
@@ -9257,8 +9257,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9303,8 +9303,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5"
       >
@@ -9338,8 +9338,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0-6"
         strokeOpacity={1}
@@ -9390,8 +9390,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-6"
         strokeOpacity={1}
@@ -9443,8 +9443,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-7"
         strokeOpacity={1}
@@ -9496,8 +9496,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2-7"
         strokeOpacity={1}
@@ -9548,8 +9548,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4-7"
         strokeOpacity={1}
@@ -9600,8 +9600,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-7"
         strokeOpacity={1}
@@ -9652,8 +9652,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-8"
         strokeOpacity={1}
@@ -9704,8 +9704,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5-7"
         strokeOpacity={1}
@@ -9754,8 +9754,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6"
       >
@@ -9789,8 +9789,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9835,8 +9835,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7"
       >
@@ -9870,8 +9870,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9916,8 +9916,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8"
       >
@@ -9950,8 +9950,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -9998,8 +9998,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-9"
         strokeOpacity={1}
@@ -10051,8 +10051,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-10"
         strokeOpacity={1}
@@ -10104,8 +10104,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7-11"
         strokeOpacity={1}
@@ -10157,8 +10157,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8-11"
         strokeOpacity={1}
@@ -10207,8 +10207,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="9"
       >
@@ -10242,8 +10242,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10288,8 +10288,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="10"
       >
@@ -10323,8 +10323,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10369,8 +10369,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="11"
       >
@@ -10404,8 +10404,8 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10494,8 +10494,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0"
       >
@@ -10529,8 +10529,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10575,8 +10575,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1"
       >
@@ -10610,8 +10610,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10656,8 +10656,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2"
       >
@@ -10690,8 +10690,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4"
       >
@@ -10724,8 +10724,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3"
       >
@@ -10759,8 +10759,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -10805,8 +10805,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5"
       >
@@ -10841,8 +10841,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="0-6"
         strokeOpacity={1}
@@ -10893,8 +10893,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-6"
         strokeOpacity={1}
@@ -10945,8 +10945,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="1-7"
         strokeOpacity={1}
@@ -10997,8 +10997,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="2-7"
         strokeOpacity={1}
@@ -11049,8 +11049,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="4-7"
         strokeOpacity={1}
@@ -11101,8 +11101,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-7"
         strokeOpacity={1}
@@ -11153,8 +11153,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="3-8"
         strokeOpacity={1}
@@ -11205,8 +11205,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="5-7"
         strokeOpacity={1}
@@ -11255,8 +11255,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6"
       >
@@ -11290,8 +11290,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -11336,8 +11336,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7"
       >
@@ -11371,8 +11371,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -11417,8 +11417,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8"
       >
@@ -11452,8 +11452,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -11500,8 +11500,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-9"
         strokeOpacity={1}
@@ -11552,8 +11552,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="6-10"
         strokeOpacity={1}
@@ -11604,8 +11604,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="7-11"
         strokeOpacity={1}
@@ -11656,8 +11656,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
               stroke-width: 3px;
               stroke: #000000;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="8-11"
         strokeOpacity={1}
@@ -11706,8 +11706,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="9"
       >
@@ -11741,8 +11741,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -11787,8 +11787,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="10"
       >
@@ -11822,8 +11822,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g
@@ -11868,8 +11868,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             {
               fill: #F5F5F5;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-              fill: #000000;
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              fill: Canvas;
             }
         key="11"
       >
@@ -11903,8 +11903,8 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
                   margin-right: 8px;
                   margin-top: 4px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
           >
             <g

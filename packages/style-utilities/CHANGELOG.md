@@ -1,8 +1,58 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.2)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.1..@fluentui/style-utilities_v8.12.2)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.67 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+- Bump @fluentui/utilities to v8.15.22 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+
+## [8.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.1)
+
+Thu, 08 May 2025 07:22:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.12.0..@fluentui/style-utilities_v8.12.1)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.66 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
+- Bump @fluentui/utilities to v8.15.21 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
+
+## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.12.0)
+
+Tue, 15 Apr 2025 07:22:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.8..@fluentui/style-utilities_v8.12.0)
+
+### Minor changes
+
+- Adding .page file type icon and updating CDN url. ([PR #34238](https://github.com/microsoft/fluentui/pull/34238) by caperez@microsoft.com)
+
+## [8.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.8)
+
+Fri, 14 Mar 2025 07:23:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.7..@fluentui/style-utilities_v8.11.8)
+
+### Patches
+
+- Updating CDN URL to point to refreshed 64x64 filetype icon assets. ([PR #33966](https://github.com/microsoft/fluentui/pull/33966) by caperez@microsoft.com)
+
+## [8.11.7](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.7)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.11.6..@fluentui/style-utilities_v8.11.7)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.65 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/merge-styles to v8.6.14 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/utilities to v8.15.20 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
 
 ## [8.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.11.6)
 

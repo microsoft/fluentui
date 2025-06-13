@@ -46,10 +46,12 @@ export function useEmblaCarousel(
     motion?: CarouselMotion;
     onDragIndexChange?: EventHandler<CarouselIndexChangeData>;
     onAutoplayIndexChange?: EventHandler<CarouselIndexChangeData>;
+    autoplayInterval?: number;
   },
 ) {
   const {
     align,
+    autoplayInterval,
     direction,
     loop,
     slidesToScroll,
@@ -59,6 +61,10 @@ export function useEmblaCarousel(
     onDragIndexChange,
     onAutoplayIndexChange,
   } = options;
+
+  const motionType = typeof motion === 'string' ? motion : motion?.kind ?? 'slide';
+  const motionDuration = typeof motion === 'string' ? 25 : motion?.duration ?? 25;
+
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -77,6 +83,7 @@ export function useEmblaCarousel(
     startIndex: activeIndex,
     watchDrag,
     containScroll,
+    duration: motionDuration,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -92,6 +99,7 @@ export function useEmblaCarousel(
     plugins.push(
       Autoplay({
         playOnInit: autoplayRef.current,
+        delay: autoplayInterval,
         /* stopOnInteraction: false causes autoplay to restart on interaction end*/
         /* we'll handle this logic to ensure autoplay state is respected */
         stopOnInteraction: true,
@@ -101,7 +109,7 @@ export function useEmblaCarousel(
     );
 
     // Optionally add Fade plugin
-    if (motion === 'fade') {
+    if (motionType === 'fade') {
       plugins.push(Fade());
     }
 
@@ -114,7 +122,7 @@ export function useEmblaCarousel(
     }
 
     return plugins;
-  }, [motion, onDragEvent, watchDrag]);
+  }, [motionType, onDragEvent, watchDrag, autoplayInterval]);
 
   /* This function enables autoplay to pause/play without affecting underlying state
    * Useful for pausing on focus etc. without having to reinitialize or set autoplay to off
@@ -150,7 +158,9 @@ export function useEmblaCarousel(
   const updateIndex = () => {
     const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
     const slides = emblaApi.current?.slideNodes();
-    const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+    const slideRegistry = emblaApi.current?.internalEngine().slideRegistry;
+    const actualIndex = slideRegistry?.[newIndex]?.[0] ?? 0;
+
     // We set the first card in the current group as the default tabster index for focus capture
     slides?.forEach((slide, slideIndex) => {
       setTabsterDefault(slide, slideIndex === actualIndex);
@@ -162,11 +172,14 @@ export function useEmblaCarousel(
     const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
     const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
     const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+    const canLoop = emblaApi.current?.internalEngine().slideLooper.canLoop();
+
     const data: CarouselUpdateData = {
       navItemsCount,
       activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
       groupIndexList,
       slideNodes: nodes,
+      canLoop,
     };
 
     updateIndex();
@@ -219,6 +232,8 @@ export function useEmblaCarousel(
         // Use direct viewport if available, else fallback to container (includes Carousel controls).
         currentElement = viewportRef.current ?? newElement;
         if (currentElement) {
+          // Stop autoplay before reinitializing.
+          emblaApi.current?.plugins?.().autoplay?.stop();
           emblaApi.current = EmblaCarousel(
             currentElement,
             {
@@ -278,8 +293,11 @@ export function useEmblaCarousel(
       slidesToScroll,
       watchDrag,
       containScroll,
+      duration: motionDuration,
     };
 
+    // Stop autoplay before reinitializing.
+    emblaApi.current?.plugins?.().autoplay?.stop();
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
@@ -287,7 +305,7 @@ export function useEmblaCarousel(
       },
       plugins,
     );
-  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag]);
+  }, [align, containScroll, direction, getPlugins, loop, slidesToScroll, watchDrag, motionDuration]);
 
   React.useEffect(() => {
     // Scroll to controlled values on update

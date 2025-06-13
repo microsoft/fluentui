@@ -12,10 +12,10 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import {
   ChartHoverCard,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getNextGradient,
 } from '../../utilities/index';
@@ -163,6 +163,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
           {...getAccessibleDataObject(this.state.callOutAccessibilityData)}
@@ -278,20 +279,20 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       case 'default':
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
-            {convertToLocaleString(x, culture)}
+            {formatToLocaleString(x, culture)}
           </div>
         );
       case 'fraction':
         return (
           <div {...accessibilityData}>
-            <span className={this._classNames.chartTitleRight}>{convertToLocaleString(x, culture)}</span>
+            <span className={this._classNames.chartTitleRight}>{formatToLocaleString(x, culture)}</span>
             <span className={this._classNames.chartDataTextDenominator}>
-              {' / ' + convertToLocaleString(y, culture)}
+              {' / ' + formatToLocaleString(y, culture)}
             </span>
           </div>
         );
       case 'percentage':
-        const dataRatioPercentage = `${convertToLocaleString(Math.round((x / y) * 100), culture)}%`;
+        const dataRatioPercentage = `${formatToLocaleString(Math.round((x / y) * 100), culture)}%`;
         return (
           <div className={this._classNames.chartTitleRight} {...accessibilityData}>
             {dataRatioPercentage}
@@ -407,7 +408,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {formatValueWithSIPrefix(barValue)}
+            {formatScientificLimitWidth(barValue)}
           </text>
         );
       }

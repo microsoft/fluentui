@@ -5,6 +5,7 @@ on:
 jobs:
   dependency-deduplication:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -15,7 +16,7 @@ jobs:
           node-version: 20.x
           cache: 'yarn'
 
-      - uses: tj-actions/changed-files@v41
+      - uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
         id: changed-files-specific
         with:
           files: |
@@ -37,6 +38,7 @@ jobs:
 
   dependency-mismatches:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -63,6 +65,7 @@ jobs:
 
   change-files:
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'microsoft' }}
     steps:
       - uses: actions/checkout@v4
         with:

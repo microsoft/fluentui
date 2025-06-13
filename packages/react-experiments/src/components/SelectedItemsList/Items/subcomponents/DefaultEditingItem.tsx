@@ -195,7 +195,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLInputElement>): void => {
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const keyCode = ev.which;
       switch (keyCode) {
         case KeyCodes.backspace:
@@ -236,14 +236,14 @@ export const DefaultEditingItemInner = <TItem extends any>(
   );
 
   const _onSuggestionSelected = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (_: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
       onEditingComplete(item, itemProps.item);
     },
     [onEditingComplete, item],
   );
 
   const _onRemoveItem = React.useCallback(
-    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+    (_: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
       if (onRemoveItem) {
         onRemoveItem(itemProps.item);
       }

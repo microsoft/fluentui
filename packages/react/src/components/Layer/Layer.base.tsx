@@ -62,7 +62,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // Sets the focus visible className when the FocusRectsProvider for the layer is rendered
     // This allows the current focus visibility style to be carried over to the layer content
     const focusRectsRef = React.useCallback(
-      el => {
+      (el: any) => {
         const isFocusVisible = getFocusVisibility(focusContext?.providerRef);
         if (el && isFocusVisible) {
           el.classList.add(IsFocusVisibleClassName);
@@ -79,7 +79,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       hostId,
       insertFirst,
       onLayerDidMount = () => undefined,
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       onLayerMounted = () => undefined,
       onLayerWillUnmount,
       styles,
@@ -216,7 +216,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         {layerRef.current &&
           ReactDOM.createPortal(
             <FocusRectsProvider layerRoot providerRef={fabricRef}>
-              {/* eslint-disable deprecation/deprecation */}
+              {/* eslint-disable @typescript-eslint/no-deprecated */}
               <Fabric
                 {...(!eventBubblingEnabled && getFilteredEvents())}
                 {...fabricProps}
@@ -225,7 +225,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
               >
                 {children}
               </Fabric>
-              {/* eslint-enable deprecation/deprecation */}
+              {/* eslint-enable @typescript-eslint/no-deprecated */}
             </FocusRectsProvider>,
             layerRef.current,
           )}

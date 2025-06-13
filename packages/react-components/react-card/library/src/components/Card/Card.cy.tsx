@@ -13,7 +13,7 @@ import {
   cardPreviewClassNames,
   CardPreview,
 } from '@fluentui/react-card';
-import type { CardProps } from '@fluentui/react-card';
+import type { CardProps, CardOnSelectionChangeEvent } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -161,9 +161,7 @@ describe('Card', () => {
       it('should focus inner elements on EnterKey press', () => {
         mountFluent(<CardSample focusMode="no-tab" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Enter');
+        cy.get('#card').realClick().realPress('Enter');
 
         cy.get('#open-button').should('be.focused');
       });
@@ -171,9 +169,7 @@ describe('Card', () => {
       it('should not focus inner elements on Tab press', () => {
         mountFluent(<CardSample focusMode="no-tab" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Tab');
+        cy.get('#card').realClick().realPress('Tab');
 
         cy.get('#card').should('not.be.focused');
         cy.get('#after').should('be.focused');
@@ -182,9 +178,7 @@ describe('Card', () => {
       it('should trap focus', () => {
         mountFluent(<CardSample focusMode="no-tab" />);
 
-        cy.get('#open-button').focus();
-
-        cy.realPress('Tab');
+        cy.get('#open-button').realClick().realPress('Tab');
 
         cy.get('#open-button').should('not.be.focused');
         cy.get('#close-button').should('be.focused');
@@ -198,9 +192,7 @@ describe('Card', () => {
       it('should focus parent on Esc press', () => {
         mountFluent(<CardSample focusMode="no-tab" />);
 
-        cy.get('#open-button').focus();
-
-        cy.realPress('Escape');
+        cy.get('#open-button').realClick().realPress('Escape');
 
         cy.get('#open-button').should('not.be.focused');
         cy.get('#card').should('be.focused');
@@ -223,9 +215,7 @@ describe('Card', () => {
       it('should focus inner elements on EnterKey press', () => {
         mountFluent(<CardSample focusMode="tab-exit" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Enter');
+        cy.get('#card').realClick().realPress('Enter');
 
         cy.get('#open-button').should('be.focused');
       });
@@ -233,9 +223,7 @@ describe('Card', () => {
       it('should not focus inner elements on Tab press', () => {
         mountFluent(<CardSample focusMode="tab-exit" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Tab');
+        cy.get('#card').realClick().realPress('Tab');
 
         cy.get('#card').should('not.be.focused');
         cy.get('#after').should('be.focused');
@@ -244,9 +232,7 @@ describe('Card', () => {
       it('should exit on Tab press', () => {
         mountFluent(<CardSample focusMode="tab-exit" />);
 
-        cy.get('#close-button').focus();
-
-        cy.realPress('Tab');
+        cy.get('#close-button').realClick().realPress('Tab');
 
         cy.get('#after').should('be.focused');
       });
@@ -254,7 +240,7 @@ describe('Card', () => {
       it('should focus parent on Esc press', () => {
         mountFluent(<CardSample focusMode="tab-exit" />);
 
-        cy.get('#card').focus().realPress('Enter');
+        cy.get('#card').realClick().realPress('Enter');
 
         cy.get('#open-button').should('be.focused');
 
@@ -280,9 +266,7 @@ describe('Card', () => {
       it('should focus inner elements on EnterKey press', () => {
         mountFluent(<CardSample focusMode="tab-only" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Enter');
+        cy.get('#card').realClick().realPress('Enter');
 
         cy.get('#open-button').should('be.focused');
       });
@@ -290,9 +274,7 @@ describe('Card', () => {
       it('should focus inner elements on Tab press', () => {
         mountFluent(<CardSample focusMode="tab-only" />);
 
-        cy.get('#card').focus();
-
-        cy.realPress('Tab');
+        cy.get('#card').realClick().realPress('Tab');
 
         cy.get('#card').should('not.be.focused');
         cy.get('#open-button').should('be.focused');
@@ -301,9 +283,7 @@ describe('Card', () => {
       it('should exit on Tab press', () => {
         mountFluent(<CardSample focusMode="tab-only" />);
 
-        cy.get('#close-button').focus();
-
-        cy.realPress('Tab');
+        cy.get('#close-button').realClick().realPress('Tab');
 
         cy.get('#after').should('be.focused');
       });
@@ -431,7 +411,10 @@ describe('Card', () => {
       const Example = () => {
         const [checked, setChecked] = React.useState(false);
 
-        const onSelectionChange = React.useCallback((event, { selected }) => setChecked(selected), []);
+        const onSelectionChange = React.useCallback(
+          (_: CardOnSelectionChangeEvent, { selected }: { selected: boolean }) => setChecked(selected),
+          [],
+        );
 
         return (
           <CardSample

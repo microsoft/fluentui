@@ -15,7 +15,7 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate, IChart, SLink, SNode } from '../../types/IDataPoint';
+import { IBasestate, IChart, IImageExportOptions, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
@@ -27,6 +27,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
+import { toImage } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -597,6 +598,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     className: string,
     containerWidth: number,
     containerHeight: number,
+    enableReflow: boolean | undefined,
   ) => ISankeyChartStyleProps;
   private readonly _computeClassNames: (
     styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
@@ -655,12 +657,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className: string,
         containerWidth: number,
         containerHeight: number,
+        enableReflow: boolean | undefined,
       ): ISankeyChartStyleProps => ({
         theme: theme!,
         width: containerWidth,
         height: containerHeight,
         pathColor,
         className,
+        enableReflow,
       }),
     );
     // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
@@ -757,6 +761,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         className!,
         state.containerWidth,
         state.containerHeight,
+        this.props.enableReflow,
       );
       const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 
@@ -896,6 +901,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       />
     );
   }
+
+  public toImage = (opts?: IImageExportOptions): Promise<string> => {
+    return toImage(this.chartContainer, undefined, this._isRtl, opts);
+  };
 
   private _computeNodeAttributes(
     nodes: SNode[],
@@ -1344,7 +1353,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
-      div.style('opacity', 0.9);
+      div.style('opacity', 0.9).style('color', this.props.theme!.palette.neutralPrimary);
       div
         .html(text)
         .style('left', evt.pageX + 'px')

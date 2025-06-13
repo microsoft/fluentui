@@ -225,7 +225,7 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
         // Try to copy the text directly to the clipboard
         copyInput.value = copyText;
         copyInput.select();
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (!doc.execCommand('copy')) {
           // The command failed. Fallback to the method below.
           throw new Error();

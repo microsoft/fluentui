@@ -118,8 +118,10 @@ export const Form: React.FC = () => {
     });
   }, [dispatch, debounceKeyColor, debounceHueTorsion, debounceVibrancy]);
 
-  const generateHexColor = (e: React.ChangeEvent<HTMLInputElement>) =>
-    '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+  const generateHexColor = (e: React.ChangeEvent<HTMLInputElement>): string => {
+    return '#' + e.target.value.replace(/[^0-9A-F]/gi, '').toUpperCase();
+  };
+
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
     const newHexColor = generateHexColor(e);

@@ -2,13 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
-import {
-  LineChartPoints,
-  LineChart,
-  ChartProps,
-  DataVizPalette,
-  CustomizedCalloutData,
-} from '@fluentui/react-charts-preview';
+import { LineChartPoints, LineChart, ChartProps, DataVizPalette, CustomizedCalloutData } from '@fluentui/react-charts';
 
 export default {
   title: 'Charts/LineChart',
@@ -149,7 +143,7 @@ export const Basic = () => {
   return (
     <div style={rootStyle}>
       <LineChart
-        culture={window.navigator.language}
+        culture="en-US"
         data={data}
         legendsOverflowText={'Overflow Items'}
         yMinValue={200}

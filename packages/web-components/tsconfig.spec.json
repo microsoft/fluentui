@@ -6,5 +6,5 @@
     "outDir": "dist/esm",
     "types": ["node"]
   },
-  "include": ["src/**/*.test.*", "src/**/*.spec.*"]
+  "include": ["src/**/*.spec.*"]
 }

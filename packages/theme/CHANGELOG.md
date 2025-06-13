@@ -1,8 +1,37 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 23 Dec 2024 07:22:58 GMT and should not be manually modified.
+This log was last generated on Fri, 16 May 2025 07:22:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.67](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.67)
+
+Fri, 16 May 2025 07:22:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.66..@fluentui/theme_v2.6.67)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.15.22 ([PR #34453](https://github.com/microsoft/fluentui/pull/34453) by beachball)
+
+## [2.6.66](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.66)
+
+Thu, 08 May 2025 07:22:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.65..@fluentui/theme_v2.6.66)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.15.21 ([PR #34340](https://github.com/microsoft/fluentui/pull/34340) by beachball)
+
+## [2.6.65](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.65)
+
+Fri, 21 Feb 2025 07:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.64..@fluentui/theme_v2.6.65)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.14 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/utilities to v8.15.20 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
+- Bump @fluentui/set-version to v8.2.24 ([PR #33879](https://github.com/microsoft/fluentui/pull/33879) by beachball)
 
 ## [2.6.64](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.64)
 

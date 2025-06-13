@@ -8,7 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -119,8 +119,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         targetRatio,
         showTriangle: !!(benchmarkData || targetData),
       });
-      const getChartData = () =>
-        convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      const getChartData = () => formatToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
 
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
@@ -138,7 +137,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                   {!this.props.hideDenominator && (
                     <span className={this._classNames.ratioDenominator}>
-                      {' / ' + convertToLocaleString(total, culture)}
+                      {' / ' + formatToLocaleString(total, culture)}
                     </span>
                   )}
                 </div>
@@ -172,6 +171,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   directionalHint={DirectionalHint.topAutoEdge}
                   id={this._calloutId}
                   onDismiss={this._closeCallout}
+                  // eslint-disable-next-line @typescript-eslint/no-deprecated
                   preventDismissOnLostFocus={true}
                   /** Keep the callout updated with details of focused/hovered bar */
                   shouldUpdateWhenHidden={true}
@@ -326,6 +326,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : startColor;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight,
@@ -342,12 +343,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-          onFocus={this._onBarFocus.bind(this, pointData, startColor, point)}
+          onFocus={this._onBarFocus.bind(this, pointData, hoverCardYColor, point)}
           onBlur={this._onBarLeave}
           aria-label={this._getAriaLabel(point)}
           role="img"
-          onMouseOver={this._onBarHover.bind(this, pointData, startColor, point)}
-          onMouseMove={this._onBarHover.bind(this, pointData, startColor, point)}
+          onMouseOver={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, hoverCardYColor, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
@@ -411,7 +412,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           refSelected: obj.refElement,
           /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-          calloutLegend: point.legend!,
+          calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
           dataForHoverCard: pointData,
           color,
           xCalloutValue: point.xAxisCalloutData!,
@@ -483,7 +484,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         refSelected: mouseEvent,
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
-        calloutLegend: point.legend!,
+        calloutLegend: point.legend ? point.legend : point.placeHolder ? 'Remaining' : '',
         dataForHoverCard: pointData,
         color,
         xCalloutValue: point.xAxisCalloutData!,
@@ -538,7 +539,10 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      (legend ? `${legend}, ` : point.placeHolder ? 'Remaining, ' : '') + `${yValue}.`
+    );
   };
 
   private _isChartEmpty(): boolean {

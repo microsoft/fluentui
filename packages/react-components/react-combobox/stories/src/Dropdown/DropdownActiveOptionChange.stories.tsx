@@ -18,16 +18,18 @@ export const ActiveOptionChange = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
   const [activeOptionText, setActiveOptionText] = React.useState('');
 
-  const onActiveOptionChange = React.useCallback(
+  const onActiveOptionChange = React.useCallback<NonNullable<DropdownProps['onActiveOptionChange']>>(
     (_, data) => {
-      setActiveOptionText(data?.nextOption?.text);
+      if (data?.nextOption?.text) {
+        setActiveOptionText(data?.nextOption?.text);
+      }
     },
     [setActiveOptionText],
   );
 
   const onMouseEnter = React.useCallback(
-    e => {
-      setActiveOptionText(`${e.target.textContent} (Mouse enter)`);
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      setActiveOptionText(`${e.currentTarget.textContent} (Mouse enter)`);
     },
     [setActiveOptionText],
   );
@@ -35,8 +37,8 @@ export const ActiveOptionChange = (props: Partial<DropdownProps>) => {
   return (
     <div className={styles.root}>
       {activeOptionText}
-      <label id={dropdownId}>Schedule a meeting</label>
-      <Dropdown aria-labelledby={dropdownId} onActiveOptionChange={onActiveOptionChange} {...props}>
+      <label htmlFor={dropdownId}>Schedule a meeting</label>
+      <Dropdown id={dropdownId} onActiveOptionChange={onActiveOptionChange} {...props}>
         <Option text="Katri Athokas" onMouseEnter={onMouseEnter}>
           <Persona
             avatar={{ color: 'colorful', 'aria-hidden': true }}

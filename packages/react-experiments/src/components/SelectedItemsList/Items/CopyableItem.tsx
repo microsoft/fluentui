@@ -17,7 +17,7 @@ export const CopyableItem = <T extends any>(
 ): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
     const onCopy = React.useCallback(
-      item => {
+      (item: any) => {
         const copyText = copyableItemProps.getCopyItemText([item]);
         const copyInput = document.createElement('input') as HTMLInputElement;
         document.body.appendChild(copyInput);
@@ -26,7 +26,7 @@ export const CopyableItem = <T extends any>(
           // Try to copy the text directly to the clipboard
           copyInput.value = copyText;
           copyInput.select();
-          // eslint-disable-next-line deprecation/deprecation
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           if (!document.execCommand('copy')) {
             // The command failed. Fallback to the method below.
             throw new Error();

@@ -14,8 +14,10 @@ import {
   ILegendsStyles,
   ILegendStyleProps,
   ILegendOverflowData,
+  ILegendContainer,
 } from './Legends.types';
 import { Shape } from './shape';
+import { cloneLegendsToSVG } from '../../utilities/image-export-utils';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -40,11 +42,12 @@ export interface ILegendState {
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
-export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
+export class LegendsBase extends React.Component<ILegendsProps, ILegendState> implements ILegendContainer {
   private _hoverCardRef: HTMLDivElement;
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
   /** Boolean variable to check if one or more legends are selected */
   private _isLegendSelected = false;
+  private _rootElem: HTMLDivElement | null;
 
   public static getDerivedStateFromProps(newProps: ILegendsProps, prevState: ILegendState): ILegendState {
     const { selectedLegend, selectedLegends } = newProps;
@@ -104,7 +107,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
-      <div className={this._classNames.root}>
+      <div className={this._classNames.root} ref={el => (this._rootElem = el)}>
         {this.props.enabledWrapLines ? (
           this._onRenderData(dataToRender)
         ) : (
@@ -118,6 +121,20 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       </div>
     );
   }
+
+  public toSVG = (svgWidth: number, isRTL: boolean = false) => {
+    return cloneLegendsToSVG(
+      this.props.legends,
+      svgWidth,
+      {
+        selectedLegends: this.state.selectedLegends,
+        centerLegends: !!this.props.centerLegends,
+        textClassName: this._classNames.text,
+        isRTL,
+      },
+      this._rootElem,
+    );
+  };
 
   private _generateData(): ILegendOverflowData {
     const { allowFocusOnLegends = true, shape } = this.props;

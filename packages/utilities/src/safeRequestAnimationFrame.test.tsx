@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { safeRequestAnimationFrame } from './safeRequestAnimationFrame';
-import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 
 describe('safeRequestAnimationFrame', () => {
   let rafCalled = false;
@@ -32,7 +32,7 @@ describe('safeRequestAnimationFrame', () => {
   });
 
   it('can request animation frame', () => {
-    mount(<Foo />);
+    renderer.create(<Foo />);
 
     expect(rafCalled).toEqual(false);
 
@@ -42,11 +42,11 @@ describe('safeRequestAnimationFrame', () => {
   });
 
   it('can cancel request animation frame', () => {
-    const wrapper = mount(<Foo />);
+    const component = renderer.create(<Foo />);
 
     expect(rafCalled).toEqual(false);
 
-    wrapper.unmount();
+    component.unmount();
 
     jest.runOnlyPendingTimers();
 

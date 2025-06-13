@@ -177,7 +177,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
-  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard()();
+  const isNavigatingWithKeyboard = useIsNavigatingWithKeyboard();
 
   // Callback ref that attaches a keyborg:focusin event listener.
   const [keyborgListenerCallbackRef] = React.useState(() => {
@@ -186,7 +186,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       // For example, we don't want to show the tooltip when a dialog is closed
       // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
-      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard) {
+      if (ev.detail?.isFocusedProgrammatically && !isNavigatingWithKeyboard()) {
         ignoreNextFocusEventRef.current = true;
       }
     }) as EventListener;
@@ -238,7 +238,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const child = getTriggerChild(children);
 
   const triggerAriaProps: Pick<TooltipChildProps, 'aria-label' | 'aria-labelledby' | 'aria-describedby'> = {};
-  const isMenuTrigger = child?.props?.['aria-haspopup'] === 'menu' && child?.props?.['aria-expanded'];
+  const isExpanded = child?.props?.['aria-expanded'] === true || child?.props?.['aria-expanded'] === 'true';
 
   if (relationship === 'label') {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
@@ -257,7 +257,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   // Case 1: Don't render the Tooltip in SSR to avoid hydration errors
   // Case 2: Don't render the Tooltip, if it triggers Menu and it's already opened
-  if (isServerSideRender || isMenuTrigger) {
+  if (isServerSideRender || isExpanded) {
     state.shouldRenderTooltip = false;
   }
 

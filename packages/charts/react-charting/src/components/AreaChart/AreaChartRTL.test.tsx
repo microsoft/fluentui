@@ -512,6 +512,16 @@ describe('Area chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the Area Chart with tozeroy mode',
+    AreaChart,
+    { data: chartData, mode: 'tozeroy' },
+    container => {
+      //Asset
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
@@ -692,6 +702,9 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
+    undefined,
+    undefined,
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(

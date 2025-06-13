@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
 import { render } from '@testing-library/react';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { Fabric } from '../../Fabric';
@@ -24,7 +23,7 @@ describe('Stack', () => {
 
   it('can handle having no children in vertical Stack', () => {
     const createEmptyStack = () => {
-      mount(<Stack />);
+      render(<Stack />);
     };
 
     expect(createEmptyStack).not.toThrow();
@@ -32,7 +31,7 @@ describe('Stack', () => {
 
   it('can handle having no children in horizontal Stack', () => {
     const createEmptyStack = () => {
-      mount(<Stack horizontal />);
+      render(<Stack horizontal />);
     };
 
     expect(createEmptyStack).not.toThrow();
@@ -202,7 +201,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with a gap in rtl context correctly', () => {
     const component = renderer.create(
-      // eslint-disable-next-line deprecation/deprecation
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       <Fabric dir="rtl">
         <Stack horizontal tokens={{ childrenGap: 10 }}>
           <Stack.Item>Item 1</Stack.Item>

@@ -1,19 +1,20 @@
 import * as React from 'react';
 import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { LegendShape } from '../components/Legends/Legends.types';
+import { CurveFactory } from 'd3-shape';
 
 export interface IBasestate {
   _width?: number;
   _height?: number;
   activeLegend?: string;
   color?: string;
-  dataForHoverCard?: number;
+  dataForHoverCard?: number | string;
   isCalloutVisible: boolean;
   isLegendSelected?: boolean;
   isLegendHovered?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected?: any;
-  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  YValueHover?: { legend?: string; y?: number | string; color?: string }[];
   hoverYValue?: string | number | null;
   hoverXValue?: string | number | null;
   xCalloutValue?: string;
@@ -299,19 +300,7 @@ export interface ILineDataInVerticalBarChart {
 /**
  * {@docCategory IChartData}
  */
-export interface ILineChartDataPoint {
-  /**
-   * Independent value of the data point, rendered along the x-axis.
-   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
-   * If data type on x is Date, then the data is spaced evenly by d3-scale
-   */
-  x: number | Date;
-
-  /**
-   * Dependent value of the data point, rendered along the y-axis.
-   */
-  y: number;
-
+export interface IBaseDataPoint {
   /**
    * Defines the function that is executed on clicking  line
    */
@@ -341,6 +330,33 @@ export interface ILineChartDataPoint {
    * X axis Accessibility data for callout
    */
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Marker size of the points
+   */
+  markerSize?: number;
+
+  /**
+   * text labels of marker points
+   */
+  text?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface ILineChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
 }
 
 /**
@@ -397,6 +413,33 @@ export interface ILineChartLineOptions extends React.SVGProps<SVGPathElement> {
    * Color of border around the line. Default white.
    */
   lineBorderColor?: string;
+
+  /**
+   * Defines the type of interpolation used to render the line.
+   * @default 'linear'
+   */
+  curve?: 'linear' | 'natural' | 'step' | 'stepAfter' | 'stepBefore' | CurveFactory;
+
+  /**
+   * Defines the mode of points to be rendered.
+   */
+  mode?:
+    | 'lines'
+    | 'markers'
+    | 'text'
+    | 'lines+markers'
+    | 'text+markers'
+    | 'text+lines'
+    | 'text+lines+markers'
+    | 'none'
+    | 'gauge'
+    | 'number'
+    | 'delta'
+    | 'number+delta'
+    | 'gauge+number'
+    | 'gauge+number+delta'
+    | 'gauge+delta'
+    | 'markers+text';
 }
 
 /**
@@ -453,6 +496,12 @@ export interface ILineChartPoints {
    * Defines the function that is executed on clicking  line
    */
   onLineClick?: () => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**
@@ -482,6 +531,11 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the scatter chart
+   */
+  scatterChartData?: IScatterChartPoints[];
 
   /**
    * data for the points in the line chart
@@ -568,7 +622,7 @@ export interface IVSChartDataPoint {
   /**
    * data the datapoint in the chart
    */
-  data: number;
+  data: number | string;
 
   /**
    * Legend text for the datapoint in the chart
@@ -637,19 +691,28 @@ export interface IVerticalStackedChartProps {
  * {@docCategory IChartData}
  */
 export interface ILineDataInVerticalStackedBarChart {
-  y: number;
+  y: number | string;
   color: string;
   legend: string;
   /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+  /**
    * Data to show in callout
    */
-  data?: number;
+  data?: number | string;
   yAxisCalloutData?: string;
   /**
    * Whether to use the secondary y scale or not
    * False by default.
    */
   useSecondaryYScale?: boolean;
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
 }
 
 /**
@@ -703,6 +766,12 @@ export interface IGVBarChartSeriesPoint {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 /**
@@ -820,4 +889,114 @@ export interface ICustomizedCalloutData {
  */
 export interface IChart {
   chartContainer: HTMLElement | null;
+  toImage?: (opts?: IImageExportOptions) => Promise<string>;
 }
+
+/**
+ * {@docCategory Chart}
+ */
+export interface IImageExportOptions {
+  width?: number;
+  height?: number;
+  scale?: number;
+  background?: string;
+}
+
+/**
+ * {@docCategory IChartData}
+ * ScatterChartDataPoint interface.
+ */
+export interface IScatterChartDataPoint extends IBaseDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   */
+  x: number | Date | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IScatterChartPoints {
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * The shape for the legend
+   * default: show the rect legend
+   */
+  legendShape?: LegendShape;
+
+  /**
+   * dataPoints for the line chart
+   */
+  data: IScatterChartDataPoint[];
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
+   * hide dots for points that are not active
+   */
+  hideNonActiveDots?: boolean;
+
+  /**
+   * Defines the function that is executed on clicking this legend
+   */
+  onLegendClick?: (selectedLegend: string | null | string[]) => void;
+
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
+}
+
+/**
+ * Specifies the ordering options for axis categories in Cartesian charts.
+ *
+ * - `'default'`: Uses the original order before custom ordering was supported.
+ *   In some charts, this behaves the same as `'data'`.
+ * - `'data'`: Preserves the order of categories as provided in the input data.
+ * - `string[]`: Explicitly defines the custom order of categories as an array of category names.
+ * - `'category ascending' | 'category descending'`: Orders categories alphanumerically.
+ * - `'total ascending' | 'total descending'`: Orders categories by the total of their associated values.
+ * - `'min ascending' | 'min descending'`: Orders by the minimum value within each category.
+ * - `'max ascending' | 'max descending'`: Orders by the maximum value within each category.
+ * - `'sum ascending' | 'sum descending'`: Orders by the sum of values for each category (same as 'total').
+ * - `'mean ascending' | 'mean descending'`: Orders by the average of values in each category.
+ * - `'median ascending' | 'median descending'`: Orders by the median value of each category.
+ *
+ * {@docCategory CartesianChart}
+ */
+export type AxisCategoryOrder =
+  | 'default'
+  | 'data'
+  | string[]
+  | 'category ascending'
+  | 'category descending'
+  | 'total ascending'
+  | 'total descending'
+  | 'min ascending'
+  | 'min descending'
+  | 'max ascending'
+  | 'max descending'
+  | 'sum ascending'
+  | 'sum descending'
+  | 'mean ascending'
+  | 'mean descending'
+  | 'median ascending'
+  | 'median descending';

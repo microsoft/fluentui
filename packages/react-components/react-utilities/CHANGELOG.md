@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 16 Dec 2024 16:26:49 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jun 2025 09:43:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.21.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.21.0)
+
+Thu, 12 Jun 2025 09:43:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.20.0..@fluentui/react-utilities_v9.21.0)
+
+### Minor changes
+
+- feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.20.0)
+
+Fri, 06 Jun 2025 13:15:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.19.0..@fluentui/react-utilities_v9.20.0)
+
+### Minor changes
+
+- feat: add custom RefAttributes interface which is used within ForwardRefComponent to mitigate breaking changes shipped as patch release in @types/react@18.2.61 ([PR #34572](https://github.com/microsoft/fluentui/pull/34572) by martinhochel@microsoft.com)
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.19.0)
+
+Wed, 16 Apr 2025 19:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.23..@fluentui/react-utilities_v9.19.0)
+
+### Minor changes
+
+- Add getSlotClassNameProp_unstable function to allow custom style hooks to preserve the original className while overriding the component default className. ([PR #34166](https://github.com/microsoft/fluentui/pull/34166) by behowell@microsoft.com)
+
+## [9.18.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.23)
+
+Thu, 27 Mar 2025 21:12:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.22..@fluentui/react-utilities_v9.18.23)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.1 ([PR #34034](https://github.com/microsoft/fluentui/pull/34034) by beachball)
+
+## [9.18.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.22)
+
+Wed, 19 Mar 2025 15:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.21..@fluentui/react-utilities_v9.18.22)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.23.0 ([PR #34032](https://github.com/microsoft/fluentui/pull/34032) by beachball)
+
+## [9.18.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.21)
+
+Tue, 11 Mar 2025 18:58:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.20..@fluentui/react-utilities_v9.18.21)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.22.0 ([PR #33927](https://github.com/microsoft/fluentui/pull/33927) by beachball)
+
+## [9.18.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.20)
+
+Wed, 22 Jan 2025 14:00:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.19..@fluentui/react-utilities_v9.18.20)
+
+### Patches
+
+- fix: add autoCorrect and minLength input properties support to getNativeProps utility ([PR #33642](https://github.com/microsoft/fluentui/pull/33642) by dmytrokirpa@microsoft.com)
 
 ## [9.18.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.19)
 

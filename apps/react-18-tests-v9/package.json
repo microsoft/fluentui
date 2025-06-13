@@ -1,17 +1,20 @@
 {
   "name": "@fluentui/react-18-tests-v9",
-  "description": "React 18 test application",
+  "description": "React 18 test application and playground",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "type-check": "just-scripts type-check",
-    "lint": "eslint --ext .js,.ts,.tsx ./src",
+    "type-check:integration": "tsc -p tsconfig.react-18.json --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
+    "test:integration": "jest --passWithNoTests -c jest-react-18.config.js",
     "format": "prettier -w . --ignore-path ../.prettierignore",
     "format:check": "yarn format -c",
     "start": "webpack-dev-server --mode=development",
+    "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "e2e": "cypress run --component"
+    "e2e:integration": "npx --yes cypress@latest run --component --config-file cypress-react-18.config.ts"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -19,14 +22,21 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-components": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-timepicker-compat": "*",
+    "@cypress/react": "9.0.1",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
+    "@types/react-test-renderer": "18.3.1",
+    "cypress-real-events": "1.14.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-test-renderer": "18.3.1",
     "tslib": "^2.1.0"
   }
 }

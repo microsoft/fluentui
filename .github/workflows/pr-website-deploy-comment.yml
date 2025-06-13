@@ -17,7 +17,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.repository_owner == 'microsoft' }} && ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
     outputs:
       pr_number: ${{ steps.pr_number.outputs.result }}
       website_url: ${{ steps.website_url.outputs.id }}
@@ -59,14 +59,14 @@ jobs:
         run: echo "id=${{env.DEPLOY_HOST_URL}}pull/${{steps.pr_number.outputs.result}}/" >> $GITHUB_OUTPUT
 
       - name: Login via Azure CLI
-        uses: azure/login@v2
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Upload PR WebSite
-        uses: azure/cli@v2
+        uses: azure/cli@089eac9d8cc39f5d003e94f8b65efc51076c9cbd # v2.1.0
         env:
           AZCOPY_AUTO_LOGIN_TYPE: 'AZCLI'
         with:
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: 'Comment on PR'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@67d0dec7b07ed060a405f9b2a64b8ab319fdd7db # v2.9.2
         with:
           header: deploy-pr-site
           number: ${{ needs.deploy.outputs.pr_number }}

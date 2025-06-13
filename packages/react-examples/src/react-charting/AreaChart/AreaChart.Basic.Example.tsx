@@ -10,6 +10,7 @@ interface IAreaChartBasicState {
   isCalloutselected: boolean;
   showAxisTitles: boolean;
   legendMultiSelect: boolean;
+  changeChartMode: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -26,6 +27,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       isCalloutselected: false,
       showAxisTitles: true,
       legendMultiSelect: false,
+      changeChartMode: false,
     };
   }
   public componentDidMount(): void {
@@ -73,6 +75,11 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   private _onToggleLegendMultiSelect = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.forceUpdate();
     this.setState({ legendMultiSelect: checked });
+  };
+
+  private _onToggleChartMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ changeChartMode: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -181,7 +188,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
     const chart3Points = chart1Points.map((point, index) => {
       return {
         x: point.x,
-        y: point.y - 5000,
+        y: point.y + 7000,
         xAxisCalloutData: point.xAxisCalloutData,
         yAxisCalloutData: point.yAxisCalloutData,
       };
@@ -249,6 +256,14 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           onChange={this._onToggleLegendMultiSelect}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <Toggle
+          label="Change chart mode to toZeroY"
+          onText="ON"
+          offText="OFF"
+          checked={this.state.changeChartMode}
+          onChange={this._onToggleChartMode}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
             <AreaChart
@@ -274,6 +289,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               legendProps={{
                 canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
+              mode={this.state.changeChartMode ? 'tozeroy' : 'tonexty'}
             />
           </div>
         )}
@@ -300,6 +316,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               legendProps={{
                 canSelectMultipleLegends: this.state.legendMultiSelect,
               }}
+              mode={this.state.changeChartMode ? 'tozeroy' : 'tonexty'}
             />
           </div>
         )}

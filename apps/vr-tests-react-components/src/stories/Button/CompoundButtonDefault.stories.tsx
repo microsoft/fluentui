@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { Steps } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
+import { getStoryVariant, RTL } from '../../utilities';
 import { buttonId } from './utils';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   // https://github.com/microsoft/fluentui/issues/21998
   // .hover('#button-id')
   // .snapshot('hover', { cropTo: '.testWrapper' })
   .mouseDown('#button-id')
-  .snapshot('pressed', { cropTo: '.testWrapper' })
+  .snapshot('pressed')
   .end();
 
 export default {
   title: 'CompoundButton Converged',
   component: CompoundButton,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
 } satisfies Meta<typeof CompoundButton>;
 
 export const Default = () => (

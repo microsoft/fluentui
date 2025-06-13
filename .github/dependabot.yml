@@ -1,13 +1,19 @@
 version: 2
 updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
   # Weekly updates for devDependencies.
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'weekly'
-      schedule: 'tuesday'
-      time: '09:00'
     allow:
       - dependency-type: 'development'
     open-pull-requests-limit: 6
     versioning-strategy: increase
+    ignore:
+      # Ignore major version bumps for all npm dependencies
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']

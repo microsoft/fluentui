@@ -1,9 +1,6 @@
 import * as React from 'react';
 
 export type MessageBarTransitionContextValue = {
-  /**
-   * @deprecated CSS className is no longer used for this transition, replaced by motion components
-   */
   className: string;
   nodeRef: React.Ref<HTMLDivElement | null>;
 };
@@ -19,7 +16,7 @@ export const messageBarTransitionContextDefaultValue: MessageBarTransitionContex
 };
 
 /**
- * Context to pass nodeRef for animation to MessageBar components
+ * Context to pass animation className to MessageBar components
  * @internal
  */
 export const MessageBarTransitionContextProvider = messageBarTransitionContext.Provider;

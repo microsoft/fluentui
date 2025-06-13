@@ -1,15 +1,17 @@
 export {
   slot,
   isSlot,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlots,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getSlotsNext,
   assertSlots,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
+  getSlotClassNameProp_unstable,
+  SLOT_CLASS_NAME_PROP_SYMBOL,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
@@ -18,12 +20,13 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
-  // eslint-disable-next-line deprecation/deprecation
+  RefAttributes,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandFunction,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   ResolveShorthandOptions,
   Slot,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   Slots,
   SlotClassNames,
   SlotPropsRecord,
@@ -60,7 +63,7 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,

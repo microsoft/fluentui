@@ -9,9 +9,9 @@ import { SlotComponentType } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type AtomMotion = {
-    keyframes: Keyframe[];
-} & KeyframeEffectOptions;
+export type AtomMotion = AtomCore & {
+    reducedMotion?: Partial<AtomCore>;
+};
 
 // @public (undocumented)
 export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
@@ -24,8 +24,8 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 // @public (undocumented)
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
-// @public (undocumented)
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
+// @public
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, variantParams: Partial<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -138,6 +138,17 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 }
 
 // @public (undocumented)
+export type PresenceGroupChildContextValue = {
+    appear: boolean;
+    visible: boolean;
+    unmountOnExit: boolean;
+    onExit: () => void;
+};
+
+// @public (undocumented)
+export const PresenceGroupChildProvider: React_2.Provider<PresenceGroupChildContextValue | undefined>;
+
+// @public (undocumented)
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 // @public (undocumented)
@@ -158,6 +169,9 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: React_2.ReactElement;
     }>;
 };
+
+// @public (undocumented)
+export const usePresenceGroupChildContext: () => PresenceGroupChildContextValue | undefined;
 
 // (No @packageDocumentation comment for this package)
 

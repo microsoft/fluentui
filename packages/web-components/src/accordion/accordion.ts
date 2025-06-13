@@ -1,11 +1,13 @@
 import { Observable } from '@microsoft/fast-element';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
+import { BaseAccordionItem } from '../accordion-item/accordion-item.base.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
  * An Accordion Custom HTML Element
  * Implements {@link https://www.w3.org/TR/wai-aria-practices-1.1/#accordion | ARIA Accordion}.
+ *
+ * @tag fluent-accordion
  *
  * @slot - The default slot for the accordion items
  * @fires change - Fires a custom 'change' event when the active item changes

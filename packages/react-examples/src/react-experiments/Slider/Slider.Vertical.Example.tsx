@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import * as React from 'react';
 import { Slider as DeprecatedSlider } from '@fluentui/react-experiments';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 
 // Workaround to prevent errors on usage of Slider, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 const Slider = DeprecatedSlider;
 
 export interface ISliderVerticalExampleState {

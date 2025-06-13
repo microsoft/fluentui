@@ -92,35 +92,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: tokens.colorTransparentBackground,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorTransparentBackgroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: tokens.colorTransparentBackground,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: tokens.colorTransparentBackgroundHover,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: tokens.colorTransparentBackgroundPressed,
       },
     },
   },

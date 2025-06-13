@@ -18,6 +18,7 @@ import { getIsChecked, getMenuItemAriaRole, hasSubmenu, isItemDisabled } from '.
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem } from '../ContextualMenu.types';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
@@ -136,7 +137,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   protected _onItemKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const { item, onItemKeyDown } = this.props;
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     if (ev.which === KeyCodes.enter) {
       this._executeItemClick(ev);
       ev.preventDefault();
@@ -161,7 +162,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -172,11 +173,11 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     const itemProps: IContextualMenuItem = {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
-      /* eslint-disable deprecation/deprecation */
+      /* eslint-disable @typescript-eslint/no-deprecated */
       name: item.name,
       text: item.text || item.name,
       secondaryText: item.secondaryText,
-      /* eslint-enable deprecation/deprecation */
+      /* eslint-enable @typescript-eslint/no-deprecated */
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
@@ -209,12 +210,17 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _renderSplitDivider(item: IContextualMenuItem) {
     const getDividerClassNames =
       item.getSplitButtonVerticalDividerClassNames || getSplitButtonVerticalDividerClassNames;
-    return <VerticalDivider getClassNames={getDividerClassNames} />;
+    return (
+      <VerticalDivider
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        getClassNames={getDividerClassNames}
+      />
+    );
   }
 
   private _renderSplitIconButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames, // eslint-disable-line deprecation/deprecation
+    classNames: IMenuItemClassNames, // eslint-disable-line @typescript-eslint/no-deprecated
     index: number,
     keytipAttributes: any,
   ) {

@@ -1,5 +1,17 @@
 import * as React from 'react';
+
+import { isAnimationRunning } from '../utils/isAnimationRunning';
 import type { AnimationHandle, AtomMotion } from '../types';
+
+export const DEFAULT_ANIMATION_OPTIONS: KeyframeEffectOptions = {
+  fill: 'forwards',
+};
+
+// A motion atom's default reduced motion is a simple 1 ms duration.
+// But an atom can define a custom reduced motion, overriding keyframes and/or params like duration, easing, iterations, etc.
+const DEFAULT_REDUCED_MOTION_ATOM: NonNullable<AtomMotion['reducedMotion']> = {
+  duration: 1,
+};
 
 function useAnimateAtomsInSupportedEnvironment() {
   // eslint-disable-next-line @nx/workspace-no-restricted-globals
@@ -16,24 +28,42 @@ function useAnimateAtomsInSupportedEnvironment() {
       const atoms = Array.isArray(value) ? value : [value];
       const { isReducedMotion } = options;
 
-      const animations = atoms.map(motion => {
-        const { keyframes, ...params } = motion;
-        const animation = element.animate(keyframes, {
-          fill: 'forwards',
+      const animations = atoms
+        .map(motion => {
+          // Grab the custom reduced motion definition if it exists, or fall back to the default reduced motion.
+          const { keyframes: motionKeyframes, reducedMotion = DEFAULT_REDUCED_MOTION_ATOM, ...params } = motion;
+          // Grab the reduced motion keyframes if they exist, or fall back to the regular keyframes.
+          const { keyframes: reducedMotionKeyframes = motionKeyframes, ...reducedMotionParams } = reducedMotion;
 
-          ...params,
-          ...(isReducedMotion && { duration: 1 }),
-        });
+          const animationKeyframes: Keyframe[] = isReducedMotion ? reducedMotionKeyframes : motionKeyframes;
+          const animationParams: KeyframeEffectOptions = {
+            ...DEFAULT_ANIMATION_OPTIONS,
+            ...params,
 
-        if (SUPPORTS_PERSIST) {
-          animation.persist();
-        } else {
-          const resultKeyframe = keyframes[keyframes.length - 1];
-          Object.assign(element.style ?? {}, resultKeyframe);
-        }
+            // Use reduced motion overrides (e.g. duration, easing) when reduced motion is enabled
+            ...(isReducedMotion && reducedMotionParams),
+          };
 
-        return animation;
-      });
+          try {
+            // Firefox can throw an error when calling `element.animate()`.
+            // See: https://github.com/microsoft/fluentui/issues/33902
+            const animation = element.animate(animationKeyframes, animationParams);
+
+            if (SUPPORTS_PERSIST) {
+              // Chromium browsers can return null when calling `element.animate()`.
+              // See: https://github.com/microsoft/fluentui/issues/33902
+              animation?.persist();
+            } else {
+              const resultKeyframe = animationKeyframes[animationKeyframes.length - 1];
+              Object.assign(element.style ?? {}, resultKeyframe);
+            }
+
+            return animation;
+          } catch (e) {
+            return null;
+          }
+        })
+        .filter(animation => !!animation) as Animation[];
 
       return {
         set playbackRate(rate: number) {
@@ -60,6 +90,9 @@ function useAnimateAtomsInSupportedEnvironment() {
               oncancel();
             });
         },
+        isRunning() {
+          return animations.some(animation => isAnimationRunning(animation));
+        },
 
         cancel: () => {
           animations.forEach(animation => {
@@ -79,6 +112,18 @@ function useAnimateAtomsInSupportedEnvironment() {
         finish: () => {
           animations.forEach(animation => {
             animation.finish();
+          });
+        },
+        reverse: () => {
+          // Heads up!
+          //
+          // This is used for the interruptible motion. If the animation is running, we need to reverse it.
+          //
+          // TODO: what do with animations that have "delay"?
+          // TODO: what do with animations that have different "durations"?
+
+          animations.forEach(animation => {
+            animation.reverse();
           });
         },
       };
@@ -130,6 +175,10 @@ function useAnimateAtomsInTestEnvironment() {
         set playbackRate(rate: number) {
           /* no-op */
         },
+        isRunning() {
+          return false;
+        },
+
         cancel() {
           /* no-op */
         },
@@ -140,6 +189,9 @@ function useAnimateAtomsInTestEnvironment() {
           /* no-op */
         },
         finish() {
+          /* no-op */
+        },
+        reverse() {
           /* no-op */
         },
       };

@@ -88,9 +88,9 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   calloutProps?: Partial<ICalloutProps>;
 
   /**
-   * yMinValue is not supported for bar charts, so only allow "undefined"
+   * yMinValue is supported for bar charts that has only lines
    */
-  yMinValue?: undefined;
+  yMinValue?: number | undefined;
 
   /**
    * Allow hover actions on the legend
@@ -155,6 +155,23 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * The prop used to enable rounded corners for the chart.
    */
   roundCorners?: boolean;
+
+  /**
+   * Specifies the mode of the chart.
+   * @default 'default'
+   */
+  mode?: 'default' | 'plotly';
+
+  /**
+   *@default false
+   *Used for to elipse y axis labes and show tooltip on x axis labels
+   */
+  showYAxisLablesTooltip?: boolean;
+
+  /**
+   *@default false
+   *Used for showing complete y axis lables   */
+  showYAxisLables?: boolean;
 }
 
 /**

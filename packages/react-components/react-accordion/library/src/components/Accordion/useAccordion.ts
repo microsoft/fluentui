@@ -20,7 +20,7 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     multiple = false,
     collapsible = false,
     onToggle,
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     navigation,
   } = props;
   const [openItems, setOpenItems] = useControllableState({

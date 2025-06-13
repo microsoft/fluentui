@@ -254,6 +254,7 @@ describe('Overflow', () => {
   it(`should overflow items when there's more than one child element`, () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     const overflowElementIndex = 6;
+
     mount(
       <Container size={350}>
         <div>
@@ -267,11 +268,12 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    cy.get(`[${selectors.item}]`).each((value, index) => {
+    cy.get(`[${selectors.item}]`).each((el, index) => {
       if (index >= overflowElementIndex) {
-        expect(Cypress.$(value).css('display')).to.equal('none');
+        cy.wrap(el).should('be.hidden');
+        cy.wrap(el).should('have.css', 'display', 'none');
       } else {
-        expect(Cypress.$(value).css('display')).to.equal('inline-block');
+        cy.wrap(el).should('have.css', 'display', 'inline-block');
       }
     });
   });
@@ -615,7 +617,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -666,7 +668,7 @@ describe('Overflow', () => {
       const addItem = React.useCallback((index: number, item: string) => {
         setMapHelper(m => [...m.slice(0, index), item, ...m.slice(index)]);
       }, []);
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 
@@ -714,7 +716,7 @@ describe('Overflow', () => {
   it('should remove overflow menu when all overflow items are removed', () => {
     const Example = () => {
       const [mapHelper, setMapHelper] = React.useState<string[]>(new Array(10).fill(0).map((_, i) => i.toString()));
-      const deleteItem = React.useCallback((index, count) => {
+      const deleteItem = React.useCallback((index: number, count: number) => {
         setMapHelper(m => [...m.slice(0, index), ...m.slice(index + count)]);
       }, []);
 

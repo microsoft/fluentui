@@ -8,6 +8,7 @@ export { CreatePresenceComponentDefault as Default } from './CreatePresenceCompo
 export { CreatePresenceComponentFactory as createPresenceComponent } from './CreatePresenceComponentFactory.stories';
 
 export { CreatePresenceComponentAppear as appear } from './CreatePresenceComponentAppear.stories';
+export { CreatePresenceComponentReducedMotion as reducedMotion } from './CreatePresenceComponentReducedMotion.stories';
 export { CreatePresenceComponentUnmountOnExit as unmountOnExit } from './CreatePresenceComponentUnmountOnExit.stories';
 export { CreatePresenceComponentLifecycleCallbacks as LifecycleCallbacks } from './CreatePresenceComponentLifecycleCallbacks.stories';
 
