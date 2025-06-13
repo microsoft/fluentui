@@ -12,7 +12,8 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
-    "@fluentui/scripts-jest": "*"
+    "@fluentui/scripts-jest": "*",
+    "@types/react": "17.0.44"
   },
   "files": [
     "dist"

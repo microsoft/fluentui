@@ -21,14 +21,10 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@types/enzyme": "3.10.19",
-    "@types/react": "17.0.44",
-    "@types/react-test-renderer": "17.0.2"
+    "@fluentui/scripts-tasks": "*"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
-    "@types/enzyme": "^3.10.19",
     "enzyme": "^3.0.0",
     "react": ">=16.8.0 <19.0.0",
     "react-test-renderer": ">=16.3.0 <18.0.0"
