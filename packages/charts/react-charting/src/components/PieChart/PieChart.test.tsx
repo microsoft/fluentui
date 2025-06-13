@@ -6,6 +6,9 @@ import { PieChartBase } from './PieChart.base';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import * as utils from '../../utilities/utilities';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 function sharedBeforeEach() {
   resetIds();
   jest.spyOn(utils, 'wrapContent').mockImplementation(() => false);

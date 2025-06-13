@@ -1842,8 +1842,8 @@ export function domainRangeOfDateForScatterChart(
   // (Which Involves customization of date axis tick values)
   // That may be Either from given graph data or from prop 'tickValues' date values.
   // So, Finding smallest and largest dates
-  sDate = d3Min([...tickValues, sDate])!;
-  lDate = d3Max([...tickValues, lDate])!;
+  sDate = d3Min<Date>([...tickValues, sDate])!;
+  lDate = d3Max<Date>([...tickValues, lDate])!;
 
   const rStartValue = margins.left!;
   const rEndValue = width - margins.right!;

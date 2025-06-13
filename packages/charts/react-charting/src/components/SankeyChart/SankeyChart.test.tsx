@@ -5,6 +5,9 @@ import { ISankeyChartAccessibilityProps, ISankeyChartProps, ISankeyChartStrings,
 import { SankeyChartBase } from './SankeyChart.base';
 import { render } from '@testing-library/react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 function sharedBeforeEach() {
   resetIds();
 }

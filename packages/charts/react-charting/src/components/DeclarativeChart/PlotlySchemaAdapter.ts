@@ -1482,7 +1482,7 @@ export const projectPolarToCartesian = (input: PlotlySchema): PlotlySchema => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isPlainObject(obj: any) {
-  if (window && window.process && window.process.versions) {
+  if (window && window.process /*  && window.process.versions */) {
     return Object.prototype.toString.call(obj) === '[object Object]';
   }
 

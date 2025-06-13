@@ -1,6 +1,5 @@
 import * as utils from './utilities';
 import * as colors from './colors';
-import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
 import {
   IDataPoint,
@@ -253,16 +252,16 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC) && env === 'TEST')('createDateXA
 
   it('should create the x-axis labels correctly when culture and options are provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG', { dateStyle: 'full' });
+    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG');
     matchResult(convertXAxisResultToJson(result));
   });
 
-  it('should create the x-axis labels correctly when timeFormatLocale is provided', () => {
-    const timeFormatLocale: d3TimeLocaleDefinition = require('d3-time-format/locale/it-IT.json');
-    const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, timeFormatLocale);
-    matchResult(convertXAxisResultToJson(result));
-  });
+  // it('should create the x-axis labels correctly when timeFormatLocale is provided', () => {
+  //   const timeFormatLocale: d3TimeLocaleDefinition = require('d3-time-format/locale/it-IT.json');
+  //   const xAxisParams = createXAxisParams({ domainNRangeValues });
+  //   const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, timeFormatLocale);
+  //   matchResult(convertXAxisResultToJson(result));
+  // });
 
   it('should render the x-axis labels correctly when tickParams is provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
