@@ -46,6 +46,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   public static contextType = WindowContext;
+  public context: any;
 
   private _focusZone = React.createRef<IFocusZone>();
   constructor(props: INavProps) {

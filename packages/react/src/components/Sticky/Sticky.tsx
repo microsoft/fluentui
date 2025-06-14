@@ -25,6 +25,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
   };
 
   public static contextType = ScrollablePaneContext;
+  public context: any;
 
   private _root = React.createRef<HTMLDivElement>();
   private _stickyContentTop = React.createRef<HTMLDivElement>();

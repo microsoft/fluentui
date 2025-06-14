@@ -33,7 +33,7 @@ function createDivWithShadowRoot(initOptions: ShadowRootInit): HTMLElement {
   return div as HTMLElement;
 }
 
-function makeShadowDiv(innerHTML: string): React.FC {
+function makeShadowDiv(innerHTML: string): React.FC<React.PropsWithChildren<unknown>> {
   const ShadowDiv = () => {
     const setRef = (node: HTMLElement | null) => {
       if (node) {

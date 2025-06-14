@@ -31,9 +31,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   public static defaultProps = {
     delay: TooltipDelay.medium,
   };
-
   public static contextType = WindowContext;
   private static _currentVisibleTooltip: ITooltipHost | undefined;
+
+  public context: any;
 
   // The wrapping div that gets the hover events
   private _tooltipHost = React.createRef<HTMLDivElement>();
