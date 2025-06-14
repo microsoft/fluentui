@@ -207,6 +207,27 @@ Array [
 ]
 `;
 
+exports[`createDateXAxis should create the x-axis labels correctly when timeFormatLocale is provided 1`] = `
+Array [
+  Array [
+    0,
+    "Luglio",
+  ],
+  Array [
+    25.274725274725274,
+    "Ottobre",
+  ],
+  Array [
+    50.54945054945055,
+    "2022",
+  ],
+  Array [
+    75.27472527472527,
+    "Aprile",
+  ],
+]
+`;
+
 exports[`createDateXAxis should render the x-axis labels correctly 1`] = `
 <g
   fill="none"
