@@ -106,6 +106,9 @@ export { Text_2 as Text }
 export const textClassNames: SlotClassNames<TextSlots>;
 
 // @public
+export type TextContextValue = TextProps;
+
+// @public
 export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 
 // @public
@@ -121,6 +124,9 @@ export type TextProps = ComponentProps<TextSlots> & {
     weight?: 'regular' | 'medium' | 'semibold' | 'bold';
     wrap?: boolean;
 };
+
+// @internal (undocumented)
+export const TextProvider: React_2.Provider<TextProps>;
 
 // @public
 export type TextSlots = {
@@ -147,6 +153,9 @@ export const Title3: React_2.FunctionComponent<TextPresetProps>;
 
 // @public (undocumented)
 export const title3ClassNames: SlotClassNames<TextSlots>;
+
+// @public (undocumented)
+export function useText(): TextContextValue;
 
 // @public
 export const useText_unstable: (props: TextProps, ref: React_2.Ref<HTMLElement>) => TextState;
