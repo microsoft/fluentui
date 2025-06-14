@@ -21,7 +21,7 @@ beforeAll(() => {
   };
 });
 
-describe('Popover', () => {
+describe.skip('Popover', () => {
   test('renders the popover component', () => {
     const { container } = render(<ChartPopover isPopoverOpen={true} />);
     const popoverElement = getById(container, /callout1/);

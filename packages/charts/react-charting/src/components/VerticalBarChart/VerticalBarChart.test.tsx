@@ -1,4 +1,3 @@
-jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
@@ -7,6 +6,7 @@ import { VerticalBarChart, IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { render } from '@testing-library/react';
 const rendererAct = renderer.act;
+declare const global: any;
 
 function sharedBeforeEach() {
   resetIds();
