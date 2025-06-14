@@ -16,7 +16,7 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "lib": ["es2019", "dom"],
+    "lib": ["es5", "dom"],
     "typeRoots": ["../../../node_modules/@types", "../../../typings"],
     "types": ["jest", "node", "custom-global", "@testing-library/jest-dom"],
     "isolatedModules": true
