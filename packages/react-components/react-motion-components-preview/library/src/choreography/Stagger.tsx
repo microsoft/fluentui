@@ -78,4 +78,4 @@ const StaggerOut: React.FC<Omit<StaggerProps, 'visible'>> = props => <StaggerBas
 export const Stagger = Object.assign(StaggerBase, {
   In: StaggerIn,
   Out: StaggerOut,
-}) as StaggerComponent;
+});

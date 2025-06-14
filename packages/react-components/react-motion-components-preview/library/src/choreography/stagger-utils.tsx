@@ -82,6 +82,7 @@ export function getStaggerVisibility({
   direction = 'enter',
   reversed: reverse = false,
 }: GetStaggerVisibilityParams): StaggerVisibilityResult {
+  // If no items, return the empty state
   if (count <= 0) {
     return { visibility: [], totalDuration: 0, completedSteps: 0 };
   }
@@ -97,16 +98,12 @@ export function getStaggerVisibility({
     const fromStart = idx < completedSteps;
     const fromEnd = idx >= count - completedSteps;
 
-    if (direction === 'enter') {
-      // In forward direction, completed steps enter in ascending order
-      // In reverse direction, completed steps enter in descending order
-      return reverse ? fromEnd : fromStart;
+    let itemVisibility = reverse ? fromEnd : fromStart;
+    if (direction === 'exit') {
+      // For exit, invert the visibility logic
+      itemVisibility = !itemVisibility;
     }
-    // direction === 'exit'
-    // The exiting of items is in the opposite order of entering, for symmetry
-    // In forward direction, completed steps exit in descending order
-    // In reverse direction, completed steps exit in ascending order
-    return reverse ? !fromStart : !fromEnd;
+    return itemVisibility;
   });
 
   return { visibility, totalDuration, completedSteps };
@@ -117,8 +114,13 @@ export interface UseStaggeredRevealParams extends Omit<GetStaggerVisibilityParam
 }
 
 /**
- * Hook that returns `visibility` array and `visibleCount`, and fires
- * onMotionFinish exactly when the full stagger completes.
+ * Hook that tracks the visibility of a staggered sequence of items as time progresses.
+ * It takes the total number of items, a delay between each item, and an optional item duration,
+ * and optionally a direction ('enter' or 'exit') and whether to reverse the order.
+ * It fires the onMotionFinish callback when the full stagger completes.
+ *
+ * @returns A `visibility` array of booleans that indicates which items are currently visible
+ * and `visibleCount` which is the count of currently visible items.
  */
 export function useStaggeredReveal({
   count,
@@ -138,6 +140,7 @@ export function useStaggeredReveal({
     let cancelled = false;
     startTimeRef.current = null;
     finishedRef.current = false;
+    // Reset visibility array to initial state
     setVisibility(Array(count).fill(direction === 'exit'));
 
     const tick = (now: number) => {
