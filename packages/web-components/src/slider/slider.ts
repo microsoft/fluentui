@@ -63,6 +63,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   @attr
   public size?: SliderSize;
 
+  /** @internal */
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
@@ -78,7 +79,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   /**
    * Handles changes to step styling based on the step value
-   * NOTE: This function is not a changed callback, stepStyles is not observable
+   * @internal
+   * @privateRemarks
+   * This function is not a changed callback, stepStyles is not observable
    */
   private handleStepStyles(): void {
     if (this.step) {
@@ -519,7 +522,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   constructor() {
     super();
 
+    /** @internal */
     this.elementInternals.role = 'slider';
+    /** @internal */
     this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }
 
@@ -587,6 +592,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
+  /** @internal */
   public handleKeydown(event: KeyboardEvent): boolean {
     if (this.disabled) {
       return true;
@@ -682,8 +688,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   *  Handle mouse moves during a thumb drag operation
-   *  If the event handler is null it removes the events
+   * Handle mouse moves during a thumb drag operation.
+   * If the event handler is null, it removes the events.
+   * @internal
    */
   public handleThumbPointerDown = (event: PointerEvent | null): boolean => {
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
@@ -696,7 +703,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   *  Handle mouse moves during a thumb drag operation
+   * Handle mouse moves during a thumb drag operation
+   * @internal
    */
   private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
     if (this.disabled || event.defaultPrevented) {
@@ -740,6 +748,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   /**
    * Handle a window mouse up during a drag operation
+   * @internal
    */
   private handleWindowPointerUp = (): void => {
     this.stopDragging();
@@ -752,7 +761,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   *
+   * @internal
    * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
   public handlePointerDown = (event: PointerEvent | null) => {

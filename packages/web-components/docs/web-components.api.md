@@ -673,10 +673,6 @@ export class BaseField extends FASTElement {
     changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal
@@ -2316,7 +2312,7 @@ export class Dialog extends FASTElement {
 // @public
 export class DialogBody extends FASTElement {
     // @internal
-    clickHandler(event: PointerEvent): boolean | void;
+    clickHandler(event: MouseEvent): boolean | void;
 }
 
 // @public
@@ -2437,8 +2433,6 @@ export class Drawer extends FASTElement {
 //
 // @public
 export class DrawerBody extends FASTElement {
-    // @internal
-    clickHandler(event: PointerEvent): boolean | void;
 }
 
 // @public (undocumented)
