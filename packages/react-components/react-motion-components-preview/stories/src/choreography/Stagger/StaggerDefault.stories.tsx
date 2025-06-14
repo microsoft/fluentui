@@ -92,6 +92,7 @@ export const Default = (props: {} /* TODO: Stagger props */) => {
       <div>
         <div className={classes.items}>
           <Stagger presence visible={visible} reversed={reversed}>
+            {/* Create a list of items, each wrapped with a presence transition */}
             {Array.from({ length: 10 }, (_, i) => (
               <ItemTransition key={i}>
                 <div className={classes.item}>{i}</div>
