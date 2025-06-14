@@ -138,3 +138,29 @@ Disabled.storyName = 'disabled';
 
 export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 export const DisabledHighContrast = getStoryVariant(Disabled, HIGH_CONTRAST);
+
+export const MultilineHeading = () => (
+  <Accordion>
+    <AccordionItem value={0}>
+      <AccordionHeader>
+        Multi-line heading with a lot of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+      </AccordionHeader>
+      <AccordionPanel>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur
+          consectetur, nisl nisi consectetur nisi, eu consectetur nisl nisi euismod nisi.
+        </div>
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem value={1}>
+      <AccordionHeader>Single-line heading</AccordionHeader>
+      <AccordionPanel>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur
+          consectetur, nisl nisi consectetur nisi, eu consectetur nisl nisi euismod nisi.
+        </div>
+      </AccordionPanel>
+    </AccordionItem>
+  </Accordion>
+);
