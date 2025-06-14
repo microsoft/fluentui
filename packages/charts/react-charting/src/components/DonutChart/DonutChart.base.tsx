@@ -144,6 +144,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}
         onMouseLeave={this._handleChartMouseLeave}
       >
+        {this.props.xAxisAnnotation && (
+          <text
+            className={this._classNames.xAxisAnnotation}
+            x={this.state._width! / 2}
+            y={this.state._height! - 10}
+            textAnchor="middle"
+          >
+            {this.props.xAxisAnnotation}
+          </text>
+        )}
         <FocusZone direction={FocusZoneDirection.horizontal} handleTabKey={FocusZoneTabbableElements.all}>
           <div>
             <svg

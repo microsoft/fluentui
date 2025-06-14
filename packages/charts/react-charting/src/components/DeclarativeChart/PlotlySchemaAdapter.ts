@@ -326,7 +326,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartTitle,
       chartData: Object.values(mapLegendToDataPoint),
     },
-    hideLegend: input.layout?.showlegend === false ? true : false,
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
     innerRadius,
@@ -1696,33 +1696,55 @@ export const getAllupLegendsProps = (
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
   isDarkTheme?: boolean,
+  chartType?: string,
 ): ILegendsProps => {
   const allupLegends: ILegend[] = [];
   // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
   const toShowLegend = input.data.reduce((acc, series) => {
-    return acc || (series as Partial<PlotData>).showlegend === true;
+    return acc || (series as Data).showlegend === true;
   }, false);
 
   if (toShowLegend) {
-    input.data.forEach((series: Partial<PlotData>, index) => {
-      const name = series.legendgroup;
-      const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
-      const legendShape = getLegendShape(series);
-      const resolvedColor = extractColor(
-        input.layout?.template?.layout?.colorway,
+    if (chartType === 'donut') {
+      const firstData = input.data[0] as Partial<PieData>;
+      const colors: string[] | string | null | undefined = extractColor(
+        input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
         colorwayType,
-        color,
+        input.layout?.piecolorway ?? firstData?.marker?.colors,
         colorMap,
         isDarkTheme,
       );
-      if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+
+      firstData.labels?.forEach((label, index: number) => {
+        const legend = `${label}`;
+        // resolve color for each legend from the extracted colors
+        const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
         allupLegends.push({
-          title: name,
-          color: resolvedColor as string,
-          shape: legendShape,
+          title: legend,
+          color,
         });
-      }
-    });
+      });
+    } else {
+      input.data.forEach((series: Partial<PlotData>, index) => {
+        const name = series.legendgroup;
+        const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
+        const legendShape = getLegendShape(series);
+        const resolvedColor = extractColor(
+          input.layout?.template?.layout?.colorway,
+          colorwayType,
+          color,
+          colorMap,
+          isDarkTheme,
+        );
+        if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+          allupLegends.push({
+            title: name,
+            color: resolvedColor as string,
+            shape: legendShape,
+          });
+        }
+      });
+    }
   }
 
   return {
@@ -1797,7 +1819,15 @@ type FillInfo = {
   fillDomain: number;
 };
 
-export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridProperties => {
+export const isNonPlotType = (chartType: string): boolean => {
+  return ['donut', 'sankey', 'pie'].includes(chartType);
+};
+
+export const getGridProperties = (
+  schema: PlotlySchema | undefined,
+  isMultiPlot: boolean,
+  chartType: string,
+): GridProperties => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
   type AnnotationProps = {
@@ -1807,40 +1837,54 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
   const annotations: Record<number, AnnotationProps> = {};
   let templateRows = '1fr';
   let templateColumns = '1fr';
-  const gridLayout: GridAxisProperties = {};
-  if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
-    return { templateRows, templateColumns, layout: gridLayout };
-  }
-  if (!layout.xaxis || !layout.yaxis) {
-    return { templateRows, templateColumns, layout: gridLayout };
-  }
+  let gridLayout: GridAxisProperties = {};
   if (!isMultiPlot) {
     return { templateRows, templateColumns, layout: gridLayout };
   }
 
-  Object.keys(layout).forEach(key => {
-    if (key.startsWith('xaxis')) {
-      const index = getIndexFromKey(key, 'xaxis');
-      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
-      const anchorIndex = getIndexFromKey(anchor, 'y');
-      if (index !== anchorIndex) {
-        throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
-      }
-      gridX[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
-    } else if (key.startsWith('yaxis')) {
-      const index = getIndexFromKey(key, 'yaxis');
-      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
-      const anchorIndex = getIndexFromKey(anchor, 'x');
-      if (index !== anchorIndex) {
-        if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
-          // Special case for secondary y axis where yaxis2 can anchor to x1
-          return { templateRows, templateColumns };
-        }
-        throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
-      }
-      gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+  const layout = schema?.layout as Partial<Layout> | undefined;
+  if (chartType === 'donut') {
+    schema?.data?.forEach((series: Partial<PieData>, index: number) => {
+      gridX[index] = series.domain?.x ?? [];
+      gridY[index] = series.domain?.y ?? [];
+    });
+  } else if (chartType === 'sankey') {
+    schema?.data?.forEach((series: Partial<SankeyData>, index: number) => {
+      gridX[index] = series.domain?.x ?? [];
+      gridY[index] = series.domain?.y ?? [];
+    });
+  } else {
+    if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
+      return { templateRows, templateColumns, layout: gridLayout };
     }
-  });
+    if (!layout.xaxis || !layout.yaxis) {
+      return { templateRows, templateColumns, layout: gridLayout };
+    }
+
+    Object.keys(layout).forEach(key => {
+      if (key.startsWith('xaxis')) {
+        const index = getIndexFromKey(key, 'xaxis');
+        const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
+        const anchorIndex = getIndexFromKey(anchor, 'y');
+        if (index !== anchorIndex) {
+          throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
+        }
+        gridX[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+      } else if (key.startsWith('yaxis')) {
+        const index = getIndexFromKey(key, 'yaxis');
+        const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
+        const anchorIndex = getIndexFromKey(anchor, 'x');
+        if (index !== anchorIndex) {
+          if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
+            // Special case for secondary y axis where yaxis2 can anchor to x1
+            return { templateRows, templateColumns };
+          }
+          throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
+        }
+        gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+      }
+    });
+  }
 
   layout.annotations?.forEach(annotation => {
     const xMatches = gridX.flatMap((interval, idx) =>
@@ -1885,7 +1929,9 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
         return;
       }
 
-      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+      const cellName = isNonPlotType(chartType)
+        ? `${chartType}_${index + 1}`
+        : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
       const annotationProps = annotations[index] as AnnotationProps;
       const xAnnotation = annotationProps?.xAnnotation;
@@ -1929,7 +1975,9 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
         return;
       }
 
-      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+      const cellName = isNonPlotType(chartType)
+        ? `${chartType}_${index + 1}`
+        : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
@@ -1945,23 +1993,27 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
     });
   }
 
-  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
-  const reversedGridLayout: GridAxisProperties = {};
-  // find the maximum row number
-  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
-  // iterate over the gridLayout and reverse the row numbers
-  Object.keys(gridLayout).forEach(key => {
-    const cell = gridLayout[key];
-    if (cell.row !== undefined) {
-      // reverse the row number
-      cell.row = maxRowNumber - cell.row + 1;
-    }
-    reversedGridLayout[key] = cell;
-  });
+  if (!isNonPlotType(chartType)) {
+    // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
+    const reversedGridLayout: GridAxisProperties = {};
+    // find the maximum row number
+    const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
+    // iterate over the gridLayout and reverse the row numbers
+    Object.keys(gridLayout).forEach(key => {
+      const cell = { ...gridLayout[key] };
+      if (cell.row !== undefined) {
+        // reverse the row number
+        cell.row = maxRowNumber - cell.row + 1;
+      }
+      reversedGridLayout[key] = cell;
+    });
+
+    gridLayout = reversedGridLayout;
+  }
 
   return {
     templateRows,
     templateColumns,
-    layout: reversedGridLayout,
+    layout: gridLayout,
   };
 };

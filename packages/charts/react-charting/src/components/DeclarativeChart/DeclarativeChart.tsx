@@ -5,13 +5,14 @@ import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import { decodeBase64Fields } from '@fluentui/chart-utilities';
-import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
+import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray, isMonthArray, mapFluentChart, sanitizeJson } from '@fluentui/chart-utilities';
 
 import type { GridProperties } from './PlotlySchemaAdapter';
 import {
   correctYearMonth,
   getGridProperties,
+  isNonPlotType,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToAreaChartProps,
@@ -387,18 +388,29 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 
   const groupedTraces: Record<string, number[]> = {};
-  plotlyInputWithValidData.data.forEach((trace: Partial<PlotData>, index) => {
-    const xAxisKey = trace.xaxis ?? DEFAULT_XAXIS;
-    if (!groupedTraces[xAxisKey]) {
-      groupedTraces[xAxisKey] = [];
+  plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
+    let traceKey = '';
+    if (isNonPlotType(chart.validTracesInfo[index][1])) {
+      traceKey = `${chart.validTracesInfo[index][1]}_${index + 1}`;
+    } else {
+      traceKey = trace.xaxis ?? DEFAULT_XAXIS;
     }
-    groupedTraces[xAxisKey].push(index);
+    if (!groupedTraces[traceKey]) {
+      groupedTraces[traceKey] = [];
+    }
+    groupedTraces[traceKey].push(index);
   });
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
-  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData.layout, isMultiPlot.current);
+  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData, isMultiPlot.current, chart.type);
 
-  const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
+  const allupLegendsProps = getAllupLegendsProps(
+    plotlyInputWithValidData,
+    colorMap,
+    props.colorwayType,
+    isDarkTheme,
+    chart.type,
+  );
 
   type ChartType = keyof ChartTypeMap;
   // map through the grouped traces and render the appropriate chart
