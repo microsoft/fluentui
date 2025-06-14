@@ -70,9 +70,13 @@ export const useList_unstable = (
     }
     const itemRole = listItemEl.getAttribute('role') || '';
     const focusable = findAllFocusable(listItemEl);
-    validateProperElementTypes(as, listItemEl.tagName.toLocaleLowerCase());
-    validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
-    validateGridCellsArePresent(listRole, listItemEl);
+    try {
+      validateProperElementTypes(as, listItemEl.tagName.toLocaleLowerCase());
+      validateProperRolesAreUsed(listRole, itemRole, !!selectionMode, focusable.length > 0);
+      validateGridCellsArePresent(listRole, listItemEl);
+    } catch (e) {
+      console.error('@fluentui/react-list [useList]:\n', e);
+    }
   });
 
   return {
