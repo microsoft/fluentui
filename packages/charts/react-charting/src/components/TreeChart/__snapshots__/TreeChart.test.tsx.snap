@@ -48,7 +48,7 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -71,7 +71,7 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={true}
@@ -91,7 +91,7 @@ subText subtext Root Node"
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -117,7 +117,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -140,7 +140,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -160,7 +160,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -186,7 +186,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -209,7 +209,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -229,7 +229,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -255,7 +255,7 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -278,7 +278,7 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -305,7 +305,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -328,7 +328,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -348,7 +348,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -374,7 +374,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -397,7 +397,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -417,7 +417,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -443,7 +443,7 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -466,7 +466,7 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -493,7 +493,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -516,7 +516,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -536,7 +536,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -562,7 +562,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -585,7 +585,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -605,7 +605,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -631,7 +631,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -654,7 +654,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -674,7 +674,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -700,7 +700,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -723,7 +723,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -743,7 +743,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -769,7 +769,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -792,7 +792,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -812,7 +812,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -838,7 +838,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -861,7 +861,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -881,7 +881,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -907,7 +907,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -930,7 +930,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -950,7 +950,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -976,7 +976,7 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -999,7 +999,7 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1019,7 +1019,7 @@ subText sub Parent info parentId: 13
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1141,7 +1141,7 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1164,7 +1164,7 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={true}
@@ -1184,7 +1184,7 @@ subText subtext Root Node"
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1210,7 +1210,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1233,7 +1233,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1253,7 +1253,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1279,7 +1279,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1302,7 +1302,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1322,7 +1322,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1348,7 +1348,7 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1371,7 +1371,7 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1398,7 +1398,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1421,7 +1421,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1441,7 +1441,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1467,7 +1467,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1490,7 +1490,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1510,7 +1510,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1536,7 +1536,7 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1559,7 +1559,7 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1586,7 +1586,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1609,7 +1609,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1629,7 +1629,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1655,7 +1655,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1678,7 +1678,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1698,7 +1698,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1724,7 +1724,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1747,7 +1747,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1767,7 +1767,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1793,7 +1793,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1816,7 +1816,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1836,7 +1836,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1862,7 +1862,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1885,7 +1885,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1905,7 +1905,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -1931,7 +1931,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -1954,7 +1954,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -1974,7 +1974,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2000,7 +2000,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2023,7 +2023,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2043,7 +2043,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2069,7 +2069,7 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2092,7 +2092,7 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2112,7 +2112,7 @@ subText sub Parent info parentId: 13
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2234,7 +2234,7 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2257,7 +2257,7 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={true}
@@ -2277,7 +2277,7 @@ subText subtext Root Node"
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2303,7 +2303,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2326,7 +2326,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2346,7 +2346,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2372,7 +2372,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2395,7 +2395,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2415,7 +2415,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2441,7 +2441,7 @@ subText undefined Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2464,7 +2464,7 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2491,7 +2491,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2514,7 +2514,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2534,7 +2534,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2560,7 +2560,7 @@ subText sub Parent info parentId: 1
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2583,7 +2583,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2603,7 +2603,7 @@ subText sub Parent info parentId: 1
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2629,7 +2629,7 @@ subText undefined Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2652,7 +2652,7 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2679,7 +2679,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2702,7 +2702,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2722,7 +2722,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2748,7 +2748,7 @@ subText sub Parent info parentId: 6
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2771,7 +2771,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2791,7 +2791,7 @@ subText sub Parent info parentId: 6
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2817,7 +2817,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2840,7 +2840,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2860,7 +2860,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2886,7 +2886,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2909,7 +2909,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2929,7 +2929,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -2955,7 +2955,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -2978,7 +2978,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -2998,7 +2998,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3024,7 +3024,7 @@ subText sub Parent info parentId: 9
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3047,7 +3047,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3067,7 +3067,7 @@ subText sub Parent info parentId: 9
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3093,7 +3093,7 @@ subText subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3116,7 +3116,7 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3136,7 +3136,7 @@ subText subtext Parent info parentId: 0
                   font-size: 20px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3162,7 +3162,7 @@ subText sub Parent info parentId: 13
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3185,7 +3185,7 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3205,7 +3205,7 @@ subText sub Parent info parentId: 13
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3327,7 +3327,7 @@ subText subtext Root Node"
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3350,7 +3350,7 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={true}
@@ -3370,7 +3370,7 @@ subText subtext Root Node"
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3396,7 +3396,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3419,7 +3419,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3439,7 +3439,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3465,7 +3465,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3488,7 +3488,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3508,7 +3508,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3534,7 +3534,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3557,7 +3557,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3577,7 +3577,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
@@ -3603,7 +3603,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 rx: 2px;
                 stroke-width: 2px;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: Canvas;
               }
           data-is-focusable={true}
@@ -3626,7 +3626,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              @media screen and (forced-colors: active){& {
                 fill: CanvasText;
               }
           data-is-focusable={false}
@@ -3646,7 +3646,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-size: 14px;
                   font-weight: 400;
                 }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                @media screen and (forced-colors: active){& {
                   fill: CanvasText;
                 }
             dy="1.4em"
