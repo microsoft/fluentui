@@ -417,8 +417,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     plotlyInputWithValidData,
     colorMap,
     props.colorwayType,
+    chart.validTracesInfo!,
     isDarkTheme,
-    chart.type,
   );
 
   type ChartType = keyof ChartTypeMap;

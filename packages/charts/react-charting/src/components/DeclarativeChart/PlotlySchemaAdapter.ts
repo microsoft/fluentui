@@ -70,6 +70,11 @@ import type { ColorwayType } from './PlotlyColorAdapter';
 import { extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
 
+type DomainInterval = {
+  start: number;
+  end: number;
+};
+
 export type AxisProperties = {
   xAnnotation?: string;
   yAnnotation?: string;
@@ -1698,8 +1703,8 @@ export const getAllupLegendsProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
+  traceInfo: TraceInfo[],
   isDarkTheme?: boolean,
-  chartType?: string,
 ): ILegendsProps => {
   const allupLegends: ILegend[] = [];
   // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
@@ -1708,30 +1713,33 @@ export const getAllupLegendsProps = (
   }, false);
 
   if (toShowLegend) {
-    if (chartType === 'donut') {
-      const firstData = input.data[0] as Partial<PieData>;
-      const colors: string[] | string | null | undefined = extractColor(
-        input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
-        colorwayType,
-        input.layout?.piecolorway ?? firstData?.marker?.colors,
-        colorMap,
-        isDarkTheme,
-      );
+    input.data.forEach((series: Data, index) => {
+      if (traceInfo[index].type === 'donut') {
+        const pieSeries = series as Partial<PieData>;
+        const colors: string[] | string | null | undefined = extractColor(
+          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+          colorwayType,
+          input.layout?.piecolorway ?? pieSeries?.marker?.colors,
+          colorMap,
+          isDarkTheme,
+        );
 
-      firstData.labels?.forEach((label, index: number) => {
-        const legend = `${label}`;
-        // resolve color for each legend from the extracted colors
-        const color: string = resolveColor(colors, index, legend, colorMap, isDarkTheme);
-        allupLegends.push({
-          title: legend,
-          color,
+        pieSeries.labels?.forEach((label, labelIndex: number) => {
+          const legend = `${label}`;
+          // resolve color for each legend from the extracted colors
+          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme);
+          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+            allupLegends.push({
+              title: legend,
+              color,
+            });
+          }
         });
-      });
-    } else {
-      input.data.forEach((series: Partial<PlotData>, index) => {
-        const name = series.legendgroup;
-        const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
-        const legendShape = getLegendShape(series);
+      } else if (isNonPlotType(traceInfo[index].type) === false) {
+        const plotSeries = series as Partial<PlotData>;
+        const name = plotSeries.legendgroup;
+        const color = plotSeries.line?.color || plotSeries.marker?.color;
+        const legendShape = getLegendShape(plotSeries);
         const resolvedColor = extractColor(
           input.layout?.template?.layout?.colorway,
           colorwayType,
@@ -1746,8 +1754,8 @@ export const getAllupLegendsProps = (
             shape: legendShape,
           });
         }
-      });
-    }
+      }
+    });
   }
 
   return {
@@ -1817,16 +1825,6 @@ const getIndexFromKey = (key: string, pattern: string): number => {
   return parseInt(normalizedKey, 10) - 1;
 };
 
-type FillInfo = {
-  row: number;
-  fillDomain: number;
-};
-
-type DomainInterval = {
-  start: number;
-  end: number;
-};
-
 export const isNonPlotType = (chartType: string): boolean => {
   return ['donut', 'sankey', 'pie'].includes(chartType);
 };
@@ -1891,7 +1889,7 @@ export const getGridProperties = (
 
   cartesianDomains = domainX.length; // Assuming that the number of x and y axes is the same
   validTracesInfo.forEach((trace, index) => {
-    if (trace.type === 'donut' || trace.type === 'sankey') {
+    if (isNonPlotType(trace.type)) {
       const series = schema?.data?.[index] as Partial<PieData> | Partial<SankeyData>;
       const domainXInfo: DomainInterval = {
         start: series.domain?.x ? series.domain.x[0] : 0,
@@ -1942,25 +1940,26 @@ export const getGridProperties = (
     const minXInterval = Math.min(
       ...Array.from(uniqueXIntervals.values()).map(interval => interval.end - interval.start),
     );
+    const sortedXStart = Array.from(uniqueXIntervals.values())
+      .map(interval => interval.start)
+      .sort();
+
+    // create templateColumns based on uniqueXIntervals
     templateColumns = Array.from(uniqueXIntervals.values())
       .map(interval => `${(interval.end - interval.start) / minXInterval}fr`)
       .join(' ');
 
-    let columnNumber = 1;
-    let lastIntervalEnd = 0;
     domainX.forEach((interval, index) => {
       const cellName =
         index >= cartesianDomains
           ? `noncar_${index - cartesianDomains + 1}`
           : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
+      const columnIndex = sortedXStart.findIndex(start => start === interval.start);
+      const columnNumber = columnIndex + 1; // Column numbers are 1-based
+
       const annotationProps = annotations[index] as AnnotationProps;
       const xAnnotation = annotationProps?.xAnnotation;
-
-      if (interval.start < lastIntervalEnd) {
-        columnNumber = 1;
-      }
-      lastIntervalEnd = interval.end;
 
       const row: AxisProperties = {
         row: -1,
@@ -1970,14 +1969,7 @@ export const getGridProperties = (
         yDomain: { start: 0, end: 1 }, // Default yDomain for x-axis
       };
       gridLayout[cellName] = row;
-      columnNumber += 1;
     });
-  }
-  const numColumns = Math.max(...Object.values(gridLayout).map(cell => cell.column ?? 0));
-
-  const columnFill: Record<number, FillInfo> = {};
-  for (let i = 1; i <= numColumns; i++) {
-    columnFill[i] = { row: 1, fillDomain: 0 };
   }
 
   if (domainY.length > 0) {
@@ -1991,9 +1983,15 @@ export const getGridProperties = (
     const minYInterval = Math.min(
       ...Array.from(uniqueYIntervals.values()).map(interval => interval.end - interval.start),
     );
+    const sortedYStart = Array.from(uniqueYIntervals.values())
+      .map(interval => interval.start)
+      .sort();
+
     templateRows = Array.from(uniqueYIntervals.values())
       .map(interval => `${(interval.end - interval.start) / minYInterval}fr`)
       .join(' ');
+
+    const numberOfRows = sortedYStart.length;
 
     domainY.forEach((interval, index) => {
       const cellName =
@@ -2001,38 +1999,20 @@ export const getGridProperties = (
           ? `noncar_${index - cartesianDomains + 1}`
           : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
+      const rowIndex = sortedYStart.findIndex(start => start === interval.start);
+      const rowNumber = numberOfRows - rowIndex; // Rows are 1-based and we need to reverse the order for CSS grid
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
 
       const cell = gridLayout[cellName];
 
       if (cell !== undefined) {
-        cell.row = columnFill[cell.column].row;
+        cell.row = rowNumber;
         cell.yAnnotation = yAnnotation;
         cell.yDomain = interval;
       }
-      columnFill[cell.column].fillDomain = interval.end;
-      columnFill[cell.column].row += 1;
     });
   }
-
-  // if (!isNonPlotType(chartType)) {
-  //   // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
-  //   const reversedGridLayout: GridAxisProperties = {};
-  //   // find the maximum row number
-  //   const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
-  //   // iterate over the gridLayout and reverse the row numbers
-  //   Object.keys(gridLayout).forEach(key => {
-  //     const cell = { ...gridLayout[key] };
-  //     if (cell.row !== undefined) {
-  //       // reverse the row number
-  //       cell.row = maxRowNumber - cell.row + 1;
-  //     }
-  //     reversedGridLayout[key] = cell;
-  //   });
-
-  //   gridLayout = reversedGridLayout;
-  // }
 
   return {
     templateRows,
