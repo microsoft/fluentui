@@ -1947,17 +1947,12 @@ export const getGridProperties = (
         uniqueXIntervals.set(key, interval);
       }
     });
-    const minXInterval = Math.min(
-      ...Array.from(uniqueXIntervals.values()).map(interval => interval.end - interval.start),
-    );
+
     const sortedXStart = Array.from(uniqueXIntervals.values())
       .map(interval => interval.start)
       .sort();
 
-    // create templateColumns based on uniqueXIntervals
-    templateColumns = Array.from(uniqueXIntervals.values())
-      .map(interval => `${(interval.end - interval.start) / minXInterval}fr`)
-      .join(' ');
+    templateColumns = `repeat('${sortedXStart.length}', 1fr)`;
 
     domainX.forEach((interval, index) => {
       const cellName =
@@ -1990,18 +1985,13 @@ export const getGridProperties = (
         uniqueYIntervals.set(key, interval);
       }
     });
-    const minYInterval = Math.min(
-      ...Array.from(uniqueYIntervals.values()).map(interval => interval.end - interval.start),
-    );
     const sortedYStart = Array.from(uniqueYIntervals.values())
       .map(interval => interval.start)
       .sort();
 
-    templateRows = Array.from(uniqueYIntervals.values())
-      .map(interval => `${(interval.end - interval.start) / minYInterval}fr`)
-      .join(' ');
-
     const numberOfRows = sortedYStart.length;
+
+    templateRows = `repeat('${numberOfRows}', 1fr)`;
 
     domainY.forEach((interval, index) => {
       const cellName =
