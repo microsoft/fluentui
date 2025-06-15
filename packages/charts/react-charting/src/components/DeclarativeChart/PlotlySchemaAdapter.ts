@@ -53,6 +53,7 @@ import type {
   Color,
   LayoutAxis,
   XAxisName,
+  TraceInfo,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -1703,7 +1704,7 @@ export const getAllupLegendsProps = (
   const allupLegends: ILegend[] = [];
   // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
   const toShowLegend = input.data.reduce((acc, series) => {
-    return acc || (series as Data).showlegend === true;
+    return acc || (series as Partial<PlotData>).showlegend === true;
   }, false);
 
   if (toShowLegend) {
@@ -1828,7 +1829,7 @@ export const isNonPlotType = (chartType: string): boolean => {
 export const getGridProperties = (
   schema: PlotlySchema | undefined,
   isMultiPlot: boolean,
-  validTracesInfo: [number, string][],
+  validTracesInfo: TraceInfo[],
 ): GridProperties => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
@@ -1846,13 +1847,8 @@ export const getGridProperties = (
 
   const layout = schema?.layout as Partial<Layout> | undefined;
   validTracesInfo.forEach((trace, index) => {
-    if (trace[1] === 'donut') {
-      schema?.data?.forEach((series: Partial<PieData>, index: number) => {
-        gridX[index] = series.domain?.x ?? [];
-        gridY[index] = series.domain?.y ?? [];
-      });
-    } else if (trace[1] === 'sankey') {
-      schema?.data?.forEach((series: Partial<SankeyData>, index: number) => {
+    if (trace.type === 'donut' || trace.type === 'sankey') {
+      schema?.data?.forEach((series: Partial<PieData> | Partial<SankeyData>, index: number) => {
         gridX[index] = series.domain?.x ?? [];
         gridY[index] = series.domain?.y ?? [];
       });

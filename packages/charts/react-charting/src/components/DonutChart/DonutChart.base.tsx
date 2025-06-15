@@ -146,7 +146,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       >
         {this.props.xAxisAnnotation && (
           <text
-            className={this._classNames.xAxisAnnotation}
+            className={this._classNames.axisAnnotation}
             x={this.state._width! / 2}
             y={this.state._height! - 10}
             textAnchor="middle"

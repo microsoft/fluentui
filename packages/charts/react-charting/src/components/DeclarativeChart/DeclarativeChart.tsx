@@ -5,7 +5,7 @@ import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import { decodeBase64Fields } from '@fluentui/chart-utilities';
-import type { Data, PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
+import type { Data, PlotData, PlotlySchema, OutputChartType, TraceInfo } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray, isMonthArray, mapFluentChart, sanitizeJson } from '@fluentui/chart-utilities';
 
 import type { GridProperties } from './PlotlySchemaAdapter';
@@ -297,10 +297,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
   const plotlyInputWithValidData: PlotlySchema = {
     ...plotlyInput,
-    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
+    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace.index]),
   };
 
-  const validTracesFilteredIndex: [number, string][] = chart.validTracesInfo!.map((trace, index) => [index, trace[1]]);
+  const validTracesFilteredIndex: TraceInfo[] = chart.validTracesInfo!.map((trace, index) => ({
+    index,
+    type: trace.type,
+  }));
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
@@ -381,8 +384,8 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
     validTracesFilteredIndex.forEach((trace, index) => {
-      if (trace[1] === 'scatterpolar') {
-        validTracesFilteredIndex[index][1] = 'line'; // Change type to line for rendering
+      if (trace.type === 'scatterpolar') {
+        validTracesFilteredIndex[index].type = 'line'; // Change type to line for rendering
       }
     });
   }
@@ -390,10 +393,10 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const groupedTraces: Record<string, number[]> = {};
   plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
     let traceKey = '';
-    if (isNonPlotType(chart.validTracesInfo[index][1])) {
-      traceKey = `${chart.validTracesInfo[index][1]}_${index + 1}`;
+    if (isNonPlotType(chart.validTracesInfo![index].type)) {
+      traceKey = `${chart.validTracesInfo![index].type}_${index + 1}`;
     } else {
-      traceKey = trace.xaxis ?? DEFAULT_XAXIS;
+      traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
     }
     if (!groupedTraces[traceKey]) {
       groupedTraces[traceKey] = [];
@@ -405,7 +408,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   const gridProperties: GridProperties = getGridProperties(
     plotlyInputWithValidData,
     isMultiPlot.current,
-    chart.validTracesInfo,
+    chart.validTracesInfo!,
   );
 
   const allupLegendsProps = getAllupLegendsProps(
@@ -433,15 +436,15 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             data: index.map(idx => plotlyInputWithValidData.data[idx]),
           };
 
-          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
+          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
-            validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
+            validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
-              : filteredTracesInfo[0][1];
+              : filteredTracesInfo[0].type;
 
           if (
-            validTracesFilteredIndex.some(trace => trace[1] === 'line') &&
-            validTracesFilteredIndex.some(trace => trace[1] === 'scatter')
+            validTracesFilteredIndex.some(trace => trace.type === 'line') &&
+            validTracesFilteredIndex.some(trace => trace.type === 'scatter')
           ) {
             chartType = 'line';
           }
