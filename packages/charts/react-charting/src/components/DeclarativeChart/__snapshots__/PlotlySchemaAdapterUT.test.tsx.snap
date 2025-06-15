@@ -87,7 +87,7 @@ Object {
     "chartTitle": "",
     "lineChartData": Array [
       Object {
-        "color": "#ff9933",
+        "color": "#ff9933ff",
         "data": Array [
           Object {
             "x": 0,
@@ -139,7 +139,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#3780bf",
+        "color": "#3780bfff",
         "data": Array [
           Object {
             "x": 0,
@@ -191,7 +191,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#32ab60",
+        "color": "#32ab60ff",
         "data": Array [
           Object {
             "x": 0,
@@ -243,7 +243,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#800080",
+        "color": "#800080ff",
         "data": Array [
           Object {
             "x": 0,
@@ -482,7 +482,7 @@ Object {
       "name": "Jan",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2000,
           "key": "Category A",
           "legend": "Category A",
@@ -490,7 +490,7 @@ Object {
           "xAxisCalloutData": "Jan",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3000,
           "key": "Category B",
           "legend": "Category B",
@@ -503,7 +503,7 @@ Object {
       "name": "Feb",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2100,
           "key": "Category A",
           "legend": "Category A",
@@ -511,7 +511,7 @@ Object {
           "xAxisCalloutData": "Feb",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3100,
           "key": "Category B",
           "legend": "Category B",
@@ -524,7 +524,7 @@ Object {
       "name": "Mar",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2200,
           "key": "Category A",
           "legend": "Category A",
@@ -532,7 +532,7 @@ Object {
           "xAxisCalloutData": "Mar",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3200,
           "key": "Category B",
           "legend": "Category B",
@@ -545,7 +545,7 @@ Object {
       "name": "Apr",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2300,
           "key": "Category A",
           "legend": "Category A",
@@ -553,7 +553,7 @@ Object {
           "xAxisCalloutData": "Apr",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3300,
           "key": "Category B",
           "legend": "Category B",
@@ -566,7 +566,7 @@ Object {
       "name": "May",
       "series": Array [
         Object {
-          "color": "#ba58c9",
+          "color": "#ba58c9ff",
           "data": 2400,
           "key": "Category A",
           "legend": "Category A",
@@ -574,7 +574,7 @@ Object {
           "xAxisCalloutData": "May",
         },
         Object {
-          "color": "#c19c00",
+          "color": "#c19c00ff",
           "data": 3400,
           "key": "Category B",
           "legend": "Category B",
@@ -590,7 +590,26 @@ Object {
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,
+  "xAxisCategoryOrder": Array [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+  ],
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": Array [
+    2000,
+    2100,
+    2200,
+    2300,
+    2400,
+    3000,
+    3100,
+    3200,
+    3300,
+    3400,
+  ],
   "yAxisTitle": "Framework",
 }
 `;
@@ -3072,7 +3091,51 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "xAxisCategoryOrder": Array [
+    "x_0",
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_5",
+    "x_6",
+    "x_7",
+    "x_8",
+    "x_9",
+    "x_10",
+    "x_11",
+    "x_12",
+    "x_13",
+    "x_14",
+    "x_15",
+    "x_16",
+    "x_17",
+    "x_18",
+    "x_19",
+  ],
   "xAxisTitle": "",
+  "yAxisCategoryOrder": Array [
+    "y_0",
+    "y_1",
+    "y_2",
+    "y_3",
+    "y_4",
+    "y_5",
+    "y_6",
+    "y_7",
+    "y_8",
+    "y_9",
+    "y_10",
+    "y_11",
+    "y_12",
+    "y_13",
+    "y_14",
+    "y_15",
+    "y_16",
+    "y_17",
+    "y_18",
+    "y_19",
+  ],
   "yAxisTitle": "",
 }
 `;
@@ -3083,142 +3146,142 @@ Object {
   "chartTitle": "PHP Framework Popularity at Work - SitePoint, 2015",
   "data": Array [
     Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
-      "x": 10,
-      "y": "Aura",
+      "x": 1659,
+      "y": "Laravel",
     },
     Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 11,
-      "y": "Drupal",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 17,
-      "y": "TYPO3 Flow",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 25,
-      "y": "FuelPHP",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 35,
-      "y": "Kohana",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 35,
-      "y": "Typo 3",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 42,
-      "y": "Simple MVC Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 65,
-      "y": "Silex",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 79,
-      "y": "Slim",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 169,
-      "y": "Phalcon",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 203,
-      "y": "We use a CMS for everything",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 243,
-      "y": "No Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 255,
-      "y": "CakePHP",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 274,
-      "y": "Zend Framework 1",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 378,
-      "y": "Company Internal Framework",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 390,
-      "y": "Zend Framework 2",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 407,
-      "y": "Yii 1",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 418,
-      "y": "PHPixie",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 504,
-      "y": "Yii 2",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 597,
-      "y": "CodeIgniter",
-    },
-    Object {
-      "color": "#c8d1fa",
-      "legend": "Votes",
-      "x": 671,
-      "y": "Nette",
-    },
-    Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
       "x": 1067,
       "y": "Symfony2",
     },
     Object {
-      "color": "#c8d1fa",
+      "color": "#b29ad4ff",
       "legend": "Votes",
-      "x": 1659,
-      "y": "Laravel",
+      "x": 671,
+      "y": "Nette",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 597,
+      "y": "CodeIgniter",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 504,
+      "y": "Yii 2",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 418,
+      "y": "PHPixie",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 407,
+      "y": "Yii 1",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 390,
+      "y": "Zend Framework 2",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 378,
+      "y": "Company Internal Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 274,
+      "y": "Zend Framework 1",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 255,
+      "y": "CakePHP",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 243,
+      "y": "No Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 203,
+      "y": "We use a CMS for everything",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 169,
+      "y": "Phalcon",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 79,
+      "y": "Slim",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 65,
+      "y": "Silex",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 42,
+      "y": "Simple MVC Framework",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 35,
+      "y": "Typo 3",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 35,
+      "y": "Kohana",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 25,
+      "y": "FuelPHP",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 17,
+      "y": "TYPO3 Flow",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 11,
+      "y": "Drupal",
+    },
+    Object {
+      "color": "#b29ad4ff",
+      "legend": "Votes",
+      "x": 10,
+      "y": "Aura",
     },
   ],
   "height": 742,
@@ -3231,6 +3294,31 @@ Object {
   "showYAxisLablesTooltip": true,
   "width": 850,
   "xAxisTitle": "Votes",
+  "yAxisCategoryOrder": Array [
+    "Laravel",
+    "Symfony2",
+    "Nette",
+    "CodeIgniter",
+    "Yii 2",
+    "PHPixie",
+    "Yii 1",
+    "Zend Framework 2",
+    "Company Internal Framework",
+    "Zend Framework 1",
+    "CakePHP",
+    "No Framework",
+    "We use a CMS for everything",
+    "Phalcon",
+    "Slim",
+    "Silex",
+    "Simple MVC Framework",
+    "Typo 3",
+    "Kohana",
+    "FuelPHP",
+    "TYPO3 Flow",
+    "Drupal",
+    "Aura",
+  ],
   "yAxisTitle": "Framework",
 }
 `;
@@ -3241,7 +3329,7 @@ Object {
     "chartTitle": "",
     "lineChartData": Array [
       Object {
-        "color": "#ff9933",
+        "color": "#ff9933ff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -3653,7 +3741,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#3780bf",
+        "color": "#3780bfff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4065,7 +4153,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#32ab60",
+        "color": "#32ab60ff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -4637,7 +4725,7 @@ Object {
     "chartTitle": "",
     "scatterChartData": Array [
       Object {
-        "color": "#ff9933",
+        "color": "#c8d1faff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5049,7 +5137,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#3780bf",
+        "color": "#f7addaff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5461,7 +5549,7 @@ Object {
         "useSecondaryYScale": false,
       },
       Object {
-        "color": "#32ab60",
+        "color": "#9bd9dbff",
         "data": Array [
           Object {
             "x": 2015-01-01T00:00:00.000Z,
@@ -5895,266 +5983,266 @@ Object {
   "chartTitle": "",
   "data": Array [
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 3,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 18,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 53,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 87,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 129,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 194,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 188,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 163,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 102,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 44,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 3.25,
       "xAxisCalloutData": "[3 - 3.5)",
       "y": 11,
     },
     Object {
-      "color": "#ff9933",
+      "color": "#ff9933cc",
       "legend": "a",
       "x": 3.75,
       "xAxisCalloutData": "[3.5 - 4)",
       "y": 8,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 6,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 11,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 40,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 100,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 158,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 189,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 192,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 148,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 90,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 47,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
       "y": 18,
     },
     Object {
-      "color": "#3780bf",
+      "color": "#3780bfcc",
       "legend": "b",
       "x": 2.75,
       "xAxisCalloutData": "[2.5 - 3)",
       "y": 1,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -4.25,
       "xAxisCalloutData": "[-4.5 - -4)",
       "y": 2,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -3.75,
       "xAxisCalloutData": "[-4 - -3.5)",
       "y": 4,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -3.25,
       "xAxisCalloutData": "[-3.5 - -3)",
       "y": 8,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -2.75,
       "xAxisCalloutData": "[-3 - -2.5)",
       "y": 49,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -2.25,
       "xAxisCalloutData": "[-2.5 - -2)",
       "y": 99,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -1.75,
       "xAxisCalloutData": "[-2 - -1.5)",
       "y": 137,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -1.25,
       "xAxisCalloutData": "[-1.5 - -1)",
       "y": 220,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -0.75,
       "xAxisCalloutData": "[-1 - -0.5)",
       "y": 181,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": -0.25,
       "xAxisCalloutData": "[-0.5 - 0)",
       "y": 142,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 0.25,
       "xAxisCalloutData": "[0 - 0.5)",
       "y": 94,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 0.75,
       "xAxisCalloutData": "[0.5 - 1)",
       "y": 45,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 1.25,
       "xAxisCalloutData": "[1 - 1.5)",
       "y": 11,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 1.75,
       "xAxisCalloutData": "[1.5 - 2)",
       "y": 6,
     },
     Object {
-      "color": "#32ab60",
+      "color": "#32ab60cc",
       "legend": "c",
       "x": 2.25,
       "xAxisCalloutData": "[2 - 2.5)",
@@ -6183,12 +6271,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2000,
           "legend": "Category A",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3000,
           "legend": "Category B",
         },
@@ -6199,12 +6287,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2100,
           "legend": "Category A",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3100,
           "legend": "Category B",
         },
@@ -6215,12 +6303,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2200,
           "legend": "Category A",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3200,
           "legend": "Category B",
         },
@@ -6231,12 +6319,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2300,
           "legend": "Category A",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3300,
           "legend": "Category B",
         },
@@ -6247,12 +6335,12 @@ Object {
     Object {
       "chartData": Array [
         Object {
-          "color": "#0000ff",
+          "color": "#0000ffff",
           "data": 2400,
           "legend": "Category A",
         },
         Object {
-          "color": "#007f00",
+          "color": "#007f00ff",
           "data": 3400,
           "legend": "Category B",
         },
@@ -6271,6 +6359,13 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
+  "xAxisCategoryOrder": Array [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+  ],
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,

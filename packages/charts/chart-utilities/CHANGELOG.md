@@ -1,8 +1,17 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Thu, 12 Jun 2025 07:20:13 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jun 2025 07:21:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.17)
+
+Fri, 13 Jun 2025 07:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.16..@fluentui/chart-utilities_v1.1.17)
+
+### Patches
+
+- fix(chart-utilities): Updating plotly converter for scatter chart ([PR #34628](https://github.com/microsoft/fluentui/pull/34628) by 120183316+srmukher@users.noreply.github.com)
 
 ## [1.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.16)
 

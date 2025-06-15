@@ -67,8 +67,10 @@ import {
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
-import { extractColor, resolveColor } from './PlotlyColorAdapter';
+import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
 import { ILegend, ILegendsProps } from '../Legends/index';
+import { rgb } from 'd3-color';
+import { ICartesianChartProps } from '../CommonComponents/index';
 
 type DomainInterval = {
   start: number;
@@ -411,12 +413,13 @@ export const transformPlotlyJsonToVSBCProps = (
                 : 0,
             )
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
+        const opacity = getOpacity(series, index2);
         const yVal: number = rangeYValues[index2] as number;
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
-            color,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -430,7 +433,7 @@ export const transformPlotlyJsonToVSBCProps = (
             legend: legend + (validXYRanges.length > 1 ? `.${rangeIdx + 1}` : ''),
             legendShape,
             y: yVal,
-            color: lineColor,
+            color: rgb(lineColor).copy({ opacity }).formatHex8() ?? color,
             lineOptions: {
               ...(lineOptions ?? {}),
               mode: series.mode,
@@ -468,6 +471,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -532,13 +536,14 @@ export const transformPlotlyJsonToGVBCProps = (
                 ? ((series.marker?.color as Color[])?.[xIndex % (series.marker?.color as Color[]).length] as number)
                 : 0,
             )
-          : resolveColor(extractedColors, index1, legend, colorMap, isDarkTheme);
+          : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
+        const opacity = getOpacity(series, xIndex);
 
         mapXToDataPoints[x].series.push({
           key: legend,
           data: series.y![xIndex] as number,
           xAxisCalloutData: x as string,
-          color,
+          color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
         });
@@ -561,6 +566,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -639,6 +645,7 @@ export const transformPlotlyJsonToVBCProps = (
               : 0,
           )
         : resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const opacity = getOpacity(series, index);
       const yVal = calculateHistNorm(
         series.histnorm,
         y[index],
@@ -650,7 +657,7 @@ export const transformPlotlyJsonToVBCProps = (
         x: isXString ? bin.join(', ') : getBinCenter(bin as Bin<number, number>),
         y: yVal,
         legend,
-        color,
+        color: rgb(color).copy({ opacity }).formatHex8() ?? color,
         ...(isXString
           ? {}
           : { xAxisCalloutData: `[${(bin as Bin<number, number>).x0} - ${(bin as Bin<number, number>).x1})` }),
@@ -673,6 +680,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -736,6 +744,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   isDarkTheme?: boolean,
 ): ILineChartProps | IAreaChartProps | IScatterChartProps => {
   const isScatterMarkers = [
+    'markers',
     'text+markers',
     'markers+text',
     'lines+markers',
@@ -775,6 +784,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       const legend: string = legends[index];
       // resolve color for each legend's lines from the extracted colors
       const seriesColor = resolveColor(extractedColors, index, legend, colorMap, isDarkTheme);
+      const seriesOpacity = getOpacity(series, index);
       mode = series.fill === 'tozeroy' ? 'tozeroy' : 'tonexty';
       const lineOptions = getLineOptions(series.line);
       const legendShape = getLegendShape(series);
@@ -801,7 +811,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
           })),
-          color: seriesColor,
+          color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
             ...(lineOptions ?? {}),
             mode: series.mode,
@@ -903,20 +913,18 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
                   : 0,
               )
             : resolveColor(extractedColors, i, legend, colorMap, isDarkTheme);
+          const opacity = getOpacity(series, i);
 
           return {
             x: series.x![i],
             y: yValue,
             legend,
-            color,
+            color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           } as IHorizontalBarChartWithAxisDataPoint;
         })
         .filter(point => point !== null) as IHorizontalBarChartWithAxisDataPoint[];
     })
-    .reverse()
-    .flat()
-    //reversing the order to invert the Y bars order as required by plotly.
-    .reverse();
+    .flat();
 
   const chartHeight: number = input.layout?.height ?? 450;
   const margin: number = input.layout?.margin?.l ?? 0;
@@ -947,6 +955,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
 
@@ -1110,6 +1119,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getAxisCategoryOrderProps([firstData], input.layout),
   };
 };
 
@@ -2019,4 +2029,54 @@ export const getGridProperties = (
     templateColumns,
     layout: gridLayout,
   };
+};
+
+type GetAxisCategoryOrderPropsResult = Pick<ICartesianChartProps, 'xAxisCategoryOrder' | 'yAxisCategoryOrder'>;
+
+/**
+ * @see {@link https://github.com/plotly/plotly.js/blob/master/src/plots/cartesian/category_order_defaults.js#L50}
+ */
+const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undefined) => {
+  const result: GetAxisCategoryOrderPropsResult = {};
+
+  const axesById: Record<string, Partial<LayoutAxis> | undefined> = {
+    x: layout?.xaxis,
+    y: layout?.yaxis,
+  };
+  Object.keys(axesById).forEach(axId => {
+    const ax = axesById[axId];
+    const axLetter = axId[0] as 'x' | 'y';
+    const propName = `${axLetter}AxisCategoryOrder` as keyof GetAxisCategoryOrderPropsResult;
+
+    const values: Datum[] = [];
+    data.forEach((series: Partial<PlotData>) => {
+      series[axLetter]?.forEach(val => {
+        if (!isInvalidValue(val)) {
+          values.push(val as Datum);
+        }
+      });
+    });
+
+    const isAxisTypeCategory =
+      ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
+    if (!isAxisTypeCategory) {
+      return;
+    }
+
+    const isValidArray = isArrayOrTypedArray(ax?.categoryarray) && ax!.categoryarray!.length > 0;
+    if (isValidArray && (!ax?.categoryorder || ax.categoryorder === 'array')) {
+      result[propName] = ax!.categoryarray;
+      return;
+    }
+
+    if (!ax?.categoryorder || ax.categoryorder === 'trace' || ax.categoryorder === 'array') {
+      const categoriesInTraceOrder = Array.from(new Set(values as string[]));
+      result[propName] = categoriesInTraceOrder;
+      return;
+    }
+
+    result[propName] = ax.categoryorder;
+  });
+
+  return result;
 };

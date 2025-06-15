@@ -231,12 +231,15 @@ const validateBarData = (data: Partial<PlotData>) => {
     throw new Error(`Non numeric or string Y values encountered.`);
   }
 };
+const isScatterMarkers = (mode: string): boolean => {
+  return ['markers', 'text+markers', 'markers+text'].includes(mode);
+};
 
 const validateScatterData = (data: Partial<PlotData>) => {
   const mode = data.mode ?? '';
   const xAxisType = data && data.x && data.x.length > 0 ? typeof data?.x?.[0] : 'undefined';
   const yAxisType = data && data.y && data.y.length > 0 ? typeof data?.y?.[0] : 'undefined';
-  if (mode === 'markers') {
+  if (isScatterMarkers(mode)) {
     // Any series having only markers -> Supported number x/string x/date x + number y
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
@@ -244,17 +247,7 @@ const validateScatterData = (data: Partial<PlotData>) => {
     if (!isNumberArray(data.y)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, yAxisType: ${yAxisType}`);
     }
-  } else if (
-    [
-      'lines+markers',
-      'markers+lines',
-      'text+lines+markers',
-      'lines',
-      'text+lines',
-      'text+markers',
-      'markers+text',
-    ].includes(mode)
-  ) {
+  } else if (['lines+markers', 'markers+lines', 'text+lines+markers', 'lines', 'text+lines'].includes(mode)) {
     if (!isNumberArray(data.x) && !isStringArray(data.x) && !isDateArray(data.x)) {
       throw new Error(`${UNSUPPORTED_MSG_PREFIX} ${data.type}, mode: ${mode}, xAxisType: ${xAxisType}`);
     }
@@ -454,7 +447,7 @@ export const mapFluentChart = (input: any): OutputChartType => {
           const scatterData = traceData as Partial<PlotData>;
           const isAreaChart =
             scatterData.fill === 'tonexty' || scatterData.fill === 'tozeroy' || !!scatterData.stackgroup;
-          const isScatterChart = (scatterData.mode ?? '') === 'markers';
+          const isScatterChart = isScatterMarkers(scatterData.mode ?? '');
           if (isScatterChart) {
             return { isValid: true, traceIndex, type: 'scatter' };
           }
