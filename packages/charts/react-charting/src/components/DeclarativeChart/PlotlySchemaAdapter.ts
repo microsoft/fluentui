@@ -140,6 +140,47 @@ function getTitles(layout: Partial<Layout> | undefined) {
   return titles;
 }
 
+const getXAxisTickFormat = (series: Data, layout: Partial<Layout> | undefined) => {
+  const xAxis = getXAxisProperties(series, layout);
+  if (xAxis?.tickformat) {
+    return {
+      tickFormat: xAxis?.tickformat,
+    };
+  }
+
+  return {};
+};
+
+const getYAxisTickFormat = (series: Data, layout: Partial<Layout> | undefined) => {
+  const yAxis = getYAxisProperties(series, layout);
+  if (yAxis?.tickformat) {
+    return {
+      yAxisTickFormat: d3Format(yAxis?.tickformat),
+    };
+  }
+
+  return {};
+};
+
+const getYMinMaxValues = (series: Data, layout: Partial<Layout> | undefined) => {
+  const range = getYAxisProperties(series, layout)?.range;
+  if (range && range.length === 2) {
+    return {
+      yMinValue: range[0],
+      yMaxValue: range[1],
+    };
+  }
+  return {};
+};
+
+const getYAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
+  return layout?.yaxis;
+};
+
+const getXAxisProperties = (series: Data, layout: Partial<Layout> | undefined): Partial<LayoutAxis> | undefined => {
+  return layout?.xaxis;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
@@ -441,8 +482,6 @@ export const transformPlotlyJsonToVSBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: Object.values(mapXToDataPoints),
     width: input.layout?.width,
@@ -450,9 +489,6 @@ export const transformPlotlyJsonToVSBCProps = (
     barWidth: 'auto',
     yMaxValue,
     yMinValue,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
@@ -463,7 +499,11 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...getYAxisTickFormat(input.data[0], input.layout),
   };
 };
 
@@ -543,22 +583,21 @@ export const transformPlotlyJsonToGVBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: Object.values(mapXToDataPoints),
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barwidth: 'auto',
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'plotly',
     ...secondaryYAxisValues,
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...getYAxisTickFormat(input.data[0], input.layout),
   };
 };
 
@@ -657,22 +696,19 @@ export const transformPlotlyJsonToVBCProps = (
     });
   });
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: vbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     supportNegativeData: true,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     mode: 'histogram',
     hideTickOverlap: true,
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    ...getYMinMaxValues(input.data[0], input.layout),
   };
 };
 
@@ -814,52 +850,50 @@ const transformPlotlyJsonToScatterTraceProps = (
     })
     .flat();
 
-  const yMinMaxValues = findNumericMinMaxOfY(chartData);
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const yMinMax = getYMinMaxValues(input.data[0], input.layout);
+  if (yMinMax.yMinValue === undefined && yMinMax.yMaxValue === undefined) {
+    const yMinMaxValues = findNumericMinMaxOfY(chartData);
+    yMinMax.yMinValue = yMinMaxValues.startValue;
+    yMinMax.yMaxValue = yMinMaxValues.endValue;
+  }
+
   const numDataPoints = chartData.reduce((total, lineChartPoints) => total + lineChartPoints.data.length, 0);
 
   const chartProps: IChartProps = {
-    chartTitle,
     lineChartData: chartData,
   };
 
   const scatterChartProps: IChartProps = {
-    chartTitle,
     scatterChartData: chartData,
+  };
+
+  const commonProps = {
+    supportNegativeData: true,
+    ...secondaryYAxisValues,
+    width: input.layout?.width,
+    height: input.layout?.height ?? 350,
+    hideTickOverlap: true,
+    hideLegend,
+    useUTC: false,
+    optimizeLargeData: numDataPoints > 1000,
+    ...yMinMax,
+    ...getTitles(input.layout),
+    ...getXAxisTickFormat(input.data[0], input.layout),
+    ...getYAxisTickFormat(input.data[0], input.layout),
   };
 
   if (isAreaChart) {
     return {
       data: chartProps,
-      supportNegativeData: true,
-      xAxisTitle,
-      yAxisTitle,
-      ...secondaryYAxisValues,
       mode,
-      width: input.layout?.width,
-      height: input.layout?.height ?? 350,
-      hideTickOverlap: true,
-      hideLegend,
-      useUTC: false,
-      optimizeLargeData: numDataPoints > 1000,
+      ...commonProps,
     } as IAreaChartProps;
   } else {
     return {
       data: isScatterChart ? scatterChartProps : chartProps,
-      supportNegativeData: true,
-      xAxisTitle,
-      yAxisTitle,
-      ...secondaryYAxisValues,
       roundedTicks: true,
-      yMinValue: yMinMaxValues.startValue,
-      yMaxValue: yMinMaxValues.endValue,
-      width: input.layout?.width,
-      height: input.layout?.height ?? 350,
-      hideTickOverlap: true,
       enableReflow: false,
-      hideLegend,
-      useUTC: false,
-      optimizeLargeData: numDataPoints > 1000,
+      ...commonProps,
     } as ILineChartProps | IScatterChartProps;
   }
 };
@@ -927,13 +961,8 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const gapFactor = 1 / (1 + scalingFactor * numberOfRows);
   const barHeight = availableHeight / (numberOfRows * (1 + gapFactor));
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: chartData,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     secondaryYAxistitle:
       typeof input.layout?.yaxis2?.title === 'string'
         ? input.layout?.yaxis2?.title
@@ -947,6 +976,7 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     roundCorners: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
   };
 };
@@ -1094,23 +1124,19 @@ export const transformPlotlyJsonToHeatmapProps = (
     ? (colorscale as Array<[number, string]>).map(arr => arr[1])
     : defaultRange;
 
-  const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
-
   return {
     data: [heatmapData],
     domainValuesForColorScale,
     rangeValuesForColorScale,
     hideLegend: true,
     showYAxisLables: true,
-    chartTitle,
-    xAxisTitle,
-    yAxisTitle,
     sortOrder: 'none',
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
   };
 };
