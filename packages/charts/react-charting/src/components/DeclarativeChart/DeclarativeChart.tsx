@@ -391,10 +391,12 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
 
   const groupedTraces: Record<string, number[]> = {};
+  let nonCartesianTraceCount = 0;
   plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
     let traceKey = '';
     if (isNonPlotType(chart.validTracesInfo![index].type)) {
-      traceKey = `${chart.validTracesInfo![index].type}_${index + 1}`;
+      traceKey = `noncar_${nonCartesianTraceCount + 1}`;
+      nonCartesianTraceCount++;
     } else {
       traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
     }
