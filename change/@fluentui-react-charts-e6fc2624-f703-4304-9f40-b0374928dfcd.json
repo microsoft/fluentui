@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Charts made responsive",
+  "packageName": "@fluentui/react-charts",
+  "email": "anushgupta@microsoft.com",
+  "dependentChangeType": "patch"
+}

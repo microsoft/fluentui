@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     ...typographyStyles.body1,
     display: 'flex',
     flexDirection: 'column',
-    width: '100%',
-    height: '100%',
+    width: 'var(--root-width, 100%)',
+    height: 'var(--root-height, 100%)',
   },
   chart: {
     boxSizing: 'content-box',

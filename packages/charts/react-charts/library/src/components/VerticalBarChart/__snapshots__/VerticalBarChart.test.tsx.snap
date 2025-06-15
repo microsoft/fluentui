@@ -51,24 +51,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(77.96153846153847,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(99.42307692307693,0)"
           >
             <line
@@ -82,24 +64,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(120.88461538461539,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              3000
             </text>
           </g>
           <g
@@ -123,24 +87,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(163.80769230769232,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(185.26923076923077,0)"
           >
             <line
@@ -154,24 +100,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(206.73076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              7000
             </text>
           </g>
           <g
@@ -195,24 +123,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(249.65384615384616,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              9000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(271.11538461538464,0)"
           >
             <line
@@ -226,24 +136,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(292.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              11,000
             </text>
           </g>
           <g
@@ -267,24 +159,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(335.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(356.96153846153845,0)"
           >
             <line
@@ -298,24 +172,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(378.4230769230769,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              15,000
             </text>
           </g>
           <g
@@ -339,24 +195,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(421.3461538461538,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(442.8076923076923,0)"
           >
             <line
@@ -370,24 +208,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(464.2692307692308,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -411,24 +231,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(507.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(528.6538461538462,0)"
           >
             <line
@@ -447,24 +249,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(550.1153846153846,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(571.5769230769231,0)"
           >
             <line
@@ -478,24 +262,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               y="16"
             >
               24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(593.0384615384615,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              25,000
             </text>
           </g>
           <g
@@ -830,24 +596,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(77.96153846153847,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(99.42307692307693,0)"
           >
             <line
@@ -861,24 +609,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(120.88461538461539,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              3000
             </text>
           </g>
           <g
@@ -902,24 +632,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(163.80769230769232,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(185.26923076923077,0)"
           >
             <line
@@ -933,24 +645,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(206.73076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              7000
             </text>
           </g>
           <g
@@ -974,24 +668,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(249.65384615384616,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              9000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(271.11538461538464,0)"
           >
             <line
@@ -1005,24 +681,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(292.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              11,000
             </text>
           </g>
           <g
@@ -1046,24 +704,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(335.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(356.96153846153845,0)"
           >
             <line
@@ -1077,24 +717,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(378.4230769230769,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              15,000
             </text>
           </g>
           <g
@@ -1118,24 +740,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(421.3461538461538,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(442.8076923076923,0)"
           >
             <line
@@ -1149,24 +753,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(464.2692307692308,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -1190,24 +776,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(507.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(528.6538461538462,0)"
           >
             <line
@@ -1226,24 +794,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <g
             class="tick"
             opacity="1"
-            transform="translate(550.1153846153846,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(571.5769230769231,0)"
           >
             <line
@@ -1257,24 +807,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               y="16"
             >
               24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(593.0384615384615,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              25,000
             </text>
           </g>
           <g
@@ -1613,24 +1145,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(77.96153846153847,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                1000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(99.42307692307693,0)"
             >
               <line
@@ -1644,24 +1158,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 2000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(120.88461538461539,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                3000
               </text>
             </g>
             <g
@@ -1685,24 +1181,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(163.80769230769232,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                5000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(185.26923076923077,0)"
             >
               <line
@@ -1716,24 +1194,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 6000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(206.73076923076923,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                7000
               </text>
             </g>
             <g
@@ -1757,24 +1217,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(249.65384615384616,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                9000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(271.11538461538464,0)"
             >
               <line
@@ -1788,24 +1230,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 10,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(292.5769230769231,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                11,000
               </text>
             </g>
             <g
@@ -1829,24 +1253,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(335.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                13,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(356.96153846153845,0)"
             >
               <line
@@ -1860,24 +1266,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 14,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(378.4230769230769,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                15,000
               </text>
             </g>
             <g
@@ -1901,24 +1289,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(421.3461538461538,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                17,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(442.8076923076923,0)"
             >
               <line
@@ -1932,24 +1302,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 18,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(464.2692307692308,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                19,000
               </text>
             </g>
             <g
@@ -1973,24 +1325,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(507.1923076923077,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                21,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(528.6538461538462,0)"
             >
               <line
@@ -2009,24 +1343,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
             <g
               class="tick"
               opacity="1"
-              transform="translate(550.1153846153846,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                23,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
               transform="translate(571.5769230769231,0)"
             >
               <line
@@ -2040,24 +1356,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 y="16"
               >
                 24,000
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(593.0384615384615,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                25,000
               </text>
             </g>
             <g
@@ -2404,24 +1702,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(77.96153846153847,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(99.42307692307693,0)"
           >
             <line
@@ -2435,24 +1715,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(120.88461538461539,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              3000
             </text>
           </g>
           <g
@@ -2476,24 +1738,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(163.80769230769232,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(185.26923076923077,0)"
           >
             <line
@@ -2507,24 +1751,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(206.73076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              7000
             </text>
           </g>
           <g
@@ -2548,24 +1774,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(249.65384615384616,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              9000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(271.11538461538464,0)"
           >
             <line
@@ -2579,24 +1787,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(292.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              11,000
             </text>
           </g>
           <g
@@ -2620,24 +1810,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(335.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(356.96153846153845,0)"
           >
             <line
@@ -2651,24 +1823,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(378.4230769230769,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              15,000
             </text>
           </g>
           <g
@@ -2692,24 +1846,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(421.3461538461538,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(442.8076923076923,0)"
           >
             <line
@@ -2723,24 +1859,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(464.2692307692308,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -2764,24 +1882,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(507.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(528.6538461538462,0)"
           >
             <line
@@ -2800,24 +1900,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(550.1153846153846,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(571.5769230769231,0)"
           >
             <line
@@ -2831,24 +1913,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               y="16"
             >
               24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(593.0384615384615,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              25,000
             </text>
           </g>
           <g
@@ -4413,24 +3477,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(77.96153846153847,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(99.42307692307693,0)"
           >
             <line
@@ -4444,24 +3490,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(120.88461538461539,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              3000
             </text>
           </g>
           <g
@@ -4485,24 +3513,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(163.80769230769232,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(185.26923076923077,0)"
           >
             <line
@@ -4516,24 +3526,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(206.73076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              7000
             </text>
           </g>
           <g
@@ -4557,24 +3549,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(249.65384615384616,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              9000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(271.11538461538464,0)"
           >
             <line
@@ -4588,24 +3562,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(292.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              11,000
             </text>
           </g>
           <g
@@ -4629,24 +3585,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(335.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(356.96153846153845,0)"
           >
             <line
@@ -4660,24 +3598,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(378.4230769230769,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              15,000
             </text>
           </g>
           <g
@@ -4701,24 +3621,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(421.3461538461538,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(442.8076923076923,0)"
           >
             <line
@@ -4732,24 +3634,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(464.2692307692308,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -4773,24 +3657,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(507.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(528.6538461538462,0)"
           >
             <line
@@ -4809,24 +3675,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           <g
             class="tick"
             opacity="1"
-            transform="translate(550.1153846153846,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(571.5769230769231,0)"
           >
             <line
@@ -4840,24 +3688,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               y="16"
             >
               24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(593.0384615384615,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              25,000
             </text>
           </g>
           <g
@@ -5202,24 +4032,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(77.96153846153847,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              1000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(99.42307692307693,0)"
           >
             <line
@@ -5233,24 +4045,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               2000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(120.88461538461539,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              3000
             </text>
           </g>
           <g
@@ -5274,24 +4068,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(163.80769230769232,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              5000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(185.26923076923077,0)"
           >
             <line
@@ -5305,24 +4081,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               6000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(206.73076923076923,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              7000
             </text>
           </g>
           <g
@@ -5346,24 +4104,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(249.65384615384616,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              9000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(271.11538461538464,0)"
           >
             <line
@@ -5377,24 +4117,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               10,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(292.5769230769231,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              11,000
             </text>
           </g>
           <g
@@ -5418,24 +4140,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(335.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              13,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(356.96153846153845,0)"
           >
             <line
@@ -5449,24 +4153,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               14,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(378.4230769230769,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              15,000
             </text>
           </g>
           <g
@@ -5490,24 +4176,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(421.3461538461538,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              17,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(442.8076923076923,0)"
           >
             <line
@@ -5521,24 +4189,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               18,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(464.2692307692308,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              19,000
             </text>
           </g>
           <g
@@ -5562,24 +4212,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(507.1923076923077,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              21,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(528.6538461538462,0)"
           >
             <line
@@ -5598,24 +4230,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           <g
             class="tick"
             opacity="1"
-            transform="translate(550.1153846153846,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              23,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
             transform="translate(571.5769230769231,0)"
           >
             <line
@@ -5629,24 +4243,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               y="16"
             >
               24,000
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(593.0384615384615,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              25,000
             </text>
           </g>
           <g
