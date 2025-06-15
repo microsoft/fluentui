@@ -514,7 +514,9 @@ export class GroupedVerticalBarChartBase
               className={this._classNames.barLabel}
               aria-hidden={true}
             >
-              {formatScientificLimitWidth(barTotalValue)}
+              {this.props.yAxisTickFormat
+                ? this.props.yAxisTickFormat(barTotalValue)
+                : formatScientificLimitWidth(barTotalValue)}
             </text>,
           );
         }

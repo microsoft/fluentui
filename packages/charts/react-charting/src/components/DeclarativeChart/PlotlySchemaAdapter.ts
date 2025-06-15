@@ -876,7 +876,6 @@ const transformPlotlyJsonToScatterTraceProps = (
     hideLegend,
     useUTC: false,
     optimizeLargeData: numDataPoints > 1000,
-    ...yMinMax,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
     ...getYAxisTickFormat(input.data[0], input.layout),
@@ -894,6 +893,7 @@ const transformPlotlyJsonToScatterTraceProps = (
       roundedTicks: true,
       enableReflow: false,
       ...commonProps,
+      ...yMinMax,
     } as ILineChartProps | IScatterChartProps;
   }
 };

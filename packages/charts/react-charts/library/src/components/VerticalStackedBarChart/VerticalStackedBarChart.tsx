@@ -1014,7 +1014,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {formatScientificLimitWidth(barLabel)}
+              {props.yAxisTickFormat ? props.yAxisTickFormat(barLabel) : formatScientificLimitWidth(barLabel)}
             </text>
           )}
         </g>
