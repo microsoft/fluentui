@@ -74,6 +74,8 @@ export type AxisProperties = {
   yAnnotation?: string;
   row: number;
   column: number;
+  xDomain: [number, number];
+  yDomain: [number, number];
 };
 export type GridAxisProperties = Record<string, AxisProperties>;
 
@@ -1826,7 +1828,7 @@ export const isNonPlotType = (chartType: string): boolean => {
 export const getGridProperties = (
   schema: PlotlySchema | undefined,
   isMultiPlot: boolean,
-  chartType: string,
+  validTracesInfo: [number, string][],
 ): GridProperties => {
   const gridX: number[][] = [];
   const gridY: number[][] = [];
@@ -1843,17 +1845,20 @@ export const getGridProperties = (
   }
 
   const layout = schema?.layout as Partial<Layout> | undefined;
-  if (chartType === 'donut') {
-    schema?.data?.forEach((series: Partial<PieData>, index: number) => {
-      gridX[index] = series.domain?.x ?? [];
-      gridY[index] = series.domain?.y ?? [];
-    });
-  } else if (chartType === 'sankey') {
-    schema?.data?.forEach((series: Partial<SankeyData>, index: number) => {
-      gridX[index] = series.domain?.x ?? [];
-      gridY[index] = series.domain?.y ?? [];
-    });
-  } else {
+  validTracesInfo.forEach((trace, index) => {
+    if (trace[1] === 'donut') {
+      schema?.data?.forEach((series: Partial<PieData>, index: number) => {
+        gridX[index] = series.domain?.x ?? [];
+        gridY[index] = series.domain?.y ?? [];
+      });
+    } else if (trace[1] === 'sankey') {
+      schema?.data?.forEach((series: Partial<SankeyData>, index: number) => {
+        gridX[index] = series.domain?.x ?? [];
+        gridY[index] = series.domain?.y ?? [];
+      });
+    }
+  });
+  {
     if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
       return { templateRows, templateColumns, layout: gridLayout };
     }

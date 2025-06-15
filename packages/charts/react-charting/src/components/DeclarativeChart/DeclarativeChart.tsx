@@ -402,7 +402,11 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   });
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
-  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData, isMultiPlot.current, chart.type);
+  const gridProperties: GridProperties = getGridProperties(
+    plotlyInputWithValidData,
+    isMultiPlot.current,
+    chart.validTracesInfo,
+  );
 
   const allupLegendsProps = getAllupLegendsProps(
     plotlyInputWithValidData,
