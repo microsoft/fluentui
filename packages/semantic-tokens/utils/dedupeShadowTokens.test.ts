@@ -216,7 +216,6 @@ const shadowTokens = {
 
 describe('dedupeShadowTokens', () => {
   const dedupedTokens = dedupeShadowTokens(shadowTokens);
-  console.log('Deduped Tokens:', dedupedTokens);
   it('Combines and removes tokens', () => {
     // First, check the tokens have been deduped and we retain all diverse tokens
     expect(Object.keys(dedupedTokens).length).toEqual(5);
@@ -233,10 +232,9 @@ describe('dedupeShadowTokens', () => {
   });
   it('Handles combined fallbacks correctly', () => {
     // Ensure fallbacks are handled correctly
-    console.log('Test: ', dedupedTokens.shadowWindowInactive);
     expect(dedupedTokens.shadowWindowInactive.fst_reference).toMatch('shadow/window/active');
   });
-  it('Handles combined fallbacks correctly', () => {
+  it('Handles combined special case shadow tokens', () => {
     // Ensure fallbacks are handled correctly
     expect(dedupedTokens.ctrlComposerInputShadow).toBeTruthy();
     expect(dedupedTokens.shadowWindowInactive).toBeTruthy();
