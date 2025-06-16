@@ -2,10 +2,14 @@ import type { Token } from '../scripts/token.types';
 import { chopLastCamelCasePart } from './chopLastCamelCasePart';
 import { removeLastDelimiter } from './removeLastDelimiter';
 
-// const chopAfterShadow = (str: string): string => {
-//   const match = str.match(/^(.*?Shadow)/i);
-//   return match ? match[1] : str;
-// };
+const chopShadowJSON = (token: Token): Token => {
+  // Handle shadow tokens by removing the last part (X,Y,Blur,Color + Ambient/Key)
+  token.cssName = removeLastDelimiter(token.cssName, '-');
+  token.fst_reference = removeLastDelimiter(token.fst_reference, '/');
+  token.name = removeLastDelimiter(token.name, '/');
+
+  return token;
+};
 
 export const dedupeShadowTokens = (_tokenJSON: Record<string, Token>) => {
   /* Our shadow tokens come exported from Figma in parts i.e. X, Y, Blur, Color & Ambient/Key variants.
@@ -13,40 +17,43 @@ export const dedupeShadowTokens = (_tokenJSON: Record<string, Token>) => {
    * If the separate shadow tokens are required, they can be re-added and formatted into a shadow token string
    * This is backwards compatible and valid with fallbacks (if a shadow part CSSVar is missing, it will fallback)
    */
-  const tokenClone = { ..._tokenJSON };
   for (const token in _tokenJSON) {
-    if (tokenClone.hasOwnProperty(token)) {
-      const tokenData: Token = _tokenJSON[token];
+    if (_tokenJSON.hasOwnProperty(token)) {
+      let tokenData: Token = _tokenJSON[token];
 
       if (token.endsWith('Y2')) {
         // Special case, ignore, no Y2 tokens should be present
-        delete tokenClone[token];
+        delete _tokenJSON[token];
         continue;
       }
 
       // We have two different ways of naming shadow tokens, so we need to handle both
       if (tokenData.name.toLowerCase().includes('shadow')) {
-        // If a token starts with 'shadow', we chop off the last two camel cased pieces
+        // If a token contains 'shadow', we chop off the last two camel cased pieces
         let combinedShadowName = chopLastCamelCasePart(chopLastCamelCasePart(token));
+        let isSpecialCase = false;
         if (!combinedShadowName.toLowerCase().includes('shadow')) {
-          console.log('Got one:', combinedShadowName);
           // Special case: Some shadow tokens don't have two modifiers, re-add Shadow to end.
           combinedShadowName = combinedShadowName + 'Shadow';
-          console.log('Got one - 2:', combinedShadowName);
+          isSpecialCase = true;
         }
-        if (!tokenClone[combinedShadowName]) {
+
+        // Check if shadow token was already combined
+        if (!_tokenJSON[combinedShadowName]) {
           // Handle shadow tokens by removing the last part (X,Y,Blur,Color + Ambient/Key)
-          tokenData.cssName = removeLastDelimiter(removeLastDelimiter(tokenData.cssName, '-'), '-');
-          tokenData.fst_reference = removeLastDelimiter(removeLastDelimiter(tokenData.fst_reference, '/'), '/');
-          tokenData.name = removeLastDelimiter(removeLastDelimiter(tokenData.name, '/'), '/');
+          tokenData = chopShadowJSON(tokenData);
+          if (!isSpecialCase) {
+            // For regular shadow tokens, we chop them twice.
+            tokenData = chopShadowJSON(tokenData);
+          }
           // Add the new combined token
-          tokenClone[combinedShadowName] = tokenData;
+          _tokenJSON[combinedShadowName] = tokenData;
         }
         // Remove original token
-        delete tokenClone[token];
+        delete _tokenJSON[token];
       }
     }
   }
 
-  return tokenClone;
+  return _tokenJSON;
 };
