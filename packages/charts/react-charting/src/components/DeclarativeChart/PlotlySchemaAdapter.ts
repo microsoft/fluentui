@@ -72,6 +72,9 @@ import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 
+export const NON_PLOT_KEY_PREFIX = 'nonplot_';
+export const SINGLE_REPEAT = 'repeat(1, 1fr)';
+
 type DomainInterval = {
   start: number;
   end: number;
@@ -1719,7 +1722,9 @@ export const getAllupLegendsProps = (
   const allupLegends: ILegend[] = [];
   // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
   const toShowLegend = input.data.reduce((acc, series) => {
-    return acc || (series as Partial<PlotData>).showlegend === true;
+    return (
+      acc || (series as Partial<PlotData>).showlegend === true || (series as Partial<PlotData>).showlegend === undefined
+    );
   }, false);
 
   if (toShowLegend) {
@@ -1952,12 +1957,12 @@ export const getGridProperties = (
       .map(interval => interval.start)
       .sort();
 
-    templateColumns = `repeat('${sortedXStart.length}', 1fr)`;
+    templateColumns = `repeat(${sortedXStart.length}, 1fr)`;
 
     domainX.forEach((interval, index) => {
       const cellName =
         index >= cartesianDomains
-          ? `noncar_${index - cartesianDomains + 1}`
+          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
           : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
       const columnIndex = sortedXStart.findIndex(start => start === interval.start);
@@ -1991,12 +1996,12 @@ export const getGridProperties = (
 
     const numberOfRows = sortedYStart.length;
 
-    templateRows = `repeat('${numberOfRows}', 1fr)`;
+    templateRows = `repeat(${numberOfRows}, 1fr)`;
 
     domainY.forEach((interval, index) => {
       const cellName =
         index >= cartesianDomains
-          ? `noncar_${index - cartesianDomains + 1}`
+          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
           : (`x${index === 0 ? '' : index + 1}` as XAxisName);
 
       const rowIndex = sortedYStart.findIndex(start => start === interval.start);

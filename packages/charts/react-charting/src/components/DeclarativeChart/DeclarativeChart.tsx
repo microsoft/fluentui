@@ -27,6 +27,8 @@ import {
   transformPlotlyJsonToScatterChartProps,
   projectPolarToCartesian,
   getAllupLegendsProps,
+  NON_PLOT_KEY_PREFIX,
+  SINGLE_REPEAT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -395,7 +397,7 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
     let traceKey = '';
     if (isNonPlotType(chart.validTracesInfo![index].type)) {
-      traceKey = `noncar_${nonCartesianTraceCount + 1}`;
+      traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
       nonCartesianTraceCount++;
     } else {
       traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
@@ -412,6 +414,20 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     isMultiPlot.current,
     chart.validTracesInfo!,
   );
+
+  // Render only one plot if the grid properties cannot determine positioning of multiple plots.
+  if (
+    isMultiPlot.current &&
+    gridProperties.templateRows === SINGLE_REPEAT &&
+    gridProperties.templateColumns === SINGLE_REPEAT
+  ) {
+    Object.keys(groupedTraces).forEach((key, index) => {
+      if (index > 0) {
+        delete groupedTraces[key];
+      }
+    });
+    isMultiPlot.current = false;
+  }
 
   const allupLegendsProps = getAllupLegendsProps(
     plotlyInputWithValidData,
