@@ -24,16 +24,10 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
   </fluent-checkbox>
 `;
 
-const messageTemplate = html`
-  <fluent-text slot="message" size="200" flag="${story => story.flag}">
-    <span>${story => story.message}</span>
-  </fluent-text>
-`;
-
 const fieldStoryTemplate = html<StoryArgs<FluentCheckbox>>`
   <fluent-field label-position="${story => story.labelPosition}">
     <label slot="label" for="${story => story.id}">${story => story.label}</label>
-    ${story => story.storyContent} ${repeat(story => story.messages, messageTemplate)}
+    ${story => story.storyContent}
   </fluent-field>
 `;
 
@@ -117,7 +111,6 @@ export default {
       table: { category: 'slots', type: {} },
     },
     label: { table: { disable: true } },
-    messageSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentCheckbox>;
 

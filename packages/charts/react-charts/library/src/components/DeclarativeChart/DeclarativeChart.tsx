@@ -5,6 +5,7 @@ import {
   decodeBase64Fields,
   isArrayOrTypedArray,
   isDateArray,
+  isMonthArray,
   isNumberArray,
   isYearArray,
   mapFluentChart,
@@ -16,7 +17,6 @@ import { Theme, webLightTheme } from '@fluentui/tokens';
 import * as d3Color from 'd3-color';
 
 import {
-  isMonthArray,
   correctYearMonth,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,

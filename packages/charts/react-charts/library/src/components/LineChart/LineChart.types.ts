@@ -106,7 +106,12 @@ export interface EventsAnnotationProps {
  * Line Chart styles
  * {@docCategory LineChart}
  */
-export interface LineChartStyles extends CartesianChartStyles {}
+export interface LineChartStyles extends CartesianChartStyles {
+  /**
+   * styles for line border
+   */
+  lineBorder?: string;
+}
 
 /**
  * Line Chart style properties

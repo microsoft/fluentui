@@ -61,4 +61,4 @@ Please see the [Migration documentation][5].
 [2]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/CHANGELOG.md
 [3]: https://github.com/microsoft/fluentui/issues/new/choose
 [4]: https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react-northstar+%28v0%29%22
-[5]: https://react.fluentui.dev/?path=/docs/concepts-migration-overview--page
+[5]: https://react.fluentui.dev/?path=/docs/concepts-migration-getting-started--docs

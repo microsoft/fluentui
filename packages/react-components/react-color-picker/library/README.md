@@ -2,8 +2,6 @@
 
 **React Color Picker components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 The ColorPicker allows users to browse and select colors.
 By default, it enables navigation through a color spectrum and operates in HSV/HSL format.
 However, it is also possible to specify a color using Red-Green-Blue (RGB), an alpha color code, or hexadecimal values in the text boxes.

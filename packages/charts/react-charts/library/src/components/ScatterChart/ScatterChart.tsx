@@ -331,7 +331,7 @@ export const ScatterChart: React.FunctionComponent<ScatterChartProps> = React.fo
             stroke={seriesColor}
             role="img"
             aria-label={_getAriaLabel(i, j)}
-            tabIndex={_points[i].legend !== '' ? 0 : undefined}
+            tabIndex={isLegendSelected ? 0 : undefined}
           />,
         );
       }

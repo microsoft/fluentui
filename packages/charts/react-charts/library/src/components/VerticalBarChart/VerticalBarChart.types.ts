@@ -144,4 +144,9 @@ export interface VerticalBarChartStyles extends CartesianChartStyles {
    * Style for the bar labels
    */
   barLabel: string;
+
+  /**
+   * Styles for line border
+   */
+  lineBorder: string;
 }

@@ -116,8 +116,8 @@
         "packages/react-components/react-motion-components-preview/stories/src/index.ts"
       ],
       "@fluentui/react-motion-stories": ["packages/react-components/react-motion/stories/src/index.ts"],
-      "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/library/src/index.ts"],
-      "@fluentui/react-nav-preview-stories": ["packages/react-components/react-nav-preview/stories/src/index.ts"],
+      "@fluentui/react-nav": ["packages/react-components/react-nav/library/src/index.ts"],
+      "@fluentui/react-nav-stories": ["packages/react-components/react-nav/stories/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/library/src/index.ts"],
       "@fluentui/react-overflow-stories": ["packages/react-components/react-overflow/stories/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/library/src/index.ts"],

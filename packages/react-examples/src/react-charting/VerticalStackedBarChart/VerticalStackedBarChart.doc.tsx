@@ -10,6 +10,7 @@ import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalSta
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
 import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
 import { VerticalStackedBarChartNegativeExample } from './VerticalStackedBarChart.Negative.Example';
+import { VSBCAxisCategoryOrderExample } from './VerticalStackedBarChart.AxisCategoryOrder.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -27,6 +28,8 @@ const VerticalStackedBarChartSecondaryYAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.SecondaryYAxis.Example.tsx') as string;
 const VerticalStackedBarChartNegativeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Negative.Example.tsx') as string;
+const VSBCAxisCategoryOrderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.AxisCategoryOrder.Example.tsx') as string;
 
 export const VerticalStackedBarChartPageProps: IDocPageProps = {
   title: 'VerticalStackedBarChart',
@@ -73,6 +76,11 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
       title: 'VerticalStackedBarChart Negative',
       code: VerticalStackedBarChartNegativeExampleCode,
       view: <VerticalStackedBarChartNegativeExample />,
+    },
+    {
+      title: 'VerticalStackedBarChart Axis Category Order',
+      code: VSBCAxisCategoryOrderExampleCode,
+      view: <VSBCAxisCategoryOrderExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartOverview.md'),
