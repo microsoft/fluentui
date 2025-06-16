@@ -1762,7 +1762,7 @@ export const getAllupLegendsProps = (
           colorMap,
           isDarkTheme,
         );
-        if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
+        if (name !== undefined && name !== '' && allupLegends.some(group => group.title === name) === false) {
           allupLegends.push({
             title: name,
             color: resolvedColor as string,
