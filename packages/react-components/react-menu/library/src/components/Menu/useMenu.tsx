@@ -21,9 +21,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
+import { MENU_SAFEZONE_TIMEOUT_EVENT, MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu } from '../../utils';
 import { menuItemClassNames } from '../MenuItem/useMenuItemStyles.styles';
-import { HAS_MOUSE_MOVED_DATA_ATTR } from '../MenuTrigger/useMenuTrigger';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
 
 // If it's not possible to position the submenu in smaller viewports, try
@@ -36,8 +35,6 @@ const submenuFallbackPositions: PositioningShorthandValue[] = [
   'before-bottom',
   'above',
 ];
-
-const MENU_SAFE_ZONE_TIMEOUT_EVENT = 'fuimenusafezonetimeout';
 
 /**
  * Create the state required to render Menu.
@@ -124,7 +121,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean }): Men
       };
     },
     onSafeZoneTimeout: () => {
-      const event = new CustomEvent(MENU_SAFE_ZONE_TIMEOUT_EVENT);
+      const event = new CustomEvent(MENU_SAFEZONE_TIMEOUT_EVENT);
 
       setOpen(event, { open: false, keyboard: false, type: 'menuSafeZoneTimeout', event });
 
@@ -137,9 +134,7 @@ export const useMenu_unstable = (props: MenuProps & { safeZone?: boolean }): Men
           return el.classList.contains(menuItemClassNames.root);
         }) as HTMLElement | null;
 
-        if (menuItemEl) {
-          menuItemEl.setAttribute(HAS_MOUSE_MOVED_DATA_ATTR, '');
-        }
+        menuItemEl?.dispatchEvent(event);
       }
     },
   });
