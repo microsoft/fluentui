@@ -50,6 +50,8 @@ export function useSafeZoneArea({
   const timeoutIdRef = React.useRef<number | null>(null);
   const mouseMoveIdRef = React.useRef<number | null>(null);
 
+  const mouseCoordinatesRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+
   const containerListenerRef = React.useMemo(() => {
     if (disabled) {
       return () => {
@@ -94,35 +96,16 @@ export function useSafeZoneArea({
     let targetEl: HTMLElement | null = null;
 
     function onTargetMouseMove(e: MouseEvent) {
-      const targetWindow = targetDocument?.defaultView;
-
-      if (!targetWindow) {
-        return;
-      }
+      mouseCoordinatesRef.current = { x: e.clientX, y: e.clientY };
 
       if (timeoutIdRef.current) {
-        targetWindow.clearTimeout(timeoutIdRef.current);
+        targetDocument?.defaultView?.clearTimeout(timeoutIdRef.current);
         timeoutIdRef.current = null;
       }
 
       if (!stateStore.isActive()) {
         stateStore.toggleActive(true);
       }
-
-      mouseMoveIdRef.current = targetWindow.requestAnimationFrame(() => {
-        const containerEl = containerRef.current;
-
-        if (!containerEl || !targetEl) {
-          return;
-        }
-
-        safeZoneAreaRef.current?.updateSVG({
-          containerPlacementSide: parseFloatingUIPlacement(containerEl.dataset.popperPlacement as Placement).side,
-          containerRect: containerEl.getBoundingClientRect(),
-          mouseCoordinates: { x: e.clientX, y: e.clientY },
-          targetRect: targetEl.getBoundingClientRect(),
-        });
-      });
     }
 
     return (el: HTMLElement | null) => {
@@ -179,6 +162,39 @@ export function useSafeZoneArea({
   const onSvgMouseLeave = useEventCallback((e: React.MouseEvent) => {
     onSafeZoneLeave?.(e);
   });
+
+  React.useEffect(() => {
+    return stateStore.subscribe(isActive => {
+      if (isActive) {
+        function updateSVGs() {
+          const containerEl = containerRef.current;
+          const targetEl = targetRef.current;
+          const targetWindow = targetDocument?.defaultView;
+
+          if (containerEl && targetEl) {
+            safeZoneAreaRef.current?.updateSVG({
+              containerPlacementSide: parseFloatingUIPlacement(containerEl.dataset.popperPlacement as Placement).side,
+              containerRect: containerEl.getBoundingClientRect(),
+              mouseCoordinates: mouseCoordinatesRef.current,
+              targetRect: targetEl.getBoundingClientRect(),
+            });
+          }
+
+          if (targetWindow) {
+            mouseMoveIdRef.current = targetWindow.requestAnimationFrame(updateSVGs);
+          }
+        }
+
+        updateSVGs();
+        return;
+      }
+
+      if (mouseMoveIdRef.current) {
+        targetDocument?.defaultView?.cancelAnimationFrame(mouseMoveIdRef.current);
+        mouseMoveIdRef.current = null;
+      }
+    });
+  }, [stateStore, targetDocument]);
 
   return {
     containerRef: useMergedRefs(containerRef, containerListenerRef),

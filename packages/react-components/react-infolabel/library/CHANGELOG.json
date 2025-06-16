@@ -2,6 +2,21 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Fri, 13 Jun 2025 12:32:53 GMT",
+      "tag": "@fluentui/react-infolabel_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.11.1",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:33 GMT",
       "tag": "@fluentui/react-infolabel_v9.3.0",
       "version": "9.3.0",
