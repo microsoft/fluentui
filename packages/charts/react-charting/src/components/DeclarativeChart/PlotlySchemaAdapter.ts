@@ -182,6 +182,16 @@ const getXAxisProperties = (series: Data, layout: Partial<Layout> | undefined): 
   return layout?.xaxis;
 };
 
+const getFormattedCalloutYData = (
+  yVal: string | number,
+  yAxisFormat: ReturnType<typeof getYAxisTickFormat>,
+): string => {
+  if (yAxisFormat?.yAxisTickFormat && typeof yAxisFormat.yAxisTickFormat === 'function' && typeof yVal === 'number') {
+    return yAxisFormat.yAxisTickFormat(yVal);
+  }
+  return formatToLocaleString(yVal) as string;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const correctYearMonth = (xValues: Datum[] | Datum[][] | TypedArray): any[] => {
   const presentYear = new Date().getFullYear();
@@ -450,10 +460,7 @@ export const transformPlotlyJsonToVSBCProps = (
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, index2);
         const yVal: number | string = rangeYValues[index2] as number | string;
-        const yAxisCalloutData =
-          yAxisTickFormat?.yAxisTickFormat && typeof yVal === 'number'
-            ? yAxisTickFormat.yAxisTickFormat(yVal)
-            : (formatToLocaleString(yVal) as string);
+        const yAxisCalloutData = getFormattedCalloutYData(yVal, yAxisTickFormat);
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
@@ -580,9 +587,6 @@ export const transformPlotlyJsonToGVBCProps = (
         const opacity = getOpacity(series, xIndex);
 
         const yVal: number = series.y![xIndex] as number;
-        const yAxisCalloutData = yAxisTickFormat?.yAxisTickFormat
-          ? yAxisTickFormat.yAxisTickFormat(yVal)
-          : (formatToLocaleString(yVal) as string);
 
         mapXToDataPoints[x].series.push({
           key: legend,
@@ -591,7 +595,7 @@ export const transformPlotlyJsonToGVBCProps = (
           color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
-          yAxisCalloutData,
+          yAxisCalloutData: getFormattedCalloutYData(yVal, yAxisTickFormat),
         });
       }
     });
@@ -853,9 +857,7 @@ const transformPlotlyJsonToScatterTraceProps = (
               ? { markerSize: series.marker.size }
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
-            yAxisCalloutData: yAxisTickFormat?.yAxisTickFormat
-              ? yAxisTickFormat.yAxisTickFormat(rangeYValues[i] as number)
-              : (formatToLocaleString(rangeYValues[i] as number) as string),
+            yAxisCalloutData: getFormattedCalloutYData(rangeYValues[i] as number, yAxisTickFormat),
           })),
           color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
@@ -896,7 +898,7 @@ const transformPlotlyJsonToScatterTraceProps = (
     optimizeLargeData: numDataPoints > 1000,
     ...getTitles(input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
-    ...getYAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
   };
 
   if (isAreaChart) {
