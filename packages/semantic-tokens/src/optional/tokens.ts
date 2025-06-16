@@ -82,12 +82,12 @@ import {
 } from '../control/variables';
 import {
   fontFamilyBase,
+  lineHeightBase400,
   fontSizeBase300,
   lineHeightBase300,
   fontSizeBase200,
   lineHeightBase200,
   fontSizeBase400,
-  lineHeightBase400,
   fontWeightSemibold,
   spacingVerticalXXS,
   strokeWidthThin,
@@ -426,7 +426,7 @@ export const textRampSubsectionHeaderLineHeight = `var(${textRampSubsectionHeade
 export const textRampReadingBodyFontSize = `var(${textRampReadingBodyFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}))`;
 export const textRampReadingBodyLineHeight = `var(${textRampReadingBodyLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
 export const textRampItemHeaderFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}))`;
-export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}))`;
+export const textRampItemHeaderLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase400}))`;
 export const textRampItemBodyFontSize = `var(${textRampItemBodyFontSizeRaw}, var(${textGlobalBody3FontSizeRaw}, ${fontSizeBase300}))`;
 export const textRampItemBodyLineHeight = `var(${textRampItemBodyLineHeightRaw}, var(${textGlobalBody3LineHeightRaw}, ${lineHeightBase300}))`;
 export const textRampMetadataFontSize = `var(${textRampMetadataFontSizeRaw}, var(${textGlobalCaption1FontSizeRaw}))`;

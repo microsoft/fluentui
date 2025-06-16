@@ -22,6 +22,14 @@ import {
   gapInsideCtrlDefaultRaw,
   backgroundCtrlNeutralRestRaw,
   foregroundCtrlNeutralSecondaryRestRaw,
+  gapBetweenCtrlDefaultRaw,
+  paddingContentAlignDefaultRaw,
+  statusDangerTintForegroundRaw,
+  statusImportantTintBackgroundRaw,
+  statusInformativeTintStrokeRaw,
+  paddingContentAlignOutdentIconOnSubtleRaw,
+  textGlobalBody2FontSizeRaw,
+  textGlobalBody2LineHeightRaw,
   textGlobalBody3FontSizeRaw,
   textGlobalBody3LineHeightRaw,
   textStyleDefaultRegularWeightRaw,
@@ -46,6 +54,14 @@ import {
   colorNeutralBackground3,
   colorNeutralBackground1,
   colorNeutralForeground4,
+  spacingHorizontalM,
+  spacingVerticalS,
+  spacingVerticalMNudge,
+  spacingVerticalM,
+  colorStatusDangerForeground1,
+  colorNeutralStroke1,
+  fontSizeBase300,
+  lineHeightBase300,
   colorNeutralForeground3Pressed,
   colorBrandStroke2Contrast,
   colorBrandStroke1,
@@ -71,6 +87,9 @@ import {
   foregroundCtrlOnTransparentPressedRaw,
   foregroundCtrlOnTransparentRestRaw,
   paddingCtrlTextBottomRaw,
+  foregroundCtrlIconOnNeutralRestRaw,
+  textRampItemHeaderFontSizeRaw,
+  textRampItemHeaderLineHeightRaw,
   foregroundCtrlOnSubtlePressedRaw,
   foregroundCtrlNeutralPrimaryPressedRaw,
   textRampItemBodyFontSizeRaw,
@@ -243,6 +262,111 @@ export const _ctrlInputBackgroundRestLighter = `var(${ctrlInputBackgroundRestRaw
  * please use foregroundCtrlNeutralSecondaryRest instead.
  */
 export const _ctrlInputNeutralForegroundPlaceholder = `var(${foregroundCtrlNeutralSecondaryRestRaw}, ${colorNeutralForeground4})`;
+/**
+ * This is a legacy variant for gapBetweenCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenCtrlDefault instead.
+ */
+export const _ctrlMessageBarActionsColumnGap = `var(${gapBetweenCtrlDefaultRaw}, ${spacingHorizontalM})`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarActionsMultilineMarginBottom = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalS})`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarActionsMultilineMarginTop = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalMNudge})`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarActionsMultilinePaddingRight = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalM})`;
+/**
+ * This is a legacy variant for statusDangerTintForeground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusDangerTintForeground instead.
+ */
+export const _ctrlMessageBarErrorIconColor = `var(${statusDangerTintForegroundRaw}, ${colorStatusDangerForeground1})`;
+/**
+ * This is a legacy variant for statusImportantTintBackground to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusImportantTintBackground instead.
+ */
+export const _ctrlMessageBarInfoBackgroundColor = `var(${statusImportantTintBackgroundRaw}, ${colorNeutralBackground3})`;
+/**
+ * This is a legacy variant for statusInformativeTintStroke to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use statusInformativeTintStroke instead.
+ */
+export const _ctrlMessageBarInfoBorderColor = `var(${statusInformativeTintStrokeRaw}, ${colorNeutralStroke1})`;
+/**
+ * This is a legacy variant for foregroundCtrlIconOnNeutralRest to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use foregroundCtrlIconOnNeutralRest instead.
+ */
+export const _ctrlMessageBarInfoIconColor = `var(${foregroundCtrlIconOnNeutralRestRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}, ${colorNeutralForeground3}))`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarMultilinePaddingTop = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalMNudge})`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarPaddingContentAlignDefault = `var(${paddingContentAlignDefaultRaw}, 12px)`;
+/**
+ * This is a legacy variant for gapBetweenCtrlDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use gapBetweenCtrlDefault instead.
+ */
+export const _ctrlMessageBarPaddingRight = `var(${gapBetweenCtrlDefaultRaw}, ${spacingHorizontalM})`;
+/**
+ * This is a legacy variant for paddingContentAlignOutdentIconOnSubtle to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignOutdentIconOnSubtle instead.
+ */
+export const _ctrlMessageBarPaddingY = `var(${paddingContentAlignOutdentIconOnSubtleRaw}, 0px)`;
+/**
+ * This is a legacy variant for paddingContentAlignDefault to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use paddingContentAlignDefault instead.
+ */
+export const _ctrlMessageBarReflowSpacerMarginBottom = `var(${paddingContentAlignDefaultRaw}, ${spacingVerticalS})`;
+/**
+ * This is a legacy variant for textRampItemHeaderFontSize to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemHeaderFontSize instead.
+ */
+export const _ctrlMessageBarTitleFontSize = `var(${textRampItemHeaderFontSizeRaw}, var(${textGlobalBody2FontSizeRaw}, ${fontSizeBase300}))`;
+/**
+ * This is a legacy variant for textRampItemHeaderLineHeight to enable backwards compatibility.
+ * It's purpose is to support Fluent UI legacy fallback variants only.
+ * This token is not intended for use in new semantic theme implementations
+ * please use textRampItemHeaderLineHeight instead.
+ */
+export const _ctrlMessageBarTitleLineHeight = `var(${textRampItemHeaderLineHeightRaw}, var(${textGlobalBody2LineHeightRaw}, ${lineHeightBase300}))`;
 /**
  * This is a legacy variant for foregroundCtrlOnSubtlePressed to enable backwards compatibility.
  * It's purpose is to support Fluent UI legacy fallback variants only.

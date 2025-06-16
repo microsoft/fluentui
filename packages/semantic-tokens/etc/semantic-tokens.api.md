@@ -2210,6 +2210,51 @@ export const ctrlLiteFilterStrokeWidthSelected = "var(--smtc-ctrl-lite-filter-st
 export const ctrlLiteFilterStrokeWidthSelectedRaw = "--smtc-ctrl-lite-filter-stroke-width-selected";
 
 // @public
+export const _ctrlMessageBarActionsColumnGap = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
+
+// @public
+export const _ctrlMessageBarActionsMultilineMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlMessageBarActionsMultilineMarginTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
+
+// @public
+export const _ctrlMessageBarActionsMultilinePaddingRight = "var(--smtc-padding-content-align-default, var(--spacingVerticalM))";
+
+// @public
+export const _ctrlMessageBarErrorIconColor = "var(--smtc-status-danger-tint-foreground, var(--colorStatusDangerForeground1))";
+
+// @public
+export const _ctrlMessageBarInfoBackgroundColor = "var(--smtc-status-important-tint-background, var(--colorNeutralBackground3))";
+
+// @public
+export const _ctrlMessageBarInfoBorderColor = "var(--smtc-status-informative-tint-stroke, var(--colorNeutralStroke1))";
+
+// @public
+export const _ctrlMessageBarInfoIconColor = "var(--smtc-foreground-ctrl-icon-on-neutral-rest, var(--smtc-foreground-ctrl-neutral-primary-rest, var(--colorNeutralForeground3)))";
+
+// @public
+export const _ctrlMessageBarMultilinePaddingTop = "var(--smtc-padding-content-align-default, var(--spacingVerticalMNudge))";
+
+// @public
+export const _ctrlMessageBarPaddingContentAlignDefault = "var(--smtc-padding-content-align-default, 12px)";
+
+// @public
+export const _ctrlMessageBarPaddingRight = "var(--smtc-gap-between-ctrl-default, var(--spacingHorizontalM))";
+
+// @public
+export const _ctrlMessageBarPaddingY = "var(--smtc-padding-content-align-outdent-icon-on-subtle, 0px)";
+
+// @public
+export const _ctrlMessageBarReflowSpacerMarginBottom = "var(--smtc-padding-content-align-default, var(--spacingVerticalS))";
+
+// @public
+export const _ctrlMessageBarTitleFontSize = "var(--smtc-text-ramp-item-header-font-size, var(--smtc-text-global-body2-font-size, var(--fontSizeBase300)))";
+
+// @public
+export const _ctrlMessageBarTitleLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase300)))";
+
+// @public
 export const _ctrlPersonaTreeIconOnSubtlePressed = "var(--smtc-foreground-ctrl-on-subtle-pressed, var(--smtc-foreground-ctrl-neutral-primary-pressed, var(--colorNeutralForeground3Pressed)))";
 
 // @public (undocumented)
@@ -4066,7 +4111,7 @@ export const paddingContentAlignDefault = "var(--smtc-padding-content-align-defa
 export const paddingContentAlignDefaultRaw = "--smtc-padding-content-align-default";
 
 // @public (undocumented)
-export const paddingContentAlignOutdentIconOnSubtle = "var(--smtc-padding-content-align-outdent-icon-on-subtle)";
+export const paddingContentAlignOutdentIconOnSubtle = "var(--smtc-padding-content-align-outdent-icon-on-subtle, var(--spacingHorizontalM))";
 
 // @public (undocumented)
 export const paddingContentAlignOutdentIconOnSubtleRaw = "--smtc-padding-content-align-outdent-icon-on-subtle";
@@ -4408,7 +4453,7 @@ export const statusDangerStroke = "var(--smtc-status-danger-stroke, var(--smtc-s
 export const statusDangerStrokeRaw = "--smtc-status-danger-stroke";
 
 // @public (undocumented)
-export const statusDangerTintBackground = "var(--smtc-status-danger-tint-background)";
+export const statusDangerTintBackground = "var(--smtc-status-danger-tint-background, var(--colorStatusDangerBackground1))";
 
 // @public (undocumented)
 export const statusDangerTintBackgroundRaw = "--smtc-status-danger-tint-background";
@@ -4420,7 +4465,7 @@ export const statusDangerTintForeground = "var(--smtc-status-danger-tint-foregro
 export const statusDangerTintForegroundRaw = "--smtc-status-danger-tint-foreground";
 
 // @public (undocumented)
-export const statusDangerTintStroke = "var(--smtc-status-danger-tint-stroke)";
+export const statusDangerTintStroke = "var(--smtc-status-danger-tint-stroke, var(--colorStatusDangerBorder1))";
 
 // @public (undocumented)
 export const statusDangerTintStrokeRaw = "--smtc-status-danger-tint-stroke";
@@ -4558,19 +4603,19 @@ export const statusSuccessStroke = "var(--smtc-status-success-stroke, var(--smtc
 export const statusSuccessStrokeRaw = "--smtc-status-success-stroke";
 
 // @public (undocumented)
-export const statusSuccessTintBackground = "var(--smtc-status-success-tint-background)";
+export const statusSuccessTintBackground = "var(--smtc-status-success-tint-background, var(--colorStatusSuccessBackground1))";
 
 // @public (undocumented)
 export const statusSuccessTintBackgroundRaw = "--smtc-status-success-tint-background";
 
 // @public (undocumented)
-export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground)";
+export const statusSuccessTintForeground = "var(--smtc-status-success-tint-foreground, var(--colorStatusSuccessForeground1))";
 
 // @public (undocumented)
 export const statusSuccessTintForegroundRaw = "--smtc-status-success-tint-foreground";
 
 // @public (undocumented)
-export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke)";
+export const statusSuccessTintStroke = "var(--smtc-status-success-tint-stroke, var(--colorStatusSuccessBorder1))";
 
 // @public (undocumented)
 export const statusSuccessTintStrokeRaw = "--smtc-status-success-tint-stroke";
@@ -4594,19 +4639,19 @@ export const statusWarningStroke = "var(--smtc-status-warning-stroke, var(--smtc
 export const statusWarningStrokeRaw = "--smtc-status-warning-stroke";
 
 // @public (undocumented)
-export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background)";
+export const statusWarningTintBackground = "var(--smtc-status-warning-tint-background, var(--colorStatusWarningBackground1))";
 
 // @public (undocumented)
 export const statusWarningTintBackgroundRaw = "--smtc-status-warning-tint-background";
 
 // @public (undocumented)
-export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground)";
+export const statusWarningTintForeground = "var(--smtc-status-warning-tint-foreground, var(--colorStatusWarningForeground3))";
 
 // @public (undocumented)
 export const statusWarningTintForegroundRaw = "--smtc-status-warning-tint-foreground";
 
 // @public (undocumented)
-export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke)";
+export const statusWarningTintStroke = "var(--smtc-status-warning-tint-stroke, var(--colorStatusWarningBorder1))";
 
 // @public (undocumented)
 export const statusWarningTintStrokeRaw = "--smtc-status-warning-tint-stroke";
@@ -5230,7 +5275,7 @@ export const textRampItemHeaderFontSize = "var(--smtc-text-ramp-item-header-font
 export const textRampItemHeaderFontSizeRaw = "--smtc-text-ramp-item-header-font-size";
 
 // @public (undocumented)
-export const textRampItemHeaderLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height))";
+export const textRampItemHeaderLineHeight = "var(--smtc-text-ramp-item-header-line-height, var(--smtc-text-global-body2-line-height, var(--lineHeightBase400)))";
 
 // @public (undocumented)
 export const textRampItemHeaderLineHeightRaw = "--smtc-text-ramp-item-header-line-height";
