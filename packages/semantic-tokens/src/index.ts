@@ -249,9 +249,8 @@ export {
   backgroundCardOnSecondaryDefaultSelectedRaw,
   textStyleDefaultDisplayFontFamilyRaw,
   textStyleDefaultDisplayLetterSpacingRaw,
-  shadowCtrlOnDragKeyRaw,
-  shadowCtrlOnDragAmbientRaw,
-  shadowWindowInactiveKeyRaw,
+  shadowCtrlOnDragRaw,
+  shadowWindowInactiveRaw,
 } from './optional/variables';
 export {
   textGlobalDisplay1FontSizeRaw,
@@ -453,13 +452,9 @@ export {
   backgroundCardOnFlyoutDefaultPressedRaw,
   backgroundCardOnFlyoutDefaultDisabledRaw,
   textStyleDefaultDisplayWeightRaw,
-  shadowFlyoutKeyRaw,
-  shadowFlyoutAmbientRaw,
-  shadowToolbarKeyRaw,
-  shadowToolbarAmbientRaw,
-  shadowWindowActiveKeyRaw,
-  shadowWindowActiveAmbientRaw,
-  shadowWindowInactiveAmbientRaw,
+  shadowFlyoutRaw,
+  shadowToolbarRaw,
+  shadowWindowActiveRaw,
 } from './control/variables';
 export {
   textStyleDefaultHeaderCaseRaw,
@@ -503,13 +498,11 @@ export {
   backgroundCtrlSubtleDisabledRaw,
   backgroundCtrlSubtleHoverSplitRaw,
   foregroundCtrlHintDefaultRaw,
-  shadowCardRestKeyRaw,
-  shadowCardHoverKeyRaw,
-  shadowCardPressedKeyRaw,
-  shadowCardDisabledKeyRaw,
-  shadowCardRestAmbientRaw,
-  shadowLayerKeyRaw,
-  shadowLayerAmbientRaw,
+  shadowCardRestRaw,
+  shadowCardHoverRaw,
+  shadowCardPressedRaw,
+  shadowCardDisabledRaw,
+  shadowLayerRaw,
 } from './nullable/variables';
 export {
   ctrlAvatarSizeRaw,
@@ -604,8 +597,7 @@ export {
   ctrlChoiceLgSwitchThumbWidthRestRaw,
   ctrlChoiceLgSwitchThumbWidthHoverRaw,
   ctrlChoiceLgSwitchThumbWidthPressedRaw,
-  ctrlChoiceSwitchThumbShadowKeyRaw,
-  ctrlChoiceSwitchThumbShadowAmbientRaw,
+  ctrlChoiceSwitchThumbShadowRaw,
 } from './components/choice/variables';
 export {
   ctrlDialogBackgroundRaw,
@@ -613,8 +605,7 @@ export {
   ctrlDialogBaseCornerRaw,
   ctrlDialogLayerBackgroundRaw,
   ctrlDialogLayerPaddingBottomRaw,
-  ctrlDialogBaseShadowKeyRaw,
-  ctrlDialogBaseShadowAmbientRaw,
+  ctrlDialogBaseShadowRaw,
 } from './components/dialog/variables';
 export { ctrlDividerFixedLineLengthRaw } from './components/divider/variables';
 export {
@@ -632,11 +623,10 @@ export {
   ctrlFabCornerRestRaw,
   ctrlFabCornerHoverRaw,
   ctrlFabCornerPressedRaw,
-  ctrlFabShadowRestKeyRaw,
-  ctrlFabShadowRestAmbientRaw,
-  ctrlFabShadowHoverKeyRaw,
-  ctrlFabShadowPressedKeyRaw,
-  ctrlFabShadowDisabledKeyRaw,
+  ctrlFabShadowRestRaw,
+  ctrlFabShadowHoverRaw,
+  ctrlFabShadowPressedRaw,
+  ctrlFabShadowDisabledRaw,
 } from './components/fab/variables';
 export {
   ctrlFocusInnerStrokeWidthRaw,
@@ -742,8 +732,7 @@ export {
   ctrlListLgIndentLevel2Raw,
   ctrlListLgIndentLevel3Raw,
   ctrlListSplitDividerShowDividerRaw,
-  ctrlListShadowSelectedKeyRaw,
-  ctrlListShadowSelectedAmbientRaw,
+  ctrlListShadowSelectedRaw,
 } from './components/list/variables';
 export {
   ctrlLiteFilterBackgroundSelectedRaw,
@@ -857,8 +846,7 @@ export {
   ctrlTooltipCornerRaw,
   ctrlTooltipBackgroundRaw,
   ctrlTooltipForegroundRaw,
-  ctrlTooltipShadowKeyRaw,
-  ctrlTooltipShadowAmbientRaw,
+  ctrlTooltipShadowRaw,
 } from './components/tooltip/variables';
 export { ctrlBooleanSelectionHintRaw } from './components/boolean/variables';
 export {
@@ -894,8 +882,7 @@ export {
   ctrlComposerContainerBackgroundAcrylicLumBlendRaw,
   ctrlComposerContainerStrokeDefaultRaw,
   ctrlComposerInputShadowRaw,
-  ctrlComposerContainerShadowKeyRaw,
-  ctrlComposerContainerShadowAmbientRaw,
+  ctrlComposerContainerShadowRaw,
 } from './components/composer/variables';
 export {
   ctrlCardStateRestRaw,
@@ -1153,9 +1140,8 @@ export {
   backgroundCardOnSecondaryDefaultSelected,
   textStyleDefaultDisplayFontFamily,
   textStyleDefaultDisplayLetterSpacing,
-  shadowCtrlOnDragKey,
-  shadowCtrlOnDragAmbient,
-  shadowWindowInactiveKey,
+  shadowCtrlOnDrag,
+  shadowWindowInactive,
 } from './optional/tokens';
 export {
   textGlobalDisplay1FontSize,
@@ -1357,13 +1343,9 @@ export {
   backgroundCardOnFlyoutDefaultPressed,
   backgroundCardOnFlyoutDefaultDisabled,
   textStyleDefaultDisplayWeight,
-  shadowFlyoutKey,
-  shadowFlyoutAmbient,
-  shadowToolbarKey,
-  shadowToolbarAmbient,
-  shadowWindowActiveKey,
-  shadowWindowActiveAmbient,
-  shadowWindowInactiveAmbient,
+  shadowFlyout,
+  shadowToolbar,
+  shadowWindowActive,
 } from './control/tokens';
 export {
   textStyleDefaultHeaderCase,
@@ -1407,13 +1389,11 @@ export {
   backgroundCtrlSubtleDisabled,
   backgroundCtrlSubtleHoverSplit,
   foregroundCtrlHintDefault,
-  shadowCardRestKey,
-  shadowCardHoverKey,
-  shadowCardPressedKey,
-  shadowCardDisabledKey,
-  shadowCardRestAmbient,
-  shadowLayerKey,
-  shadowLayerAmbient,
+  shadowCardRest,
+  shadowCardHover,
+  shadowCardPressed,
+  shadowCardDisabled,
+  shadowLayer,
 } from './nullable/tokens';
 export {
   ctrlAvatarSize,
@@ -1508,8 +1488,7 @@ export {
   ctrlChoiceLgSwitchThumbWidthRest,
   ctrlChoiceLgSwitchThumbWidthHover,
   ctrlChoiceLgSwitchThumbWidthPressed,
-  ctrlChoiceSwitchThumbShadowKey,
-  ctrlChoiceSwitchThumbShadowAmbient,
+  ctrlChoiceSwitchThumbShadow,
 } from './components/choice/tokens';
 export {
   ctrlDialogBackground,
@@ -1517,8 +1496,7 @@ export {
   ctrlDialogBaseCorner,
   ctrlDialogLayerBackground,
   ctrlDialogLayerPaddingBottom,
-  ctrlDialogBaseShadowKey,
-  ctrlDialogBaseShadowAmbient,
+  ctrlDialogBaseShadow,
 } from './components/dialog/tokens';
 export { ctrlDividerFixedLineLength } from './components/divider/tokens';
 export {
@@ -1536,11 +1514,10 @@ export {
   ctrlFabCornerRest,
   ctrlFabCornerHover,
   ctrlFabCornerPressed,
-  ctrlFabShadowRestKey,
-  ctrlFabShadowRestAmbient,
-  ctrlFabShadowHoverKey,
-  ctrlFabShadowPressedKey,
-  ctrlFabShadowDisabledKey,
+  ctrlFabShadowRest,
+  ctrlFabShadowHover,
+  ctrlFabShadowPressed,
+  ctrlFabShadowDisabled,
 } from './components/fab/tokens';
 export {
   ctrlFocusInnerStrokeWidth,
@@ -1646,8 +1623,7 @@ export {
   ctrlListLgIndentLevel2,
   ctrlListLgIndentLevel3,
   ctrlListSplitDividerShowDivider,
-  ctrlListShadowSelectedKey,
-  ctrlListShadowSelectedAmbient,
+  ctrlListShadowSelected,
 } from './components/list/tokens';
 export {
   ctrlLiteFilterBackgroundSelected,
@@ -1761,8 +1737,7 @@ export {
   ctrlTooltipCorner,
   ctrlTooltipBackground,
   ctrlTooltipForeground,
-  ctrlTooltipShadowKey,
-  ctrlTooltipShadowAmbient,
+  ctrlTooltipShadow,
 } from './components/tooltip/tokens';
 export { ctrlBooleanSelectionHint } from './components/boolean/tokens';
 export {
@@ -1798,8 +1773,7 @@ export {
   ctrlComposerContainerBackgroundAcrylicLumBlend,
   ctrlComposerContainerStrokeDefault,
   ctrlComposerInputShadow,
-  ctrlComposerContainerShadowKey,
-  ctrlComposerContainerShadowAmbient,
+  ctrlComposerContainerShadow,
 } from './components/composer/tokens';
 export {
   ctrlCardStateRest,
