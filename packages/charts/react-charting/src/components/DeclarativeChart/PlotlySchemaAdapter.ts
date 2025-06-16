@@ -62,6 +62,7 @@ import {
   isStringArray,
   isYearArray,
   isInvalidValue,
+  formatToLocaleString,
 } from '@fluentui/chart-utilities';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
@@ -393,6 +394,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
       input.layout?.coloraxis?.colorscale?.length &&
@@ -447,12 +449,17 @@ export const transformPlotlyJsonToVSBCProps = (
             )
           : resolveColor(extractedBarColors, index2, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, index2);
-        const yVal: number = rangeYValues[index2] as number;
+        const yVal: number | string = rangeYValues[index2] as number | string;
+        const yAxisCalloutData =
+          yAxisTickFormat?.yAxisTickFormat && typeof yVal === 'number'
+            ? yAxisTickFormat.yAxisTickFormat(yVal)
+            : (formatToLocaleString(yVal) as string);
         if (series.type === 'bar') {
           mapXToDataPoints[x].chartData.push({
             legend,
             data: yVal,
             color: rgb(color).copy({ opacity }).formatHex8() ?? color,
+            yAxisCalloutData,
           });
           if (typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -472,6 +479,7 @@ export const transformPlotlyJsonToVSBCProps = (
               mode: series.mode,
             },
             useSecondaryYScale: usesSecondaryYScale(series, input.layout),
+            yAxisCalloutData,
           });
           if (!usesSecondaryYScale(series, input.layout) && typeof yVal === 'number') {
             yMaxValue = Math.max(yMaxValue, yVal);
@@ -501,9 +509,8 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLablesTooltip: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
-    ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
-    ...getYAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
   };
 };
 
@@ -533,6 +540,7 @@ export const transformPlotlyJsonToGVBCProps = (
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout, 0, 0);
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
   let colorScale: ((value: number) => string) | undefined = undefined;
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   input.data.forEach((series: Partial<PlotData>, index1: number) => {
     if (
       input.layout?.coloraxis?.colorscale?.length &&
@@ -571,13 +579,19 @@ export const transformPlotlyJsonToGVBCProps = (
           : resolveColor(extractedColors, xIndex, legend, colorMap, isDarkTheme);
         const opacity = getOpacity(series, xIndex);
 
+        const yVal: number = series.y![xIndex] as number;
+        const yAxisCalloutData = yAxisTickFormat?.yAxisTickFormat
+          ? yAxisTickFormat.yAxisTickFormat(yVal)
+          : (formatToLocaleString(yVal) as string);
+
         mapXToDataPoints[x].series.push({
           key: legend,
-          data: series.y![xIndex] as number,
+          data: yVal,
           xAxisCalloutData: x as string,
           color: rgb(color).copy({ opacity }).formatHex8() ?? color,
           legend,
           useSecondaryYScale: usesSecondaryYScale(series, input.layout),
+          yAxisCalloutData,
         });
       }
     });
@@ -597,7 +611,7 @@ export const transformPlotlyJsonToGVBCProps = (
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
-    ...getYAxisTickFormat(input.data[0], input.layout),
+    ...yAxisTickFormat,
   };
 };
 
@@ -789,6 +803,7 @@ const transformPlotlyJsonToScatterTraceProps = (
   );
   let mode: string = 'tonexty';
   const { legends, hideLegend } = getLegendProps(input.data, input.layout, isMultiPlot);
+  const yAxisTickFormat = getYAxisTickFormat(input.data[0], input.layout);
   const chartData: ILineChartPoints[] = input.data
     .map((series: Partial<PlotData>, index: number) => {
       const colors = isScatterMarkers
@@ -838,6 +853,9 @@ const transformPlotlyJsonToScatterTraceProps = (
               ? { markerSize: series.marker.size }
               : {}),
             ...(textValues ? { text: textValues[i] } : {}),
+            yAxisCalloutData: yAxisTickFormat?.yAxisTickFormat
+              ? yAxisTickFormat.yAxisTickFormat(rangeYValues[i] as number)
+              : (formatToLocaleString(rangeYValues[i] as number) as string),
           })),
           color: rgb(seriesColor).copy({ opacity: seriesOpacity }).formatHex8() ?? seriesColor,
           lineOptions: {
