@@ -207,6 +207,7 @@ export interface CartesianChartStyles {
     opacityChangeOnHover?: string;
     root?: string;
     shapeStyles?: string;
+    svgTooltip?: string;
     tooltip?: string;
     xAxis?: string;
     yAxis?: string;
@@ -973,6 +974,7 @@ export interface LineChartStyleProps extends CartesianChartStyleProps {
 
 // @public
 export interface LineChartStyles extends CartesianChartStyles {
+    lineBorder?: string;
 }
 
 // @public (undocumented)
@@ -1312,6 +1314,7 @@ export interface VerticalBarChartStyleProps extends CartesianChartStyleProps {
 // @public
 export interface VerticalBarChartStyles extends CartesianChartStyles {
     barLabel: string;
+    lineBorder: string;
 }
 
 // @public (undocumented)

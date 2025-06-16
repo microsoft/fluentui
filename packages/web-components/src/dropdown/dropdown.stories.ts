@@ -1,9 +1,7 @@
 import { html, ref, repeat } from '@microsoft/fast-element';
-import { ValidationFlags } from '../field/field.options.js';
+
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { DropdownOption as FluentOption } from '../option/option.js';
-import { TextSize } from '../text/text.options.js';
-import { colorStatusDangerForeground1 } from '../theme/design-tokens.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 import { DropdownAppearance, DropdownSize, DropdownType } from './dropdown.options.js';
 
@@ -53,7 +51,6 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
     >
       <fluent-listbox>${repeat(story => story.slottedContent?.(), optionTemplate)}</fluent-listbox>
     </fluent-dropdown>
-    ${story => story.messageSlottedContent?.()}
   </fluent-field>
 `;
 
@@ -468,15 +465,5 @@ export const Required: Story = {
     name: 'fruit',
     required: true,
     multiple: true,
-    messageSlottedContent: () => html`
-      <fluent-text
-        slot="message"
-        flag="${ValidationFlags.valueMissing}"
-        size="${TextSize._200}"
-        style="color: ${colorStatusDangerForeground1}"
-      >
-        Please select a fruit.
-      </fluent-text>
-    `,
   },
 };

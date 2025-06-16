@@ -124,6 +124,11 @@ export interface CartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: string;
 }
 
 /**
