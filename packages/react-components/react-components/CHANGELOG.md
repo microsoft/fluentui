@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 06 Jun 2025 13:15:13 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jun 2025 12:32:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.1)
+
+Fri, 13 Jun 2025 12:32:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.66.0..@fluentui/react-components_v9.66.1)
+
+### Patches
+
+- `@fluentui/react-positioning`
+  - fix: update logic for triggering updates ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - Allow the skeleton root to be a span in addition to a div ([PR #34563](https://github.com/microsoft/fluentui/pull/34563) by nathansokol@microsoft.com)
+- `@fluentui/react-tag-picker`
+  - chore(react-tag-picker): ensure no toggle behaviour when re-selecting already selected data ([PR #33344](https://github.com/microsoft/fluentui/pull/33344) by bernardo.sunderhus@gmail.com)
+
+## [9.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.66.0)
+
+Thu, 12 Jun 2025 09:43:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.65.0..@fluentui/react-components_v9.66.0)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: react 18 support for slots api ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adjust types to support react 18 ([PR #34456](https://github.com/microsoft/fluentui/pull/34456) by dmytrokirpa@microsoft.com)
+- `@fluentui/react-charts`
+  - line border and axis title background fix ([PR #34621](https://github.com/microsoft/fluentui/pull/34621) by anushgupta@microsoft.com)
+
+## [9.65.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.65.0)
+
+Wed, 11 Jun 2025 22:31:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.64.1..@fluentui/react-components_v9.65.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-nav to suite ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+- `@fluentui/react-nav`
+  - feat: release stable ([PR #34631](https://github.com/microsoft/fluentui/pull/34631) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-charts`
+  - Fix GaugeChart so it can merge customer provided styles to the chart ([PR #34604](https://github.com/microsoft/fluentui/pull/34604) by emhkimm@gmail.com)
+  - fix(react-charts): Move isMonth function to chart-utilities ([PR #34626](https://github.com/microsoft/fluentui/pull/34626) by 98592573+AtishayMsft@users.noreply.github.com)
+  - fix accessibility bugs ([PR #34609](https://github.com/microsoft/fluentui/pull/34609) by anushgupta@microsoft.com)
+- `@fluentui/react-color-picker`
+  - docs: removed text from preview stage ([PR #34612](https://github.com/microsoft/fluentui/pull/34612) by vkozlova@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: implement useSafeZoneArea() hook ([PR #34445](https://github.com/microsoft/fluentui/pull/34445) by olfedias@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: selected Tag and InteractionTag styles are visible in high contrast mode ([PR #34620](https://github.com/microsoft/fluentui/pull/34620) by sarah.higley@microsoft.com)
 
 ## [9.64.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.64.1)
 

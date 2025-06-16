@@ -54,6 +54,7 @@ import {
   getNextGradient,
   areArraysEqual,
   calculateLongestLabelWidth,
+  sortAxisCategories,
 } from '../../utilities/index';
 import { IChart, IImageExportOptions } from '../../types/index';
 import { ILegendContainer } from '../Legends/index';
@@ -89,6 +90,7 @@ export class VerticalBarChartBase
   public static defaultProps: Partial<IVerticalBarChartProps> = {
     maxBarWidth: 24,
     useUTC: true,
+    xAxisCategoryOrder: 'default',
   };
 
   private _points: IVerticalBarChartDataPoint[];
@@ -137,10 +139,6 @@ export class VerticalBarChartBase
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType =
-      this.props.data! && this.props.data!.length > 0
-        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
-        : XAxisTypes.StringAxis;
     this._emptyChartId = getId('_VBC_empty');
     this._domainMargin = MIN_DOMAIN_MARGIN;
     this._cartesianChartRef = React.createRef();
@@ -157,7 +155,7 @@ export class VerticalBarChartBase
 
   public render(): JSX.Element {
     this._adjustProps();
-    this._xAxisLabels = this._points.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._xAxisLabels = this._getOrderedXAxisLabels();
     this._yMax = Math.max(
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
@@ -445,6 +443,10 @@ export class VerticalBarChartBase
   };
 
   private _adjustProps(): void {
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
     this._points = this.props.data || [];
     this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, undefined, this.props.mode);
     const { palette } = this.props.theme!;
@@ -1265,7 +1267,9 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(barValue)}
+        {typeof this.props.yAxisTickFormat === 'function'
+          ? this.props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
@@ -1373,5 +1377,28 @@ export class VerticalBarChartBase
       (this._isHavingLine ? ' and 1 line' : '') +
       '. '
     );
+  };
+
+  private _getOrderedXAxisLabels = () => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return [];
+    }
+
+    return sortAxisCategories(this._mapCategoryToValues(), this.props.xAxisCategoryOrder);
+  };
+
+  private _mapCategoryToValues = () => {
+    const categoryToValues: Record<string, number[]> = {};
+    this._points.forEach(point => {
+      const xValue = point.x as string;
+      if (!categoryToValues[xValue]) {
+        categoryToValues[xValue] = [];
+      }
+      categoryToValues[xValue].push(point.y);
+      if (point.lineData) {
+        categoryToValues[xValue].push(point.lineData.y);
+      }
+    });
+    return categoryToValues;
   };
 }
