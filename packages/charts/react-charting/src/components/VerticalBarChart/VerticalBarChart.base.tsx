@@ -1267,7 +1267,9 @@ export class VerticalBarChartBase
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {this.props.yAxisTickFormat ? this.props.yAxisTickFormat(barValue) : formatScientificLimitWidth(barValue)}
+        {this.props.yAxisTickFormat && typeof this.props.yAxisTickFormat === 'function'
+          ? this.props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
