@@ -103,7 +103,7 @@ export type AriaLiveAnnouncerState = {
 };
 
 // @public (undocumented)
-export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSX.Element;
+export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => React_2.JSX.Element;
 
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;

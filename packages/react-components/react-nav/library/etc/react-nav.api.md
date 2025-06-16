@@ -387,7 +387,7 @@ export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.El
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
-export const renderNavCategory_unstable: (state: NavCategoryState, contextValues: NavCategoryContextValues) => JSX.Element;
+export const renderNavCategory_unstable: (state: NavCategoryState, contextValues: NavCategoryContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;

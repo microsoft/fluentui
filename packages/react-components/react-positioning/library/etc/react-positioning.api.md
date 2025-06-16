@@ -139,7 +139,7 @@ export const usePositioningMouseTarget: (initialState?: PositioningVirtualElemen
 export function useSafeZoneArea({ debug, disabled, onSafeZoneEnter, onSafeZoneMove, onSafeZoneLeave, onSafeZoneTimeout, timeout, }?: UseSafeZoneOptions): {
     containerRef: RefObjectFunction<HTMLElement>;
     targetRef: RefObjectFunction<HTMLElement>;
-    elementToRender: JSX.Element | null;
+    elementToRender: React_2.JSX.Element | null;
 };
 
 // @public (undocumented)

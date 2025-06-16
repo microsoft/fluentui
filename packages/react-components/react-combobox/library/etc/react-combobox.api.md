@@ -278,7 +278,7 @@ export function useComboboxContextValues(state: Omit<ComboboxBaseState, 'freefor
 export function useComboboxFilter<T extends {
     children: React_2.ReactNode;
     value: string;
-} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSX.Element[];
+} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): React_2.JSX.Element[];
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;
