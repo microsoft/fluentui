@@ -3,7 +3,10 @@
   "compilerOptions": {
     "module": "esnext",
     "types": ["node", "webpack-env"],
+    "emitDeclarationOnly": false,
+    "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "exclude": ["./src/vr-tests/**"]
 }

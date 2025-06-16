@@ -8,7 +8,9 @@
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "*"
+    "@fluentui/react-northstar": "*",
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15"
   },
   "publishConfig": {
     "access": "public"
