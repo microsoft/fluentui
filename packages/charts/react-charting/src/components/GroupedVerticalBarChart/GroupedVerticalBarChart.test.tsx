@@ -6,6 +6,9 @@ import { GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
 import { act } from 'react-dom/test-utils';
 import { render, waitFor } from '@testing-library/react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {

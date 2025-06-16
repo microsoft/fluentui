@@ -5,6 +5,9 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, MultiStackedBarChart, MultiStackedBarChartVariant } from '../../index';
 import { MultiStackedBarChartBase } from './MultiStackedBarChart.base';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 const firstChartPoints: IChartDataPoint[] = [
   {
     legend: 'Debit card numbers (EU and USA)',

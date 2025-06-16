@@ -967,7 +967,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(barValue)}
+        {typeof props.yAxisTickFormat === 'function'
+          ? props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
