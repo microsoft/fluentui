@@ -1,10 +1,7 @@
-import * as React from 'react';
-import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
-import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { useIsSubmenu } from '../../utils';
-import { useFocusFinders } from '@fluentui/react-tabster';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
@@ -13,9 +10,11 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { useARIAButtonProps } from '@fluentui/react-aria';
+import * as React from 'react';
 
-export const HAS_MOUSE_MOVED_DATA_ATTR = 'data-has-mouse-moved';
+import type { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
+import { useMenuContext_unstable } from '../../contexts/menuContext';
+import { useIsSubmenu, useOnMenuSafeZoneTimeout } from '../../utils';
 
 function noop() {
   // does nothing
@@ -47,11 +46,24 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   }, [findFirstFocusable, menuPopoverRef]);
 
   const openedWithKeyboardRef = React.useRef(false);
+  const hasMouseMoved = React.useRef(false);
 
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
   const child = getTriggerChild(children);
+
+  // Heads up!
+  //
+  // Handles an edge case where mouse movement over the menu trigger didn't happen as safe zone blocked pointer events,
+  // but the cursor is already over the menu trigger.
+  const safeZoneHandlerRef = useOnMenuSafeZoneTimeout(
+    useEventCallback(() => {
+      if (isSubmenu) {
+        hasMouseMoved.current = true;
+      }
+    }),
+  );
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(event) || event.isDefaultPrevented()) {
@@ -100,8 +112,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (isTargetDisabled(event)) {
       return;
     }
-
-    if (openOnHover && triggerRef.current?.hasAttribute(HAS_MOUSE_MOVED_DATA_ATTR)) {
+    if (openOnHover && hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseEnter', event });
     }
   };
@@ -113,10 +124,9 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     if (isTargetDisabled(event)) {
       return;
     }
-
-    if (openOnHover && !triggerRef.current?.hasAttribute(HAS_MOUSE_MOVED_DATA_ATTR)) {
+    if (openOnHover && !hasMouseMoved.current) {
       setOpen(event, { open: true, keyboard: false, type: 'menuTriggerMouseMove', event });
-      triggerRef.current?.setAttribute(HAS_MOUSE_MOVED_DATA_ATTR, '');
+      hasMouseMoved.current = true;
     }
   };
 
@@ -132,7 +142,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const contextMenuProps = {
     id: triggerId,
     ...child?.props,
-    ref: useMergedRefs(triggerRef, child?.ref),
+    ref: useMergedRefs(triggerRef, child?.ref, safeZoneHandlerRef),
     onMouseEnter: useEventCallback(child?.props.onMouseEnter ?? noop),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
