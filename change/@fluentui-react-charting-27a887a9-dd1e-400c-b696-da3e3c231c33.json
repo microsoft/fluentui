@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(react-charting): Support marker shapes for scatter chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
