@@ -1,6 +1,7 @@
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { tokens } from '@fluentui/react-theme';
 import { ProviderContextValue_unstable as FluentProviderContextValue } from '@fluentui/react-shared-contexts';
+import * as semanticTokens from '@fluentui/semantic-tokens';
 
 import type { DrawerBaseProps } from './DrawerBase.types';
 import { drawerCSSVars } from './useDrawerBaseStyles.styles';
@@ -91,7 +92,8 @@ export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>((
     },
     {
       transform: 'translate3d(0, 0, 0)',
-      boxShadow: tokens.shadow64,
+      // boxShadow: tokens.shadow64,
+      boxShadow: `var(${semanticTokens.shadowFlyoutKey}, ${semanticTokens.shadowFlyoutAmbient}, ${semanticTokens.shadowFlyoutKey}`,
       opacity: 1,
     },
   ];

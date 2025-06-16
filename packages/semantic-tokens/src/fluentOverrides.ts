@@ -219,4 +219,7 @@ export const fluentOverrides: FluentOverrides = {
   textStyleDefaultRegularFontFamily: { f2Token: 'fontFamilyBase' },
   textStyleDefaultRegularLetterSpacing: { rawValue: '0' },
   textStyleDefaultRegularWeight: { f2Token: 'fontWeightRegular' },
+  backgroundFlyoutSolid: { f2Token: 'colorNeutralBackground1' },
+  strokeFlyout: { f2Token: 'colorTransparentStroke' },
+  shadowFlyoutKey: { f2Token: 'shadow64' },
 };

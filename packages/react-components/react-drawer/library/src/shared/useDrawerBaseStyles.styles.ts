@@ -3,6 +3,8 @@ import { tokens } from '@fluentui/react-theme';
 
 import { DrawerBaseState } from './DrawerBase.types';
 
+import * as semanticTokens from '@fluentui/semantic-tokens';
+
 /**
  * CSS variable names used internally for uniform styling in Drawer.
  */
@@ -25,8 +27,8 @@ export const drawerDefaultStyles: GriffelResetStyle = {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: semanticTokens.backgroundFlyoutSolid,
+  color: semanticTokens.foregroundContentNeutralPrimary,
 };
 
 /**
@@ -35,13 +37,13 @@ export const drawerDefaultStyles: GriffelResetStyle = {
 const useDrawerStyles = makeStyles({
   /* Positioning */
   start: {
-    borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    borderRight: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`,
 
     left: 0,
     right: 'auto',
   },
   end: {
-    borderLeft: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+    borderLeft: `${semanticTokens.strokeWidthDefault} solid ${semanticTokens.strokeFlyout}`,
 
     right: 0,
     left: 'auto',

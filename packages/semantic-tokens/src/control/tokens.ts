@@ -34,10 +34,10 @@ import {
   colorNeutralStrokeDisabled,
   colorNeutralStrokeOnBrand,
   colorNeutralStroke2,
+  colorNeutralBackground1,
   colorBrandBackground,
   colorBrandBackgroundHover,
   colorBrandBackgroundPressed,
-  colorNeutralBackground1,
   colorNeutralBackground1Hover,
   colorNeutralBackground1Pressed,
   colorNeutralBackgroundDisabled,
@@ -371,7 +371,7 @@ export const backgroundCardOnPrimaryAltDisabled = `var(${backgroundCardOnPrimary
 export const backgroundCardOnPrimaryDefaultHover = `var(${backgroundCardOnPrimaryDefaultHoverRaw})`;
 export const backgroundCardOnPrimaryDefaultPressed = `var(${backgroundCardOnPrimaryDefaultPressedRaw})`;
 export const backgroundCardOnPrimaryDefaultDisabled = `var(${backgroundCardOnPrimaryDefaultDisabledRaw})`;
-export const backgroundFlyoutSolid = `var(${backgroundFlyoutSolidRaw})`;
+export const backgroundFlyoutSolid = `var(${backgroundFlyoutSolidRaw}, ${colorNeutralBackground1})`;
 export const backgroundCtrlBrandRest = `var(${backgroundCtrlBrandRestRaw}, ${colorBrandBackground})`;
 export const backgroundCtrlBrandHover = `var(${backgroundCtrlBrandHoverRaw}, ${colorBrandBackgroundHover})`;
 export const backgroundCtrlBrandPressed = `var(${backgroundCtrlBrandPressedRaw}, ${colorBrandBackgroundPressed})`;
