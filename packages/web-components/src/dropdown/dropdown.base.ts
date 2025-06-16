@@ -394,6 +394,14 @@ export class BaseDropdown extends FASTElement {
   public controlSlot!: HTMLSlotElement;
 
   /**
+   * An abort controller to remove scroll and resize event listeners when the dropdown is closed or disconnected. Used
+   * when the browser does not support CSS anchor positioning.
+   *
+   * @internal
+   */
+  private debounceController?: AbortController;
+
+  /**
    * Event handler for scroll and resize events. Used when the browser does not support CSS anchor positioning.
    *
    * @internal
@@ -995,9 +1003,7 @@ export class BaseDropdown extends FASTElement {
 
   disconnectedCallback(): void {
     BaseDropdown.AnchorPositionFallbackObserver?.disconnect();
-
-    window.removeEventListener('scroll', this.debouncedReposition, { capture: true });
-    window.removeEventListener('resize', this.debouncedReposition);
+    this.debounceController?.abort();
 
     super.disconnectedCallback();
   }
@@ -1044,18 +1050,28 @@ export class BaseDropdown extends FASTElement {
     }
 
     if (shouldObserve) {
+      this.debounceController = new AbortController();
       BaseDropdown.AnchorPositionFallbackObserver.observe(this.listbox);
 
-      window.addEventListener('scroll', this.debouncedReposition, { passive: true, capture: true });
-      window.addEventListener('resize', this.debouncedReposition, { passive: true });
+      window.addEventListener('scroll', this.debouncedReposition, {
+        passive: true,
+        capture: true,
+        signal: this.debounceController.signal,
+      });
+
+      window.addEventListener('resize', this.debouncedReposition, {
+        passive: true,
+        signal: this.debounceController.signal,
+      });
+
       this.debouncedReposition();
+
       return;
     }
 
     BaseDropdown.AnchorPositionFallbackObserver.unobserve(this.listbox);
+    this.debounceController?.abort();
 
-    window.removeEventListener('scroll', this.debouncedReposition, { capture: true });
-    window.removeEventListener('resize', this.debouncedReposition);
     if (this.frameId) {
       cancelAnimationFrame(this.frameId);
       this.frameId = undefined;
