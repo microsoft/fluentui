@@ -13,7 +13,8 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/react": "17.0.44"
+    "@types/react": "17.0.44",
+    "@types/react-dom": "17.0.15"
   },
   "files": [
     "dist"
