@@ -439,7 +439,7 @@ export const GroupedVerticalBarChart: React.FC<GroupedVerticalBarChartProps> = R
             className={classes.barLabel}
             aria-hidden={true}
           >
-            {formatScientificLimitWidth(pointData.data)}
+            {props.yAxisTickFormat ? props.yAxisTickFormat(pointData.data) : formatScientificLimitWidth(pointData.data)}
           </text>,
         );
       }
