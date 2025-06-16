@@ -228,7 +228,7 @@ const validateBarData = (data: Partial<PlotData>) => {
   } else if (data.orientation === 'h' && isNumberArray(data.x)) {
     validateSeriesData(data, false);
   } else if (!isNumberArray(data.y) && !isStringArray(data.y)) {
-    throw new Error(`Non numeric or string Y values encountered.`);
+    throw new Error(`Non numeric or string Y values encountered, type: ${typeof data.y}`);
   }
 };
 const isScatterMarkers = (mode: string): boolean => {
