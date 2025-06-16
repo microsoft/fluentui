@@ -96,7 +96,7 @@ export type {
   TableData,
 } from './PlotlySchema';
 
-export type { OutputChartType } from './PlotlySchemaConverter';
+export type { OutputChartType, FluentChart, TraceInfo } from './PlotlySchemaConverter';
 export {
   mapFluentChart,
   isDate,

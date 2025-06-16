@@ -54,6 +54,9 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         lineHeight: FontSizes.medium,
         color: NeutralColors.gray160,
         fill: theme.semanticColors.bodyText,
+        [HighContrastSelector]: {
+          fill: 'CanvasText',
+        },
       },
     ],
     xAxis: {
