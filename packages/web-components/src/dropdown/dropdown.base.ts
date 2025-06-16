@@ -402,7 +402,26 @@ export class BaseDropdown extends FASTElement {
     if (this.frameId) {
       cancelAnimationFrame(this.frameId);
     }
-    this.frameId = requestAnimationFrame(this.repositionListbox);
+
+    this.frameId = requestAnimationFrame(() => {
+      const controlRect = this.getBoundingClientRect();
+      const right = window.innerWidth - controlRect.right;
+      const left = controlRect.left;
+
+      this.listbox.style.minWidth = `${controlRect.width}px`;
+      this.listbox.style.top = `${controlRect.top}px`;
+
+      if (
+        left + controlRect.width > window.innerWidth ||
+        (getDirection(this) === 'rtl' && right - controlRect.width > 0)
+      ) {
+        this.listbox.style.right = `${right}px`;
+        this.listbox.style.left = 'unset';
+      } else {
+        this.listbox.style.left = `${left}px`;
+        this.listbox.style.right = 'unset';
+      }
+    });
   };
 
   /**
@@ -484,31 +503,6 @@ export class BaseDropdown extends FASTElement {
   public get options(): DropdownOption[] {
     return this.listbox?.options ?? [];
   }
-
-  /**
-   * Repositions the listbox to align with the control element. Used when the browser does not support CSS anchor positioning.
-   *
-   * @internal
-   */
-  private repositionListbox = () => {
-    const controlRect = this.getBoundingClientRect();
-    const right = window.innerWidth - controlRect.right;
-    const left = controlRect.left;
-
-    this.listbox.style.minWidth = `${controlRect.width}px`;
-    this.listbox.style.top = `${controlRect.top}px`;
-
-    if (
-      left + controlRect.width > window.innerWidth ||
-      (getDirection(this) === 'rtl' && right - controlRect.width > 0)
-    ) {
-      this.listbox.style.right = `${right}px`;
-      this.listbox.style.left = 'unset';
-    } else {
-      this.listbox.style.left = `${left}px`;
-      this.listbox.style.right = 'unset';
-    }
-  };
 
   /**
    * The index of the first selected option, scoped to the enabled options.
