@@ -69,4 +69,76 @@ export const legacyFluentVariantsValues: LegacyFluentVariants = {
     f2Token: 'colorNeutralForeground3',
     originalToken: 'foregroundCtrlHintDefault',
   },
+  _ctrlMessageBarActionsColumnGap: {
+    f2Token: 'spacingHorizontalM',
+    // should be 8px per design
+    originalToken: 'gapBetweenCtrlDefault',
+  },
+  _ctrlMessageBarActionsMultilineMarginBottom: {
+    f2Token: 'spacingVerticalS',
+    // should be 20px per design
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarActionsMultilineMarginTop: {
+    f2Token: 'spacingVerticalMNudge',
+    // should be 20px per design
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarActionsMultilinePaddingRight: {
+    f2Token: 'spacingVerticalM',
+    // should be 20px per design
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarErrorIconColor: {
+    f2Token: 'colorStatusDangerForeground1',
+    originalToken: 'statusDangerTintForeground',
+  },
+  _ctrlMessageBarInfoBackgroundColor: {
+    f2Token: 'colorNeutralBackground3',
+    // should be colorNeutralBackground5 per design
+    originalToken: 'statusImportantTintBackground',
+  },
+  _ctrlMessageBarInfoBorderColor: {
+    f2Token: 'colorNeutralStroke1',
+    // should be colorNeutralStroke2 per design
+    originalToken: 'statusInformativeTintStroke',
+  },
+  _ctrlMessageBarInfoIconColor: {
+    f2Token: 'colorNeutralForeground3',
+    // should be colorNeutralForeground2 per design
+    originalToken: 'foregroundCtrlIconOnNeutralRest',
+  },
+  _ctrlMessageBarMultilinePaddingTop: {
+    f2Token: 'spacingVerticalMNudge',
+    // should be 20px per design
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarPaddingContentAlignDefault: {
+    originalToken: 'paddingContentAlignDefault',
+    rawValue: '12px', // should be 20px per design
+  },
+  _ctrlMessageBarPaddingRight: {
+    f2Token: 'spacingHorizontalM',
+    // should be 8px per design
+    originalToken: 'gapBetweenCtrlDefault',
+  },
+  _ctrlMessageBarPaddingY: {
+    originalToken: 'paddingContentAlignOutdentIconOnSubtle',
+    rawValue: '0px', // setting this to maintain current Fluent implementation
+  },
+  _ctrlMessageBarReflowSpacerMarginBottom: {
+    f2Token: 'spacingVerticalS',
+    // should be 20px per design
+    originalToken: 'paddingContentAlignDefault',
+  },
+  _ctrlMessageBarTitleFontSize: {
+    f2Token: 'fontSizeBase300',
+    // should be fontSizeBase400 per design
+    originalToken: 'textRampItemHeaderFontSize',
+  },
+  _ctrlMessageBarTitleLineHeight: {
+    f2Token: 'lineHeightBase300',
+    // should be lineHeightBase400 per design
+    originalToken: 'textRampItemHeaderLineHeight',
+  },
 };
