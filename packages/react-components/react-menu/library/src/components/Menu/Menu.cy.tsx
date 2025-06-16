@@ -12,6 +12,7 @@ import {
   MenuGroupHeader,
   MenuSplitGroup,
   type MenuProps,
+  menuItemClassNames,
 } from '@fluentui/react-menu';
 import { FluentProvider } from '@fluentui/react-provider';
 import { Portal } from '@fluentui/react-portal';
@@ -1150,6 +1151,7 @@ const DebugPointer: React.FC = () => {
 };
 
 const MenuWithSafeZoneExample = () => {
+  // TODO: remove once "safeZone" is enabled by default
   const menuProps = { safeZone: true } as unknown as MenuProps;
 
   return (
@@ -1159,21 +1161,32 @@ const MenuWithSafeZoneExample = () => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
-          <MenuItem>item A</MenuItem>
+          <MenuItem>item 1</MenuItem>
           <Menu {...menuProps}>
             <MenuTrigger>
-              <MenuItem id="secondary-trigger">secondary trigger</MenuItem>
+              <MenuItem id="item-2">item 2</MenuItem>
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
-                <MenuItem id="secondary-item-a">secondary item A</MenuItem>
-                <MenuItem>secondary item B</MenuItem>
-                <MenuItem>secondary item C</MenuItem>
+                <MenuItem id="secondary-item-2a">secondary item 1A</MenuItem>
+                <MenuItem>secondary item 1B</MenuItem>
+                <MenuItem>secondary item 1C</MenuItem>
               </MenuList>
             </MenuPopover>
           </Menu>
-          <MenuItem id="menu-item">item B</MenuItem>
-          <MenuItem>item C</MenuItem>
+          <Menu {...menuProps}>
+            <MenuTrigger>
+              <MenuItem id="item-3">item 3</MenuItem>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem id="secondary-item-3a">secondary item 1A</MenuItem>
+                <MenuItem>secondary item 1B</MenuItem>
+                <MenuItem>secondary item 1C</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <MenuItem id="item-4">item 4</MenuItem>
         </MenuList>
       </MenuPopover>
     </Menu>
@@ -1189,21 +1202,21 @@ describe('safeZone', () => {
       </>,
     );
 
-    cy.get('#secondary-trigger').should('be.visible');
+    cy.get('#item-2').should('be.visible');
 
-    cy.get('#secondary-trigger').realHover();
+    cy.get('#item-2').realHover();
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
-    cy.get('#menu-item').realHover();
+    cy.get('#item-4').realHover();
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
     cy.clock(0).then(() => {
       cy.tick(500);
-      cy.get('#secondary-item-a').should('be.visible');
+      cy.get('#secondary-item-2a').should('be.visible');
       cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
       cy.tick(2000);
-      cy.get('#secondary-item-a').should('not.exist');
+      cy.get('#secondary-item-2a').should('not.exist');
       cy.get('[data-safe-zone]').should('not.exist');
     });
   });
@@ -1216,19 +1229,44 @@ describe('safeZone', () => {
       </>,
     );
 
-    cy.get('#secondary-trigger').should('be.visible');
+    cy.get('#item-2').should('be.visible');
 
-    cy.get('#secondary-trigger').realHover();
-    cy.get('#secondary-item-a').should('be.visible');
+    cy.get('#item-2').realHover();
+    cy.get('#secondary-item-2a').should('be.visible');
     cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
     cy.clock(0).then(() => {
       cy.tick(500);
-      cy.get('#secondary-item-a').should('be.visible');
+      cy.get('#secondary-item-2a').should('be.visible');
       cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
 
-      cy.get('#secondary-item-a').realHover();
+      cy.get('#secondary-item-2a').realHover();
       cy.get('[data-safe-zone]').should('have.css', 'display', 'none');
+    });
+  });
+
+  it('another submenu could be opened once a safe zone timeouts', () => {
+    mount(
+      <>
+        <DebugPointer />
+        <MenuWithSafeZoneExample />
+      </>,
+    );
+
+    cy.get('#item-2').should('be.visible');
+
+    cy.get(`#item-2 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('[data-safe-zone]').should('have.css', 'display', 'block');
+
+    cy.get(`#item-3 .${menuItemClassNames.submenuIndicator}`).realHover();
+    cy.get('#secondary-item-2a').should('be.visible');
+    cy.get('#secondary-item-3a').should('not.exist');
+
+    cy.clock(0).then(() => {
+      cy.tick(2000);
+
+      cy.get('#secondary-item-2a').should('not.exist');
+      cy.get('#secondary-item-3a').should('be.visible');
     });
   });
 });
