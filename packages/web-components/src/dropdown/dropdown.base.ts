@@ -402,11 +402,12 @@ export class BaseDropdown extends FASTElement {
   private debounceController?: AbortController;
 
   /**
-   * Event handler for scroll and resize events. Used when the browser does not support CSS anchor positioning.
+   * Repositions the listbox to align with the control element. Used when the browser does not support CSS anchor
+   * positioning.
    *
    * @internal
    */
-  private debouncedReposition = () => {
+  private repositionListbox = () => {
     if (this.frameId) {
       cancelAnimationFrame(this.frameId);
     }
@@ -1053,18 +1054,18 @@ export class BaseDropdown extends FASTElement {
       this.debounceController = new AbortController();
       BaseDropdown.AnchorPositionFallbackObserver.observe(this.listbox);
 
-      window.addEventListener('scroll', this.debouncedReposition, {
+      window.addEventListener('scroll', this.repositionListbox, {
         passive: true,
         capture: true,
         signal: this.debounceController.signal,
       });
 
-      window.addEventListener('resize', this.debouncedReposition, {
+      window.addEventListener('resize', this.repositionListbox, {
         passive: true,
         signal: this.debounceController.signal,
       });
 
-      this.debouncedReposition();
+      this.repositionListbox();
 
       return;
     }
