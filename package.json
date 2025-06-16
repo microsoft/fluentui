@@ -365,6 +365,9 @@
       "tools/*",
       "typings",
       "starter-templates"
+    ],
+    "nohoist": [
+      "@fluentui/react-bindings/@testing-library/react-hooks"
     ]
   },
   "resolutions": {
