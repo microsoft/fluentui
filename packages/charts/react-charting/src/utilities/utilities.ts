@@ -51,6 +51,7 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
   ILineChartLineOptions,
   AxisCategoryOrder,
+  LegendShape,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { getId } from '@fluentui/react';
@@ -1503,6 +1504,20 @@ export enum Points {
   hexagon,
   pentagon,
   octagon,
+  rectangle,
+  cross,
+  x,
+  star,
+  hexagramx,
+  triangleup,
+  triangledown,
+  triangleleft,
+  triangleright,
+  hexagon2,
+  startriangleup,
+  startriangledown,
+  starsquare,
+  stardiamond,
 }
 
 export enum CustomPoints {
@@ -1868,12 +1883,12 @@ export function domainRangeOfNumericForScatterChart(
   width: number,
   isRTL: boolean,
 ): IDomainNRange {
-  let xMin = d3Min(points, (point: ILineChartPoints) => {
+  let xMin = d3Min(points, (point: IScatterChartPoints) => {
     return d3Min(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => item.x as number)!;
   })!;
 
-  let xMax = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data as IScatterChartDataPoint[], (item: ILineChartDataPoint) => {
+  let xMax = d3Max(points, (point: IScatterChartPoints) => {
+    return d3Max(point.data as IScatterChartDataPoint[], (item: IScatterChartDataPoint) => {
       return item.x as number;
     });
   })!;
@@ -1966,3 +1981,46 @@ export const sortAxisCategories = (
 
   return Object.keys(categoryToValues);
 };
+
+export const scatterPointPaths: { [key: string]: string } = {
+  // Basic shapes
+  circle: 'M6 1 A5 5 0 1 0 6 11 A5 5 0 1 0 6 1 Z',
+  square: 'M2 2 L10 2 L10 10 L2 10 L2 2 Z',
+  triangle: 'M6 2 L10 10 H2 L6 2 Z',
+  pyramid: 'M6 2 L11 10 L1 10 Z M6 2 L6 10',
+  diamond: 'M6 1 L11 6 L6 11 L1 6 L6 1 Z',
+  hexagon: 'M8.5 2 L8.5 6 L6 8 L4 8 L1.5 6 L1.5 2 L4 0 L6 0 L8.5 2 Z',
+  pentagon: 'M6 1 L9.5 4 L8 9 L4 9 L2.5 4 L6 1 Z',
+  octagon: 'M7 1 L9 3 L9 7 L7 9 L5 9 L3 7 L3 3 L5 1 L7 1 Z',
+  rectangle: 'M2 3 L10 3 L10 9 L2 9 L2 3 Z',
+  cross: 'M4 1 L4 4 L1 4 L1 8 L4 8 L4 11 L8 11 L8 8 L11 8 L11 4 L8 4 L8 1 L4 1 Z',
+  x: 'M3 1 L6 4 L9 1 L11 3 L8 6 L11 9 L9 11 L6 8 L3 11 L1 9 L4 6 L1 3 L3 1 Z',
+  // Additional shapes
+  star: 'M6 1 L7 4 L10 4 L8 6 L9 9 L6 7.5 L3 9 L4 6 L2 4 L5 4 L6 1 Z',
+  hexagramx: 'M6 1 L7 3.5 L9.5 3 L8 5 L10 6 L8 7 L9.5 9 L7 8.5 L6 11 L5 8.5 L2.5 9 L4 7 L2 6 L4 5 L2.5 3 L5 3.5 L6 1 Z',
+  triangleup: 'M6 2 L10 10 H2 L6 2 Z',
+  triangledown: 'M6 10 L10 2 H2 L6 10 Z',
+  triangleleft: 'M2 6 L10 2 V10 L2 6 Z',
+  triangleright: 'M10 6 L2 10 V2 L10 6 Z',
+  hexagon2: 'M6 1 L9 3 L9 7 L6 9 L3 7 L3 3 L6 1 Z',
+  startriangleup: 'M6 1 L7 4 L10 4 L8 6 L9 9 L6 7.5 L3 9 L4 6 L2 4 L5 4 L6 1 Z M6 3 L4 8 H8 L6 3 Z',
+  startriangledown: 'M6 1 L7 4 L10 4 L8 6 L9 9 L6 7.5 L3 9 L4 6 L2 4 L5 4 L6 1 Z M6 9 L8 4 H4 L6 9 Z',
+  starsquare: 'M6 1 L7 4 L10 4 L8 6 L9 9 L6 7.5 L3 9 L4 6 L2 4 L5 4 L6 1 Z M4 4 L4 8 L8 8 L8 4 Z',
+  stardiamond: 'M6 1 L7 4 L10 4 L8 6 L9 9 L6 7.5 L3 9 L4 6 L2 4 L5 4 L6 1 Z M6 4 L3 6 L6 8 L9 6 L6 4 Z',
+};
+
+export function getShapePath(shape: LegendShape | undefined): string {
+  if (!shape) {
+    return scatterPointPaths.circle;
+  }
+
+  const mappedShape = shape.toLowerCase().includes('open')
+    ? shape.toLowerCase().replace('open', '')
+    : shape.toLowerCase();
+
+  return scatterPointPaths[mappedShape] || scatterPointPaths.circle;
+}
+
+export function isOpenShape(shape?: LegendShape): boolean {
+  return Boolean(shape?.toLowerCase().includes('open'));
+}

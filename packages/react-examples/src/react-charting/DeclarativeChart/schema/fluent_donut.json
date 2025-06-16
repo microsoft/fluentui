@@ -1,76 +1,2286 @@
 {
-  "visualizer": "plotly",
   "data": [
     {
-      "hole": 0.6,
-      "type": "pie",
-      "frame": null,
+      "hovertemplate": "phase=Construction<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra><br><b>Hover!</b><extra></extra>",
+      "legendgroup": "Construction",
       "marker": {
+        "color": "#636efa",
+        "symbol": "circle",
         "line": {
-          "color": "transparent"
+          "color": "DarkSlateGrey",
+          "width": 2
         },
-        "colors": [
-          "rgba(31,119,180,1)",
-          "rgba(255,127,14,1)",
-          "rgba(44,160,44,1)",
-          "rgba(214,39,40,1)",
-          "rgba(148,103,189,1)",
-          "rgba(140,86,75,1)",
-          "rgba(227,119,194,1)",
-          "rgba(127,127,127,1)",
-          "rgba(188,189,34,1)",
-          "rgba(23,190,207,1)"
-        ],
-        "fillcolor": "rgba(31,119,180,1)"
+        "size": 18
       },
-      "labels": [
-        "AMC",
-        "Cadillac",
-        "Camaro",
-        "Chrysler",
-        "Datsun",
-        "Dodge",
-        "Duster",
-        "Ferrari",
-        "Fiat",
-        "Ford",
-        "Honda",
-        "Hornet",
-        "Lincoln",
-        "Lotus",
-        "Maserati",
-        "Mazda",
-        "Merc",
-        "Pontiac",
-        "Porsche",
-        "Toyota",
-        "Valiant",
-        "Volvo"
-      ],
-      "values": [1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 7, 1, 1, 2, 1, 1]
+      "mode": "markers",
+      "name": "Construction",
+      "orientation": "v",
+      "showlegend": true,
+      "x": {
+        "dtype": "f8",
+        "bdata": "UOF6FK5HwT8="
+      },
+      "xaxis": "x",
+      "y": {
+        "dtype": "f8",
+        "bdata": "j8L1KFyPBEA="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "hovertemplate": "phase=Design<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra><br><b>Hover!</b><extra></extra>",
+      "legendgroup": "Design",
+      "marker": {
+        "color": "#EF553B",
+        "symbol": "diamond",
+        "line": {
+          "color": "DarkSlateGrey",
+          "width": 2
+        },
+        "size": 18
+      },
+      "mode": "markers",
+      "name": "Design",
+      "orientation": "v",
+      "showlegend": true,
+      "x": {
+        "dtype": "f8",
+        "bdata": "Z2ZmZmZmCEA="
+      },
+      "xaxis": "x",
+      "y": {
+        "dtype": "f8",
+        "bdata": "zczMzMzMCEA="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "hovertemplate": "phase=Finishing<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra><br><b>Hover!</b><extra></extra>",
+      "legendgroup": "Finishing",
+      "marker": {
+        "color": "#00cc96",
+        "symbol": "square",
+        "line": {
+          "color": "DarkSlateGrey",
+          "width": 2
+        },
+        "size": 18
+      },
+      "mode": "markers",
+      "name": "Finishing",
+      "orientation": "v",
+      "showlegend": true,
+      "x": {
+        "dtype": "f8",
+        "bdata": "pHA9CtcjK0A="
+      },
+      "xaxis": "x",
+      "y": {
+        "dtype": "f8",
+        "bdata": "KVyPwvUoCkA="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "hovertemplate": "phase=Planning<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra><br><b>Hover!</b><extra></extra>",
+      "legendgroup": "Planning",
+      "marker": {
+        "color": "#ab63fa",
+        "symbol": "x",
+        "line": {
+          "color": "DarkSlateGrey",
+          "width": 2
+        },
+        "size": 18
+      },
+      "mode": "markers",
+      "name": "Planning",
+      "orientation": "v",
+      "showlegend": true,
+      "x": {
+        "dtype": "f8",
+        "bdata": "cD0K16Nwvb8="
+      },
+      "xaxis": "x",
+      "y": {
+        "dtype": "f8",
+        "bdata": "9ihcj8J1EUA="
+      },
+      "yaxis": "y",
+      "type": "scatter"
+    },
+    {
+      "hovertemplate": "phase=Procurement<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra><br><b>Hover!</b><extra></extra>",
+      "legendgroup": "Procurement",
+      "marker": {
+        "color": "#FFA15A",
+        "symbol": "cross",
+        "line": {
+          "color": "DarkSlateGrey",
+          "width": 2
+        },
+        "size": 18
+      },
+      "mode": "markers",
+      "name": "Procurement",
+      "orientation": "v",
+      "showlegend": true,
+      "x": {
+        "dtype": "f8",
+        "bdata": "AAAAAAAAHMA="
+      },
+      "xaxis": "x",
+      "y": {
+        "dtype": "f8",
+        "bdata": "w/UoXI/C5T8="
+      },
+      "yaxis": "y",
+      "type": "scatter"
     }
   ],
   "layout": {
-    "title": "Donut charts using Plotly",
+    "template": {
+      "data": {
+        "histogram2dcontour": [
+          {
+            "type": "histogram2dcontour",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "choropleth": [
+          {
+            "type": "choropleth",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "histogram2d": [
+          {
+            "type": "histogram2d",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "heatmap": [
+          {
+            "type": "heatmap",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "contourcarpet": [
+          {
+            "type": "contourcarpet",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "contour": [
+          {
+            "type": "contour",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "surface": [
+          {
+            "type": "surface",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            },
+            "colorscale": [
+              [0.0, "#0d0887"],
+              [0.1111111111111111, "#46039f"],
+              [0.2222222222222222, "#7201a8"],
+              [0.3333333333333333, "#9c179e"],
+              [0.4444444444444444, "#bd3786"],
+              [0.5555555555555556, "#d8576b"],
+              [0.6666666666666666, "#ed7953"],
+              [0.7777777777777778, "#fb9f3a"],
+              [0.8888888888888888, "#fdca26"],
+              [1.0, "#f0f921"]
+            ]
+          }
+        ],
+        "mesh3d": [
+          {
+            "type": "mesh3d",
+            "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+            }
+          }
+        ],
+        "scatter": [
+          {
+            "fillpattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+            },
+            "type": "scatter"
+          }
+        ],
+        "parcoords": [
+          {
+            "type": "parcoords",
+            "line": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterpolargl": [
+          {
+            "type": "scatterpolargl",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "bar": [
+          {
+            "error_x": {
+              "color": "#2a3f5f"
+            },
+            "error_y": {
+              "color": "#2a3f5f"
+            },
+            "marker": {
+              "line": {
+                "color": "#E5ECF6",
+                "width": 0.5
+              },
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "bar"
+          }
+        ],
+        "scattergeo": [
+          {
+            "type": "scattergeo",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterpolar": [
+          {
+            "type": "scatterpolar",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "histogram": [
+          {
+            "marker": {
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "histogram"
+          }
+        ],
+        "scattergl": [
+          {
+            "type": "scattergl",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatter3d": [
+          {
+            "type": "scatter3d",
+            "line": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            },
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattermap": [
+          {
+            "type": "scattermap",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattermapbox": [
+          {
+            "type": "scattermapbox",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scatterternary": [
+          {
+            "type": "scatterternary",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "scattercarpet": [
+          {
+            "type": "scattercarpet",
+            "marker": {
+              "colorbar": {
+                "outlinewidth": 0,
+                "ticks": ""
+              }
+            }
+          }
+        ],
+        "carpet": [
+          {
+            "aaxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+              "endlinecolor": "#2a3f5f",
+              "gridcolor": "white",
+              "linecolor": "white",
+              "minorgridcolor": "white",
+              "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+          }
+        ],
+        "table": [
+          {
+            "cells": {
+              "fill": {
+                "color": "#EBF0F8"
+              },
+              "line": {
+                "color": "white"
+              }
+            },
+            "header": {
+              "fill": {
+                "color": "#C8D4E3"
+              },
+              "line": {
+                "color": "white"
+              }
+            },
+            "type": "table"
+          }
+        ],
+        "barpolar": [
+          {
+            "marker": {
+              "line": {
+                "color": "#E5ECF6",
+                "width": 0.5
+              },
+              "pattern": {
+                "fillmode": "overlay",
+                "size": 10,
+                "solidity": 0.2
+              }
+            },
+            "type": "barpolar"
+          }
+        ],
+        "pie": [
+          {
+            "automargin": true,
+            "type": "pie"
+          }
+        ]
+      },
+      "layout": {
+        "autotypenumbers": "strict",
+        "colorway": [
+          "#636efa",
+          "#EF553B",
+          "#00cc96",
+          "#ab63fa",
+          "#FFA15A",
+          "#19d3f3",
+          "#FF6692",
+          "#B6E880",
+          "#FF97FF",
+          "#FECB52"
+        ],
+        "font": {
+          "color": "#2a3f5f"
+        },
+        "hovermode": "closest",
+        "hoverlabel": {
+          "align": "left"
+        },
+        "paper_bgcolor": "white",
+        "plot_bgcolor": "#E5ECF6",
+        "polar": {
+          "bgcolor": "#E5ECF6",
+          "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "ternary": {
+          "bgcolor": "#E5ECF6",
+          "aaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "baxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          },
+          "caxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+          }
+        },
+        "coloraxis": {
+          "colorbar": {
+            "outlinewidth": 0,
+            "ticks": ""
+          }
+        },
+        "colorscale": {
+          "sequential": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "sequentialminus": [
+            [0.0, "#0d0887"],
+            [0.1111111111111111, "#46039f"],
+            [0.2222222222222222, "#7201a8"],
+            [0.3333333333333333, "#9c179e"],
+            [0.4444444444444444, "#bd3786"],
+            [0.5555555555555556, "#d8576b"],
+            [0.6666666666666666, "#ed7953"],
+            [0.7777777777777778, "#fb9f3a"],
+            [0.8888888888888888, "#fdca26"],
+            [1.0, "#f0f921"]
+          ],
+          "diverging": [
+            [0, "#8e0152"],
+            [0.1, "#c51b7d"],
+            [0.2, "#de77ae"],
+            [0.3, "#f1b6da"],
+            [0.4, "#fde0ef"],
+            [0.5, "#f7f7f7"],
+            [0.6, "#e6f5d0"],
+            [0.7, "#b8e186"],
+            [0.8, "#7fbc41"],
+            [0.9, "#4d9221"],
+            [1, "#276419"]
+          ]
+        },
+        "xaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": {
+            "standoff": 15
+          },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "yaxis": {
+          "gridcolor": "white",
+          "linecolor": "white",
+          "ticks": "",
+          "title": {
+            "standoff": 15
+          },
+          "zerolinecolor": "white",
+          "automargin": true,
+          "zerolinewidth": 2
+        },
+        "scene": {
+          "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          },
+          "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white",
+            "gridwidth": 2
+          }
+        },
+        "shapedefaults": {
+          "line": {
+            "color": "#2a3f5f"
+          }
+        },
+        "annotationdefaults": {
+          "arrowcolor": "#2a3f5f",
+          "arrowhead": 0,
+          "arrowwidth": 1
+        },
+        "geo": {
+          "bgcolor": "white",
+          "landcolor": "#E5ECF6",
+          "subunitcolor": "white",
+          "showland": true,
+          "showlakes": true,
+          "lakecolor": "white"
+        },
+        "title": {
+          "x": 0.05
+        },
+        "mapbox": {
+          "style": "light"
+        }
+      }
+    },
     "xaxis": {
-      "showgrid": false,
-      "zeroline": false,
-      "showticklabels": false
+      "anchor": "y",
+      "domain": [0.0, 1.0],
+      "title": {
+        "text": "Variance [%]"
+      }
     },
     "yaxis": {
-      "showgrid": false,
-      "zeroline": false,
-      "showticklabels": false
+      "anchor": "x",
+      "domain": [0.0, 1.0],
+      "title": {
+        "text": "Material Escalation [%]"
+      }
     },
-    "margin": {
-      "b": 40,
-      "l": 60,
-      "r": 10,
-      "t": 25
+    "legend": {
+      "title": {
+        "text": "Project Phase"
+      },
+      "tracegroupgap": 0
     },
-    "hovermode": "closest",
-    "showlegend": true
+    "title": {
+      "text": "Variance % vs. Material Escalation by Project Phase"
+    },
+    "updatemenus": [
+      {
+        "buttons": [
+          {
+            "args": [
+              null,
+              {
+                "frame": {
+                  "duration": 500,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 500,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "&#9654;",
+            "method": "animate"
+          },
+          {
+            "args": [
+              [null],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "&#9724;",
+            "method": "animate"
+          }
+        ],
+        "direction": "left",
+        "pad": {
+          "r": 10,
+          "t": 70
+        },
+        "showactive": false,
+        "type": "buttons",
+        "x": 0.1,
+        "xanchor": "right",
+        "y": 0,
+        "yanchor": "top"
+      }
+    ],
+    "sliders": [
+      {
+        "active": 0,
+        "currentvalue": {
+          "prefix": "month="
+        },
+        "len": 0.9,
+        "pad": {
+          "b": 10,
+          "t": 60
+        },
+        "steps": [
+          {
+            "args": [
+              ["Apr 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Apr 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Aug 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Aug 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Dec 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Dec 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Feb 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Feb 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Jan 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Jan 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Jul 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Jul 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Jun 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Jun 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Mar 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Mar 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["May 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "May 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Oct 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Oct 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Sep 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Sep 2023",
+            "method": "animate"
+          },
+          {
+            "args": [
+              ["Nov 2023"],
+              {
+                "frame": {
+                  "duration": 0,
+                  "redraw": false
+                },
+                "mode": "immediate",
+                "fromcurrent": true,
+                "transition": {
+                  "duration": 0,
+                  "easing": "linear"
+                }
+              }
+            ],
+            "label": "Nov 2023",
+            "method": "animate"
+          }
+        ],
+        "x": 0.1,
+        "xanchor": "left",
+        "y": 0,
+        "yanchor": "top"
+      }
+    ]
   },
-  "frames": [],
-  "selectedLegends": ["Cadillac"]
+  "frames": [
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "UOF6FK5HwT8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "j8L1KFyPBEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "Z2ZmZmZmCEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "zczMzMzMCEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "pHA9CtcjK0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "KVyPwvUoCkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "cD0K16Nwvb8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "9ihcj8J1EUA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Apr 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "AAAAAAAAHMA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "w/UoXI/C5T8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Apr 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Aug 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "mpmZmZmZHsA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "uB6F61G4AEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Aug 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "mpmZmZmZHkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ZmZmZmZmBEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Aug 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "hetRuB4FGkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "FK5H4XoUCkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Aug 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "S36x5BdL5j8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "6LSBThvo/D8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Aug 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Dec 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "4XoUrkfhHcA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "16NwPQrX678="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Dec 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "Fa5H4XqUHEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ZmZmZmZmBkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Dec 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "57SBThvoAkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "BzptoNMG4j8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Dec 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "uB6F61G4CkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "j8L1KFyPA0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Dec 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Feb 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "1AY6baDTIEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "aQOdNtBp/z8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Feb 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "9Shcj8L1C0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "CtejcD0KD0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Feb 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "SOF6FK5H8b8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "KVyPwvUo5D8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Feb 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "SOF6FK5HIMA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "CtejcD0KEkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Feb 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KVyPwvUozL8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "exSuR+F6tD8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Feb 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Jan 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "AAAAAAAACcA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ZmZmZmZmBEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Jan 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "PgrXo3A9DUA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "UrgehetRA0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Jan 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "16NwPQrXIsA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "4XoUrkfh+j8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Jan 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "l/xiyS+WDsA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ERERERER+T8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Jan 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Jul 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "HoXrUbgeCEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "SOF6FK5HBUA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Jul 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "pHA9CtejwL8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "PQrXo3A9EEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Jul 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "FRERERERsb8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "gU4b6LSB8j8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Jul 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "CtejcD0KCkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "PgrXo3A9CUA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Jul 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Jun 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KFyPwvUo9j8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "cD0K16Nw8T8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Jun 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KVyPwvUoEcA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "exSuR+F6xL8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Jun 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "exSuR+H6HEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "pHA9CtejAkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Jun 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "PQrXo3C9I8A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "9ihcj8L14L8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Jun 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "XI/C9ShcKEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "hetRuB6FAEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Jun 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Mar 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "4XoUrkdhIMA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "zMzMzMzMBkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Mar 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "H4XrUbgeE0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "exSuR+F67D8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Mar 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "AAAAAACAJkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "FK5H4XoUAkA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Mar 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "wvUoXI+iIkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "kML1KFyP+T8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Mar 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=May 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "9ihcj8L1H0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "HoXrUbgexT8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=May 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "HoXrUbgeCcA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "8FG4HoXrob8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=May 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "XI/C9ShcF0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "FK5H4XoUBEA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=May 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KFyPwvUoBEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "exSuR+F69D8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=May 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "hetRuB6FGEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ZmZmZmZm1j8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "May 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Oct 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "awOdNtBpB0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "2kCnDXTa8D8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Oct 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "XI/C9ShcJ0A="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "MzMzMzMzC0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Oct 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "zMzMzMzMGkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "ZmZmZmZmD0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Oct 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KFyPwvUo1L8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "9ihcj8L12L8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Oct 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Construction<br>month=Sep 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Construction",
+          "marker": {
+            "color": "#636efa",
+            "symbol": "circle"
+          },
+          "mode": "markers",
+          "name": "Construction",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "HoXrUbgeBkA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "AAAAAAAAB0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Design<br>month=Sep 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "16NwPQrXDUA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "w/UoXI/CC0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Sep 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "A5020GkDFUA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "TxvotIFOA0A="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Sep 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "KVyPwvUozD8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "mpmZmZmZqT8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Sep 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "MzMzMzMzIUA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "FK5H4XoU7j8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Sep 2023"
+    },
+    {
+      "data": [
+        {
+          "hovertemplate": "phase=Design<br>month=Nov 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Design",
+          "marker": {
+            "color": "#EF553B",
+            "symbol": "diamond"
+          },
+          "mode": "markers",
+          "name": "Design",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "uB6F61G4JEA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "XI/C9Shc8z8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Finishing<br>month=Nov 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Finishing",
+          "marker": {
+            "color": "#00cc96",
+            "symbol": "square"
+          },
+          "mode": "markers",
+          "name": "Finishing",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "7lG4HoXr778="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "AAAAAAAA+z8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Planning<br>month=Nov 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Planning",
+          "marker": {
+            "color": "#ab63fa",
+            "symbol": "x"
+          },
+          "mode": "markers",
+          "name": "Planning",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "H4XrUbgeKUA="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "SOF6FK5HBUA="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        },
+        {
+          "hovertemplate": "phase=Procurement<br>month=Nov 2023<br>Variance [%]=%{x}<br>Material Escalation [%]=%{y}<extra></extra>",
+          "legendgroup": "Procurement",
+          "marker": {
+            "color": "#FFA15A",
+            "symbol": "cross"
+          },
+          "mode": "markers",
+          "name": "Procurement",
+          "orientation": "v",
+          "showlegend": true,
+          "x": {
+            "dtype": "f8",
+            "bdata": "gFG4HoXroT8="
+          },
+          "xaxis": "x",
+          "y": {
+            "dtype": "f8",
+            "bdata": "wvUoXI/C1T8="
+          },
+          "yaxis": "y",
+          "type": "scatter"
+        }
+      ],
+      "name": "Nov 2023"
+    }
+  ],
+  "id": 10
 }

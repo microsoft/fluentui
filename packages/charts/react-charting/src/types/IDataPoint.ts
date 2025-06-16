@@ -916,6 +916,11 @@ export interface IScatterChartDataPoint extends IBaseDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  /**
+   * Shape of the marker for this data point
+   */
+  shape?: LegendShape;
 }
 
 /**

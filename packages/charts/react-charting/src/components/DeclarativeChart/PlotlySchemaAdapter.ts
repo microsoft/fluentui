@@ -67,7 +67,7 @@ import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 import { IScatterChartProps } from '../ScatterChart/index';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { getOpacity, extractColor, resolveColor } from './PlotlyColorAdapter';
-import { ILegend, ILegendsProps } from '../Legends/index';
+import { ILegend, ILegendsProps, LegendShape } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 
@@ -1696,7 +1696,7 @@ const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
   if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
     return 'dottedLine';
   } else if (series.mode?.includes('markers')) {
-    return 'circle';
+    return (series?.marker?.symbol as LegendShape) ?? 'circle';
   }
   return 'default';
 };

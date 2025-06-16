@@ -1389,6 +1389,7 @@ export interface ISankeyChartStyles {
 
 // @public
 export interface IScatterChartDataPoint extends IBaseDataPoint {
+    shape?: LegendShape;
     x: number | Date | string;
     y: number;
 }
@@ -1427,6 +1428,8 @@ export interface IScatterChartStyles extends ICartesianChartStyles {
 export interface IShapeProps {
     // (undocumented)
     classNameForNonSvg?: string;
+    // (undocumented)
+    isOpenShape?: boolean;
     // (undocumented)
     pathProps: React_2.SVGAttributes<SVGPathElement>;
     // (undocumented)
