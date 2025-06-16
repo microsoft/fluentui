@@ -186,7 +186,7 @@ const getFormattedCalloutYData = (
   yVal: string | number,
   yAxisFormat: ReturnType<typeof getYAxisTickFormat>,
 ): string => {
-  if (yAxisFormat?.yAxisTickFormat && typeof yAxisFormat.yAxisTickFormat === 'function' && typeof yVal === 'number') {
+  if (typeof yAxisFormat?.yAxisTickFormat === 'function' && typeof yVal === 'number') {
     return yAxisFormat.yAxisTickFormat(yVal);
   }
   return formatToLocaleString(yVal) as string;

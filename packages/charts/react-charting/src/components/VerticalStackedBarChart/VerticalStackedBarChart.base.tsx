@@ -1165,7 +1165,7 @@ export class VerticalStackedBarChartBase
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {this.props.yAxisTickFormat && typeof this.props.yAxisTickFormat === 'function'
+              {typeof this.props.yAxisTickFormat === 'function'
                 ? this.props.yAxisTickFormat(barLabel)
                 : formatScientificLimitWidth(barLabel)}
             </text>
