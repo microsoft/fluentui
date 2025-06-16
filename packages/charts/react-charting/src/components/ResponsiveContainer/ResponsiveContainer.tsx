@@ -78,6 +78,8 @@ export const ResponsiveContainer: React.FC<IResponsiveContainerProps> = props =>
           // Keep components styles
           ...child.props.styles,
           root: {
+            // eslint-disable-next-line @fluentui/max-len
+            // @ts-expect-error - TS2339: Property 'root' does not exist on type 'IStyleFunctionOrObject<{}, { root: IStyle; }>'.
             ...child.props.styles?.root,
             // Ensure the child element fills the parent container
             // https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height

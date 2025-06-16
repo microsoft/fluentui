@@ -1,0 +1,12 @@
+{
+  "name": "@types/enzyme",
+  "version": "0.0.1",
+  "private": true,
+  "main": "",
+  "types": "src/index.d.ts",
+  "dependencies": {
+    "@types/cheerio": "<1",
+    "@types/react": "^17"
+  },
+  "devDependencies": {}
+}

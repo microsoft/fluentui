@@ -19,6 +19,7 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
   implements IBaseSelectedItemsList<T>
 {
   public static contextType = WindowContext;
+  public context: any;
 
   protected root: HTMLElement;
   private _defaultSelection: Selection;

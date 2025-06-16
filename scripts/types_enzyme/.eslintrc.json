@@ -1,0 +1,21 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/node", "plugin:@fluentui/eslint-plugin/imports"],
+  "rules": {
+    "@fluentui/max-len": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "packageDir": [".", "../../"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": "index.d.ts",
+      "rules": {
+        "import/no-self-import": "off"
+      }
+    }
+  ],
+  "root": true
+}
