@@ -153,6 +153,7 @@ const config = {
         '@types/react',
         '@types/react-dom',
         '@types/react-is',
+        '@types/react-transition-group',
       ],
     },
   ],

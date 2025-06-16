@@ -6,7 +6,12 @@
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
       "src/*": ["packages/fluentui/react-northstar/src/*"],
-      "test/*": ["packages/fluentui/react-northstar/test/*"]
+      "test/*": ["packages/fluentui/react-northstar/test/*"],
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime.d.ts"],
+      "react": ["packages/fluentui/react-northstar/node_modules/@types/react/index.d.ts"],
+      "react-dom": ["packages/fluentui/react-northstar/node_modules/@types/react-dom/index.d.ts"],
+      "@testing-library/react": ["packages/fluentui/react-northstar/node_modules/@testing-library/react/*"],
+      "@testing-library/dom": ["packages/fluentui/react-northstar/node_modules/@testing-library/dom/*"]
     }
   },
   "include": ["src", "test"],
