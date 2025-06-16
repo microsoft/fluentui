@@ -54,7 +54,7 @@ export interface CartesianChartStyleProps {
    */
   toDrawShape?: boolean;
 
-  /**Add commentMore actions
+  /**
    * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
    */
   enableReflow?: boolean;
