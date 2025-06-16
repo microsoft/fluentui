@@ -19,6 +19,7 @@ module.exports = {
       rules: {
         'no-restricted-globals': 'off',
         'react/jsx-no-bind': 'off',
+        '@typescript-eslint/no-deprecated': 'off',
       },
     },
   ],
