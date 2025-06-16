@@ -367,7 +367,8 @@
       "starter-templates"
     ],
     "nohoist": [
-      "@fluentui/react-bindings/@testing-library/react-hooks"
+      "@fluentui/react-bindings/@testing-library/react-hooks",
+      "@fluentui/docs/react-hot-loader"
     ]
   },
   "resolutions": {
