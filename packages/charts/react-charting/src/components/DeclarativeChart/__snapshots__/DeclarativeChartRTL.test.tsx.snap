@@ -453,7 +453,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   role="region"
                 >
                   <circle
-                    aria-label="0. a, 0.17048910089864067."
+                    aria-label="0. a, 0.17."
                     cx="40"
                     cy="-41.80657629370952"
                     data-is-focusable="true"
@@ -466,7 +466,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="0"
                   />
                   <circle
-                    aria-label="1. a, 0.05390702725063046."
+                    aria-label="1. a, 0.054."
                     cx="100"
                     cy="-42.622650809245584"
                     data-is-focusable="true"
@@ -479,7 +479,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="2. a, 0.7560889217240573."
+                    aria-label="2. a, 0.756."
                     cx="160"
                     cy="-37.7073775479316"
                     data-is-focusable="true"
@@ -492,7 +492,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="3. a, 0.7393313216390578."
+                    aria-label="3. a, 0.739."
                     cx="220"
                     cy="-37.824680748526596"
                     data-is-focusable="true"
@@ -505,7 +505,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="4. a, 0.7562979443674754."
+                    aria-label="4. a, 0.756."
                     cx="280"
                     cy="-37.705914389427676"
                     data-is-focusable="true"
@@ -518,7 +518,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="5. a, 0.983908108492343."
+                    aria-label="5. a, 0.984."
                     cx="340"
                     cy="-36.1126432405536"
                     data-is-focusable="true"
@@ -531,7 +531,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="6. a, 0.4552096139092071."
+                    aria-label="6. a, 0.455."
                     cx="399.99999999999994"
                     cy="-39.81353270263555"
                     data-is-focusable="true"
@@ -544,7 +544,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="7. a, 0.751939393026647."
+                    aria-label="7. a, 0.752."
                     cx="460.00000000000006"
                     cy="-37.73642424881348"
                     data-is-focusable="true"
@@ -557,7 +557,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="8. a, 0.42441695150031034."
+                    aria-label="8. a, 0.424."
                     cx="520"
                     cy="-40.02908133949783"
                     data-is-focusable="true"
@@ -570,7 +570,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="9. a, 0.6119820237450841."
+                    aria-label="9. a, 0.612."
                     cx="580"
                     cy="-38.71612583378442"
                     data-is-focusable="true"
@@ -589,7 +589,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   role="region"
                 >
                   <circle
-                    aria-label="0. b, 1.0921498980687505."
+                    aria-label="0. b, 1.092."
                     cx="40"
                     cy="-34.16152700722826"
                     data-is-focusable="false"
@@ -602,7 +602,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="1. b, 0.628379692444796."
+                    aria-label="1. b, 0.628."
                     cx="100"
                     cy="-38.223992962132016"
                     data-is-focusable="false"
@@ -615,7 +615,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="2. b, 1.6804387333467445."
+                    aria-label="2. b, 1.68."
                     cx="160"
                     cy="-25.944306414504386"
                     data-is-focusable="false"
@@ -628,7 +628,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="3. b, 1.1741874271317159."
+                    aria-label="3. b, 1.174."
                     cx="220"
                     cy="-29.605368758604584"
                     data-is-focusable="false"
@@ -641,7 +641,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="4. b, 1.7098535938519392."
+                    aria-label="4. b, 1.71."
                     cx="280"
                     cy="-25.736939232464096"
                     data-is-focusable="false"
@@ -654,7 +654,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="5. b, 1.0165440369832146."
+                    aria-label="5. b, 1.017."
                     cx="340"
                     cy="-28.996834981671103"
                     data-is-focusable="false"
@@ -667,7 +667,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="6. b, 0.8201578488720772."
+                    aria-label="6. b, 0.82."
                     cx="399.99999999999994"
                     cy="-34.07242776053101"
                     data-is-focusable="false"
@@ -680,7 +680,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="7. b, 1.019179653143562."
+                    aria-label="7. b, 1.019."
                     cx="460.00000000000006"
                     cy="-30.602166676808537"
                     data-is-focusable="false"
@@ -693,7 +693,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="8. b, 0.5391840333768539."
+                    aria-label="8. b, 0.539."
                     cx="520"
                     cy="-36.254793105859854"
                     data-is-focusable="false"
@@ -706,7 +706,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="9. b, 0.9023036941696878."
+                    aria-label="9. b, 0.902."
                     cx="580"
                     cy="-32.3999999745966"
                     data-is-focusable="false"
@@ -725,7 +725,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   role="region"
                 >
                   <circle
-                    aria-label="0. c, 1.5084498776097979."
+                    aria-label="0. c, 1.508."
                     cx="40"
                     cy="-23.602377863959674"
                     data-is-focusable="false"
@@ -738,7 +738,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="1. c, 1.0993096327196032."
+                    aria-label="1. c, 1.099."
                     cx="100"
                     cy="-30.528825533094793"
                     data-is-focusable="false"
@@ -751,7 +751,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="2. c, 2.5468884763826125."
+                    aria-label="2. c, 2.547."
                     cx="160"
                     cy="-8.116087079826098"
                     data-is-focusable="false"
@@ -764,7 +764,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="3. c, 1.3139261978658."
+                    aria-label="3. c, 1.314."
                     cx="220"
                     cy="-20.407885373543984"
                     data-is-focusable="false"
@@ -777,7 +777,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="4. c, 1.7288516603693358."
+                    aria-label="4. c, 1.729."
                     cx="280"
                     cy="-13.634977609878746"
                     data-is-focusable="false"
@@ -790,7 +790,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="5. c, 1.3500413551768342."
+                    aria-label="5. c, 1.35."
                     cx="340"
                     cy="-19.54654549543326"
                     data-is-focusable="false"
@@ -803,7 +803,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="6. c, 1.4111774146124456."
+                    aria-label="6. c, 1.411."
                     cx="399.99999999999994"
                     cy="-24.1941858582439"
                     data-is-focusable="false"
@@ -816,7 +816,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="7. c, 1.1245312639069405."
+                    aria-label="7. c, 1.125."
                     cx="460.00000000000006"
                     cy="-22.730447829459955"
                     data-is-focusable="false"
@@ -829,7 +829,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="8. c, 1.4068617318281056."
+                    aria-label="8. c, 1.407."
                     cx="520"
                     cy="-26.40676098306311"
                     data-is-focusable="false"
@@ -842,7 +842,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="9. c, 0.9236499701488171."
+                    aria-label="9. c, 0.924."
                     cx="580"
                     cy="-25.934450183554876"
                     data-is-focusable="false"
@@ -861,7 +861,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                   role="region"
                 >
                   <circle
-                    aria-label="0. d, 1.912915766078795."
+                    aria-label="0. d, 1.913."
                     cx="40"
                     cy="-10.211967501408111"
                     data-is-focusable="false"
@@ -874,7 +874,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="1. d, 1.6450103381519354."
+                    aria-label="1. d, 1.645."
                     cx="100"
                     cy="-19.013753166031247"
                     data-is-focusable="false"
@@ -887,7 +887,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="2. d, 3.523866933241722."
+                    aria-label="2. d, 3.524."
                     cx="160"
                     cy="16.550981452865962"
                     data-is-focusable="false"
@@ -900,7 +900,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="3. d, 1.656799203492564."
+                    aria-label="3. d, 1.657."
                     cx="220"
                     cy="-8.810290949096029"
                     data-is-focusable="false"
@@ -913,7 +913,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="4. d, 2.666064160881149."
+                    aria-label="4. d, 2.666."
                     cx="280"
                     cy="5.027471516289296"
                     data-is-focusable="false"
@@ -926,7 +926,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="5. d, 2.2985767814076814."
+                    aria-label="5. d, 2.299."
                     cx="340"
                     cy="-3.456508025579488"
                     data-is-focusable="false"
@@ -939,7 +939,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="6. d, 1.6491300653173326."
+                    aria-label="6. d, 1.649."
                     cx="399.99999999999994"
                     cy="-12.650275401022567"
                     data-is-focusable="false"
@@ -952,7 +952,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="7. d, 1.2880873970749964."
+                    aria-label="7. d, 1.288."
                     cx="460.00000000000006"
                     cy="-13.713836049934985"
                     data-is-focusable="false"
@@ -965,7 +965,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="8. d, 2.192375146193222."
+                    aria-label="8. d, 2.192."
                     cx="520"
                     cy="-11.060134959710552"
                     data-is-focusable="false"
@@ -978,7 +978,7 @@ exports[`DeclarativeChart Should render areachart in DeclarativeChart 1`] = `
                     tabindex="-1"
                   />
                   <circle
-                    aria-label="9. d, 1.6271909616796654."
+                    aria-label="9. d, 1.627."
                     cx="580"
                     cy="-14.544113451797218"
                     data-is-focusable="false"

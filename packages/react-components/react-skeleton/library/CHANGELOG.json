@@ -2,6 +2,27 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Fri, 13 Jun 2025 12:32:52 GMT",
+      "tag": "@fluentui/react-skeleton_v9.3.1",
+      "version": "9.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "nathansokol@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "1a693a71094d5cac094f05ede2af07d0152b7993",
+            "comment": "Allow the skeleton root to be a span in addition to a div"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.3.1",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:33 GMT",
       "tag": "@fluentui/react-skeleton_v9.3.0",
       "version": "9.3.0",

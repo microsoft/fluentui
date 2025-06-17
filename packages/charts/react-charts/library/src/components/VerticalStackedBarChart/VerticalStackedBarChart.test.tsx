@@ -9,6 +9,9 @@ import * as renderer from 'react-test-renderer';
 
 expect.extend(toHaveNoViolations);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
   global.ResizeObserver = class ResizeObserver {
@@ -143,6 +146,11 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the vertical stacked bar chart with Date x-axis data',

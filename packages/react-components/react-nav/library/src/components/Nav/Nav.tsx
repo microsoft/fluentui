@@ -1,5 +1,7 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+
 import { useNav_unstable } from './useNav';
 import { renderNav_unstable } from './renderNav';
 import { useNavStyles_unstable } from './useNavStyles.styles';
@@ -15,6 +17,8 @@ export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) 
   const contextValues = useNavContextValues_unstable(state);
 
   useNavStyles_unstable(state);
+  useCustomStyleHook_unstable('useHamburgerStyles_unstable')(state);
+
   return renderNav_unstable(state, contextValues);
 });
 

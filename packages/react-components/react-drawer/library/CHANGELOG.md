@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 12 Jun 2025 09:43:30 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jun 2025 12:32:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.8.1)
+
+Fri, 13 Jun 2025 12:32:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.8.0..@fluentui/react-drawer_v9.8.1)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.13.1 ([PR #34639](https://github.com/microsoft/fluentui/pull/34639) by beachball)
 
 ## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.8.0)
 

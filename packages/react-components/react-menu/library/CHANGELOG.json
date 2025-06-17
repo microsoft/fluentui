@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 13 Jun 2025 12:32:53 GMT",
+      "tag": "@fluentui/react-menu_v9.17.1",
+      "version": "9.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.18.1",
+            "commit": "d41da5857f1332ef8d6b24ce3234070b67a20179"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Jun 2025 09:43:30 GMT",
       "tag": "@fluentui/react-menu_v9.17.0",
       "version": "9.17.0",

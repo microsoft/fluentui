@@ -2,6 +2,45 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 17 Jun 2025 07:20:32 GMT",
+      "tag": "@fluentui/react-charting_v5.24.5",
+      "version": "5.24.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0e2b75a2b9f3108726359976929d2224e989689c",
+            "comment": "fix(react-charting): Support axis tick formatting and y axis range"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c47fda213ca7f4b7fc81298a59cc19180408dad5",
+            "comment": "chore(react-charting): Remove enzyme react 17 test adapter"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "342462151232a909b98d049ec70e356b7470780b",
+            "comment": "feat(react-charting): Support non plot and composite multiplots"
+          },
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "654d9e63cf2ea8cda5279677b5535c047a5a0de4",
+            "comment": "fix(react-charting): Fix svg tooltip background alignment"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/chart-utilities to v1.1.18",
+            "commit": "654d9e63cf2ea8cda5279677b5535c047a5a0de4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Jun 2025 07:21:01 GMT",
       "tag": "@fluentui/react-charting_v5.24.4",
       "version": "5.24.4",
