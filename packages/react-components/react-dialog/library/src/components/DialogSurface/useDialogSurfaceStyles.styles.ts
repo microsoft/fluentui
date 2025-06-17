@@ -39,7 +39,7 @@ const useRootBaseStyle = makeResetStyles({
   color: semanticTokens.foregroundContentNeutralPrimary,
   // Same styles as DialogSurfaceMotion last keyframe,
   // to ensure dialog will be properly styled when surfaceMotion is opted-out
-  boxShadow: `${semanticTokens.ctrlDialogBaseShadowKey} ${semanticTokens.ctrlDialogBaseShadowAmbient}`,
+  boxShadow: semanticTokens.ctrlDialogBaseShadow,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',

@@ -1442,21 +1442,10 @@ export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--s
 export const ctrlDialogBaseCornerRaw = "--smtc-ctrl-dialog-base-corner";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow)";
+export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow, var(--shadow64))";
 
 // @public (undocumented)
 export const ctrlDialogBaseShadowRaw = "--smtc-ctrl-dialog-base-shadow";
-
-export const ctrlDialogBaseShadowAmbient = "var(--smtc-ctrl-dialog-base-shadow-ambient, rgba(0, 0, 0, 0.14) 0px 32px 64px 0px)";
-
-// @public (undocumented)
-export const ctrlDialogBaseShadowAmbientRaw = "--smtc-ctrl-dialog-base-shadow-ambient";
-
-// @public (undocumented)
-export const ctrlDialogBaseShadowKey = "var(--smtc-ctrl-dialog-base-shadow-key, rgba(0, 0, 0, 0.12) 0px 0px 8px 0px)";
-
-// @public (undocumented)
-export const ctrlDialogBaseShadowKeyRaw = "--smtc-ctrl-dialog-base-shadow-key";
 
 // @public
 export const _ctrlDialogGapBetweenContentMedium = "var(--smtc-gap-between-content-medium, 8px)";
