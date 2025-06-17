@@ -2721,7 +2721,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
             <g
               class="tick"
               opacity="1"
-              transform="translate(0,265.5)"
+              transform="translate(0,NaN)"
             >
               <line
                 stroke="currentColor"
@@ -2733,79 +2733,7 @@ exports[`Area chart rendering Should render the Area chart with secondary Y axis
                 fill="currentColor"
                 x="10"
               >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,204.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-570"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="10"
-              >
-                25
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,143)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-570"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="10"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,81.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-570"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="10"
-              >
-                75
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="-570"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="10"
-              >
-                100
+                NaNundefined
               </text>
             </g>
           </g>
@@ -3381,7 +3309,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Dec 31
+              31 Dec
             </text>
           </g>
           <g
@@ -3399,7 +3327,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 07
+              07 Jan
             </text>
           </g>
           <g
@@ -3417,7 +3345,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 14
+              14 Jan
             </text>
           </g>
           <g
@@ -3435,7 +3363,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 21
+              21 Jan
             </text>
           </g>
           <g
@@ -3453,7 +3381,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Jan 28
+              28 Jan
             </text>
           </g>
           <g
@@ -3471,7 +3399,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Feb 04
+              04 Feb
             </text>
           </g>
           <g
@@ -3489,7 +3417,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Feb 11
+              11 Feb
             </text>
           </g>
           <g
@@ -3507,7 +3435,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               fill="currentColor"
               y="16"
             >
-              Feb 18
+              18 Feb
             </text>
           </g>
         </g>

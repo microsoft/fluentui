@@ -136,6 +136,7 @@ export interface CartesianChartProps {
     customDateTimeFormatter?: (dateTime: Date) => string;
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
+    enableReflow?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideTickOverlap?: boolean;
@@ -161,6 +162,7 @@ export interface CartesianChartProps {
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
     styles?: CartesianChartStyles;
+    supportNegativeData?: boolean;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
     tickFormat?: string;
     tickPadding?: number;
@@ -306,7 +308,7 @@ export interface ChildProps {
     // (undocumented)
     xScale?: any;
     // (undocumented)
-    yScale?: any;
+    yScalePrimary?: any;
     // (undocumented)
     yScaleSecondary?: any;
 }
@@ -630,6 +632,7 @@ export interface GVBarChartSeriesPoint {
     key: string;
     legend: string;
     onClick?: VoidFunction;
+    useSecondaryYScale?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
@@ -947,6 +950,7 @@ export interface LineChartPoints {
     onLegendClick?: (selectedLegend: string | null | string[]) => void;
     onLineClick?: () => void;
     opacity?: number;
+    useSecondaryYScale?: boolean;
 }
 
 // @public

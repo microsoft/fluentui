@@ -480,10 +480,10 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
 
   function _createLines(
     xScale: any,
-    yScale: NumericScale,
+    yScalePrimary: NumericScale,
     containerHeight: number,
     containerWidth: number,
-    secondaryYScale?: NumericScale,
+    yScaleSecondary?: NumericScale,
   ): JSX.Element {
     const lineObject: LineObject = _getFormattedLineData(props.data);
     const lines: React.ReactNode[] = [];
@@ -499,10 +499,12 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = xScale(lineObject[item][i - 1].xItem.xAxisPoint);
         const useSecondaryYScale =
-          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
-        const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
+          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && yScaleSecondary;
+        const y1 = useSecondaryYScale
+          ? yScaleSecondary!(lineObject[item][i - 1].y)
+          : yScalePrimary(lineObject[item][i - 1].y);
         const x2 = xScale(lineObject[item][i].xItem.xAxisPoint);
-        const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
+        const y2 = useSecondaryYScale ? yScaleSecondary!(lineObject[item][i].y) : yScalePrimary(lineObject[item][i].y);
         if (lineBorderWidth > 0) {
           borderForLines.push(
             <line
@@ -549,7 +551,9 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
             key={`${index}-${subIndex}-dot`}
             cx={xScale(circlePoint.xItem.xAxisPoint)}
             cy={
-              circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
+              circlePoint.useSecondaryYScale && yScaleSecondary
+                ? yScaleSecondary(circlePoint.y)
+                : yScalePrimary(circlePoint.y)
             }
             onMouseOver={
               _isLegendHighlighted(item)
@@ -1107,7 +1111,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
                 {_isHavingLines &&
                   _createLines(
                     props.xScale!,
-                    props.yScale!,
+                    props.yScalePrimary!,
                     props.containerHeight!,
                     props.containerWidth!,
                     props.yScaleSecondary,

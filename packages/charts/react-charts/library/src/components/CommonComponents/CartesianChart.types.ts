@@ -332,6 +332,12 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default True for LineChart but False for other charts
+   */
+  enableReflow?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {
@@ -375,6 +381,12 @@ export interface CartesianChartProps {
 
   /**
    * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeData?: boolean;
+
+  /**
+   * @default false
    * The prop used to decide rounded ticks on y axis
    */
   roundedTicks?: boolean;
@@ -413,7 +425,7 @@ export interface ChildProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   xScale?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  yScale?: any;
+  yScalePrimary?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yScaleSecondary?: any;
   containerHeight?: number;

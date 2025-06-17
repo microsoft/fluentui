@@ -51,6 +51,7 @@ import {
   VerticalBarChartDataPoint,
   HorizontalBarChartWithAxisDataPoint,
   LineChartLineOptions,
+  GVBarChartSeriesPoint,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -1542,17 +1543,23 @@ export function getDomainNRangeValues(
  * @param {LineChartPoints[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findNumericMinMaxOfY(points: LineChartPoints[]): { startValue: number; endValue: number } {
-  const yMax = d3Max(points, (point: LineChartPoints) => {
-    return d3Max(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
-  })!;
-  const yMin = d3Min(points, (point: LineChartPoints) => {
-    return d3Min(point.data as LineChartDataPoint[], (item: LineChartDataPoint) => item.y)!;
-  })!;
+export function findNumericMinMaxOfY(
+  points: LineChartPoints[],
+  yAxisType?: YAxisType | undefined,
+  useSecondaryYScale?: boolean,
+): { startValue: number; endValue: number } {
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale === !point.useSecondaryYScale) {
+      point.data.forEach(data => {
+        values.push(data.y);
+      });
+    }
+  });
 
   return {
-    startValue: yMin,
-    endValue: yMax,
+    startValue: d3Min(values)!,
+    endValue: d3Max(values)!,
   };
 }
 
@@ -1575,34 +1582,27 @@ export function findVSBCNumericMinMaxOfY(dataset: DataPoint[]): { startValue: nu
  * @param {VerticalBarChartDataPoint[]} points
  * @returns {{ startValue: number; endValue: number }}
  */
-export function findVerticalNumericMinMaxOfY(points: VerticalBarChartDataPoint[]): {
+export function findVerticalNumericMinMaxOfY(
+  points: VerticalBarChartDataPoint[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): {
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: VerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y > point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
-      }
-    } else {
-      return point.y;
+  const values: number[] = [];
+  points.forEach(point => {
+    if (!useSecondaryYScale) {
+      values.push(point.y);
     }
-  })!;
-  const yMin = d3Min(points, (point: VerticalBarChartDataPoint) => {
-    if (point.lineData !== undefined) {
-      if (point.y < point.lineData!.y) {
-        return point.y;
-      } else {
-        return point.lineData!.y;
+    if (typeof point.lineData !== 'undefined') {
+      if (!useSecondaryYScale === !point.lineData.useSecondaryYScale) {
+        values.push(point.lineData.y);
       }
-    } else {
-      return point.y;
     }
-  })!;
+  });
 
-  return { startValue: yMin, endValue: yMax };
+  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
 }
 /**
  * Fins the min and max values of the vertical bar chart y axis data point.
@@ -1624,6 +1624,30 @@ export function findHBCWANumericMinMaxOfY(
 }
 
 /**
+ * Fins the min and max values of the grouped vertical bar chart y axis data point.
+ * @export
+ * @param {GVBarChartSeriesPoint[]} points
+ * @returns {{ startValue: number; endValue: number }}
+ */
+export function findGroupedVerticalNumericMinMaxOfY(
+  datasetForBars: GVBarChartSeriesPoint[],
+  yAxisType?: YAxisType,
+  useSecondaryYScale?: boolean,
+): { startValue: number; endValue: number } {
+  const values: number[] = [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  datasetForBars.forEach((data: any) => {
+    data.groupSeries.forEach((point: GVBarChartSeriesPoint) => {
+      if (!useSecondaryYScale === !point.useSecondaryYScale) {
+        values.push(point.data);
+      }
+    });
+  });
+
+  return { startValue: d3Min(values)!, endValue: d3Max(values)! };
+}
+
+/**
  * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
  * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
  * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
@@ -1638,6 +1662,7 @@ export function getMinMaxOfYAxis(
   points: any,
   chartType: ChartTypes,
   yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
+  useSecondaryYScale?: boolean,
 ): { startValue: number; endValue: number } {
   let minMaxValues: { startValue: number; endValue: number };
 
@@ -1645,16 +1670,19 @@ export function getMinMaxOfYAxis(
     case ChartTypes.AreaChart:
     case ChartTypes.LineChart:
     case ChartTypes.ScatterChart:
-      minMaxValues = findNumericMinMaxOfY(points);
+      minMaxValues = findNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     case ChartTypes.VerticalStackedBarChart:
       minMaxValues = findVSBCNumericMinMaxOfY(points);
       break;
     case ChartTypes.VerticalBarChart:
-      minMaxValues = findVerticalNumericMinMaxOfY(points);
+      minMaxValues = findVerticalNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     case ChartTypes.HorizontalBarChartWithAxis:
       minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
+      break;
+    case ChartTypes.GroupedVerticalBarChart:
+      minMaxValues = findGroupedVerticalNumericMinMaxOfY(points, yAxisType, useSecondaryYScale);
       break;
     default:
       minMaxValues = { startValue: 0, endValue: 0 };
