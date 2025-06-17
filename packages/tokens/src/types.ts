@@ -500,7 +500,7 @@ export type ColorVariants = {
   tint60: string;
 };
 
-export type ColorScheme = {
+export type ColorSchemeTokens = {
   colorScheme: 'light' | 'dark';
 };
 
@@ -793,6 +793,6 @@ export type Theme = FontSizeTokens &
   ColorStatusTokens &
   ColorTokens &
   ZIndexTokens &
-  ColorScheme;
+  ColorSchemeTokens;
 
 export type PartialTheme = Partial<Theme>;
