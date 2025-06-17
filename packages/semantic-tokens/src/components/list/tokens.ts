@@ -72,8 +72,7 @@ import {
   ctrlListLgIndentLevel2Raw,
   ctrlListLgIndentLevel3Raw,
   ctrlListSplitDividerShowDividerRaw,
-  ctrlListShadowSelectedKeyRaw,
-  ctrlListShadowSelectedAmbientRaw,
+  ctrlListShadowSelectedRaw,
 } from './variables';
 
 export const ctrlListPillWidth = `var(${ctrlListPillWidthRaw})`;
@@ -127,5 +126,4 @@ export const ctrlListLgIndentLevel1 = `var(${ctrlListLgIndentLevel1Raw}, var(${p
 export const ctrlListLgIndentLevel2 = `var(${ctrlListLgIndentLevel2Raw})`;
 export const ctrlListLgIndentLevel3 = `var(${ctrlListLgIndentLevel3Raw})`;
 export const ctrlListSplitDividerShowDivider = `var(${ctrlListSplitDividerShowDividerRaw})`;
-export const ctrlListShadowSelectedKey = `var(${ctrlListShadowSelectedKeyRaw}, unset)`;
-export const ctrlListShadowSelectedAmbient = `var(${ctrlListShadowSelectedAmbientRaw})`;
+export const ctrlListShadowSelected = `var(${ctrlListShadowSelectedRaw})`;

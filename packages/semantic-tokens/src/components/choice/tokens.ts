@@ -75,8 +75,7 @@ import {
   ctrlChoiceLgSwitchThumbWidthRestRaw,
   ctrlChoiceLgSwitchThumbWidthHoverRaw,
   ctrlChoiceLgSwitchThumbWidthPressedRaw,
-  ctrlChoiceSwitchThumbShadowKeyRaw,
-  ctrlChoiceSwitchThumbShadowAmbientRaw,
+  ctrlChoiceSwitchThumbShadowRaw,
 } from './variables';
 
 export const ctrlChoicePaddingHorizontal = `var(${ctrlChoicePaddingHorizontalRaw}, ${spacingHorizontalS})`;
@@ -129,5 +128,4 @@ export const ctrlChoiceLgSwitchHeight = `var(${ctrlChoiceLgSwitchHeightRaw}, var
 export const ctrlChoiceLgSwitchThumbWidthRest = `var(${ctrlChoiceLgSwitchThumbWidthRestRaw})`;
 export const ctrlChoiceLgSwitchThumbWidthHover = `var(${ctrlChoiceLgSwitchThumbWidthHoverRaw}, var(${ctrlChoiceLgSwitchThumbWidthRestRaw}))`;
 export const ctrlChoiceLgSwitchThumbWidthPressed = `var(${ctrlChoiceLgSwitchThumbWidthPressedRaw}, var(${ctrlChoiceLgSwitchThumbWidthRestRaw}))`;
-export const ctrlChoiceSwitchThumbShadowKey = `var(${ctrlChoiceSwitchThumbShadowKeyRaw}, unset)`;
-export const ctrlChoiceSwitchThumbShadowAmbient = `var(${ctrlChoiceSwitchThumbShadowAmbientRaw}, unset)`;
+export const ctrlChoiceSwitchThumbShadow = `var(${ctrlChoiceSwitchThumbShadowRaw}, unset)`;

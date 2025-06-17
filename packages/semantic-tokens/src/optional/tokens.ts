@@ -77,9 +77,8 @@ import {
   statusInformativeBackgroundRaw,
   statusNeutralBackgroundRaw,
   backgroundCardOnSecondaryDefaultRestRaw,
-  shadowFlyoutKeyRaw,
-  shadowFlyoutAmbientRaw,
-  shadowWindowActiveKeyRaw,
+  shadowFlyoutRaw,
+  shadowWindowActiveRaw,
 } from '../control/variables';
 import {
   fontFamilyBase,
@@ -381,9 +380,8 @@ import {
   backgroundCardOnSecondaryDefaultSelectedRaw,
   textStyleDefaultDisplayFontFamilyRaw,
   textStyleDefaultDisplayLetterSpacingRaw,
-  shadowCtrlOnDragKeyRaw,
-  shadowCtrlOnDragAmbientRaw,
-  shadowWindowInactiveKeyRaw,
+  shadowCtrlOnDragRaw,
+  shadowWindowInactiveRaw,
 } from './variables';
 
 export const textStyleDefaultHeaderFontFamily = `var(${textStyleDefaultHeaderFontFamilyRaw}, var(${textStyleDefaultRegularFontFamilyRaw}, ${fontFamilyBase}))`;
@@ -635,6 +633,5 @@ export const materialAcrylicShellDefaultLumBlend = `var(${materialAcrylicShellDe
 export const backgroundCardOnSecondaryDefaultSelected = `var(${backgroundCardOnSecondaryDefaultSelectedRaw}, var(${backgroundCardOnSecondaryDefaultRestRaw}))`;
 export const textStyleDefaultDisplayFontFamily = `var(${textStyleDefaultDisplayFontFamilyRaw}, var(${textStyleDefaultRegularFontFamilyRaw}))`;
 export const textStyleDefaultDisplayLetterSpacing = `var(${textStyleDefaultDisplayLetterSpacingRaw}, var(${textStyleDefaultRegularLetterSpacingRaw}))`;
-export const shadowCtrlOnDragKey = `var(${shadowCtrlOnDragKeyRaw}, var(${shadowFlyoutKeyRaw}))`;
-export const shadowCtrlOnDragAmbient = `var(${shadowCtrlOnDragAmbientRaw}, var(${shadowFlyoutAmbientRaw}))`;
-export const shadowWindowInactiveKey = `var(${shadowWindowInactiveKeyRaw}, var(${shadowWindowActiveKeyRaw}))`;
+export const shadowCtrlOnDrag = `var(${shadowCtrlOnDragRaw}, var(${shadowFlyoutRaw}))`;
+export const shadowWindowInactive = `var(${shadowWindowInactiveRaw}, var(${shadowWindowActiveRaw}))`;

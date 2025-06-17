@@ -49,5 +49,4 @@ export const ctrlChoiceLgSwitchHeightRaw = '--smtc-ctrl-choice-lg-switch-height'
 export const ctrlChoiceLgSwitchThumbWidthRestRaw = '--smtc-ctrl-choice-lg-switch-thumb-width-rest';
 export const ctrlChoiceLgSwitchThumbWidthHoverRaw = '--smtc-ctrl-choice-lg-switch-thumb-width-hover';
 export const ctrlChoiceLgSwitchThumbWidthPressedRaw = '--smtc-ctrl-choice-lg-switch-thumb-width-pressed';
-export const ctrlChoiceSwitchThumbShadowKeyRaw = '--smtc-ctrl-choice-switch-thumb-shadow-key';
-export const ctrlChoiceSwitchThumbShadowAmbientRaw = '--smtc-ctrl-choice-switch-thumb-shadow-ambient';
+export const ctrlChoiceSwitchThumbShadowRaw = '--smtc-ctrl-choice-switch-thumb-shadow';
