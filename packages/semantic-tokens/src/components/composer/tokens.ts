@@ -33,8 +33,7 @@ import {
   ctrlComposerContainerBackgroundAcrylicLumBlendRaw,
   ctrlComposerContainerStrokeDefaultRaw,
   ctrlComposerInputShadowRaw,
-  ctrlComposerContainerShadowKeyRaw,
-  ctrlComposerContainerShadowAmbientRaw,
+  ctrlComposerContainerShadowRaw,
 } from './variables';
 
 export const ctrlComposerInputBottomStrokeWidthSelectedRest = `var(${ctrlComposerInputBottomStrokeWidthSelectedRestRaw})`;
@@ -69,5 +68,4 @@ export const ctrlComposerContainerBackgroundAcrylicColorBlend = `var(${ctrlCompo
 export const ctrlComposerContainerBackgroundAcrylicLumBlend = `var(${ctrlComposerContainerBackgroundAcrylicLumBlendRaw}, var(${backgroundFlyoutSolidRaw}))`;
 export const ctrlComposerContainerStrokeDefault = `var(${ctrlComposerContainerStrokeDefaultRaw}, unset)`;
 export const ctrlComposerInputShadow = `var(${ctrlComposerInputShadowRaw})`;
-export const ctrlComposerContainerShadowKey = `var(${ctrlComposerContainerShadowKeyRaw})`;
-export const ctrlComposerContainerShadowAmbient = `var(${ctrlComposerContainerShadowAmbientRaw})`;
+export const ctrlComposerContainerShadow = `var(${ctrlComposerContainerShadowRaw})`;

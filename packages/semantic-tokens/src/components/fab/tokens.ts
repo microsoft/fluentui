@@ -3,7 +3,7 @@ import {
   foregroundCtrlNeutralPrimaryRestRaw,
   foregroundCtrlNeutralPrimaryDisabledRaw,
   cornerCircularRaw,
-  shadowFlyoutKeyRaw,
+  shadowFlyoutRaw,
 } from '../../control/variables';
 import {
   ctrlFabForegroundRestNewRaw,
@@ -15,11 +15,10 @@ import {
   ctrlFabCornerRestRaw,
   ctrlFabCornerHoverRaw,
   ctrlFabCornerPressedRaw,
-  ctrlFabShadowRestKeyRaw,
-  ctrlFabShadowRestAmbientRaw,
-  ctrlFabShadowHoverKeyRaw,
-  ctrlFabShadowPressedKeyRaw,
-  ctrlFabShadowDisabledKeyRaw,
+  ctrlFabShadowRestRaw,
+  ctrlFabShadowHoverRaw,
+  ctrlFabShadowPressedRaw,
+  ctrlFabShadowDisabledRaw,
 } from './variables';
 
 export const ctrlFabForegroundRestNew = `var(${ctrlFabForegroundRestNewRaw}, var(${foregroundCtrlNeutralPrimaryRestRaw}))`;
@@ -31,8 +30,7 @@ export const ctrlFabBackgroundDisabled = `var(${ctrlFabBackgroundDisabledRaw})`;
 export const ctrlFabCornerRest = `var(${ctrlFabCornerRestRaw}, var(${cornerCircularRaw}))`;
 export const ctrlFabCornerHover = `var(${ctrlFabCornerHoverRaw}, var(${cornerCircularRaw}))`;
 export const ctrlFabCornerPressed = `var(${ctrlFabCornerPressedRaw}, var(${cornerCircularRaw}))`;
-export const ctrlFabShadowRestKey = `var(${ctrlFabShadowRestKeyRaw})`;
-export const ctrlFabShadowRestAmbient = `var(${ctrlFabShadowRestAmbientRaw})`;
-export const ctrlFabShadowHoverKey = `var(${ctrlFabShadowHoverKeyRaw}, var(${shadowFlyoutKeyRaw}))`;
-export const ctrlFabShadowPressedKey = `var(${ctrlFabShadowPressedKeyRaw})`;
-export const ctrlFabShadowDisabledKey = `var(${ctrlFabShadowDisabledKeyRaw}, var(${ctrlFabShadowPressedKeyRaw}))`;
+export const ctrlFabShadowRest = `var(${ctrlFabShadowRestRaw})`;
+export const ctrlFabShadowHover = `var(${ctrlFabShadowHoverRaw}, var(${shadowFlyoutRaw}))`;
+export const ctrlFabShadowPressed = `var(${ctrlFabShadowPressedRaw})`;
+export const ctrlFabShadowDisabled = `var(${ctrlFabShadowDisabledRaw}, var(${ctrlFabShadowPressedRaw}))`;

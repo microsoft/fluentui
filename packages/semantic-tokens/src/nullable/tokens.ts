@@ -51,13 +51,11 @@ import {
   backgroundCtrlSubtleDisabledRaw,
   backgroundCtrlSubtleHoverSplitRaw,
   foregroundCtrlHintDefaultRaw,
-  shadowCardRestKeyRaw,
-  shadowCardHoverKeyRaw,
-  shadowCardPressedKeyRaw,
-  shadowCardDisabledKeyRaw,
-  shadowCardRestAmbientRaw,
-  shadowLayerKeyRaw,
-  shadowLayerAmbientRaw,
+  shadowCardRestRaw,
+  shadowCardHoverRaw,
+  shadowCardPressedRaw,
+  shadowCardDisabledRaw,
+  shadowLayerRaw,
 } from './variables';
 
 export const textStyleDefaultHeaderCase = `var(${textStyleDefaultHeaderCaseRaw}, unset)`;
@@ -101,10 +99,8 @@ export const backgroundCtrlSubtleRest = `var(${backgroundCtrlSubtleRestRaw}, var
 export const backgroundCtrlSubtleDisabled = `var(${backgroundCtrlSubtleDisabledRaw}, var(${nullColorRaw}, ${colorTransparentBackground}))`;
 export const backgroundCtrlSubtleHoverSplit = `var(${backgroundCtrlSubtleHoverSplitRaw}, unset)`;
 export const foregroundCtrlHintDefault = `var(${foregroundCtrlHintDefaultRaw}, unset)`;
-export const shadowCardRestKey = `var(${shadowCardRestKeyRaw}, unset)`;
-export const shadowCardHoverKey = `var(${shadowCardHoverKeyRaw}, unset)`;
-export const shadowCardPressedKey = `var(${shadowCardPressedKeyRaw}, unset)`;
-export const shadowCardDisabledKey = `var(${shadowCardDisabledKeyRaw}, unset)`;
-export const shadowCardRestAmbient = `var(${shadowCardRestAmbientRaw}, unset)`;
-export const shadowLayerKey = `var(${shadowLayerKeyRaw}, unset)`;
-export const shadowLayerAmbient = `var(${shadowLayerAmbientRaw}, unset)`;
+export const shadowCardRest = `var(${shadowCardRestRaw}, unset)`;
+export const shadowCardHover = `var(${shadowCardHoverRaw}, unset)`;
+export const shadowCardPressed = `var(${shadowCardPressedRaw}, unset)`;
+export const shadowCardDisabled = `var(${shadowCardDisabledRaw}, unset)`;
+export const shadowLayer = `var(${shadowLayerRaw}, unset)`;

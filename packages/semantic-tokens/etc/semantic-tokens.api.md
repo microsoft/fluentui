@@ -1202,16 +1202,10 @@ export const ctrlChoiceSwitchPaddingRest = "var(--smtc-ctrl-choice-switch-paddin
 export const ctrlChoiceSwitchPaddingRestRaw = "--smtc-ctrl-choice-switch-padding-rest";
 
 // @public (undocumented)
-export const ctrlChoiceSwitchThumbShadowAmbient = "var(--smtc-ctrl-choice-switch-thumb-shadow-ambient, unset)";
+export const ctrlChoiceSwitchThumbShadow = "var(--smtc-ctrl-choice-switch-thumb-shadow, unset)";
 
 // @public (undocumented)
-export const ctrlChoiceSwitchThumbShadowAmbientRaw = "--smtc-ctrl-choice-switch-thumb-shadow-ambient";
-
-// @public (undocumented)
-export const ctrlChoiceSwitchThumbShadowKey = "var(--smtc-ctrl-choice-switch-thumb-shadow-key, unset)";
-
-// @public (undocumented)
-export const ctrlChoiceSwitchThumbShadowKeyRaw = "--smtc-ctrl-choice-switch-thumb-shadow-key";
+export const ctrlChoiceSwitchThumbShadowRaw = "--smtc-ctrl-choice-switch-thumb-shadow";
 
 // @public (undocumented)
 export const ctrlChoiceSwitchThumbWidthHover = "var(--smtc-ctrl-choice-switch-thumb-width-hover, var(--smtc-ctrl-choice-switch-thumb-width-rest))";
@@ -1262,16 +1256,10 @@ export const ctrlComposerContainerCorner = "var(--smtc-ctrl-composer-container-c
 export const ctrlComposerContainerCornerRaw = "--smtc-ctrl-composer-container-corner";
 
 // @public (undocumented)
-export const ctrlComposerContainerShadowAmbient = "var(--smtc-ctrl-composer-container-shadow-ambient)";
+export const ctrlComposerContainerShadow = "var(--smtc-ctrl-composer-container-shadow)";
 
 // @public (undocumented)
-export const ctrlComposerContainerShadowAmbientRaw = "--smtc-ctrl-composer-container-shadow-ambient";
-
-// @public (undocumented)
-export const ctrlComposerContainerShadowKey = "var(--smtc-ctrl-composer-container-shadow-key)";
-
-// @public (undocumented)
-export const ctrlComposerContainerShadowKeyRaw = "--smtc-ctrl-composer-container-shadow-key";
+export const ctrlComposerContainerShadowRaw = "--smtc-ctrl-composer-container-shadow";
 
 // @public (undocumented)
 export const ctrlComposerContainerStrokeDefault = "var(--smtc-ctrl-composer-container-stroke-default, unset)";
@@ -1382,10 +1370,10 @@ export const ctrlComposerInputCornerRest = "var(--smtc-ctrl-composer-input-corne
 export const ctrlComposerInputCornerRestRaw = "--smtc-ctrl-composer-input-corner-rest";
 
 // @public (undocumented)
-export const ctrlComposerInputShadow = "var(--smtc-ctrl-composer-input-shadow-x)";
+export const ctrlComposerInputShadow = "var(--smtc-ctrl-composer-input-shadow)";
 
 // @public (undocumented)
-export const ctrlComposerInputShadowRaw = "--smtc-ctrl-composer-input-shadow-x";
+export const ctrlComposerInputShadowRaw = "--smtc-ctrl-composer-input-shadow";
 
 // @public (undocumented)
 export const ctrlComposerInputStrokeDisabledUsesGradient = "var(--smtc-ctrl-composer-input-stroke-disabled-uses-gradient, unset)";
@@ -1454,16 +1442,10 @@ export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--s
 export const ctrlDialogBaseCornerRaw = "--smtc-ctrl-dialog-base-corner";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadowAmbient = "var(--smtc-ctrl-dialog-base-shadow-ambient)";
+export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow)";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadowAmbientRaw = "--smtc-ctrl-dialog-base-shadow-ambient";
-
-// @public (undocumented)
-export const ctrlDialogBaseShadowKey = "var(--smtc-ctrl-dialog-base-shadow-key)";
-
-// @public (undocumented)
-export const ctrlDialogBaseShadowKeyRaw = "--smtc-ctrl-dialog-base-shadow-key";
+export const ctrlDialogBaseShadowRaw = "--smtc-ctrl-dialog-base-shadow";
 
 // @public (undocumented)
 export const ctrlDialogLayerBackground = "var(--smtc-ctrl-dialog-layer-background, var(--smtc-background-layer-primary-solid))";
@@ -1565,34 +1547,28 @@ export const ctrlFabForegroundRestNew = "var(--smtc-ctrl-fab-foreground-rest-new
 export const ctrlFabForegroundRestNewRaw = "--smtc-ctrl-fab-foreground-rest-new";
 
 // @public (undocumented)
-export const ctrlFabShadowDisabledKey = "var(--smtc-ctrl-fab-shadow-disabled-key, var(--smtc-ctrl-fab-shadow-pressed-key))";
+export const ctrlFabShadowDisabled = "var(--smtc-ctrl-fab-shadow-disabled, var(--smtc-ctrl-fab-shadow-pressed))";
 
 // @public (undocumented)
-export const ctrlFabShadowDisabledKeyRaw = "--smtc-ctrl-fab-shadow-disabled-key";
+export const ctrlFabShadowDisabledRaw = "--smtc-ctrl-fab-shadow-disabled";
 
 // @public (undocumented)
-export const ctrlFabShadowHoverKey = "var(--smtc-ctrl-fab-shadow-hover-key, var(--smtc-shadow-flyout-key))";
+export const ctrlFabShadowHover = "var(--smtc-ctrl-fab-shadow-hover, var(--smtc-shadow-flyout))";
 
 // @public (undocumented)
-export const ctrlFabShadowHoverKeyRaw = "--smtc-ctrl-fab-shadow-hover-key";
+export const ctrlFabShadowHoverRaw = "--smtc-ctrl-fab-shadow-hover";
 
 // @public (undocumented)
-export const ctrlFabShadowPressedKey = "var(--smtc-ctrl-fab-shadow-pressed-key)";
+export const ctrlFabShadowPressed = "var(--smtc-ctrl-fab-shadow-pressed)";
 
 // @public (undocumented)
-export const ctrlFabShadowPressedKeyRaw = "--smtc-ctrl-fab-shadow-pressed-key";
+export const ctrlFabShadowPressedRaw = "--smtc-ctrl-fab-shadow-pressed";
 
 // @public (undocumented)
-export const ctrlFabShadowRestAmbient = "var(--smtc-ctrl-fab-shadow-rest-ambient)";
+export const ctrlFabShadowRest = "var(--smtc-ctrl-fab-shadow-rest)";
 
 // @public (undocumented)
-export const ctrlFabShadowRestAmbientRaw = "--smtc-ctrl-fab-shadow-rest-ambient";
-
-// @public (undocumented)
-export const ctrlFabShadowRestKey = "var(--smtc-ctrl-fab-shadow-rest-key)";
-
-// @public (undocumented)
-export const ctrlFabShadowRestKeyRaw = "--smtc-ctrl-fab-shadow-rest-key";
+export const ctrlFabShadowRestRaw = "--smtc-ctrl-fab-shadow-rest";
 
 // @public (undocumented)
 export const ctrlFocusInnerStroke = "var(--smtc-ctrl-focus-inner-stroke, var(--colorStrokeFocus2))";
@@ -2123,16 +2099,10 @@ export const ctrlListPillWidth = "var(--smtc-ctrl-list-pill-width)";
 export const ctrlListPillWidthRaw = "--smtc-ctrl-list-pill-width";
 
 // @public (undocumented)
-export const ctrlListShadowSelectedAmbient = "var(--smtc-ctrl-list-shadow-selected-ambient)";
+export const ctrlListShadowSelected = "var(--smtc-ctrl-list-shadow-selected)";
 
 // @public (undocumented)
-export const ctrlListShadowSelectedAmbientRaw = "--smtc-ctrl-list-shadow-selected-ambient";
-
-// @public (undocumented)
-export const ctrlListShadowSelectedKey = "var(--smtc-ctrl-list-shadow-selected-key-y, unset)";
-
-// @public (undocumented)
-export const ctrlListShadowSelectedKeyRaw = "--smtc-ctrl-list-shadow-selected-key-y";
+export const ctrlListShadowSelectedRaw = "--smtc-ctrl-list-shadow-selected";
 
 // @public (undocumented)
 export const ctrlListSmCornerHover = "var(--smtc-ctrl-list-sm-corner-hover, var(--smtc-corner-ctrl-sm-rest))";
@@ -2789,16 +2759,10 @@ export const ctrlTooltipForeground = "var(--smtc-ctrl-tooltip-foreground)";
 export const ctrlTooltipForegroundRaw = "--smtc-ctrl-tooltip-foreground";
 
 // @public (undocumented)
-export const ctrlTooltipShadowAmbient = "var(--smtc-ctrl-tooltip-shadow-ambient, var(--smtc-ctrl-fab-shadow-rest-ambient))";
+export const ctrlTooltipShadow = "var(--smtc-ctrl-tooltip-shadow, var(--smtc-ctrl-fab-shadow-rest))";
 
 // @public (undocumented)
-export const ctrlTooltipShadowAmbientRaw = "--smtc-ctrl-tooltip-shadow-ambient";
-
-// @public (undocumented)
-export const ctrlTooltipShadowKey = "var(--smtc-ctrl-tooltip-shadow-key, var(--smtc-ctrl-fab-shadow-rest-key))";
-
-// @public (undocumented)
-export const ctrlTooltipShadowKeyRaw = "--smtc-ctrl-tooltip-shadow-key";
+export const ctrlTooltipShadowRaw = "--smtc-ctrl-tooltip-shadow";
 
 // @public (undocumented)
 export const foregroundContentBrandPrimary = "var(--smtc-foreground-content-brand-primary, var(--smtc-foreground-ctrl-brand-rest, var(--colorBrandForeground1)))";
@@ -4189,106 +4153,64 @@ export const paddingToolbarOutside = "var(--smtc-padding-toolbar-outside, var(--
 export const paddingToolbarOutsideRaw = "--smtc-padding-toolbar-outside";
 
 // @public (undocumented)
-export const shadowCardDisabledKey = "var(--smtc-shadow-card-disabled-key, unset)";
+export const shadowCardDisabled = "var(--smtc-shadow-card-disabled, unset)";
 
 // @public (undocumented)
-export const shadowCardDisabledKeyRaw = "--smtc-shadow-card-disabled-key";
+export const shadowCardDisabledRaw = "--smtc-shadow-card-disabled";
 
 // @public (undocumented)
-export const shadowCardHoverKey = "var(--smtc-shadow-card-hover-key, unset)";
+export const shadowCardHover = "var(--smtc-shadow-card-hover, unset)";
 
 // @public (undocumented)
-export const shadowCardHoverKeyRaw = "--smtc-shadow-card-hover-key";
+export const shadowCardHoverRaw = "--smtc-shadow-card-hover";
 
 // @public (undocumented)
-export const shadowCardPressedKey = "var(--smtc-shadow-card-pressed-key, unset)";
+export const shadowCardPressed = "var(--smtc-shadow-card-pressed, unset)";
 
 // @public (undocumented)
-export const shadowCardPressedKeyRaw = "--smtc-shadow-card-pressed-key";
+export const shadowCardPressedRaw = "--smtc-shadow-card-pressed";
 
 // @public (undocumented)
-export const shadowCardRestAmbient = "var(--smtc-shadow-card-rest-ambient, unset)";
+export const shadowCardRest = "var(--smtc-shadow-card-rest, unset)";
 
 // @public (undocumented)
-export const shadowCardRestAmbientRaw = "--smtc-shadow-card-rest-ambient";
+export const shadowCardRestRaw = "--smtc-shadow-card-rest";
 
 // @public (undocumented)
-export const shadowCardRestKey = "var(--smtc-shadow-card-rest-key, unset)";
+export const shadowCtrlOnDrag = "var(--smtc-shadow-ctrl-on-drag, var(--smtc-shadow-flyout))";
 
 // @public (undocumented)
-export const shadowCardRestKeyRaw = "--smtc-shadow-card-rest-key";
+export const shadowCtrlOnDragRaw = "--smtc-shadow-ctrl-on-drag";
 
 // @public (undocumented)
-export const shadowCtrlOnDragAmbient = "var(--smtc-shadow-ctrl-on-drag-ambient, var(--smtc-shadow-flyout-ambient))";
+export const shadowFlyout = "var(--smtc-shadow-flyout)";
 
 // @public (undocumented)
-export const shadowCtrlOnDragAmbientRaw = "--smtc-shadow-ctrl-on-drag-ambient";
+export const shadowFlyoutRaw = "--smtc-shadow-flyout";
 
 // @public (undocumented)
-export const shadowCtrlOnDragKey = "var(--smtc-shadow-ctrl-on-drag-key, var(--smtc-shadow-flyout-key))";
+export const shadowLayer = "var(--smtc-shadow-layer, unset)";
 
 // @public (undocumented)
-export const shadowCtrlOnDragKeyRaw = "--smtc-shadow-ctrl-on-drag-key";
+export const shadowLayerRaw = "--smtc-shadow-layer";
 
 // @public (undocumented)
-export const shadowFlyoutAmbient = "var(--smtc-shadow-flyout-ambient)";
+export const shadowToolbar = "var(--smtc-shadow-toolbar)";
 
 // @public (undocumented)
-export const shadowFlyoutAmbientRaw = "--smtc-shadow-flyout-ambient";
+export const shadowToolbarRaw = "--smtc-shadow-toolbar";
 
 // @public (undocumented)
-export const shadowFlyoutKey = "var(--smtc-shadow-flyout-key)";
+export const shadowWindowActive = "var(--smtc-shadow-window-active)";
 
 // @public (undocumented)
-export const shadowFlyoutKeyRaw = "--smtc-shadow-flyout-key";
+export const shadowWindowActiveRaw = "--smtc-shadow-window-active";
 
 // @public (undocumented)
-export const shadowLayerAmbient = "var(--smtc-shadow-layer-ambient, unset)";
+export const shadowWindowInactive = "var(--smtc-shadow-window-inactive, var(--smtc-shadow-window-active))";
 
 // @public (undocumented)
-export const shadowLayerAmbientRaw = "--smtc-shadow-layer-ambient";
-
-// @public (undocumented)
-export const shadowLayerKey = "var(--smtc-shadow-layer-key, unset)";
-
-// @public (undocumented)
-export const shadowLayerKeyRaw = "--smtc-shadow-layer-key";
-
-// @public (undocumented)
-export const shadowToolbarAmbient = "var(--smtc-shadow-toolbar-ambient)";
-
-// @public (undocumented)
-export const shadowToolbarAmbientRaw = "--smtc-shadow-toolbar-ambient";
-
-// @public (undocumented)
-export const shadowToolbarKey = "var(--smtc-shadow-toolbar-key)";
-
-// @public (undocumented)
-export const shadowToolbarKeyRaw = "--smtc-shadow-toolbar-key";
-
-// @public (undocumented)
-export const shadowWindowActiveAmbient = "var(--smtc-shadow-window-active-ambient)";
-
-// @public (undocumented)
-export const shadowWindowActiveAmbientRaw = "--smtc-shadow-window-active-ambient";
-
-// @public (undocumented)
-export const shadowWindowActiveKey = "var(--smtc-shadow-window-active-key)";
-
-// @public (undocumented)
-export const shadowWindowActiveKeyRaw = "--smtc-shadow-window-active-key";
-
-// @public (undocumented)
-export const shadowWindowInactiveAmbient = "var(--smtc-shadow-window-inactive-ambient)";
-
-// @public (undocumented)
-export const shadowWindowInactiveAmbientRaw = "--smtc-shadow-window-inactive-ambient";
-
-// @public (undocumented)
-export const shadowWindowInactiveKey = "var(--smtc-shadow-window-inactive-key, var(--smtc-shadow-window-active-key))";
-
-// @public (undocumented)
-export const shadowWindowInactiveKeyRaw = "--smtc-shadow-window-inactive-key";
+export const shadowWindowInactiveRaw = "--smtc-shadow-window-inactive";
 
 // @public (undocumented)
 export const sizeCtrlDefault = "var(--smtc-size-ctrl-default, 44px)";
