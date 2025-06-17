@@ -67,6 +67,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     return this.selectedItemsList.current ? this.selectedItemsList.current.highlightedItems() : [];
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { className, inputProps, disabled, focusZoneProps } = this.props;
     const activeDescendant =
@@ -128,6 +129,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     return itemLimit === undefined || this.items.length < itemLimit;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderFloatingPicker(): JSX.Element {
     const FloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>> = this.props.onRenderFloatingPicker;
     return (
@@ -144,6 +146,7 @@ export class BaseExtendedPicker<T extends {}, P extends IBaseExtendedPickerProps
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderSelectedItemsList(): JSX.Element {
     const SelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>> = this.props.onRenderSelectedItems;
     return (

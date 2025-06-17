@@ -20,6 +20,7 @@ export class ChartTableBase extends React.Component<IChartTableProps> {
     return toImage(this._rootElem, undefined, this._isRTL, opts);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { headers, rows, width, height, styles, theme } = this.props;
 

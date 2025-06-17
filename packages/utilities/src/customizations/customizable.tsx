@@ -53,6 +53,7 @@ export function customizable(
         Customizations.unobserve(this._onSettingChanged);
       }
 
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       public render(): JSX.Element {
         return (
           <MergeStylesShadowRootConsumer stylesheetKey={scope}>

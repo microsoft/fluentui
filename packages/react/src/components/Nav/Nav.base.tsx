@@ -59,6 +59,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element | null {
     const { styles, groups, className, isOnTop, role = 'navigation', theme } = this.props;
 
@@ -96,12 +97,14 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     return false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onRenderLink = (link: INavLink): JSX.Element => {
     const { styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, { theme: theme!, groups });
     return <div className={classNames.linkText}>{link.name}</div>;
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const { styles, groups, theme } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;

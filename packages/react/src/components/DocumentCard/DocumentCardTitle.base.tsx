@@ -87,6 +87,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     this._async.dispose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;

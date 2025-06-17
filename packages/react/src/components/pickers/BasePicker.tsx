@@ -53,6 +53,7 @@ export interface IBasePickerState<T> {
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   errorMessage?: string | JSX.Element;
 }
 
@@ -280,6 +281,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;
@@ -399,6 +401,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   protected renderLabel(
     inputId: string,
     styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element | null {
     const { label, disabled, required } = this.props;
     if (!label) {
@@ -411,6 +414,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderError(className?: string): JSX.Element | null {
     const { errorMessage = this.state.errorMessage } = this.props;
     if (!errorMessage) {
@@ -425,6 +429,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 
   protected renderSuggestions(
     styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element | null {
     const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
@@ -465,8 +470,10 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     ) : null;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderItems(): JSX.Element[] {
     const { disabled, removeButtonAriaLabel, removeButtonIconProps } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
     const { items, selectedIndices } = this.state;
@@ -1075,6 +1082,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private async _getErrorMessage(items: T[]): Promise<string | JSX.Element | undefined> {
     if (this.props.errorMessage) {
       return this.props.errorMessage;
@@ -1083,9 +1091,12 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
       try {
         const errorMessage = this.props.onGetErrorMessage(items);
         if (errorMessage) {
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             return await (errorMessage as PromiseLike<string | JSX.Element>);
           } else {
+            // eslint-disable-next-line @typescript-eslint/no-deprecated
             return errorMessage as string | JSX.Element;
           }
         } else {
@@ -1098,6 +1109,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   private _updateErrorMessage(items: T[]): void {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     let newErrorMessage: string | JSX.Element | undefined;
     this._getErrorMessage(items)
       .then(errorMessage => {
@@ -1204,6 +1216,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
 }
 
 export class BasePickerListBelow<T extends {}, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, selectionAriaLabel, selectionRole = 'list', theme, styles } = this.props;

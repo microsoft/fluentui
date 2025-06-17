@@ -56,11 +56,13 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
     return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
     const expandGroup = this.props.onExpandGroup;
@@ -95,6 +97,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       // from static defaultProps
       // TODO: Move this component to composition with required onRenderItem to remove
       // this cast.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
       const renderedItem = onRenderItem(props);
       return hasContextMenu ? (

@@ -71,6 +71,7 @@ export class ScrollContainer
     this._callbacks.push(callback);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { children, className } = this.props;
 
@@ -80,7 +81,7 @@ export class ScrollContainer
         data-is-scrollable={true}
         ref={this._resolveRoot}
       >
-        {children as JSX.Element}
+        {children as React.ReactElement}
       </div>
     );
   }

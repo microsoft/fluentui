@@ -60,7 +60,8 @@ function _processStackChildren(
     enableScopedSelectors,
     doNotRenderFalsyValues,
   }: { disableShrink: boolean; enableScopedSelectors: boolean; doNotRenderFalsyValues: boolean },
-): (React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
+): // eslint-disable-next-line @typescript-eslint/no-deprecated
+(React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
   let childrenArray = React.Children.toArray(children);
 
   childrenArray = React.Children.map(childrenArray, child => {

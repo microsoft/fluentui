@@ -32,6 +32,7 @@ describe('FluentProvider', () => {
    * Note: see more visual regression tests for FluentProvider in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- FIXME
     const component = reactTestRenderer.create(
       <FluentProvider theme={{ colorBrandBackground2: '#fff' }}>Default FluentProvider</FluentProvider>,
     );

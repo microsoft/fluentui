@@ -79,6 +79,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { data, theme } = this.props;
     this._adjustProps();
@@ -267,6 +268,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getDefaultTextData(data: IChartProps): JSX.Element {
     const { culture } = this.props;
     const chartDataMode = this.props.chartDataMode || 'default';
@@ -303,6 +305,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createBenchmark(data: IChartProps): JSX.Element {
     const totalData = data.chartData![0].horizontalBarChartdata!.y;
     const benchmarkData = data.chartData![0].data;
@@ -326,6 +329,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSX.Element[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
