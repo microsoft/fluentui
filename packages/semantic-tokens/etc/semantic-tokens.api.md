@@ -1457,7 +1457,7 @@ export const ctrlDialogBaseCorner = "var(--smtc-ctrl-dialog-base-corner, var(--s
 export const ctrlDialogBaseCornerRaw = "--smtc-ctrl-dialog-base-corner";
 
 // @public (undocumented)
-export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow)";
+export const ctrlDialogBaseShadow = "var(--smtc-ctrl-dialog-base-shadow, var(--shadow64))";
 
 // @public (undocumented)
 export const ctrlDialogBaseShadowRaw = "--smtc-ctrl-dialog-base-shadow";
