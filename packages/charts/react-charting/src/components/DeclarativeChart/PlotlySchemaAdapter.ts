@@ -1696,7 +1696,7 @@ const getLegendShape = (series: Partial<PlotData>): ILegend['shape'] => {
   if (dashType === 'dot' || dashType === 'dash' || dashType === 'dashdot') {
     return 'dottedLine';
   } else if (series.mode?.includes('markers') && series?.marker?.symbol !== undefined) {
-    return (String(series?.marker?.symbol).replace(/-/g, '') as LegendShape) ?? 'circle';
+    return (String(series?.marker?.symbol).toLowerCase().replace(/-/g, '') as LegendShape) ?? 'circle';
   }
   return 'default';
 };

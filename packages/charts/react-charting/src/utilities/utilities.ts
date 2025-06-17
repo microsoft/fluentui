@@ -2015,9 +2015,11 @@ export function getShapePath(shape: LegendShape | undefined): string {
     return scatterPointPaths.circle;
   }
 
-  const mappedShape = shape.toLowerCase().includes('open')
+  let mappedShape = shape.toLowerCase().includes('open')
     ? shape.toLowerCase().replace('open', '')
     : shape.toLowerCase();
+
+  mappedShape = !(mappedShape in scatterPointPaths) ? 'circle' : mappedShape;
 
   return scatterPointPaths[mappedShape] || scatterPointPaths.circle;
 }

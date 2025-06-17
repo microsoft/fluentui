@@ -61,12 +61,6 @@ export class ScatterChartShapesExample extends React.Component<{}, IScatterChart
           color: DataVizPalette.color6,
         },
         {
-          legend: 'Rectangle Points',
-          legendShape: 'rectangle',
-          data: [{ x: 80, y: 70, markerSize: 0.5, shape: 'rectangle' }],
-          color: DataVizPalette.color7,
-        },
-        {
           legend: 'Hexagon Points',
           legendShape: 'hexagon',
           data: [{ x: 85, y: 190, markerSize: 0.5, shape: 'hexagon' }],
@@ -99,7 +93,7 @@ export class ScatterChartShapesExample extends React.Component<{}, IScatterChart
         {
           legend: 'Hexagram Points',
           legendShape: 'hexagramx',
-          data: [{ x: 85, y: 120, markerSize: 0.5, shape: 'hexagramx' }],
+          data: [{ x: 85, y: 120, markerSize: 0.5, shape: 'hexagram' }],
           color: DataVizPalette.color12,
         },
         {

@@ -539,7 +539,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
           pointsForSeries.push(
             <>
               {_renderShape(
-                pointShape || _points.current?.[i]?.legendShape,
+                pointShape?.toLowerCase().replace(/-/g, '') as LegendShape,
                 x,
                 y,
                 circleRadius,

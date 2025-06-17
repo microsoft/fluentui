@@ -446,7 +446,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> im
         shape={
           legend.shape?.includes('open')
             ? (legend.shape.replace('open', '') as LegendShape)
-            : (legend.shape as LegendShape)
+            : (String(legend.shape).toLowerCase() as LegendShape)
         }
         classNameForNonSvg={classNames.rect}
         isOpenShape={legend.shape?.toLowerCase().includes('open')}
