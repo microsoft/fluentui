@@ -29,7 +29,7 @@ export interface OnOverflowChangeData extends OverflowState {
 }
 
 // @public
-export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible" | "boxModel" | "measureGap">> & {
+export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible" | "measureGap">> & {
     children: React_2.ReactElement;
     onOverflowChange?: ((ev: null, data: OverflowState) => void) | undefined;
     imperativeRef?: React_2.Ref<OverflowImperativeRef | null | undefined> | undefined;
@@ -55,7 +55,7 @@ export type OverflowItemProps = {
 };
 
 // @public
-export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'boxModel' | 'measureGap'>> & {
+export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'measureGap'>> & {
     children: React_2.ReactElement;
     onOverflowChange?: (ev: null, data: OverflowState) => void;
     imperativeRef?: React_2.Ref<OverflowImperativeRef | null | undefined>;
