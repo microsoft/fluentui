@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates the documentation to reflect the new tokens",
+  "packageName": "@fluentui/web-components",
+  "email": "DKirwan@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
