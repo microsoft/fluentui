@@ -20,7 +20,7 @@ export interface OnOverflowChangeData extends OverflowState {}
  * Overflow Props
  */
 export type OverflowProps = Partial<
-  Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'boxModel' | 'measureGap'>
+  Pick<ObserveOptions, 'overflowAxis' | 'overflowDirection' | 'padding' | 'minimumVisible' | 'measureGap'>
 > & {
   children: React.ReactElement;
 
@@ -44,7 +44,6 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
     overflowDirection,
     padding,
     onOverflowChange,
-    boxModel,
     measureGap,
     imperativeRef,
   } = props;
@@ -80,7 +79,6 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
       overflowDirection,
       overflowAxis,
       padding,
-      boxModel,
       measureGap,
       minimumVisible,
       onUpdateItemVisibility: updateVisibilityAttribute,

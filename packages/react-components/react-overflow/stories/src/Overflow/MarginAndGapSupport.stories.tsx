@@ -81,7 +81,7 @@ export const MarginAndGapSupport = () => {
         <Checkbox onChange={onChange(setUseGap)} checked={useGap} label="Use column gap" />
         <Checkbox onChange={onChange(setUseMargin)} checked={useMargin} label="Use margins" />
       </div>
-      <Overflow imperativeRef={imperativeRef} boxModel="inline-margin" measureGap>
+      <Overflow imperativeRef={imperativeRef} measureGap>
         <div className={mergeClasses(styles.container, styles.resizableArea, useGap && styles.gap)}>
           {itemIds.map((i, index) => (
             <OverflowItem key={i} id={i}>

@@ -9,7 +9,6 @@ import type {
   ObserveOptions,
   OverflowDividerEntry,
 } from './types';
-import { parseCSSLength } from './utils';
 
 /**
  * @internal
@@ -34,7 +33,6 @@ export function createOverflowManager(): OverflowManager {
     minimumVisible: 0,
     onUpdateItemVisibility: () => undefined,
     onUpdateOverflow: () => undefined,
-    boxModel: 'border',
     measureGap: false,
   };
 
@@ -87,11 +85,6 @@ export function createOverflowManager(): OverflowManager {
     const requested = options.overflowAxis === 'horizontal' ? horizontal : vertical;
     let measurement = el[requested];
 
-    if (options.boxModel === 'inline-margin' && requested === 'offsetWidth' && liveStylesCache.has(el)) {
-      const liveStyles = liveStylesCache.get(el)!;
-      measurement += parseCSSLength(liveStyles.marginInlineStart) + parseCSSLength(liveStyles.marginInlineEnd);
-    }
-
     sizeCache.set(el, measurement);
     return sizeCache.get(el)!;
   }
@@ -102,6 +95,35 @@ export function createOverflowManager(): OverflowManager {
   const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
   const visibleItemQueue = createPriorityQueue<string>(compareItems);
+
+  function isOverflowMenuVisible(): boolean {
+    return Boolean(invisibleItemQueue.size() > 0 && overflowMenu);
+  }
+
+  function gapSize(): number {
+    const elements = visibleItemQueue.all().map(id => overflowItems[id].element);
+    if (isOverflowMenuVisible() && overflowMenu) {
+      elements.push(overflowMenu);
+    }
+
+    return elements
+      .sort((a, b) => {
+        return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+      })
+      .reduce((gapSize, el, i, arr) => {
+        if (i === 0) {
+          // We deliberately don't measure the spacing between first and last elements and the container
+          // Space at the ends of a container can be either be container padding or collapsed empty space
+          return gapSize;
+        }
+
+        // If perf becomes an issue we can extend the current sizeCache and cache rects
+        const current = el.getBoundingClientRect();
+        const prev = arr[i - 1].getBoundingClientRect();
+
+        return gapSize + (current.left - prev.right);
+      }, 0);
+  }
 
   function occupiedSize(): number {
     const totalItemSize = visibleItemQueue
@@ -116,7 +138,7 @@ export function createOverflowManager(): OverflowManager {
       0,
     );
 
-    const overflowMenuSize = invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    const overflowMenuSize = isOverflowMenuVisible() && overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
@@ -162,17 +184,7 @@ export function createOverflowManager(): OverflowManager {
       return 0;
     }
 
-    let totalGapSize = 0;
-
-    if (options.measureGap && liveStylesCache.has(container)) {
-      const cssColumnGap = liveStylesCache.get(container)!.columnGap;
-      const columnGap = parseCSSLength(cssColumnGap);
-      const overflowMenuMod = overflowMenu ? 1 : 0;
-      if (columnGap) {
-        totalGapSize = columnGap * (visibleItemQueue.size() - 1 + overflowMenuMod);
-      }
-    }
-
+    const totalGapSize = options.measureGap ? gapSize() : 0;
     return getClientSize(container) - options.padding - totalGapSize;
   };
 
