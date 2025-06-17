@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { swapStates } from '../utils/element-internals.js';
 import { ProgressBarValidationState } from './progress-bar.options.js';
 
@@ -9,6 +9,10 @@ import { ProgressBarValidationState } from './progress-bar.options.js';
  * @public
  */
 export class BaseProgressBar extends FASTElement {
+  /** @internal */
+  @observable
+  public indicator!: HTMLElement;
+
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -51,6 +55,7 @@ export class BaseProgressBar extends FASTElement {
    */
   protected valueChanged(prev: number | undefined, next: number | undefined): void {
     this.elementInternals.ariaValueNow = typeof next === 'number' ? `${next}` : null;
+    this.setIndicatorWidth();
   }
 
   /**
@@ -69,6 +74,7 @@ export class BaseProgressBar extends FASTElement {
    */
   protected minChanged(prev: number | undefined, next: number | undefined): void {
     this.elementInternals.ariaValueMin = typeof next === 'number' ? `${next}` : null;
+    this.setIndicatorWidth();
   }
 
   /**
@@ -88,25 +94,36 @@ export class BaseProgressBar extends FASTElement {
    */
   protected maxChanged(prev: number | undefined, next: number | undefined): void {
     this.elementInternals.ariaValueMax = typeof next === 'number' ? `${next}` : null;
-  }
-
-  /**
-   * Indicates progress in %
-   * @internal
-   */
-  @volatile
-  public get percentComplete(): number {
-    const min = this.min ?? 0;
-    const max = this.max ?? 100;
-    const value = this.value ?? 0;
-    const range = max - min;
-
-    return range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
+    this.setIndicatorWidth();
   }
 
   public constructor() {
     super();
 
     this.elementInternals.role = 'progressbar';
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setIndicatorWidth();
+  }
+
+  private setIndicatorWidth() {
+    if (!this.$fastController.isConnected || CSS.supports('width: attr(value type(<number>))')) {
+      return;
+    }
+
+    const min = this.min ?? 0;
+    const max = this.max ?? 100;
+    const value = this.value ?? 0;
+    const range = max - min;
+
+    const width = range === 0 ? 0 : Math.fround(((value - min) / range) * 100);
+
+    if (width) {
+      this.indicator.style.setProperty('width', `${width}%`);
+    } else {
+      this.indicator.style.removeProperty('width');
+    }
   }
 }
