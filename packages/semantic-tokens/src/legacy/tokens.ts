@@ -100,6 +100,11 @@ export const fontSizeBase300 = 'var(--fontSizeBase300)';
  */
 export const borderRadiusXLarge = 'var(--borderRadiusXLarge)';
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#shadow64 | `shadow64`} design token.
+ * @public
+ */
+export const shadow64 = 'var(--shadow64)';
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorNeutralStroke2 | `colorNeutralStroke2`} design token.
  * @public
  */
