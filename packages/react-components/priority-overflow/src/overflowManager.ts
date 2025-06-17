@@ -237,8 +237,6 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
-    if (container.ownerDocument.defaultView) {
-    }
 
     disposeResizeObserver = observeResize(container, entries => {
       if (!entries[0] || !container) {
@@ -255,8 +253,6 @@ export function createOverflowManager(): OverflowManager {
     }
 
     overflowItems[item.id] = item;
-    if (item.element.ownerDocument.defaultView) {
-    }
 
     // some options can affect priority which are only set on `observe`
     if (observing) {
@@ -277,8 +273,6 @@ export function createOverflowManager(): OverflowManager {
 
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
-    if (overflowMenu.ownerDocument.defaultView) {
-    }
   };
 
   const addDivider: OverflowManager['addDivider'] = divider => {
@@ -288,8 +282,6 @@ export function createOverflowManager(): OverflowManager {
 
     divider.element.setAttribute(DATA_OVERFLOW_GROUP, divider.groupId);
     overflowDividers[divider.groupId] = divider;
-    if (divider.element.ownerDocument.defaultView) {
-    }
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
