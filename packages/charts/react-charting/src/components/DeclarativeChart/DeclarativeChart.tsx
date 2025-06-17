@@ -5,13 +5,14 @@ import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { DonutChart } from '../DonutChart/index';
 import { VerticalStackedBarChart } from '../VerticalStackedBarChart/index';
 import { decodeBase64Fields } from '@fluentui/chart-utilities';
-import type { PlotData, PlotlySchema, OutputChartType } from '@fluentui/chart-utilities';
+import type { Data, PlotData, PlotlySchema, OutputChartType, TraceInfo } from '@fluentui/chart-utilities';
 import { isArrayOrTypedArray, isMonthArray, mapFluentChart, sanitizeJson } from '@fluentui/chart-utilities';
 
 import type { GridProperties } from './PlotlySchemaAdapter';
 import {
   correctYearMonth,
   getGridProperties,
+  isNonPlotType,
   transformPlotlyJsonToDonutProps,
   transformPlotlyJsonToVSBCProps,
   transformPlotlyJsonToAreaChartProps,
@@ -26,6 +27,8 @@ import {
   transformPlotlyJsonToScatterChartProps,
   projectPolarToCartesian,
   getAllupLegendsProps,
+  NON_PLOT_KEY_PREFIX,
+  SINGLE_REPEAT,
 } from './PlotlySchemaAdapter';
 import type { ColorwayType } from './PlotlyColorAdapter';
 import { LineChart } from '../LineChart/index';
@@ -296,10 +299,13 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
   }
   const plotlyInputWithValidData: PlotlySchema = {
     ...plotlyInput,
-    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace[0]]),
+    data: chart.validTracesInfo!.map(trace => plotlyInput.data[trace.index]),
   };
 
-  const validTracesFilteredIndex: [number, string][] = chart.validTracesInfo!.map((trace, index) => [index, trace[1]]);
+  const validTracesFilteredIndex: TraceInfo[] = chart.validTracesInfo!.map((trace, index) => ({
+    index,
+    type: trace.type,
+  }));
 
   let { selectedLegends } = plotlySchema;
   const colorMap = useColorMapping();
@@ -380,25 +386,56 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
     const cartesianProjection = projectPolarToCartesian(plotlyInputWithValidData);
     plotlyInputWithValidData.data = cartesianProjection.data;
     validTracesFilteredIndex.forEach((trace, index) => {
-      if (trace[1] === 'scatterpolar') {
-        validTracesFilteredIndex[index][1] = 'line'; // Change type to line for rendering
+      if (trace.type === 'scatterpolar') {
+        validTracesFilteredIndex[index].type = 'line'; // Change type to line for rendering
       }
     });
   }
 
   const groupedTraces: Record<string, number[]> = {};
-  plotlyInputWithValidData.data.forEach((trace: Partial<PlotData>, index) => {
-    const xAxisKey = trace.xaxis ?? DEFAULT_XAXIS;
-    if (!groupedTraces[xAxisKey]) {
-      groupedTraces[xAxisKey] = [];
+  let nonCartesianTraceCount = 0;
+  plotlyInputWithValidData.data.forEach((trace: Data, index: number) => {
+    let traceKey = '';
+    if (isNonPlotType(chart.validTracesInfo![index].type)) {
+      traceKey = `${NON_PLOT_KEY_PREFIX}${nonCartesianTraceCount + 1}`;
+      nonCartesianTraceCount++;
+    } else {
+      traceKey = (trace as PlotData).xaxis ?? DEFAULT_XAXIS;
     }
-    groupedTraces[xAxisKey].push(index);
+    if (!groupedTraces[traceKey]) {
+      groupedTraces[traceKey] = [];
+    }
+    groupedTraces[traceKey].push(index);
   });
 
   isMultiPlot.current = Object.keys(groupedTraces).length > 1;
-  const gridProperties: GridProperties = getGridProperties(plotlyInputWithValidData.layout, isMultiPlot.current);
+  const gridProperties: GridProperties = getGridProperties(
+    plotlyInputWithValidData,
+    isMultiPlot.current,
+    chart.validTracesInfo!,
+  );
 
-  const allupLegendsProps = getAllupLegendsProps(plotlyInputWithValidData, colorMap, props.colorwayType, isDarkTheme);
+  // Render only one plot if the grid properties cannot determine positioning of multiple plots.
+  if (
+    isMultiPlot.current &&
+    gridProperties.templateRows === SINGLE_REPEAT &&
+    gridProperties.templateColumns === SINGLE_REPEAT
+  ) {
+    Object.keys(groupedTraces).forEach((key, index) => {
+      if (index > 0) {
+        delete groupedTraces[key];
+      }
+    });
+    isMultiPlot.current = false;
+  }
+
+  const allupLegendsProps = getAllupLegendsProps(
+    plotlyInputWithValidData,
+    colorMap,
+    props.colorwayType,
+    chart.validTracesInfo!,
+    isDarkTheme,
+  );
 
   type ChartType = keyof ChartTypeMap;
   // map through the grouped traces and render the appropriate chart
@@ -417,15 +454,15 @@ export const DeclarativeChart: React.FunctionComponent<DeclarativeChartProps> = 
             data: index.map(idx => plotlyInputWithValidData.data[idx]),
           };
 
-          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace[0]));
+          const filteredTracesInfo = validTracesFilteredIndex.filter(trace => index.includes(trace.index));
           let chartType =
-            validTracesFilteredIndex.some(trace => trace[1] === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
+            validTracesFilteredIndex.some(trace => trace.type === FALLBACK_TYPE) || chart.type === FALLBACK_TYPE
               ? FALLBACK_TYPE
-              : filteredTracesInfo[0][1];
+              : filteredTracesInfo[0].type;
 
           if (
-            validTracesFilteredIndex.some(trace => trace[1] === 'line') &&
-            validTracesFilteredIndex.some(trace => trace[1] === 'scatter')
+            validTracesFilteredIndex.some(trace => trace.type === 'line') &&
+            validTracesFilteredIndex.some(trace => trace.type === 'scatter')
           ) {
             chartType = 'line';
           }

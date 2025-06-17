@@ -53,6 +53,7 @@ import type {
   Color,
   LayoutAxis,
   XAxisName,
+  TraceInfo,
 } from '@fluentui/chart-utilities';
 import {
   isArrayOrTypedArray,
@@ -72,11 +73,21 @@ import { ILegend, ILegendsProps } from '../Legends/index';
 import { rgb } from 'd3-color';
 import { ICartesianChartProps } from '../CommonComponents/index';
 
+export const NON_PLOT_KEY_PREFIX = 'nonplot_';
+export const SINGLE_REPEAT = 'repeat(1, 1fr)';
+
+type DomainInterval = {
+  start: number;
+  end: number;
+};
+
 export type AxisProperties = {
   xAnnotation?: string;
   yAnnotation?: string;
   row: number;
   column: number;
+  xDomain: DomainInterval;
+  yDomain: DomainInterval;
 };
 export type GridAxisProperties = Record<string, AxisProperties>;
 
@@ -380,7 +391,7 @@ export const transformPlotlyJsonToDonutProps = (
       chartTitle,
       chartData: Object.values(mapLegendToDataPoint),
     },
-    hideLegend: input.layout?.showlegend === false ? true : false,
+    hideLegend: isMultiPlot || input.layout?.showlegend === false,
     width: input.layout?.width,
     height,
     innerRadius,
@@ -1751,32 +1762,59 @@ export const getAllupLegendsProps = (
   input: PlotlySchema,
   colorMap: React.MutableRefObject<Map<string, string>>,
   colorwayType: ColorwayType,
+  traceInfo: TraceInfo[],
   isDarkTheme?: boolean,
 ): ILegendsProps => {
   const allupLegends: ILegend[] = [];
   // reduce on showlegend boolean propperty. reduce should return true if at least one series has showlegend true
   const toShowLegend = input.data.reduce((acc, series) => {
-    return acc || (series as Partial<PlotData>).showlegend === true;
+    return (
+      acc || (series as Partial<PlotData>).showlegend === true || (series as Partial<PlotData>).showlegend === undefined
+    );
   }, false);
 
   if (toShowLegend) {
-    input.data.forEach((series: Partial<PlotData>, index) => {
-      const name = series.legendgroup;
-      const color = series.line?.color || (series as Partial<PlotData>).marker?.color;
-      const legendShape = getLegendShape(series);
-      const resolvedColor = extractColor(
-        input.layout?.template?.layout?.colorway,
-        colorwayType,
-        color,
-        colorMap,
-        isDarkTheme,
-      );
-      if (name !== undefined && allupLegends.some(group => group.title === name) === false) {
-        allupLegends.push({
-          title: name,
-          color: resolvedColor as string,
-          shape: legendShape,
+    input.data.forEach((series: Data, index) => {
+      if (traceInfo[index].type === 'donut') {
+        const pieSeries = series as Partial<PieData>;
+        const colors: string[] | string | null | undefined = extractColor(
+          input.layout?.piecolorway ?? input.layout?.template?.layout?.colorway,
+          colorwayType,
+          input.layout?.piecolorway ?? pieSeries?.marker?.colors,
+          colorMap,
+          isDarkTheme,
+        );
+
+        pieSeries.labels?.forEach((label, labelIndex: number) => {
+          const legend = `${label}`;
+          // resolve color for each legend from the extracted colors
+          const color: string = resolveColor(colors, labelIndex, legend, colorMap, isDarkTheme);
+          if (legend !== '' && allupLegends.some(group => group.title === legend) === false) {
+            allupLegends.push({
+              title: legend,
+              color,
+            });
+          }
         });
+      } else if (isNonPlotType(traceInfo[index].type) === false) {
+        const plotSeries = series as Partial<PlotData>;
+        const name = plotSeries.legendgroup;
+        const color = plotSeries.line?.color || plotSeries.marker?.color;
+        const legendShape = getLegendShape(plotSeries);
+        const resolvedColor = extractColor(
+          input.layout?.template?.layout?.colorway,
+          colorwayType,
+          color,
+          colorMap,
+          isDarkTheme,
+        );
+        if (name !== undefined && name !== '' && allupLegends.some(group => group.title === name) === false) {
+          allupLegends.push({
+            title: name,
+            color: resolvedColor as string,
+            shape: legendShape,
+          });
+        }
       }
     });
   }
@@ -1848,14 +1886,18 @@ const getIndexFromKey = (key: string, pattern: string): number => {
   return parseInt(normalizedKey, 10) - 1;
 };
 
-type FillInfo = {
-  row: number;
-  fillDomain: number;
+export const isNonPlotType = (chartType: string): boolean => {
+  return ['donut', 'sankey', 'pie'].includes(chartType);
 };
 
-export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPlot: boolean): GridProperties => {
-  const gridX: number[][] = [];
-  const gridY: number[][] = [];
+export const getGridProperties = (
+  schema: PlotlySchema | undefined,
+  isMultiPlot: boolean,
+  validTracesInfo: TraceInfo[],
+): GridProperties => {
+  const domainX: DomainInterval[] = [];
+  const domainY: DomainInterval[] = [];
+  let cartesianDomains = 0;
   type AnnotationProps = {
     xAnnotation?: string;
     yAnnotation?: string;
@@ -1864,161 +1906,169 @@ export const getGridProperties = (layout: Partial<Layout> | undefined, isMultiPl
   let templateRows = '1fr';
   let templateColumns = '1fr';
   const gridLayout: GridAxisProperties = {};
-  if (layout === undefined || layout === null || Object.keys(layout).length === 0) {
-    return { templateRows, templateColumns, layout: gridLayout };
-  }
-  if (!layout.xaxis || !layout.yaxis) {
-    return { templateRows, templateColumns, layout: gridLayout };
-  }
   if (!isMultiPlot) {
     return { templateRows, templateColumns, layout: gridLayout };
   }
 
-  Object.keys(layout).forEach(key => {
-    if (key.startsWith('xaxis')) {
-      const index = getIndexFromKey(key, 'xaxis');
-      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
-      const anchorIndex = getIndexFromKey(anchor, 'y');
-      if (index !== anchorIndex) {
-        throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
-      }
-      gridX[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
-    } else if (key.startsWith('yaxis')) {
-      const index = getIndexFromKey(key, 'yaxis');
-      const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
-      const anchorIndex = getIndexFromKey(anchor, 'x');
-      if (index !== anchorIndex) {
-        if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
-          // Special case for secondary y axis where yaxis2 can anchor to x1
-          return { templateRows, templateColumns };
+  const layout = schema?.layout as Partial<Layout> | undefined;
+
+  if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
+    Object.keys(layout ?? {}).forEach(key => {
+      if (key.startsWith('xaxis')) {
+        const index = getIndexFromKey(key, 'xaxis');
+        const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'y';
+        const anchorIndex = getIndexFromKey(anchor, 'y');
+        if (index !== anchorIndex) {
+          throw new Error(`Invalid layout: xaxis ${index + 1} anchor should be y${anchorIndex + 1}`);
         }
-        throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
+        const xAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
+        const domainXInfo: DomainInterval = {
+          start: xAxisLayout?.domain ? xAxisLayout.domain[0] : 0,
+          end: xAxisLayout?.domain ? xAxisLayout.domain[1] : 1,
+        };
+        domainX.push(domainXInfo);
+      } else if (key.startsWith('yaxis')) {
+        const index = getIndexFromKey(key, 'yaxis');
+        const anchor = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.anchor ?? 'x';
+        const anchorIndex = getIndexFromKey(anchor, 'x');
+        if (index !== anchorIndex) {
+          if ((index === 1 && anchorIndex === 0) || layout.yaxis2?.side === 'right') {
+            // Special case for secondary y axis where yaxis2 can anchor to x1
+            return { templateRows, templateColumns };
+          }
+          throw new Error(`Invalid layout: yaxis ${index + 1} anchor should be x${anchorIndex + 1}`);
+        }
+        const yAxisLayout = layout[key as keyof typeof layout] as Partial<LayoutAxis>;
+        const domainYInfo: DomainInterval = {
+          start: yAxisLayout?.domain ? yAxisLayout.domain[0] : 0,
+          end: yAxisLayout?.domain ? yAxisLayout.domain[1] : 1,
+        };
+        domainY.push(domainYInfo);
       }
-      gridY[index] = (layout[key as keyof typeof layout] as Partial<LayoutAxis>)?.domain ?? [];
+    });
+  }
+
+  cartesianDomains = domainX.length; // Assuming that the number of x and y axes is the same
+  validTracesInfo.forEach((trace, index) => {
+    if (isNonPlotType(trace.type)) {
+      const series = schema?.data?.[index] as Partial<PieData> | Partial<SankeyData>;
+      const domainXInfo: DomainInterval = {
+        start: series.domain?.x ? series.domain.x[0] : 0,
+        end: series.domain?.x ? series.domain.x[1] : 1,
+      };
+      const domainYInfo: DomainInterval = {
+        start: series.domain?.y ? series.domain.y[0] : 0,
+        end: series.domain?.y ? series.domain.y[1] : 1,
+      };
+      domainX.push(domainXInfo);
+      domainY.push(domainYInfo);
     }
   });
 
-  layout.annotations?.forEach(annotation => {
-    const xMatches = gridX.flatMap((interval, idx) =>
-      (annotation?.x as number) >= interval[0] && (annotation?.x as number) <= interval[1] ? [idx] : [],
-    );
-    const yMatch = gridY.findIndex(
-      (interval, yIndex) =>
-        xMatches.includes(yIndex) &&
-        (annotation?.y as number) >= interval[0] &&
-        (annotation?.y as number) <= interval[1],
-    );
+  if (layout !== undefined && layout !== null && Object.keys(layout).length > 0) {
+    layout.annotations?.forEach(annotation => {
+      const xMatches = domainX.flatMap((interval, idx) =>
+        (annotation?.x as number) >= interval.start && (annotation?.x as number) <= interval.end ? [idx] : [],
+      );
+      const yMatch = domainY.findIndex(
+        (interval, yIndex) =>
+          xMatches.includes(yIndex) &&
+          (annotation?.y as number) >= interval.start &&
+          (annotation?.y as number) <= interval.end,
+      );
 
-    if (yMatch !== -1) {
-      if (annotations[yMatch] === undefined) {
-        annotations[yMatch] = {} as AnnotationProps;
+      if (yMatch !== -1) {
+        if (annotations[yMatch] === undefined) {
+          annotations[yMatch] = {} as AnnotationProps;
+        }
+        if ((annotation?.textangle as number) === 90) {
+          annotations[yMatch].yAnnotation = annotation.text;
+        } else {
+          annotations[yMatch].xAnnotation = annotation.text;
+        }
       }
-      if ((annotation?.textangle as number) === 90) {
-        annotations[yMatch].yAnnotation = annotation.text;
-      } else {
-        annotations[yMatch].xAnnotation = annotation.text;
-      }
-    }
-  });
+    });
+  }
 
-  if (gridX.length > 0) {
-    const uniqueXIntervals = new Map<string, number[]>();
-    gridX.forEach(interval => {
-      const key = `${interval[0]}-${interval[1]}`;
+  if (domainX.length > 0) {
+    const uniqueXIntervals = new Map<string, DomainInterval>();
+    domainX.forEach(interval => {
+      const key = `${interval.start}-${interval.end}`;
       if (!uniqueXIntervals.has(key)) {
         uniqueXIntervals.set(key, interval);
       }
     });
-    const minXInterval = Math.min(...Array.from(uniqueXIntervals.values()).map(interval => interval[1] - interval[0]));
-    templateColumns = Array.from(uniqueXIntervals.values())
-      .map(interval => `${(interval[1] - interval[0]) / minXInterval}fr`)
-      .join(' ');
 
-    let columnNumber = 1;
-    let lastIntervalEnd = 0;
-    gridX.forEach((interval, index) => {
-      if (interval.length === 0) {
-        return;
-      }
+    const sortedXStart = Array.from(uniqueXIntervals.values())
+      .map(interval => interval.start)
+      .sort();
 
-      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+    templateColumns = `repeat(${sortedXStart.length}, 1fr)`;
+
+    domainX.forEach((interval, index) => {
+      const cellName =
+        index >= cartesianDomains
+          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
+          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
+
+      const columnIndex = sortedXStart.findIndex(start => start === interval.start);
+      const columnNumber = columnIndex + 1; // Column numbers are 1-based
 
       const annotationProps = annotations[index] as AnnotationProps;
       const xAnnotation = annotationProps?.xAnnotation;
-
-      if (interval[0] < lastIntervalEnd) {
-        columnNumber = 1;
-      }
-      lastIntervalEnd = interval[1];
 
       const row: AxisProperties = {
         row: -1,
         column: columnNumber,
         xAnnotation,
+        xDomain: interval,
+        yDomain: { start: 0, end: 1 }, // Default yDomain for x-axis
       };
       gridLayout[cellName] = row;
-      columnNumber += 1;
     });
   }
-  const numColumns = Math.max(...Object.values(gridLayout).map(cell => cell.column ?? 0));
 
-  const columnFill: Record<number, FillInfo> = {};
-  for (let i = 1; i <= numColumns; i++) {
-    columnFill[i] = { row: 1, fillDomain: 0 };
-  }
-
-  if (gridY.length > 0) {
-    const uniqueYIntervals = new Map<string, number[]>();
-    gridY.forEach(interval => {
-      const key = `${interval[0]}-${interval[1]}`;
+  if (domainY.length > 0) {
+    const uniqueYIntervals = new Map<string, DomainInterval>();
+    domainY.forEach(interval => {
+      const key = `${interval.start}-${interval.end}`;
       if (!uniqueYIntervals.has(key)) {
         uniqueYIntervals.set(key, interval);
       }
     });
-    const minYInterval = Math.min(...Array.from(uniqueYIntervals.values()).map(interval => interval[1] - interval[0]));
-    templateRows = Array.from(uniqueYIntervals.values())
-      .map(interval => `${(interval[1] - interval[0]) / minYInterval}fr`)
-      .join(' ');
+    const sortedYStart = Array.from(uniqueYIntervals.values())
+      .map(interval => interval.start)
+      .sort();
 
-    gridY.forEach((interval, index) => {
-      if (interval.length === 0) {
-        return;
-      }
+    const numberOfRows = sortedYStart.length;
 
-      const cellName = `x${index === 0 ? '' : index + 1}` as XAxisName;
+    templateRows = `repeat(${numberOfRows}, 1fr)`;
 
+    domainY.forEach((interval, index) => {
+      const cellName =
+        index >= cartesianDomains
+          ? `${NON_PLOT_KEY_PREFIX}${index - cartesianDomains + 1}`
+          : (`x${index === 0 ? '' : index + 1}` as XAxisName);
+
+      const rowIndex = sortedYStart.findIndex(start => start === interval.start);
+      const rowNumber = numberOfRows - rowIndex; // Rows are 1-based and we need to reverse the order for CSS grid
       const annotationProps = annotations[index] as AnnotationProps;
       const yAnnotation = annotationProps?.yAnnotation;
 
       const cell = gridLayout[cellName];
 
       if (cell !== undefined) {
-        cell.row = columnFill[cell.column].row;
+        cell.row = rowNumber;
         cell.yAnnotation = yAnnotation;
+        cell.yDomain = interval;
       }
-      columnFill[cell.column].fillDomain = interval[1];
-      columnFill[cell.column].row += 1;
     });
   }
-
-  // reverse the order of rows in grid layout from bottom-top to top-bottom as required by CSS grid
-  const reversedGridLayout: GridAxisProperties = {};
-  // find the maximum row number
-  const maxRowNumber = Math.max(...Object.values(gridLayout).map(cell => cell.row ?? 0));
-  // iterate over the gridLayout and reverse the row numbers
-  Object.keys(gridLayout).forEach(key => {
-    const cell = gridLayout[key];
-    if (cell.row !== undefined) {
-      // reverse the row number
-      cell.row = maxRowNumber - cell.row + 1;
-    }
-    reversedGridLayout[key] = cell;
-  });
 
   return {
     templateRows,
     templateColumns,
-    layout: reversedGridLayout,
+    layout: gridLayout,
   };
 };
 
