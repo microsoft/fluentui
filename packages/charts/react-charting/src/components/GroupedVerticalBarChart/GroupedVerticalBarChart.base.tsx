@@ -35,6 +35,10 @@ import {
   calculateLongestLabelWidth,
   YAxisType,
   sortAxisCategories,
+  calcTotalWidth,
+  calcBandwidth,
+  calcTotalBandUnits,
+  calcRequiredWidth,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -61,10 +65,6 @@ type NumericAxis = D3Axis<number | { valueOf(): number }>;
 
 const MIN_DOMAIN_MARGIN = 8;
 const X1_INNER_PADDING = 0.1;
-// x1_inner_padding = space_between_bars / (space_between_bars + bar_width)
-// => space_between_bars = (x1_inner_padding / (1 - x1_inner_padding)) * bar_width
-/** Rate at which the space between the bars in a group changes wrt the bar width */
-const BAR_GAP_RATE = X1_INNER_PADDING / (1 - X1_INNER_PADDING);
 const VERTICAL_BAR_GAP = 1;
 const MIN_BAR_HEIGHT = 1;
 
@@ -313,9 +313,9 @@ export class GroupedVerticalBarChartBase
     this._barWidth = getBarWidth(
       this.props.barwidth,
       this.props.maxBarWidth,
-      xScale0.bandwidth() / (this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE),
+      calcBandwidth(xScale0.bandwidth(), this._legends.length, X1_INNER_PADDING),
     );
-    this._groupWidth = (this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE) * this._barWidth;
+    this._groupWidth = calcRequiredWidth(this._barWidth, this._legends.length, X1_INNER_PADDING);
 
     const xScale1 = this._createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
@@ -711,10 +711,7 @@ export class GroupedVerticalBarChartBase
     this._domainMargin = MIN_DOMAIN_MARGIN;
 
     /** Total width available to render the bars */
-    const totalWidth =
-      containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-    /** Rate at which the space between the groups changes wrt the group width */
-    const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, MIN_DOMAIN_MARGIN);
 
     if (this._xAxisType === XAxisTypes.StringAxis) {
       if (isScalePaddingDefined(this.props.xAxisOuterPadding)) {
@@ -725,9 +722,9 @@ export class GroupedVerticalBarChartBase
         // Update the bar width so that when CartesianChart rerenders,
         // the following calculations don't use the previous bar width.
         this._barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth);
-        const groupWidth = (this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE) * this._barWidth;
+        const groupWidth = calcRequiredWidth(this._barWidth, this._legends.length, X1_INNER_PADDING);
         /** Total width required to render the groups. Directly proportional to group width */
-        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
+        const reqWidth = calcRequiredWidth(groupWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
 
         if (totalWidth >= reqWidth) {
           // Center align the chart by setting equal left and right margins for domain
@@ -735,11 +732,11 @@ export class GroupedVerticalBarChartBase
         }
       } else if (this.props.mode === 'plotly' && this._xAxisLabels.length > 1) {
         // Calculate the remaining width after rendering groups at their maximum allowable width
-        const groupBandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate);
-        const barBandwidth = groupBandwidth / (this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE);
+        const groupBandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
+        const barBandwidth = calcBandwidth(groupBandwidth, this._legends.length, X1_INNER_PADDING);
         const barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth, barBandwidth);
-        const groupWidth = (this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE) * barWidth;
-        let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
+        const groupWidth = calcRequiredWidth(barWidth, this._legends.length, X1_INNER_PADDING);
+        let reqWidth = calcRequiredWidth(groupWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
         const margin1 = (totalWidth - reqWidth) / 2;
 
         // Calculate the remaining width after accounting for the space required to render x-axis labels
@@ -774,7 +771,7 @@ export class GroupedVerticalBarChartBase
     this._xAxisInnerPadding = getScalePadding(
       this.props.xAxisInnerPadding,
       undefined,
-      2 / (2 + this._legends.length + (this._legends.length - 1) * BAR_GAP_RATE),
+      2 / (2 + calcTotalBandUnits(this._legends.length, X1_INNER_PADDING)),
     );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding);
   }
@@ -877,10 +874,8 @@ export class GroupedVerticalBarChartBase
       return containerWidth;
     }
 
-    const totalWidth =
-      containerWidth - (this.margins.left! + this._domainMargin) - (this.margins.right! + this._domainMargin);
-    const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
-    const groupBandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate);
+    const totalWidth = calcTotalWidth(containerWidth, this.margins, this._domainMargin);
+    const groupBandwidth = calcBandwidth(totalWidth, this._xAxisLabels.length, this._xAxisInnerPadding);
     const step = groupBandwidth / (1 - this._xAxisInnerPadding);
     return step;
   };

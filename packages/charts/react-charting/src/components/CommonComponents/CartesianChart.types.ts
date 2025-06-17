@@ -776,7 +776,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   showRoundOffXTickValues?: boolean;
 
   /**
-   *
+   * Callback that returns the maximum available width for an x-axis label, after which the label should wrap.
    */
   getXAxisLabelWidth?: (containerWidth: number) => number;
 }

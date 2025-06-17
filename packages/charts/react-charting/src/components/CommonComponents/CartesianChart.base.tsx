@@ -327,7 +327,7 @@ export class CartesianChartBase
         xAxisOuterPadding: this.props.xAxisOuterPadding,
         containerWidth: this.state.containerWidth,
         hideTickOverlap: this.props.hideTickOverlap,
-        xyz: this._xyz,
+        calcMaxLabelWidth: this._calcMaxLabelWidthWithTransform,
       };
 
       const YAxisParams = {
@@ -1008,9 +1008,8 @@ export class CartesianChartBase
   };
 
   private _calculateChartMinWidth = (): number => {
-    let labelWidth = 10; // Total padding on the left and right sides of the label
-    labelWidth += this._xyz(this._tickValues);
-
+    // Adding 10px for padding on both sides
+    const labelWidth = this._calcMaxLabelWidthWithTransform(this._tickValues) + 10;
     let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
 
     if (
@@ -1053,7 +1052,7 @@ export class CartesianChartBase
     );
   };
 
-  private _xyz = (x: (string | number)[]) => {
+  private _calcMaxLabelWidthWithTransform = (x: (string | number)[]) => {
     // Case: rotated labels
     if (
       !this.props.wrapXAxisLables &&
@@ -1077,11 +1076,15 @@ export class CartesianChartBase
 
     // Case: wrapped labels
     if (this.props.wrapXAxisLables) {
+      // FIXME: Calculate the max width of lines instead of words. This requires applying
+      // the wrapping transformation earlier to obtain the actual rendered lines.
       const words: string[] = [];
       x.forEach((val: string) => {
         words.push(...val.toString().split(/\s+/));
       });
 
+      // This approach works well in most cases, since overflow typically occurs only when
+      // a single word exceeds the specified width — otherwise, the text will wrap as expected.
       const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
       return Math.max(Math.ceil(longestLabelWidth), 10);
     }

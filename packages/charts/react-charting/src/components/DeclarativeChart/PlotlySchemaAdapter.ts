@@ -1180,9 +1180,9 @@ export const transformPlotlyJsonToHeatmapProps = (
     hideTickOverlap: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
+    wrapXAxisLables: true,
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps([firstData], input.layout),
-    wrapXAxisLables: getTypeOfAxis(heatmapDataPoints[0]?.x, true) === XAxisTypes.StringAxis,
   };
 };
 
