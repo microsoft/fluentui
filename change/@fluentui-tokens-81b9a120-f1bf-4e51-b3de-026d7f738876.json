@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds color-scheme token and sets values for dark/light themes",
+  "packageName": "@fluentui/tokens",
+  "email": "DKirwan@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

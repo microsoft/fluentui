@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Set appropriate CSS color-scheme for theme",
+  "packageName": "@fluentui/react-provider",
+  "email": "DKirwan@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
