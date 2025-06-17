@@ -18,7 +18,6 @@ export function createOverflowManager(): OverflowManager {
   // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
   // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
   const sizeCache = new Map<HTMLElement, number>();
-  const liveStylesCache = new Map<HTMLElement, CSSStyleDeclaration>();
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
   // Set as true when resize observer is observing
@@ -239,8 +238,6 @@ export function createOverflowManager(): OverflowManager {
 
     container = observedContainer;
     if (container.ownerDocument.defaultView) {
-      const liveStyles = container.ownerDocument.defaultView.getComputedStyle(container);
-      liveStylesCache.set(container, liveStyles);
     }
 
     disposeResizeObserver = observeResize(container, entries => {
@@ -259,8 +256,6 @@ export function createOverflowManager(): OverflowManager {
 
     overflowItems[item.id] = item;
     if (item.element.ownerDocument.defaultView) {
-      const liveStyles = item.element.ownerDocument.defaultView.getComputedStyle(item.element);
-      liveStylesCache.set(item.element, liveStyles);
     }
 
     // some options can affect priority which are only set on `observe`
@@ -283,8 +278,6 @@ export function createOverflowManager(): OverflowManager {
   const addOverflowMenu: OverflowManager['addOverflowMenu'] = el => {
     overflowMenu = el;
     if (overflowMenu.ownerDocument.defaultView) {
-      const liveStyles = overflowMenu.ownerDocument.defaultView.getComputedStyle(overflowMenu);
-      liveStylesCache.set(overflowMenu, liveStyles);
     }
   };
 
@@ -296,15 +289,10 @@ export function createOverflowManager(): OverflowManager {
     divider.element.setAttribute(DATA_OVERFLOW_GROUP, divider.groupId);
     overflowDividers[divider.groupId] = divider;
     if (divider.element.ownerDocument.defaultView) {
-      const liveStyles = divider.element.ownerDocument.defaultView.getComputedStyle(divider.element);
-      liveStylesCache.set(divider.element, liveStyles);
     }
   };
 
   const removeOverflowMenu: OverflowManager['removeOverflowMenu'] = () => {
-    if (overflowMenu) {
-      liveStylesCache.delete(overflowMenu);
-    }
     overflowMenu = undefined;
   };
 
@@ -314,7 +302,6 @@ export function createOverflowManager(): OverflowManager {
     }
     const divider = overflowDividers[groupId];
     sizeCache.delete(divider.element);
-    liveStylesCache.delete(divider.element);
     if (divider.groupId) {
       delete overflowDividers[groupId];
       divider.element.removeAttribute(DATA_OVERFLOW_GROUP);
@@ -342,7 +329,6 @@ export function createOverflowManager(): OverflowManager {
     }
 
     sizeCache.delete(item.element);
-    liveStylesCache.delete(item.element);
     delete overflowItems[itemId];
     update();
   };
@@ -360,7 +346,6 @@ export function createOverflowManager(): OverflowManager {
     Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
     removeOverflowMenu();
     sizeCache.clear();
-    liveStylesCache.clear();
   };
 
   return {
