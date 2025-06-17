@@ -92,7 +92,7 @@ const CodeSnippetBase: React.FunctionComponent<React.PropsWithChildren<ICodeSnip
   );
 };
 
-export const CodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styled<
+export const CodeSnippet: React.FunctionComponent<React.PropsWithChildren<ICodeSnippetProps>> = styled<
   ICodeSnippetProps,
   ICodeSnippetStyleProps,
   ICodeSnippetStyles
