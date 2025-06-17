@@ -8,6 +8,11 @@ import { FluentProvider } from './FluentProvider';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 import { isConformant } from '../../testing/isConformant';
 
+jest.mock('@fluentui/react-utilities', () => ({
+  ...jest.requireActual('@fluentui/react-utilities'),
+  ...jest.requireActual('../../testing/createUseIdMock').createUseIdMock(),
+}));
+
 describe('FluentProvider', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
