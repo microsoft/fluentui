@@ -228,6 +228,7 @@ export class VerticalBarChartBase
           !isScalePaddingDefined(this.props.xAxisInnerPadding, this.props.xAxisPadding) &&
           this.props.mode !== 'histogram'
         }
+        getXAxisLabelWidth={this._getXAxisLabelWidth}
         /* eslint-disable react/jsx-no-bind */
         children={(props: IChildProps) => {
           return (
@@ -452,11 +453,14 @@ export class VerticalBarChartBase
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
-    this._xAxisInnerPadding = getScalePadding(
-      this.props.xAxisInnerPadding,
-      this.props.xAxisPadding,
-      this.props.mode === 'histogram' ? 0 : this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
-    );
+    this._xAxisInnerPadding =
+      this.props.mode === 'histogram'
+        ? 0
+        : getScalePadding(
+            this.props.xAxisInnerPadding,
+            this.props.xAxisPadding,
+            this._xAxisType === XAxisTypes.StringAxis ? 2 / 3 : 1 / 2,
+          );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
@@ -1316,7 +1320,8 @@ export class VerticalBarChartBase
         const margin1 = (totalWidth - reqWidth) / 2;
 
         let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
+        // TODO: add comment
+        if (this.props.mode !== 'histogram') {
           // Calculate the remaining width after accounting for the space required to render x-axis labels
           const step = calculateLongestLabelWidth(uniqueX as string[]) + 20;
           reqWidth = (uniqueX.length - this._xAxisInnerPadding) * step;
@@ -1398,5 +1403,23 @@ export class VerticalBarChartBase
       }
     });
     return categoryToValues;
+  };
+
+  private _getXAxisLabelWidth = (containerWidth: number): number => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return 0;
+    }
+
+    if (this._xAxisLabels.length <= 1) {
+      return containerWidth;
+    }
+
+    const totalWidth =
+      containerWidth - (this.margins.left! + this._domainMargin) - (this.margins.right! + this._domainMargin);
+    const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const numBars = this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate;
+    const bandwidth = totalWidth / numBars;
+    const step = bandwidth / (1 - this._xAxisInnerPadding);
+    return step;
   };
 }

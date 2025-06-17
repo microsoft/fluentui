@@ -38,7 +38,13 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
+import {
+  findNumericMinMaxOfY,
+  formatScientificLimitWidth,
+  getTypeOfAxis,
+  MIN_DONUT_RADIUS,
+  XAxisTypes,
+} from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -442,9 +448,10 @@ export const transformPlotlyJsonToVSBCProps = (
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const vsbcData = Object.values(mapXToDataPoints);
 
   return {
-    data: Object.values(mapXToDataPoints),
+    data: vsbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
@@ -464,6 +471,7 @@ export const transformPlotlyJsonToVSBCProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    wrapXAxisLables: getTypeOfAxis(vsbcData[0]?.xAxisPoint, true) === XAxisTypes.StringAxis,
   };
 };
 
@@ -544,9 +552,10 @@ export const transformPlotlyJsonToGVBCProps = (
   });
 
   const { chartTitle, xAxisTitle, yAxisTitle } = getTitles(input.layout);
+  const gvbcData = Object.values(mapXToDataPoints);
 
   return {
-    data: Object.values(mapXToDataPoints),
+    data: gvbcData,
     width: input.layout?.width,
     height: input.layout?.height ?? 350,
     barwidth: 'auto',
@@ -559,6 +568,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideLegend,
     roundCorners: true,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    wrapXAxisLables: getTypeOfAxis(gvbcData[0]?.name, true) === XAxisTypes.StringAxis,
   };
 };
 
@@ -673,6 +683,7 @@ export const transformPlotlyJsonToVBCProps = (
     hideLegend,
     roundCorners: true,
     ...getAxisCategoryOrderProps(input.data, input.layout),
+    wrapXAxisLables: getTypeOfAxis(vbcData[0]?.x, true) === XAxisTypes.StringAxis,
   };
 };
 
@@ -1112,6 +1123,7 @@ export const transformPlotlyJsonToHeatmapProps = (
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
     ...getAxisCategoryOrderProps([firstData], input.layout),
+    wrapXAxisLables: getTypeOfAxis(heatmapDataPoints[0]?.x, true) === XAxisTypes.StringAxis,
   };
 };
 
@@ -2005,6 +2017,7 @@ const getAxisCategoryOrderProps = (data: Data[], layout: Partial<Layout> | undef
     const isAxisTypeCategory =
       ax?.type === 'category' || (isStringArray(values) && !isNumberArray(values) && !isDateArray(values));
     if (!isAxisTypeCategory) {
+      result[propName] = 'data';
       return;
     }
 

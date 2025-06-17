@@ -104,6 +104,7 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
+  width: number;
 }
 
 export interface IRotateLabelProps {
@@ -159,6 +160,7 @@ export interface IXAxisParams {
   containerHeight: number;
   containerWidth: number;
   hideTickOverlap?: boolean;
+  xyz: (x: (string | number)[]) => number;
 }
 export interface ITickParams {
   tickValues?: Date[] | number[] | string[];
@@ -235,6 +237,7 @@ export function createNumericXAxis(
     xAxisCount,
     xAxisElement,
     hideTickOverlap,
+    xyz,
   } = xAxisParams;
   const xAxisScale = d3ScaleLinear()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -250,8 +253,7 @@ export function createNumericXAxis(
     return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 20;
+    const longestLabelWidth = xyz(xAxisScale.ticks().map(tickFormat)) + 20;
     const [start, end] = xAxisScale.range();
     tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
@@ -398,7 +400,15 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
+  const {
+    domainNRangeValues,
+    xAxisElement,
+    tickPadding = 6,
+    xAxistickSize = 6,
+    xAxisCount,
+    hideTickOverlap,
+    xyz,
+  } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -450,8 +460,7 @@ export function createDateXAxis(
     return formatDateToLocaleString(domainValue, culture, useUTC, false, formatOptions);
   };
 
-  const longestLabelWidth =
-    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '[class^="xAxis-"] text') + 40;
+  const longestLabelWidth = xyz(xAxisScale.ticks().map(tickFormat)) + 40;
   const [start, end] = xAxisScale.range();
   const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
@@ -496,6 +505,7 @@ export function createStringXAxis(
     xAxisOuterPadding,
     containerWidth,
     hideTickOverlap,
+    xyz,
   } = xAxisParams;
   const xAxisScale = d3ScaleBand()
     .domain(dataset!)
@@ -509,7 +519,7 @@ export function createStringXAxis(
     // Here, we need the width of each individual label to detect overlaps,
     // but calculateLongestLabelWidth returns the maximum pixel width from an array of labels.
     // So call this function separately for each label, instead of the entire array.
-    const tickSizes = tickValues.map(value => calculateLongestLabelWidth([value], '[class^="xAxis-"] text'));
+    const tickSizes = tickValues.map(value => xyz([value]));
     // for LTR
     let start = 0;
     let end = containerWidth;
@@ -882,13 +892,12 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip } = wrapLabelProps;
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width } = wrapLabelProps;
   if (node === null) {
     return;
   }
   const axisNode = d3Select(node).call(xAxis);
   let removeVal = 0;
-  const width = 10;
   const arr: number[] = [];
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);

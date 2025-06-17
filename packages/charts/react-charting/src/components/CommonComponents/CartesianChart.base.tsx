@@ -325,11 +325,8 @@ export class CartesianChartBase
         xAxisInnerPadding: this.props.xAxisInnerPadding,
         xAxisOuterPadding: this.props.xAxisOuterPadding,
         containerWidth: this.state.containerWidth,
-        hideTickOverlap:
-          this.props.hideTickOverlap &&
-          !this.props.rotateXAxisLables &&
-          !this.props.showXAxisLablesTooltip &&
-          !this.props.wrapXAxisLables,
+        hideTickOverlap: this.props.hideTickOverlap,
+        xyz: this._xyz,
       };
 
       const YAxisParams = {
@@ -409,6 +406,7 @@ export class CartesianChartBase
           xAxis: xScale,
           showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
           noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+          width: this.props.getXAxisLabelWidth?.(this.state.containerWidth) || 10,
         };
         const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
         // this value need to be updated for draw graph updated. So instead of using private value, using set state.
@@ -1010,41 +1008,7 @@ export class CartesianChartBase
 
   private _calculateChartMinWidth = (): number => {
     let labelWidth = 10; // Total padding on the left and right sides of the label
-
-    // Case: rotated labels
-    if (
-      !this.props.wrapXAxisLables &&
-      this.props.rotateXAxisLables &&
-      this.props.xAxisType! === XAxisTypes.StringAxis
-    ) {
-      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
-    }
-    // Case: truncated labels
-    else if (this.props.showXAxisLablesTooltip) {
-      const tickValues = this._tickValues.map(val => {
-        const numChars = this.props.noOfCharsToTruncate || 4;
-        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
-    // Case: wrapped labels
-    else if (this.props.wrapXAxisLables) {
-      const words: string[] = [];
-      this._tickValues.forEach((val: string) => {
-        words.push(...val.toString().split(/\s+/));
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
-    }
-    // Default case
-    else {
-      const longestLabelWidth = calculateLongestLabelWidth(this._tickValues, `.${this._classNames.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
+    labelWidth += this._xyz(this._tickValues);
 
     let minChartWidth = this.margins.left! + this.margins.right! + labelWidth * (this._tickValues.length - 1);
 
@@ -1086,5 +1050,43 @@ export class CartesianChartBase
           : 'values')) +
       '. '
     );
+  };
+
+  private _xyz = (x: (string | number)[]) => {
+    // Case: rotated labels
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const longestLabelWidth = calculateLongestLabelWidth(x, `.${this._classNames.xAxis} text`);
+      return Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
+    }
+
+    // Case: truncated labels
+    if (this.props.showXAxisLablesTooltip) {
+      const tickValues = x.map(val => {
+        const numChars = this.props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${this._classNames.xAxis} text`);
+      return Math.ceil(longestLabelWidth);
+    }
+
+    // Case: wrapped labels
+    if (this.props.wrapXAxisLables) {
+      const words: string[] = [];
+      x.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
+      return Math.max(Math.ceil(longestLabelWidth), 10);
+    }
+
+    // Default case
+    const longestLabelWidth = calculateLongestLabelWidth(x, `.${this._classNames.xAxis} text`);
+    return Math.ceil(longestLabelWidth);
   };
 }

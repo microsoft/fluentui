@@ -238,6 +238,7 @@ export class GroupedVerticalBarChartBase
         })}
         barwidth={this._barWidth}
         ref={this._cartesianChartRef}
+        getXAxisLabelWidth={this._getXAxisLabelWidth}
         /* eslint-disable react/jsx-no-bind */
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
@@ -739,13 +740,10 @@ export class GroupedVerticalBarChartBase
         let reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
         const margin1 = (totalWidth - reqWidth) / 2;
 
-        let margin2 = Number.POSITIVE_INFINITY;
-        if (!this.props.hideTickOverlap) {
-          // Calculate the remaining width after accounting for the space required to render x-axis labels
-          const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
-          reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
-          margin2 = (totalWidth - reqWidth) / 2;
-        }
+        // Calculate the remaining width after accounting for the space required to render x-axis labels
+        const step = calculateLongestLabelWidth(this._xAxisLabels) + 20;
+        reqWidth = (this._xAxisLabels.length - this._xAxisInnerPadding) * step;
+        const margin2 = (totalWidth - reqWidth) / 2;
 
         this._domainMargin = MIN_DOMAIN_MARGIN + Math.max(0, Math.min(margin1, margin2));
       }
@@ -866,5 +864,22 @@ export class GroupedVerticalBarChartBase
       });
     });
     return categoryToValues;
+  };
+
+  private _getXAxisLabelWidth = (containerWidth: number): number => {
+    if (this._xAxisType !== XAxisTypes.StringAxis) {
+      return 0;
+    }
+
+    if (this._xAxisLabels.length <= 1) {
+      return containerWidth;
+    }
+
+    const totalWidth =
+      containerWidth - (this.margins.left! + this._domainMargin) - (this.margins.right! + this._domainMargin);
+    const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+    const groupBandwidth = totalWidth / (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate);
+    const step = groupBandwidth / (1 - this._xAxisInnerPadding);
+    return step;
   };
 }

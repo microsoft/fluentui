@@ -774,4 +774,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * @default true
    */
   showRoundOffXTickValues?: boolean;
+
+  /**
+   *
+   */
+  getXAxisLabelWidth?: (containerWidth: number) => number;
 }
