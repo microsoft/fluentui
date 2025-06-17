@@ -8,7 +8,10 @@ type Item = {
   media: string;
   header: string;
   headerMedia: string;
-  content: string | JSX.Element;
+  content:
+    | string
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | JSX.Element;
 };
 
 const items: Item[] = [

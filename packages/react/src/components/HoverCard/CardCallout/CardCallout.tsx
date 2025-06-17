@@ -8,6 +8,7 @@ import type { ICalloutProps } from '../../../Callout';
 
 export interface ICardCalloutProps extends Omit<IBaseCardProps<{}, {}, {}>, 'content'> {
   finalHeight?: number;
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   content?: JSX.Element;
 }
 

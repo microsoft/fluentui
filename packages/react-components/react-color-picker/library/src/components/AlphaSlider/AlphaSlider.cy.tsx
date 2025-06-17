@@ -7,7 +7,10 @@ import type { AlphaSliderProps } from './AlphaSlider.types';
 import { calculateTransparencyValue } from './alphaSliderUtils';
 import { INITIAL_COLOR_HSV } from '../../utils/constants';
 
-const mountFluent = (element: JSX.Element) => {
+const mountFluent = (
+  element: // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 

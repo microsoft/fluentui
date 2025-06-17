@@ -5,8 +5,10 @@ import type { IFloatingPeopleSuggestionsProps } from './FloatingPeopleSuggestion
 import type { IPersonaProps } from '@fluentui/react/lib/Persona';
 import type { IFloatingSuggestionOnRenderItemProps } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps): JSX.Element => {
   const renderSuggestionItem = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (suggestionItemProps: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
       return SuggestionItemNormal({ ...suggestionItemProps.item });
     },

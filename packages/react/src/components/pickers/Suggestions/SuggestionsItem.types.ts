@@ -25,7 +25,7 @@ export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
 
   /** Optional renderer to override the default one for each type of picker. */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+  // eslint-disable-next-line @typescript-eslint/naming-convention, @typescript-eslint/no-deprecated
   RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /** Callback for when the user clicks on the suggestion. */

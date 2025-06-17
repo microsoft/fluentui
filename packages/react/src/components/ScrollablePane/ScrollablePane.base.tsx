@@ -192,6 +192,7 @@ export class ScrollablePaneBase
     this._async.setTimeout(this._onWindowResize, 0);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles, onScroll } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;

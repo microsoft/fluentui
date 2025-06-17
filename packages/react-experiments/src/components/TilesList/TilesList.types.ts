@@ -17,11 +17,13 @@ export interface ITilesGridItemCellProps<TItem> {
 }
 
 export interface ITilesListRowProps<TItem> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   cellElements: JSX.Element[];
   divProps: React.HTMLAttributes<HTMLDivElement>;
 }
 
 export interface ITilesListRootProps<TItem> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   surfaceElement: JSX.Element | null;
   divProps: React.HTMLAttributes<HTMLDivElement>;
   rowCount: number;
@@ -58,6 +60,7 @@ export interface ITilesGridItem<TItem> {
    * Provided positioning and sizing information in addition to the item.
    * Preferred over `onRender`.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   onRenderCell?: (props: ITilesGridItemCellProps<TItem>) => JSX.Element | null;
 }
 

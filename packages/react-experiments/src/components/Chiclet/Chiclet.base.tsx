@@ -6,6 +6,7 @@ import type { IChicletProps } from './Chiclet.types';
 import type { IChicletCardProps } from './ChicletCard.types';
 
 export class ChicletBase extends React.Component<IChicletProps, {}> {
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     const props: IChicletCardProps = this.props;
     switch (this.props.size) {

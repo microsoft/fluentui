@@ -174,8 +174,10 @@ export class BaseSelectedItemsList<T extends {}, P extends IBaseSelectedItemsLis
     return this.renderItems();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   protected renderItems = (): JSX.Element[] => {
     const { removeButtonAriaLabel } = this.props;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const onRenderItem = this.props.onRenderItem as (props: ISelectedItemProps<T>) => JSX.Element;
 
     const { items } = this.state;

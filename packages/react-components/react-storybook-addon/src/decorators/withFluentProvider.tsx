@@ -26,7 +26,11 @@ const findTheme = (themeId?: ThemeIds) => {
   return themeId ? themes[themeId] : null;
 };
 
-export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
+export const withFluentProvider = (
+  StoryFn: () => // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element,
+  context: FluentStoryContext,
+) => {
   const { globals, parameters } = context;
   const { mode } = parameters;
 

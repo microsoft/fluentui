@@ -50,6 +50,7 @@ describe('Nav', () => {
   });
 
   it('render Nav with overrides correctly', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const LinkAs = (props: IComponentAsProps<INavButtonProps>): JSX.Element | null => {
       const { defaultRender: DefaultRender, ...buttonProps } = props;
 
@@ -64,6 +65,7 @@ describe('Nav', () => {
       );
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     function onRenderNavLink(props?: INavLink, defaultRender?: IRenderFunction<INavLink>): JSX.Element | null {
       if (!props || !defaultRender) {
         return null;
@@ -75,6 +77,7 @@ describe('Nav', () => {
     function onRenderGroupHeader(
       props?: IRenderGroupHeaderProps,
       defaultRender?: IRenderFunction<IRenderGroupHeaderProps>,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element | null {
       if (!props || !defaultRender) {
         return null;

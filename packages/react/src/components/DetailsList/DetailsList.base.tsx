@@ -105,6 +105,7 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
     onToggleCollapse: (collapsed: boolean) => void;
     onActiveRowChanged: (el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
     onBlur: (event: React.FocusEvent<HTMLElement>) => void;
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     onRenderDefaultRow: (detailsRowProps: IDetailsRowProps) => JSX.Element;
   };
 
@@ -115,6 +116,7 @@ type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
  */
 const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   props: IDetailsListInnerProps,
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
 ): JSX.Element | null => {
   const { selection } = props;
 
@@ -238,12 +240,14 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   }
 
   const defaultOnRenderDetailsHeader = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (detailsHeaderProps: IDetailsHeaderProps): JSX.Element | null => {
       return <DetailsHeader {...detailsHeaderProps} />;
     },
     [],
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const defaultOnRenderDetailsFooter = React.useCallback((): JSX.Element | null => {
     return null;
   }, []);
@@ -979,6 +983,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     return (
       <DetailsListInner
@@ -1014,6 +1019,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   protected _onRenderRow = (
     props: IDetailsRowProps,
     defaultRender?: IRenderFunction<IDetailsRowProps>,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element => {
     return <DetailsRow {...props} />;
   };

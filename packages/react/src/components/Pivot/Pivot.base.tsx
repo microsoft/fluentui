@@ -99,6 +99,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       },
     }));
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const renderLinkContent = (link?: IPivotItemProps): JSX.Element | null => {
       if (!link) {
         return null;
@@ -123,9 +124,11 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       link: IPivotItemProps,
       renderPivotLinkSelectedKey: string | null | undefined,
       className: string,
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
     ): JSX.Element => {
       const { itemKey, headerButtonProps, onRenderItemLink } = link;
       const tabId = renderLinkCollection.keyToTabIdMapping[itemKey!];
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       let linkContent: JSX.Element | null;
       const isSelected: boolean = renderPivotLinkSelectedKey === itemKey;
 
@@ -201,6 +204,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       overflowMenuButtonComponentRef.current?.dismissMenu();
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const renderPivotItem = (itemKey: string | undefined, isActive: boolean): JSX.Element | null => {
       if (props.headersOnly || !itemKey) {
         return null;

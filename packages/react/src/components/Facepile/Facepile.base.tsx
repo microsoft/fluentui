@@ -37,6 +37,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     this._ariaDescriptionId = getId();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
     const {
@@ -103,6 +104,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     personas: IFacepilePersona[],
     singlePersona: boolean,
     showTooltip: boolean,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element[] {
     const {
       onRenderPersona = this._getPersonaControl,
@@ -110,6 +112,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       onRenderPersonaWrapper,
     } = this.props;
     return personas.map((persona: IFacepilePersona, index: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const personaControl: JSX.Element | null = singlePersona
         ? onRenderPersona(persona, this._getPersonaControl)
         : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
@@ -125,6 +128,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getPersonaControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
@@ -147,6 +151,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getPersonaCoinControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     return (
@@ -163,10 +168,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   };
 
   private _getElementWithOnClickEvent(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     personaControl: JSX.Element | null,
     persona: IFacepilePersona,
     showTooltip: boolean,
     index: number,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     const { keytipProps } = persona;
     return (
@@ -183,10 +190,12 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithoutOnClickEvent(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     personaControl: JSX.Element | null,
     persona: IFacepilePersona,
     showTooltip: boolean,
     index: number,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
   ): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, showTooltip, index)}>
@@ -212,6 +221,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
@@ -225,6 +235,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getDescriptiveOverflowElement(personasOverflow: IFacepilePersona[]): JSX.Element | null {
     const { personaSize } = this.props;
     if (!personasOverflow || personasOverflow.length < 1) {
@@ -252,6 +263,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getIconElement(icon: string): JSX.Element {
     const { overflowButtonProps, personaSize } = this.props;
     const overflowInitialsIcon = true;
@@ -268,6 +280,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
       </FacepileButton>
     );
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _getAddNewElement(): JSX.Element {
     const { addButtonProps, personaSize } = this.props;
 
@@ -298,17 +311,21 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderInitials(iconName: string, overflowButton?: boolean): () => JSX.Element {
     const { _classNames } = this;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return (): JSX.Element => {
       return <Icon iconName={iconName} className={overflowButton ? _classNames.overflowInitialsIcon : ''} />;
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _renderInitialsNotPictured(numPersonasNotPictured: number): () => JSX.Element {
     const { _classNames } = this;
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     return (): JSX.Element => {
       return (
         <span className={_classNames.overflowInitialsIcon}>

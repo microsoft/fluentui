@@ -114,6 +114,9 @@ describe('print', () => {
       animationDelay: '500ms',
     });
 
-    expect(renderer.create(<div className={fadeInClassName} />).toJSON()).toMatchSnapshot();
+    expect(
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      renderer.create(<div className={fadeInClassName} />).toJSON(),
+    ).toMatchSnapshot();
   });
 });

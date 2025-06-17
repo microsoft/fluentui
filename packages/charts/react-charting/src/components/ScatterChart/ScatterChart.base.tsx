@@ -69,6 +69,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   const _uniqueCallOutID = React.useRef<string | null>(null);
   const _refArray = React.useMemo(() => [], []);
   const margins = React.useRef<IMargins | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   const renderSeries = React.useRef<JSX.Element[]>([]);
   let _xAxisLabels: string[] = [];
   const _xAxisCalloutAccessibilityData: IAccessibilityProps = {};
@@ -168,6 +169,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
     setIsSelectedLegend(false);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   function _createLegends(data: ScatterChartDataWithIndex[]): JSX.Element {
     const { legendProps } = props;
     const isLegendMultiSelectEnabled = !!(legendProps && !!legendProps.canSelectMultipleLegends);
@@ -408,7 +410,9 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
   }
 
   const _createPlot = React.useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     (xElement: SVGElement, containerHeight: number): JSX.Element[] => {
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
       const series: JSX.Element[] = [];
       if (isSelectedLegend) {
         _points.current = selectedLegendPoints;
@@ -462,6 +466,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       })!;
 
       for (let i = _points.current?.length - 1; i >= 0; i--) {
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         const pointsForSeries: JSX.Element[] = [];
 
         const legendVal: string = _points.current?.[i]?.legend;
