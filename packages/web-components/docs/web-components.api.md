@@ -1984,6 +1984,9 @@ export const colorPaletteYellowForeground3 = "var(--colorPaletteYellowForeground
 export const colorPaletteYellowForegroundInverted = "var(--colorPaletteYellowForegroundInverted)";
 
 // @public
+export const colorScheme = "var(--colorScheme)";
+
+// @public
 export const colorScrollbarOverlay = "var(--colorScrollbarOverlay)";
 
 // @public

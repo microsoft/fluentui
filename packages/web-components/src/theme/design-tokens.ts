@@ -997,6 +997,12 @@ export const colorBrandShadowAmbient = 'var(--colorBrandShadowAmbient)';
 export const colorBrandShadowKey = 'var(--colorBrandShadowKey)';
 
 /**
+ * CSS custom property value for the {@link @fluentui/tokens#colorScheme | `colorScheme`} design token.
+ * @public
+ */
+export const colorScheme = 'var(--colorScheme)';
+
+/**
  * CSS custom property value for the {@link @fluentui/tokens#colorPaletteRedBackground1 | `colorPaletteRedBackground1`} design token.
  * @public
  */
