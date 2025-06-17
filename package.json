@@ -368,7 +368,9 @@
     ],
     "nohoist": [
       "@fluentui/react-bindings/@testing-library/react-hooks",
-      "@fluentui/docs/react-hot-loader"
+      "@fluentui/docs/react-hot-loader",
+      "@fluentui/docs/@types/react-custom-scrollbars",
+      "@fluentui/react-northstar-proptypes/@types/react-custom-scrollbars"
     ]
   },
   "resolutions": {
