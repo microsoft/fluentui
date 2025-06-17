@@ -7,6 +7,7 @@ interface PrimitiveComponent {
    * Infers props from JSX.IntrinsicElements based on "as" value. Explicitly avoids `React.ElementType` and manually
    * narrow the prop types so that events are typed when using JSX.IntrinsicElements.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   <As extends keyof JSX.IntrinsicElements>(props: { as?: As } & JSX.IntrinsicElements[As]): React.ReactElement | null;
 
   displayName: string;

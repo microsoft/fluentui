@@ -49,7 +49,13 @@ const callbacks: ReactCallbackName[] = [
 /**
  * React has special handling for some events, this means that they should be called on proper elements.
  */
-const specialElements: Partial<Record<ReactCallbackName, keyof JSX.IntrinsicElements>> = {
+const specialElements: Partial<
+  Record<
+    ReactCallbackName,
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
+    keyof JSX.IntrinsicElements
+  >
+> = {
   onBlur: 'button',
   onFocus: 'button',
   onInvalid: 'input',

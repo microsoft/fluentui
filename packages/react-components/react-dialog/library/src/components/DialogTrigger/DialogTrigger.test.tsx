@@ -33,6 +33,7 @@ describe('DialogTrigger', () => {
    * Note: see more visual regression tests for DialogTrigger in /apps/vr-tests.
    */
   it('renders a default state', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     const component = renderer.create(
       <DialogTrigger disableButtonEnhancement>
         <button>Dialog trigger</button>

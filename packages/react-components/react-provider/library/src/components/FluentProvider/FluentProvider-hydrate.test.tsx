@@ -62,6 +62,7 @@ describe('FluentProvider (hydration)', () => {
     document.body.appendChild(container);
     container.innerHTML = renderHTML(<FluentProvider targetDocument={SSR_TARGET_DOCUMENT} />);
 
+    // eslint-disable-next-line @typescript-eslint/no-deprecated -- FIXME
     ReactDOM.hydrate(<FluentProvider />, container);
     expect(logErrorSpy).toHaveBeenCalledTimes(0);
   });

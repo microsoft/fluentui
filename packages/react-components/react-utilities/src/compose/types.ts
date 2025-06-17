@@ -103,9 +103,20 @@ type EmptyIntrinsicElements =
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type extends EmptyIntrinsicElements
-  ? PropsWithoutChildren<React.PropsWithRef<JSX.IntrinsicElements[Type]>>
-  : React.PropsWithRef<JSX.IntrinsicElements[Type]>;
+type IntrinsicElementProps<
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
+  Type extends keyof JSX.IntrinsicElements,
+> = Type extends EmptyIntrinsicElements
+  ? PropsWithoutChildren<
+      React.PropsWithRef<
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        JSX.IntrinsicElements[Type]
+      >
+    >
+  : React.PropsWithRef<
+      // eslint-disable-next-line @typescript-eslint/no-deprecated
+      JSX.IntrinsicElements[Type]
+    >;
 
 /**
  * The props type and shorthand value for a slot. Type is either a single intrinsic element like `'div'`,
@@ -130,12 +141,16 @@ type IntrinsicElementProps<Type extends keyof JSX.IntrinsicElements> = Type exte
  * ```
  */
 export type Slot<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Type extends keyof JSX.IntrinsicElements | ComponentType<any> | UnknownSlotProps,
+  Type extends  // eslint-disable-next-line @typescript-eslint/no-deprecated
+    | keyof JSX.IntrinsicElements
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    | ComponentType<any>
+    | UnknownSlotProps,
   AlternateAs extends keyof JSX.IntrinsicElements = never,
 > = IsSingleton<Extract<Type, string>> extends true
   ?
       | WithSlotShorthandValue<
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           Type extends keyof JSX.IntrinsicElements // Intrinsic elements like `div`
             ? { as?: Type } & WithSlotRenderFunction<IntrinsicElementProps<Type>>
             : Type extends ComponentType<infer Props> // Component types like `typeof Button`
@@ -267,7 +282,10 @@ export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
      */
     [SLOT_ELEMENT_TYPE_SYMBOL]:
       | ComponentType<Props>
-      | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+      | (Props extends AsIntrinsicElement<infer As>
+          ? As
+          : // eslint-disable-next-line @typescript-eslint/no-deprecated
+            keyof JSX.IntrinsicElements);
     /**
      * @internal
      * The original className prop for the slot, before being modified by the useStyles hook.

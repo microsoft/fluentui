@@ -15,7 +15,8 @@ type UseComboboxFilterConfig<T extends { children: React.ReactNode; value: strin
   optionToText?: (option: T) => string;
 
   /** Provides a custom render for the option. */
-  renderOption?: (option: T) => JSX.Element;
+  renderOption?: (option: T) => // eslint-disable-next-line @typescript-eslint/no-deprecated
+  JSX.Element;
 };
 
 function defaultFilter(optionText: string, query: string) {

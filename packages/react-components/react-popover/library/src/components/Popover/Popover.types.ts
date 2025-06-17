@@ -25,6 +25,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Can contain two children including `PopoverTrigger` and `PopoverSurface`.
    * Alternatively can only contain `PopoverSurface` if using a custom `target`.
    */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   children: [JSX.Element, JSX.Element] | JSX.Element;
 
   /**
