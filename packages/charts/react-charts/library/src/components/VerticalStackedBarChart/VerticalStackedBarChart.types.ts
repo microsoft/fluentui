@@ -76,9 +76,9 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
   onRenderCalloutPerDataPoint?: RenderFunction<VSChartDataPoint>;
 
   /**
-   * yMinValue is supported for bar charts that has only lines
+   * yMinValue is not supported for bar charts, so only allow "undefined"
    */
-  yMinValue?: number | undefined;
+  yMinValue?: undefined;
 
   /**
    * Allow hover actions on the legend

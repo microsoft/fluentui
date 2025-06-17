@@ -1324,7 +1324,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
-    yMinValue?: number | undefined;
+    yMinValue?: undefined;
 }
 
 // @public

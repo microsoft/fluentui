@@ -69,7 +69,7 @@ export const LabelLink: React.FunctionComponent<LabelLinkProps> = props => {
 
   return (
     <>
-      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }} role="button">
+      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
           x={props.labelDef.x}
