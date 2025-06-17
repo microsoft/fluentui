@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { LegendShape } from './Legends.types';
-import { CustomPoints, getSecureProps, getShapePath, isOpenShape, scatterPointPaths } from '../../utilities/utilities';
+import { DataPointShape } from './Legends.types';
+import { CustomPoints, getSecureProps, getShapePath, isOpenShape, pointPaths } from '../../utilities/shape-utilities';
 
 export interface IShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;
   pathProps: React.SVGAttributes<SVGPathElement>;
-  shape: LegendShape;
+  shape: DataPointShape;
   classNameForNonSvg?: string;
   isOpenShape?: boolean;
 }
 
 // Legacy point paths for backward compatibility
-const legacyPointPaths: { [key: string]: string } = {
+const customPointPaths: { [key: string]: string } = {
   [`${CustomPoints[CustomPoints.dottedLine]}`]: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
-const pointPath = { ...scatterPointPaths, ...legacyPointPaths };
+const pointPath = { ...pointPaths, ...customPointPaths };
 
 const getViewBoxForShape = (shapeName: string): string => {
   if (shapeName === 'dottedLine' || shapeName === 'pyramid') {
@@ -26,12 +26,12 @@ const getViewBoxForShape = (shapeName: string): string => {
 };
 
 export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
-  if (Object.keys(pointPath).indexOf(shape) === -1) {
+  if (Object.keys(pointPath).indexOf(String(shape)) === -1) {
     return <div className={classNameForNonSvg} />;
   }
 
   return (
-    <svg width={14} height={14} viewBox={getViewBoxForShape(shape)} {...getSecureProps(svgProps)}>
+    <svg width={14} height={14} viewBox={getViewBoxForShape(String(shape))} {...getSecureProps(svgProps)}>
       <path
         d={getShapePath(shape)}
         {...getSecureProps(pathProps)}

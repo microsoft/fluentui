@@ -15,9 +15,9 @@ export type {
   ILegendsProps,
   ILegendsStyles,
   IShapeProps,
-  LegendShape,
+  DataPointShape,
 } from './Legends';
-export { Legends, Shape } from './Legends';
+export { Legends } from './Legends';
 export type {
   IColorFillBarData,
   IColorFillBarsProps,
@@ -142,6 +142,7 @@ export type {
 export { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 export { DataVizPalette, getColorFromToken, getNextColor } from './utilities/colors';
 export { DataVizGradientPalette, getGradientFromToken, getNextGradient } from './utilities/gradients';
+export { getShapePath, isOpenShape } from './utilities/shape-utilities';
 export type { IGaugeChartProps, IGaugeChartSegment, IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart';
 export { GaugeChart, GaugeChartVariant, GaugeValueFormat } from './GaugeChart';
 export type { DeclarativeChartProps, Schema, IDeclarativeChart } from './DeclarativeChart';

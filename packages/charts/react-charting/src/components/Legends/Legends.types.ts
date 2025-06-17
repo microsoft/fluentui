@@ -4,7 +4,7 @@ import { IRefObject, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilitie
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
-import { CustomPoints, Points } from '../../utilities/utilities';
+import { CustomPoints, Points } from '../../utilities/shape-utilities';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -116,7 +116,7 @@ export interface ILegend {
   /**
    * The shape for the legend
    */
-  shape?: LegendShape;
+  shape?: DataPointShape;
 
   /**
    * Indicated whether or not to apply stripe pattern
@@ -278,7 +278,7 @@ export interface ILegendsProps {
   /**
    * The shape for the legend.
    */
-  shape?: LegendShape;
+  shape?: DataPointShape;
 
   /**
    * Callback to access the public methods and properties of the component.
@@ -293,7 +293,7 @@ export interface ILegendsProps {
  * triangle: show the triangle legend
  * {@docCategory Legends}
  */
-export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
+export type DataPointShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;
 
 /**
  * {@docCategory Legends}

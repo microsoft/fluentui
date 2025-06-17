@@ -22,8 +22,6 @@ import {
   YAxisType,
   createWrapOfXLabels,
   rotateXAxisLabels,
-  Points,
-  pointTypes,
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
@@ -32,9 +30,10 @@ import {
   truncateString,
   tooltipOfAxislabels,
 } from '../../utilities/index';
-import { LegendShape, Shape } from '../Legends/index';
+import { DataPointShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
+import { Points, pointTypes } from '../../utilities/shape-utilities';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = React.lazy(() =>
@@ -907,7 +906,7 @@ export class CartesianChartBase
                   className: _classNames.shapeStyles,
                 }}
                 pathProps={{ fill: xValue.color }}
-                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
+                shape={Points[xValue.index! % Object.keys(pointTypes).length] as DataPointShape}
               />
             )}
             <div>
