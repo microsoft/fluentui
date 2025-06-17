@@ -297,7 +297,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
   }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength, gap]);
 
-  // We use this ref as a constant source to access the virtualizer's state imperatively
+  // We store the number of items since last render, we will allow an update if the number of items changes
   const previousNumItems = React.useRef<number>(numItems);
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
