@@ -500,6 +500,10 @@ export type ColorVariants = {
   tint60: string;
 };
 
+export type ColorScheme = {
+  colorScheme: 'light' | 'dark';
+};
+
 export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 120 | 130 | 140 | 150 | 160;
 
 export type BrandVariants = Record<Brands, string>;
@@ -788,6 +792,7 @@ export type Theme = FontSizeTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
   ColorTokens &
-  ZIndexTokens;
+  ZIndexTokens &
+  ColorScheme;
 
 export type PartialTheme = Partial<Theme>;

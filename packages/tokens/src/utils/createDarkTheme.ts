@@ -29,5 +29,7 @@ export const createDarkTheme: (brand: BrandVariants) => Theme = brand => {
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
     ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),
+
+    colorScheme: 'dark',
   };
 };

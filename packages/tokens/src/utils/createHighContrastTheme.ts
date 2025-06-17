@@ -29,5 +29,7 @@ export const createHighContrastTheme = (): Theme => {
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
     ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),
+
+    colorScheme: 'dark',
   };
 };

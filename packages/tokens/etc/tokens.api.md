@@ -449,7 +449,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & ZIndexTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & ZIndexTokens & ColorScheme;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;

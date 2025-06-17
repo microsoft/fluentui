@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
     textAlign: 'left',
+    colorScheme: tokens.colorScheme,
     ...typographyStyles.body1,
   },
 });

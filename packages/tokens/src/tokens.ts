@@ -169,6 +169,9 @@ export const tokens: Record<keyof Theme, string> = {
   colorBrandShadowAmbient: 'var(--colorBrandShadowAmbient)',
   colorBrandShadowKey: 'var(--colorBrandShadowKey)',
 
+  // Color scheme tokens
+  colorScheme: 'var(--colorScheme)',
+
   // Color palette tokens
 
   // Color palette red tokens
