@@ -255,13 +255,9 @@ import {
   backgroundCardOnFlyoutDefaultPressedRaw,
   backgroundCardOnFlyoutDefaultDisabledRaw,
   textStyleDefaultDisplayWeightRaw,
-  shadowFlyoutKeyRaw,
-  shadowFlyoutAmbientRaw,
-  shadowToolbarKeyRaw,
-  shadowToolbarAmbientRaw,
-  shadowWindowActiveKeyRaw,
-  shadowWindowActiveAmbientRaw,
-  shadowWindowInactiveAmbientRaw,
+  shadowFlyoutRaw,
+  shadowToolbarRaw,
+  shadowWindowActiveRaw,
 } from './variables';
 
 export const textGlobalDisplay1FontSize = `var(${textGlobalDisplay1FontSizeRaw})`;
@@ -463,10 +459,6 @@ export const backgroundCardOnFlyoutDefaultHover = `var(${backgroundCardOnFlyoutD
 export const backgroundCardOnFlyoutDefaultPressed = `var(${backgroundCardOnFlyoutDefaultPressedRaw})`;
 export const backgroundCardOnFlyoutDefaultDisabled = `var(${backgroundCardOnFlyoutDefaultDisabledRaw})`;
 export const textStyleDefaultDisplayWeight = `var(${textStyleDefaultDisplayWeightRaw})`;
-export const shadowFlyoutKey = `var(${shadowFlyoutKeyRaw})`;
-export const shadowFlyoutAmbient = `var(${shadowFlyoutAmbientRaw})`;
-export const shadowToolbarKey = `var(${shadowToolbarKeyRaw})`;
-export const shadowToolbarAmbient = `var(${shadowToolbarAmbientRaw})`;
-export const shadowWindowActiveKey = `var(${shadowWindowActiveKeyRaw})`;
-export const shadowWindowActiveAmbient = `var(${shadowWindowActiveAmbientRaw})`;
-export const shadowWindowInactiveAmbient = `var(${shadowWindowInactiveAmbientRaw})`;
+export const shadowFlyout = `var(${shadowFlyoutRaw})`;
+export const shadowToolbar = `var(${shadowToolbarRaw})`;
+export const shadowWindowActive = `var(${shadowWindowActiveRaw})`;

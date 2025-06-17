@@ -50,5 +50,4 @@ export const ctrlListLgIndentLevel1Raw = '--smtc-ctrl-list-lg-indent-level1';
 export const ctrlListLgIndentLevel2Raw = '--smtc-ctrl-list-lg-indent-level2';
 export const ctrlListLgIndentLevel3Raw = '--smtc-ctrl-list-lg-indent-level3';
 export const ctrlListSplitDividerShowDividerRaw = '--smtc-ctrl-list-split-divider-show-divider';
-export const ctrlListShadowSelectedKeyRaw = '--smtc-ctrl-list-shadow-selected-key-y';
-export const ctrlListShadowSelectedAmbientRaw = '--smtc-ctrl-list-shadow-selected-ambient';
+export const ctrlListShadowSelectedRaw = '--smtc-ctrl-list-shadow-selected';
