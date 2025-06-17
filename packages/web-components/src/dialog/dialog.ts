@@ -4,6 +4,8 @@ import { DialogType } from './dialog.options.js';
 /**
  * A Dialog Custom HTML Element.
  *
+ * @tag fluent-dialog
+ *
  * @public
  */
 export class Dialog extends FASTElement {
@@ -92,10 +94,10 @@ export class Dialog extends FASTElement {
    * @returns boolean
    */
   public clickHandler(event: Event): boolean {
-    event.preventDefault();
     if (this.dialog.open && this.type !== DialogType.alert && event.target === this.dialog) {
       this.hide();
     }
+
     return true;
   }
 }

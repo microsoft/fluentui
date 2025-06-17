@@ -10,6 +10,9 @@ export { VerticalBarAxisTooltip } from './VerticalBarChartAxisTooltip.stories';
 export { VerticalBarRotateLabels } from './VerticalBarChartRotateLabels.stories';
 export { VerticalBarStyled } from './VerticalBarChartStyled.stories';
 export { VerticalBarDynamic } from './VerticalBarChartDynamic.stories';
+export { VerticalBarAllNegative } from './VerticalBarChartAllNegative.stories';
+export { VerticalBarNegative } from './VerticalBarChartNegative.stories';
+export { VerticalBarChartResponsive } from './VerticalBarChartResponsive.stories';
 
 export default {
   title: 'Charts/VerticalBarChart',

@@ -20,6 +20,8 @@ import { convertPixelToPercent } from './slider-utilities.js';
 /**
  * The base class used for constructing a fluent-slider custom element
  *
+ * @tag fluent-slider
+ *
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
@@ -60,9 +62,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr
   public size?: SliderSize;
-  protected sizeChanged(prev: SliderSize | undefined, next: SliderSize | undefined) {
-    swapStates(this.elementInternals, prev, next, SliderSize);
-  }
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
@@ -501,8 +500,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public orientation?: Orientation;
   protected orientationChanged(prev: Orientation | undefined, next: Orientation | undefined) {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
-
-    swapStates(this.elementInternals, prev, next, Orientation);
 
     if (this.$fastController.isConnected) {
       this.setSliderPosition();

@@ -1,5 +1,5 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
-import { max as d3Max, min as d3Min } from 'd3-array';
+import { max as d3Max, min as d3Min, ticks as d3Ticks, nice as d3nice } from 'd3-array';
 import {
   scaleLinear as d3ScaleLinear,
   scaleBand as d3ScaleBand,
@@ -54,6 +54,11 @@ import {
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import {
+  formatDateToLocaleString,
+  formatToLocaleString,
+  getMultiLevelDateTimeFormatOptions,
+} from '@fluentui/chart-utilities';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;
@@ -168,6 +173,36 @@ export interface IYAxisParams {
   yAxisPadding?: number;
 }
 
+function yAxisTickFormatterInternal(value: number, limitWidth: boolean = false): string {
+  // Use SI format prefix with 2 decimal places without insignificant trailing zeros
+  let formatter = d3FormatPrefix('.2~', value);
+
+  if (Math.abs(value) < 1) {
+    // Don't use SI notation for small numbers as it is less readable
+    formatter = d3Format('.2~g');
+  } else if (limitWidth && Math.abs(value) >= 1000) {
+    // If width is limited, use SI format prefix with 1 point precision
+    formatter = d3FormatPrefix('.1~', value);
+  }
+  const formattedValue = formatter(value);
+
+  // Replace 'G' with 'B' if the value is greater than 10^9 as it is a more common convention
+  if (Math.abs(value) >= 1e9) {
+    return formattedValue.replace('G', 'B');
+  }
+
+  return formattedValue;
+}
+
+/**
+ * Formatter for y axis ticks.
+ * @param value - The number to format.
+ * @returns The formatted string .
+ */
+export function defaultYAxisTickFormatter(value: number): string {
+  return yAxisTickFormatterInternal(value);
+}
+
 /**
  * Create Numeric X axis
  * @export
@@ -199,13 +234,13 @@ export function createNumericXAxis(
       return d3Format(tickParams.tickFormat)(domainValue);
     }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
-    return convertToLocaleString(xAxisValue, culture) as string;
+    return formatToLocaleString(xAxisValue, culture) as string;
   };
   if (hideTickOverlap && typeof xAxisCount === 'undefined') {
     const longestLabelWidth =
       calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 20;
     const [start, end] = xAxisScale.range();
-    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
+    tickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
   }
 
   const xAxis = d3AxisBottom(xAxisScale)
@@ -229,17 +264,83 @@ export function createNumericXAxis(
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: string | boolean) {
+/**
+ * This function returns a multilevel formatter for a given date range.
+ * It determines the appropriate date format to accommodate each tick value.
+ * The goal is to represent the date label in the smallest possible format without loss of information.
+ * The challenge here is to adhere to locale specific formats while ensuring the complete label is shown.
+ * There is an exhaustive map of all possible date/time units and their respective formats.
+ * Based on the range of formatting granularity levels, a format spanning the range is returned.
+ * @param startLevel - The starting level of the date format.
+ * @param endLevel - The ending level of the date format.
+ * @param locale - The locale object for formatting.
+ * @param useUTC
+ * @returns
+ */
+function getMultiLevelD3DateFormatter(
+  startLevel: number,
+  endLevel: number,
+  locale?: d3TimeLocaleObject,
+  useUTC?: boolean,
+) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
-  const formatMillisecond = timeFormat('.%L');
-  const formatSecond = timeFormat(':%S');
-  const formatMinute = timeFormat('%I:%M');
-  const formatHour = timeFormat('%I %p');
-  const formatDay = timeFormat('%a %d');
-  const formatWeek = timeFormat('%b %d');
-  const formatMonth = timeFormat('%B');
-  const formatYear = timeFormat('%Y');
 
+  // Refer to https://d3js.org/d3-time-format#locale_format to see explanation about each format specifier
+  const DEFAULT = '%c';
+  const MS = '.%L';
+  const MS_S = ':%S.%L';
+  const MS_S_MIN = '%M:%S.%L';
+  const MS_S_MIN_H = '%-I:%M:%S.%L %p';
+  const MS_S_MIN_H_D = '%a %d, %X';
+  const MS_S_MIN_H_D_W = '%b %d, %X';
+  const MS_S_MIN_H_D_W_M = MS_S_MIN_H_D_W;
+  const MS_S_MIN_H_D_W_M_Y = DEFAULT;
+  const S = ':%S';
+  const S_MIN = '%-I:%M:%S';
+  const S_MIN_H = '%X';
+  const S_MIN_H_D = MS_S_MIN_H_D;
+  const S_MIN_H_D_W = MS_S_MIN_H_D_W;
+  const S_MIN_H_D_W_M = MS_S_MIN_H_D_W_M;
+  const S_MIN_H_D_W_M_Y = DEFAULT;
+  const MIN = '%-I:%M %p';
+  const MIN_H = MIN;
+  const MIN_H_D = '%a %d, %-I:%M %p';
+  const MIN_H_D_W = '%b %d, %-I:%M %p';
+  const MIN_H_D_W_M = MIN_H_D_W;
+  const MIN_H_D_W_M_Y = '%x, %-I:%M %p';
+  const H = '%-I %p';
+  const H_D = '%a %d, %-I %p';
+  const H_D_W = '%b %d, %-I %p';
+  const H_D_W_M = H_D_W;
+  const H_D_W_M_Y = '%x, %-I %p';
+  const D = '%a %d';
+  const D_W = '%b %d';
+  const D_W_M = D_W;
+  const D_W_M_Y = '%x';
+  const W = D_W;
+  const W_M = W;
+  const W_M_Y = D_W_M_Y;
+  const M = '%B';
+  const M_Y = '%b %Y';
+  const Y = '%Y';
+
+  const MULTI_LEVEL_DATE_TIME_FORMATS = [
+    // ms, s, min, h, d, w, m, y
+    [MS, MS_S, MS_S_MIN, MS_S_MIN_H, MS_S_MIN_H_D, MS_S_MIN_H_D_W, MS_S_MIN_H_D_W_M, MS_S_MIN_H_D_W_M_Y], // ms
+    [DEFAULT, S, S_MIN, S_MIN_H, S_MIN_H_D, S_MIN_H_D_W, S_MIN_H_D_W_M, S_MIN_H_D_W_M_Y], // s
+    [DEFAULT, DEFAULT, MIN, MIN_H, MIN_H_D, MIN_H_D_W, MIN_H_D_W_M, MIN_H_D_W_M_Y], // min
+    [DEFAULT, DEFAULT, DEFAULT, H, H_D, H_D_W, H_D_W_M, H_D_W_M_Y], // h
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, D, D_W, D_W_M, D_W_M_Y], // d
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, W, W_M, W_M_Y], // w
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, M, M_Y], // m
+    [DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, Y], // y
+  ];
+
+  const formatter = timeFormat(MULTI_LEVEL_DATE_TIME_FORMATS[startLevel][endLevel]);
+  return formatter;
+}
+
+function getDateFormatLevel(date: Date, useUTC?: boolean) {
   const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
   const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
   const timeHour = useUTC ? d3UtcHour : d3TimeHour;
@@ -248,23 +349,20 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: string | 
   const timeWeek = useUTC ? d3UtcWeek : d3TimeWeek;
   const timeYear = useUTC ? d3UtcYear : d3TimeYear;
 
-  return (
-    timeSecond(date) < date
-      ? formatMillisecond
-      : timeMinute(date) < date
-      ? formatSecond
-      : timeHour(date) < date
-      ? formatMinute
-      : timeDay(date) < date
-      ? formatHour
-      : timeMonth(date) < date
-      ? timeWeek(date) < date
-        ? formatDay
-        : formatWeek
-      : timeYear(date) < date
-      ? formatMonth
-      : formatYear
-  )(date);
+  const formats = [
+    { formatLevel: 0, condition: (d: Date) => timeSecond(d) < d }, // Milliseconds
+    { formatLevel: 1, condition: (d: Date) => timeMinute(d) < d }, // Seconds
+    { formatLevel: 2, condition: (d: Date) => timeHour(d) < d }, // Minutes
+    { formatLevel: 3, condition: (d: Date) => timeDay(d) < d }, // Hours
+    { formatLevel: 4, condition: (d: Date) => timeMonth(d) < d && timeWeek(d) < d }, // Days
+    { formatLevel: 5, condition: (d: Date) => timeMonth(d) < d }, // Weeks
+    { formatLevel: 6, condition: (d: Date) => timeYear(d) < d }, // Months
+    { formatLevel: 7, condition: () => true }, // Years (default)
+  ];
+
+  const matchedFormat = formats.find(({ condition }) => condition(date));
+
+  return matchedFormat?.formatLevel ?? 7;
 }
 
 /**
@@ -282,30 +380,47 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: string | boolean,
 ) {
-  const {
-    domainNRangeValues,
-    xAxisElement,
-    tickPadding = 6,
-    xAxistickSize = 6,
-    xAxisCount,
-    hideTickOverlap,
-  } = xAxisParams;
-  const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount } = xAxisParams;
+  const isUtcSet = useUTC === true || useUTC === 'utc';
+  const xAxisScale = isUtcSet ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
-    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
+    .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue])
+    .nice();
 
   let tickCount = xAxisCount ?? 6;
+
+  let lowestFormatLevel = 100;
+  let highestFormatLevel = -1;
+
+  const locale = timeFormatLocale ? d3TimeFormatLocale(timeFormatLocale) : undefined;
+
+  xAxisScale.ticks().forEach((domainValue: Date) => {
+    const formatLevel = getDateFormatLevel(domainValue, isUtcSet);
+
+    if (formatLevel > highestFormatLevel) {
+      highestFormatLevel = formatLevel;
+    }
+    if (formatLevel < lowestFormatLevel) {
+      lowestFormatLevel = formatLevel;
+    }
+  });
+
+  const formatOptions = options ?? getMultiLevelDateTimeFormatOptions(lowestFormatLevel, highestFormatLevel);
+
+  const formatFn: (date: Date) => string = getMultiLevelD3DateFormatter(
+    lowestFormatLevel,
+    highestFormatLevel,
+    locale,
+    isUtcSet,
+  );
+
   const tickFormat = (domainValue: Date, _index: number) => {
     if (customDateTimeFormatter) {
       return customDateTimeFormatter(domainValue);
     }
-    if (culture && options) {
-      return domainValue.toLocaleString(culture, options);
-    }
     if (timeFormatLocale) {
-      const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
-      return multiFormat(domainValue, locale, useUTC);
+      return formatFn(domainValue);
     }
     if (culture === undefined && tickParams.tickFormat) {
       if (useUTC) {
@@ -314,14 +429,15 @@ export function createDateXAxis(
         return d3TimeFormat(tickParams.tickFormat)(domainValue);
       }
     }
-    return multiFormat(domainValue, undefined, useUTC);
+
+    return formatDateToLocaleString(domainValue, culture, useUTC ? true : false, false, formatOptions);
   };
-  if (hideTickOverlap && typeof xAxisCount === 'undefined') {
-    const longestLabelWidth =
-      calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 40;
-    const [start, end] = xAxisScale.range();
-    tickCount = Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth));
-  }
+
+  const longestLabelWidth =
+    calculateLongestLabelWidth(xAxisScale.ticks().map(tickFormat), '.fui-cart__xAxis text') + 40;
+  const [start, end] = xAxisScale.range();
+  const maxPossibleTickCount = Math.min(Math.max(1, Math.floor(Math.abs(end - start) / longestLabelWidth)), 10);
+  tickCount = Math.min(maxPossibleTickCount, xAxisCount ?? tickCount);
 
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
@@ -372,7 +488,7 @@ export function createStringXAxis(
 
   let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   const tickFormat = (domainValue: string, _index: number) => {
-    return convertToLocaleString(domainValue, culture) as string;
+    return formatToLocaleString(domainValue, culture) as string;
   };
   if (hideTickOverlap) {
     let nonOverlappingTickValues = [];
@@ -421,6 +537,35 @@ export function useRtl() {
   return dir === 'rtl';
 }
 
+function isPowerOf10(num: number): boolean {
+  const roundedfinalYMax = handleFloatingPointPrecisionError(num);
+  return Math.log10(roundedfinalYMax) % 1 === 0;
+}
+
+//for reference, go through this 'https://docs.python.org/release/2.5.1/tut/node16.html'
+function handleFloatingPointPrecisionError(num: number): number {
+  const rounded = Math.round(num);
+  return Math.abs(num - rounded) < 1e-6 ? rounded : num;
+}
+
+/**
+ * This method is used to calculate the rounded tick values for the y-axis
+ * @param {number} minVal
+ * @param {number} maxVal
+ * @param {number} splitInto
+ * @returns {number[]}
+ */
+function calculateRoundedTicks(minVal: number, maxVal: number, splitInto: number) {
+  const finalYmin = minVal >= 0 && minVal === maxVal ? 0 : minVal;
+  const finalYmax = minVal < 0 && minVal === maxVal ? 0 : maxVal;
+  const ticksInterval = d3nice(finalYmin, finalYmax, splitInto);
+  const ticks = d3Ticks(ticksInterval[0], ticksInterval[ticksInterval.length - 1], splitInto);
+  if (ticks[ticks.length - 1] > finalYmax && isPowerOf10(finalYmax)) {
+    ticks.pop();
+  }
+  return ticks;
+}
+
 /**
  * This method used for creating data points for the y axis.
  * @export
@@ -435,13 +580,37 @@ export function prepareDatapoints(
   minVal: number,
   splitInto: number,
   isIntegralDataset: boolean,
+  roundedTicks?: boolean,
 ): number[] {
+  if (roundedTicks) {
+    return calculateRoundedTicks(minVal, maxVal, splitInto);
+  }
   const val = isIntegralDataset
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto >= 1
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto;
-  const dataPointsArray: number[] = [minVal, minVal + val];
+  /*
+    For cases where we have negative and positive values
+    The dataPointsArray is filled from 0 to minVal by val difference
+    Then the array is reversed and values from 0(excluding 0) to maxVal are appended
+    This ensures presence of 0 to act as an anchor reference.
+    For simple cases where the scale may not encounter such a need for 0,
+    We simply fill from minVal to maxVal
+  */
+  const dataPointsArray: number[] = [minVal < 0 && maxVal >= 0 ? 0 : minVal];
+  /*For the case of all positive or all negative, we need to add another value
+     in array for atleast one interval, but in case of mix of positive and negative,
+     there will always be one more entry that will be added by the logic we have*/
+  if (dataPointsArray[0] === minVal) {
+    dataPointsArray.push(minVal + val);
+  }
+  if (minVal < 0 && maxVal >= 0) {
+    while (dataPointsArray[dataPointsArray.length - 1] > minVal) {
+      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] - val);
+    }
+    dataPointsArray.reverse();
+  }
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
   }
@@ -462,12 +631,21 @@ export function createYAxis(
   barWidth: number,
   isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, chartType, useSecondaryYScale);
+      return createNumericYAxisForOtherCharts(
+        yAxisParams,
+        isRtl,
+        axisData,
+        isIntegralDataset,
+        chartType,
+        useSecondaryYScale,
+        roundedTicks,
+      );
   }
 }
 
@@ -499,18 +677,19 @@ export function createYAxisForHorizontalBarChartWithAxis(
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   return yAxisScale;
 }
 
-export function createYAxisForOtherCharts(
+export function createNumericYAxisForOtherCharts(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,
   isIntegralDataset: boolean,
   chartType: ChartTypes,
   useSecondaryYScale: boolean = false,
+  roundedTicks: boolean = false,
 ) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
@@ -531,8 +710,8 @@ export function createYAxisForOtherCharts(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const finalYmin = Math.min(yMinMaxValues.startValue, yMinValue || 0);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset, roundedTicks);
   let yMin = finalYmin;
   let yMax = domainValues[domainValues.length - 1];
   if (chartType === ChartTypes.ScatterChart) {
@@ -541,7 +720,7 @@ export function createYAxisForOtherCharts(
     yMax = yMax + yPadding;
   }
   const yAxisScale = d3ScaleLinear()
-    .domain([yMin, yMax])
+    .domain([domainValues[0], yMax])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
@@ -550,7 +729,7 @@ export function createYAxisForOtherCharts(
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
-  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
+  yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(defaultYAxisTickFormatter);
   yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
@@ -848,6 +1027,7 @@ export function createYAxisLabels(
   if (node === null) {
     return;
   }
+  let tickIndex = 0;
   const axisNode = d3Select(node).call(yAxis);
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
@@ -861,19 +1041,20 @@ export function createYAxisLabels(
     const x = text.attr('x');
     const dy = parseFloat(text.attr('dy'));
     const dx = 0;
+    const uid = tickIndex++;
     text
       .text(null)
       .append('tspan')
       .attr('x', x)
       .attr('y', y)
-      .attr('id', 'BaseSpan')
+      .attr('id', `BaseSpan-${uid}`)
       .attr('dy', dy + 'em')
       .attr('data-', totalWord);
 
     if (truncateLabel && totalWordLength > noOfCharsToTruncate) {
       text
         .append('tspan')
-        .attr('id', 'showDots')
+        .attr('id', `showDots-${uid}`)
         .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dy', dy)
@@ -883,7 +1064,7 @@ export function createYAxisLabels(
       text
         .attr('text-align', 'start')
         .append('tspan')
-        .attr('id', 'LessLength')
+        .attr('id', `LessLength-${uid}`)
         .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
@@ -1597,23 +1778,6 @@ export const getAccessibleDataObject = (
   };
 };
 
-type LocaleStringDataProps = number | string | Date | undefined;
-export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (data === undefined || data === null || Number.isNaN(data)) {
-    return data;
-  }
-  culture = culture || undefined;
-  if (typeof data === 'number') {
-    return data.toLocaleString(culture);
-  } else if (typeof data === 'string' && !isNaN(Number(data))) {
-    const num = Number(data);
-    return num.toLocaleString(culture);
-  } else if (data instanceof Date) {
-    return data.toLocaleDateString(culture);
-  }
-  return data;
-};
-
 export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   const { node, xAxis } = rotateLabelProps;
   if (node === null || xAxis === null) {
@@ -1700,15 +1864,8 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
-export function formatValueWithSIPrefix(value: number) {
-  let specifier: string;
-  if (value < 1000) {
-    specifier = '.2~'; // upto 2 decimal places without insignificant trailing zeros
-  } else {
-    specifier = '.1'; // upto 1 decimal place
-  }
-
-  return d3FormatPrefix(specifier, value)(value);
+export function formatScientificLimitWidth(value: number) {
+  return yAxisTickFormatterInternal(value, true);
 }
 
 const DEFAULT_BAR_WIDTH = 16;
@@ -1842,6 +1999,8 @@ export function getCurveFactory(
   }
 
   switch (curve) {
+    case 'linear':
+      return d3CurveLinear;
     case 'natural':
       return d3CurveNatural;
     case 'step':

@@ -12,20 +12,12 @@ export const verticalstackedbarchartClassNames: SlotClassNames<VerticalStackedBa
   yAxis: '',
   legendContainer: '',
   hover: '',
-  calloutContentRoot: '',
-  calloutContentX: '',
-  calloutContentY: '',
   descriptionMessage: '',
-  calloutDateTimeContainer: '',
-  calloutInfoContainer: '',
-  calloutBlockContainer: '',
-  calloutBlockContainertoDrawShapefalse: '',
-  calloutBlockContainertoDrawShapetrue: '',
-  calloutlegendText: '',
   axisTitle: '',
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  svgTooltip: '',
 };
 
 const useStyles = makeStyles({
@@ -47,6 +39,7 @@ const useStyles = makeStyles({
   barLabel: {
     ...typographyStyles.caption1Strong,
     fill: tokens.colorNeutralForeground1,
+    forcedColorAdjust: 'auto',
   },
 });
 

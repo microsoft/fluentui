@@ -1,5 +1,5 @@
-import { html, repeat } from '@microsoft/fast-element';
-import { LabelPosition, ValidationFlags } from '../field/field.options.js';
+import { html, ref, repeat } from '@microsoft/fast-element';
+import { LabelPosition } from '../field/field.options.js';
 import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Switch as FluentSwitch } from './switch.js';
 
@@ -13,19 +13,14 @@ const storyTemplate = html<StoryArgs<FluentSwitch>>`
     name="${story => story.name}"
     ?required="${story => story.required}"
     slot="${story => story.slot}"
+    ${ref('switch')}
   ></fluent-switch>
-`;
-
-const messageTemplate = html`
-  <fluent-text slot="message" size="200" flag="${story => story.flag}">
-    <span>${story => story.message}</span>
-  </fluent-text>
 `;
 
 const fieldStoryTemplate = html<StoryArgs<FluentSwitch>>`
   <fluent-field label-position="${story => story.labelPosition}">
     <label slot="label">${story => story.label}</label>
-    ${storyTemplate} ${repeat(story => story.messages, messageTemplate)}
+    ${storyTemplate}
   </fluent-field>
 `;
 
@@ -91,13 +86,17 @@ export const Disabled: Story = {
 
 export const Required: Story = {
   render: renderComponent(html<StoryArgs<FluentSwitch>>`
-    <form style="display: flex; gap: 1em; align-items: end">
+    <form
+      @reset="${story => story.successMessage.toggleAttribute('hidden', true)}"
+      @submit="${story => story.switch.checkValidity() && story.successMessage.toggleAttribute('hidden', false)}"
+      style="display: inline-flex; flex-direction: column; gap: 1rem; max-width: 400px;"
+    >
+      ${fieldStoryTemplate}
       <div>
-        <fluent-switch id="required-fluent-switch" required></fluent-switch>
-        <label for="required-fluent-switch">Required</label>
+        <fluent-button type="submit" appearance="primary">Submit</fluent-button>
+        <fluent-button type="reset" ${ref('resetButton')}>Reset</fluent-button>
       </div>
-      <div>${fieldStoryTemplate}</div>
-      <fluent-button type="submit">Submit</fluent-button>
+      <span id="success-message" hidden ${ref('successMessage')}>Form submitted successfully!</span>
     </form>
   `),
   args: {
@@ -105,12 +104,6 @@ export const Required: Story = {
     labelPosition: LabelPosition.after,
     required: true,
     label: 'Required',
-    messages: [
-      {
-        message: 'This field is required',
-        flag: ValidationFlags.valueMissing,
-      },
-    ],
   },
 };
 

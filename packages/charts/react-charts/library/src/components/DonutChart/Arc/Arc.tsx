@@ -4,7 +4,7 @@ import { useArcStyles } from './useArcStyles.styles';
 import { ChartDataPoint } from '../index';
 import { ArcProps } from './index';
 import { format as d3Format } from 'd3-format';
-import { formatValueWithSIPrefix, useRtl } from '../../../utilities/index';
+import { formatScientificLimitWidth, useRtl } from '../../../utilities/index';
 
 // Create a Arc within Donut Chart variant which uses these default styles and this styled subcomponent.
 /**
@@ -74,7 +74,7 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
         >
           {showLabelsInPercent
             ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-            : formatValueWithSIPrefix(arcValue)}
+            : formatScientificLimitWidth(arcValue)}
         </text>
       );
     }
@@ -88,7 +88,10 @@ export const Arc: React.FunctionComponent<ArcProps> = React.forwardRef<HTMLDivEl
 
     const { href, focusedArcId } = props;
     //TO DO 'replace' is throwing error
-    const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
+    const id =
+      props.uniqText! +
+      (typeof props.data!.data.legend === 'string' ? props.data!.data.legend.replace(/\s+/g, '') : '') +
+      props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
     return (
       <g ref={currentRef}>

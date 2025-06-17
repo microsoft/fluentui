@@ -29,7 +29,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -51,17 +51,17 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -144,8 +144,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -154,9 +154,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -310,6 +310,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -381,6 +384,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               role="img"
               text-anchor="middle"
@@ -454,6 +460,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -490,38 +499,32 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -563,7 +566,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1018,7 +1021,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1040,17 +1043,17 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -1133,8 +1136,8 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -1143,9 +1146,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -1299,6 +1302,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -1370,6 +1376,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               role="img"
               text-anchor="middle"
@@ -1443,6 +1452,9 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -1479,38 +1491,32 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           <circle
             cx="279"
             cy="157.46000000000004"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -1552,7 +1558,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2007,7 +2013,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2029,17 +2035,17 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -2122,8 +2128,8 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -2132,9 +2138,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -2288,6 +2294,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -2359,6 +2368,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     fill: #323130;
                     font-size: 12px;
                     font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
                   }
               role="img"
               text-anchor="middle"
@@ -2432,6 +2444,9 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(0, 0)"
@@ -2468,38 +2483,32 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           <circle
             cx="279"
             cy="157.46000000000004"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="327"
             cy="159.83"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
           <circle
             cx="375"
             cy="20"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#e3008c"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(8, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -2541,7 +2550,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3009,7 +3018,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
 
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone13"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -3031,17 +3040,17 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & line {
                   opacity: 0.2;
                   stroke: #f3f2f1;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
                 & path {
                   display: none;
@@ -3160,8 +3169,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   font-size: 10px;
                   font-weight: 600;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                  fill: CanvasText;
                 }
                 & path {
                   display: none;
@@ -3170,9 +3179,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.2;
                   stroke: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                   opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
+                  stroke: CanvasText;
                 }
             fill="none"
             font-family="sans-serif"
@@ -3330,6 +3339,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 role="img"
                 text-anchor="middle"
                 transform="translate(-8, 0)"
@@ -3391,6 +3403,9 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       font-size: 12px;
                       font-weight: 600;
                     }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      fill: CanvasText;
+                    }
                 role="img"
                 text-anchor="middle"
                 transform="translate(-8, 0)"
@@ -3441,7 +3456,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone9"
+                  data-focuszone-id="FocusZone14"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -9756,6 +9771,998 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
 </div>
 `;
 
+exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with negative points 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_3"
+  >
+    <div
+      id="defaultTabbableElement_4"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+
+      data-focuszone-id="FocusZone14"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 3 stacked bars and 1 lines. The X axis displays categories. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M279.5,6V0.5H391.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(287,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              January
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(335,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(383,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
+                opacity: 0.1;
+                stroke: CanvasText;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              20
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              30
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <g
+              aria-label="January. Metadata1, -2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
+              data-is-focusable="true"
+              id="0-singleBar"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="11.85"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="257"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="5.925"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="279"
+                y="251.075"
+              />
+            </g>
+            <text
+              aria-label="Total: -1.5"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="287"
+              y="269"
+            >
+              −1.5
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="February. Metadata1, -30. Metadata2, -3. Metadata3, -40. Supported Builds, 41."
+              data-is-focusable="true"
+              id="1-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="177.75"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="257"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="17.775"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="434.75"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="237"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="327"
+                y="452.525"
+              />
+            </g>
+            <text
+              aria-label="Total: -73"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="335"
+              y="701.525"
+            >
+              −73
+            </text>
+          </g>
+          <g>
+            <g
+              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, -30. Supported Builds, 100."
+              data-is-focusable="true"
+              id="2-singleBar"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#0078d4"
+                height="59.25"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="197.75"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00188f"
+                height="355.5"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="-157.75"
+              />
+              <rect
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                fill="#00bcf2"
+                height="177.75"
+                rx="0"
+                transform="translate(0, 0)"
+                width="16"
+                x="375"
+                y="257"
+              />
+            </g>
+            <text
+              aria-label="Total: 40"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
+              role="img"
+              text-anchor="middle"
+              transform="translate(0, 0)"
+              x="383"
+              y="251"
+            >
+              40
+            </text>
+          </g>
+        </g>
+        <g>
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="279"
+            x2="327"
+            y1="8.149999999999988"
+            y2="14.075000000000022"
+          />
+          <line
+            opacity="1"
+            stroke="#e3008c"
+            stroke-linecap="round"
+            stroke-width="3"
+            transform="translate(8, 0)"
+            x1="327"
+            x2="375"
+            y1="14.075000000000022"
+            y2="-335.5"
+          />
+          <circle
+            cx="279"
+            cy="8.149999999999988"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="327"
+            cy="14.075000000000022"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+          <circle
+            cx="375"
+            cy="-335.5"
+            fill="#ffffff"
+            opacity="0"
+            r="8"
+            stroke="#e3008c"
+            stroke-width="3"
+            transform="translate(8, 0)"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone15"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Supported Builds"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e3008c;
+                              border-color: #e3008c;
+                              border: 1px solid;
+                              content: ;
+                              height: 4px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e3008c, #e3008c);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Supported Builds
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Metadata1"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Metadata1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Metadata2"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Metadata2
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Metadata3"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Metadata3
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Vertical stacked bar chart rendering Should render the vertical stacked bar chart with numeric x-axis data 1`] = `
 <div>
   <div
@@ -9785,7 +10792,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -9807,17 +10814,17 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -9936,8 +10943,8 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -9946,9 +10953,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -10106,6 +11113,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -10167,6 +11177,9 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -10217,7 +11230,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone11"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10472,7 +11485,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10494,17 +11507,17 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -10623,8 +11636,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -10633,9 +11646,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -10793,6 +11806,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -10854,6 +11870,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -10896,7 +11915,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone11"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11148,7 +12167,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -11170,17 +12189,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -11299,8 +12318,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -11309,9 +12328,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -11469,6 +12488,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -11530,6 +12552,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -11572,7 +12597,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone11"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11824,7 +12849,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             outline: none;
           }
 
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone10"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -11846,17 +12871,17 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & line {
                 opacity: 0.2;
                 stroke: #323130;
                 width: 1px;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
               & path {
                 display: none;
@@ -11975,8 +13000,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 font-size: 10px;
                 font-weight: 600;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& text {
+                fill: CanvasText;
               }
               & path {
                 display: none;
@@ -11985,9 +13010,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 opacity: 0.2;
                 stroke: #323130;
               }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& line {
                 opacity: 0.1;
-                stroke: rgb(179, 179, 179);
+                stroke: CanvasText;
               }
           fill="none"
           font-family="sans-serif"
@@ -12141,6 +13166,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -12198,6 +13226,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     font-size: 12px;
                     font-weight: 600;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    fill: CanvasText;
+                  }
               role="img"
               text-anchor="middle"
               transform="translate(-8, 0)"
@@ -12223,26 +13254,22 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           <circle
             cx="56"
             cy="188.6346153846154"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(0, 0)"
-            visibility="hidden"
           />
           <circle
             cx="614"
             cy="120.26923076923077"
-            data-is-focusable="false"
             fill="#ffffff"
+            opacity="0"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
-            tabindex="-1"
             transform="translate(0, 0)"
-            visibility="hidden"
           />
         </g>
       </svg>
@@ -12276,7 +13303,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone6"
+          data-focuszone-id="FocusZone11"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >

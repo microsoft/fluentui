@@ -6,14 +6,14 @@ import { YValueHover } from '../../index';
 import {
   Points,
   areArraysEqual,
-  formatValueWithSIPrefix,
+  formatScientificLimitWidth,
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
   pointTypes,
   useRtl,
 } from '../../utilities/index';
-import { convertToLocaleString } from '../../utilities/locale-util';
+import { formatToLocaleString } from '@fluentui/chart-utilities';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import { Legend, LegendShape, Legends, Shape } from '../Legends/index';
 import { GaugeChartVariant, GaugeValueFormat, GaugeChartProps, GaugeChartSegment } from './GaugeChart.types';
@@ -150,6 +150,14 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       }
       prevPropsRef.current = props;
     }, [props]);
+
+    React.useImperativeHandle(
+      props.componentRef,
+      () => ({
+        chartContainer: _rootElem.current,
+      }),
+      [],
+    );
 
     const classes = useGaugeChartStyles(props);
     function _getStylesBasedOnBreakpoint() {
@@ -447,7 +455,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               className={classes.calloutContentX}
               {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
             >
-              {convertToLocaleString(calloutProps!.hoverXValue, props.culture)}
+              {formatToLocaleString(calloutProps!.hoverXValue, props.culture)}
             </div>
           </div>
           <div className={classes.calloutInfoContainer} style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}>
@@ -509,7 +517,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
       const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
       const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
       const { culture } = props;
-      const yValue = convertToLocaleString(xValue.y, culture);
+      const yValue = formatToLocaleString(xValue.y, culture);
       if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
         return (
           <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
@@ -521,7 +529,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             <div
               id={`${index}_${xValue.y}`}
               className={classes.calloutBlockContainer}
-              style={{ borderLeft: `4px solid ${xValue.color}` }}
+              style={{ borderInlineStart: `4px solid ${xValue.color}` }}
             >
               {toDrawShape && (
                 <Shape
@@ -536,7 +544,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
               <div>
                 <div className={classes.calloutlegendText}> {xValue.legend}</div>
                 <div className={classes.calloutContentY}>
-                  {convertToLocaleString(
+                  {formatToLocaleString(
                     xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
                     culture,
                   )}
@@ -555,9 +563,9 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
             {Object.keys(subcounts).map((subcountName: string) => {
               return (
                 <div key={subcountName} className={classes.calloutBlockContainer}>
-                  <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                  <div className={classes.calloutlegendText}> {formatToLocaleString(subcountName, culture)}</div>
                   <div className={classes.calloutContentY}>
-                    {convertToLocaleString(subcounts[subcountName], culture)}
+                    {formatToLocaleString(subcounts[subcountName], culture)}
                   </div>
                 </div>
               );
@@ -616,7 +624,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   role="img"
                   aria-label={`Min value: ${_minValue}`}
                 >
-                  {formatValueWithSIPrefix(_minValue)}
+                  {formatScientificLimitWidth(_minValue)}
                 </text>
                 <text
                   x={(_isRTL ? -1 : 1) * (_outerRadius + LABEL_OFFSET)}
@@ -626,7 +634,7 @@ export const GaugeChart: React.FunctionComponent<GaugeChartProps> = React.forwar
                   role="img"
                   aria-label={`Max value: ${_maxValue}`}
                 >
-                  {formatValueWithSIPrefix(_maxValue)}
+                  {formatScientificLimitWidth(_maxValue)}
                 </text>
               </>
             )}

@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, ITheme, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { DefaultPalette, ITheme, HighContrastSelector } from '@fluentui/react/lib/Styling';
 export const getStyles = (props: IArcProps, theme: ITheme | undefined): IArcStyles => {
   const { color } = props;
   return {
@@ -10,7 +10,7 @@ export const getStyles = (props: IArcProps, theme: ITheme | undefined): IArcStyl
       fill: theme?.semanticColors.bodyText || DefaultPalette.black,
       outline: 'none',
       selectors: {
-        [HighContrastSelectorBlack]: {
+        [HighContrastSelector]: {
           fill: 'CanvasText',
         },
       },

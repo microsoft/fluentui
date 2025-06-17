@@ -53,6 +53,11 @@ export interface CartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -86,54 +91,9 @@ export interface CartesianChartStyles {
   hover?: string;
 
   /**
-   * styles for callout root-content
-   */
-  calloutContentRoot?: string;
-
-  /**
-   * styles for callout x-content
-   */
-  calloutContentX?: string;
-
-  /**
-   * styles for callout y-content
-   */
-  calloutContentY?: string;
-
-  /**
    * styles for description message
    */
   descriptionMessage?: string;
-
-  /**
-   * styles for callout Date time container
-   */
-  calloutDateTimeContainer?: string;
-
-  /**
-   * styles for callout info container
-   */
-  calloutInfoContainer?: string;
-
-  /**
-   * styles for callout block container
-   */
-  calloutBlockContainer?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is false
-   */
-  calloutBlockContainertoDrawShapefalse?: string;
-
-  /**
-   * Styles for callout block container when toDrawShape is true
-   */
-  calloutBlockContainertoDrawShapetrue?: string;
-
-  /**
-   * styles for callout legend text
-   */
-  calloutlegendText?: string;
 
   /**
    * styles for tooltip
@@ -164,6 +124,11 @@ export interface CartesianChartStyles {
    * Styles for the chart wrapper div
    */
   chartWrapper?: string;
+
+  /**
+   * Styles for the svg tooltip
+   */
+  svgTooltip?: string;
 }
 
 /**
@@ -372,6 +337,12 @@ export interface CartesianChartProps {
   svgProps?: React.SVGProps<SVGSVGElement>;
 
   /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default True for LineChart but False for other charts
+   */
+  enableReflow?: boolean;
+
+  /**
    * Props related to reflow behavior of the chart
    */
   reflowProps?: {
@@ -414,8 +385,14 @@ export interface CartesianChartProps {
   useUTC?: string | boolean;
 
   /**
-   * Determines whether overlapping x-axis tick labels should be hidden.
    * @default false
+   * The prop used to decide rounded ticks on y axis
+   */
+  roundedTicks?: boolean;
+
+  /**
+   * Determines whether overlapping x-axis tick labels should be hidden.
+   * @default true
    */
   hideTickOverlap?: boolean;
 

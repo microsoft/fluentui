@@ -15,6 +15,9 @@ safeCreate(<Foo />, foo => {
 });
 ```
 
+> [!WARNING]
+> This api is deprecated. use `@testing-library/react` instead
+
 `safeMount(jsxContent, callback): void` - Abstraction on `mount` method in `enzyme` package which
 will auto unmount after executing the given callback.
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add HeatMapChart in v9",
-  "packageName": "@fluentui/react-charts",
-  "email": "110246001+krkshitij@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
