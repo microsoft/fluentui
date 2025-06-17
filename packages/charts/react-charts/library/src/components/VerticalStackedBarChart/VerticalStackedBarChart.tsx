@@ -1025,7 +1025,7 @@ export const VerticalStackedBarChart: React.FunctionComponent<VerticalStackedBar
           {!props.hideLabels && _barWidth >= 16 && showLabel && (
             <text
               x={xPoint + _barWidth / 2}
-              //if total bar value >=0, show label above top bar, otherwise below bottom barAdd commentMore actions
+              //if total bar value >=0, show label above top bar, otherwise below bottom bar
               y={barLabel >= Y_ORIGIN ? yPoint - 6 : yPoint + heightOfLastBar + 12}
               textAnchor="middle"
               className={classes.barLabel}
