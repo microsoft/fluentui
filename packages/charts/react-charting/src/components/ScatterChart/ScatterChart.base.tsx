@@ -426,28 +426,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       const cx = _xAxisScale.current?.(x) + _xBandwidth.current;
       const cy = _yAxisScale.current?.(y);
 
-      // Default to circle if no shape specified
-      if (!shape || shape === 'default' || shape === 'circle') {
-        return (
-          <circle
-            id={circleId}
-            key={circleId}
-            r={Math.max(size, 4)}
-            cx={cx}
-            cy={cy}
-            data-is-focusable={isLegendSelected}
-            {...eventHandlers}
-            opacity={opacity}
-            fill={isOpenShape(shape) ? 'none' : fill}
-            stroke={stroke}
-            strokeWidth={isOpenShape(shape) ? 2 : 1}
-            role="img"
-            aria-label={ariaLabel}
-            tabIndex={tabIndex}
-          />
-        );
-      }
-
       const pathData = getShapePath(shape);
 
       return (

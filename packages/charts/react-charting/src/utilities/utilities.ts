@@ -2011,7 +2011,7 @@ export const scatterPointPaths: { [key: string]: string } = {
 };
 
 export function getShapePath(shape: LegendShape | undefined): string {
-  if (!shape) {
+  if (!shape || shape === 'default') {
     return scatterPointPaths.circle;
   }
 
