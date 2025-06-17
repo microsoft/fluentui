@@ -9,6 +9,9 @@ import * as renderer from 'react-test-renderer';
 
 expect.extend(toHaveNoViolations);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 beforeAll(() => {
   // https://github.com/jsdom/jsdom/issues/3368
   global.ResizeObserver = class ResizeObserver {

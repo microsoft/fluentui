@@ -37,7 +37,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
   const tooltipHostId = useRef(useId('tooltip-host')).current;
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
-  const PADDING = 4;
+  const PADDING = 3;
 
   const wrapContentCallback = useCallback(() => {
     if (
@@ -163,7 +163,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
     (props.isTooltipVisibleProp && isOverflowing && !!props.content) || (isTooltipVisible && !!props.content);
 
   const rectX = (typeof props.textProps?.x === 'number' ? props.textProps.x : 0) - (textWidth ?? 0) / 2 - PADDING;
-  const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - PADDING;
+  const rectY = (typeof props.textProps?.y === 'number' ? props.textProps.y : 0) - (textHeight ?? 0) / 2 - 2 * PADDING;
 
   return (
     <>
@@ -172,7 +172,7 @@ export const SVGTooltipText: React.FunctionComponent<SVGTooltipTextProps> = Reac
           x={rectX}
           y={rectY}
           width={(textWidth ?? 0) + 2 * PADDING}
-          height={(textHeight ?? 0) + 2 * PADDING}
+          height={(textHeight ?? 0) + PADDING}
           transform={props.textProps?.transform}
           className={props.className}
         />

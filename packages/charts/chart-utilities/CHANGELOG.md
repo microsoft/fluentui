@@ -1,8 +1,18 @@
 # Change Log - @fluentui/chart-utilities
 
-This log was last generated on Fri, 13 Jun 2025 07:21:01 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Jun 2025 07:20:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.18](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.18)
+
+Tue, 17 Jun 2025 07:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/chart-utilities_v1.1.17..@fluentui/chart-utilities_v1.1.18)
+
+### Patches
+
+- fix(chart-utilities): Add type info to bar validation error message ([PR #34653](https://github.com/microsoft/fluentui/pull/34653) by 98592573+AtishayMsft@users.noreply.github.com)
+- fix(chart-utilities): Strongly type TraceInfo ([PR #34652](https://github.com/microsoft/fluentui/pull/34652) by 98592573+AtishayMsft@users.noreply.github.com)
 
 ## [1.1.17](https://github.com/microsoft/fluentui/tree/@fluentui/chart-utilities_v1.1.17)
 
