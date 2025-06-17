@@ -56,7 +56,6 @@ import {
   isNumberArray,
   isYearArray,
 } from '@fluentui/chart-utilities';
-import { timeParse } from 'd3-time-format';
 import { curveCardinal as d3CurveCardinal } from 'd3-shape';
 
 interface SecondaryYAxisValues {
@@ -102,16 +101,6 @@ const dashOptions = {
     lineBorderWidth: '4',
   },
 } as const;
-
-const isMonth = (possiblyMonthValue: any): boolean => {
-  const parseFullMonth = timeParse('%B');
-  const parseShortMonth = timeParse('%b');
-  return parseFullMonth(possiblyMonthValue) !== null || parseShortMonth(possiblyMonthValue) !== null;
-};
-
-export const isMonthArray = (data: Datum[] | Datum[][] | TypedArray): boolean => {
-  return isArrayOfType(data, isMonth);
-};
 
 const getLegend = (series: Partial<PlotData>, index: number): string => {
   return series.name || `Series ${index + 1}`;
@@ -257,6 +246,7 @@ export const transformPlotlyJsonToVSBCProps = (
 ): VerticalStackedBarChartProps => {
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
+  let yMinValue = 0;
   let secondaryYAxisValues: SecondaryYAxisValues = {};
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
@@ -285,6 +275,7 @@ export const transformPlotlyJsonToVSBCProps = (
       }
 
       yMaxValue = Math.max(yMaxValue, yVal);
+      yMinValue = Math.min(yMinValue, yVal);
     });
     secondaryYAxisValues = getSecondaryYAxisValues(series, input.layout);
   });
@@ -297,6 +288,7 @@ export const transformPlotlyJsonToVSBCProps = (
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
     yMaxValue,
+    yMinValue,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
@@ -520,7 +512,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = (input.data[0] as PlotData).y.length;
+  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
+    return total + (item.y?.length || 0);
+  }, 0);
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));

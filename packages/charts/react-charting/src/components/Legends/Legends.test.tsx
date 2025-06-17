@@ -5,6 +5,9 @@ import { LegendsBase } from './Legends.base';
 import { render, cleanup } from '@testing-library/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 function sharedBeforeEach() {
   resetIds();
 }

@@ -171,7 +171,7 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={tokens.colorNeutralBackground1}
+          className={classes.lineBorder}
         />,
       );
     }
@@ -967,7 +967,9 @@ export const VerticalBarChart: React.FunctionComponent<VerticalBarChartProps> = 
         className={classes.barLabel}
         aria-hidden={true}
       >
-        {formatScientificLimitWidth(barValue)}
+        {typeof props.yAxisTickFormat === 'function'
+          ? props.yAxisTickFormat(barValue)
+          : formatScientificLimitWidth(barValue)}
       </text>
     );
   }
