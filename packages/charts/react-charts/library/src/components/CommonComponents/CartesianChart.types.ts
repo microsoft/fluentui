@@ -53,6 +53,11 @@ export interface CartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   */
+  enableReflow?: boolean;
 }
 
 /**
@@ -330,6 +335,12 @@ export interface CartesianChartProps {
    * props for the svg; use this to include aria-* or other attributes on the tag
    */
   svgProps?: React.SVGProps<SVGSVGElement>;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default True for LineChart but False for other charts
+   */
+  enableReflow?: boolean;
 
   /**
    * Props related to reflow behavior of the chart
