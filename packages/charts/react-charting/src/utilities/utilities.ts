@@ -104,7 +104,7 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
-  width: number;
+  width?: number;
 }
 
 export interface IRotateLabelProps {
@@ -400,15 +400,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
   useUTC?: boolean,
 ) {
-  const {
-    domainNRangeValues,
-    xAxisElement,
-    tickPadding = 6,
-    xAxistickSize = 6,
-    xAxisCount,
-    hideTickOverlap,
-    xyz,
-  } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount, xyz } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
   xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
@@ -892,7 +884,7 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width } = wrapLabelProps;
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = 10 } = wrapLabelProps;
   if (node === null) {
     return;
   }

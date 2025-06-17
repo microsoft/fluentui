@@ -1174,6 +1174,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         startValue: number;
         endValue: number;
     };
+    // (undocumented)
+    getXAxisLabelWidth?: (containerWidth: number) => number;
     getYDomainMargins?: (containerHeight: number) => IMargins;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;

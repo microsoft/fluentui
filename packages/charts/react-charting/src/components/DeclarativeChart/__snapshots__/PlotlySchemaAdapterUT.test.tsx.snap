@@ -590,6 +590,7 @@ Object {
   "mode": "plotly",
   "roundCorners": true,
   "width": 850,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -3091,6 +3092,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "sortOrder": "none",
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "x_0",
     "x_1",
@@ -3293,6 +3295,7 @@ Object {
   "showYAxisLables": true,
   "showYAxisLablesTooltip": true,
   "width": 850,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "Votes",
   "yAxisCategoryOrder": Array [
     "Laravel",
@@ -6257,7 +6260,10 @@ Object {
   "roundCorners": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": false,
+  "xAxisCategoryOrder": "data",
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
 }
 `;
@@ -6359,6 +6365,7 @@ Object {
   "showYAxisLablesTooltip": true,
   "supportNegativeData": true,
   "width": undefined,
+  "wrapXAxisLables": true,
   "xAxisCategoryOrder": Array [
     "Jan",
     "Feb",
@@ -6367,6 +6374,7 @@ Object {
     "May",
   ],
   "xAxisTitle": "",
+  "yAxisCategoryOrder": "data",
   "yAxisTitle": "",
   "yMaxValue": 3400,
   "yMinValue": 0,

@@ -406,7 +406,7 @@ export class CartesianChartBase
           xAxis: xScale,
           showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
           noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-          width: this.props.getXAxisLabelWidth?.(this.state.containerWidth) || 10,
+          width: this.props.getXAxisLabelWidth?.(this.state.containerWidth),
         };
         const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
         // this value need to be updated for draw graph updated. So instead of using private value, using set state.

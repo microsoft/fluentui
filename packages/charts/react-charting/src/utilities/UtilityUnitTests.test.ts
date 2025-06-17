@@ -160,6 +160,7 @@ const createXAxisParams = (xAxisParams?: ICreateXAxisParams): utils.IXAxisParams
       bottom: 0,
       ...xAxisParams?.margins,
     },
+    xyz: utils.calculateLongestLabelWidth,
   };
 };
 const convertXAxisResultToJson = (
