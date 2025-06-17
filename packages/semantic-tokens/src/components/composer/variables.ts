@@ -35,6 +35,5 @@ export const ctrlComposerContainerBackgroundAcrylicColorBlendRaw =
 export const ctrlComposerContainerBackgroundAcrylicLumBlendRaw =
   '--smtc-ctrl-composer-container-background-acrylic-lum-blend';
 export const ctrlComposerContainerStrokeDefaultRaw = '--smtc-ctrl-composer-container-stroke-default';
-export const ctrlComposerInputShadowRaw = '--smtc-ctrl-composer-input-shadow-x';
-export const ctrlComposerContainerShadowKeyRaw = '--smtc-ctrl-composer-container-shadow-key';
-export const ctrlComposerContainerShadowAmbientRaw = '--smtc-ctrl-composer-container-shadow-ambient';
+export const ctrlComposerInputShadowRaw = '--smtc-ctrl-composer-input-shadow';
+export const ctrlComposerContainerShadowRaw = '--smtc-ctrl-composer-container-shadow';
