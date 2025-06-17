@@ -5380,11 +5380,11 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             }
                         focusable="false"
                         height="14"
-                        viewBox="-1 -1 14 14"
+                        viewBox="-7 -7 14 14"
                         width="14"
                       >
                         <path
-                          d="M6 1 A5 5 0 1 0 6 11 A5 5 0 1 0 6 1 Z"
+                          d="M4,0A4,4 0 1,1 0,-4A4,4 0 0,1 4,0Z"
                           fill="red"
                           stroke="red"
                           stroke-width="2"
@@ -5481,11 +5481,11 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             }
                         focusable="false"
                         height="14"
-                        viewBox="-1 -1 14 14"
+                        viewBox="-7 -7 14 14"
                         width="14"
                       >
                         <path
-                          d="M2 2 L10 2 L10 10 L2 10 L2 2 Z"
+                          d="M4,4H-4V-4H4Z"
                           fill="green"
                           stroke="green"
                           stroke-width="2"
@@ -5582,11 +5582,11 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                             }
                         focusable="false"
                         height="14"
-                        viewBox="-1 -1 14 14"
+                        viewBox="-7 -7 14 14"
                         width="14"
                       >
                         <path
-                          d="M6 2 L10 10 H2 L6 2 Z"
+                          d="M-4.62,2H4.62L0,-4Z"
                           fill="yellow"
                           stroke="yellow"
                           stroke-width="2"

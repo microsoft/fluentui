@@ -418,6 +418,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       opacity: number,
       circleId: string,
       isLegendSelected: boolean,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       eventHandlers: any,
       ariaLabel: string,
       tabIndex?: number,
@@ -532,7 +533,6 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
         const verticaLineHeight = containerHeight - (margins.current?.bottom ?? 0) + 6;
 
         for (let j = 0; j < _points.current?.[i]?.data?.length; j++) {
-          console.log('Rendering point:', _points.current?.[i]);
           const seriesId = `${_seriesId}_${i}_${j}`;
           const circleId = `${_circleId}_${i}_${j}`;
           const { x, y, xAxisCalloutData, xAxisCalloutAccessibilityData } = _points.current?.[i]?.data[j];
@@ -671,6 +671,7 @@ export const ScatterChartBase: React.FunctionComponent<IScatterChartProps> = Rea
       selectedLegendPoints,
       classNames,
       _renderShape,
+      _getRangeForScatterMarkerSize,
     ],
   );
 

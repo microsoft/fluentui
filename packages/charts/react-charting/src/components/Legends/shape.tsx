@@ -17,13 +17,21 @@ const legacyPointPaths: { [key: string]: string } = {
 
 const pointPath = { ...scatterPointPaths, ...legacyPointPaths };
 
+const getViewBoxForShape = (shapeName: string): string => {
+  if (shapeName === 'dottedLine' || shapeName === 'pyramid') {
+    return '-1 -1 14 14';
+  }
+  // For plotly-based shapes, use centered viewBox
+  return '-7 -7 14 14';
+};
+
 export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
   if (Object.keys(pointPath).indexOf(shape) === -1) {
     return <div className={classNameForNonSvg} />;
   }
 
   return (
-    <svg width={14} height={14} viewBox={'-1 -1 14 14'} {...getSecureProps(svgProps)}>
+    <svg width={14} height={14} viewBox={getViewBoxForShape(shape)} {...getSecureProps(svgProps)}>
       <path
         d={getShapePath(shape)}
         {...getSecureProps(pathProps)}
