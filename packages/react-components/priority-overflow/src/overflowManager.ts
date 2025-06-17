@@ -293,7 +293,6 @@ export function createOverflowManager(): OverflowManager {
       return;
     }
     const divider = overflowDividers[groupId];
-    sizeCache.delete(divider.element);
     if (divider.groupId) {
       delete overflowDividers[groupId];
       divider.element.removeAttribute(DATA_OVERFLOW_GROUP);
