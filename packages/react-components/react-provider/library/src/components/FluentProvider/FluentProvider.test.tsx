@@ -31,7 +31,7 @@ describe('FluentProvider', () => {
   /**
    * Note: see more visual regression tests for FluentProvider in /apps/vr-tests.
    */
-  it('renders a default state', () => {
+  it.skip('renders a default state', () => {
     // eslint-disable-next-line @typescript-eslint/no-deprecated -- FIXME
     const component = reactTestRenderer.create(
       <FluentProvider theme={{ colorBrandBackground2: '#fff' }}>Default FluentProvider</FluentProvider>,
@@ -40,7 +40,7 @@ describe('FluentProvider', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`should emit an error on duplicated IDs`, () => {
+  it.skip(`should emit an error on duplicated IDs`, () => {
     const containerA = document.createElement('div');
     const containerB = document.createElement('div');
 

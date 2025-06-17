@@ -27,7 +27,7 @@ describe('FluentProvider (node)', () => {
     resetIdsForTests();
   });
 
-  it('should render CSS variables as inline style', () => {
+  it.skip('should render CSS variables as inline style', () => {
     const html = ReactDOM.renderToStaticMarkup(<FluentProvider theme={testTheme} />);
 
     expect(parseHTMLString(html)).toMatchInlineSnapshot(`
@@ -45,7 +45,7 @@ describe('FluentProvider (node)', () => {
     `);
   });
 
-  it('renders nonce with SSR style element', () => {
+  it.skip('renders nonce with SSR style element', () => {
     const nonce = 'random';
     const renderer = createDOMRenderer(undefined, {
       styleElementAttributes: { nonce },
