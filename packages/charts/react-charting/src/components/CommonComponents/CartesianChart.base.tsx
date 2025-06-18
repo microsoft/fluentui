@@ -33,7 +33,7 @@ import {
   tooltipOfAxislabels,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
-import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { SVGTooltipText, ISVGTooltipTextProps } from '../../utilities/SVGTooltipText';
 import { IChart } from '../../types/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
@@ -556,6 +556,13 @@ export class CartesianChartBase
       this.margins.top! -
       this.state._removalValueForTextTuncate! -
       this.titleMargin;
+
+    const commonSvgToolTipProps: ISVGTooltipTextProps = {
+      wrapContent,
+      theme: this.props.theme,
+      showBackground: true,
+      className: this._classNames.svgTooltip,
+    };
     /**
      * We have use the {@link defaultTabbableElement } to fix
      * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -621,10 +628,7 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
-                className={this._classNames.svgTooltip}
+                {...commonSvgToolTipProps}
               />
             )}
             {this.props.xAxisAnnotation !== undefined && this.props.xAxisAnnotation !== '' && (
@@ -638,10 +642,7 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
-                className={this._classNames.svgTooltip}
+                {...commonSvgToolTipProps}
               />
             )}
             <g
@@ -691,10 +692,7 @@ export class CartesianChartBase
                       'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
-                    wrapContent={wrapContent}
-                    theme={this.props.theme}
-                    showBackground={true}
-                    className={this._classNames.svgTooltip}
+                    {...commonSvgToolTipProps}
                   />
                 )}
               </g>
@@ -717,10 +715,7 @@ export class CartesianChartBase
                   'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
-                wrapContent={wrapContent}
-                theme={this.props.theme}
-                showBackground={true}
-                className={this._classNames.svgTooltip}
+                {...commonSvgToolTipProps}
               />
             )}
             {this.props.yAxisAnnotation !== undefined &&
@@ -746,10 +741,7 @@ export class CartesianChartBase
                     'aria-hidden': true,
                   }}
                   maxWidth={yAxisTitleMaximumAllowedHeight}
-                  wrapContent={wrapContent}
-                  theme={this.props.theme}
-                  showBackground={true}
-                  className={this._classNames.svgTooltip}
+                  {...commonSvgToolTipProps}
                 />
               )}
           </svg>
