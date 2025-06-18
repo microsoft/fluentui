@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataPointShape } from './Legends.types';
-import { CustomPoints, getSecureProps, getShapePath, isOpenShape, pointPaths } from '../../utilities/shape-utilities';
+import { CustomPoints, getShapePath, isOpenShape, pointPaths } from '../../utilities/shape-utilities';
+import { getSecureProps } from '../../utilities/utilities';
 
 export interface IShapeProps {
   svgProps: React.SVGAttributes<SVGElement>;

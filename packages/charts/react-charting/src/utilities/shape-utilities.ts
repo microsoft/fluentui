@@ -127,12 +127,3 @@ export function getShapePath(shape: DataPointShape | undefined): string {
 export function isOpenShape(shape?: DataPointShape): boolean {
   return Boolean(String(shape)?.toLowerCase().includes('open'));
 }
-
-export function getSecureProps(props: Record<string, any> = {}): Record<string, any> {
-  return Object.keys(props).reduce((acc, key) => {
-    if (props[key] !== undefined && props[key] !== null) {
-      acc[key] = props[key];
-    }
-    return acc;
-  }, {} as Record<string, any>);
-}
