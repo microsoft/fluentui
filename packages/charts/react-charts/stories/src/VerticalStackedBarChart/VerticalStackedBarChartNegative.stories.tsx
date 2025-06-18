@@ -363,7 +363,6 @@ export const VerticalStackedBarNegative = () => {
             xAxisTitle={showAxisTitles ? 'Number of days' : undefined}
             roundCorners={roundCorners}
             roundedTicks={true}
-            supportNegativeData={true}
           />
         </div>
       )}
@@ -386,7 +385,6 @@ export const VerticalStackedBarNegative = () => {
             enableReflow={true}
             roundCorners={roundCorners}
             roundedTicks={true}
-            supportNegativeData={true}
           />
         </div>
       )}

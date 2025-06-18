@@ -386,12 +386,6 @@ export interface CartesianChartProps {
 
   /**
    * @default false
-   * Used for enabling negative values in Y axis.
-   */
-  supportNegativeData?: boolean;
-
-  /**
-   * @default false
    * The prop used to decide rounded ticks on y axis
    */
   roundedTicks?: boolean;
