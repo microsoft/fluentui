@@ -42,7 +42,7 @@ jobs:
 
       - name: Bump & Pack
         working-directory: packages/web-components
-        run: npm bump
+        run: npm run bump
 
       - name: Publish to GitHub Packages
         working-directory: packages/web-components

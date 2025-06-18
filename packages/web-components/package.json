@@ -67,7 +67,7 @@
     "build-storybook": "storybook build -o ./dist/storybook --docs",
     "e2e": "node ./scripts/e2e.js",
     "e2e:local": "node ./scripts/e2e.js --ui",
-    "bump": "npm version patch --force && npm pack"
+    "bump": "npm version patch --no-git-tag-version && npm pack"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
