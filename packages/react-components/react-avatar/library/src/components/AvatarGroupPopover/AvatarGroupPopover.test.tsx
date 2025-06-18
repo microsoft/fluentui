@@ -3,7 +3,7 @@ import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { AvatarGroupPopover } from './AvatarGroupPopover';
 import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles.styles';
 import { isConformant } from '../../testing/isConformant';
-import { render, RenderResult, screen } from '@testing-library/react';
+import { render, RenderResult, screen, fireEvent } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
@@ -18,7 +18,8 @@ function queryByRoleDialog(result: RenderResult) {
 
 const getPopoverSurfaceElement = (result: RenderResult) => {
   // triggerButton needs to be clicked otherwise content won't be rendered.
-  result.getByRole('button').click();
+  fireEvent.click(result.getByRole('button'));
+
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
   return dialog!;

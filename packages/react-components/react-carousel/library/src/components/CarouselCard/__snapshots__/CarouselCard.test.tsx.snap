@@ -4,7 +4,7 @@ exports[`CarouselCard renders a default state 1`] = `
 <div>
   <div
     class="fui-CarouselCard"
-    id="fui-CarouselCard8"
+    id="fui-CarouselCardr7"
     role="tabpanel"
   >
     Default CarouselCard
