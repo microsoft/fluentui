@@ -46,7 +46,7 @@ class ComponentCustomizer {
    * Clone the custom files repository
    */
   cloneCustomFiles() {
-    console.log('📦 Cloning custom files repository...');
+    console.log('Cloning custom files repository...');
 
     // Clean up any existing temp directory
     if (fs.existsSync(this.config.tempDir)) {
