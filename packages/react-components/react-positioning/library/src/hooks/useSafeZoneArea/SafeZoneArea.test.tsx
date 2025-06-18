@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { SafeZoneArea, type SafeZoneAreaImperativeHandle, createSafeZoneAreaStateStore } from './SafeZoneArea';
+import type { createSafeZoneAreaStateStore } from './createSafeZoneAreaStateStore';
+import { SafeZoneArea, type SafeZoneAreaImperativeHandle } from './SafeZoneArea';
+import type { Point } from './types';
 
 function noop() {
   // do nothing
@@ -36,30 +38,26 @@ describe('SafeZoneArea', () => {
   describe('updateSVGs', () => {
     it.each([
       {
-        placement: 'right' as const,
         containerRect: createDOMRectMock({ height: 300, width: 200, top: 200, left: 200 }),
         targetRect: createDOMRectMock({ height: 50, width: 100, top: 300, left: 0 }),
-        mouseCoordinates: { x: 10, y: 10 },
+        mouseCoordinates: [10, 10] satisfies Point,
       },
       {
-        placement: 'left' as const,
         containerRect: createDOMRectMock({ height: 300, width: 200, top: 200, left: 200 }),
         targetRect: createDOMRectMock({ height: 50, width: 100, top: 300, left: 500 }),
-        mouseCoordinates: { x: 310, y: 510 },
+        mouseCoordinates: [310, 510] satisfies Point,
       },
       {
-        placement: 'bottom' as const,
         containerRect: createDOMRectMock({ height: 300, width: 200, top: 200, left: 200 }),
         targetRect: createDOMRectMock({ height: 50, width: 100, top: 0, left: 300 }),
-        mouseCoordinates: { x: 10, y: 350 },
+        mouseCoordinates: [10, 350] satisfies Point,
       },
       {
-        placement: 'top' as const,
         containerRect: createDOMRectMock({ height: 300, width: 200, top: 0, left: 200 }),
         targetRect: createDOMRectMock({ height: 50, width: 100, top: 400, left: 300 }),
-        mouseCoordinates: { x: 410, y: 390 },
+        mouseCoordinates: [410, 390] satisfies Point,
       },
-    ])('updates SVGs', ({ placement, containerRect, targetRect, mouseCoordinates }) => {
+    ])('updates SVGs', ({ containerRect, targetRect, mouseCoordinates }) => {
       const imperativeRef = React.createRef<SafeZoneAreaImperativeHandle>();
       const { container } = render(
         <SafeZoneArea
@@ -73,7 +71,6 @@ describe('SafeZoneArea', () => {
       );
 
       imperativeRef.current?.updateSVG({
-        containerPlacementSide: placement,
         containerRect,
         targetRect,
         mouseCoordinates,
