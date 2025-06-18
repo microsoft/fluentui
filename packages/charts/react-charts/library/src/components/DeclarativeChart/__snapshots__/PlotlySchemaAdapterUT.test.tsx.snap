@@ -4960,5 +4960,6 @@ Object {
   "xAxisTitle": "",
   "yAxisTitle": "",
   "yMaxValue": 3400,
+  "yMinValue": 0,
 }
 `;

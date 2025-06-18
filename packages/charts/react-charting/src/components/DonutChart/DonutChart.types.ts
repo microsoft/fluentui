@@ -101,4 +101,9 @@ export interface IDonutChartStyles {
    * Style for the legend container.
    */
   legendContainer: IStyle;
+
+  /**
+   * styles for axis annotation
+   */
+  axisAnnotation?: IStyle;
 }

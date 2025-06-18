@@ -53,6 +53,11 @@ export interface CartesianChartStyleProps {
    * boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   */
+  enableReflow?: boolean;
 }
 
 /**

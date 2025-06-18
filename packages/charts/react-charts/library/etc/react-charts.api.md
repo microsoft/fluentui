@@ -186,6 +186,7 @@ export interface CartesianChartProps {
 export interface CartesianChartStyleProps {
     className?: string;
     color?: string;
+    enableReflow?: boolean;
     height?: number;
     href?: string;
     lineColor?: string;
@@ -1104,8 +1105,30 @@ export interface RefArrayData {
     refElement?: SVGGElement;
 }
 
-// @public (undocumented)
+// @public
+export interface ResponsiveChildProps {
+    // (undocumented)
+    height?: number;
+    // (undocumented)
+    shouldResize?: number;
+    // (undocumented)
+    width?: number;
+}
+
+// @public
 export const ResponsiveContainer: React_2.FC<ResponsiveContainerProps>;
+
+// @public
+export interface ResponsiveContainerProps {
+    aspect?: number;
+    children: React_2.ReactElement<ResponsiveChildProps>;
+    height?: number | string;
+    maxHeight?: number;
+    minHeight?: number | string;
+    minWidth?: number | string;
+    onResize?: (width: number, height: number) => void;
+    width?: number | string;
+}
 
 // @public (undocumented)
 export const SankeyChart: React_2.FunctionComponent<SankeyChartProps>;
@@ -1323,7 +1346,7 @@ export interface VerticalStackedBarChartProps extends CartesianChartProps {
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
-    yMinValue?: undefined;
+    yMinValue?: number | undefined;
 }
 
 // @public
@@ -1360,6 +1383,9 @@ export interface VSChartDataPoint {
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
 }
+
+// @public
+export function withResponsiveContainer<TProps extends Omit<ResponsiveContainerProps, 'children'>>(WrappedComponent: React_2.ComponentType<TProps>): React_2.FC<TProps>;
 
 // @public (undocumented)
 export interface YValueHover {

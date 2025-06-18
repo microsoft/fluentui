@@ -269,6 +269,7 @@ export const transformPlotlyJsonToVSBCProps = (
   const mapXToDataPoints: { [key: string]: VerticalStackedChartProps } = {};
   let yMaxValue = 0;
   const secondaryYAxisValues = getSecondaryYAxisValues(input.data, input.layout);
+  let yMinValue = 0;
   input.data.forEach((series: PlotData, index1: number) => {
     const isXYearCategory = isYearArray(series.x); // Consider year as categorical not numeric continuous axis
     (series.x as Datum[])?.forEach((x: string | number, index2: number) => {
@@ -299,6 +300,9 @@ export const transformPlotlyJsonToVSBCProps = (
           yMaxValue = Math.max(yMaxValue, yVal);
         }
       }
+
+      yMaxValue = Math.max(yMaxValue, yVal);
+      yMinValue = Math.min(yMinValue, yVal);
     });
   });
 
@@ -310,6 +314,7 @@ export const transformPlotlyJsonToVSBCProps = (
     height: input.layout?.height ?? 350,
     barWidth: 'auto',
     yMaxValue,
+    yMinValue,
     chartTitle,
     xAxisTitle,
     yAxisTitle,
@@ -534,7 +539,9 @@ export const transformPlotlyJsonToHorizontalBarWithAxisProps = (
   const margin: number = input.layout?.margin?.l ?? 0;
   const padding: number = input.layout?.margin?.pad ?? 0;
   const availableHeight: number = chartHeight - margin - padding;
-  const numberOfBars = (input.data[0] as PlotData).y.length;
+  const numberOfBars = input.data.reduce((total: number, item: PlotData) => {
+    return total + (item.y?.length || 0);
+  }, 0);
   const scalingFactor = 0.01;
   const gapFactor = 1 / (1 + scalingFactor * numberOfBars);
   const barHeight = availableHeight / (numberOfBars * (1 + gapFactor));

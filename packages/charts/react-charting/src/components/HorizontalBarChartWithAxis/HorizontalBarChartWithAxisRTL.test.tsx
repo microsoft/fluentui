@@ -20,6 +20,9 @@ const runTest = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const global: any;
+
 beforeEach(() => {
   resetIds();
 });
