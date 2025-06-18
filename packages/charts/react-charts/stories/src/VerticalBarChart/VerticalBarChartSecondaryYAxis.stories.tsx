@@ -6,8 +6,7 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charts';
-// eslint-disable-next-line no-restricted-imports
-import { useId } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-components';
 
 export const VerticalBarSecondaryYAxis = () => {
   const [width, setWidth] = React.useState<number>(700);
