@@ -40,6 +40,13 @@ jobs:
         working-directory: packages/web-components
         run: yarn nx build
 
+      - name: Checkout custom-styles repo
+        uses: actions/checkout@v4
+        with:
+          repository: NBS-Sandbox/npds-fluentui-custom-files
+          path: packages/web-components/.temp-custom-files
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Apply Custom NPDS Styling
         working-directory: packages/web-components
         run: npm run overlay-styles
