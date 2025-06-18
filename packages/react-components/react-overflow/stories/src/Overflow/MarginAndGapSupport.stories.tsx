@@ -132,3 +132,14 @@ const OverflowMenu: React.FC<{ itemIds: string[]; useMargin: boolean }> = ({ ite
     </Menu>
   );
 };
+
+MarginAndGapSupport.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `Overflow` component allows you to opt-in for a more advandced measuring approach.',
+        'When the `measureGap` prop is set the gap spacing between overflow items will dynamically be calculated.'
+      ].join('\n'),
+    },
+  },
+};
