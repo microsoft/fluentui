@@ -95,13 +95,15 @@ export function createOverflowManager(): OverflowManager {
 
   const visibleItemQueue = createPriorityQueue<string>(compareItems);
 
-  function isOverflowMenuVisible(): boolean {
-    return Boolean(invisibleItemQueue.size() > 0 && overflowMenu);
+  function hasOverflowItems(): boolean {
+    return Boolean(invisibleItemQueue.size() > 0);
   }
 
   function gapSize(): number {
-    const elements = visibleItemQueue.all().map(id => overflowItems[id].element);
-    if (isOverflowMenuVisible() && overflowMenu) {
+    let elements = visibleItemQueue.all().map(id => overflowItems[id].element);
+    elements = elements.concat(Object.values(overflowDividers).map(x => x.element));
+
+    if (hasOverflowItems() && overflowMenu) {
       elements.push(overflowMenu);
     }
 
@@ -137,7 +139,7 @@ export function createOverflowManager(): OverflowManager {
       0,
     );
 
-    const overflowMenuSize = isOverflowMenuVisible() && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+    const overflowMenuSize = hasOverflowItems() && overflowMenu ? getOffsetSize(overflowMenu) : 0;
 
     return totalItemSize + totalDividerSize + overflowMenuSize;
   }
