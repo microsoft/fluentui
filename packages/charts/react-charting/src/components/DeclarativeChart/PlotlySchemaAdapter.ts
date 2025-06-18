@@ -38,13 +38,7 @@ import { GaugeChartVariant, IGaugeChartProps, IGaugeChartSegment } from '../Gaug
 import { IGroupedVerticalBarChartProps } from '../GroupedVerticalBarChart/index';
 import { IVerticalBarChartProps } from '../VerticalBarChart/index';
 import { IChartTableProps } from '../ChartTable/index';
-import {
-  findNumericMinMaxOfY,
-  formatScientificLimitWidth,
-  getTypeOfAxis,
-  MIN_DONUT_RADIUS,
-  XAxisTypes,
-} from '../../utilities/utilities';
+import { findNumericMinMaxOfY, formatScientificLimitWidth, MIN_DONUT_RADIUS } from '../../utilities/utilities';
 import type {
   Datum,
   Layout,
@@ -533,7 +527,7 @@ export const transformPlotlyJsonToVSBCProps = (
     showYAxisLables: true,
     noOfCharsToTruncate: 20,
     showYAxisLablesTooltip: true,
-    wrapXAxisLables: getTypeOfAxis(vsbcData[0]?.xAxisPoint, true) === XAxisTypes.StringAxis,
+    wrapXAxisLables: typeof vsbcData[0]?.xAxisPoint === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getXAxisTickFormat(input.data[0], input.layout),
@@ -633,7 +627,7 @@ export const transformPlotlyJsonToGVBCProps = (
     hideTickOverlap: true,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: getTypeOfAxis(gvbcData[0]?.name, true) === XAxisTypes.StringAxis,
+    wrapXAxisLables: typeof gvbcData[0]?.name === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),
@@ -747,7 +741,7 @@ export const transformPlotlyJsonToVBCProps = (
     maxBarWidth: 50,
     hideLegend,
     roundCorners: true,
-    wrapXAxisLables: getTypeOfAxis(vbcData[0]?.x, true) === XAxisTypes.StringAxis,
+    wrapXAxisLables: typeof vbcData[0]?.x === 'string',
     ...getTitles(input.layout),
     ...getAxisCategoryOrderProps(input.data, input.layout),
     ...getYMinMaxValues(input.data[0], input.layout),

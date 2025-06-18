@@ -881,6 +881,8 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
   }
 }
 
+export const DEFAULT_WRAP_WIDTH = 10;
+
 /**
  * This method used for wrapping of x axis labels (tick values).
  * It breaks down given text value by space separated and calculates the total height needed to display all the words.
@@ -891,7 +893,7 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
  * @returns
  */
 export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
-  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = 10 } = wrapLabelProps;
+  const { node, xAxis, noOfCharsToTruncate, showXAxisLablesTooltip, width = DEFAULT_WRAP_WIDTH } = wrapLabelProps;
   if (node === null) {
     return;
   }

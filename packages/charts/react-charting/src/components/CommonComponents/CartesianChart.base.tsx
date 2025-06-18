@@ -31,6 +31,7 @@ import {
   getSecureProps,
   truncateString,
   tooltipOfAxislabels,
+  DEFAULT_WRAP_WIDTH,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
@@ -1095,7 +1096,7 @@ export class CartesianChartBase
       // This approach works well in most cases, since overflow typically occurs only when
       // a single word exceeds the specified width — otherwise, the text will wrap as expected.
       const longestLabelWidth = calculateLongestLabelWidth(words, `.${this._classNames.xAxis} text`);
-      return Math.max(Math.ceil(longestLabelWidth), 10);
+      return Math.max(Math.ceil(longestLabelWidth), DEFAULT_WRAP_WIDTH);
     }
 
     // Default case
