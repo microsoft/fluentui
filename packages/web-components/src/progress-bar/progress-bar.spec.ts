@@ -45,54 +45,54 @@ test.describe('Progress Bar', () => {
     fastPage,
   }) => {
     const { element } = fastPage;
-    const indicator = element.locator(".indicator");
+    const indicator = element.locator('.indicator');
 
     await fastPage.setTemplate({ attributes: { value: '50' } });
 
-    const elementBox = await element.boundingBox() as BoundingBox;
+    const elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", `${elementBox.width / 2}px`);
+    await expect(indicator).toHaveCSS('width', `${elementBox.width / 2}px`);
   });
 
   test('should set the indicator width to match the `value` property as a percentage between `min` and `max`', async ({
     fastPage,
   }) => {
     const { element } = fastPage;
-    const indicator = element.locator(".indicator");
+    const indicator = element.locator('.indicator');
 
     await fastPage.setTemplate({ attributes: { value: '0' } });
 
-    let elementBox = await element.boundingBox() as BoundingBox;
+    let elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", "0px");
+    await expect(indicator).toHaveCSS('width', '0px');
 
     await element.evaluate((node: ProgressBar) => {
       node.value = 50;
     });
-    elementBox = await element.boundingBox() as BoundingBox;
+    elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", `${elementBox.width / 2}px`);
+    await expect(indicator).toHaveCSS('width', `${elementBox.width / 2}px`);
 
     await element.evaluate((node: ProgressBar) => {
       node.value = 100;
     });
-    elementBox = await element.boundingBox() as BoundingBox;
+    elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", `${elementBox.width}px`);
+    await expect(indicator).toHaveCSS('width', `${elementBox.width}px`);
 
     await element.evaluate((node: ProgressBar) => {
       node.max = 200;
     });
-    elementBox = await element.boundingBox() as BoundingBox;
+    elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", `${elementBox.width / 2}px`);
+    await expect(indicator).toHaveCSS('width', `${elementBox.width / 2}px`);
 
     await element.evaluate((node: ProgressBar) => {
       node.min = 100;
     });
-    elementBox = await element.boundingBox() as BoundingBox;
+    elementBox = (await element.boundingBox()) as BoundingBox;
 
-    await expect(indicator).toHaveCSS("width", "0px");
+    await expect(indicator).toHaveCSS('width', '0px');
   });
 
   test('should set the `thickness` property to match the `thickness` attribute', async ({ fastPage }) => {
