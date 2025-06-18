@@ -134,3 +134,29 @@ export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveO
  * **THIS TYPE IS INTERNAL AND SHOULD NEVER BE EXPOSED**
  */
 export type ReactVersionDependent<Modern, Legacy> = {} extends React.ReactNode ? Legacy : Modern;
+
+/**
+ * Our own `JSX.Element` type that is compatible with both React 17 and React >=18.
+ * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
+ */
+export type JSXElement = React.ReactElement<
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  any,
+  any
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+>;
+
+/**
+ * Our own `keyof JSX.IntrinsicElements` type that is compatible with both React 17 and React >=18.
+ * Use this type to get the intrinsic elements from React types in order to avoid issues between different React versions.
+ */
+export type IntrinsicElements =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  keyof JSX.IntrinsicElements extends string
+    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      keyof JSX.IntrinsicElements
+    : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      keyof React.JSX.IntrinsicElements;
