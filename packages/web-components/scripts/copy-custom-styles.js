@@ -46,6 +46,13 @@ class ComponentCustomizer {
    * Clone the custom files repository
    */
   cloneCustomFiles() {
+    // If running in GitHub Actions and tempDir exists, skip cloning
+    if (process.env.GITHUB_ACTIONS && fs.existsSync(this.config.tempDir)) {
+      console.log('Detected GITHUB_ACTIONS + existing tempDir; skipping git clone');
+      return true;
+    }
+
+    // Otherwise, perform a fresh clone
     console.log('Cloning custom files repository...');
 
     // Clean up any existing temp directory
@@ -54,17 +61,16 @@ class ComponentCustomizer {
     }
 
     try {
-      const cloneCommand = `git clone ${this.config.customFilesRepo} ${this.config.tempDir}`;
-      if (this.config.branch && this.config.branch !== 'main') {
-        execSync(`${cloneCommand} --branch ${this.config.branch}`, { stdio: 'pipe' });
-      } else {
-        execSync(cloneCommand, { stdio: 'pipe' });
-      }
+      const base = `git clone ${this.config.customFilesRepo} ${this.config.tempDir}`;
+      const cmd = this.config.branch && this.config.branch !== 'main'
+        ? `${base} --branch ${this.config.branch}`
+        : base;
 
+      execSync(cmd, { stdio: 'pipe' });
       console.log('Custom files repository cloned successfully');
       return true;
-    } catch (error) {
-      console.error('Failed to clone custom files repository:', error.message);
+    } catch (err) {
+      console.error('Failed to clone custom files repository:', err.message);
       return false;
     }
   }
