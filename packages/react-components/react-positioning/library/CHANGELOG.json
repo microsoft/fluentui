@@ -2,6 +2,35 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Wed, 18 Jun 2025 17:33:58 GMT",
+      "tag": "@fluentui/react-positioning_v9.18.2",
+      "version": "9.18.2",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89cf76e7bf5e8e47ea506443b3b7fcdeb0571125",
+            "comment": "chore: add Storybook setup"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.24.0",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.21.1",
+            "commit": "ddb50b0e9313fe7eb75830a0546d01a2c7fe270b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Jun 2025 12:32:51 GMT",
       "tag": "@fluentui/react-positioning_v9.18.1",
       "version": "9.18.1",
