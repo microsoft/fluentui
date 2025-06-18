@@ -48,3 +48,16 @@ export const getBarLabelStyle = (theme: ITheme): IStyle => {
     },
   };
 };
+
+export const getMarkerLabelStyle = (theme: ITheme): IStyle => {
+  return {
+    fontSize: FontSizes.medium,
+    fill: theme.semanticColors.bodyText,
+    textAnchor: 'middle',
+    selectors: {
+      [HighContrastSelector]: {
+        fill: 'CanvasText',
+      },
+    },
+  };
+};
