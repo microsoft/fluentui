@@ -67,7 +67,8 @@
     "build-storybook": "storybook build -o ./dist/storybook --docs",
     "e2e": "node ./scripts/e2e.js",
     "e2e:local": "node ./scripts/e2e.js --ui",
-    "bump-patch": "node scripts/bump-patch.js"
+    "bump-patch": "node scripts/bump-patch.js",
+    "overlay-styles": "node scripts/copy-custom-styles.js"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

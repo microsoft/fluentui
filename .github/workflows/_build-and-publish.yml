@@ -40,6 +40,10 @@ jobs:
         working-directory: packages/web-components
         run: yarn nx build
 
+      - name: Apply Custom NPDS Styling
+        working-directory: packages/web-components
+        run: npm run overlay-styles
+
       - name: bump Version
         working-directory: packages/web-components
         run: npm run bump-patch
