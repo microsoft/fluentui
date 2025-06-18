@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
 /**
  * Script to apply custom styled components to the freshly built web components
  * This script runs from within packages/web-components after the build process
@@ -195,7 +195,7 @@ class ComponentCustomizer {
    * Validate that we're in the right directory and structure exists
    */
   validateEnvironment() {
-    console.log('🔍 Validating environment...');
+    console.log(' Validating environment...');
 
     // Check if we're in packages/web-components
     const currentDir = path.basename(this.targetDir);
@@ -285,9 +285,11 @@ class ComponentCustomizer {
 }
 
 // Execute if run directly
-if (require.main === module) {
+const entrypoint = fileURLToPath(import.meta.url);
+const invoked = process.argv[1];
+
+if (entrypoint === invoked) {
   const customizer = new ComponentCustomizer();
   customizer.run();
 }
 
-module.exports = ComponentCustomizer;
