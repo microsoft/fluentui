@@ -30,8 +30,8 @@ const useStyles = makeStyles({
   root: {
     ...typographyStyles.body1,
     display: 'flex',
-    width: '100%',
-    height: '100%',
+    width: 'var(--root-width, 100%)',
+    height: 'var(--root-height, 100%)',
     flexDirection: 'column',
     overflow: 'hidden',
   },
@@ -110,7 +110,8 @@ export const useCartesianChartStyles = (props: CartesianChartProps): CartesianCh
     root: mergeClasses(cartesianchartClassNames.root, baseStyles.root /*props.styles?.root*/),
     chartWrapper: mergeClasses(
       cartesianchartClassNames.chartWrapper,
-      baseStyles.chartWrapper /*props.styles?.chartWrapper*/,
+      props.enableReflow ? baseStyles.chartWrapper : '',
+      /* props.styles?.chartWrapper */
     ),
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),

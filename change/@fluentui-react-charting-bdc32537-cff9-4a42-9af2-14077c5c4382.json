@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(react-charting): Remove enzyme react 17 test adapter",
-  "packageName": "@fluentui/react-charting",
-  "email": "98592573+AtishayMsft@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

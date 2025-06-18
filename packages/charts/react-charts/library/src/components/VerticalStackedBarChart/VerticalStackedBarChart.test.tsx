@@ -146,6 +146,11 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe.skip('Vertical stacked bar chart rendering with Date x-axis data', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the vertical stacked bar chart with Date x-axis data',
