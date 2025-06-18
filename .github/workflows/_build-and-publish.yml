@@ -1,0 +1,51 @@
+# .github/workflows/_build-and-publish.yml
+name: Build and Publish Fluent UI
+
+on:
+  workflow_dispatch:
+  push:
+    # support either `main` or `master` as your default branch
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node 20.19.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.19.2
+          registry-url: https://npm.pkg.github.com/
+          scope: '@nbs-sandbox'
+
+      - name: Install Yarn v1
+        run: npm install -g yarn@1
+
+      - name: Install root dependencies
+        run: yarn install
+
+      - name: Install web-components dependencies
+        working-directory: packages/web-components
+        run: yarn install
+
+      - name: Build Fluent UI web-components
+        working-directory: packages/web-components
+        run: yarn nx build
+
+      - name: Bump version
+        working-directory: packages/web-components
+        run: yarn version --patch --no-git-tag-version
+
+      - name: Publish to GitHub Packages
+        working-directory: packages/web-components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn publish --access public
